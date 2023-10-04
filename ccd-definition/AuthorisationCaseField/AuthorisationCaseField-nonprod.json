@@ -1,31 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "changeOrganisationRequestField",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "casePaymentWaysToPay",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "payment-access",
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "businessProcess",
     "AccessControl": [
       {

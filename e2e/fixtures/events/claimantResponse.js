@@ -90,7 +90,7 @@ const createRespondentResponseAndApplicantDefenceResponseDocument = (mpScenario)
 };
 
 module.exports = {
-  claimantResponse: (mpScenario = 'ONE_V_ONE') => {
+  claimantResponse: (mpScenario = 'ONE_V_ONE', allocatedTrack = 'SMALL_CLAIM') => {
     return {
       valid: {
         ...createRespondentResponseAndApplicantDefenceResponseDocument(mpScenario),
@@ -101,6 +101,16 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
           }
         },
+        ...(allocatedTrack === 'FAST_CLAIM' ? {
+          FixedRecoverableCosts: {
+            applicant1DQFixedRecoverableCosts: {
+              band: 'BAND_1',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes'
+            }
+          }
+        } : {}),
         DisclosureOfElectronicDocuments: {
           applicant1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',

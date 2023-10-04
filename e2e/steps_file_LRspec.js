@@ -24,6 +24,7 @@ const proceedPage = require('./pages/respondToDefence/proceed.page');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
+const fixedRecoverableCosts = require('./fragments/dq/fixedRecoverableCosts.page');
 const disclosureOfElectronicDocumentsPage = require('./fragments/dq/disclosureOfElectrionicDocuments.page');
 const expertsPage = require('./fragments/dq/experts.page');
 const singleResponse = require('./pages/respondToClaimLRspec/singleResponseLRSpec.page.js');
@@ -143,7 +144,7 @@ const firstDefendantSteps = () => [
 const secondDefendantSteps = (respondent2, respondent1Represented) => [
   ...conditionalSteps(respondent2, [
     () => party.enterParty('respondent2', address),
-    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(parties.RESPONDENT_SOLICITOR_2, respondent2.represented),
+    () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(respondent2.represented),
     ...conditionalSteps(respondent2 && respondent2.represented, [
       ...conditionalSteps(respondent1Represented, [
         () => respondent2SameLegalRepresentative.enterRespondent2SameLegalRepresentative(respondent2.sameLegalRepresentativeAsRespondent1),
@@ -151,7 +152,7 @@ const secondDefendantSteps = (respondent2, respondent1Represented) => [
       ...conditionalSteps(respondent2 && !respondent2.sameLegalRepresentativeAsRespondent1, [
         () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent2'),
         () => specDefendantSolicitorEmailPage.enterSolicitorEmail('2'),
-
+        () => specParty.enterSpecParty('Respondent2'),
       ])
     ])
   ])
@@ -447,6 +448,7 @@ module.exports = function () {
             () => this.clickContinue(),
          ... conditionalSteps(claimType === 'fast', [
                 () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
                 () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                 () => this.clickContinue(),
                 () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
@@ -489,6 +491,7 @@ module.exports = function () {
                 () => this.clickContinue(),
              ... conditionalSteps(claimType === 'fast', [
                     () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_2),
+                    () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_2),
                     () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent2'),
                     () => this.clickContinue(),
                     () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_2),
@@ -544,6 +547,7 @@ module.exports = function () {
                ]),
                ... conditionalSteps(claimType === 'fast', [
                   () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+                  () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
                   () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
                   () => this.clickContinue(),
                   () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
@@ -608,6 +612,7 @@ module.exports = function () {
                       ]),
                       ... conditionalSteps(claimType === 'fast', [
                        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+                       () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
                        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1),
                        () => this.clickContinue(),
                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),

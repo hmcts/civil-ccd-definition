@@ -16,6 +16,14 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
+    // for preview
+    // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
@@ -25,7 +33,7 @@ module.exports = {
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    //----------------------------------------------------------------------------------------------
+    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     wiremockService: 'http://localhost:8765'
   },
   s2s: {
@@ -39,6 +47,12 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
+  applicantSolicitorUserForBulkClaim: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
     type: 'applicant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
@@ -249,6 +263,12 @@ module.exports = {
     password: judgeDefaultPassword,
     type: 'judge',
     roleCategory: 'JUDICIAL'
+  },
+  bulkClaimSystemUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com', // temporary email
+    type: 'bulk_system_user',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
