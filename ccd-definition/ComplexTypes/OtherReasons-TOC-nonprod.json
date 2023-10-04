@@ -1,13 +1,13 @@
 [
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "ListElementCode": "txtTocOtherReasons",
     "ElementLabel": "The case will be taken offline automatically.\n\nIf you are judge submitting this information, the case will be sent to a listing officer. If a legal advisor has submitted this information, the case will be sent to a judge for review.\n\nGive reasons",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "ListElementCode": "input",
     "ElementLabel": " ",
     "FieldType": "TextArea",

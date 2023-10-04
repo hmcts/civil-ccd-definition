@@ -1,16 +1,16 @@
 [
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
     "ListElementCode": "txtTocOtherReasons",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
   {
-    "ID": "OtherReasons",
+    "ID": "ReasonNotSuitableSDO",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "tocOtherReasons",
+    "CaseFieldID": "reasonNotSuitableSDO",
     "ListElementCode": "input",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
