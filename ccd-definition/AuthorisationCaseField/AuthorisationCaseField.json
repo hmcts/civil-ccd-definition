@@ -1158,12 +1158,6 @@
     "CRUD": "CRU"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "pcqId",
-  "UserRole": "caseworker-civil-citizen-ui-pcqextractor",
-  "CRUD": "R"
-},
-  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "paymentSuccessfulDate",
     "AccessControl": [
