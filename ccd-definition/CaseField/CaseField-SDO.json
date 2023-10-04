@@ -666,7 +666,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMethodInPerson",
-    "Label": "Select hearing location ",
+    "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "SmallClaimsMethodInPerson",
     "SecurityClassification": "Public"
@@ -1044,7 +1044,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackMethodInPerson",
-    "Label": "Select hearing location ",
+    "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "FastTrackMethodInPerson",
     "SecurityClassification": "Public"
