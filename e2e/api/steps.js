@@ -1209,7 +1209,10 @@ const assertValidData = async (data, pageId, solicitor) => {
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
     addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
-
+  if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
+    // CIV-3883 depends on backend having the field
+    responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
+  }
   if (eventName === 'CREATE_SDO') {
     if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
@@ -1358,7 +1361,10 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
-    assert.property(returnedCaseData, populatedCaseField);
+    // this property won't be here until civil service is merged
+    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
+      assert.property(returnedCaseData, populatedCaseField);
+    }
   }
 };
 

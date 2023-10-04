@@ -29,6 +29,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRemoteHearing",
+    "Label": "Claimant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1",
     "Label": "Claimant's details",
     "FieldType": "Party",
