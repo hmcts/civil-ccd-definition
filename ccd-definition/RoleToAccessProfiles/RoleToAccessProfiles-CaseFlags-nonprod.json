@@ -45,24 +45,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin,caseflags-viewer",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "senior-tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin,caseflags-viewer",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
