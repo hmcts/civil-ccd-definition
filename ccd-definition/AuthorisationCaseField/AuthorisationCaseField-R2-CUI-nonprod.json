@@ -2371,7 +2371,7 @@
         "CRUD": "CRU"
       },
       {
-        "UserRole": [
+        "UserRoles": [
           "caseworker-civil-citizen-ui-pcqextractor"
         ],
         "CRUD": "R"
