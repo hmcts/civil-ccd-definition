@@ -463,6 +463,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT1_CLAIM_SUBMITTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "AccessControl": [
       {
@@ -482,6 +495,25 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_LIP_RESPONDENT_CLAIMANT_CONFIRM_TO_PROCEED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_LIP_APPLICANT_CLAIMANT_CONFIRM_TO_PROCEED",
     "AccessControl": [
       {
         "UserRoles": [
