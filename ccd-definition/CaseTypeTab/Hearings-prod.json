@@ -159,5 +159,21 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "TabFieldDisplayOrder": 20
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Hearings",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent1DQRemoteHearing",
+    "TabFieldDisplayOrder": 21
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Hearings",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent2DQRemoteHearing",
+    "TabFieldDisplayOrder": 22
   }
 ]

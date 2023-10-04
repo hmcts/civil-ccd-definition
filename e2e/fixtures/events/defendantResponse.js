@@ -135,7 +135,11 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'No reasons',
             requestHearingAtSpecificCourt: 'Yes'
-          }
+          },
+          respondent1DQRemoteHearing: {
+            hearingToBeHeldRemotely: 'Yes',
+            reasonForRemoteHearing: 'No reasons'
+          },
         },
         HearingSupport: {
           respondent1DQHearingSupport: {
