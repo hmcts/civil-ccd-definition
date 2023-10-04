@@ -189,15 +189,6 @@
     "CaseAccessCategories": ""
   },
   {
-    "RoleName" : "tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
     "RoleName" : "idam:caseworker-ras-validation",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
@@ -220,15 +211,6 @@
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "senior-tribunal-caseworker",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
