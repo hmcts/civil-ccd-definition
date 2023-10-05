@@ -6,10 +6,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+          tempAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
       },
     };
@@ -306,8 +306,8 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempAddress1Required: 'Yes',
+            respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
@@ -336,10 +336,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSRespondent2HomeAddressRequired: 'Yes',
+          tempAddress2Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondent2CorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor2ServiceAddressRequired: 'Yes'
         },
       },
     };
@@ -573,8 +573,8 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempAddress1Required: 'Yes',
+            respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
