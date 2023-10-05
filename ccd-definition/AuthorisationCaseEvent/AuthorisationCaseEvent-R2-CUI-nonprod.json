@@ -67,6 +67,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "CASE_DISMISSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_AFTER_PAYMENT",
     "AccessControl": [
       {

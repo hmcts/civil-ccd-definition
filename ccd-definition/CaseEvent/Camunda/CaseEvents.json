@@ -63,5 +63,19 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_DISMISSED",
+    "Name": "Claim has been dismissed",
+    "Description": "Claim has been dismissed",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "publish": "Y"
   }
 ]
