@@ -31,7 +31,7 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsIniti
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {fetchCaseDetails} = require('./apiRequest');
-const {removeFlagsFieldsFromFixture} = require('../helpers/caseFlagsFeatureHelper');
+const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 
 const data = {
@@ -326,6 +326,8 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
+    caseData = await addFlagsToFixture(caseData);
+
     await validateEventPages(data[eventName]);
 
     const document = await testingSupport.uploadDocument();
@@ -353,6 +355,8 @@ module.exports = {
     legacyCaseReference = returnedCaseData['legacyCaseReference'];
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
+
+    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -414,6 +418,8 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
         value: listElement('Both')
       }};
+
+    caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
 
@@ -482,6 +488,8 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     assertContainsPopulatedFields(returnedCaseData);
 
+    await addFlagsToFixture(returnedCaseData);
+
     await validateEventPages(data[eventName]);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -506,6 +514,8 @@ module.exports = {
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
+
+    caseData = await addFlagsToFixture(caseData);
 
     deleteCaseFields('systemGeneratedCaseDocuments');
     deleteCaseFields('solicitorReferences');
@@ -567,6 +577,8 @@ module.exports = {
       informAgreedExtensionData = eventData['informAgreedExtensionDates'][mpScenario][solicitor];
     }
 
+    caseData = await addFlagsToFixture(caseData);
+
     await validateEventPages(informAgreedExtensionData, solicitor);
 
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -615,6 +627,7 @@ module.exports = {
 
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
+    caseData = await addFlagsToFixture(caseData);
 
     deleteCaseFields('isRespondent1');
     deleteCaseFields('respondent1', 'solicitorReferences');
@@ -703,6 +716,8 @@ module.exports = {
     let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
       : data.CLAIMANT_RESPONSE(mpScenario);
 
+    caseData = await addFlagsToFixture(caseData);
+
     await validateEventPages(claimantResponseData);
 
     await assertError('Experts', claimantResponseData.invalid.Experts.emptyDetails, 'Expert details required');
@@ -773,6 +788,8 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
 
+    caseData = await addFlagsToFixture(caseData);
+
     let fixture = data.ADD_DEFENDANT_LITIGATION_FRIEND[mpScenario];
 
     await validateEventPages(fixture);
@@ -783,7 +800,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
 
     if(await checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterAddLitigationFriend(config.adminUser, caseId);
+      await assertFlagsInitialisedAfterAddLitigationFriend(config.hearingCenterAdminWithRegionId1, caseId);
     }
   },
 
