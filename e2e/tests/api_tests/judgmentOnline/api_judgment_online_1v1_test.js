@@ -45,6 +45,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
     await api.notifyClaimDetails(config.applicantSolicitorUser);
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_IN_INSTALMENTS');
     await api.setAsideJudgment(caseWorkerUser);
   }
@@ -58,6 +59,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with set as
     await api.notifyClaimDetails(config.applicantSolicitorUser);
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     await api.recordJudgment(caseWorkerUser, mpScenario, 'JUDGE_ORDER', 'PAY_IMMEDIATELY');
     await api.setAsideJudgment(caseWorkerUser);
   }
