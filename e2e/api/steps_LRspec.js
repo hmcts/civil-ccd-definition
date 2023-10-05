@@ -23,6 +23,10 @@ const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../he
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
+const lodash = require('lodash');
+const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
+const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 
 let caseId, eventName;
 let caseData = {};
@@ -40,7 +44,12 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
-  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js')
+  DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
+  FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
+  RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
+  RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
+  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
+  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
 };
 
 const eventData = {
@@ -476,6 +485,92 @@ module.exports = {
     const expectedStatus = shouldHaveAccess ? 200 : 404;
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
+
+  createFinalOrderJO: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER'));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER'));
+    }
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  recordJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'RECORD_JUDGMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (mpScenario === 'ONE_V_ONE') {
+      await validateEventPages(data.RECORD_JUDGMENT_SPEC(whyRecorded, paymentPlanSelection));
+    } else {
+      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
+    }
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  setAsideJudgment: async (user) => {
+    console.log(`case in All set aside judgment ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'SET_ASIDE_JUDGMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.SET_ASIDE_JUDGMENT());
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
+
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  }
 };
 
 // Functions
@@ -705,3 +800,28 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
+
+const validateEventPages = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.userInput)) {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    // data = await updateCaseDataWithPlaceholders(data);
+    await assertValidData(data, pageId, solicitor);
+  }
+};
+
+async function updateCaseDataWithPlaceholders(data, document) {
+  const placeholders = {
+    TEST_DOCUMENT_URL: document.document_url,
+    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
+    TEST_DOCUMENT_FILENAME: document.document_filename
+  };
+
+  data = lodash.template(JSON.stringify(data))(placeholders);
+
+  return JSON.parse(data);
+}
