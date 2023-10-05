@@ -418,9 +418,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDocumentCollection",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

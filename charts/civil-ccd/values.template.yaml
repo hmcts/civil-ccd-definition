@@ -305,6 +305,7 @@ camunda-bpm:
   enabled: true
   java:
     imagePullPolicy: Always
+    ingressHost: camunda-${SERVICE_FQDN}
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
     devcpuRequests: 500m
