@@ -137,7 +137,7 @@ module.exports = {
             requestHearingAtSpecificCourt: 'Yes'
           },
           respondent1DQRemoteHearing: {
-            hearingToBeHeldRemotely: 'Yes',
+            remoteHearingRequested: 'Yes',
             reasonForRemoteHearing: 'No reasons'
           },
         },

@@ -282,7 +282,7 @@
   },
   {
     "ID": "RequestedCourt",
-    "ListElementCode": "hearingToBeHeldRemotely",
+    "ListElementCode": "remoteHearingRequested",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": " respondent1DQRemoteHearing",
     "EventHintText": "This will be over telephone or video",
@@ -320,7 +320,7 @@
   },
   {
     "ID": "RequestedCourt",
-    "ListElementCode": "hearingToBeHeldRemotely",
+    "ListElementCode": "remoteHearingRequested",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": " respondent2DQRemoteHearing",
     "EventElementLabel": "Do you want to the hearing to held remotely?",
