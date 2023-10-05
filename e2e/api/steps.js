@@ -25,6 +25,8 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
+const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
+const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -82,6 +84,10 @@ const data = {
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
+  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
+  RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
+  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
+  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
 };
 
 const eventData = {
@@ -976,11 +982,34 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  createFinalOrderJO: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
     } else {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
     }
 
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1149,6 +1178,68 @@ module.exports = {
       await validateEventPages(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  recordJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'RECORD_JUDGMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (mpScenario === 'ONE_V_ONE') {
+      await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection));
+    } else {
+      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
+    }
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+
+    await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
+
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  setAsideJudgment: async (user) => {
+    console.log(`case in All set aside judgment ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'SET_ASIDE_JUDGMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.SET_ASIDE_JUDGMENT());
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
     await waitForFinishedBusinessProcess(caseId);
   }
 };

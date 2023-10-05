@@ -5,10 +5,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+          tempAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
         RespondentResponseTypeSpec: {
           respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
@@ -243,8 +243,8 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempAddress1Required: 'Yes',
+            respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
@@ -275,10 +275,10 @@ module.exports = {
     return {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+          tempAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
         RespondentResponseTypeSpec: {
           respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
