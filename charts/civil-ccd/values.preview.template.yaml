@@ -1,5 +1,5 @@
 civil-wa:
-  enabled: true
+  enabled: false
 
 civil-service:
   java:
