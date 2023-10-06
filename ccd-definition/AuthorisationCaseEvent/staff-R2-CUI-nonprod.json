@@ -4,5 +4,11 @@
     "CaseEventID": "ENTER_BREATHING_SPACE_LIP",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "LIFT_BREATHING_SPACE_LIP",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]
