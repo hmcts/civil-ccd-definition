@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "lblTransferOnlineCase",
+    "Label": "Transfer online case",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tocNewCourtLocation",
+    "Label": "New hearing centre locaation",
+    "FieldType": "CourtLocation",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tocReasonForTransfer",
+    "Label": "Reason for transfer",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+
+]
+
+
+

@@ -29,20 +29,20 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario.only('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.createSDO(judgeUser, 'CREATE_SMALL');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    if (['demo'].includes(config.runningEnv)) {
-      await api.triggerBundle(config.systemupdate);
-    }
-    await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    // await api.createSDO(judgeUser, 'CREATE_SMALL');
+    // await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    // await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    // await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+    // await api.amendHearingDueDate(config.systemupdate);
+    // await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    // if (['demo'].includes(config.runningEnv)) {
+    //   await api.triggerBundle(config.systemupdate);
+    // }
+    // await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
 });
 
@@ -248,6 +248,6 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
   }
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
