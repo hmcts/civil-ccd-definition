@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "lblTransferOnlineCase",
+    "CaseFieldID": "lblReasonNotSuitableSDO",
     "AccessControl": [
       {
         "UserRoles": [
@@ -12,6 +12,44 @@
       }
     ]
   },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "notSuitableSdoOptions",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tocTransferCaseReason",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },{
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "lblTransferOnlineCase",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "judge-profile",
+        "legal-adviser"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+},
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "tocNewCourtLocation",

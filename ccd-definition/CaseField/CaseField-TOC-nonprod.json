@@ -1,6 +1,38 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "lblReasonNotSuitableSDO",
+    "Label": "## What is the reason for not drawing a Standard Directions Order? \n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "notSuitableSdoOptions",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ReasonNotSuitableSDOList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "tocTransferCaseReason",
+    "Label": "Transfer the case to another hearing court location centre",
+    "FieldType": "TransferCaseReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonNotSuitableSDO",
+    "Label": "Other reason",
+    "FieldType": "ReasonNotSuitableSDO",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "lblTransferOnlineCase",
     "Label": "Transfer online case",
     "FieldType": "Text",
@@ -20,8 +52,5 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public"
   }
-
 ]
-
-
 
