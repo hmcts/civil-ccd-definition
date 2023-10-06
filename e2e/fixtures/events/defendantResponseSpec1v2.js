@@ -5,11 +5,11 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-          specAoSRespondent2HomeAddressRequired: 'Yes'
+          tempAddress1Required: 'Yes',
+          tempAddress2Required: 'Yes'
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
       },
     };
