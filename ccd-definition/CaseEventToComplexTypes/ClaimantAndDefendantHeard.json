@@ -45,7 +45,7 @@
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationClaimantList",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
@@ -173,7 +173,7 @@
     "CaseFieldID": "finalOrderRepresentation",
     "ListElementCode": "typeRepresentationComplex.typeRepresentationDefendantList",
     "FieldDisplayOrder": 12,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "ClaimantAndDefendantHeard",
