@@ -582,6 +582,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
       }
     ]
   }
