@@ -89,7 +89,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
-  TRANSFER_CASE: () => transferOnlineCase.transferCase()
+  TRANSFER_CASE: () => transferOnlineCase.transferCase(option)
 };
 
 const eventData = {
@@ -1245,7 +1245,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  transferCase: async (user) => {
+  transferCase: async (user, option) => {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1255,12 +1255,19 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data.TRANSFER_CASE());
+    await validateEventPages(data.TRANSFER_CASE(option));
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-      header: '',
-      body: ''
-    }, true);
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+    } else {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+        header: '',
+        body: ''
+      }, true);
+    }
 
     await waitForFinishedBusinessProcess(caseId);
   }
