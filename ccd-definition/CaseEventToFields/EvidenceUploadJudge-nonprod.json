@@ -43,7 +43,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
-    "CaseFieldID": "caseNoteTypeNoteTA",
+    "CaseFieldID": "caseNoteTA",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "CaseNoteSelectionNote",
