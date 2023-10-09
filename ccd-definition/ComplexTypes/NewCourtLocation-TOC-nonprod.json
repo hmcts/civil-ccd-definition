@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "NewCourtLocation",
+    "ListElementCode": "courtLocations",
+    "ElementLabel": "New hearing centre location",
+    "FieldType": "CaseLocationCivil",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

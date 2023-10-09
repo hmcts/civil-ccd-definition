@@ -41,8 +41,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "tocNewCourtLocation",
-    "Label": "New hearing centre locaation",
-    "FieldType": "CourtLocation",
+    "Label": "New hearing centre location",
+    "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
   {
