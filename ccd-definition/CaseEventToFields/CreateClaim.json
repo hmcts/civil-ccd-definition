@@ -64,18 +64,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicant1DQRemoteHearing",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
-    "PageID": "Court",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
