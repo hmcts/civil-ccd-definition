@@ -9,7 +9,22 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
+    // manageCase: process.env.URL || 'https://manage-case.aat.platform.hmcts.net',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-aat.service.core-compute-aat.internal',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+
+// manageCase: 'https://xui-civil-service-pr-3066.preview.platform.hmcts.net',
+//      authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+//      ccdDataStore: 'https://ccd-data-store-api-civil-service-pr-3066.preview.platform.hmcts.net',
+//      dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+//      idamApi: 'https://idam-api.aat.platform.hmcts.net',
+//      civilService: 'https://civil-service-pr-3066.preview.platform.hmcts.net'
+
+    // manageCase: process.env.URL || 'https://manage-case.demo.platform.hmcts.net',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
     // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
@@ -17,35 +32,25 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    // for preview
-    // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
-    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-    // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
-    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+    manageCase: 'https://xui-civil-ccd-pr-3324.preview.platform.hmcts.net',
+    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3324.preview.platform.hmcts.net',
+    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-3324.preview.platform.hmcts.net' 
 
+    // manageCase: process.env.URL || 'http://localhost:3333',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
+    // dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
+    // idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+    // generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+    // caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
+    // //----------------------------------------------------------------------------------------------
+    // wiremockService: 'http://localhost:8765'
 
-    /* 
-    manageCase:  'https://manage-case.aat.platform.hmcts.net/',
-    authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
-    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',*/
-
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
-    wiremockService: 'http://localhost:8765'
   },
   s2s: {
     microservice: 'civil_service',
