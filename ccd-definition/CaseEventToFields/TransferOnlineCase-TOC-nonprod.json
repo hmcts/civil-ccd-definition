@@ -2,33 +2,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
-    "CaseFieldID": "lblTransferOnlineCase",
+    "CaseFieldID": "tocNewCourtLocation",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "MANDATORY",
     "PageID": "TransferOnlineCase",
     "PageLabel": "Transfer online case",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRANSFER_ONLINE_CASE",
-    "CaseFieldID": "tocNewCourtLocation",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "TransferOnlineCase",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "TRANSFER_ONLINE_CASE",
-    "CaseFieldID": "tocReasonForTransfer",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "TransferOnlineCase",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"

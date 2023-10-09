@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "NewCourtLocationAndReason",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "tocNewCourtLocation",
+    "ListElementCode": "lblTransferOnlineCase",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "NewCourtLocationAndReason",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "tocNewCourtLocation",
+    "ListElementCode": "responseCourtLocationList",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "NewCourtLocationAndReason",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "tocNewCourtLocation",
+    "ListElementCode": "reasonForTransfer",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]

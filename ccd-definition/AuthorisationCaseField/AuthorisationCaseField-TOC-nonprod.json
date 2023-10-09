@@ -37,9 +37,10 @@
         "CRUD": "CRU"
       }
     ]
-  },{
+  },
+  {
   "CaseTypeID": "CIVIL",
-  "CaseFieldID": "lblTransferOnlineCase",
+  "CaseFieldID": "tocNewCourtLocation",
   "AccessControl": [
     {
       "UserRoles": [
@@ -49,31 +50,5 @@
       "CRUD": "CRU"
     }
   ]
-},
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tocNewCourtLocation",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tocReasonForTransfer",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  }
+ }
 ]

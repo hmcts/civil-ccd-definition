@@ -1,0 +1,23 @@
+[
+  {
+    "ID": "NewCourtLocationAndReason",
+    "ListElementCode": "lblTransferOnlineCase",
+    "ElementLabel": "Transfer online case",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+ },
+  {
+    "ID": "NewCourtLocationAndReason",
+    "ListElementCode": "responseCourtLocationList",
+    "ElementLabel": "New hearing centre location",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "NewCourtLocationAndReason",
+    "ListElementCode": "reasonForTransfer",
+    "ElementLabel": "Reason for transfer",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public"
+  }
+]
