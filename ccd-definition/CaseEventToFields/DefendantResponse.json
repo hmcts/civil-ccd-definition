@@ -227,34 +227,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1PartyNameLabelRequestedCourt",
+    "CaseFieldID": "applicant1PartyNameLabelRequestedCourt2",
     "PageLabel": "Respond to claim",
     "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RequestedCourt",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQRequestedCourt",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourt",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "applicant1PartyNameLabelRequestedCourt1",
-    "PageLabel": "Respond to claim",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "RequestedCourt",
     "ShowSummaryChangeOption": "Y",
@@ -275,21 +251,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQRequestedCourt",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "COMPLEX",
-    "PageID": "RequestedCourt",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "applicant1PartyNameLabelRequestedCourt2",
+    "CaseFieldID": "applicant1PartyNameLabelRequestedCourt1",
     "PageLabel": "Respond to claim",
     "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "RequestedCourt",
     "ShowSummaryChangeOption": "Y",
@@ -298,26 +263,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQRemoteHearing",
+    "CaseFieldID": "respondent1PartyNameLabelRequestedCourt",
+    "PageLabel": "Respond to claim",
     "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
     "PageID": "RequestedCourt",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQRemoteHearing",
-    "PageDisplayOrder": 16,
-    "PageFieldDisplayOrder": 8,
-    "DisplayContext": "COMPLEX",
-    "CaseEventFieldLabel": " ",
-    "PageID": "RequestedCourt",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1406,6 +1359,29 @@
     "PageID": "ConfirmDetails",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQRequestedCourt",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourt",
+    "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "PageDisplayOrder": 16,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestedCourt",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
