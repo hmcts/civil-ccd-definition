@@ -89,7 +89,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
-  TRANSFER_CASE: () => transferOnlineCase.transferCase(option)
+  TRANSFER_CASE: (option) => transferOnlineCase.transferCase(option)
 };
 
 const eventData = {
