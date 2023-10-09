@@ -118,13 +118,6 @@ module.exports = {
             ]
           }
         },
-        DraftDirections: {
-          respondent1DQDraftDirections: {
-            document_url: '${TEST_DOCUMENT_URL}',
-            document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-            document_filename: '${TEST_DOCUMENT_FILENAME}'
-          }
-        },
         RequestedCourt: {
           respondent1DQRequestedCourt: {
             responseCourtLocations: {
