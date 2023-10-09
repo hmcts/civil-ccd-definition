@@ -23,7 +23,7 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+let caseNumber = '1696872900973065';
 
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
@@ -78,7 +78,8 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
 });
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
-  await I.respondToClaim({defendant1Response: 'fullDefence'});
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaim({defendant1Response: 'fullDefence', oneDefendant: true});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
   await I.click('Sign out');
@@ -94,7 +95,7 @@ Scenario('Add case flags', async ({I}) => {
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
@@ -112,7 +113,7 @@ Scenario('Manage case flags', async ({I}) => {
       flagComment: 'test comment'
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.manageCaseFlags(caseFlags);
     await I.validateUpdatedCaseFlags(caseFlags);
   }
@@ -126,6 +127,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-AfterSuite(async () => {
-  await unAssignAllUsers();
-});
+// AfterSuite(async () => {
+//   await unAssignAllUsers();
+// });

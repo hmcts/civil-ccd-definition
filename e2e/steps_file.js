@@ -154,7 +154,7 @@ const CONFIRMATION_MESSAGE = {
   pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
-let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId = '1696875919078198', screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
@@ -492,7 +492,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, oneDefendant = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
 
       await this.triggerStepsWithScreenshot([
@@ -500,7 +500,9 @@ module.exports = function () {
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
-          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
+          ...conditionalSteps(!oneDefendant, [
+            () => fixedRecoverableCostsPage.fixedRecoverableCosts(party)
+          ]),
           ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
@@ -529,7 +531,9 @@ module.exports = function () {
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-        () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(!(mpScenario === 'ONE_V_ONE'), [
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party)
+        ]),
         ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
