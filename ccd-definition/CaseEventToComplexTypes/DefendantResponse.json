@@ -258,7 +258,8 @@
     "CaseFieldID": "respondent1DQRequestedCourt",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Please select your preferred court hearing location.",
+    "EventElementLabel": "Please select your preferred hearing court centre",
+    "EventHintText": "If the defendant is an individual the case will be held at the defendant's preferred court",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   },
@@ -282,29 +283,13 @@
   },
   {
     "ID": "RequestedCourt",
-    "ListElementCode": "remoteHearingRequested",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": " respondent1DQRemoteHearing",
-    "EventHintText": "This will be over telephone or video",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "RequestedCourt",
-    "ListElementCode": "reasonForRemoteHearing",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQRemoteHearing",
-    "FieldDisplayOrder": 6,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "RequestedCourt",
     "ListElementCode": "responseCourtLocations",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQRequestedCourt",
-    "FieldDisplayOrder": 7,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
-    "EventElementLabel": "Please select your preferred court hearing location",
+    "EventElementLabel": "Please select your preferred hearing court centre",
+    "EventHintText": "If the defendant is an individual the case will be held at the defendant's preferred court",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
   },
@@ -313,30 +298,10 @@
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQRequestedCourt",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\" OR requestHearingAtSpecificCourt != \"Yes\"",
     "_Comment": "Condition to true, must override default"
-  },
-  {
-    "ID": "RequestedCourt",
-    "ListElementCode": "remoteHearingRequested",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": " respondent2DQRemoteHearing",
-    "EventElementLabel": "Do you want to the hearing to held remotely?",
-    "EventHintText": "This will be over telephone or video",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY",
-    "_Comment": "Condition to true, must override default"
-  },
-  {
-    "ID": "RequestedCourt",
-    "ListElementCode": "reasonForRemoteHearing",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQRemoteHearing",
-    "EventElementLabel": "Briefly explain your reasons",
-    "FieldDisplayOrder": 10,
-    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "Witnesses",
