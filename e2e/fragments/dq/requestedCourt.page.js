@@ -45,7 +45,7 @@ module.exports = {
       I.click(this.fields(party).remoteHearingRequested.options.yes);
     });
 
-    I.fillField(this.fields(party).reasonForRemoteHearing, 'Reason for remote hearing');
+    I.fillField(this.fields(party).reasonForRemoteHearing, 'No reasons');
     await I.clickContinue();
   },
 };
