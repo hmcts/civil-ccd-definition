@@ -9,7 +9,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondentSolicitor1EmailAddress=\"DO_NOT_SHOW_IN_UI\"",
-    "retainHiddenValues": "Y"
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -21,7 +21,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondentSolicitor1EmailAddress=\"DO_NOT_SHOW_IN_UI\"",
-    "retainHiddenValues": "Y"
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -33,7 +33,7 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondentSolicitor1EmailAddress=\"DO_NOT_SHOW_IN_UI\"",
-    "retainHiddenValues": "Y"
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -110,7 +110,7 @@
     "PageID": "Respondent1SolicitorEmail",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "retainHiddenValues": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondentSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   },
   {
@@ -178,7 +178,7 @@
     "PageID": "Respondent2SolicitorEmail",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
-    "retainHiddenValues": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondentSolicitor2ServiceAddress=\"DO NOT SHOW UI\""
   },
   {
@@ -256,7 +256,7 @@
     "PageID": "Applicant1SolicitorEmail",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N",
-    "retainHiddenValues": "Y",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "applicantSolicitor1ServiceAddress=\"DO NOT SHOW UI\""
   }
 ]
