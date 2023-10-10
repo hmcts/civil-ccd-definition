@@ -76,31 +76,5 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_LIP_APPLICANT_BREATHING_SPACE_LIFTED",
-    "Name": "Email:Breathing Space lifted",
-    "Description": "Notify applicant Breathing space lifted",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_LIP_RESPONDENT_BREATHING_SPACE_LIFTED",
-    "Name": "Email:Breathing Space Lifted",
-    "Description": "Notify respondent Breathing space lifted",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]

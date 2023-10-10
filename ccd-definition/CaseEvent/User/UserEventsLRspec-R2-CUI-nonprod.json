@@ -17,24 +17,5 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "LIFT_BREATHING_SPACE_LIP",
-    "Name": "Lift Breathing Space - LiP",
-    "Description": "Lift Breathing Space - Citizen",
-    "PreConditionState(s)": "CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "EventEnablingCondition": "applicant1Represented = \"No\"",
-    "ShowSummary": "Y",
-    "ShowEventNotes": "N",
-    "EndButtonLabel": "Submit",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
