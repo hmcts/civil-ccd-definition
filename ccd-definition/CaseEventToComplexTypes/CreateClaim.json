@@ -8,6 +8,31 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "CourtLocation",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "courtLocation",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CourtLocation",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "ListElementCode": "remoteHearingRequested",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "CourtLocation",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "applicant1DQRemoteHearing",
+    "FieldShowCondition": "applicant1DQRemoteHearing.remoteHearingRequested = \"Yes\"",
+    "ListElementCode": "reasonForRemoteHearing",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
     "ID": "Claimant",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "applicant1",
