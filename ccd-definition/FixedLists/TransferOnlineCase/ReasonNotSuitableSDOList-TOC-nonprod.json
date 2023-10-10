@@ -2,7 +2,7 @@
   {
     "ID": "ReasonNotSuitableSDOList",
     "ListElementCode": "CHANGE_LOCATION",
-    "ListElement": "Transfer the case to another hearing court location centre",
+    "ListElement": "The case should be sent to another hearing centre for directions",
     "DisplayOrder": 1
   },
   {

@@ -19,7 +19,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "tocTransferCaseReason",
-    "Label": "Transfer the case to another hearing court location centre",
+    "Label": "The case should be sent to another hearing centre for directions",
     "FieldType": "TransferCaseReason",
     "SecurityClassification": "Public",
     "Searchable": "N"
