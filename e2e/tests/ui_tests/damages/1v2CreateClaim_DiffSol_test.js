@@ -118,31 +118,31 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-Scenario.skip('Add case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
-      details: [PARTY_FLAGS.vulnerableUser.value]
-    }, {
-      partyName: 'John Smith', roleOnCase: 'Defendant solicitor 1 witness',
-      details: [PARTY_FLAGS.unacceptableBehaviour.value]
-    }
-    ];
+// Scenario('Add case flags', async ({I}) => {
+//   if(await checkCaseFlagsEnabled()) {
+//     const caseFlags = [{
+//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       details: [PARTY_FLAGS.vulnerableUser.value]
+//     }, {
+//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+//       details: [PARTY_FLAGS.unacceptableBehaviour.value]
+//     }
+//     ];
 
-    await I.login(config.hearingCenterAdminWithRegionId4);
-    await I.createCaseFlags(caseFlags);
-    await I.validateCaseFlags(caseFlags);
-  }
-}).retry(3);
+//     await I.login(config.hearingCenterAdminWithRegionId1);
+//     await I.createCaseFlags(caseFlags);
+//     await I.validateCaseFlags(caseFlags);
+//   }
+// }).retry(3);
 
-Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
-  if (await checkToggleEnabled('update-contact-details')) {
-    await I.login(config.secondDefendantSolicitorUser);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-    await I.waitForText('Summary');
-    await I.addUnavailableDates(caseNumber);
-  }
-}).retry(3);
+// Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
+//   if (await checkToggleEnabled('update-contact-details')) {
+//     await I.login(config.secondDefendantSolicitorUser);
+//     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+//     await I.waitForText('Summary');
+//     await I.addUnavailableDates(caseId());
+//   }
+// }).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUser2WithRegionId2);
@@ -152,11 +152,13 @@ Scenario('Judge triggers SDO', async ({I}) => {
 }).retry(3);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);
 }).retry(3);
 
-Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
+Scenario('Defendant solicitor uploads evidence', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
     await I.evidenceUpload(caseNumber, true);
 }).retry(3);
