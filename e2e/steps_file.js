@@ -532,7 +532,7 @@ module.exports = function () {
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
         () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
         ...conditionalSteps(!(mpScenario === 'ONE_V_ONE'), [
-          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party)
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1)
         ]),
         ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.
