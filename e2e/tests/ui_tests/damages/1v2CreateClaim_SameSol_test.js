@@ -102,6 +102,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-AfterSuite(async  () => {
-  await unAssignAllUsers();
-});
+// AfterSuite(async  () => {
+//   await unAssignAllUsers();
+// });
