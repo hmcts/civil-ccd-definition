@@ -76,7 +76,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "translatedDocument",
+    "CaseFieldID": "translatedDocuments",
     "AccessControl": [
       {
         "UserRoles": [
@@ -84,7 +84,7 @@
           "caseworker-civil-admin",
           "caseworker-civil"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -232,6 +232,26 @@
           "caseworker-civil"
         ],
         "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantUserDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   }

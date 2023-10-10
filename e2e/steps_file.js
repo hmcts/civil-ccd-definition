@@ -51,8 +51,6 @@ const responseIntentionPage = require('./pages/acknowledgeClaim/responseIntentio
 const caseProceedsInCasemanPage = require('./pages/caseProceedsInCaseman/caseProceedsInCaseman.page');
 const takeCaseOffline = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 
-const extensionDatePage = require('./pages/informAgreedExtensionDate/date.page');
-
 const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
@@ -132,6 +130,8 @@ const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selec
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const specifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforSpecifiedClaims');
+
+const addUnavailableDatesPage = require('./pages/addUnavailableDates/unavailableDates.page');
 
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
@@ -440,12 +440,11 @@ module.exports = function () {
       ]);
     },
 
-    async informAgreedExtensionDate(respondentSolicitorNumber = '1') {
-      eventName = 'Inform agreed extension date';
+    async informAgreedExtensionDate() {
+      eventName = 'Inform agreed 28 day extension';
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
-        () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
         () => event.submit('Submit', 'Extension deadline submitted'),
         () => event.returnToCaseDetails()
       ]);
@@ -644,6 +643,20 @@ module.exports = function () {
         () => takeCaseOffline.takeCaseOffline()
       ]);
       await this.takeScreenshot();
+    },
+
+    async addUnavailableDates(caseId) {
+      eventName = 'Add Unavailable Dates';
+      const url = config.url.manageCase + '/cases/case-details/' + caseId;
+
+      await this.amOnPage(url + '/trigger/ADD_UNAVAILABLE_DATES/ADD_UNAVAILABLE_DATESAddAdditionalDates');
+      await this.waitForText('Add unavailable dates');
+      await this.triggerStepsWithScreenshot([
+        () => addUnavailableDatesPage.enterUnavailableDates(),
+        () => event.submit('Submit', 'Availability updated'),
+        () => event.returnToCaseDetails(),
+        () => addUnavailableDatesPage.confirmSubmission(url + '#Listing%20notes'),
+      ]);
     },
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
