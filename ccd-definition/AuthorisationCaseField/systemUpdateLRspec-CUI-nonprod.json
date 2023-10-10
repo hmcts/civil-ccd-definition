@@ -87,19 +87,19 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeLabel",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeOption",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjPaymentPaidSomeAmount",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -153,7 +153,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFee",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -171,7 +171,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "ccjJudgmentStatement",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
