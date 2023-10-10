@@ -6,7 +6,7 @@ xui-webapp:
   enabled: false
 camunda-bpm:
   enabled: false
-civil-wa:
+wa:
   enabled: false
 servicebus:
   enabled: false
