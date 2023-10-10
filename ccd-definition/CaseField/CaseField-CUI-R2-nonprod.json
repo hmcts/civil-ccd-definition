@@ -6,5 +6,12 @@
     "FieldType": "ClaimantLiPResponse",
     "SecurityClassification": "Public",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentLipInterest",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
