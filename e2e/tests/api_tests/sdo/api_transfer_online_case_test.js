@@ -25,6 +25,16 @@ async function prepareClaim(api) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
+async function prepareClaimSpec(api_spec) {
+console.log('--createClaimWithRepresentedRespondent--');
+await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
+console.log('--defendantResponse--');
+await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario1v2Spec);
+console.log('--claimantResponse--');
+await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
+  'JUDICIAL_REFERRAL');
+}
+
 Scenario('1v1 full defence unspecified - judge user - not suitable SDO - Transfer Case)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
@@ -76,15 +86,17 @@ Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @a
 
 Scenario('Transfer Online Spec claim 1v2 - judge user - not suitable SDO - Transfer Case', async ({api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    console.log('--createClaimWithRepresentedRespondent--');
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-    console.log('--defendantResponse--');
-    await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario1v2Spec);
-    console.log('--claimantResponse--');
-    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO',
-      'JUDICIAL_REFERRAL');
+    await prepareClaimSpec(api_spec);
     console.log('notSuitableForSdo-transferCase');
     await api_spec.transferCase(judgeUser, 'CHANGE_LOCATION');
+  }
+});
+
+Scenario('Transfer Online Spec claim 1v2 - judge user - not suitable SDO - Other reasons', async ({api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpec(api_spec);
+    console.log('notSuitableForSdo-otherReasons');
+    await api_spec.transferCase(judgeUser, 'OTHER_REASONS');
   }
 });
 

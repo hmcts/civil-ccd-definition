@@ -51,7 +51,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCase()
+  TRANSFER_CASE_SPEC: (option) => transferOnlineCaseSpec.transferCase(option)
 };
 
 const eventData = {
@@ -574,7 +574,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  transferCase: async (user) => {
+  transferCase: async (user, option) => {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -584,14 +584,23 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data.TRANSFER_CASE_SPEC());
+    await validateEventPages(data.TRANSFER_CASE_SPEC(option));
 
-    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-      header: '',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
   }
 };
 
