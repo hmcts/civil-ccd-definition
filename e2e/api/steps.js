@@ -1262,14 +1262,16 @@ module.exports = {
         header: '',
         body: ''
       }, true);
+      await waitForFinishedBusinessProcess(caseId);
     } else {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
         header: '',
         body: ''
       }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
-
-    await waitForFinishedBusinessProcess(caseId);
   }
 };
 
