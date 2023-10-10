@@ -27,7 +27,7 @@ const respondent2 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber ='1696875919078198';
+let caseNumber;
 
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-1v2DS @master-e2e-ft');
 
@@ -91,25 +91,26 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 */
-// Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
-//   await I.login(config.defendantSolicitorUser);
-//   await I.navigateToCaseDetails(caseId());
-//   await I.informAgreedExtensionDate();
-//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//   // I.see(caseEventMessage('Inform agreed extension date'));
-// }).retry(3);
+Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.navigateToCaseDetails(caseId());
+  await I.informAgreedExtensionDate();
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  // I.see(caseEventMessage('Inform agreed extension date'));
+}).retry(3);
 
-// Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
-//   await I.login(config.defendantSolicitorUser);
-//   await I.addDefendantLitigationFriend();
-//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//   //await I.see(caseEventMessage('Add litigation friend'));
-// }).retry(3);
+Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.addDefendantLitigationFriend();
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Add litigation friend'));
+}).retry(3);
 
 Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
+    twoDefendantsDiffSol: true,
     claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
@@ -121,6 +122,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
     defendant2Response: 'fullDefence',
+    twoDefendantsDiffSol: true,
     claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
@@ -136,31 +138,31 @@ Scenario.skip('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-// Scenario('Add case flags', async ({I}) => {
-//   if(await checkCaseFlagsEnabled()) {
-//     const caseFlags = [{
-//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-//       details: [PARTY_FLAGS.vulnerableUser.value]
-//     }, {
-//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
-//       details: [PARTY_FLAGS.unacceptableBehaviour.value]
-//     }
-//     ];
+Scenario('Add case flags', async ({I}) => {
+  if(await checkCaseFlagsEnabled()) {
+    const caseFlags = [{
+      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      details: [PARTY_FLAGS.vulnerableUser.value]
+    }, {
+      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+      details: [PARTY_FLAGS.unacceptableBehaviour.value]
+    }
+    ];
 
-//     await I.login(config.hearingCenterAdminWithRegionId1);
-//     await I.createCaseFlags(caseFlags);
-//     await I.validateCaseFlags(caseFlags);
-//   }
-// }).retry(3);
+    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.createCaseFlags(caseFlags);
+    await I.validateCaseFlags(caseFlags);
+  }
+}).retry(3);
 
-// Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
-//   if (await checkToggleEnabled('update-contact-details')) {
-//     await I.login(config.secondDefendantSolicitorUser);
-//     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
-//     await I.waitForText('Summary');
-//     await I.addUnavailableDates(caseId());
-//   }
-// }).retry(3);
+Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
+  if (await checkToggleEnabled('update-contact-details')) {
+    await I.login(config.secondDefendantSolicitorUser);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.waitForText('Summary');
+    await I.addUnavailableDates(caseId());
+  }
+}).retry(3);
 
 Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
@@ -189,6 +191,6 @@ Scenario('Make a general application', async ({api}) => {
   }
 }).retry(3);
 
-// AfterSuite(async  () => {
-//   await unAssignAllUsers();
-// });
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
