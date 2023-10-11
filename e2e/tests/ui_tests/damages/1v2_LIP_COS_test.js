@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 let civilCaseReference;
 
-Feature('CCD 1v2 2 LIPs COS UI test @e2e-unspec @e2e-cos @master-e2e-ft');
+Feature('CCD 1v2 2 LIPs COS UI test @e2e-unspec @e2e-cos @master-e2e-ft @e2e-regression');
 
 Scenario('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
@@ -32,6 +32,6 @@ Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async
   await I.see('Awaiting Defendant Response');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });

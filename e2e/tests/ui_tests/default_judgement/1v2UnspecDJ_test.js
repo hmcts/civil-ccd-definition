@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2 Unspec defaultJudgement @e2e-dj-1v2DS');
+Feature('1v2 Unspec defaultJudgement @e2e-dj-1v2DS @e2e-regression');
 
 Scenario.skip('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api}) => {
 

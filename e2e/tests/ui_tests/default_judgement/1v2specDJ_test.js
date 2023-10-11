@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v2 spec defaultJudgement @e2e-spec-dj-1v2DS @e2e-nightly-prod');
+Feature('1v2 spec defaultJudgement @e2e-spec-dj-1v2DS @e2e-nightly-prod @e2e-regression');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
