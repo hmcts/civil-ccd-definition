@@ -24,7 +24,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('1v2 Same Solicitor Claim Journey @e2e-unspec @e2e-multiparty @e2e-1v2SS @e2e-nightly-prod');
+Feature('1v2 Same Solicitor Claim Journey @e2e-unspec @e2e-multiparty @e2e-1v2SS @e2e-nightly-prod @e2e-regression');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have the same solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -102,6 +102,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseId());
 }).retry(3);
 
-// AfterSuite(async  () => {
-//   await unAssignAllUsers();
-// });
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

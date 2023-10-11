@@ -10,7 +10,7 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 Feature('1v1 Unspec defaultJudgement');
 
-Scenario('Request default judgement @create-claim @e2e-dj-1v1 @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Request default judgement @create-claim @e2e-dj-1v1 @e2e-wa @master-e2e-ft @wa-r4 @e2e-regression', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   caseId = await api.getCaseId();
 
@@ -34,7 +34,7 @@ Scenario('Judge add casee notes @create-claim @e2e-dj-1v1 @e2e-wa @master-e2e-ft
   await I.judgeAddsCaseNotes();
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-dj-1v1 @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Judge perform direction order @create-claim @e2e-dj-1v1 @e2e-wa @master-e2e-ft @wa-r4 @e2e-regression', async ({I, api}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   if (config.runWAApiTest) {

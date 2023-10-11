@@ -1,3 +1,4 @@
+const config = require('../config');
 const {I} = inject();
 
 module.exports = {
@@ -21,3 +22,5 @@ module.exports = {
     }
   },
 };
+
+

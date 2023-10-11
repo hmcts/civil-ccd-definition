@@ -12,7 +12,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('Claim creation 1v1 @e2e-spec-1v1 @e2e-nightly-prod');
+Feature('Claim creation 1v1 @e2e-spec-1v1 @e2e-nightly-prod @e2e-regression');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');

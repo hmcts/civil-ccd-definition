@@ -111,7 +111,7 @@ const CONFIRMATION_MESSAGE = {
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 
-let caseId = '1696934398519089', screenshotNumber, eventName, currentEventName, loggedInUser;
+let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];

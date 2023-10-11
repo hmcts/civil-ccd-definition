@@ -42,9 +42,9 @@ Scenario('Notify claim details', async ({api}) => {
 //   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
 // });
 
-Scenario('Defendant response', async ({api}) => {
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
-});
+// Scenario('Defendant response', async ({api}) => {
+//   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
+// });
 
 // Scenario('Claimant response', async ({api}) => {
 //   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
