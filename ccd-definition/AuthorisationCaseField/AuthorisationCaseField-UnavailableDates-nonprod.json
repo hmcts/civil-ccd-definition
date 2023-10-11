@@ -1,4 +1,18 @@
 [
+    {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partyChosen",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-UNSPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-UNSPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRUD"
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "additionalUnavailableDates",
@@ -7,14 +21,6 @@
       "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "partyChosen",
-    "UserRoles": [
-      "caseworker-civil-admin"
-    ],
-    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -34,7 +40,8 @@
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -44,8 +51,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -60,7 +66,8 @@
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -70,8 +77,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -86,7 +92,8 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -96,8 +103,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -112,7 +118,8 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "legal-adviser"
+          "legal-adviser",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -122,8 +129,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "judge-profile",
-          "caseworker-civil-systemupdate"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
