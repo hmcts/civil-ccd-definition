@@ -70,12 +70,5 @@
     "FieldType": "Text",
     "Searchable": "N",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "RespondentLiPResponse",
-    "ListElementCode": "helpWithFeesReferenceNumberLip",
-    "ElementLabel": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
   }
 ]
