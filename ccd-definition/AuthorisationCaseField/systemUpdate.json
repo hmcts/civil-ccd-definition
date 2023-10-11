@@ -129,7 +129,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "systemGeneratedCaseDocuments",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
