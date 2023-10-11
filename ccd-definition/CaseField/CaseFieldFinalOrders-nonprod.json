@@ -373,13 +373,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "finalOrderCaseDocument",
-    "Label": " ",
-    "FieldType": "CaseDocument",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "finalOrderDocumentCollection",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
