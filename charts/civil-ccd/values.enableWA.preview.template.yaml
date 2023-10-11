@@ -64,3 +64,8 @@ ccd-message-publisher:
       SERVICE_BUS_CONNECTION_STRING:
         secretRef: civil-sb-preview
         key: connectionString
+
+xui-webapp:
+  nodejs:
+    environment:
+      WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
