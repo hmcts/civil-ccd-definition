@@ -2,7 +2,7 @@ civil-wa:
   enabled: false
 
 civil-service:
-    java:
+  java:
     keyVaults:
       civil:
         resourceGroup: civil
