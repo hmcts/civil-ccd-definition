@@ -367,8 +367,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderDocument",
-    "Label": "Order",
-    "FieldType": "Document",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderCaseDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public"
   },
   {

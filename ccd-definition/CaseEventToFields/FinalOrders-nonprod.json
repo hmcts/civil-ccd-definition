@@ -540,7 +540,7 @@
     "CaseFieldID": "finalOrderDocument",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderPreview",
     "ShowSummaryChangeOption": "Y"
   },
