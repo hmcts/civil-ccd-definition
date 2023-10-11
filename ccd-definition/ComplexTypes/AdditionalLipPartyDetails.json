@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "AdditionalLipPartyDetails",
+    "ListElementCode": "correspondenceAddress",
+    "FieldType": "AddressUK",
+    "ElementLabel": "Correspondence Address",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "AdditionalLipPartyDetails",
+    "ListElementCode": "contactPerson",
+    "FieldType": "Text",
+    "ElementLabel": "Contact Person",
+    "SecurityClassification": "Public"
+  }
+]

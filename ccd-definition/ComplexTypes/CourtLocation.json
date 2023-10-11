@@ -12,8 +12,7 @@
     "ID": "CourtLocation",
     "ListElementCode": "applicantPreferredCourtLocationList",
     "DisplayContext": "MANDATORY",
-    "ElementLabel": "Court location code",
-    "HintText": "This should be your preferred County Court hearing centre.",
+    "ElementLabel": "Please select your preferred court hearing location",
     "FieldType": "DynamicList",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -25,5 +24,13 @@
     "FieldType": "CaseLocationCivil",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "CourtLocation",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "ElementLabel": "Briefly explain your reasons",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
