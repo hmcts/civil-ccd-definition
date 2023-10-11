@@ -13,5 +13,13 @@
     "Label": "PCQ id",
     "FieldType": "Text",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "helpWithFees",
+    "Label": " ",
+    "FieldType": "HelpWithFees",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]
