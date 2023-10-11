@@ -16,7 +16,14 @@ module.exports = {
           no: 'No'
         }
       },
-
+      remoteHearingRequested: {
+        id: `#${party}DQRemoteHearing_remoteHearingRequested`,
+        options: {
+          yes: 'Yes',
+          no: 'No'
+        }
+      },
+      reasonForRemoteHearing: `#${party}DQRemoteHearing_reasonForRemoteHearing`,
       reasonForHearingAtSpecificCourt: `#${party}DQRequestedCourt_reasonForHearingAtSpecificCourt`,
       courtLocation: {
         id: `#${party}DQRequestedCourt_responseCourtLocations`,
@@ -34,6 +41,11 @@ module.exports = {
     I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);
 
     I.fillField(this.fields(party).reasonForHearingAtSpecificCourt, 'A reason for the court');
+    await within(this.fields(party).remoteHearingRequested.id, () => {
+      I.click(this.fields(party).remoteHearingRequested.options.yes);
+    });
+
+    I.fillField(this.fields(party).reasonForRemoteHearing, 'Reason for remote hearing');
     await I.clickContinue();
   },
 };
