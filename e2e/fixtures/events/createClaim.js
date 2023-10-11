@@ -90,6 +90,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
           value: listElement(config.claimantSelectedCourt)
         }
       },
+      applicant1DQRemoteHearing: {
+        remoteHearingRequested: 'No'
+      },
       applicant1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
         Organisation: {
