@@ -26,9 +26,6 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
           - notification-caseworker-spec-receiver
-          - default-password
-          - judge-default-password
-          - iac-default-password
     environment:
       LAUNCH_DARKLY_ENV: ccd-staging
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update
