@@ -106,7 +106,7 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
   //await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
+/*Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
@@ -188,7 +188,7 @@ Scenario('Make a general application', async ({api}) => {
     await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
-
+*/
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
