@@ -77,22 +77,22 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', 
 }).retry(3);
 
 // Skip case flags scenario as it's covered in the unspec e2e
-Scenario.skip('Add case flags', async ({LRspec}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-      details: [PARTY_FLAGS.vulnerableUser.value]
-    }, {
-      partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
-      details: [PARTY_FLAGS.unacceptableBehaviour.value]
-    }
-    ];
+// Scenario.skip('Add case flags', async ({LRspec}) => {
+//   if(await checkCaseFlagsEnabled()) {
+//     const caseFlags = [{
+//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       details: [PARTY_FLAGS.vulnerableUser.value]
+//     }, {
+//       partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
+//       details: [PARTY_FLAGS.unacceptableBehaviour.value]
+//     }
+//     ];
 
-    await LRspec.login(config.hearingCenterAdminWithRegionId1);
-    await LRspec.createCaseFlags(caseFlags);
-    await LRspec.validateCaseFlags(caseFlags);
-  }
-}).retry(3);
+//     await LRspec.login(config.hearingCenterAdminWithRegionId1);
+//     await LRspec.createCaseFlags(caseFlags);
+//     await LRspec.validateCaseFlags(caseFlags);
+//   }
+// }).retry(3);
 
 Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
@@ -101,19 +101,19 @@ Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), false);
-  }
-}).retry(3);
+// Scenario('Claimant solicitor uploads evidence', async ({LRspec}) => {
+//   if (['preview', 'demo'].includes(config.runningEnv)) {
+//     await LRspec.login(config.applicantSolicitorUser);
+//     await LRspec.evidenceUploadSpec(caseId(), false);
+//   }
+// }).retry(3);
 
-Scenario.skip('Defendant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.defendantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), true);
-  }
-}).retry(3);
+// Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
+//   if (['preview', 'demo'].includes(config.runningEnv)) {
+//     await LRspec.login(config.defendantSolicitorUser);
+//     await LRspec.evidenceUploadSpec(caseId(), true);
+//   }
+// }).retry(3);
 
 Scenario.skip('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -137,6 +137,6 @@ Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   ]);
 }).retry(3);
 
-// AfterSuite(async  () => {
-//   await unAssignAllUsers();
-// });
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});
