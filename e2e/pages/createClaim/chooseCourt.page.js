@@ -11,7 +11,7 @@ module.exports = {
     },
     reasonForHearingAtSpecificCourt: '#courtLocation_reasonForHearingAtSpecificCourt',
     remoteHearingRequested: {
-      id: '#applicant1DQRemoteHearing_remoteHearingRequested',
+      id: '#applicant1DQRemoteHearing_remoteHearingRequested_radio',
       options: {
         yes: 'Yes',
         no: 'No'

@@ -21,7 +21,7 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: '#applicant1DQRequestedCourt_reasonForHearingAtSpecificCourt',
             remoteHearingRequested: {
-              id: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested',
+              id: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
@@ -52,7 +52,7 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested',
+              id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
@@ -84,7 +84,7 @@ module.exports = {
             },
             reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
-              id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested',
+              id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
                 yes: 'Yes',
                 no: 'No'
