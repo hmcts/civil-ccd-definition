@@ -94,7 +94,7 @@ Scenario('Add case flags', async ({I}) => {
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
@@ -112,7 +112,7 @@ Scenario('Manage case flags', async ({I}) => {
       flagComment: 'test comment'
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.manageCaseFlags(caseFlags);
     await I.validateUpdatedCaseFlags(caseFlags);
   }
