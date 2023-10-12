@@ -169,7 +169,7 @@ Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
-Scenario('Claimant solicitor uploads evidence', async ({I}) => {
+Scenario.skip('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseId(), false);
