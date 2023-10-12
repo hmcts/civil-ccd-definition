@@ -29,6 +29,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQRemoteHearing",
+    "Label": "Claimant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearing",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1",
     "Label": "Claimant's details",
     "FieldType": "Party",
@@ -721,6 +728,22 @@
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQRemoteHearing",
+    "Label": "Defendant 1 Remote Hearing Questions",
+    "FieldType": "RemoteHearing",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQRemoteHearing",
+    "Label": "Defendant 2 Remote Hearing Questions",
+    "FieldType": "RemoteHearing",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -2394,6 +2417,34 @@
     "ID": "cosLabelTabDef2CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQFixedRecoverableCosts",
+    "Label": "Claimant 1 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCosts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2DQFixedRecoverableCosts",
+    "Label": "Claimant 2 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCosts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFixedRecoverableCosts",
+    "Label": "Defendant 1 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCosts",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFixedRecoverableCosts",
+    "Label": "Defendant 2 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCosts",
     "SecurityClassification": "Public"
   }
 ]
