@@ -3,6 +3,9 @@ civil-wa:
 
 civil-service:
   java:
+    imagePullPolicy: Always
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3347'
+    ingressHost: ${SERVICE_FQDN}
     keyVaults:
       civil:
         resourceGroup: civil
