@@ -104,5 +104,13 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "otherDetails",
     "TabFieldDisplayOrder": 13
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "reasonForTransfer",
+    "TabFieldDisplayOrder": 14
   }
 ]

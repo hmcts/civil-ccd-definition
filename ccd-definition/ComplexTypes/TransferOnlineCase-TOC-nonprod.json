@@ -1,7 +1,7 @@
 [
   {
     "ID": "NewCourtLocationAndReason",
-    "ListElementCode": "responseCourtLocationList",
+    "ListElementCode": "transferCourtLocationList",
     "ElementLabel": "New hearing centre location",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public"
