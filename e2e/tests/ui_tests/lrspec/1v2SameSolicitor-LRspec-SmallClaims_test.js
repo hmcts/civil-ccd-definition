@@ -63,6 +63,6 @@ Scenario('1v2 same solicitor responds to defence - claimant Intention to proceed
   await LRspec.click('Sign out');
 }).retry(3);
 
-// AfterSuite(async  () => {
-//   await unAssignAllUsers();
-// });
+AfterSuite(async  () => {
+  await unAssignAllUsers();
+});

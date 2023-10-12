@@ -32,6 +32,6 @@ Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async
   await I.see('Awaiting Defendant Response');
 });
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});

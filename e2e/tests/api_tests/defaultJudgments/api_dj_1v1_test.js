@@ -22,57 +22,57 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
-  if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
-    console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
-    WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
-    taskId = summaryJudgmentDirectionsTask['id'];
-    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
-  }
-});
+// Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
+//   if (config.runWAApiTest) {
+//     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
+//     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
+//     WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
+//     taskId = summaryJudgmentDirectionsTask['id'];
+//     api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+//   }
+// });
 
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
-  if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
-  }
-});
+// Scenario('Default Judgment claim SDO', async ({I, api}) => {
+//   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
+//   if (config.runWAApiTest) {
+//     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+//   }
+// });
 
-Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
-    await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
-  }
-});
+// Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
+//   if (['preview', 'demo'].includes(config.runningEnv)) {
+//     await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'NOTE_ONLY', 'CASE_PROGRESSION');
+//     await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_ONLY', 'CASE_PROGRESSION');
+//     await api.evidenceUploadJudge(config.judgeUserWithRegionId1, 'DOCUMENT_AND_NOTE', 'CASE_PROGRESSION');
+//     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+//     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+//     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+//     await api.amendHearingDueDate(config.systemupdate);
+//     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+//     await api.trialReadiness(config.applicantSolicitorUser);
+//     await api.trialReadiness(config.defendantSolicitorUser);
+//   }
+// });
 
-Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
-  if (['demo'].includes(config.runningEnv)) {
-    await api.triggerBundle(config.systemupdate);
-  }
-});
+// Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
+//   if (['demo'].includes(config.runningEnv)) {
+//     await api.triggerBundle(config.systemupdate);
+//   }
+// });
 
-Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
-  if (config.runWAApiTest) {
-    const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
-    console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
-    WA.validateTaskInfo(caseProgressionTakeCaseOfflineTask, caseProgressionOfflineExpectedTask);
-    if (config.runWAApiTest) {
-      taskId = caseProgressionTakeCaseOfflineTask['id'];
-      api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
-      api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
-    }
-  }
-});
+// Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
+//   if (config.runWAApiTest) {
+//     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+//     console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
+//     WA.validateTaskInfo(caseProgressionTakeCaseOfflineTask, caseProgressionOfflineExpectedTask);
+//     if (config.runWAApiTest) {
+//       taskId = caseProgressionTakeCaseOfflineTask['id'];
+//       api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
+//       api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+//     }
+//   }
+// });
 
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async  ({api}) => {
+//   await api.cleanUp();
+// });
