@@ -106,7 +106,7 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
   //await I.see(caseEventMessage('Add litigation friend'));
 }).retry(3);
 
-/*Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
+Scenario.skip('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({
     defendant1Response: 'fullDefence',
@@ -116,7 +116,7 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
+Scenario.skip('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
   await I.respondToClaim({
     party: parties.RESPONDENT_SOLICITOR_2,
@@ -127,7 +127,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Claimant solicitor responds to defence', async ({I}) => {
+Scenario.skip('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -136,7 +136,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-Scenario('Add case flags', async ({I}) => {
+Scenario.skip('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
@@ -153,7 +153,7 @@ Scenario('Add case flags', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
+Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   if (await checkToggleEnabled('update-contact-details')) {
     await I.login(config.secondDefendantSolicitorUser);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
@@ -162,33 +162,33 @@ Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Judge triggers SDO', async ({I}) => {
+Scenario.skip('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await I.waitForText('Summary');
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
-Scenario('Claimant solicitor uploads evidence', async ({I}) => {
+Scenario.skip('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseId(), false);
   }
 }).retry(3);
 
-Scenario('Defendant solicitor uploads evidence', async ({I}) => {
+Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
     await I.evidenceUpload(caseId(), true);
   }
 }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
+Scenario.skip('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
-*/
+
 AfterSuite(async  () => {
   await unAssignAllUsers();
 });
