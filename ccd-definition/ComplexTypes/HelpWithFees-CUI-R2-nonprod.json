@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "HelpWithFees",
+    "ListElementCode": "helpWithFee",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "HelpWithFees",
+    "ListElementCode": "helpWithFeesReferenceNumber",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  }
+]
