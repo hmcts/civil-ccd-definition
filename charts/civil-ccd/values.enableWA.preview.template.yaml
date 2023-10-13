@@ -13,7 +13,7 @@ global:
   jobKind: CronJob
 
 civil-camunda-bpm:
-  enabled: false
+  enabled: true
 
 camunda-bpm:
   # comes from WA chart
@@ -26,7 +26,7 @@ civil-wa:
 wa:
   wa:
     postgresql:
-      enabled: false
+      enabled: true
   wa-case-event-handler:
     java:
       ingressHost: wa-case-event-handler-${SERVICE_FQDN}

@@ -1,8 +1,9 @@
 civil-wa:
-  enabled: false
+  enabled: true
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3343'
     keyVaults:
       civil:
         resourceGroup: civil
