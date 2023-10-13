@@ -14,7 +14,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ReasonNotSuitableSDOList",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
