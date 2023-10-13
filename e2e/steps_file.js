@@ -246,7 +246,7 @@ module.exports = function () {
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
 
-        await caseViewPage.acceptCookieBanner('Accept analytics cookies');
+        await caseViewPage.acceptCookieBanner();
       }
     },
 
