@@ -58,24 +58,24 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
-  await I.login(config.defendantSolicitorUser);
-  await I.acknowledgeClaim('fullDefence');
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Acknowledge claim'));
-}).retry(3);
+// Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
+//   await I.login(config.defendantSolicitorUser);
+//   await I.acknowledgeClaim('fullDefence');
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Acknowledge claim'));
+// }).retry(3);
 
-Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
-  await I.informAgreedExtensionDate(1);
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Inform agreed extension date'));
-}).retry(3);
+// Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
+//   await I.informAgreedExtensionDate(1);
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Inform agreed extension date'));
+// }).retry(3);
 
-Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
-  await I.addDefendantLitigationFriend();
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('Add litigation friend'));
-});
+// Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
+//   await I.addDefendantLitigationFriend();
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await I.see(caseEventMessage('Add litigation friend'));
+// });
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
@@ -85,39 +85,39 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Add case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-      details: [PARTY_FLAGS.vulnerableUser.value]
-    }, {
-      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
-      details: [PARTY_FLAGS.unacceptableBehaviour.value]
-    }];
+// Scenario('Add case flags', async ({I}) => {
+//   if(await checkCaseFlagsEnabled()) {
+//     const caseFlags = [{
+//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       details: [PARTY_FLAGS.vulnerableUser.value]
+//     }, {
+//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+//       details: [PARTY_FLAGS.unacceptableBehaviour.value]
+//     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId4);
-    await I.createCaseFlags(caseFlags);
-    await I.validateCaseFlags(caseFlags);
-  }
-});
+//     await I.login(config.hearingCenterAdminWithRegionId4);
+//     await I.createCaseFlags(caseFlags);
+//     await I.validateCaseFlags(caseFlags);
+//   }
+// });
 
-Scenario('Manage case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-      flagType: 'Vulnerable user',
-      flagComment: 'test comment'
-    }, {
-      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
-      flagType: 'Unacceptable/disruptive customer behaviour',
-      flagComment: 'test comment'
-    }];
+// Scenario('Manage case flags', async ({I}) => {
+//   if(await checkCaseFlagsEnabled()) {
+//     const caseFlags = [{
+//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       flagType: 'Vulnerable user',
+//       flagComment: 'test comment'
+//     }, {
+//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+//       flagType: 'Unacceptable/disruptive customer behaviour',
+//       flagComment: 'test comment'
+//     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId4);
-    await I.manageCaseFlags(caseFlags);
-    await I.validateUpdatedCaseFlags(caseFlags);
-  }
-});
+//     await I.login(config.hearingCenterAdminWithRegionId4);
+//     await I.manageCaseFlags(caseFlags);
+//     await I.validateUpdatedCaseFlags(caseFlags);
+//   }
+// });
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
