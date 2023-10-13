@@ -301,7 +301,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant1EmailLabel",
-    "Label": "### Email:\n${respondent1.partyEmail}\n",
+    "Label": "### Email:\n${defendantUserDetails.email}\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "_Comment": "Label for CUI users because these fields are not editable"
