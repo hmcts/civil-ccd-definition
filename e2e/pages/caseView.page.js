@@ -62,10 +62,12 @@ module.exports = {
     }
   },
 
-  async rejectCookieBanner() {
-    if (await I.see('We use some essential cookies to make this service work.')) {
-      await I.click('Reject analytics cookies');
-      await I.wait(5);
+  async acceptCookieBanner() {
+    try {
+      await I.see('Accept analytics cookies');
+      await I.forceClick('Accept analytics cookies');
+    } catch (e) {
+      console.log('no cookie banner');
     }
   },
 

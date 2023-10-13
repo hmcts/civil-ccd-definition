@@ -245,6 +245,8 @@ module.exports = function () {
 
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
+
+        await caseViewPage.acceptCookieBanner('Accept analytics cookies');
       }
     },
 
@@ -980,7 +982,6 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
-        () => caseViewPage.rejectCookieBanner(),
         () => caseViewPage.assertCaseFlagsInfo(caseFlags.length),
         () => caseViewPage.assertCaseFlags(caseFlags)
       ]);
