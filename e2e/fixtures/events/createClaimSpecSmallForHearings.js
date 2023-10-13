@@ -34,7 +34,7 @@ const isPBAv3 = (pbaV3) => {
   return pbaV3;
 };
 
-const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.2@gmail.com';
+const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '50000';
 
 const validPba = listElement('PBA0088192');
