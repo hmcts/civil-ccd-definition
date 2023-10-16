@@ -93,9 +93,6 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
   }
 });
 
-AfterSuite(async ({api}) => {
- //  await api.cleanUp();
-});
 
 Feature('CCD 1v1 API test @e2e-nightly');
 
@@ -248,6 +245,3 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
   }
 });
 
-AfterSuite(async ({api}) => {
- //  await api.cleanUp();
-});
