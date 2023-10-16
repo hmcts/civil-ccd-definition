@@ -3546,26 +3546,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2LitigationFriend",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "RU"
-      },
-      {
-        "UserRoles": [
-          "RES-SOL-TWO-UNSPEC-PROFILE"
-        ],
-        "CRUD": "CRUD"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
     "AccessControl": [
       {
