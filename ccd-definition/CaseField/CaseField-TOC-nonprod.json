@@ -30,5 +30,12 @@
     "Label": "Other reason",
     "FieldType": "ReasonNotSuitableSDO",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "transferCaseDetails",
+    "Label": "The case should be sent to another hearing centre for directions",
+    "FieldType": "TransferCaseDetails",
+    "SecurityClassification": "Public"
   }
 ]
