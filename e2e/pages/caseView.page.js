@@ -1,5 +1,6 @@
 const {I} = inject();
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const retryCount = 3;
 
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
@@ -14,7 +15,10 @@ module.exports = {
   },
   fields: {
     eventDropdown: '#next-step',
-    tabButton: 'div.mat-tab-label-content'
+    tabButton: 'div.mat-tab-label-content',
+    cookieAccept: '#cookie-accept-submit',
+    cookieAcceptHide: '#cookie-accept-all-success-banner-hide',
+    authorizeBlock: '#authorizeCommand'
   },
   goButton: '.button[type="submit"]',
 
@@ -65,9 +69,12 @@ module.exports = {
   async acceptCookieBanner() {
     try {
       await I.see('Accept analytics cookies');
-      await I.forceClick('Accept analytics cookies');
+      await I.retry(retryCount).forceClick(this.fields.cookieAccept);
+      await I.retry(retryCount).forceClick(this.fields.cookieAcceptHide);
+      await I.retry(retryCount).seeElement(this.fields.authorizeBlock);
     } catch (e) {
       console.log('no cookie banner');
+      await I.retry(retryCount).seeElement(this.fields.authorizeBlock);
     }
   },
 
