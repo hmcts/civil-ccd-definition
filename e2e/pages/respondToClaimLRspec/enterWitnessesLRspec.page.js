@@ -11,9 +11,6 @@ module.exports = {
               no: '#applicant1DQWitnessesSmallClaim_witnessesToAppear_No'
             },
           },
-          noOfWitnessesTextField: {
-            id: '#applicant1ClaimWitnesses'
-          }
         };
       }
 
@@ -37,9 +34,6 @@ module.exports = {
     I.waitForElement(this.fields(mpScenario).noOfWitnesses.id);
     await I.runAccessibilityTest();
     await I.click(this.fields(mpScenario).noOfWitnesses.options.no);
-    if(mpScenario === 'ClaimantResponse') {
-      I.fillField(this.fields(mpScenario).noOfWitnessesTextField.id, '0');
-    }
     await I.clickContinue();
   }
 };
