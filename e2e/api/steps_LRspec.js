@@ -27,6 +27,7 @@ const lodash = require('lodash');
 const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
 const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
+const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 
 let caseId, eventName;
 let caseData = {};
@@ -50,6 +51,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
+  TRANSFER_CASE_SPEC: (option) => transferOnlineCaseSpec.transferCase(option)
 };
 
 const eventData = {
@@ -570,6 +572,35 @@ module.exports = {
       body: 'The judgment has been marked as paid in full'
     }, true);
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  transferCase: async (user, option) => {
+    console.log(`case in Judicial Referral ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'NotSuitable_SDO';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.TRANSFER_CASE_SPEC(option));
+
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
   }
 };
 
