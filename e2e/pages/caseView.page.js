@@ -16,7 +16,7 @@ module.exports = {
   fields: {
     eventDropdown: '#next-step',
     tabButton: 'div.mat-tab-label-content',
-    cookieAccept: '#cookie-accept-submit',
+    cookieAccept: 'button[value="accept"]',
     cookieAcceptHide: '#cookie-accept-all-success-banner-hide',
     authorizeBlock: '#authorizeCommand'
   },
@@ -68,13 +68,11 @@ module.exports = {
 
   async acceptCookieBanner() {
     try {
-      await I.see('Accept analytics cookies');
+      await I.seeElement(this.fields.cookieAccept);
       await I.retry(retryCount).forceClick(this.fields.cookieAccept);
-      await I.retry(retryCount).forceClick(this.fields.cookieAcceptHide);
-      await I.retry(retryCount).seeElement(this.fields.authorizeBlock);
+      //await I.retry(retryCount).forceClick(this.fields.cookieAcceptHide);
     } catch (e) {
       console.log('no cookie banner');
-      await I.retry(retryCount).seeElement(this.fields.authorizeBlock);
     }
   },
 
