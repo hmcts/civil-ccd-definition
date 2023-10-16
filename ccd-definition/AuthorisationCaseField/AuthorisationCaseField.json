@@ -2255,10 +2255,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
-          "judge-profile",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -2321,10 +2318,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
