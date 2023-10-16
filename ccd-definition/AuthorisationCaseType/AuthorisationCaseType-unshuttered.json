@@ -28,7 +28,8 @@
     "UserRoles": [
       "caseworker-civil-staff",
       "GS_profile",
-      "caseworker-ras-validation"
+      "caseworker-ras-validation",
+      "caseworker-civil-citizen-ui-pcqextractor"
     ],
     "CRUD": "R"
   },

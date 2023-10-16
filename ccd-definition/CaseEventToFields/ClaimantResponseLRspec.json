@@ -2,27 +2,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1",
-    "PageDisplayOrder": 1,
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "PageShowCondition": "showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_IMMEDIATELY\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "DisplayContext": "COMPLEX",
+    "PageID": "FixedRecoverableCosts",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "FieldShowCondition": "applicant1ProceedWithClaim=\"Yes\" OR applicant1ProceedWithClaimSpec2v1=\"Yes\"",
+    "PageShowCondition": "responseClaimTrack =\"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

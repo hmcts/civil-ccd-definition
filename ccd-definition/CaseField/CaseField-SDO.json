@@ -666,7 +666,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMethodInPerson",
-    "Label": "Select hearing location ",
+    "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "SmallClaimsMethodInPerson",
     "SecurityClassification": "Public"
@@ -1044,7 +1044,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "fastTrackMethodInPerson",
-    "Label": "Select hearing location ",
+    "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
     "FieldTypeParameter": "FastTrackMethodInPerson",
     "SecurityClassification": "Public"
@@ -1155,13 +1155,6 @@
     "ID": "fastTrackAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "reasonNotSuitableSDO",
-    "Label": "What is the reason for not drawing a Standard Directions Order? \n",
-    "FieldType": "ReasonNotSuitableSDO",
     "SecurityClassification": "Public"
   },
   {

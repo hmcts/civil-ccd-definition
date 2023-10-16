@@ -274,7 +274,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -297,7 +297,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
