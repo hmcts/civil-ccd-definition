@@ -13,7 +13,7 @@
     "ListElementCode": "reasonForRemoteHearing",
     "FieldType": "TextArea",
     "ElementLabel": "Briefly explain your reasons",
-    "FieldShowCondition_": "remoteHearingRequested = \"Yes\"",
+    "FieldShowCondition": "remoteHearingRequested = \"Yes\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
