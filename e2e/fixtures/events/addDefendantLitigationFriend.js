@@ -19,7 +19,7 @@ module.exports = {
     valid: {
       DefendantLitigationFriend: {
         respondent2LitigationFriend: {
-          firstName: 'Davif',
+          firstName: 'David',
           lastName: 'the litigant friend',
           emailAddress: 'davidthelitigant@litigants.com',
           phoneNumber: '07123458675',
