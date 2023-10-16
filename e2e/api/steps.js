@@ -27,6 +27,7 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
+const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const {checkNoCToggleEnabled, checkToggleEnabled,checkCertificateOfServiceIsEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -88,6 +89,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
+  TRANSFER_CASE: (option) => transferOnlineCase.transferCase(option)
 };
 
 const eventData = {
@@ -1258,6 +1260,35 @@ module.exports = {
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  transferCase: async (user, option) => {
+    console.log(`case in Judicial Referral ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'NotSuitable_SDO';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.TRANSFER_CASE(option));
+
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
   }
 };
 
