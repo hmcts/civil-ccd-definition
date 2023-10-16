@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_LIP_CLAIM",
+    "CaseFieldID": "helpWithFees",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "Publish": "Y"
+  }
+]

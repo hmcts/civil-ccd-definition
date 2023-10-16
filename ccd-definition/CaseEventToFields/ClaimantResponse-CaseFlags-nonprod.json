@@ -1,0 +1,24 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent1",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "respondent2",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N"
+  }
+]
