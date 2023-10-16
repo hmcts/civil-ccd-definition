@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "businessProcess",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRU"
+  }
+]
