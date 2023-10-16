@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UpdateNextHearingInfo",
-    "UserRole": "caseworker-civil-systemupdate",
+    "UserRole": "next-hearing-date-admin",
     "CRUD": "CRU"
   }
 ]
