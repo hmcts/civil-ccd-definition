@@ -1,18 +1,18 @@
 [
   {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "transferCourtLocationList",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "caseworker-civil-admin",
-        "caseworker-civil",
-        "caseworker-civil-staff"
-      ],
-      "CRUD": "CRU"
-    }
-  ]
- },
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "transferCourtLocationList",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "reasonForTransfer",
@@ -22,6 +22,45 @@
           "caseworker-civil-admin",
           "caseworker-civil",
           "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "lblReasonNotSuitableSDO",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "notSuitableSdoOptions",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "tocTransferCaseReason",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
