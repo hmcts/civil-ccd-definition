@@ -7,6 +7,9 @@ module.exports = {
     dateOfService: {
       id: 'cosDateOfServiceForDefendant'
     },
+    dateOfDeemedServed: {
+      id: 'cosDateDeemedServedForDefendant'
+    },
     servedDocumentFilesTextArea: 'textarea[id*="cosServedDocumentFiles"]',
     cosRecipientTextArea: 'textarea[id$="cosRecipient"]',
     cosRecipientServeTypeDropDown: {
@@ -43,6 +46,7 @@ module.exports = {
     await I.see(defendantName);
     await I.seeNumberOfVisibleElements('[id*="cosLabelFor"]', 2);
     await date.enterDate(this.fields.dateOfService.id, -1);
+    await data.enterDate(this.fields.dateOfDeemedServed.id, -1)
     await I.fillField(this.fields.servedDocumentFilesTextArea, 'Test Document');
     await I.fillField(this.fields.cosRecipientTextArea, 'Test test');
     await I.selectOption(this.fields.cosRecipientServeTypeDropDown.id,
