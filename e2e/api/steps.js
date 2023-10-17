@@ -426,7 +426,6 @@ module.exports = {
     caseData = {...returnedCaseData, defendantSolicitorNotifyClaimDetailsOptions: {
         value: listElement('Both')
       }};
-
     caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(data[eventName]);
@@ -588,7 +587,6 @@ module.exports = {
     caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(informAgreedExtensionData, solicitor);
-
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: 'Extension deadline submitted',
       body: 'You must respond to the claimant by'
@@ -723,7 +721,6 @@ module.exports = {
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
       : data.CLAIMANT_RESPONSE(mpScenario);
-
     caseData = await addFlagsToFixture(caseData);
 
     await validateEventPages(claimantResponseData);
