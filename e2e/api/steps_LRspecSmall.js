@@ -193,6 +193,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     caseData = await addFlagsToFixture(caseData);
+
     let claimantResponseData = data.CLAIMANT_RESPONSE();
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {

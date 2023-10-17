@@ -2,7 +2,8 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.31
+version: 0.0.30
+maintainers:
   - name: HMCTS Civil team
 
 dependencies:
