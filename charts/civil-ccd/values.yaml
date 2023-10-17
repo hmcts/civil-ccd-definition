@@ -5,8 +5,8 @@ idam-pr:
 xui-webapp:
   enabled: false
 camunda-bpm:
-  enabled: true
+  enabled: false
 civil-wa:
-  enabled: true
+  enabled: false
 servicebus:
-  enabled: true
+  enabled: false
