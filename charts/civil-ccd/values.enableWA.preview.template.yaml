@@ -21,7 +21,7 @@ camunda-bpm:
     ingressHost: camunda-${SERVICE_FQDN}
 
 civil-wa:
-  enabled: false
+  enabled: true
 
 wa:
   wa:
