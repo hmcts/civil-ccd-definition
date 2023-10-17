@@ -25,21 +25,21 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "partyChosenId",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "partyChosen = \"DO_NOT_SHOW_IN_UI\"",
-    "PageID": "partyChosenLabel",
-    "Comment": "Page only used for debug purposes to check partychosenid and type"
+    "FieldShowCondition": "partyChosen = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "PartySelection"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "partyChosenType",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
-    "PageID": "partyChosenLabel"
+    "FieldShowCondition": "partyChosen = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "PartySelection"
   },
   {
     "CaseTypeID": "CIVIL",
