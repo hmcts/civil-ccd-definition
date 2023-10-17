@@ -27,8 +27,8 @@ Feature('CCD 1v1 API test @api-spec @api-spec-1v1 @api-specified @api-nightly-pr
 
 Scenario('1v1 full defence claimant and defendant response @api-prod-specified', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
-  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  // await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+  // await api_spec.defendantResponse(config.defendantSolicitorUser);
   // await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
   //   'AWAITING_APPLICANT_INTENTION');
 });

@@ -26,7 +26,7 @@ Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
 //     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
 //     console.log('--setAsideJudgment--');
 //     await api_spec.setAsideJudgment(caseWorkerUser);
-//   }
+  // }
 // });
 
 // Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
