@@ -19,6 +19,7 @@ const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateA
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
+const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -160,6 +161,8 @@ module.exports = {
 
     caseData = returnedCaseData;
 
+    caseData = await addFlagsToFixture(caseData);
+
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
       await assertValidData(defendantResponseData, pageId);
     }
@@ -189,6 +192,7 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
+    caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = data.CLAIMANT_RESPONSE();
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {

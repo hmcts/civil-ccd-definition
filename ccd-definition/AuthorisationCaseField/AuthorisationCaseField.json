@@ -3659,7 +3659,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -3681,7 +3681,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
