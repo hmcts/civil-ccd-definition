@@ -12,15 +12,25 @@
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "documentAndNote",
-    "TabFieldDisplayOrder": 1
+    "CaseFieldID": "noteAdditionDateTime",
+    "TabFieldDisplayOrder": 2
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
-    "CaseFieldID": "documentOnly",
-    "TabFieldDisplayOrder": 1
+    "CaseFieldID": "documentAndNote",
+    "TabFieldDisplayOrder": 3,
+    "DisplayContextParameter": "#TABLE(documentName, createdDateTime, document, documentNote)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "JudicialCaseNotesTab",
+    "TabLabel": "Judicial Case Notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "documentAndName",
+    "TabFieldDisplayOrder": 4,
+    "DisplayContextParameter": "#TABLE(documentName, createdDateTime, document)"
   }
 ]

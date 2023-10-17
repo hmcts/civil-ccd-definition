@@ -15,24 +15,35 @@
   },
   {
     "ID": "SmallClaimsWitnessStatement",
+    "ListElementCode": "smallClaimsNumberOfWitnessesToggle",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": " ",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "SmallClaimsWitnessStatement",
     "ListElementCode": "input2",
     "FieldType": "Number",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",
     "ListElementCode": "input3",
     "FieldType": "Number",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",
     "ListElementCode": "input4",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "smallClaimsNumberOfWitnessesToggle=\"SHOW\""
   },
   {
     "ID": "SmallClaimsWitnessStatement",

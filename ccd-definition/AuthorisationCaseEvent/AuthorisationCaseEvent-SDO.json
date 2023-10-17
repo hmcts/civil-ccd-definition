@@ -1,27 +1,28 @@
 [
   {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "CREATE_SDO",
-  "AccessControl": [
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "AccessControl": [
       {
-      "UserRoles": [
-        "judge-profile",
-        "legal-adviser"
-      ],
-      "CRUD": "CRU"
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
       },
-    {
-      "UserRoles": [
-        "APP-SOL-UNSPEC-PROFILE",
-        "APP-SOL-SPEC-PROFILE",
-        "RES-SOL-ONE-UNSPEC-PROFILE",
-        "RES-SOL-TWO-UNSPEC-PROFILE",
-        "RES-SOL-ONE-SPEC-PROFILE",
-        "RES-SOL-TWO-SPEC-PROFILE",
-        "caseworker-civil-admin"
-      ],
-      "CRUD": "R"
-    }
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
     ]
   },
   {
@@ -115,7 +116,8 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "legal-adviser"
+          "legal-adviser",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -140,7 +142,8 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }

@@ -85,7 +85,7 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
 }).retry(3);
 
 Scenario('Add case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
@@ -94,14 +94,14 @@ Scenario('Add case flags', async ({I}) => {
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
 });
 
 Scenario('Manage case flags', async ({I}) => {
-  if(checkCaseFlagsEnabled()) {
+  if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
       flagType: 'Vulnerable user',
@@ -112,7 +112,7 @@ Scenario('Manage case flags', async ({I}) => {
       flagComment: 'test comment'
     }];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId4);
     await I.manageCaseFlags(caseFlags);
     await I.validateUpdatedCaseFlags(caseFlags);
   }

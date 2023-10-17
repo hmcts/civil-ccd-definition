@@ -107,17 +107,18 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
               details: [
                 element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
                   reasonForWitness: 'None'
                 })
-              ],
-              witnessesToAppear: 'Yes'}
+              ]
+            }
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
@@ -268,5 +269,86 @@ module.exports = {
     }
 
     return responseData;
+  },
+
+  respondToClaimForJudicialReferral: () => {
+    return {
+      userInput: {
+        ResponseConfirmNameAddress: {
+          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        },
+        ResponseConfirmDetails: {
+          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+        },
+        RespondentResponseTypeSpec: {
+          respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+        },
+        defenceRoute: {
+          defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+        },
+        Upload: {
+          detailsOfWhyDoesYouDisputeTheClaim: 'details'
+        },
+        HowToAddTimeline: {
+          specClaimResponseTimelineList: 'MANUAL'
+        },
+        Mediation: {
+          responseClaimMediationSpecRequired: 'No'
+        },
+        SmallClaimExperts: {
+          responseClaimExpertSpecRequired: 'No'
+        },
+        SmallClaimWitnesses: {
+          responseClaimWitnesses: '1'
+        },
+        Language: {
+          respondent1DQLanguage: {
+            court: 'ENGLISH',
+            documents: 'ENGLISH'
+          }
+        },
+        SmallClaimHearing: {
+          respondent1DQHearingSmallClaim: {
+            unavailableDatesRequired: 'No'
+          },
+          SmallClaimHearingInterpreterRequired: 'No'
+        },
+        RequestedCourtLocationLRspec: {
+          respondToCourtLocation: {
+            responseCourtLocations: {
+              list_items: [
+                listElement(config.defendantSelectedCourt)
+              ],
+              value: listElement(config.defendantSelectedCourt)
+            },
+            reasonForHearingAtSpecificCourt: 'Reasons'
+          }
+        },
+        HearingSupport: {
+          respondent1DQHearingSupport: {
+            supportRequirements: 'Yes',
+            supportRequirementsAdditional: 'Sir John Doe: Step free wheelchair access'
+          }
+        },
+        VulnerabilityQuestions: {
+          respondent1DQVulnerabilityQuestions: {
+            vulnerabilityAdjustmentsRequired: 'No'
+          }
+        },
+        StatementOfTruth: {
+          uiStatementOfTruth: {
+            name: 'name',
+            role: 'role'
+          }
+        }
+      },
+      midEventData: {
+        StatementOfTruth: {
+          respondent1DQHearing: {
+            unavailableDatesRequired: 'No'
+          }
+        }
+      }
+    };
   }
 };

@@ -18,7 +18,7 @@ module.exports = {
       currentDefendant: 'Has Sir John Doe paid some of the amount owed?',
       currentDefendantName: 'Sir John Doe',
       businessProcess: {
-        camundaEvent: 'CREATE_CLAIM_SPEC',
+        camundaEvent: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
         status: 'FINISHED'
       }
     },

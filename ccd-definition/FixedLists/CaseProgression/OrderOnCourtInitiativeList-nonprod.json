@@ -13,8 +13,8 @@
   },
   {
     "ID": "OrderOnCourtsList",
-    "ListElementCode": "NONE",
-    "ListElement": "None",
+    "ListElementCode": "NOT_APPLICABLE",
+    "ListElement": "Not applicable",
     "DisplayOrder": 3
   }
 ]

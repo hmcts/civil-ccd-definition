@@ -4,5 +4,11 @@
     "CaseStateID": "CASE_SETTLED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_STAYED",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -14,18 +14,16 @@ module.exports = {
 
   async hearingType(trackType) {
      await I.runAccessibilityTest();
-         if(trackType === 'smallClaims'){
-            I.click(this.fields.hearingNoticeType.options.smallClaims);
-            I.waitForElement(this.fields.hearingNoticeType.id);
-          } else if(trackType === 'fastTrack'){
-            I.click(this.fields.hearingNoticeType.options.fastTrack);
-            I.waitForElement((this.fields.hearingNoticeType.id));
-          }else {
-             I.click(this.fields.hearingNoticeType.options.others);
-             I.waitForElement((this.fields.hearingNoticeType.id));
-          }
+     await I.waitForElement(this.fields.hearingNoticeType.id);
+     if(trackType === 'smallClaims'){
+        await I.click(this.fields.hearingNoticeType.options.smallClaims);
+      } else if(trackType === 'fastTrack'){
+        await I.click(this.fields.hearingNoticeType.options.fastTrack);
+      } else {
+        await I.click(this.fields.hearingNoticeType.options.others);
+      }
 
-        await I.clickContinue();
+      await I.clickContinue();
   }
 
 };

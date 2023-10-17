@@ -48,7 +48,7 @@
     "RoleName" : "ctsc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -57,7 +57,7 @@
     "RoleName" : "ctsc",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,cui-admin-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -66,7 +66,7 @@
     "RoleName" : "nbc-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,caseflags-admin,cui-nbc-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -75,7 +75,7 @@
     "RoleName" : "national-business-centre",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin",
+    "AccessProfiles": "GS_profile,caseworker-civil-admin,hearing-schedule-access,caseflags-admin,cui-nbc-profile",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -104,6 +104,15 @@
     "CaseTypeID": "CIVIL",
     "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
     "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "task-supervisor",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "GS_profile,cui-admin-profile",
+    "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
   }

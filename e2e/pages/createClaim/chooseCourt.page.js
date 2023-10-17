@@ -1,32 +1,34 @@
 const {I} = inject();
-const {checkCourtLocationDynamicListIsEnabled} = require('./../../api/testingSupport');
 const config = require('./../../config');
 
 module.exports = {
-  oldFields:{
-    courtLocation: '#courtLocation_applicantPreferredCourt'
-  },
   fields: {
     courtLocation: {
       id: 'select[id$="courtLocation_applicantPreferredCourtLocationList"]',
       options: {
         claimantPreferredCourt: config.claimantSelectedCourt
       }
-    }
+    },
+    reasonForHearingAtSpecificCourt: '#courtLocation_reasonForHearingAtSpecificCourt',
+    remoteHearingRequested: {
+      id: '#applicant1DQRemoteHearing_remoteHearingRequested_radio',
+      options: {
+        yes: 'Yes',
+        no: 'No'
+      }
+    },
+    reasonForRemoteHearing: '#applicant1DQRemoteHearing_reasonForRemoteHearing'
   },
 
+
   async selectCourt() {
-    let isCourtListEnabled = await checkCourtLocationDynamicListIsEnabled();
-    if (!isCourtListEnabled) {
-      I.waitForElement(this.oldFields.courtLocation);
-      await I.runAccessibilityTest();
-      I.fillField(this.oldFields.courtLocation, '344');
-      await I.clickContinue();
-    } else {
-      I.waitForElement(this.fields.courtLocation.id);
-      await I.runAccessibilityTest();
-      I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.claimantPreferredCourt);
-      await I.clickContinue();
-    }
+    I.waitForElement(this.fields.courtLocation.id);
+    await I.runAccessibilityTest();
+    I.selectOption(this.fields.courtLocation.id, this.fields.courtLocation.options.claimantPreferredCourt);
+    await within(this.fields.remoteHearingRequested.id, () => {
+      I.click(this.fields.remoteHearingRequested.options.yes);
+    });
+    I.fillField(this.fields.reasonForRemoteHearing, 'Some reason');
+    await I.clickContinue();
   }
 };

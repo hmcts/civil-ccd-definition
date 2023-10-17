@@ -67,8 +67,8 @@ const applicant1LitigationFriend = {
   primaryAddress: buildAddress('litigant friend')
 };
 
-let selectedPba = listElement('PBA0088192');
-const validPba = listElement('PBA0088192');
+let selectedPba = listElement('PBAFUNC12345');
+const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
 const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
@@ -89,6 +89,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
           ],
           value: listElement(config.claimantSelectedCourt)
         }
+      },
+      applicant1DQRemoteHearing: {
+        remoteHearingRequested: 'No'
       },
       applicant1OrganisationPolicy: {
         OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
@@ -430,7 +433,7 @@ module.exports = {
     valid: createClaimData(false,'Yes', true, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP')
   },
   createClaimLIPLIP: {
-    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS')
+    valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS', '11000')
   },
   createClaimWithTerminatedPBAAccount: {
     valid: createClaimData(false,'Yes', false)

@@ -16,4 +16,6 @@ module.exports = {
     permissions: { values: [ 'Read', 'Own', 'Manage', 'Cancel', 'Complete', 'Claim', 'Assign', 'Unassign'  ] },
     description: '[Take case offline](/cases/case-details/${[CASE_REFERENCE]}/trigger/TAKE_CASE_OFFLINE/TAKE_CASE_OFFLINE)',
     role_category: 'ADMIN',
+    minor_priority: 500,
+    major_priority: 5000
 };

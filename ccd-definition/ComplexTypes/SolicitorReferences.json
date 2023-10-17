@@ -5,7 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Claimant's legal representative's reference",
     "SecurityClassification": "Public",
-    "Max": "24",
+    "_Max": "24",
     "_Definition":  "The reference value understood by the first applicant solicitor firm for the [claim / applicant]",
     "_Category":  "COMMON"
   },
@@ -15,7 +15,7 @@
     "FieldType": "Text",
     "ElementLabel": "Defendant's legal representative's reference",
     "SecurityClassification": "Public",
-    "Max": "24",
+    "_Max": "24",
     "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
     "_Category":  "COMMON"
   },
@@ -25,7 +25,7 @@
     "FieldType": "Text",
     "ElementLabel": "Defendant's legal representative's reference",
     "SecurityClassification": "Public",
-    "Max": "24",
+    "_Max": "24",
     "_Definition":  "The reference value understood by the first respondent solicitor firm for the [claim / respondent]",
     "FieldShowCondition": "respondentSolicitor1Reference=\"DO_NOT_SHOW_IN_UI\"",
     "_Category":  "COMMON"

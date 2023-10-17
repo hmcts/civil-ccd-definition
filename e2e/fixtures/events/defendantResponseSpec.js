@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -26,6 +26,16 @@ module.exports = {
           Mediation: {
             responseClaimMediationSpecRequired: 'No'
           },
+          ...(fastTrack ? {
+            FixedRecoverableCosts: {
+              respondent1DQFixedRecoverableCosts: {
+                isSubjectToFixedRecoverableCostRegime: 'Yes',
+                band: 'BAND_4',
+                complexityBandingAgreed: 'Yes',
+                reasons: 'some reasons'
+              }
+            }
+          } : {}),
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -45,18 +55,19 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'Yes',
               details: [
                 element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
                   reasonForWitness: 'None'
                 })
-              ],
-              witnessesToAppear: 'Yes'}
-        },
+              ]
+            }
+          },
           Language: {
             respondent1DQLanguage: {
               court: 'ENGLISH',
@@ -78,7 +89,15 @@ module.exports = {
                 ],
                 value: listElement()
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              reasonForHearingAtSpecificCourt: 'Reasons',
+              caseLocation: {
+                region: '2',
+                baseLocation: '420219'
+              }
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -213,6 +232,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           Applications: {
@@ -321,17 +344,18 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-          respondent2DQWitnessesSmallClaim: {
+            respondent2DQWitnesses: {
+              witnessesToAppear: 'Yes',
               details: [
                 element({
-                  firstName: 'John',
-                  lastName: 'Smith',
-                  phoneNumber: '07012345678',
-                  emailAddress: 'johnsmith@email.com',
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
                   reasonForWitness: 'None'
                 })
-              ],
-              witnessesToAppear: 'Yes'}
+              ]
+            }
           },
           Language: {
             respondent2DQLanguage: {
@@ -355,6 +379,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent2DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           HearingSupport: {
@@ -489,6 +517,10 @@ module.exports = {
                 value: listElement(config.defendantSelectedCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
             }
           },
           Applications: {
