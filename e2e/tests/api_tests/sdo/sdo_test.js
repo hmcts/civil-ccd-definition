@@ -59,7 +59,8 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of dama
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    // await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
+    // to be re-added after merge of  https://github.com/hmcts/civil-service/pull/3340
+    //await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 
