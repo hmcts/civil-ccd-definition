@@ -585,6 +585,7 @@ module.exports = {
     }
 
     caseData = await addFlagsToFixture(caseData);
+    await validateEventPages(informAgreedExtensionData, solicitor);
 
     await validateEventPages(informAgreedExtensionData, solicitor);
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
