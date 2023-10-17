@@ -511,6 +511,7 @@ module.exports = {
       ...(lip1) ? {
         cosNotifyClaimDetails1: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosEvidenceDocument: [
             {
@@ -537,6 +538,7 @@ module.exports = {
       ...(lip2) ? {
         cosNotifyClaimDetails2: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosEvidenceDocument: [
             {
