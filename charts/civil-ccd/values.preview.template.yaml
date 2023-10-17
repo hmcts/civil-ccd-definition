@@ -1,8 +1,6 @@
-civil-wa:
-  enabled: false
-
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3383'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -64,5 +62,9 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
-civil-camunda-bpm:
-  enabled: true
+camunda-bpm:
+  java:
+    ingressHost: camunda-${SERVICE_FQDN}
+
+civil-wa:
+  enabled: false
