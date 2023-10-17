@@ -92,7 +92,7 @@ module.exports = {
           },
         },
         DefendantSolicitorEmail: {
-          respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+          respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
         },
 
         specRespondentCorrespondenceAddress: {
@@ -250,7 +250,7 @@ module.exports = {
           },
 
           SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+            respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.3.solicitor.1@gmail.com'
           },
 
           SameLegalRepresentative: {
@@ -332,7 +332,7 @@ module.exports = {
           },
 
           SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+            respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
           },
 
           SameLegalRepresentative: {
@@ -382,7 +382,7 @@ module.exports = {
             }
           },
           SecondDefendantSolicitorEmail: {
-            respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+            respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
           }
         };
         break;
@@ -467,7 +467,7 @@ module.exports = {
       },
       DefendantSolicitorEmail: {
         userInput: {
-          respondentSolicitor1EmailAddress: 'civilunspecified@gmail.com'
+          respondentSolicitor1EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
         }
       },
       specRespondentCorrespondenceAddress: {
@@ -632,7 +632,7 @@ module.exports = {
           },
           SecondDefendantSolicitorEmail: {
             userInput: {
-              respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+              respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.3.solicitor.1@gmail.com'
             }
           },
 
@@ -703,7 +703,7 @@ module.exports = {
           },
           SecondDefendantSolicitorEmail: {
             userInput: {
-              respondentSolicitor2EmailAddress: 'civilmoneyclaimsdemo@gmail.com'
+              respondentSolicitor2EmailAddress: 'hmcts.civil+organisation.2.solicitor.1@gmail.com'
             }
           },
 

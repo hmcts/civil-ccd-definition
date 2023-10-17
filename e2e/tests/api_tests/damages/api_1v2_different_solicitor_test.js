@@ -46,9 +46,9 @@ Scenario('Notify claim details', async ({I, api}) => {
 //   await api.informAgreedExtension(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 // });
 
-// Scenario('Defendant response Solicitor 1', async ({I, api}) => {
-//   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-// });
+Scenario('Defendant response Solicitor 1', async ({I, api}) => {
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+});
 
 // Scenario('Defendant response Solicitor 2', async ({I, api}) => {
 //   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
