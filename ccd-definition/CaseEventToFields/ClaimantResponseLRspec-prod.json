@@ -372,7 +372,8 @@
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "respondent1ClaimResponseTypeForSpec =\"FULL_DEFENCE\" AND applicant1ProceedWithClaim =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
