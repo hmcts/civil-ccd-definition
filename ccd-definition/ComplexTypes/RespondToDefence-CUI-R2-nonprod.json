@@ -12,5 +12,13 @@
     "ElementLabel": " ",
     "FieldType": "HearingSupportLip",
     "SecurityClassification": "Public"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1ChoosesHowToProceed",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ChooseHowToProceed",
+    "SecurityClassification": "Public"
   }
 ]
