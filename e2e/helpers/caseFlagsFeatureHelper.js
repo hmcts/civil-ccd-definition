@@ -104,7 +104,7 @@ module.exports = {
           }
         }
       });
-      return data;
     }
+    return data;
   }
 };
