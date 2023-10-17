@@ -40,12 +40,12 @@ const createAssistedOrder = () => {
         }
       },
       orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: date(0),
+        ownInitiativeDate: date(7),
         ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
           ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: date(0),
+        withOutNoticeDate: date(7),
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
