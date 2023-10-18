@@ -1,0 +1,9 @@
+[
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "reasonNotSuitableSDO",
+  "Label": "What is the reason for not drawing a Standard Directions Order? \n",
+  "FieldType": "ReasonNotSuitableSDO",
+  "SecurityClassification": "Public"
+  }
+]

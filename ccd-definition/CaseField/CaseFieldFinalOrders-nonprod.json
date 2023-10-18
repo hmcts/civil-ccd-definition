@@ -65,6 +65,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "finalOrderJudgePapersLabel",
+    "Label": "**** \n ## Judge considered the papers",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderJudgePapers",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrdersJudgePapers",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgeHeardLabel",
     "Label": "**** \n ## Judge heard from",
     "FieldType": "Label",
