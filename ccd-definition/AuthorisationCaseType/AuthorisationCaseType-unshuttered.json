@@ -9,7 +9,8 @@
       "admin-access",
       "full-access",
       "hearing-schedule-access",
-      "payment-access"
+      "payment-access",
+      "next-hearing-date-admin"
     ],
     "CRUD": "CRU"
   },
