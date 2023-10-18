@@ -66,7 +66,6 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -78,7 +77,6 @@
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 7,
     "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -90,7 +88,6 @@
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 8,
     "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -102,7 +99,6 @@
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 9,
     "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   }
 ]
