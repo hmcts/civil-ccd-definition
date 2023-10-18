@@ -1,0 +1,86 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PENDING_CASE_ISSUED",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_APPLICANT_INTENTION",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_ISSUED",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_DISMISSED",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "JUDICIAL_REFERRAL",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_PROGRESSION",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "HEARING_READINESS",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "IN_MEDIATION",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "UserRole": "next-hearing-date-admin",
+    "CRUD": "CRUD"
+  }
+]
