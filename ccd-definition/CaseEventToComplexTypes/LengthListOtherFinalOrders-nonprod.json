@@ -13,7 +13,7 @@
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "ListElementCode": "lengthListOther.lengthListOtherDays",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   },
   {
     "ID": "CaseHearingLengthElement",
@@ -21,7 +21,7 @@
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "ListElementCode": "lengthListOther.lengthListOtherHours",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   },
   {
     "ID": "CaseHearingLengthElement",
@@ -29,6 +29,6 @@
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "ListElementCode": "lengthListOther.lengthListOtherMinutes",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "COMPLEX"
   }
 ]
