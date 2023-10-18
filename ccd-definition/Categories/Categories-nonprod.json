@@ -186,9 +186,81 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "DocumentsDisclosure",
-    "CategoryLabel": "Documents",
+    "CategoryID": "dq",
+    "CategoryLabel": "Directions questionnaire",
     "DisplayOrder": "2",
+    "ParentCategoryID": ""
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantDQ",
+    "CategoryLabel": "Claimant One",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "dq"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DQApplicant",
+    "CategoryLabel": "Directions questionnaire",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantDQ"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoDQ",
+    "CategoryLabel": "Claimant Two",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "dq"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DQApplicantTwo",
+    "CategoryLabel": "Directions questionnaire",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantTwoDQ"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentDQ",
+    "CategoryLabel": "Defendant One",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "dq"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DQRespondent",
+    "CategoryLabel": "Defence (Including directions questionnaire)",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentDQ"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoDQ",
+    "CategoryLabel": "Defendant Two",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "dq"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DQRespondentTwo",
+    "CategoryLabel": "Defence (Including directions questionnaire)",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentTwoDQ"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "DocumentsDisclosure",
+    "CategoryLabel": "Disclosure",
+    "DisplayOrder": "3",
     "ParentCategoryID": ""
   },
   {
@@ -292,7 +364,7 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsWitness",
     "CategoryLabel": "Witness statements for trial",
-    "DisplayOrder": "3",
+    "DisplayOrder": "4",
     "ParentCategoryID": ""
   },
   {
@@ -460,7 +532,7 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsExpert",
     "CategoryLabel": "Expert Evidence",
-    "DisplayOrder": "4",
+    "DisplayOrder": "5",
     "ParentCategoryID": ""
   },
   {
@@ -628,7 +700,7 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsPreTrial",
     "CategoryLabel": "Documents for pre-trial review",
-    "DisplayOrder": "5",
+    "DisplayOrder": "6",
     "ParentCategoryID": ""
   },
   {
@@ -732,7 +804,7 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsTrial",
     "CategoryLabel": "Trial documents",
-    "DisplayOrder": "6",
+    "DisplayOrder": "7",
     "ParentCategoryID": ""
   },
   {
@@ -779,7 +851,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialDocCorrespondence",
-    "CategoryLabel": "Chronology",
+    "CategoryLabel": "Documents",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantTrialDocuments"
   },
@@ -803,7 +875,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialDocCorrespondence",
-    "CategoryLabel": "Chronology",
+    "CategoryLabel": "Documents",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantTwoTrialDocuments"
   },
@@ -827,7 +899,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneTrialDocCorrespondence",
-    "CategoryLabel": "Chronology",
+    "CategoryLabel": "Documents",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentTrialDocuments"
   },
@@ -851,7 +923,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialDocCorrespondence",
-    "CategoryLabel": "Chronology",
+    "CategoryLabel": "Documents",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentTwoTrialDocuments"
   },
@@ -867,8 +939,8 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "orders",
-    "CategoryLabel": "Orders",
-    "DisplayOrder": "7",
+    "CategoryLabel": "Orders and notices",
+    "DisplayOrder": "8",
     "ParentCategoryID": ""
   },
   {
@@ -898,9 +970,25 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
+    "CategoryID": "hearingNotices",
+    "CategoryLabel": "Hearing Notices",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "orders"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "bundles",
+    "CategoryLabel": "Bundles",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "orders"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ordersMadeOnApplications",
     "CategoryLabel": "Orders made on applications",
-    "DisplayOrder": "2",
+    "DisplayOrder": "4",
     "ParentCategoryID": "orders"
   },
   {
@@ -914,9 +1002,145 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
+    "CategoryID": "DocumentsSchedulesOfCost",
+    "CategoryLabel": "Schedules of Costs",
+    "DisplayOrder": "9",
+    "ParentCategoryID": ""
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantSchedulesOfCost",
+    "CategoryLabel": "Claimant One",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "DocumentsSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoSchedulesOfCost",
+    "CategoryLabel": "Claimant Two",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "DocumentsSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentSchedulesOfCost",
+    "CategoryLabel": "Defendant One",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "DocumentsSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoSchedulesOfCost",
+    "CategoryLabel": "Defendant Two",
+    "DisplayOrder": "4",
+    "ParentCategoryID": "DocumentsSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTrialAuthorities",
+    "CategoryLabel": "Uploaded precedent H",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantPrecedent",
+    "CategoryLabel": "Approved/agreed precedent H",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "ApplicantSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoTrialAuthorities",
+    "CategoryLabel": "Uploaded precedent H",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ApplicantTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoPrecedent",
+    "CategoryLabel": "Approved/agreed precedent H",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "ApplicantTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTrialCosts",
+    "CategoryLabel": "Any precedent H",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "ApplicantSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoTrialCosts",
+    "CategoryLabel": "Any precedent H",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "ApplicantTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneTrialAuthorities",
+    "CategoryLabel": "Uploaded precedent H",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOnePrecedent",
+    "CategoryLabel": "Approved/agreed precedent H",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "respondentOneTrialCosts",
+    "CategoryLabel": "Any precedent H",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoTrialAuthorities",
+    "CategoryLabel": "Uploaded precedent H",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "RespondentTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoPrecedent",
+    "CategoryLabel": "Approved/agreed precedent H",
+    "DisplayOrder": "2",
+    "ParentCategoryID": "RespondentTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "respondentTwoTrialCosts",
+    "CategoryLabel": "Any precedent H" ,
+    "DisplayOrder": "3",
+    "ParentCategoryID": "RespondentTwoSchedulesOfCost"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsTrialCostsBudgets",
     "CategoryLabel": "Costs budgets",
-    "DisplayOrder": "8",
+    "DisplayOrder": "10",
     "ParentCategoryID": ""
   },
   {
@@ -954,105 +1178,9 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTrialAuthorities",
-    "CategoryLabel": "Uploaded precedent H",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "ApplicantTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantPrecedent",
-    "CategoryLabel": "Approved/agreed precedent H",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "ApplicantTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTwoTrialAuthorities",
-    "CategoryLabel": "Uploaded precedent H",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "ApplicantTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTwoPrecedent",
-    "CategoryLabel": "Approved/agreed precedent H",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "ApplicantTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTrialCosts",
-    "CategoryLabel": "Any precedent H",
-    "DisplayOrder": "3",
-    "ParentCategoryID": "ApplicantTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTwoTrialCosts",
-    "CategoryLabel": "Any precedent H",
-    "DisplayOrder": "3",
-    "ParentCategoryID": "ApplicantTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentOneTrialAuthorities",
-    "CategoryLabel": "Uploaded precedent H",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "RespondentTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentOnePrecedent",
-    "CategoryLabel": "Approved/agreed precedent H",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "RespondentTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "respondentOneTrialCosts",
-    "CategoryLabel": "Any precedent H",
-    "DisplayOrder": "3",
-    "ParentCategoryID": "RespondentTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentTwoTrialAuthorities",
-    "CategoryLabel": "Uploaded precedent H",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "RespondentTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentTwoPrecedent",
-    "CategoryLabel": "Approved/agreed precedent H",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "RespondentTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "respondentTwoTrialCosts",
-    "CategoryLabel": "Any precedent H" ,
-    "DisplayOrder": "3",
-    "ParentCategoryID": "RespondentTwoTrialCostsBudgets"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsTrialCorrespondence",
     "CategoryLabel": "Correspondence",
-    "DisplayOrder": "9",
+    "DisplayOrder": "11",
     "ParentCategoryID": ""
   },
   {
