@@ -25,6 +25,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "featureToggleWA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDurationTextApplicant",
     "AccessControl": [
       {
@@ -284,7 +300,8 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
