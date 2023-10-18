@@ -6,7 +6,8 @@
       "caseworker-civil-admin",
       "caseworker-caa",
       "caseworker-civil-staff",
-      "caseworker-approver"
+      "caseworker-approver,",
+      "next-hearing-date-admin"
     ],
     "CRUD": "D"
   },
