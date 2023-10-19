@@ -608,7 +608,7 @@ module.exports = {
     }
   },
 
-  transferOnlineCaseSpec: async (user) => {
+  transferCaseSpec: async (user) => {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
 

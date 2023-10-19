@@ -32,7 +32,7 @@ Scenario.only('1v1 full defence unspecified - not suitable SDO - Transfer Case)'
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
-    await api.transferOnlineCase(caseWorkerUser);
+    await api.transferCase(caseWorkerUser);
   }
 });
 
@@ -59,7 +59,7 @@ Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', asy
     await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario1v2, 'solicitorTwo');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v2, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
-    await api.transferOnlineCase(caseWorkerUser);
+    await api.transferCase(caseWorkerUser);
   }
 });
 
@@ -73,7 +73,7 @@ Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', as
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
     await api_spec.notSuitableSDOspec(judgeUser, 'CHANGE_LOCATION');
-    await api_spec.transferOnlineCaseSpec(caseWorkerUser);
+    await api_spec.transferCaseSpec(caseWorkerUser);
   }
 });
 
