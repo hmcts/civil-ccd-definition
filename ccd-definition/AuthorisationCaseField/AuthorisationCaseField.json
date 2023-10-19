@@ -6,8 +6,7 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "judge-profile",
-      "legal-adviser",
-      "caseworker-wa-task-configuration"
+      "legal-adviser"
     ],
     "CRUD": "CRU"
   },
