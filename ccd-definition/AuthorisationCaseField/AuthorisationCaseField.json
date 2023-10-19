@@ -3659,7 +3659,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -3681,7 +3681,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       },
       {
         "UserRoles": [
@@ -5640,6 +5640,22 @@
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "featureToggleWA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }
