@@ -284,7 +284,8 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },
