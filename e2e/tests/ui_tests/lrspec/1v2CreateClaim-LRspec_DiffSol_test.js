@@ -59,7 +59,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
@@ -70,7 +70,7 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejec
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
@@ -94,7 +94,7 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', 
 //   }
 // }).retry(3);
 
-Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
+Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await LRspec.waitForText('Summary');
@@ -115,7 +115,7 @@ Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
 //   }
 // }).retry(3);
 
-Scenario.skip('Schedule a hearing', async ({LRspec}) => {
+Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
@@ -127,7 +127,7 @@ Scenario.skip('Schedule a hearing', async ({LRspec}) => {
 }).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
-Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
+Scenario('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
   // await I.createCaseFlags();
   await LRspec.validateCaseFlags([

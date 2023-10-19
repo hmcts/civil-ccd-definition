@@ -127,7 +127,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.click('Sign out');
 }).retry(3);
 
-Scenario.skip('Claimant solicitor responds to defence', async ({I}) => {
+Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -162,7 +162,7 @@ Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   }
 }).retry(3);
 
-Scenario.skip('Judge triggers SDO', async ({I}) => {
+Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await I.waitForText('Summary');

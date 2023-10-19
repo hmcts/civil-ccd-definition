@@ -31,7 +31,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
-Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
+Scenario('2v1 Respond To Claim - Defendants solicitor rejects claim for defendant', async ({LRspec}) => {
   console.log('2v1 Defendant solicitor reject the specified claim');
   await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
@@ -46,7 +46,7 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for def
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
+Scenario('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimPartAdmit({
     defendant1Response: 'partAdmission',
@@ -58,7 +58,7 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor Part Admit the claim 
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
+Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullAdmit({
     twoDefendants: false,
