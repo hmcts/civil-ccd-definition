@@ -1,5 +1,5 @@
 
-const transferCase = () => {
+const changeLocation = () => {
   return {
     TransferCase: {
       notSuitableSdoOptions: 'CHANGE_LOCATION',
@@ -25,7 +25,7 @@ module.exports = {
   notSuitableSDO : (option) => {
     if (option === 'CHANGE_LOCATION') {
       return {
-        valid: transferCase()
+        valid: changeLocation()
       };
     } else {
       return {
@@ -36,7 +36,7 @@ module.exports = {
 };
 
 module.exports = {
-  transferOnlineCase : () => {
+  transferCase : () => {
       return {
         valid: {
           TransferOnlineCase: {

@@ -53,7 +53,7 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_ONLINE_CASE_SPEC: () => transferOnlineCaseSpec.transferOnlineCaseSpec()
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
 };
 
 const eventData = {
@@ -618,7 +618,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    await validateEventPages(data.TRANSFER_ONLINE_CASE_SPEC());
+    await validateEventPages(data.TRANSFER_CASE_SPEC());
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
       header: '',
