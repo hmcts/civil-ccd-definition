@@ -45,7 +45,7 @@ def secrets = [
     secret('ccd-importer-username', 'DEFINITION_IMPORTER_USERNAME'),
     secret('ccd-importer-password', 'DEFINITION_IMPORTER_PASSWORD'),
     secret('postgres-user', 'POSTGRES_USER'),
-    secret('postgres-password', 'POSTGRES_PASSWORD'),
+    secret('postgres-password', 'POSTGRES_PASSWORD')
   ]
 ]
 
