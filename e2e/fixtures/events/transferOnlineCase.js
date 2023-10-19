@@ -22,7 +22,7 @@ const otherReasons = () => {
 };
 
 module.exports = {
-  transferCase : (option) => {
+  notSuitableSDO : (option) => {
     if (option === 'CHANGE_LOCATION') {
       return {
         valid: transferCase()
@@ -33,4 +33,19 @@ module.exports = {
       };
     }
   }
+};
+
+module.exports = {
+  transferOnlineCase : () => {
+      return {
+        valid: {
+          TransferOnlineCase: {
+            notSuitableSdoOptions: 'CHANGE_LOCATION',
+            tocTransferCaseReason: {
+              reasonForCaseTransferJudgeTxt: 'Reason for transferring case'
+            }
+          }
+        }
+      };
+    }
 };
