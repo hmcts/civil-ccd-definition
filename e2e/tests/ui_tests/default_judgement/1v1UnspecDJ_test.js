@@ -76,7 +76,7 @@ Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @mas
   }
 }).retry(3);
 
-Scenario.skip('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   if (['preview', 'demo'  ].includes(config.runningEnv)) {
     await api.amendHearingDate(config.systemupdate, '2025-01-10');
     hearingDateIsLessThan3Weeks = false;
@@ -85,7 +85,7 @@ Scenario.skip('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master
   }
 }).retry(3);
 
-Scenario.skip('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
+Scenario('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
   if (['preview', 'demo'  ].includes(config.runningEnv)) {
     await payHearingFee(I);
   }
