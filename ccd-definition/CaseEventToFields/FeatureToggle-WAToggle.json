@@ -104,16 +104,5 @@
     "PageID": "NotSuitableSDO",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "TRANSFER_ONLINE_CASE",
-  "CaseFieldID": "featureToggleWA",
-  "PageDisplayOrder": 1,
-  "PageFieldDisplayOrder": 20,
-  "DisplayContext": "READONLY",
-  "PageID": "NotSuitableSDO",
-  "ShowSummaryChangeOption": "N",
-  "Publish": "Y"
-}
+  }
 ]
