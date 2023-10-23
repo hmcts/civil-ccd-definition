@@ -1316,7 +1316,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    addCaseId(pageId) ? caseId : null
   );
 
   let responseBody = await response.json();
@@ -1442,7 +1442,7 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
     eventName,
     pageId,
     {...caseData, ...eventData},
-    isDifferentSolicitorForDefendantResponseOrExtensionDate ? caseId : null,
+    addCaseId(pageId) ? caseId : null,
     422
   );
 
@@ -1717,6 +1717,17 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent2'];
   }
   return responseBody;
+};
+
+const addCaseId = (pageId) => {
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId);
+};
+
+const isEvidenceUpload = (pageId) => {
+  return (pageId === 'DocumentSelectionFastTrack'
+          || pageId === 'DocumentSelectionSmallClaim')
+         && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
+             || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
 };
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
