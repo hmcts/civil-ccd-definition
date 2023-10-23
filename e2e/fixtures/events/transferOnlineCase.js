@@ -1,4 +1,4 @@
-const {listElement} = require("../../api/dataHelper");
+const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 
 const changeLocation = () => {
