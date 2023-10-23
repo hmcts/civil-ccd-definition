@@ -129,6 +129,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgePapersLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgePapers",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
       "judge-profile"
