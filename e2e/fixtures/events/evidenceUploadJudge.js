@@ -11,7 +11,7 @@ module.exports = {
 
     if (typeOfNote === 'NOTE_ONLY') {
       caseNoteData.CaseNoteSelectionNote = {
-        caseNoteTypeNoteTA: 'string'
+        caseNoteTA: 'string'
       };
     } else if (typeOfNote === 'DOCUMENT_ONLY') {
       caseNoteData.UploadDocument = {

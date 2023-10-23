@@ -22,21 +22,5 @@
     "ListElementCode": "typeRepresentationOtherComplex",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FinalOrderRepresentation",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
-    "ListElementCode": "typeRepresentationJudgePapersLabel",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FinalOrderRepresentation",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderRepresentation",
-    "ListElementCode": "typeRepresentationJudgePapersList",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
   }
 ]
