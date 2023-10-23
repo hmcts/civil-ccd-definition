@@ -3,11 +3,11 @@ const config = require('../../../config.js');
 const mpScenario1v1 = 'ONE_V_ONE';
 const mpScenario1v2Spec = 'ONE_V_TWO';
 const mpScenario1v2 = 'ONE_V_TWO_TWO_LEGAL_REP';
-// const judgeUser = config.judgeUserWithRegionId1;
-// const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 // To use on local because the idam images are different
-const judgeUser = config.judgeUserWithRegionId1Local;
-const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
+// const judgeUser = config.judgeUserWithRegionId1Local;
+// const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 const fastClaimAmount = '11000';
 
 Feature('Transfer Online Case 1v1 API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
@@ -28,7 +28,7 @@ await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', '
   'JUDICIAL_REFERRAL');
 }
 
-Scenario.only('1v1 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
+Scenario('1v1 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
