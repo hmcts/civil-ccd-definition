@@ -5,7 +5,9 @@
     "FieldType": "Text",
     "ElementLabel": "Type of document",
     "HintText": "For example, contract, invoice, receipt, email, text message, photo, social media message",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "documentUpload != \"DUMMY_VALUE_TO_SHOW_FIELD\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "UploadEvidenceDocumentType",
@@ -13,7 +15,9 @@
     "FieldType": "Date",
     "ElementLabel": "Date document was issued or message was sent",
     "HintText": "For example, 12/09/2022",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "documentUpload != \"DUMMY_VALUE_TO_SHOW_FIELD\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "UploadEvidenceDocumentType",
@@ -22,7 +26,9 @@
     "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMG, TIF, TIFF",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "documentUpload != \"DUMMY_VALUE_TO_SHOW_FIELD\"",
+    "RetainHiddenValue": "Yes"
   },
   {
     "ID": "UploadEvidenceDocumentType",

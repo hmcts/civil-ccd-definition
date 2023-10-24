@@ -1379,8 +1379,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition":"trialCostsFlag = \"show_trial_costs\" AND caseTypeFlag = \"RespondentTwoFields\""
   },
   {
