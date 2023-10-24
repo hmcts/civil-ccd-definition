@@ -20,6 +20,7 @@ Scenario('Default Judgment claim 1v2', async ({I, api}) => {
   caseId = await api.getCaseId();
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser, 'TRIAL_HEARING');
+  await api.initiateGeneralApplication(caseId, config.applicantSolicitorUser, 'JUDICIAL_REFERRAL');
 });
 
 Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
@@ -74,5 +75,5 @@ Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearin
 });
 
 AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
