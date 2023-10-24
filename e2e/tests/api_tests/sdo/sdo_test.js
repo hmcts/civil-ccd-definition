@@ -20,6 +20,8 @@ if (config.runWAApiTest) {
 
 Feature('CCD 1v1 API test');
 
+let caseId;
+
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -28,7 +30,6 @@ async function prepareClaim(api, claimAmount) {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
-
 Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -43,6 +44,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
       await api.triggerBundle(config.systemupdate);
     }
     await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    caseId = await api.getCaseId();
     await api.initiateGeneralApplication(caseId, config.applicantSolicitorUser, 'All_FINAL_ORDERS_ISSUED');
   }
 });
