@@ -43,6 +43,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
       await api.triggerBundle(config.systemupdate);
     }
     await api.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    await api.initiateGeneralApplication(caseId, config.applicantSolicitorUser, 'All_FINAL_ORDERS_ISSUED');
   }
 });
 
