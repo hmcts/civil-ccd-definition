@@ -7,7 +7,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 
-Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-nonprod');
+Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-nonprod @master-e2e-ft');
 
 Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
