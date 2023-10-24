@@ -109,7 +109,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-wa-task-configuration",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
@@ -128,7 +129,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "caseflags-viewer"
         ],
         "CRUD": "R"
       }
