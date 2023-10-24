@@ -5649,6 +5649,12 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "judge-profile",
           "legal-adviser",
           "caseworker-civil-solicitor",
