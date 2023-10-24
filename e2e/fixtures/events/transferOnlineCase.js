@@ -40,12 +40,12 @@ module.exports = {
       return {
         valid: {
           transferCourtLocationList: {
-            list_items: [
-              listElement(config.claimantSelectedCourt)
-            ],
-            value: listElement(config.liverpoolCourt)
+            transferCourtLocationList: {
+              value: listElement(config.liverpoolCourt),
+              list_items: [listElement(config.claimantSelectedCourt)]
+            },
+            reasonForTransfer: 'Allocated court location is not appropriate'
           },
-          reasonForTransfer: 'allocated court location is not appropriate'
         }
       };
     }

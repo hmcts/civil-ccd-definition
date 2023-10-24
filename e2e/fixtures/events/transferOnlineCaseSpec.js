@@ -37,16 +37,16 @@ module.exports = {
   },
 
   transferCaseSpec : () => {
-      return {
-        userInput: {
+    return {
+      userInput: {
+        transferCourtLocationList: {
           transferCourtLocationList: {
-            list_items: [
-              listElement(config.claimantSelectedCourt)
-            ],
-            value: listElement(config.liverpoolCourt)
+            value: listElement(config.liverpoolCourt),
+              list_items: [listElement(config.claimantSelectedCourt)]
           },
-          reasonForTransfer: 'allocated court location is not appropriate'
-        }
-      };
+          reasonForTransfer: 'Allocated court location is not appropriate'
+        },
+      }
+    };
   }
 };
