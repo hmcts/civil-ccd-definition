@@ -35,7 +35,6 @@
     "ID": "FinalOrderRepresentation",
     "ElementLabel": "### Judge considered the papers",
     "FieldType": "Label",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -45,7 +44,6 @@
     "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "FinalOrdersJudgePapers",
-    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]

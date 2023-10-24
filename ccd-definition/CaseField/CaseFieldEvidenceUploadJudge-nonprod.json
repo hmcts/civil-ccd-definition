@@ -28,11 +28,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseNoteTypeNoteTA",
+    "ID": "caseNoteTA",
     "Label": "Write a note about this case",
     "FieldType": "TextArea",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNotesTA",
+    "Label": "Write a note about this case",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseNote",
+    "SecurityClassification": "Public",
+    "Comment": "The note fields to be displayed in the tab"
   },
   {
     "CaseTypeID": "CIVIL",
