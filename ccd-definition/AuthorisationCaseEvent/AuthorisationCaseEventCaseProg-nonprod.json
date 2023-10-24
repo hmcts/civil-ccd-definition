@@ -236,7 +236,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
