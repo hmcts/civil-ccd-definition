@@ -801,7 +801,7 @@ module.exports = {
 
   createSDOSmallWODamageSumInPerson: () => {
     const data = {
-      userInput: {
+      valid: {
         SDO: {
           drawDirectionsOrderRequired: 'No',
         },
