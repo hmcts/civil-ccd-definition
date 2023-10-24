@@ -5653,7 +5653,8 @@
           "legal-adviser",
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
