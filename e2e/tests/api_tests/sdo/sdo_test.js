@@ -18,7 +18,7 @@ if (config.runWAApiTest) {
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
 }
 
-Feature('CCD 1v1 API test');
+Feature('CCD 1v1 API test @api-dj-1v2, @api-dj @dmn-task-dj @api-prod-dj');
 
 let caseId;
 
@@ -97,7 +97,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
 Feature('CCD 1v1 API test @e2e-nightly');
