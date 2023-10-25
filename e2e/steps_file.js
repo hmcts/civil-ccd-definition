@@ -245,9 +245,9 @@ module.exports = function () {
 
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
-        console.log('Value of vault: ', process.env.DEFAULT_PASSWORD)
-        console.log('Value of vault: ', process.env.JUDGE_DEFAULT_PASSWORD)
-        console.log('Value of vault: ', process.env.IAC_DEFAULT_PASSWORD)
+        console.log('Value of vault: ', process.env.DEFAULT_PASSWORD);
+        console.log('Value of vault: ', process.env.JUDGE_DEFAULT_PASSWORD);
+        console.log('Value of vault: ', process.env.IAC_DEFAULT_PASSWORD);
       }
     },
 
