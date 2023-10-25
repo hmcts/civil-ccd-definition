@@ -183,5 +183,14 @@
     "ElementLabel": "Phone",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "Party",
+    "ListElementCode": "flags",
+    "FieldType": "Flags",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   }
 ]
