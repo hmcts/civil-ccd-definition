@@ -224,11 +224,11 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
     ])
   ];
 
-const { DefaultAzureCredential } = require("@azure/identity");
-const { SecretClient } = require("@azure/keyvault-secrets");
+const { DefaultAzureCredential } = require('@azure/identity');
+const { SecretClient } = require('@azure/keyvault-secrets');
 
 async function getSecretFromVault(secretName) {
-  const kvUrl = "https://civil-aat.vault.azure.net";
+  const kvUrl = 'https://civil-aat.vault.azure.net';
   const credential = new DefaultAzureCredential();
   const client = new SecretClient(kvUrl, credential);
   const secret = await client.getSecret(secretName);
@@ -244,7 +244,7 @@ async function logSecretValue(secretName, secretValue) {
 }
 
 async function main() {
-  const secretNames = ["default-password", "judge-default-password", "iac-default-password"];
+  const secretNames = ['default-password', 'judge-default-password', 'iac-default-password'];
 
   for (const secretName of secretNames) {
     const secretValue = await getSecretFromVault(secretName);
@@ -253,7 +253,7 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error("An error occurred:", err);
+  console.error('An error occurred: ', err);
 });
 
 module.exports = function () {
