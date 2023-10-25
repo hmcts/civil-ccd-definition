@@ -4,35 +4,40 @@
     "ID": "caseHistory",
     "Label": " ",
     "FieldType": "CaseHistoryViewer",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
     "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "solicitorReferencesCopy",
     "Label": "Workaround for solicitorReferences label",
     "FieldType": "SolicitorReferences",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "courtLocation",
     "Label": "Court location code",
     "FieldType": "CourtLocation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQRemoteHearing",
     "Label": "Claimant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -40,6 +45,7 @@
     "Label": "Claimant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the first applicant on the case",
     "_Category":  "COMMON"
   },
@@ -48,14 +54,16 @@
     "ID": "applicant1LitigationFriendRequired",
     "Label": "Is the claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1LitigationFriend",
     "Label": "Claimant litigation friend details",
     "FieldType": "LitigationFriend",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -63,6 +71,7 @@
     "Label": "Defendant details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the first respondent on the case",
     "_Category":  "COMMON"
   },
@@ -71,21 +80,24 @@
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimValue",
     "Label": "Expected claim value",
     "FieldType": "ClaimValue",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -93,14 +105,16 @@
     "Label": "Type of claim",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimTypeOther",
     "Label": "Enter Claim type",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -108,14 +122,16 @@
     "Label": "What type of personal injury is this?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PersonalInjuryType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "personalInjuryTypeOther",
     "Label": "Enter personal injury type",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -123,35 +139,40 @@
     "Label": "Allocated track",
     "FieldType": "FixedList",
     "FieldTypeParameter": "Track",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "litigantFriendSelection",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1PbaAccounts",
     "Label": "PBA Number",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "noPbaAccountsLabel",
     "Label": "### You don't have a registered PBA.\n### This case will not be saved.\n## Register an existing PBA with MyHMCTS\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Apply to get a new PBA\n\nYou can <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-fee-account-application-form-fee-account-customer-application-form\">use this form to apply for a new PBA account.</a>\n\nYou’ll need to provide details for you and your organisation, including the required credit limit for your account.\n\nOnce your account has been registered, you’ll need to start your claim again to pay the fee.\n\nRead more information on <a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">registering a PBA.</a>",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -159,6 +180,7 @@
     "Label": "Hide pba and show noPbaAccountLabel",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "workaround field to show noPbaAccountsLabel when applicantSolicitor1PbaAccounts is empty. Also hides applicantSolicitor1PbaAccounts"
   },
   {
@@ -166,14 +188,16 @@
     "ID": "pbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## If there’s 1 PBA listed\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## If there are 2 PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nIf you want to remove a PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk. You should include the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n\n\nSelect ‘cancel’ below to discard the case.\n</div></details><br />",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimStatementOfTruthLabel",
     "Label": "The claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant(s) to sign this statement.\n\nThe claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -181,6 +205,7 @@
     "Label": " ",
     "FieldType": "StatementOfTruth",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The statement of truth acknowledged by the first applicant solicitor of the issue of the claim.",
     "_Category":  "CIVIL"
   },
@@ -190,6 +215,7 @@
     "Label": "Date claim issued",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The derived legal date the claim is deemed issued. It is based on the date time when the claim was submitted digitally",
     "_Category":  "CIVIL"
   },
@@ -198,14 +224,16 @@
     "ID": "submittedDate",
     "Label": "Date claim Submitted",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "servedDocumentFiles",
     "Label": "Upload documents",
     "FieldType": "ServedDocumentFiles",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -213,6 +241,7 @@
     "Label": "Defendant 1 solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
     "_Category":  "CIVIL"
   },
@@ -222,6 +251,7 @@
     "Label": "Defendant 2 solicitor deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The date time by which the second respondent solicitor has to submit the response to the claim.",
     "_Category":  "CIVIL"
   },
@@ -231,7 +261,8 @@
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -239,7 +270,8 @@
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -247,7 +279,8 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -255,7 +288,8 @@
     "Label": "Defendant response Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -263,7 +297,8 @@
     "Label": "Claimant response to defence documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -271,6 +306,7 @@
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "Field interpolation can be used only with case fields present on the same or one of the previous pages - otherwise the data will be removed on clicking previous.",
     "_Category": "WORKAROUND"
   },
@@ -280,6 +316,7 @@
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "Field interpolation can be used only with case fields present on the same or one of the previous pages - otherwise the data will be removed on clicking previous.",
     "_Category": "WORKAROUND"
   },
@@ -288,35 +325,40 @@
     "ID": "respondentDetailsAcknowledgeClaim",
     "Label": "<br/>The Claimant legal representative has provided the following name and address for the Defendant.\nIf these are not correct, you should contact the Claimant's legal representative.\n\n**Claimant's email address**<br/>${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "confirmRespondentDetailsAdvice",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentDetails",
     "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
     {
     "CaseTypeID": "CIVIL",
     "ID": "claimantSolicitorEmail",
     "Label": "**Claimant’s email address:** ${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentResponseIsSame",
     "Label": "Do the defendants intend to file a single response to the claim?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -325,6 +367,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The intended response of the first respondent to the claim",
     "_Category":  "CIVIL"
   },
@@ -333,49 +376,56 @@
     "ID": "respondentBothLabel",
     "Label": "<br/>**Both defendants intend to:**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabel",
     "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelDisclosureOfElectronicDocuments",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelVulnerabilityQuestions",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelUpload",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelUpload",
     "Label": "<br/>**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -383,6 +433,7 @@
     "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
   },
   {
@@ -390,63 +441,72 @@
     "ID": "respondent2PartyNameLabel",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabel",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelVulnerabilityQuestions1",
     "Label": "**${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelUpload1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelUpload2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -454,6 +514,7 @@
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
   },
   {
@@ -461,7 +522,8 @@
     "ID": "applicant2PartyNameLabel",
     "Label": "**against Claimant: ${applicant2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -469,7 +531,8 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -477,7 +540,8 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "MultiPartyResponseTypeFlags",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -485,7 +549,8 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -493,217 +558,248 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSingleResponseRequiredLabel",
     "Label": "You will be required to complete a single directions questionnaire for all defendants.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseHandOffLabel",
     "Label": "This online service only currently supports full defences. Post your response to:\n\nCounty Court Money Claims Centre\n\nPO Box 527\n\nSalford\n\nM5 0BY\n\nDX:702634 Salford 5",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
   "CaseTypeID": "CIVIL",
   "ID": "respondentSharedClaimResponseDocument",
   "Label": "Upload defence",
   "FieldType": "ResponseDocument",
-  "SecurityClassification": "Public"
+  "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaim",
     "Label": "Do you want to proceed with the claim",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DefenceResponseDocument",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
     "Label": "CaseMan reference number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "withdrawClaim",
     "Label": "Withdraw claim",
     "FieldType": "CloseClaim",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "discontinueClaim",
     "Label": "Discontinue claim",
     "FieldType": "CloseClaim",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "businessProcess",
     "Label": "Business process for camunda",
     "FieldType": "BusinessProcess",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQVulnerabilityQuestions",
     "Label": "Defendant 1 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
   "CaseTypeID": "CIVIL",
   "ID": "respondent2DQVulnerabilityQuestions",
   "Label": "Defendant 2 Vulnerability Questions",
   "FieldType": "VulnerabilityQuestions",
-  "SecurityClassification": "Public"
+  "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQExperts",
     "Label": "Defendant 1 experts",
     "FieldType": "Experts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQExperts",
     "Label": "Defendant 2 experts",
     "FieldType": "Experts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnesses",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQWitnesses",
     "Label": "Defendant 2 witnesses",
     "FieldType": "Witnesses",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearing",
     "Label": "Defendant 1 Hearing",
     "FieldType": "Hearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQHearing",
     "Label": "Defendant 2 Hearing",
     "FieldType": "Hearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -712,7 +808,8 @@
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -721,14 +818,16 @@
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -751,112 +850,128 @@
     "ID": "respondent2DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQHearingSupport",
     "Label": "Defendant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQHearingSupport",
     "Label": "Defendant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFurtherInformation",
     "Label": "Defendant 1 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFurtherInformation",
     "Label": "Defendant 2 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQVulnerabilityQuestions",
     "Label": "Claimant 1 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQExperts",
     "Label": "Claimant 1 experts",
     "FieldType": "Experts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQWitnesses",
     "Label": "Claimant 1 witnesses",
     "FieldType": "Witnesses",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearing",
     "Label": "Claimant 1 Hearing",
     "FieldType": "Hearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -865,84 +980,96 @@
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQHearingSupport",
     "Label": "Claimant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFurtherInformation",
     "Label": "Applicant 1 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2LitigationFriend",
     "Label": "Defendant 2 litigation details",
     "FieldType": "LitigationFriend",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "genericLitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDeadline",
     "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1ResponseDate",
     "Label": "Defendant response date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2ResponseDate",
     "Label": "Defendant 2 response date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -950,28 +1077,32 @@
     "Label": "Postal correspondence for the Claimant’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Claimant’s legal representative will be sent.",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1ServiceAddress",
     "Label": "Claimant's legal representative correspondence address",
     "FieldType": "AddressUK",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -979,14 +1110,16 @@
     "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1ServiceAddress",
     "Label": "Defendant's legal representative Correspondence address",
     "FieldType": "AddressUK",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -994,224 +1127,256 @@
     "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2ServiceAddress",
     "Label": "Defendant 2's legal representative Correspondence address",
     "FieldType": "AddressUK",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1EmailAddress",
     "Label": "Enter defendant legal representative's email address to be used for notifications",
     "FieldType": "Email",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimProceedsInCaseman",
     "Label": "Case proceeds in Caseman",
     "FieldType": "ClaimProceedsInCaseman",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDate",
     "Label": "Date claim notified",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "notifyClaimLabel",
     "Label": "If you continue the defendant legal representative's organisation will be notified and will be granted access to this claim.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1CheckEmail",
     "Label": "Notifications",
     "FieldType": "CorrectEmail",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantSolicitor1UserDetails",
     "Label": "Notification details",
     "FieldType": "UserDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaimLabel",
     "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "detailsOfClaim",
     "Label": "Description of claim",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDate",
     "Label": "Case details notification date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "pbaPaymentFailedLabel",
     "Label": "#### Your payment did not go through. To resubmit the same claim please try again by selecting the PBA account number",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "amendPartyDetailsLabel",
     "Label": "Update a legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "paymentSuccessfulDate",
     "Label": "Payment successful date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimNotificationDeadline",
     "Label": "Claim notification deadline",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimDetailsNotificationDeadline",
     "Label": "Case details notification deadline",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1TimeExtensionDate",
     "Label": "Date respondent 1 submitted time extension",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2TimeExtensionDate",
     "Label": "Date respondent 2 submitted time extension",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1AcknowledgeNotificationDate",
     "Label": "Date respondent 1 acknowledged notification",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2AcknowledgeNotificationDate",
     "Label": "Date respondent 2 acknowledged notification",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "takenOfflineDate",
     "Label": "Date claim moved offline",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "takenOfflineByStaffDate",
     "Label": "Date claim moved offline by staff",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendDate",
     "Label": "Date respondent 1 added or last updated litigation friend",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2LitigationFriendDate",
     "Label": "Date respondent 2 added or last updated litigation friend",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2LitigationFriendCreatedDate",
     "Label": "Date respondent 2 added litigation friend",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "uploadParticularsOfClaim",
     "Label": "Do you want to upload Particulars of claim?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "statementOfTruthSubmitLabel",
     "Label": "In order to verify the claim by a statement of truth please click \"submit\" on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the \"submit\" button.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1219,6 +1384,7 @@
     "Label": " ",
     "FieldType": "StatementOfTruth",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
@@ -1226,56 +1392,64 @@
     "ID": "casePaymentHistoryViewer",
     "Label": "Custom Payment History Viewer",
     "FieldType": "CasePaymentHistoryViewer",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "addApplicant2Label",
     "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "addApplicant2",
     "Label": "Do you want to add another claimant now?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2",
     "Label": "Second claimant's details",
     "FieldType": "Party",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2LitigationFriendRequired",
     "Label": "Is the second Claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2LitigationFriend",
     "Label": "Second Claimant litigation friend details",
     "FieldType": "LitigationFriend",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "addRespondent2",
     "Label": "Is there another defendant?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2",
     "Label": "Second defendant's details",
     "FieldType": "Party",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1283,28 +1457,32 @@
     "Label": "Does the second defendant have a legal representative?",
     "HintText": "If they are not legally represented you can still continue with the claim but the Defendant will be served offline (on paper)",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2SameLegalRepresentative",
     "Label": "Does the second defendant have the same legal representative?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1313,6 +1491,7 @@
     "HintText": "Add note detail, including relevant dates and people involved",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "The note field to be displayed in an event"
   },
   {
@@ -1322,6 +1501,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseNote",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "The note fields to be displayed in the tab"
   },
   {
@@ -1330,21 +1510,24 @@
     "Label": "Enter the second defendant legal representatives email address to be used for notifications",
     "HintText": "This should be the email address that the defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
     "FieldType": "Email",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor2OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1352,6 +1535,7 @@
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Max": "24"
   },
   {
@@ -1360,6 +1544,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "Temporary workaround - flag used to indicate applicant 1 for whom an event should apply.",
     "_Category": "WORKAROUND"
   },
@@ -1369,6 +1554,7 @@
     "Label": "Is respondent1?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "Temporary workaround - flag used to indicate respondent 1 for whom an event should apply.",
     "_Category": "WORKAROUND"
   },
@@ -1378,6 +1564,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "Temporary workaround - flag used to indicate respondent 2 for whom an event should apply.",
     "_Category": "WORKAROUND"
   },
@@ -1387,6 +1574,7 @@
     "Label": "Which defendant legal representative do you want to notify?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },
   {
@@ -1395,6 +1583,7 @@
     "Label": "Which defendant legal representative do you want to notify of the claim details?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },
   {
@@ -1402,14 +1591,16 @@
     "ID": "claimant1Name",
     "Label": "Claimant 1 Name",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimant2Name",
     "Label": "Claimant 2 Name",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1417,14 +1608,16 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyName",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1432,343 +1625,392 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ResponseIntention",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelFurtherInformation",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelHearingSupport",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelRequestedCourt",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDraftDirections",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelHearing",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelLanguage",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelWitnesses",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelExperts",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDisclosureReport",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelVulnerabilityQuestions",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2PartyNameLabelDisclosureOfElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureReport1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDisclosureReport2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelExperts1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelExperts2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelWitnesses1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelWitnesses2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelLanguage1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelLanguage2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelHearing1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelHearing2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDraftDirections1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelDraftDirections2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelRequestedCourt1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelRequestedCourt2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelHearingSupport1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelHearingSupport2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelFurtherInformation1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1PartyNameLabelFurtherInformation2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelDisclosureReport",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelExperts",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelWitnesses",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelLanguage",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelHearing",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelDraftDirections",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelRequestedCourt",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelHearingSupport",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1PartyNameLabelFurtherInformation",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "selectLitigationFriend",
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "eligibilityQuestions",
     "Label": "## Issue civil court proceedings\n### Who can use this service\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA) or card payment\n\nIf the defendant has legal representation, you'll need:\n* name of the defendant's firm of solicitors \n* email address the firm uses for notifications from MyHMCTS \n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* meets all the conditions in PD51ZB 1.6(3)\n* is conducted in English \n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentUploadWarning",
     "Label": "### Documents uploaded to the Damages Claims Portal prior to the 'notify claim details' next step (refer to PD51ZB section 4), will be visible to the defendant solicitor once the claim has been issued. \n### If you do not want to provide access to these documents prior to completing the 'notify claim details' next step, please do not upload them now.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "vulnerabilityQuestionsInfoLabel",
     "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\n\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1776,6 +2018,7 @@
     "Label": "Defendant details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the first respondent on the case",
     "_Category":  "COMMON"
   },
@@ -1785,6 +2028,7 @@
     "Label": "Second Defendant's details",
     "FieldType": "Party",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the second respondent on the case",
     "_Category":  "COMMON"
   },
@@ -1793,49 +2037,56 @@
     "ID": "amendRespondent1SolicitorEmailLabel",
     "Label": "Update the defendant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "amendRespondent2SolicitorEmailLabel",
     "Label": "Update the second defendant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "amendApplicant1SolicitorEmailLabel",
     "Label": "Update the claimant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "amendApplicant2SolicitorEmailLabel",
     "Label": "Update the second claimant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicantsProceedIntention",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantResponseDocumentToDefendant2Flag",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimant2ResponseFlag",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
 
   {
@@ -1843,14 +2094,16 @@
     "ID": "applicant2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQVulnerabilityQuestions",
     "Label": "Claimant 2 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1858,112 +2111,128 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimantResponseScenarioFlag",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantResponseToDefendantLabel",
     "Label": "<br/>**Claimant's response to defendant**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant1ResponseToDefendantLabel",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant2ResponseToDefendantLabel",
     "Label": "<br/>**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaimMultiParty2v1",
     "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2ProceedWithClaimMultiParty2v1",
     "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent2.partyName}",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimantDefenceResDocToDefendant2",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureOfElectronicDocuments",
     "Label": "Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureOfNonElectronicDocuments",
     "Label": "Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureReport",
     "Label": "Disclosure report",
     "FieldType": "DisclosureReport",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQExperts",
     "Label": "Claimant 2 experts",
     "FieldType": "Experts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQWitnesses",
     "Label": "Claimant 2 witnesses",
     "FieldType": "Witnesses",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearing",
     "Label": "Claimant 2 Hearing",
     "FieldType": "Hearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1972,35 +2241,40 @@
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQHearingSupport",
     "Label": "Claimant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQFurtherInformation",
     "Label": "Applicant 2 Further information",
     "FieldType": "FurtherInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2008,6 +2282,7 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "A workaround to stop users being able to jump onto any page during create claim",
     "_Category": "WORKAROUND"
   },
@@ -2016,14 +2291,16 @@
     "ID": "respondent1GeneratedResponseDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2GeneratedResponseDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2031,6 +2308,7 @@
     "Label": "Respondent 1 Organisation ID Copy",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
   },
   {
@@ -2039,6 +2317,7 @@
     "Label": "Respondent 2 Organisation ID Copy",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
   },
   {
@@ -2047,6 +2326,7 @@
     "Label": "Add Legal Rep Deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Add legal rep to case deadline",
     "_Category":  "CIVIL"
   },
@@ -2055,21 +2335,24 @@
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseListDisplayDefendantSolicitorReferences",
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2077,6 +2360,7 @@
     "Label": "Next Deadline",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Next deadline on a case",
     "_Category":  "CIVIL"
   },
@@ -2085,49 +2369,56 @@
     "ID": "headingParticularsOfClaim",
     "Label": "## Particulars of claim",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingClaimantDetails",
     "Label": "## Claimant details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingDefendantDetails",
     "Label": "## Defendant details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingClaimantDQ",
     "Label": "## Claimant directions questionnaire",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingDefendantDQ",
     "Label": "## Defendant directions questionnaire",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingSolicitorReferences",
     "Label": "## Solicitor references",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingAmountClaiming",
     "Label": "## Amount claiming",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2135,6 +2426,7 @@
     "Label": "Next hearing details",
     "FieldType": "NextHearingDetails",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Details of the next hearing on a case",
     "_Category":  "CIVIL"
   },
@@ -2143,7 +2435,8 @@
     "ID": "migrationId",
     "Label": "Migration Id",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2152,6 +2445,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "CaseAccessCategory",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"
   },
@@ -2160,21 +2454,24 @@
     "ID": "caseManagementLocation",
     "Label": " ",
     "FieldType": "CaseLocationCivil",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "locationName",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "paymentTypePBA",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2182,7 +2479,8 @@
     "Label": "registration information respondent one",
     "FieldType": "Collection",
     "FieldTypeParameter": "RegistrationTypeInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2190,56 +2488,64 @@
     "Label": "registration information respondent two",
     "FieldType": "Collection",
     "FieldTypeParameter": "RegistrationTypeInformation",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseNamePublic",
     "Label": "Public case name",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1Details",
     "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent1Copy.partyEmail}\n\n**Phone number:** ${respondent1Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2Details",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DetailsDiffLR",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "casePaymentWaysToPay",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "claimIssuedPBADetails",
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendantLitigationFriendWarning",
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2247,6 +2553,7 @@
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Copy field for 1v2DS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
   },
   {
@@ -2255,6 +2562,7 @@
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Copy field for 1v2SS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
   },
   {
@@ -2262,14 +2570,16 @@
     "ID": "applicantSolicitor1AddressLabel",
     "Label": "Claimant's legal representative's correspondence address",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentSolicitor1AddressLabel",
     "Label": "Defendant's legal representative's correspondence address",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2277,6 +2587,7 @@
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "Field storing noc update details"
   },
   {
@@ -2284,167 +2595,191 @@
     "ID": "cosNotifyClaimDetails1",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosNotifyClaimDetails2",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForClaimant1_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForClaimant2_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForDefendant1",
     "Label": "Defendant's name <br /> ${respondent1.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForDefendant2",
     "Label": "Defendant's name <br /> ${respondent2.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant1LIPAtClaimIssued",
     "Label": "Is defendant 1 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendant2LIPAtClaimIssued",
     "Label": "Is defendant 2 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabel",
     "Label": "# Certificate of Service",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelDef1",
     "Label": "# Certificate of Service [defendant1]",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelDef2",
     "Label": "# Certificate of Service [defendant2]",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosNotifyClaimDefendant1",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosNotifyClaimDefendant2",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelForClaimant1_2",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef1",
     "Label": "# Defendant 1 details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef1CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef1CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef2",
     "Label": "# Defendant 2 details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef2CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "cosLabelTabDef2CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFixedRecoverableCosts",
     "Label": "Claimant 1 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQFixedRecoverableCosts",
     "Label": "Claimant 2 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQFixedRecoverableCosts",
     "Label": "Defendant 1 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQFixedRecoverableCosts",
     "Label": "Defendant 2 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

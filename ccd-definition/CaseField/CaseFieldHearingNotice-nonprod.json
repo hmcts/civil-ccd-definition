@@ -6,7 +6,8 @@
     "HintText": "Select one option.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingNoticeSelection",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,14 +15,16 @@
     "Label": "Application details",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingAppFor",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "typeOfApplication",
     "Label": "Type of application",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,14 +32,16 @@
     "Label": "Date of application",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingNoticeListOther",
     "Label": "What hearing notice are you creating?",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -44,14 +49,16 @@
     "Label": "Is this a listing or a relisting?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ListingOrRelisting",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingLocationLabel",
     "Label": "**Location**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -59,14 +66,16 @@
     "Label": " ",
     "HintText": "Venue",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "channelLabel",
     "Label": "**Channel**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -74,14 +83,16 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "HearingChannel",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDateLabel",
     "Label": "**Date**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -89,14 +100,16 @@
     "Label": " ",
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingTimeLabel",
     "Label": "**Time**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -104,7 +117,8 @@
     "Label": "Start time",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingTimeHourMinute",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -112,28 +126,32 @@
     "Label": "Duration",
     "FieldType": "FixedList",
     "FieldTypeParameter": "HearingLengthCasePro",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "information",
     "Label": "Is there more information you need to add to the Hearing Notification letter?",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingFee",
     "Label": "Hearing Fee",
     "FieldType": "Fee",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -141,21 +159,24 @@
     "Label": "Date of dismissal",
     "HintText": "For example, 27 3 2022",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingFeePaymentDetails",
     "Label": "Hearing Payment Details",
     "FieldType": "PaymentDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingFeePBADetails",
     "Label": "Hearing fee PBA details\n",
     "FieldType": "SRPbaDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -163,20 +184,23 @@
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "relistHearingNotice",
     "Label": "When you click Continue, the next screen will enable you to select to schedule the hearing.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
