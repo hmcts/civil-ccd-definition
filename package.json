@@ -92,9 +92,9 @@
     "totp-generator": "^0.0.7",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1",
-    "azure-identity": "^1.4.0",
-    "azure-keyvault-secrets": "^4.2.0",
-    "azure-storage": "^2.10.4"
+    "azure-identity": "1.10.4",
+    "azure-keyvault-secrets": "4.7.1",
+    "azure-storage": "8.6.6"
   },
   "resolutions": {
     "minimatch": "^3.0.5"
