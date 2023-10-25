@@ -30,5 +30,22 @@
     "Label": "Other reason",
     "FieldType": "ReasonNotSuitableSDO",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "transferCourtLocationList",
+    "Label": "New hearing centre location",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForTransfer",
+    "Label": "Reasons for transfer",
+    "HintText": "For example, allocated court location is not appropriate",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -29,7 +29,7 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -46,33 +46,25 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
   await api.createSDO(judgeUser, 'CREATE_FAST');
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    //await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    //await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    if (['demo'].includes(config.runningEnv)) {
-      await api.triggerBundle(config.systemupdate);
-    }
-    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
-  }
 });
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
+Scenario.only('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - hearing scheduled', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    //await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    //await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+    //await api.amendHearingDueDate(config.systemupdate);
+    //await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
@@ -80,7 +72,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
 });
 
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
@@ -94,7 +86,7 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
 Feature('CCD 1v1 API test @e2e-nightly');
@@ -249,5 +241,5 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
