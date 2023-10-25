@@ -26,14 +26,14 @@ await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', '
   'JUDICIAL_REFERRAL');
 }
 
-Scenario.only('1v1 full defence unspecified - judge user - not suitable SDO - Transfer Case)', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge user - not suitable SDO - Transfer Case)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.transferCase(judgeUser, 'CHANGE_LOCATION');
   }
 });
 
-Scenario.skip('1v1 full defence unspecified - judge user - not suitable SDO - Other reasons)', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge user - not suitable SDO - Other reasons)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.transferCase(judgeUser, 'OTHER_REASONS');
@@ -41,7 +41,7 @@ Scenario.skip('1v1 full defence unspecified - judge user - not suitable SDO - Ot
 });
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
 
 Feature('Transfer Online Case 1v2 API test - fast claim - unspec @api-unspec @api-tests-1v2SS @api-nonprod');

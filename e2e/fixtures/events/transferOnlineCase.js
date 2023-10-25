@@ -1,5 +1,3 @@
-const {listElement} = require("../../api/dataHelper");
-const config = require("../../config");
 
 const transferCase = () => {
   return {
@@ -24,17 +22,15 @@ const otherReasons = () => {
 };
 
 module.exports = {
-  transferCase : () => {
-    return {
-      valid: {
-        transferCourtLocationList: {
-          list_items: [
-            listElement(config.claimantSelectedCourt)
-          ],
-          value: listElement(config.liverpoolCourt)
-        },
-        reasonForTransfer: 'allocated court location is not appropriate'
-      }
-    };
+  transferCase : (option) => {
+    if (option === 'CHANGE_LOCATION') {
+      return {
+        valid: transferCase()
+      };
+    } else {
+      return {
+        valid: otherReasons()
+      };
+    }
   }
 };
