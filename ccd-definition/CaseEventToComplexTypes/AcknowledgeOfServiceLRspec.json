@@ -57,6 +57,60 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "Party",
+    "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "ACKNOWLEDGEMENT_OF_SERVICE",
     "CaseFieldID": "specAoSApplicantCorrespondenceAddressdetails",
