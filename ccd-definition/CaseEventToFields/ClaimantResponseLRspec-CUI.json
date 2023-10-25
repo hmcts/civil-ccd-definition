@@ -997,7 +997,8 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
