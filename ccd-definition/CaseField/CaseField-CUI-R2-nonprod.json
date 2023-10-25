@@ -6,5 +6,27 @@
     "FieldType": "ClaimantLiPResponse",
     "SecurityClassification": "Public",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentLipInterest",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "pcqId",
+    "Label": "PCQ id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "helpWithFees",
+    "Label": " ",
+    "FieldType": "HelpWithFees",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]
