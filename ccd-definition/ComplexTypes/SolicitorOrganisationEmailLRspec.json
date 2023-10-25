@@ -5,6 +5,6 @@
       "FieldType": "Text",
       "ElementLabel": "Email",
       "SecurityClassification": "Public",
-      "Searchable": "N"
+      "Searchable": "Y"
     }
   ]

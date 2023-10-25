@@ -13,7 +13,7 @@
     "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -140,7 +140,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "Track",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -215,7 +215,7 @@
     "Label": "Date claim issued",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Definition":  "The derived legal date the claim is deemed issued. It is based on the date time when the claim was submitted digitally",
     "_Category":  "CIVIL"
   },
@@ -225,7 +225,7 @@
     "Label": "Date claim Submitted",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -607,7 +607,7 @@
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -631,7 +631,7 @@
     "FieldType": "Text",
     "Label": "CaseMan reference number",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1045,7 +1045,7 @@
     "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1069,7 +1069,7 @@
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1094,7 +1094,7 @@
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1102,7 +1102,7 @@
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1256,7 +1256,7 @@
     "Label": "Claim notification deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1264,7 +1264,7 @@
     "Label": "Case details notification deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1482,7 +1482,7 @@
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2336,7 +2336,7 @@
     "Label": "All party names",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2344,7 +2344,7 @@
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2352,7 +2352,7 @@
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2360,7 +2360,7 @@
     "Label": "Next Deadline",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Definition":  "Next deadline on a case",
     "_Category":  "CIVIL"
   },
@@ -2445,7 +2445,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "CaseAccessCategory",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Definition":  "Case Access Category",
     "_Category":  "CIVIL"
   },

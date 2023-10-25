@@ -50,7 +50,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ListingOrRelisting",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -101,7 +101,7 @@
     "HintText": "For example, 27 3 2022",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -151,7 +151,7 @@
     "Label": "Hearing Due Date",
     "FieldType": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

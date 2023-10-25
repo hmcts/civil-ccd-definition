@@ -5,7 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Max": 80,
     "RegularExpression": "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$|^$"
   },
@@ -15,7 +15,7 @@
     "FieldType": "Text",
     "ElementLabel": "Organisation name",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "SolicitorOrganisationDetails",
@@ -23,7 +23,7 @@
     "FieldType": "Text",
     "ElementLabel": "Fax",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Max": 24
   },
   {
@@ -32,7 +32,7 @@
     "FieldType": "Text",
     "ElementLabel": "DX",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Max": 35
   },
   {
@@ -41,7 +41,7 @@
     "FieldType": "Text",
     "ElementLabel": "Phone number",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Max": 24
   },
   {
@@ -50,6 +50,6 @@
     "FieldType": "AddressUK",
     "ElementLabel": "Address",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   }
 ]

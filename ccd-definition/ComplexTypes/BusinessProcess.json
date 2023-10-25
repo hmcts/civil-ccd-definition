@@ -14,7 +14,7 @@
     "FieldTypeParameter": "BusinessProcessStatus",
     "ElementLabel": "Camunda business process status",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "BusinessProcess",
