@@ -411,7 +411,7 @@
     "Label": "upload date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1024,7 +1024,7 @@
     "Label": "upload date",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
