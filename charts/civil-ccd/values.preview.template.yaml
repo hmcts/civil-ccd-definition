@@ -3,6 +3,7 @@ civil-wa:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3383'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -32,6 +33,7 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
+      WA_TOGGLE: WA3.5
 idam-pr:
   redirect_uris:
     XUI:
