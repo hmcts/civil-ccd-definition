@@ -9,5 +9,16 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "eaCourtLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "disposalHearingBundleDJ=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "Publish": "Y"
   }
 ]
