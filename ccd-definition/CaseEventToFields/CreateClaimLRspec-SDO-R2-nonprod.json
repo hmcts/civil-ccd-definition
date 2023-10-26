@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "isFlightDelayClaim",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FlightDelayClaim",
+    "PageDisplayOrder": 17,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "addRespondent2=\"No\""
+  }
+]
