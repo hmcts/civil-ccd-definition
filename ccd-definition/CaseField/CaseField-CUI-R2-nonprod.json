@@ -9,6 +9,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "ccjJudgmentLipInterest",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "pcqId",
     "Label": "PCQ id",
     "FieldType": "Text",
