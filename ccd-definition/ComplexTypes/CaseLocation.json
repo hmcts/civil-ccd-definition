@@ -7,14 +7,5 @@
     "ElementLabel": "Region",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "CaseLocationCivil",
-    "CaseFieldID": "baseLocation",
-    "ListElementCode": "baseLocation",
-    "ElementLabel": "Base location",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Publish": "Y"
   }
 ]
