@@ -224,38 +224,6 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
     ])
   ];
 
-const { DefaultAzureCredential } = require('@azure/identity');
-const { SecretClient } = require('@azure/keyvault-secrets');
-
-async function getSecretFromVault(secretName) {
-  const kvUrl = 'https://civil-aat.vault.azure.net';
-  const credential = new DefaultAzureCredential();
-  const client = new SecretClient(kvUrl, credential);
-  const secret = await client.getSecret(secretName);
-  return secret.value;
-}
-
-async function logSecretValue(secretName, secretValue) {
-  if (secretValue) {
-    console.log(`Successfully retrieved secret ${secretName} from Key Vault: ${secretValue}`);
-  } else {
-    console.error(`Failed to retrieve secret ${secretName} from Key Vault.`);
-  }
-}
-
-async function main() {
-  const secretNames = ['default-password', 'judge-default-password', 'iac-default-password'];
-
-  for (const secretName of secretNames) {
-    const secretValue = await getSecretFromVault(secretName);
-    await logSecretValue(secretName, secretValue);
-  }
-}
-
-main().catch((err) => {
-  console.error('An error occurred: ', err);
-});
-
 module.exports = function () {
   return actor({
     // Define custom steps here, use 'this' to access default methods of I.

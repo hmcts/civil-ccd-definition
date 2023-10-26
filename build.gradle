@@ -45,9 +45,6 @@ ext.libraries = [
 dependencies {
   implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.7.8'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.3'
-  implementation group: 'com.azure', name: 'azure-identity', version: '1.10.4'
-  implementation group: 'com.azure', name: 'azure-security-keyvault-secrets', version: '4.7.1'
-  implementation group: 'com.microsoft.azure', name: 'azure-storage', version: '8.6.6'
 
   testImplementation libraries.junit5
 }
