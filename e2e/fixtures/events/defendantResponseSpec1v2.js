@@ -70,8 +70,8 @@ module.exports = {
           },
           Language: {
             respondent1DQLanguage: {
-              court: 'ENGLISH',
-              documents: 'ENGLISH'
+              court: 'WELSH',
+              documents: 'WELSH'
             }
           },
           SmaillClaimHearing: {
