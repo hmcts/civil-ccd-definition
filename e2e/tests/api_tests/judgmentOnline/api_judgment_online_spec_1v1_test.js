@@ -20,6 +20,8 @@ Scenario.skip('Record Judgment Spec claim 1v1 with set aside', async ({I, api_sp
     console.log('--claimantResponse--');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'AWAITING_APPLICANT_INTENTION');
+    console.log('--sdo--');
+    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
@@ -40,6 +42,8 @@ Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I
     console.log('--claimantResponse--');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'AWAITING_APPLICANT_INTENTION');
+    console.log('--sdo--');
+    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
