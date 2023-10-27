@@ -28,11 +28,5 @@
     "CaseFieldID": "hearingMethodValuesFastTrack",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "eaCourtLocation",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
   }
 ]
