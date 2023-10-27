@@ -25,6 +25,8 @@ Scenario('1v2 full defence unspecified - caseworker records judgment with set as
     await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
     console.log('--claimantResponse--');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('sdo');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
@@ -50,6 +52,8 @@ Scenario('1v2 full defence unspecified - caseworker records judgment with mark j
     await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
     console.log('--claimantResponse--');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('--sdo--');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
