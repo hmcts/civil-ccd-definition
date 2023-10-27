@@ -44,8 +44,7 @@
   "AccessControl": [
     {
       "UserRoles": [
-        "judge-profile",
-        "legal-adviser"
+        "judge-profile"
       ],
       "CRUD": "CRU"
     }
@@ -57,8 +56,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
@@ -83,8 +81,7 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "judge-profile"
         ],
         "CRUD": "CR"
       }
@@ -109,8 +106,7 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
+          "judge-profile"
         ],
         "CRUD": "CR"
       }
