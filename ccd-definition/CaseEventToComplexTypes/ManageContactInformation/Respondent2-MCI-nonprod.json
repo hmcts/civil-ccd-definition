@@ -4,8 +4,9 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualTitle",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -13,8 +14,9 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualFirstName",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -22,9 +24,18 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualLastName",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "individualDateOfBirth",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SecondDefendant",
@@ -33,6 +44,7 @@
     "ListElementCode": "companyName",
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_COMPANY\"",
     "FieldDisplayOrder": 5,
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -42,6 +54,7 @@
     "ListElementCode": "organisationName",
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_ORGANISATION\"",
     "FieldDisplayOrder": 6,
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -51,6 +64,7 @@
     "ListElementCode": "soleTraderTitle",
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 7,
+    "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -60,6 +74,7 @@
     "ListElementCode": "soleTraderFirstName",
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 8,
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -69,6 +84,7 @@
     "ListElementCode": "soleTraderLastName",
     "FieldShowCondition": "partyChosenType=\"DEFENDANT_2_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 9,
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -80,19 +96,20 @@
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
+
   {
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress",
+    "ListElementCode": "soleTraderDateOfBirth",
     "FieldDisplayOrder": 11,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine1",
+    "ListElementCode": "primaryAddress",
     "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
@@ -100,15 +117,15 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine2",
+    "ListElementCode": "primaryAddress.AddressLine1",
     "FieldDisplayOrder": 13,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.AddressLine3",
+    "ListElementCode": "primaryAddress.AddressLine2",
     "FieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL"
   },
@@ -116,8 +133,16 @@
     "ID": "SecondDefendant",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2",
-    "ListElementCode": "primaryAddress.PostTown",
+    "ListElementCode": "primaryAddress.AddressLine3",
     "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "primaryAddress.PostTown",
+    "FieldDisplayOrder": 16,
     "DisplayContext": "OPTIONAL"
   },
   {
