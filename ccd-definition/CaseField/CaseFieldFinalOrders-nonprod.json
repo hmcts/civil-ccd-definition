@@ -125,7 +125,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrdered",
-    "Label": "**** \n ## Ordered",
+    "Label": "**** \n ## Order",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -339,7 +339,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### The court orders that:",
+    "Label": "**** \n ## Order \n ### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
