@@ -4,7 +4,7 @@
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "isFlightDelayClaim",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "PageID": "FlightDelayClaim",
     "PageDisplayOrder": 17,
     "PageColumnNumber": 1,

@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isFlightDelayClaim",
+    "Label": "## Is this claim for a flight delay?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  }
+]
