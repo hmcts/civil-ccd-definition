@@ -2,13 +2,23 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "isFlightDelayClaim",
+    "CaseFieldID": "isFlightDelayClaimLbl",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FlightDelayClaim",
-    "PageDisplayOrder": 17,
+    "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2=\"No\""
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "isFlightDelayClaim",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FlightDelayClaim",
+    "PageDisplayOrder": 23,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
 ]
