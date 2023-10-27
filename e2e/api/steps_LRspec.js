@@ -29,6 +29,7 @@ const createFinalOrderSpec = require('../fixtures/events/finalOrderSpec');
 const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
+const sdoTracks = require('../fixtures/events/createSDO.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -47,6 +48,7 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
+  CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -135,6 +137,9 @@ const eventData = {
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
     }
+  },
+  sdoTracks: {
+    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM_SPEC(),
   }
 };
 
@@ -442,6 +447,31 @@ module.exports = {
 
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else {
+      eventName = 'CREATE_SDO';
+    }
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.CREATE_FAST_NO_SUM_SPEC());
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+
   },
 
   createCaseFlags: async (user) => {
