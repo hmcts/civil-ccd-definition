@@ -25,6 +25,8 @@ Feature('Record Judgment 1v2 API test unspec @api-unspec @api-tests-1v2SS @api-j
 //     await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 //     console.log('--claimantResponse--');
 //     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    // console.log('sdo');
+    // await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
 //     console.log('--createFinalOrderJO--');
 //     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
 //     console.log('--recordJudgment--');
