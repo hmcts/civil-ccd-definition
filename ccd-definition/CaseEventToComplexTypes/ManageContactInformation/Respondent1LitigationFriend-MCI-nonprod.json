@@ -115,7 +115,7 @@
      "ListElementCode": "certificateOfSuitability",
      "FieldDisplayOrder": 14,
      "DisplayContext": "fullName",
-     "FieldShowCondition": "firstName = \"DO_NOT_SHOW_IN_UI\"",
+     "FieldShowCondition": "respondent1LitigationFriend=\"DO_NOT_SHOW_IN_UI\"",
      "RetainHiddenValue": "Y"
-   }
+  }
 ]
