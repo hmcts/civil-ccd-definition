@@ -4,7 +4,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "reasonForTransfer",
+    "CaseFieldID": "transferCaseDetails",
     "TabFieldDisplayOrder": 14
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "reasonForTransfer",
+    "TabFieldDisplayOrder": 15
   }
 ]
