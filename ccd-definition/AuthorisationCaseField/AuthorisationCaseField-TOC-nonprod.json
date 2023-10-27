@@ -104,5 +104,56 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "claimValue",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-civil-solicitor"
+      ],
+      "CRUD": "CRU"
+    },
+    {
+      "UserRoles": [
+        "caseworker-civil-admin",
+        "CITIZEN-DEFENDANT-PROFILE"
+      ],
+      "CRUD": "R"
+    },
+    {
+      "UserRoles": [
+        "judge-profile",
+        "legal-adviser"
+      ],
+      "CRUD": "CR"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allocatedTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CR"
+      }
+    ]
   }
 ]

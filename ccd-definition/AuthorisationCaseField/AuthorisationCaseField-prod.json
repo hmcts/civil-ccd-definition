@@ -1,0 +1,43 @@
+[
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseFieldID": "claimValue",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-civil-solicitor"
+      ],
+      "CRUD": "CRU"
+    },
+    {
+      "UserRoles": [
+        "caseworker-civil-admin",
+        "CITIZEN-DEFENDANT-PROFILE",
+        "judge-profile",
+        "legal-adviser"
+      ],
+      "CRUD": "R"
+    }
+  ]
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "allocatedTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
