@@ -5,7 +5,7 @@
     "CaseFieldID": "respondent1",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N"
@@ -16,7 +16,7 @@
     "CaseFieldID": "respondent2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N"
@@ -515,7 +515,8 @@
     "CaseEventFieldLabel": "Support with access needs",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -527,7 +528,8 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -540,7 +542,8 @@
     "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -552,7 +555,8 @@
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
