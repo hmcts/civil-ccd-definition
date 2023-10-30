@@ -56,5 +56,49 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "notSuitableSdoOptions = \"OTHER_REASONS\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "allocatedTrack",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "NotSuitableSDO",
+    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "claimValue",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "NotSuitableSDO",
+    "PageDisplayOrder": 7,
+    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "NotSuitableSDO",
+    "PageDisplayOrder": 8,
+    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "NotSuitableSDO",
+    "PageDisplayOrder": 9,
+    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
