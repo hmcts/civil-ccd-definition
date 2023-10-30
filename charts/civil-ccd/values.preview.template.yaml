@@ -3,6 +3,7 @@ civil-wa:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3470'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -42,7 +43,37 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 civil-general-applications:
-  enabled: true
+  java:
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1173'
+    ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
+    keyVaults:
+      civil:
+        resourceGroup: civil
+        secrets:
+          - civil-idam-client-secret
+          - microservicekey-civil-service
+          - system-update-user-username
+          - system-update-user-password
+          - cross-access-user-username
+          - cross-access-user-password
+          - prd-admin-user-username
+          - prd-admin-user-password
+          - name: AppInsightsInstrumentationKeyGeneralApplications
+            alias: azure.application-insights.instrumentation-key
+          - docmosis-api-key
+          - gov-notify-api-key
+          - sendgrid-api-key
+          - robotics-notification-sender
+          - robotics-notification-recipient
+          - name: launch-darkly-sdk-key-non-prod
+            alias: launch-darkly-sdk-key
+          - robotics-notification-multipartyrecipient
+      civil-gen-apps:
+        resourceGroup: civil
+        secrets:
+          - microservicekey-civil-general-applications
+    environment:
+      LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
