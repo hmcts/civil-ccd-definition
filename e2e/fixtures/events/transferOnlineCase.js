@@ -1,5 +1,7 @@
+const {listElement} = require('../../api/dataHelper');
+const config = require('../../config.js');
 
-const transferCase = () => {
+const changeLocation = () => {
   return {
     TransferCase: {
       notSuitableSdoOptions: 'CHANGE_LOCATION',
@@ -22,15 +24,29 @@ const otherReasons = () => {
 };
 
 module.exports = {
-  transferCase : (option) => {
+  notSuitableSDO : (option) => {
     if (option === 'CHANGE_LOCATION') {
       return {
-        valid: transferCase()
+        valid: changeLocation()
       };
     } else {
       return {
         valid: otherReasons()
       };
     }
-  }
+  },
+
+  transferCase : () => {
+      return {
+        valid: {
+          transferCourtLocationList: {
+            transferCourtLocationList: {
+              value: listElement(config.liverpoolCourt),
+              list_items: [listElement(config.claimantSelectedCourt)]
+            },
+            reasonForTransfer: 'Allocated court location is not appropriate'
+          },
+        }
+      };
+    }
 };
