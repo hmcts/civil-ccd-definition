@@ -55,7 +55,7 @@ Scenario('Defendant response Solicitor 2', async ({I, api}) => {
 });
 
 Scenario('Claimant response', async ({I, api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
 Scenario('Add case flags', async ({api}) => {

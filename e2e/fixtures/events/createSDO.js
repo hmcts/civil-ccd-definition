@@ -1058,6 +1058,144 @@ module.exports = {
     return data;
   },
 
+  //Fast track for spec
+  //Fast Track WITHOUT Sum of damages
+
+  createSDOFastTrackSpec: () => {
+
+    const createSDO = {};
+    createSDO.userInput = {
+      ...createSDO.userInput,
+        SDO: {
+          drawDirectionsOrderRequired: 'Yes',
+        },
+        ClaimsTrack: {
+          claimsTrack: 'fastTrack',
+          drawDirectionsOrderSmallClaims: 'No',
+          fastClaims: [
+            'fastClaimBuildingDispute',
+            'fastClaimClinicalNegligence',
+            'fastClaimCreditHire',
+            'fastClaimEmployersLiability',
+            'fastClaimHousingDisrepair',
+            'fastClaimPersonalInjury',
+            'fastClaimRoadTrafficAccident'
+          ]
+        },
+        OrderType: {
+          orderType: 'DECIDE_DAMAGES'
+        },
+        FastTrack: {
+          fastTrackJudgesRecital: {
+            input: 'string'
+          },
+          fastTrackAllocation: {
+            assignComplexityBand: 'Yes',
+            band: 'BAND_2',
+            reasons: 'reasons'
+          },
+          fastTrackDisclosureOfDocuments: {
+            input1: 'string',
+            date1: date(-1),
+            input2: 'string',
+            date2: date(-1),
+            input3: 'string',
+            input4: 'string',
+            date3: date(-1)
+          },
+          fastTrackWitnessOfFact: {
+            input1: 'string',
+            input2: '1',
+            input3: '1',
+            input4: 'string',
+            input5: 'string',
+            input6: '1',
+            input7: 'string',
+            input8: 'string',
+            date: date(1),
+            input9: 'string'
+          },
+          fastTrackSchedulesOfLoss: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackTrial: {
+            input1: 'string',
+            date1: date(1),
+            date2: date(1),
+            input2: 'string',
+            input3: 'string',
+            type: ['DOCUMENTS']
+          },
+          fastTrackMethod: 'fastTrackMethodTelephoneHearing',
+          fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
+          fastTrackBuildingDispute: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackClinicalNegligence: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            input4: 'string'
+          },
+          fastTrackCreditHire: {
+            input1: 'string',
+            input2: 'string',
+            date1: date(1),
+            input3: 'string',
+            input4: 'string',
+            date2: date(1),
+            input5: 'string',
+            input6: 'string',
+            date3: date(1),
+            input7: 'string',
+            date4: date(1),
+            input8: 'string'
+          },
+          fastTrackHousingDisrepair: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackPersonalInjury: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackRoadTrafficAccident: {
+            input: 'string',
+            date: date(1)
+          },
+          fastTrackAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          fastTrackNotes: {
+            input: 'string',
+            date: date(1)
+          }
+        }
+      };
+    return createSDO;
+  },
+
 //Unsuitable for SDO
 
   createNotSuitableSDO: () => {
