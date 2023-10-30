@@ -5,9 +5,9 @@
     "CaseFieldID": "eaCourtLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
@@ -16,9 +16,9 @@
     "CaseFieldID": "eaCourtLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "disposalHearingBundleDJ=\"DONOTSHOW\"",
+    "PageShowCondition": "disposalHearingBundleDJ=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   }
 ]
