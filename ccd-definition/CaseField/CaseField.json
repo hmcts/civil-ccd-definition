@@ -2136,7 +2136,8 @@
     "FieldType": "NextHearingDetails",
     "SecurityClassification": "Public",
     "_Definition":  "Details of the next hearing on a case",
-    "_Category":  "CIVIL"
+    "_Category":  "CIVIL",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
