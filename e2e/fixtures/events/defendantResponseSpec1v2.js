@@ -128,7 +128,8 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
             respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes'
+            respondentResponseIsSame: 'Yes',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
