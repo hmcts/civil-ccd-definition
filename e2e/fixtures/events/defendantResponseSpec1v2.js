@@ -22,7 +22,8 @@ module.exports = {
             respondentResponseIsSame: 'Yes'
           },
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM',
@@ -151,7 +152,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM',
@@ -167,7 +169,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
