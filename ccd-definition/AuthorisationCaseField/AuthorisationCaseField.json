@@ -389,47 +389,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimValue",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "allocatedTrack",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "litigantFriendSelection",
     "AccessControl": [
       {
@@ -2736,6 +2695,8 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2748,11 +2709,9 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+         "judge-profile",
+         "legal-adviser",
+         "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -2765,7 +2724,9 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -2779,9 +2740,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -3196,23 +3155,18 @@
         "UserRoles": [
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CR"
-      },
-      {
-        "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -3225,7 +3179,9 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -3239,9 +3195,7 @@
         "UserRoles": [
           "judge-profile",
           "legal-adviser",
-          "caseworker-civil-admin",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -5640,6 +5594,23 @@
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "featureToggleWA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

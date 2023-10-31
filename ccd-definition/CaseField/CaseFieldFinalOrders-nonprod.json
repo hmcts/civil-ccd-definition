@@ -65,6 +65,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "finalOrderJudgePapersLabel",
+    "Label": "**** \n ## Judge considered the papers",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderJudgePapers",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "FinalOrdersJudgePapers",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgeHeardLabel",
     "Label": "**** \n ## Judge heard from",
     "FieldType": "Label",
@@ -110,7 +125,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrdered",
-    "Label": "**** \n ## Ordered",
+    "Label": "**** \n ## Order",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
@@ -324,7 +339,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedLabel",
-    "Label": "**** \n ## Ordered \n ### The court orders that:",
+    "Label": "**** \n ## Order \n ### The court orders that:",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
