@@ -143,9 +143,9 @@
     "ListElementCode": "title",
     "FieldType": "Text",
     "ElementLabel": "Trial Bundle",
-    "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "title=\"Trial Bundle\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Bundle",
@@ -215,9 +215,9 @@
     "ListElementCode": "fileName",
     "FieldType": "Text",
     "ElementLabel": "Name",
-    "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "title=\"Trial Bundle\""
+    "SecurityClassification": "Public"
   },
   {
     "ID": "Bundle",
