@@ -97,10 +97,6 @@ module.exports = {
             sameSolicitorSameResponse: 'Yes',
             respondent2SameLegalRepresentative: 'Yes',
             respondentResponseIsSame: 'Yes',
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'

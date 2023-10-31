@@ -9,7 +9,8 @@
     "PageDisplayOrder": 31,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimValue = \"DO_NOT_SHOW_UI\""
+    "FieldShowCondition": "claimValue = \"DO_NOT_SHOW_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
   "CaseTypeID": "CIVIL",
@@ -21,7 +22,8 @@
   "PageDisplayOrder": 31,
   "PageColumnNumber": 1,
   "ShowSummaryChangeOption": "N",
-  "FieldShowCondition": "specCheckList = \"DO_NOT_SHOW_UI\""
+  "FieldShowCondition": "specCheckList = \"DO_NOT_SHOW_UI\"",
+  "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -57,7 +59,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseType=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "Publish": "Y",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -80,7 +83,8 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
+    "Publish": "Y",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -92,7 +96,8 @@
     "PageID": "SDO",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
-    "Publish": "Y"
+    "Publish": "Y",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
