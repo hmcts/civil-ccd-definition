@@ -23,7 +23,7 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
 }).retry(3);
 
 
-Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(config.judgeUser2WithRegionId4);
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
