@@ -46,7 +46,7 @@
     "ID": "reasonNotSuitableSDO",
     "Label": "Other reason",
     "FieldType": "ReasonNotSuitableSDO",
-    "Searchable": "N"
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
