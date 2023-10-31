@@ -46,6 +46,7 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 civil-general-applications:
+  enabled: true
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1173'
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
