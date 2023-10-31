@@ -85,9 +85,6 @@ module.exports = {
       },
       midEventData: {
         Hearing: {
-          respondent1DQVulnerabilityQuestions: {
-            vulnerabilityAdjustmentsRequired: 'No'
-          },
           respondent1DQStatementOfTruth: {
             name: 'name',
             role: 'role'
