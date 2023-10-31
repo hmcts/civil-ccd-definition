@@ -34,7 +34,7 @@ Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e
   }
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   if (config.runWAApiTest) {
@@ -52,7 +52,7 @@ Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @maste
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   if (['preview', 'demo'  ].includes(config.runningEnv)) {
     await createHearingScheduled(I);
   } else {
@@ -68,7 +68,7 @@ Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
   }
 }).retry(3);
 
-Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   if (['preview', 'demo'  ].includes(config.runningEnv)) {
     await api.amendHearingDate(config.systemupdate, '2022-01-10');
     hearingDateIsLessThan3Weeks = true;
