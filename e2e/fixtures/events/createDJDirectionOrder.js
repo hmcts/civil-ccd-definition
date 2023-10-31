@@ -27,6 +27,9 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
     };
 
     const trialHearing = {
+      caseManagementOrder: {
+
+      },
       trialHearing: {
         trialHearingAddNewDirectionsDJ: [],
         trialHearingAlternativeDisputeDJToggle: ['SHOW'],
@@ -84,6 +87,9 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingHearingNotesDJ: {
           input: 'Hearing notes'
         },
+        getTrialHearingMethodInPersonDJ: {
+          value: { code: '192280'}
+        }
       }
     };
 
@@ -147,7 +153,10 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           input3: 'string',
           input4: 'string'
         },
-        disposalHearingWitnessOfFactDJToggle: ['SHOW']
+        disposalHearingWitnessOfFactDJToggle: ['SHOW'],
+        disposalHearingMethodInPersonDJ: {
+          value: { code: '192280'}
+        }
       }
     };
     switch (mpScenario) {
