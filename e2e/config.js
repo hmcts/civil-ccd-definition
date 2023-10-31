@@ -1,6 +1,6 @@
-const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
-const iacDefaultPassword = 'AldgateT0wer';
+const defaultPassword = process.env.DEFAULT_PASSWORD;
+const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 
 module.exports = {
   idamStub: {
@@ -14,7 +14,7 @@ module.exports = {
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+    // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
     // for preview
     // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',

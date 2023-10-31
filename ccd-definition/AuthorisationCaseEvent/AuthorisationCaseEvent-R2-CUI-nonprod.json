@@ -289,7 +289,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -568,6 +568,24 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SET_LIP_RESPONDENT_RESPONSE_DEADLINE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
