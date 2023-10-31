@@ -144,7 +144,7 @@
     "FieldType": "Text",
     "ElementLabel": "Trial Bundle",
     "Searchable": "N",
-    "FieldShowCondition": "title=\"Trial Bundle\""
+    "FieldShowCondition": "title=\"Trial Bundle\"",
     "SecurityClassification": "Public"
   },
   {
@@ -216,7 +216,7 @@
     "FieldType": "Text",
     "ElementLabel": "Name",
     "Searchable": "N",
-    "FieldShowCondition": "title=\"Trial Bundle\""
+    "FieldShowCondition": "title=\"Trial Bundle\"",
     "SecurityClassification": "Public"
   },
   {
