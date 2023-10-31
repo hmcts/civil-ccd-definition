@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+set -e
+
 branchName=$1
 
-#Checkout specific branch pf  civil camunda bpmn definition
+#Checkout specific branch pf  civil camunda bpmn definition1
 git clone https://github.com/hmcts/civil-general-apps-ccd-definition.git
 cd civil-general-apps-ccd-definition
 
