@@ -81,6 +81,9 @@ civil-service:
           - launch-darkly-sdk-key
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
+          - default-password
+          - judge-default-password
+          - iac-default-password
     environment:
       PAYMENTS_CALLBACK_URL: https://${SERVICE_FQDN}/service-request-update
       TESTING_SUPPORT_ENABLED: true
