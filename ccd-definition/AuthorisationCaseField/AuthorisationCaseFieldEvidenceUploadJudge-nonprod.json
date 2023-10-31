@@ -13,6 +13,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentAndNameToAdd",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentAndName",
     "AccessControl": [
       {
@@ -50,6 +62,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseNotesTA",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentAndNoteToAdd",
     "AccessControl": [
       {
         "UserRoles": [
