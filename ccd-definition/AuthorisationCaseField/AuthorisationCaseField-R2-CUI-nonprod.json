@@ -798,6 +798,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
