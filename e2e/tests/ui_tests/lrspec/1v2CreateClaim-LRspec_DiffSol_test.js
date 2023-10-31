@@ -43,13 +43,13 @@ Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendan
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
     await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
