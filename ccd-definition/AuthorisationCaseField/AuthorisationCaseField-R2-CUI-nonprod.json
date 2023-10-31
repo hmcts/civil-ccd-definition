@@ -2401,6 +2401,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondentSignSettlementAgreement",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1RespondToSettlementAgreementDeadline",
     "AccessControl": [
       {
