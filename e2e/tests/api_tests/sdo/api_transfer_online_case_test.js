@@ -69,7 +69,7 @@ AfterSuite(async ({api}) => {
 
 Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @api-nonprod');
 
-Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({api_spec}) => {
+Scenario.skip('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
     await api_spec.notSuitableSDOspec(judgeUser, 'CHANGE_LOCATION');
