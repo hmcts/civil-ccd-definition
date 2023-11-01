@@ -19,7 +19,7 @@
         "UserRoles": [
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -79,7 +79,7 @@
         "UserRoles": [
           "judge-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
