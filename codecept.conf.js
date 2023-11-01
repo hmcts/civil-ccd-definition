@@ -14,7 +14,8 @@ exports.config = {
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/api_tests/hearings/*_test.js',
     './e2e/tests/api_tests/bulkclaim/*_test.js',
-    './e2e/tests/ui_tests/hearings/*_test.js'
+    './e2e/tests/ui_tests/hearings/*_test.js',
+    './e2e/tests/api_tests/judgmentOnline/*_test.js'
   ],
   output: 'test-results/functional',
   helpers: {
@@ -45,7 +46,8 @@ exports.config = {
     api_spec_small: './e2e/api/steps_LRspecSmall.js',
     api_spec_cui: './e2e/api/steps_LRspecCui.js',
     noc: './e2e/api/steps_noc.js',
-    hearings: './e2e/api/steps_hearings.js'
+    hearings: './e2e/api/steps_hearings.js',
+    bulks: './e2e/api/steps_Bulk.js'
   },
   plugins: {
     autoDelay: {

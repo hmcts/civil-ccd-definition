@@ -19,6 +19,8 @@ const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateA
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
+const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
+
 
 
 let caseId, eventName;
@@ -191,6 +193,8 @@ module.exports = {
 
     caseData = returnedCaseData;
 
+    caseData = await addFlagsToFixture(caseData);
+
     console.log(`${response} ${scenario}`);
 
     for (let pageId of Object.keys(defendantResponseData.userInput)) {
@@ -229,6 +233,7 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = await addFlagsToFixture(caseData);
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     if (!fastTrackUpliftsEnabled) {
@@ -241,7 +246,7 @@ module.exports = {
 
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');

@@ -24,9 +24,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "translatedDocument",
-    "Label": " ",
-    "FieldType": "TranslatedDocument",
+    "ID": "translatedDocuments",
+    "Label": "Translated Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TranslatedDocument",
     "SecurityClassification": "Public"
   },
   {
@@ -90,6 +91,13 @@
     "ID": "headingCourtOrder",
     "Label": "Is ${respondent1.partyName} paying money as a result of any court order?",
     "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendantUserDetails",
+    "Label": "Defendant User Details",
+    "FieldType": "UserDetails",
     "SecurityClassification": "Public"
   }
 ]

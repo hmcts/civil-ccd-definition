@@ -109,7 +109,8 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-wa-task-configuration",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
@@ -128,7 +129,8 @@
       {
         "UserRoles": [
           "caseworker-ras-validation",
-          "GS_profile"
+          "GS_profile",
+          "caseflags-viewer"
         ],
         "CRUD": "R"
       }
@@ -205,7 +207,8 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "judge-profile"
+      "judge-profile",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "R"
   },
@@ -323,7 +326,8 @@
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -331,6 +335,28 @@
         "UserRoles": [
           "caseworker-ras-validation",
           "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-ras-validation",
+          "GS_profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "hearing-schedule-access"
         ],
         "CRUD": "R"
       }

@@ -26,6 +26,9 @@ civil-service:
           - ordnance-survey-api-key
           - robotics-notification-multipartyrecipient
           - notification-caseworker-spec-receiver
+          - default-password
+          - judge-default-password
+          - iac-default-password
     environment:
       LAUNCH_DARKLY_ENV: ccd-staging
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update
@@ -55,5 +58,8 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
+aac-manage-case-assignment:
+  java:
+    ingressHost: manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net
 civil-wa:
   enabled: false

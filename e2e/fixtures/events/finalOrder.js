@@ -4,40 +4,52 @@ const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
-      assistedOrderCostsClaimantPaySub: {
-        claimantCostStandardDate: date(14)
+      assistedOrderMakeAnOrderForCosts: {
+        assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderAssessmentThirdDropdownDate: date(14),
+        makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
-      assistedOrderCostsClaimantSum: {
-        claimantCostSummarilyDate: date(14)
+      finalOrderRepresentation: {
+        typeRepresentationComplex:{
+          typeRepresentationClaimantOneDynamic: 'Test Inc',
+          typeRepresentationDefendantOneDynamic: 'Sir John Doe',
+        }
       },
-      assistedOrderCostsDefendantPaySub: {
-        defendantCostStandardDate: date(14)
-      },
-      assistedOrderCostsDefendantSum: {
-        defendantCostSummarilyDate: date(14)
-      },
+      publicFundingCostsProtection: 'No',
       finalOrderAppealComplex: {
-        appealGranted: {
-          appealDate: date(21)
-        },
-          appealRefused: {
-              appealDate: date(21),
-            refusedText: '[name] court'
+        appealGrantedDropdown: {
+          appealChoiceSecondDropdownA: {
+            appealGrantedRefusedDate: date(21),
+          },
+          appealChoiceSecondDropdownB: {
+            appealGrantedRefusedDate: date(21),
           }
+        },
+        appealRefusedDropdown: {
+          appealChoiceSecondDropdownA: {
+            appealGrantedRefusedDate: date(21),
+          },
+          appealChoiceSecondDropdownB: {
+            appealGrantedRefusedDate: date(21),
+          }
+        }
       },
       finalOrderDateHeardComplex: {
-        date: date(0)
+        singleDateSelection: {
+          singleDate: date(0)
+        }
       },
       orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: date(0),
+        ownInitiativeDate: date(7),
         ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
           ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: date(0),
+        withOutNoticeDate: date(7),
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
-      }
+      },
+      finalOrderGiveReasonsYesNo: 'No'
     },
   };
 };
@@ -47,12 +59,12 @@ const createFreeFormOrder = () => {
     FinalOrderSelect: {
       finalOrderSelection: 'FREE_FORM_ORDER',
       orderOnCourtInitiative: {
-        onInitiativeSelectionDate: date(0),
+        onInitiativeSelectionDate: date(7),
         onInitiativeSelectionTextArea: 'As this order was made on the court\'s own initiative any party affected ' +
           'by the order may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderWithoutNotice: {
-        withoutNoticeSelectionDate: date(0),
+        withoutNoticeSelectionDate: date(7),
         withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
           ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 
@@ -60,7 +72,6 @@ const createFreeFormOrder = () => {
     },
   };
 };
-
 
 module.exports = {
   requestFinalOrder: (finalOrderRequestType) => {

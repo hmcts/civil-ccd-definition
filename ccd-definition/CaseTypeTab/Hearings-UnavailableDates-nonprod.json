@@ -1,0 +1,34 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant1UnavailableDatesForTab",
+    "TabFieldDisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "applicant2UnavailableDatesForTab",
+    "TabFieldDisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent1UnavailableDatesForTab",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "respondent2UnavailableDatesForTab",
+    "TabFieldDisplayOrder": 19
+  }
+]

@@ -2,18 +2,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "partAdmitPaidValuePounds",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
@@ -834,7 +822,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
@@ -846,7 +835,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1010,7 +1000,8 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

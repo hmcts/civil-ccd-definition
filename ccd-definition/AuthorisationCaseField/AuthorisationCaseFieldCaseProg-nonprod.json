@@ -72,7 +72,12 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -85,7 +90,32 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "trialReadyRespondent2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -99,20 +129,37 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialReadyRespondent2",
+    "CaseFieldID": "applicationNotReadyApplicant",
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRU"
-      },
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicationNotReadyRespondent1",
+    "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-solicitor"
         ],
-        "CRUD": "R"
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicationNotReadyRespondent2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },
@@ -142,7 +189,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -161,7 +209,8 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -199,7 +248,8 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -218,7 +268,8 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -242,7 +293,8 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin"
+      "caseworker-civil-admin",
+      "CITIZEN-DEFENDANT-PROFILE"
     ],
     "CRUD": "CRU"
   },

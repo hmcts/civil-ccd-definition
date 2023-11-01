@@ -935,6 +935,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateInputValue",
     "FieldShowCondition": "smallClaimsWitnessStatementToggle=\"SHOW\""
   },
   {
@@ -1276,6 +1277,7 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateInputValue",
     "FieldShowCondition": "fastTrackWitnessOfFactToggle=\"SHOW\""
   },
   {
@@ -1623,6 +1625,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingMethodInPerson",
+    "PageFieldDisplayOrder": 33,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisposalHearing",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingMethodToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "hearingMethodValuesSmallClaims",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY",
@@ -1635,12 +1647,32 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMethodInPerson",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaims",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaimsMethodToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "hearingMethodValuesFastTrack",
     "PageFieldDisplayOrder": 42,
     "DisplayContext": "MANDATORY",
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "fastTrackMethodToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackMethodInPerson",
+    "PageFieldDisplayOrder": 43,
+    "DisplayContext": "MANDATORY",
+    "PageID": "FastTrack",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "fastTrackMethodToggle=\"SHOW\""
   },

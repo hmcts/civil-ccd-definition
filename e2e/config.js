@@ -1,6 +1,6 @@
-const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
-const iacDefaultPassword = 'AldgateT0wer';
+const defaultPassword = process.env.DEFAULT_PASSWORD;
+const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 
 module.exports = {
   idamStub: {
@@ -14,7 +14,15 @@ module.exports = {
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+    // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+
+    // for preview
+    // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
 
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
@@ -26,7 +34,6 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
-    //----------------------------------------------------------------------------------------------
     wiremockService: 'http://localhost:8765'
   },
   s2s: {
@@ -40,6 +47,12 @@ module.exports = {
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
+    type: 'applicant_solicitor',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
+  },
+  applicantSolicitorUserForBulkClaim: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
     type: 'applicant_solicitor',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
@@ -250,6 +263,12 @@ module.exports = {
     password: judgeDefaultPassword,
     type: 'judge',
     roleCategory: 'JUDICIAL'
+  },
+  bulkClaimSystemUser: {
+    password: defaultPassword,
+    email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com', // temporary email
+    type: 'bulk_system_user',
+    orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
