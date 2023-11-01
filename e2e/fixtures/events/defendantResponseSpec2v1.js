@@ -126,7 +126,8 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
             sameSolicitorSameResponse: null,
             specFullDefenceOrPartAdmission: 'Yes',
-            specDefenceFullAdmittedRequired: 'No'
+            specDefenceFullAdmittedRequired: 'No',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
