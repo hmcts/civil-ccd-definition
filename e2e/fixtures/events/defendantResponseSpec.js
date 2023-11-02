@@ -319,7 +319,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent2ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired2: 'DISPUTES_THE_CLAIM'
@@ -415,7 +416,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
