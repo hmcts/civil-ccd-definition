@@ -6,7 +6,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {paymentUpdate} = require('../../../api/apiRequest');
 const claimData = require('../../../fixtures/events/createClaimSpec');
-const apiRequest = require("../../../api/apiRequest");
+const apiRequest = require('../../../api/apiRequest');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
