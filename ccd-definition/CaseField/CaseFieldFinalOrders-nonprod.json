@@ -318,7 +318,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recitals and order",
+    "Label": "**** \n ## Recitals",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },
