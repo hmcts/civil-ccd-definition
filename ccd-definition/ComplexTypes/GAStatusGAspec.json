@@ -4,6 +4,7 @@
     "ListElementCode": "status",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

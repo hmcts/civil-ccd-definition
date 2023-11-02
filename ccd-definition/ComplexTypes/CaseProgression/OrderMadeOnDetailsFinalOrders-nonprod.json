@@ -5,7 +5,8 @@
     "ElementLabel": "### Order on court's own initiative",
     "HintText": " ",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetails",
@@ -13,7 +14,8 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetails",
@@ -21,7 +23,8 @@
     "ElementLabel": "### Please enter date",
     "HintText": " ",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetails",
@@ -29,7 +32,8 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetailsOrderWithoutNotice",
@@ -37,7 +41,8 @@
     "ElementLabel": "### Order without notice",
     "HintText": " ",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetailsOrderWithoutNotice",
@@ -45,7 +50,8 @@
     "ElementLabel": " ",
     "HintText": "",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetailsOrderWithoutNotice",
@@ -53,7 +59,8 @@
     "ElementLabel": "### Please enter date",
     "HintText": " ",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderMadeOnDetailsOrderWithoutNotice",
@@ -61,6 +68,7 @@
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

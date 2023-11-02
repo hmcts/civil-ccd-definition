@@ -4,14 +4,16 @@
     "ListElementCode": "line1",
     "FieldType": "Label",
     "ElementLabel": "****",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "FastTrackAllocation",
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "FastTrackAllocation",

@@ -6,7 +6,8 @@
     "Label": "Civil",
     "ElementLabel": "Civil",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -15,6 +16,7 @@
     "Label": "Civil",
     "ElementLabel": "Civil",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
