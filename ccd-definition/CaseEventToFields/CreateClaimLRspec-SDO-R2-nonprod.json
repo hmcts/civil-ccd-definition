@@ -43,7 +43,29 @@
     "PageID": "EnterFlightDetails",
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "flightDetailsNameOfAirline",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EnterFlightDetails",
+    "PageDisplayOrder": 24,
+    "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-airline"
+    "FieldShowCondition": "flightDetailsAirlineList=\"OTHER\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "flightDetailsFlightNumber",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EnterFlightDetails",
+    "PageDisplayOrder": 24,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

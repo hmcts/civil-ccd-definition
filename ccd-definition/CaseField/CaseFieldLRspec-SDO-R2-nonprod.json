@@ -27,5 +27,19 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "FlightDetailsAirlineList",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDetailsNameOfAirline",
+    "Label": "Name of airline",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDetailsFlightNumber",
+    "Label": "Flight number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
