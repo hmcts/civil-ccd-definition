@@ -346,7 +346,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -354,7 +355,6 @@
         "UserRoles": [
           "caseworker-ras-validation",
           "GS_profile",
-          "caseworker-civil-admin",
           "caseworker-civil-solicitor",
           "hearing-schedule-access"
         ],
