@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "FlightDetailsAirlineList",
+    "ListElementCode": "BRITISH_AIRWAYS",
+    "ListElement": "British Airways",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "FlightDetailsAirlineList",
+    "ListElementCode": "OTHER",
+    "ListElement": "OTHER",
+    "DisplayOrder": 2
+  }
+]

@@ -12,5 +12,20 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDetailsLbl",
+    "Label": "## Flight delay",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDetailsAirlineList",
+    "Label": "Airline",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "FlightDetailsAirlineList",
+    "SecurityClassification": "Public"
   }
 ]
