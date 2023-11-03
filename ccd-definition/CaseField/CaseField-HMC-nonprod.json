@@ -24,6 +24,6 @@
      "FieldType": "Collection",
      "FieldTypeParameter": "PartyFlagStructure",
      "SecurityClassification": "Public",
-     "Searchable": "N"
+    "Searchable": "N"
   }
 ]

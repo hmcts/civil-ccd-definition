@@ -4,20 +4,23 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsDocuments",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsDocuments",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
