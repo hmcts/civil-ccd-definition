@@ -4,13 +4,15 @@
     "ListElementCode": "reasonsLabel",
     "ElementLabel": "### Brief reasons",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AssistedOrderReasons",
     "ListElementCode": "reasonsText",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
