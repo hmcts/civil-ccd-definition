@@ -24,8 +24,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "flightDetailsAirlineList",
     "Label": "Airline",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "FlightDetailsAirlineList",
+    "FieldType": "DynamicList",
     "SecurityClassification": "Public"
   },
   {
@@ -41,5 +40,14 @@
     "Label": "Flight number",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  }
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "flightDetailsScheduledDate",
+  "Label": "Scheduled date of flight",
+  "HintText": "For example, 16 04 2021",
+  "FieldType": "Date",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+}
 ]
