@@ -5,7 +5,8 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "IncomeType",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RecurringIncome",
@@ -13,6 +14,7 @@
     "FieldType": "Text",
     "ElementLabel": "Type of income",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "type = \"OTHER\""
   },
   {
@@ -20,7 +22,8 @@
     "ListElementCode": "amount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount received",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RecurringIncome",
@@ -28,6 +31,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "WeekMonthPeriod",
     "ElementLabel": "Paid every:",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
