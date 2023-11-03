@@ -4,7 +4,8 @@
     "ListElementCode": "lengthOfUnemploymentLabel",
     "ElementLabel": "How long has your client been unemployed? \n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,7 +14,8 @@
     "Label": " ",
     "ElementLabel": "Years",
     "FieldType": "Number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -22,6 +24,7 @@
     "Label": " ",
     "ElementLabel": "Months",
     "FieldType": "Number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

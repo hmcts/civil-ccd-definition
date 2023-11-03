@@ -5,69 +5,79 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ClaimsTrack",
     "ElementLabel": "Claims Track",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "smallClaimCreditHire",
     "FieldType": "Text",
     "ElementLabel": "Credit Hire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "smallClaimRoadTrafficAccident",
     "FieldType": "Text",
     "ElementLabel": "Road Traffic Accident",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimBuildingDispute",
     "FieldType": "Text",
     "ElementLabel": "Building Dispute",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimClinicalNegligence",
     "FieldType": "Text",
     "ElementLabel": "Clinical Negligence",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimCreditHire",
     "FieldType": "Text",
     "ElementLabel": "Credit Hire",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimEmployersLiability",
     "FieldType": "Text",
     "ElementLabel": "Employers Liability",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimHousingDisrepair",
     "FieldType": "Text",
     "ElementLabel": "Housing Disrepair",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimPersonalInjury",
     "FieldType": "Text",
     "ElementLabel": "Expert evidence",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimsTrackType",
     "ListElementCode": "fastClaimRoadTrafficAccident",
     "FieldType": "Text",
     "ElementLabel": "Road Traffic Accident",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

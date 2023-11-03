@@ -4,13 +4,15 @@
     "ListElementCode": "expertName",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ExpertReportLiP",
     "ListElementCode": "reportDate",
     "ElementLabel": " ",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -5,6 +5,7 @@
     "ElementLabel": "On what day did you serve?",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter the date you served the documents"
   },
   {
@@ -21,6 +22,7 @@
     "ElementLabel": "What documents did you serve?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter details of the documents you served"
   },
   {
@@ -30,6 +32,7 @@
     "HintText": "Include their position if they have one, for example - partner, director",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter the name of the person you served the documents to"
   },
   {
@@ -39,6 +42,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "ServeTypeCoS",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Select an option for how you served the documents"
   },
   {
@@ -47,6 +51,7 @@
     "ElementLabel": "Where did you serve the documents?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter the details of where you served the documents",
     "HintText": "Enter the postal address, email address, fax or DX number"
   },
@@ -57,6 +62,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ServeLocationOwnerTypeCoS",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Select the person at whose location you served the documents"
   },
   {
@@ -66,6 +72,7 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "ServeLocationTypeCoS",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Select the type of location where you served the documents"
   },
   {
@@ -74,6 +81,7 @@
     "ElementLabel": "Other",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Other",
     "HintText": "Tell us the other type of location where you served the documents",
     "FieldShowCondition": "cosRecipientServeLocationType = \"OTHER\""
@@ -84,6 +92,7 @@
     "ElementLabel": "Your name",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter your name"
   },
   {
@@ -92,6 +101,7 @@
     "ElementLabel": "Your firm",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter the name of your firm"
   },
   {
@@ -101,6 +111,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Confirm that you believe that the facts stated in the certificate are true"
   },
   {
@@ -110,6 +121,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "NotifyClaimStatement",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Confirm that you believe that the facts stated in the certificate are true"
   },
   {
@@ -117,6 +129,7 @@
     "ListElementCode": "cosStatementOfTruthLabel",
     "ElementLabel": "## Statement of truth\nI believe that the facts stated in this certificate of service are true. \n\nI understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
