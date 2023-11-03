@@ -5,7 +5,8 @@
     "ListElementCode": "hearingUnavailableFrom",
     "ElementLabel": "Date from",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,6 +14,7 @@
     "ListElementCode": "hearingUnavailableUntil",
     "ElementLabel": "Date to",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

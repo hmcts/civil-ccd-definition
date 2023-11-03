@@ -4,13 +4,15 @@
     "ListElementCode": "email",
     "FieldType": "Email",
     "ElementLabel": "What email would you like to send notifications to?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "UserDetails",
     "ListElementCode": "id",
     "FieldType": "Text",
     "ElementLabel": "User ID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

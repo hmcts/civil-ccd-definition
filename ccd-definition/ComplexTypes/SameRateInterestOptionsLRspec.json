@@ -5,7 +5,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SameRateInterestSelectionList",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SameRateInterestOptions",
@@ -13,7 +14,8 @@
     "FieldType": "Number",
     "ElementLabel": "Rate you're claiming\n",
     "FieldShowCondition": "sameRateInterestType = \"SAME_RATE_INTEREST_DIFFERENT_RATE\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SameRateInterestOptions",
@@ -21,6 +23,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Why are you entitled to this rate?\n",
     "FieldShowCondition": "sameRateInterestType = \"SAME_RATE_INTEREST_DIFFERENT_RATE\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

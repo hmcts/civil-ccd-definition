@@ -6,7 +6,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FinalOrdersRepresentationList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -15,7 +16,8 @@
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"CLAIMANT_AND_DEFENDANT\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -24,6 +26,7 @@
     "ElementLabel": " ",
     "FieldType": "ClaimantAndDefendantHeard",
     "FieldShowCondition": "typeRepresentationList=\"OTHER_REPRESENTATION\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
