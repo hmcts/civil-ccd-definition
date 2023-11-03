@@ -11,7 +11,7 @@
   {
     "ID": "NotifyClaimCoS",
     "ListElementCode": "cosDateDeemedServedForDefendant",
-    "ElementLabel": "The data of service is",
+    "ElementLabel": "The date of service is",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Definition":  "Enter the date of service"
