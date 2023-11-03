@@ -6,10 +6,9 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "feat/CIV-10568"
-def dmnBranch = "feat/CIV-10568"
+def camundaBranch = "master"
+def dmnBranch = "master"
 def waStandaloneBranch = "master"
-def generalappCCDBranch = "feat/CIV-10568"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
@@ -163,7 +162,6 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-      ./bin/pull-latest-general-app-ccd-files.sh ${generalappCCDBranch}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
