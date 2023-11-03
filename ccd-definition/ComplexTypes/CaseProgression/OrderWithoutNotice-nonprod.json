@@ -4,21 +4,24 @@
     "ListElementCode": "withoutNoticeSelectionLabel",
     "FieldType": "Label",
     "ElementLabel": "### Order without notice",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderWithoutNotice",
     "ListElementCode": "withoutNoticeSelectionTextArea",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderWithoutNotice",
     "ListElementCode": "withoutNoticeSelectionDateLabel",
     "FieldType": "Label",
     "ElementLabel": "### Please enter date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OrderWithoutNotice",
@@ -26,6 +29,7 @@
     "FieldType": "Date",
     "ElementLabel": " ",
     "HintText": "For example, 16 4 2021",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

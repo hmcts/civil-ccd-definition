@@ -1,24 +1,27 @@
 [
-  {
+   {
     "ID": "ClaimantLiPResponse",
     "ListElementCode": "applicant1DQExtraDetails",
     "ElementLabel": " ",
     "FieldType": "DQExtraDetailsLip",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ClaimantLiPResponse",
     "ListElementCode": "applicant1DQHearingSupportLip",
     "ElementLabel": " ",
     "FieldType": "HearingSupportLip",
-    "SecurityClassification": "Public"
-  },
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
   {
     "ID": "ClaimantLiPResponse",
     "ListElementCode": "applicant1ChoosesHowToProceed",
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "ChooseHowToProceed",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
