@@ -4,13 +4,15 @@
     "ListElementCode": "helpWithFee",
     "ElementLabel": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "HelpWithFees",
     "ListElementCode": "helpWithFeesReferenceNumber",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

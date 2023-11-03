@@ -4,7 +4,8 @@
     "ListElementCode": "payingDetailsRequired",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "PaymentUponCourtOrderLRspec",
@@ -13,6 +14,7 @@
     "FieldTypeParameter": "PayingExtraInfo",
     "ElementLabel": " ",
     "FieldShowCondition": "payingDetailsRequired = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

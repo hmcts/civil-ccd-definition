@@ -4,20 +4,23 @@
       "ListElementCode": "label",
       "FieldType": "Label",
       "ElementLabel": " ",
-      "SecurityClassification": "Public"
+      "SecurityClassification": "Public",
+      "Searchable": "N"
     },
     {
       "ID": "DisposalHearingMedicalEvidenceDJ",
       "ListElementCode": "input1",
       "FieldType": "TextArea",
       "ElementLabel": " ",
-      "SecurityClassification": "Public"
+      "SecurityClassification": "Public",
+      "Searchable": "N"
     },
     {
       "ID": "DisposalHearingMedicalEvidenceDJ",
       "ListElementCode": "date1",
       "FieldType": "Date",
       "ElementLabel": " ",
-      "SecurityClassification": "Public"
+      "SecurityClassification": "Public",
+      "Searchable": "N"
     }
   ]

@@ -4,7 +4,8 @@
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
@@ -12,7 +13,8 @@
     "FieldType": "Number",
     "HintText":"Number of witnesses (claimant), e.g. 4",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
@@ -20,21 +22,24 @@
     "FieldType": "Number",
     "HintText":"Number of witnesses (defendant), e.g. 4",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input4",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input5",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
@@ -42,34 +47,39 @@
     "FieldType": "Number",
     "HintText":"Number of pages, e.g. 4",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input7",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input8",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingWitnessOfFactDJ",
     "ListElementCode": "input9",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

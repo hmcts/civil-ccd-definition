@@ -5,7 +5,8 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "ExpenseType",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RecurringExpense",
@@ -13,6 +14,7 @@
     "FieldType": "Text",
     "ElementLabel": "Type of expense",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "type = \"OTHER\""
   },
   {
@@ -21,7 +23,8 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount paid",
     "HintText": "Only include the amount your client is paying to clear previously missed regular payments",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RecurringExpense",
@@ -29,6 +32,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "WeekMonthPeriod",
     "ElementLabel": "Paid every:",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
