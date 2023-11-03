@@ -4,13 +4,15 @@
     "ListElementCode": "hearingID",
     "FieldType": "Text",
     "ElementLabel": "ID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "NextHearingDetails",
     "ListElementCode": "hearingDateTime",
     "FieldType": "DateTime",
     "ElementLabel": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

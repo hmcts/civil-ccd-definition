@@ -6,6 +6,7 @@
     "FieldTypeParameter": "GeneralApplicationTypesGAspec",
     "HintText": "  ",
     "ElementLabel": "  ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

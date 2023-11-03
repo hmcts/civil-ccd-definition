@@ -5,7 +5,8 @@
     "FieldType": "Label",
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Is the application for an adjournment of a hearing which is at least 14 days away?</p>",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDateGAspec",
@@ -13,7 +14,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "ElementLabel": "Hearing scheduled related to this application",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDateGAspec",
@@ -22,7 +24,8 @@
     "FieldTypeParameter": "GAHearingScheduleGAspec",
     "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
     "ElementLabel": "<p class=\"govuk-body govuk-!-margin-bottom-1 govuk-!-font-weight-bold\">Please provide the hearing dates.</p>",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDateGAspec",
@@ -31,6 +34,7 @@
     "FieldShowCondition": "hearingScheduledPreferenceYesNo = \"Yes\"",
     "ElementLabel": " ",
     "HintText": "If there is more than one hearing, please provide the date of the earliest hearing",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

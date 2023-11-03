@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Claim number",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "[0-9A-Za-z]*"
   },
   {
@@ -12,13 +13,15 @@
     "ListElementCode": "amountOwed",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount owed",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "PaymentOrder",
     "ListElementCode": "monthlyInstalmentAmount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Monthly instalment amount",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

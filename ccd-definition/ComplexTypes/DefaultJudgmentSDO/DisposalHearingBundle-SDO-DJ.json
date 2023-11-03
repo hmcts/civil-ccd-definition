@@ -4,21 +4,24 @@
     "ListElementCode": "label1",
     "FieldType": "Label",
     "ElementLabel": "## Disposal hearing bundle ##",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "input",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingBundleDJ",
     "ListElementCode": "label2",
     "FieldType": "Label",
     "ElementLabel": "#### Select bundle type",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingBundleDJ",
@@ -26,6 +29,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DisposalHearingBundleType",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
