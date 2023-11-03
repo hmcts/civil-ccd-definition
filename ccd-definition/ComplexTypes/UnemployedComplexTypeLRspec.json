@@ -7,7 +7,8 @@
     "ElementLabel": "Is your client unemployed or retired?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "UnemployedRadioFixedListLRspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -16,6 +17,7 @@
     "ElementLabel": " ",
     "FieldType": "LengthOfUnemploymentComplexTypeLRspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": " ",
     "FieldShowCondition": "unemployedComplexTypeRequired = \"UNEMPLOYED\""
   },
@@ -26,6 +28,7 @@
     "ElementLabel": "Provide details",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": " ",
     "FieldShowCondition": "unemployedComplexTypeRequired = \"OTHER\""
   }
