@@ -4,6 +4,7 @@
     "ListElementCode": "applicant1DQLiPExpert",
     "ElementLabel": " ",
     "FieldType": "ExpertLiP",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -4,20 +4,23 @@
     "ListElementCode": "calculatedAmountInPence",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount to pay",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "Fee",
     "ListElementCode": "code",
     "FieldType": "Text",
     "ElementLabel": "Code",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "Fee",
     "ListElementCode": "version",
     "FieldType": "Text",
     "ElementLabel": "Version",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
