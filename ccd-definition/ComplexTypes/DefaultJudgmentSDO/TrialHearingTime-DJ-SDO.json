@@ -4,14 +4,16 @@
     "ListElementCode": "date1Label",
     "FieldType": "Label",
     "ElementLabel": "Date from",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
@@ -19,7 +21,8 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "DateToShowToggle",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
@@ -27,7 +30,8 @@
     "FieldType": "Date",
     "ElementLabel": "Date to",
     "FieldShowCondition": "dateToToggle=\"SHOW\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
@@ -35,7 +39,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
@@ -43,6 +48,7 @@
     "FieldType": "Number",
     "ElementLabel": "Hours",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "^([0-9]|[1-9][0-9]|[1-9][0-9][0-9])$"
   },
   {
@@ -51,6 +57,7 @@
     "FieldType": "Number",
     "ElementLabel": "Minutes",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "[0-9]|[0-5][0-9]"
   },
   {
@@ -58,13 +65,15 @@
     "ListElementCode": "helpText1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingTimeDJ",
     "ListElementCode": "helpText2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
