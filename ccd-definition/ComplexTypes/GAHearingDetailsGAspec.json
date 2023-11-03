@@ -4,7 +4,8 @@
     "ListElementCode": "hearingYesorNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Do you have a hearing scheduled?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -12,6 +13,7 @@
     "ElementLabel": "What is the date of hearing?",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "hearingYesorNo = \"Yes\""
   },
   {
@@ -19,7 +21,8 @@
     "ListElementCode": "judgeRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is your case reserved to a judge?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -28,6 +31,7 @@
     "FieldType": "Text",
     "Max": 40,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "judgeRequiredYesOrNo = \"Yes\""
   },
 
@@ -36,7 +40,8 @@
     "ListElementCode": "trialRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Has the trial been fixed?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -44,6 +49,7 @@
     "ElementLabel": "<span class=\"form-label ng-star-inserted\">Enter the trial date or trial window</span>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
@@ -52,6 +58,7 @@
     "ElementLabel": "Date from",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
@@ -60,6 +67,7 @@
     "ElementLabel": "Date to",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "trialRequiredYesOrNo = \"Yes\""
   },
   {
@@ -67,7 +75,8 @@
     "ListElementCode": "HearingPreferencesDetailLabel",
     "ElementLabel": "Choose your preferred type of hearingA judge will still need to approve the hearing",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -76,7 +85,8 @@
     "HintText": "A judge will still need to approve the hearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingTypeGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -85,6 +95,7 @@
     "FieldType": "Text",
     "Max": 40,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "HearingPreferencesPreferredType = \"TELEPHONE\""
   },
   {
@@ -93,7 +104,8 @@
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
     "Max": 400,
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -101,7 +113,8 @@
     "ElementLabel": "Preferred location",
     "HintText": "This is needed if the judge decides to hold the hearing in person.",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -110,7 +123,8 @@
     "FieldType": "Text",
     "Max": 40,
     "RegularExpression": "^([0-9\\:\\@\\+\\-\\.\\,\\(\\) ]+)",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -119,7 +133,8 @@
     "FieldType": "Text",
     "Max": 40,
     "RegularExpression": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -127,7 +142,8 @@
     "ElementLabel": "How long do you think the hearing will last?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingDurationGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -136,6 +152,7 @@
     "FieldType": "Number",
     "Max": 9,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
@@ -145,6 +162,7 @@
     "FieldType": "Number",
     "Max": 99,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
@@ -154,6 +172,7 @@
     "FieldType": "Number",
     "Max": 99,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "HearingDuration = \"OTHER\""
   },
   {
@@ -161,7 +180,8 @@
     "ListElementCode": "unavailableTrialRequiredYesOrNo",
     "FieldType": "YesOrNo",
     "ElementLabel": "Are there any dates when you cannot attend a hearing within the next 3 months?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -170,6 +190,7 @@
     "FieldTypeParameter": "GAUnavailabilityDates",
     "ElementLabel": "  ",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "unavailableTrialRequiredYesOrNo = \"Yes\""
   },
   {
@@ -177,7 +198,8 @@
     "ListElementCode": "vulnerabilityQuestionsLabel",
     "ElementLabel": "**Vulnerability questions**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -185,7 +207,8 @@
     "ElementLabel": "Is anyone who will participate in the hearing vulnerable?",
     "FieldType": "YesOrNo",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -193,6 +216,7 @@
     "ElementLabel": "Please give details of the vulnerability and the support or adjustments that you want the court to consider.",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "vulnerabilityQuestionsYesOrNo = \"Yes\""
   },
   {
@@ -200,7 +224,8 @@
     "ListElementCode": "HearingSupportRequirementsLabel",
     "ElementLabel": "**Support requirements**",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -208,7 +233,8 @@
     "ElementLabel": "Select any support you, your client and any experts or witness you would require for a court hearing",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "GAHearingSupportRequirementsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -216,6 +242,7 @@
     "ElementLabel": "What type of sign language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "SupportRequirementCONTAINS\"SIGN_INTERPRETER\""
   },
   {
@@ -224,6 +251,7 @@
     "ElementLabel": "What spoken or written language do you need an interpreter for?",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "SupportRequirementCONTAINS\"LANGUAGE_INTERPRETER\""
   },
   {
@@ -232,6 +260,7 @@
     "ElementLabel": "What other support do you need?",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "SupportRequirementCONTAINS\"OTHER_SUPPORT\""
   }
 ]
