@@ -17,7 +17,7 @@ module.exports = {
       await I.retry(5).waitForElement(this.submitButton);
       await I.click(this.submitButton);
     } else {
-      console.log("*******User details are empty. Cannot login to idam*******")
+      console.log('*******User details are empty. Cannot login to idam*******');
     }
   },
 };
