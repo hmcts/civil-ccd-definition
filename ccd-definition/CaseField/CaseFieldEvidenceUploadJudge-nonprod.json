@@ -5,7 +5,8 @@
     "Label": "This case note is only visible to you and other judges",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "CaseNoteType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,21 +24,24 @@
     "HintText": "Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, PNG, BMP, TIF, TIFF",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndName",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseNoteTypeNoteLabel",
     "Label": "## Write a Note \n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseNoteTA",
     "Label": "Write a note about this case",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -46,6 +50,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseNote",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "The note fields to be displayed in the tab"
   },
   {
@@ -53,7 +58,8 @@
     "ID": "noteAdditionDateTime",
     "Label": "Note was added on",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -71,6 +77,7 @@
     "HintText": "Each document must be less than 100MB, You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, PNG, BMP, TIF, TIFF",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentAndNote",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
