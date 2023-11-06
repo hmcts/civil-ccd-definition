@@ -5,6 +5,7 @@
     "FieldType": "Date",
     "HintText": "For example, 12 11 2023",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

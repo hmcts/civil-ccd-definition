@@ -6,6 +6,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case",
     "_Category":  "COMMON"
   },
@@ -16,6 +17,7 @@
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
   },
@@ -26,6 +28,7 @@
     "HintText": "  ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "Type of the child application on the case",
     "_Category":  "COMMON"
   },
@@ -35,6 +38,7 @@
     "Label": "Has the respondent agreed to the order that you want the judge to make?",
     "FieldType": "GARespondentAgreementGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case related to respondent agreement",
     "_Category":  "COMMON"
   },
@@ -43,7 +47,8 @@
     "ID": "generalAppStatementOfTruthLabel",
     "Label": "## Statement of truth\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,6 +56,7 @@
     "Label": " ",
     "FieldType": "GAStatementOfTruthGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
@@ -61,7 +67,8 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "StatementOfTruthConsentGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -69,6 +76,7 @@
     "Label": "Is this an urgent application?",
     "FieldType": "GAUrgencyRecordGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "This fields holds whether or not the application is urgent, and if it is then the further details and reasons",
     "_Category":  "COMMON"
   },
@@ -78,7 +86,8 @@
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAIsUrgentGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -86,6 +95,7 @@
     "Label": "Do you want the court to inform the other party of this application?\n",
     "FieldType": "GAWithOrWithoutNotice",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "This fields holds whether or not the other party should be notified of this application. If no, then reasons behind not notifying.",
     "_Category":  "COMMON"
   },
@@ -96,7 +106,8 @@
     "HintText": "This is the draft order that you are requesting from the court",
     "FieldType": "TextArea",
     "Max": 4000,
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -104,14 +115,16 @@
     "Label": "Reasons for requesting this order",
     "FieldType": "TextArea",
     "Max": 4000,
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
     "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -121,6 +134,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case for Claimant solicitor",
     "_Category":  "COMMON"
   },
@@ -132,6 +146,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case for Judge",
     "_Category":  "COMMON"
   },
@@ -143,6 +158,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case for respondent solicitor",
     "_Category":  "COMMON"
   },
@@ -154,6 +170,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "GeneralApplicationDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "The details of the child application on the case for respondent2 solicitor ",
     "_Category":  "COMMON"
   },
@@ -162,7 +179,8 @@
     "ID": "generalAppHearingDetails",
     "Label": "Scheduled hearings and trials",
     "FieldType": "GAHearingDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -170,6 +188,7 @@
     "Label": "Paying for an application",
     "FieldType": "GAPBADetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "This fields holds applicant's PBA details.",
     "_Category":  "COMMON"
   },
@@ -179,6 +198,7 @@
     "Label": "Applicant Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "This fields holds applicant's Solicitor details.",
     "_Category":  "COMMON"
   },
@@ -188,6 +208,7 @@
     "Label": "Respondent Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "_Definition":  "This fields holds Respondent's Solicitor details.",
     "_Category":  "COMMON"
   },
@@ -199,49 +220,56 @@
     "Label": "Upload evidence",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseLink",
     "Label": " ",
     "FieldType": "CaseLink",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseState",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppStatusGAspec",
     "Label": "Status",
     "FieldType": "GAStatusGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppSubmittedDateGAspec",
     "Label": "General Application Submitted on",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "civilServiceUserRoles",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -249,7 +277,8 @@
     "Label": "General order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -257,7 +286,8 @@
     "Label": "Dismissal order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -265,28 +295,32 @@
     "Label": "Directions order document",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppVaryJudgementType",
     "Label": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppParentClaimantIsApplicant",
     "Label": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "gaUploadN245FormUploadLabel",
     "Label": "Upload your completed N245 form",
     "FieldType": "GAN245FormUpload",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -294,6 +328,7 @@
     "Label": "N245 form",
     "FieldType": "Document",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications"
   },
@@ -302,7 +337,8 @@
     "ID": "generalAppHearingDate",
     "Label": " ",
     "FieldType": "GAHearingDateGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },  {
   "CaseTypeID": "CIVIL",
   "ID": "hearingNoticeDocStaff",

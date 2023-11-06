@@ -6,20 +6,23 @@
     "HintText": "Bundle to hold documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "Bundle",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "bundleConfiguration",
     "Label": "Bundle configuration",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "TrialBundles",
     "Label": "Trial Bundle",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
