@@ -4,7 +4,8 @@
     "ListElementCode": "name",
     "ElementLabel": "Document name",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "MediationAgreementDocument",
@@ -12,13 +13,15 @@
     "ElementLabel": "Document type",
     "FieldType": "FixedList",
     "FieldTypeParameter": "MediationDocumentType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "MediationAgreementDocument",
     "ListElementCode": "document",
     "ElementLabel": "Document link",
     "FieldType": "Document",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

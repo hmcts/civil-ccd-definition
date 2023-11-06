@@ -14,13 +14,13 @@
   {
     "ID": "GAHearingSupportRequirementsGAspec",
     "ListElementCode": "SIGN_INTERPRETER",
-    "ListElement": "Sign language interpreter",
+    "ListElement": "Sign language interpreter (you will have to arrange this)",
     "DisplayOrder": 3
   },
   {
     "ID": "GAHearingSupportRequirementsGAspec",
     "ListElementCode": "LANGUAGE_INTERPRETER",
-    "ListElement": "Language interpreter",
+    "ListElement": "Language interpreter (you will have to arrange this)",
     "DisplayOrder": 4
   },
   {
