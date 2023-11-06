@@ -1653,7 +1653,7 @@
     "CaseEventFieldLabel": "Remote Hearing",
     "PageID": "RequestedCourtLocationLRspec",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
+    "FieldShowCondition": "isRespondent2=\"Yes\" AND isRespondent1=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",

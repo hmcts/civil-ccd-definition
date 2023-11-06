@@ -2665,8 +2665,8 @@
       },
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CR"
       },
