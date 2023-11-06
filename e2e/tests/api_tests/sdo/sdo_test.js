@@ -221,7 +221,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
     }
     await api.createSDO(legalAdvUser);
     if (config.runWAApiTest) {
-      api.completeTaskByUser(config.legalAdvUser, taskId);
+      api.completeTaskByUser(legalAdvUser, taskId);
     }
   }
 });
