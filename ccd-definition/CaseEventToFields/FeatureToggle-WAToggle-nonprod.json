@@ -1,13 +1,35 @@
 [
-{
-  "CaseTypeID": "CIVIL",
-  "CaseEventID": "TRANSFER_ONLINE_CASE",
-  "CaseFieldID": "featureToggleWA",
-  "PageDisplayOrder": 1,
-  "PageFieldDisplayOrder": 20,
-  "DisplayContext": "READONLY",
-  "PageID": "TransferOnlineCase",
-  "ShowSummaryChangeOption": "N",
-  "Publish": "Y"
-}
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "TransferOnlineCase",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REVIEW_HEARING_EXCEPTION",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "featureToggleWA",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_CVP_JOIN_LINK",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "featureToggleWA",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  }
 ]
