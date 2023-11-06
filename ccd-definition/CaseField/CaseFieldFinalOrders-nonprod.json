@@ -437,7 +437,7 @@
     "ID": "finalOrderDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
