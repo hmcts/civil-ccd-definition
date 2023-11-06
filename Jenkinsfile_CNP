@@ -126,7 +126,6 @@ def uploadCoreCaseDataDefinitions(env) {
 }
 
 withPipeline(type, product, component) {
-  syncBranchesWithMaster(['demo'])
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 
