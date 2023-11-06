@@ -4,6 +4,7 @@
     "ID": "componentLauncher",
     "Label": "Case file view",
     "FieldType": "ComponentLauncher",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

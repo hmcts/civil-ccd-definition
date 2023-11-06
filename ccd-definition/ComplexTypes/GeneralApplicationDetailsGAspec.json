@@ -4,7 +4,8 @@
     "ListElementCode": "generalApplicationType",
     "FieldType": "Text",
     "ElementLabel": "Application type",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationDetailsGAspec",
@@ -12,7 +13,8 @@
     "FieldType": "CaseLink",
     "Label": "Application ID",
     "ElementLabel": "Application ID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationDetailsGAspec",
@@ -20,7 +22,8 @@
     "FieldType": "Text",
     "Label": "Status",
     "ElementLabel": "Status",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationDetailsGAspec",
@@ -28,6 +31,7 @@
     "FieldType": "DateTime",
     "Label": "Submitted on",
     "ElementLabel": "Submitted on",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -4,20 +4,23 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingHearingNotesDJ",
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": "This is only seen by the listing officer.",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "TrialHearingHearingNotesDJ",
     "ListElementCode": "line",
     "FieldType": "Label",
     "ElementLabel": "****",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -4,7 +4,8 @@
     "ListElementCode": "trialReadyLabel",
     "ElementLabel": "Is the case ready for Trial or Hearing?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SolicitorTrialReady",
@@ -12,6 +13,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialReadyList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -4,20 +4,23 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": "## Important",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "FastTrackNotes",
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "FastTrackNotes",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

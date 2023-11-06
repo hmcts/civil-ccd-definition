@@ -46,6 +46,7 @@
     "ID": "reasonNotSuitableSDO",
     "Label": "Other reason",
     "FieldType": "ReasonNotSuitableSDO",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   },
   {
@@ -53,6 +54,7 @@
     "ID": "transferCaseDetails",
     "Label": "The case should be sent to another hearing centre for directions",
     "FieldType": "TransferCaseDetails",
+    "Searchable": "N",
     "SecurityClassification": "Public"
   }
 ]
