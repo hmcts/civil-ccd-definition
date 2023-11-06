@@ -84,7 +84,7 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingHearingNotesDJ: {
           input: 'Hearing notes'
         },
-        getTrialHearingMethodInPersonDJ: {
+        trialHearingMethodInPersonDJ: {
           value: { code: '192280'}
         }
       }
