@@ -362,7 +362,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
-    "Label": "**** \n ## Recitals and order",
+    "Label": "**** \n ## Recitals",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -429,6 +429,23 @@
     "ID": "orderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormHearingNotesLabel",
+    "Label": "### Hearing notes (Optional)",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "freeFormHearingNotes",
+    "Label": " ",
+    "HintText": "For example, potentially violent, reading time needed, CVP for hearing",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

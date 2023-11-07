@@ -250,7 +250,7 @@
     "Label": "Claimant User Details",
     "FieldType": "UserDetails",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
