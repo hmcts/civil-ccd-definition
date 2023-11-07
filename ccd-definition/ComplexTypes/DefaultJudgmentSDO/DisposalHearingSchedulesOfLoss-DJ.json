@@ -4,55 +4,63 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "date1",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "date2",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "input3",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "date3",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingSchedulesOfLossDJ",
     "ListElementCode": "inputText4",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
