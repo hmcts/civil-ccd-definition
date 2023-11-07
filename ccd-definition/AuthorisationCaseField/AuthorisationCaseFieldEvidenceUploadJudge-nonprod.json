@@ -13,6 +13,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentAndNameToAdd",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentAndName",
     "AccessControl": [
       {
@@ -56,6 +68,18 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentAndNoteToAdd",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   },

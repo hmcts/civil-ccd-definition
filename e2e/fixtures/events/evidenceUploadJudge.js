@@ -15,7 +15,7 @@ module.exports = {
       };
     } else if (typeOfNote === 'DOCUMENT_ONLY') {
       caseNoteData.UploadDocument = {
-        documentAndName: [{
+        documentAndNameToAdd: [{
           id: docUuid,
           value: {
             documentName: 'string',
@@ -29,7 +29,7 @@ module.exports = {
       };
     } else {
       caseNoteData.UploadDocumentAndNote = {
-        documentAndNote: [{
+        documentAndNoteToAdd: [{
           id: docUuid,
           value: {
             documentName: 'string',
