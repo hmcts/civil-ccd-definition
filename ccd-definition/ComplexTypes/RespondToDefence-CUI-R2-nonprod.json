@@ -14,7 +14,7 @@
     "FieldType": "HearingSupportLip",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  }
+  },
   {
     "ID": "ClaimantLiPResponse",
     "ListElementCode": "applicant1ChoosesHowToProceed",
