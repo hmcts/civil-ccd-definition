@@ -224,7 +224,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Notify respondent caseman",
-    "Description": "Notify respondent solicitor 1 for case proceeds in caseman",
+    "Description": "Notify respondent solicitor 2 for case proceeds in caseman",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
