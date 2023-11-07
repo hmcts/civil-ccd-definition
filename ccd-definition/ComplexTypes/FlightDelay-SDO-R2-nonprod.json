@@ -1,13 +1,6 @@
 [
   {
     "ID": "FlightDelay",
-    "ListElementCode": "flightDetailsLbl",
-    "FieldType": "Label",
-    "ElementLabel": "## Flight delay",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "FlightDelay",
     "ListElementCode": "flightDetailsAirlineList",
     "FieldType": "DynamicList",
     "ElementLabel": "Airline",
