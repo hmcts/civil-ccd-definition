@@ -4,34 +4,39 @@
     "ListElementCode": "organisationToAddID",
     "FieldType": "Text",
     "ElementLabel": "organisationToAddID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "organisationToRemoveID",
     "FieldType": "Text",
     "ElementLabel": "organisationToRemoveID",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "caseRole",
     "FieldType": "Text",
     "ElementLabel": "caseRole",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "timestamp",
     "FieldType": "DateTime",
     "ElementLabel": "timestamp",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ChangeOfRepresentation",
     "ListElementCode": "formerRepresentationEmailAddress",
     "FieldType": "Text",
     "ElementLabel": "formerRepresentationEmailAddress",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
