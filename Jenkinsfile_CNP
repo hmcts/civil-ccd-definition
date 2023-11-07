@@ -126,7 +126,6 @@ def uploadCoreCaseDataDefinitions(env) {
 }
 
 withPipeline(type, product, component) {
-  syncBranchesWithMaster(['demo'])
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
 
@@ -143,6 +142,10 @@ withPipeline(type, product, component) {
   }
   onPerftest{
     env.ENVIRONMENT = "perftest"
+  }
+
+  onIthc{
+    env.ENVIRONMENT = "ithc"
   }
 
   before('highleveldatasetup') {
