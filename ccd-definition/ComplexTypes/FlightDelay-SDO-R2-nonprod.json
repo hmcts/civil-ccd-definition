@@ -1,0 +1,39 @@
+[
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightDetailsLbl",
+    "FieldType": "Label",
+    "ElementLabel": "## Flight delay",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightDetailsAirlineList",
+    "FieldType": "DynamicList",
+    "ElementLabel": "Airline",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightDetailsNameOfAirline",
+    "FieldType": "Text",
+    "ElementLabel": "Name of airline",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightDetailsFlightNumber",
+    "FieldType": "Text",
+    "ElementLabel": "Flight number",
+    "SecurityClassification": "Public"
+  },
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightDetailsScheduledDate",
+    "FieldType": "Date",
+    "ElementLabel": "Scheduled date of flight",
+    "HintText": "For example, 16 04 2021",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

@@ -26,59 +26,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDetailsLbl",
+    "CaseFieldID": "flightDelay",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "EnterFlightDetails",
     "PageDisplayOrder": 24,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "isFlightDelayClaim=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDetailsAirlineList",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "EnterFlightDetails",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDetailsNameOfAirline",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "EnterFlightDetails",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "flightDetailsAirlineList=\"OTHER\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDetailsFlightNumber",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "PageID": "EnterFlightDetails",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDetailsScheduledDate",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY",
-    "PageID": "EnterFlightDetails",
-    "PageDisplayOrder": 24,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Flight delay",
+    "PageShowCondition": "isFlightDelayClaim=\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-date-of-flight"
   }
 ]
