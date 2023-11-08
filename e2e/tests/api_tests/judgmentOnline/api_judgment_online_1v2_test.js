@@ -63,6 +63,7 @@ Scenario.skip('1v2 full defence unspecified - caseworker records judgment with m
   }
 });
 
+// eslint-disable-next-line no-unused-vars
 AfterSuite(async ({api}) => {
   // await api.cleanUp();
 });
