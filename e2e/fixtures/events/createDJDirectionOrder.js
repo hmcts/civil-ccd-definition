@@ -84,6 +84,9 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
         trialHearingHearingNotesDJ: {
           input: 'Hearing notes'
         },
+        trialHearingMethodInPersonDJ: {
+          value: { code: '192280'}
+        }
       }
     };
 
@@ -147,7 +150,10 @@ const createDJDirectionOrder = (djOrderType = 'DISPOSAL_HEARING', mpScenario = '
           input3: 'string',
           input4: 'string'
         },
-        disposalHearingWitnessOfFactDJToggle: ['SHOW']
+        disposalHearingWitnessOfFactDJToggle: ['SHOW'],
+        disposalHearingMethodInPersonDJ: {
+          value: { code: '192280'}
+        }
       }
     };
     switch (mpScenario) {

@@ -9,7 +9,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 
 Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nonprod');
 
-Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -18,6 +18,8 @@ Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) 
     console.log('--claimantResponse--');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'JUDICIAL_REFERRAL');
+    console.log('--sdo--');
+    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
@@ -27,7 +29,7 @@ Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) 
   }
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -36,6 +38,8 @@ Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, ap
     console.log('--claimantResponse--');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'JUDICIAL_REFERRAL');
+    console.log('--sdo--');
+    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');

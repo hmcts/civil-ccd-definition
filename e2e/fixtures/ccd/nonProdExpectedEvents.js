@@ -75,6 +75,7 @@ module.exports = {
       events.MANAGE_CONTACT_INFORMATION
     ],
     PENDING_CASE_ISSUED: [
+      events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS
     ]
   }

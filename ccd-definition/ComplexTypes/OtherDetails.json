@@ -4,13 +4,15 @@
     "ListElementCode": "notSuitableForSDO",
     "FieldType": "YesOrNo",
     "ElementLabel": "Not suitable for SDO",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "OtherDetails",
     "ListElementCode": "reasonNotSuitableForSDO",
     "FieldType": "Text",
     "ElementLabel": "Reason",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

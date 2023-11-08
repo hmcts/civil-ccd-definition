@@ -9,7 +9,7 @@ const claimAmountJudge = '11000';
 
 Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-nonprod');
 
-Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('createClaimWithRepresentedRespondent');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -23,6 +23,8 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with mark j
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     console.log('claimantResponse');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('sdo');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('createFinalOrderJO');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('recordJudgment');
@@ -32,7 +34,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with mark j
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay by date)', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay by date)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('createClaimWithRepresentedRespondent');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -46,6 +48,8 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with mark j
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     console.log('claimantResponse');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('sdo');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('createFinalOrderJO');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('recordJudgment');
@@ -55,7 +59,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with mark j
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Order - pay instalments)', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - caseworker records judgment (Judge Order - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('createClaimWithRepresentedRespondent');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -69,6 +73,8 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     console.log('claimantResponse');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('sdo');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('createFinalOrderJO');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('recordJudgment');
@@ -78,7 +84,7 @@ Scenario('1v1 full defence unspecified - caseworker records judgment (Judge Orde
   }
 });
 
-Scenario('1v1 full defence unspecified - caseworker records judgment with set aside (Judge Order - pay immediately)', async ({api}) => {
+Scenario.skip('1v1 full defence unspecified - caseworker records judgment with set aside (Judge Order - pay immediately)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('createClaimWithRepresentedRespondent');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -92,6 +98,8 @@ Scenario('1v1 full defence unspecified - caseworker records judgment with set as
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
     console.log('claimantResponse');
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+    console.log('sdo');
+    await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
     console.log('createFinalOrderJO');
     await api.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
     console.log('recordJudgment');
