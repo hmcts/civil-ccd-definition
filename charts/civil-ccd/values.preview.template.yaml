@@ -3,7 +3,6 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-3285'
     keyVaults:
       civil:
         resourceGroup: civil
