@@ -1317,7 +1317,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
@@ -1336,7 +1336,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     eventName,
     pageId,
     caseData,
-    isDifferentSolicitorForDefendantResponseOrExtensionDate() ? caseId : null
+    addCaseId(pageId) ? caseId : null
   );
 
   let responseBody = await response.json();
@@ -1346,6 +1346,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    responseBody = clearDataForEvidenceUpload(responseBody, eventName);
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -1462,7 +1465,7 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
     eventName,
     pageId,
     {...caseData, ...eventData},
-    isDifferentSolicitorForDefendantResponseOrExtensionDate ? caseId : null,
+    addCaseId(pageId) ? caseId : null,
     422
   );
 
@@ -1737,6 +1740,119 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent2'];
   }
   return responseBody;
+};
+
+const clearDataForEvidenceUpload = (responseBody, eventName) => {
+  delete responseBody.data['businessProcess'];
+  delete responseBody.data['caseNoteType'];
+  delete responseBody.data['caseNotes'];
+  delete responseBody.data['caseNotesTA'];
+  delete responseBody.data['disposalHearingFinalDisposalHearingTimeDJ'];
+  delete responseBody.data['disposalHearingHearingNotesDJ'];
+  delete responseBody.data['disposalHearingOrderMadeWithoutHearingDJ'];
+  delete responseBody.data['documentAndName'];
+  delete responseBody.data['documentAndNote'];
+  delete responseBody.data['hearingNotes'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
+  delete responseBody.data['applicantExperts'];
+  delete responseBody.data['applicantWitnesses'];
+  delete responseBody.data['disposalHearingBundle'];
+  delete responseBody.data['disposalHearingBundleToggle'];
+  delete responseBody.data['disposalHearingClaimSettlingToggle'];
+  delete responseBody.data['disposalHearingCostsToggle'];
+  delete responseBody.data['disposalHearingDisclosureOfDocuments'];
+  delete responseBody.data['disposalHearingDisclosureOfDocumentsToggle'];
+  delete responseBody.data['disposalHearingFinalDisposalHearing'];
+  delete responseBody.data['disposalHearingFinalDisposalHearingToggle'];
+  delete responseBody.data['disposalHearingJudgementDeductionValue'];
+  delete responseBody.data['disposalHearingJudgesRecital'];
+  delete responseBody.data['disposalHearingMedicalEvidence'];
+  delete responseBody.data['disposalHearingMedicalEvidenceToggle'];
+  delete responseBody.data['disposalHearingMethodInPerson'];
+  delete responseBody.data['disposalHearingMethodToggle'];
+  delete responseBody.data['disposalHearingNotes'];
+  delete responseBody.data['disposalHearingQuestionsToExperts'];
+  delete responseBody.data['disposalHearingQuestionsToExpertsToggle'];
+  delete responseBody.data['disposalHearingSchedulesOfLossToggle'];
+  delete responseBody.data['disposalHearingWitnessOfFact'];
+  delete responseBody.data['disposalHearingWitnessOfFactToggle'];
+  delete responseBody.data['drawDirectionsOrder'];
+  delete responseBody.data['drawDirectionsOrderRequired'];
+  delete responseBody.data['drawDirectionsOrderSmallClaims'];
+  delete responseBody.data['fastTrackAddNewDirections'];
+  delete responseBody.data['fastTrackAllocation'];
+  delete responseBody.data['fastTrackAltDisputeResolutionToggle'];
+  delete responseBody.data['fastTrackBuildingDispute'];
+  delete responseBody.data['fastTrackClinicalNegligence'];
+  delete responseBody.data['fastTrackCostsToggle'];
+  delete responseBody.data['fastTrackCreditHire'];
+  delete responseBody.data['fastTrackDisclosureOfDocuments'];
+  delete responseBody.data['fastTrackDisclosureOfDocumentsToggle'];
+  delete responseBody.data['fastTrackHearingNotes'];
+  delete responseBody.data['fastTrackHearingTime'];
+  delete responseBody.data['fastTrackHousingDisrepair'];
+  delete responseBody.data['fastTrackJudgementDeductionValue'];
+  delete responseBody.data['fastTrackJudgesRecital'];
+  delete responseBody.data['fastTrackMethod'];
+  delete responseBody.data['fastTrackMethodInPerson'];
+  delete responseBody.data['fastTrackMethodTelephoneHearing'];
+  delete responseBody.data['fastTrackMethodToggle'];
+  delete responseBody.data['fastTrackNotes'];
+  delete responseBody.data['fastTrackOrderWithoutJudgement'];
+  delete responseBody.data['fastTrackPersonalInjury'];
+  delete responseBody.data['fastTrackRoadTrafficAccident'];
+  delete responseBody.data['fastTrackSchedulesOfLoss'];
+  delete responseBody.data['fastTrackSchedulesOfLossToggle'];
+  delete responseBody.data['fastTrackSettlementToggle'];
+  delete responseBody.data['fastTrackTrial'];
+  delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
+  delete responseBody.data['fastTrackWitnessOfFact'];
+  delete responseBody.data['fastTrackWitnessOfFactToggle'];
+  delete responseBody.data['orderType'];
+  delete responseBody.data['respondent1Experts'];
+  delete responseBody.data['respondent1Witnesses'];
+  delete responseBody.data['setFastTrackFlag'];
+  delete responseBody.data['setSmallClaimsFlag'];
+  delete responseBody.data['smallClaimsCreditHire'];
+  delete responseBody.data['smallClaimsDocuments'];
+  delete responseBody.data['smallClaimsDocumentsToggle'];
+  delete responseBody.data['smallClaimsHearing'];
+  delete responseBody.data['smallClaimsHearingToggle'];
+  delete responseBody.data['smallClaimsJudgementDeductionValue'];
+  delete responseBody.data['smallClaimsJudgesRecital'];
+  delete responseBody.data['smallClaimsMethod'];
+  delete responseBody.data['smallClaimsMethodInPerson'];
+  delete responseBody.data['smallClaimsMethodToggle'];
+  delete responseBody.data['smallClaimsNotes'];
+  delete responseBody.data['smallClaimsWitnessStatementToggle'];
+  delete responseBody.data['smallClaimsWitnessStatement'];
+  delete responseBody.data['smallClaimsRoadTrafficAccident'];
+
+  if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    delete responseBody.data['evidenceUploadOptions'];
+  }
+
+  if ( eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    delete responseBody.data['claimantResponseScenarioFlag'];
+    delete responseBody.data['claimant2ResponseFlag'];
+    delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
+    delete responseBody.data['applicantsProceedIntention'];
+  }
+
+  return responseBody;
+};
+
+const addCaseId = (pageId) => {
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId);
+};
+
+const isEvidenceUpload = (pageId) => {
+  return (pageId === 'DocumentSelectionFastTrack'
+          || pageId === 'DocumentSelectionSmallClaim')
+         && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
+             || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
 };
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
