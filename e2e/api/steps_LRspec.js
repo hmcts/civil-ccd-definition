@@ -12,7 +12,6 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const {PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const claimDataBulk = require('../fixtures/events/createClaimSpecBulk.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
@@ -36,7 +35,6 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
-  CREATE_CLAIM_BULK: (scenario, pbaV3) => claimDataBulk.createClaimBulk(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -203,25 +201,6 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
-  },
-
-  createNewClaimWithCaseworker: async (user, scenario) => {
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {};
-    let createClaimData  = {};
-
-    createClaimData = data.CREATE_CLAIM_BULK(scenario);
-    await apiRequest.setupTokens(user);
-    await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
-    await waitForFinishedBusinessProcess(caseId);
-    console.log('Bulk claim created with case id: ' + caseId);
-    if (scenario === 'ONE_V_ONE') {
-      await assertCorrectEventsAreAvailableToUserBulkClaims(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    } else {
-      // one v two/multiparty continuing online not currently supported for LiPs
-       await assertCorrectEventsAreAvailableToUserBulkClaims(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    }
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -792,19 +771,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
-  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
-  const responseBody = await response.json();
-  assert.equal(response.status, 201);
-  assert.equal(responseBody.state, expectedState);
-
-  if (eventName === 'CREATE_CLAIM_SPEC') {
-    caseId = responseBody.id;
-    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
-    console.log('Case created: ' + caseId);
-  }
-};
-
 const validateEventPagesDefaultJudgments = async (data, scenario) => {
   //transform the data
   console.log('validateEventPages');
@@ -878,15 +844,6 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
-      'Unexpected events for state ' + state + ' and user type ' + user.type);
-  }
-};
-
-const assertCorrectEventsAreAvailableToUserBulkClaims = async (user, state) => {
-  console.log(`Bulk claim: Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
-  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
- if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
