@@ -13,7 +13,7 @@ module.exports = {
       await I.retry(5).waitForElement(this.fields.username);
       await I.fillField(this.fields.username, user.email);
       await I.fillField(this.fields.password, user.password);
-  
+
       await I.retry(5).waitForElement(this.submitButton);
       await I.click(this.submitButton);
     } else {
