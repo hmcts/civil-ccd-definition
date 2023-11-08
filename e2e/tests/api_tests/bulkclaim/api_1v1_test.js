@@ -11,12 +11,12 @@ Feature('Bulk claim 1v1 SDT user API test @api-bulk');
 
 Scenario('Create claim - 1v1 with No interest', async ({bulks}) => {
   // create claim directly via civil service, using caseworker case creation endpoint
-  await bulks.createNewClaimWithCaseworkerCivilService(config.applicantSolicitorUserForBulkClaim, 'ONE_V_ONE');
+  await bulks.createNewClaimWithCaseworkerCivilService(config.applicantSolicitorUser, 'ONE_V_ONE');
 });
 
 Scenario('Create claim - 1v2 with No interest', async ({bulks}) => {
   // create claim directly via civil service, using caseworker case creation endpoint
-  await bulks.createNewClaimWithCaseworkerCivilService(config.applicantSolicitorUserForBulkClaim, 'ONE_V_TWO');
+  await bulks.createNewClaimWithCaseworkerCivilService(config.applicantSolicitorUser, 'ONE_V_TWO');
 });
 
 Scenario('1v1 with No interest - Create claim via SDT - Postcode Negative Validation', async ({bulks}) => {
