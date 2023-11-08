@@ -4,28 +4,32 @@
     "ListElementCode": "selfEmploymentLabel",
     "ElementLabel": "## If self-employed:\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
     "ListElementCode": "jobTitle",
     "ElementLabel": "Job title",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
     "ListElementCode": "annualTurnover",
     "ElementLabel": "Annual turnover",
     "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
     "ListElementCode": "isBehindOnTaxPayment",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is your client behind on tax payments?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
@@ -33,7 +37,8 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount owed",
     "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SelfEmployment",
@@ -41,6 +46,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Reason",
     "FieldShowCondition": "isBehindOnTaxPayment = \"Yes\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -6,6 +6,7 @@
     "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "Enter the date the judgment was paid in full"
   },
   {
@@ -15,6 +16,7 @@
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmJudgmentPaidInFull",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Definition":  "I confirm that this judgment can be marked as paid in full"
   }
 ]
