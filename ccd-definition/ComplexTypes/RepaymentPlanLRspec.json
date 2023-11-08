@@ -5,7 +5,8 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Regular payments of\n",
     "HintText" : "For example, £50",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RepaymentPlanLRspec",
@@ -13,7 +14,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RepaymentFrequencyLRspec",
     "ElementLabel": "How often will your client make payments?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RepaymentPlanLRspec",
@@ -21,6 +23,7 @@
     "FieldType": "Date",
     "ElementLabel": "When will your client make the first payment?",
     "HintText": "For example, 12 11 2007 ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

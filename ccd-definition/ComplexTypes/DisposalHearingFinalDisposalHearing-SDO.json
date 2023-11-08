@@ -4,21 +4,24 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingFinalDisposalHearing",
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingFinalDisposalHearing",
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "DisposalHearingFinalDisposalHearing",
@@ -26,6 +29,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DisposalHearingFinalDisposalHearingTimeEstimate",
     "ElementLabel": "The time estimate is",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

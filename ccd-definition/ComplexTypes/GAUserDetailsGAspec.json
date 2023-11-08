@@ -4,13 +4,15 @@
     "ListElementCode": "email",
     "FieldType": "Email",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAUserDetailsGAspec",
     "ListElementCode": "id",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
