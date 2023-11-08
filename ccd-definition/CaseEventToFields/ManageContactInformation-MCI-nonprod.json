@@ -309,52 +309,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "specRespondent1Represented",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "Party",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
-    "FieldShowCondition": "partyChosenId = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "specRespondent2Represented",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "Party",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
-    "FieldShowCondition": "partyChosenId = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "defendantUserDetails",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "Party",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "partyChosenId = \"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "defendant2EmailLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "Party",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "partyChosenId = \"DEFENDANT_2\" AND specRespondent2Represented = \"No\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "orgIndividualsLabel",
     "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
