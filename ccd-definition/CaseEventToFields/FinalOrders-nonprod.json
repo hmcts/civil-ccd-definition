@@ -557,10 +557,30 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "freeFormHearingNotesLabel",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "FreeFormOrder",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "freeFormHearingNotes",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FreeFormOrder",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDocument",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderPreview",
     "ShowSummaryChangeOption": "Y"
   },
