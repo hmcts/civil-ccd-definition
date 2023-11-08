@@ -2,7 +2,7 @@ const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
 
 chai.use(deepEqualInAnyOrder);
-const {assert} = chai;
+const {expect, assert} = chai;
 
 const apiRequest = require('./apiRequest.js');
 const bulkClaimData = require('../fixtures/events/createBulkClaim.js');
