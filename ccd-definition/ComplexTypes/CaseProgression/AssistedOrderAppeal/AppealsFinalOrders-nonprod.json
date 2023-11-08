@@ -5,7 +5,8 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### The",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,7 +15,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "AppealList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,7 +25,8 @@
     "ElementLabel": "Please specify",
     "FieldType": "Text",
     "FieldShowCondition": "list = \"OTHER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -31,7 +34,8 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### application for permission to appeal is",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -40,7 +44,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ApplicationAppealList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -49,6 +54,7 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceFirstDropdownGrant",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "applicationList = \"GRANTED\""
   },
 
@@ -59,6 +65,7 @@
     "ElementLabel": " ",
     "FieldType": "AppealChoiceFirstDropdownRefuse",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "applicationList = \"REFUSED\""
   }
 ]

@@ -5,7 +5,8 @@
     "ElementLabel": "Application fee to pay",
     "HintText": "  ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAPBADetailsGAspec",
@@ -13,27 +14,31 @@
     "ElementLabel": "You will be able to pay for your application once it has been submitted.",
     "HintText": "  ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "fee",
     "ElementLabel": " ",
     "FieldType": "Fee",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "paymentDetails",
     "ElementLabel": "Details of PBA payment",
     "FieldType": "GAPaymentDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GAPBADetailsGAspec",
     "ListElementCode": "paymentSuccessfulDate",
     "ElementLabel": "Payment successful date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

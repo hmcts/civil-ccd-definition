@@ -593,6 +593,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "LIFT_BREATHING_SPACE_LIP",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_SIGN_SETTLEMENT_AGREEMENT",
     "AccessControl": [
       {
