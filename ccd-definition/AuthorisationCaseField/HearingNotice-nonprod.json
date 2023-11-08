@@ -191,36 +191,41 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFee",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
-  },{
-  "UserRoles": [
-    "judge-profile",
-    "caseworker-civil-admin",
-    "RES-SOL-ONE-UNSPEC-PROFILE",
-    "RES-SOL-ONE-SPEC-PROFILE",
-    "RES-SOL-TWO-UNSPEC-PROFILE",
-    "RES-SOL-TWO-SPEC-PROFILE",
-    "APP-SOL-UNSPEC-PROFILE",
-    "APP-SOL-SPEC-PROFILE",
-    "CITIZEN-DEFENDANT-PROFILE"
-  ],
-  "CRUD": "R"
-},
- {
+    "AccessControl" : [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
     "AccessControl" : [
       {
         "UserRoles": [
           "hearing-schedule-access",
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      }, {
+      },
+      {
         "UserRoles": [
           "judge-profile",
           "caseworker-civil-admin",
