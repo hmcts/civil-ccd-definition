@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const mpScenario = 'TWO_V_ONE';
 
-Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod-unspec');
+Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod-unspec @123');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -51,8 +51,10 @@ Scenario('Add case flags', async ({api}) => {
 
 Scenario('Manage case flags', async ({api}) => {
   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+  await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
+  console.log('2v1');
 });
 
 AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
