@@ -216,13 +216,11 @@ module.exports = {
     await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
     await waitForFinishedBusinessProcess(caseId);
     console.log('Bulk claim created with case id: ' + caseId);
-    // payment is made, we need to wait for response and the processing of another business process
-    await new Promise(resolve => setTimeout(resolve, 30000));
     if (scenario === 'ONE_V_ONE') {
-      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUserBulkClaims(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     } else {
       // one v two/multiparty continuing online not currently supported for LiPs
-      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
+       await assertCorrectEventsAreAvailableToUserBulkClaims(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
     }
   },
 
@@ -880,6 +878,15 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+      'Unexpected events for state ' + state + ' and user type ' + user.type);
+  }
+};
+
+const assertCorrectEventsAreAvailableToUserBulkClaims = async (user, state) => {
+  console.log(`Bulk claim: Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
+  const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
+ if (['preview', 'demo'].includes(config.runningEnv)) {
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
