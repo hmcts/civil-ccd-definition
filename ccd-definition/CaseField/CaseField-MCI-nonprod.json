@@ -335,24 +335,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "defendant1EmailLabel",
-    "Label": "### Email:\n${defendantUserDetails.email}\n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "_Comment": "Label for CUI users because these fields are not editable",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "defendant2EmailLabel",
-    "Label": "### Email:\n${respondent2.partyEmail}\n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "_Comment": "Label for CUI users because these fields are not editable",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "contactDetailsChangedLabel",
     "Label": "### Details of this claim have been updated.",
     "FieldType": "Label",
