@@ -365,6 +365,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQRequestedCourt",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
