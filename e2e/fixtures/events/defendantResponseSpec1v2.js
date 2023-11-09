@@ -9,7 +9,8 @@ module.exports = {
           tempAddress2Required: 'Yes'
         },
         ResponseConfirmDetails: {
-          respondentSolicitor1ServiceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes',
+          sameSolicitorSameResponse: 'Yes'
         },
       },
     };
