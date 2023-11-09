@@ -9,7 +9,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 
 Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nonprod');
 
-Scenario.skip('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -29,7 +29,7 @@ Scenario.skip('Record Judgment with set aside Spec claim 1v2', async ({I, api_sp
   }
 });
 
-Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
