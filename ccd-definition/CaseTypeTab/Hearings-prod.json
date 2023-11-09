@@ -179,9 +179,9 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
-    "TabLabel": "Listing notes",
+    "TabLabel": "Hearings",
     "TabDisplayOrder": 5,
     "CaseFieldID": "hearingNotes",
-    "TabFieldDisplayOrder": 19
+    "TabFieldDisplayOrder": 23
   }
 ]
