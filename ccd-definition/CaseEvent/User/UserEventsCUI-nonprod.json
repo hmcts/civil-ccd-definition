@@ -36,7 +36,8 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -82,7 +83,7 @@
     "Description": "Upload Translated Document",
     "DisplayOrder": 3,
     "PreConditionState(s)": "*",
-    "PostConditionState": "*",
+    "PostConditionState": "AWAITING_APPLICANT_INTENTION",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",

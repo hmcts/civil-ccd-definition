@@ -4,7 +4,8 @@
     "ID": "applicant1Represented",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -12,6 +13,7 @@
     "Label": " ",
     "FieldType": "RespondentLiPResponse",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Publish": "Y"
   },
   {
@@ -20,83 +22,96 @@
     "Label": " ",
     "FieldType": "FinancialDetailsLiP",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "translatedDocument",
-    "Label": " ",
-    "FieldType": "TranslatedDocument",
-    "SecurityClassification": "Public"
+    "ID": "translatedDocuments",
+    "Label": "Translated Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TranslatedDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingManualDetermination",
     "Label": "## Manual Determination",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingDefendantProposedPlan",
     "Label": "Defendant Proposed Plan",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingDefendantFinancialDetails",
     "Label": "Defendant Financial Details",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingClaimantProposedPlan",
     "Label": "Claimant Proposed Plan",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingBankAccount",
     "Label": "List ${respondent1.partyName}'s bank and savings accounts",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingDisabilityPremiumPayments",
     "Label": "Does ${respondent1.partyName} receive any disability premium payments?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingHomeDetails",
     "Label": "Where does ${respondent1.partyName} live?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingEmployment",
     "Label": "Is ${respondent1.partyName} in employment?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "headingCourtOrder",
     "Label": "Is ${respondent1.partyName} paying money as a result of any court order?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "defendantUserDetails",
     "Label": "Defendant User Details",
     "FieldType": "UserDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
