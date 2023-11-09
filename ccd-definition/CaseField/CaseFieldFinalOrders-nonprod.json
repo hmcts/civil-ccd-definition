@@ -338,7 +338,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderGiveReasonsLabel",
-    "Label": "### Do you want to give reasons for the order?",
+    "Label": "### Do you want to give reasons for the order? (including any reasons for refusing/granting permission to appeal)",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
