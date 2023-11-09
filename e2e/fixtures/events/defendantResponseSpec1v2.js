@@ -22,7 +22,8 @@ module.exports = {
             respondentResponseIsSame: 'Yes'
           },
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM',
