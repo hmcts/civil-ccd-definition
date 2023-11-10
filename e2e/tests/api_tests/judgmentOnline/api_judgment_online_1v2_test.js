@@ -9,7 +9,7 @@ const claimAmountJudge = '11000';
 
 Feature('Record Judgment 1v2 API test unspec @api-unspec @api-tests-1v2SS @api-jo @api-nonprod');
 
-Scenario.skip('1v2 full defence unspecified - caseworker records judgment with set aside (Det.of means - pay instalments)', async ({api}) => {
+Scenario('1v2 full defence unspecified - caseworker records judgment with set aside (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);
@@ -36,7 +36,7 @@ Scenario.skip('1v2 full defence unspecified - caseworker records judgment with s
   }
 });
 
-Scenario.skip('1v2 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
+Scenario('1v2 full defence unspecified - caseworker records judgment with mark judgment paid (Det.of means - pay instalments)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountJudge);

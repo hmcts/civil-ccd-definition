@@ -1407,5 +1407,29 @@
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidenceRes = \"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
+    "CaseFieldID": "notificationText",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "EvidenceUpload",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"caseTypeFlag = \"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
+    "CaseFieldID": "notificationText",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "readonly",
+    "PageID": "EvidenceUpload",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition":"evidenceUploadText = \"DO_NOT_SHOW\""
   }
 ]
