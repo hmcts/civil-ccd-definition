@@ -37,7 +37,7 @@ dependencies:
   - name: camunda-bpm
     version: 0.0.42
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: civil-camunda-bpm.enabled
+    condition: camunda-bpm.enabled
   - name: postgresql
     version: 1.0.2
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
