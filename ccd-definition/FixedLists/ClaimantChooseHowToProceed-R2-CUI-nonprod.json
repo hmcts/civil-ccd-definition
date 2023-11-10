@@ -1,0 +1,12 @@
+[
+  {
+    "ID": "ChooseHowToProceedType",
+    "ListElementCode": "SIGN_A_SETTLEMENT_AGREEMENT",
+    "ListElement": "Sign a settlement agreement"
+  },
+  {
+    "ID": "ChooseHowToProceedType",
+    "ListElementCode": "REQUEST_A_CCJ",
+    "ListElement": "Request a CCJ"
+  }
+]
