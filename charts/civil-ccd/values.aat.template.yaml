@@ -50,12 +50,18 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
+      DATA_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
+
   ccd-definition-store-api:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
+      DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
+
   ccd-user-profile-api:
     java:
       ingressHost: civil-ccd-xui-staging-aat.aat.platform.hmcts.net
+      USER_PROFILE_DB_HOST: ${SERVICE_NAME}-postgresql
+
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
