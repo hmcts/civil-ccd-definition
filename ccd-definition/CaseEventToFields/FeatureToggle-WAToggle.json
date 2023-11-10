@@ -108,7 +108,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "reasonNotSuitableSDO=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
 ]
