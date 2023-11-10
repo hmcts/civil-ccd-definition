@@ -39,7 +39,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
   - name: camunda-bpm
-    version: 0.0.41
+    version: 0.0.42
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-camunda-bpm.enabled
   - name: postgresql
