@@ -38,7 +38,6 @@ civil-general-applications:
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       CMC_DB_HOST: ${SERVICE_NAME}-postgresql
       CMC_DB_USERNAME: ${POSTGRES_USER}
-      CMC_DB_PASSWORD: ${POSTGRES_PASSWORD}
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       REFERENCE_DATABASE_MIGRATION: false
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
@@ -88,7 +87,6 @@ civil-service:
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
-      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.password}}"
       REFERENCE_DATABASE_MIGRATION: true
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: http://${SERVICE_NAME}-camunda/engine-rest/
