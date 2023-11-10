@@ -345,7 +345,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestions",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -688,7 +688,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsRes",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -823,7 +823,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsRes2",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -958,7 +958,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsApp2",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
