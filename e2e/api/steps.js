@@ -1276,13 +1276,13 @@ module.exports = {
     await validateEventPages(data.NOT_SUITABLE_SDO(option));
 
     if (option === 'CHANGE_LOCATION') {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
         header: '',
         body: ''
       }, true);
       await waitForFinishedBusinessProcess(caseId);
     } else {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      await assertSubmittedEvent('JUDICIAL_REFERRAL', {
         header: '',
         body: ''
       }, true);
