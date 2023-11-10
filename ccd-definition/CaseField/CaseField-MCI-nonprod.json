@@ -6,5 +6,340 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyChosenId",
+    "Label": "Party chosen id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "manageContactDetailsEventUsed",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "expertsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Experts</h2>\n Please update the contact details of any individual who may attend a hearing as an expert.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "witnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Witnesses</h2>\n Please update the contact details of any individual who may attend a hearing as a witness.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateWitnessesDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Witnesses",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateExpertsDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Experts",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyChosenType",
+    "Label": "Party chosen type",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1PartyNameManageContactLabel",
+    "Label": "### Claimant: ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyNameManageContactLabel",
+    "Label": "### Claimant: ${applicant2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1PartyNameManageContactLabel",
+    "Label": "### Defendant: ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2PartyNameManageContactLabel",
+    "Label": "### Defendant: ${respondent2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1IndividualTypeLabel",
+    "Label": "### Title:\n${applicant1.individualTitle}\n\n### First name:\n${applicant1.individualFirstName}\n\n### Last name:\n${applicant1.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2IndividualTypeLabel",
+    "Label": "### Title:\n${applicant2.individualTitle}\n\n### First name:\n${applicant2.individualFirstName}\n\n### Last name:\n${applicant2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1IndividualTypeLabel",
+    "Label": "### Title:\n${respondent1.individualTitle}\n\n### First name:\n${respondent1.individualFirstName}\n\n### Last name:\n${respondent1.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2IndividualTypeLabel",
+    "Label": "### Title:\n${respondent2.individualTitle}\n\n### First name:\n${respondent2.individualFirstName}\n\n### Last name:\n${respondent2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant1.companyName}${applicant1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant2.companyName}${applicant2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent1.companyName}${respondent1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent2.companyName}${respondent2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant1.soleTraderTradingAs}\n\n### First name:\n${applicant1.soleTraderFirstName}\n\n### Last name:\n${applicant1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant2.soleTraderTradingAs}\n\n### First name:\n${applicant2.soleTraderFirstName}\n\n### Last name:\n${applicant2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent1.soleTraderTradingAs}\n\n### First name:\n${respondent1.soleTraderFirstName}\n\n### Last name:\n${respondent1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent2.soleTraderTradingAs}\n\n### First name:\n${respondent2.soleTraderFirstName}\n\n### Last name:\n${respondent2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "LROrgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing.\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "orgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "litigationFriendTitle",
+    "Label": "## Litigation friend",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "litigationFriendHeader",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant1LitigationFriend.firstName}\n\n### Last name:\n${applicant1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant2LitigationFriend.firstName}\n\n### Last name:\n${applicant2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent1LitigationFriend.firstName}\n\n### Last name:\n${respondent1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defendant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent2LitigationFriend.firstName}\n\n### Last name:\n${respondent2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "contactDetailsChangedLabel",
+    "Label": "### Details of this claim have been updated.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for contact details have changed on the case details tab screen",
+    "Searchable": "N"
   }
 ]
