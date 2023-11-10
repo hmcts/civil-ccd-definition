@@ -2332,6 +2332,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadlineRes1",
+    "Label": "Add Legal Rep 1 Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_Definition":  "Add legal rep 1 to case deadline",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "addLegalRepDeadlineRes2",
+    "Label": "Add Legal Rep 2 Deadline",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_Definition":  "Add legal rep 2 to case deadline",
+    "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
