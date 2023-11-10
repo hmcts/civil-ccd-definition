@@ -1,5 +1,21 @@
 const {date} = require('../../api/dataHelper');
 
+const finalOrderDocument = {
+  FinalOrderPreview: {
+    finalOrderDocument: {
+      documentLink: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      },
+      documentName: 'test document',
+      documentSize: 1234,
+      createdDatetime: '2023-02-06T13:11:52.466Z',
+      createdBy: 'CIVIL',
+    }
+  },
+};
+
 const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
@@ -51,6 +67,7 @@ const createAssistedOrder = () => {
       },
       finalOrderGiveReasonsYesNo: 'No'
     },
+    ...finalOrderDocument
   };
 };
 
@@ -68,8 +85,9 @@ const createFreeFormOrder = () => {
         withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
           ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 
-      }
+      },
     },
+    ...finalOrderDocument
   };
 };
 
@@ -77,11 +95,11 @@ module.exports = {
   requestFinalOrder: (finalOrderRequestType) => {
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       return {
-        valid: createAssistedOrder()
+        valid: createAssistedOrder(),
       };
     } else {
       return {
-        valid: createFreeFormOrder()
+        valid: createFreeFormOrder(),
       };
     }
 
