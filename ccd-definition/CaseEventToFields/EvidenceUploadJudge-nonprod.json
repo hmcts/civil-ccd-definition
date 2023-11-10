@@ -14,7 +14,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
-    "CaseFieldID": "documentAndName",
+    "CaseFieldID": "documentAndNameToAdd",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "UploadDocument",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
-    "CaseFieldID": "documentAndNote",
+    "CaseFieldID": "documentAndNoteToAdd",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "UploadDocumentAndNote",

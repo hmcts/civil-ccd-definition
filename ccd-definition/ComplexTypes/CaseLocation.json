@@ -6,7 +6,8 @@
     "ListElementCode": "region",
     "ElementLabel": "Region",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "CaseLocationCivil",
@@ -14,6 +15,7 @@
     "ListElementCode": "baseLocation",
     "ElementLabel": "Base location",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

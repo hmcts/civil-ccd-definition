@@ -5,7 +5,8 @@
     "ElementLabel": "What type is it?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "BreathingSpaceType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceStartInfo",
@@ -13,6 +14,7 @@
     "ElementLabel": "Reference Number",
     "FieldType": "Text",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Max": 16
   },
   {
@@ -21,7 +23,8 @@
     "ElementLabel": "When did it start?",
     "HintText": "This is the date Breathing Space started, not the date you received notification of it, for example, 15 01 2022",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceStartInfo",
@@ -29,7 +32,8 @@
     "ElementLabel": "Expected end date",
     "HintText": "This is the date Breathing Space is due to finish, for example, 17 03 2022",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceStartInfo",
@@ -37,14 +41,16 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceStartInfo",
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
@@ -52,7 +58,8 @@
     "ElementLabel": "When is the Breathing Space expected to end?",
     "HintText": "This is the date that you have been instructed it will finish",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
@@ -60,27 +67,31 @@
     "ElementLabel": "Event summary",
     "HintText": "A few words describing the purpose of the event",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceLiftInfo",
     "ListElementCode": "eventDescription",
     "ElementLabel": "Event Description",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceInfo",
     "ListElementCode": "enter",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceStartInfo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BreathingSpaceInfo",
     "ListElementCode": "lift",
     "ElementLabel": " ",
     "FieldType": "BreathingSpaceLiftInfo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

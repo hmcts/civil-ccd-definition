@@ -5,7 +5,8 @@
     "ID": "DateRangeHeardFinalOrders",
     "ElementLabel": "## Date range",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,7 +15,8 @@
     "ElementLabel": "Date From",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,6 +25,7 @@
     "ElementLabel": "Date to",
     "HintText": "For example, 16 4 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

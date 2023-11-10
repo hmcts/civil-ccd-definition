@@ -4,14 +4,16 @@
     "ListElementCode": "label",
     "FieldType": "Label",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "input1",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
@@ -19,7 +21,8 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SmallClaimsTimeEstimate",
     "ElementLabel": "The time estimate is",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
@@ -27,6 +30,7 @@
     "ElementLabel": "Hour(s)",
     "FieldType": "Number",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "time = \"OTHER\""
   },
   {
@@ -36,6 +40,7 @@
     "FieldType": "Number",
     "Max": 59,
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "time = \"OTHER\""
   },
   {
@@ -43,34 +48,39 @@
     "ListElementCode": "input2",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "dateToLabel",
     "ElementLabel": "Date to",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "dateTo",
     "ElementLabel": " ",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "dateFromLabel",
     "ElementLabel": "Date from",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsHearing",
     "ListElementCode": "dateFrom",
     "ElementLabel": " ",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

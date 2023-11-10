@@ -5,6 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "Court location",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": "[0-9]{3}"
   },
   {
@@ -13,14 +14,16 @@
     "DisplayContext": "MANDATORY",
     "ElementLabel": "Please select your preferred court hearing location",
     "FieldType": "DynamicList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "CourtLocation",
     "ListElementCode": "caseLocation",
     "ElementLabel": "Case Location",
     "FieldType": "CaseLocationCivil",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "CourtLocation",

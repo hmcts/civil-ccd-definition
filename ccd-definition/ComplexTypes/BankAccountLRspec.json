@@ -5,20 +5,23 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "AccountType",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BankAccount",
     "ListElementCode": "jointAccount",
     "ElementLabel": "Joint account",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "BankAccount",
     "ListElementCode": "balance",
     "ElementLabel": "Balance (£)",
     "FieldType": "Number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
