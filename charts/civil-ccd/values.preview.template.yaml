@@ -72,6 +72,9 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
+civil-camunda-bpm:
+  enabled: true
+
 postgresql:
   enabled: true
   flexibleserver: civil-preview
