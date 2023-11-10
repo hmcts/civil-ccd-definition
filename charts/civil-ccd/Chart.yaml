@@ -30,6 +30,10 @@ dependencies:
     version: 2.3.0-alpha
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
+  - name: camunda-bpm
+    version: 0.0.28
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: camunda-bpm.enabled
   - name: servicebus
     version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
