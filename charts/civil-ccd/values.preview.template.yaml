@@ -106,6 +106,7 @@ camunda-bpm:
       CAMUNDA_DB_USER_NAME: hmcts
       CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
+      TEMP_VAR: false
     secrets:
       CAMUNDA_DB_PASSWORD:
         secretRef: postgres
