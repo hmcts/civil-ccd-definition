@@ -452,8 +452,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderDocument",
-    "Label": "Order",
-    "FieldType": "Document",
+    "Label": " ",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
