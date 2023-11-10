@@ -63,3 +63,6 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net
 civil-wa:
   enabled: false
+
+postgresql:
+  enabled: false

@@ -53,6 +53,11 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
 ccd:
+  global:
+    postgresUsername: hmcts
+    postgresSecret: postgres
+    postgresHostname: civil-preview.postgres.database.azure.com
+    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -67,5 +72,28 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
-civil-camunda-bpm:
+postgresql:
   enabled: true
+  flexibleserver: civil-preview
+  setup:
+    databases:
+      - name: "pr-${CHANGE_ID}-data-store"
+      - name: "pr-${CHANGE_ID}-definition-store"
+      - name: "pr-${CHANGE_ID}-user-profile"
+      - name: "pr-${CHANGE_ID}-draftstore"
+      - name: "pr-${CHANGE_ID}-evidence"
+      - name: "pr-${CHANGE_ID}-annotation"
+      - name: "pr-${CHANGE_ID}-role-assignment"
+      - name: "pr-${CHANGE_ID}-hmc-cft-hearing-service"
+      - name: "pr-${CHANGE_ID}-cft_task_db"
+      - name: "pr-${CHANGE_ID}-wa-case-event-handler"
+      - name: "pr-${CHANGE_ID}-wa_workflow_api"
+      - name: "pr-${CHANGE_ID}-camunda"
+      - name: "pr-${CHANGE_ID}-org_role_mapping"
+      - name: "pr-${CHANGE_ID}-emstitch"
+      - name: "pr-${CHANGE_ID}-payment"
+      - name: "pr-${CHANGE_ID}-dbrdcaseworker"
+      - name: "pr-${CHANGE_ID}-et_cos"
+      - name: "pr-${CHANGE_ID}-dbrefdata"
+      - name: "pr-${CHANGE_ID}-dbuserprofile"
+      - name: "pr-${CHANGE_ID}-dbjuddata"
