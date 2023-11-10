@@ -82,7 +82,7 @@ module.exports = {
   },
   adminUser: {
     password: defaultPassword,
-    email: 'civil-admin@mailnesia.com',
+    email: 'civil-admin@hmcts.net',
     type: 'admin'
   },
   judgeUserWithRegionId1: {
