@@ -101,6 +101,7 @@ civil-camunda-bpm:
 camunda-bpm:
   enabled: true
   java:
+    disableKeyVaults: true
     environment:
       CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
       CAMUNDA_DB_USER_NAME: hmcts
