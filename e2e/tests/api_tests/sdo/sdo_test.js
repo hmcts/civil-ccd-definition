@@ -46,7 +46,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario.skip('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
