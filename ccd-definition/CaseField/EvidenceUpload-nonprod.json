@@ -320,7 +320,7 @@
     "ID": "documentReferredInStatement",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
