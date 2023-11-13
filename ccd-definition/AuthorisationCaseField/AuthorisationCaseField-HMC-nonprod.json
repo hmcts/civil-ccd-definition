@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicantSolOrgIndividuals",
+    "CaseFieldID": "applicant1LRIndividuals",
     "AccessControl": [
       {
         "UserRoles": [
@@ -19,7 +19,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1SolOrgIndividuals",
+    "CaseFieldID": "respondent1LRIndividuals",
     "AccessControl": [
       {
         "UserRoles": [
@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent2SolOrgIndividuals",
+    "CaseFieldID": "respondent2LRIndividuals",
     "AccessControl": [
       {
         "UserRoles": [
