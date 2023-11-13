@@ -1,6 +1,6 @@
 [
 {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "firstName",
@@ -8,7 +8,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "lastName",
@@ -16,15 +16,16 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "phone",
@@ -32,7 +33,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "flags",
@@ -41,7 +42,7 @@
     "FieldShowCondition": "applicant1LRIndividuals=\"DO NOT SHOW IN UI\""
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "firstName",
@@ -49,7 +50,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "lastName",
@@ -57,15 +58,16 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "phone",
@@ -73,7 +75,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "flags",
@@ -82,7 +84,7 @@
     "FieldShowCondition": "respondent1LRIndividuals=\"DO NOT SHOW IN UI\""
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "firstName",
@@ -90,7 +92,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "lastName",
@@ -98,15 +100,16 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "phone",
@@ -114,7 +117,7 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "OrgIndividuals",
+    "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "flags",

@@ -105,5 +105,15 @@
     "ListElementCode": "primaryAddress.PostCode",
     "FieldDisplayOrder": 13,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "certificateOfSuitability",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "applicant2LitigationFriend=\"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]

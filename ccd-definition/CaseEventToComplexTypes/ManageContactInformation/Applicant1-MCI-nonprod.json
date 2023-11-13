@@ -6,6 +6,7 @@
     "ListElementCode": "individualTitle",
     "FieldDisplayOrder": 2,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -15,6 +16,7 @@
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -24,6 +26,7 @@
     "ListElementCode": "individualLastName",
     "FieldDisplayOrder": 4,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_INDIVIDUAL\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -41,6 +44,7 @@
     "ListElementCode": "companyName",
     "FieldDisplayOrder": 6,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_COMPANY\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -50,6 +54,7 @@
     "ListElementCode": "organisationName",
     "FieldDisplayOrder": 7,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_ORGANISATION\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -58,6 +63,7 @@
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderTitle",
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "RetainHiddenValue": "Y",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },
@@ -68,6 +74,7 @@
     "ListElementCode": "soleTraderFirstName",
     "FieldDisplayOrder": 9,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -77,6 +84,7 @@
     "ListElementCode": "soleTraderLastName",
     "FieldDisplayOrder": 10,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {
@@ -86,6 +94,7 @@
     "ListElementCode": "soleTraderTradingAs",
     "FieldDisplayOrder": 11,
     "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
   {

@@ -4,7 +4,8 @@
     "ListElementCode": "debtAddLabel",
     "ElementLabel": "## Add details of any debts owed by your client.\n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "Debts",
@@ -12,6 +13,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Debt",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
