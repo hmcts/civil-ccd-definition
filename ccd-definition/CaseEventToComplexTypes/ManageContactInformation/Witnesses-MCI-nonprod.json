@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "emailAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "updateWitnessesDetailsForm",
+    "ListElementCode": "phoneNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  }
+]
