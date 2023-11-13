@@ -275,10 +275,10 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
-      devcpuRequests: 500m
-      devmemoryRequests: 512Mi
       devcpuLimits: 2
-      devmemoryLimits: 1Gi
+      devcpuRequests: 1000m
+      devmemoryRequests: 2048Mi
+      devmemoryLimits: 4096Mi
       environment:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
