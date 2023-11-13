@@ -469,18 +469,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addLegalRepDeadlineRes1",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "addLegalRepDeadlineRes2",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

@@ -1802,11 +1802,14 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+
         ],
         "CRUD": "R"
       }
@@ -1820,11 +1823,14 @@
         "UserRoles": [
           "caseworker-civil-solicitor"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+
         ],
         "CRUD": "R"
       }
