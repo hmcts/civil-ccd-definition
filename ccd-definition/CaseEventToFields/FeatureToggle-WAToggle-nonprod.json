@@ -8,6 +8,7 @@
     "DisplayContext": "READONLY",
     "PageID": "TransferOnlineCase",
     "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
