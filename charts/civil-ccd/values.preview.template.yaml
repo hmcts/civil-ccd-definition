@@ -3,6 +3,7 @@ civil-wa:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3296'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -58,7 +59,6 @@ ccd:
       ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
     java:
-      image: 'hmctspublic.azurecr.io/civil/service:pr-3296'
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
