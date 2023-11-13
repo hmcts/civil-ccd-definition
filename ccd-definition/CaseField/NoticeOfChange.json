@@ -4,6 +4,7 @@
     "ID": "changeOrganisationRequestField",
     "Label": "Change Organisation Request",
     "FieldType": "ChangeOrganisationRequest",
-    "SecurityClassification": "PUBLIC"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

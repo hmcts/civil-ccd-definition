@@ -129,6 +129,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgePapersLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderJudgePapers",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
       "judge-profile"
@@ -297,6 +313,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderCost",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderCostSecondaryLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "assistedOrderCostList",
     "UserRoles": [
       "judge-profile"
@@ -393,6 +425,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormHearingNotesLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormHearingNotes",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDocument",
     "UserRoles": [
       "judge-profile"
@@ -402,9 +450,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDocumentCollection",
-    "UserRoles": [
-      "judge-profile"
-    ],
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

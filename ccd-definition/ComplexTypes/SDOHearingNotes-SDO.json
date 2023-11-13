@@ -5,6 +5,7 @@
     "FieldType": "TextArea",
     "HintText": "This is only seen by the listing officer.",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

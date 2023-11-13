@@ -5,7 +5,8 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### The",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -14,7 +15,8 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "AppealList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -23,7 +25,8 @@
     "ElementLabel": "Please specify",
     "FieldType": "Text",
     "FieldShowCondition": "list = \"OTHER\"",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -31,7 +34,8 @@
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### application for permission to appeal is",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -40,16 +44,28 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ApplicationAppealList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "appealGrantedDropdown",
+    "ID": "FinalOrderAppeal",
+    "ElementLabel": " ",
+    "FieldType": "AppealChoiceFirstDropdownGrant",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "applicationList = \"GRANTED\""
   },
 
   {
     "CaseTypeID": "CIVIL",
-    "ListElementCode": "appealGrantedRefusedDropdown",
+    "ListElementCode": "appealRefusedDropdown",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
-    "FieldType": "AppealChoiceFirstDropdown",
+    "FieldType": "AppealChoiceFirstDropdownRefuse",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "applicationList = \"GRANTED\" OR applicationList = \"REFUSED\""
+    "Searchable": "N",
+    "FieldShowCondition": "applicationList = \"REFUSED\""
   }
 ]
