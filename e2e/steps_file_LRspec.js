@@ -97,6 +97,7 @@ const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
+const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -347,6 +348,7 @@ module.exports = function () {
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
              ...secondDefendantSteps(respondent2, respondent1.represented),
+                 () => addClaimForAFlightDelay.enteraddFlightDelayClaim(),
                  () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
                  () => specAddTimelinePage.addTimeline(),
@@ -374,6 +376,7 @@ module.exports = function () {
               () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
             ]),
             ...secondDefendantSteps(respondent2, respondent1.represented),
+            () => addClaimForAFlightDelay.enteraddFlightDelayClaim(),
             () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
             () => specTimelinePage.addManually(),
             () => specAddTimelinePage.addTimeline(),
