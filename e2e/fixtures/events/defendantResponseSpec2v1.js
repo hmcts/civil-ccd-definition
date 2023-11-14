@@ -5,7 +5,7 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          tempAddress1Required: 'Yes',
+          tempCorrespondenceAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
           respondentSolicitor1ServiceAddressRequired: 'Yes'
