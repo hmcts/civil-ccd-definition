@@ -612,5 +612,12 @@
     "TabLabel": "Claim details",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "TabFieldDisplayOrder": 85
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "caseManagementLocation",
+    "TabFieldDisplayOrder": 90
   }
 ]
