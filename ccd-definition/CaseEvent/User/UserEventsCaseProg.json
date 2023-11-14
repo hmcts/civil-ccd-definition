@@ -14,8 +14,7 @@
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y"
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",
