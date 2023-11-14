@@ -12,7 +12,7 @@ module.exports = {
     },
   },
 
-  async enteraddFlightDelayClaim(addAnotherDefendant) {
+  async enteredFlightDelayClaim(addAnotherDefendant) {
     I.waitForElement(this.fields.addFlightDelayClaim.id);
     await I.runAccessibilityTest();
     await within(this.fields.addFlightDelayClaim.id, () => {
