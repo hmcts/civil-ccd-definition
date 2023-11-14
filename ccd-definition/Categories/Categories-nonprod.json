@@ -603,7 +603,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantExpertDocuments"
   },
@@ -611,7 +611,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantTwoExpertDocuments"
   },
@@ -619,7 +619,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentExpertDocuments"
   },
@@ -627,7 +627,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentTwoExpertDocuments"
   },
@@ -635,7 +635,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "ApplicantExpertDocuments"
   },
@@ -643,7 +643,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "ApplicantTwoExpertDocuments"
   },
@@ -651,7 +651,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "RespondentExpertDocuments"
   },
@@ -659,7 +659,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "RespondentTwoExpertDocuments"
   },
