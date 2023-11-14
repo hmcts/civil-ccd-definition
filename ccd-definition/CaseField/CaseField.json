@@ -2336,7 +2336,7 @@
     "Label": "Add Legal Rep 1 Deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2344,7 +2344,7 @@
     "Label": "Add Legal Rep 2 Deadline",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "Y",
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
