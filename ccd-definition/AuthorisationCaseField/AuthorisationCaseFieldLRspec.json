@@ -622,7 +622,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempCorrespondenceAddress1",
+    "CaseFieldID": "tempAddress1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -640,7 +640,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempCorrespondenceAddress2",
+    "CaseFieldID": "tempAddress2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1967,7 +1967,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempCorrespondenceAddress1Required",
+    "CaseFieldID": "tempAddress1Required",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1985,7 +1985,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempCorrespondenceAddress2Required",
+    "CaseFieldID": "tempAddress2Required",
     "AccessControl": [
       {
         "UserRoles": [
