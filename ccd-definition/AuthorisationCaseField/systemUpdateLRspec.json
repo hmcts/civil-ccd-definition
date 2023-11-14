@@ -77,13 +77,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempAddress1",
+    "CaseFieldID": "tempCorrespondenceAddress1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "tempAddress2",
+    "CaseFieldID": "tempCorrespondenceAddress2",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },

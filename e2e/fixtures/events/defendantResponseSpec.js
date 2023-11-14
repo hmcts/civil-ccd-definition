@@ -5,7 +5,7 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          tempAddress1Required: 'Yes',
+          tempCorrespondenceAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
           respondentSolicitor1ServiceAddressRequired: 'Yes'
@@ -276,7 +276,7 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            tempAddress1Required: 'Yes',
+            tempCorrespondenceAddress1Required: 'Yes',
             respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
@@ -306,7 +306,7 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          tempAddress2Required: 'Yes',
+          tempCorrespondenceAddress2Required: 'Yes',
         },
         ResponseConfirmDetails: {
           respondentSolicitor2ServiceAddressRequired: 'Yes'
@@ -563,7 +563,7 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            tempAddress1Required: 'Yes',
+            tempCorrespondenceAddress1Required: 'Yes',
             respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
