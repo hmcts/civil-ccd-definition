@@ -1509,7 +1509,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -1521,7 +1521,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       }
     ]
   },
