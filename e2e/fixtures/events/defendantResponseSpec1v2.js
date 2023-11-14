@@ -5,11 +5,11 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-          specAoSRespondent2HomeAddressRequired: 'Yes'
+          tempCorrespondenceAddress1Required: 'Yes',
+          tempCorrespondenceAddress2Required: 'Yes'
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
       },
     };
@@ -22,7 +22,8 @@ module.exports = {
             respondentResponseIsSame: 'Yes'
           },
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM',
@@ -128,7 +129,8 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             specRespondent2Represented: 'Yes',
             respondent2SameLegalRepresentative: 'Yes',
-            respondentResponseIsSame: 'Yes'
+            respondentResponseIsSame: 'Yes',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
@@ -150,7 +152,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM',
@@ -166,7 +169,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
