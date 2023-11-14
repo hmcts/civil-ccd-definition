@@ -188,8 +188,7 @@
     "PageID": "HearingSupportRequirementsFieldDJ",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hearingDirectionsLabel = \"DO_NOT_SHOW_IN_UI\""
+    "ShowSummaryChangeOption": "N"
   }
 ]
 
