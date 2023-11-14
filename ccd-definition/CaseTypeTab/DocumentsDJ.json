@@ -23,8 +23,7 @@
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 10,
     "CaseFieldID": "caseManagementLocation",
-    "TabFieldDisplayOrder": 6,
-    "FieldShowCondition": "caseManagementLocation=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "TabFieldDisplayOrder": 6
   },
   {
     "CaseTypeID": "CIVIL",
