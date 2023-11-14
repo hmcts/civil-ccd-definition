@@ -95,8 +95,7 @@ const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3, SdoR2} = require('./fixtures/featureKeys');
-const {SdoR2} = require('./fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 
@@ -335,7 +334,7 @@ module.exports = function () {
 
          //const twoVOneScenario = claimant1 && claimant2;
          const pbaV3 = await checkToggleEnabled(PBAv3);
-         const SdoR2 = await checkToggleEnabled(SdoR2);
+         const SdoR2 = await checkToggleEnabled(SDOR2);
          output.log('--------------createCaseSpecified calling------------');
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
          output.log('--------------createCaseSpecified finished------------');
