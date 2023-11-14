@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "LocationRefData",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "flightDelay",
+    "ListElementCode": "courtVenueId",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]
