@@ -1,0 +1,40 @@
+[
+   {
+     "CaseTypeID": "CIVIL",
+     "CaseFieldID": "specRespondent1Represented",
+     "AccessControl": [
+       {
+         "UserRoles": [
+           "caseworker-civil-solicitor"
+         ],
+         "CRUD": "CRU"
+       },
+       {
+         "UserRoles": [
+           "caseworker-civil-admin"
+         ],
+         "CRUD": "R"
+       }
+     ]
+   },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "specRespondent2Represented",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
