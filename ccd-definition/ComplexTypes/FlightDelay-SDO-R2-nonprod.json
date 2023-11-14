@@ -28,5 +28,13 @@
     "HintText": "For example, 16 04 2021",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "FlightDelay",
+    "ListElementCode": "flightCourtLocation",
+    "FieldType": "LocationRefData",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
