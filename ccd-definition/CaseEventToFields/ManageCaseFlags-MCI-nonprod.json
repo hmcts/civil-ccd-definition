@@ -1,0 +1,93 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "PageLabel": " ",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "COMPLEX",
+    "FieldShowCondition": "flagLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "ManageCaseFlags",
+    "ShowSummaryChangeOption": "Y",
+    "RetainHiddenValue": "Y"
+  }
+]
