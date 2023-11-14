@@ -532,19 +532,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "tempCorrespondenceAddress1",
+    "ID": "tempAddress1",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "tempCorrespondenceAddress2",
+    "ID": "tempAddress2",
     "Label": "Add the address you want",
     "FieldType": "AddressUK",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -564,19 +562,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "tempCorrespondenceAddress1Required",
+    "ID": "tempAddress1Required",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "tempCorrespondenceAddress2Required",
+    "ID": "tempAddress2Required",
     "Label": "Is this address correct?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL",
