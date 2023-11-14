@@ -5,10 +5,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+          tempCorrespondenceAddress1Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor1ServiceAddressRequired: 'Yes'
         },
       },
     };
@@ -18,7 +18,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
@@ -128,7 +129,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
@@ -274,8 +276,8 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempCorrespondenceAddress1Required: 'Yes',
+            respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',
@@ -304,10 +306,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          specAoSRespondent2HomeAddressRequired: 'Yes',
+          tempCorrespondenceAddress2Required: 'Yes',
         },
         ResponseConfirmDetails: {
-          specAoSRespondent2CorrespondenceAddressRequired: 'Yes'
+          respondentSolicitor2ServiceAddressRequired: 'Yes'
         },
       },
     };
@@ -317,7 +319,8 @@ module.exports = {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
-            respondent2ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            respondent2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
           defenceRoute: {
             defenceRouteRequired2: 'DISPUTES_THE_CLAIM'
@@ -413,7 +416,8 @@ module.exports = {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: 'Yes'
           },
 
           defenceRoute: {
@@ -559,8 +563,8 @@ module.exports = {
           ...responseData.midEventData,
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'COUNTER_ADMIT_OR_ADMIT_PART',
-            specAoSApplicantCorrespondenceAddressRequired: 'Yes',
-            specAoSRespondentCorrespondenceAddressRequired: 'Yes',
+            tempCorrespondenceAddress1Required: 'Yes',
+            respondentSolicitor1ServiceAddressRequired: 'Yes',
             specFullDefenceOrPartAdmission: 'No',
             specDefenceFullAdmittedRequired: 'No',
             specApplicantCorrespondenceAddressRequired: 'No',

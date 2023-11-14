@@ -4,13 +4,15 @@
     "ListElementCode": "correspondenceAddress",
     "FieldType": "AddressUK",
     "ElementLabel": "Correspondence Address",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "AdditionalLipPartyDetails",
     "ListElementCode": "contactPerson",
     "FieldType": "Text",
     "ElementLabel": "Contact Person",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

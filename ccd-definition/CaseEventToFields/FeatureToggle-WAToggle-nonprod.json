@@ -1,0 +1,14 @@
+[
+{
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "TRANSFER_ONLINE_CASE",
+  "CaseFieldID": "featureToggleWA",
+  "PageDisplayOrder": 1,
+  "PageFieldDisplayOrder": 20,
+  "DisplayContext": "READONLY",
+  "PageID": "TransferOnlineCase",
+  "ShowSummaryChangeOption": "N",
+  "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
+  "Publish": "Y"
+}
+]

@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "eaCourtLocation",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
