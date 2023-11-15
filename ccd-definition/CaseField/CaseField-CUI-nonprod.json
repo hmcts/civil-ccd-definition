@@ -112,6 +112,6 @@
     "Label": "Defendant User Details",
     "FieldType": "UserDetails",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   }
 ]
