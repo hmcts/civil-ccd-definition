@@ -100,7 +100,7 @@ civil-service:
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
-      S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
+      CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
