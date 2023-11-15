@@ -19,7 +19,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "REFER_TO_JUDGE",
-    "Name": "Refer to Judge",
+    "Name": "Refer to Judge Modified",
     "Description": "Refer to Judge",
     "DisplayOrder": 19,
     "PreConditionState(s)": "JUDICIAL_REFERRAL",
