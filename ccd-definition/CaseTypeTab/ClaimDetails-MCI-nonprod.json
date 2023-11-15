@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "contactDetailsChangedLabel",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "manageContactDetailsEventUsed = \"Yes\"",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "manageContactDetailsEventUsed",
+    "TabFieldDisplayOrder": 117,
+    "FieldShowCondition": "legacyCaseReference = \"DO_NOT_SHOW_IN_UI\"",
+    "Searchable": "N"
+  }
+]
