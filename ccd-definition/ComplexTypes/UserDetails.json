@@ -5,7 +5,7 @@
     "FieldType": "Email",
     "ElementLabel": "What email would you like to send notifications to?",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "UserDetails",
@@ -13,6 +13,6 @@
     "FieldType": "Text",
     "ElementLabel": "User ID",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   }
 ]
