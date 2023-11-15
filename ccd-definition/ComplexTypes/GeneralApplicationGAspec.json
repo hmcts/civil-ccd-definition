@@ -4,77 +4,88 @@
     "ListElementCode": "generalAppType",
     "FieldType": "GATypeGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppRespondentAgreement",
     "FieldType": "GARespondentAgreementGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppConsentOrder",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppUrgencyRequirement",
     "FieldType": "GAUrgencyRecordGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppInformOtherParty",
     "FieldType": "GAWithOrWithoutNotice",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppStatementOfTruth",
     "ElementLabel": " ",
     "FieldType": "GAStatementOfTruthGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppDetailsOfOrder",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppReasonsOfOrder",
     "ElementLabel": " ",
     "FieldType": "TextArea",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppHearingDetails",
     "ElementLabel": " ",
     "FieldType": "GAHearingDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppPBADetails",
     "ElementLabel": " ",
     "FieldType": "GAPBADetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppApplnSolicitor",
     "ElementLabel": " ",
     "FieldType": "GASolicitorDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
@@ -82,28 +93,32 @@
     "ElementLabel": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "GASolicitorDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppHearingDate",
     "ElementLabel": "Hearing date for all GA types",
     "FieldType": "GAHearingDateGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppVaryJudgementType",
     "ElementLabel": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "gaUploadN245FormUploadLabel",
     "ElementLabel": "Upload your completed N245 form Label",
     "FieldType": "GAN245FormUpload",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
@@ -111,6 +126,7 @@
     "ElementLabel": "Upload your completed N245 form",
     "FieldType": "Document",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "CategoryID": "applications"
   },
   {
@@ -120,6 +136,7 @@
     "FieldTypeParameter": "Document",
     "ElementLabel": "Upload evidence",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "CategoryID": "applications"
   },
@@ -128,154 +145,176 @@
     "ListElementCode": "businessProcess",
     "ElementLabel": " ",
     "FieldType": "BusinessProcess",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "isMultiParty",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseLink",
     "FieldType": "CaseLink",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "parentClaimantIsApplicant",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "applicantPartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "litigiousPartyID",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "claimant2PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "defendant1PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "defendant2PartyName",
     "FieldType": "Text",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseManagementLocation",
     "FieldType": "GACaseLocationGAspec",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "isCtscLocation",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "respondentSolicitor1EmailAddress",
     "ElementLabel": " ",
     "FieldType": "Email",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppSubmittedDateGAspec",
     "ElementLabel": " ",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppDateDeadline",
     "ElementLabel": " ",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "civilServiceUserRoles",
     "ElementLabel": " ",
     "FieldType": "GAUserDetailsGAspec",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppSuperClaimType",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseManagementCategory",
     "ElementLabel": " ",
     "FieldType": "GACaseManagementCategory",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "CaseAccessCategory",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "locationName",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "applicationClosedDate",
     "ElementLabel": "Application Closed date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "applicationTakenOfflineDate",
     "ElementLabel": "Application Closed date",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
@@ -283,6 +322,7 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "applicationTakenOfflineDate = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

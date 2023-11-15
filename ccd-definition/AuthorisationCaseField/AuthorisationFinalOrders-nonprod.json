@@ -425,6 +425,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormHearingNotesLabel",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "freeFormHearingNotes",
+    "UserRoles": [
+      "judge-profile"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDocument",
     "UserRoles": [
       "judge-profile"

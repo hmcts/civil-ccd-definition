@@ -4,13 +4,15 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": "This is only seen by the listing officer",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "FastTrackHearingNotes",
     "ListElementCode": "line",
     "FieldType": "Label",
     "ElementLabel": "****",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

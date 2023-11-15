@@ -4,13 +4,15 @@
     "ListElementCode": "date",
     "FieldType": "Date",
     "ElementLabel": "Order date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "HearingNotes",
     "ListElementCode": "notes",
     "FieldType": "Text",
     "ElementLabel": "Notes",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
