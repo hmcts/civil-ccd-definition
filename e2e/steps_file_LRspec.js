@@ -349,7 +349,8 @@ module.exports = function () {
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
              ...secondDefendantSteps(respondent2, respondent1.represented),
-                 SdoR2 ? () => addClaimForAFlightDelay.enteredFlightDelayClaim() : null,
+            ...conditionalSteps(SdoR2, [
+              () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
                  () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
                  () => specAddTimelinePage.addTimeline(),
@@ -377,7 +378,8 @@ module.exports = function () {
               () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
             ]),
             ...secondDefendantSteps(respondent2, respondent1.represented),
-            SdoR2 ? () => addClaimForAFlightDelay.enteredFlightDelayClaim() : null,
+            ...conditionalSteps(SdoR2, [
+              () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
             () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
             () => specTimelinePage.addManually(),
             () => specAddTimelinePage.addTimeline(),
