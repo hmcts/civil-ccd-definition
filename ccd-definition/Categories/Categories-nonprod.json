@@ -27,7 +27,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "detailsOfClaim",
-    "CategoryLabel": "Details of claim",
+    "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
     "ParentCategoryID": "claimant"
   },
@@ -83,7 +83,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDetailsOfClaim",
-    "CategoryLabel": "Details of claim",
+    "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
     "ParentCategoryID": "claimantTwo"
   },
