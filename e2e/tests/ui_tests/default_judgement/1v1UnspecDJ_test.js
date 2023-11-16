@@ -61,7 +61,7 @@ Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
       console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
       taskId = caseProgressionTakeCaseOfflineTask['id'];
     }
-    await I.login(config.judgeUserWithRegionId1);
+    await I.login(config.hearingCenterAdminWithRegionId1);
     await api.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
     await api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
