@@ -175,5 +175,13 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQRemoteHearing",
     "TabFieldDisplayOrder": 22
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Hearings",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "hearingNotes",
+    "TabFieldDisplayOrder": 23
   }
 ]

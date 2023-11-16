@@ -143,13 +143,5 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQRemoteHearingLRspec",
     "TabFieldDisplayOrder": 18
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "Hearings",
-    "TabLabel": "Listing notes",
-    "TabDisplayOrder": 5,
-    "CaseFieldID": "hearingNotes",
-    "TabFieldDisplayOrder": 19
   }
 ]
