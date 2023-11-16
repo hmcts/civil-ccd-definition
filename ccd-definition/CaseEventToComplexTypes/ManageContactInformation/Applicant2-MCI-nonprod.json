@@ -201,7 +201,7 @@
      "CaseFieldID": "applicant2",
      "ListElementCode": "flags",
      "FieldDisplayOrder": 23,
-     "DisplayContext": "MANDATORY",
+     "DisplayContext": "OPTIONAL",
      "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
    }
 ]

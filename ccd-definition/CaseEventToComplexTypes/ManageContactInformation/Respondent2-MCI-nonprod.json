@@ -201,7 +201,7 @@
     "CaseFieldID": "respondent2",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 23,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
