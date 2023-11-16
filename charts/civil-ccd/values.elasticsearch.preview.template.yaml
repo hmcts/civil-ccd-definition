@@ -31,24 +31,25 @@ ccd:
   logstash:
     image: hmctspublic.azurecr.io/ccd/logstash
     imageTag: "latest"
-    secrets:
-      DATA_STORE_PASS:
-        secretRef: postgres
-        key: PASSWORD
-        disabled: false
-      DB_PWD:
-        secretRef: postgres
-        key: PASSWORD
-        disabled: false
     extraEnvs:
       - name: DATA_STORE_URL
         value: "jdbc:postgresql://civil-preview.postgres.database.azure.com:5432/pr-${CHANGE_ID}-data-store?sslmode=require&stringtype=unspecified&reWriteBatchedInserts=true"
       - name: DATA_STORE_USER
         value: hmcts
+      - name: DATA_STORE_PASS
+        valueFrom:
+          secretKeyRef:
+            name: postgres
+            key: PASSWORD
       - name: DB_URL
         value: "jdbc:postgresql://civil-preview.postgres.database.azure.com:5432/pr-${CHANGE_ID}-data-store?sslmode=require&stringtype=unspecified&reWriteBatchedInserts=true"
       - name: DB_USER
         value: hmcts
+      - name: DB_PWD
+        valueFrom:
+          secretKeyRef:
+            name: postgres
+            key: PASSWORD
       - name: ES_HOSTS
         value: http://${SERVICE_NAME}-es-master:9200
       - name: ES_DATA_NODES_URL
