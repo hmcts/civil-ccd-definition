@@ -29,10 +29,8 @@ ccd:
         cpu: "25m"
         memory: "512Mi"
   logstash:
-    image: "hmctspublic.azurecr.io/imported/logstash/logstash"
-    imageTag: "7.16.1"
-    imagePullPolicy: "IfNotPresent"
-    logstashJavaOpts: "-Xmx1g -Xms512M"
+    image: hmctspublic.azurecr.io/ccd/logstash
+    imageTag: "latest"
     extraInitContainers: |
       - name: download-postgres-jdbc
         image: hmctspublic.azurecr.io/curl:7.70.0
@@ -40,18 +38,18 @@ ccd:
         volumeMounts:
         - name: logstash-lib
           mountPath: /logstash-lib
-    extraVolumeMounts: |
-      - name: logstash-lib
-        mountPath: /usr/share/logstash/ccd
-      - name: database-secret-volume
-        mountPath: /etc/logstash/secrets
-        readOnly: true
     extraVolumes: |
       - name: logstash-lib
         emptyDir: {}
       - name: database-secret-volume
         secret:
           secretName: postgres
+    extraVolumeMounts: |
+      - name: logstash-lib
+        mountPath: /usr/share/logstash/ccd
+      - name: database-secret-volume
+        mountPath: /etc/logstash/secrets
+        readOnly: true
     logstashConfig:
       logstash.yml: |
         http.host: 0.0.0.0
