@@ -37,7 +37,6 @@ module.exports = {
         } catch (err) {
           console.warn('Error while fetching UK Bank Holidays...', err);
         }
-      }
     } else {
       return await dateNoWeekends(days - 1);
     }
