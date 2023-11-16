@@ -25,7 +25,6 @@ module.exports = {
     let date_String = date.toISOString().slice(0, 10);
     let isDateABankHoliday = false;
     if (date.getDay() !== 6 && date.getDay() !== 0) {
-      if(date.getDay() == 1 || date.getDay() == 5) {
         try {
           const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
           const ukbankholidays = await rawBankHolidays.json();
@@ -38,8 +37,6 @@ module.exports = {
         } catch (err) {
           console.warn('Error while fetching UK Bank Holidays...', err);
         }
-      } else {
-        return date_String;
       }
     } else {
       return await dateNoWeekends(days - 1);
