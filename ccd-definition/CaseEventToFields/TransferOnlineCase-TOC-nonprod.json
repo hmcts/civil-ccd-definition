@@ -23,5 +23,16 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "TransferOnlineCase",
+    "PageDisplayOrder": 1,
+    "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
