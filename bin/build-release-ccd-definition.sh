@@ -20,7 +20,7 @@ elif [ ${environment} == demo ]; then
 elif [ ${environment} == perftest ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == ithc ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"b
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
