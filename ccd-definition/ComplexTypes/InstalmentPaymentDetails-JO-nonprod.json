@@ -4,7 +4,8 @@
     "ListElementCode": "instalmentAmount",
     "ElementLabel": "Enter the amount of the instalments agreed",
     "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "InstalmentPaymentDetails",
@@ -12,7 +13,8 @@
     "ElementLabel": "Enter the frequency of the instalments agreed",
     "FieldType": "FixedList",
     "FieldTypeParameter": "PaymentFrequencyList",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "InstalmentPaymentDetails",
@@ -20,6 +22,7 @@
     "ElementLabel": "Enter the date of the first instalment",
     "HintText": "For example, 20 04 2021",
     "FieldType": "Date",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
