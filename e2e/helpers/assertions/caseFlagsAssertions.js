@@ -33,7 +33,7 @@ const assertRespondent1DQPartyFields = (caseDetails) => {
     console.log(`${assertionText} [Respondent solicitor 1 expert]`);
     expect(respondent1Experts[0].value.flags).deep.equal({
       'partyName': 'John Doe',
-      'roleOnCase': 'Defendant solicitor 1 expert'
+      'roleOnCase': 'Respondent solicitor 1 expert'
     });
   }
 
@@ -41,7 +41,7 @@ const assertRespondent1DQPartyFields = (caseDetails) => {
     console.log(`${assertionText} [Respondent solicitor 1 witness]`);
     expect(respondent1Witnesses[0].value.flags).deep.equal({
       'partyName': 'John Smith',
-      'roleOnCase': 'Defendant solicitor 1 witness'
+      'roleOnCase': 'Respondent solicitor 1 witness'
     });
   }
 };
@@ -54,7 +54,7 @@ function assertRespondent2DQPartyFields(caseDetails) {
     console.log(`${assertionText} [Respondent solicitor 2 expert]`);
     expect(respondent2Experts[0].value.flags).deep.equal({
       'partyName': 'John Doe',
-      'roleOnCase': 'Defendant solicitor 2 expert'
+      'roleOnCase': 'Respondent solicitor 2 expert'
     });
   }
 
@@ -62,7 +62,7 @@ function assertRespondent2DQPartyFields(caseDetails) {
     console.log(`${assertionText} [Respondent solicitor 2 witness]`);
     expect(respondent2Witnesses[0].value.flags).deep.equal({
       'partyName': 'John Smith',
-      'roleOnCase': 'Defendant solicitor 2 witness'
+      'roleOnCase': 'Respondent solicitor 2 witness'
     });
   }
 }
@@ -75,7 +75,7 @@ function assertApplicantDQPartyFields(caseDetails) {
     console.log(`${assertionText} [Applicant solicitor expert]`);
     expect(applicantExperts[0].value.flags).deep.equal({
       'partyName': 'John Doe',
-      'roleOnCase': 'Claimant solicitor expert'
+      'roleOnCase': 'Applicant solicitor expert'
     });
   }
 
@@ -83,7 +83,7 @@ function assertApplicantDQPartyFields(caseDetails) {
     console.log(`${assertionText} [Applicant solicitor witness]`);
     expect(applicantWitnesses[0].value.flags).deep.equal({
       'partyName': 'John Smith',
-      'roleOnCase': 'Claimant solicitor witness'
+      'roleOnCase': 'Applicant solicitor witness'
     });
   }
 }
@@ -92,17 +92,17 @@ function assertApplicantDQPartyFields(caseDetails) {
 module.exports = {
   assertFlagsInitialisedAfterCreateClaim: async (user, caseId) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
-    assertPartyFlags(case_data.applicant1, 'Claimant 1');
-    assertPartyFlags(case_data.applicant2, 'Claimant 2');
-    assertPartyFlags(case_data.respondent1, 'Defendant 1');
-    assertPartyFlags(case_data.respondent2, 'Defendant 2');
-    assertLitigationFriendFlags(case_data.applicant1LitigationFriend, 'Claimant 1 Litigation Friend');
-    assertLitigationFriendFlags(case_data.applicant2LitigationFriend, 'Claimant 2 Litigation Friend');
+    assertPartyFlags(case_data.applicant1, 'Applicant 1');
+    assertPartyFlags(case_data.applicant2, 'Applicant 2');
+    assertPartyFlags(case_data.respondent1, 'Respondent 1');
+    assertPartyFlags(case_data.respondent2, 'Respondent 2');
+    assertLitigationFriendFlags(case_data.applicant1LitigationFriend, 'Applicant 1 Litigation Friend');
+    assertLitigationFriendFlags(case_data.applicant2LitigationFriend, 'Applicant 2 Litigation Friend');
   },
   assertFlagsInitialisedAfterAddLitigationFriend: async (user, caseId) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
-    assertLitigationFriendFlags(case_data.respondent1LitigationFriend, 'Defendant 1 Litigation Friend');
-    assertLitigationFriendFlags(case_data.respondent2LitigationFriend, 'Defendant 2 Litigation Friend');
+    assertLitigationFriendFlags(case_data.respondent1LitigationFriend, 'Respondent 1 Litigation Friend');
+    assertLitigationFriendFlags(case_data.respondent2LitigationFriend, 'Respondent 2 Litigation Friend');
   },
   assertCaseFlags: async (caseId, user, response) => {
     if (['FULL_DEFENCE1', 'FULL_DEFENCE2', 'FULL_DEFENCE'].indexOf(response) > -1) {
