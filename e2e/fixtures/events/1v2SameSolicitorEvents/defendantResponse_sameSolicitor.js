@@ -19,7 +19,8 @@ module.exports = {
             flags: {
               partyName: 'Sir John Doe',
               roleOnCase: 'Respondent 1'
-            }
+            },
+            partyID: "767407ce-3293-40"
           },
           respondent2: {
             type: 'INDIVIDUAL',
@@ -30,7 +31,8 @@ module.exports = {
             individualDateOfBirth: date(-1),
             partyName: 'Dr Foo Bar',
             partyTypeDisplayValue: 'Individual',
-          }
+          },
+          partyID: "767407ce-3293-41"
         },
         SingleResponse: {
           respondentResponseIsSame: 'Yes',

@@ -19,7 +19,8 @@ module.exports = {
             flags: {
               partyName: 'Sir John Doe',
               roleOnCase: 'Respondent 1'
-            }
+            },
+            partyID: "767407ce-3293-41"
           },
         },
         RespondentResponseType: {

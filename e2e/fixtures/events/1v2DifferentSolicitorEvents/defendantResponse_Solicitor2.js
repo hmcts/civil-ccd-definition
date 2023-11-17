@@ -14,6 +14,11 @@ module.exports = {
             individualDateOfBirth: date(-1),
             partyName: 'Dr Foo Bar',
             partyTypeDisplayValue: 'Individual',
+            flags: {
+              partyName: 'Dr Foo Bar',
+              roleOnCase: 'Respondent 2'
+            },
+            partyID: "767407ce-3293-42"
           }
         },
         RespondentResponseType: {
