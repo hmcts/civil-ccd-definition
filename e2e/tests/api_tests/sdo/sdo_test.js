@@ -46,20 +46,20 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo @123', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-    /*await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');*/
+    await api.createFinalOrder(config.judgeUserWithRegionId1, 'ASSISTED_ORDER');
   }
 });
 
@@ -91,6 +91,10 @@ Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of d
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId1);
   }
+});
+
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
 });
 
 Feature('CCD 1v1 API test @e2e-nightly');
@@ -242,4 +246,8 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
     await prepareClaim(api, claimAmountAdvisor);
     await api.createSDO(legalAdvUser, 'UNSUITABLE_FOR_SDO');
   }
+});
+
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
 });
