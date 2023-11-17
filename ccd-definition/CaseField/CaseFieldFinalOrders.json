@@ -158,6 +158,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrderedThatText",
+    "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
@@ -394,6 +395,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedTextArea",
+    "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
