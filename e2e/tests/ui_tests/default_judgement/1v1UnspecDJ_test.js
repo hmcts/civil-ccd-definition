@@ -126,7 +126,7 @@ Scenario.skip('Verify Challenged access check for judge @e2e-wa', async ({I, WA}
 }).retry(3);
 
 Scenario.skip('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
-  await I.login(hearingCenterAdminToBeUsed2);
+  await I.login(hearingCenterAdminWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
