@@ -57,6 +57,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Note",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   }
 ]
