@@ -42,7 +42,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantWitnessReferred",
+    "CategoryID": "ApplicantSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
     "ParentCategoryID": "claimant"
@@ -98,7 +98,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTwoWitnessReferred",
+    "CategoryID": "ApplicantTwoSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
     "ParentCategoryID": "claimantTwo"
@@ -154,7 +154,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentOneWitnessReferred",
+    "CategoryID": "RespondentOneSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantOne"
@@ -178,7 +178,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentTwoWitnessReferred",
+    "CategoryID": "RespondentTwoSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantTwo"
@@ -525,6 +525,38 @@
     "CategoryID": "RespondentTwoWitnessHearsay",
     "CategoryLabel": "Hearsay notices",
     "DisplayOrder": "4",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "ApplicantTwoWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
     "ParentCategoryID": "RespondentTwoWitnessDocuments"
   },
   {
