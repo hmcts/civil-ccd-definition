@@ -78,10 +78,10 @@ Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to pro
 
 Scenario.skip('Add case flags', async ({LRspec}) => {
   const caseFlags = [{
-    partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
+    partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]
   },{
-    partyName: 'John Smith', roleOnCase: 'Claimant solicitor expert',
+    partyName: 'John Smith', roleOnCase: 'Applicant solicitor expert',
     details: [PARTY_FLAGS.unacceptableBehaviour.value]
   }
   ];
