@@ -133,9 +133,11 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.TEST_EA_COURTS = true
   }
   onMaster {
     env.ENVIRONMENT="aat"
+    env.TEST_EA_COURTS = true
   }
   onDemo {
     env.ENVIRONMENT = "demo"
