@@ -14,13 +14,13 @@
   {
     "ID": "AssistedCostTypesList",
     "ListElementCode": "COSTS_RESERVED",
-    "ListElement": "Costs reserved",
+    "ListElement": "Costs reserved (not where multiple claimants/defendants: use bespoke order for those cases)",
     "DisplayOrder": 3
   },
   {
     "ID": "AssistedCostTypesList",
     "ListElementCode": "MAKE_AN_ORDER_FOR_DETAILED_COSTS",
-    "ListElement": "Make an order for detailed/summary costs",
+    "ListElement": "Make an order for detailed/summary costs (not where multiple claimants/defendants: use bespoke order for those cases)",
     "DisplayOrder": 4
   },
   {
