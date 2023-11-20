@@ -33,6 +33,10 @@ module.exports = {
         individualDateOfBirth: date(-1),
         partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
+        flags: {
+          partyName: 'Dr Foo Bar',
+          roleOnCase: 'Defendant 2'
+        }
       }
     },
     ResponseIntention: {
