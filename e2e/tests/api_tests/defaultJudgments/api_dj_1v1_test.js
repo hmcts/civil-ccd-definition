@@ -14,7 +14,7 @@ let caseId;
 
 Scenario('Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.addCaseNote(config.adminUser);
+  // await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   caseId = await api.getCaseId();
