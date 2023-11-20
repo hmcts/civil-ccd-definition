@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 
 const mpScenario = 'ONE_V_ONE';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : judgeUser;
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : hearingCenterAdminToBeUsed;
 
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
@@ -163,40 +163,29 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
 });
 
 Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled @wa-r4', async ({ api, WA}) => {
-  // sdo requires judicial_referral, which is not past preview
+  await prepareClaim(api, claimAmountJudge);
+  if (config.runWAApiTest) {
+    const caseId = await api.getCaseId();
+    const task = await api.retrieveTaskDetails(judgeUser, caseId, config.waTaskIds.fastTrackDirections);
+    WA.validateTaskInfo(task, fastTrackDirectionsTask);
+    taskId = task['id'];
+  }
+  await api.createSDO(judgeUser);
+  if (config.runWAApiTest) {
+    api.completeTaskByUser(judgeUser, taskId);
+  }
   if (config.testEarlyAdopterCourts) {
-    await prepareClaim(api, claimAmountJudge);
-    if (config.runWAApiTest) {
-      const caseId = await api.getCaseId();
-      const task = await api.retrieveTaskDetails(judgeUser, caseId, config.waTaskIds.fastTrackDirections);
-      WA.validateTaskInfo(task, fastTrackDirectionsTask);
-      taskId = task['id'];
-    }
-    await api.createSDO(judgeUser);
-    if (config.runWAApiTest) {
-      api.completeTaskByUser(judgeUser, taskId);
-    }
-    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(hearingCenterAdminToBeUsed);
   } else {
-    await prepareClaim(api, claimAmountJudge);
-    if (config.runWAApiTest) {
-      const caseId = await api.getCaseId();
-      const task = await api.retrieveTaskDetails(judgeUser, caseId, config.waTaskIds.fastTrackDirections);
-      WA.validateTaskInfo(task, fastTrackDirectionsTask);
-      taskId = task['id'];
-    }
-    await api.createSDO(judgeUser);
-    if (config.runWAApiTest) {
-      api.completeTaskByUser(judgeUser, taskId);
-    }
+    console.log('Transfer case offline task is created');
   }
 });
 
-Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api, WA}) => {
+Scenario('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountAdvisor);
@@ -207,9 +196,9 @@ Scenario.skip('1v1 full defence unspecified - legal advisor draws disposal order
       WA.validateTaskInfo(task, smallClaimDirectionsTask);
     }
     await api.createSDO(legalAdvUser);
-    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(hearingCenterAdminToBeUsed);
   } else if (['aat'].includes(config.runningEnv)) {
