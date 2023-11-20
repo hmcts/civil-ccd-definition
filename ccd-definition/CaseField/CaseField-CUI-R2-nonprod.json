@@ -38,6 +38,7 @@
     "ID": "claimantResponseSubmittedDate",
     "Label": "Date claimant response Submitted",
     "FieldType": "DateTime",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
