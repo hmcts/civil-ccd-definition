@@ -251,5 +251,5 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
 });
 
 AfterSuite(async ({api}) => {
-  //await api.cleanUp();
+  await api.cleanUp();
 });
