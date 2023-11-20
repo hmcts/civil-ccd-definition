@@ -58,24 +58,24 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   await I.click('Sign out');
 }).retry(3);
 
-// Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
-//   await I.login(config.defendantSolicitorUser);
-//   await I.acknowledgeClaim('fullDefence');
-//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//   //await I.see(caseEventMessage('Acknowledge claim'));
-// }).retry(3);
+Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
+  await I.acknowledgeClaim('fullDefence');
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Acknowledge claim'));
+}).retry(3);
 
-// Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
-//   await I.informAgreedExtensionDate(1);
-//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//   //await I.see(caseEventMessage('Inform agreed extension date'));
-// }).retry(3);
+Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
+  await I.informAgreedExtensionDate(1);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Inform agreed extension date'));
+}).retry(3);
 
-// Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
-//   await I.addDefendantLitigationFriend();
-//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-//   //await I.see(caseEventMessage('Add litigation friend'));
-// });
+Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
+  await I.addDefendantLitigationFriend();
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('Add litigation friend'));
+});
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);

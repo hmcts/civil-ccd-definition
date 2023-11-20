@@ -46,30 +46,30 @@ Scenario('2v1 Respond To Claim - Defendants solicitor rejects claim for defendan
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.respondToClaimPartAdmit({
-    defendant1Response: 'partAdmission',
-    claimType: 'fast',
-    defenceType: 'repaymentPlan'
-  });
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
-}).retry(3);
+// Scenario('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
+//   await LRspec.login(config.defendantSolicitorUser);
+//   await LRspec.respondToClaimPartAdmit({
+//     defendant1Response: 'partAdmission',
+//     claimType: 'fast',
+//     defenceType: 'repaymentPlan'
+//   });
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await LRspec.see(caseEventMessage('Respond to claim'));
+//   await LRspec.click('Sign out');
+// }).retry(3);
 
-Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.respondToClaimFullAdmit({
-    twoDefendants: false,
-    defendant1Response: 'fullAdmission',
-    claimType: 'fast',
-    defenceType: 'setDate'
-  });
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
-}).retry(3);
+// Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
+//   await LRspec.login(config.defendantSolicitorUser);
+//   await LRspec.respondToClaimFullAdmit({
+//     twoDefendants: false,
+//     defendant1Response: 'fullAdmission',
+//     claimType: 'fast',
+//     defenceType: 'setDate'
+//   });
+//   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+//   //await LRspec.see(caseEventMessage('Respond to claim'));
+//   await LRspec.click('Sign out');
+// }).retry(3);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

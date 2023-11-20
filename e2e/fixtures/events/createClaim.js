@@ -115,7 +115,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         correct: 'No'
       },
       applicantSolicitor1UserDetails: {
-        email: 'civilunspecified@gmail.com',
+        email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
         id: 'c18d5f8d-06fa-477d-ac09-5b6129828a5b'
       }
     },

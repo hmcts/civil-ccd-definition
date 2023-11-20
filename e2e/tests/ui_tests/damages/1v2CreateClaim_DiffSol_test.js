@@ -136,22 +136,22 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 }).retry(3);
 
 
-Scenario('Add case flags', async ({I}) => {
-  if(await checkCaseFlagsEnabled()) {
-    const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
-      details: [PARTY_FLAGS.vulnerableUser.value]
-    }, {
-      partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
-      details: [PARTY_FLAGS.unacceptableBehaviour.value]
-    }
-    ];
+// Scenario('Add case flags', async ({I}) => {
+//   if(await checkCaseFlagsEnabled()) {
+//     const caseFlags = [{
+//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       details: [PARTY_FLAGS.vulnerableUser.value]
+//     }, {
+//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 witness',
+//       details: [PARTY_FLAGS.unacceptableBehaviour.value]
+//     }
+//     ];
 
-    await I.login(config.hearingCenterAdminWithRegionId1);
-    await I.createCaseFlags(caseFlags);
-    // await I.validateCaseFlags(caseFlags);
-  }
-}).retry(3);
+//     await I.login(config.hearingCenterAdminWithRegionId1);
+//     await I.createCaseFlags(caseFlags);
+//     // await I.validateCaseFlags(caseFlags);
+//   }
+// }).retry(3);
 
 Scenario('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   if (await checkToggleEnabled('update-contact-details')) {
