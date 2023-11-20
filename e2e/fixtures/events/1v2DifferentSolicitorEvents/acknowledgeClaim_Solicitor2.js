@@ -21,7 +21,7 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',flags: {
           partyName: 'Sir John Doe',
-          roleOnCase: 'Defendant 1'
+          roleOnCase: 'Respondent 1'
         }
       },
       respondent2: {
