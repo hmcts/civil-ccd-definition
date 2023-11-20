@@ -615,7 +615,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
