@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_SERVICE_REQUEST_CUI",
+    "ID": "CREATE_SERVICE_REQUEST_CUI_CLAIM_ISSUE",
     "Name": "Create service request CUI",
     "Description": "Create payment service request from CUI",
     "PreConditionState(s)": "*",
