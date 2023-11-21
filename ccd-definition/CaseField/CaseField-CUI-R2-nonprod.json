@@ -35,6 +35,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantResponseSubmittedDate",
+    "Label": "Date claimant response Submitted",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "serviceRequestReference",
     "Label": " ",
     "FieldType": "Text",
