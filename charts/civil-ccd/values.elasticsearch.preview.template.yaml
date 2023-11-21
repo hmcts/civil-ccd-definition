@@ -65,5 +65,14 @@ ccd:
       limits:
         cpu: "2500m"
         memory: "1024Mi"
+    configTpl:
+      db.url: "jdbc:postgresql://civil-preview.postgres.database.azure.com:5432/pr-${CHANGE_ID}-data-store?sslmode=require&stringtype=unspecified"
+      db.user: hmcts
+      db.pwd:
+        valueFrom:
+          secretKeyRef:
+            name: postgres
+            key: PASSWORD
+      es.data.nodes.url: http://${SERVICE_NAME}-es-master:9200
     livenessProbe:
       initialDelaySeconds: 90
