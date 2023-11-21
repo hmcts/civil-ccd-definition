@@ -5,10 +5,10 @@ module.exports = {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
-          tempCorrespondenceAddress1Required: 'Yes',
+          specAoSApplicantCorrespondenceAddressRequired: 'Yes',
         },
         ResponseConfirmDetails: {
-          respondentSolicitor1ServiceAddressRequired: 'Yes'
+          specAoSRespondentCorrespondenceAddressRequired: 'Yes'
         },
       },
     };
@@ -124,9 +124,9 @@ module.exports = {
           RespondentResponseTypeSpec: {
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE',
+            sameSolicitorSameResponse: null,
             specFullDefenceOrPartAdmission: 'Yes',
-            specDefenceFullAdmittedRequired: 'No',
-            sameSolicitorSameResponse: 'Yes'
+            specDefenceFullAdmittedRequired: 'No'
           },
 
           defenceRoute: {
