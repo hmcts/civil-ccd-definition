@@ -13,7 +13,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "flightDelay",
+    "CaseFieldID": "flightDelayDetails",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   }
