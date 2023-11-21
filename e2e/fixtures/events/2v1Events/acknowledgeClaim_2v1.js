@@ -14,7 +14,7 @@ module.exports = {
         partyTypeDisplayValue: 'Individual',
         flags: {
           partyName: 'Sir John Doe',
-          roleOnCase: 'Respondent 1'
+          roleOnCase: 'Defendant 1'
         }
       }
     },
