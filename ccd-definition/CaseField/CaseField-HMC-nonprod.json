@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicantSolOrgIndividuals",
-    "Label": " ",
+    "ID": "applicant1LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
@@ -10,20 +10,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1SolOrgIndividuals",
-    "Label": " ",
+    "ID": "respondent1LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
     "FieldType": "Collection",
     "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
-   {
+  {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent2SolOrgIndividuals",
-     "Label": " ",
-     "FieldType": "Collection",
-     "FieldTypeParameter": "PartyFlagStructure",
-     "SecurityClassification": "Public",
-     "Searchable": "N"
+    "ID": "respondent2LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

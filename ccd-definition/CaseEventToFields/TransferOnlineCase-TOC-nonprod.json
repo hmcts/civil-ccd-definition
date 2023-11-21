@@ -1,0 +1,27 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "transferCourtLocationList",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "TransferOnlineCase",
+    "PageLabel": "Transfer online case",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-court-location"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "reasonForTransfer",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "TransferOnlineCase",
+    "PageLabel": "Transfer online case",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

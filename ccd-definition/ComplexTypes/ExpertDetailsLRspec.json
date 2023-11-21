@@ -4,7 +4,8 @@
     "ListElementCode": "expertDetails",
     "ElementLabel": "## Expert details \n",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ExpertDetails",
@@ -12,6 +13,7 @@
     "FieldType": "Text",
     "ElementLabel": "First name",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Max": 40
   },
   {
@@ -20,6 +22,7 @@
     "FieldType": "Text",
     "ElementLabel": "Last name",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Max": 40
   },
   {
@@ -27,21 +30,24 @@
     "ListElementCode": "phoneNumber",
     "FieldType": "PhoneUK",
     "ElementLabel": "Phone number",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ExpertDetails",
     "ListElementCode": "emailAddress",
     "FieldType": "Email",
     "ElementLabel": "Email address",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ExpertDetails",
     "ListElementCode": "whyRequired",
     "FieldType": "TextArea",
     "ElementLabel": "Why do you need this expert?",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "ExpertDetails",
@@ -49,6 +55,7 @@
     "FieldType": "Text",
     "ElementLabel": "Expert name",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Expert name"
   },
   {
@@ -57,6 +64,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Field of expertise",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Field of expertise"
   },
   {
@@ -65,6 +73,7 @@
     "FieldType": "MoneyGBP",
     "ElementLabel": "Estimated cost",
     "SecurityClassification": "Public",
+    "Searchable": "N",
     "Label": "Estimated cost"
   }
 ]

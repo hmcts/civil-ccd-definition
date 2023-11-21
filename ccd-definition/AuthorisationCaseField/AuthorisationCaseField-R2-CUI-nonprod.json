@@ -798,6 +798,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
@@ -2395,6 +2396,18 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseSubmittedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

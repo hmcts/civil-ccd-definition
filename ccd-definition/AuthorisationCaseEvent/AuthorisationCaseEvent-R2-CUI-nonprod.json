@@ -289,7 +289,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -593,11 +593,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_HEARING_TO_LIP_CLAIMANT",
+    "CaseEventID": "LIFT_BREATHING_SPACE_LIP",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -605,11 +611,39 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_FINAL_ORDER_TO_LIP_CLAIMANT",
+    "CaseEventID": "NOTIFY_APPLICANT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION_LIP_CLAIMANT",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION_LIP_CLAIMANT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }

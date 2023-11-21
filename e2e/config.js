@@ -1,6 +1,7 @@
-const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
-const iacDefaultPassword = 'AldgateT0wer';
+const defaultPassword = process.env.DEFAULT_PASSWORD;
+const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
+const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
 
 module.exports = {
   idamStub: {
@@ -23,6 +24,16 @@ module.exports = {
     // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     // idamApi: 'https://idam-api.aat.platform.hmcts.net',
     // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+
+
+    /* 
+    manageCase:  'https://manage-case.aat.platform.hmcts.net/',
+    authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi:  'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
+    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',*/
 
     manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
@@ -120,6 +131,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '2'
   },
+  judgeUser2WithRegionId2: {
+    password: judgeDefaultPassword,
+    email: 'EMP42506@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '2'
+  },
   hearingCenterAdminLocal: {
     email: 'hearing-centre-admin-01@example.com',
     password: defaultPassword,
@@ -134,15 +152,22 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
-  hearingCenterAdminWithRegionId4: {
-    email: 'hearing_center_admin_region4@justice.gov.uk',
+  hearingCenterAdminWithRegionId2: {
+    email: 'hearing_center_admin_reg2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '1'
+  },
+  hearingCenterAdminWithRegionId41: {
+    email: 'hearing_center_admin_region2@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
     regionId: '4'
   },
-  hearingCenterAdminWithRegionId2: {
-    email: 'hearing_center_admin_reg2@justice.gov.uk',
+  hearingCenterAdminWithRegionId4: {
+    email: 'hearing_center_admin_region4@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
@@ -273,6 +298,7 @@ module.exports = {
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
+    scheduleAHearing: 'ScheduleAHearing',
     reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
@@ -286,14 +312,17 @@ module.exports = {
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
+  testEarlyAdopterCourts: process.env.TEST_EA_COURTS == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
-  claimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  defendant2SelectedCourt: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  djClaimantSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-  liverpoolCourt:'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
-  sdoJudgeSelectedCourt:'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+  claimantSelectedCourt: courtToBeSelected,
+  defendantSelectedCourt: courtToBeSelected,
+  defendant2SelectedCourt: courtToBeSelected,
+  djClaimantSelectedCourt: courtToBeSelected,
+  liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
+  sdoJudgeSelectedCourt: courtToBeSelected,
+
+
   localNoCTests: false
 };

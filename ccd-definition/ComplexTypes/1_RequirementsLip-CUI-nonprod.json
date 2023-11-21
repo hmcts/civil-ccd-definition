@@ -4,7 +4,8 @@
     "ListElementCode": "name",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequirementsLip",
@@ -12,27 +13,31 @@
     "ElementLabel": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "HearingSupportRequirements",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequirementsLip",
     "ListElementCode": "signLanguageRequired",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequirementsLip",
     "ListElementCode": "languageToBeInterpreted",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "ID": "RequirementsLip",
     "ListElementCode": "otherSupport",
     "ElementLabel": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
