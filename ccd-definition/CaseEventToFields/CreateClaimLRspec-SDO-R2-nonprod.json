@@ -26,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
-    "CaseFieldID": "flightDelay",
+    "CaseFieldID": "flightDelayDetails",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "EnterFlightDetails",

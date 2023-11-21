@@ -15,9 +15,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "flightDelay",
+    "ID": "flightDelayDetails",
     "Label": " ",
-    "FieldType": "FlightDelay",
+    "FieldType": "FlightDelayDetails",
     "SecurityClassification": "Public"
   }
 ]
