@@ -1,28 +1,28 @@
 [
   {
-    "ID": "FlightDelay",
-    "ListElementCode": "flightDetailsAirlineList",
+    "ID": "FlightDelayDetails",
+    "ListElementCode": "airlineList",
     "FieldType": "DynamicList",
     "ElementLabel": "Airline",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FlightDelay",
-    "ListElementCode": "flightDetailsNameOfAirline",
+    "ID": "FlightDelayDetails",
+    "ListElementCode": "nameOfAirline",
     "FieldType": "Text",
     "ElementLabel": "Name of airline",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FlightDelay",
-    "ListElementCode": "flightDetailsFlightNumber",
+    "ID": "FlightDelayDetails",
+    "ListElementCode": "flightNumber",
     "FieldType": "Text",
     "ElementLabel": "Flight number",
     "SecurityClassification": "Public"
   },
   {
-    "ID": "FlightDelay",
-    "ListElementCode": "flightDetailsScheduledDate",
+    "ID": "FlightDelayDetails",
+    "ListElementCode": "scheduledDate",
     "FieldType": "Date",
     "ElementLabel": "Scheduled date of flight",
     "HintText": "For example, 16 04 2021",
@@ -30,7 +30,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "FlightDelay",
+    "ID": "FlightDelayDetails",
     "ListElementCode": "flightCourtLocation",
     "FieldType": "CaseLocationCivil",
     "ElementLabel": " ",
