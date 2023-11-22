@@ -83,10 +83,10 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', 
 Scenario.skip('Add case flags', async ({LRspec}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
     }, {
-      partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
+      partyName: 'Example respondent1 company', roleOnCase: 'Defendant 1',
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }
     ];
