@@ -1,6 +1,6 @@
-const defaultPassword = process.env.DEFAULT_PASSWORD;
-const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
-const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
+const defaultPassword = process.env.DEFAULT_PASSWORD || 'Password12!';
+const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD || 'Hmcts1234';
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD || 'AlgateT0wer';
 const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
 
 module.exports = {
@@ -9,13 +9,13 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    manageCase: process.env.URL || 'https://manage-case.aat.platform.hmcts.net/',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-    dmStore:process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi: process.env.IDAM_API_URL || 'https://idam-api.aat.platform.hmcts.net',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-aat.service.core-compute-aat.internal',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
+    // manageCase: process.env.URL || 'https://manage-case.aat.platform.hmcts.net/',
+    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-aat.service.core-compute-aat.internal',
+    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.aat.platform.hmcts.net',
+    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-aat.service.core-compute-aat.internal',
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal'
 
 // manageCase: 'https://xui-civil-service-pr-3484.preview.platform.hmcts.net',
 //      authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
@@ -32,12 +32,12 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-    // manageCase: 'https://xui-civil-ccd-pr-3539.preview.platform.hmcts.net',
-    // authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3539.preview.platform.hmcts.net',
-    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    // civilService: 'https://civil-ccd-pr-3539.preview.platform.hmcts.net' 
+    manageCase: 'https://xui-civil-ccd-pr-3476.preview.platform.hmcts.net',
+    authProviderApi:'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3476.preview.platform.hmcts.net',
+    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-3476.preview.platform.hmcts.net' 
 
     // manageCase: process.env.URL || 'http://localhost:3333',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
