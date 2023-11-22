@@ -24,5 +24,14 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "document = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "DocumentAndName",
+    "ListElementCode": "createdBy",
+    "FieldType": "Text",
+    "ElementLabel": "Created by",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "createdDateTime = \"DO_NOT_SHOW\""
   }
 ]

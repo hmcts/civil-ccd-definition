@@ -25,7 +25,7 @@ module.exports = {
                 ...data.respondent1,
                 flags: {
                   partyName: 'Sir John Doe',
-                  roleOnCase: 'Respondent 1'
+                  roleOnCase: 'Defendant 1'
                 }
               }
             };
@@ -37,7 +37,7 @@ module.exports = {
                 ...data.respondent2,
                 flags: {
                   partyName: 'Dr Foo Bar',
-                  roleOnCase: 'Respondent 2'
+                  roleOnCase: 'Defendant 2'
                 }
               }
             };
@@ -49,7 +49,7 @@ module.exports = {
                 ...data.applicant1,
                 flags: {
                   partyName: 'Test Inc',
-                  roleOnCase: 'Applicant 1'
+                  roleOnCase: 'Claimant 1'
                 }
               }
             };
@@ -61,7 +61,7 @@ module.exports = {
                 ...data.applicant2,
                 flags: {
                   partyName: 'Dr Jane Doe',
-                  roleOnCase: 'Applicant 2'
+                  roleOnCase: 'Claimant 2'
                 }
               }
             };
@@ -73,7 +73,7 @@ module.exports = {
                 ...data.applicant1LitigationFriend,
                 flags: {
                   partyName: 'Bob the litigant friend',
-                  roleOnCase: 'Applicant 1 Litigation Friend'
+                  roleOnCase: 'Claimant 1 Litigation Friend'
                 }
               }
             };
@@ -85,7 +85,7 @@ module.exports = {
                 ...data.respondent1LitigationFriend,
                 flags: {
                   partyName: 'Bob the litigant friend',
-                  roleOnCase: 'Respondent 1 Litigation Friend'
+                  roleOnCase: 'Defendant 1 Litigation Friend'
                 }
               }
             };
@@ -97,7 +97,7 @@ module.exports = {
                 ...data.respondent2LitigationFriend,
                 flags: {
                   partyName: 'David the litigant friend',
-                  roleOnCase: 'Respondent 2 Litigation Friend'
+                  roleOnCase: 'Defendant 2 Litigation Friend'
                 }
               }
             };
