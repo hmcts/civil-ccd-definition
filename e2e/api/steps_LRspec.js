@@ -325,7 +325,7 @@ module.exports = {
     }
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
+    if (response == 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
 
