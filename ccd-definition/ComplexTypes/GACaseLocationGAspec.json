@@ -22,5 +22,21 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "address",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GACaseLocationGAspec",
+    "ListElementCode": "postcode",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
