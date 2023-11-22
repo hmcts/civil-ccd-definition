@@ -17,6 +17,6 @@
   "RetriesTimeoutAboutToStartEvent": 0,
   "RetriesTimeoutURLAboutToSubmitEvent": 0,
   "Publish": "Y",
-  "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
+  "EventEnablingCondition": "detailsOfDirection = \"CIV-11468, Only available through tasks\""
 }
 ]
