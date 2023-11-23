@@ -40,5 +40,24 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "label = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "DocumentAndNote",
+    "ListElementCode": "createdBy",
+    "FieldType": "Text",
+    "ElementLabel": "Created by",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
+  },
+  {
+    "ID": "DocumentAndNote",
+    "ListElementCode": "documentNoteForTab",
+    "_comment": "used to populate column label for case tab table",
+    "FieldType": "TextArea",
+    "ElementLabel": "Note",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "label = \"DO_NOT_SHOW\""
   }
 ]
