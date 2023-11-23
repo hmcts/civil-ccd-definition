@@ -40,5 +40,13 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentSignSettlementAgreement",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]
