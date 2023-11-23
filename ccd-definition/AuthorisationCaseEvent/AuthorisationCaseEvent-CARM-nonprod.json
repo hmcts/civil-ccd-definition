@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_MEDIATION_REPRESENTATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
