@@ -498,7 +498,8 @@
     "DisplayContext": "READONLY",
     "PageID": "Experts",
     "PageShowCondition": "partyChosen = \"CLAIMANT_1_EXPERTS\" OR partyChosen = \"DEFENDANT_1_EXPERTS\" OR partyChosen = \"DEFENDANT_2_EXPERTS\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-experts"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -519,7 +520,8 @@
     "DisplayContext": "READONLY",
     "PageID": "Witnesses",
     "PageShowCondition": "partyChosen = \"CLAIMANT_1_WITNESSES\" OR partyChosen = \"DEFENDANT_1_WITNESSES\" OR partyChosen = \"DEFENDANT_2_WITNESSES\"",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-witnesses"
   },
   {
     "CaseTypeID": "CIVIL",
