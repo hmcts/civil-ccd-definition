@@ -14,7 +14,7 @@
   {
     "ID": "EvidenceUploadExpert",
     "ListElementCode": "QUESTIONS_FOR_EXPERTS",
-    "ListElement": "Questions for other party's expert or joint experts",
+    "ListElement": "Questions asked of other party expert",
     "DisplayOrder": 3
   },
   {

@@ -98,7 +98,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disclosureToggleText",
-    "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information tat you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
+    "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information that you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -123,7 +123,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "witnessToggleText",
-    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
+    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -198,7 +198,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "witnessToggleTextSmallClaim",
-    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
+    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -320,7 +320,7 @@
     "ID": "documentReferredInStatement",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -345,7 +345,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestions",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -441,7 +441,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "disclosureToggleTextRes",
-    "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information tat you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
+    "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information that you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -466,7 +466,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "witnessToggleTextRes",
-    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
+    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -541,7 +541,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "witnessToggleTextSmallClaimRes",
-    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - form example, emails, receipts, invoices, contracts and photos.</div></details><br />",
+    "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -688,7 +688,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsRes",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -823,7 +823,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsRes2",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -958,7 +958,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentQuestionsApp2",
-    "Label": "Questions for other party's expert or joint experts",
+    "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceExpert3",
     "SecurityClassification": "Public",
@@ -1032,6 +1032,14 @@
     "Label": "Respondent uploaded documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentBundles",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "notificationText",
+    "Label":" ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

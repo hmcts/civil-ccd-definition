@@ -27,7 +27,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "detailsOfClaim",
-    "CategoryLabel": "Details of claim",
+    "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
     "ParentCategoryID": "claimant"
   },
@@ -42,7 +42,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantWitnessReferred",
+    "CategoryID": "ApplicantSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
     "ParentCategoryID": "claimant"
@@ -83,7 +83,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDetailsOfClaim",
-    "CategoryLabel": "Details of claim",
+    "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
     "ParentCategoryID": "claimantTwo"
   },
@@ -98,7 +98,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "ApplicantTwoWitnessReferred",
+    "CategoryID": "ApplicantTwoSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
     "ParentCategoryID": "claimantTwo"
@@ -154,7 +154,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentOneWitnessReferred",
+    "CategoryID": "RespondentOneSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantOne"
@@ -178,7 +178,7 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "RespondentTwoWitnessReferred",
+    "CategoryID": "RespondentTwoSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
     "ParentCategoryID": "defendantTwo"
@@ -530,6 +530,38 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "ApplicantWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "ApplicantTwoWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "ApplicantTwoWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentOneWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "RespondentWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
+    "CategoryID": "RespondentTwoWitnessReferred",
+    "CategoryLabel": "Documents referred to in statement",
+    "DisplayOrder": "5",
+    "ParentCategoryID": "RespondentTwoWitnessDocuments"
+  },
+  {
+    "LiveFrom": "05/12/2022",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsExpert",
     "CategoryLabel": "Expert Evidence",
     "DisplayOrder": "5",
@@ -603,7 +635,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantExpertDocuments"
   },
@@ -611,7 +643,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "ApplicantTwoExpertDocuments"
   },
@@ -619,7 +651,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentExpertDocuments"
   },
@@ -627,7 +659,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertQuestions",
-    "CategoryLabel": "Questions of experts of any other party",
+    "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
     "ParentCategoryID": "RespondentTwoExpertDocuments"
   },
@@ -635,7 +667,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "ApplicantExpertDocuments"
   },
@@ -643,7 +675,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "ApplicantTwoExpertDocuments"
   },
@@ -651,7 +683,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "RespondentExpertDocuments"
   },
@@ -659,7 +691,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertAnswers",
-    "CategoryLabel": "Answers to any questions asked by another party",
+    "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
     "ParentCategoryID": "RespondentTwoExpertDocuments"
   },
@@ -1003,7 +1035,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsSchedulesOfCost",
-    "CategoryLabel": "Schedules of Costs",
+    "CategoryLabel": "Schedule of Costs",
     "DisplayOrder": "9",
     "ParentCategoryID": ""
   },
