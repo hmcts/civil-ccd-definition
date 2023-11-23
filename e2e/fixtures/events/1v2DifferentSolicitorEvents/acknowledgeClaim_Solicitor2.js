@@ -21,7 +21,7 @@ module.exports = {
         partyName: 'Sir John Doe',
         partyTypeDisplayValue: 'Individual',flags: {
           partyName: 'Sir John Doe',
-          roleOnCase: 'Respondent 1'
+          roleOnCase: 'Defendant 1'
         }
       },
       respondent2: {
@@ -33,6 +33,10 @@ module.exports = {
         individualDateOfBirth: date(-1),
         partyName: 'Dr Foo Bar',
         partyTypeDisplayValue: 'Individual',
+        flags: {
+          partyName: 'Dr Foo Bar',
+          roleOnCase: 'Defendant 2'
+        }
       }
     },
     ResponseIntention: {
