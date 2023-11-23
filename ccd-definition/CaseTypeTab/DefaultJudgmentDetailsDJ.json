@@ -21,6 +21,7 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "detailsOfDirection",
+    "FieldShowCondition": "detailsOfDirection != \"CIV-11468, Only available through tasks\"",
     "TabFieldDisplayOrder": 3
   },
   {
