@@ -218,66 +218,6 @@ module.exports =  {
         );
   },
 
-  checkNoCToggleEnabled: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    const s2sAuth = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
-      {'Content-Type': 'application/json'},
-      {
-        microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
-      })
-      .then(response => response.text());
-
-
-    return await restHelper.request(
-      `${config.url.civilService}/testing-support/feature-toggle/noc`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-        'ServiceAuthorization': s2sAuth
-      }, null, 'GET')
-      .then(async response =>  {
-          if (response.status === 200) {
-            const json = await response.json();
-            return json.toggleEnabled;
-          } else {
-            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-          }
-        }
-      );
-  },
-
-  checkCertificateOfServiceIsEnabled: async () => {
-    const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
-    const s2sAuth = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
-      {'Content-Type': 'application/json'},
-      {
-        microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
-      })
-      .then(response => response.text());
-
-
-    return await restHelper.request(
-      `${config.url.civilService}/testing-support/feature-toggle/isCertificateOfServiceEnabled`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${authToken}`,
-        'ServiceAuthorization': s2sAuth
-      }, null, 'GET')
-      .then(async response =>  {
-          if (response.status === 200) {
-            const json = await response.json();
-            return json.toggleEnabled;
-          } else {
-            throw new Error(`Error when checking toggle occurred with status : ${response.status}`);
-          }
-        }
-      );
-  },
-
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await restHelper.retriedRequest(
