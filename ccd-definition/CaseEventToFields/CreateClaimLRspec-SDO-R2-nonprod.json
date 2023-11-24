@@ -19,7 +19,8 @@
     "PageID": "FlightDelayClaim",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateDateAndSetFlightDelayClaimType"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -32,7 +33,6 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Flight delay",
-    "FieldShowCondition": "isFlightDelayClaim= \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-date-of-flight"
+    "FieldShowCondition": "isFlightDelayClaim= \"Yes\""
   }
 ]
