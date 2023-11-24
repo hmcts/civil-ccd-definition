@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPLOAD_MEDIATION_REPRESENTATION",
+    "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "AccessControl": [
       {
         "UserRoles": [
