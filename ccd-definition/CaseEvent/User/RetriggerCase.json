@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RETRIGGER_CASES",
+    "Name": "Retrigger case",
+    "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
