@@ -15,7 +15,7 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "documentAndNote",
     "TabFieldDisplayOrder": 3,
-    "DisplayContextParameter": "#TABLE(documentName, createdDateTime, document, documentNote)"
+    "DisplayContextParameter": "#TABLE(documentNoteForTab, documentName, createdBy, createdDateTime, document)"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -24,6 +24,6 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "documentAndName",
     "TabFieldDisplayOrder": 4,
-    "DisplayContextParameter": "#TABLE(documentName, createdDateTime, document)"
+    "DisplayContextParameter": "#TABLE(documentName, createdBy, createdDateTime, document)"
   }
 ]
