@@ -11,13 +11,14 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
 let fastTrackDirectionsTask, taskId;
-let smallClaimDirectionsTask, legalAdvisorSmallClaimsTrackDirectionsTask;
+let legalAdvisorSmallClaimsTrackDirectionsTask;
 let transferOfflineSdoTask;
 if (config.runWAApiTest) {
   fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
   smallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTask.js');
   legalAdvisorSmallClaimsTrackDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
+  scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
 }
 
 Feature('CCD 1v1 API test');
@@ -164,8 +165,8 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
 
 Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled @wa-r4', async ({ api, WA}) => {
   await prepareClaim(api, claimAmountJudge);
+  const caseId = await api.getCaseId();
   if (config.runWAApiTest) {
-    const caseId = await api.getCaseId();
     const task = await api.retrieveTaskDetails(judgeUser, caseId, config.waTaskIds.fastTrackDirections);
     WA.validateTaskInfo(task, fastTrackDirectionsTask);
     taskId = task['id'];
@@ -177,43 +178,59 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
   if (config.testEarlyAdopterCourts) {
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+    if (config.runWAApiTest) {
+      const hearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
+      WA.validateTaskInfo(hearingTask, scheduleAHearingTask);
+      taskId = scheduleAHearingTask['id'];
+    }
     await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(hearingCenterAdminToBeUsed, taskId);
+    }
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeeUnpaid(hearingCenterAdminToBeUsed);
   } else {
+    if (config.runWAApiTest) {
+      const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+      console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
+      taskId = caseProgressionTakeCaseOfflineTask['id'];
+    }
     console.log('Transfer case offline task is created');
   }
 });
 
 Scenario('1v1 full defence unspecified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api, WA}) => {
   // sdo requires judicial_referral, which is not past preview
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaim(api, claimAmountAdvisor);
+  await prepareClaim(api, claimAmountAdvisor);
+  const caseId = await api.getCaseId();
+  if (config.runWAApiTest) {
+    const caseId = await api.getCaseId();
+    const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
+    WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
+    taskId = task['id'];
+  }
+  await api.createSDO(legalAdvUser);
+  if (config.runWAApiTest) {
+    api.completeTaskByUser(legalAdvUser, taskId);
+  }
+  if (config.testEarlyAdopterCourts) {
     if (config.runWAApiTest) {
-      const caseId = await api.getCaseId();
-      // TODO not sure which one is for this case
-      const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
-      WA.validateTaskInfo(task, smallClaimDirectionsTask);
+      const hearingTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.scheduleAHearing);
+      taskId = scheduleAHearingTask['id'];
     }
-    await api.createSDO(legalAdvUser);
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
+    await api.scheduleHearing(config.hearingCenterAdminWithRegionId4, 'OTHER');
+    if (config.runWAApiTest) {
+      api.completeTaskByUser(config.hearingCenterAdminWithRegionId4, taskId);
+    }
     await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeeUnpaid(hearingCenterAdminToBeUsed);
-  } else if (['aat'].includes(config.runningEnv)) {
-    await prepareClaim(api, claimAmountAdvisor);
+    await api.hearingFeeUnpaid(config.hearingCenterAdminWithRegionId4);
+  } else {
     if (config.runWAApiTest) {
-      const caseId = await api.getCaseId();
-      // TODO not sure which one is for this case
-      const task = await api.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
-      WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
-      taskId = task['id'];
+      const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+      console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
+      taskId = caseProgressionTakeCaseOfflineTask['id'];
     }
-    await api.createSDO(legalAdvUser);
-    if (config.runWAApiTest) {
-      api.completeTaskByUser(legalAdvUser, taskId);
-    }
+    console.log('Transfer case offline task is created');
   }
 });
 
