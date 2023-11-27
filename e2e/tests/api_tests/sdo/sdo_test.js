@@ -11,11 +11,10 @@ const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
 let fastTrackDirectionsTask, taskId;
-let legalAdvisorSmallClaimsTrackDirectionsTask;
+let legalAdvisorSmallClaimsTrackDirectionsTask, scheduleAHearingTask;
 let transferOfflineSdoTask;
 if (config.runWAApiTest) {
   fastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
-  smallClaimDirectionsTask = require('../../../../wa/tasks/smallClaimDirectionsTask.js');
   legalAdvisorSmallClaimsTrackDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
   transferOfflineSdoTask = require('../../../../wa/tasks/transferOfflineSdo.js');
   scheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
@@ -181,7 +180,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
     if (config.runWAApiTest) {
       const hearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
       WA.validateTaskInfo(hearingTask, scheduleAHearingTask);
-      taskId = scheduleAHearingTask['id'];
+      taskId = hearingTask['id'];
     }
     await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
     if (config.runWAApiTest) {
@@ -216,7 +215,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws disposal order - he
   if (config.testEarlyAdopterCourts) {
     if (config.runWAApiTest) {
       const hearingTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.scheduleAHearing);
-      taskId = scheduleAHearingTask['id'];
+      taskId = hearingTask['id'];
     }
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId4, 'OTHER');
     if (config.runWAApiTest) {
