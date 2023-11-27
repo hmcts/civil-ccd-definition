@@ -6,15 +6,14 @@ const {expect, assert} = chai;
 
 const apiRequest = require('./apiRequest.js');
 const bulkClaimData = require('../fixtures/events/createBulkClaim.js');
-const {waitForFinishedBusinessProcess} = require("./testingSupport");
-const config = require("../config");
-const {addUserCaseMapping} = require("./caseRoleAssignmentHelper");
-const nonProdExpectedEvents = require("../fixtures/ccd/nonProdExpectedEventsLRSpec");
-const claimDataBulk = require("../fixtures/events/createClaimSpecBulk");
-const claimData = require("../fixtures/events/createClaim");
+const {waitForFinishedBusinessProcess} = require('./testingSupport');
+const config = require('../config');
+const {addUserCaseMapping} = require('./caseRoleAssignmentHelper');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec');
+const claimDataBulk = require('../fixtures/events/createClaimSpecBulk');
+const claimData = require('../fixtures/events/createClaim');
 
 let caseId, eventName;
-let caseData = {};
 
 const data = {
   CREATE_BULK_CLAIM: (mpScenario, interest, customerId, amount, postcodeValidation) => bulkClaimData.bulkCreateClaimDto(mpScenario, interest, customerId, amount, postcodeValidation),
@@ -46,7 +45,6 @@ module.exports = {
   createNewClaimWithCaseworkerCivilService: async (user, scenario, withInterest) => {
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
-    caseData = {};
     let createClaimData  = {};
 
     createClaimData = data.CREATE_BULK_CLAIM_VIA_CIVILSERVICE(scenario, withInterest);
