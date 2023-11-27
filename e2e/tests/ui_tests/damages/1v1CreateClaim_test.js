@@ -88,34 +88,34 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
 // Scenario('Add case flags', async ({I}) => {
 //   if(await checkCaseFlagsEnabled()) {
 //     const caseFlags = [{
-//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
 //       details: [PARTY_FLAGS.vulnerableUser.value]
 //     }, {
-//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+//       partyName: 'John Smith', roleOnCase: 'Defendant solicitor 1 expert',
 //       details: [PARTY_FLAGS.unacceptableBehaviour.value]
 //     }];
 
 //     await I.login(config.hearingCenterAdminWithRegionId4);
 //     await I.createCaseFlags(caseFlags);
-//     await I.validateCaseFlags(caseFlags);
+//     // await I.validateCaseFlags(caseFlags);
 //   }
 // });
 
 // Scenario('Manage case flags', async ({I}) => {
 //   if(await checkCaseFlagsEnabled()) {
 //     const caseFlags = [{
-//       partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+//       partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
 //       flagType: 'Vulnerable user',
 //       flagComment: 'test comment'
 //     }, {
-//       partyName: 'John Smith', roleOnCase: 'Respondent solicitor 1 expert',
+//       partyName: 'John Smith', roleOnCase: 'Defendant solicitor 1 expert',
 //       flagType: 'Unacceptable/disruptive customer behaviour',
 //       flagComment: 'test comment'
 //     }];
 
 //     await I.login(config.hearingCenterAdminWithRegionId4);
 //     await I.manageCaseFlags(caseFlags);
-//     await I.validateUpdatedCaseFlags(caseFlags);
+//     // await I.validateUpdatedCaseFlags(caseFlags);
 //   }
 // });
 
