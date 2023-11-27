@@ -55,6 +55,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_CASE_PROCEEDS_IN_CASEMAN",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CASE_PROCEEDS_IN_CASEMAN",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -236,6 +242,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "migrateCase",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RETRIGGER_CASES",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
