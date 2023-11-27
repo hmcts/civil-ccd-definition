@@ -37,6 +37,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "DEFENDANT_SIGN_SETTLEMENT_AGREEMENT",
+    "Name": "defendant sign agreement",
+    "Description": "defendant sign agreement",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "RetriesTimeoutAboutToStartEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_SERVICE_REQUEST_CUI_CLAIM_ISSUE",
     "Name": "Create service request CUI",
     "Description": "Create payment service request from CUI",

@@ -43,6 +43,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "respondentSignSettlementAgreement",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "serviceRequestReference",
     "Label": " ",
     "FieldType": "Text",
