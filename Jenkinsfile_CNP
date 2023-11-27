@@ -7,6 +7,7 @@ def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
+// may have changes here, but for now, just to make a testing pr
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
