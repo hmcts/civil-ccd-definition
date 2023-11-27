@@ -12,5 +12,12 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDelayDetails",
+    "Label": " ",
+    "FieldType": "FlightDelayDetails",
+    "SecurityClassification": "Public"
   }
 ]
