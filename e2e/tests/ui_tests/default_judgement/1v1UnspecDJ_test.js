@@ -1,12 +1,17 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-let caseId, taskId, hearingDateIsLessThan3Weeks;
+let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsTask, validScheduleAHearingTask;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const judgeUserToBeUsed = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+
+if (config.runWAApiTest) {
+  validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  validScheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
+}
 
 Feature('1v1 Unspec defaultJudgement');
 
@@ -34,12 +39,13 @@ Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft
   await I.judgeAddsCaseNotes();
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   if (config.runWAApiTest) {
     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(judgeUserToBeUsed, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
+    WA.validateTaskInfo(summaryJudgmentDirectionsTask, validSummaryJudgmentDirectionsTask);
     taskId = summaryJudgmentDirectionsTask['id'];
     api.assignTaskToUser(judgeUserToBeUsed, taskId);
   }
@@ -52,11 +58,12 @@ Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @maste
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
   if (config.testEarlyAdopterCourts) {
     if (config.runWAApiTest) {
       const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
       console.log('Schedule a hearing task...' , scheduleAHearingTask);
+      WA.validateTaskInfo(scheduleAHearingTask, validScheduleAHearingTask);
       taskId = scheduleAHearingTask['id'];
     }
     await createHearingScheduled(I);
@@ -120,22 +127,22 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
   }
 }
 
-Scenario.skip('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
-  await I.login(config.judgeUserWithRegionId2);
+Scenario('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
+  await I.login(config.judgeUser2WithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
+Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
   await I.login(config.hearingCenterAdminWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
