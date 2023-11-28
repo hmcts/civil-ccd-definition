@@ -651,6 +651,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_SIGN_SETTLEMENT_AGREEMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_HEARING_TO_LIP_CLAIMANT",
     "AccessControl": [
       {
