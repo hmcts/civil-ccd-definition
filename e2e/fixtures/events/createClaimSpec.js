@@ -36,6 +36,24 @@ const claimAmount = '150000';
 
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
+const value={
+  value:{
+    code: 'OTHER',
+    label: 'OTHER'
+  }
+}
+
+const airLineList={
+  ...value
+}
+const flightDelayDetails ={
+  airlineList:{
+    ...airLineList,
+  },
+  flightNumber: 'test',
+  nameOfAirline: 'fligth',
+  scheduledDate: '2023-11-26'
+};
 
 module.exports = {
   createClaim: (mpScenario, pbaV3) => {
@@ -386,6 +404,19 @@ module.exports = {
           }
         };
         break;
+      case 'ONE_V_ONE_FLIGHT_DELAY':
+        userData.userInput = {
+          ...userData.userInput,
+          FlightDelayClaim: {
+              isFlightDelayClaim: 'Yes',
+              flightDelayDetails: {
+                ...flightDelayDetails
+              }
+          },
+
+        };
+        break;
+
     }
 
     return userData;
