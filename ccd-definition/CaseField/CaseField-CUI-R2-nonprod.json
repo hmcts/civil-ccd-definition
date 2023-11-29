@@ -32,5 +32,19 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantCourtDecision",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1RejectedRepaymentReason",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
