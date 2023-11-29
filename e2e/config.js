@@ -26,7 +26,7 @@ module.exports = {
     // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
 
 
-    /* 
+    /*
     manageCase:  'https://manage-case.aat.platform.hmcts.net/',
     authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
@@ -310,7 +310,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  runningEnv: process.env.ENVIRONMENT,
+  runningEnv: 'aat',
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
   testEarlyAdopterCourts: process.env.TEST_EA_COURTS == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
