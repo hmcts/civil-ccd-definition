@@ -29,6 +29,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "UPDATE_BUSINESS_PROCESS_STATE",
+    "Name": "Update business process state",
+    "Description": "Update business process state",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "END_BUSINESS_PROCESS_GASPEC",
     "Name": "End business process",
     "Description": "End business process",
