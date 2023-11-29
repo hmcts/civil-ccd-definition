@@ -56,7 +56,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\" OR \"respondent1Represented\"=\"No\""
+    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\" OR specRespondent1Represented=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -113,7 +113,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\" OR \"respondent1Represented\"=\"No\""
+    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\" OR specRespondent1Represented=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
