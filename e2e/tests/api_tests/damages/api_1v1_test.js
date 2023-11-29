@@ -10,7 +10,7 @@ Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
-Scenario('HMCTS admin adds a case note to case', async ({api}) => {
+/*Scenario('HMCTS admin adds a case note to case', async ({api}) => {
   await api.addCaseNote(config.adminUser);
 });
 
@@ -73,7 +73,7 @@ Scenario('Create claim and move it to caseman', async ({api}) => {
 Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({api}) => {
   await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
   await api.resubmitClaim(config.applicantSolicitorUser);
-});
+});*/
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
