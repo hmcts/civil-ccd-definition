@@ -41,11 +41,11 @@ const value={
     code: 'OTHER',
     label: 'OTHER'
   }
-}
+};
 
 const airLineList={
   ...value
-}
+};
 const flightDelayDetails ={
   airlineList:{
     ...airLineList,
