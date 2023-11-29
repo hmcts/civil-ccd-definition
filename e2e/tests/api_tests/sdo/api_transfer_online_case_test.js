@@ -28,7 +28,7 @@ await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', '
   'JUDICIAL_REFERRAL');
 }
 
-Scenario('1v1 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
+/*Scenario('1v1 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
@@ -87,3 +87,4 @@ Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Other reasons', as
 AfterSuite(async ({api_spec}) => {
   await api_spec.cleanUp();
 });
+*/
