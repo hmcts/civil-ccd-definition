@@ -1151,6 +1151,8 @@ module.exports = {
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
+    console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
+
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim applicant for case id ' + caseId);
       let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
@@ -1808,7 +1810,18 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
   delete responseBody.data['eaCourtLocation'];
   delete responseBody.data['documentAndNoteToAdd'];
-  delete responseBody.data['documentAndNameToAdd'];
+  delete responseBody.data['documentAndNameToAdd']; 
+  delete responseBody.data['channel'];
+  delete responseBody.data['disposalHearingMethodTelephoneHearing'];
+  delete responseBody.data['disposalHearingSchedulesOfLoss'];
+  delete responseBody.data['disposalHearingMethod']; 
+  delete responseBody.data['hearingNoticeList'];
+  delete responseBody.data['information'];
+  delete responseBody.data['hearingDueDate']; 
+  delete responseBody.data['disposalHearingAddNewDirections'];
+  delete responseBody.data['hearingFee'];
+  delete responseBody.data['hearingFeePBADetails'];
+  delete responseBody.data['hearingNoticeListOther'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
