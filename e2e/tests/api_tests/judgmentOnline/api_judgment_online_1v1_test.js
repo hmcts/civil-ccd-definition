@@ -1,9 +1,9 @@
-const config = require('../../../config.js');
+//const config = require('../../../config.js');
 
 // to use on local because the idam images are different
 // const caseWorkerUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
-const claimAmountJudge = '11000';
+//const claimAmountJudge = '11000';
 
 Feature('Record Judgment 1v1 API test unspec @api-unspec @api-tests-1v1 @api-jo @api-nonprod');
 
