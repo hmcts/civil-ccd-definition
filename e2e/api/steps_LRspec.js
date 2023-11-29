@@ -30,7 +30,7 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
-const requestForReconsideration = require("../fixtures/events/requestForReconsideration");
+const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 
 let caseId, eventName;
 let caseData = {};
