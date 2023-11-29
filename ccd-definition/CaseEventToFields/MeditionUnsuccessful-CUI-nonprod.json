@@ -32,11 +32,23 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "mediationUnsuccessful",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defendantName=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "unsuccessfulMediationReason",
     "DisplayContext": "MANDATORY",
     "PageID": "mediationUnsuccessful",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "showCarmFields=\"No\""
   }
 ]

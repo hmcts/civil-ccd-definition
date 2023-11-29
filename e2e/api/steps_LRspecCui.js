@@ -7,12 +7,21 @@ chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers, assignCaseToCitizen} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
+const claimDataSpecFastLRvLiP = require('../fixtures/events/cui/createClaimSpecFastTrackCui.js');
+const claimDataSpecSmallLRvLiP = require('../fixtures/events/cui/createClaimSpecSmallCui.js');
+const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.js');
+const claimantResponseAdmitAll = require('../fixtures/events/cui/claimantResponseCuiAdmitAll.js');
+const claimantResponsePartAdmit = require('../fixtures/events/cui/claimantResponseCuiPartAdmit.js');
+const claimantResponseRejectAll = require('../fixtures/events/cui/claimantResponseCuiRejectAll.js');
+const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends} = require('./dataHelper');
+const {checkToggleEnabled} = require('./testingSupport');
+const {PBAv3} = require('../fixtures/featureKeys');
 
 let caseId, eventName;
 let caseData = {};
@@ -20,6 +29,8 @@ let caseData = {};
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
+  CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
+  CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
@@ -88,6 +99,122 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+  },
+
+  createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
+    console.log(' Creating specified claim');
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+    let createClaimSpecData;
+    if (claimType === 'FastTrack') {
+      console.log('Creating FastTrack claim...');
+      createClaimSpecData = data.CREATE_SPEC_CLAIM_FASTTRACK(multipartyScenario);
+    } else {
+      console.log('Creating small claims...');
+      createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
+    }
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimSpecData.userInput)) {
+      await assertValidData(createClaimSpecData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+    await waitForFinishedBusinessProcess(caseId);
+
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    if (claimType !== 'pinInPost') {
+      await assignCaseToCitizen(caseId, multipartyScenario);
+    }
+    await waitForFinishedBusinessProcess(caseId);
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+
+    if (carmEnabled) {
+      console.log('carm enabled, updating submitted date');
+      await apiRequest.setupTokens(config.systemupdate);
+      let submittedDate ={};
+      submittedDate = {'submittedDate':'2024-05-10T15:59:50'};
+      await testingSupport.updateCaseData(caseId, submittedDate);
+      console.log('submitted date update to after carm date');
+    } else {
+      console.log('carm not enabled, updating submitted date');
+      await apiRequest.setupTokens(config.systemupdate);
+      let submittedDate ={};
+      submittedDate = {'submittedDate':'2022-05-10T15:59:50'};
+      await testingSupport.updateCaseData(caseId, submittedDate);
+      console.log('submitted date update to before carm date');
+    }
+    return caseId;
+  },
+
+  performCitizenResponse: async (user, caseId, claimType = 'SmallClaims') => {
+    console.log('This is inside performCitizenResponse : ' + caseId);
+    let eventName = 'DEFENDANT_RESPONSE_CUI';
+    let payload = {};
+    if (claimType === 'FastTrack') {
+      console.log('FastTrack claim...');
+      payload = defendantResponse.createDefendantResponse('15000');
+    } else {
+      console.log('SmallClaim...');
+      payload = defendantResponse.createDefendantResponse('1500');
+    }
+    //console.log('The payload : ' + payload);
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of performCitizenResponse()');
+  },
+
+  viewAndRespondToDefence: async (user, defenceType = config.defenceType.admitAllPayBySetDate, expectedState) => {
+    let responsePayload;
+    if (defenceType === config.defenceType.admitAllPayBySetDate) {
+      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayBySetDate();
+    } else if (defenceType === config.defenceType.admitAllPayImmediate) {
+      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayImmediately();
+    } else if (defenceType === config.defenceType.admitAllPayByInstallment) {
+      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayByInstallment();
+    } else if (defenceType === config.defenceType.partAdmitAmountPaid) {
+      responsePayload = claimantResponsePartAdmit.partAdmitAmountPaidButClaimantWantsToProceed();
+    } else if (defenceType === config.defenceType.partAdmitHaventPaidPartiallyWantsToPayImmediately) {
+      responsePayload = claimantResponsePartAdmit.partAdmitHaventPaidPartiallyWantsToPayImmediatelyButClaimantWantsToProceedWithMediation();
+    } else if (defenceType === config.defenceType.partAdmitWithPartPaymentOnSpecificDate) {
+      responsePayload = claimantResponsePartAdmit.partAdmitWithPartPaymentOnSpecificDateClaimantWantsToAcceptRepaymentPlanWithFixedCosts();
+    } else if (defenceType === config.defenceType.partAdmitWithPartPaymentAsPerInstallmentPlan) {
+      responsePayload = claimantResponsePartAdmit.partAdmitWithPartPaymentAsPerPlanClaimantWantsToAcceptRepaymentPlanWithoutFixedCosts();
+    } else if (defenceType === config.defenceType.rejectAll) {
+      responsePayload = claimantResponseRejectAll.createClaimantIntendsToProceedResponse();
+    } else if (defenceType === config.defenceType.rejectAllAlreadyPaid) {
+      responsePayload = claimantResponseRejectAll.rejectAllAlreadyPaidButClaimantWantsToProceed();
+    } else if (defenceType === config.defenceType.rejectAllDisputeAll) {
+      responsePayload = claimantResponseRejectAll.rejectAllDisputeAllButClaimantWantsToProceedWithMediation();
+    }
+    eventName = responsePayload['event'];
+    caseData = responsePayload['caseData'];
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent(expectedState);
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of viewAndRespondToDefence()');
+  },
+
+  mediationUnsuccesful: async (user, carmEnabled = false) => {
+    eventName = 'MEDIATION_UNSUCCESSFUL';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of unsuccessful mediation');
   },
 
   cleanUp: async () => {
