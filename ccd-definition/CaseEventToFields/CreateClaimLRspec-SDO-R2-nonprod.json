@@ -48,7 +48,6 @@
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Flight delay",
     "PageShowCondition": "isFlightDelayClaim=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-date-of-flight"
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateDateAndSetFlightDelayClaimType"
   },
   {
