@@ -2,12 +2,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
-    "CaseFieldID": "mediationUnsuccessfulReasonsMultiSelect",
+    "CaseFieldID": "unsuccessfulMediationReason",
     "DisplayContext": "MANDATORY",
     "PageID": "mediationUnsuccessful",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "showCarmFields=\"Yes\""
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y"
   }
 ]

@@ -32,7 +32,7 @@ const data = {
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
@@ -51,6 +51,7 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_CITIZEN_DEFENDANT: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM'),
@@ -206,7 +207,7 @@ module.exports = {
     console.log('End of viewAndRespondToDefence()');
   },
 
-  mediationUnsuccesful: async (user, carmEnabled = false) => {
+  mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
 
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -270,9 +271,7 @@ module.exports = {
 
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if ((response == 'FULL_DEFENCE' || response == 'NOT_PROCEED')) {
-      validState = 'JUDICIAL_REFERRAL';
-    }
+
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
