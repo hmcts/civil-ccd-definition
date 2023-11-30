@@ -97,6 +97,11 @@ module.exports = {
     email: 'civil-admin@mailnesia.com',
     type: 'admin'
   },
+  nbcUserWithRegionId1: {
+    password: defaultPassword,
+    email: 'nbc_admin_region1@justice.gov.uk',
+    type: 'admin'
+  },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
     email: '4917924EMP-@ejudiciary.net',

@@ -16,13 +16,15 @@ Feature('Unsuccessful mediation for spec small claim with unrepresented defendan
 Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   await prepareClaim(api_spec_cui, carmEnabled);
-  await api_spec_cui.mediationUnsuccessful(config.adminUser, carmEnabled);
+  // nbcUserWithRegionId1 doesn't exist locally
+  await api_spec_cui.mediationUnsuccessful(config.nbcUserWithRegionId1, carmEnabled);
 });
 
 Scenario('CARM not enabled', async ({api_spec_cui}) => {
   carmEnabled = false;
   await prepareClaim(api_spec_cui, carmEnabled);
-  await api_spec_cui.mediationUnsuccessful(config.adminUser, carmEnabled);
+  // nbcUserWithRegionId1 doesn't exist locally
+  await api_spec_cui.mediationUnsuccessful(config.nbcUserWithRegionId1, carmEnabled);
 });
 
 
