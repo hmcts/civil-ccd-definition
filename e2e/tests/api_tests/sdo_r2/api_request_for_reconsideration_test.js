@@ -25,7 +25,7 @@ await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', '
   'JUDICIAL_REFERRAL');
 }
 
-Scenario('1v1 request for reconsideration', async ({api}) => {
+Scenario('1v1 unspec request for reconsideration', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST');
@@ -39,7 +39,7 @@ AfterSuite(async ({api}) => {
 
 Feature('Request for reconsideration - 1v2 - spec @api-spec-1v2 @api-nonprod');
 
-Scenario('1v2 request for reconsiderationo )', async ({api_spec}) => {
+Scenario('1v2 spec request for reconsideration', async ({api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
     await api_spec.createSDO(judgeUser, 'CREATE_FAST');
