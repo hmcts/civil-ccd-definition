@@ -132,8 +132,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_LIP_APPLICANT_FOR_SIGN_SETTLEMENT_AGREEMENT",
-    "Name": "Email: Defendant Sign Settlement",
-    "Description": "Notify Applicant for sign settlement",
+    "Name": "Email:Sign Settlement",
+    "Description": "Notify applicant for sign settlement",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -145,8 +145,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_LIP_RESPONDENT_FOR_SIGN_SETTLEMENT_AGREEMENT",
-    "Name": "Email: Defendant Sign Settlement",
-    "Description": "Notify Defendant for sign settlement",
+    "Name": "Email:Sign Settlement",
+    "Description": "Notify respondent for sign settlement",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
