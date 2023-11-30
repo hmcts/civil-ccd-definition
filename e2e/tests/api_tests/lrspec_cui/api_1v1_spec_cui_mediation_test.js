@@ -11,7 +11,7 @@ async function prepareClaim(api_spec_cui, carmEnabled) {
 }
 
 
-Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm');
+Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm @api-nonprod');
 
 Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
