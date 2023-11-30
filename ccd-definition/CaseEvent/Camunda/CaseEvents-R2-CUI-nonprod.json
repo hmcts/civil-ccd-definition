@@ -14,7 +14,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_JUDGMENT_BY_DETERMINATION",
+    "ID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
     "Name": "Judgment by Determination",
     "Description": "Generate Judgment by Determination",
     "PreConditionState(s)": "*",
