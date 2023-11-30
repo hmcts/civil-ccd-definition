@@ -2433,20 +2433,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantCourtDecision",
+    "CaseFieldID": "serviceRequestReference",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
       }
     ]
   }

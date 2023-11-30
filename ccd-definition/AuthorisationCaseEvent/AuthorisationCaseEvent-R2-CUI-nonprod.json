@@ -663,6 +663,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SERVICE_REQUEST_CUI_CLAIM_ISSUE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
     "AccessControl": [
       {
