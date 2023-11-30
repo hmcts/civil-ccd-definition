@@ -344,17 +344,5 @@ module.exports = {
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
   claimantLRSelectedCourtCui:'Leeds Combined Court Centre - The Court House, 1 Oxford Row - LS1 3BG',
-  defenceType: {
-    admitAllPayImmediate: 'ADMIT_ALL_PAU_IMMEDIATE',
-    admitAllPayBySetDate: 'ADMIT_ALL_PAY_BY_SET_DATE',
-    admitAllPayByInstallment: 'ADMIT_ALL_PAY_BY_INSTALLMENTS',
-    partAdmitAmountPaid: 'PART_ADMIT_ALREADY_PAID',
-    partAdmitHaventPaidPartiallyWantsToPayImmediately: 'PART_ADMIT_PAY_IMMEDIATELY',
-    partAdmitWithPartPaymentOnSpecificDate: 'PART_ADMIT_PAY_BY_SET_DATE',
-    partAdmitWithPartPaymentAsPerInstallmentPlan: 'PART_ADMIT_PAY_BY_INSTALLMENTS',
-    rejectAll: 'REJECT_ALL',
-    rejectAllAlreadyPaid: 'REJECT_ALL_ALREADY_PAID',
-    rejectAllDisputeAll: 'REJECT_ALL_DISPUTE_ALL',
-  },
   localNoCTests: false
 };

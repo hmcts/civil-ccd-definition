@@ -28,15 +28,15 @@
       {
         "UserRoles": [
           "caseworker-civil",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"

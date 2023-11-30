@@ -176,37 +176,6 @@ module.exports = {
     console.log('End of performCitizenResponse()');
   },
 
-  viewAndRespondToDefence: async (user, defenceType = config.defenceType.admitAllPayBySetDate, expectedState) => {
-    let responsePayload;
-    if (defenceType === config.defenceType.admitAllPayBySetDate) {
-      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayBySetDate();
-    } else if (defenceType === config.defenceType.admitAllPayImmediate) {
-      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayImmediately();
-    } else if (defenceType === config.defenceType.admitAllPayByInstallment) {
-      responsePayload = claimantResponseAdmitAll.doNotAcceptAskToPayByInstallment();
-    } else if (defenceType === config.defenceType.partAdmitAmountPaid) {
-      responsePayload = claimantResponsePartAdmit.partAdmitAmountPaidButClaimantWantsToProceed();
-    } else if (defenceType === config.defenceType.partAdmitHaventPaidPartiallyWantsToPayImmediately) {
-      responsePayload = claimantResponsePartAdmit.partAdmitHaventPaidPartiallyWantsToPayImmediatelyButClaimantWantsToProceedWithMediation();
-    } else if (defenceType === config.defenceType.partAdmitWithPartPaymentOnSpecificDate) {
-      responsePayload = claimantResponsePartAdmit.partAdmitWithPartPaymentOnSpecificDateClaimantWantsToAcceptRepaymentPlanWithFixedCosts();
-    } else if (defenceType === config.defenceType.partAdmitWithPartPaymentAsPerInstallmentPlan) {
-      responsePayload = claimantResponsePartAdmit.partAdmitWithPartPaymentAsPerPlanClaimantWantsToAcceptRepaymentPlanWithoutFixedCosts();
-    } else if (defenceType === config.defenceType.rejectAll) {
-      responsePayload = claimantResponseRejectAll.createClaimantIntendsToProceedResponse();
-    } else if (defenceType === config.defenceType.rejectAllAlreadyPaid) {
-      responsePayload = claimantResponseRejectAll.rejectAllAlreadyPaidButClaimantWantsToProceed();
-    } else if (defenceType === config.defenceType.rejectAllDisputeAll) {
-      responsePayload = claimantResponseRejectAll.rejectAllDisputeAllButClaimantWantsToProceedWithMediation();
-    }
-    eventName = responsePayload['event'];
-    caseData = responsePayload['caseData'];
-    await apiRequest.setupTokens(user);
-    await assertSubmittedEvent(expectedState);
-    await waitForFinishedBusinessProcess(caseId);
-    console.log('End of viewAndRespondToDefence()');
-  },
-
   mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
 
