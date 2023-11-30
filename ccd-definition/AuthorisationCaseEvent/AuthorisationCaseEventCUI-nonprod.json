@@ -196,17 +196,17 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile",
-          "APP-SOL-SPEC-PROFILE",
-          "judge-profile"
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -281,8 +281,7 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile",
-          "judge-profile"
+          "cui-nbc-profile"
         ],
         "CRUD": "CRU"
       },
@@ -291,7 +290,8 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
