@@ -2,14 +2,26 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "addRespondent2",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "AddAnotherDefendant",
+    "PageDisplayOrder": 16,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "addApplicant2=\"No\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/get-airline-list"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "isFlightDelayClaimLbl",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FlightDelayClaim",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/get-airline-list"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -20,21 +32,20 @@
     "PageID": "FlightDelayClaim",
     "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/is-flight-delay-claim"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "flightDelayDetails",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
-    "PageID": "EnterFlightDetails",
-    "PageDisplayOrder": 24,
+    "PageID": "FlightDelayClaim",
+    "PageDisplayOrder": 23,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Flight delay",
-    "PageShowCondition": "isFlightDelayClaim=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-date-of-flight"
+    "FieldShowCondition": "isFlightDelayClaim=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validateDateAndSetFlightDelayClaimType"
   }
 ]
