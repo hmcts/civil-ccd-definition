@@ -14,5 +14,29 @@
     "FieldType": "HearingSupportLip",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1ChoosesHowToProceed",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ChooseHowToProceed",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1SignedSettlementAgreement",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1RejectedRepaymentReason",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

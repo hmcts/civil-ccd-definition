@@ -35,16 +35,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimantCourtDecision",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "ID": "claimantResponseSubmittedDate",
+    "Label": "Date claimant response Submitted",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1RejectedRepaymentReason",
+    "ID": "respondentSignSettlementAgreement",
     "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]

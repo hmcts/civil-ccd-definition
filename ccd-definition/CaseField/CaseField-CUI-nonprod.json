@@ -113,5 +113,14 @@
     "FieldType": "UserDetails",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantCourtDecision",
+    "ListElementCode": "claimantCourtDecision",
+    "Label": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "ClaimantCourtDecision",
+    "SecurityClassification": "Public"
   }
 ]
