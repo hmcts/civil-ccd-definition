@@ -343,6 +343,5 @@ module.exports = {
   djClaimantSelectedCourt: courtToBeSelected,
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
-  claimantLRSelectedCourtCui:'Leeds Combined Court Centre - The Court House, 1 Oxford Row - LS1 3BG',
   localNoCTests: false
 };

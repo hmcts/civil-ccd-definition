@@ -13,9 +13,6 @@ const claimData = require('../fixtures/events/createClaimSpec.js');
 const claimDataSpecFastLRvLiP = require('../fixtures/events/cui/createClaimSpecFastTrackCui.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/events/cui/createClaimSpecSmallCui.js');
 const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.js');
-const claimantResponseAdmitAll = require('../fixtures/events/cui/claimantResponseCuiAdmitAll.js');
-const claimantResponsePartAdmit = require('../fixtures/events/cui/claimantResponseCuiPartAdmit.js');
-const claimantResponseRejectAll = require('../fixtures/events/cui/claimantResponseCuiRejectAll.js');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
@@ -28,7 +25,6 @@ let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
-  CREATE_CLAIM_AP: (scenario) => claimData.createClaimForAccessProfiles(scenario),
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
