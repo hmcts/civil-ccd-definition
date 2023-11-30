@@ -1029,7 +1029,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondentDocsUploadedAfterBundle",
-    "Label": "Respondent uploaded documents",
+    "Label": "Defendant uploaded documents",
     "FieldType": "Collection",
     "FieldTypeParameter": "UploadEvidenceDocumentBundles",
     "SecurityClassification": "Public",
