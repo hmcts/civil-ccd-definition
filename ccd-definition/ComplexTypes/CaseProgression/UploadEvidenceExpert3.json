@@ -3,7 +3,7 @@
     "ID": "UploadEvidenceExpert3",
     "ListElementCode": "expertOptionName",
     "FieldType": "Text",
-    "ElementLabel": "Expert's names",
+    "ElementLabel": "Expert's name",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -19,7 +19,7 @@
     "ID": "UploadEvidenceExpert3",
     "ListElementCode": "expertDocumentQuestion",
     "FieldType": "Text",
-    "ElementLabel": "Name of document you have questions about",
+    "ElementLabel": "Questions for another party's expert",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -27,7 +27,7 @@
     "ID": "UploadEvidenceExpert3",
     "ListElementCode": "expertOptionUploadDate",
     "FieldType": "Date",
-    "ElementLabel": "Date statement was made",
+    "ElementLabel": "Date questions were asked",
     "HintText": "For example, 12/09/2022",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -21,8 +21,12 @@ const createAssistedOrder = () => {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
       assistedOrderMakeAnOrderForCosts: {
+        assistedOrderAssessmentSecondDropdownList1: 'STANDARD_BASIS',
+        assistedOrderAssessmentSecondDropdownList2: 'NO',
         assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderClaimantDefendantFirstDropdown: 'SUBJECT_DETAILED_ASSESSMENT',
         assistedOrderAssessmentThirdDropdownDate: date(14),
+        makeAnOrderForCostsList: 'CLAIMANT',
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
       finalOrderRepresentation: {
