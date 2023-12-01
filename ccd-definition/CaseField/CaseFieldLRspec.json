@@ -1039,7 +1039,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "responseClaimTrack",
-    "Label": "Enter Claim type",
+    "Label": "SPEC CLAIM TRACK (TEST ONLY)",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
