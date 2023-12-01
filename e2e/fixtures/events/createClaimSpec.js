@@ -38,8 +38,8 @@ const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 const value={
   value:{
-    code: 'OTHER',
-    label: 'OTHER'
+    code: 'SK247',
+    label: 'Sky Airways'
   }
 };
 
