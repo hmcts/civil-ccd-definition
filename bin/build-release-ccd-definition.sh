@@ -18,11 +18,11 @@ elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
 elif [ ${environment} == prod ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json,*CUI.json"
 else
   echo "ERROR! You are passing an environment that is not known by the script!"
   echo "       Either add the new environment to the script or specify a supported environment!"

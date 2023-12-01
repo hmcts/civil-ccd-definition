@@ -55,8 +55,7 @@
     "ShowEventNotes": "N",
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
     "CaseTypeID": "CIVIL",
