@@ -102,6 +102,11 @@ module.exports = {
     email: 'nbc_admin_region1@justice.gov.uk',
     type: 'admin'
   },
+  nbcUserLocal: {
+    password: defaultPassword,
+    email: 'nbc-team-leader@mailnesia.com',
+    type: 'admin'
+  },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
     email: '4917924EMP-@ejudiciary.net',
@@ -343,5 +348,6 @@ module.exports = {
   djClaimantSelectedCourt: courtToBeSelected,
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
-  localNoCTests: false
+  localNoCTests: false,
+  localMediationTests: false
 };
