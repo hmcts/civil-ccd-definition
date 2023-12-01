@@ -20,6 +20,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
+const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 
 let caseId, eventName;
 let caseData = {};
@@ -212,6 +213,27 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
+  },
+
+  uploadMediationDocuments: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    let eventData;
+    if (user === config.applicantSolicitorUser) {
+      eventData = mediationDocuments.uploadMediationDocuments('claimant');
+    } else {
+      eventData = mediationDocuments.uploadMediationDocuments('defendant');
+    }
+
+    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    for (let pageId of Object.keys(eventData.userInput)) {
+      await assertValidData(eventData, pageId);
+    }
+
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
   },
 
   createCaseFlags: async (user) => {

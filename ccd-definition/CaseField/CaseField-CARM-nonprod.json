@@ -1,0 +1,51 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadMediationDocumentsExplanation",
+    "Label": "If you or your client did not attend the mediation appointment to represent your case the judge may issue a penalty. The Judge may order your party to pay costs or automatically rule in the other party's favour. \n\nIf you or your client were unable to attend mediation due to exceptional circumstances, you can explain why with supporting evidence such as a doctor's note or a photograph. If the Judge accepts the reasons given for non-attendance, your party will not be issued with a penalty.\n\nYou do not have to upload supporting evidence if you or your client attended the mediation appointment.\n\nYou cannot withdraw a document once you have submitted it. If you want to add more information to something you have already submitted. you can upload the document again. You should add a version number to the name, for example, 'version 2'.\n\nThe other parties will be able to see the documents you have uploaded and you will be able to see their documents.\n\n### Deadlines for uploading documents\n\n You have until 14 days before the hearing to submit documents. You do not have to upload all documents at once. You can return to upload them later.\n\n### Before you upload your documents\n\n Before you upload a document, give it a name that tells the court what it is, for example \"Mediation non-attendance statement by Jane Smith\".\n\nEach document must be less than 100MB. You can upload the following file types: DOC/DOCX (Word), XLS/XLSM (Excel). PPT/PPTX (PowerPoint). PDF, RTF, TXT, CSV. LPG/JPEG, PNG. BMP. TIF /TIFF.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "whoIsDocumentForLabel",
+    "Label": "You can use the options below to let the court know who this\ndocument is from",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadMediationDocumentsPartyChosen",
+    "Label": "Select one of the options",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentTypeLabel1",
+    "Label": "## You can select more than one type of document",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentTypeLabel2",
+    "Label": "<details><summary><u>Mediation non-attendance</u></summary><div class=\"panel\">\n\n ### Non-attendance statement \n\n A written statement explaining why the mediation appointment was not attended \n\n ### Documents referred to in the statement \n\n Documents referred to in the statement - for example emails, photographs of relevant documents or doctor’s notes</div></details><br />",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationDocumentsType",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "MediationDocumentsType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
