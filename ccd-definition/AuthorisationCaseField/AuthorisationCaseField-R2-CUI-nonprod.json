@@ -2401,13 +2401,44 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseSubmittedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSignSettlementAgreement",
     "AccessControl": [
       {
         "UserRoles": [
           "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
+
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "serviceRequestReference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }

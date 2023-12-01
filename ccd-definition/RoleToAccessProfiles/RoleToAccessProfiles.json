@@ -336,7 +336,7 @@
     "RoleName" : "specific-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin,caseflags-admin,hearing-schedule-access",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -345,7 +345,7 @@
     "RoleName" : "challenged-access-admin",
     "Authorisation": "",
     "CaseTypeID": "CIVIL",
-    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil,caseflags-admin",
+    "AccessProfiles": "GS_profile,legal-adviser,caseworker-civil-admin,caseflags-admin,hearing-schedule-access",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

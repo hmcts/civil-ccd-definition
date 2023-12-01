@@ -191,12 +191,22 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFee",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
+    "AccessControl" : [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   },
- {
+  {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
     "AccessControl" : [
@@ -206,6 +216,12 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },

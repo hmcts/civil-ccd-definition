@@ -1,10 +1,17 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-let caseId, taskId, hearingDateIsLessThan3Weeks;
+let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsTask, validScheduleAHearingTask;
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
+const judgeUserToBeUsed = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+
+if (config.runWAApiTest) {
+  validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
+  validScheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
+}
 
 Feature('1v1 Unspec defaultJudgement');
 
@@ -24,52 +31,57 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
 
 
 Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
-  await I.login(config.judgeUser2WithRegionId4);
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-    await I.waitForText('Summary');
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
-    await I.waitForText('How do you want to add a case note?');
-    await I.judgeAddsCaseNotes();
-  }
+  await I.login(judgeUserToBeUsed);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
+  await I.waitForText('How do you want to add a case note?');
+  await I.judgeAddsCaseNotes();
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUser2WithRegionId4, caseId, config.waTaskIds.judgeUnspecDJTask);
+    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(judgeUserToBeUsed, caseId, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
+    WA.validateTaskInfo(summaryJudgmentDirectionsTask, validSummaryJudgmentDirectionsTask);
     taskId = summaryJudgmentDirectionsTask['id'];
-    api.assignTaskToUser(config.judgeUser2WithRegionId4, taskId);
+    api.assignTaskToUser(judgeUserToBeUsed, taskId);
   }
 
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUser2WithRegionId4, taskId);
+    api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
   await I.click('Sign out');
 }).retry(3);
 
-Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
-  if (['preview', 'demo'  ].includes(config.runningEnv)) {
+Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+  if (config.testEarlyAdopterCourts) {
+    if (config.runWAApiTest) {
+      const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
+      console.log('Schedule a hearing task...' , scheduleAHearingTask);
+      WA.validateTaskInfo(scheduleAHearingTask, validScheduleAHearingTask);
+      taskId = scheduleAHearingTask['id'];
+    }
     await createHearingScheduled(I);
   } else {
     if (config.runWAApiTest) {
-      const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId4, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
+      const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
       console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
       taskId = caseProgressionTakeCaseOfflineTask['id'];
     }
-    await I.login(config.hearingCenterAdminWithRegionId4);
-    await api.assignTaskToUser(config.hearingCenterAdminWithRegionId4, taskId);
+    await I.login(hearingCenterAdminToBeUsed);
+    await api.assignTaskToUser(hearingCenterAdminToBeUsed, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
-    await api.completeTaskByUser(config.judgeUser2WithRegionId4, taskId);
+    await api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
 }).retry(3);
 
 Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
-  if (['preview', 'demo'  ].includes(config.runningEnv)) {
+  if (config.testEarlyAdopterCourts) {
     await api.amendHearingDate(config.systemupdate, '2022-01-10');
     hearingDateIsLessThan3Weeks = true;
     await performConfirmTrialReadiness(I, config.defendantSolicitorUser, 'yes');
@@ -77,7 +89,7 @@ Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @mas
 }).retry(3);
 
 Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
-  if (['preview', 'demo'  ].includes(config.runningEnv)) {
+  if (config.testEarlyAdopterCourts) {
     await api.amendHearingDate(config.systemupdate, '2025-01-10');
     hearingDateIsLessThan3Weeks = false;
     await performConfirmTrialReadiness(I, config.applicantSolicitorUser, hearingDateIsLessThan3Weeks, 'no');
@@ -86,13 +98,13 @@ Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-
 }).retry(3);
 
 Scenario('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
-  if (['preview', 'demo'  ].includes(config.runningEnv)) {
+  if (config.testEarlyAdopterCourts) {
     await payHearingFee(I);
   }
 }).retry(3);
 
 async function createHearingScheduled(I) {
-    await I.login(config.hearingCenterAdminWithRegionId4);
+    await I.login(hearingCenterAdminToBeUsed);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
@@ -115,31 +127,31 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
   }
 }
 
-Scenario.skip('Verify Challenged access check for judge @e2e-wa', async ({I, WA}) => {
-  await I.login(config.judgeUserWithRegionId2);
+Scenario('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
+  await I.login(config.judgeUser2WithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Challenged access check for admin @e2e-wa', async ({I, WA}) => {
-  await I.login(config.hearingCenterAdminWithRegionId12);
+Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
+  await I.login(config.hearingCenterAdminWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
   await I.login(config.tribunalCaseworkerWithRegionId4);
   await WA.runChallengedAccessSteps(caseId);
 }).retry(3);
 
-Scenario.skip('Verify Specific access check for judge @e2e-wa', async ({I, WA, api}) => {
+Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
   await WA.runSpecificAccessRequestSteps(caseId);
   if (config.runWAApiTest) {
-    const sarTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.reviewSpecificAccessRequestJudiciary);
+    const sarTask = await api.retrieveTaskDetails(judgeUserToBeUsed, caseId, config.waTaskIds.reviewSpecificAccessRequestJudiciary);
   } else {
     console.log('WA flag is not enabled');
     return;
   }
-  await I.login(config.judgeUserWithRegionId1);
+  await I.login(judgeUserToBeUsed);
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacLeadershipJudge);
   await WA.verifyApprovedSpecificAccess(caseId);
