@@ -30,6 +30,7 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 
 let caseId, eventName;
 let caseData = {};
@@ -338,6 +339,31 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
+  },
+
+  uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
+    await apiRequest.setupTokens(user);
+
+    let eventData;
+    if (user === config.applicantSolicitorUser) {
+      eventData = mediationDocuments.uploadMediationDocuments('claimant');
+    } else {
+      if (sameDefendantSolicitor) {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
+      } else {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant');
+      }
+    }
+
+    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    for (let pageId of Object.keys(eventData.userInput)) {
+      await assertValidData(eventData, pageId);
+    }
+
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
   },
 
   amendRespondent1ResponseDeadline: async (user) => {

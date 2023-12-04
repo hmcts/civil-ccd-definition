@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "whoIsDocumentForLabel",
-    "Label": "You can use the options below to let the court know who this\ndocument is from",
+    "Label": "You can use the options below to let the court know who this document is from",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -26,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "documentTypeLabel1",
-    "Label": "## You can select more than one type of document",
+    "Label": "You can select more than one type of document \n\n ## Mediation non-attendance",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

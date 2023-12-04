@@ -1,7 +1,7 @@
 const {listElementWithCode} = require('../../../api/dataHelper');
 
 module.exports = {
-  uploadMediationDocuments: (user) => {
+  uploadMediationDocuments: (user, sameDefendantSolicitor = false) => {
     let partyChosen;
     if (user === 'claimant') {
       partyChosen = {
@@ -13,14 +13,27 @@ module.exports = {
         },
       };
     } else {
-      partyChosen = {
-        uploadMediationDocumentsPartyChosen: {
-          list_items: [
-            listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
-          ],
-          value: listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
-        },
-      };
+      if (sameDefendantSolicitor) {
+        partyChosen = {
+          uploadMediationDocumentsPartyChosen: {
+            list_items: [
+              listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe'),
+              listElementWithCode('DEFENDANT_2', 'Second Defendant'),
+              listElementWithCode('DEFENDANTS', 'Defendants 1 and 2')
+            ],
+            value: listElementWithCode('DEFENDANTS', 'Defendants 1 and 2')
+          },
+        };
+      } else {
+        partyChosen = {
+          uploadMediationDocumentsPartyChosen: {
+            list_items: [
+              listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
+            ],
+            value: listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
+          },
+        };
+      }
     }
     return {
       userInput: {
