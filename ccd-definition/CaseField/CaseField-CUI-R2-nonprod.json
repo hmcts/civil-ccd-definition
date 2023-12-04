@@ -48,13 +48,5 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "serviceRequestReference",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
