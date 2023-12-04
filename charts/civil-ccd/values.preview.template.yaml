@@ -3,9 +3,9 @@ civil-wa:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3651'
     keyVaults:
       civil:
-        image: 'hmctspublic.azurecr.io/civil/service:pr-3651'
         resourceGroup: civil
         secrets:
           - civil-idam-client-secret
