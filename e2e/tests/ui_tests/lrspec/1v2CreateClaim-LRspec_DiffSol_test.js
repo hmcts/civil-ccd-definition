@@ -62,7 +62,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
@@ -73,7 +73,7 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejec
   await LRspec.click('Sign out');
 }).retry(3);
 
-Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
+Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
   await LRspec.click('Sign out');
