@@ -14,7 +14,7 @@ async function prepareClaim(api_spec, claimAmount) {
 }
 
 async function prepareClaimOtherOption(api_spec, claimAmount) {
-  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, "ONE_V_ONE_FLIGHT_DELAY_OTHER", claimAmount);
+  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER', claimAmount);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
