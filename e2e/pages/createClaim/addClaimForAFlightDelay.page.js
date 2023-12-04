@@ -36,10 +36,10 @@ module.exports = {
     I.click('Continue');
     I.fillField('#scheduledDate-day', 1);
     I.click('Continue');
-    I.see('The data entered is not valid for Scheduled date of flight')
+    I.see('The data entered is not valid for Scheduled date of flight');
     I.fillField('#scheduledDate-month', 1);
     I.click('Continue');
-    I.see('The data entered is not valid for Scheduled date of flight')
+    I.see('The data entered is not valid for Scheduled date of flight');
     I.fillField('#scheduledDate-year', 2035);
     I.click('Continue');
     I.waitForText('Scheduled date of flight must be today or in the past','5');
