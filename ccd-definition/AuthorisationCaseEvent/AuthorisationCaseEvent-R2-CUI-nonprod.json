@@ -672,15 +672,14 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
+ },
+ {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
