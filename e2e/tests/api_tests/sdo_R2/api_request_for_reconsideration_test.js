@@ -47,6 +47,6 @@ Scenario('1v2 spec request for reconsideration', async ({api_spec}) => {
   }
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_spec}) => {
+  await api_spec.cleanUp();
 });
