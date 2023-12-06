@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "ClaimantResponseOnCourtDecisionType",
+    "ListElementCode": "ACCEPT_REPAYMENT_DATE",
+    "ListElement": "ACCEPT_REPAYMENT_DATE",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ClaimantResponseOnCourtDecisionType",
+    "ListElementCode": "JUDGE_REPAYMENT_DATE",
+    "ListElement": "JUDGE_REPAYMENT_DATE",
+    "DisplayOrder": 2
+  }
+]
