@@ -1,0 +1,42 @@
+[
+  {
+    "ID": "Experts",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "CaseFieldID": "updateExpertsDetailsForm",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "CaseFieldID": "updateExpertsDetailsForm",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "CaseFieldID": "updateExpertsDetailsForm",
+    "ListElementCode": "emailAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "CaseFieldID": "updateExpertsDetailsForm",
+    "ListElementCode": "phoneNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "CaseFieldID": "updateExpertsDetailsForm",
+    "ListElementCode": "fieldOfExpertise",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  }
+]

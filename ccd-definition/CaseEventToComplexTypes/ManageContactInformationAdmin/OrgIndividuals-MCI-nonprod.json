@@ -1,0 +1,166 @@
+[
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1OrgIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1OrgIndividuals=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant2OrgIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2OrgIndividuals=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1OrgIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1OrgIndividuals=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "OrgIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2OrgIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2OrgIndividuals=\"DO NOT SHOW IN UI\""
+  }
+]

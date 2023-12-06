@@ -4,5 +4,17 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
   }
 ]

@@ -1,0 +1,128 @@
+[
+{
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "applicant1LRIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1LRIndividuals=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent1LRIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent1LRIndividuals=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "EventHintText": "Please note this will not change your email for notifications",
+    "ListElementCode": "email",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "ListElementCode": "phone",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "LRIndividuals",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "CaseFieldID": "respondent2LRIndividuals",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "respondent2LRIndividuals=\"DO NOT SHOW IN UI\""
+  }
+]

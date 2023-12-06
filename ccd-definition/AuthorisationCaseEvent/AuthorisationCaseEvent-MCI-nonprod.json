@@ -5,8 +5,32 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_AD",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION_LR",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
