@@ -98,6 +98,7 @@ const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
+const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -365,6 +366,8 @@ module.exports = function () {
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
                  () => statementOfTruth.enterNameAndRole('claim'),
+            ...conditionalSteps(SdoR2, [
+              () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
            ] : [
@@ -395,6 +398,8 @@ module.exports = function () {
             () => pbaNumberPage.selectPbaNumber(),
             () => paymentReferencePage.updatePaymentReference(),
             () => statementOfTruth.enterNameAndRole('claim'),
+            ...conditionalSteps(SdoR2, [
+              () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
             () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
             () => event.returnToCaseDetails(),
           ];
