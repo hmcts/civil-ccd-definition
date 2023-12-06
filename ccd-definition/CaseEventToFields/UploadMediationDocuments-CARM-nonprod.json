@@ -62,5 +62,50 @@
     "PageID": "DocumentType",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
+    "CaseFieldID": "mediationDocumentUploadWarning",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "PageLabel":  "Upload documents",
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-dates"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
+    "CaseFieldID": "mediationDocumentUploadLabel",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "PageLabel":  "Upload documents",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
+    "CaseFieldID": "nonAttendanceStatementForm",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "FieldShowCondition": "mediationDocumentsType CONTAINS \"NON_ATTENDANCE_STATEMENT\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
+    "CaseFieldID": "documentsReferredForm",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentUpload",
+    "PageDisplayOrder": 4,
+    "FieldShowCondition": "mediationDocumentsType CONTAINS \"REFERRED_DOCUMENTS\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]

@@ -1,4 +1,5 @@
-const {listElementWithCode} = require('../../../api/dataHelper');
+const {listElementWithCode, date} = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 module.exports = {
   uploadMediationDocuments: (user, sameDefendantSolicitor = false) => {
@@ -38,10 +39,40 @@ module.exports = {
     return {
       userInput: {
         WhoIsDocumentFor: {
-          partyChosen,
+          ...partyChosen,
         },
         DocumentType: {
           mediationDocumentsType: ['NON_ATTENDANCE_STATEMENT', 'REFERRED_DOCUMENTS'],
+        },
+        DocumentUpload: {
+          nonAttendanceStatementForm: [
+            {
+              id: uuid.v1(),
+              value: {
+                document: {
+                  document_url: '${TEST_DOCUMENT_URL}',
+                  document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                  document_filename: '${TEST_DOCUMENT_FILENAME}'
+                },
+                documentDate: date(-1),
+                yourName: 'name'
+              },
+            }
+          ],
+          documentsReferredForm: [
+            {
+              id: uuid.v1(),
+              value: {
+                document: {
+                  document_url: '${TEST_DOCUMENT_URL}',
+                  document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                  document_filename: '${TEST_DOCUMENT_FILENAME}'
+                },
+                documentDate: date(-1),
+                documentType: 'type'
+              },
+            },
+          ],
         },
       },
     };

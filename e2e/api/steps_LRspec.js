@@ -359,9 +359,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
 
 
-    for (let pageId of Object.keys(eventData.userInput)) {
-      await assertValidData(eventData, pageId);
-    }
+    await validateEventPages(eventData);
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
   },
