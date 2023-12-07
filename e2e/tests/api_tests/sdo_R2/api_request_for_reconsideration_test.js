@@ -1,8 +1,6 @@
 const config = require('../../../config.js');
 
 const mpScenario1v1 = 'ONE_V_ONE';
-const mpScenario1v2Spec = 'ONE_V_TWO';
-const judgeUser = config.judgeUserWithRegionId1;
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
