@@ -3,32 +3,6 @@ civil-general-applications:
 civil-service:
   java:
     ingressHost: ${SERVICE_NAME}.aat.platform.hmcts.net
-    keyVaults:
-      civil:
-        resourceGroup: civil
-        secrets:
-          - civil-idam-client-secret
-          - microservicekey-civil-service
-          - system-update-user-username
-          - system-update-user-password
-          - cross-access-user-username
-          - cross-access-user-password
-          - prd-admin-user-username
-          - prd-admin-user-password
-          - AppInsightsInstrumentationKey
-          - docmosis-api-key
-          - gov-notify-api-key
-          - sendgrid-api-key
-          - robotics-notification-sender
-          - robotics-notification-recipient
-          - robotics-notification-recipient-spec
-          - launch-darkly-sdk-key
-          - ordnance-survey-api-key
-          - robotics-notification-multipartyrecipient
-          - notification-caseworker-spec-receiver
-          - default-password
-          - judge-default-password
-          - iac-default-password
     environment:
       LAUNCH_DARKLY_ENV: ccd-staging
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update
