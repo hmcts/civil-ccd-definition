@@ -1042,5 +1042,184 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectAllDocuments",
+    "Label": "## Submit all documents?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitEvidenceUploadDisclosure",
+    "Label": "Submit disclosure documents",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadDisclosure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitEvidenceUploadWitness",
+    "Label": "Submit witness documents",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadWitness",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitEvidenceUploadExpert",
+    "Label": "Submit expert documents",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadExpert",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitEvidenceUploadTrial",
+    "Label": "Submit trial documents",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "EvidenceUploadTrial",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentDisclosureList",
+    "Label": "Disclosure list",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentForDisclosure",
+    "Label": "Documents for disclosure",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentWitnessStatement",
+    "Label": "Witness statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness1",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentWitnessSummary",
+    "Label": "Witness summary",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness2",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentHearsayNotice",
+    "Label": "Notice of the intention to rely on hearsay evidence",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceWitness3",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentReferredInStatement",
+    "Label": "Documents referred to in the statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentExpertReport",
+    "Label": "Expert's report",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert1",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentJointStatement",
+    "Label": "Joint Statement of Experts / Single Joint Expert Report",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert2",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentQuestions",
+    "Label": "Questions asked of other party expert",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert3",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentAnswers",
+    "Label": "Answers to questions asked by the other party",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceExpert4",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentCaseSummary",
+    "Label": "Case summary",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentSkeletonArgument",
+    "Label": "Skeleton argument",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentAuthorities",
+    "Label": "Authorities",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentCosts",
+    "Label": "Costs",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadDocumentOnly",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "submitDocumentEvidenceForTrial",
+    "Label": "Documentary evidence for trial",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

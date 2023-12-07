@@ -1431,5 +1431,59 @@
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
     "FieldShowCondition":"evidenceUploadText = \"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_SUBMIT_APPLICANT",
+    "CaseFieldID": "selectAllDocuments",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_SUBMIT_APPLICANT",
+    "CaseFieldID": "submitEvidenceUploadDisclosure",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":"selectAllDocuments = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_SUBMIT_APPLICANT",
+    "CaseFieldID": "submitEvidenceUploadWitness",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":"selectAllDocuments = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_SUBMIT_APPLICANT",
+    "CaseFieldID": "submitEvidenceUploadExpert",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":"selectAllDocuments = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EVIDENCE_SUBMIT_APPLICANT",
+    "CaseFieldID": "submitEvidenceUploadTrial",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "DocumentSelection",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":"selectAllDocuments = \"No\""
   }
 ]
