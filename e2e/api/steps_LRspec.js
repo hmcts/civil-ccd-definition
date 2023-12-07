@@ -30,7 +30,6 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
-const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 
 let caseId, eventName;
 let caseData = {};
@@ -56,8 +55,7 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec()
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
 };
 
 const eventData = {
@@ -474,25 +472,6 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-  },
-
-  requestForReconsideration: async (user) => {
-    console.log('RequestForReconsideration for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-    eventName = 'REQUEST_FOR_RECONSIDERATION';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-    await validateEventPages(data.REQUEST_FOR_RECONSIDERATION());
-    await assertSubmittedEvent('CASE_PROGRESSION', {
-      header: '# Your request has been submitted',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   createCaseFlags: async (user) => {

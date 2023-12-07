@@ -20,7 +20,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
-const requestForReconsideration = require("../fixtures/events/requestForReconsideration");
+const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 
 let caseId, eventName;
 let caseData = {};
