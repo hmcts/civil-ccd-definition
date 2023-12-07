@@ -67,8 +67,10 @@ const airLineList={
 };
 const flightDelayDetails ={
   airlineList:{
-    ...airLineList
+    ...airLineList,
+
   },
+  flightNumber: 'WA247',
   scheduledDate: '2023-11-26'
 };
 
