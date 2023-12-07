@@ -162,6 +162,7 @@ module.exports = {
               documentWitnessSummary: [{
                 value: {
                   witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument: {
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -227,6 +228,7 @@ module.exports = {
               documentWitnessSummary: [{
                 value: {
                   witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument: {
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
