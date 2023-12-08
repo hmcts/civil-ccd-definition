@@ -1,6 +1,7 @@
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
+const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
 const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
 
 module.exports = {
@@ -94,6 +95,16 @@ module.exports = {
   adminUser: {
     password: defaultPassword,
     email: 'civil-admin@mailnesia.com',
+    type: 'admin'
+  },
+  nbcUserWithRegionId1: {
+    password: defaultPassword,
+    email: 'nbc_admin_region1@justice.gov.uk',
+    type: 'admin'
+  },
+  nbcUserLocal: {
+    password: defaultPassword,
+    email: 'nbc-team-leader@mailnesia.com',
     type: 'admin'
   },
   judgeUserWithRegionId1: {
@@ -213,6 +224,11 @@ module.exports = {
     email: 'hmcts.civil+organisation.1.superuser@gmail.com',
     type: 'systemupdate'
   },
+  systemUpdate2: {
+    password: defaultPasswordSystemUser,
+    email: 'civil-system-update@mailnesia.com',
+    type: 'systemupdate',
+  },
   definition: {
     jurisdiction: 'CIVIL',
     caseType: 'CIVIL',
@@ -295,6 +311,16 @@ module.exports = {
     type: 'bulk_system_user',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
+  defendantCitizenUser: {
+    password: defaultPassword,
+    email: 'citizen2.user@gmail.com',
+    type: 'defendant',
+  },
+  defendantLRCitizenUser:{
+    password: defaultPassword,
+    email: 'cuiuseraat@gmail.com',
+    type: 'defendant',
+  },
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
@@ -322,7 +348,6 @@ module.exports = {
   djClaimantSelectedCourt: courtToBeSelected,
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
-
-
-  localNoCTests: false
+  localNoCTests: false,
+  localMediationTests: false
 };
