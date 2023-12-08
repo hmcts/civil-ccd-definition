@@ -246,6 +246,12 @@
     "CRUD": "CRU"
   },
   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RETRIGGER_CASES",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
   "CaseTypeID": "CIVIL",
   "CaseEventID": "CREATE_SERVICE_REQUEST_API",
   "UserRole": "caseworker-civil-systemupdate",
