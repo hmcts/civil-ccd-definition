@@ -47,5 +47,110 @@
     "FieldTypeParameter": "MediationDocumentsType",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationDocumentUploadLabel",
+    "Label": "## Mediation non-attendance",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationDocumentUploadWarning",
+    "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You cannot withdraw a document once you have uploaded it</strong></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nonAttendanceStatementForm",
+    "Label": "Non-attendance statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "NonAttendanceMediationStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "documentsReferredForm",
+    "Label": "Documents referred to in statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentsReferred",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app1MediationNonAttendanceDocs",
+    "Label": "Non-attendance statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "NonAttendanceMediationStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app1MediationDocumentsReferred",
+    "Label": "Documents referred to in statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentsReferred",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app2MediationNonAttendanceDocs",
+    "Label": "Non-attendance statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "NonAttendanceMediationStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "app2MediationDocumentsReferred",
+    "Label": "Documents referred to in statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentsReferred",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "res1MediationNonAttendanceDocs",
+    "Label": "Non-attendance statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "NonAttendanceMediationStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "res1MediationDocumentsReferred",
+    "Label": "Documents referred to in statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentsReferred",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "res2MediationNonAttendanceDocs",
+    "Label": "Non-attendance statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "NonAttendanceMediationStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "res2MediationDocumentsReferred",
+    "Label": "Documents referred to in statement",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "DocumentsReferred",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

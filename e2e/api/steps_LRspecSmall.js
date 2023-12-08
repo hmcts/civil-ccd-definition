@@ -21,6 +21,8 @@ const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
+const testingSupport = require('./testingSupport');
+const lodash = require('lodash');
 
 let caseId, eventName;
 let caseData = {};
@@ -228,10 +230,7 @@ module.exports = {
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
-
-    for (let pageId of Object.keys(eventData.userInput)) {
-      await assertValidData(eventData, pageId);
-    }
+    await validateEventPages(eventData);
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
   },
@@ -425,6 +424,31 @@ function update(currentObject, modifications) {
     }
   }
   return modified;
+}
+
+const validateEventPages = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.userInput)) {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    // data = await updateCaseDataWithPlaceholders(data);
+    await assertValidData(data, pageId, solicitor);
+  }
+};
+
+async function updateCaseDataWithPlaceholders(data, document) {
+  const placeholders = {
+    TEST_DOCUMENT_URL: document.document_url,
+    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
+    TEST_DOCUMENT_FILENAME: document.document_filename
+  };
+
+  data = lodash.template(JSON.stringify(data))(placeholders);
+
+  return JSON.parse(data);
 }
 
 const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {

@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('Spec small claims mediation API test @api-spec-mediation');
+Feature('Spec small claims mediation API test @api-spec-mediation @api-nonprod');
 
 Scenario('1v1 claimant and defendant upload mediation documents', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
