@@ -38,7 +38,7 @@
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1DQRemoteHearing",
     "TabFieldDisplayOrder": 5,
-    "TabShowCondition":"respondent1ClaimResponseType= \"*\" OR respondent2ClaimResponseType= \"*\""
+    "TabShowCondition":"respondent1ClaimResponseType= \"*\" OR respondent2ClaimResponseType= \"*\" OR respondent1ClaimResponseTypeForSpec= \"*\" OR respondent2ClaimResponseTypeForSpec= \"*\""
   },
   {
     "CaseTypeID": "CIVIL",
