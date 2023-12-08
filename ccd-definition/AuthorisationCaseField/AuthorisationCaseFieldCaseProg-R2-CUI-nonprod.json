@@ -1,11 +1,19 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDate",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDuration",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
     ],
-    "CRUD": "CRU"
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
