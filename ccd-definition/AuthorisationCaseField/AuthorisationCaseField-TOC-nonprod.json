@@ -6,10 +6,15 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil",
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -20,10 +25,15 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil",
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   },
