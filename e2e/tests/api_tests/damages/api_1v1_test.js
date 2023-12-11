@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const {setupTokens} = require('../../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-prod-unspec');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-1v1 @api-prod-unspec');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -50,13 +50,13 @@ Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION');
 });
 
-// Scenario('Add case flags', async ({api}) => {
-//   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-// });
+// // Scenario('Add case flags', async ({api}) => {
+// //   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+// // });
 
-// Scenario('Manage case flags', async ({api}) => {
-//   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-// });
+// // Scenario('Manage case flags', async ({api}) => {
+// //   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+// // });
 
 // Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
 //   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);

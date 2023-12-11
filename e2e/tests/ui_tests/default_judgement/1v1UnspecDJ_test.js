@@ -6,7 +6,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const judgeUserToBeUsed = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1 //config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
