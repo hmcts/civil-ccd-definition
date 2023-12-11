@@ -1150,7 +1150,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    delete caseData.data['eaCourtLocation'];
+    delete caseData['eaCourtLocation'];
     console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
 
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
@@ -1172,7 +1172,7 @@ module.exports = {
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-    delete caseData.data['eaCourtLocation'];
+    delete caseData['eaCourtLocation'];
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim respondent for case id ' + caseId);
       let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
