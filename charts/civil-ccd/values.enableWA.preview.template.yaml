@@ -55,6 +55,10 @@ wa:
     java:
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+  wa-workflow-api:
+    java:
+      environment:
+        DB_READER_USERNAME: "hmcts"
 
 ccd-message-publisher:
   java:
