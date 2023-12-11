@@ -888,9 +888,9 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
   }
 
-  if(responseBody.case_data.responseClaimTrack === "SMALL_CLAIM" && responseBody.case_data.flightDelayDetails.airlineList.value.code === "OTHER"){
+  if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code === 'OTHER'){
     assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.applicant1DQRequestedCourt.caseLocation);
-  }else if(responseBody.case_data.responseClaimTrack === "SMALL_CLAIM" && responseBody.case_data.flightDelayDetails.airlineList.value.code !== "OTHER"){
+  }else if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code !== 'OTHER'){
     assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.flightDelayDetails.flightCourtLocation);
   }
 
