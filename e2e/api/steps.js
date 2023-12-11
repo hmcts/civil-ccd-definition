@@ -1150,7 +1150,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
-
+    delete caseData.data['eaCourtLocation'];
     console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
 
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
@@ -1172,7 +1172,7 @@ module.exports = {
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-
+    delete caseData.data['eaCourtLocation'];
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim respondent for case id ' + caseId);
       let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
@@ -1810,14 +1810,14 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
   delete responseBody.data['eaCourtLocation'];
   delete responseBody.data['documentAndNoteToAdd'];
-  delete responseBody.data['documentAndNameToAdd']; 
+  delete responseBody.data['documentAndNameToAdd'];
   delete responseBody.data['channel'];
   delete responseBody.data['disposalHearingMethodTelephoneHearing'];
   delete responseBody.data['disposalHearingSchedulesOfLoss'];
-  delete responseBody.data['disposalHearingMethod']; 
+  delete responseBody.data['disposalHearingMethod'];
   delete responseBody.data['hearingNoticeList'];
   delete responseBody.data['information'];
-  delete responseBody.data['hearingDueDate']; 
+  delete responseBody.data['hearingDueDate'];
   delete responseBody.data['disposalHearingAddNewDirections'];
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
