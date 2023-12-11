@@ -45,7 +45,7 @@ module.exports = function (){
       await this.click('//button[@type=\'submit\']');
       await this.waitForText(caseId);
       await this.waitForClickable('//a[contains(text(), \'Challenged access\')]', 60);
-      await this.click('Challenged access');
+      await this.click('//a[contains(text(), \'Challenged access\')]');
       await this.waitForText('This case requires challenged access');
       await this.waitForText('Request access');
       await this.forceClick('Request access');
