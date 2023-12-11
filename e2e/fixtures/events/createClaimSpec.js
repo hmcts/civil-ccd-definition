@@ -36,6 +36,43 @@ const claimAmount = '150000';
 
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
+const valueOther={
+  value:{
+    code: 'OTHER',
+    label: 'OTHER'
+  }
+};
+
+const airLineListOther={
+  ...valueOther
+};
+const flightDelayDetailsOther ={
+  airlineList:{
+    ...airLineListOther,
+  },
+  flightNumber: 'SK247',
+  nameOfAirline: 'Sky Airways',
+  scheduledDate: '2023-11-26'
+};
+
+const value={
+  value:{
+    code: 'WizzAir',
+    label: 'WizzAir'
+  }
+};
+
+const airLineList={
+  ...value
+};
+const flightDelayDetails ={
+  airlineList:{
+    ...airLineList,
+
+  },
+  flightNumber: 'WA247',
+  scheduledDate: '2023-11-26'
+};
 
 module.exports = {
   createClaim: (mpScenario, pbaV3) => {
@@ -386,6 +423,32 @@ module.exports = {
           }
         };
         break;
+      case 'ONE_V_ONE_FLIGHT_DELAY':
+        userData.userInput = {
+          ...userData.userInput,
+          FlightDelayClaim: {
+            isFlightDelayClaim: 'Yes',
+            flightDelayDetails: {
+              ...flightDelayDetails
+            }
+          },
+
+        };
+        break;
+
+      case 'ONE_V_ONE_FLIGHT_DELAY_OTHER':
+        userData.userInput = {
+          ...userData.userInput,
+          FlightDelayClaim: {
+            isFlightDelayClaim: 'Yes',
+            flightDelayDetails: {
+              ...flightDelayDetailsOther
+            }
+          },
+
+        };
+        break;
+
     }
 
     return userData;

@@ -5,7 +5,9 @@
     "FieldType": "Text",
     "ElementLabel": "Expert's name",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "expertOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceExpert4",
@@ -13,7 +15,9 @@
     "FieldType": "Text",
     "ElementLabel": "Other party's name",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "expertOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceExpert4",
@@ -21,7 +25,9 @@
     "FieldType": "Text",
     "ElementLabel": "Name of document with other party's questions",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "expertOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceExpert4",
@@ -30,7 +36,9 @@
     "ElementLabel": "Date statement was made",
     "HintText": "For example, 12/09/2022",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "expertOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceExpert4",
@@ -40,7 +48,9 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "expertOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceExpert4",
@@ -49,6 +59,7 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "expertDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "expertDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   }
 ]

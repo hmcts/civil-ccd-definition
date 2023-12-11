@@ -24,7 +24,7 @@
     "ID": "FlightDelayDetails",
     "ListElementCode": "scheduledDate",
     "FieldType": "Date",
-    "ElementLabel": "Scheduled date of flight",
+    "ElementLabel": "Date of flight",
     "HintText": "For example, 16 04 2021",
     "SecurityClassification": "Public",
     "Searchable": "N"

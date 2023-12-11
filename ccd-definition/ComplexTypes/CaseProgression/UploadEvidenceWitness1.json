@@ -5,7 +5,9 @@
     "FieldType": "Text",
     "ElementLabel": "Witness's name",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "witnessOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceWitness1",
@@ -14,7 +16,9 @@
     "ElementLabel": "Date statement was made",
     "HintText": "For example, 12/09/2022",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "witnessOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceWitness1",
@@ -24,7 +28,9 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "witnessOptionName != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceWitness1",
@@ -33,6 +39,7 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "witnessOptionDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "witnessOptionDocument = \"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   }
 ]

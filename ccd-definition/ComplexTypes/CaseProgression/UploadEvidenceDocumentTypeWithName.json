@@ -5,7 +5,9 @@
     "FieldType": "Text",
     "ElementLabel": "Witness's name",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "typeOfDocument != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceDocumentTypeWithName",
@@ -14,7 +16,9 @@
     "ElementLabel": "Type of document",
     "HintText": "For example, contract, invoice, receipt, email, text message, photo, social media message",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "typeOfDocument != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceDocumentTypeWithName",
@@ -23,7 +27,9 @@
     "ElementLabel": "Date document was issued or message was sent",
     "HintText": "For example, 12/09/2022",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "typeOfDocument != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceDocumentTypeWithName",
@@ -33,7 +39,9 @@
     "FieldType": "Document",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "typeOfDocument != \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "UploadEvidenceDocumentTypeWithName",
@@ -42,6 +50,7 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "documentUpload = \"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "FieldShowCondition": "documentUpload = \"DUMMY_VALUE_TO_HIDE_FIELD\"",
+    "RetainHiddenValue": "Y"
   }
 ]
