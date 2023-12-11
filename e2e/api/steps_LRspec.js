@@ -203,6 +203,49 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY') => {
+    const pbaV3 = await checkToggleEnabled(PBAv3);
+    eventName = 'CREATE_CLAIM_SPEC';
+    caseId = null;
+    caseData = {};
+
+    let createClaimData  = {};
+
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    //==============================================================
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidData(createClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+    if(await checkCaseFlagsEnabled()) {
+      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+    }
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
+  },
+
   informAgreedExtensionDate: async (user) => {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
