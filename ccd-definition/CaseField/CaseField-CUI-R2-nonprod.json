@@ -48,5 +48,12 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimMovedToMediationOn",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
   }
 ]
