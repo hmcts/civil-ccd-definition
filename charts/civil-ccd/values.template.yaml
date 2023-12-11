@@ -57,6 +57,9 @@ civil-general-applications:
 civil-service:
   java:
     releaseNameOverride: ${SERVICE_NAME}-java
+    devcpuRequests: 1000m
+    devmemoryRequests: 2048Mi
+    devmemoryLimits: 4096Mi
     imagePullPolicy: Always
     ingressHost: ${SERVICE_NAME}.preview.platform.hmcts.net
     keyVaults:
