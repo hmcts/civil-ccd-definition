@@ -64,7 +64,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTitle",
     "FieldDisplayOrder": 7,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   },
@@ -74,7 +74,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderFirstName",
     "FieldDisplayOrder": 8,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
@@ -84,7 +84,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderLastName",
     "FieldDisplayOrder": 9,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
@@ -93,6 +93,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTradingAs",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
