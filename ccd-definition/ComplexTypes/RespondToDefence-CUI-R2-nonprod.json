@@ -42,6 +42,7 @@
     "Searchable": "N"
   },
   {
+    "ID": "ClaimantLiPResponse",
     "ListElementCode": "claimantCourtDecision",
     "ElementLabel": " ",
     "FieldType": "FixedList",
