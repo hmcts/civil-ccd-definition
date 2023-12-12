@@ -96,10 +96,7 @@ module.exports = {
   },
   bulk_system_user: {
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
-      events.INITIATE_GENERAL_APPLICATION,
-      events.CHANGE_SOLICITOR_EMAIL,
-      events.ENTER_BREATHING_SPACE_SPEC,
-      events.LIFT_BREATHING_SPACE_SPEC
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
   }
