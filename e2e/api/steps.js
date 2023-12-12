@@ -1829,7 +1829,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsWitnessStatementToggle'];
   delete responseBody.data['smallClaimsWitnessStatement'];
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
-  delete responseBody.data['eaCourtLocation'];
   delete responseBody.data['documentAndNoteToAdd'];
   delete responseBody.data['documentAndNameToAdd'];
   delete responseBody.data['channel'];
