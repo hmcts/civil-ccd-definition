@@ -28,6 +28,7 @@ const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
+const requestForReconsideration = require('../fixtures/events/requestForReconsideration.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -90,7 +91,8 @@ const data = {
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
-  TRANSFER_CASE: () => transferOnlineCase.transferCase()
+  TRANSFER_CASE: () => transferOnlineCase.transferCase(),
+  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsideration()
 };
 
 const eventData = {
@@ -975,6 +977,25 @@ module.exports = {
 
   },
 
+  requestForReconsideration: async (user) => {
+    console.log('RequestForReconsideration for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.REQUEST_FOR_RECONSIDERATION());
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '# Your request has been submitted',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createFinalOrder: async (user, finalOrderRequestType) => {
     console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
@@ -1808,16 +1829,15 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsWitnessStatementToggle'];
   delete responseBody.data['smallClaimsWitnessStatement'];
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
-  delete responseBody.data['eaCourtLocation'];
   delete responseBody.data['documentAndNoteToAdd'];
-  delete responseBody.data['documentAndNameToAdd']; 
+  delete responseBody.data['documentAndNameToAdd'];
   delete responseBody.data['channel'];
   delete responseBody.data['disposalHearingMethodTelephoneHearing'];
   delete responseBody.data['disposalHearingSchedulesOfLoss'];
-  delete responseBody.data['disposalHearingMethod']; 
+  delete responseBody.data['disposalHearingMethod'];
   delete responseBody.data['hearingNoticeList'];
   delete responseBody.data['information'];
-  delete responseBody.data['hearingDueDate']; 
+  delete responseBody.data['hearingDueDate'];
   delete responseBody.data['disposalHearingAddNewDirections'];
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
