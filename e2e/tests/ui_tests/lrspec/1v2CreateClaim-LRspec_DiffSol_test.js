@@ -6,6 +6,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 const {paymentUpdate} = require('../../../api/apiRequest');
 const claimData = require('../../../fixtures/events/createClaimSpec');
+const apiRequest = require('../../../api/apiRequest');
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const respondent1 = {
@@ -25,6 +26,7 @@ Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
+  var user = config.applicantSolicitorUser;
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
   caseNumber = await LRspec.grabCaseNumber();
@@ -33,6 +35,7 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
   if (pbaV3) {
+    await apiRequest.setupTokens(user);
     await serviceRequest.openServiceRequestTab();
     await serviceRequest.payFee(caseId());
     await paymentUpdate(caseId(), '/service-request-update-claim-issued',
@@ -80,10 +83,10 @@ Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', 
 Scenario.skip('Add case flags', async ({LRspec}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
-      partyName: 'Example applicant1 company', roleOnCase: 'Applicant 1',
+      partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
       details: [PARTY_FLAGS.vulnerableUser.value]
     }, {
-      partyName: 'Example respondent1 company', roleOnCase: 'Respondent 1',
+      partyName: 'Example respondent1 company', roleOnCase: 'Defendant 1',
       details: [PARTY_FLAGS.unacceptableBehaviour.value]
     }
     ];

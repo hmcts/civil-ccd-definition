@@ -39,6 +39,7 @@ module.exports = {
               documentWitnessSummaryRes2:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -98,6 +99,7 @@ module.exports = {
               documentWitnessSummaryRes:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -159,6 +161,7 @@ module.exports = {
               documentWitnessSummaryRes:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -246,6 +249,7 @@ module.exports = {
               documentWitnessSummaryRes2:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -317,6 +321,7 @@ module.exports = {
               documentWitnessSummaryRes:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
@@ -389,6 +394,7 @@ module.exports = {
               documentWitnessSummaryRes:[{
                 value: {
                   witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
                   witnessOptionDocument:{
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',

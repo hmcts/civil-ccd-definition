@@ -1,0 +1,23 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isFlightDelayClaimLbl",
+    "Label": "## Is this an airline claim?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isFlightDelayClaim",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDelayDetails",
+    "Label": " ",
+    "FieldType": "FlightDelayDetails",
+    "SecurityClassification": "Public"
+  }
+]
