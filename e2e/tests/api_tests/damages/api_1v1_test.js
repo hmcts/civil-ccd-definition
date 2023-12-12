@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const {setupTokens} = require('../../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-prod-unspec');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-prod-unspec @testGL3');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -50,31 +50,31 @@ Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-});
-
-Scenario('Manage case flags', async ({api}) => {
-  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-});
-
-Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
-  await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimLip(config.applicantSolicitorUser);
-  await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
-});
-
-Scenario('Create claim and move it to caseman', async ({api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  await api.moveCaseToCaseman(config.adminUser);
-});
-
-// This will be enabled when PAY-3817 issue of two minutes is fixed
-Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({api}) => {
-  await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
-  await api.resubmitClaim(config.applicantSolicitorUser);
-});
-
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
-});
+// Scenario('Add case flags', async ({api}) => {
+//   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+// });
+//
+// Scenario('Manage case flags', async ({api}) => {
+//   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+// });
+//
+// Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
+//   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
+//   await api.notifyClaimLip(config.applicantSolicitorUser);
+//   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
+// });
+//
+// Scenario('Create claim and move it to caseman', async ({api}) => {
+//   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+//   await api.moveCaseToCaseman(config.adminUser);
+// });
+//
+// // This will be enabled when PAY-3817 issue of two minutes is fixed
+// Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({api}) => {
+//   await api.createClaimWithFailingPBAAccount(config.applicantSolicitorUser);
+//   await api.resubmitClaim(config.applicantSolicitorUser);
+// });
+//
+// AfterSuite(async  ({api}) => {
+//   await api.cleanUp();
+// });

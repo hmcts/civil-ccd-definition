@@ -812,8 +812,7 @@ module.exports = {
 
     await validateEventPages(data.CASE_PROCEEDS_IN_CASEMAN);
 
-    await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman,
-      'The date entered cannot be in the future');
+    await assertError('CaseProceedsInCaseman', data[eventName].invalid.CaseProceedsInCaseman, 'The date entered cannot be in the future');
 
     //TODO CMC-1245 confirmation page for event
     await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {

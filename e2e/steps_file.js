@@ -136,6 +136,7 @@ const addUnavailableDatesPage = require('./pages/addUnavailableDates/unavailable
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
+const partySelection = require('./pages/manageContactInformation/partySelection.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
 
@@ -355,6 +356,18 @@ module.exports = function () {
         () => continuePage.continue(),
         () => event.submit('Submit', 'Notification of claim sent'),
         () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async manageContactInformation() {
+      eventName = 'Manage Contact Information';
+      caseId=1702379756550858;
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => partySelection.selectParty(''),
+        // () => event.submit('Submit', 'Notification of claim sent'),
+        // () => event.returnToCaseDetails()
       ]);
     },
 

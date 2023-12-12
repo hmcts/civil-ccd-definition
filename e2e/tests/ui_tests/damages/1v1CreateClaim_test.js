@@ -27,6 +27,14 @@ let caseNumber;
 
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
+Scenario('MCI test @create-claim', async ({I}) => {
+  await I.login(config.adminUser);
+  caseNumber = '1702-3797-5655-0858,';
+  await I.manageContactInformation();
+
+}).retry(3);
+
+
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   await I.createCase(claimant1, null, respondent1, null);
