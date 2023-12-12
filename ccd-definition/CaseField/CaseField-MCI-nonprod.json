@@ -99,7 +99,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "partyTypeIndividualLabel",
+    "ID": "applicant1PartyTypeIndividualLabel",
     "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
@@ -107,7 +107,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "partyTypeCompanyLabel",
+    "ID": "applicant1PartyTypeCompanyLabel",
     "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
     "FieldType": "Label",
     "SecurityClassification": "Public",
@@ -115,7 +115,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "partyTypeSoleTraderLabel",
+    "ID": "applicant1PartyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant2PartyTypeSoleTraderLabel",
     "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
     "FieldType": "Label",
     "SecurityClassification": "Public",
