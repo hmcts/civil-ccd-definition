@@ -27,7 +27,7 @@ module.exports = {
     // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
 
 
-    /* 
+    /*
     manageCase:  'https://manage-case.aat.platform.hmcts.net/',
     authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',

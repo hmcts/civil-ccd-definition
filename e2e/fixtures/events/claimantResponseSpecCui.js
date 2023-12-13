@@ -71,10 +71,6 @@ module.exports = {
           responseData.midEventData = {
             ...responseData.midEventData,
             Hearing: {
-              respondent1DQVulnerabilityQuestions: {
-                vulnerabilityAdjustmentsRequired: 'Yes',
-                vulnerabilityAdjustments: 'test'
-              },
               respondent1DQStatementOfTruth: {
                 name: 'Test',
                 role: 'Worker'
