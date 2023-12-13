@@ -107,7 +107,7 @@ module.exports = {
             }
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnesses: {
+            respondent1DQWitnessesSmallClaim: {
               witnessesToAppear: 'Yes',
               details: [
                 element({
