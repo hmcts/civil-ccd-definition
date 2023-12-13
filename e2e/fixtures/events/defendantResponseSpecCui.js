@@ -31,7 +31,7 @@ module.exports = {
             responseClaimExpertSpecRequired: 'No'
           },
           SmallClaimWitnesses: {
-            respondent1DQWitnesses: {
+            respondent1DQWitnessesSmallClaim: {
               witnessesToAppear: 'Yes',
               details: [
                 element({
@@ -361,7 +361,7 @@ module.exports = {
             responseClaimExpertSpecRequired2: 'No'
           },
           SmallClaimWitnesses: {
-            respondent2DQWitnesses: {
+            respondent2DQWitnessesSmallClaim: {
               witnessesToAppear: 'Yes',
               details: [
                 element({
