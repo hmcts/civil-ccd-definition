@@ -96,5 +96,5 @@
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "packageManager": "yarn@1.22.21"
+  "packageManager": "yarn@3.5.1"
 }
