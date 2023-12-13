@@ -9,6 +9,12 @@
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   }
