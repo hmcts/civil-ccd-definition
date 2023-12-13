@@ -34,18 +34,18 @@
   },
   {
     "ID": "ClaimantLiPResponse",
-    "ListElementCode": "applicant1RejectedRepaymentReason",
-    "ElementLabel": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ClaimantLiPResponse",
     "ListElementCode": "claimantCourtDecision",
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "RepaymentDecisionType",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1RejectedRepaymentReason",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]

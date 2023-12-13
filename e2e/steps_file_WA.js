@@ -43,10 +43,8 @@ module.exports = function (){
       await this.waitForElement('#caseRef');
       await this.fillField('#caseRef', caseId);
       await this.click('//button[@type=\'submit\']');
-      await this.waitForText(caseId);
-      await this.waitForClickable('//a[contains(text(), \'Challenged access\')]', 60);
-      await this.click('Challenged access');
-      await this.waitForText('This case requires challenged access');
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}`);
+      await this.waitForText('This case requires challenged access', 60);
       await this.waitForText('Request access');
       await this.forceClick('Request access');
       await this.waitForText('To determine if the case needs to be consolidated');

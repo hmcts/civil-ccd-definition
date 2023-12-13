@@ -1,6 +1,12 @@
 [
   {
     "ID": "DocumentType",
+    "ListElementCode": "DRAFT_CLAIM_FORM",
+    "ListElement": "Draft claim form",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "INTERLOCUTORY_JUDGEMENT",
     "ListElement": "Interlock judgement",
     "DisplayOrder": 16
