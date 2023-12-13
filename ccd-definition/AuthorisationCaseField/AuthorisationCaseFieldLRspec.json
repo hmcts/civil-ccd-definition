@@ -945,7 +945,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
-    "UserRole": "caseworker-civil-solicitor",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "legal-adviser"
+    ],
     "CRUD": "CR"
   },
   {
