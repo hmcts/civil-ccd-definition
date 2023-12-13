@@ -23,8 +23,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser",
-          "caseworker-civil-admin"
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
