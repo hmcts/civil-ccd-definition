@@ -184,7 +184,8 @@
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
   },
    {
      "ID": "SecondClaimant",

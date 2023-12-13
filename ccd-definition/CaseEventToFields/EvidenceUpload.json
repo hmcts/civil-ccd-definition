@@ -482,7 +482,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"DOCUMENTS_REFERRED\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTS_REFERRED\" AND caseTypeFlag != \"ApplicantTwoFields\""
   },
   {
@@ -626,7 +625,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_STATEMENT\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_STATEMENT\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -638,7 +636,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"WITNESS_SUMMARY\" OR witnessSelectionEvidenceSmallClaim CONTAINS \"WITNESS_SUMMARY\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -650,7 +647,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"witnessSelectionEvidence CONTAINS \"NOTICE_OF_INTENTION\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -674,7 +670,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"EXPERT_REPORT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"EXPERT_REPORT\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -686,7 +681,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"JOINT_STATEMENT\" OR expertSelectionEvidenceSmallClaim CONTAINS \"JOINT_STATEMENT\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -698,7 +692,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"QUESTIONS_FOR_EXPERTS\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -710,7 +703,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"expertSelectionEvidence CONTAINS \"ANSWERS_FOR_EXPERTS\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -770,7 +762,6 @@
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y",
     "FieldShowCondition":"trialSelectionEvidence CONTAINS \"DOCUMENTARY\" OR trialSelectionEvidenceSmallClaim CONTAINS \"DOCUMENTARY\" AND caseTypeFlag = \"ApplicantTwoFields\""
   },
   {
@@ -793,7 +784,6 @@
     "DisplayContext": "READONLY",
     "PageID": "EvidenceUpload",
     "PageDisplayOrder": 1,
-    "PageLabel": "Upload your documents",
     "ShowSummaryChangeOption": "N"
   },
   {

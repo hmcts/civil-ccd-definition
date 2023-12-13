@@ -15,13 +15,9 @@ const respondent1 = {
   partyPhone: '07898678902',
 };
 const respondent2 = {
-  type: 'INDIVIDUAL',
-  individualFirstName: 'Foo',
-  individualLastName: 'Bar',
-  individualTitle: 'Dr',
+  type: 'COMPANY',
+  companyName: 'Google Inc',
   primaryAddress: buildAddress('second respondent'),
-  partyEmail: 'foo.bar@example.com',
-  partyPhone: '07898678912',
 };
 const respondent1WithPartyName = {
   ...respondent1,
@@ -30,8 +26,8 @@ const respondent1WithPartyName = {
 };
 const respondent2WithPartyName = {
   ...respondent2,
-  partyName: 'Dr Foo Bar',
-  partyTypeDisplayValue: 'Individual',
+  partyName: 'Google Inc',
+  partyTypeDisplayValue: 'Company',
 };
 const applicant1 = {
   type: 'COMPANY',

@@ -9,7 +9,7 @@ module.exports = {
         },
         Mediation: {
           applicant1ClaimMediationSpecRequired: {
-            hasAgreedFreeMediation: 'Yes'
+            hasAgreedFreeMediation: 'No'
           }
         },
         SmallClaimExperts: {
