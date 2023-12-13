@@ -204,6 +204,7 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    return caseId;
   },
 
 
