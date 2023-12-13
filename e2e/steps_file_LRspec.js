@@ -98,6 +98,7 @@ const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
+const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -402,6 +403,85 @@ module.exports = function () {
           await this.triggerStepsWithScreenshot(steps);
          caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
   },
+
+    async createCaseSpecifiedForFlightDelay(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
+      output.log('Create claim - Specified');
+      eventName = 'Create claim - Specified';
+
+      //const twoVOneScenario = claimant1 && claimant2;
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+      const SdoR2 = await checkToggleEnabled(SDOR2);
+      output.log('--------------createCaseSpecified calling------------');
+      await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
+      output.log('--------------createCaseSpecified finished------------');
+      let steps = pbaV3 ? [
+        () => this.clickContinue(),
+        () => this.clickContinue(),
+        () => solicitorReferencesPage.enterReferences(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...conditionalSteps(claimant2 == null, [
+          () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+        ]),
+        ...secondDefendantSteps(respondent2, respondent1.represented),
+        ...conditionalSteps(SdoR2, [
+          () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
+        () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+        () => specTimelinePage.addManually(),
+        () => specAddTimelinePage.addTimeline(),
+        () => specListEvidencePage.addEvidence(),
+        () => specClaimAmountPage.addClaimItem(claimAmount),
+        () => this.clickContinue(),
+        () => specInterestPage.addInterest(),
+        () => specInterestValuePage.selectInterest(),
+        () => specInterestRatePage.selectInterestRate(),
+        () => specInterestDateStartPage.selectInterestDateStart(),
+        () => specInterestDateEndPage.selectInterestDateEnd(),
+        () => this.clickContinue(),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        ...conditionalSteps(SdoR2, [
+          () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
+        () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
+        () => event.returnToCaseDetails(),
+      ] : [
+        () => this.clickContinue(),
+        () => this.clickContinue(),
+        () => solicitorReferencesPage.enterReferences(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...conditionalSteps(claimant2 == null, [
+          () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+        ]),
+        ...secondDefendantSteps(respondent2, respondent1.represented),
+        ...conditionalSteps(SdoR2, [
+          () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
+        () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+        () => specTimelinePage.addManually(),
+        () => specAddTimelinePage.addTimeline(),
+        () => specListEvidencePage.addEvidence(),
+        () => specClaimAmountPage.addClaimItem(claimAmount),
+        () => this.clickContinue(),
+        () => specInterestPage.addInterest(),
+        () => specInterestValuePage.selectInterest(),
+        () => specInterestRatePage.selectInterestRate(),
+        () => specInterestDateStartPage.selectInterestDateStart(),
+        () => specInterestDateEndPage.selectInterestDateEnd(),
+        () => this.clickContinue(),
+        () => pbaNumberPage.selectPbaNumber(),
+        () => paymentReferencePage.updatePaymentReference(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        ...conditionalSteps(SdoR2, [
+          () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
+        () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+        () => event.returnToCaseDetails(),
+      ];
+
+      await this.triggerStepsWithScreenshot(steps);
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
 
    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
        eventName = 'Inform agreed extension date';
