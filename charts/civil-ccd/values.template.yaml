@@ -110,6 +110,8 @@ civil-service:
             alias: notification.caseworker.spec.receiver
           - name: mediation-notification-sender
             alias: mediation.emails.sender
+          - name: mediation-notification-recipient
+            alias: mediation.emails.recipient
           - name: hmc-servicebus-shared-access-key-tf
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     environment:
@@ -128,7 +130,6 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.platform.hmcts.net/service-request-update-claim-issued
       ACA_SERVICE_API_BASEURL: http://${SERVICE_NAME}-aac-manage-case-assignment
-      MEDIATION_EMAILS_RECIPIENT: "deepthi.doppalapudi@hmcts.net"
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false

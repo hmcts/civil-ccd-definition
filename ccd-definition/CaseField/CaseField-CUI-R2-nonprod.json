@@ -51,13 +51,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimMovedToMediationOn",
-    "Label": " ",
-    "FieldType": "Date",
-    "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "serviceRequestReference",
     "Label": " ",
     "FieldType": "Text",
