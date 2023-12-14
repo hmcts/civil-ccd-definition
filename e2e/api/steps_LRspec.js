@@ -875,19 +875,6 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
   }
 };
 
-const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
-  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
-  const responseBody = await response.json();
-  assert.equal(response.status, 201);
-  assert.equal(responseBody.state, expectedState);
-
-  if (eventName === 'CREATE_CLAIM_SPEC') {
-    caseId = responseBody.id;
-    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
-    console.log('Case created: ' + caseId);
-  }
-};
-
 const validateEventPagesDefaultJudgments = async (data, scenario) => {
   //transform the data
   console.log('validateEventPages');
