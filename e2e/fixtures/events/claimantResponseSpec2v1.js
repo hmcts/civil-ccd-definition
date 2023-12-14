@@ -97,10 +97,6 @@ module.exports = {
             claimant1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             claimant2ClaimResponseTypeForSpec: 'FULL_DEFENCE',
             defendantSingleResponseToBothClaimants: 'Yes',
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
