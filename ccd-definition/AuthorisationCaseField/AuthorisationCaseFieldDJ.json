@@ -275,6 +275,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
           "judge-profile",
           "caseworker-civil",
           "caseworker-civil-staff"
