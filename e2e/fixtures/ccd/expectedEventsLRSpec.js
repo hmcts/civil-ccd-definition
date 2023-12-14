@@ -62,34 +62,48 @@ module.exports = {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
-      events.AMEND_PARTY_DETAILS
+      events.AMEND_PARTY_DETAILS,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE
+      events.ADD_CASE_NOTE,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
     PENDING_CASE_ISSUED: [
-      events.AMEND_PARTY_DETAILS
+      events.AMEND_PARTY_DETAILS,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ],
 
     AWAITING_DEFENDANT_RESPONSE: [
       events.ADD_CASE_NOTE,
       events.CASE_PROCEEDS_IN_CASEMAN,
-      events.AMEND_PARTY_DETAILS
+      events.AMEND_PARTY_DETAILS,
+      events.MANAGE_DOCUMENTS,
+      events.RESET_PIN
     ]
   }
 };

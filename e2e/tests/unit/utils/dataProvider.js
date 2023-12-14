@@ -12,8 +12,8 @@ const exclusions = new Map([
   ['preview', ['-prod.json']],
   ['demo', ['UserProfile.json','-prod.json']],
   ['aat', ['UserProfile.json','-prod.json']],
-  ['prod', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']],
-  ['staging', ['UserProfile.json','-nonprod.json','GAspec.json','CUI.json']]
+  ['prod', ['UserProfile.json','-nonprod.json','GAspec.json']],
+  ['staging', ['UserProfile.json','-nonprod.json','GAspec.json']]
 ]);
 
 const ccdData = {

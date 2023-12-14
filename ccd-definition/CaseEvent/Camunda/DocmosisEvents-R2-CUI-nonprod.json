@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
-    "Name": "Email: Notify DJ",
-    "Description": "Generates default judgment received email",
+    "ID": "GENERATE_DRAFT_FORM",
+    "Name": "Generate draft claim form",
+    "Description": "Generates draft claim form",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -12,5 +12,4 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
-
 ]

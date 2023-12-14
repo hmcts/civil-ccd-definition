@@ -14,13 +14,13 @@
   {
     "ID": "FinalOrdersClaimantRepresentationList",
     "ListElementCode": "COUNSEL_FOR_CLAIMANT",
-    "ListElement": "Counsel for claimant",
+    "ListElement": "Counsel for the claimant",
     "DisplayOrder": 1
   },
   {
     "ID": "FinalOrdersClaimantRepresentationList",
     "ListElementCode": "SOLICITOR_FOR_CLAIMANT",
-    "ListElement": "Solicitor for claimant",
+    "ListElement": "Solicitor for the claimant",
     "DisplayOrder": 2
   },
   {
@@ -50,13 +50,13 @@
   {
     "ID": "FinalOrdersDefendantRepresentationList",
     "ListElementCode": "COUNSEL_FOR_DEFENDANT",
-    "ListElement": "Counsel for defendant",
+    "ListElement": "Counsel for the defendant",
     "DisplayOrder": 1
   },
   {
     "ID": "FinalOrdersDefendantRepresentationList",
     "ListElementCode": "SOLICITOR_FOR_DEFENDANT",
-    "ListElement": "Solicitor for defendant",
+    "ListElement": "Solicitor for the defendant",
     "DisplayOrder": 2
   },
   {
