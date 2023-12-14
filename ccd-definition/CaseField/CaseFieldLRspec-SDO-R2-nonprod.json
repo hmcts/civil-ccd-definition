@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isFlightDelayClaimLbl",
-    "Label": "## Is this claim for a flight delay?",
+    "Label": "## Is this an airline claim?",
     "FieldType": "Label",
     "SecurityClassification": "Public"
   },

@@ -166,5 +166,17 @@ module.exports = {
     name: 'Manage Contact Information',
     description: 'Updated party contact details',
     order: 99
+  },
+  MANAGE_DOCUMENTS: {
+    id: 'MANAGE_DOCUMENTS',
+    name: 'Manage Documents',
+    description: 'Manage Documents',
+    order: 4
+  },
+  RESET_PIN: {
+    id: 'RESET_PIN',
+    name: 'Reset Pin',
+    description: 'Reset Pin for case',
+    order: 7
   }
 };

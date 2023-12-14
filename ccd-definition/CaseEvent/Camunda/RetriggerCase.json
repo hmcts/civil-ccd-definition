@@ -8,6 +8,6 @@
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "publish": "Y"
+    "Publish": "Y"
   }
 ]
