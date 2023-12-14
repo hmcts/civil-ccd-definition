@@ -141,10 +141,6 @@ module.exports = {
             respondent1DQHearing: {
               hearingLength: 'ONE_DAY'
             },
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
