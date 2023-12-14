@@ -9,11 +9,20 @@ module.exports = {
     }
   },
 
-  async selectDocumentType() {
+  async selectDocumentType(docType) {
     await I.waitForText('Select the type of document you want to upload', 10);
     await I.see('Mediation non-attendance');
-    I.click(this.fields.options.nonAttendance);
-    I.click(this.fields.options.referredDocs);
+    switch (docType) {
+      case 'Both docs': {
+        I.click(this.fields.options.nonAttendance);
+        I.click(this.fields.options.referredDocs);
+        break;
+      }
+      case 'Non-attendance': {
+        I.click(this.fields.options.nonAttendance);
+        break;
+      }
+    }
     await I.clickContinue();
   },
 };

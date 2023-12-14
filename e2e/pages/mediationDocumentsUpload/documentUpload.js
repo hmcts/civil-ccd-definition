@@ -44,6 +44,5 @@ module.exports = {
     I.fillField(this.fields.documentsReferredForm.month, '10');
     I.fillField(this.fields.documentsReferredForm.year, '2022');
     I.attachFile(this.fields.documentsReferredForm.document, file);
-    await I.clickContinue();
   },
 };

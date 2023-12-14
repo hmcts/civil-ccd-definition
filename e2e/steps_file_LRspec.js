@@ -748,15 +748,22 @@ module.exports = function () {
       ]);
     },
 
-    async uploadMediationDocs(caseId) {
+    async uploadMediationDocs(caseId, partyType, docType) {
       eventName = 'Upload mediation documents';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => mediationDocumentsExplanation.uploadADocument(),
-        () => whoIsFor.selectOptions(),
-        () => documentType.selectDocumentType(),
-        () => documentUpload.fillNonAttendanceStatement(TEST_FILE_PATH),
-        () => documentUpload.fillDocumentsReferredForm(TEST_FILE_PATH),
+        () => whoIsFor.selectOptions(partyType),
+        () => documentType.selectDocumentType(docType),
+        ... conditionalSteps(docType === 'Both docs', [
+          () => documentUpload.fillNonAttendanceStatement(TEST_FILE_PATH),
+          () => documentUpload.fillDocumentsReferredForm(TEST_FILE_PATH),
+          () => this.clickContinue(),
+        ]),
+        ... conditionalSteps(docType === 'Non-attendance', [
+          () => documentUpload.fillNonAttendanceStatement(TEST_FILE_PATH),
+          () => this.clickContinue(),
+        ]),
         () => event.submitWithoutHeader('Submit')
       ]);
     },
