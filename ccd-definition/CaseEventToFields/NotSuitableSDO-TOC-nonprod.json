@@ -100,5 +100,16 @@
     "PageDisplayOrder": 9,
     "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NotSuitable_SDO",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "NotSuitableSDO",
+    "PageDisplayOrder": 10,
+    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
