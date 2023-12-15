@@ -6,6 +6,8 @@ module.exports = {
     options: {
       bothClaimants: 'input[id*="CLAIMANTS"]',
       defendant1: 'input[id*="DEFENDANT_1"]',
+      defendant2: 'input[id*="DEFENDANT_2"]',
+      claimant1: 'input[id*="CLAIMANT_1"]',
     }
   },
 
@@ -19,6 +21,14 @@ module.exports = {
       }
       case 'Defendant 1': {
         I.click(this.fields.options.defendant1);
+        break;
+      }
+      case 'Defendant 2': {
+        I.click(this.fields.options.defendant2);
+        break;
+      }
+      case 'Claimant 1': {
+        I.click(this.fields.options.claimant1);
         break;
       }
     }
