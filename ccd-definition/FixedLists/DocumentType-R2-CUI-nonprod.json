@@ -16,5 +16,17 @@
     "ListElementCode": "LIP_MANUAL_DETERMINATION",
     "ListElement": "Claimant Lip Manual Determination",
     "DisplayOrder": 17
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": " CCJ_REQUEST_ADMISSION",
+    "ListElement": "CCJ Request Admission",
+    "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": " CCJ_REQUEST_DETERMINATION",
+    "ListElement": "CCJ Request Determination",
+    "DisplayOrder": 19
   }
 ]
