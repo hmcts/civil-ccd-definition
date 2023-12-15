@@ -40,5 +40,14 @@
     "FieldTypeParameter": "ClaimantResponseOnCourtDecisionType",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "claimantCourtDecision",
+    "ElementLabel": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "RepaymentDecisionType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
