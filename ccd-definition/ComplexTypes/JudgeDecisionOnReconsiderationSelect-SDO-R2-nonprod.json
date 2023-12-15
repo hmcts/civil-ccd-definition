@@ -1,0 +1,67 @@
+[
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationSelectLbl",
+    "ElementLabel": "**Do you wish to uphold the previous order made?**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationSelectList",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseToReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },{
+  "ID": "JudgeDecisionOnReconsiderationSelect",
+  "ListElementCode": "reasonForReconsiderationLblYes",
+  "ElementLabel": "### Yes",
+  "FieldType": "Label",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+},
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationTxtYes",
+    "ElementLabel": "Reason for upholding previous order",
+    "HintText": "State the reason why previous order is upheld (i.e. previous order doesn't need amending.all information on the claim has been taken into account and directions order drawn are all in order)",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationLblNoTitle",
+    "ElementLabel": "### No",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationLblNoTxt",
+    "ElementLabel": "If you select this option, a new SDO task for this case is created and appears in \"Available Tasks\" on the main dashboard.You will need to go there to re-select the case to continue.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationLblAmendingTitle",
+    "ElementLabel": "### No,previous order needs amending",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JudgeDecisionOnReconsiderationSelect",
+    "ListElementCode": "reasonForReconsiderationLblAmendingTxt",
+    "ElementLabel": "If you wish to do this you should select \"general order\" from dropdown menu on the right of the screen.This will allow you to make a bespoke order in the case.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

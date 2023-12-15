@@ -32,7 +32,7 @@ Scenario('1v1 unspec request for reconsideration', async ({api}) => {
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
 
 Feature('Request for reconsideration - 1v1 - spec @api-spec-1v1 @api-nonprod');
@@ -46,5 +46,5 @@ Scenario('1v1 spec request for reconsideration', async ({api_spec_small}) => {
 });
 
 AfterSuite(async ({api_spec_small}) => {
-  await api_spec_small.cleanUp();
+ // await api_spec_small.cleanUp();
 });

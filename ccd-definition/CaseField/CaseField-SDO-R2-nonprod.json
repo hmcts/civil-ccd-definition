@@ -22,5 +22,37 @@
     "FieldType": "ReasonForReconsideration",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeResponseToReconsiderationSelect",
+    "Label": " ",
+    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "judgeResponseToReconsiderationDetailsYes",
+  "Label": " ",
+  "FieldType": "JudgeDecisionOnReconsiderationSelect",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeResponseToReconsiderationDetailsNo",
+    "Label": " ",
+    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeResponseToReconsiderationDetailsAmending",
+    "Label": " ",
+    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

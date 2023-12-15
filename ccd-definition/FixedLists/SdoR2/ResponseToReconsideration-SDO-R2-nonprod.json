@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "ResponseToReconsideration",
+    "ListElementCode": "YES",
+    "ListElement": "Yes",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "ResponseToReconsideration",
+    "ListElementCode": "CREATE_SDO",
+    "ListElement": "No,create a new SDO",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "ResponseToReconsideration",
+    "ListElementCode": "CREATE_GENERAL_ORDER",
+    "ListElement": "No,previous order needs amending",
+    "DisplayOrder": 3
+  }
+]

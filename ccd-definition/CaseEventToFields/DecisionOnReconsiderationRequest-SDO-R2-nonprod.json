@@ -1,0 +1,65 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "reasonForReconsiderationSeparator",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Request for reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "judgeResponseToReconsiderationSelect",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Request for reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "judgeResponseToReconsiderationDetailsYes",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Request for reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"YES\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "judgeResponseToReconsiderationDetailsNo",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Request for reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"CREATE_SDO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "judgeResponseToReconsiderationDetailsAmending",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "COMPLEX",
+    "PageID": "JudgeResponseToReconsideration",
+    "PageLabel": "Request for reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"CREATE_GENERAL_ORDER\""
+  }
+]
