@@ -214,7 +214,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:latest
+    image: hmctspublic.azurecr.io/xui/webapp:prod-7926f0d-20231130153228
     memoryRequests: 2Gi
     cpuRequests: 2000m
     memoryLimits: 4Gi
