@@ -26,8 +26,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "judgeResponseToReconsiderationSelect",
-    "Label": " ",
-    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "Label": "Do you wish to uphold the previous order made?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ResponseToReconsideration",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -16,7 +16,7 @@
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "judgeResponseToReconsiderationSelect",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "JudgeResponseToReconsideration",
     "PageLabel": "Request for reconsideration",
     "PageDisplayOrder": 1,
@@ -34,7 +34,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"YES\""
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect=\"YES\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -47,7 +47,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"CREATE_SDO\""
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect=\"CREATE_SDO\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -60,6 +60,6 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "judgeResponseToReconsiderationSelect.reasonForReconsiderationSelectList=\"CREATE_GENERAL_ORDER\""
+    "FieldShowCondition": "judgeResponseToReconsiderationSelect=\"CREATE_GENERAL_ORDER\""
   }
 ]

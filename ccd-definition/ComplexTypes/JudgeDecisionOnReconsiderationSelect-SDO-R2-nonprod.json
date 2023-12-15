@@ -1,28 +1,12 @@
 [
   {
-    "ID": "JudgeDecisionOnReconsiderationSelect",
-    "ListElementCode": "reasonForReconsiderationSelectLbl",
-    "ElementLabel": "**Do you wish to uphold the previous order made?**",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "JudgeDecisionOnReconsiderationSelect",
-    "ListElementCode": "reasonForReconsiderationSelectList",
-    "ElementLabel": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ResponseToReconsideration",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },{
   "ID": "JudgeDecisionOnReconsiderationSelect",
   "ListElementCode": "reasonForReconsiderationLblYes",
   "ElementLabel": "### Yes",
   "FieldType": "Label",
   "SecurityClassification": "Public",
   "Searchable": "N"
-},
+  },
   {
     "ID": "JudgeDecisionOnReconsiderationSelect",
     "ListElementCode": "reasonForReconsiderationTxtYes",
