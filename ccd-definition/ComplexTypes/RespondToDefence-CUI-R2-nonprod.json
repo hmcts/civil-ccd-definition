@@ -34,10 +34,10 @@
   },
   {
     "ID": "ClaimantLiPResponse",
-    "ListElementCode": "claimantCourtDecision",
+    "ListElementCode": "claimantResponseOnCourtDecision",
     "ElementLabel": " ",
     "FieldType": "FixedList",
-    "FieldTypeParameter": "RepaymentDecisionType",
+    "FieldTypeParameter": "ClaimantResponseOnCourtDecisionType",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
