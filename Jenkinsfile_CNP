@@ -6,7 +6,7 @@ import uk.gov.hmcts.contino.GithubAPI
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
-def camundaBranch = "master"
+def camundaBranch = "feat/civ-9947-manage-contact-info-history"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
