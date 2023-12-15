@@ -8,7 +8,7 @@ maintainers:
 
 dependencies:
   - name: civil-service
-    version: 0.0.57
+    version: 0.0.48
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
     version: 0.0.28
