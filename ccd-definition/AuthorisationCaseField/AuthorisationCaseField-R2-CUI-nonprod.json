@@ -2446,8 +2446,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1JudgmentByDeterminationForm",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CR"
+    "CaseFieldID": "caseWorkerDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

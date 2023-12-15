@@ -59,9 +59,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "applicant1JudgmentByDeterminationForm",
-    "Label": " ",
-    "FieldType": "CaseDocument",
+    "ID": "caseWorkerDocuments",
+    "Label": "Administrator Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
