@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../../config.js');
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+
 
 let civilCaseReference;
 
@@ -28,7 +30,7 @@ Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nigh
   console.log('1v2 Spec claims created : ' + civilCaseReference);
 
   console.log('Create SDO');
-  await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL');
+  await api_spec.createSDO(judgeUser, 'CREATE_SMALL');
   await LRspec.wait(20);
 
   await LRspec.login(config.applicantSolicitorUser);
