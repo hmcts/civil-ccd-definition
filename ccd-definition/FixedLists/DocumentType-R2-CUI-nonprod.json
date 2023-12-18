@@ -4,5 +4,11 @@
     "ListElementCode": "DRAFT_CLAIM_FORM",
     "ListElement": "Draft claim form",
     "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT",
+    "ListElement": "Defendant settlement agreement form",
+    "DisplayOrder": 15
   }
 ]
