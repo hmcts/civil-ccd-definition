@@ -2,7 +2,7 @@
 
 const config = require('../../../../config.js');
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-
+const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
 let civilCaseReference;
 
@@ -22,7 +22,7 @@ Scenario('2v1 claimant and defendant upload mediation documents @carm @non-prod-
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 });
 
-Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nightly-nonprod', async ({api_spec, LRspec}) => {
+Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nightly-nonprod @123', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL');
@@ -38,19 +38,19 @@ Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nigh
   await LRspec.click('Sign out');
 
   console.log('Schedule Hearing');
-  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'SMALL_CLAIMS');
+  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
   await LRspec.click('Sign out');
 
   console.log('Prepare for Hearing Conduct Hearing');
   await api_spec.amendHearingDueDate(config.systemupdate);
-  await api_spec.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+  await api_spec.hearingFeePaid(hearingCenterAdminToBeUsed);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 2', 'Both docs');
   await LRspec.click('Sign out');
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  // await api.cleanUp();
 });
