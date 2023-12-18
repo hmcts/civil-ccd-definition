@@ -70,5 +70,70 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "isMediationContactNameCorrect",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "alternativeMediationContactPerson",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "isMediationEmailCorrect",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "alternativeMediationEmail",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "isMediationPhoneCorrect",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "alternativeMediationTelephone",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "hasUnavailabilityNextThreeMonths",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MediationLiP",
+    "ListElementCode": "unavailableDatesForMediation",
+    "ElementLabel": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
