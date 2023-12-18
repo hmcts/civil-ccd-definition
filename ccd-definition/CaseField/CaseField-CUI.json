@@ -113,5 +113,12 @@
     "FieldType": "UserDetails",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimMovedToMediationOn",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public"
   }
 ]
