@@ -417,8 +417,6 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
-
-
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
