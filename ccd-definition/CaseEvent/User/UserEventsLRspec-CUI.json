@@ -45,7 +45,7 @@
     "Name": "Request Judgement by Admission",
     "Description": "Request Judgement by Admission (Specified)",
     "DisplayOrder": 10,
-    "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION",
+    "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION;All_FINAL_ORDERS_ISSUED",
     "PostConditionState": "*",
     "EventEnablingCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"IMMEDIATELY\"",
     "SecurityClassification": "Public",
