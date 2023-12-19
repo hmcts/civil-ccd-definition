@@ -1689,7 +1689,8 @@
     "CaseEventFieldLabel": "Support with access needs",
     "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1701,7 +1702,8 @@
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1714,7 +1716,8 @@
     "CaseEventFieldLabel": "Vulnerability Questions",
     "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1726,7 +1729,8 @@
     "PageID": "VulnerabilityQuestions",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative != \"Yes\"",
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "Vulnerability Questions"
+    "CaseEventFieldLabel": "Vulnerability Questions",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

@@ -13,7 +13,8 @@
     "CaseFieldID": "respondent1DQLanguage",
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   },
   {
     "ID": "GAUrgencyRecordPage",
@@ -37,7 +38,8 @@
     "CaseFieldID": "respondent2DQLanguage",
     "ListElementCode": "court",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "Publish": "Y"
   },
   {
     "ID": "GAUrgencyRecordPage",
