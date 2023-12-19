@@ -2,7 +2,6 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
@@ -13,12 +12,12 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   caseNumber = await api_spec.getCaseId();
   await LRspec.setCaseId(caseNumber);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
-    await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
@@ -69,7 +68,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUser2WithRegionId2);
-   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
@@ -77,23 +76,23 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
 Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), false);
+    await LRspec.evidenceUploadSpec(caseNumber, false);
   }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
-    await LRspec.evidenceUploadSpec(caseId(), true);
+    await LRspec.evidenceUploadSpec(caseNumber, true);
   }
 }).retry(3);
 
 Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId2);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId() + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
     await LRspec.payHearingFee();
   }

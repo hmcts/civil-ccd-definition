@@ -9,7 +9,6 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
@@ -19,14 +18,14 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   caseNumber = await api.getCaseId();
   await I.setCaseId(caseNumber);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
 }).retry(3);
 
 Scenario('1v2 Diff   - Assign roles to defendants', async () => {
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await assignCaseRoleToUser(caseId(),  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+  await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 }).retry(3);
 
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
@@ -47,7 +46,7 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
 
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseId());
+  await I.navigateToCaseDetails(caseNumber);
   await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   // I.see(caseEventMessage('Inform agreed extension date'));
@@ -86,7 +85,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.respondToDefence('ONE_V_TWO_TWO_LEGAL_REP', 20000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseId());
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
 
@@ -110,15 +109,15 @@ Scenario.skip('Add case flags', async ({I}) => {
 Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   if (await checkToggleEnabled('update-contact-details')) {
     await I.login(config.secondDefendantSolicitorUser);
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await I.waitForText('Summary');
-    await I.addUnavailableDates(caseId());
+    await I.addUnavailableDates(caseNumber);
   }
 }).retry(3);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUser2WithRegionId2);
-   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
+   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await I.waitForText('Summary');
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
@@ -126,20 +125,20 @@ Scenario('Judge triggers SDO', async ({I}) => {
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
-    await I.evidenceUpload(caseId(), false);
+    await I.evidenceUpload(caseNumber, false);
   }
 }).retry(3);
 
 Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
-    await I.evidenceUpload(caseId(), true);
+    await I.evidenceUpload(caseNumber, true);
   }
 }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseId(), config.applicantSolicitorUser, 'CASE_PROGRESSION');
+    await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
 }).retry(3);
 
