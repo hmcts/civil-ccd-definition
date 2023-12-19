@@ -20,6 +20,7 @@ Scenario('1v2 same solicitor claimant and defendant upload mediation documents',
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_spec_small, api_spec}) => {
+  await api_spec_small.cleanUp();
+  await api_spec.cleanUp();
 });

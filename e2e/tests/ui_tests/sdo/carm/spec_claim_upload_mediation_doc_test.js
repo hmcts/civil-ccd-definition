@@ -51,6 +51,6 @@ Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nigh
   await LRspec.click('Sign out');
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_spec}) => {
+  await api_spec.cleanUp();
 });
