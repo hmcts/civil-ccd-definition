@@ -64,6 +64,13 @@ ccd:
         volumeMounts:
         - name: logstash-lib
           mountPath: /logstash-lib
+        resources:
+          requests:
+            cpu: "500m"
+            memory: "1024Mi"
+          limits:
+            cpu: "2500m"
+            memory: "1024Mi"
     extraVolumes: |
       - name: logstash-lib
         emptyDir: {}
