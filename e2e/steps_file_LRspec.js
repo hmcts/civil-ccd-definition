@@ -195,6 +195,15 @@ module.exports = function () {
         this.click('Sign out');
       }, SIGNED_OUT_SELECTOR);
     },
+        
+    async getCaseId(){
+      console.log(`case created: ${caseId}`);
+      return caseId;
+    },
+    
+    async setCaseId(argCaseNumber) {
+      caseId = argCaseNumber;
+    },
 
     async takeScreenshot() {
       if (currentEventName !== eventName) {
