@@ -15,5 +15,30 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimTypeUnSpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

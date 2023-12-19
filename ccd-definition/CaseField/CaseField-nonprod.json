@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimTypeUnSpec",
+    "Label": "Type of claim",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ClaimTypeUnSpec",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
