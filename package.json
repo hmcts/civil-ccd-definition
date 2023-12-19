@@ -91,12 +91,12 @@
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.9",
     "puppeteer": "^19.0.0",
-    "totp-generator": "^0.0.7",
+    "totp-generator": "^0.0.14",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "packageManager": "yarn@3.5.1"
+  "packageManager": "yarn@3.7.0"
 }
