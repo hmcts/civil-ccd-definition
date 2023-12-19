@@ -4,5 +4,11 @@
     "ListElementCode": "DRAFT_CLAIM_FORM",
     "ListElement": "Draft claim form",
     "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_CLAIM_FORM",
+    "ListElement": "claimant claim form",
+    "DisplayOrder": 19
   }
 ]

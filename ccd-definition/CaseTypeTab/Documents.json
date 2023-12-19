@@ -33,5 +33,14 @@
     "TabDisplayOrder": 4,
     "CaseFieldID": "servedDocumentFiles",
     "TabFieldDisplayOrder": 4
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Defendant documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "defendantDocuments",
+    "TabFieldDisplayOrder": 6,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   }
 ]

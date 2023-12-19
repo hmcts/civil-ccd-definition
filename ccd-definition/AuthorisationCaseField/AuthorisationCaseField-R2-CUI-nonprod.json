@@ -2419,7 +2419,6 @@
         "UserRoles": [
           "citizen-profile",
           "CITIZEN-DEFENDANT-PROFILE"
-
         ],
         "CRUD": "CRU"
       },
@@ -2441,6 +2440,32 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendantDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   }
