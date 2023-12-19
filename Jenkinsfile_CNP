@@ -7,6 +7,7 @@ def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
+// back to start
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
