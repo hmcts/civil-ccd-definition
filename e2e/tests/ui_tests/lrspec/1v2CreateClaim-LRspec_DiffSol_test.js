@@ -97,7 +97,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
   }
 }).retry(3);
 
-Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
+Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
    await LRspec.waitForText('Summary');
@@ -111,14 +111,14 @@ Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
   }
 }).retry(3);
 
-Scenario.skip('Defendant solicitor uploads evidence', async ({LRspec}) => {
+Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseId(), true);
   }
 }).retry(3);
 
-Scenario.skip('Schedule a hearing', async ({LRspec}) => {
+Scenario('Schedule a hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId());
