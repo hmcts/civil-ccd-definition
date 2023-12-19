@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsideration",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]
