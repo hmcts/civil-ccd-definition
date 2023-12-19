@@ -38,6 +38,7 @@ civil-general-applications:
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       CMC_DB_HOST: ${SERVICE_NAME}-postgresql
       CMC_DB_USERNAME: ${POSTGRES_USER}
+      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       REFERENCE_DATABASE_MIGRATION: false
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
@@ -119,6 +120,7 @@ civil-service:
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
+      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       REFERENCE_DATABASE_MIGRATION: true
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
@@ -258,6 +260,7 @@ ccd:
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
     s2sUrl: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    postgresHostname: ${SERVICE_NAME}-postgresql
 
   ccd-api-gateway-web:
     nodejs:
@@ -295,11 +298,13 @@ ccd:
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         RELEASE_REVISION: "{{ .Release.Revision }}"
+        DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
   am-role-assignment-service:
     java:
       releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
+        ROLE_ASSIGNMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       keyVaults:
         am:
           secrets:
@@ -317,6 +322,7 @@ ccd:
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
         DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 35
+        DEFINITION_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
@@ -324,6 +330,7 @@ ccd:
       imagePullPolicy: Always
       enviroment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
+        USER_PROFILE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       disableKeyVaults: true
 
   postgresql:
@@ -346,6 +353,7 @@ camunda-bpm:
       CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
       CAMUNDA_DB_NAME: camunda
       CAMUNDA_DB_USER_NAME: hmcts
+      CAMUNDA_DB_PASSWORD: hmcts
       CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
       S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
       CAMUNDA_DB_CONN_OPTIONS: ""
