@@ -14,13 +14,15 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {PBAv3} = require('../fixtures/featureKeys');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkHmcEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkHmcEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
+const {updateExpert} = require("./manageContactInformationHelper");
+const manageContactInformation = require("../fixtures/events/manageContactInformation.js");
 
 let caseId, eventName;
 let caseData = {};
@@ -34,7 +36,8 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec()
+  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec(),
+  MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
 };
 
 const eventData = {
@@ -106,6 +109,7 @@ module.exports = {
     }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
@@ -233,6 +237,16 @@ module.exports = {
     for (const [index, value] of caseFlagLocations.entries()) {
       await addAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
+  },
+
+  manageContactInformation : async (user) => {
+    if(!(await checkManageContactInformationEnabled())) {
+      return;
+    }
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
+    await updateExpert(caseId, manageContactInformationData);
   },
 
   manageCaseFlags: async (user) => {
