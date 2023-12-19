@@ -547,7 +547,10 @@ module.exports = {
         await assertValidData(disposalData, pageId);
       }
     } else {
-      await validateEventPages(data.CREATE_FAST_NO_SUM_SPEC());
+      let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
     }
 
     if (response === 'UNSUITABLE_FOR_SDO') {
