@@ -298,25 +298,7 @@ ccd:
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
-      secrets:
-        IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET:
-          secretRef: idam-data-store-client-secret
-          key: key
-          disabled: true
-        IDAM_DATA_STORE_SYSTEM_USER_USERNAME:
-          secretRef: idam-data-store-system-user-username
-          key: key
-          disabled: true
-        IDAM_DATA_STORE_SYSTEM_USER_PASSWORD:
-          secretRef: idam-data-store-system-user-password
-          key: key
-          disabled: true
-        DATA_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
+
   am-role-assignment-service:
     java:
       releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
@@ -345,40 +327,18 @@ ccd:
       devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
       devmemoryLimits: 4096Mi
-      secrets:
-        STORAGE_ACCOUNT_NAME:
-          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
-          key: storageAccountName
-          disabled: true
-        STORAGE_ACCOUNT_KEY:
-          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
-          key: accessKey
-          disabled: true
-        DEFINITION_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
       environment:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
         DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 35
-        DEFINITION_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-user-profile-api
       imagePullPolicy: Always
-      enviroment:
+      environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        USER_PROFILE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
-      secrets:
-        USER_PROFILE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
       disableKeyVaults: true
 
   postgresql:
