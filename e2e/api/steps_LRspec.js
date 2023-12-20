@@ -29,6 +29,7 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 
 let caseId, eventName;
 let caseData = {};
@@ -356,6 +357,64 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
+  },
+
+  uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
+    await apiRequest.setupTokens(user);
+
+    let eventData;
+    if (user === config.applicantSolicitorUser) {
+      eventData = mediationDocuments.uploadMediationDocuments('claimant');
+    } else {
+      if (sameDefendantSolicitor) {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
+      } else {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant');
+      }
+    }
+
+    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    await validateEventPages(eventData);
+
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+  },
+  
+  claimantResponseForFlightDelay: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                           expectedEndState) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = await addFlagsToFixture(caseData);
+    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (response == 'FULL_DEFENCE') {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+
+    await assertSubmittedEventFlightDelay(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
+
+
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
@@ -805,6 +864,32 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
     assert.equal(responseBody.callback_response_status_code, 200);
     assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
     assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+  }
+
+  if (eventName === 'CREATE_CLAIM_SPEC') {
+    caseId = responseBody.id;
+    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
+    console.log('Case created: ' + caseId);
+  }
+};
+
+const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  await apiRequest.startEvent(eventName, caseId);
+
+  const response = await apiRequest.submitEvent(eventName, caseData, caseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 201);
+  assert.equal(responseBody.state, expectedState);
+  if (hasSubmittedCallback && submittedCallbackResponseContains) {
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+  }
+
+  if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code === 'OTHER'){
+    assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.applicant1DQRequestedCourt.caseLocation);
+  }else if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code !== 'OTHER'){
+    assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.flightDelayDetails.flightCourtLocation);
   }
 
   if (eventName === 'CREATE_CLAIM_SPEC') {
