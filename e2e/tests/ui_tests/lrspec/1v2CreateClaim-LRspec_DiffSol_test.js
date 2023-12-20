@@ -3,14 +3,14 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('..
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
-let caseNumber;
+let caseNumber='1703080438703241';
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
-Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec, LRspec}) => {
+Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec_fast, LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
-  caseNumber = await api_spec.getCaseId();
+  await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  caseNumber = await api_spec_fast.getCaseId();
   await LRspec.setCaseId(caseNumber);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
@@ -74,34 +74,31 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
 }).retry(3);
 
 Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseNumber, false);
-  }
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.defendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseNumber, true);
-  }
 }).retry(3);
 
 Scenario('Schedule a hearing', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId2);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
-    await LRspec.payHearingFee();
-  }
+}).retry(3);
+
+Scenario('Pay hearing fee', async ({LRspec}) => {
+  await LRspec.payHearingFee();
 }).retry(3);
 
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
-  // await I.createCaseFlags();
+  await LRspec.createCaseFlags();
   await LRspec.validateCaseFlags([
     { partyName: 'Example applicant1 company', details: [] },
     { partyName: 'Example respondent1 company', details: [] },
