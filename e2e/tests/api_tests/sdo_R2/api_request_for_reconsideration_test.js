@@ -23,7 +23,8 @@ await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFE
 await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 }
 
-Scenario('1v1 unspec request for reconsideration', async ({api}) => {
+// since CIV-11084 LA can't create sdo for small claims Damages
+Scenario.skip('1v1 unspec request for reconsideration', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');

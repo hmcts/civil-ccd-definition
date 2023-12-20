@@ -288,7 +288,7 @@
           "legal-adviser",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CR"
       }
     ]
   },
@@ -1789,6 +1789,48 @@
       {
         "UserRoles": [
           "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate",
+          "CITIZEN-DEFENDANT-PROFILE"
+
         ],
         "CRUD": "R"
       }
