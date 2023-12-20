@@ -28,4 +28,8 @@ Scenario('CARM not enabled', async ({api_spec_cui}) => {
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
 });
 
+AfterSuite(async ({api_spec_cui}) => {
+  await api_spec_cui.cleanUp();
+});
+
 
