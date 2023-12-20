@@ -1503,6 +1503,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "allPartyNames",
     "AccessControl": [
       {
@@ -1912,8 +1936,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -2442,25 +2465,6 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1RespondToSettlementAgreementDeadline",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "citizen-profile",
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
       }
     ]
   },
