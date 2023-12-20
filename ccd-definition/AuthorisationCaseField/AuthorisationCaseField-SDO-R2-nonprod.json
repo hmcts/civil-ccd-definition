@@ -18,7 +18,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgeResponseToReconsiderationSelect",
+    "CaseFieldID": "decisionOnRequestReconsiderationOptions",
     "AccessControl": [
       {
         "UserRoles": [
@@ -41,7 +41,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgeResponseToReconsiderationDetailsYes",
+    "CaseFieldID": "upholdingPreviousOrderReason",
     "AccessControl": [
       {
         "UserRoles": [

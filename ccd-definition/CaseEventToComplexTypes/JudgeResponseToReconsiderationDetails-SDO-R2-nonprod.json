@@ -2,7 +2,7 @@
   {
     "ID": "JudgeDecisionOnReconsideration",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "judgeResponseToReconsiderationDetailsYes",
+    "CaseFieldID": "upholdingPreviousOrderReason",
     "ListElementCode": "reasonForReconsiderationTxtYes",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
