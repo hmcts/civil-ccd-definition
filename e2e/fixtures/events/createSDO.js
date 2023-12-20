@@ -1064,8 +1064,8 @@ module.exports = {
   createSDOFastTrackSpec: () => {
 
     const createSDO = {};
-    createSDO.userInput = {
-      ...createSDO.userInput,
+    createSDO.valid = {
+      ...createSDO.valid,
         SDO: {
           drawDirectionsOrderRequired: 'Yes',
         },
