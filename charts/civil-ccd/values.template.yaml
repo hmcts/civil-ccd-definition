@@ -85,8 +85,6 @@ civil-service:
             alias: azure.application-insights.instrumentation-key
           - name: docmosis-api-key
             alias: docmosis.tornado.key
-          - name: cmc-db-password-v11
-            alias: CMC_DB_PASSWORD
           - name: gov-notify-api-key
             alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
@@ -120,7 +118,6 @@ civil-service:
       CMC_DB_HOST: "{{ .Values.postgresql.releaseNameOverride}}"
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
-      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       REFERENCE_DATABASE_MIGRATION: true
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
