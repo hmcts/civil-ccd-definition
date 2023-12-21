@@ -3,7 +3,7 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('..
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
-let caseNumber='1703080438703241';
+let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
