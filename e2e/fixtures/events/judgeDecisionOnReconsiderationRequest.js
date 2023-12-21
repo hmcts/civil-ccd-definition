@@ -1,21 +1,4 @@
 module.exports = {
-  judgeDecisionOnReconsiderationRequest : (decisionSelection) => {
-    if (decisionSelection == 'YES') {
-      return {
-        valid: judgeDecisionOnReconsiderationRequestYes()
-      };
-    }
-    else if (decisionSelection == 'CREATE_SDO') {
-      return {
-        valid: judgeDecisionOnReconsiderationRequestCreateSDO()
-      };
-    }
-    else {
-      return {
-        valid: judgeDecisionOnReconsiderationRequestCreateGeneralOrder()
-      };
-    }
-  },
 
   judgeDecisionOnReconsiderationRequestSpec : (decisionSelection) => {
     if (decisionSelection == 'YES') {

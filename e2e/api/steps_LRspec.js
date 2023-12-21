@@ -29,6 +29,8 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
+const hearingScheduled = require('../fixtures/events/specScheduleHearing');
 
 let caseId, eventName;
 let caseData = {};
@@ -47,6 +49,8 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
+  CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -201,6 +205,7 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    return caseId;
   },
 
   createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY') => {
@@ -358,6 +363,29 @@ module.exports = {
     }
   },
 
+  uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
+    await apiRequest.setupTokens(user);
+
+    let eventData;
+    if (user === config.applicantSolicitorUser) {
+      eventData = mediationDocuments.uploadMediationDocuments('claimant');
+    } else {
+      if (sameDefendantSolicitor) {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
+      } else {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant');
+      }
+    }
+
+    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    await validateEventPages(eventData);
+
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+  },
+
   claimantResponseForFlightDelay: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
                            expectedEndState) => {
     // workaround
@@ -389,8 +417,6 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
-
-
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
@@ -515,7 +541,17 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.CREATE_FAST_NO_SUM_SPEC());
+    if (response === 'CREATE_SMALL') {
+      let disposalData = data.CREATE_SDO();
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+    } else {
+      let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+    }
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
@@ -525,6 +561,47 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+  },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+    for (let pageId of Object.keys(scheduleData.userInput)) {
+      await assertValidData(scheduleData, pageId);
+    }
+
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    await apiRequest.setupTokens(config.applicantSolicitorUser);
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+updatedCaseState);
   },
 
   createCaseFlags: async (user) => {
@@ -715,7 +792,13 @@ module.exports = {
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  let userData;
+
+  if (eventName === 'CREATE_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
