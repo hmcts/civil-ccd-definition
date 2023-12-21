@@ -25,6 +25,6 @@ Scenario('1v1 unspec request for reconsideration', async ({api}) => {
   }
 });
 
-// AfterSuite(async ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});
