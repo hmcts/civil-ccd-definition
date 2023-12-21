@@ -179,8 +179,8 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ClaimType: {
-      claimType: 'CONSUMER_CREDIT'
+    ClaimTypeUnSpec: {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
     },
     Details: {
       detailsOfClaim: 'Test details of claim'
