@@ -29,6 +29,7 @@ const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration.js');
+const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -92,7 +93,8 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsideration()
+  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsideration(),
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequest(decisionSelection)
 };
 
 const eventData = {
@@ -995,6 +997,27 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
+
+  judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
+    console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    await validateEventPages(data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption));
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '# Response has been submitted',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
 
   createFinalOrder: async (user, finalOrderRequestType) => {
     console.log(`case in Final Order ${caseId}`);

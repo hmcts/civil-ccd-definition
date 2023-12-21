@@ -21,6 +21,7 @@ const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
+const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 
 let caseId, eventName;
 let caseData = {};
@@ -34,7 +35,8 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec()
+  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec(),
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection)
 };
 
 const eventData = {
@@ -290,6 +292,26 @@ module.exports = {
     }
     await assertSubmittedEvent('CASE_PROGRESSION', {
       header: '# Your request has been submitted',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
+    console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '# Response has been submitted',
       body: ''
     }, true);
 
