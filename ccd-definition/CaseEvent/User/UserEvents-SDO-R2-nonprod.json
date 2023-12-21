@@ -31,6 +31,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y"
+    "Publish": "Y",
+    "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
   }
 ]
