@@ -5,33 +5,33 @@ module.exports = {
 
   fields: {
     witnessSelectionEvidence: {
-      id: '#witnessSelectionEvidence',
-      witnessStatement: '#witnessSelectionEvidence-WITNESS_STATEMENT'
+      id: '#witnessSelectionEvidenceSmallClaim',
+      witnessStatement: '#witnessSelectionEvidenceSmallClaim-WITNESS_STATEMENT'
     },
 
     witnessSelectionEvidenceRes: {
-      id: '#witnessSelectionEvidenceRes',
-      witnessStatement: '#witnessSelectionEvidenceRes-WITNESS_STATEMENT'
+      id: '#witnessSelectionEvidenceSmallClaimRes',
+      witnessStatement: '#witnessSelectionEvidenceSmallClaimRes-WITNESS_STATEMENT'
     },
 
     expertSelectionEvidence:{
-      id: '#expertSelectionEvidence',
-      expertReport: '#expertSelectionEvidence-EXPERT_REPORT'
+      id: '#expertSelectionEvidenceSmallClaim',
+      expertReport: '#expertSelectionEvidenceSmallClaim-EXPERT_REPORT'
     },
 
     expertSelectionEvidenceRes:{
-      id: '#expertSelectionEvidenceRes',
-      expertReport: '#expertSelectionEvidenceRes-EXPERT_REPORT'
+      id: '#expertSelectionEvidenceSmallClaimRes',
+      expertReport: '#expertSelectionEvidenceSmallClaimRes-EXPERT_REPORT'
     },
 
     trialSelectionEvidence:{
-      id: '#trialSelectionEvidence',
-      authorities: '#trialSelectionEvidence-AUTHORITIES'
+      id: '#trialSelectionEvidenceSmallClaim',
+      authorities: '#trialSelectionEvidenceSmallClaim-AUTHORITIES'
     },
 
     trialSelectionEvidenceRes:{
-      id: '#trialSelectionEvidenceRes',
-      authorities: '#trialSelectionEvidenceRes-AUTHORITIES'
+      id: '#trialSelectionEvidenceSmallClaimRes',
+      authorities: '#trialSelectionEvidenceSmallClaimRes-AUTHORITIES'
     },
 
     documentWitnessStatement:{

@@ -123,17 +123,13 @@ Scenario('Judge triggers SDO', async ({I}) => {
 }).retry(3);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);
-  }
 }).retry(3);
 
 Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
     await I.evidenceUpload(caseNumber, true);
-  }
 }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
