@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: () => {
+  claimantResponse: (hasAgreedFreeMediation = 'Yes') => {
     return {
       userInput: {
         RespondentResponse: {
@@ -9,7 +9,7 @@ module.exports = {
         },
         Mediation: {
           applicant1ClaimMediationSpecRequired: {
-            hasAgreedFreeMediation: 'Yes'
+            hasAgreedFreeMediation: hasAgreedFreeMediation
           }
         },
         SmallClaimExperts: {
