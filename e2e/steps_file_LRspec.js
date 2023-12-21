@@ -97,6 +97,12 @@ const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
 const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
+const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
+const whoIsFor = require('./pages/mediationDocumentsUpload/whoIsFor');
+const documentType = require('./pages/mediationDocumentsUpload/documentType');
+const documentUpload = require('./pages/mediationDocumentsUpload/documentUpload');
+
+
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
 
@@ -739,6 +745,26 @@ module.exports = function () {
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
         () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async uploadMediationDocs(caseId, partyType, docType) {
+      eventName = 'Upload mediation documents';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => mediationDocumentsExplanation.uploadADocument(),
+        () => whoIsFor.selectOptions(partyType),
+        () => documentType.selectDocumentType(docType),
+        ... conditionalSteps(docType === 'Both docs', [
+          () => documentUpload.fillNonAttendanceStatement(TEST_FILE_PATH),
+          () => documentUpload.fillDocumentsReferredForm(TEST_FILE_PATH),
+          () => this.clickContinue(),
+        ]),
+        ... conditionalSteps(docType === 'Non-attendance', [
+          () => documentUpload.fillNonAttendanceStatement(TEST_FILE_PATH),
+          () => this.clickContinue(),
+        ]),
+        () => event.submitWithoutHeader('Submit')
       ]);
     },
 
