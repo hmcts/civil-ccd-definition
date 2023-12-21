@@ -19,8 +19,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "Name": "Request for reconsideration",
-    "Description": "Request for reconsideration Judge",
+    "Name": "Decision on reconsideration",
+    "Description": "Decision on reconsideration",
     "PreConditionState(s)": "CASE_PROGRESSION",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
