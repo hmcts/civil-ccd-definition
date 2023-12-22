@@ -367,7 +367,7 @@ const isSdoR2 = (sdoR2) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
     return {
       midEventData: {
         ClaimValue: {
