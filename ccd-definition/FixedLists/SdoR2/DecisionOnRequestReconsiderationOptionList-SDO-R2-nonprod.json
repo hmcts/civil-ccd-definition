@@ -8,13 +8,13 @@
   {
     "ID": "DecisionOnRequestReconsiderationOptionList",
     "ListElementCode": "CREATE_SDO",
-    "ListElement": "No,create a new SDO",
+    "ListElement": "No, create a new SDO",
     "DisplayOrder": 2
   },
   {
     "ID": "DecisionOnRequestReconsiderationOptionList",
     "ListElementCode": "CREATE_GENERAL_ORDER",
-    "ListElement": "No,previous order needs amending",
+    "ListElement": "No, previous order needs amending",
     "DisplayOrder": 3
   }
 ]
