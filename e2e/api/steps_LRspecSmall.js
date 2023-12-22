@@ -21,8 +21,8 @@ const {dateNoWeekends} = require('./dataHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
-const {updateExpert} = require("./manageContactInformationHelper");
-const manageContactInformation = require("../fixtures/events/manageContactInformation.js");
+const {updateExpert} = require('./manageContactInformationHelper');
+const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 
 let caseId, eventName;
 let caseData = {};

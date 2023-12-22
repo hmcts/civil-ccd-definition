@@ -1,5 +1,4 @@
-const {element} = require("../../api/dataHelper");
-const CLAIMANT_1 = 'CLAIMANT_1';
+const {element} = require('../../api/dataHelper');
 const DEFENDANT_1 = 'DEFENDANT_1';
 const DEFENDANT_1_LR_INDIVIDUALS = 'DEFENDANT_1_LR_INDIVIDUALS';
 const DEFENDANT_1_EXPERTS = 'DEFENDANT_1_EXPERTS';
@@ -42,7 +41,7 @@ module.exports = {
     };
   },
   manageDefendant1ExpertsInformation: (caseData) => {
-    let expert = caseData.respondent1DQExperts.details[0].value
+    let expert = caseData.respondent1DQExperts.details[0].value;
     return {
       ...caseData,
       partyChosen: {
@@ -69,6 +68,6 @@ module.exports = {
           fieldOfExpertise: 'pharmaceutical'
         })
       ]
-    }
+    };
   }
-}
+};

@@ -1503,7 +1503,7 @@ const validateErrorOrWarning = async (pageId, eventData) => {
     422
   );
   return response;
-}
+};
 
 const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
   const response = await validateErrorOrWarning(pageId, eventData);

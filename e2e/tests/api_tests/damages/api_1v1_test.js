@@ -59,7 +59,7 @@ Scenario('Manage case flags', async ({api}) => {
 });
 
 Scenario('Manage contact information', async ({api}) => {
-  await api.manageApplicant1Details(config.adminUser);
+  await api.manageDefendant1Details(config.adminUser);
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
 });
 
