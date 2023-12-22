@@ -11,7 +11,7 @@
     "ID": "JudgeDecisionOnReconsiderationSelect",
     "ListElementCode": "reasonForReconsiderationTxtYes",
     "ElementLabel": "Reason for upholding previous order",
-    "HintText": "State the reason why previous order is upheld (i.e. previous order doesn't need amending,all information on the claim has been taken into account and directions order drawn are all in order)\n",
+    "HintText": "State the reason why previous order is upheld (i.e. previous order doesn't need amending, all information on the claim has been taken into account and directions order drawn are all in order)\n",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
