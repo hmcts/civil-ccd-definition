@@ -96,13 +96,11 @@ const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
-const unspecifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocument');
+const specifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocumentSpec');
 const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
 const whoIsFor = require('./pages/mediationDocumentsUpload/whoIsFor');
 const documentType = require('./pages/mediationDocumentsUpload/documentType');
 const documentUpload = require('./pages/mediationDocumentsUpload/documentUpload');
-
-
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
 
@@ -200,6 +198,15 @@ module.exports = function () {
       await this.retryUntilExists(() => {
         this.click('Sign out');
       }, SIGNED_OUT_SELECTOR);
+    },
+        
+    async getCaseId(){
+      console.log(`case created: ${caseId}`);
+      return caseId;
+    },
+    
+    async setCaseId(argCaseNumber) {
+      caseId = argCaseNumber;
     },
 
     async takeScreenshot() {
@@ -833,9 +840,9 @@ module.exports = function () {
     async evidenceUploadSpec(caseId, defendant) {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
-        () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
-        () => unspecifiedEvidenceUpload.selectType(defendant),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => specifiedEvidenceUpload.uploadADocument(caseId, defendant),
+        () => specifiedEvidenceUpload.selectType(defendant),
+        () => specifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },

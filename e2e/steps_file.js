@@ -694,6 +694,15 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
+    
+    async getCaseId(){
+      console.log(`case created: ${caseId}`);
+      return caseId;
+    },
+    
+    async setCaseId(argCaseNumber) {
+      caseId = argCaseNumber;
+    },
 
     /**
      * Retries defined action util element described by the locator is invisible. If element is not invisible
