@@ -71,7 +71,7 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -179,9 +179,15 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ClaimTypeUnSpec: {
-      claimTypeUnSpec: 'CONSUMER_CREDIT'
-    },
+    ...isSdoR2(sdoR2) ? {
+      ClaimTypeUnSpec: {
+        claimTypeUnSpec: 'CONSUMER_CREDIT'
+      }
+    } : {
+      ClaimType: {
+        claimType: 'CONSUMER_CREDIT'
+      }
+      },
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
@@ -355,8 +361,13 @@ const isPBAv3 = (pbaV3) => {
   return pbaV3;
 };
 
+const isSdoR2 = (sdoR2) => {
+  console.log( 'SDOR2 value in create claim' + sdoR2);
+  return sdoR2;
+};
+
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
     return {
       midEventData: {
         ClaimValue: {
