@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Hearings",
+    "TabLabel": "Listing notes",
+    "TabDisplayOrder": 5,
+    "CaseFieldID": "mediationUnsuccessfulReasonsMultiSelect",
+    "TabFieldDisplayOrder": 19
+  }
+]

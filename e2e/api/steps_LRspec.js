@@ -12,7 +12,6 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const {PBAv3} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
-const claimDataBulk = require('../fixtures/events/createClaimSpecBulk.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
@@ -30,13 +29,14 @@ const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec'
 const judgmentOnline1v2Spec = require('../fixtures/events/judgmentOnline1v2Spec');
 const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpec');
 const sdoTracks = require('../fixtures/events/createSDO.js');
+const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
+const hearingScheduled = require('../fixtures/events/specScheduleHearing');
 
 let caseId, eventName;
 let caseData = {};
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
-  CREATE_CLAIM_BULK: (scenario, pbaV3) => claimDataBulk.createClaimBulk(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
@@ -49,6 +49,8 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
+  CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -203,29 +205,50 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    return caseId;
   },
 
-  createNewClaimWithCaseworker: async (user, scenario) => {
+  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY') => {
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
+
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM_BULK(scenario);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    //==============================================================
+
     await apiRequest.setupTokens(user);
-    await assertCaseworkerSubmittedNewClaim('PENDING_CASE_ISSUED', createClaimData);
+    await apiRequest.startEvent(eventName);
+    for (let pageId of Object.keys(createClaimData.userInput)) {
+      await assertValidData(createClaimData, pageId);
+    }
+
+    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+
+    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+
     await waitForFinishedBusinessProcess(caseId);
-    console.log('Bulk claim created with case id: ' + caseId);
+
+
+    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+
+    if (pbaV3) {
+      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+      console.log('Service request update sent to callback URL');
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
     }
-    await waitForFinishedBusinessProcess(caseId);
-    if (scenario === 'ONE_V_ONE') {
-      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    } else {
-      // one v two/multiparty continuing online not currently supported for LiPs
-      await assertCorrectEventsAreAvailableToUser(config.bulkClaimSystemUser, 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    }
+    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+
+    //field is deleted in about to submit callback
+    deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -331,6 +354,62 @@ module.exports = {
 
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
+
+    await waitForFinishedBusinessProcess(caseId);
+
+    const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    if (caseFlagsEnabled) {
+      await assertCaseFlags(caseId, user, response);
+    }
+  },
+
+  uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
+    await apiRequest.setupTokens(user);
+
+    let eventData;
+    if (user === config.applicantSolicitorUser) {
+      eventData = mediationDocuments.uploadMediationDocuments('claimant');
+    } else {
+      if (sameDefendantSolicitor) {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
+      } else {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant');
+      }
+    }
+
+    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+
+    await validateEventPages(eventData);
+
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+  },
+
+  claimantResponseForFlightDelay: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+                           expectedEndState) => {
+    // workaround
+    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+    deleteCaseFields('respondentResponseIsSame');
+
+    await apiRequest.setupTokens(user);
+
+    eventName = 'CLAIMANT_RESPONSE_SPEC';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = await addFlagsToFixture(caseData);
+    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+
+    for (let pageId of Object.keys(claimantResponseData.userInput)) {
+      await assertValidData(claimantResponseData, pageId);
+    }
+
+    let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
+    if (response == 'FULL_DEFENCE') {
+      validState = 'JUDICIAL_REFERRAL';
+    }
+
+
+    await assertSubmittedEventFlightDelay(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -462,7 +541,17 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.CREATE_FAST_NO_SUM_SPEC());
+    if (response === 'CREATE_SMALL') {
+      let disposalData = data.CREATE_SDO();
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+    } else {
+      let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+    }
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
@@ -472,6 +561,47 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
+  },
+
+  scheduleHearing: async (user, allocatedTrack) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+    for (let pageId of Object.keys(scheduleData.userInput)) {
+      await assertValidData(scheduleData, pageId);
+    }
+
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate = {};
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
+    await apiRequest.setupTokens(config.applicantSolicitorUser);
+    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
+    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+updatedCaseState);
   },
 
   createCaseFlags: async (user) => {
@@ -662,7 +792,13 @@ module.exports = {
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  let userData;
+
+  if (eventName === 'CREATE_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -796,11 +932,24 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertCaseworkerSubmittedNewClaim = async (expectedState, caseData) => {
-  const response = await apiRequest.submitNewClaimAsCaseworker(eventName, caseData);
+const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  await apiRequest.startEvent(eventName, caseId);
+
+  const response = await apiRequest.submitEvent(eventName, caseData, caseId);
   const responseBody = await response.json();
   assert.equal(response.status, 201);
   assert.equal(responseBody.state, expectedState);
+  if (hasSubmittedCallback && submittedCallbackResponseContains) {
+    assert.equal(responseBody.callback_response_status_code, 200);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+  }
+
+  if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code === 'OTHER'){
+    assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.applicant1DQRequestedCourt.caseLocation);
+  }else if(responseBody.case_data.responseClaimTrack === 'SMALL_CLAIM' && responseBody.case_data.flightDelayDetails.airlineList.value.code !== 'OTHER'){
+    assert.include(responseBody.case_data.caseManagementLocation, responseBody.case_data.flightDelayDetails.flightCourtLocation);
+  }
 
   if (eventName === 'CREATE_CLAIM_SPEC') {
     caseId = responseBody.id;
