@@ -109,7 +109,9 @@ module.exports = {
     }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    if(scenario.equals('ONE_V_TWO')) {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    }
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
