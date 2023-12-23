@@ -3,27 +3,29 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    witnesses: {
-      id: '#updateWitnessesDetailsForm',
+    applicant1OrgIndividuals: {
+      id: '#applicant1OrgIndividuals',
       element: {
-        firstName: `#updateWitnessesDetailsForm_1_firstName`,
-        lastName: `#updateWitnessesDetailsForm_1_lastName`,
-        emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
-        phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
+        firstName: `#applicant1OrgIndividuals_0_firstName`,
+        lastName: `#applicant1OrgIndividuals_0_lastName`,
+        emailAddress: `#applicant1OrgIndividuals_0_emailAddress`,
+        phoneNumber: `#applicant1OrgIndividuals_0_phoneNumber`
       }
     },
   },
 
-  async addWitness() {
-    I.waitForElement(this.fields.witnesses.id);
+  async addOrgIndividuals() {
+    I.waitForElement(this.fields.applicant1OrgIndividuals.id);
     await I.runAccessibilityTest();
 
+    // TODO: it is failing here because add new button click is not working
     await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields.witnesses.element.firstName);
-    I.fillField(this.fields.witnesses.element.firstName, 'Leia');
-    I.fillField(this.fields.witnesses.element.lastName, 'Johnson');
-    I.fillField(this.fields.witnesses.element.emailAddress, 'leiajohnson@email.com');
-    I.fillField(this.fields.witnesses.element.phoneNumber, '07821016453');
+
+    I.waitForElement(this.fields.applicant1OrgIndividuals.element.firstName);
+    I.fillField(this.fields.applicant1OrgIndividuals.element.firstName, 'Kendal');
+    I.fillField(this.fields.applicant1OrgIndividuals.element.lastName, 'Bloom');
+    I.fillField(this.fields.applicant1OrgIndividuals.element.emailAddress, 'kendalbloom@email.com');
+    I.fillField(this.fields.applicant1OrgIndividuals.element.phoneNumber, '07821016453');
     await I.clickContinue();
   },
 };

@@ -3,23 +3,27 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    partyChosen: {
-      id: '#partyChosen',
-      options: {
-        claimant1: 'Individuals attending for the organisation',
-        defendant1: 'Individuals attending for the organisation',
-        defendant1Witness: '#partyChosen_DEFENDANT_1_WITNESSES',
-        defendant1LitigationFriend: '#partyChosen_DEFENDANT_1_LITIGATION_FRIEND',
+    witnesses: {
+      id: '#updateWitnessesDetailsForm',
+      element: {
+        firstName: `#updateWitnessesDetailsForm_1_firstName`,
+        lastName: `#updateWitnessesDetailsForm_1_lastName`,
+        emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
+        phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
       }
     },
   },
 
-  async selectDefendant1Witness() {
-    I.waitForElement(this.fields.partyChosen.id);
+  async addWitness() {
+    I.waitForElement(this.fields.witnesses.id);
     await I.runAccessibilityTest();
-    await within(this.fields.partyChosen.id, () => {
-      I.click(this.fields.partyChosen.options.defendant1Witness);
-    });
+
+    await I.addAnotherElementToCollection();
+    I.waitForElement(this.fields.witnesses.element.firstName);
+    I.fillField(this.fields.witnesses.element.firstName, 'Leia');
+    I.fillField(this.fields.witnesses.element.lastName, 'Johnson');
+    I.fillField(this.fields.witnesses.element.emailAddress, 'leiajohnson@email.com');
+    I.fillField(this.fields.witnesses.element.phoneNumber, '07821016453');
     await I.clickContinue();
-  }
+  },
 };

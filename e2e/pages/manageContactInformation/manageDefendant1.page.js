@@ -3,27 +3,28 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    witnesses: {
-      id: '#updateWitnessesDetailsForm',
+    defendant1: {
+      // id: '#',
       element: {
-        firstName: `#updateWitnessesDetailsForm_1_firstName`,
-        lastName: `#updateWitnessesDetailsForm_1_lastName`,
-        emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
-        phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
+        // firstName: `#`,
+        // lastName: `#updateWitnessesDetailsForm_1_lastName`,
+        // emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
+        // phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
       }
     },
   },
 
-  async addWitness() {
-    I.waitForElement(this.fields.witnesses.id);
+  async editAddress() {
+    I.waitForElement(this.fields.defendant1.id);
     await I.runAccessibilityTest();
 
-    await I.addAnotherElementToCollection();
-    I.waitForElement(this.fields.witnesses.element.firstName);
-    I.fillField(this.fields.witnesses.element.firstName, 'Leia');
-    I.fillField(this.fields.witnesses.element.lastName, 'Johnson');
-    I.fillField(this.fields.witnesses.element.emailAddress, 'leiajohnson@email.com');
-    I.fillField(this.fields.witnesses.element.phoneNumber, '07821016453');
+    // needs editing, just copy paste
+    // await I.addAnotherElementToCollection();
+    // I.waitForElement(this.fields.defendant1.element.firstName);
+    // I.fillField(this.fields.defendant1.element.firstName, 'Leia');
+    // I.fillField(this.fields.defendant1.element.lastName, 'Johnson');
+    // I.fillField(this.fields.defendant1.element.emailAddress, 'leiajohnson@email.com');
+    // I.fillField(this.fields.defendant1.element.phoneNumber, '07821016453');
     await I.clickContinue();
   },
 };
