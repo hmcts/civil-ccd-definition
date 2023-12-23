@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod @api-prod-specified @api-sher2');
+Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod @api-prod-specified');
 
 Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim', async ({I, api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
