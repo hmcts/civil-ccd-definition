@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationUnsuccessfulReasonsMultiSelect",
+    "Label": "Mediation failed reason",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "MediationUnsuccessfulReasonsMultiSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "showCarmFields",
+    "Label": "Show CARM field",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
