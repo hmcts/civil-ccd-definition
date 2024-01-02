@@ -72,6 +72,21 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startEventForCitizen: async (eventName, caseId, payload) => {
+    let url = getCivilServiceUrl();
+    const userId = await idamHelper.userId(tokens.userAuth);
+    console.log('The value of the userId from the startEventForCitizen() : '+userId);
+    console.log('The value of the Auth Token from the startEventForCitizen() : '+tokens.userAuth);
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/citizen/${userId}/event`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+  },
+
   startEventNotAllowed: async (eventName, caseId) => {
     let url = getCcdDataStoreBaseUrl();
     if (caseId) {
