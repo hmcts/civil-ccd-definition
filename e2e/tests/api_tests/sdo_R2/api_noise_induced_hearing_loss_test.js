@@ -2,10 +2,10 @@ const config = require('../../../config.js');
 
 const mpScenario1v1 = 'ONE_V_ONE';
 const mpScenario1v1Nihl = 'ONE_V_ONE_NIHL';
-const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+const legalAdvUser = config.judgeUserWithRegionId1;
 // To use on local because the idam images are different
 // const legalAdvUser = config.judgeUserWithRegionId1Local;
-const smallClaimAmount = '100';
+const smallClaimAmount = '11000';
 
 Feature('Noise Induced Hearing Loss Case 1v1 API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
 
