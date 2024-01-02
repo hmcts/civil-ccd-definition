@@ -734,6 +734,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DEFAULT_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_FINAL_ORDER_TO_LIP_DEFENDANT",
     "AccessControl": [
       {
