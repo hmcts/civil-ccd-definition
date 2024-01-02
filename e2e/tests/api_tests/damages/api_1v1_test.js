@@ -6,7 +6,7 @@ const mpScenario = 'ONE_V_ONE';
 
 Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-1v1 @api-prod-unspec');
 
-Scenario('Create claim', async ({api}) => {
+Scenario('Create claim', async ({api}) => { 
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
 });
 
