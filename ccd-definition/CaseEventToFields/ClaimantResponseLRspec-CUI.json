@@ -319,7 +319,8 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
