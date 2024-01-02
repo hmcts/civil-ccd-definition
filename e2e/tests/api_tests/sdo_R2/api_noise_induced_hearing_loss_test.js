@@ -18,7 +18,7 @@ async function prepareClaim(api) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Scenario('1v1 unspec request for reconsideration', async ({api}) => {
+Scenario.only('1v1 unspec request for reconsideration', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(legalAdvUser, 'CREATE_FAST');
