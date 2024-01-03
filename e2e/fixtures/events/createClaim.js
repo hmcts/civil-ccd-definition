@@ -179,7 +179,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...isSdoR2(sdoR2) ? {
+    ...(sdoR2 === true) ? {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: 'CONSUMER_CREDIT'
       }
@@ -359,11 +359,6 @@ const hasRespondent2 = (mpScenario) => {
 const isPBAv3 = (pbaV3) => {
   console.log( 'Pba value in create claim' + pbaV3);
   return pbaV3;
-};
-
-const isSdoR2 = (sdoR2) => {
-  console.log( 'SDOR2 value in create claim' + sdoR2);
-  return sdoR2;
 };
 
 module.exports = {
