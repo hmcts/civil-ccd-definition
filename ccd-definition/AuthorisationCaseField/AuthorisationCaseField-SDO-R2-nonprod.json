@@ -13,6 +13,25 @@
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "personalInjuryType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
       }
     ]
   }
