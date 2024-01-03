@@ -248,7 +248,7 @@ module.exports = {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
     }
     if (sdoR2) {
-      createClaimData.valid.claimTypeUnspec = 'CONSUMER_CREDIT';
+      createClaimData.valid.claimTypeUnSpec = 'CONSUMER_CREDIT';
     }
     await validateEventPages(createClaimData);
 
