@@ -361,11 +361,6 @@ const isPBAv3 = (pbaV3) => {
   return pbaV3;
 };
 
-const isSdoR2 = (sdoR2) => {
-  console.log( 'SDOR2 value in create claim' + sdoR2);
-  return sdoR2;
-};
-
 module.exports = {
   createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
     return {
