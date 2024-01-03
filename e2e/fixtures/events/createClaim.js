@@ -179,7 +179,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...isSdoR2(sdoR2) ? {
+    ...(sdoR2 === true) ? {
       ClaimTypeUnSpec: {
         claimTypeUnSpec: 'CONSUMER_CREDIT'
       }
