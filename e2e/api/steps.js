@@ -229,7 +229,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    const sdoR2 = await checkToggleEnabled(sdoR2);
+    const sdoR2 = await checkToggleEnabled(SDOR2);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -248,7 +248,7 @@ module.exports = {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
     }
     if (sdoR2) {
-      createClaimData.valid.claimTypeUnSpec = 'CONSUMER_CREDIT';
+      createClaimData.valid.claimTypeUnspec = 'CONSUMER_CREDIT';
     }
     await validateEventPages(createClaimData);
 
