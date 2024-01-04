@@ -13,7 +13,38 @@
           "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
-  }
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "legal-adviser"
+        ],
+        "CRUD": "R"
+      }
+  ]
+}
 ]
