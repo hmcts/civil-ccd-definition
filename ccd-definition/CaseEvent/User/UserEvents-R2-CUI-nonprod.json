@@ -66,9 +66,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIMANT_LIP_HELP_WITH_FEES",
-    "Name": "Notify claimant lip help fees",
-    "Description": "Notify claimant lip help fees",
+    "ID": "APPLY_HELP_WITH_HEARING_FEE",
+    "Name": "Apply Help with Hearing Fee",
+    "Description": "Apply Help with Hearing Fee",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

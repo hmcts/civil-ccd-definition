@@ -740,7 +740,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIMANT_LIP_HELP_WITH_FEES",
+    "CaseEventID": "APPLY_HELP_WITH_HEARING_FEE",
     "AccessControl": [
       {
         "UserRoles": [
