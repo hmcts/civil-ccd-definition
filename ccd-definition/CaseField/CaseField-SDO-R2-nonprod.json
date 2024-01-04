@@ -17,9 +17,33 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "reasonForReconsideration",
+    "ID": "reasonForReconsiderationApplicant",
     "Label": "Reason for reconsideration of directions order by a Legal Advisor",
     "FieldType": "ReasonForReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForReconsiderationRespondent1",
+    "Label": "Reason for reconsideration of directions order by a Legal Advisor",
+    "FieldType": "ReasonForReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForReconsiderationRespondent2",
+    "Label": "Reason for reconsideration of directions order by a Legal Advisor",
+    "FieldType": "ReasonForReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "casePartyRequestForReconsideration",
+    "Label": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

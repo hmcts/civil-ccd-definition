@@ -26,13 +26,53 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
-    "CaseFieldID": "reasonForReconsideration",
+    "CaseFieldID": "casePartyRequestForReconsideration",
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "RequestForReconsideration",
+    "PageLabel": "Request For Reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "RequestForReconsideration",
     "PageLabel": "Request For Reconsideration",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsiderationRespondent1",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestForReconsideration",
+    "PageLabel": "Request For Reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsiderationRespondent2",
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "PageID": "RequestForReconsideration",
+    "PageLabel": "Request For Reconsideration",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
   }
 ]

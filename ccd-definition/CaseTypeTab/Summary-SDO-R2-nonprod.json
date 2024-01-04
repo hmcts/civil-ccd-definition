@@ -4,7 +4,7 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
-    "CaseFieldID": "reasonForReconsideration",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
     "TabFieldDisplayOrder": 16
   }
 ]

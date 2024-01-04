@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "reasonForReconsideration",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
