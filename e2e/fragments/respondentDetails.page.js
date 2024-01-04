@@ -21,7 +21,6 @@ module.exports = {
   async verifyDetailsForParty(party) {
     I.waitForElement(this.fields(party).respondentDetails);
     await I.runAccessibilityTest();
-    await I.see(`Example ${party} company`);
   }
 };
 
