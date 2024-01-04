@@ -1,0 +1,66 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "app1MediationNonAttendanceDocs",
+    "TabFieldDisplayOrder": 5
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "app1MediationDocumentsReferred",
+    "TabFieldDisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "app2MediationNonAttendanceDocs",
+    "TabFieldDisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "app2MediationDocumentsReferred",
+    "TabFieldDisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "res1MediationNonAttendanceDocs",
+    "TabFieldDisplayOrder": 9
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "res1MediationDocumentsReferred",
+    "TabFieldDisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "res2MediationNonAttendanceDocs",
+    "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "res2MediationDocumentsReferred",
+    "TabFieldDisplayOrder": 12
+  }
+]

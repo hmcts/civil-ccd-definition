@@ -369,13 +369,9 @@ module.exports = {
     let eventData;
     if (user === config.applicantSolicitorUser) {
       eventData = mediationDocuments.uploadMediationDocuments('claimant');
-    } else {
-      if (sameDefendantSolicitor) {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
-      } else {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant');
-      }
-    }
+    }  else {
+          eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
+        }
 
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);

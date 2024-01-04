@@ -1,0 +1,15 @@
+[
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "NON_ATTENDANCE_STATEMENT",
+    "ListElement": "Mediation Document",
+    "DisplayOrder": 16
+  },
+
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "REFERRED_DOCUMENTS",
+    "ListElement": "Mediation Document",
+    "DisplayOrder": 17
+  }
+]

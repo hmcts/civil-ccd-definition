@@ -26,14 +26,26 @@ module.exports = {
           },
         };
       } else {
-        partyChosen = {
-          uploadMediationDocumentsPartyChosen: {
-            list_items: [
-              listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
-            ],
-            value: listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
-          },
-        };
+        if (user === 'defendant') {
+          partyChosen = {
+            uploadMediationDocumentsPartyChosen: {
+              list_items: [
+                listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
+              ],
+              value: listElementWithCode('DEFENDANT_1', 'Defendant 1: Mr John Doe')
+            },
+          };
+        }
+        if (user === 'defendantTwo') {
+          partyChosen = {
+            uploadMediationDocumentsPartyChosen: {
+              list_items: [
+                listElementWithCode('DEFENDANT_2', 'Defendant 2: Dr Foo Bar')
+              ],
+              value: listElementWithCode('DEFENDANT_2', 'Defendant 2: Dr Foo Bar')
+            },
+          };
+        }
       }
     }
     return {
