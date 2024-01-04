@@ -112,7 +112,7 @@ module.exports = {
     }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if(scenario.equals('ONE_V_TWO')) {
+    if (scenario === 'ONE_V_TWO') {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
 
