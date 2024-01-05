@@ -3,7 +3,7 @@
     "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "hearingYesorNo",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Do you have a hearing scheduled?",
+    "ElementLabel": "Do you have any other hearing scheduled?",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -72,17 +72,9 @@
   },
   {
     "ID": "GAHearingDetailsGAspec",
-    "ListElementCode": "HearingPreferencesDetailLabel",
-    "ElementLabel": "Choose your preferred type of hearingA judge will still need to approve the hearing",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "GAHearingDetailsGAspec",
     "ListElementCode": "HearingPreferencesPreferredType",
     "ElementLabel": "Choose your preferred type of hearing",
-    "HintText": "A judge will still need to approve the hearing",
+    "HintText": "A judge will decide the type of hearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "GAHearingTypeGAspec",
     "SecurityClassification": "Public",
