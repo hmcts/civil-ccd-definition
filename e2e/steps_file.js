@@ -1016,7 +1016,6 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseId),
         () => partySelection.selectParty('DEFENDANT_1'),
         () => manageDefendant1.editAddress(address),
-        // need another step to ignore warning
         () => event.submit('Submit', 'Contact information changed'),
         () => event.returnToCaseDetails()
       ]);
