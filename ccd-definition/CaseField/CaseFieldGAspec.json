@@ -13,7 +13,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppType",
-    "Label": "What type of applications do you want to make?",
+    "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
     "FieldType": "GATypeGAspec",
     "SecurityClassification": "Public",
@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalApplicationType",
-    "Label": "What type of applications do you want to make?",
+    "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -121,7 +121,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "generalAppUploadEvidenceLabel",
-    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
+    "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith dated DD/MM/YYYY\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
