@@ -4,5 +4,11 @@
     "CaseEventID": "ASSIGN_CASE_TO_APPLICANT1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT1_GENERIC_TEMPLATE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
