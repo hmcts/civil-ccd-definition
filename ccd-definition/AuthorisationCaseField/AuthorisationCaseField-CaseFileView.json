@@ -11,11 +11,16 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "hearing-schedule-access",
           "caseworker-civil"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   }
