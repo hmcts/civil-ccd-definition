@@ -6,15 +6,15 @@ module.exports = {
   fields: {
     respondent1LitigationFriend: {
       id: '#respondent1LitigationFriend_respondent1LitigationFriend',
-      firstName: `#respondent1LitigationFriend_firstName`,
-      diffAddress: `#respondent1LitigationFriend_hasSameAddressAsLitigant_No`,
+      firstName: '#respondent1LitigationFriend_firstName',
+      diffAddress: '#respondent1LitigationFriend_hasSameAddressAsLitigant_No',
       differentAddress: {
-        id: `#respondent1LitigationFriend_hasSameAddressAsLitigant`,
+        id: '#respondent1LitigationFriend_hasSameAddressAsLitigant',
         options: {
           yes: 'Yes',
           no: 'No'
         },
-        address:`#respondent1LitigationFriend_primaryAddress`
+        address:'#respondent1LitigationFriend_primaryAddress'
       }
     },
   },

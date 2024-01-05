@@ -699,12 +699,12 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
-    
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
     },
-    
+
     async setCaseId(argCaseNumber) {
       caseId = argCaseNumber;
     },
@@ -973,7 +973,7 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
-    async manageWitnessesForDefendant() {
+    async manageWitnessesForDefendant(caseId) {
       eventName = 'Manage Contact Information';
 
       await this.triggerStepsWithScreenshot([
@@ -985,7 +985,7 @@ module.exports = function () {
       ]);
     },
 
-    async manageOrganisationIndividualsForClaimant() {
+    async manageOrganisationIndividualsForClaimant(caseId) {
       eventName = 'Manage Contact Information';
 
       await this.triggerStepsWithScreenshot([
@@ -997,7 +997,7 @@ module.exports = function () {
       ]);
     },
 
-    async manageLitigationFriendForDefendant() {
+    async manageLitigationFriendForDefendant(caseId) {
       eventName = 'Manage Contact Information';
 
       await this.triggerStepsWithScreenshot([
@@ -1009,7 +1009,7 @@ module.exports = function () {
       ]);
     },
 
-    async manageDefendant() {
+    async manageDefendant(caseId) {
       eventName = 'Manage Contact Information';
 
       await this.triggerStepsWithScreenshot([

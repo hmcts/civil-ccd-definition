@@ -1,4 +1,7 @@
 const { buildAddress } = require('../../api/dataHelper');
+const uuid = require('uuid');
+
+const docUuid = uuid.v1();
 
 module.exports = {
   ONE_V_ONE: {
@@ -23,8 +26,19 @@ module.exports = {
           lastName: 'the litigant friend',
           emailAddress: 'bobthelitigant@litigants.com',
           phoneNumber: '07123456789',
-          hasSameAddressAsLitigant: 'No',
-          primaryAddress: buildAddress('litigant friend')
+          hasSameAddressAsLitigant: 'Yes',
+          certificateOfSuitability: [
+            {
+              id: docUuid,
+              value: {
+                document: {
+                  document_url: '${TEST_DOCUMENT_URL}',
+                  document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                  document_filename: '${TEST_DOCUMENT_FILENAME}'
+                }
+              }
+            }
+          ]
         }
       }
     }

@@ -6,10 +6,10 @@ module.exports = {
     applicant1OrgIndividuals: {
       id: '#applicant1OrgIndividuals',
       element: {
-        firstName: `#applicant1OrgIndividuals_0_firstName`,
-        lastName: `#applicant1OrgIndividuals_0_lastName`,
-        emailAddress: `#applicant1OrgIndividuals_0_emailAddress`,
-        phoneNumber: `#applicant1OrgIndividuals_0_phoneNumber`
+        firstName: '#applicant1OrgIndividuals_0_firstName',
+        lastName: '#applicant1OrgIndividuals_0_lastName',
+        emailAddress: '#applicant1OrgIndividuals_0_email',
+        phoneNumber: '#applicant1OrgIndividuals_0_phone'
       }
     },
   },
@@ -18,7 +18,6 @@ module.exports = {
     I.waitForElement(this.fields.applicant1OrgIndividuals.id);
     await I.runAccessibilityTest();
 
-    // TODO: it is failing here because add new button click is not working
     await I.addAnotherElementToCollection();
 
     I.waitForElement(this.fields.applicant1OrgIndividuals.element.firstName);
