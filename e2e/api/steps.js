@@ -28,7 +28,6 @@ const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
-const requestForReconsideration = require('../fixtures/events/requestForReconsideration.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
@@ -94,7 +93,6 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsideration(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
   MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
@@ -1002,25 +1000,6 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
 
-  },
-
-  requestForReconsideration: async (user) => {
-    console.log('RequestForReconsideration for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-    eventName = 'REQUEST_FOR_RECONSIDERATION';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-    await validateEventPages(data.REQUEST_FOR_RECONSIDERATION());
-    await assertSubmittedEvent('CASE_PROGRESSION', {
-      header: '# Your request has been submitted',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   createFinalOrder: async (user, finalOrderRequestType) => {
