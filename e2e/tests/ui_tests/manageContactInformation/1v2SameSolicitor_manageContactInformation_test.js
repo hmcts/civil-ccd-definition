@@ -14,16 +14,16 @@ Scenario('Create claim to claimant response', async ({api}) => {
   caseId = await api.getCaseId();
 });
 
-Scenario('Manage Contact Information For Admin', async ({I, api}) => {
+Scenario('Manage Contact Information For Admin', async ({I}) => {
   await I.login(config.adminUser);
   // this one should work
-  await I.manageWitnessesForDefendant();
+  await I.manageWitnessesForDefendant(caseId);
 });
 
-Scenario('Manage Contact Information For Claimant Solicitor', async ({I, api}) => {
+Scenario('Manage Contact Information For Claimant Solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
   // this one has some errors midway but the ids should be correct
-  await I.manageOrganisationIndividualsForClaimant();
+  await I.manageOrganisationIndividualsForClaimant(caseId);
 });
 
 Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
