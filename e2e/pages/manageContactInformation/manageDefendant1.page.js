@@ -4,12 +4,16 @@ module.exports = {
 
   fields: {
     defendant1: {
-      // id: '#',
+      id: '#respondent1_respondent1',
+      primaryAddress: '#respondent1_primaryAddress_primaryAddress',
       element: {
-        // firstName: `#`,
-        // lastName: `#updateWitnessesDetailsForm_1_lastName`,
-        // emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
-        // phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
+        addressLine1: '#respondent1_primaryAddress__detailAddressLine1',
+        addressLine2: '#respondent1_primaryAddress__detailAddressLine2',
+        addressLine3: '#respondent1_primaryAddress__detailAddressLine3',
+        city: '#respondent1_primaryAddress__detailPostTown',
+        postcode: '#respondent1_primaryAddress__detailPostCode',
+        email: '#respondent1_partyEmail',
+        phone: '#respondent1_partyPhone'
       }
     },
   },
@@ -18,13 +22,14 @@ module.exports = {
     I.waitForElement(this.fields.defendant1.id);
     await I.runAccessibilityTest();
 
-    // needs editing, just copy paste
-    // await I.addAnotherElementToCollection();
-    // I.waitForElement(this.fields.defendant1.element.firstName);
-    // I.fillField(this.fields.defendant1.element.firstName, 'Leia');
-    // I.fillField(this.fields.defendant1.element.lastName, 'Johnson');
-    // I.fillField(this.fields.defendant1.element.emailAddress, 'leiajohnson@email.com');
-    // I.fillField(this.fields.defendant1.element.phoneNumber, '07821016453');
+    I.waitForElement(this.fields.defendant1.primaryAddress);
+    I.fillField(this.fields.defendant1.element.addressLine1, 'Flat 6');
+    I.fillField(this.fields.defendant1.element.addressLine2, 'Number 10');
+    I.fillField(this.fields.defendant1.element.addressLine3, 'Upping Street');
+    I.fillField(this.fields.defendant1.element.city, 'London');
+    I.fillField(this.fields.defendant1.element.postcode, 'SW1A 2AA');
+    I.fillField(this.fields.defendant1.element.email, 'updatedemail@newmail.com');
+    I.fillField(this.fields.defendant1.element.phone, '07777777777');
     await I.clickContinue();
   },
 };

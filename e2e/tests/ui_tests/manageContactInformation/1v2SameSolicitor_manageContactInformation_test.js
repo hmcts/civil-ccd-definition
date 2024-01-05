@@ -16,20 +16,16 @@ Scenario('Create claim to claimant response', async ({api}) => {
 
 Scenario('Manage Contact Information For Admin', async ({I}) => {
   await I.login(config.adminUser);
-  // this one should work
   await I.manageWitnessesForDefendant(caseId);
 });
 
 Scenario('Manage Contact Information For Claimant Solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  // this one has some errors midway but the ids should be correct
   await I.manageOrganisationIndividualsForClaimant(caseId);
 });
 
 Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  // this one has some errors midway but the ids should be correct - might have an error because lit friend doesn't have documents in `addDefendantLitigationFriend`
   await I.manageLitigationFriendForDefendant(caseId);
-  // this one have not completed.
   await I.manageDefendant(caseId);
 });

@@ -14,8 +14,8 @@ module.exports = {
           yes: 'Yes',
           no: 'No'
         },
-        address:'#respondent1LitigationFriend_primaryAddress'
-      }
+      },
+      addressId:'#respondent1LitigationFriend_primaryAddress_primaryAddress'
     },
   },
 
@@ -29,7 +29,8 @@ module.exports = {
       I.click(this.fields.respondent1LitigationFriend.differentAddress.options.no);
     });
 
-    await within(this.fields.respondent1LitigationFriend.address, () => {
+    I.waitForElement(this.fields.respondent1LitigationFriend.addressId);
+    await within(this.fields.respondent1LitigationFriend.addressId, () => {
       postcodeLookup.enterAddressManually(address);
     });
 

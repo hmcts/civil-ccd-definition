@@ -6,10 +6,10 @@ module.exports = {
     witnesses: {
       id: '#updateWitnessesDetailsForm',
       element: {
-        firstName: `#updateWitnessesDetailsForm_1_firstName`,
-        lastName: `#updateWitnessesDetailsForm_1_lastName`,
-        emailAddress: `#updateWitnessesDetailsForm_1_emailAddress`,
-        phoneNumber: `#updateWitnessesDetailsForm_1_phoneNumber`
+        firstName: '#updateWitnessesDetailsForm_1_firstName',
+        lastName: '#updateWitnessesDetailsForm_1_lastName',
+        emailAddress: '#updateWitnessesDetailsForm_1_emailAddress',
+        phoneNumber: '#updateWitnessesDetailsForm_1_phoneNumber'
       }
     },
   },
