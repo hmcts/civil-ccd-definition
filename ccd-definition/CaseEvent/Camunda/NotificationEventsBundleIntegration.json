@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_BUNDLE_CREATED",
-    "Name": "Notify bundle creation",
-    "Description": "Notify Defendant 1 for bundle created",
+    "Name": "Notify Defendant: Bundle",
+    "Description": "Notify defendant of bundle creation",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_BUNDLE_CREATED",
-    "Name": "Notify bundle creation",
-    "Description": "Notify Defendant 2 for bundle created",
+    "Name": "Notify Defendant: Bundle",
+    "Description": "Notify second defendant of bundle creation",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -28,8 +28,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
-    "Name": "Notify bundle creation",
-    "Description": "Notify Claimant for bundle created",
+    "Name": "Notify Claimant: Bundle",
+    "Description": "Notify claimant of bundle creation",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
