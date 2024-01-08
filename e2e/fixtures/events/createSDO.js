@@ -371,6 +371,69 @@ module.exports = {
   },
 
 
+  createLASDO: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'No',
+          claimsTrack: 'smallClaimsTrack',
+        },
+        SmallClaims: {
+          smallClaims: [
+      
+          ],
+          smallClaimsJudgesRecital: {
+            input: 'string'
+          },
+          smallClaimsHearing: {
+            input1: 'string',
+            input2: 'string',
+            time: 'THIRTY_MINUTES'
+          },
+          smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
+          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsDocuments: {
+            input1: 'string',
+            input2: 'string'
+          },
+          smallClaimsWitnessStatement: {
+            input1: 'string',
+            input2: '1',
+            input3: '1',
+            input4: 'string'
+          },
+          smallClaimsAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          smallClaimsNotes: {
+            input: 'string',
+            date: date(1)
+          }
+        }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackWSum
+    };
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
+    return data;
+  },
+
+
 //Fast Track WITH Sum of damages
 
   createSDOFast: () => {
