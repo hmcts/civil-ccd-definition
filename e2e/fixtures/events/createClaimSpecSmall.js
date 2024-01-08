@@ -7,7 +7,7 @@ const respondent1 = {
   individualFirstName: 'John',
   individualLastName: 'Doe',
   individualTitle: 'Sir',
-  partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+  partyEmail: 'johndoe@example.com',
   partyPhone: '07898678902',
   primaryAddress: buildAddress('respondent')
 };
