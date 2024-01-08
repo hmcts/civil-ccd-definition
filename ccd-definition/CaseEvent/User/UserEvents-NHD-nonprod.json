@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "UPDATE_NEXT_HEARING_DETAILS",
+    "Name": "Manage Contact Information",
+    "Description": "Updated party contact details",
+    "DisplayOrder": 99,
+    "PreConditionState(s)": "*",
+    "PostConditionState":  "*",
+    "Comment": " ",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "Y",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
