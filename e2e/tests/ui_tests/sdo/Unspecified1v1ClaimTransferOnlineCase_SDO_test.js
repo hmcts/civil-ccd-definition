@@ -2,13 +2,10 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {
   waitForFinishedBusinessProcess,
-  checkToggleEnabled,
-  checkCaseFlagsEnabled
+  checkToggleEnabled
 } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
-const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 const claimant1 = {
