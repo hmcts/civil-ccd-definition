@@ -219,7 +219,7 @@ module.exports = {
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
-    
+
     if (judicialReferral) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL');
     }
@@ -288,7 +288,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = data.LA_CREATE_SDO();
-    
+
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }

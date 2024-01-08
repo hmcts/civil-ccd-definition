@@ -1278,45 +1278,5 @@
     "CategoryLabel": "Other",
     "DisplayOrder": "1",
     "ParentCategoryID": "RespondentTwoTrialCorrespondence"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "MediationDocuments",
-    "CategoryLabel": "Mediation Documents",
-    "DisplayOrder": "15",
-    "ParentCategoryID": ""
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ClaimantOneMediationDocs",
-    "CategoryLabel": "Claimant One",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "MediationDocuments"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "ClaimantTwoMediationDocs",
-    "CategoryLabel": "Claimant Two",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "MediationDocuments"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "DefendantOneMediationDocs",
-    "CategoryLabel": "Defendant One",
-    "DisplayOrder": "3",
-    "ParentCategoryID": "MediationDocuments"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "DefendantTwoMediationDocs",
-    "CategoryLabel": "Defendant Two",
-    "DisplayOrder": "4",
-    "ParentCategoryID": "MediationDocuments"
   }
 ]
