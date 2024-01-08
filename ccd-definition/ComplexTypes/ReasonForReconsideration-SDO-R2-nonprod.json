@@ -1,18 +1,18 @@
 [
   {
     "ID": "ReasonForReconsideration",
-    "ListElementCode": "reasonForReconsiderationTxt",
-    "ElementLabel": "Enter your reasons",
-    "HintText": "For example, the legal adviser overlooked the following factors or did not give them sufficient importance",
-    "FieldType": "TextArea",
+    "ListElementCode": "requestor",
+    "FieldType": "Text",
+    "ElementLabel": "Requestor",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "ReasonForReconsideration",
-    "ListElementCode": "requestor",
-    "FieldType": "Label",
-    "ElementLabel": "Requestor",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "ElementLabel": "Enter your reasons",
+    "HintText": "For example, the legal adviser overlooked the following factors or did not give them sufficient importance",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
