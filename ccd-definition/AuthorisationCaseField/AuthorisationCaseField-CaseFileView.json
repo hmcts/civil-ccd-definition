@@ -21,7 +21,7 @@
           "hearing-schedule-access",
           "hearing-viewer"
         ],
-        "CRUD": "CRUD"
+        "CRUD": "CRU"
       }
     ]
   }
