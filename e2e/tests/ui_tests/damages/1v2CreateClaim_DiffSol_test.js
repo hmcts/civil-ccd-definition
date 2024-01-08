@@ -72,7 +72,7 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   //await I.see(caseEventMessage('Acknowledge claim'));
   await I.click('Sign out');
 }).retry(3);
-*/
+
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.navigateToCaseDetails(caseId());
@@ -131,7 +131,7 @@ Scenario('Add case flags', async ({I}) => {
 
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.createCaseFlags(caseFlags);
-    // await I.validateCaseFlags(caseFlags);
+    await I.validateCaseFlags(caseFlags);
   }
 }).retry(3);
 
@@ -152,13 +152,11 @@ Scenario('Judge triggers SDO', async ({I}) => {
 }).retry(3);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);
 }).retry(3);
 
 Scenario('Defendant solicitor uploads evidence', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.defendantSolicitorUser);
     await I.evidenceUpload(caseNumber, true);
 }).retry(3);

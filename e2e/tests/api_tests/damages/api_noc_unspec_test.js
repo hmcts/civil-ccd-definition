@@ -25,18 +25,18 @@ Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api
 //   await api.checkUserCaseAccess(otherSolicitorUser1, true);
 // });
 
-// Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
-//   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
+Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
+  await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
 
-//   let caseId = await api.getCaseId();
+  let caseId = await api.getCaseId();
 
-//   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_ONE');
   // await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_ONE');
 
   // await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser2);
 
   // await api.checkUserCaseAccess(otherSolicitorUser2, true);
-// });
+});
 
 // Scenario('notice of change - 1v2 - both defendants represented - diff solicitor to diff solicitor', async ({api, noc}) => {
 //   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP');
@@ -87,9 +87,9 @@ Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api
 //   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_TWO_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 // });
 
-Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {
-  await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
-  await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
+// Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc}) => {
+//   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
+//   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
 //   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
 
 //   let caseId = await api.getCaseId();
@@ -97,7 +97,7 @@ Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc
 //   await noc.requestNoticeOfChangeForRespondent2Solicitor(caseId, secondDefendantSolicitorUser);
 
 //   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
-});
+// });
 
 // Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc}) => {
 //   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
