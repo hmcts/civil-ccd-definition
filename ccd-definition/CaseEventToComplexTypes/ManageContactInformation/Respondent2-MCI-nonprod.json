@@ -185,6 +185,7 @@
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent2.type = \"INDIVIDUAL\" OR respondent2.type = \"SOLE_TRADER\""
   },
   {
@@ -194,6 +195,7 @@
     "ListElementCode": "partyID",
     "FieldDisplayOrder": 22,
     "DisplayContext": "MANDATORY",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -203,6 +205,7 @@
     "ListElementCode": "flags",
     "FieldDisplayOrder": 23,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

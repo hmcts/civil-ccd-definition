@@ -1,7 +1,7 @@
 const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE') => {
+  claimantResponse: (response = 'FULL_DEFENCE', citizenDefendantResponse = false) => {
     const responseData = {
     };
     switch (response) {
@@ -57,23 +57,31 @@ module.exports = {
             }
           }
         };
-        responseData.midEventData = {
-          ...responseData.midEventData,
-          Hearing: {
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            },
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            },
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
+        if (citizenDefendantResponse) {
+          responseData.midEventData = {
+            ...responseData.midEventData,
+            Hearing: {
+              businessProcess: {
+                status: 'FINISHED',
+                camundaEvent: 'DEFENDANT_RESPONSE_CUI'
+              }
             }
-          }
-        };
+          };
+        } else {
+          responseData.midEventData = {
+            ...responseData.midEventData,
+            Hearing: {
+              respondent1DQStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              },
+              businessProcess: {
+                status: 'FINISHED',
+                camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
+              }
+            }
+          };
+        }
         break;
       case 'PART_ADMISSION':
         responseData.userInput = {

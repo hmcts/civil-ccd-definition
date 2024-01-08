@@ -28,7 +28,6 @@ const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
-const requestForReconsideration = require('../fixtures/events/requestForReconsideration.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
@@ -91,8 +90,7 @@ const data = {
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
-  TRANSFER_CASE: () => transferOnlineCase.transferCase(),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsideration()
+  TRANSFER_CASE: () => transferOnlineCase.transferCase()
 };
 
 const eventData = {
@@ -972,26 +970,6 @@ module.exports = {
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
-
-    await waitForFinishedBusinessProcess(caseId);
-
-  },
-
-  requestForReconsideration: async (user) => {
-    console.log('RequestForReconsideration for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-    eventName = 'REQUEST_FOR_RECONSIDERATION';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-    await validateEventPages(data.REQUEST_FOR_RECONSIDERATION());
-    await assertSubmittedEvent('CASE_PROGRESSION', {
-      header: '# Your request has been submitted',
-      body: ''
-    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
