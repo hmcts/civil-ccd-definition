@@ -29,3 +29,7 @@ Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
   await I.manageLitigationFriendForDefendant(caseId);
   await I.manageDefendant(caseId);
 });
+
+AfterSuite(async ({api}) => {
+  await api.cleanUp();
+});

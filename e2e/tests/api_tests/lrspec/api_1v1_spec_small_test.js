@@ -28,3 +28,7 @@ Scenario('1v1 COUNTER_CLAIM claimant and defendant response small claim', async 
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM');
   // counter claim defense brings the case offline
 });
+
+AfterSuite(async ({api_spec_small}) => {
+  await api_spec_small.cleanUp();
+});
