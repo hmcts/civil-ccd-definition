@@ -18,8 +18,7 @@
       {
         "UserRoles": [
           "judge-profile",
-          "hearing-schedule-access",
-          "hearing-viewer"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }

@@ -32,7 +32,6 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "cui-nbc-profile"
 ./bin/utils/ccd-add-role.sh "citizen-profile"
 ./bin/utils/ccd-add-role.sh "caseworker-civil-citizen-ui-pcqextractor"
-./bin/utils/ccd-add-role.sh "hearing-viewer"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"
