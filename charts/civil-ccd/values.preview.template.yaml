@@ -3,6 +3,8 @@ civil-wa:
 
 civil-service:
   java:
+    imagePullPolicy: Always
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3826'
     keyVaults:
       civil:
         resourceGroup: civil
