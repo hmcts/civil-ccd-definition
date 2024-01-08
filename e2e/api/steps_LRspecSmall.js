@@ -379,7 +379,7 @@ module.exports = {
     }
   },
 
-  requestForReconsideration: async (user) => {
+  requestForReconsideration: async (user, userType) => {
     console.log('RequestForReconsideration for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'REQUEST_FOR_RECONSIDERATION';
