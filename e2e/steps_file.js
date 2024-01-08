@@ -125,6 +125,7 @@ const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/heari
 const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
 const confirmTrialReadinessPage = require('./pages/caseProgression/confirmTrialReadiness.page');
 
+const transferCaseOnline = require('./pages/transferOnlineCase/newHearingCentreLocation.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
@@ -283,6 +284,59 @@ module.exports = function () {
     },
 
     async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
+      eventName = 'Create case';
+
+      const twoVOneScenario = claimant1 && claimant2;
+      await createCasePage.createCase(config.definition.jurisdiction);
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+
+      let steps = pbaV3 ? [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.clickContinue(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ] : [
+        () => continuePage.continue(),
+        () => solicitorReferencesPage.enterReferences(),
+        () => chooseCourtPage.selectCourt(),
+        ...firstClaimantSteps(),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
+        () => claimTypePage.selectClaimType(),
+        () => personalInjuryTypePage.selectPersonalInjuryType(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(),
+        () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
+        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => claimValuePage.enterClaimValue(claimValue),
+        () => pbaNumberPage.selectPbaNumber(),
+        () => paymentReferencePage.updatePaymentReference(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',
+          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.returnToCaseDetails(),
+      ];
+
+      await this.triggerStepsWithScreenshot(steps);
+
+      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+    },
+
+    async createCaseForTOC(claimant1, claimant2, respondent1, respondent2, claimValue = 3000, shouldStayOnline = true) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -522,6 +576,36 @@ module.exports = function () {
       ]);
     },
 
+    async respondToClaimForTOC({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 3000}) {
+      eventName = 'Respond to claim';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
+          ...conditionalSteps(claimValue >= 25000, [
+              () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
+            ]
+          ),
+          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
+          () => expertsPage.enterExpertInformation(party),
+          () => witnessPage.enterWitnessInformation(party),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
+          () => hearingPage.enterHearingInformation(party),
+          () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
+          () => requestedCourtPage.selectSpecificCourtForHearing(party),
+          () => hearingSupportRequirementsPage.selectRequirements(party),
+          () => vulnerabilityQuestionsPage.vulnerabilityQuestions(party),
+          () => furtherInformationPage.enterFurtherInformation(party),
+          () => statementOfTruth.enterNameAndRole(party + 'DQ'),
+        ]),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
     async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
       await this.triggerStepsWithScreenshot([
@@ -546,6 +630,46 @@ module.exports = function () {
         () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
+        () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async respondToDefenceForTOC(mpScenario = 'ONE_V_ONE', claimValue = 3000) {
+      eventName = 'View and respond to defence';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
+        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+        () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(claimValue >= 25000, [
+            () => disclosureOfElectronicDocumentsPage.
+            enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
+          ]
+        ),
+        () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+        () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => hearingPage.enterHearingInformation(parties.APPLICANT_SOLICITOR_1),
+        () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+        () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
+        () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async transferOnlineCase() {
+      eventName = 'Transfer online case';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => transferCaseOnline.selectCourt(),
+        () => this.click('Submit'),
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();
@@ -694,12 +818,12 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
-    
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
     },
-    
+
     async setCaseId(argCaseNumber) {
       caseId = argCaseNumber;
     },
