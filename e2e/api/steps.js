@@ -979,7 +979,6 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   createFinalOrder: async (user, finalOrderRequestType) => {
