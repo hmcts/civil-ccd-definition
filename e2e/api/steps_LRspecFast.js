@@ -150,6 +150,11 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  getCaseId: async () => {
+    console.log (`case created: ${caseId}`);
+    return caseId;
+  },
+
   informAgreedExtensionDate: async (user) => {
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);

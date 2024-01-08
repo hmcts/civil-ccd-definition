@@ -28,15 +28,5 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
-    "CaseFieldID": "unsuccessfulMediationReason",
-    "DisplayContext": "MANDATORY",
-    "PageID": "mediationUnsuccessful",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y"
   }
 ]
