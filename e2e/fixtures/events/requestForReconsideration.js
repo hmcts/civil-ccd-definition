@@ -21,7 +21,7 @@ module.exports = {
             }
           }
         }
-      }
+      };
     }
     else if (userType == 'Respondent1') {
       return {
@@ -32,7 +32,7 @@ module.exports = {
             }
           }
         }
-      }
+      };
     }
     else {
       return {
@@ -43,7 +43,7 @@ module.exports = {
             }
           }
         }
-      }
+      };
     }
   }
 };

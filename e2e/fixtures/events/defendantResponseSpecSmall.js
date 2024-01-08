@@ -352,7 +352,7 @@ module.exports = {
     };
   },
 
-  respondToClaim2: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim2: (response = 'FULL_DEFENCE') => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
