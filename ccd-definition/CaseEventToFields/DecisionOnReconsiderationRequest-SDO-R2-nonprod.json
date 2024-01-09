@@ -66,30 +66,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "allocatedTrack",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "JudgeResponseToReconsideration",
-    "PageDisplayOrder": 1,
-    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
-    "CaseFieldID": "claimValue",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "JudgeResponseToReconsideration",
-    "PageDisplayOrder": 1,
-    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
