@@ -51,6 +51,16 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'FAST_CLAIM_NIHL' ? {
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCosts: {
+              band: 'BAND_2',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes'
+            }
+          }
+        } : {}),
         DisclosureOfElectronicDocuments: {
           respondent1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',

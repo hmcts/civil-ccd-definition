@@ -1503,6 +1503,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "addLegalRepDeadlineRes2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "allPartyNames",
     "AccessControl": [
       {
@@ -2441,19 +2465,6 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseWorkerDocuments",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
       }
     ]
   }

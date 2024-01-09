@@ -71,7 +71,11 @@ const flightDelayDetails ={
 
   },
   flightNumber: 'WA247',
-  scheduledDate: '2023-11-26'
+  scheduledDate: '2023-11-26',
+  flightCourtLocation: {
+    region: '1',
+    baseLocation: '20262'
+  }
 };
 
 module.exports = {
