@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "UPDATE_NEXT_HEARING_DETAILS",
-    "Name": "Manage Contact Information",
-    "Description": "Updated party contact details",
+    "Name": "Update Next Hearing (HMC)",
+    "Description": "Reading message off HMC Service bus.",
     "DisplayOrder": 99,
     "PreConditionState(s)": "*",
     "PostConditionState":  "*",
