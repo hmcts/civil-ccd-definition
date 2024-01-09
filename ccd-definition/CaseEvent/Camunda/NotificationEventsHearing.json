@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
-    "Name": "Notify Claimant: Fee Unpaid",
+    "Name": "Notify CL: Fee Unpaid",
     "Description": "Notify claimant fee unpaid",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -15,7 +15,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
-    "Name": "Notify Defendant: Fee Unpaid",
+    "Name": "Notify DF 1: Fee Unpaid",
     "Description": "Notify defendant fee unpaid",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
-    "Name": "Notify Defendant: Fee Unpaid",
+    "Name": "Notify DF 2: Fee Unpaid",
     "Description": "Notify Second Respondent Fee Unpaid",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify: trial readiness",
+    "Name": "Notify CL: trial readiness",
     "Description": "Notify Applicant Check Trial Readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify defend: trial readiness",
+    "Name": "Notify DF 1: trial readiness",
     "Description": "Notify defendant check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
-    "Name": "Notify defend: trial readiness",
+    "Name": "Notify DF 2: trial readiness",
     "Description": "Notify second defendant check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -80,7 +80,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_HEARING",
-    "Name": "Notify: Hearing created",
+    "Name": "Notify CL: Hearing created",
     "Description": "Notify claimant of hearing",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -93,7 +93,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT1_HEARING",
-    "Name": "Notify defend: Hearing created",
+    "Name": "Notify DF 1: Hearing created",
     "Description": "Notify defendant of Hearing",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -107,7 +107,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT2_HEARING",
-    "Name": "Notify defend: Hearing created",
+    "Name": "Notify DF 2: Hearing created",
     "Description": "Notify second defendant of hearing",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -120,7 +120,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify: trial readiness",
+    "Name": "Notify CL: trial readiness",
     "Description": "Notify Claimant to check other party trial readiness",
     "PreConditionState(s)": "HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "*",
@@ -134,7 +134,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify defend: trial readiness",
+    "Name": "Notify DF 1: trial readiness",
     "Description": "Notify Defendant to check other party trial readiness",
     "PreConditionState(s)": "HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "*",
@@ -147,7 +147,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_OTHER_TRIAL_READY",
-    "Name": "Notify defend: trial readiness",
+    "Name": "Notify DF 2: trial readiness",
     "Description": "Notify Second Defendant to check other party trial readiness",
     "PreConditionState(s)": "HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "*",
@@ -160,7 +160,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_GENERATE_ORDER",
-    "Name": "Notify Claimant: order made",
+    "Name": "Notify CL: order made",
     "Description": "Notify claimant of order",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -173,7 +173,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_GENERATE_ORDER",
-    "Name": "Notify defendant: order made",
+    "Name": "Notify DF 1: order made",
     "Description": "Notify defendant of order",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -186,7 +186,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_GENERATE_ORDER",
-    "Name": "Notify defendant: order made",
+    "Name": "Notify DF 2: order made",
     "Description": "Notify second defendant of order",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -199,7 +199,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_FOR_HEARING_FEE_AFTER_NOC",
-    "Name": "Notify Claimant: Fee Unpaid",
+    "Name": "Notify CL: Fee Unpaid",
     "Description": "Notify Claimant Fee Unpaid",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
