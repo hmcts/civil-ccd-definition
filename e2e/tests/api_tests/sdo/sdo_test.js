@@ -213,7 +213,6 @@ Scenario('1v1 full defence specified - legal advisor draws disposal order - hear
     WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
     taskId = task['id'];
   }
-  await api_spec_small.createLASDO(legalAdvUser);
   if (config.runWAApiTest) {
     api_spec_small.completeTaskByUser(legalAdvUser, taskId);
   }
