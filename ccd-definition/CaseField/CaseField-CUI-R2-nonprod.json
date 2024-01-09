@@ -59,11 +59,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingFeeHelpWithFees",
+    "ID": "hearingHelpFeesReferenceNumber",
     "Label": " ",
-    "FieldType": "HelpWithFees",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
+    "Searchable": "N"
   }
 ]
