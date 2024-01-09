@@ -91,6 +91,13 @@ Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.createHearingScheduled();
 }).retry(3);
 
+Scenario('Transfer online case', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.hearingCenterAdminWithRegionId2);
+    await I.transferOnlineCase();
+    await I.click('Sign out'); }
+}).retry(3);
+
 Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
 }).retry(3);
