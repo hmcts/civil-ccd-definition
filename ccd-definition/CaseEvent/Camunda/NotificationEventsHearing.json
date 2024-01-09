@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify CL: trial readiness",
+    "Name": "Notify CL: Confirm readiness",
     "Description": "Notify Applicant Check Trial Readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
-    "Name": "Notify DF 1: trial readiness",
+    "Name": "Notify DF 1: Confirm readiness",
     "Description": "Notify defendant check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
-    "Name": "Notify DF 2: trial readiness",
+    "Name": "Notify DF 2: confirm readiness",
     "Description": "Notify second defendant check trial readiness",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
