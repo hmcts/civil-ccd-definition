@@ -127,12 +127,11 @@ module.exports = {
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
-
+    await waitForFinishedBusinessProcess(caseId);    
     if (claimType !== 'pinInPost') {
       await assignCaseToCitizen(caseId, multipartyScenario);
     }
-    await waitForFinishedBusinessProcess(caseId);
-
+    
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
