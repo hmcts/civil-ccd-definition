@@ -50,7 +50,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("cui-nbc-profile", "PUBLIC"),
         new CcdRoleConfig("citizen-profile", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-citizen-ui-pcqextractor", "PUBLIC"),
-        new CcdRoleConfig("judge", "PUBLIC")
+        new CcdRoleConfig("judge", "PUBLIC"),
+        new CcdRoleConfig("hearing-centre-admin", "PUBLIC"),
+        new CcdRoleConfig("national-business-centre", "PUBLIC"),
+        new CcdRoleConfig("hearing-centre-team-leader", "PUBLIC")
     };
 
     private final CcdEnvironment environment;

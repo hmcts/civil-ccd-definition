@@ -17,7 +17,10 @@
       },
       {
         "UserRoles": [
-          "judge"
+          "judge",
+          "hearing-centre-admin",
+          "national-business-centre",
+          "hearing-centre-team-leader"
         ],
         "CRUD": "CRU"
       }
