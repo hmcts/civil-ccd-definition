@@ -59,10 +59,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimantDocuments",
-    "Label": "Claimant Documents",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
+    "ID": "applicant1FullDefenceConfirmAmountPaidSpec",
+    "Label": " ",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

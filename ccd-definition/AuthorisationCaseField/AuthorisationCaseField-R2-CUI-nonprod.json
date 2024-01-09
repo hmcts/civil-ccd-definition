@@ -2470,13 +2470,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantDocuments",
+    "CaseFieldID": "applicant1FullDefenceConfirmAmountPaidSpec",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   }
