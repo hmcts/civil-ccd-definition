@@ -8,5 +8,15 @@
     "DisplayContext": "READONLY",
     "PageID": "FeatureToggleWA",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UpdateNextHearingInfo",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FeatureToggleWA",
+    "ShowSummaryChangeOption": "N"
   }
 ]

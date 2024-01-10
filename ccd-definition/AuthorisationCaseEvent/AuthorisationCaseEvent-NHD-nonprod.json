@@ -11,5 +11,18 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UpdateNextHearingInfo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

@@ -11,5 +11,18 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 3
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "UpdateNextHearingInfo",
+    "Name": "Update Next Hearing Scheduler",
+    "Description": "Automated process: Synchronising next hearing details.",
+    "PreConditionState(s)": "*",
+    "PostConditionState":  "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 3
   }
 ]
