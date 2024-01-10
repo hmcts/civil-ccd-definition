@@ -85,8 +85,8 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "CLAIM_INTENTION_TRANSLATED_DOCUMENT",
-    "ListElement": "Claim Intention Translated Document",
+    "ListElementCode": "CLAIMANT_INTENTION_TRANSLATED_DOCUMENT",
+    "ListElement": "Claimant Intention Translated Document",
     "DisplayOrder": 15
   }
 
