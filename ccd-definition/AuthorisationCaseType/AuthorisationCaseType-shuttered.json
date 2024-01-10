@@ -12,7 +12,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-civil-systemupdate",
+    "UserRoles": [
+      "caseworker-civil-systemupdate",
+      "next-hearing-date-admin"
+    ],
     "CRUD": "CRUD"
   }
 ]

@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "nextHearingDetails",
+    "Label": "Next hearing details",
+    "FieldType": "NextHearingDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_Definition":  "Details of the next hearing on a case",
+    "_Category":  "CIVIL",
+    "Publish": "Y"
+  }
+]

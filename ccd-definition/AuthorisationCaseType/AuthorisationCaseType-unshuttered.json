@@ -19,6 +19,7 @@
       "caseworker-approver",
       "caseworker-caa",
       "caseworker-civil-systemupdate",
+      "next-hearing-date-admin",
       "caseworker-wa-task-configuration"
     ],
     "CRUD": "CRUD"

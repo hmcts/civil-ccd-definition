@@ -5,7 +5,8 @@
     "FieldType": "Text",
     "ElementLabel": "ID",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "ID": "NextHearingDetails",
@@ -13,6 +14,7 @@
     "FieldType": "DateTime",
     "ElementLabel": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
