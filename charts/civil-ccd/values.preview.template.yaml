@@ -3,6 +3,8 @@ civil-wa:
 
 civil-service:
   java:
+    imagePullPolicy: Always
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3858'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -62,7 +64,12 @@ civil-service:
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
-      HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
+      HMC_HEARINGS_TOPIC_NAMESPACE: 'hmc-servicebus-aat'
+      HMC_HEARINGS_TOPIC_NAME: 'hmc-to-cft-aat'
+      HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: 'hmc-to-civil-subscription-aat'
+      HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
+      HMC_HEARINGS_SUBSCRIPTION_ENABLED: true
+      HMC_HEARINGS_TOPIC_THREAD_COUNT: 4
 idam-pr:
   redirect_uris:
     XUI:
