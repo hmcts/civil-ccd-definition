@@ -2400,6 +2400,12 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
       }
     ]
   },
