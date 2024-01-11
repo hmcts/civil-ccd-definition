@@ -95,6 +95,13 @@ Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
 }).retry(3);
 
+Scenario('Transfer online case', async ({I}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.login(config.hearingCenterAdminWithRegionId2);
+    await I.transferOnlineCase();
+    await I.click('Sign out'); }
+}).retry(3);
+
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
