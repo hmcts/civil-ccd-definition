@@ -43,9 +43,21 @@
   },
   {
     "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "LEGAL_EXECUTIVE_FOR_THE_CLAIMANT",
+    "ListElement": "Legal Executive",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
+    "ListElementCode": "SOLICITORS_AGENT_FOR_THE_CLAIMANT",
+    "ListElement": "Solicitor's Agent",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "FinalOrdersClaimantRepresentationList",
     "ListElementCode": "CLAIMANT_NOT_ATTENDING",
     "ListElement": "The claimant not attending",
-    "DisplayOrder": 6
+    "DisplayOrder": 8
   },
   {
     "ID": "FinalOrdersDefendantRepresentationList",
@@ -79,9 +91,21 @@
   },
   {
     "ID": "FinalOrdersDefendantRepresentationList",
+    "ListElementCode": "LEGAL_EXECUTIVE_FOR_THE_DEFENDANT",
+    "ListElement": "Legal Executive",
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "FinalOrdersDefendantRepresentationList",
+    "ListElementCode": "SOLICITORS_AGENT_FOR_THE_DEFENDANT",
+    "ListElement": "Solicitor's Agent",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "FinalOrdersDefendantRepresentationList",
     "ListElementCode": "DEFENDANT_NOT_ATTENDING",
     "ListElement": "The defendant not attending",
-    "DisplayOrder": 6
+    "DisplayOrder": 8
   },
   {
     "ID": "FinalOrdersClaimantDefendantNotAttending",
