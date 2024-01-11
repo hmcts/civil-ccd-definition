@@ -981,7 +981,6 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   requestForReconsideration: async (user) => {

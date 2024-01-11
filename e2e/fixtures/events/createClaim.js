@@ -342,6 +342,20 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         }
       };
     }
+
+    case 'ONE_V_ONE_NIHL': {
+      delete claimData.ClaimType;
+      return {
+        ...claimData,
+        ClaimType: {
+          claimType: 'PERSONAL_INJURY'
+        },
+        PersonalInjuryType: {
+          personalInjuryType: 'NOISE_INDUCED_HEARING_LOSS'
+        },
+      };
+    }
+
     case 'ONE_V_ONE':
     default: {
       return claimData;
