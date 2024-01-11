@@ -7,8 +7,14 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT",
+    "ListElement": "Defendant settlement agreement form",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "LIP_MANUAL_DETERMINATION",
     "ListElement": "Claimant Lip Manual Determination",
-    "DisplayOrder": 16
+    "DisplayOrder": 17
   }
 ]
