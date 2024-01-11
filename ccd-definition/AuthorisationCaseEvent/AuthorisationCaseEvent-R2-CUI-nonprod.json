@@ -482,7 +482,7 @@
         ],
         "CRUD": "CRU"
       }
-     ]
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -819,6 +819,26 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   }

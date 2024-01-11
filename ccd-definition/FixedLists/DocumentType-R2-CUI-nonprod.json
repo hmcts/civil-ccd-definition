@@ -4,5 +4,11 @@
     "ListElementCode": "DRAFT_CLAIM_FORM",
     "ListElement": "Draft claim form",
     "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "LIP_MANUAL_DETERMINATION",
+    "ListElement": "Claimant Lip Manual Determination",
+    "DisplayOrder": 16
   }
 ]
