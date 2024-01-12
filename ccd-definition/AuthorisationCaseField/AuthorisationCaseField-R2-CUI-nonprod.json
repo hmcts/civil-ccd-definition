@@ -1936,7 +1936,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -2506,6 +2507,25 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1RespondToSettlementAgreementDeadline",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
