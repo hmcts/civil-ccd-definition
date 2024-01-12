@@ -18,7 +18,7 @@ module.exports = {
     I.waitForElement(this.fields.applicant1OrgIndividuals.id);
     await I.runAccessibilityTest();
 
-    await I.addAnotherElementToCollection();
+    await I.addAnotherElementToCollection('//div[@id=\'applicant1OrgIndividuals\']//button[@type=\'button\' and contains(text(), \'Add new\')]');
 
     I.waitForElement(this.fields.applicant1OrgIndividuals.element.firstName);
     I.fillField(this.fields.applicant1OrgIndividuals.element.firstName, 'Kendal');

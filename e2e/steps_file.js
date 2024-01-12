@@ -738,9 +738,9 @@ module.exports = function () {
       }
     },
 
-    async addAnotherElementToCollection() {
+    async addAnotherElementToCollection(button = 'Add new') {
       const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title');
-      this.click('Add new');
+      this.click(button);
       this.waitNumberOfVisibleElements('.collection-title', numberOfElements + 1);
     },
 
