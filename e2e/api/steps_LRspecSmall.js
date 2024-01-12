@@ -350,6 +350,7 @@ module.exports = {
     if(!(await checkManageContactInformationEnabled())) {
       return;
     }
+    eventName = 'MANAGE_CONTACT_INFORMATION';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
     let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
