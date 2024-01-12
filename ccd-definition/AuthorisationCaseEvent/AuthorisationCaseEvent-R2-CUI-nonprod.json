@@ -821,5 +821,17 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "APPLY_HELP_WITH_HEARING_FEE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
