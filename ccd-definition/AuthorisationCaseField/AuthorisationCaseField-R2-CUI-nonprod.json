@@ -2524,6 +2524,19 @@
         ],
         "CRUD": "R"
       }
+      ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
     ]
   }
 ]
