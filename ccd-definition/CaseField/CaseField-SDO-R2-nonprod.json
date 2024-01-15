@@ -1,0 +1,59 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForReconsiderationPartiesName",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForReconsiderationSeparator",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "reasonForReconsideration",
+    "Label": "Reason for reconsideration of directions order by a Legal Advisor",
+    "FieldType": "ReasonForReconsideration",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "decisionOnRequestReconsiderationOptions",
+    "Label": "Do you wish to uphold the previous order made?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DecisionOnRequestReconsiderationOptionList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "upholdingPreviousOrderReason",
+  "Label": " ",
+  "FieldType": "JudgeDecisionOnReconsiderationSelect",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeResponseToReconsiderationDetailsNo",
+    "Label": " ",
+    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeResponseToReconsiderationDetailsAmending",
+    "Label": " ",
+    "FieldType": "JudgeDecisionOnReconsiderationSelect",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

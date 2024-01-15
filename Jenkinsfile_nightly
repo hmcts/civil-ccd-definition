@@ -44,7 +44,8 @@ def secrets = [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
     secret('default-password', 'DEFAULT_PASSWORD'),
     secret('judge-default-password', 'JUDGE_DEFAULT_PASSWORD'),
-    secret('iac-default-password', 'IAC_DEFAULT_PASSWORD')
+    secret('iac-default-password', 'IAC_DEFAULT_PASSWORD'),
+    secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
   ]
 ]
 
@@ -63,6 +64,12 @@ withNightlyPipeline(type, product, component) {
     'aat': params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
+
+  enableCrossBrowserTest()
+
+  afterAlways('crossBrowserTest') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+  }
 
   enableFullFunctionalTest(200)
 

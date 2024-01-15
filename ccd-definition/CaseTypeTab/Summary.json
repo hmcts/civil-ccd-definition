@@ -68,8 +68,15 @@
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
+    "CaseFieldID": "responseClaimTrack",
+    "TabFieldDisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Summary",
+    "TabLabel": "Summary",
+    "TabDisplayOrder": 1,
     "CaseFieldID": "respondent1ResponseDeadline",
-    "FieldShowCondition": "respondent1Represented = \"Yes\" AND respondent1OrgRegistered = \"Yes\"",
     "TabFieldDisplayOrder": 9
   },
   {

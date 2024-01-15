@@ -972,7 +972,6 @@ module.exports = {
     }
 
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   createFinalOrder: async (user, finalOrderRequestType) => {
@@ -1808,16 +1807,15 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsWitnessStatementToggle'];
   delete responseBody.data['smallClaimsWitnessStatement'];
   delete responseBody.data['smallClaimsRoadTrafficAccident'];
-  delete responseBody.data['eaCourtLocation'];
   delete responseBody.data['documentAndNoteToAdd'];
-  delete responseBody.data['documentAndNameToAdd']; 
+  delete responseBody.data['documentAndNameToAdd'];
   delete responseBody.data['channel'];
   delete responseBody.data['disposalHearingMethodTelephoneHearing'];
   delete responseBody.data['disposalHearingSchedulesOfLoss'];
-  delete responseBody.data['disposalHearingMethod']; 
+  delete responseBody.data['disposalHearingMethod'];
   delete responseBody.data['hearingNoticeList'];
   delete responseBody.data['information'];
-  delete responseBody.data['hearingDueDate']; 
+  delete responseBody.data['hearingDueDate'];
   delete responseBody.data['disposalHearingAddNewDirections'];
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];

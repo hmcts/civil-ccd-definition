@@ -24,6 +24,7 @@
     "DisplayOrder": 19,
     "PreConditionState(s)": "JUDICIAL_REFERRAL",
     "PostConditionState": "*",
+    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\"",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",

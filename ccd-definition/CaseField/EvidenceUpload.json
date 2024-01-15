@@ -663,7 +663,7 @@
     "ID": "documentReferredInStatementRes",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -798,7 +798,7 @@
     "ID": "documentReferredInStatementRes2",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -933,7 +933,7 @@
     "ID": "documentReferredInStatementApp2",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UploadEvidenceDocumentType",
+    "FieldTypeParameter": "UploadEvidenceDocumentTypeWithName",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
