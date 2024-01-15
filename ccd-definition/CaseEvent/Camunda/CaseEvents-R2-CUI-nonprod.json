@@ -28,8 +28,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
-    "Name": "Update claimant intention claim state",
-    "Description": "Update claimant intention claim state",
+    "Name": "Update claim state",
+    "Description": "Update claim state",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -41,8 +41,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
-    "Name": "Update claim state after translated doc uploaded",
-    "Description": "Update claim state after translated doc uploaded",
+    "Name": "Update claim state",
+    "Description": "Update claim state",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
