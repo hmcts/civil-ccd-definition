@@ -4,5 +4,17 @@
     "ListElementCode": "DRAFT_CLAIM_FORM",
     "ListElement": "Draft claim form",
     "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT",
+    "ListElement": "Defendant settlement agreement form",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "LIP_MANUAL_DETERMINATION",
+    "ListElement": "Claimant Lip Manual Determination",
+    "DisplayOrder": 17
   }
 ]
