@@ -10,5 +10,29 @@
   "ShowSummaryChangeOption": "N",
   "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
   "Publish": "Y"
-}
+},
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RequestForReconsideration",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "JudgeResponseToReconsideration",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  }
 ]

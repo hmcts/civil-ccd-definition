@@ -176,6 +176,7 @@
     "ListElementCode": "partyEmail",
     "FieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\" OR applicant1.type = \"ORGANISATION\" OR applicant1.type = \"COMPANY\""
   },
   {
@@ -185,6 +186,7 @@
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "applicant1.type = \"INDIVIDUAL\" OR applicant1.type = \"SOLE_TRADER\""
   },
   {
@@ -194,6 +196,7 @@
     "ListElementCode": "partyID",
     "FieldDisplayOrder": 22,
     "DisplayContext": "MANDATORY",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -202,7 +205,8 @@
     "CaseFieldID": "applicant1",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 23,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_DRAFT_FORM",
-    "Name": "Generate draft claim form",
-    "Description": "Generates draft claim form",
+    "ID": "SEND_HEARING_TO_LIP_DEFENDANT",
+    "Name": "Send hearing to Defendant",
+    "Description": "Bulk Email Send to Defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -14,9 +14,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
-    "Name": "Generate settlement form",
-    "Description": "Generate Defendant lip settlement agreement form",
+    "ID": "SEND_HEARING_TO_LIP_CLAIMANT",
+    "Name": "Send hearing to Claimant",
+    "Description": "Bulk Email Send to Claimant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -27,9 +27,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
-    "Name": "Generate LIP Claimant MD Form",
-    "Description": "Generate LIP Claimant Manual Determination Form",
+    "ID": "SEND_FINAL_ORDER_TO_LIP_DEFENDANT",
+    "Name": "Send order to Defendant",
+    "Description": "Bulk Email Send to Defendant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "SEND_FINAL_ORDER_TO_LIP_CLAIMANT",
+    "Name": "Send order to Claimant",
+    "Description": "Bulk Email Send to Claimant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -39,4 +52,3 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
-
