@@ -8,13 +8,6 @@ module.exports = {
       id: '#respondent1LitigationFriend_respondent1LitigationFriend',
       firstName: '#respondent1LitigationFriend_firstName',
       diffAddress: '#respondent1LitigationFriend_hasSameAddressAsLitigant_No',
-      differentAddress: {
-        id: '#respondent1LitigationFriend_hasSameAddressAsLitigant',
-        options: {
-          yes: 'Yes',
-          no: 'No'
-        },
-      },
       addressId:'#respondent1LitigationFriend_primaryAddress_primaryAddress'
     },
   },
@@ -24,10 +17,6 @@ module.exports = {
     await I.runAccessibilityTest();
 
     I.click(this.fields.respondent1LitigationFriend.diffAddress);
-
-    await within(this.fields.respondent1LitigationFriend.id, () => {
-      I.click(this.fields.respondent1LitigationFriend.differentAddress.options.no);
-    });
 
     I.waitForElement(this.fields.respondent1LitigationFriend.addressId);
     await within(this.fields.respondent1LitigationFriend.addressId, () => {
