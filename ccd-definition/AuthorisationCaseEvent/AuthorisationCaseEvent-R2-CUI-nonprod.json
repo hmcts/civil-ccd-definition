@@ -855,8 +855,8 @@
           "caseworker-civil-systemupdate"
           ],
          "CRUD": "CRU"
-      },
-        ]
+      }
+    ]
   },
 {
     "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
