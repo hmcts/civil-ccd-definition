@@ -165,7 +165,8 @@
     "FieldTypeParameter": "UnavailableDate",
     "ElementLabel": "Unavailable date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -174,7 +175,8 @@
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
     "Max": "40",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
@@ -182,7 +184,8 @@
     "FieldType": "PhoneUK",
     "ElementLabel": "Phone",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
   },
   {
     "ID": "Party",
