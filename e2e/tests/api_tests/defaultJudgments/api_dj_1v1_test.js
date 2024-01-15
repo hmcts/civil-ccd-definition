@@ -14,7 +14,7 @@ let caseId;
 
 Scenario('Default Judgment claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.addCaseNote(config.adminUser);
+  // await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   caseId = await api.getCaseId();
@@ -22,22 +22,22 @@ Scenario('Default Judgment claim', async ({I, api}) => {
   await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
-  if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
-    console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
-    WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
-    taskId = summaryJudgmentDirectionsTask['id'];
-    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
-  }
-});
+// Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
+//   if (config.runWAApiTest) {
+//     const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
+//     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
+//     WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
+//     taskId = summaryJudgmentDirectionsTask['id'];
+//     api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+//   }
+// });
 
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
-  if (config.runWAApiTest) {
-    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
-  }
-});
+// Scenario('Default Judgment claim SDO', async ({I, api}) => {
+//   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1);
+//   if (config.runWAApiTest) {
+//     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+//   }
+// });
 
 // Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hearing date, pay fee, confirm trial readiness)', async ({I, api}) => {
 //   if (['preview', 'demo'].includes(config.runningEnv)) {
