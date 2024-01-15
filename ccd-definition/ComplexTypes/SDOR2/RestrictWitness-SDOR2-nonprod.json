@@ -1,0 +1,36 @@
+[
+  {
+    "ID": "SdoRestrictWitness",
+    "ListElementCode": "isRestrictWitness",
+    "FieldType": "FixedRadioList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldTypeParameter": "SDOYesNORadio",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoRestrictWitness",
+    "ListElementCode": "noOfWitnessClaimant",
+    "FieldType": "Number",
+    "HintText":"For example,4",
+    "ElementLabel": "Number of witnesses (claimant)",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoRestrictWitness",
+    "ListElementCode": "noOfWitnessDefendant",
+    "FieldType": "Number",
+    "HintText":"For example,4",
+    "ElementLabel": "Number of witnesses (defendant)",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoRestrictWitness",
+    "ListElementCode": "partyIsCountedAsWitnessTxt",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

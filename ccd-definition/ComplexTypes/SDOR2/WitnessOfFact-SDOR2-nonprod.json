@@ -1,0 +1,26 @@
+[
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "SdoStatementOfWitness",
+    "FieldType": "TextArea",
+    "ElementLabel": "Statements of witnesses",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "SdoRestrictWitnessDetails",
+    "FieldType": "SdoRestrictWitness",
+    "ElementLabel": "Restrict number of witnesses",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

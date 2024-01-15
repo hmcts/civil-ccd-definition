@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureTxt",
+    "FieldType": "TextArea",
+    "ElementLabel": "Standard disclosure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureInspectionTxt",
+    "FieldType": "TextArea",
+    "ElementLabel": "Inspection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureInspectionDate",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SDODisclosureOfDocuments",
+    "ListElementCode": "requestCompliedWithTxt",
+    "FieldType": "Text",
+    "ElementLabel": "Requests will be complied with",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

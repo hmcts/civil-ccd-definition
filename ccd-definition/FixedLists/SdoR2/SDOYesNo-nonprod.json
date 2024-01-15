@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "SDOYesNORadio",
+    "ListElementCode": "Yes",
+    "ListElement": "Yes",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "SDOYesNORadio",
+    "ListElementCode": "No",
+    "ListElement": "No",
+    "DisplayOrder": 2
+  }
+]

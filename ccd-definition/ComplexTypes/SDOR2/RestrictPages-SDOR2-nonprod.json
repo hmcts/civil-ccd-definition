@@ -1,0 +1,90 @@
+[
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": "Statements of witnesses",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input2",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SDOYesNORadio",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input3",
+    "FieldType": "Number",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input4",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input5",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input6",
+    "FieldType": "Number",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input7",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input8",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "date",
+    "FieldType": "Date",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoWitnessOfFact",
+    "ListElementCode": "input9",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
