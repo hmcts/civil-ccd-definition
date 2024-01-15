@@ -16,7 +16,7 @@ async function prepareClaim(api_spec_cui, carmEnabled) {
 // set config.localMediationTests to true to run locally
 Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @mm');
 
-Scenario.only('CARM enabled', async ({api_spec_cui}) => {
+Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   await prepareClaim(api_spec_cui, carmEnabled);
   //await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
