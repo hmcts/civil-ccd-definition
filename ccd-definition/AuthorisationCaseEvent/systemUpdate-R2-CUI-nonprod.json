@@ -10,11 +10,5 @@
     "CaseEventID": "NOTIFY_CLAIMANT_LIP_HELP_WITH_FEES",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT1_GENERIC_TEMPLATE",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]
