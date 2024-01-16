@@ -20,7 +20,8 @@ module.exports = {
 
     I.waitForElement(this.fields.respondent1LitigationFriend.addressId);
     await within(this.fields.respondent1LitigationFriend.addressId, () => {
-      postcodeLookup.enterAddressManually(address);
+      postcodeLookup.enterAddressManually(address, locate('a').withText('I can\'t enter a UK postcode')
+        .inside(locate('div#respondent1LitigationFriend_primaryAddress_primaryAddress')));
     });
 
     await I.clickContinue();
