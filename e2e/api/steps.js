@@ -28,11 +28,13 @@ const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled} = require('./testingSupport');
+const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {addAndAssertCaseFlag, getDefinedCaseFlagLocations, getPartyFlags, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
+const {updateApplicant, updateLROrganisation} = require('./manageContactInformationHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
@@ -90,7 +92,9 @@ const data = {
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
-  TRANSFER_CASE: () => transferOnlineCase.transferCase()
+  TRANSFER_CASE: () => transferOnlineCase.transferCase(),
+  MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
+  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
 
 const eventData = {
@@ -217,6 +221,29 @@ module.exports = {
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+  },
+
+  manageDefendant1Details: async (user) => {
+    if(!(await checkManageContactInformationEnabled())) {
+      return;
+    }
+    eventName = 'MANAGE_CONTACT_INFORMATION';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let manageContactInformationData = data.MANAGE_DEFENDANT1_INFORMATION(caseData);
+    await expectedWarnings('Defendant1Party', manageContactInformationData, 'Check the litigation friend\'s details');
+    await updateApplicant(caseId, manageContactInformationData);
+  },
+
+  manageDefendant1LROrgDetails: async (user) => {
+    if(!(await checkManageContactInformationEnabled())) {
+      return;
+    }
+    eventName = 'MANAGE_CONTACT_INFORMATION';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let manageContactInformationData = data.MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION(caseData);
+    await updateLROrganisation(caseId, manageContactInformationData);
   },
 
   createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
@@ -1309,7 +1336,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
@@ -1452,7 +1479,7 @@ function removeUiFields(pageId, caseData) {
   return caseData;
 }
 
-const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+const validateErrorOrWarning = async (pageId, eventData) => {
   const response = await apiRequest.validatePage(
     eventName,
     pageId,
@@ -1460,13 +1487,26 @@ const assertError = async (pageId, eventData, expectedErrorMessage, responseBody
     addCaseId(pageId) ? caseId : null,
     422
   );
+  return response;
+};
 
+const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+  const response = await validateErrorOrWarning(pageId, eventData);
   const responseBody = await response.json();
-
   assert.equal(response.status, 422);
   assert.equal(responseBody.message, responseBodyMessage);
   if (responseBody.callbackErrors != null) {
     assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
+  }
+};
+
+const expectedWarnings = async (pageId, eventData, expectedWarningMessages, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+  const response = await validateErrorOrWarning(pageId, eventData);
+  const responseBody = await response.json();
+  assert.equal(response.status, 422);
+  assert.equal(responseBody.message, responseBodyMessage);
+  if(responseBody.callbackWarnings != null ) {
+    assert.equal(responseBody.callbackWarnings[0], expectedWarningMessages);
   }
 };
 
@@ -1843,7 +1883,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
 };
 
 const addCaseId = (pageId) => {
-  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId);
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation();
 };
 
 const isEvidenceUpload = (pageId) => {
@@ -1853,8 +1893,12 @@ const isEvidenceUpload = (pageId) => {
              || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
 };
 
+const isManageContactInformation = () => {
+  return eventName === 'MANAGE_CONTACT_INFORMATION';
+};
+
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE');
+  return (mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE'));
 };
 
 const adjustDataForSolicitor = (user, data) => {
