@@ -11,7 +11,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_LIP_CLAIM",
+    "CaseEventID": "GENERATE_LIP_DEFENDANT_CLAIM_FORM_SPEC",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
