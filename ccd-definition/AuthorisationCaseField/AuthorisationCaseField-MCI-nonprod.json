@@ -14,10 +14,37 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "expertsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "witnessesLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1PartyNameManageContactLabel",
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -30,6 +57,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -42,6 +70,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -54,6 +83,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRUD"
@@ -364,6 +394,84 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "orgIndividualsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigationFriendTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "litigationFriendHeader",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1LitigationFriendTypeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant2LitigationFriendTypeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendant1LitigationFriendTypeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "defendant2LitigationFriendTypeLabel",
     "AccessControl": [
       {
         "UserRoles": [
