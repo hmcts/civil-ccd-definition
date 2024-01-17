@@ -27,6 +27,8 @@ const requestForReconsideration = require('../fixtures/events/requestForReconsid
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {updateExpert} = require('./manageContactInformationHelper');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
+const transferOnlineCase = require("../fixtures/events/transferOnlineCase");
+const {fetchCaseDetails} = require("./apiRequest");
 
 let caseId, eventName;
 let caseData = {};
@@ -44,6 +46,7 @@ const data = {
   REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec(),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
+  NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
 };
 
 const eventData = {
@@ -282,6 +285,37 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  notSuitableSDO: async (user, option) => {
+    console.log(`case in CASE PROGRESSION  ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'NotSuitable_SDO';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.NOT_SUITABLE_SDO(option);
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('CASE_PROGRESSION', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
+  },
+
   createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
@@ -428,7 +462,7 @@ const assertValidData = async (data, pageId) => {
 
   let userData;
 
-  if (eventName === 'CREATE_SDO') {
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];

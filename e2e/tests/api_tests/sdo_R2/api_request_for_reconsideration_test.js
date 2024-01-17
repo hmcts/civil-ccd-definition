@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const sdoTracks = require("../../../fixtures/events/createSDO");
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
@@ -27,8 +28,32 @@ Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser);
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
+    // Create a new SDO again
+    await api_spec_small.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
+
   }
 });
+
+Scenario('1v1 spec request for reconsideration for create new SDO - Chose Not Suitable SDO- Change locatiion', async ({api_spec_small}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await api_spec_small.requestForReconsideration(config.defendantSolicitorUser);
+    await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
+    await api_spec_small.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
+  }
+});
+
+Scenario('1v1 spec request for reconsideration for create new SDO - Chose Not Suitable SDO - Other reasons', async ({api_spec_small}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await api_spec_small.requestForReconsideration(config.defendantSolicitorUser);
+    await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
+    await api_spec_small.notSuitableSDO(judgeUser, 'OTHER_REASONS');
+  }
+});
+
 
 Scenario('1v1 spec request for reconsideration for create general order', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
