@@ -14,5 +14,13 @@
     "FieldType": "AdditionalLipPartyDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantBilingualLanguagePreference",
+    "Label": "Claimant Language Preference",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
