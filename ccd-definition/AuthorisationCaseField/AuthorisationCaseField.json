@@ -4596,6 +4596,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
