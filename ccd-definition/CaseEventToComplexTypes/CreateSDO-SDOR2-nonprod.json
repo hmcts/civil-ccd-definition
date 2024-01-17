@@ -1,0 +1,154 @@
+[
+  {
+    "ID": "FastTrackJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoFastTrackJudgesRecital",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoFastTrackJudgesRecital",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackAltDisputeResolution",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoAltDisputeResolution",
+    "ListElementCode": "IncludeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackAltDisputeResolution",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoAltDisputeResolution",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2VariationOfDirections",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoVariationOfDirections",
+    "ListElementCode": "IncludeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2VariationOfDirections",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoVariationOfDirections",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Settlement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Settlement",
+    "ListElementCode": "IncludeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Settlement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Settlement",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureTxt",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureDate",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionLabel",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionTxt",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "requestsWillBeCompiledLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2WitnessesOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2WitnessesOfFact",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2WitnessesOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2WitnessesOfFact",
+    "ListElementCode": "sdoStatementOfWitness",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2WitnessesOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2WitnessesOfFact",
+    "ListElementCode": "sdoR2RestrictWitness",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2WitnessesOfFact",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2WitnessesOfFact",
+    "ListElementCode": "sdoRestrictPages",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  }
+]

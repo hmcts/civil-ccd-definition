@@ -1,8 +1,8 @@
 [
   {
     "ID": "IncludeInOrderToggle",
-    "ListElementCode": "Include",
-    "ListElement": "Show/hide",
+    "ListElementCode": "INCLUDE",
+    "ListElement": "Include in Order",
     "DisplayOrder": 1
   }
 ]

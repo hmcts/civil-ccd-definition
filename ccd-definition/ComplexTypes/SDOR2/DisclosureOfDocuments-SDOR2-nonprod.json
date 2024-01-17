@@ -1,22 +1,22 @@
 [
   {
-    "ID": "SDODisclosureOfDocuments",
+    "ID": "SdoR2DisclosureOfDocuments",
     "ListElementCode": "label",
+    "ElementLabel": "### Standard disclosure",
     "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureTxt",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SDODisclosureOfDocuments",
-    "ListElementCode": "standardDisclosureTxt",
-    "FieldType": "TextArea",
-    "ElementLabel": "Standard disclosure",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SDODisclosureOfDocuments",
+    "ID": "SdoR2DisclosureOfDocuments",
     "ListElementCode": "standardDisclosureDate",
     "FieldType": "Date",
     "ElementLabel": " ",
@@ -24,26 +24,34 @@
     "Searchable": "N"
   },
   {
-    "ID": "SDODisclosureOfDocuments",
-    "ListElementCode": "standardDisclosureInspectionTxt",
-    "FieldType": "TextArea",
-    "ElementLabel": "Inspection",
+    "ID": "SdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionLabel",
+    "ElementLabel": "### Inspection",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SDODisclosureOfDocuments",
-    "ListElementCode": "standardDisclosureInspectionDate",
-    "FieldType": "Date",
+    "ID": "SdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionTxt",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SDODisclosureOfDocuments",
-    "ListElementCode": "requestCompliedWithTxt",
+  "ID": "SdoR2DisclosureOfDocuments",
+  "ListElementCode": "inspectionDate",
+  "FieldType": "Date",
+  "ElementLabel": " ",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "ListElementCode": "requestsWillBeCompiledLabel",
+    "ElementLabel": "Request will be compiled with",
     "FieldType": "Text",
-    "ElementLabel": "Requests will be complied with",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

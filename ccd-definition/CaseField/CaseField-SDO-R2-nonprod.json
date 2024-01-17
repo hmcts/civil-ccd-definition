@@ -66,16 +66,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoSeparator",
-    "Label": "****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "sdoWarningDateFormat",
-    "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\"></span>All dates should be in the format 16 4 2021</strong></div>",
+    "Label": "****\n<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\"></span>All dates should be in the format 16 4 2021</strong></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -83,15 +75,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoWarning",
-    "Label": "#Warning\nYou must comply with the terms imposed upon you by this Order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make a formal application to the Court before any deadline imposed upon you expires.",
+    "Label": "****\n ### Warning\nYou must comply with the terms imposed upon you by this Order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make a formal application to the Court before any deadline imposed upon you expires.\n ****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "fastTrackJudgesRecital",
-    "Label": "Judge's recital",
+    "ID": "sdoFastTrackJudgesRecital",
+    "Label": "Judge’s recital",
     "FieldType": "FastTrackJudgesRecital",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -99,7 +91,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoAllocation",
-    "Label": "The claim is allocated to the Fast Track.",
+    "Label": "****\n ### Allocation\n The claim is allocated to the Fast Track. \n****\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -107,47 +99,97 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoAltDisputeResolution",
-    "Label": " ",
-    "FieldType": "FastTrackAltDisputeResolution",
+    "Label": "Alternative Dispute Resolution",
+    "FieldType": "SdoR2FastTrackAltDisputeResolution",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorVariationOfDirections",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoVariationOfDirections",
-    "Label": "The parties may, by written agreement, extend time for compliance with a direction where that is permitted by CPR 3.8(4). Otherwise, the time for compliance with a direction may only be extended by making an application.",
+    "Label": "Variation of directions",
+    "FieldType": "SdoR2VariationOfDirections",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorSettlement",
+    "Label": "****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoSettlement",
-    "Label": "Each party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement.",
+    "ID": "sdoR2Settlement",
+    "Label": "Settlement",
+    "FieldType": "SdoR2Settlement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorDisclosureOfDocument",
+    "Label": "****\n ### Disclosure of documents",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoDisclosureOfDocuments",
-    "Label": "Each party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement.",
-    "FieldType": "SDODisclosureOfDocuments",
+    "ID": "sdoR2DisclosureOfDocumentsToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoWitnessOfFact",
-    "Label": "Each party must inform the Court immediately if the case is settled whether or not it is then possible to upload to the Digital Portal a draft consent order to give effect to their agreement.",
-    "FieldType": "SdoWitnessOfFact",
+    "ID": "sdoR2DisclosureOfDocuments",
+    "Label": " ",
+    "FieldType": "SdoR2DisclosureOfDocuments",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorWitnessesOfFact",
+    "Label": "****\n ### Witnesses of Fact",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorWitnessesOfFactToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2WitnessesOfFact",
+    "Label": " ",
+    "FieldType": "SdoR2WitnessOfFact",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "isSdoR2NewScreen",
-    "Label": "",
+    "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
