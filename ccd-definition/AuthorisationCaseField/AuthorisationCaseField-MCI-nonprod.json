@@ -14,6 +14,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "choosePartyHeader",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "expertsLabel",
     "AccessControl": [
       {
