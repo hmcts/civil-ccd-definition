@@ -193,5 +193,30 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorExpertEvidence",
+    "Label": "****\n ### Expert Evidence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorExpertEvidenceToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2ExpertEvidence",
+    "Label": " ",
+    "FieldType": "SdoR2ExpertEvidence",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -150,5 +150,21 @@
     "ListElementCode": "sdoRestrictPages",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2ExpertEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2ExpertEvidence",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2ExpertEvidence",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2ExpertEvidence",
+    "ListElementCode": "sdoClaimantPermissionToRely",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
   }
 ]

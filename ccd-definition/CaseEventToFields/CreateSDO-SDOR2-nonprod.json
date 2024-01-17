@@ -203,5 +203,39 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "sdoWarning=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoSeparatorExpertEvidence",
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "READONLY",
+    "PageID": "SdoR2FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SeparatorExpertEvidenceToggle",
+    "PageFieldDisplayOrder": 18,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SdoR2FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2ExpertEvidence",
+    "PageFieldDisplayOrder": 19,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SdoR2FastTrack",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "sdoR2SeparatorExpertEvidenceToggle = \"INCLUDE\""
   }
 ]
