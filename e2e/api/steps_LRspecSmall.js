@@ -14,7 +14,7 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {PBAv3} = require('../fixtures/featureKeys');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
@@ -25,6 +25,8 @@ const testingSupport = require('./testingSupport');
 const lodash = require('lodash');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
+const {updateExpert} = require('./manageContactInformationHelper');
+const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -41,6 +43,7 @@ const data = {
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection)
+  MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
 };
 
 const eventData = {
@@ -118,11 +121,10 @@ module.exports = {
     }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if (scenario === 'ONE_V_TWO'
-      && createClaimData.userInput.SameLegalRepresentative
-      && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
+    if (scenario === 'ONE_V_TWO') {
       await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
+
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
       await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
@@ -358,6 +360,17 @@ module.exports = {
     for (const [index, value] of caseFlagLocations.entries()) {
       await addAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
+  },
+
+  manageContactInformation : async (user) => {
+    if(!(await checkManageContactInformationEnabled())) {
+      return;
+    }
+    eventName = 'MANAGE_CONTACT_INFORMATION';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
+    await updateExpert(caseId, manageContactInformationData);
   },
 
   manageCaseFlags: async (user) => {
