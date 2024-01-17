@@ -9,31 +9,11 @@
   },
   {
     "ID": "SdoR2RestrictWitness",
-    "ListElementCode": "noOfWitnessClaimant",
-    "FieldType": "Number",
-    "HintText":"For example,4",
-    "ElementLabel": "Number of witnesses (claimant)",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "isRestrictWitness = \"Yes\""
-  },
-  {
-    "ID": "SdoR2RestrictWitness",
-    "ListElementCode": "noOfWitnessDefendant",
-    "FieldType": "Number",
-    "HintText":"For example,4",
-    "ElementLabel": "Number of witnesses (defendant)",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "isRestrictWitness = \"Yes\""
-  },
-  {
-    "ID": "SdoR2RestrictWitness",
-    "ListElementCode": "partyIsCountedAsWitnessTxt",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
+    "ListElementCode": "restrictNoOfWitnessDetails",
+    "FieldType": "SdoR2RestrictNoOfWitnessDetails",
     "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
     "FieldShowCondition": "isRestrictWitness = \"Yes\""
   }
 ]

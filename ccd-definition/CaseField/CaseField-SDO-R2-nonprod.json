@@ -188,6 +188,73 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorScheduleOfLoss",
+    "Label": "****\n ### Schedule of loss",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2ScheduleOfLossToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2ScheduleOfLoss",
+    "Label": " ",
+    "FieldType": "SdoR2ScheduleOfLoss",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorAddNewDirection",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2AddNewDirection",
+    "Label": "Add a new direction",
+    "FieldTypeParameter": "SdoR2AddNewDirection",
+    "FieldType": "Collection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorTrial",
+    "Label": "****\n ### Trial",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2TrialToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2Trial",
+    "Label": " ",
+    "FieldType": "SdoR2Trial",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "isSdoR2NewScreen",
     "Label": " ",
     "FieldType": "Text",
