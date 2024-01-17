@@ -139,6 +139,11 @@ const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
 const {PBAv3} = require('./fixtures/featureKeys');
+const partySelection = require('./pages/manageContactInformation/partySelection.page');
+const manageWitnesses = require('./pages/manageContactInformation/manageWitnesses.page');
+const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
+const manageLitigationFriend = require('./pages/manageContactInformation/manageLitigationFriend.page');
+const manageDefendant1 = require('./pages/manageContactInformation/manageDefendant1.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -745,9 +750,9 @@ module.exports = function () {
       }
     },
 
-    async addAnotherElementToCollection() {
+    async addAnotherElementToCollection(button = 'Add new') {
       const numberOfElements = await this.grabNumberOfVisibleElements('.collection-title');
-      this.click('Add new');
+      this.click(button);
       this.waitNumberOfVisibleElements('.collection-title', numberOfElements + 1);
     },
 
@@ -978,6 +983,54 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async manageWitnessesForDefendant(caseId) {
+      eventName = 'Manage Contact Information';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => partySelection.selectParty('DEFENDANT_1_WITNESSES'),
+        () => manageWitnesses.addWitness(),
+        () => event.submit('Submit', 'Contact information changed'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async manageOrganisationIndividualsForClaimant(caseId) {
+      eventName = 'Manage Contact Information';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => partySelection.selectParty('CLAIMANT_1_ORGANISATION_INDIVIDUALS'),
+        () => manageOrganisationIndividuals.addOrgIndividuals(),
+        () => event.submit('Submit', 'Contact information changed'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async manageLitigationFriendForDefendant(caseId) {
+      eventName = 'Manage Contact Information';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => partySelection.selectParty('DEFENDANT_1_LITIGATION_FRIEND'),
+        () => manageLitigationFriend.updateLitigationFriend(address),
+        () => event.submit('Submit', 'Contact information changed'),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
+    async manageDefendant(caseId) {
+      eventName = 'Manage Contact Information';
+
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => partySelection.selectParty('DEFENDANT_1'),
+        () => manageDefendant1.editAddress(address),
+        () => event.submit('Submit', 'Contact information changed'),
+        () => event.returnToCaseDetails()
+      ]);
     },
 
     async createCaseFlags(caseFlags) {
