@@ -319,6 +319,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "DocumentUpdated",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "AccessControl": [
       {
