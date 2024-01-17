@@ -266,5 +266,16 @@
     "SecurityClassification": "Public",
     "ShowSummary": "N",
     "ShowEventNotes": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DocumentUpdated",
+    "Name": "DocumentUpdated",
+    "Description": "Shows document was moved in case history",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
   }
 ]
