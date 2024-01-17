@@ -40,6 +40,7 @@ const data = {
   DEFENDANT_RESPONSE2_1V2_2ND_DEF: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim2(response),
   CLAIMANT_RESPONSE: (hasAgreedFreeMediation) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
+  LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection)
