@@ -19,14 +19,20 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "INTERLOCUTORY_JUDGEMENT",
+    "ListElement": "Interlocutory Judgment",
+    "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": " CCJ_REQUEST_ADMISSION",
     "ListElement": "CCJ Request Admission",
-    "DisplayOrder": 18
+    "DisplayOrder": 19
   },
   {
     "ID": "DocumentType",
     "ListElementCode": " CCJ_REQUEST_DETERMINATION",
     "ListElement": "CCJ Request Determination",
-    "DisplayOrder": 19
+    "DisplayOrder": 20
   }
 ]
