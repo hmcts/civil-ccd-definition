@@ -35,7 +35,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "responseClaimTrack ",
+    "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
