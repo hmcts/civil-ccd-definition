@@ -753,7 +753,8 @@
         "UserRoles": [
           "caseworker-civil-staff",
           "legal-adviser",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       }
