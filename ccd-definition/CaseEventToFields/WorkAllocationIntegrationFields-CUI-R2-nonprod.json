@@ -8,5 +8,15 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_LIP_DEFENDANT_CLAIM_FORM_SPEC",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
   }
 ]

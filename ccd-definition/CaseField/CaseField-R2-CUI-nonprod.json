@@ -21,6 +21,7 @@
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
