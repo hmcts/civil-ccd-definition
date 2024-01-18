@@ -23,9 +23,3 @@ Scenario('CARM enabled', async ({api_spec_cui}) => {
 });
 
 
-
-AfterSuite(async ({api_spec_cui}) => {
-  //await api_spec_cui.cleanUp();
-});
-
-
