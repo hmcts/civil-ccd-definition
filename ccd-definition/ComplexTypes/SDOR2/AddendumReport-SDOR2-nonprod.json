@@ -17,7 +17,7 @@
   },
   {
     "ID": "SdoR2AddendumReport",
-    "ListElementCode": "addendumReportDate",
+    "ListElementCode": "sdoAddendumReportDate",
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public",

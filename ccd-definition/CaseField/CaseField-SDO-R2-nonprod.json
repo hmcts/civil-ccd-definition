@@ -334,5 +334,30 @@
     "FieldType": "SdoR2AddendumReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorFurtherAudiogram",
+    "Label": "****\n ### Further audiogram",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorFurtherAudiogramToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FurtherAudiogram",
+    "Label": " ",
+    "FieldType": "SdoR2FurtherAudiogram",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

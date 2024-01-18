@@ -238,5 +238,61 @@
     "ListElementCode": "sdoAddendumReportUpload",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2AddendumReport",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2AddendumReport",
+    "ListElementCode": "sdoAddendumReportDate",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+  "ID": "SdoR2FurtherAudiogram",
+  "CaseEventID": "CREATE_SDO",
+  "CaseFieldID": "sdoR2FurtherAudiogram",
+  "ListElementCode": "sdoClaimantShallUndergoLabel",
+  "FieldDisplayOrder": 1,
+  "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FurtherAudiogram",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FurtherAudiogram",
+    "ListElementCode": "sdoClaimantShallUndergoTxt",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FurtherAudiogram",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FurtherAudiogram",
+    "ListElementCode": "sdoClaimantShallUndergoDate",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FurtherAudiogram",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FurtherAudiogram",
+    "ListElementCode": "sdoServiceReportLabel",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FurtherAudiogram",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FurtherAudiogram",
+    "ListElementCode": "sdoServiceReportTxt",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FurtherAudiogram",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FurtherAudiogram",
+    "ListElementCode": "sdoServiceReportDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]
