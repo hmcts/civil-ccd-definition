@@ -57,8 +57,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "HEARING_FEE_UNPAID",
-    "Name": "Dismissed for unpaid fee",
-    "Description": "Dismissed for unpaid hearing fee",
+    "Name": "Case Struck out for unpaid fee",
+    "Description": "Case Struck out for unpaid fee",
     "PreConditionState(s)": "HEARING_READINESS",
     "PostConditionState": "CASE_DISMISSED",
     "SecurityClassification": "Public",
@@ -261,6 +261,17 @@
     "Name": "EVIDENCE_UPLOAD_CHECK",
     "Description": "EVIDENCE_UPLOAD_CHECK",
     "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DocumentUpdated",
+    "Name": "DocumentUpdated",
+    "Description": "Shows document was moved in case history",
+    "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "N",
