@@ -20,5 +20,27 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "allocatedTrack",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "responseClaimTrack ",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
   }
 ]
