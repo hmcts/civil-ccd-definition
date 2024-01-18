@@ -37,11 +37,12 @@ const data = {
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE2_1V2_2ND_DEF: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim2(response),
   CLAIMANT_RESPONSE: (hasAgreedFreeMediation) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
-  REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec(),
+  REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
 };
@@ -65,7 +66,13 @@ const eventData = {
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
       PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM'),
-      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE_1v2('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT')
+    },
+    ONE_V_TWO_DIF_SOL: {
+      FULL_DEFENCE1: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
+      FULL_DEFENCE1_PBAv3:  data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
+      FULL_DEFENCE2: data.DEFENDANT_RESPONSE2_1V2_2ND_DEF('FULL_DEFENCE'),
+      FULL_DEFENCE2_PBAv3:  data.DEFENDANT_RESPONSE2_1V2_2ND_DEF('FULL_DEFENCE')
     }
   }
 };
@@ -182,7 +189,11 @@ module.exports = {
     if (!judicialReferral) {
       defendantResponseData = eventData['defendantResponses'][scenario][response];
     } else {
-      defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
+      if (scenario === 'ONE_V_TWO_DIF_SOL') {
+        defendantResponseData = eventData['defendantResponses'][scenario][response];
+      } else {
+        defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
+      }
     }
 
     caseData = returnedCaseData;
@@ -197,6 +208,12 @@ module.exports = {
       await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
     else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    else if(scenario === 'ONE_V_TWO_DIF_SOL') {
+      if(response === 'FULL_DEFENCE1' || response === 'FULL_DEFENCE1_PBAv3')
+        await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      else if(response === 'FULL_DEFENCE2' || response === 'FULL_DEFENCE2_PBAv3')
+        await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+    }
 
     await waitForFinishedBusinessProcess(caseId);
 
@@ -376,7 +393,7 @@ module.exports = {
     }
   },
 
-  requestForReconsideration: async (user) => {
+  requestForReconsideration: async (user, userType) => {
     console.log('RequestForReconsideration for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'REQUEST_FOR_RECONSIDERATION';
@@ -384,7 +401,7 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
-    let disposalData = data.REQUEST_FOR_RECONSIDERATION();
+    let disposalData = data.REQUEST_FOR_RECONSIDERATION(userType);
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
