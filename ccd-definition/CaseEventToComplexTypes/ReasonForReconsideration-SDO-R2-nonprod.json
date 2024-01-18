@@ -2,9 +2,28 @@
   {
     "ID": "ReasonForReconsideration",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
-    "CaseFieldID": "reasonForReconsideration",
+    "CaseFieldID": "reasonForReconsiderationApplicant",
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
+  },
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsiderationRespondent1",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
+  },
+  {
+    "ID": "ReasonForReconsideration",
+    "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
+    "CaseFieldID": "reasonForReconsiderationRespondent2",
+    "ListElementCode": "reasonForReconsiderationTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
   }
 ]
