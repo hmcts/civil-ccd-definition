@@ -11,17 +11,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_LIP_CLAIM",
-    "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
