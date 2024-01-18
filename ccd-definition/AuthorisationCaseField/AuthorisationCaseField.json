@@ -542,14 +542,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRUD"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
           "legal-adviser"
         ],
         "CRUD": "R"
@@ -584,14 +584,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
           "legal-adviser",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
@@ -605,14 +606,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
           "legal-adviser"
         ],
         "CRUD": "R"
@@ -625,14 +626,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
           "legal-adviser"
         ],
         "CRUD": "R"
