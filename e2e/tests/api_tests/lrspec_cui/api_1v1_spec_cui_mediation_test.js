@@ -19,7 +19,7 @@ Feature('Unsuccessful mediation for spec small claim with unrepresented defendan
 Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   await prepareClaim(api_spec_cui, carmEnabled);
-  //await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
+  await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
 });
 
 
