@@ -285,5 +285,30 @@
     "FieldType": "SdoR2ExpertEvidence",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorAddendumReport",
+    "Label": "****\n ### Addendum report",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorAddendumReportToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2AddendumReport",
+    "Label": " ",
+    "FieldType": "SdoR2AddendumReport",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
