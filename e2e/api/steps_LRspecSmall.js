@@ -27,8 +27,8 @@ const requestForReconsideration = require('../fixtures/events/requestForReconsid
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {updateExpert} = require('./manageContactInformationHelper');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const transferOnlineCase = require("../fixtures/events/transferOnlineCase");
-const {fetchCaseDetails} = require("./apiRequest");
+const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
+const {fetchCaseDetails} = require('./apiRequest');
 
 let caseId, eventName;
 let caseData = {};

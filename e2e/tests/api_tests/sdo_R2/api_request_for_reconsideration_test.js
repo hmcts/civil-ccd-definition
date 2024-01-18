@@ -1,5 +1,4 @@
 const config = require('../../../config.js');
-const sdoTracks = require("../../../fixtures/events/createSDO");
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
