@@ -120,36 +120,92 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SdoR2WitnessesOfFact",
+    "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2WitnessesOfFact",
-    "ListElementCode": "label",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "includeInOrderToggle",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SdoR2WitnessesOfFact",
+    "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2WitnessesOfFact",
-    "ListElementCode": "sdoStatementOfWitness",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SdoR2WitnessesOfFact",
+    "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2WitnessesOfFact",
-    "ListElementCode": "sdoR2RestrictWitness",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialWindow",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SdoR2WitnessesOfFact",
+    "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2WitnessesOfFact",
-    "ListElementCode": "sdoRestrictPages",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "lengthOfTrialRadio",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2HearingLengthOther",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingCourtLocationList",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "methodOfHearing",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundleOptions",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundlePartyTxt",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesTxt",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2ExpertEvidence",
