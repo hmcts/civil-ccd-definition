@@ -64,7 +64,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTitle",
     "FieldDisplayOrder": 7,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "OPTIONAL"
   },
@@ -74,7 +74,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderFirstName",
     "FieldDisplayOrder": 8,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
@@ -84,7 +84,7 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderLastName",
     "FieldDisplayOrder": 9,
-    "FieldShowCondition": "partyChosenType=\"CLAIMANT_1_ADMIN_SOLE_TRADER\"",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "RetainHiddenValue": "Y",
     "DisplayContext": "MANDATORY"
   },
@@ -93,6 +93,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTradingAs",
+    "FieldShowCondition": "partyChosenType=\"DEFENDANT_1_ADMIN_SOLE_TRADER\"",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
@@ -175,6 +176,7 @@
     "ListElementCode": "partyEmail",
     "FieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\" OR respondent1.type = \"ORGANISATION\" OR respondent1.type = \"COMPANY\""
   },
   {
@@ -184,6 +186,7 @@
     "ListElementCode": "partyPhone",
     "FieldDisplayOrder": 21,
     "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1.type = \"INDIVIDUAL\" OR respondent1.type = \"SOLE_TRADER\""
   },
   {
@@ -193,6 +196,7 @@
     "ListElementCode": "partyID",
     "FieldDisplayOrder": 22,
     "DisplayContext": "MANDATORY",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -201,7 +205,8 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "flags",
     "FieldDisplayOrder": 23,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent1 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

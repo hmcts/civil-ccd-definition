@@ -168,13 +168,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "hearing-schedule-access",
+          "judge-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "judge-profile",
           "caseworker-civil-admin",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
