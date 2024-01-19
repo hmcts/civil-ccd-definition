@@ -82,8 +82,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoJudgesRecitalLbl",
+    "Label": "### Judge’s recital",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoFastTrackJudgesRecital",
-    "Label": "Judge’s recital",
+    "Label": " ",
     "FieldType": "FastTrackJudgesRecital",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -98,8 +106,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoAltDisputeResolutionLbl",
+    "Label": "### Alternative Dispute Resolution",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoAltDisputeResolution",
-    "Label": "Alternative Dispute Resolution",
+    "Label": " ",
     "FieldType": "SdoR2FastTrackAltDisputeResolution",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -107,7 +123,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoSeparatorVariationOfDirections",
-    "Label": "****",
+    "Label": "****\n ### Variation of directions",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -115,7 +131,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoVariationOfDirections",
-    "Label": "Variation of directions",
+    "Label": " ",
     "FieldType": "SdoR2VariationOfDirections",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -123,7 +139,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoSeparatorSettlement",
-    "Label": "****",
+    "Label": "****\n ### Settlement",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -131,7 +147,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2Settlement",
-    "Label": "Settlement",
+    "Label": " ",
     "FieldType": "SdoR2Settlement",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -214,7 +230,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoSeparatorAddNewDirection",
-    "Label": "****",
+    "Label": "****\n ### Add a new direction",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -222,7 +238,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2AddNewDirection",
-    "Label": "Add a new direction",
+    "Label": " ",
     "FieldTypeParameter": "SdoR2AddNewDirection",
     "FieldType": "Collection",
     "SecurityClassification": "Public",
@@ -248,8 +264,32 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2Trial",
-    "Label": " ",
+    "Label": "A trial will take place on",
     "FieldType": "SdoR2Trial",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorImportantNotes",
+    "Label": "****\n ### Important notes",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2ImportantNotesTxt",
+    "Label": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2ImportantNotesDate",
+    "Label": " ",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
