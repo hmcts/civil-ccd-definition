@@ -12,6 +12,8 @@ servicebus:
 global:
   jobKind: CronJob
 
+useWorkloadIdentity: true
+
 civil-camunda-bpm:
   enabled: false
 
