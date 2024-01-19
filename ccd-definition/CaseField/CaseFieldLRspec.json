@@ -1046,6 +1046,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "responseClaimTrackSearch",
+    "Label": "Allocated track",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "_comment": "Used for searching responseClaimTrack, as using responseClaimTrack would require re-indexing",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "responseClaimMediationSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} agreed to free mediation?</h2>\n ",
     "FieldType": "Label",

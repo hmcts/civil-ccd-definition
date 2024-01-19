@@ -493,6 +493,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "responseClaimTrackSearch",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
