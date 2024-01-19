@@ -12,8 +12,6 @@ servicebus:
 global:
   jobKind: CronJob
 
-useWorkloadIdentity: true
-
 civil-camunda-bpm:
   enabled: false
 
@@ -27,6 +25,7 @@ civil-wa:
 
 wa:
   wa:
+    useWorkloadIdentity: true
     postgresql:
       enabled: false
   wa-case-event-handler:
