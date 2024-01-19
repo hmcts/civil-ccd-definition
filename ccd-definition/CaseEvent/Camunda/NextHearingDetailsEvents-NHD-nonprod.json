@@ -11,7 +11,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "Published": "Y",
-    "RetriesTimeoutURLAboutToSubmitEvent": 3,
+    "RetriesTimeoutURLAboutToSubmitEvent": 3
   },
   {
     "CaseTypeID": "CIVIL",

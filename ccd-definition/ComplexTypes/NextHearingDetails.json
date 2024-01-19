@@ -5,7 +5,7 @@
     "FieldType": "Text",
     "ElementLabel": "ID",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Publish": "Y"
   },
   {
@@ -14,7 +14,7 @@
     "FieldType": "DateTime",
     "ElementLabel": "Date",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Publish": "Y"
   }
 ]
