@@ -43,26 +43,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "caseManagementOrderSelection",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "orderType",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 1,
@@ -76,26 +56,6 @@
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "caseManagementOrderSelection",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
-    "CaseFieldID": "orderType",
-    "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
