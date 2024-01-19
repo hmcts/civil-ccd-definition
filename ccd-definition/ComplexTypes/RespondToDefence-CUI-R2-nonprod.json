@@ -49,5 +49,12 @@
     "FieldTypeParameter": "RepaymentDecisionType",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1RejectedRepaymentReason",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public"
   }
 ]
