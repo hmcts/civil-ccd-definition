@@ -14,7 +14,7 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {PBAv3} = require('../fixtures/featureKeys');
-const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
@@ -25,6 +25,8 @@ const testingSupport = require('./testingSupport');
 const lodash = require('lodash');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
+const {updateExpert} = require('./manageContactInformationHelper');
+const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -40,7 +42,8 @@ const data = {
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   REQUEST_FOR_RECONSIDERATION: () => requestForReconsideration.createRequestForReconsiderationSpec(),
-  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection)
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
+  MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
 };
 
 const eventData = {
@@ -112,6 +115,9 @@ module.exports = {
     }
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+    if (scenario === 'ONE_V_TWO') {
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+    }
 
     await waitForFinishedBusinessProcess(caseId);
     if(await checkCaseFlagsEnabled()) {
@@ -219,7 +225,7 @@ module.exports = {
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
-    
+
     if (judicialReferral) {
       await assertSubmittedEvent('JUDICIAL_REFERRAL');
     }
@@ -288,7 +294,7 @@ module.exports = {
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = data.LA_CREATE_SDO();
-    
+
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
@@ -338,6 +344,17 @@ module.exports = {
     for (const [index, value] of caseFlagLocations.entries()) {
       await addAndAssertCaseFlag(value, partyFlags[index], caseId);
     }
+  },
+
+  manageContactInformation : async (user) => {
+    if(!(await checkManageContactInformationEnabled())) {
+      return;
+    }
+    eventName = 'MANAGE_CONTACT_INFORMATION';
+    await apiRequest.setupTokens(user);
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
+    await updateExpert(caseId, manageContactInformationData);
   },
 
   manageCaseFlags: async (user) => {

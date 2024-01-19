@@ -289,14 +289,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile",
           "caseworker-civil",
           "caseworker-civil-staff",
           "CITIZEN-DEFENDANT-PROFILE"
