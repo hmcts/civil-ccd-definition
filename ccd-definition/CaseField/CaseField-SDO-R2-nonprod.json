@@ -359,5 +359,30 @@
     "FieldType": "SdoR2FurtherAudiogram",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorQuestionsClaimantExpert",
+    "Label": "****\n ### Questions of the Claimant's expert",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorQuestionsClaimantExpertToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2QuestionsClaimantExpert",
+    "Label": " ",
+    "FieldType": "SdoR2QuestionsClaimantExpert",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
