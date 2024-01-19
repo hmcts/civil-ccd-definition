@@ -40,7 +40,7 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM enabled',
 
 Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await prepareClaim1v2SameSol(api_spec, true);
-  await api_spec.mediationUnsuccessful(mediationAdminRegion4, true);
+  await api_spec.mediationUnsuccessful(mediationAdminRegion1, true);
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser );
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
