@@ -18,7 +18,7 @@ elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
 elif [ ${environment} == staging ]; then
