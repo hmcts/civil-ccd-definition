@@ -1,9 +1,0 @@
-[
-  {
-    "ID": "FinalOrderDocument",
-    "ListElementCode": "finalOrderDocument",
-    "FieldType": "CaseDocument",
-    "ElementLabel": "Document",
-    "SecurityClassification": "Public"
-  }
-]
