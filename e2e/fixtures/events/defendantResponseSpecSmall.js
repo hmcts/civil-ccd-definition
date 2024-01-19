@@ -350,5 +350,132 @@ module.exports = {
         }
       }
     };
+  },
+
+  respondToClaim2: (response = 'FULL_DEFENCE') => {
+    const responseData = {
+      userInput: {
+        ResponseConfirmNameAddress: {
+          specAoSRespondent2HomeAddressRequired: 'Yes',
+        },
+        ResponseConfirmDetails: {
+          specAoSRespondent2CorrespondenceAddressRequired: 'Yes'
+        },
+      },
+    };
+
+    switch (response) {
+      case 'FULL_DEFENCE':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponseTypeSpec: {
+            respondent2ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+          },
+          defenceRoute: {
+            defenceRouteRequired2: 'DISPUTES_THE_CLAIM'
+          },
+          Mediation: {
+            responseClaimMediationSpec2Required: 'No'
+          },
+          SmallClaimExperts: {
+            respondent2DQExperts: {
+              expertRequired: 'Yes',
+              expertReportsSent: 'NOT_OBTAINED',
+              jointExpertSuitable: 'Yes',
+              details: [
+                element({
+                  firstName: 'John',
+                  lastName: 'Doe',
+                  emailAddress: 'john@doemail.com',
+                  phoneNumber: '07111111111',
+                  fieldOfExpertise: 'None',
+                  whyRequired: 'Testing',
+                  estimatedCost: '10000'
+                })
+              ]
+            }
+          },
+          SmallClaimWitnesses: {
+            respondent2DQWitnessesSmallClaim: {
+              witnessesToAppear: 'Yes',
+              details: [
+                element({
+                  firstName: 'Witness',
+                  lastName: 'One',
+                  emailAddress: 'witness@email.com',
+                  phoneNumber: '07116778998',
+                  reasonForWitness: 'None'
+                })
+              ]
+            }
+          },
+          Language: {
+            respondent2DQLanguage: {
+              court: 'WELSH',
+              documents: 'WELSH'
+            }
+          },
+          SmaillClaimHearing: {
+            smallClaimHearingInterpreterDescription2: 'test',
+            SmallClaimHearingInterpreter2Required: 'Yes',
+            respondent2DQHearingSmallClaim: {
+              unavailableDatesRequired: 'No',
+            },
+          },
+          RequestedCourtLocationLRspec: {
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement(config.defendantSelectedCourt)
+                ],
+                value: listElement(config.defendantSelectedCourt)
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent2DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
+            }
+          },
+          HearingSupport: {
+            respondent2DQHearingSupport: {
+              supportRequirements: 'Yes',
+              supportRequirementsAdditional: 'Additional support reasons'
+            }
+          },
+          VulnerabilityQuestions: {
+            respondent2DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'Yes',
+              vulnerabilityAdjustments: 'test'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Test',
+              role: 'Worker'
+            },
+            respondent2DQHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'Yes',
+            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+            specDefenceFullAdmittedRequired: 'No',
+            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+          },
+
+          defenceRoute: {
+            responseClaimTrack: 'SMALL_CLAIM',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+          }
+        };
+        break;
+    }
+
+    return responseData;
   }
 };
