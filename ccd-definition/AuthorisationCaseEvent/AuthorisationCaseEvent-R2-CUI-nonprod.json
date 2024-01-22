@@ -853,13 +853,13 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate"
-          ],
-         "CRUD": "CRU"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
   {
-  "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
     "AccessControl": [
       {
@@ -878,7 +878,7 @@
       }
     ]
   },
-   {
+  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
     "AccessControl": [
@@ -923,6 +923,18 @@
       {
         "UserRoles": [
           "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SERVICE_REQUEST_RECEIVED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
