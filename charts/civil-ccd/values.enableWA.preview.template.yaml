@@ -14,6 +14,7 @@ global:
 
 camunda-bpm:
   # comes from WA chart
+  enabled: false
   java:
     ingressHost: camunda-${SERVICE_FQDN}
 
