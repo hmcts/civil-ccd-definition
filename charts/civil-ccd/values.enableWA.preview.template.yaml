@@ -25,7 +25,7 @@ wa:
   global:
     postgresUsername: hmcts
     postgresSecret: postgres
-    postgresHost: civil-preview.postgres.database.azure.com
+    postgresHost: ${SERVICE_NAME}-postgresql
   wa:
     postgresql:
       enabled: false
