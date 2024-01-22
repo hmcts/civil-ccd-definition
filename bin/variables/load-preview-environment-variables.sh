@@ -4,7 +4,7 @@ set -eu
 
 pr=${1}
 
-echo 'export ENVIRONMENT=aat'
+echo 'export ENVIRONMENT=preview'
 
 # urls
 echo "export SERVICE_AUTH_PROVIDER_API_BASE_URL=http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
@@ -16,4 +16,4 @@ echo "export HEALTH_WORK_ALLOCATION_TASK_API=https://wa-task-management-api-civi
 
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-pr-${pr}-java"
-echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=http://civil-general-apps-aat.service.core-compute-aat.internal"
+echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=https://ga-civil-ccd-pr-${pr}.preview.platform.hmcts.net"
