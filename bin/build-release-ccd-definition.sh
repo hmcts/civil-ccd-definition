@@ -45,8 +45,8 @@ root_dir=$(realpath $(dirname ${0})/..)
 config_dir=${root_dir}/ccd-definition
 build_dir=${root_dir}/build/ccd-release-config
 github_dir=${root_dir}/build/github-release
-release_definition_output_file=${build_dir}/civil-ccd-aat.xlsx
-github_file=${github_dir}/civil-ccd-aat.xlsx
+release_definition_output_file=${build_dir}/civil-ccd-${environment}.xlsx
+github_file=${github_dir}/civil-ccd-${environment}.xlsx
 
 mkdir -p ${build_dir}
 mkdir -p ${github_dir}

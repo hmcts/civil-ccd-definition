@@ -93,12 +93,12 @@ def archiveCoreCaseDataDefinitions() {
       sh """
           set -e
           eval \$(./variables/load-aat-environment-variables.sh ${CHANGE_ID})
-          ./build-release-ccd-definition.sh aat
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
     }
 
     dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-aat.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
     }
   } else {
     dir("${WORKSPACE}/bin") {
@@ -110,14 +110,14 @@ def archiveCoreCaseDataDefinitions() {
     }
 
     dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-aat.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
     }
   }
 }
 
 def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin"){
-    ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-aat.xlsx"
+    ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
