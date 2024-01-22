@@ -2,20 +2,20 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.37
+version: 0.0.38
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: civil-service
-    version: 0.0.48
+    version: 0.0.58
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
     version: 0.0.53
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 9.0.20
+    version: 8.0.29
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
@@ -43,12 +43,12 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-camunda-bpm.enabled
 
-# WA
+  # WA
   - name: wa
-    version: 0.1.7
+    version: ~1.0.5
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
-# CCD message publisher
+  # CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
