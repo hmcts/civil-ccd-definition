@@ -98,7 +98,7 @@ def archiveCoreCaseDataDefinitions() {
     }
 
     dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-aat.xlsx"
     }
   } else {
     dir("${WORKSPACE}/bin") {
@@ -110,14 +110,14 @@ def archiveCoreCaseDataDefinitions() {
     }
 
     dir("${WORKSPACE}/build") {
-      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-${env.ENVIRONMENT}.xlsx"
+      steps.archiveArtifacts artifacts: "ccd-release-config/civil-ccd-aat.xlsx"
     }
   }
 }
 
 def uploadCoreCaseDataDefinitions(env) {
   dir("${WORKSPACE}/bin"){
-    ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
+    ccdDefinitionFilePath="${WORKSPACE}/build/ccd-release-config/civil-ccd-aat.xlsx"
     sh """
       set -e
       eval \$(./variables/load-${env}-environment-variables.sh)
