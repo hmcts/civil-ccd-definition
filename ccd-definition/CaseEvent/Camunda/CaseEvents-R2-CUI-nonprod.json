@@ -51,5 +51,18 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
+    "Name": "Update claim state",
+    "Description": "Update claim state",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
