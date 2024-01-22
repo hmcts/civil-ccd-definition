@@ -424,5 +424,80 @@
     "FieldType": "SdoR2QuestionsClaimantExpert",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorPermissionToRelyOnExpert",
+    "Label": "****\n ### Permission for any Defendant to rely on expert evidence from a consultant ENT surgeon",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorPermissionToRelyOnExpertToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2PermissionToRelyOnExpert",
+    "Label": " ",
+    "FieldType": "SdoR2PermissionToRelyOnExpert",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorEvidenceAcousticEngineer",
+    "Label": "****\n ### Evidence of an expert acoustic engineer",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorEvidenceAcousticEngineerToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2EvidenceAcousticEngineer",
+    "Label": " ",
+    "FieldType": "SdoR2EvidenceAcousticEngineer",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorQuestionsToEntExpert",
+    "Label": "****\n ### Questions to ENT expert(s) after engineering evidence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorQuestionsToEntExpertToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2QuestionsToEntExpert",
+    "Label": " ",
+    "FieldType": "SdoR2QuestionsToEntExpert",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

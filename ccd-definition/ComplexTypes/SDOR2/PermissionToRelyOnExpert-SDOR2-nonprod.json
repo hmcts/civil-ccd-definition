@@ -1,62 +1,62 @@
 [
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoDefendantMayAskLbl",
-    "ElementLabel": "### Defendant(s) may ask questions",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "label",
+    "ElementLabel": "### Permission to rely on expert evidence",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoDefendantMayAskTxt",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "sdoPermissionToRelyOnExpertTxt",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoDefendantMayAskDate",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "sdoPermissionToRelyOnExpertDate",
     "FieldType": "Date",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoQuestionsShallBeAnsweredLbl",
-    "ElementLabel": "### Questions shall be answered by",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "sdoJointMeetingOfExpertsLabel",
+    "ElementLabel": "### Joint meeting of experts",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoQuestionsShallBeAnsweredTxt",
-    "FieldType": "Text",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "sdoJointMeetingOfExpertsTxt",
+    "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-  "ID": "SdoR2QuestionsClaimantExpert",
-  "ListElementCode": "sdoQuestionsShallBeAnsweredDate",
+  "ID": "SdoR2PermissionToRelyOnExpert",
+  "ListElementCode": "sdoJointMeetingOfExpertsDate",
   "FieldType": "Date",
   "ElementLabel": " ",
   "SecurityClassification": "Public",
   "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoUploadedToDigitalPortalLbl",
+    "ID": "SdoR2PermissionToRelyOnExpert",
+    "ListElementCode": "sdoUploadedToDigitalPortalLabel",
     "FieldType": "Label",
     "ElementLabel": "and uploaded to the Digital Portal",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2QuestionsClaimantExpert",
+    "ID": "SdoR2PermissionToRelyOnExpert",
     "ListElementCode": "sdoUploadedToDigitalPortalTxt",
     "FieldType": "Text",
     "ElementLabel": " ",

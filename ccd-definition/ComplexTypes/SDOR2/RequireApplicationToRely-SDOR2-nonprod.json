@@ -6,14 +6,5 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "ID": "SdoR2RequireApplicationToRely",
-    "ListElementCode": "requireApplicationToRelyDetails",
-    "FieldType": "SdoR2RequireApplicationToRelyDetails",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "doRequireApplicationToRely = \"Yes\""
   }
 ]
