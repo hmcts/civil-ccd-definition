@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "lblRecordJudgment",
+    "CaseFieldID": "lblTransferCaseDetails",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
@@ -65,7 +65,7 @@
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -76,7 +76,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 7,
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -87,7 +87,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 8,
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -98,7 +98,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 9,
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
@@ -109,7 +109,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 10,
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
 ]

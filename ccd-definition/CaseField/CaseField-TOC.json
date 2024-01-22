@@ -59,7 +59,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "lblRecordJudgment",
+    "ID": "lblTransferCaseDetails",
     "Label": " ",
     "FieldType": "Label",
     "SecurityClassification": "Public",

@@ -17,6 +17,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "lblRecordJudgment",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "joPartiesNames",
     "Label": "**${caseNameHmctsInternal}** <br> <br>",
     "FieldType": "Label",
