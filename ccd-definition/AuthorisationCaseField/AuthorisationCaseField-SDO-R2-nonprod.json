@@ -339,6 +339,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoR2ImportantNotesTxt",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "sdoR2ImportantNotesDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2ExpertEvidence",
     "AccessControl": [
       {

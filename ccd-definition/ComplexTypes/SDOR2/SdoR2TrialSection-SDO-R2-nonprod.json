@@ -1,7 +1,7 @@
 [
   {
     "ID": "SdoR2Trial",
-    "ListElementCode": "includeInOrderToggle",
+    "ListElementCode": "trialOnOptions",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialOnRadioOptions",
     "ElementLabel": "First open date after",
@@ -15,7 +15,7 @@
     "ElementLabel": "First open date after",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "includeInOrderToggle = \"OPEN_DATE\""
+    "FieldShowCondition": "trialOnOptions = \"OPEN_DATE\""
   },
   {
     "ID": "SdoR2Trial",
@@ -24,11 +24,11 @@
     "ElementLabel": "Trial window",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "includeInOrderToggle = \"TRIAL_WINDOW\""
+    "FieldShowCondition": "trialOnOptions = \"TRIAL_WINDOW\""
   },
   {
     "ID": "SdoR2Trial",
-    "ListElementCode": "lengthOfTrialRadio",
+    "ListElementCode": "lengthList",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackTimeEstimate",
     "ElementLabel": "Length of trial",
@@ -37,12 +37,12 @@
   },
   {
     "ID": "SdoR2Trial",
-    "ListElementCode": "sdoR2HearingLengthOther",
+    "ListElementCode": "lengthListOther",
     "FieldType": "SdoR2TrialHearingLengthOther",
     "ElementLabel": "Length of hearing",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "lengthOfTrialRadio = \"OTHER\""
+    "FieldShowCondition": "lengthList = \"OTHER\""
   },
   {
     "ID": "SdoR2Trial",

@@ -123,7 +123,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "includeInOrderToggle",
+    "ListElementCode": "trialOnOptions",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -147,7 +147,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "lengthOfTrialRadio",
+    "ListElementCode": "lengthList",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -155,7 +155,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "sdoR2HearingLengthOther",
+    "ListElementCode": "lengthListOther",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
