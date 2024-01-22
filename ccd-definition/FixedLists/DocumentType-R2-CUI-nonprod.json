@@ -21,8 +21,6 @@
     "ID": "DocumentType",
     "ListElementCode": "CLAIM_ISSUE_TRANSLATED_DOCUMENT",
     "ListElement": "Claim Issue Translated Document",
-    "ListElementCode": "INTERLOCUTORY_JUDGEMENT",
-    "ListElement": "Interlocutory Judgment",
     "DisplayOrder": 18
   }
 ]
