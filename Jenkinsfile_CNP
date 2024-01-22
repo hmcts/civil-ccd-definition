@@ -92,7 +92,7 @@ def archiveCoreCaseDataDefinitions() {
     dir("${WORKSPACE}/bin") {
       sh """
           set -e
-          eval \$(./variables/load-aat-environment-variables.sh ${CHANGE_ID})
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
     }
