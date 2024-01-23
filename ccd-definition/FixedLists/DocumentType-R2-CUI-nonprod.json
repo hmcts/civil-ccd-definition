@@ -25,8 +25,14 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_CLAIM_FORM",
+    "ListElement": "claimant claim form",
+    "DisplayOrder": 19
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "CLAIM_ISSUE_TRANSLATED_DOCUMENT",
     "ListElement": "Claim Issue Translated Document",
-    "DisplayOrder": 19
+    "DisplayOrder": 20
   }
 ]

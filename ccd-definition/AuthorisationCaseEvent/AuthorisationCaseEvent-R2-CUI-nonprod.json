@@ -930,6 +930,30 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_LIP_CLAIMANT_CLAIM_FORM_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_LIP_DEFENDANT_CLAIM_FORM_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
     "AccessControl": [
       {
