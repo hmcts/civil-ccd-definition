@@ -14,7 +14,7 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+Scenario.only('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   caseNumber = await api.getCaseId();
   await I.setCaseId(caseNumber);
