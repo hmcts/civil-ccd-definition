@@ -133,9 +133,7 @@ Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
 }).retry(3);
 
 Scenario('Make a general application', async ({api}) => {
-  //if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
-  //}
 }).retry(3);
 
 Scenario('Transfer online case', async ({I}) => {
