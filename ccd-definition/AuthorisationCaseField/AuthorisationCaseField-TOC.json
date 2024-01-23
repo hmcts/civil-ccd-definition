@@ -132,7 +132,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "legal-adviser"
         ],
         "CRUD": "R"
       },
@@ -156,8 +157,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
-
+          "caseworker-civil-admin",
+          "legal-adviser"
         ],
         "CRUD": "R"
       },
