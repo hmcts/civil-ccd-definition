@@ -97,5 +97,5 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
-civil-camunda-bpm:
+camunda-bpm:
   enabled: true
