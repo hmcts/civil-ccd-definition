@@ -20,9 +20,9 @@ elif [ ${environment} == local ]; then
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 else
   echo "ERROR! You are passing an environment that is not known by the script!"
   echo "       Either add the new environment to the script or specify a supported environment!"
