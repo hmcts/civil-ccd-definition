@@ -31,7 +31,8 @@ exports.config = {
       browser: 'chromium',
       timeout: 20000,
       waitForAction: 500,
-      waitForNavigation: 'networkidle0',
+      waitForNavigation: 'load',
+      bypassCSP: true,
       ignoreHTTPSErrors: true,
       trace: true
     },
