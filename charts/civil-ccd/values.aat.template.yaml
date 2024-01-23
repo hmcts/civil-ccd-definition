@@ -26,8 +26,8 @@ ccd:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
       environment:
-        DEFINITION_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
+        DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         STORAGE_ACCOUNT_NAME:
           secretRef: storage-secret-{{ .Release.Name }}-blobstorage
@@ -37,7 +37,7 @@ ccd:
           secretRef: storage-secret-{{ .Release.Name }}-blobstorage
           key: accessKey
           disabled: true
-        DEFINITION_STORE_DB_PASSWORD:
+        DATA_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: true
@@ -46,8 +46,8 @@ ccd:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
       environment:
-        DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+        DEFINITION_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         STORAGE_ACCOUNT_NAME:
           secretRef: storage-secret-{{ .Release.Name }}-blobstorage
