@@ -499,5 +499,30 @@
     "FieldType": "SdoR2QuestionsToEntExpert",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoSeparatorUploadOfDocuments",
+    "Label": "****\n ### Upload of documents",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SeparatorUploadOfDocumentsToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2UploadOfDocuments",
+    "Label": " ",
+    "FieldType": "SdoR2UploadOfDocuments",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -213,7 +213,7 @@
     "CaseFieldID": "sdoR2ExpertEvidence",
     "ListElementCode": "label",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2ExpertEvidence",
@@ -229,7 +229,7 @@
     "CaseFieldID": "sdoR2AddendumReport",
     "ListElementCode": "label",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2AddendumReport",
@@ -253,7 +253,7 @@
   "CaseFieldID": "sdoR2FurtherAudiogram",
   "ListElementCode": "sdoClaimantShallUndergoLbl",
   "FieldDisplayOrder": 1,
-  "DisplayContext": "MANDATORY"
+  "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2FurtherAudiogram",
@@ -277,7 +277,7 @@
     "CaseFieldID": "sdoR2FurtherAudiogram",
     "ListElementCode": "sdoServiceReportLbl",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2FurtherAudiogram",
@@ -301,7 +301,7 @@
     "CaseFieldID": "sdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoDefendantMayAskLbl",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsClaimantExpert",
@@ -325,7 +325,7 @@
     "CaseFieldID": "sdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoQuestionsShallBeAnsweredLbl",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsClaimantExpert",
@@ -347,9 +347,9 @@
     "ID": "SdoR2QuestionsClaimantExpert",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2QuestionsClaimantExpert",
-    "ListElementCode": "sdoUploadedToDigitalPortalLabel",
+    "ListElementCode": "sdoUploadedToDigitalPortalLbl",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsClaimantExpert",
@@ -373,7 +373,7 @@
     "CaseFieldID": "sdoR2PermissionToRelyOnExpert",
     "ListElementCode": "label",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2PermissionToRelyOnExpert",
@@ -397,7 +397,7 @@
     "CaseFieldID": "sdoR2PermissionToRelyOnExpert",
     "ListElementCode": "sdoJointMeetingOfExpertsLbl",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2PermissionToRelyOnExpert",
@@ -421,7 +421,7 @@
     "CaseFieldID": "sdoR2PermissionToRelyOnExpert",
     "ListElementCode": "sdoUploadedToDigitalPortalLbl",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2PermissionToRelyOnExpert",
@@ -445,7 +445,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoInstructionOfTheExpertLbl",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -477,7 +477,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoExpertReportLbl",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -501,7 +501,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoExpertReportDigitalPortalLbl",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -517,7 +517,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoWrittenQuestionsLbl",
     "FieldDisplayOrder": 11,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -541,7 +541,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoWrittenQuestionsDigitalPortalLbl",
     "FieldDisplayOrder": 14,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -557,7 +557,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoRepliesLbl",
     "FieldDisplayOrder": 16,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -565,7 +565,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoRepliesTheExpertLbl",
     "FieldDisplayOrder": 17,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -589,7 +589,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoRepliesDigitalPortalLbl",
     "FieldDisplayOrder": 20,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -605,7 +605,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoServiceOfOrderLbl",
     "FieldDisplayOrder": 22,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -621,7 +621,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoExpertMayApplyMainLbl",
     "FieldDisplayOrder": 24,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -629,7 +629,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoExpertMayApplyLbl",
     "FieldDisplayOrder": 25,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -637,7 +637,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoFeesAndExpensesMainLbl",
     "FieldDisplayOrder": 26,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2EvidenceAcousticEngineer",
@@ -645,7 +645,7 @@
     "CaseFieldID": "sdoR2EvidenceAcousticEngineer",
     "ListElementCode": "sdoFeesAndExpensesLbl",
     "FieldDisplayOrder": 27,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsToEntExpert",
@@ -653,7 +653,7 @@
     "CaseFieldID": "sdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoWrittenQuestionsLbl",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsToEntExpert",
@@ -685,7 +685,7 @@
     "CaseFieldID": "sdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoQuestionsShallBeAnsweredLbl",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsToEntExpert",
@@ -709,7 +709,7 @@
     "CaseFieldID": "sdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoShallBeUploadedLbl",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2QuestionsToEntExpert",
@@ -717,6 +717,22 @@
     "CaseFieldID": "sdoR2QuestionsToEntExpert",
     "ListElementCode": "sdoShallBeUploadedTxt",
     "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2UploadOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2UploadOfDocuments",
+    "ListElementCode": "sdoUploadOfDocumentsLbl",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2UploadOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2UploadOfDocuments",
+    "ListElementCode": "sdoUploadOfDocumentsTxt",
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   }
 ]
