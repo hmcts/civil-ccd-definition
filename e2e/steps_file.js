@@ -8,6 +8,9 @@ const loginPage = require('./pages/login.page');
 const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
+const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
+const updateHearingPage = require('./pages/hearing/updateHearing.page');
+const cancelHearingPage = require('./pages/hearing/cancelHearing.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
 const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claimantSolicitorOrganisationLRspec.page');
@@ -288,7 +291,41 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
+    async requestNewHearing() {
+      eventName = 'Request Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => requestNewHearingPage.openHearingTab(),
+        () => requestNewHearingPage.selectAdditionalFacilities(),
+        () => requestNewHearingPage.selectHearingStage(),
+        () => requestNewHearingPage.selectParticipantAttendance(),
+        () => requestNewHearingPage.selectHearingVenues(),
+        () => requestNewHearingPage.selectJudges(),
+        () => requestNewHearingPage.selectLengthDatePriority(),
+        () => requestNewHearingPage.enterAdditionalInstructions(),
+        () => requestNewHearingPage.submitHearing(),
+        () => requestNewHearingPage.verifyWaitingForHearingToBeListed()
+      ]);
+    },
+
+    async updateHearing() {
+      eventName = 'Update Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.updateHearingValues(),
+        () => updateHearingPage.submitUpdatedHearing(),
+        () => updateHearingPage.verifyUpdatedHearingDetails()
+    ]);
+    },
+
+    async cancelHearing() {
+      eventName = 'Cancel Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => cancelHearingPage.clickCancelHearing(),
+        () => cancelHearingPage.verifyHearingCancellation()
+      ]);
+    },
+
+      async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -1084,5 +1121,6 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
+
   });
 };

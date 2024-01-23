@@ -2,56 +2,70 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
-const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
+const manchesterCourt = 'Manchester Civil Justice Centre (Civil and Family Courts) - 1 Bridge Street West - M60 9DJ';
+const courtToBeSelected = process.env.ENVIRONMENT === 'demo' ? manchesterCourt : process.env.TEST_EA_COURTS == 'true' ? manchesterCourt : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
 
 module.exports = {
   idamStub: {
     enabled: process.env.IDAM_STUB_ENABLED === 'true',
     url: 'http://localhost:5555'
   },
+  // url: {
+  //   // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
+  //   // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+  //   // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+  //   // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
+  //   // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
+  //   // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
+  //   // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+  //
+  //   // for preview
+  //   // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
+  //   // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+  //   // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
+  //   // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+  //   // idamApi: 'https://idam-api.aat.platform.hmcts.net',
+  //   // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+  //
+  //
+  //   /*
+  //   manageCase:  'https://manage-case.aat.platform.hmcts.net/',
+  //   authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+  //   ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+  //   dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
+  //   idamApi:  'https://idam-api.aat.platform.hmcts.net',
+  //   civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
+  //   waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',*/
+  //
+  //   manageCase: process.env.URL || 'http://localhost:3333',
+  //   authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
+  //   ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
+  //   dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
+  //   idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
+  //   civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+  //   generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
+  //   waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+  //   caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
+  //   orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
+  //   wiremockService: 'http://localhost:8765'
+  // },
+  // s2s: {
+  //   microservice: 'civil_service',
+  //   secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+  // },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
-    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
-    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
-    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
-
-    // for preview
-    // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
-    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-    // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
-    // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
-    // idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
-
-
-    /*
-    manageCase:  'https://manage-case.aat.platform.hmcts.net/',
-    authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
-    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
-    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',*/
-
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
-    generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
-    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-    caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
-    orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
-    wiremockService: 'http://localhost:8765'
+    manageCase: process.env.URL || 'https://manage-case-hearings-int.demo.platform.hmcts.net',
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+    dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
+    idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
+    civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal'
   },
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: '4W4QUXOYX623JW64'
   },
+
   s2sForXUI: {
     microservice: 'xui_webapp',
     secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
@@ -114,6 +128,13 @@ module.exports = {
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
+  judgeUserWithRegionId4Demo: {
+    password: judgeDefaultPassword,
+    email: 'EMP261006@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '4'
+  },
   judgeUserWithRegionId4: {
     password: judgeDefaultPassword,
     email: '4924159EMP-@ejudiciary.net',
@@ -156,7 +177,7 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
-  hearingCenterAdminWithRegionId1: {
+    hearingCenterAdminWithRegionId1: {
     email: 'hearing_center_admin_reg1@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
@@ -172,6 +193,13 @@ module.exports = {
   },
   hearingCenterAdminWithRegionId41: {
     email: 'hearing_center_admin_region2@justice.gov.uk',
+    password: defaultPassword,
+    type: 'hearing-center-admin',
+    roleCategory: 'ADMIN',
+    regionId: '4'
+  },
+  hearingCenterAdminWithRegionId4Demo: {
+    email: 'hearings_admin_region4_user@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
@@ -347,6 +375,7 @@ module.exports = {
   defendant2SelectedCourt: courtToBeSelected,
   djClaimantSelectedCourt: courtToBeSelected,
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
+  manchesterCourt: manchesterCourt,
   sdoJudgeSelectedCourt: courtToBeSelected,
   localNoCTests: false,
   localMediationTests: false
