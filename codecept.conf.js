@@ -28,10 +28,12 @@ exports.config = {
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
       windowSize: '1920x1080',
+      browser: 'chromium',
       timeout: 20000,
       waitForAction: 500,
       waitForNavigation: 'networkidle0',
       ignoreHTTPSErrors: true,
+      trace: true
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
