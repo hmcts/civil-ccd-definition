@@ -29,8 +29,6 @@ civil-service:
             alias: azure.application-insights.instrumentation-key
           - name: docmosis-api-key
             alias: docmosis.tornado.key
-          - name: cmc-db-password-v11
-            alias: CMC_DB_PASSWORD
           - name: gov-notify-api-key
             alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
@@ -63,6 +61,17 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
+      CMC_DB_HOST: civil-preview.postgres.database.azure.com
+      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      CMC_DB_USERNAME: hmcts
+      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
+    secrets:
+      CMC_DB_PASSWORD:
+        secretRef: postgres
+        key: PASSWORD
+        disabled: false
+    postgresql:
+      enabled: false
 idam-pr:
   redirect_uris:
     XUI:
@@ -74,6 +83,18 @@ aac-manage-case-assignment:
 
 civil-general-applications:
   enabled: true
+  java:
+    environment:
+      CMC_DB_HOST: civil-preview.postgres.database.azure.com
+      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      CMC_DB_USERNAME: hmcts
+      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
+    secrets:
+      CMC_DB_PASSWORD:
+        secretRef: postgres
+        key: PASSWORD
+        disabled: false
+
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
@@ -81,6 +102,11 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
 ccd:
+  global:
+    postgresUsername: hmcts
+    postgresSecret: postgres
+    postgresHostname: civil-preview.postgres.database.azure.com
+    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -97,3 +123,42 @@ ccd:
 
 camunda-bpm:
   enabled: true
+  java:
+    disableKeyVaults: true
+    environment:
+      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
+      CAMUNDA_DB_USER_NAME: hmcts
+      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
+      TEMP_VAR: false
+    secrets:
+      CAMUNDA_DB_PASSWORD:
+        secretRef: postgres
+        key: PASSWORD
+        disabled: false
+
+postgresql:
+  enabled: true
+  flexibleserver: civil-preview
+  setup:
+    databases:
+      - name: "pr-${CHANGE_ID}-data-store"
+      - name: "pr-${CHANGE_ID}-definition-store"
+      - name: "pr-${CHANGE_ID}-user-profile"
+      - name: "pr-${CHANGE_ID}-draftstore"
+      - name: "pr-${CHANGE_ID}-evidence"
+      - name: "pr-${CHANGE_ID}-annotation"
+      - name: "pr-${CHANGE_ID}-role-assignment"
+      - name: "pr-${CHANGE_ID}-hmc-cft-hearing-service"
+      - name: "pr-${CHANGE_ID}-cft_task_db"
+      - name: "pr-${CHANGE_ID}-wa-case-event-handler"
+      - name: "pr-${CHANGE_ID}-wa_workflow_api"
+      - name: "pr-${CHANGE_ID}-camunda"
+      - name: "pr-${CHANGE_ID}-org_role_mapping"
+      - name: "pr-${CHANGE_ID}-emstitch"
+      - name: "pr-${CHANGE_ID}-payment"
+      - name: "pr-${CHANGE_ID}-dbrdcaseworker"
+      - name: "pr-${CHANGE_ID}-dbrefdata"
+      - name: "pr-${CHANGE_ID}-dbuserprofile"
+      - name: "pr-${CHANGE_ID}-dbjuddata"
+      - name: "pr-${CHANGE_ID}-cmc"
