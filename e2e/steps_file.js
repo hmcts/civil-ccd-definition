@@ -125,6 +125,7 @@ const hearingScheduledChooseDetailsPage = require('./pages/caseProgression/heari
 const hearingScheduledMoreInfoPage = require('./pages/caseProgression/hearingScheduledMoreInfo.page');
 const confirmTrialReadinessPage = require('./pages/caseProgression/confirmTrialReadiness.page');
 
+const transferCaseOnline = require('./pages/transferOnlineCase/newHearingCentreLocation.page');
 
 const selectLitigationFriendPage = require('./pages/selectLitigationFriend/selectLitigationFriend.page.ts');
 const unspecifiedDefaultJudmentPage = require('./pages/defaultJudgment/requestDefaultJudgmentforUnspecifiedClaims');
@@ -551,6 +552,17 @@ module.exports = function () {
         () => furtherInformationPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
+        () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async transferOnlineCase() {
+      eventName = 'Transfer online case';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => transferCaseOnline.selectCourt(),
+        () => this.click('Submit'),
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();
