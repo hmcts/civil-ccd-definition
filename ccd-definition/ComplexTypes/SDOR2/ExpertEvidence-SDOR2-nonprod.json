@@ -9,7 +9,7 @@
   },
   {
     "ID": "SdoR2ExpertEvidence",
-    "ListElementCode": "sdoClaimantPermissionToRely",
+    "ListElementCode": "sdoClaimantPermissionToRelyTxt",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",

@@ -219,7 +219,7 @@
     "ID": "SdoR2ExpertEvidence",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2ExpertEvidence",
-    "ListElementCode": "sdoClaimantPermissionToRely",
+    "ListElementCode": "sdoClaimantPermissionToRelyTxt",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -235,7 +235,7 @@
     "ID": "SdoR2AddendumReport",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2AddendumReport",
-    "ListElementCode": "sdoAddendumReportUpload",
+    "ListElementCode": "sdoAddendumReportTxt",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },

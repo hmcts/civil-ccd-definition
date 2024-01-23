@@ -9,7 +9,7 @@
   },
   {
     "ID": "SdoR2AddendumReport",
-    "ListElementCode": "sdoAddendumReportUpload",
+    "ListElementCode": "sdoAddendumReportTxt",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
