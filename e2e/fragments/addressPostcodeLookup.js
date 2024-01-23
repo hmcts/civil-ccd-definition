@@ -18,8 +18,8 @@ module.exports = {
   findAddressButton: 'Find address',
   cantEnterPostcodeLink: locate('a').withText('I can\'t enter a UK postcode'),
 
-  enterAddressManually(address) {
-    I.click(this.cantEnterPostcodeLink);
+  enterAddressManually(address, link = this.cantEnterPostcodeLink) {
+    I.click(link);
     I.fillField(this.fields.buildingAndStreet.lineOne, address.buildingAndStreet.lineOne);
     I.fillField(this.fields.buildingAndStreet.lineTwo, address.buildingAndStreet.lineTwo);
     I.fillField(this.fields.buildingAndStreet.lineThree, address.buildingAndStreet.lineThree);
