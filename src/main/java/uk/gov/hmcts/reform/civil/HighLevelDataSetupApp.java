@@ -96,7 +96,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+    protected boolean shouldTolerateDataSetupFailure() {
         return true;
     }
 
