@@ -23,21 +23,16 @@ exports.config = {
   ],
   output: 'test-results/functional',
   helpers: {
-    Puppeteer: {
-      restart: false,
-      keepCookies: true,
+    Playwright: {
+      url: process.env.URL || 'http://localhost:3333', 
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
-      windowSize: '1200x900',
       waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
-      chrome: {
-        ignoreHTTPSErrors: true
-      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
     },
     GenerateReportHelper: {
-      require: './e2e/helpers/generate_report_helper.js'
+      require: './e2e/helpers/generate_report_helper.js',
     },
   },
   include: {
@@ -51,7 +46,7 @@ exports.config = {
     api_spec_cui: './e2e/api/steps_LRspecCui.js',
     noc: './e2e/api/steps_noc.js',
     hearings: './e2e/api/steps_hearings.js',
-    bulks: './e2e/api/steps_Bulk.js'
+    bulks: './e2e/api/steps_Bulk.js',
   },
   plugins: {
     autoDelay: {
@@ -61,7 +56,7 @@ exports.config = {
         'fillField',
         'checkOption',
         'selectOption',
-        'attachFile',
+        'attach',
       ],
     },
     retryFailedStep: {
@@ -91,12 +86,12 @@ exports.config = {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
-          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME+'-'+new Date().getTime()}`,
+          reportFilename: `${process.env.MOCHAWESOME_REPORTFILENAME + '-' + new Date().getTime()}`,
           inlineAssets: true,
           overwrite: false,
           json: false,
         },
       },
-    }
-  }
+    },
+  },
 };
