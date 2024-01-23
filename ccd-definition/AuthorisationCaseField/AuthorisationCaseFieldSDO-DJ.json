@@ -37,13 +37,14 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
