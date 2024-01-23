@@ -1,6 +1,14 @@
 [
   {
     "ID": "SdoR2ApplicationToRelyOnFurther",
+    "ListElementCode": "applicationToRelyLbl",
+    "FieldType": "Label",
+    "ElementLabel": "### Require application to rely on further medical evidence",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2ApplicationToRelyOnFurther",
     "ListElementCode": "doRequireApplicationToRely",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",

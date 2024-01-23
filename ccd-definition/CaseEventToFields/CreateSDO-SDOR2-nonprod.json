@@ -456,7 +456,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoSeparatorUploadOfDocuments",
+    "CaseFieldID": "sdoSeparatorScheduleOfLoss",
     "PageFieldDisplayOrder": 40,
     "DisplayContext": "READONLY",
     "PageID": "SdoR2FastTrack",
@@ -467,7 +467,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2SeparatorUploadOfDocumentsToggle",
+    "CaseFieldID": "sdoR2ScheduleOfLossToggle",
     "PageFieldDisplayOrder": 41,
     "DisplayContext": "OPTIONAL",
     "PageID": "SdoR2FastTrack",
@@ -478,19 +478,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2UploadOfDocuments",
+    "CaseFieldID": "sdoR2ScheduleOfLoss",
     "PageFieldDisplayOrder": 42,
     "DisplayContext": "MANDATORY",
     "PageID": "SdoR2FastTrack",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2SeparatorUploadOfDocumentsToggle = \"INCLUDE\""
+    "FieldShowCondition": "sdoR2ScheduleOfLossToggle = \"INCLUDE\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoSeparatorScheduleOfLoss",
+    "CaseFieldID": "sdoSeparatorUploadOfDocuments",
     "PageFieldDisplayOrder": 43,
     "DisplayContext": "READONLY",
     "PageID": "SdoR2FastTrack",
@@ -501,7 +501,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2ScheduleOfLossToggle",
+    "CaseFieldID": "sdoR2SeparatorUploadOfDocumentsToggle",
     "PageFieldDisplayOrder": 44,
     "DisplayContext": "OPTIONAL",
     "PageID": "SdoR2FastTrack",
@@ -512,14 +512,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2ScheduleOfLoss",
+    "CaseFieldID": "sdoR2UploadOfDocuments",
     "PageFieldDisplayOrder": 45,
     "DisplayContext": "MANDATORY",
     "PageID": "SdoR2FastTrack",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2ScheduleOfLossToggle = \"INCLUDE\""
+    "FieldShowCondition": "sdoR2SeparatorUploadOfDocumentsToggle = \"INCLUDE\""
   },
   {
     "CaseTypeID": "CIVIL",

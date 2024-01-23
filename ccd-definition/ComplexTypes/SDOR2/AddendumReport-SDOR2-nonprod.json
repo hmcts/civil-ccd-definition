@@ -3,7 +3,7 @@
     "ID": "SdoR2AddendumReport",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "### Addendum report upload",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -11,7 +11,7 @@
     "ID": "SdoR2AddendumReport",
     "ListElementCode": "sdoAddendumReportUpload",
     "FieldType": "TextArea",
-    "ElementLabel": "Addendum report upload",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

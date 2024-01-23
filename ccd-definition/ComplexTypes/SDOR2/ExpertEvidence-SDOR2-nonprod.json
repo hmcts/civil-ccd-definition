@@ -3,7 +3,7 @@
     "ID": "SdoR2ExpertEvidence",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "### Claimant's permission to rely",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -11,7 +11,7 @@
     "ID": "SdoR2ExpertEvidence",
     "ListElementCode": "sdoClaimantPermissionToRely",
     "FieldType": "TextArea",
-    "ElementLabel": "Claimant's permission to rely",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

@@ -67,7 +67,7 @@
     "ID": "SdoR2QuestionsClaimantExpert",
     "ListElementCode": "sdoApplicationToRelyOnFurther",
     "FieldType": "SdoR2ApplicationToRelyOnFurther",
-    "ElementLabel": "Require application to rely on further medical evidence",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
