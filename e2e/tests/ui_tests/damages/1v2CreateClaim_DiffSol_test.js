@@ -138,6 +138,16 @@ Scenario('Make a general application', async ({api}) => {
   }
 }).retry(3);
 
+Scenario('Create a Hearing Request', async ({I}) => {
+  if (['demo'].includes(config.runningEnv)) {
+    await I.login(config.hearingCenterAdminWithRegionId4Demo);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+    await I.requestNewHearing();
+    await I.updateHearing();
+    await I.cancelHearing();
+  }
+}).retry(3);
+
 Scenario('Transfer online case', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.hearingCenterAdminWithRegionId2);
