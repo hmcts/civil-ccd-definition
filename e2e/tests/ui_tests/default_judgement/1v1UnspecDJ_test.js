@@ -5,8 +5,8 @@ let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsT
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const judgeUserToBeUsed = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUserToBeUsed = process.env.ENVIRONMENT === 'demo' ? config.manchesterCourt : config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId4 : config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = process.env.ENVIRONMENT === 'demo' ? config.hearingCenterAdminWithRegionId4Demo : config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId4 : config.hearingCenterAdminWithRegionId1;
 
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
@@ -30,7 +30,7 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
 }).retry(3);
 
 
-Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Judge add case notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
