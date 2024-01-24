@@ -12,7 +12,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 let caseNumber;
 
-Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
+Feature('1v2 Different Solicitors Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft @createClaim');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -88,7 +88,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
-
 Scenario.skip('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
@@ -140,7 +139,7 @@ Scenario('Make a general application', async ({api}) => {
 
 Scenario('Create a Hearing Request', async ({I}) => {
   if (['demo'].includes(config.runningEnv)) {
-    await I.login(config.hearingCenterAdminWithRegionId4Demo);
+    await I.login(config.hearingCenterAdminWithRegionId2);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await I.requestNewHearing();
     await I.updateHearing();
