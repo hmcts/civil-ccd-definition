@@ -31,6 +31,8 @@ const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpe
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
+const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -331,10 +333,12 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState) => {
+                           expectedEndState, carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 
@@ -348,10 +352,11 @@ module.exports = {
     }
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (response == 'FULL_DEFENCE') {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
 
+    carmEnabled ? validState = 'IN_MEDIATION' : validState;
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -361,6 +366,17 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
+  },
+
+  mediationUnsuccessful: async (user, carmEnabled = false) => {
+    eventName = 'MEDIATION_UNSUCCESSFUL';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of unsuccessful mediation');
   },
 
   uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
