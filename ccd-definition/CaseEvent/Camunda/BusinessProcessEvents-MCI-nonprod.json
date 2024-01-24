@@ -1,0 +1,32 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CONTACT_INFORMATION_UPDATED",
+    "Name": "Contact Information Updated",
+    "Description": " ",
+    "PreConditionState(s)": "*",
+    "PostConditionState":  "*",
+    "Comment": " ",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CONTACT_INFORMATION_UPDATED_WA",
+    "Name": "Contact Information Updated WA",
+    "Description": " ",
+    "PreConditionState(s)": "*",
+    "PostConditionState":  "*",
+    "Comment": " ",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
+  }
+]

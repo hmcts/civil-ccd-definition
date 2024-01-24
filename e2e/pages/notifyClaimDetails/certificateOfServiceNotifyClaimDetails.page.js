@@ -8,6 +8,9 @@ module.exports = {
     dateOfService: {
       id: 'cosDateOfServiceForDefendant'
     },
+    dateOfDeemedServed: {
+      id: 'cosDateDeemedServedForDefendant'
+    },
     servedDocumentFilesTextArea: 'textarea[id*="cosServedDocumentFiles"]',
     cosRecipientTextArea: 'textarea[id$="cosRecipient"]',
     cosRecipientServeTypeDropDown: {
@@ -50,6 +53,7 @@ module.exports = {
     await I.see(defendantName);
     await I.seeNumberOfVisibleElements('[id*="cosLabelFor"]', 2);
     await date.enterDate(this.fields(party).dateOfService.id, -1);
+    await date.enterDate(this.fields(party).dateOfDeemedServed.id, 2);
     await I.fillField(this.fields(party).servedDocumentFilesTextArea, 'Test Document');
     await servedDocuments.upload(file, this.fields(party).supportingEvidenceDocumentFiles.options);
     await I.fillField(this.fields(party).cosRecipientTextArea, 'Test test');
