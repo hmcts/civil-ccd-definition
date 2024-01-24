@@ -56,5 +56,13 @@
     "FieldType": "TransferCaseDetails",
     "Searchable": "N",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "lblTransferCaseDetails",
+    "Label": " ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
