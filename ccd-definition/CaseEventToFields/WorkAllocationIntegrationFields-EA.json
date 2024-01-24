@@ -47,7 +47,6 @@
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "allocatedTrack=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
