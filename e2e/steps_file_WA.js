@@ -47,13 +47,13 @@ module.exports = function (){
       await this.waitForText('This case requires challenged access', 60);
       await this.waitForText('Request access');
       await this.forceClick('Request access');
-      await this.waitForText('To determine if the case needs to be consolidated');
+      await this.waitForText('To determine if the case needs to be consolidated', 60);
       await this.click('#reason-1');
       await this.click('Submit');
-      await this.waitForText('Access successful');
-      await this.see(caseId);
+      await this.waitForText('Access successful', 60);
+      await this.waitForText(caseId, 60);
       await this.click('View case file');
-      await this.waitForText('Your fee will be calculated based on the statement of value');
+      await this.waitForText('Your fee will be calculated based on the statement of value', 60);
     },
 
     runSpecificAccessRequestSteps: async function(caseId) {
