@@ -69,8 +69,7 @@
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageShowCondition": "allocatedTrack=\"DONOTSHOW\"",
-    "FieldShowCondition": "allocatedTrack=\"DONOTSHOW\"",
+    "PageShowCondition": "relistHearingNotice=\"DONOTSHOW\"",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -80,7 +79,6 @@
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "allocatedTrack=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
@@ -91,7 +89,6 @@
     "CaseFieldID": "orderType",
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "allocatedTrack=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
@@ -102,7 +99,6 @@
     "CaseFieldID": "caseManagementOrderSelection",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "allocatedTrack=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
