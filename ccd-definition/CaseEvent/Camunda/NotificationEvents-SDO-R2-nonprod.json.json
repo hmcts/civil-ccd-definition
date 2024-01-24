@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SET_LIP_RESPONDENT_RESPONSE_DEADLINE",
-    "Name": "Set LIP Response Deadline",
-    "Description": "Set LIP Respondent Response deadline",
+    "ID": "NOTIFY_CLAIM_RECONSIDERATION_UPHELD_CLAIMANT",
+    "Name": "Notify Reconsideration",
+    "Description": "Notify Reconsideration to claimant ",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -14,9 +14,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIMANT_LIP_HELP_WITH_FEES",
-    "Name": "Notify Help with Fees",
-    "Description": "Notify Help with Fees",
+    "ID": "NOTIFY_CLAIM_RECONSIDERATION_UPHELD_DEFENDANT",
+    "Name": "Notify Reconsideration",
+    "Description": "Notify Reconsideration to Defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
