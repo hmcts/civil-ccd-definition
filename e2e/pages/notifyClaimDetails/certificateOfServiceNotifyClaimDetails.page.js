@@ -8,9 +8,6 @@ module.exports = {
     dateOfService: {
       id: 'cosDateOfServiceForDefendant'
     },
-    cosDateDeemedServed: {
-      id: 'cosDateDeemedServedForDefendant'
-    },
     servedDocumentFilesTextArea: 'textarea[id*="cosServedDocumentFiles"]',
     cosRecipientTextArea: 'textarea[id$="cosRecipient"]',
     cosRecipientServeTypeDropDown: {
@@ -65,7 +62,6 @@ module.exports = {
     await I.see('Statement of truth');
     await I.seeNumberOfVisibleElements('[id="cosStatementOfTruthLabel"]', 1);
     await I.fillField(this.fields(party).senderName, 'Test Sender');
-    await date.enterDate(this.fields(party).cosDateDeemedServed.id, 1);
     await I.fillField(this.fields(party).firmName, 'Test Firm');
     await I.click(this.fields(party).certifiedCheckBox);
     await I.clickContinue();

@@ -958,6 +958,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
@@ -978,6 +979,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
         await this.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
       }, SIGNED_IN_SELECTOR);
