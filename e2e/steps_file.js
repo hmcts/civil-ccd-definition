@@ -235,9 +235,10 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (loggedInUser !== user) {
-        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.signOut();
+        if (loggedInUser !== user) {
+          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+            await this.signOut();
+          }
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
@@ -251,7 +252,6 @@ module.exports = function () {
 
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
-      }
     },
 
     grabCaseNumber: async function () {
