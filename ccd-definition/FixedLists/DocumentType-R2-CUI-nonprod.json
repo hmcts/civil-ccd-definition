@@ -22,5 +22,11 @@
     "ListElementCode": "INTERLOCUTORY_JUDGEMENT",
     "ListElement": "Interlocutory Judgment",
     "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_CLAIM_FORM",
+    "ListElement": "claimant claim form",
+    "DisplayOrder": 19
   }
 ]
