@@ -232,6 +232,7 @@ module.exports = {
     let manageContactInformationData = data.MANAGE_DEFENDANT1_INFORMATION(caseData);
     await expectedWarnings('Defendant1Party', manageContactInformationData, 'Check the litigation friend\'s details');
     await updateApplicant(caseId, manageContactInformationData);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   manageDefendant1LROrgDetails: async (user) => {
@@ -243,6 +244,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     let manageContactInformationData = data.MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION(caseData);
     await updateLROrganisation(caseId, manageContactInformationData);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   createClaimWithRespondentLitigantInPerson: async (user, multipartyScenario) => {
