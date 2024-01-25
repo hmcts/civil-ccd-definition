@@ -19,6 +19,7 @@ const testingSupport = require('./testingSupport');
 const {dateNoWeekends} = require('./dataHelper');
 const {checkToggleEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -127,29 +128,16 @@ module.exports = {
         claimData.serviceUpdateDto(caseId, 'paid'));
       console.log('Service request update sent to callback URL');
     }
-    await waitForFinishedBusinessProcess(caseId);    
+    await waitForFinishedBusinessProcess(caseId);
     if (claimType !== 'pinInPost') {
       await assignCaseToCitizen(caseId, multipartyScenario);
     }
-    
+
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    if (carmEnabled) {
-      console.log('carm enabled, updating submitted date');
-      await apiRequest.setupTokens(config.systemupdate);
-      let submittedDate ={};
-      submittedDate = {'submittedDate':'2024-05-10T15:59:50'};
-      await testingSupport.updateCaseData(caseId, submittedDate);
-      console.log('submitted date update to after carm date');
-    } else {
-      console.log('carm not enabled, updating submitted date');
-      await apiRequest.setupTokens(config.systemupdate);
-      let submittedDate ={};
-      submittedDate = {'submittedDate':'2022-05-10T15:59:50'};
-      await testingSupport.updateCaseData(caseId, submittedDate);
-      console.log('submitted date update to before carm date');
-    }
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+
     return caseId;
   },
 
