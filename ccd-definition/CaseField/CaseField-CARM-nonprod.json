@@ -84,7 +84,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationNonAttendanceDocs",
-    "Label": "Non-attendance statement",
+    "Label": "Claimant One - Non-attendance statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "NonAttendanceMediationStatement",
     "SecurityClassification": "Public",
@@ -93,7 +93,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationDocumentsReferred",
-    "Label": "Documents referred to in statement",
+    "Label": "Claimant One - Documents referred to in statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentsReferred",
     "SecurityClassification": "Public",
@@ -102,7 +102,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app2MediationNonAttendanceDocs",
-    "Label": "Non-attendance statement",
+    "Label": "Claimant Two - Non-attendance statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "NonAttendanceMediationStatement",
     "SecurityClassification": "Public",
@@ -111,7 +111,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app2MediationDocumentsReferred",
-    "Label": "Documents referred to in statement",
+    "Label": "Claimant Two - Documents referred to in statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentsReferred",
     "SecurityClassification": "Public",
@@ -120,7 +120,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "res1MediationNonAttendanceDocs",
-    "Label": "Non-attendance statement",
+    "Label": "Defendant One - Non-attendance statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "NonAttendanceMediationStatement",
     "SecurityClassification": "Public",
@@ -129,7 +129,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "res1MediationDocumentsReferred",
-    "Label": "Documents referred to in statement",
+    "Label": "Defendant One - Documents referred to in statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentsReferred",
     "SecurityClassification": "Public",
@@ -138,7 +138,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "res2MediationNonAttendanceDocs",
-    "Label": "Non-attendance statement",
+    "Label": "Defendant Two - Non-attendance statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "NonAttendanceMediationStatement",
     "SecurityClassification": "Public",
@@ -147,7 +147,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "res2MediationDocumentsReferred",
-    "Label": "Documents referred to in statement",
+    "Label": "Defendant Two - Documents referred to in statement",
     "FieldType": "Collection",
     "FieldTypeParameter": "DocumentsReferred",
     "SecurityClassification": "Public",
