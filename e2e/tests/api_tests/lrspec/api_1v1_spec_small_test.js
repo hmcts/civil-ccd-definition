@@ -29,6 +29,13 @@ Scenario('1v1 COUNTER_CLAIM claimant and defendant response small claim', async 
   // counter claim defense brings the case offline
 });
 
+Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim - CARM enabled', async ({I, api_spec_small}) => {
+  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+  await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true);
+  await api_spec_small.manageContactInformation(config.adminUser, true);
+});
+
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
 });
