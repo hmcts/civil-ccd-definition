@@ -102,6 +102,11 @@ module.exports = {
     email: 'nbc_admin_region1@justice.gov.uk',
     type: 'admin'
   },
+  nbcUserWithRegionId4: {
+    password: defaultPassword,
+    email: 'nbc_admin_region4@justice.gov.uk',
+    type: 'admin'
+  },
   nbcUserLocal: {
     password: defaultPassword,
     email: 'nbc-team-leader@mailnesia.com',
