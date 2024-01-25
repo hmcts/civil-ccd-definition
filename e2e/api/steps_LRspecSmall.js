@@ -33,15 +33,8 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
-const caseViewPage = require('../pages/caseView.page');
-const requestForRR = require('../pages/requestForReconsideration/reasonForReconsideration.page');
-const requestForDecision = require('../pages/decisionOnReconsideration/decisionOnReconsideration.page');
 
-const loginPage = require('../pages/login.page');
-const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
-
-let caseId, eventName, currentEventName, screenshotNumber, loggedInUser;
-let eventNumber = 0;
+let caseId, eventName;
 let caseData = {};
 
 const data = {
@@ -534,68 +527,6 @@ module.exports = function (){
     console.log(`case created: ${caseId}`);
     return caseId;
   },
-    async requestForReconsiderationForUI() {
-      eventName = 'Request for Reconsideration';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForRR(eventName, caseId),
-        () => requestForRR.reasonForReconsideration(),
-        () => this.click('Submit'),
-        () => this.waitForText('Close and Return to case details'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Testing Request for Reconsideration'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
-
-    async decisionForReconsideration() {
-      eventName = 'Decision on reconsideration';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
-        () => requestForDecision.selectCreateNewSDO(),
-        () => this.click('Submit'),
-        () => this.waitForText('Close and Return to case details'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
-
-    async decisionForReconsiderationYesOption() {
-      eventName = 'Decision on reconsideration';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
-        () => requestForDecision.selectYesOptionToUpholdThePreviousOrderMade(),
-        () => this.click('Submit'),
-        () => this.waitForText('Close and Return to case details'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
-
-    async decisionForReconsiderationNoOptionForAmending() {
-      eventName = 'Decision on reconsideration';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
-        () => requestForDecision.selectNoOptionForPreviousOrderNeedsAmending(),
-        () => this.click('Submit'),
-        () => this.waitForText('Close and Return to case details'),
-        () => this.click('Close and Return to case details'),
-        () => this.waitForText('Sign out'),
-        () => this.click('Sign out'),
-      ]);
-      await this.takeScreenshot();
-    },
-
-    triggerStepsWithScreenshot: async function (steps) {
-      for (let i = 0; i < steps.length; i++) {
-        await steps[i]();
-      }
-    },
   });
 };
 
