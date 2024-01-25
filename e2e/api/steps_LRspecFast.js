@@ -20,6 +20,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 
 
 
@@ -227,10 +228,12 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedCcdState) => {
+                           expectedCcdState, carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 
