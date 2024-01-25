@@ -71,7 +71,7 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000') => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   const claimData = {
     References: {
@@ -179,9 +179,15 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ClaimType: {
-      claimType: 'CONSUMER_CREDIT'
-    },
+    ...(sdoR2 === true) ? {
+      ClaimTypeUnSpec: {
+        claimTypeUnSpec: 'CONSUMER_CREDIT'
+      }
+    } : {
+      ClaimType: {
+        claimType: 'CONSUMER_CREDIT'
+      }
+      },
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
@@ -370,7 +376,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -406,7 +412,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2),
       },
       invalid: {
         Upload: {
@@ -475,6 +481,7 @@ module.exports = {
       ...(lip1) ? {
         cosNotifyClaimDefendant1: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosRecipient: 'sample text',
           cosRecipientServeType: 'HANDED',
@@ -491,6 +498,7 @@ module.exports = {
       ...(lip2) ? {
         cosNotifyClaimDefendant2: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(-1),
           cosServedDocumentFiles: 'sample text',
           cosRecipient: 'sample text',
           cosRecipientServeType: 'HANDED',
@@ -525,6 +533,7 @@ module.exports = {
       ...(lip1) ? {
         cosNotifyClaimDetails1: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(2),
           cosServedDocumentFiles: 'sample text',
           cosEvidenceDocument: [
             {
@@ -551,6 +560,7 @@ module.exports = {
       ...(lip2) ? {
         cosNotifyClaimDetails2: {
           cosDateOfServiceForDefendant: date(-1),
+          cosDateDeemedServedForDefendant: date(2),
           cosServedDocumentFiles: 'sample text',
           cosEvidenceDocument: [
             {
