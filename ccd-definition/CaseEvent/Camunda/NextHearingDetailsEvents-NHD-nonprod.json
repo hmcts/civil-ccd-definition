@@ -11,6 +11,6 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 3,
-    "Published": "Y"
+    "Publish": "Y"
   }
 ]
