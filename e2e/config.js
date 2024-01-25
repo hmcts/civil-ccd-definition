@@ -316,9 +316,19 @@ module.exports = {
     type: 'bulk_system_user',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
+  applicantCitizenUser: {
+    password: defaultPassword,
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'claimant',
+  },
   defendantCitizenUser: {
     password: defaultPassword,
     email: 'citizen2.user@gmail.com',
+    type: 'defendant',
+  },
+  defendantCitizenUser2: {
+    password: defaultPassword,
+    email: 'citizen3.user@gmail.com',
     type: 'defendant',
   },
   defendantLRCitizenUser:{

@@ -13,14 +13,6 @@ const assignCaseRoleToUser = async (caseId, role, user) => {
     .then(() => addUserCaseMapping(caseId, user));
 };
 
-const assignCaseToCitizen = async (caseId, type) => {
-  if (type === 'lrvlr') {
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantLRCitizenUser);
-  } else {
-    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser);
-  }
-};
-
 const unAssignAllUsers = async () => {
   console.log('Removing case role allocations...');
   for (const userRole of Object.values(userCaseMappings)) {
@@ -32,6 +24,5 @@ const unAssignAllUsers = async () => {
 module.exports = {
   addUserCaseMapping,
   assignCaseRoleToUser,
-  unAssignAllUsers,
-  assignCaseToCitizen
+  unAssignAllUsers
 };

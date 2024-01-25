@@ -4,6 +4,8 @@ const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
+const chai = require('chai');
+const {assert} = chai;
 
 
 const TASK_MAX_RETRIES = 20;
@@ -72,7 +74,22 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
-  startEventForCitizen: async (eventName, caseId, payload) => {
+  fetchUserId: async () => {
+    return await idamHelper.userId(tokens.userAuth);
+  },
+
+  startCreateCaseForCitizen: async (payload, caseId = 'draft') => {
+    let url = getCivilServiceUrl();
+    const userId = await idamHelper.userId(tokens.userAuth);
+    url += `/cases/${caseId}/citizen/${userId}/event`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+    return response.id;
+  },
+
+  startEventForCitizen: async (eventName, caseId, payload, expectedEndState = null) => {
     let url = getCivilServiceUrl();
     const userId = await idamHelper.userId(tokens.userAuth);
     console.log('The value of the userId from the startEventForCitizen() : '+userId);
@@ -85,6 +102,10 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
+
+    if (expectedEndState) {
+      assert.equal(response.state, expectedEndState);
+    }
   },
 
   startEventNotAllowed: async (eventName, caseId) => {
