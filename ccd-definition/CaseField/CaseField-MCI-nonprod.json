@@ -413,5 +413,12 @@
     "SecurityClassification": "Public",
     "_Comment": "Label for contact details have changed on the case details tab screen",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "contactDetailsUpdatedEvent",
+    "Label": " ",
+    "FieldType": "ContactDetailsChangedEvent",
+    "SecurityClassification": "Public"
   }
 ]
