@@ -963,6 +963,26 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async navigateToCaseDetailsForRR(caseNumber) {
+      const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+      console.log(`Navigating to case: ${normalizedCaseId}`);
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+      SIGNED_IN_SELECTOR;
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToCaseDetailsForDR(caseNumber) {
+      const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+      console.log(`Navigating to case: ${normalizedCaseId}`);
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+      await this.waitForText('Summary');
+      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
+      SIGNED_IN_SELECTOR;
+
+      await this.waitForSelector('#decisionOnRequestReconsiderationOptions-CREATE_SDO');
+    },
+
     async initiateNoticeOfChange(caseId, clientName) {
       eventName = 'NoC Request';
       await this.triggerStepsWithScreenshot([

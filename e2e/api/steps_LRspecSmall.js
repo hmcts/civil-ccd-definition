@@ -5,6 +5,8 @@ const chai = require('chai');
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
+const SIGNED_IN_SELECTOR = 'exui-header';
+const SIGNED_OUT_SELECTOR = '#global-header';
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
@@ -29,8 +31,15 @@ const {updateExpert} = require('./manageContactInformationHelper');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
+const caseViewPage = require("../pages/caseView.page");
+const requestForRR = require("../pages/requestForReconsideration/reasonForReconsideration.page");
+const requestForDecision = require("../pages/decisionOnReconsideration/decisionOnReconsideration.page");
 
-let caseId, eventName;
+const loginPage = require("../pages/login.page");
+const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
+
+let caseId, eventName, currentEventName, screenshotNumber, loggedInUser;
+let eventNumber = 0;
 let caseData = {};
 
 const data = {
@@ -80,7 +89,42 @@ const eventData = {
   }
 };
 
-module.exports = {
+module.exports = function (){
+  return actor({
+    async login(user) {
+      if (loggedInUser !== user) {
+        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          await this.signOut();
+        }
+        await this.retryUntilExists(async () => {
+          this.amOnPage(config.url.manageCase, 90);
+
+          if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
+            console.log(`Signing in user: ${user.type}`);
+            await loginPage.signIn(user);
+          }
+          await this.waitForSelector(SIGNED_IN_SELECTOR);
+        }, SIGNED_IN_SELECTOR);
+
+        loggedInUser = user;
+        console.log('Logged in user..', loggedInUser);
+      }
+    },
+    async signOut() {
+      await this.retryUntilExists(() => {
+        this.click('Sign out');
+      }, SIGNED_OUT_SELECTOR);
+    },
+
+    async takeScreenshot() {
+      if (currentEventName !== eventName) {
+        currentEventName = eventName;
+        eventNumber++;
+        screenshotNumber = 0;
+      }
+      screenshotNumber++;
+      await this.saveScreenshot(getScreenshotName(), true);
+    },
 
   /**
    * Creates a claim
@@ -471,6 +515,69 @@ module.exports = {
     console.log(`case created: ${caseId}`);
     return caseId;
   },
+    async requestForReconsiderationForUI() {
+      eventName = 'Request for Reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForRR(eventName, caseId),
+        () => requestForRR.reasonForReconsideration(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Testing Request for Reconsideration'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsideration() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectCreateNewSDO(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsiderationYesOption() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectYesOptionToUpholdThePreviousOrderMade(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsiderationNoOptionForAmending() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectNoOptionForPreviousOrderNeedsAmending(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    triggerStepsWithScreenshot: async function (steps) {
+      for (let i = 0; i < steps.length; i++) {
+        await steps[i]();
+      }
+    },
+  });
 };
 
 // Functions
