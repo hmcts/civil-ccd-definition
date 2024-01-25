@@ -31,11 +31,11 @@ const {updateExpert} = require('./manageContactInformationHelper');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
-const caseViewPage = require("../pages/caseView.page");
-const requestForRR = require("../pages/requestForReconsideration/reasonForReconsideration.page");
-const requestForDecision = require("../pages/decisionOnReconsideration/decisionOnReconsideration.page");
+const caseViewPage = require('../pages/caseView.page');
+const requestForRR = require('../pages/requestForReconsideration/reasonForReconsideration.page');
+const requestForDecision = require('../pages/decisionOnReconsideration/decisionOnReconsideration.page');
 
-const loginPage = require("../pages/login.page");
+const loginPage = require('../pages/login.page');
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 
 let caseId, eventName, currentEventName, screenshotNumber, loggedInUser;

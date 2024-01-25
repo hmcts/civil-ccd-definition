@@ -1,12 +1,10 @@
 const {I} = inject();
-const config = require('./../../config');
 
 module.exports = {
   fields: {
     decisionOnRequest: {
       id: '#decisionOnRequestReconsiderationOptions-CREATE_SDO',
     },
-    decisionOnRequestCreateSDO: '#decisionOnRequestReconsiderationOptions-CREATE_SDO',
   },
 
   async selectCreateNewSDO() {
