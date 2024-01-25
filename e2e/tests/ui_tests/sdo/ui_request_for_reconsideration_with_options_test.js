@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 async function prepareClaimSpec(api_spec_small) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
@@ -52,7 +53,7 @@ Scenario('Decision on Reconsideration Request to uphold the previous order made'
   }
 }).retry(3);
 
-Scenario('1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small, LRspec}) => {
+Scenario('1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
@@ -75,4 +76,5 @@ Scenario('Decision on Reconsideration Request to previous order needs amending',
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
+  await unAssignAllUsers();
 });

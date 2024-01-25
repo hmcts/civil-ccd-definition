@@ -1,5 +1,6 @@
 const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 async function prepareClaimSpec(api_spec_small) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');

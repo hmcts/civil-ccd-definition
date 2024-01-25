@@ -103,7 +103,6 @@ const documentType = require('./pages/mediationDocumentsUpload/documentType');
 const documentUpload = require('./pages/mediationDocumentsUpload/documentUpload');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
-const caseViewPage = require('../pages/caseView.page');
 const requestForRR = require('../pages/requestForReconsideration/reasonForReconsideration.page');
 const requestForDecision = require('../pages/decisionOnReconsideration/decisionOnReconsideration.page');
 
