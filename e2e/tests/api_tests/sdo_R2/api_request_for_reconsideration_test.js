@@ -10,7 +10,7 @@ await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFE
 await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 }
 
-Feature('Request for reconsideration - 1v1 - spec @api-spec-1v1 @api-nonprod');
+Feature('Request for reconsideration - 1v1 - spec @api-specified @api-nonprod');
 
 Scenario('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -51,7 +51,18 @@ Scenario('1v2 spec request for reconsideration by defendant2 for create general 
   }
 });
 
+Scenario('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE');
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'JUDICIAL_REFERRAL');
+    await api_spec.createSDO(judgeUser, 'CREATE_FAST');
+    await api_spec.requestForReconsideration(config.defendantSolicitorUser,'Respondent1')
+  }
+});
 
-AfterSuite(async ({api_spec_small}) => {
+AfterSuite(async ({api_spec_small, api_spec}) => {
   await api_spec_small.cleanUp();
+  await api_spec.cleanup();
 });

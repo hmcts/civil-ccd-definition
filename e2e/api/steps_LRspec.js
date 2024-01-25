@@ -31,6 +31,7 @@ const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpe
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
+const requestForReconsideration = require("../fixtures/events/requestForReconsideration");
 
 let caseId, eventName;
 let caseData = {};
@@ -57,7 +58,8 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
+  REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
 };
 
 const eventData = {
@@ -525,6 +527,16 @@ module.exports = {
 
 
 
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  requestForReconsideration: async (user, userType) => {
+    console.log('RequestForReconsideration for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+    let response = await apiRequest.startEventForCallbackError(eventName, caseId);
+    assert(response === 'This event is not available for claim amount greater than 1000 pounds');
     await waitForFinishedBusinessProcess(caseId);
   },
 
