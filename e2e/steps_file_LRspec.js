@@ -103,8 +103,8 @@ const documentType = require('./pages/mediationDocumentsUpload/documentType');
 const documentUpload = require('./pages/mediationDocumentsUpload/documentUpload');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
-const requestForRR = require('../pages/requestForReconsideration/reasonForReconsideration.page');
-const requestForDecision = require('../pages/decisionOnReconsideration/decisionOnReconsideration.page');
+const requestForRR = require('./pages/requestForReconsideration/reasonForReconsideration.page');
+const requestForDecision = require('./pages/decisionOnReconsideration/decisionOnReconsideration.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
