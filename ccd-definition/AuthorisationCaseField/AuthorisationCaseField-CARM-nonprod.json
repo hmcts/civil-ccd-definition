@@ -241,17 +241,17 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -263,10 +263,23 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CR"
       }
     ]
   }
