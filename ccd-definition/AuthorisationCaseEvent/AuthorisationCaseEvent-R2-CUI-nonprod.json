@@ -496,7 +496,8 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
