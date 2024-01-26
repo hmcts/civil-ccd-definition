@@ -1,14 +1,20 @@
 [
   {
     "ID": "TranslatedDocumentType",
+    "ListElementCode": "CLAIM_ISSUE",
+    "ListElement": "Claim Issue",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "DEFENDANT_RESPONSE",
     "ListElement": "Defendant Response",
-    "DisplayOrder": 1
+    "DisplayOrder": 2
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "CLAIMANT_INTENTION",
     "ListElement": "Claimant Intention",
-    "DisplayOrder": 2
+    "DisplayOrder": 3
   }
 ]

@@ -10,7 +10,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 const fastClaimAmount = '11000';
 
-Feature('Transfer Online Case 1v1 API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
+Feature('Transfer Online Case 1v1 API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, fastClaimAmount);
@@ -29,28 +29,23 @@ await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', '
 }
 
 Scenario('1v1 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
     await api.transferCase(caseWorkerUser);
-  }
 });
 
 Scenario('1v1 full defence unspecified - not suitable SDO - Other reasons)', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'OTHER_REASONS');
-  }
 });
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
 
-Feature('Transfer Online Case 1v2 API test - fast claim - unspec @api-unspec @api-tests-1v2SS @api-nonprod');
+Feature('Transfer Online Case 1v2 API test - fast claim - unspec @api-unspec @api-tests-1v2SS @api-prod');
 
 Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v2, fastClaimAmount);
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser, mpScenario1v2);
@@ -60,28 +55,23 @@ Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', asy
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v2, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
     await api.transferCase(caseWorkerUser);
-  }
 });
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
 
-Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @api-nonprod');
+Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @api-prod');
 
 Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
     await api_spec.notSuitableSDOspec(judgeUser, 'CHANGE_LOCATION');
     await api_spec.transferCaseSpec(caseWorkerUser);
-  }
 });
 
 Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Other reasons', async ({api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
     await api_spec.notSuitableSDOspec(judgeUser, 'OTHER_REASONS');
-  }
 });
 
 AfterSuite(async ({api_spec}) => {
