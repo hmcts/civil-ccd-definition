@@ -3,6 +3,7 @@ civil-wa:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -95,5 +96,5 @@ ccd:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
 
-civil-camunda-bpm:
+camunda-bpm:
   enabled: true
