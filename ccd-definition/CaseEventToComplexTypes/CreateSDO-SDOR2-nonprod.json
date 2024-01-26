@@ -21,7 +21,7 @@
     "CaseFieldID": "sdoAltDisputeResolution",
     "ListElementCode": "IncludeInOrderToggle",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2FastTrackAltDisputeResolution",
@@ -37,7 +37,7 @@
     "CaseFieldID": "sdoVariationOfDirections",
     "ListElementCode": "IncludeInOrderToggle",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2VariationOfDirections",
@@ -53,7 +53,7 @@
     "CaseFieldID": "sdoR2Settlement",
     "ListElementCode": "IncludeInOrderToggle",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2Settlement",
