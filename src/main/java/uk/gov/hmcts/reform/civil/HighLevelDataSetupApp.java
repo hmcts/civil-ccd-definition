@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
-
+//test
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
 
     private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_NFD = {
