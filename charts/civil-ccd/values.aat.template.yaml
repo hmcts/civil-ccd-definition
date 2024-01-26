@@ -77,6 +77,8 @@ ccd:
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
+    environment:
+      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
 
 aac-manage-case-assignment:
   java:
