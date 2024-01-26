@@ -179,15 +179,15 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "methodOfHearing",
+    "ListElementCode": "altHearingCourtLocationList",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "physicalBundleOptions",
+    "ListElementCode": "methodOfHearing",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -195,7 +195,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "physicalBundlePartyTxt",
+    "ListElementCode": "physicalBundleOptions",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -203,8 +203,16 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingNotesTxt",
+    "ListElementCode": "physicalBundlePartyTxt",
     "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesTxt",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "OPTIONAL"
   },
   {
