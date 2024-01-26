@@ -546,7 +546,7 @@ module.exports = {
     eventName = 'REQUEST_FOR_RECONSIDERATION';
 
     let response = await apiRequest.startEventForCallbackError(eventName, caseId);
-    assert(response === 'This event is not available for claim amount greater than 1000 pounds');
+    assert(response === 'You can only request a reconsideration for claims of £1,000 or less.');
     await waitForFinishedBusinessProcess(caseId);
   },
 
