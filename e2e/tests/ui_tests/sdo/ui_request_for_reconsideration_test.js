@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {addUserCaseMapping} = require("../../../api/caseRoleAssignmentHelper");
+const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
