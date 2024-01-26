@@ -61,7 +61,8 @@ Scenario('1v1 spec request for reconsideration when claim amount is greater than
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
       'JUDICIAL_REFERRAL');
     await api_spec.createSDO(judgeUser, 'CREATE_FAST');
-    await api_spec.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
+    //should throw 422 error as this event is not allowed for claim amount more than 1000
+    await api_spec.requestForReconsideration(config.defendantSolicitorUser);
   }
 });
 

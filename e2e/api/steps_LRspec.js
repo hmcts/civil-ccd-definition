@@ -540,7 +540,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  requestForReconsideration: async (user, userType) => {
+  requestForReconsideration: async (user) => {
     console.log('RequestForReconsideration for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'REQUEST_FOR_RECONSIDERATION';
