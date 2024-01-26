@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
-const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-
+const {unAssignAllUsers, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+let caseNumber;
 async function prepareClaimSpec(api_spec_small) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
@@ -10,10 +10,13 @@ async function prepareClaimSpec(api_spec_small) {
 
 Feature('Request for reconsideration - 1v1 - spec @api-spec-1v1 @e2e-nightly-prod');
 
-Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({api_spec_small}) => {
+Scenario('1v1 spec request for reconsideration for other options', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    caseNumber = await api_spec_small.getCaseId();
+    await LRspec.setCaseId(caseNumber);
+    addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
 }).retry(3);
 
