@@ -31,7 +31,6 @@ const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpe
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
-const requestForReconsideration = require("../fixtures/events/requestForReconsideration");
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 
@@ -60,8 +59,7 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
-  REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
 };
 
 const eventData = {

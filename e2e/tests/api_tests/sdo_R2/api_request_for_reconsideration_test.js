@@ -61,11 +61,11 @@ Scenario('1v1 spec request for reconsideration when claim amount is greater than
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
       'JUDICIAL_REFERRAL');
     await api_spec.createSDO(judgeUser, 'CREATE_FAST');
-    await api_spec.requestForReconsideration(config.defendantSolicitorUser,'Respondent1')
+    await api_spec.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
   }
 });
 
 AfterSuite(async ({api_spec_small, api_spec}) => {
   await api_spec_small.cleanUp();
-  await api_spec.cleanup();
+  await api_spec.cleanUp();
 });
