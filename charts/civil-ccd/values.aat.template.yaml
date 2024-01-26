@@ -9,6 +9,8 @@ civil-service:
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.aat.platform.hmcts.net/service-request-update-claim-issued
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
+      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+
 idam-pr:
   redirect_uris:
     XUI:
@@ -23,17 +25,64 @@ ccd:
   ccd-data-store-api:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
+      environment:
+        DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        STORAGE_ACCOUNT_NAME:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: storageAccountName
+          disabled: true
+        STORAGE_ACCOUNT_KEY:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: accessKey
+          disabled: true
+        DATA_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
   ccd-definition-store-api:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
+      environment:
+        DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        STORAGE_ACCOUNT_NAME:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: storageAccountName
+          disabled: true
+        STORAGE_ACCOUNT_KEY:
+          secretRef: storage-secret-{{ .Release.Name }}-blobstorage
+          key: accessKey
+          disabled: true
+        DEFINITION_STORE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
   ccd-user-profile-api:
     java:
       ingressHost: civil-ccd-xui-staging-aat.aat.platform.hmcts.net
+      environment:
+        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
+      secrets:
+        USER_PROFILE_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
+
 camunda-bpm:
   java:
     ingressHost: civil-ccd-camunda-staging-aat.aat.platform.hmcts.net
+
 aac-manage-case-assignment:
   java:
     ingressHost: manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net
 civil-wa:
+  enabled: false
+
+postgresql:
   enabled: false
