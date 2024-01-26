@@ -106,6 +106,7 @@ module.exports = {
   },
 
   createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false) => {
+    console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
     let userId = await apiRequest.fetchUserId();
@@ -118,11 +119,13 @@ module.exports = {
     }
     caseId = await apiRequest.startCreateCaseForCitizen(payload);
     await waitForFinishedBusinessProcess(caseId);
+    console.log('Claim submitted');
 
     // issue claim
     payload = createClaimLipClaimant.issueClaim();
     await apiRequest.startCreateCaseForCitizen(payload, caseId);
     await waitForFinishedBusinessProcess(caseId);
+    console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     return caseId;
