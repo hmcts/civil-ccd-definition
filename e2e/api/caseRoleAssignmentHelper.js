@@ -1,5 +1,4 @@
 const {assignCaseToDefendant, unAssignUserFromCases} = require('./testingSupport');
-const config = require('../config');
 
 let userCaseMappings = {};
 
