@@ -26,7 +26,7 @@ ccd:
     java:
       ingressHost: civil-ccd-data-store-staging-aat.aat.platform.hmcts.net
       environment:
-        DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DATA_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         STORAGE_ACCOUNT_NAME:
@@ -46,7 +46,7 @@ ccd:
     java:
       ingressHost: civil-ccd-definition-store-staging-aat.aat.platform.hmcts.net
       environment:
-        DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        DEFINITION_STORE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         STORAGE_ACCOUNT_NAME:
@@ -66,7 +66,7 @@ ccd:
     java:
       ingressHost: civil-ccd-xui-staging-aat.aat.platform.hmcts.net
       environment:
-        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        USER_PROFILE_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
         USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         USER_PROFILE_DB_PASSWORD:
