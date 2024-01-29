@@ -19,7 +19,7 @@
     "ID": "SdoR2FastTrackAltDisputeResolution",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoAltDisputeResolution",
-    "ListElementCode": "IncludeInOrderToggle",
+    "ListElementCode": "includeInOrderToggle",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -35,7 +35,7 @@
     "ID": "SdoR2VariationOfDirections",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoVariationOfDirections",
-    "ListElementCode": "IncludeInOrderToggle",
+    "ListElementCode": "includeInOrderToggle",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -51,7 +51,7 @@
     "ID": "SdoR2Settlement",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Settlement",
-    "ListElementCode": "IncludeInOrderToggle",
+    "ListElementCode": "includeInOrderToggle",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
