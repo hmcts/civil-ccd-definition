@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.40
+version: 0.0.41
 maintainers:
   - name: HMCTS Civil team
 
@@ -15,7 +15,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 8.0.29
+    version: 9.0.21
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
@@ -38,7 +38,10 @@ dependencies:
     version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
-
+  - name: postgresql
+    version: 1.0.2
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: postgresql.enabled
 # WA
   - name: wa
     version: ~1.0.5
