@@ -2,7 +2,8 @@ const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId4;
+const judgeUserForFastClaim = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
 async function prepareClaimSpec(api_spec_small) {
 await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
@@ -60,7 +61,7 @@ Scenario('1v1 spec request for reconsideration when claim amount is greater than
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
       'JUDICIAL_REFERRAL');
-    await api_spec.createSDO(judgeUser, 'CREATE_FAST');
+    await api_spec.createSDO(judgeUserForFastClaim, 'CREATE_FAST');
     //should throw 422 error as this event is not allowed for claim amount more than 1000
     await api_spec.requestForReconsideration(config.defendantSolicitorUser);
   }
