@@ -1,0 +1,36 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "mediationContactInfo",
+    "PageDisplayOrder": 40,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "MediationContactInformation",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\"",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "mediationAvailabilityHeading",
+    "PageDisplayOrder": 41,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "mediationAvailabilityText",
+    "PageDisplayOrder": 41,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  }
+]

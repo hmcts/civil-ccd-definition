@@ -152,5 +152,29 @@
     "FieldTypeParameter": "DocumentsReferred",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationContactInfo",
+    "Label": "Mediation contact information",
+    "FieldType": "MediationContactInformation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAvailabilityHeading",
+    "Label": "<h2 class=\"govuk-heading-l\">Mediation availability</h2>\n ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "mediationAvailabilityText",
+    "Label": "Are there any dates in the next 3 months when you or your client cannot attend a mediation appointment?\n These should only be the dates of important events like medical appointment, other court hearings, or holidays that are already booked. If the mediation appointment is not attended, your client may face a penalty.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
