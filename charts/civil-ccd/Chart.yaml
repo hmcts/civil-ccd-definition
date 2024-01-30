@@ -7,6 +7,10 @@ maintainers:
   - name: HMCTS Civil team
 
 dependencies:
+  - name: postgresql
+    version: 1.0.2
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: postgresql.enabled
   - name: civil-service
     version: 0.0.58
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
@@ -38,10 +42,6 @@ dependencies:
     version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
-  - name: postgresql
-    version: 1.0.2
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: postgresql.enabled
 # WA
   - name: wa
     version: ~1.0.5
