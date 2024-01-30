@@ -74,6 +74,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_NIHL: (userInput) => sdoTracks.createSDOFastNIHL(userInput),
   CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
@@ -132,7 +133,8 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
   }
 };
 
@@ -196,7 +198,7 @@ module.exports = {
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\n# using the link below';
+    let headerText = '# Please now pay your claim fee\r\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -1376,6 +1378,10 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
+  // if(data.valid && data.valid.ClaimsTrack && data.valid.ClaimsTrack.fastClaims
+  //   && data.valid.ClaimsTrack.fastClaims[0] === 'fastClaimNoiseInducedHearingLoss') {
+  //   responseBody = clearDataForNihl(responseBody);
+  // }
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1916,5 +1922,14 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
+};
+
+const clearDataForNihl = (responseBody) => {
+  delete responseBody.data['disposalHearingBundle'];
+  delete responseBody.data['disposalHearingBundleToggle'];
+  delete responseBody.data['disposalHearingClaimSettlingToggle'];
+  delete responseBody.data['disposalHearingCostsToggle'];
+  delete responseBody.data['fastTrackDisclosureOfDocumentsToggle'];
   return responseBody;
 };
