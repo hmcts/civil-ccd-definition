@@ -23,24 +23,30 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "CaseFieldID": "applicant1DQLanguage",
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_CUI",
     "CaseFieldID": "applicant1DQHearingSupport",
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
     "Publish": "Y"
   }
 ]
