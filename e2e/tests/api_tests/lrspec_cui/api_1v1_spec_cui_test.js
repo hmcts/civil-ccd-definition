@@ -15,7 +15,7 @@ Before(async () => {
 async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState);
 }
 
@@ -51,7 +51,7 @@ async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   await noc.requestNoticeOfChangeForApplicant1Solicitor(caseId, config.applicantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
   await api_spec_cui.checkUserCaseAccess(config.applicantSolicitorUser, true);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
 }
 
@@ -66,7 +66,7 @@ Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CAR
 async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
 }
 

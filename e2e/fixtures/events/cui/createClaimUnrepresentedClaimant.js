@@ -1,3 +1,4 @@
+const {date} = require('../../../api/dataHelper');
 module.exports = {
   createClaimUnrepresentedClaimant: (claimAmount, userId) => {
     const createClaimData = {
@@ -21,7 +22,7 @@ module.exports = {
         respondent1: {
           individualDateOfBirth: null,
           organisationName: 'Sir John Doe',
-          partyEmail: '',
+          partyEmail: 'citizen@gmail.com',
           partyPhone: '07777777777',
           primaryAddress: {
             AddressLine1: '1',
@@ -104,7 +105,7 @@ module.exports = {
     const claimIssueData = {
       event: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
       caseDataUpdate: {
-        issueDate: '2024-01-24T14:47:26.498Z'
+        issueDate: date(0)
       }
     };
     return claimIssueData;

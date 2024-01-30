@@ -173,15 +173,15 @@ module.exports = {
     return caseId;
   },
 
-  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims') => {
+  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false) => {
     let eventName = 'DEFENDANT_RESPONSE_CUI';
     let payload = {};
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
-      payload = defendantResponse.createDefendantResponse('15000');
+      payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
     } else {
       console.log('SmallClaim...');
-      payload = defendantResponse.createDefendantResponse('1500');
+      payload = defendantResponse.createDefendantResponse('1500', carmEnabled);
     }
     //console.log('The payload : ' + payload);
     await apiRequest.setupTokens(user);

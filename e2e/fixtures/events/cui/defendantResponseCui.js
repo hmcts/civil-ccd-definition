@@ -1,5 +1,6 @@
+const {date} = require('../../../api/dataHelper');
 module.exports = {
-  createDefendantResponse: (totalClaimAmount) => {
+  createDefendantResponse: (totalClaimAmount, carmEnabled = false) => {
     const defendantResponseData = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
@@ -100,6 +101,179 @@ module.exports = {
         },
       },
     };
-    return defendantResponseData;
+    const defendantResponseDataCarm = {
+      event: 'DEFENDANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+        respondToClaimAdmitPartLRspec: {},
+        responseClaimMediationSpecRequired: 'Yes',
+        specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        totalClaimAmount: 1500,
+        respondent1: {
+          individualDateOfBirth: null,
+          organisationName: 'Sir John Doe',
+          partyEmail: 'citizen@gmail.com',
+          partyPhone: '07777777777',
+          primaryAddress: {
+            AddressLine1: '1',
+            AddressLine2: '',
+            AddressLine3: '',
+            PostCode: 'E1 6AN',
+            PostTown: 'London'
+          },
+          soleTraderDateOfBirth: null,
+          type: 'ORGANISATION'
+        },
+        respondent1LiPResponse: {
+          timelineComment: '',
+          evidenceComment: '',
+          respondent1MediationLiPResponse: {
+            isMediationContactNameCorrect: 'Yes',
+            isMediationEmailCorrect: 'Yes',
+            isMediationPhoneCorrect: 'No',
+            alternativeMediationTelephone: '07777777777',
+            hasUnavailabilityNextThreeMonths: 'Yes',
+            unavailableDatesForMediation: [
+              {
+                value: {
+                  who: 'defendant',
+                  date: date(30),
+                  fromDate: date(30),
+                  unavailableDateType: 'SINGLE_DATE'
+                }
+              },
+              {
+                value: {
+                  who: 'defendant',
+                  date: date(40),
+                  fromDate: date(40),
+                  toDate: date(45),
+                  unavailableDateType: 'DATE_RANGE'
+                }
+              }
+            ]
+          },
+          respondent1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'Yes',
+            whyPhoneOrVideoHearing: 'video',
+            giveEvidenceYourSelf: 'Yes',
+            determinationWithoutHearingRequired: 'Yes',
+            determinationWithoutHearingReason: '',
+            considerClaimantDocumentsDetails: '',
+            respondent1DQLiPExpert: {
+              caseNeedsAnExpert: 'No',
+              expertCanStillExamineDetails: ''
+            }
+          },
+          respondent1DQHearingSupportLip: {
+            supportRequirementLip: 'Yes',
+            requirementsLip: [
+              {
+                value: {
+                  name: 'Whit Nessie',
+                  requirements: [
+                    'DISABLED_ACCESS',
+                    'HEARING_LOOPS'
+                  ],
+                  signLanguageRequired: '',
+                  languageToBeInterpreted: '',
+                  otherSupport: ''
+                }
+              }
+            ]
+          },
+          respondent1LiPContactPerson: 'contact person',
+          respondent1ResponseLanguage: 'ENGLISH'
+        },
+        respondent1LiPFinancialDetails: {},
+        detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
+        specClaimResponseTimelineList: 'MANUAL',
+        specResponseTimelineOfEvents: [
+          {
+            value: {
+              timelineDate: date(-100),
+              timelineDescription: 'asd'
+            }
+          }
+        ],
+        specResponselistYourEvidenceList: [
+          {
+            id: '0',
+            value: {
+              evidenceType: 'PHOTO_EVIDENCE',
+              photoEvidence: ''
+            }
+          }
+        ],
+        defenceRouteRequired: 'HAS_PAID_THE_AMOUNT_CLAIMED',
+        respondToClaim: {
+          howMuchWasPaid: 95000,
+          howWasThisAmountPaid: 'OTHER',
+          whenWasThisAmountPaid: '2000-01-01T00:00:00.000Z',
+          howWasThisAmountPaidOther: 'card'
+        },
+        respondent1DQHomeDetails: {},
+        respondent1PartnerAndDependent: {
+          howManyChildrenByAgeGroup: {}
+        },
+        specDefendant1SelfEmploymentDetails: {},
+        respondToClaimAdmitPartUnemployedLRspec: {},
+        respondent1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH'
+        },
+        respondent1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'Yes',
+          vulnerabilityAdjustments: 'vulnerable'
+        },
+        respondent1DQRequestedCourt: {
+          requestHearingAtSpecificCourt: 'No',
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          responseCourtLocations: [],
+          caseLocation: {}
+        },
+        respondent1DQWitnesses: {
+          witnessesToAppear: 'Yes',
+          details: [
+            {
+              value: {
+                name: 'Whit',
+                firstName: 'Whit',
+                lastName: 'Nessie',
+                emailAddress: '',
+                phoneNumber: '',
+                reasonForWitness: 'asd'
+              }
+            }
+          ]
+        },
+        respondent1DQHearingSmallClaim: {
+          unavailableDatesRequired: 'Yes',
+          smallClaimUnavailableDate: [
+            {
+              value: {
+                who: 'defendant',
+                date: date(30),
+                fromDate: date(30),
+                unavailableDateType: 'SINGLE_DATE'
+              }
+            },
+            {
+              value: {
+                who: 'defendant',
+                date: date(40),
+                fromDate: date(40),
+                toDate: date(45),
+                unavailableDateType: 'DATE_RANGE'
+              }
+            }
+          ]
+        },
+        respondent1DQExperts: {}
+      }
+    };
+    return carmEnabled ? defendantResponseDataCarm : defendantResponseData;
   },
 };
