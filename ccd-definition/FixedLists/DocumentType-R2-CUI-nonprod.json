@@ -22,5 +22,29 @@
     "ListElementCode": "INTERLOCUTORY_JUDGEMENT",
     "ListElement": "Interlocutory Judgment",
     "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIMANT_CLAIM_FORM",
+    "ListElement": "claimant claim form",
+    "DisplayOrder": 19
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": " CCJ_REQUEST_ADMISSION",
+    "ListElement": "CCJ Request Admission",
+    "DisplayOrder": 20
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": " CCJ_REQUEST_DETERMINATION",
+    "ListElement": "CCJ Request Determination",
+    "DisplayOrder": 20
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "CLAIM_ISSUE_TRANSLATED_DOCUMENT",
+    "ListElement": "Claim Issue Translated Document",
+    "DisplayOrder": 20
   }
 ]
