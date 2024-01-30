@@ -18,5 +18,29 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseFieldID": "applicant1DQLanguage",
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
   }
 ]
