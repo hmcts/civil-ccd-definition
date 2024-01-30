@@ -3,12 +3,12 @@
     "ID": "SmallTrack",
     "ListElementCode": "smallClaimCreditHire",
     "ListElement": "Credit Hire",
-    "DisplayOrder": 1
+    "DisplayOrder": 2
   },
   {
     "ID": "SmallTrack",
     "ListElementCode": "smallClaimRoadTrafficAccident",
     "ListElement": "Road Traffic Accident",
-    "DisplayOrder": 2
+    "DisplayOrder": 4
   }
 ]
