@@ -1,11 +1,16 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
+const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let caseId;
 
 Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
+
+Before(async () => {
+  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
+});
 
 async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
@@ -75,5 +80,6 @@ Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.defendantCitizenUser2.email);
 });
 
