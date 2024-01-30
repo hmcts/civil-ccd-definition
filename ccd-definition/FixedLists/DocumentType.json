@@ -82,12 +82,6 @@
     "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
     "ListElement": "Defence Translated Document",
     "DisplayOrder": 14
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "CLAIMANT_INTENTION_TRANSLATED_DOCUMENT",
-    "ListElement": "Claimant Intention Translated Document",
-    "DisplayOrder": 15
   }
 
 ]
