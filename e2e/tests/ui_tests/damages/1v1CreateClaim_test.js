@@ -23,7 +23,7 @@ const respondent1 = {
   representativeOrgNumber: 2
 };
 
-let caseNumber;
+let caseNumber; 
 
 Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod @e2e-regression');
 
