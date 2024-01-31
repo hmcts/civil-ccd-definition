@@ -31,7 +31,6 @@ Scenario('1v1 COUNTER_CLAIM claimant and defendant response small claim', async 
 });
 
 Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim - CARM enabled', async ({I, api_spec_small}) => {
-
   if (await checkCarmToggleEnabled()) {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
     await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
