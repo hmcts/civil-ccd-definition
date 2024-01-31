@@ -449,7 +449,6 @@ module.exports = {
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
-          isSdoR2NewScreen: 'No',
           orderType: 'DECIDE_DAMAGES',
           orderTypeTrialAdditionalDirections: [
             'OrderTypeTrialAdditionalDirectionsBuildingDispute',
@@ -582,6 +581,7 @@ module.exports = {
           setFastTrackFlag: 'No'
         },
         OrderType: {
+          isSdoR2NewScreen: 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
