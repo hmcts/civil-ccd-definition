@@ -21,7 +21,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
@@ -31,7 +31,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
@@ -41,7 +41,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CLAIMANT_RESPONSE_CUI",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQHearingSupport",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
