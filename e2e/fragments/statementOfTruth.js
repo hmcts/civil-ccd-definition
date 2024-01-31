@@ -4,17 +4,17 @@ module.exports = {
 
   fields: {
     claim: {
-      name: 'input[id$="uiStatementOfTruth_name"',
-      role: 'input[id$="uiStatementOfTruth_role"',    },
+      name: '#uiStatementOfTruth_name',
+      role: '#uiStatementOfTruth_role',    },
     respondent1DQ: {
-      name: 'input[id$="uiStatementOfTruth_name"',
-      role: 'input[id$="uiStatementOfTruth_role"',    },
+      name: '#uiStatementOfTruth_name',
+      role: '#uiStatementOfTruth_role',    },
     respondent2DQ: {
-      name: 'input[id$="uiStatementOfTruth_name"',
-      role: 'input[id$="uiStatementOfTruth_role"',    },
+      name: '#uiStatementOfTruth_name',
+      role: '#uiStatementOfTruth_role',    },
     applicant1DQ: {
-      name: 'input[id$="uiStatementOfTruth_name"',
-      role: 'input[id$="uiStatementOfTruth_role"',    }
+      name: '#uiStatementOfTruth_name',
+      role: '#uiStatementOfTruth_role',    }
   },
 
   async enterNameAndRole(type = '', name = 'John Smith', role = 'Solicitor') {

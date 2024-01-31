@@ -3,17 +3,17 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    postcodeLookup: 'input[id$="postcodeInput"]',
-    addressList: 'select[id$="addressList"]',
+    postcodeLookup: '#postcodeInput',
+    addressList: '#addressList',
     buildingAndStreet: {
-      lineOne: 'input[id$="AddressLine1"]',
-      lineTwo: 'input[id$="AddressLine2"]',
-      lineThree: 'input[id$="AddressLine3"]',
+      lineOne: '#AddressLine1',
+      lineTwo: '#AddressLine2',
+      lineThree: '#AddressLine3',
     },
-    town: 'input[id$="PostTown"]',
-    county: 'input[id$="County"]',
-    country: 'input[id$="Country"]',
-    postcode: 'input[id$="PostCode"]',
+    town: '#PostTown"]',
+    county: '#County"]',
+    country: '#Country"]',
+    postcode: '#PostCode"]',
   },
   findAddressButton: 'Find address',
   cantEnterPostcodeLink: locate('a').withText('I can\'t enter a UK postcode'),

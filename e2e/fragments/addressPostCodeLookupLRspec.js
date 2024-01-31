@@ -4,17 +4,17 @@ module.exports = {
   fields: function (party) {
     return {
       fields: {
-        postcodeLookup: 'input[id$="postcodeInput"]',
-        addressList: 'select[id$="addressList"]',
+        postcodeLookup: '#postcodeInput',
+        addressList: '#addressList',
         buildingAndStreet: {
-          lineOne: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine1"]`,
-          lineTwo: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine2"]`,
-          lineThree: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine3"]`,
+          lineOne: `#spec${party}CorrespondenceAddressdetails__detailAddressLine1`,
+          lineTwo: `#spec${party}CorrespondenceAddressdetails__detailAddressLine2`,
+          lineThree: `#spec${party}CorrespondenceAddressdetails__detailAddressLine3`,
         },
-        town: `input[id$="spec${party}CorrespondenceAddressdetails__detailPostTown"]`,
-        county: `input[id$="spec${party}CorrespondenceAddressdetails__detailPostTown"]`,
-        country: `input[id$="spec${party}CorrespondenceAddressdetails__detailCountry"]`,
-        postcode: `input[id$="spec${party}CorrespondenceAddressdetails__detailPostCode"]`,
+        town: `#spec${party}CorrespondenceAddressdetails__detailPostTown`,
+        county: `#spec${party}CorrespondenceAddressdetails__detailPostTown`,
+        country: `#spec${party}CorrespondenceAddressdetails__detailCountry`,
+        postcode: `#spec${party}CorrespondenceAddressdetails__detailPostCode`,
       },
       findAddressButton: 'Find address',
       cantEnterPostcodeLink: locate('a').withText('I can\'t enter a UK postcode'),

@@ -5,8 +5,8 @@ module.exports = {
     fullAdmitType: {
       id: '#specDefenceFullAdmittedRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No',
+        yes: '#specDefenceFullAdmittedRequired_Yes',
+        no: '#specDefenceFullAdmittedRequired_No',
       }
     }
   },
