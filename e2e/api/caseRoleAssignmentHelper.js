@@ -17,7 +17,7 @@ const assignCaseToCitizen = async (caseId, type) => {
   if (type === 'lrvlr') {
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantLRCitizenUser);
   } else {
-    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser);
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
   }
 };
 
