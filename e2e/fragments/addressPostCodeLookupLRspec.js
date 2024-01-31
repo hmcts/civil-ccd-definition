@@ -4,12 +4,12 @@ module.exports = {
   fields: function (party) {
     return {
       fields: {
-        postcodeLookup: '#postcodeInput',
-        addressList: '#addressList',
+        postcodeLookup: 'input[id$="postcodeInput"]',
+        addressList: 'select[id$="addressList"]',
         buildingAndStreet: {
-          lineOne: `#spec${party}CorrespondenceAddressdetails__detailAddressLine1`,
-          lineTwo: `#spec${party}CorrespondenceAddressdetails__detailAddressLine2`,
-          lineThree: `#spec${party}CorrespondenceAddressdetails__detailAddressLine3`,
+          lineOne: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine1"]`,
+          lineTwo: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine2"]`,
+          lineThree: `input[id$="spec${party}CorrespondenceAddressdetails__detailAddressLine3"]`,
         },
         town: `#spec${party}CorrespondenceAddressdetails__detailPostTown`,
         county: `#spec${party}CorrespondenceAddressdetails__detailPostTown`,

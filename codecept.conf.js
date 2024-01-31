@@ -31,10 +31,26 @@ exports.config = {
       browser: 'chromium',
       timeout: 20000,
       waitForAction: 500,
-      waitForNavigation: 'load',
       bypassCSP: true,
       ignoreHTTPSErrors: true,
-      trace: true
+      chrome: {
+        'ignoreHTTPSErrors': true,
+        'ignore-certificate-errors': true,
+        'defaultViewport': {
+          'width': 1280,
+          'height': 960,
+        },
+        args: [
+          // '--headless',
+          '--disable-gpu',
+          '--no-sandbox',
+          '--allow-running-insecure-content',
+          '--ignore-certificate-errors',
+          // '--proxy-server=proxyout.reform.hmcts.net:8080',
+          // '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
+          '--window-size=1440,1400',
+        ],
+      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
