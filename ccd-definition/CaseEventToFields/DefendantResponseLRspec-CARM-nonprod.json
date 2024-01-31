@@ -8,7 +8,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "MediationContactInformation",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"No\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "isRespondent1 = \"Yes\"",
     "RetriesTimeoutURLMidEvent": 0
   },
@@ -20,7 +20,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "MediationAvailability",
-    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"No\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"Yes\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "isRespondent1 = \"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
