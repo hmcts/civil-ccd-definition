@@ -9,7 +9,7 @@ let mediationAdmin = config.localMediationTests ? config.nbcUserLocal : config.n
 
 async function prepareClaim(api_spec_cui, carmEnabled) {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
-  await api_spec_cui.performCitizenResponse(config.defendantCitizenUser, claimRef, claimType);
+  await api_spec_cui.performCitizenResponse(config.defendantCitizenUser2, claimRef, claimType);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'IN_MEDIATION');
 }
 
