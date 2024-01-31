@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
+const {checkCarmToggleEnabled} = require('../../../api/testingSupport');
 
 Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod @api-prod-specified');
 
@@ -27,6 +28,15 @@ Scenario('1v1 COUNTER_CLAIM claimant and defendant response small claim', async 
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM');
   // counter claim defense brings the case offline
+});
+
+Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim - CARM enabled', async ({I, api_spec_small}) => {
+  if (await checkCarmToggleEnabled()) {
+    await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+    await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true);
+    await api_spec_small.manageContactInformation(config.adminUser, true);
+  }
 });
 
 AfterSuite(async ({api_spec_small}) => {

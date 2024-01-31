@@ -102,6 +102,11 @@ module.exports = {
     email: 'nbc_admin_region1@justice.gov.uk',
     type: 'admin'
   },
+  nbcUserWithRegionId4: {
+    password: defaultPassword,
+    email: 'nbc_admin_region4@justice.gov.uk',
+    type: 'admin'
+  },
   nbcUserLocal: {
     password: defaultPassword,
     email: 'nbc-team-leader@mailnesia.com',
@@ -311,9 +316,9 @@ module.exports = {
     type: 'bulk_system_user',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
-  defendantCitizenUser: {
+  defendantCitizenUser2: {
     password: defaultPassword,
-    email: 'citizen2.user@gmail.com',
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
     type: 'defendant',
   },
   defendantLRCitizenUser:{
