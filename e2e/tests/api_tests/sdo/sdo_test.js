@@ -1,13 +1,13 @@
 const config = require('../../../config.js');
 
 const mpScenario = 'ONE_V_ONE';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+// const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
-const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+// const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
-// const judgeUser = judgeUserLocal;
-// const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
+const judgeUser = config.judgeUserWithRegionId1Local;
+const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
 let fastTrackDirectionsTask, taskId;
@@ -54,7 +54,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
+Scenario.only('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');

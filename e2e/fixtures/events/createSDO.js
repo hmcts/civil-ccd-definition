@@ -449,6 +449,7 @@ module.exports = {
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
+          isSdoR2NewScreen: 'No',
           orderType: 'DECIDE_DAMAGES',
           orderTypeTrialAdditionalDirections: [
             'OrderTypeTrialAdditionalDirectionsBuildingDispute',
@@ -568,6 +569,10 @@ module.exports = {
           },
           fastTrackHearingNotes: {
             input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
+          },
+          hearingNotes: {
+            date: '2024-01-31',
+            notes: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
           }
         }
       },
