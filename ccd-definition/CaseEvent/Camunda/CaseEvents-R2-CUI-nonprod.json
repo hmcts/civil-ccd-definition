@@ -27,9 +27,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
-    "Name": "Update claim state",
-    "Description": "Update claim state",
     "ID": "GENERATE_DEFAULT_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
     "Name": "Judgment by Admission",
     "Description": "Generate Judgment by Admission",
