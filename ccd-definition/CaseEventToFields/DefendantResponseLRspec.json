@@ -1129,6 +1129,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageDisplayOrder": 41,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "responseClaimTrack=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecLabelRes2",
     "PageDisplayOrder": 41,
     "PageFieldDisplayOrder": 1,
@@ -1146,7 +1157,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showCarmFields=\"No\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
