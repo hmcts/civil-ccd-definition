@@ -198,7 +198,7 @@ module.exports = {
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\r\n# using the link below';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -1378,10 +1378,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
-  // if(data.valid && data.valid.ClaimsTrack && data.valid.ClaimsTrack.fastClaims
-  //   && data.valid.ClaimsTrack.fastClaims[0] === 'fastClaimNoiseInducedHearingLoss') {
-  //   responseBody = clearDataForNihl(responseBody);
-  // }
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1922,14 +1918,5 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
-  return responseBody;
-};
-
-const clearDataForNihl = (responseBody) => {
-  delete responseBody.data['disposalHearingBundle'];
-  delete responseBody.data['disposalHearingBundleToggle'];
-  delete responseBody.data['disposalHearingClaimSettlingToggle'];
-  delete responseBody.data['disposalHearingCostsToggle'];
-  delete responseBody.data['fastTrackDisclosureOfDocumentsToggle'];
   return responseBody;
 };

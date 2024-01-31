@@ -330,7 +330,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "isSdoR2NewScreen",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

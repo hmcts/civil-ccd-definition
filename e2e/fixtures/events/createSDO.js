@@ -294,8 +294,7 @@ module.exports = {
         && d.dateTo
     };
     data.calculated.OrderType = data.calculated.ClaimsTrack;
-    data.calculated.DisposalHearing = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.DisposalHearing = {...data.calculated.ClaimsTrack,
       ...disposalChecks,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
@@ -359,12 +358,12 @@ module.exports = {
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
-        SmallClaims: {}
+        SmallClaims: {
+        }
       },
       calculated: calculatedClaimsTrackWSum
     };
-    data.calculated.SmallClaims = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
@@ -380,7 +379,9 @@ module.exports = {
           claimsTrack: 'smallClaimsTrack',
         },
         SmallClaims: {
-          smallClaims: [],
+          smallClaims: [
+
+          ],
           smallClaimsJudgesRecital: {
             input: 'string'
           },
@@ -420,12 +421,12 @@ module.exports = {
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
-        SmallClaims: {}
+        SmallClaims: {
+        }
       },
       calculated: calculatedClaimsTrackWSum
     };
-    data.calculated.SmallClaims = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
@@ -579,16 +580,16 @@ module.exports = {
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
-        FastTrack: {}
+        FastTrack: {
+
+        }
       },
       calculated: calculatedClaimsTrackWSum
     };
-    data.calculated.OrderType = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.OrderType = {...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
     };
-    data.calculated.FastTrack = {
-      ...data.calculated.OrderType,
+    data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
@@ -738,16 +739,16 @@ module.exports = {
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
-        FastTrack: {}
+        FastTrack: {
+
+        }
       },
       calculated: calculatedClaimsTrackWSum
     };
-    data.calculated.OrderType = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.OrderType = {...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
     };
-    data.calculated.FastTrack = {
-      ...data.calculated.OrderType,
+    data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
@@ -826,12 +827,12 @@ module.exports = {
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
-        SmallClaims: {}
+        SmallClaims: {
+        }
       },
       calculated: calculatedClaimsTrackWOSum
     };
-    data.calculated.SmallClaims = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
@@ -930,12 +931,12 @@ module.exports = {
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
-        SmallClaims: {}
+        SmallClaims: {
+        }
       },
       calculated: calculatedClaimsTrackWOSum
     };
-    data.calculated.SmallClaims = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
       setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
@@ -1104,16 +1105,16 @@ module.exports = {
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
-        FastTrack: {}
+        FastTrack: {
+
+        }
       },
       calculated: calculatedClaimsTrackWOSum
     };
-    data.calculated.OrderType = {
-      ...data.calculated.ClaimsTrack,
+    data.calculated.OrderType = {...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
     };
-    data.calculated.FastTrack = {
-      ...data.calculated.OrderType,
+    data.calculated.FastTrack = {...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
       setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
@@ -1128,133 +1129,133 @@ module.exports = {
     const createSDO = {};
     createSDO.valid = {
       ...createSDO.valid,
-      SDO: {
-        drawDirectionsOrderRequired: 'Yes',
-      },
-      ClaimsTrack: {
-        claimsTrack: 'fastTrack',
-        drawDirectionsOrderSmallClaims: 'No',
-        fastClaims: [
-          'fastClaimBuildingDispute',
-          'fastClaimClinicalNegligence',
-          'fastClaimCreditHire',
-          'fastClaimEmployersLiability',
-          'fastClaimHousingDisrepair',
-          'fastClaimPersonalInjury',
-          'fastClaimRoadTrafficAccident'
-        ]
-      },
-      OrderType: {
-        orderType: 'DECIDE_DAMAGES'
-      },
-      FastTrack: {
-        fastTrackJudgesRecital: {
-          input: 'string'
+        SDO: {
+          drawDirectionsOrderRequired: 'Yes',
         },
-        fastTrackAllocation: {
-          assignComplexityBand: 'Yes',
-          band: 'BAND_2',
-          reasons: 'reasons'
+        ClaimsTrack: {
+          claimsTrack: 'fastTrack',
+          drawDirectionsOrderSmallClaims: 'No',
+          fastClaims: [
+            'fastClaimBuildingDispute',
+            'fastClaimClinicalNegligence',
+            'fastClaimCreditHire',
+            'fastClaimEmployersLiability',
+            'fastClaimHousingDisrepair',
+            'fastClaimPersonalInjury',
+            'fastClaimRoadTrafficAccident'
+          ]
         },
-        fastTrackDisclosureOfDocuments: {
-          input1: 'string',
-          date1: date(-1),
-          input2: 'string',
-          date2: date(-1),
-          input3: 'string',
-          input4: 'string',
-          date3: date(-1)
+        OrderType: {
+          orderType: 'DECIDE_DAMAGES'
         },
-        fastTrackWitnessOfFact: {
-          input1: 'string',
-          input2: '1',
-          input3: '1',
-          input4: 'string',
-          input5: 'string',
-          input6: '1',
-          input7: 'string',
-          input8: 'string',
-          date: date(1),
-          input9: 'string'
-        },
-        fastTrackSchedulesOfLoss: {
-          input1: 'string',
-          date1: date(1),
-          input2: 'string',
-          date2: date(1),
-          input3: 'string'
-        },
-        fastTrackTrial: {
-          input1: 'string',
-          date1: date(1),
-          date2: date(1),
-          input2: 'string',
-          input3: 'string',
-          type: ['DOCUMENTS']
-        },
-        fastTrackMethod: 'fastTrackMethodTelephoneHearing',
-        fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
-        fastTrackBuildingDispute: {
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          date1: date(1),
-          input4: 'string',
-          date2: date(1)
-        },
-        fastTrackClinicalNegligence: {
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          input4: 'string'
-        },
-        fastTrackCreditHire: {
-          input1: 'string',
-          input2: 'string',
-          date1: date(1),
-          input3: 'string',
-          input4: 'string',
-          date2: date(1),
-          input5: 'string',
-          input6: 'string',
-          date3: date(1),
-          input7: 'string',
-          date4: date(1),
-          input8: 'string'
-        },
-        fastTrackHousingDisrepair: {
-          input1: 'string',
-          input2: 'string',
-          input3: 'string',
-          date1: date(1),
-          input4: 'string',
-          date2: date(1)
-        },
-        fastTrackPersonalInjury: {
-          input1: 'string',
-          date1: date(1),
-          input2: 'string',
-          date2: date(1),
-          input3: 'string'
-        },
-        fastTrackRoadTrafficAccident: {
-          input: 'string',
-          date: date(1)
-        },
-        fastTrackAddNewDirections: [
-          element({
-            directionComment: 'string'
-          }),
-          element({
-            directionComment: 'string'
-          })
-        ],
-        fastTrackNotes: {
-          input: 'string',
-          date: date(1)
+        FastTrack: {
+          fastTrackJudgesRecital: {
+            input: 'string'
+          },
+          fastTrackAllocation: {
+            assignComplexityBand: 'Yes',
+            band: 'BAND_2',
+            reasons: 'reasons'
+          },
+          fastTrackDisclosureOfDocuments: {
+            input1: 'string',
+            date1: date(-1),
+            input2: 'string',
+            date2: date(-1),
+            input3: 'string',
+            input4: 'string',
+            date3: date(-1)
+          },
+          fastTrackWitnessOfFact: {
+            input1: 'string',
+            input2: '1',
+            input3: '1',
+            input4: 'string',
+            input5: 'string',
+            input6: '1',
+            input7: 'string',
+            input8: 'string',
+            date: date(1),
+            input9: 'string'
+          },
+          fastTrackSchedulesOfLoss: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackTrial: {
+            input1: 'string',
+            date1: date(1),
+            date2: date(1),
+            input2: 'string',
+            input3: 'string',
+            type: ['DOCUMENTS']
+          },
+          fastTrackMethod: 'fastTrackMethodTelephoneHearing',
+          fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
+          fastTrackBuildingDispute: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackClinicalNegligence: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            input4: 'string'
+          },
+          fastTrackCreditHire: {
+            input1: 'string',
+            input2: 'string',
+            date1: date(1),
+            input3: 'string',
+            input4: 'string',
+            date2: date(1),
+            input5: 'string',
+            input6: 'string',
+            date3: date(1),
+            input7: 'string',
+            date4: date(1),
+            input8: 'string'
+          },
+          fastTrackHousingDisrepair: {
+            input1: 'string',
+            input2: 'string',
+            input3: 'string',
+            date1: date(1),
+            input4: 'string',
+            date2: date(1)
+          },
+          fastTrackPersonalInjury: {
+            input1: 'string',
+            date1: date(1),
+            input2: 'string',
+            date2: date(1),
+            input3: 'string'
+          },
+          fastTrackRoadTrafficAccident: {
+            input: 'string',
+            date: date(1)
+          },
+          fastTrackAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          fastTrackNotes: {
+            input: 'string',
+            date: date(1)
+          }
         }
-      }
-    };
+      };
     return createSDO;
   },
 
@@ -1277,6 +1278,9 @@ module.exports = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'No',
+          drawDirectionsOrder: {
+            judgementSum: 20
+          },
         },
         ClaimsTrack: {
           claimsTrack: 'fastTrack',
@@ -1290,15 +1294,10 @@ module.exports = {
             'fastClaimPersonalInjury',
             'fastClaimRoadTrafficAccident',
             'fastClaimNoiseInducedHearingLoss'
-          ]
-        },
-        OrderType: {
-          orderType: 'DECIDE_DAMAGES'
-        },
-        SdoR2FastTrack: {
+          ],
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes',
-          isSdoR2NewScreen: 'true',
+          isSdoR2NewScreen: 'Yes',
           sdoR2ImportantNotesTxt: 'This Order has been made without hearing. Each party has the right to apply to have this Order set aside or varied. Any such application must be received by the Court (together with the appropriate fee) by 4pm on',
           sdoR2ImportantNotesDate: date(+7),
           sdoFastTrackJudgesRecital: {
@@ -1317,11 +1316,13 @@ module.exports = {
             sdoWitnessDeadlineDate: date(+70),
             sdoWitnessDeadlineText: 'Evidence will not be permitted at trial from a witness whose statement has not been uploaded in accordance with the Order, except with permission from the Court.',
             sdoR2RestrictWitness: {
+              isRestrictWitness: 'No',
               restrictNoOfWitnessDetails: {
                 partyIsCountedAsWitnessTxt: 'For this limitation, a party is counted as a witness.'
               }
             },
             sdoRestrictPages: {
+              isRestrictPages: 'No',
               restrictNoOfPagesDetails: {
                 witnessShouldNotMoreThanTxt: 'Each witness statement should be no more than',
                 fontDetails: 'pages of A4 (including exhibits). Statements should be double spaced using a font size of 12.'
@@ -1349,9 +1350,9 @@ module.exports = {
             sdoUploadedToDigitalPortalTxt: 'by the asking party within 7 days of receipt.',
             sdoApplicationToRelyOnFurther: {
               applicationToRelyOnFurtherDetails: {
-                        applicationToRelyDetailsDate: date(+161),
-            applicationToRelyDetailsTxt: 'Any application by the Defendant for permission to rely on further expert medical evidence shall be made by 4pm on'
-          },
+                applicationToRelyDetailsDate: date(+161),
+                applicationToRelyDetailsTxt: 'Any application by the Defendant for permission to rely on further expert medical evidence shall be made by 4pm on'
+              },
               doRequireApplicationToRely: 'No'
             }
           },
@@ -1387,6 +1388,7 @@ module.exports = {
             sdoShallBeUploadedTxt: 'within 7 days of receipt.'
           },
           sdoR2ScheduleOfLoss: {
+            isClaimForPecuniaryLoss: 'No',
             sdoR2ScheduleOfLossClaimantText: 'The Claimant must upload to the Digital Portal an up-to-date schedule of loss by 4pm on',
             sdoR2ScheduleOfLossClaimantDate: date(+364),
             sdoR2ScheduleOfLossDefendantText: 'In the event of a challenge to the updated schedule of loss, a defendant shall upload to the Digital Portal a counter-schedule by 4pm on',
@@ -1404,8 +1406,8 @@ module.exports = {
                   label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
                 },
                 {
-                code: '111100',
-                label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
+                  code: '111100',
+                  label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
                 },
                 {
                   code: '222200',
@@ -1415,9 +1417,9 @@ module.exports = {
                   code: '333300',
                   label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
                 }
-                ]
+              ]
             },
-              hearingCourtLocationList: {
+            hearingCourtLocationList: {
               list_items: [
                 {
                   code: '000000',
@@ -1427,7 +1429,7 @@ module.exports = {
                   code: 'OTHER_LOCATION',
                   label: 'Other location'
                 }
-              ]
+              ],
             },
             physicalBundlePartyTxt: 'The Claimant shall deliver to the court a physical copy of the court generated bundle no later than 10 days before the trial.',
             sdoR2TrialFirstOpenDateAfter: {
@@ -1436,11 +1438,81 @@ module.exports = {
             sdoR2TrialWindow: {
               listFrom: date(+434),
               dateTo: date(+455)
-        }
+            }
 
-  }
+          }
+        },
+        SdoR2FastTrack: {
+          sdoR2Trial: {
+            altHearingCourtLocationList: {
+              list_items: [
+                {
+                  code: '000000',
+                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+                },
+                {
+                  code: '111100',
+                  label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
+                },
+                {
+                  code: '222200',
+                  label: 'High Wycombe Law Courts - THE LAW COURTS, EASTON STREET - HP11 1LR'
+                },
+                {
+                  code: '333300',
+                  label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
+                }
+              ]
+            },
+            hearingCourtLocationList: {
+              list_items: [
+                {
+                  code: '000000',
+                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+                },
+                {
+                  code: 'OTHER_LOCATION',
+                  label: 'Other location'
+                }
+              ],
+              value: {
+                code: '000000',
+                label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+              },
+            },
+            physicalBundlePartyTxt: 'The Claimant shall deliver to the court a physical copy of the court generated bundle no later than 10 days before the trial.',
+            sdoR2TrialFirstOpenDateAfter: {
+              listFrom: date(+434)
+            },
+            sdoR2TrialWindow: {
+              listFrom: date(+434),
+              dateTo: date(+455)
+            }
+
+          },
         }
-  }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'Yes'
+        },
+        OrderType: {
+          setSmallClaimsFlag: 'No',
+          setFastTrackFlag: 'Yes'
+        },
+        FastTrack: {}
+      },
+      calculated: calculatedClaimsTrackWSum
+    };
+    data.calculated.OrderType = {
+      ...data.calculated.ClaimsTrack,
+      orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.FastTrack = {
+      ...data.calculated.OrderType,
+      setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
     };
     return data;
   }

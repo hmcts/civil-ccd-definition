@@ -1,12 +1,8 @@
-// const defaultPassword = process.env.DEFAULT_PASSWORD;
-// const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
-// const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
+const defaultPassword = process.env.DEFAULT_PASSWORD;
+const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
+const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
 const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
-
-const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
-const iacDefaultPassword = 'AldgateT0wer';
 
 module.exports = {
   idamStub: {
