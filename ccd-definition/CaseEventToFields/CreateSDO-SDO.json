@@ -467,17 +467,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "disposalHearingMethodToggle",
-    "PageFieldDisplayOrder": 31,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "DisposalHearing",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "disposalHearingBundleStartLine",
     "PageFieldDisplayOrder": 38,
     "DisplayContext": "READONLY",
@@ -809,17 +798,6 @@
     "CaseFieldID": "smallClaimsMethodTitle",
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethodToggle",
-    "PageFieldDisplayOrder": 13,
-    "DisplayContext": "OPTIONAL",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
@@ -1617,8 +1595,7 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1627,8 +1604,7 @@
     "PageFieldDisplayOrder": 33,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1639,8 +1615,7 @@
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1649,8 +1624,7 @@
     "PageFieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaims",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1661,8 +1635,7 @@
     "PageID": "FastTrack",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1671,8 +1644,7 @@
     "PageFieldDisplayOrder": 43,
     "DisplayContext": "MANDATORY",
     "PageID": "FastTrack",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackMethodToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
