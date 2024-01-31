@@ -321,11 +321,6 @@ module.exports = {
     email: 'civilmoneyclaimsdemo@gmail.com',
     type: 'claimant',
   },
-  defendantCitizenUser: {
-    password: defaultPassword,
-    email: 'citizen2.user@gmail.com',
-    type: 'defendant',
-  },
   defendantCitizenUser2: {
     password: defaultPassword,
     email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,

@@ -59,7 +59,7 @@ async function deleteAccount(email) {
 
     console.log('Account deleted: ' + email);
 
-    config.defendantCitizenUser.email = `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`;
+    config.defendantCitizenUser2.email = `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`;
 
   } catch (error) {
     console.error('Error deleting account:', error);
