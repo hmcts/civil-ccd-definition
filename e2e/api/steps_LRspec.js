@@ -540,6 +540,16 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  requestForReconsideration: async (user) => {
+    console.log('RequestForReconsideration for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+    let response = await apiRequest.startEventForCallbackError(eventName, caseId);
+    assert(response === 'You can only request a reconsideration for claims of £1,000 or less.');
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
