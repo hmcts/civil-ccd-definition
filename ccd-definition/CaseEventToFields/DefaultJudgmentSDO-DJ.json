@@ -32,7 +32,8 @@
     "PageID": "CaseManagementOrder",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
