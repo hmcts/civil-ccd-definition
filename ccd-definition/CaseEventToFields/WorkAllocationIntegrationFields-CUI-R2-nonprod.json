@@ -18,5 +18,15 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
     "Publish": "Y"
+  },
+   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 3,
+    "Publish": "Y"
   }
 ]
