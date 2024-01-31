@@ -1,4 +1,5 @@
 const config = require('../../../config.js');
+const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 const claimType = 'SmallClaims';
 let carmEnabled = false;
@@ -16,6 +17,10 @@ async function prepareClaim(api_spec_cui, carmEnabled) {
 // set config.localMediationTests to true to run locally
 Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm @api-nonprod');
 
+Before(async () => {
+  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
+});
+
 Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   await prepareClaim(api_spec_cui, carmEnabled);
@@ -30,6 +35,7 @@ Scenario('CARM not enabled', async ({api_spec_cui}) => {
 
 AfterSuite(async ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
+  await deleteAccount(config.defendantCitizenUser2.email);
 });
 
 
