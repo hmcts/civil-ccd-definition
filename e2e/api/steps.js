@@ -988,6 +988,10 @@ module.exports = {
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    // will be assigned on about to submit, based on judges decision
+    delete caseData['allocatedTrack'];
+    delete caseData['responseClaimTrack'];
+
     let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
