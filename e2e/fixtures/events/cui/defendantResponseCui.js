@@ -1,3 +1,4 @@
+const {date} = require('../../../api/dataHelper');
 module.exports = {
   createDefendantResponse: (totalClaimAmount) => {
     const defendantResponseData = {
@@ -40,8 +41,8 @@ module.exports = {
                 id: '8f76a758-733b-42c0-95b9-69b3ee2b7e6a',
                 value: {
                   who: 'defendant',
-                  date: '2024-01-01',
-                  fromDate: '2024-01-01',
+                  date: date(30),
+                  fromDate: date(30),
                   unavailableDateType: 'SINGLE_DATE'
                 }
               }
@@ -118,5 +119,5 @@ module.exports = {
       },
     };
     return defendantResponseData;
-  },
+  }
 };
