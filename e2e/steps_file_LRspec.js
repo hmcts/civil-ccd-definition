@@ -172,8 +172,9 @@ module.exports = function () {
 
     // It is recommended to place a general 'login' function here.
     async login(user) {
+      console.log('logged in user is ', loggedInUser);
+      console.log('user to login is ', user);
       if (loggedInUser !== user) {
-        console.log('logged in user is ', loggedInUser);
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
           console.log('logged in as ', loggedInUser);
           await this.signOut();
