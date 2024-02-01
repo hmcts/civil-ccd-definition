@@ -990,6 +990,10 @@ module.exports = {
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    // will be assigned on about to submit, based on judges decision
+    delete caseData['allocatedTrack'];
+    delete caseData['responseClaimTrack'];
+
     let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
@@ -1608,6 +1612,11 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
 
+  if(checkToggleEnabled(SDOR2) && pageId === 'OrderType') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+      midEventData = {...midEventData, ...sdoR2Var};
+  }
+
   caseData = {...caseData, ...midEventData};
   if (midEventField) {
     responseBody.data[midEventField.id] = caseData[midEventField.id];
@@ -1869,6 +1878,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['isSdoR2NewScreen'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
