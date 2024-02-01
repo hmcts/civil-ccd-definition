@@ -568,7 +568,7 @@ module.exports = {
           },
           fastTrackHearingNotes: {
             input: 'Claimant\'s expert will be joining via Video\nRemaining hearing participants will attend in person'
-          },
+          }
         }
       },
       midEventData: {
