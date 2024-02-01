@@ -988,7 +988,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
