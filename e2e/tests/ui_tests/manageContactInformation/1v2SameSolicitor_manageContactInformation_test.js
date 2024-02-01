@@ -28,6 +28,7 @@ Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.manageLitigationFriendForDefendant(caseId);
   await I.manageDefendant(caseId);
+  await I.signOut();
 });
 
 AfterSuite(async ({api}) => {
