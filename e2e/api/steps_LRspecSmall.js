@@ -82,7 +82,8 @@ const eventData = {
   }
 };
 
-module.exports = {
+module.exports = function (){
+  return actor({
 
   /**
    * Creates a claim
@@ -490,6 +491,7 @@ module.exports = {
     console.log(`case created: ${caseId}`);
     return caseId;
   },
+  });
 };
 
 // Functions

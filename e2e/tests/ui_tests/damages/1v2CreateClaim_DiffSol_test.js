@@ -148,10 +148,9 @@ Scenario('Create a Hearing Request', async ({I}) => {
 }).retry(3);
 
 Scenario('Transfer online case', async ({I}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.login(config.hearingCenterAdminWithRegionId2);
     await I.transferOnlineCase();
-    await I.click('Sign out'); }
+    await I.click('Sign out'); 
 }).retry(3);
 
 AfterSuite(async  () => {
