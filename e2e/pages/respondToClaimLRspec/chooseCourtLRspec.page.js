@@ -45,12 +45,12 @@ module.exports = {
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="responseCourtLocations"]',
+              id: 'select[id$="respondToCourtLocation2_responseCourtLocations"]',
               options: {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
+            reasonForHearingAtSpecificCourt: 'textarea[id$="respondToCourtLocation2_reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
               id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
