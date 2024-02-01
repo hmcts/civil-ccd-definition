@@ -8,7 +8,11 @@
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
           "CITIZEN-DEFENDANT-PROFILE",
-          "judge-profile"
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "legal-adviser",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
@@ -22,7 +26,11 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "legal-adviser",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
@@ -36,7 +44,11 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin",
+          "legal-adviser",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
