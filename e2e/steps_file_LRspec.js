@@ -173,8 +173,11 @@ module.exports = function () {
     // It is recommended to place a general 'login' function here.
     async login(user) {
       if (loggedInUser !== user) {
+        console.log('logged in user is ' + loggedInUser);
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+          console.log('logged in as ' + loggedInUser);
           await this.signOut();
+          console.log('logged out from ' + loggedInUser);
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
@@ -201,12 +204,12 @@ module.exports = function () {
         this.click('Sign out');
       }, SIGNED_OUT_SELECTOR);
     },
-        
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
     },
-    
+
     async setCaseId(argCaseNumber) {
       caseId = argCaseNumber;
     },
