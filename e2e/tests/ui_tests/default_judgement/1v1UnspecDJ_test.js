@@ -96,8 +96,8 @@ Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-
     await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
   }
 }).retry(3);
-//skipping it due to liberata issue
-Scenario.skip('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
+
+Scenario('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
   if (config.testEarlyAdopterCourts) {
     await payHearingFee(I);
   }

@@ -99,7 +99,8 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "drawDirectionsOrderSmallClaims=\"No\" AND drawDirectionsOrderRequired=\"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details-navigation"
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/order-details-navigation",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
