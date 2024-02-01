@@ -47,8 +47,16 @@ const checkCaseFlagsEnabled = async () => {
   return checkFlagEnabled('case-flags');
 };
 
+const checkManageContactInformationEnabled = async () => {
+  return checkFlagEnabled('update-contact-details');
+};
+
 const checkFastTrackUpliftsEnabled = async () => {
   return checkFlagEnabled('fast-track-uplifts');
+};
+
+const checkCarmToggleEnabled = async () => {
+  return checkFlagEnabled('carm');
 };
 
 module.exports =  {
@@ -299,5 +307,7 @@ module.exports =  {
   },
   checkHmcEnabled,
   checkCaseFlagsEnabled,
-  checkFastTrackUpliftsEnabled
+  checkFastTrackUpliftsEnabled,
+  checkManageContactInformationEnabled,
+  checkCarmToggleEnabled
 };

@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CONTACT_INFORMATION_UPDATED_WA",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  }
+]

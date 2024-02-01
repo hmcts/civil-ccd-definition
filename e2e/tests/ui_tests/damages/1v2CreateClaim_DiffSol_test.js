@@ -88,7 +88,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
-
 Scenario.skip('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
     const caseFlags = [{
@@ -136,6 +135,22 @@ Scenario('Make a general application', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
   }
+}).retry(3);
+
+Scenario('Create a Hearing Request', async ({I}) => {
+  if (['demo'].includes(config.runningEnv)) {
+    await I.login(config.hearingCenterAdminWithRegionId2);
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+    await I.requestNewHearing();
+    await I.updateHearing();
+    await I.cancelHearing();
+  }
+}).retry(3);
+
+Scenario('Transfer online case', async ({I}) => {
+    await I.login(config.hearingCenterAdminWithRegionId2);
+    await I.transferOnlineCase();
+    await I.click('Sign out'); 
 }).retry(3);
 
 AfterSuite(async  () => {
