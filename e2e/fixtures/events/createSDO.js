@@ -577,7 +577,6 @@ module.exports = {
           setFastTrackFlag: 'No'
         },
         OrderType: {
-          isSdoR2NewScreen: 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
