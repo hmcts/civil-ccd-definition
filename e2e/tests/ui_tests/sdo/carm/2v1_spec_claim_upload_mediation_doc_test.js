@@ -18,8 +18,6 @@ Scenario('claimant LR uploads mediation documents', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
   await LRspec.click('Sign out');
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 });
 
 Scenario('defendant LR uploads mediation documents', async ({LRspec}) => {
