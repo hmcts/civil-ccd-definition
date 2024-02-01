@@ -6,23 +6,9 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 let civilCaseReference;
 
-Feature('SDO Carm - Upload mediation documents');
+Feature('SDO Carm - Upload mediation documents @carm @e2e-nightly-nonprod');
 
-Scenario('2v1 claimant and defendant upload mediation documents @carm @non-prod-e2e-ft', async ({api_spec, LRspec}) => {
-  civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
-  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
-    'JUDICIAL_REFERRAL');
-  console.log('2v1 Spec small claims created : ' + civilCaseReference);
-
-  await LRspec.login(config.applicantSolicitorUser);
-  await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
-  await LRspec.click('Sign out');
-  await LRspec.login(config.defendantSolicitorUser);
-  await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
-});
-
-Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nightly-nonprod', async ({api_spec, LRspec}) => {
+Scenario('1v2 upload mediation documents in different SDO states', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL');
@@ -52,5 +38,5 @@ Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nigh
 });
 
 AfterSuite(async ({api_spec}) => {
-  //await api_spec.cleanUp();
+  await api_spec.cleanUp();
 });
