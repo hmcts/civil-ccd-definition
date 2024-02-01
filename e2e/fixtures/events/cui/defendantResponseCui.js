@@ -1,4 +1,3 @@
-const {date} = require('../../../api/dataHelper');
 module.exports = {
   createDefendantResponse: (totalClaimAmount) => {
     const defendantResponseData = {
