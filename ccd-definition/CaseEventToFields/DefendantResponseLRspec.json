@@ -1157,7 +1157,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Mediation",
-    "PageShowCondition": "showCarmFields=\"No\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND showCarmFields=\"No\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"ONLY_RESPONDENT_1_DISPUTES\" OR showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
