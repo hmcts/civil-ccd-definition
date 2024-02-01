@@ -100,6 +100,7 @@ civil-general-applications:
 
 xui-webapp:
   nodejs:
+    image: 'hmctspublic.azurecr.io/xui/webapp:pr-3512-fe214c7-20240201125932'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
