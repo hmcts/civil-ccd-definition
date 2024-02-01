@@ -1,3 +1,4 @@
+const {date} = require('../../../api/dataHelper');
 module.exports = {
   createDefendantResponse: (totalClaimAmount) => {
     const defendantResponseData = {
@@ -32,7 +33,24 @@ module.exports = {
 
           },
           respondent1MediationLiPResponse:{
-            mediationDisagreementLiP:'No',
+            isMediationEmailCorrect: 'No',
+            isMediationPhoneCorrect: 'No',
+            alternativeMediationEmail: 'test@test.com',
+            unavailableDatesForMediation: [
+              {
+                id: '8f76a758-733b-42c0-95b9-69b3ee2b7e6a',
+                value: {
+                  who: 'defendant',
+                  date: date(30),
+                  fromDate: date(30),
+                  unavailableDateType: 'SINGLE_DATE'
+                }
+              }
+            ],
+             alternativeMediationTelephone: '01632960001',
+             isMediationContactNameCorrect: 'No',
+             hasUnavailabilityNextThreeMonths: 'Yes',
+             alternativeMediationContactPerson: 'aaa'
           },
           respondent1DQExtraDetails:{
             wantPhoneOrVideoHearing:'No',
@@ -131,5 +149,5 @@ module.exports = {
       },
     };
     return defendantResponseData;
-  },
+  }
 };
