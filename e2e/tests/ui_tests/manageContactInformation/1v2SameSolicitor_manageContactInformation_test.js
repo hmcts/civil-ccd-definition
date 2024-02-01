@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 let caseId;
 
-Feature('1v2 Same Solicitor - Manage Contact Information @e2e-mci @non-prod-e2e-ft @testing');
+Feature('1v2 Same Solicitor - Manage Contact Information @e2e-mci @non-prod-e2e-ft');
 
 Scenario('Create claim to claimant response', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -14,21 +14,20 @@ Scenario('Create claim to claimant response', async ({api}) => {
   caseId = await api.getCaseId();
 });
 
-// Scenario('Manage Contact Information For Admin', async ({I}) => {
-//   await I.login(config.adminUser);
-//   await I.manageWitnessesForDefendant(caseId);
-// });
-//
-// Scenario('Manage Contact Information For Claimant Solicitor', async ({I}) => {
-//   await I.login(config.applicantSolicitorUser);
-//   await I.manageOrganisationIndividualsForClaimant(caseId);
-// });
+Scenario('Manage Contact Information For Admin', async ({I}) => {
+  await I.login(config.adminUser);
+  await I.manageWitnessesForDefendant(caseId);
+});
+
+Scenario('Manage Contact Information For Claimant Solicitor', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.manageOrganisationIndividualsForClaimant(caseId);
+});
 
 Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.manageLitigationFriendForDefendant(caseId);
-  // await I.manageDefendant(caseId);
-  // await I.signOut();
+  await I.manageDefendant(caseId);
 });
 
 AfterSuite(async ({api}) => {

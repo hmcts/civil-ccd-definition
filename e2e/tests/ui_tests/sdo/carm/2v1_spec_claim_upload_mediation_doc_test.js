@@ -4,7 +4,7 @@ const config = require('../../../../config.js');
 
 let civilCaseReference;
 
-Feature('SDO Carm - Upload mediation documents @carm @non-prod-e2e-ft @testing');
+Feature('SDO Carm - Upload mediation documents @carm @non-prod-e2e-ft');
 
 Scenario('Prepare claim', async ({api_spec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
@@ -15,6 +15,7 @@ Scenario('Prepare claim', async ({api_spec}) => {
 });
 
 Scenario('claimant LR uploads mediation documents', async ({LRspec}) => {
+  console.log('logging in as claimant LR for upload docs');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
   await LRspec.click('Sign out');
