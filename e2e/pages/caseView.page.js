@@ -37,6 +37,21 @@ module.exports = {
     }, locate('.govuk-heading-l'));
   },
 
+  async startEventForRR(event, caseId) {
+      await waitForFinishedBusinessProcess(caseId);
+      await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForRR(caseId);
+      await this.start(event);
+    }, locate('.govuk-heading-l'));
+  },
+
+  async startEventForDR(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForDR(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+
   async verifyErrorMessageOnEvent(event, caseId, errorMsg) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
