@@ -74,6 +74,19 @@ module.exports = {
     return response.case_details.case_data || {};
   },
 
+  startEventForCallbackError: async (eventName, caseId) => {
+    let url = getCcdDataStoreBaseUrl();
+    if (caseId) {
+      url += `/cases/${caseId}`;
+    }
+    url += `/event-triggers/${eventName}/token`;
+
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET',422)
+      .then(response => response.json());
+    tokens.ccdEvent = response.token;
+    return response.callbackErrors[0];
+  },
+
   fetchUserId: async () => {
     return await idamHelper.userId(tokens.userAuth);
   },
@@ -89,7 +102,7 @@ module.exports = {
     return response.id;
   },
 
-  startEventForCitizen: async (eventName, caseId, payload, expectedEndState = null) => {
+  startEventForCitizen: async (eventName, caseId, payload) => {
     let url = getCivilServiceUrl();
     const userId = await idamHelper.userId(tokens.userAuth);
     console.log('The value of the userId from the startEventForCitizen() : '+userId);
