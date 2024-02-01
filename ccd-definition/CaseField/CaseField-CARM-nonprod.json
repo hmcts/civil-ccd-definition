@@ -161,13 +161,5 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "responseClaimMediationSpecRequiredCarm",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
