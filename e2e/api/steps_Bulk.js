@@ -75,6 +75,18 @@ module.exports = {
    assert.equal(response_msg.errorCode, '008');
   },
 
+  createClaimFromSDTRequest: async (user, mpScenario, interest) => {
+    let createClaimData;
+    createClaimData = data.CREATE_BULK_CLAIM(mpScenario, interest, '12345678', '87989', 'TW13 4DA');
+
+    await apiRequest.setupTokens(user);
+    const response_msg = await apiRequest.createBulkClaimForStatusCode201(Math.random().toString(36).slice(2), createClaimData);
+
+    assert.equal(response_msg.issueDate, null);
+    assert.equal(response_msg.serviceDate, null);
+    assert.notEqual(response_msg.claimNumber, null);
+  },
+
   createClaimFromSDTRequestForPostCodePositive: async (user, mpScenario, interest) => {
     let createClaimData;
 
