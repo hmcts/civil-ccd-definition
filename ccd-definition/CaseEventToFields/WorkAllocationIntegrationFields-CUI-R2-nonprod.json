@@ -28,5 +28,15 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 3,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "APPLY_HELP_WITH_HEARING_FEE",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 4,
+    "Publish": "Y"
   }
 ]
