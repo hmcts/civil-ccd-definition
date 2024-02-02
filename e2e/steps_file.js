@@ -73,6 +73,10 @@ const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 
+const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
+const updateHearingPage = require('./pages/hearing/updateHearing.page');
+const cancelHearingPage = require('./pages/hearing/cancelHearing.page');
+
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const fixedRecoverableCostsPage = require('./fragments/dq/fixedRecoverableCosts.page');
@@ -679,6 +683,11 @@ module.exports = function () {
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
 
+      if (['demo'].includes(config.runningEnv)) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+        await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
+        await this.click('#action_claim');
+      }
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
       await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
@@ -963,6 +972,28 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async navigateToCaseDetailsForRR(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToCaseDetailsForDR(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#decisionOnRequestReconsiderationOptions-CREATE_SDO');
+    },
+
     async initiateNoticeOfChange(caseId, clientName) {
       eventName = 'NoC Request';
       await this.triggerStepsWithScreenshot([
@@ -1084,5 +1115,40 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
+
+    async requestNewHearing() {
+      eventName = 'Request Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => requestNewHearingPage.openHearingTab(),
+        () => requestNewHearingPage.selectAdditionalFacilities(),
+        () => requestNewHearingPage.selectHearingStage(),
+        () => requestNewHearingPage.selectParticipantAttendance(),
+        () => requestNewHearingPage.selectHearingVenues(),
+        () => requestNewHearingPage.selectJudges(),
+        () => requestNewHearingPage.selectLengthDatePriority(),
+        () => requestNewHearingPage.enterAdditionalInstructions(),
+        () => requestNewHearingPage.submitHearing(),
+        () => requestNewHearingPage.verifyWaitingForHearingToBeListed()
+      ]);
+    },
+
+    async updateHearing() {
+      eventName = 'Update Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.updateHearingValues(),
+        () => updateHearingPage.submitUpdatedHearing(),
+        () => updateHearingPage.verifyUpdatedHearingDetails()
+      ]);
+    },
+
+    async cancelHearing() {
+      eventName = 'Cancel Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => cancelHearingPage.clickCancelHearing(),
+        () => cancelHearingPage.verifyHearingCancellation()
+      ]);
+    },
+
   });
 };

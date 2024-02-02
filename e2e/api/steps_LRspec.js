@@ -31,6 +31,8 @@ const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpe
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
+const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -331,10 +333,12 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState) => {
+                           expectedEndState, carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 
@@ -348,10 +352,11 @@ module.exports = {
     }
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (response == 'FULL_DEFENCE') {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
 
+    carmEnabled ? validState = 'IN_MEDIATION' : validState;
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -363,19 +368,26 @@ module.exports = {
     }
   },
 
+  mediationUnsuccessful: async (user, carmEnabled = false) => {
+    eventName = 'MEDIATION_UNSUCCESSFUL';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of unsuccessful mediation');
+  },
+
   uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
     await apiRequest.setupTokens(user);
 
     let eventData;
     if (user === config.applicantSolicitorUser) {
       eventData = mediationDocuments.uploadMediationDocuments('claimant');
-    } else {
-      if (sameDefendantSolicitor) {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
-      } else {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant');
-      }
-    }
+    }  else {
+          eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
+        }
 
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -525,6 +537,16 @@ module.exports = {
 
 
 
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  requestForReconsideration: async (user) => {
+    console.log('RequestForReconsideration for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+    let response = await apiRequest.startEventForCallbackError(eventName, caseId);
+    assert(response === 'You can only request a reconsideration for claims of £1,000 or less.');
     await waitForFinishedBusinessProcess(caseId);
   },
 
