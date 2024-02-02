@@ -2,6 +2,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "isSdoR2NewScreen",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "FastTrack",
+    "PageFieldDisplayOrder": 58,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackOrderAndHearingDetails",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
@@ -609,16 +621,5 @@
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "isSdoR2NewScreen",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "SdoR2FastTrack",
-    "PageDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoWarning=\"DO_NOT_SHOW_IN_UI\""
   }
 ]
