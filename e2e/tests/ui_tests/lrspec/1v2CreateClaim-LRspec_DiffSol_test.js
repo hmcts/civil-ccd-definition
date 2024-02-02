@@ -91,8 +91,7 @@ Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.createHearingScheduled();
 }).retry(3);
 
-//skipping it due to liberata issue
-Scenario.skip('Pay hearing fee', async ({LRspec}) => {
+Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
 }).retry(3);
 
