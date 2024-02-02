@@ -16,7 +16,7 @@ Scenario('Prepare claim', async ({api_spec}) => {
 
 Scenario('claimant LR uploads mediation documents', async ({LRspec}) => {
   console.log('logging in as claimant LR for upload docs');
-  await LRspec.login(config.applicantSolicitorUser);
+  await LRspec.login(config.applicantSolicitorUser, 'mediation');
   await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
   await LRspec.click('Sign out');
 });
