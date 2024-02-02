@@ -88,5 +88,86 @@
     "FieldType": "JudgeDecisionOnReconsiderationSelect",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "sdoR2SmallClaimsWarning",
+  "Label": "****\n ### Warning\nYou must comply with the terms imposed upon you by this Order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make a formal application to the Court before any deadline imposed upon you expires.\n\nYou are encouraged to try to settle the case with the other side. You may also contact the Small Claims Mediation Service to arrange an appointment. The service is free and can be contacted on 01604 795 511.\n ****",
+  "FieldType": "Label",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsJudgesRecitalLbl",
+    "Label": "### Judge’s recital",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsJudgesRecital",
+    "Label": " ",
+    "FieldType": "SdoR2SmallTrackJudgesRecital",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsAllocation",
+    "Label": "****\n ### Allocation\n The claim is allocated to the Small Claims Track. \n****\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsDisputeResolutionHearing",
+    "Label": "****\n ### Dispute Resolution Hearing\n The claim is listed for a Dispute Resolution Hearing before a District Judge on the date and at the time indicated on the Notice of Hearing which will follow separately.\n. A Dispute Resolution Hearing is a preliminary hearing for the purposes of Civil Procedure Rule 27.6.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsLRForDRH",
+    "Label": "****\n ### Legal representation for DRH\n If a party is legally represented at the dispute resolution hearing and the party is not also in attendance, they must have provided full instructions including as to settlement and be contactable so that meaningful negotiations can take place. Failure to have done so may result in the hearing being adjourned and a costs order being made against the party at fault.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsJudgesPowersDRH",
+    "Label": "****\n ### Judges powers at DRH\n At the Dispute Resolution Hearing the Judge may:\na) Strike out the claim, the defence, and any counterclaim and/or any defence to counterclaim if the court finds that the statement of case discloses no reasonable grounds for bringing or defending the claim or if it is considered a party has no real prospect of success at a final hearing.\nb) If a party fails to provide a contact number for the hearing, fails to attend the hearing, or fails to comply with the directions set out in this Order the court may strike out the claim, defence, and/or counterclaim.\nc) Conduct mediation with the parties’ consent, to assist the parties to reach an agreed resolution of the claim so that the dispute can be resolved completely at the Dispute Resolution Hearing and/or identify the real issues in the dispute.\nd) List any further hearing including final hearing and/or make an Order requiring the parties to take further steps prior to a further or final hearing and provide that if the same are not carried out, that the Statement of Case of any party in default will be struck out.\ne) Make any other Order which the court considers appropriate.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsWitnessesOfFact",
+    "Label": " ",
+    "FieldType": "SdoR2SmallClaimsWitnessStatements",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsUploadDoc",
+    "Label": " ",
+    "FieldType": "SdoR2SmallClaimsUploadDoc",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsAddNewDirection",
+    "Label": " ",
+    "FieldTypeParameter": "SdoR2AddNewDirection",
+    "FieldType": "Collection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
