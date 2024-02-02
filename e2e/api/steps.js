@@ -1401,10 +1401,15 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
-    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+    if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
+      if (checkToggleEnabled(SDOR2)) {
+        clearHearingCourtLocationData(responseBody);
+        delete caseData.sdoR2Trial.hearingCourtLocationList;
+        delete caseData.sdoR2Trial.altHearingCourtLocationList;
+      }
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1928,5 +1933,11 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
+};
+
+const clearHearingCourtLocationData = (responseBody) => {
+  delete responseBody.data.sdoR2Trial['altHearingCourtLocationList'];
+  delete responseBody.data.sdoR2Trial['hearingCourtLocationList'];
   return responseBody;
 };
