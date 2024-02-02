@@ -1405,7 +1405,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
-      if (checkToggleEnabled(SDOR2)) {
+      if (checkToggleEnabled(SDOR2) && responseBody.data.sdoR2Trial) {
         clearHearingCourtLocationData(responseBody);
         delete caseData.sdoR2Trial.hearingCourtLocationList;
         delete caseData.sdoR2Trial.altHearingCourtLocationList;
