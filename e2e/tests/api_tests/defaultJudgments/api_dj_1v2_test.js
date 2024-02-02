@@ -47,10 +47,6 @@ Scenario('Case progression tests (Upload evidence, schedule a hearing, amend hea
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
     await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
-    await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
-    await api.trialReadiness(config.applicantSolicitorUser);
-    await api.trialReadiness(config.defendantSolicitorUser);
   }
 });
 
