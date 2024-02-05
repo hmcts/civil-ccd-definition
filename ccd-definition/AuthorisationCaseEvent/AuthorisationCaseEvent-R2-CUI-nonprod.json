@@ -144,7 +144,6 @@
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor",
           "citizen-profile"
         ],
         "CRUD": "CRU"
