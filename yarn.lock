@@ -1438,7 +1438,7 @@ __metadata:
     node-cache: ^5.1.2
     node-fetch: ^2.6.9
     playwright: ^1.41.1
-    totp-generator: ^0.0.14
+    totp-generator: ^1.0.0
     uuid: ^3.4.0
     webdriverio: ^6.12.1
   languageName: unknown
@@ -3430,7 +3430,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jssha@npm:^3.1.2":
+"jssha@npm:^3.3.1":
   version: 3.3.1
   resolution: "jssha@npm:3.3.1"
   checksum: 4f2b636305710d5275d5e48a323ceaed80b6400fd545321fccdb4e904392a7b808fa79cdf355073766a290d731756eb5bd5ceb2341cc53e57b686c7bb3a18488
@@ -5500,12 +5500,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"totp-generator@npm:^0.0.14":
-  version: 0.0.14
-  resolution: "totp-generator@npm:0.0.14"
+"totp-generator@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "totp-generator@npm:1.0.0"
   dependencies:
-    jssha: ^3.1.2
-  checksum: e68c57849ca259a49a6470900e92a89f372de559c3c528f92e0e631655b17e8477a341ec1d870924235d59c249b7614bb01847f2e29118d52e241629cd230026
+    jssha: ^3.3.1
+  checksum: 5d8865c4683ddadb8934b4b871cc3090972f8b782fc9c0c017bef3932336846d51d6359bed4b1afe1600149c26f123f9aa257738387a877e2ca828b3c64e7b60
   languageName: node
   linkType: hard
 
