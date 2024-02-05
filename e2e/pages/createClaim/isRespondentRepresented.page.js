@@ -7,8 +7,8 @@ module.exports = {
       respondentRepresented: {
         id: `#${respondent}Represented`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${respondent}Represented_Yes`,
+          no: `#${respondent}Represented_No`
         }
       }
     };

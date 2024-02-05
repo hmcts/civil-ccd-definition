@@ -6,8 +6,8 @@ module.exports = {
     addRespondent2: {
       id: '#addRespondent2',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#addRespondent2_Yes',
+        no: '#addRespondent2_No'
       }
     },
   },
