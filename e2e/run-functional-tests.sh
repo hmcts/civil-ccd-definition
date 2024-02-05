@@ -3,7 +3,7 @@ set -ex
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
-export CCD_PIPELINE=true
+export CCD_UI_TESTS=true
 if [ ${ENVIRONMENT} == preview ]; then
   yarn test:non-prod-e2e-ft
 else
