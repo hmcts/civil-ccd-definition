@@ -23,8 +23,8 @@ module.exports = {
             remoteHearingRequested: {
               id: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
-                yes: 'Yes',
-                no: 'No'
+                yes: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_Yes',
+                no: '#applicant1DQRemoteHearingLRspec_remoteHearingRequested_No'
               }
             },
             reasonForRemoteHearing: '#applicant1DQRemoteHearingLRspec_reasonForRemoteHearing'
@@ -38,24 +38,24 @@ module.exports = {
             chooseCourtLocation: {
               id: '#responseClaimCourtLocation2Required_radio',
               options: {
-                yes: 'Yes',
-                no: 'No'
+                yes: '#responseClaimCourtLocation2Required_rYes',
+                no: '#responseClaimCourtLocation2Required_rNo'
               }
             },
           },
           fields: {
             responseCourtLocations: {
-              id: 'select[id$="responseCourtLocations"]',
+              id: 'select[id$="respondToCourtLocation2_responseCourtLocations"]',
               options: {
                 preferredCourt: config.defendant2SelectedCourt
               }
             },
-            reasonForHearingAtSpecificCourt: 'textarea[id$="reasonForHearingAtSpecificCourt"]',
+            reasonForHearingAtSpecificCourt: 'textarea[id$="respondToCourtLocation2_reasonForHearingAtSpecificCourt"]',
             remoteHearingRequested: {
               id: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
-                yes: 'Yes',
-                no: 'No'
+                yes: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_Yes',
+                no: '#respondent2DQRemoteHearingLRspec_remoteHearingRequested_No'
               }
             },
             reasonForRemoteHearing: '#respondent2DQRemoteHearingLRspec_reasonForRemoteHearing'
@@ -70,8 +70,8 @@ module.exports = {
             chooseCourtLocation: {
               id: '#responseClaimCourtLocationRequired_radio',
               options: {
-                yes: 'Yes',
-                no: 'No'
+                yes: '#responseClaimCourtLocationRequired_Yes',
+                no: '#responseClaimCourtLocationRequired_No'
               }
             }
           },
@@ -86,8 +86,8 @@ module.exports = {
             remoteHearingRequested: {
               id: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_radio',
               options: {
-                yes: 'Yes',
-                no: 'No'
+                yes: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_Yes',
+                no: '#respondent1DQRemoteHearingLRspec_remoteHearingRequested_No'
               }
             },
             reasonForRemoteHearing: '#respondent1DQRemoteHearingLRspec_reasonForRemoteHearing'

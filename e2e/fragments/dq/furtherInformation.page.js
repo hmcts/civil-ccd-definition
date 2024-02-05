@@ -7,8 +7,8 @@ module.exports = {
       futureApplications: {
         id: `#${party}DQFurtherInformation_futureApplications`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQFurtherInformation_futureApplications_Yes`,
+          no: `#${party}DQFurtherInformation_futureApplications_No`
         }
       },
       reasonForFutureApplications: `#${party}DQFurtherInformation_reasonForFutureApplications`,
