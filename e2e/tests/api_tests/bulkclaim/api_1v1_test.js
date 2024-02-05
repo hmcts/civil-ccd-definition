@@ -24,7 +24,7 @@ Scenario('Create claim - 1v1 with interest', async ({bulks}) => {
   await bulks.createNewClaimWithCaseworkerCivilService(config.applicantSolicitorUser, 'ONE_V_ONE', true);
 });
 
-Scenario('1v1 with No interest - Create claim via SDT - Claim Created', async ({bulks}) => {
+Scenario('1v1 with No interest - Create claim via SDT - Claim Created - valid success sync response', async ({bulks}) => {
   await bulks.createClaimFromSDTRequestValidSuccessSyncResponse(config.applicantSolicitorUserForBulkClaim, mpScenario, false);
 });
 
