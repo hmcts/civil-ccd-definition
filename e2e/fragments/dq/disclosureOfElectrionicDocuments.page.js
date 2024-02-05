@@ -7,15 +7,15 @@ module.exports = {
       reachedAgreement: {
         id: `#${party}DQDisclosureOfElectronicDocuments_reachedAgreement`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureOfElectronicDocuments_reachedAgreement_Yes`,
+          no: `#${party}DQDisclosureOfElectronicDocuments_reachedAgreement_No`
         }
       },
       agreementLikely: {
         id: `#${party}DQDisclosureOfElectronicDocuments_agreementLikely`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureOfElectronicDocuments_agreementLikely_Yes`,
+          no: `#${party}DQDisclosureOfElectronicDocuments_agreementLikely_No`
         }
       },
       reasonForNoAgreement: `#${party}DQDisclosureOfElectronicDocuments_reasonForNoAgreement`,

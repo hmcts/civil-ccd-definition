@@ -6,8 +6,8 @@ module.exports = {
     addFlightDelayClaim: {
       id: '#isFlightDelayClaim',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#isFlightDelayClaim_Yes',
+        no: '#isFlightDelayClaim_No'
       }
     },
   },
