@@ -41,7 +41,8 @@ Scenario('Create SDO journey - after Request for Reconsideration', async ({api_s
   }
 }).retry(3);
 
-AfterSuite(async ({api_spec_small}) => {
+AfterSuite(async ({api_spec_small, LRspec}) => {
+  await LRspec.signOut();
   await api_spec_small.cleanUp();
   await unAssignAllUsers();
 });

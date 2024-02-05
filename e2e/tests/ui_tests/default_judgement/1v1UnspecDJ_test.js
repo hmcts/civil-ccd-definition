@@ -224,6 +224,7 @@ Scenario.skip('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api})
   await WA.verifyCreatedBooking('Liverpool Civil and Family Court');
 }).retry(3);
 
-AfterSuite(async  ({api}) => {
+AfterSuite(async  ({api, I}) => {
+  await I.signOut();
   await api.cleanUp();
 });

@@ -150,9 +150,10 @@ Scenario('Create a Hearing Request', async ({I}) => {
 Scenario('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId2);
     await I.transferOnlineCase();
-    await I.click('Sign out'); 
+    await I.click('Sign out');
 }).retry(3);
 
-AfterSuite(async  () => {
+AfterSuite(async  ({I}) => {
+  await I.signOut();
   await unAssignAllUsers();
 });

@@ -35,6 +35,7 @@ xScenario('Create SDO', async ({api}) => {
   await api.createSDO(judgeUser, 'CREATE_SMALL');
 });
 
-AfterSuite(async  () => {
+AfterSuite(async  ({I}) => {
+  await I.signOut();
   await unAssignAllUsers();
 });

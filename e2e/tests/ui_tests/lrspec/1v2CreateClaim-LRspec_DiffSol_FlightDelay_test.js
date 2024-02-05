@@ -47,6 +47,7 @@ Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendan
   }
 }).retry(3);
 
-AfterSuite(async  () => {
+AfterSuite(async ({LRspec}) => {
+  await LRspec.signOut();
   await unAssignAllUsers();
 });

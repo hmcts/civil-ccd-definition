@@ -27,6 +27,7 @@ Scenario('defendant LR uploads mediation documents', async ({LRspec}) => {
   await LRspec.click('Sign out');
 });
 
-AfterSuite(async ({api_spec}) => {
-  //await api_spec.cleanUp();
+AfterSuite(async ({api_spec, LRspec}) => {
+  await LRspec.signOut();
+  await api_spec.cleanUp();
 });

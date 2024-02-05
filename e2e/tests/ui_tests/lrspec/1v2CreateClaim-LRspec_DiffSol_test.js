@@ -106,6 +106,7 @@ Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   ]);
 }).retry(3);
 
-AfterSuite(async  () => {
+AfterSuite(async  ({LRspec}) => {
+  await LRspec.signOut();
   await unAssignAllUsers();
 });

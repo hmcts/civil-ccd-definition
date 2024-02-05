@@ -30,6 +30,7 @@ Scenario('Manage Contact Information For Defendant parties', async ({I}) => {
   await I.manageDefendant(caseId);
 });
 
-AfterSuite(async ({api}) => {
+AfterSuite(async ({api, I}) => {
+  await I.signOut();
   await api.cleanUp();
 });

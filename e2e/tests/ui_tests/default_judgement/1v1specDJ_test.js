@@ -14,6 +14,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await I.initiateDJSpec(caseid, 'ONE_V_ONE');
 }).retry(3);
 
-AfterSuite(async  ({api_spec}) => {
+AfterSuite(async  ({api_spec, I}) => {
+  await I.signOut();
   await api_spec.cleanUp();
 });
