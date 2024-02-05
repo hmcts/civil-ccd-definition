@@ -13,15 +13,15 @@ module.exports = {
       oneMonthStay: {
         id: `#${party}DQFileDirectionsQuestionnaire_oneMonthStayRequested`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQFileDirectionsQuestionnaire_oneMonthStayRequested_Yes`,
+          no: `#${party}DQFileDirectionsQuestionnaire_oneMonthStayRequested_No`
         }
       },
       reactionProtocolCompliedWith: {
         id: `#${party}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_Yes`,
+          no: `#${party}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_No`
         }
       },
       reactionProtocolNotCompliedWithReason: `#${party}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`,

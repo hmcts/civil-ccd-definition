@@ -4,7 +4,7 @@ const config = require('./../../config');
 module.exports = {
   fields: {
     courtLocation: {
-      id: 'select[id$="hearingLocation"]',
+      id: '#hearingLocation',
       options: {
         preferredCourt: config.claimantSelectedCourt
       }
