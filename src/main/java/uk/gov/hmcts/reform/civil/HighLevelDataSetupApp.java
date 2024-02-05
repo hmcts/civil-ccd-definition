@@ -96,13 +96,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
-        int httpStatusCode504 = 504;
-        if (e instanceof ImportException) {
-            ImportException importException = (ImportException) e;
-            return importException.getHttpStatusCode() == httpStatusCode504;
-        }
-        return false;
+    protected boolean shouldTolerateDataSetupFailure() {
+        return true;
     }
 
 }
