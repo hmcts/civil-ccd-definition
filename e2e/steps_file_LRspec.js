@@ -171,14 +171,10 @@ module.exports = function () {
     // Define custom steps here, use 'this' to access default methods of I.
 
     // It is recommended to place a general 'login' function here.
-    async login(user, mediation = '') {
-      console.log('logged in user is ', loggedInUser, mediation);
-      console.log('user to login is ', user, mediation);
+    async login(user) {
       if (loggedInUser !== user) {
         if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          console.log('logged in as ', loggedInUser, mediation);
           await this.signOut();
-          console.log('logged out from ', loggedInUser, mediation);
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
