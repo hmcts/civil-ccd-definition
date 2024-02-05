@@ -13,8 +13,8 @@ module.exports = {
     remoteHearingRequested: {
       id: '#applicant1DQRemoteHearing_remoteHearingRequested_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#applicant1DQRemoteHearing_remoteHearingRequested_Yes',
+        no: '#applicant1DQRemoteHearing_remoteHearingRequested_No'
       }
     },
     reasonForRemoteHearing: '#applicant1DQRemoteHearing_reasonForRemoteHearing'
