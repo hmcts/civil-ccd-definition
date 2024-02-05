@@ -75,7 +75,7 @@ module.exports = {
    assert.equal(response_msg.errorCode, '008');
   },
 
-  createClaimFromSDTRequest: async (user, mpScenario, interest) => {
+  createClaimFromSDTRequestValidSuccessSyncResponse: async (user, mpScenario, interest) => {
     let createClaimData;
     createClaimData = data.CREATE_BULK_CLAIM(mpScenario, interest, '12345678', '87989', 'TW13 4DA');
 
