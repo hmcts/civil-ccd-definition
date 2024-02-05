@@ -271,7 +271,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2AddNewDirection",
-    "Label": " ",
+    "Label": "Add a new direction",
     "FieldTypeParameter": "SdoR2AddNewDirection",
     "FieldType": "Collection",
     "SecurityClassification": "Public",

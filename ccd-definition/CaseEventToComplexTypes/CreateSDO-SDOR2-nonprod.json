@@ -211,8 +211,16 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingNotesTxt",
+    "ListElementCode": "hearingNotesLbl",
     "FieldDisplayOrder": 12,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesTxt",
+    "FieldDisplayOrder": 13,
     "DisplayContext": "OPTIONAL"
   },
   {

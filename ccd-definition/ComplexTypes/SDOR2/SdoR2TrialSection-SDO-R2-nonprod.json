@@ -73,7 +73,7 @@
     "ID": "SdoR2Trial",
     "ListElementCode": "methodOfHearing",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "FastTrackMethod",
+    "FieldTypeParameter": "SdoR2FastTrackMethod",
     "ElementLabel": "Method of hearing",
     "HintText": "If you want to include any extra information or want to request a certain hearing platform, please include this in the Hearing notes section below",
     "SecurityClassification": "Public",
@@ -99,10 +99,18 @@
   },
   {
     "ID": "SdoR2Trial",
+    "ListElementCode": "hearingNotesLbl",
+    "FieldType": "Label",
+    "ElementLabel": "Hearing notes.",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
     "ListElementCode": "hearingNotesTxt",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "ElementLabel": "Hearing notes"
+    "ElementLabel": "This is only seen by the listing officer"
   }
 ]
