@@ -8,6 +8,7 @@ import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import javax.net.ssl.SSLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -96,8 +97,16 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        return true;
+    protected boolean shouldTolerateDataSetupFailure(Throwable e) {
+        int httpStatusCode504 = 504;
+        if (e instanceof ImportException) {
+            ImportException importException = (ImportException) e;
+            return importException.getHttpStatusCode() == httpStatusCode504;
+        }
+        if(e instanceof SSLException){
+            return true;
+        }
+        return false;
     }
 
 }

@@ -12,15 +12,15 @@ module.exports = {
       requestHearingAtSpecificCourt: {
         id: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt_Yes`,
+          no: `#${party}DQRequestedCourt_requestHearingAtSpecificCourt_No`
         }
       },
       remoteHearingRequested: {
         id: `#${party}DQRemoteHearing_remoteHearingRequested`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQRemoteHearing_remoteHearingRequested_Yes`,
+          no: `#${party}DQRemoteHearing_remoteHearingRequested_No`
         }
       },
       reasonForRemoteHearing: `#${party}DQRemoteHearing_reasonForRemoteHearing`,

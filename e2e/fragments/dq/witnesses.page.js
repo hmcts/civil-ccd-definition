@@ -7,8 +7,8 @@ module.exports = {
       witnessesToAppear: {
         id: `#${party}DQWitnesses_witnessesToAppear`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQWitnesses_witnessesToAppear_Yes`,
+          no: `#${party}DQWitnesses_witnessesToAppear_No`
         }
       },
       witnessDetails: {
