@@ -8,8 +8,8 @@ module.exports = {
       isSubjectToFixedRecoverableCostRegime: {
         id: `#${party}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_Yes`,
+          no: `#${party}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_No`
         }
       },
       band: {
@@ -24,8 +24,8 @@ module.exports = {
       complexityBandingAgreed: {
         id: `#${party}DQFixedRecoverableCosts_complexityBandingAgreed`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQFixedRecoverableCosts_complexityBandingAgreed_Yes`,
+          no: `#${party}DQFixedRecoverableCosts_complexityBandingAgreed_No`
         }
       },
       reasons: `#${party}DQFixedRecoverableCosts_reasons`,
