@@ -17,8 +17,8 @@ module.exports = {
       unavailableDatesRequired: {
         id: `#${party}DQHearingFastClaim_unavailableDatesRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQHearingFastClaim_unavailableDatesRequired_Yes`,
+          no: `#${party}DQHearingFastClaim_unavailableDatesRequired_No`
         }
       },
       unavailableDates: {

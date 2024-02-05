@@ -6,8 +6,8 @@ module.exports = {
       id: '#specDefenceAdmittedRequired_radio',
       claimOwingAmount: '#respondToAdmittedClaimOwingAmount',
       options: {
-        yes: 'Yes',
-        no: 'No',
+        yes: '#specDefenceAdmittedRequired_Yes',
+        no: '#specDefenceAdmittedRequired_No',
       }
     }
   },
