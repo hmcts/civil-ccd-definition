@@ -143,6 +143,15 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-solicitor",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
