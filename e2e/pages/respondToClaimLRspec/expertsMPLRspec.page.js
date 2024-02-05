@@ -7,22 +7,22 @@ module.exports = {
       expertRequired: {
         id: `#${party}DQExperts_expertRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQExperts_expertRequired_Yes`,
+          no: `#${party}DQExperts_expertRequired_No`
         }
       },
       expertReportsSent: {
         id: `#${party}DQExperts_expertReportsSent`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQExperts_expertReportsSent_Yes`,
+          no: `#${party}DQExperts_expertReportsSent_No`
         }
       },
       jointExpertSuitable: {
         id: `#${party}DQExperts_jointExpertSuitable`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQExperts_jointExpertSuitable_Yes`,
+          no: `#${party}DQExperts_jointExpertSuitable_No`
         }
       },
       expertDetails: {
