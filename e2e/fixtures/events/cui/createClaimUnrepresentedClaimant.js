@@ -22,7 +22,7 @@ module.exports = {
         respondent1: {
           individualDateOfBirth: null,
           organisationName: 'Sir John Doe',
-          partyEmail: 'citizen@gmail.com',
+          partyEmail: 'civilmoneyclaimsdemo@gmail.com',
           partyPhone: '07777777777',
           primaryAddress: {
             AddressLine1: '1',
