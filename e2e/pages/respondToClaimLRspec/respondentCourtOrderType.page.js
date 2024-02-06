@@ -5,8 +5,8 @@ module.exports = {
     courtOrderType: {
       id: '#respondent1CourtOrderPayment_payingDetailsRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#respondent1CourtOrderPayment_payingDetailsRequired_Yes',
+        no: '#respondent1CourtOrderPayment_payingDetailsRequired_No'
       },
     },
   },
