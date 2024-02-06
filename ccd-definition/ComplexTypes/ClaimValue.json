@@ -14,6 +14,7 @@
     "ElementLabel": "Statement of value",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "Min": 100
+    "Min": 100,
+    "Publish": "Y"
   }
 ]
