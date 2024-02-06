@@ -27,7 +27,7 @@
     "ID": "MediationContactInformation",
     "ListElementCode": "emailAddress",
     "ElementLabel": "Email address",
-    "FieldType": "Text",
+    "FieldType": "Email",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -35,7 +35,7 @@
     "ID": "MediationContactInformation",
     "ListElementCode": "telephoneNumber",
     "ElementLabel": "Telephone number",
-    "FieldType": "Text",
+    "FieldType": "PhoneUK",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
