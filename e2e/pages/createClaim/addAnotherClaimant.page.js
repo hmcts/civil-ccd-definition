@@ -6,8 +6,8 @@ module.exports = {
     addApplicant2: {
       id: '#addApplicant2',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#addApplicant2_Yes',
+        no: '#addApplicant2_No'
       }
     },
   },
