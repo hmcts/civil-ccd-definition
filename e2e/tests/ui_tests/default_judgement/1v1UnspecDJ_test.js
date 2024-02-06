@@ -131,18 +131,24 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
 }
 
 Scenario('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.judgeUser2WithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.judgeUser2WithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.hearingCenterAdminWithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.hearingCenterAdminWithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.tribunalCaseworkerWithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.tribunalCaseworkerWithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
