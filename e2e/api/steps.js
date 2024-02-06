@@ -1431,10 +1431,6 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
-    // if(sdoR2Flag && pageId === 'ClaimsTrack') {
-    //   let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
-    //   caseData.ClaimsTrack = {...caseData.ClaimsTrack, ...sdoR2Var};
-    // }
   }
 
   if (pageId === 'Claimant') {
@@ -1622,6 +1618,10 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   }
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};
