@@ -8,7 +8,6 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "Publish": "Y",
-    "RetainHiddenValue": "Y"
+    "Publish": "Y"
   }
 ]

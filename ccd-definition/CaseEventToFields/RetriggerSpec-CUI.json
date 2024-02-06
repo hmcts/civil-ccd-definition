@@ -8,7 +8,6 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -41,7 +40,6 @@
     "PageFieldDisplayOrder": 15,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "RetainHiddenValue": "Y",
     "Publish" : "Y"
   },
   {
@@ -52,7 +50,6 @@
     "PageFieldDisplayOrder": 16,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -63,7 +60,6 @@
     "PageFieldDisplayOrder": 17,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {

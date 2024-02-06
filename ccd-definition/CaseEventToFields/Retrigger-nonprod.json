@@ -17,7 +17,6 @@
     "PageFieldDisplayOrder": 18,
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
@@ -29,7 +28,6 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y",
     "Publish": "Y"
   },
   {
