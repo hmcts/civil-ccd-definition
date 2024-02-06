@@ -5,8 +5,8 @@ module.exports = {
     solicitor1Reference: {
       id: '#specAoSRespondent2HomeAddressRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#specAoSRespondent2HomeAddressRequired_Yes',
+        no: '#specAoSRespondent2HomeAddressRequired_No'
       }
     },
 
