@@ -72,14 +72,14 @@ const data = {
   ADD_CASE_NOTE: require('../fixtures/events/addCaseNote.js'),
   REQUEST_DJ: (djRequestType, mpScenario) => createDJ.requestDJ(djRequestType, mpScenario),
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
-  CREATE_DISPOSAL: (userInput, sdoR2) => sdoTracks.createSDODisposal(userInput, sdoR2),
-  CREATE_FAST: (userInput, sdoR2) => sdoTracks.createSDOFast(userInput, sdoR2),
-  CREATE_FAST_NIHL: (userInput, sdoR2) => sdoTracks.createSDOFastNIHL(userInput, sdoR2),
-  CREATE_FAST_IN_PERSON: (userInput, sdoR2) => sdoTracks.createSDOFastInPerson(userInput, sdoR2),
-  CREATE_SMALL: (userInput, sdoR2) => sdoTracks.createSDOSmall(userInput, sdoR2),
-  CREATE_FAST_NO_SUM: (userInput, sdoR2) => sdoTracks.createSDOFastWODamageSum(userInput, sdoR2),
-  CREATE_SMALL_NO_SUM: (userInput, sdoR2) => sdoTracks.createSDOSmallWODamageSum(userInput, sdoR2),
-  UNSUITABLE_FOR_SDO: (userInput, sdoR2) => sdoTracks.createNotSuitableSDO(userInput, sdoR2),
+  CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
+  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_NIHL: (userInput) => sdoTracks.createSDOFastNIHL(userInput),
+  CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
+  CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
+  CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
+  CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
+  UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -127,14 +127,14 @@ const eventData = {
     TWO_V_ONE: (allocatedTrack) => data.DEFENDANT_RESPONSE_TWO_APPLICANTS(allocatedTrack)
   },
   sdoTracks: {
-    CREATE_DISPOSAL: (sdoR2) => data.CREATE_DISPOSAL(sdoR2),
-    CREATE_SMALL: (sdoR2) => data.CREATE_SMALL(sdoR2),
-    CREATE_FAST: (sdoR2) => data.CREATE_FAST(sdoR2),
-    CREATE_FAST_IN_PERSON: (sdoR2) => data.CREATE_FAST_IN_PERSON(sdoR2),
-    CREATE_SMALL_NO_SUM: (sdoR2) => data.CREATE_SMALL_NO_SUM(sdoR2),
-    CREATE_FAST_NO_SUM: (sdoR2) => data.CREATE_FAST_NO_SUM(sdoR2),
-    UNSUITABLE_FOR_SDO: (sdoR2) => data.UNSUITABLE_FOR_SDO(sdoR2),
-    CREATE_FAST_NIHL: (sdoR2) => data.CREATE_FAST_NIHL(sdoR2),
+    CREATE_DISPOSAL: data.CREATE_DISPOSAL(),
+    CREATE_SMALL: data.CREATE_SMALL(),
+    CREATE_FAST: data.CREATE_FAST(),
+    CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
+    CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
+    CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
   }
 };
 
@@ -987,14 +987,13 @@ module.exports = {
     } else {
       eventName = 'CREATE_SDO';
     }
-    const sdoR2 = await checkToggleEnabled(SDOR2);
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
 
-    let disposalData = eventData['sdoTracks'][response](sdoR2);
+    let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
@@ -1432,6 +1431,10 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
+    // if(sdoR2Flag && pageId === 'ClaimsTrack') {
+    //   let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    //   caseData.ClaimsTrack = {...caseData.ClaimsTrack, ...sdoR2Var};
+    // }
   }
 
   if (pageId === 'Claimant') {
