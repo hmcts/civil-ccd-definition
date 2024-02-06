@@ -316,6 +316,7 @@ module.exports = {
           }
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           drawDirectionsOrderSmallClaims: 'Yes'
         },
         SmallClaims: {
@@ -355,6 +356,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },

@@ -1352,6 +1352,7 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
@@ -1362,6 +1363,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
+  if(sdoR2Flag && pageId === 'SmallClaims') {
+    delete caseData.isSdoR2NewScreen;
+  }
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
@@ -1404,7 +1408,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
-      if (checkToggleEnabled(SDOR2) && responseBody.data.sdoR2Trial) {
+      if (sdoR2Flag && responseBody.data.sdoR2Trial) {
         clearHearingCourtLocationData(responseBody);
         delete caseData.sdoR2Trial.hearingCourtLocationList;
         delete caseData.sdoR2Trial.altHearingCourtLocationList;
@@ -1614,11 +1618,6 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   }
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
-  }
-
-  if(checkToggleEnabled(SDOR2) && pageId === 'OrderType') {
-    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
-      midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};
