@@ -195,6 +195,7 @@ module.exports = {
           }
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -268,6 +269,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -420,6 +422,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -448,6 +451,7 @@ module.exports = {
           },
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -575,6 +579,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -608,6 +613,7 @@ module.exports = {
           },
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -734,6 +740,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -766,6 +773,7 @@ module.exports = {
           drawDirectionsOrderRequired: 'No',
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           claimsTrack: 'smallClaimsTrack',
           smallClaims: [
             'smallClaimCreditHire',
@@ -826,6 +834,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -871,6 +880,7 @@ module.exports = {
           drawDirectionsOrderRequired: 'No',
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           claimsTrack: 'smallClaimsTrack',
           smallClaims: [
             'smallClaimCreditHire',
@@ -930,6 +940,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -975,6 +986,7 @@ module.exports = {
           drawDirectionsOrderRequired: 'Yes',
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           claimsTrack: 'fastTrack',
           drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
@@ -1100,6 +1112,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -1135,6 +1148,7 @@ module.exports = {
           drawDirectionsOrderRequired: 'Yes',
         },
         ClaimsTrack: {
+          isSdoR2NewScreen : 'No',
           claimsTrack: 'fastTrack',
           drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
@@ -1496,6 +1510,7 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
+          isSdoR2NewScreen : 'Yes',
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes'
         },
