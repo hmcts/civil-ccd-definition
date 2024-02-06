@@ -48,5 +48,23 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 5,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 7
   }
 ]

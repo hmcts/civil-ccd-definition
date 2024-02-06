@@ -984,7 +984,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "AccessControl": [
       {
         "UserRoles": [
