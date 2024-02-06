@@ -185,7 +185,7 @@ const calculatedClaimsTrackWSum = {
 //Disposal Hearing
 module.exports = {
 
-  createSDODisposal: () => {
+  createSDODisposal: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
@@ -195,7 +195,9 @@ module.exports = {
           }
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+              isSdoR2NewScreen: 'No'
+            } : {},
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -269,7 +271,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -308,7 +312,7 @@ module.exports = {
 
 //Small Claims WITH Sum of Damages
 
-  createSDOSmall: () => {
+  createSDOSmall: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
@@ -318,7 +322,9 @@ module.exports = {
           }
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           drawDirectionsOrderSmallClaims: 'Yes'
         },
         SmallClaims: {
@@ -358,7 +364,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -375,7 +383,7 @@ module.exports = {
   },
 
 
-  createLASDO: () => {
+  createLASDO: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
@@ -422,7 +430,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -441,7 +451,7 @@ module.exports = {
 
 //Fast Track WITH Sum of damages
 
-  createSDOFast: () => {
+  createSDOFast: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
@@ -451,7 +461,9 @@ module.exports = {
           },
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -579,7 +591,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -603,7 +617,7 @@ module.exports = {
     return data;
   },
 
-  createSDOFastInPerson: () => {
+  createSDOFastInPerson: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
@@ -613,7 +627,9 @@ module.exports = {
           },
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           drawDirectionsOrderSmallClaims: 'No'
         },
         OrderType: {
@@ -740,7 +756,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -766,14 +784,16 @@ module.exports = {
 
 //Small Claims WITHOUT Sum of Damages
 
-  createSDOSmallWODamageSum: () => {
+  createSDOSmallWODamageSum: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'No',
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           claimsTrack: 'smallClaimsTrack',
           smallClaims: [
             'smallClaimCreditHire',
@@ -834,7 +854,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -873,14 +895,16 @@ module.exports = {
 
   //Small Claims WITHOUT Sum of Damages in person
 
-  createSDOSmallWODamageSumInPerson: () => {
+  createSDOSmallWODamageSumInPerson: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'No',
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           claimsTrack: 'smallClaimsTrack',
           smallClaims: [
             'smallClaimCreditHire',
@@ -940,7 +964,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'Yes',
           setFastTrackFlag: 'No'
         },
@@ -979,14 +1005,16 @@ module.exports = {
 
 //Fast Track WITHOUT Sum of damages
 
-  createSDOFastWODamageSum: () => {
+  createSDOFastWODamageSum: (sdoR2) => {
     const data = {
       valid: {
         SDO: {
           drawDirectionsOrderRequired: 'Yes',
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           claimsTrack: 'fastTrack',
           drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
@@ -1112,7 +1140,9 @@ module.exports = {
       },
       midEventData: {
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'No'
         },
@@ -1139,7 +1169,7 @@ module.exports = {
   //Fast track for spec
   //Fast Track WITHOUT Sum of damages
 
-  createSDOFastTrackSpec: () => {
+  createSDOFastTrackSpec: (sdoR2) => {
 
     const createSDO = {};
     createSDO.valid = {
@@ -1148,7 +1178,9 @@ module.exports = {
           drawDirectionsOrderRequired: 'Yes',
         },
         ClaimsTrack: {
-          isSdoR2NewScreen : 'No',
+          ...sdoR2 ? {
+            isSdoR2NewScreen: 'No'
+          } : {},
           claimsTrack: 'fastTrack',
           drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
