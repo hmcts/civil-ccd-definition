@@ -69,15 +69,17 @@ Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
     }
     await createHearingScheduled(I);
   } else {
+    await I.login(hearingCenterAdminToBeUsed);
     if (config.runWAApiTest) {
       const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
       console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
       taskId = caseProgressionTakeCaseOfflineTask['id'];
+      await api.assignTaskToUser(hearingCenterAdminToBeUsed, taskId);
     }
-    await I.login(hearingCenterAdminToBeUsed);
-    await api.assignTaskToUser(hearingCenterAdminToBeUsed, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
-    await api.completeTaskByUser(judgeUserToBeUsed, taskId);
+    if (config.runWAApiTest) {
+      await api.completeTaskByUser(judgeUserToBeUsed, taskId);
+    }
   }
 }).retry(3);
 
