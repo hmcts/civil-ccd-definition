@@ -185,8 +185,7 @@
     "PageID": "ResponseIntention",
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\"",
-    "Publish": "Y"
+    "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
