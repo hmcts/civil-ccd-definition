@@ -8,7 +8,6 @@
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -20,7 +19,6 @@
     "FieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -32,7 +30,6 @@
     "FieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -44,7 +41,6 @@
     "FieldDisplayOrder": 15,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -56,7 +52,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -68,7 +63,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "claimant2ResponseFlag=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
@@ -80,7 +74,6 @@
     "DisplayContext": "READONLY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -93,7 +86,6 @@
     "DisplayContext": "READONLY",
     "PageID": "HearingSupport",
     "CaseEventFieldLabel": "Support with access needs",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -106,7 +98,6 @@
     "DisplayContext": "READONLY",
     "PageID": "VulnerabilityQuestions",
     "CaseEventFieldLabel": "Vulnerability Questions",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -118,7 +109,6 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "VulnerabilityQuestions",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "CaseEventFieldLabel": "Vulnerability Questions",
     "Publish": "Y"
@@ -131,7 +121,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Language",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -142,7 +131,6 @@
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "PageID": "Language",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"

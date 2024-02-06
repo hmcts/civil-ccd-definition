@@ -5,7 +5,6 @@
     "CaseFieldID": "personalInjuryType",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
-    "FieldShowCondition": "claimType=\"DO NOT SHOW IN UI\"",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "FieldDisplayOrder": 16,
