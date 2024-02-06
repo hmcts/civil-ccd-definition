@@ -34,6 +34,7 @@ const {fetchCaseDetails} = require('./apiRequest');
 
 let caseId, eventName;
 let caseData = {};
+let mpScenario = 'ONE_V_ONE';
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
@@ -337,10 +338,8 @@ module.exports = function (){
     }
 
     if (option === 'CHANGE_LOCATION') {
-      await assertSubmittedEvent('CASE_PROGRESSION', {
-        header: '',
-        body: ''
-      }, true);
+      await assertError('NotSuitableSDO', data.NOT_SUITABLE_SDO(option).invalid.TransferCase.notSuitableSdoOptions,
+        'Unable to process this request. To transfer the case to another court you need to issue a General Order.');
       await waitForFinishedBusinessProcess(caseId);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', {
@@ -533,6 +532,44 @@ const clearDataForSearchCriteria = (responseBody) => {
   return responseBody;
 };
 
+const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
+  const response = await validateErrorOrWarning(pageId, eventData);
+  const responseBody = await response.json();
+  assert.equal(response.status, 422);
+  assert.equal(responseBody.message, responseBodyMessage);
+  if (responseBody.callbackErrors != null) {
+    assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
+  }
+};
+
+const validateErrorOrWarning = async (pageId, eventData) => {
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    {...caseData, ...eventData},
+    addCaseId(pageId) ? caseId : null,
+    422
+  );
+  return response;
+};
+
+const addCaseId = (pageId) => {
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation();
+};
+const isEvidenceUpload = (pageId) => {
+  return (pageId === 'DocumentSelectionFastTrack'
+      || pageId === 'DocumentSelectionSmallClaim')
+    && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
+      || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
+};
+
+const isManageContactInformation = () => {
+  return eventName === 'MANAGE_CONTACT_INFORMATION';
+};
+
+const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
+  return (mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE'));
+};
 function checkExpected(responseBodyData, expected, prefix = '') {
   if (!(responseBodyData) && expected) {
     if (expected) {

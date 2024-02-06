@@ -61,13 +61,23 @@ Scenario('1v1 spec request for reconsideration when claim amount is greater than
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
       'JUDICIAL_REFERRAL');
-    await api_spec.createSDO(judgeUserForFastClaim, 'CREATE_FAST');
+    //await api_spec.createSDO(judgeUserForFastClaim, 'CREATE_FAST');
     //should throw 422 error as this event is not allowed for claim amount more than 1000
     await api_spec.requestForReconsideration(config.defendantSolicitorUser);
   }
 });
 
-AfterSuite(async ({api_spec_small, api_spec}) => {
+Scenario.only('1v1 spec request for reconsideration for create a new SDO ', async ({api_spec_small}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpec(api_spec_small);
+    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
+    await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
+    await api_spec_small.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
+  }
+});
+
+/*AfterSuite(async ({api_spec_small, api_spec}) => {
   await api_spec_small.cleanUp();
   await api_spec.cleanUp();
-});
+});*/

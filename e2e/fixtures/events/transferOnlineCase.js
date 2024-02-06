@@ -27,7 +27,8 @@ module.exports = {
   notSuitableSDO : (option) => {
     if (option === 'CHANGE_LOCATION') {
       return {
-        valid: changeLocation()
+        valid: changeLocation(),
+        invalid: changeLocation(),
       };
     } else {
       return {
