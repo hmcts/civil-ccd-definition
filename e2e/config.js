@@ -56,6 +56,10 @@ module.exports = {
     microservice: 'xui_webapp',
     secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
+  s2sForCMC: {
+    microservice: 'cmc',
+    secret: process.env.CMC_S2S_SECRET || 'AABBCCDDEEFFGGHH'
+  },
   applicantSolicitorUser: {
     password: defaultPassword,
     email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',

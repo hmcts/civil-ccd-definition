@@ -38,6 +38,11 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const idamHelper = require('./idamHelper');
+const restHelper = require('./restHelper');
+const totp = require('totp-generator');
+const {retry} = require('./retryHelper');
+const getPaymentAPIBaseUrl = () => 'http://payment-api-aat.service.core-compute-aat.internal';
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
@@ -166,6 +171,77 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
+  createAPBAPayment: async function(user, ccdCaseNumber, amount, feeCode, version, volume) {
+
+    const creditAccountPaymentEndPoint = '/credit-account-payments';
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const accountNumber = 'PBA0088192';
+
+    const saveBody = {
+      account_number: `${accountNumber}`,
+      amount: amount,
+      case_reference: '1253656',
+      ccd_case_number: `${ccdCaseNumber}`,
+      currency: 'GBP',
+      customer_reference: 'string',
+      description: 'string',
+      fees: [
+        {
+          calculated_amount: amount,
+          code: `${feeCode}`,
+          fee_amount: amount,
+          version: version,
+          volume: volume
+        }
+      ],
+      organisation_name: 'string',
+      service: 'CIVIL',
+      site_id: 'ABA6'
+    };
+
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl()+ creditAccountPaymentEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, saveBody, 'POST', 201);
+    }, 2, 30).then(response => response.text).catch(error => {
+      console.log(error);
+    });
+
+  },
+
+  rollbackPaymentDate: async function(user, ccdCaseNumber,expectedStatus = 204) {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl()+ rollbackPaymentDateByCCDNumberEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, '', 'PATCH', expectedStatus);
+    }, 2, 30).then(response => response.status);
+  },
+
   createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
