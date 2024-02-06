@@ -159,7 +159,6 @@
     "Label": "Defendant 1 Mediation",
     "FieldType": "MediationLiPCarm",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
+    "Searchable": "N"
   }
 ]
