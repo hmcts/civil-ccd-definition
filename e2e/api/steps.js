@@ -1431,6 +1431,10 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
+    // if(sdoR2Flag && pageId === 'ClaimsTrack') {
+    //   let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    //   caseData.ClaimsTrack = {...caseData.ClaimsTrack, ...sdoR2Var};
+    // }
   }
 
   if (pageId === 'Claimant') {
