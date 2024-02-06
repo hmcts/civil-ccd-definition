@@ -5,8 +5,8 @@ module.exports = {
     selectIncomeExpensesType: {
       id: '#respondent1DQCarerAllowanceCreditFullAdmission_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#respondent1DQCarerAllowanceCreditFullAdmission_Yes',
+        no: '#respondent1DQCarerAllowanceCreditFullAdmission_No'
       }
     }
   },

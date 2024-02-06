@@ -9,15 +9,15 @@ module.exports = {
           proceed: {
             id: '#applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2_Yes',
+              no: '#applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2_No'
             }
           },
           proceedForSecondPerson: {
             id: '#applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2_Yes',
+              no: '#applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2_No'
             }
           }
         };
@@ -27,15 +27,15 @@ module.exports = {
           proceed: {
             id: '#applicant1ProceedWithClaimMultiParty2v1',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1ProceedWithClaimMultiParty2v1_Yes',
+              no: '#applicant1ProceedWithClaimMultiParty2v1_No'
             }
           },
           proceedForSecondPerson: {
             id: '#applicant2ProceedWithClaimMultiParty2v1',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant2ProceedWithClaimMultiParty2v1_Yes',
+              no: '#applicant2ProceedWithClaimMultiParty2v1_No'
             }
           }
         };
@@ -46,8 +46,8 @@ module.exports = {
           proceed: {
             id: '#applicant1ProceedWithClaim',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1ProceedWithClaim_Yes',
+              no: '#applicant1ProceedWithClaim_No'
             }
           }
         };

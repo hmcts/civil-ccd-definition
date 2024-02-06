@@ -4,7 +4,7 @@ const config = require('./../../config');
 module.exports = {
   fields: {
     courtLocation: {
-      id: 'select[id$="courtLocation_applicantPreferredCourtLocationList"]',
+      id: '#courtLocation_applicantPreferredCourtLocationList',
       options: {
         claimantPreferredCourt: config.claimantSelectedCourt
       }
@@ -13,8 +13,8 @@ module.exports = {
     remoteHearingRequested: {
       id: '#applicant1DQRemoteHearing_remoteHearingRequested_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#applicant1DQRemoteHearing_remoteHearingRequested_Yes',
+        no: '#applicant1DQRemoteHearing_remoteHearingRequested_No'
       }
     },
     reasonForRemoteHearing: '#applicant1DQRemoteHearing_reasonForRemoteHearing'

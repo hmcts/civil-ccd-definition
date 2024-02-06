@@ -9,8 +9,8 @@ module.exports = {
     respondentSolicitor2ServiceAddressRequired: {
       id: '#respondentSolicitor2ServiceAddressRequired',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#respondentSolicitor2ServiceAddressRequired_Yes',
+        no: '#respondentSolicitor2ServiceAddressRequired_No'
       }
     },
     respondentSolicitor2ServiceAddress: '#respondentSolicitor2ServiceAddress_respondentSolicitor2ServiceAddress'
