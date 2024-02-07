@@ -1,0 +1,226 @@
+[
+  {
+    "ID": "FastTrackJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoFastTrackJudgesRecital",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackJudgesRecital",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoFastTrackJudgesRecital",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackAltDisputeResolution",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoAltDisputeResolution",
+    "ListElementCode": "includeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackAltDisputeResolution",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoAltDisputeResolution",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2VariationOfDirections",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoVariationOfDirections",
+    "ListElementCode": "includeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2VariationOfDirections",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoVariationOfDirections",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Settlement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Settlement",
+    "ListElementCode": "includeInOrderToggle",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Settlement",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Settlement",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureTxt",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "standardDisclosureDate",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionLabel",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionTxt",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "inspectionDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2DisclosureOfDocuments",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisclosureOfDocuments",
+    "ListElementCode": "requestsWillBeCompiledLabel",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "trialOnOptions",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialWindow",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "lengthList",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "lengthListOther",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingCourtLocationList",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "altHearingCourtLocationList",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "methodOfHearing",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundleOptions",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundlePartyTxt",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesLbl",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesTxt",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "OPTIONAL"
+  }
+]
