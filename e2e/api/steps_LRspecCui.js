@@ -197,7 +197,7 @@ module.exports = {
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
     if (expectedEndState) {
-      const response = await apiRequest.fetchCaseDetails(config.systemUpdate2, caseId);
+      const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
     }
   },
