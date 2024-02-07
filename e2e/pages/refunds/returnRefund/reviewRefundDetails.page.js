@@ -4,7 +4,7 @@ module.exports = {
   fields: {
     refunddetails: {
       refund_action_for_return: '#refundAction-2',
-      refund_notes_for_return : '#sendmeback'
+      refund_notes_for_return: '#sendmeback'
     }
   },
 
@@ -25,13 +25,13 @@ module.exports = {
     I.see('Date submitted');
     I.see('Notification');
 
+    I.waitForText('Some information needs correcting', 3);
     I.see('What do you want to do with this refund?');
     I.see('Approve');
     I.see('Send to middle office');
     I.see('Reject');
     I.see('There is no refund due');
     I.see('Return to caseworker');
-    I.see('Some information needs correcting');
 
     if (action === 'Return to caseworker') {
 
