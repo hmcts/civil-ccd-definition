@@ -4,15 +4,13 @@ module.exports = {
   async checkYourAnswers(changeReason = false) {
     I.wait(1);
     I.see('Payment reference');
-    if (!changeReason) {
-      I.see('Payment amount');
       I.see('£550');
       I.see('Reason for refund');
       if (!changeReason) {
+        I.see('Payment amount');
         I.see('Amended claim');
       } else {
         I.see('System/technical error');
-      }
       }
       I.see('Refund amount');
       I.see('Send via');

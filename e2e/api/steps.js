@@ -189,7 +189,7 @@ module.exports = {
     const saveBody = {
       account_number: `${accountNumber}`,
       amount: amount,
-      case_reference: '1253656',
+      case_reference: `${ccdCaseNumber}`,
       ccd_case_number: `${ccdCaseNumber}`,
       currency: 'GBP',
       customer_reference: 'string',
@@ -205,7 +205,7 @@ module.exports = {
       ],
       organisation_name: 'string',
       service: 'CIVIL',
-      site_id: 'ABA6'
+      site_id: 'AAA7'
     };
 
     return retry(() => {
