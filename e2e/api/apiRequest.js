@@ -5,8 +5,6 @@ const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const totp = require('totp-generator');
 const chai = require('chai');
-const {assert} = chai;
-
 
 const TASK_MAX_RETRIES = 20;
 const TASK_RETRY_TIMEOUT_MS = 20000;
@@ -102,7 +100,7 @@ module.exports = {
     return response.id;
   },
 
-  startEventForCitizen: async (eventName, caseId, payload, expectedEndState = null) => {
+  startEventForCitizen: async (eventName, caseId, payload) => {
     let url = getCivilServiceUrl();
     const userId = await idamHelper.userId(tokens.userAuth);
     console.log('The value of the userId from the startEventForCitizen() : '+userId);
