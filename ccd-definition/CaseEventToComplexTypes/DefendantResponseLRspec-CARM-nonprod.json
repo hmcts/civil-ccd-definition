@@ -11,7 +11,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationContactInfo",
-    "ListElementCode": "firstName",
+    "ListElementCode": "contactDetailsHintText",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -19,7 +19,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationContactInfo",
-    "ListElementCode": "lastName",
+    "ListElementCode": "firstName",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -27,7 +27,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationContactInfo",
-    "ListElementCode": "emailAddress",
+    "ListElementCode": "lastName",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -35,8 +35,16 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationContactInfo",
-    "ListElementCode": "telephoneNumber",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "ListElementCode": "telephoneNumber",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -123,7 +131,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationContactInfo",
-    "ListElementCode": "firstName",
+    "ListElementCode": "contactDetailsHintText",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -131,7 +139,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationContactInfo",
-    "ListElementCode": "lastName",
+    "ListElementCode": "firstName",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -139,7 +147,7 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationContactInfo",
-    "ListElementCode": "emailAddress",
+    "ListElementCode": "lastName",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -147,8 +155,16 @@
     "ID": "MediationContactInformation",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationContactInfo",
-    "ListElementCode": "telephoneNumber",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "ListElementCode": "telephoneNumber",
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
