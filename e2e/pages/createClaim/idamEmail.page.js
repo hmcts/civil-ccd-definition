@@ -6,8 +6,8 @@ module.exports = {
     idamEmailIsCorrect: {
       id: '#applicantSolicitor1CheckEmail_correct',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#applicantSolicitor1CheckEmail_correct_Yes',
+        no: '#applicantSolicitor1CheckEmail_correct_No'
       },
       newEmail: '#applicantSolicitor1UserDetails_email',
     }

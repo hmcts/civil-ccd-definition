@@ -12,8 +12,8 @@ module.exports = {
       litigantInFriendDifferentAddress: {
         id: `#${partyType}LitigationFriend_hasSameAddressAsLitigant`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${partyType}LitigationFriend_hasSameAddressAsLitigant_Yes`,
+          no: `#${partyType}LitigationFriend_hasSameAddressAsLitigant_No`
         }
       },
       litigantInFriendAddress: `#${partyType}LitigationFriend_primaryAddress_primaryAddress`,
