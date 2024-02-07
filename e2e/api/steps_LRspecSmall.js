@@ -705,26 +705,6 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 };
 
-const assertErrorSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
-  await apiRequest.startEvent(eventName, caseId);
-
-  const response = await apiRequest.submitEvent(eventName, caseData, caseId);
-  const responseBody = await response.json();
-  assert.equal(response.status, 422);
-  assert.equal(responseBody.state, expectedState);
-  if (hasSubmittedCallback && submittedCallbackResponseContains) {
-    assert.equal(responseBody.callback_response_status_code, 422);
-    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
-    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
-  }
-
-  if (eventName === 'NotSuitable_SDO') {
-    caseId = responseBody.id;
-    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
-    console.log('Case created: ' + caseId);
-  }
-};
-
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
