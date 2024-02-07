@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "RemissionDetails",
+    "ListElementCode": "hwfDetails",
+    "ElementLabel": "Details",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RemissionDetails",
+    "ListElementCode": "hwfFeeDetailsSummary",
+    "ElementLabel": "Summary",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HWFFeesSummaryType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

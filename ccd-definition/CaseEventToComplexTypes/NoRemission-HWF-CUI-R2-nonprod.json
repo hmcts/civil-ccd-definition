@@ -1,11 +1,20 @@
 [
   {
-    "ID": "HelpWithFees",
+    "ID": "RemissionDetails",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "helpWithFees",
-    "ListElementCode": "helpWithFeesReferenceNumber",
-    "EventElementLabel": "",
-    "FieldDisplayOrder": 4,
+    "CaseFieldID": "remissionDetails",
+    "ListElementCode": "hwfDetails",
+    "EventElementLabel": "Details",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "RemissionDetails",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "remissionDetails",
+    "ListElementCode": "hwfFeeDetailsSummary",
+    "EventElementLabel": "Summary",
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   }
 ]

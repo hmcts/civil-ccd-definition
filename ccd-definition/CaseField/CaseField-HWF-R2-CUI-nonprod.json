@@ -9,20 +9,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfFeeDetailsSummary",
-    "Label": "Summary",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "HWFFeesSummaryType",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hwfDetails",
-    "Label": "Details ",
-    "FieldType": "TextArea",
+    "ID": "remissionDetails",
+    "FieldType": "RemissionDetails",
+    "Label": "",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
-
 ]

@@ -11,19 +11,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwfFeeDetailsSummary",
+    "CaseFieldID": "remissionDetails",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
     "PageID": "NoRemissionHWF",
-    "PageDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageFieldDisplayOrder": 2
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwfDetails",
-    "PageID": "NoRemissionHWF",
-    "PageDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageFieldDisplayOrder": 3
+    "ShowSummaryChangeOption": "N"
   }
 ]
