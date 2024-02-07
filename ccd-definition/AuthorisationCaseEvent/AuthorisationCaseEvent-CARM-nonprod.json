@@ -7,8 +7,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -23,8 +22,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-systemupdate"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
