@@ -1,8 +1,9 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const RequestRefundSteps = require('./steps/requestRefundSteps');
+const apiRequest = require('../../../api/apiRequest');
 
-Feature('Request and Processing of refunds @non-prod-e2e-ft').tag('@refunds');
+Feature('Request and Processing of refunds @non-prod-e2e-ft');
 
 Scenario('Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {
@@ -11,8 +12,8 @@ Scenario('Request and Approval of a Refund after a return to Requestor by the Ap
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser);
     await api.notifyClaimDetails(config.applicantSolicitorUser);
-    await api.createAPBAPayment(config.applicantSolicitorUser, caseId, 550, 'FEE0209', 3, 1);
-    await api.rollbackPaymentDate(config.applicantSolicitorUser, caseId);
+    await apiRequest.createAPBAPayment(config.applicantSolicitorUser, caseId, 550, 'FEE0209', 3, 1);
+    await apiRequest.rollbackPaymentDate(config.applicantSolicitorUser, caseId);
     await I.navigateToServiceRequest(config.applicantSolicitorUser, caseId);
     RequestRefundSteps.performRefunds();
     await I.navigateToRefundsList(config.defendantSolicitorUser);
@@ -30,8 +31,8 @@ Scenario('Request and Rejection of a Refund after a return to Requestor by the A
     await api.amendClaimDocuments(config.applicantSolicitorUser);
     await api.notifyClaim(config.applicantSolicitorUser);
     await api.notifyClaimDetails(config.applicantSolicitorUser);
-    await api.createAPBAPayment(config.applicantSolicitorUser, caseId, 550, 'FEE0209', 3, 1);
-    await api.rollbackPaymentDate(config.applicantSolicitorUser, caseId);
+    await apiRequest.createAPBAPayment(config.applicantSolicitorUser, caseId, 550, 'FEE0209', 3, 1);
+    await apiRequest.rollbackPaymentDate(config.applicantSolicitorUser, caseId);
     await I.navigateToServiceRequest(config.applicantSolicitorUser, caseId);
     RequestRefundSteps.performRefunds();
     await I.navigateToRefundsList(config.defendantSolicitorUser);

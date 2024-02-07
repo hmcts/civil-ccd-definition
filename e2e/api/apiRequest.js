@@ -314,4 +314,74 @@ module.exports = {
           await response.json()
       );
   },
+
+  createAPBAPayment: async function(user, ccdCaseNumber, amount, feeCode, version, volume) {
+
+    const creditAccountPaymentEndPoint = '/credit-account-payments';
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const accountNumber = 'PBA0088192';
+
+    const saveBody = {
+      account_number: `${accountNumber}`,
+      amount: amount,
+      case_reference: `${ccdCaseNumber}`,
+      ccd_case_number: `${ccdCaseNumber}`,
+      currency: 'GBP',
+      customer_reference: 'string',
+      description: 'string',
+      fees: [
+        {
+          calculated_amount: amount,
+          code: `${feeCode}`,
+          fee_amount: amount,
+          version: version,
+          volume: volume
+        }
+      ],
+      organisation_name: 'string',
+      service: 'CIVIL',
+      site_id: 'AAA7'
+    };
+
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl()+ creditAccountPaymentEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, saveBody, 'POST', 201);
+    }, 2, 30).then(response => response.text).catch(error => {
+      console.log(error);
+    });
+
+  },
+
+  rollbackPaymentDate: async function(user, ccdCaseNumber,expectedStatus = 204) {
+    const userToken =  await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl()+ rollbackPaymentDateByCCDNumberEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, '', 'PATCH', expectedStatus);
+    }, 2, 30).then(response => response.status);
+  },
 };

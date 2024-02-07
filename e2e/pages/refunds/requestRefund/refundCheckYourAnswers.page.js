@@ -7,11 +7,12 @@ module.exports = {
       I.see('£550');
       I.see('Reason for refund');
       if (!changeReason) {
-        I.see('Payment amount');
         I.see('Amended claim');
+        I.see('Payment amount');
       } else {
         I.see('System/technical error');
       }
+      I.see('£550');
       I.see('Refund amount');
       I.see('Send via');
       I.see('Email');
