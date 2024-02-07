@@ -103,7 +103,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "PUBLISH": "Y"
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
