@@ -6,8 +6,8 @@ module.exports = {
     respondent2SameLegalRepresentative: {
       id: '#specRespondent2Represented',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#specRespondent2Represented_Yes',
+        no: '#specRespondent2Represented_No'
       }
     },
   },
