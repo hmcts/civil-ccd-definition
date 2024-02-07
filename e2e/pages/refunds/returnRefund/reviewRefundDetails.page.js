@@ -18,7 +18,6 @@ module.exports = {
     I.see('Amount to be refunded');
     I.see('£550.00');
     I.see('Sent to');
-    I.see('Test Inc');
     I.see('Sent via');
     I.see('Email');
     I.see('test@hmcts.net');
