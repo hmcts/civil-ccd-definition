@@ -40,13 +40,13 @@ module.exports = {
       I.click(this.fields.refunddetails.refund_action_for_return);
       I.fillField(this.fields.refunddetails.refund_notes_for_return, 'Automation Test Comments');
       I.click('Submit');
-      I.waitForText('Refund returned to caseworker', 'h1');
+      I.waitForText('Refund returned to caseworker', 3);
 
     } else if (action === 'Approve') {
 
       I.click('#refundAction-0');
       I.click('Submit');
-      I.waitForText('Refund approved', 'h1');
+      I.waitForText('Refund approved', 3);
 
     } else if (action === 'Reject') {
       I.click('#refundAction-1');
@@ -54,7 +54,7 @@ module.exports = {
       I.click('#refundRejectReason-0');
       I.click('Submit');
 
-      I.waitForText('Refund rejected', 'h1');
+      I.waitForText('Refund rejected', 3);
     }
   }
 };
