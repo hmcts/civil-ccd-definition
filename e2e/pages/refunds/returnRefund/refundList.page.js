@@ -3,7 +3,7 @@ const {I} = inject();
 module.exports = {
   fields: {
     refundlist: {
-      last_updated_tab: '.mat-sort-header-content.ng-tns-c12-1',
+      last_updated_tab: '//div[@class=\'mat-sort-header-content ng-tns-c12-1\']',
       process_refund_link: '//mat-row[1]//a[.=\'Process refund\']',
       review_refund_link : '//mat-row[1]//a[.=\'Review refund\']'
     }
