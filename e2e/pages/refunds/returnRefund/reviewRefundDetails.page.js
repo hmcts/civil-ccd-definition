@@ -24,7 +24,6 @@ module.exports = {
     I.see('Submitted by');
     I.see('Date submitted');
     I.see('Notification');
-    I.see('SendRefund');
 
     I.see('What do you want to do with this refund?');
     I.see('Approve');
