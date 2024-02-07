@@ -45,7 +45,7 @@
     "CaseFieldID": "applicant1LiPResponse",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntFields",
     "PageDisplayOrder": 5,
     "Publish": "Y"
   },
@@ -55,7 +55,7 @@
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntFields",
     "PageDisplayOrder": 6,
     "Publish": "Y"
   }
