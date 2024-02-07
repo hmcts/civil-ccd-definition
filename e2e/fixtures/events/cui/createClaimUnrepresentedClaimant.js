@@ -8,7 +8,7 @@ module.exports = {
           individualDateOfBirth: null,
           organisationName: 'Test Inc',
           partyEmail: 'civilmoneyclaimsdemo@gmail.com',
-          partyPhone: '07777777777',
+          partyPhone: '07711111111',
           primaryAddress: {
             AddressLine1: '1',
             AddressLine2: '',
@@ -89,7 +89,7 @@ module.exports = {
             PostCode: '',
             PostTown: ''
           },
-          contactPerson: ''
+          contactPerson: 'claimant contact person'
         },
         claimFee: {
           calculatedAmountInPence: '3500',
