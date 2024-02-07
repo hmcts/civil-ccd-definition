@@ -18,6 +18,7 @@ module.exports = {
       I.see('Refunds to be approved', 'h2');
     }
     I.see('Refunds returned to caseworker', 'h2');
+    I.wait(3);//Waiting till the List Records are Loaded...
     I.click(this.fields.refundlist.last_updated_tab);
     I.click(this.fields.refundlist.last_updated_tab);
     if (!reviewRefundFlag) {
