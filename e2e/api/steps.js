@@ -1885,7 +1885,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
-  delete responseBody.data['isSdoR2NewScreen'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
