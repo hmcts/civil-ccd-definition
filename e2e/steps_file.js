@@ -252,7 +252,7 @@ module.exports = function () {
 
     navigateToRefundsList: async function (user) {
       await this.login(user);
-      this.amOnPage(config.url.manageCase + 'refunds');
+      this.amOnPage(config.url.manageCase + '/refunds');
       this.waitForInvisible('.spinner-container', 60);
     },
 
