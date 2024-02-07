@@ -13,7 +13,7 @@ echo "export CCD_IDAM_REDIRECT_URL=https://ccd-case-management-web-aat.aat.platf
 echo "export CCD_DEFINITION_STORE_API_BASE_URL=https://ccd-definition-store-civil-ccd-pr-${pr}.preview.platform.hmcts.net"
 echo "export CAMUNDA_BASE_URL=https://camunda-civil-ccd-pr-${pr}.preview.platform.hmcts.net"
 echo "export HEALTH_WORK_ALLOCATION_TASK_API=https://wa-task-management-api-civil-ccd-pr-${pr}.preview.platform.hmcts.net/health"
-
+echo "export CCD_API_GATEWAY_S2S_ID=ccd_gw"
 # definition placeholders
 echo "export CCD_DEF_CASE_SERVICE_BASE_URL=http://civil-ccd-pr-${pr}-java"
 echo "export CCD_DEF_GEN_APP_SERVICE_BASE_URL=https://ga-civil-ccd-pr-${pr}.preview.platform.hmcts.net"
