@@ -10,14 +10,13 @@ module.exports = {
 
   async chooseRefunds() {
 
+    I.wait(3);
     I.waitForText('Money Claims - Claim Amount - 10000.01 up to 200000 GBP. FEE AMOUNT = 5% of claim value');
-    I.wait(1);
     I.see('Process refund','h1');
     I.see('Case reference:','h2');
     I.see('Payment reference:');
     I.see('Select fees to be refunded');
     I.see('Fee description');
-    I.see('Money Claims - Claim Amount - 10000.01 up to 200000 GBP. FEE AMOUNT = 5% of claim value');
     I.see('Fee amount');
     I.see('Total paid');
     I.see('Quantity');
