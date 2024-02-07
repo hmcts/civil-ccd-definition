@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const RequestRefundSteps = require('./steps/requestRefundSteps');
 
-Feature('Request and Processing of refunds').tag('@refunds');
+Feature('Request and Processing of refunds @non-prod-e2e-ft').tag('@refunds');
 
 Scenario('Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {

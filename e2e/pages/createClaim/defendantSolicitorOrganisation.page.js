@@ -7,8 +7,8 @@ module.exports = {
       respondentOrgRepresented: {
         id: `#respondent${respondentNumber}OrgRegistered`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#respondent${respondentNumber}OrgRegistered_Yes`,
+          no: `#respondent${respondentNumber}OrgRegistered_No`
         }
       },
       orgPolicyReference: `#respondent${respondentNumber}OrganisationPolicy_OrgPolicyReference`,

@@ -19,8 +19,8 @@ module.exports = {
       supportRequirements: {
         id: `#${party}DQHearingSupport_supportRequirements`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQHearingSupport_supportRequirements_Yes`,
+          no: `#${party}DQHearingSupport_supportRequirements_No`
         }
       },
       supportRequirementsAdditional: `#${party}DQHearingSupport_supportRequirementsAdditional`
