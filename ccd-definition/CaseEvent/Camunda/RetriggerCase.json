@@ -31,5 +31,16 @@
     "SecurityClassification": "Public",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "RETRIGGER_NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "Name": "Retrigger notify interim DJ",
+    "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
   }
 ]
