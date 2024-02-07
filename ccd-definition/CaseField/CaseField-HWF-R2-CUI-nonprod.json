@@ -1,0 +1,28 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFFeeNumber",
+    "Label": "### ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeDetailsSummary",
+    "Label": "Summary",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HWFFeesSummaryType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfDetails",
+    "Label": "Details ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+
+]
