@@ -3,11 +3,16 @@ const config = require('../../config.js');
 
 const changeLocation = () => {
   return {
-    TransferCase: {
+    NotSuitableSDO: {
+      responseClaimTrack: 'SMALL_CLAIM',
       notSuitableSdoOptions: 'CHANGE_LOCATION',
-      tocTransferCaseReason:{
-        reasonForCaseTransferJudgeTxt: 'Reason for transferring case'
-      }
+      reasonNotSuitableSDO:{
+        input: 'Other reason for not suitable SDO'
+      },
+      tocTransferCaseReason: {
+        reasonForCaseTransferJudgeTxt: 'Test'
+      },
+      featureToggleWA: 'Prod'
     }
   };
 };
@@ -27,8 +32,7 @@ module.exports = {
   notSuitableSDO : (option) => {
     if (option === 'CHANGE_LOCATION') {
       return {
-        valid: changeLocation(),
-        invalid: changeLocation(),
+        valid: changeLocation()
       };
     } else {
       return {

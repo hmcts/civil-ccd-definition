@@ -34,7 +34,6 @@ const {fetchCaseDetails} = require('./apiRequest');
 
 let caseId, eventName;
 let caseData = {};
-let mpScenario = 'ONE_V_ONE';
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
@@ -48,7 +47,7 @@ const data = {
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
-  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection) => judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
 };
@@ -76,420 +75,438 @@ const eventData = {
     },
     ONE_V_TWO_DIF_SOL: {
       FULL_DEFENCE1: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
-      FULL_DEFENCE1_PBAv3:  data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
+      FULL_DEFENCE1_PBAv3: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
       FULL_DEFENCE2: data.DEFENDANT_RESPONSE2_1V2_2ND_DEF('FULL_DEFENCE'),
-      FULL_DEFENCE2_PBAv3:  data.DEFENDANT_RESPONSE2_1V2_2ND_DEF('FULL_DEFENCE')
+      FULL_DEFENCE2_PBAv3: data.DEFENDANT_RESPONSE2_1V2_2ND_DEF('FULL_DEFENCE')
     }
   }
 };
 
-module.exports = function (){
+module.exports = function () {
   return actor({
 
-  /**
-   * Creates a claim
-   *
-   * @param user user to create the claim
-   * @param scenario
-   * @param hearings
-   * @return {Promise<void>}
-   */
-  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false) => {
+    /**
+     * Creates a claim
+     *
+     * @param user user to create the claim
+     * @param scenario
+     * @param hearings
+     * @return {Promise<void>}
+     */
+    createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', hearings = false) => {
 
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {};
+      eventName = 'CREATE_CLAIM_SPEC';
+      caseId = null;
+      caseData = {};
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    let createClaimData  = {};
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+      let createClaimData = {};
 
-    if (!hearings) {
-      createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
-    } else {
-      createClaimData = data.CREATE_CLAIM_HEARINGS(scenario, pbaV3);
-    }
-    //==============================================================
+      if (!hearings) {
+        createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+      } else {
+        createClaimData = data.CREATE_CLAIM_HEARINGS(scenario, pbaV3);
+      }
+      //==============================================================
 
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    for (let pageId of Object.keys(createClaimData.userInput)) {
-      await assertValidData(createClaimData, pageId);
-    }
+      await apiRequest.setupTokens(user);
+      await apiRequest.startEvent(eventName);
+      for (let pageId of Object.keys(createClaimData.userInput)) {
+        await assertValidData(createClaimData, pageId);
+      }
 
-    await assertSubmittedEvent('PENDING_CASE_ISSUED');
+      await assertSubmittedEvent('PENDING_CASE_ISSUED');
 
-    await waitForFinishedBusinessProcess(caseId);
+      await waitForFinishedBusinessProcess(caseId);
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
+      console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+      if (pbaV3) {
+        await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+          claimData.serviceUpdateDto(caseId, 'paid'));
+        console.log('Service request update sent to callback URL');
+      }
 
-    await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-    if (scenario === 'ONE_V_TWO') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-    }
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+      if (scenario === 'ONE_V_TWO') {
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+      }
 
-    await waitForFinishedBusinessProcess(caseId);
-    if(await checkCaseFlagsEnabled()) {
-      await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
-    }
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
+      await waitForFinishedBusinessProcess(caseId);
+      if (await checkCaseFlagsEnabled()) {
+        await assertFlagsInitialisedAfterCreateClaim(config.adminUser, caseId);
+      }
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'CASE_ISSUED');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'CASE_ISSUED');
 
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
-  },
+      //field is deleted in about to submit callback
+      deleteCaseFields('applicantSolicitor1CheckEmail');
+    },
 
-  informAgreedExtensionDate: async (user) => {
-    eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
-    await apiRequest.setupTokens(user);
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    informAgreedExtensionDate: async (user) => {
+      eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
+      await apiRequest.setupTokens(user);
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
-    informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
+      let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT' : 'CREATE_CLAIM_SPEC');
+      informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
-    for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
-      await assertValidData(informAgreedExtensionData, pageId);
-    }
+      for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
+        await assertValidData(informAgreedExtensionData, pageId);
+      }
 
-    await waitForFinishedBusinessProcess(caseId);
-    await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-  },
+      await waitForFinishedBusinessProcess(caseId);
+      await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      await assertCorrectEventsAreAvailableToUser(config.adminUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    },
 
-  cleanUp: async () => {
-    await unAssignAllUsers();
-  },
+    cleanUp: async () => {
+      await unAssignAllUsers();
+    },
 
-  retrieveTaskDetails: async (user, caseNumber, taskId) => {
-    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
-  },
+    retrieveTaskDetails: async (user, caseNumber, taskId) => {
+      return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+    },
 
-  assignTaskToUser: async (user, taskId) => {
-    return apiRequest.taskActionByUser(user, taskId, 'claim');
-  },
+    assignTaskToUser: async (user, taskId) => {
+      return apiRequest.taskActionByUser(user, taskId, 'claim');
+    },
 
-  completeTaskByUser: async (user, taskId) => {
-    return apiRequest.taskActionByUser(user, taskId, 'complete');
-  },
+    completeTaskByUser: async (user, taskId) => {
+      return apiRequest.taskActionByUser(user, taskId, 'complete');
+    },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false) => {
-    await apiRequest.setupTokens(user);
+    defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false) => {
+      await apiRequest.setupTokens(user);
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if(pbaV3){
-      response = response+'_PBAv3';
-    }
+      const pbaV3 = await checkToggleEnabled(PBAv3);
+      if (pbaV3) {
+        response = response + '_PBAv3';
+      }
 
-    eventName = 'DEFENDANT_RESPONSE_SPEC';
+      eventName = 'DEFENDANT_RESPONSE_SPEC';
 
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
 
-    let defendantResponseData;
+      let defendantResponseData;
 
-    if (!judicialReferral) {
-      defendantResponseData = eventData['defendantResponses'][scenario][response];
-    } else {
-      if (scenario === 'ONE_V_TWO_DIF_SOL') {
+      if (!judicialReferral) {
         defendantResponseData = eventData['defendantResponses'][scenario][response];
       } else {
-        defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
+        if (scenario === 'ONE_V_TWO_DIF_SOL') {
+          defendantResponseData = eventData['defendantResponses'][scenario][response];
+        } else {
+          defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
+        }
       }
-    }
 
-    caseData = returnedCaseData;
+      caseData = returnedCaseData;
 
-    caseData = await addFlagsToFixture(caseData);
+      caseData = await addFlagsToFixture(caseData);
 
-    for (let pageId of Object.keys(defendantResponseData.userInput)) {
-      await assertValidData(defendantResponseData, pageId);
-    }
+      for (let pageId of Object.keys(defendantResponseData.userInput)) {
+        await assertValidData(defendantResponseData, pageId);
+      }
 
-    if(scenario === 'ONE_V_ONE')
-      await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    else if(response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
-      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    else if(scenario === 'ONE_V_TWO_DIF_SOL') {
-      if(response === 'FULL_DEFENCE1' || response === 'FULL_DEFENCE1_PBAv3')
-        await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-      else if(response === 'FULL_DEFENCE2' || response === 'FULL_DEFENCE2_PBAv3')
+      if (scenario === 'ONE_V_ONE')
         await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
-    }
+      else if (response === 'FULL_ADMISSION' && scenario === 'ONE_V_TWO')
+        await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+      else if (scenario === 'ONE_V_TWO_DIF_SOL') {
+        if (response === 'FULL_DEFENCE1' || response === 'FULL_DEFENCE1_PBAv3')
+          await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+        else if (response === 'FULL_DEFENCE2' || response === 'FULL_DEFENCE2_PBAv3')
+          await assertSubmittedEvent('AWAITING_APPLICANT_INTENTION');
+      }
 
-    await waitForFinishedBusinessProcess(caseId);
-
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, response);
-    }
-
-    deleteCaseFields('respondent1Copy');
-  },
-
-  claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes', carmEnabled = false) => {
-    // workaround
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
-    deleteCaseFields('respondentResponseIsSame');
-
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-
-    await apiRequest.setupTokens(user);
-
-    eventName = 'CLAIMANT_RESPONSE_SPEC';
-    caseData = await apiRequest.startEvent(eventName, caseId);
-
-    caseData = await addFlagsToFixture(caseData);
-
-    let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation);
-
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidData(claimantResponseData, pageId);
-    }
-
-    let expectedEndState;
-
-    carmEnabled ? expectedEndState = 'IN_MEDIATION' : judicialReferral ? expectedEndState = 'JUDICIAL_REFERRAL' : null;
-
-    if (expectedEndState) {
-      await assertSubmittedEvent(expectedEndState);
-    }
-
-    await waitForFinishedBusinessProcess(caseId);
-
-    const caseFlagsEnabled = await checkCaseFlagsEnabled();
-    if (caseFlagsEnabled) {
-      await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
-    }
-  },
-
-  mediationUnsuccessful: async (user, carmEnabled = false) => {
-    eventName = 'MEDIATION_UNSUCCESSFUL';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
-    await apiRequest.setupTokens(user);
-    await assertSubmittedEvent('JUDICIAL_REFERRAL');
-    await waitForFinishedBusinessProcess(caseId);
-    console.log('End of unsuccessful mediation');
-  },
-
-  uploadMediationDocuments: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    let eventData;
-    if (user === config.applicantSolicitorUser) {
-      eventData = mediationDocuments.uploadMediationDocuments('claimant');
-    } else {
-      eventData = mediationDocuments.uploadMediationDocuments('defendant');
-    }
-
-    eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
-    caseData = await apiRequest.startEvent(eventName, caseId);
-
-    await validateEventPages(eventData);
-
-    await assertSubmittedEvent('JUDICIAL_REFERRAL');
-  },
-
-  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
-    console.log('SDO for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-
-    if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
-    } else {
-      eventName = 'CREATE_SDO';
-    }
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    let disposalData = data.CREATE_SDO();
-
-    for (let pageId of Object.keys(disposalData.valid)) {
-      await assertValidData(disposalData, pageId);
-    }
-
-    if (response === 'UNSUITABLE_FOR_SDO') {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
-    } else {
-      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
-    }
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  notSuitableSDO: async (user, option) => {
-    console.log(`case in CASE PROGRESSION  ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'NotSuitable_SDO';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    let disposalData = data.NOT_SUITABLE_SDO(option);
-
-    for (let pageId of Object.keys(disposalData.valid)) {
-      await assertValidData(disposalData, pageId);
-    }
-
-    if (option === 'CHANGE_LOCATION') {
-      await assertError('NotSuitableSDO', data.NOT_SUITABLE_SDO(option).invalid.TransferCase.notSuitableSdoOptions,
-        'Unable to process this request. To transfer the case to another court you need to issue a General Order.');
       await waitForFinishedBusinessProcess(caseId);
-    } else {
+
+      const caseFlagsEnabled = await checkCaseFlagsEnabled();
+      if (caseFlagsEnabled) {
+        await assertCaseFlags(caseId, user, response);
+      }
+
+      deleteCaseFields('respondent1Copy');
+    },
+
+    claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes', carmEnabled = false) => {
+      // workaround
+      deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+      deleteCaseFields('respondentResponseIsSame');
+
+      await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+
+      await apiRequest.setupTokens(user);
+
+      eventName = 'CLAIMANT_RESPONSE_SPEC';
+      caseData = await apiRequest.startEvent(eventName, caseId);
+
+      caseData = await addFlagsToFixture(caseData);
+
+      let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation);
+
+      for (let pageId of Object.keys(claimantResponseData.userInput)) {
+        await assertValidData(claimantResponseData, pageId);
+      }
+
+      let expectedEndState;
+
+      carmEnabled ? expectedEndState = 'IN_MEDIATION' : judicialReferral ? expectedEndState = 'JUDICIAL_REFERRAL' : null;
+
+      if (expectedEndState) {
+        await assertSubmittedEvent(expectedEndState);
+      }
+
+      await waitForFinishedBusinessProcess(caseId);
+
+      const caseFlagsEnabled = await checkCaseFlagsEnabled();
+      if (caseFlagsEnabled) {
+        await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
+      }
+    },
+
+    mediationUnsuccessful: async (user, carmEnabled = false) => {
+      eventName = 'MEDIATION_UNSUCCESSFUL';
+
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+      await apiRequest.setupTokens(user);
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+      await waitForFinishedBusinessProcess(caseId);
+      console.log('End of unsuccessful mediation');
+    },
+
+    uploadMediationDocuments: async (user) => {
+      await apiRequest.setupTokens(user);
+
+      let eventData;
+      if (user === config.applicantSolicitorUser) {
+        eventData = mediationDocuments.uploadMediationDocuments('claimant');
+      } else {
+        eventData = mediationDocuments.uploadMediationDocuments('defendant');
+      }
+
+      eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
+      caseData = await apiRequest.startEvent(eventName, caseId);
+
+      await validateEventPages(eventData);
+
+      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    },
+
+    createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+      console.log('SDO for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+
+      if (response === 'UNSUITABLE_FOR_SDO') {
+        eventName = 'NotSuitable_SDO';
+      } else {
+        eventName = 'CREATE_SDO';
+      }
+
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      let disposalData = data.CREATE_SDO();
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+
+      if (response === 'UNSUITABLE_FOR_SDO') {
+        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+      }
+
+      await waitForFinishedBusinessProcess(caseId);
+    },
+
+    notSuitableSDO: async (user, option) => {
+      console.log(`case in CASE PROGRESSION  ${caseId}`);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'NotSuitable_SDO';
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.NOT_SUITABLE_SDO(option);
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+
+      if (option === 'CHANGE_LOCATION') {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: '',
+          body: ''
+        }, true);
+        await waitForFinishedBusinessProcess(caseId);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: '',
+          body: ''
+        }, true);
+        await waitForFinishedBusinessProcess(caseId);
+        const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+        assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+      }
+    },
+
+    notSuitableSdoChangeLocation: async (user, option) => {
+      console.log(`case in CASE PROGRESSION  ${caseId}`);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'NotSuitable_SDO';
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.NOT_SUITABLE_SDO(option);
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertNotValidData(disposalData, pageId);
+      }
+
+    },
+
+    createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
+      console.log('SDO for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+
+      if (response === 'UNSUITABLE_FOR_SDO') {
+        eventName = 'NotSuitable_SDO';
+      } else {
+        eventName = 'CREATE_SDO';
+      }
+
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      let disposalData = data.LA_CREATE_SDO();
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertValidData(disposalData, pageId);
+      }
+
+      if (response === 'UNSUITABLE_FOR_SDO') {
+        await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+      }
+
+      await waitForFinishedBusinessProcess(caseId);
+    },
+
+    scheduleHearing: async (user, allocatedTrack) => {
+      console.log('Hearing Scheduled for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'HEARING_SCHEDULED';
+
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      delete caseData['SearchCriteria'];
+
+      let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+
+      for (let pageId of Object.keys(scheduleData.userInput)) {
+        await assertValidData(scheduleData, pageId);
+      }
+
+      await assertSubmittedEvent('HEARING_READINESS', null, false);
+      await waitForFinishedBusinessProcess(caseId);
+    },
+
+    createCaseFlags: async (user) => {
+      if (!(await checkCaseFlagsEnabled())) {
+        return;
+      }
+
+      eventName = 'CREATE_CASE_FLAGS';
+
+      await apiRequest.setupTokens(user);
+
+      await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+      const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+      const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+      for (const [index, value] of caseFlagLocations.entries()) {
+        await addAndAssertCaseFlag(value, partyFlags[index], caseId);
+      }
+    },
+
+    manageContactInformation: async (user) => {
+      if (!(await checkManageContactInformationEnabled())) {
+        return;
+      }
+      eventName = 'MANAGE_CONTACT_INFORMATION';
+      await apiRequest.setupTokens(user);
+      caseData = await apiRequest.startEvent(eventName, caseId);
+      let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
+      await updateExpert(caseId, manageContactInformationData);
+    },
+
+    manageCaseFlags: async (user) => {
+      if (!(await checkCaseFlagsEnabled())) {
+        return;
+      }
+
+      eventName = 'MANAGE_CASE_FLAGS';
+
+      await apiRequest.setupTokens(user);
+
+      await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
+
+      const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
+      const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
+
+      for (const [index, value] of caseFlagLocations.entries()) {
+        await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
+      }
+    },
+
+    requestForReconsideration: async (user, userType) => {
+      console.log('RequestForReconsideration for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+      eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.REQUEST_FOR_RECONSIDERATION(userType);
+      for (let pageId of Object.keys(disposalData.userInput)) {
+        await assertValidData(disposalData, pageId);
+      }
       await assertSubmittedEvent('CASE_PROGRESSION', {
-        header: '',
+        header: '# Your request has been submitted',
         body: ''
       }, true);
+
       await waitForFinishedBusinessProcess(caseId);
-      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
-      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
-    }
-  },
+    },
 
-  createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
-    console.log('SDO for case id ' + caseId);
-    await apiRequest.setupTokens(user);
+    judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
+      console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+      eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
 
-    if (response === 'UNSUITABLE_FOR_SDO') {
-      eventName = 'NotSuitable_SDO';
-    } else {
-      eventName = 'CREATE_SDO';
-    }
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption);
+      for (let pageId of Object.keys(disposalData.userInput)) {
+        await assertValidData(disposalData, pageId);
+      }
+      await assertSubmittedEvent('CASE_PROGRESSION', {
+        header: '# Response has been submitted',
+        body: ''
+      }, true);
 
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    let disposalData = data.LA_CREATE_SDO();
+      await waitForFinishedBusinessProcess(caseId);
+    },
 
-    for (let pageId of Object.keys(disposalData.valid)) {
-      await assertValidData(disposalData, pageId);
-    }
-
-    if (response === 'UNSUITABLE_FOR_SDO') {
-      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
-    } else {
-      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
-    }
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  scheduleHearing: async (user, allocatedTrack) => {
-    console.log('Hearing Scheduled for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'HEARING_SCHEDULED';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    delete caseData['SearchCriteria'];
-
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
-
-    for (let pageId of Object.keys(scheduleData.userInput)) {
-      await assertValidData(scheduleData, pageId);
-    }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  createCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
-
-    eventName = 'CREATE_CASE_FLAGS';
-
-    await apiRequest.setupTokens(user);
-
-    await addAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
-
-    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
-    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
-
-    for (const [index, value] of caseFlagLocations.entries()) {
-      await addAndAssertCaseFlag(value, partyFlags[index], caseId);
-    }
-  },
-
-  manageContactInformation : async (user) => {
-    if(!(await checkManageContactInformationEnabled())) {
-      return;
-    }
-    eventName = 'MANAGE_CONTACT_INFORMATION';
-    await apiRequest.setupTokens(user);
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    let manageContactInformationData = data.MANAGE_DEFENDANT1_EXPERT_INFORMATION(caseData);
-    await updateExpert(caseId, manageContactInformationData);
-  },
-
-  manageCaseFlags: async (user) => {
-    if(!(await checkCaseFlagsEnabled())) {
-      return;
-    }
-
-    eventName = 'MANAGE_CASE_FLAGS';
-
-    await apiRequest.setupTokens(user);
-
-    await updateAndAssertCaseFlag('caseFlags', CASE_FLAGS.complexCase, caseId);
-
-    const partyFlags = [...getPartyFlags(), ...getPartyFlags()];
-    const caseFlagLocations = await getDefinedCaseFlagLocations(user, caseId);
-
-    for(const [index, value] of caseFlagLocations.entries()) {
-      await updateAndAssertCaseFlag(value, partyFlags[index], caseId);
-    }
-  },
-
-  requestForReconsideration: async (user, userType) => {
-    console.log('RequestForReconsideration for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-    eventName = 'REQUEST_FOR_RECONSIDERATION';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    let disposalData = data.REQUEST_FOR_RECONSIDERATION(userType);
-    for (let pageId of Object.keys(disposalData.userInput)) {
-      await assertValidData(disposalData, pageId);
-    }
-    await assertSubmittedEvent('CASE_PROGRESSION', {
-      header: '# Your request has been submitted',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
-    console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
-    await apiRequest.setupTokens(user);
-    eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
-
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    let disposalData = data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption);
-    for (let pageId of Object.keys(disposalData.userInput)) {
-      await assertValidData(disposalData, pageId);
-    }
-    await assertSubmittedEvent('CASE_PROGRESSION', {
-      header: '# Response has been submitted',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  getCaseId: async () => {
-    console.log(`case created: ${caseId}`);
-    return caseId;
-  },
+    getCaseId: async () => {
+      console.log(`case created: ${caseId}`);
+      return caseId;
+    },
   });
 };
 
@@ -499,7 +516,7 @@ const assertValidData = async (data, pageId) => {
 
   let userData;
 
-  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO') {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];
@@ -527,49 +544,36 @@ const assertValidData = async (data, pageId) => {
   caseData = update(caseData, responseBody.data);
 };
 
+const assertNotValidData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  let userData;
+
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId,
+    422
+  );
+  let responseBody = await response.json();
+  if (responseBody.callbackErrors != null) {
+    assert.equal(responseBody.callbackErrors[0], 'Unable to process this request. To transfer the case to another court you need to issue a General Order.');
+  }
+
+};
+
 const clearDataForSearchCriteria = (responseBody) => {
   delete responseBody.data['SearchCriteria'];
   return responseBody;
 };
 
-const assertError = async (pageId, eventData, expectedErrorMessage, responseBodyMessage = 'Unable to proceed because there are one or more callback Errors or Warnings') => {
-  const response = await validateErrorOrWarning(pageId, eventData);
-  const responseBody = await response.json();
-  assert.equal(response.status, 422);
-  assert.equal(responseBody.message, responseBodyMessage);
-  if (responseBody.callbackErrors != null) {
-    assert.equal(responseBody.callbackErrors[0], expectedErrorMessage);
-  }
-};
-
-const validateErrorOrWarning = async (pageId, eventData) => {
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    {...caseData, ...eventData},
-    addCaseId(pageId) ? caseId : null,
-    422
-  );
-  return response;
-};
-
-const addCaseId = (pageId) => {
-  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation();
-};
-const isEvidenceUpload = (pageId) => {
-  return (pageId === 'DocumentSelectionFastTrack'
-      || pageId === 'DocumentSelectionSmallClaim')
-    && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
-      || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
-};
-
-const isManageContactInformation = () => {
-  return eventName === 'MANAGE_CONTACT_INFORMATION';
-};
-
-const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
-  return (mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE'));
-};
 function checkExpected(responseBodyData, expected, prefix = '') {
   if (!(responseBodyData) && expected) {
     if (expected) {
@@ -660,7 +664,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.userInput)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections' || pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
@@ -695,6 +699,26 @@ const assertSubmittedEvent = async (expectedState, submittedCallbackResponseCont
   }
 
   if (eventName === 'CREATE_CLAIM_SPEC') {
+    caseId = responseBody.id;
+    await addUserCaseMapping(caseId, config.applicantSolicitorUser);
+    console.log('Case created: ' + caseId);
+  }
+};
+
+const assertErrorSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+  await apiRequest.startEvent(eventName, caseId);
+
+  const response = await apiRequest.submitEvent(eventName, caseData, caseId);
+  const responseBody = await response.json();
+  assert.equal(response.status, 422);
+  assert.equal(responseBody.state, expectedState);
+  if (hasSubmittedCallback && submittedCallbackResponseContains) {
+    assert.equal(responseBody.callback_response_status_code, 422);
+    assert.include(responseBody.after_submit_callback_response.confirmation_header, submittedCallbackResponseContains.header);
+    assert.include(responseBody.after_submit_callback_response.confirmation_body, submittedCallbackResponseContains.body);
+  }
+
+  if (eventName === 'NotSuitable_SDO') {
     caseId = responseBody.id;
     await addUserCaseMapping(caseId, config.applicantSolicitorUser);
     console.log('Case created: ' + caseId);
