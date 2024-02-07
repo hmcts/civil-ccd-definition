@@ -19,7 +19,7 @@
     "PageDisplayOrder": 2,
     "Publish": "Y"
   },
-   {
+  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "claimantBilingualLanguagePreference",
@@ -27,6 +27,36 @@
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 3,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 4,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 5,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 6,
     "Publish": "Y"
   }
 ]
