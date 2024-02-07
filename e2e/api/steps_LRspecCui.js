@@ -196,6 +196,10 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
+    if (expectedEndState) {
+      const response = await apiRequest.fetchCaseDetails(config.systemUpdate2, caseId);
+      assert.equal(response.state, expectedEndState);
+    }
   },
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {

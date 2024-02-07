@@ -115,10 +115,6 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
-
-    if (expectedEndState) {
-      assert.equal(response.state, expectedEndState);
-    }
   },
 
   startEventNotAllowed: async (eventName, caseId) => {
