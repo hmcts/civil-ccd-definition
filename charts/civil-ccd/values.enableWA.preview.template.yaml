@@ -70,12 +70,12 @@ wa:
         POSTGRES_REPLICA_PORT: 5432
         POSTGRES_NAME: "cft_task_db"
         POSTGRES_REPLICA_NAME: "cft_task_db_replica"
-        POSTGRES_USERNAME: ${POSTGRES_USER}
+        POSTGRES_USERNAME: postgres
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-        REPLICATION_USERNAME: ${POSTGRES_USER}
+        REPLICATION_USERNAME: postgres
         REPLICATION_PASSWORD: ${POSTGRES_PASSWORD}
         SPRING_PROFILES_ACTIVE: "preview"
-        DB_READER_USERNAME: ${POSTGRES_USER}
+        DB_READER_USERNAME: postgres
       secrets:
         POSTGRES_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
