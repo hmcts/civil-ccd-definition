@@ -1,14 +1,1 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwFeesDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  }
-]
+[]
