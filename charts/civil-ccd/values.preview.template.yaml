@@ -76,6 +76,8 @@ civil-service:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       auth:
+        username: hmcts
+        password: hmcts
         database: cft_task_db
       primary:
         persistence:

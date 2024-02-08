@@ -75,7 +75,7 @@ wa:
         REPLICATION_USERNAME: ${POSTGRES_USER}
         REPLICATION_PASSWORD: ${POSTGRES_PASSWORD}
         SPRING_PROFILES_ACTIVE: "preview,replica"
-        DB_READER_USERNAME: "{{ .Values.postgresql.auth.username}}"
+        DB_READER_USERNAME: ${POSTGRES_USER}
       secrets:
         POSTGRES_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
