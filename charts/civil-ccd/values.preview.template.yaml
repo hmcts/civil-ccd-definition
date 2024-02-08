@@ -79,6 +79,7 @@ civil-service:
         username: hmcts
         password: hmcts
         database: cft_task_db
+        postgresPassword: hmcts
       primary:
         persistence:
           enabled: false
@@ -90,7 +91,10 @@ civil-service:
             cpu: 25m
         initdb:
           user: postgres
+          password: hmcts
           scripts:
+            update_role.sql: |
+              ALTER ROLE hmcts WITH SUPERUSER;
             init_civil.sql: |
               CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
@@ -98,7 +102,6 @@ civil-service:
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             init_wa.sql: |  
-              ALTER ROLE hmcts WITH SUPERUSER;
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
