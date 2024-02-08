@@ -77,9 +77,6 @@ civil-service:
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       auth:
         database: cft_task_db
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASSWORD}
-        postgresPassword: ${POSTGRES_PASSWORD}
       primary:
         persistence:
           enabled: false
