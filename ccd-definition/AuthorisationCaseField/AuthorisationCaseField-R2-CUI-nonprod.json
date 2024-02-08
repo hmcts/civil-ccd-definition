@@ -2542,6 +2542,12 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
       }
     ]
   },
