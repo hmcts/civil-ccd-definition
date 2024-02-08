@@ -8,8 +8,8 @@ module.exports = {
       childApplicant: {
         id: `#${party}LitigationFriendRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}LitigationFriendRequired_Yes`,
+          no: `#${party}LitigationFriendRequired_No`
         }
       },
     };

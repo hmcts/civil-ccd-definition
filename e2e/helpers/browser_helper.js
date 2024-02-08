@@ -4,11 +4,11 @@ const {runAccessibility} = require('./accessibility/runner');
 module.exports = class BrowserHelpers extends Helper {
 
   getHelper() {
-    return this.helpers['Puppeteer'] || this.helpers['WebDriver'];
+    return this.helpers['Playwright'] || this.helpers['WebDriver'];
   }
 
-  isPuppeteer(){
-    return this.helpers['Puppeteer'];
+  isPlaywirght(){
+    return this.helpers['Playwright'];
   }
 
   /**
@@ -39,7 +39,7 @@ module.exports = class BrowserHelpers extends Helper {
     const helper = this.getHelper();
     const waitTimeout = sec ? sec * 1000 : helper.options.waitForTimeout;
     try {
-      if (this.isPuppeteer()) {
+      if (this.isPlaywirght()) {
         const context = await helper._getContext();
         return await context.waitForSelector(locator, {timeout: waitTimeout});
       } else {
