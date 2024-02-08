@@ -1,64 +1,64 @@
 [
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "isMediationContactNameCorrect",
-    "ElementLabel": " ",
+    "ElementLabel": "Is the mediation contact name correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "alternativeMediationContactPerson",
-    "ElementLabel": " ",
+    "ElementLabel": "Alternative mediation contact name",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "isMediationEmailCorrect",
-    "ElementLabel": " ",
+    "ElementLabel": "Is the mediation email correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "alternativeMediationEmail",
-    "ElementLabel": " ",
+    "ElementLabel": "Alternative mediation email",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "isMediationPhoneCorrect",
-    "ElementLabel": " ",
+    "ElementLabel": "Is the mediation phone number correct?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "alternativeMediationTelephone",
-    "ElementLabel": " ",
+    "ElementLabel": "Alternative mediation phone number",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "hasUnavailabilityNextThreeMonths",
-    "ElementLabel": " ",
+    "ElementLabel": "Are there any unavailable dates for mediation in the next three months?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "MediationLiP",
+    "ID": "MediationLiPCarm",
     "ListElementCode": "unavailableDatesForMediation",
-    "ElementLabel": " ",
+    "ElementLabel": "Unavailable dates for mediation",
     "FieldType": "Collection",
     "FieldTypeParameter": "UnavailableDate",
     "SecurityClassification": "Public",
