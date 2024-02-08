@@ -76,10 +76,10 @@ civil-service:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       auth:
-        username: hmcts
-        password: hmcts
+        username: ${POSTGRES_USERNAME}
+        password: ${POSTGRES_PASSWORD}
         database: cft_task_db
-        postgresPassword: hmcts
+        postgresPassword: ${POSTGRES_PASSWORD}
       primary:
         persistence:
           enabled: false
@@ -91,10 +91,9 @@ civil-service:
             cpu: 25m
         initdb:
           user: postgres
-          password: hmcts
+          password: ${POSTGRES_PASSWORD}
           scripts:
             00_grant_superuser_role.sql: |
-              echo "Hi, I'm a testing role change by @dharmendrak"
               ALTER ROLE hmcts WITH SUPERUSER;
             01_init_civil.sql: |
               CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
