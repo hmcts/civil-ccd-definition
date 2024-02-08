@@ -74,6 +74,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_NIHL: (userInput) => sdoTracks.createSDOFastNIHL(userInput),
   CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
@@ -132,7 +133,8 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
   }
 };
 
@@ -1350,6 +1352,7 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
@@ -1360,6 +1363,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
+  if(sdoR2Flag && pageId === 'SmallClaims') {
+    delete caseData.isSdoR2NewScreen;
+  }
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
@@ -1398,10 +1404,15 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
-    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+    if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
+      if (sdoR2Flag && responseBody.data.sdoR2Trial) {
+        clearHearingCourtLocationData(responseBody);
+        delete caseData.sdoR2Trial.hearingCourtLocationList;
+        delete caseData.sdoR2Trial.altHearingCourtLocationList;
+      }
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1607,6 +1618,10 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   }
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   if(checkToggleEnabled(SDOR2) && pageId === 'OrderType') {
@@ -1925,5 +1940,11 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
+};
+
+const clearHearingCourtLocationData = (responseBody) => {
+  delete responseBody.data.sdoR2Trial['altHearingCourtLocationList'];
+  delete responseBody.data.sdoR2Trial['hearingCourtLocationList'];
   return responseBody;
 };
