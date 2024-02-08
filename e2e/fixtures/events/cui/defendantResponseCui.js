@@ -1,3 +1,4 @@
+const {date} = require('../../../api/dataHelper');
 module.exports = {
   createDefendantResponse: (totalClaimAmount, carmEnabled = false) => {
     const defendantResponseData = {
