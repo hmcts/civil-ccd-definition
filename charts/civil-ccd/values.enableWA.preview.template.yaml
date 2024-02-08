@@ -64,9 +64,18 @@ wa:
     java:
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
-        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
-        SPRING_PROFILES_ACTIVE: "preview"
+        POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+        POSTGRES_REPLICA_HOST: "{{ .Release.Name }}-postgresql"
+        POSTGRES_REPLICA_PORT: 5432
+        POSTGRES_NAME: "cft_task_db"
+        POSTGRES_REPLICA_NAME: "cft_task_db_replica"
+        POSTGRES_USERNAME: ${POSTGRES_USER}
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        REPLICATION_USERNAME: ${POSTGRES_USER}
+        REPLICATION_PASSWORD: ${POSTGRES_PASSWORD}
+        SPRING_PROFILES_ACTIVE: "preview,replica"
+        DB_READER_USERNAME: "{{ .Values.postgresql.auth.username}}"
       secrets:
         POSTGRES_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
