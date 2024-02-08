@@ -73,7 +73,7 @@ civil-service:
         key: PASSWORD
         disabled: true
     postgresql:
-      enabled: true
+      enabled: false
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       auth:
         database: cft_task_db
@@ -90,7 +90,7 @@ civil-service:
           requests:
             cpu: 25m
         initdb:
-          user: hmcts
+          user: postgres
           scripts:
             init.sql: |
               ALTER ROLE hmcts WITH SUPERUSER;
