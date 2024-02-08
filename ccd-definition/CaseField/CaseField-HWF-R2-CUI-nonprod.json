@@ -1,10 +1,1 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hwFeesDetails",
-    "Label": "",
-    "FieldType": "HelpWithFeesDetails",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  }
-]
+[]
