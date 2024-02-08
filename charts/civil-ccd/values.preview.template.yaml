@@ -73,7 +73,7 @@ civil-service:
         key: PASSWORD
         disabled: true
     postgresql:
-      enabled: false
+      enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
       auth:
         database: cft_task_db
