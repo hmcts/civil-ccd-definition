@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
