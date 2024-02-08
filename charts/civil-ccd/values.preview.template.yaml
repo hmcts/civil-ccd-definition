@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr:4006'
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -74,6 +74,11 @@ civil-service:
         disabled: true
     postgresql:
       enabled: true
+      releaseNameOverride: ${SERVICE_NAME}-postgresql
+      image:
+        registry: hmctspublic.azurecr.io
+        repository: imported/bitnami/postgresql
+        tag: '11.6.0'
       auth:
         database: cft_task_db
         username: ${POSTGRES_USER}
@@ -100,6 +105,7 @@ civil-service:
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               ALTER ROLE hmcts WITH SUPERUSER;
               CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 idam-pr:
