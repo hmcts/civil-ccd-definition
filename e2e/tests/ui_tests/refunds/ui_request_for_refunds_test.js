@@ -17,11 +17,11 @@ Scenario('Request and Approval of a Refund after a return to Requestor by the Ap
     await I.navigateToServiceRequest(config.applicantSolicitorUser, caseId);
     RequestRefundSteps.performRefunds();
     await I.navigateToRefundsList(config.defendantSolicitorUser);
-    RequestRefundSteps.returnRefunds();
+    RequestRefundSteps.returnRefunds(caseId);
     await I.navigateToRefundsList(config.applicantSolicitorUser);
-    RequestRefundSteps.reviewRefunds();
+    RequestRefundSteps.reviewRefunds(caseId);
     await I.navigateToRefundsList(config.defendantSolicitorUser);
-    RequestRefundSteps.approveRefund();
+    RequestRefundSteps.approveRefund(caseId);
 });
 
 Scenario('Request and Rejection of a Refund after a return to Requestor by the Approval Caseworker',
@@ -36,11 +36,11 @@ Scenario('Request and Rejection of a Refund after a return to Requestor by the A
     await I.navigateToServiceRequest(config.applicantSolicitorUser, caseId);
     RequestRefundSteps.performRefunds();
     await I.navigateToRefundsList(config.defendantSolicitorUser);
-    RequestRefundSteps.returnRefunds();
+    RequestRefundSteps.returnRefunds(caseId);
     await I.navigateToRefundsList(config.applicantSolicitorUser);
-    RequestRefundSteps.reviewRefunds();
+    RequestRefundSteps.reviewRefunds(caseId);
     await I.navigateToRefundsList(config.defendantSolicitorUser);
-    RequestRefundSteps.rejectRefund();
+    RequestRefundSteps.rejectRefund(caseId);
 });
 
 

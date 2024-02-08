@@ -32,13 +32,13 @@ class RequestRefundSteps {
     refundConfirmation.verifyConfirmationPage();
   }
 
-  returnRefunds() {
-    refundList.verifyAndChooseRefundFromRefundList(false);
+  returnRefunds(caseNumber) {
+    refundList.verifyAndChooseRefundFromRefundList(false, caseNumber);
     reviewRefundDetails.verifyAndProcessRefundsDetails('Return to caseworker', 'Amended claim');
   }
 
-  reviewRefunds() {
-    refundList.verifyAndChooseRefundFromRefundList(true);
+  reviewRefunds(caseNumber) {
+    refundList.verifyAndChooseRefundFromRefundList(true, caseNumber);
     refundDetails.verifyRefundsDetailsAndInitiateChange();
     reviewRefundCheckYourAnswers.verifyChangeYourAnswersPageAndChangeReason();
     refundReasons.chooseRefundsReason('System/technical error');
@@ -46,13 +46,13 @@ class RequestRefundSteps {
     refundConfirmation.verifyConfirmationPage();
   }
 
-  approveRefund() {
-    refundList.verifyAndChooseRefundFromRefundList(false);
+  approveRefund(caseId) {
+    refundList.verifyAndChooseRefundFromRefundList(false, caseId);
     reviewRefundDetails.verifyAndProcessRefundsDetails('Approve', 'System/technical error');
   }
 
-  rejectRefund() {
-    refundList.verifyAndChooseRefundFromRefundList(false);
+  rejectRefund(caseId) {
+    refundList.verifyAndChooseRefundFromRefundList(false, caseId);
     reviewRefundDetails.verifyAndProcessRefundsDetails('Reject', 'System/technical error');
   }
 

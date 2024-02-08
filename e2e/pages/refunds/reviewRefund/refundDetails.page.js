@@ -4,6 +4,7 @@ module.exports = {
 
   async verifyRefundsDetailsAndInitiateChange() {
 
+    I.waitForText('Sent for approval',3);
     I.see('Refund details', 'h2');
     I.see('Refund reference');
     I.see('Payment to be refunded');
