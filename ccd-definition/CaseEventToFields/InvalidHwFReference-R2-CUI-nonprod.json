@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "helpWithFeesReferenceNumber",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "Email",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]
