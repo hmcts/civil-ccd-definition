@@ -72,38 +72,7 @@ civil-service:
         secretRef: postgres
         key: PASSWORD
         disabled: true
-    postgresql:
-      enabled: true
-      releaseNameOverride: ${SERVICE_NAME}-postgresql
-      auth:
-        database: cft_task_db
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASSWORD}
-        postgresPassword: ${POSTGRES_PASSWORD}
-      primary:
-        persistence:
-          enabled: false
-        extraEnvVars:
-          - name: POSTGRESQL_WAL_LEVEL
-            value: "logical"
-        resources:
-          requests:
-            cpu: 25m
-        initdb:
-          user: postgres
-          scripts:
-            init.sql: |
-              ALTER ROLE hmcts WITH SUPERUSER;
-              CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+
 idam-pr:
   redirect_uris:
     XUI:
@@ -179,6 +148,32 @@ ccd:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: true
+  postgresql:
+    enabled: false
+    auth:
+      database: cft_task_db
+      username: ${POSTGRES_USER}
+      password: ${POSTGRES_PASSWORD}
+      postgresPassword: ${POSTGRES_PASSWORD}
+    primary:
+      persistence:
+        enabled: false
+      extraEnvVars:
+        - name: POSTGRESQL_WAL_LEVEL
+          value: "logical"
+      resources:
+        requests:
+          cpu: 25m
+      initdb:
+        user: postgres
+        scripts:
+          init-et_cos.sql: |
+            ALTER ROLE hmcts WITH SUPERUSER;
+            CREATE DATABASE "et_cos" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+            CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
 
 camunda-bpm:
   enabled: true
