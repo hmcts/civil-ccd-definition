@@ -7,15 +7,15 @@ module.exports = {
       disclosureFormFiledAndServed: {
         id: `#${party}DQDisclosureReport_disclosureFormFiledAndServed`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureReport_disclosureFormFiledAndServed_Yes`,
+          no: `#${party}DQDisclosureReport_disclosureFormFiledAndServed_No`
         }
       },
       disclosureProposalAgreed: {
         id: `#${party}DQDisclosureReport_disclosureProposalAgreed`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureReport_disclosureProposalAgreed_Yes`,
+          no: `#${party}DQDisclosureReport_disclosureProposalAgreed_No`
         }
       },
       draftOrderNumber: `#${party}DQDisclosureReport_draftOrderNumber`,

@@ -184,5 +184,13 @@
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1LiPResponseCarm",
+    "Label": "Defendant 1 Mediation",
+    "FieldType": "MediationLiPCarm",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -5,8 +5,8 @@ module.exports = {
     partAdmitType: {
       id: '#specDefenceAdmittedRequired_radio',
       options: {
-        no: 'no',
-        yes: 'yes'
+        no: '#specDefenceAdmittedRequired_no',
+        yes: '#specDefenceAdmittedRequired_yes'
       },
     },
       claimOwingAmount: '#respondToAdmittedClaimOwingAmount',

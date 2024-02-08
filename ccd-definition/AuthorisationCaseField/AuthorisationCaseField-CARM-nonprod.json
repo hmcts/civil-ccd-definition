@@ -264,5 +264,27 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LiPResponseCarm",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

@@ -31,9 +31,6 @@ module.exports = {
           respondent1LiPFinancialDetails:{
 
           },
-          respondent1MediationLiPResponse:{
-            mediationDisagreementLiP:'No',
-          },
           respondent1DQExtraDetails:{
             wantPhoneOrVideoHearing:'No',
             giveEvidenceYourSelf:'No',
@@ -50,6 +47,36 @@ module.exports = {
             supportRequirementLip:'No',
           },
           respondent1ResponseLanguage:'ENGLISH',
+        },
+        respondent1LiPResponseCarm:{
+          isMediationPhoneCorrect: 'No',
+          alternativeMediationTelephone: '01632960001',
+          isMediationEmailCorrect: 'No',
+          alternativeMediationEmail: 'test@test.com',
+          hasUnavailabilityNextThreeMonths: 'Yes',
+          unavailableDatesForMediation: [
+            {
+              id: '8f76a758-733b-42c0-95b9-69b3ee2b7e6a',
+              value: {
+                who: 'defendant',
+                date: '2024-01-01',
+                fromDate: '2024-01-01',
+                unavailableDateType: 'SINGLE_DATE'
+              }
+            },
+            {
+              id: '38abd745-a52f-4ec1-86a9-2e2457b2f28b',
+              value: {
+                who: 'defendant',
+                date: '2024-03-13',
+                toDate: '2024-03-23',
+                fromDate: '2024-03-13',
+                unavailableDateType: 'DATE_RANGE'
+              }
+            }
+          ],
+          isMediationContactNameCorrect: 'No',
+          alternativeMediationContactPerson: 'aaa'
         },
         detailsOfWhyDoesYouDisputeTheClaim:'Testreason',
         specClaimResponseTimelineList:'MANUAL',
@@ -101,5 +128,5 @@ module.exports = {
       },
     };
     return defendantResponseData;
-  },
+  }
 };
