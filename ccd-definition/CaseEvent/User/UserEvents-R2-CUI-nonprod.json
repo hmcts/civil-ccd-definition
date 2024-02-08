@@ -96,6 +96,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "detailsOfDirection = \"Not_Shown_in_UI\""
+    "EventEnablingCondition": "detailsOfDirection = \"Not_Shown_in_UI\"",
+    "Publish": "Y"
   }
 ]
