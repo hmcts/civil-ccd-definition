@@ -202,6 +202,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingDirectionsLabel=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y",
     "Publish": "Y"
   }
 ]
