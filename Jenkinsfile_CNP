@@ -36,6 +36,7 @@ def secrets = [
     secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
     secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
+    secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_ID'),
     secret('idam-data-store-system-user-username','ROLE_ASSIGNMENT_USER_EMAIL')
   ],
   'civil-${env}': [
