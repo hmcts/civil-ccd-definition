@@ -116,7 +116,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NotSuitable_SDO",
-    "CaseFieldID": "setDJFlag",
+    "CaseFieldID": "setRequestDJDamagesFlagForWA",
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
