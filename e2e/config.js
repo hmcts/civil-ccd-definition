@@ -25,6 +25,8 @@ module.exports = {
     // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     // idamApi: 'https://idam-api.aat.platform.hmcts.net',
     // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // cui: 'https://cui-civil-ccd-pr-3186.preview.platform.hmcts.net',
+    // caseAssignmentService: 'https://manage-case-assignment-civil-ccd-pr-3186.preview.platform.hmcts.net',
 
 
     /*
