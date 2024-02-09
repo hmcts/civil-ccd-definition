@@ -22,6 +22,12 @@
           "judge-profile"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "next-hearing-date-admin"
+        ],
+        "CRUD": "CRUD"
       }
     ]
   }
