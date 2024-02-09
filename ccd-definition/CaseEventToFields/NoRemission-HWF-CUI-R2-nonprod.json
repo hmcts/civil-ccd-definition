@@ -7,8 +7,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N"
+    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -18,8 +17,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
-    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N"
+    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -29,8 +27,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"CLAIMISSUED\"",
-    "ShowSummaryChangeOption": "N"
+    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -40,8 +37,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"HEARING\"",
-    "ShowSummaryChangeOption": "N"
+    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -51,6 +47,6 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
     "PageID": "NoRemissionHWF",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   }
 ]
