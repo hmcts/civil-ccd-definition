@@ -194,7 +194,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT",
-    "CaseFieldID": "setDJFlag",
+    "CaseFieldID": "setRequestDJDamagesFlagForWA",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "HearingSupportRequirementsFieldDJ",

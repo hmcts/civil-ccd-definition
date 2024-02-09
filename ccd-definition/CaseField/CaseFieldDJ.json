@@ -131,7 +131,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "setDJFlag",
+    "ID": "setRequestDJDamagesFlagForWA",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
