@@ -155,6 +155,38 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "resp1MediationContactInfo",
+    "Label": "Mediation contact information",
+    "FieldType": "MediationContactInformation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "resp2MediationContactInfo",
+    "Label": "Mediation contact information",
+    "FieldType": "MediationContactInformation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "resp1MediationAvailability",
+    "Label": "Mediation availability",
+    "FieldType": "MediationAvailability",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "resp2MediationAvailability",
+    "Label": "Mediation availability",
+    "FieldType": "MediationAvailability",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1LiPResponseCarm",
     "Label": "Defendant 1 Mediation",
     "FieldType": "MediationLiPCarm",
