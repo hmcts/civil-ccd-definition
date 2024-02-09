@@ -1,0 +1,56 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "helpWithFees",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "caseTitleWithHWFFeeNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"CLAIMISSUED\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "caseTitleWithHWFHearingNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"HEARING\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "hwFeesDetails",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "COMPLEX",
+    "PageID": "NoRemissionHWF",
+    "ShowSummaryChangeOption": "N"
+  }
+]
