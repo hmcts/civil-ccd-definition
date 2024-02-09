@@ -308,21 +308,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "setDJFlag",
+    "CaseFieldID": "setRequestDJDamagesFlagForWA",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin",
-          "caseworker-civil",
           "judge-profile",
+          "caseworker-civil",
           "caseworker-civil-staff"
-
         ],
         "CRUD": "CRU"
       }
