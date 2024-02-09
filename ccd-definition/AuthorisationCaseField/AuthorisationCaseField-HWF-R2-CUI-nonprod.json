@@ -18,7 +18,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
           "caseworker-civil-admin",
           "cui-admin-profile"
         ],
