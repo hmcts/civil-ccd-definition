@@ -1107,8 +1107,11 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    let expectedState = 'HEARING_READINESS';
+    if (allocatedTrack === 'OTHER') {
+      expectedState = 'PREPARE_FOR_HEARING_CONDUCT_HEARING';
+    }
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
