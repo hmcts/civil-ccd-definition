@@ -41,7 +41,7 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({noc, api_spec_cui}) => {
   await  prepareClaimLiPvLR(api_spec_cui, noc, true);
 });
 
