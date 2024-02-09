@@ -176,7 +176,7 @@ withPipeline(type, product, component) {
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL="https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CIVIL_SERVICE_URL="https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.CUI_URL="https://civil-citizen-ui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CUI_URL="https://cui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
 
 
       deploymentNumber = githubCreateDeployment()

@@ -217,7 +217,7 @@ postgresql:
 
 nodejs:
   applicationPort: 3001
-  ingressHost: civil-citizen-ui-${SERVICE_NAME}.platform.hmcts.net
+  ingressHost: cui-${SERVICE_FQDN}
   image: hmctspublic.azurecr.io/civil/citizen-ui:latest
   memoryRequests: 1024Mi
   cpuRequests: 2500m
