@@ -20,11 +20,11 @@ async function prepareClaim1v2SameSol(api_spec, carmEnabled) {
 }
 
 async function prepareClaim1v2DiffSol(api_spec, carmEnabled) {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO', carmEnabled);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
-    'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', carmEnabled);
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
-    'AWAITING_APPLICANT_INTENTION');
+    'AWAITING_APPLICANT_INTENTION', carmEnabled);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
 }
 
