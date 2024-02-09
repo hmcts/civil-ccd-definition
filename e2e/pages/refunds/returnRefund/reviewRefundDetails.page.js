@@ -25,7 +25,7 @@ module.exports = {
     I.see('Date submitted');
     I.see('Notification');
 
-    I.waitForText('Some information needs correcting', 3);
+    I.waitForText('Some information needs correcting');
     I.see('What do you want to do with this refund?');
     I.see('Approve');
     I.see('Send to middle office');
@@ -38,13 +38,13 @@ module.exports = {
       I.click(this.fields.refunddetails.refund_action_for_return);
       I.fillField(this.fields.refunddetails.refund_notes_for_return, 'Automation Test Comments');
       I.click('Submit');
-      I.waitForText('Refund returned to caseworker', 3);
+      I.waitForText('Refund returned to caseworker');
 
     } else if (action === 'Approve') {
 
       I.click('#refundAction-0');
       I.click('Submit');
-      I.waitForText('Refund approved', 3);
+      I.waitForText('Refund approved');
 
     } else if (action === 'Reject') {
       I.click('#refundAction-1');
@@ -52,7 +52,7 @@ module.exports = {
       I.click('#refundRejectReason-0');
       I.click('Submit');
 
-      I.waitForText('Refund rejected', 3);
+      I.waitForText('Refund rejected');
     }
   }
 };
