@@ -42,6 +42,10 @@ dependencies:
     version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
+# CUI
+  - name: nodejs
+    version: 3.0.1
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
 # WA
   - name: wa
     version: ~1.0.5

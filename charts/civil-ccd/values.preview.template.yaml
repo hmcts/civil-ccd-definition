@@ -101,7 +101,7 @@ civil-service:
               CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-            02_init_wa.sql: |  
+            02_init_wa.sql: |
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
@@ -199,3 +199,59 @@ postgresql:
       - name: "pr-${CHANGE_ID}-wa-case-event-handler"
       - name: "pr-${CHANGE_ID}-wa_workflow_api"
       - name: "pr-${CHANGE_ID}-cmc"
+
+nodejs:
+  applicationPort: 3001
+  ingressHost: cui-${SERVICE_FQDN}
+  image: hmctspublic.azurecr.io/civil/citizen-ui:latest
+  memoryRequests: 1024Mi
+  cpuRequests: 2500m
+  memoryLimits: 2048Mi
+  cpuLimits: 2500m
+  devcpuRequests: 500m
+  devmemoryRequests: 1Gi
+  devcpuLimits: 2
+  devmemoryLimits: 2Gi
+  readinessDelay: 130
+  livenessDelay: 130
+  keyVaults:
+    civil-cui:
+      resourceGroup: civil-citizen-ui
+      secrets:
+        - appinsights-instrumentation-key
+        - draft-store-access-key
+        - citizen-ui-idam-secret
+        - ordnance-survey-api-key
+        - cmc-s2s-secret
+        - citizen-draft-store-primary
+        - citizen-draft-store-secondary
+        - civil-citizen-ui-token-key
+        - name: launch-darkly-sdk-key
+          alias: LAUNCH_DARKLY_SDK_KEY
+
+  environment:
+    IDAM_WEB_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/login
+    IDAM_API_URL: https://idam-api.{{ .Values.global.environment }}.platform.hmcts.net/o/token
+    IDAM_CLIENT_ID: civil_citizen_ui
+    IDAM_END_SESSION_URL: https://idam-web-public.{{ .Values.global.environment }}.platform.hmcts.net/o/endSession
+    IDAM_SIGN_OUT_REDIRECT_URL: https://civil-citizen-ui.{{ .Values.global.environment }}.platform.hmcts.net/dashboard
+    OAUTH_CLIENT_REDIRECT: https://civil-citizen-ui.{{ .Values.global.environment }}.platform.hmcts.net/oauth2/callback
+    REDIS_HOST: 'civil-citizen-ui-draft-store-{{ .Values.global.environment }}.redis.cache.windows.net'
+    REDIS_PORT: 6380
+    REDIS_TLS: true
+    REDIS_EXPIRE_IN_DAYS: 180
+    SECURE_COOKIE: 'true'
+    CIVIL_SERVICE_URL: http://civil-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    ALLOW_CONFIG_MUTATIONS: true
+    DOCUMENT_MANAGEMENT_URL: http://dm-store-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    AUTH_PROVIDER_SERVICE_CLIENT_BASEURL: http://rpe-service-auth-provider-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    DRAFT_STORE_API_URL: http://draft-store-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    OCMC_URL: https://moneyclaims.{{ .Values.global.environment }}.platform.hmcts.net
+    PCQ_URL: https://pcq.{{ .Values.global.environment }}.platform.hmcts.net
+    GOVPAY_URL: https://card.payments.service.gov.uk
+    CARM_DATE: '01 May 2024'
+
+  autoscaling:
+    enabled: true
+    maxReplicas: 5
+    targetCPUUtilizationPercentage: 80
