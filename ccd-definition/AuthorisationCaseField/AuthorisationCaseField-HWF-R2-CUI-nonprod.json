@@ -1,29 +1,74 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "helpWithFeesMoreInformation",
+    "CaseFieldID": "caseTitleWithHWFFeeNumber",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil",
           "cui-admin-profile"
         ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwfMoreInformationLabel",
+    "CaseFieldID": "caseTitleWithHWFHearingNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hwfClaimFeeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hwfHearingFeeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hwfFeeType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "helpWithFeesMoreInformation",
     "AccessControl": [
       {
         "UserRoles": [

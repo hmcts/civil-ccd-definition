@@ -1,12 +1,43 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfMoreInformationLabel",
-    "Label": "### ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "ID": "caseTitleWithHWFFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-l\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFHearingNumber",
+    "Label": "<h2 class=\"govuk-heading-l\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfClaimFeeLabel",
+    "Label": "Help with Fees type:HwF Claim fee",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfHearingFeeLabel",
+    "Label": "Help with Fees type:HwF Hearing Fee",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
