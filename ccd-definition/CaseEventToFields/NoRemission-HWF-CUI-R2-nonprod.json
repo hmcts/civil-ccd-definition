@@ -7,7 +7,7 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -17,12 +17,12 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
-    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "caseTitleWithHWFFeeNumber",
+    "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,

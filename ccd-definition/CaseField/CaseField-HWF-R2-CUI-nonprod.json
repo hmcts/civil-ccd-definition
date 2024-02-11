@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHWFFeeNumber",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
     "Label": "### ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
