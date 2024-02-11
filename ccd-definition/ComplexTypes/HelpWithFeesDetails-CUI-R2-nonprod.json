@@ -1,0 +1,37 @@
+[
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "remissionAmount",
+    "ElementLabel": "Remission Amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "hwfFeeType",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "hwfFeeType=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "claimFee",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "hearingFee",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "hwfFeeType=\"HEARING\""
+  }
+]
