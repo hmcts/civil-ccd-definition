@@ -40,6 +40,7 @@ Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft
 }).retry(3);
 
 Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+  await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   if (config.runWAApiTest) {
@@ -68,15 +69,17 @@ Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
     }
     await createHearingScheduled(I);
   } else {
+    await I.login(hearingCenterAdminToBeUsed);
     if (config.runWAApiTest) {
       const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.listingOfficerCaseProgressionTask);
       console.log('caseProgressionTakeCaseOfflineTask...' , caseProgressionTakeCaseOfflineTask);
       taskId = caseProgressionTakeCaseOfflineTask['id'];
+      await api.assignTaskToUser(hearingCenterAdminToBeUsed, taskId);
     }
-    await I.login(hearingCenterAdminToBeUsed);
-    await api.assignTaskToUser(hearingCenterAdminToBeUsed, taskId);
     await I.staffPerformDJCaseTransferCaseOffline(caseId);
-    await api.completeTaskByUser(judgeUserToBeUsed, taskId);
+    if (config.runWAApiTest) {
+      await api.completeTaskByUser(judgeUserToBeUsed, taskId);
+    }
   }
 }).retry(3);
 
@@ -128,18 +131,24 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
 }
 
 Scenario('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.judgeUser2WithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.judgeUser2WithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.hearingCenterAdminWithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.hearingCenterAdminWithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
-  await I.login(config.tribunalCaseworkerWithRegionId4);
-  await WA.runChallengedAccessSteps(caseId);
+  if (config.runWAApiTest) {
+    await I.login(config.tribunalCaseworkerWithRegionId4);
+    await WA.runChallengedAccessSteps(caseId);
+  }
 }).retry(3);
 
 Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {

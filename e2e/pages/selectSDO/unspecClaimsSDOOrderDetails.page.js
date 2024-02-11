@@ -72,7 +72,8 @@ module.exports = {
   async selectOrderDetails(allocateSmallClaims, trackType, orderType) {
     await I.runAccessibilityTest();
     if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
-      await I.fillField(this.fields.smallClaimsHearingTime.id, '30 minutes');
+      await I.waitForElement(this.fields.smallClaimsHearingTime.id);
+      await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
       await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');

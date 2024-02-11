@@ -7,13 +7,5 @@
     "FieldTypeParameter": "MediationUnsuccessfulReasonsMultiSelect",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "showCarmFields",
-    "Label": "Show CARM field",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]

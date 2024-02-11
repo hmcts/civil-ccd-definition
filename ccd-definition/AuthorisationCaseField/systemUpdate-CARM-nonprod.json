@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LiPResponseCarm",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  }
+]

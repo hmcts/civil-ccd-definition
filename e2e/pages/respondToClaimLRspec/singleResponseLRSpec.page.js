@@ -6,15 +6,15 @@ module.exports = {
     respondentResponseIsSame: {
       id: '#respondentResponseIsSame_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#respondentResponseIsSame_Yes',
+        no: '#respondentResponseIsSame_No'
       }
     },
     respondentResponseIsSameForBothClaimants:{
       id: '#defendantSingleResponseToBothClaimants_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#defendantSingleResponseToBothClaimants_Yes',
+        no: '#defendantSingleResponseToBothClaimants_No'
       }
     }
   },

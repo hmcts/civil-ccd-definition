@@ -188,7 +188,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
       WA.validateTaskInfo(hearingTask, scheduleAHearingTask);
       taskId = hearingTask['id'];
     }
-    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'OTHER');
+    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
     if (config.runWAApiTest) {
       api.completeTaskByUser(hearingCenterAdminToBeUsed, taskId);
     }

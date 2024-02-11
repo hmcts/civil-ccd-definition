@@ -2544,6 +2544,12 @@
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
       }
     ]
   },

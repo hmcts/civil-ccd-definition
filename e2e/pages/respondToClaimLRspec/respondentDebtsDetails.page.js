@@ -5,8 +5,8 @@ module.exports = {
     debtsType: {
       id: '#specDefendant1Debts_hasLoanCardDebt_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#specDefendant1Debts_hasLoanCardDebt_Yes',
+        no: '#specDefendant1Debts_hasLoanCardDebt_No'
       },
     },
   },
