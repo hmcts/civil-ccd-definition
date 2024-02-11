@@ -8,6 +8,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFHearingNumber",
+    "Label": "### ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "remissionFeeAmountWarningMessage",
     "Label": "#### Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.",
     "FieldType": "Label",

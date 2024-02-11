@@ -4,7 +4,7 @@
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "hwFeesDetails",
     "ListElementCode": "remissionAmount",
-    "EventElementLabel": "remissionAmount",
+    "EventElementLabel": "Remission Amount",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },

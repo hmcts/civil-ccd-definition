@@ -13,6 +13,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "partRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "FieldShowCondition": "caseTitleWithHWFFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "caseTitleWithHWFFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "partRemissionHWF",
@@ -22,10 +32,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "caseTitleWithHWFHearingNumber",
     "DisplayContext": "READONLY",
-    "PageID": "NoRemissionHWF",
+    "PageID": "partRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"HEARING\""
@@ -43,7 +53,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "hwFeesDetails",
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "partRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,

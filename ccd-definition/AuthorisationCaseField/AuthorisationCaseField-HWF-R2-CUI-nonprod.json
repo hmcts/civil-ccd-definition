@@ -5,7 +5,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "judge-profile",
+          "caseworker-civil-admin",
+          "cui-admin-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
