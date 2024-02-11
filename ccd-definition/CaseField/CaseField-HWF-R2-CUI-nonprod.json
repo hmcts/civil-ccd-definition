@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-l\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2> ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFHearingNumber",
+    "Label": "<h2 class=\"govuk-heading-l\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "subTitleHwfDetails",
+    "Label": "### HwF Details",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwFeesDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

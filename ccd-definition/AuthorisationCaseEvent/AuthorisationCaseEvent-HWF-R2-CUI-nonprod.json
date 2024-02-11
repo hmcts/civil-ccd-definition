@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "FULL_REMISSION_HWF",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
