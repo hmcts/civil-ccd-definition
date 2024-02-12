@@ -12,11 +12,11 @@ module.exports = {
         return {
           calculatedAmountInPence: '3500',
           code: 'FEE0202',
-          version: '4'
+          version: '6'
         };
       case '11000':
         return {
-          calculatedAmountInPence: '150000',
+          calculatedAmountInPence: '55000',
           code: 'FEE0209',
           version: '3'
         };
