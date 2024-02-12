@@ -88,5 +88,22 @@
     "FieldType": "JudgeDecisionOnReconsiderationSelect",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2TrialToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2Trial",
+    "Label": "A trial will take place on",
+    "FieldType": "SdoR2Trial",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

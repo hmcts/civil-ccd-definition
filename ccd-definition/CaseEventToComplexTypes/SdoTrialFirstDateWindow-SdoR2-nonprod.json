@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "SdoR2TrialFromTo",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialWindow.listFrom",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX"
+  },
+  {
+    "ID": "SdoR2TrialFromTo",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialWindow.dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX"
+  }
+]

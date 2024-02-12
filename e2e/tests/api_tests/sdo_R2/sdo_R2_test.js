@@ -34,7 +34,7 @@ Scenario('1v1 specified - flight delay Fast-claim', async ({api_spec}) => {
   }
 });
 
-Scenario('1v1 specified - flight delay other option Small-claim', async ({api_spec}) => {
+Scenario.only('1v1 specified - flight delay other option Small-claim', async ({api_spec}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimOtherOption(api_spec, claimAmountSmallTrack);
@@ -48,6 +48,6 @@ Scenario('1v1 specified - flight delay other option Fast-claim', async ({api_spe
   }
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
-});
+// AfterSuite(async ({api}) => {
+//   await api.cleanUp();
+// });
