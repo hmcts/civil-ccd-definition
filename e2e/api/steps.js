@@ -1929,6 +1929,15 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['sdoR2SmallClaimsJudgesRecital'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDocToggle'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
+  delete responseBody.data['sdoR2SmallClaimsImpNotes'];
+  delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['sdoR2SmallClaimsPPI'];
+  delete responseBody.data['sdoR2SmallClaimsHearing'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
