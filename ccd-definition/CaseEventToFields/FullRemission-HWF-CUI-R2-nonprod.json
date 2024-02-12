@@ -56,6 +56,6 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "FullRemissionHWF",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   }
 ]
