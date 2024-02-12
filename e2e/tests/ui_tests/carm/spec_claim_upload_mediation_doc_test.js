@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 
-const config = require('../../../../config.js');
+const config = require('../../../config.js');
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
