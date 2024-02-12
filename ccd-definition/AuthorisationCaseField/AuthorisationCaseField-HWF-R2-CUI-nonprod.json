@@ -1,12 +1,34 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseTitleWithHWFHearingNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwFeesDetails",
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "caseworker-civil-admin",
           "cui-admin-profile",
           "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"

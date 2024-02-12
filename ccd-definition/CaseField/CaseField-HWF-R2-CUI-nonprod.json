@@ -1,25 +1,29 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHWFFeeNumber",
-    "Label": "### ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFHearingNumber",
-    "Label": "### ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "remissionFeeAmountWarningMessage",
-    "Label": "#### Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.",
+    "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
