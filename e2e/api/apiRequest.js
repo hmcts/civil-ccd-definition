@@ -18,6 +18,8 @@ const getHearingFeePaidUrl = (caseId) => `${config.url.civilService}/testing-sup
 const getHearingFeeUnpaidUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-hearing-fee-unpaid`;
 const getBundleTriggerUrl = (caseId) => `${config.url.civilService}/testing-support/${caseId}/trigger-trial-bundle`;
 const getBulkClaimServiceUrl = () => `${config.url.orchestratorService}/createSDTClaim`;
+const getPaymentAPIBaseUrl = () => `${config.url.paymentApi}`;
+
 const getRequestHeaders = (userAuth) => {
   return {
     'Content-Type': 'application/json',
@@ -41,7 +43,7 @@ module.exports = {
       .then(response => response.text());
   },
 
-  fetchCaseDetails: async(user, caseId, response = 200) => {
+  fetchCaseDetails: async (user, caseId, response = 200) => {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
     let url = getCaseDetailsUrl(eventUserId, caseId);
@@ -79,7 +81,7 @@ module.exports = {
     }
     url += `/event-triggers/${eventName}/token`;
 
-    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET',422)
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), null, 'GET', 422)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
     return response.callbackErrors[0];
@@ -88,14 +90,14 @@ module.exports = {
   startEventForCitizen: async (eventName, caseId, payload) => {
     let url = getCivilServiceUrl();
     const userId = await idamHelper.userId(tokens.userAuth);
-    console.log('The value of the userId from the startEventForCitizen() : '+userId);
-    console.log('The value of the Auth Token from the startEventForCitizen() : '+tokens.userAuth);
+    console.log('The value of the userId from the startEventForCitizen() : ' + userId);
+    console.log('The value of the Auth Token from the startEventForCitizen() : ' + tokens.userAuth);
     if (caseId) {
       url += `/cases/${caseId}`;
     }
     url += `/citizen/${userId}/event`;
 
-    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST',200)
+    let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST', 200)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
   },
@@ -148,8 +150,8 @@ module.exports = {
       }, 'POST', 201);
   },
 
-  taskActionByUser: async function(user, taskId, url, expectedStatus = 204) {
-    const userToken =  await idamHelper.accessToken(user);
+  taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {
+    const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
       {'Content-Type': 'application/json'},
@@ -161,11 +163,11 @@ module.exports = {
 
     return retry(() => {
       return restHelper.request(`${config.url.waTaskMgmtApi}/task/${taskId}/${url}`,
-      {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${userToken}`,
-        'ServiceAuthorization': `Bearer ${s2sToken}`
-      }, '', 'POST', expectedStatus);
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, '', 'POST', expectedStatus);
     }, 2, TASK_RETRY_TIMEOUT_MS);
   },
 
@@ -236,7 +238,7 @@ module.exports = {
         'SdtRequestId': `${sdtRequestId}`
       },
       claimData,
-       'POST')
+      'POST')
       .then(response => response.json());
 
     return response || {};
@@ -258,38 +260,38 @@ module.exports = {
     return response || {};
   },
 
-  hearingFeePaidEvent: async(caseId) => {
+  hearingFeePaidEvent: async (caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getHearingFeePaidUrl(caseId);
-    let response_msg =  await restHelper.retriedRequest(url, {
+    let response_msg = await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
         'ServiceAuthorization': tokens.s2sAuth
-      },null,
+      }, null,
       'GET');
     return response_msg || {};
   },
 
-  bundleTriggerEvent: async(caseId) => {
+  bundleTriggerEvent: async (caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getBundleTriggerUrl(caseId);
-    let response_msg =  await restHelper.retriedRequest(url, {
+    let response_msg = await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
         'ServiceAuthorization': tokens.s2sAuth
-      },null,
+      }, null,
       'GET');
     return response_msg || {};
   },
 
-  hearingFeeUnpaidEvent: async(caseId) => {
+  hearingFeeUnpaidEvent: async (caseId) => {
     const authToken = await idamHelper.accessToken(config.systemupdate);
     let url = getHearingFeeUnpaidUrl(caseId);
-    let response_msg =  await restHelper.retriedRequest(url, {
+    let response_msg = await restHelper.retriedRequest(url, {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${authToken}`,
         'ServiceAuthorization': tokens.s2sAuth
-      },null,
+      }, null,
       'GET');
     return response_msg || {};
   },
@@ -307,10 +309,83 @@ module.exports = {
 
   getHearingsPayload: async (user, caseId) => {
     return restHelper.request(
-      `${config.url.civilService}/serviceHearingValues`, getRequestHeaders(tokens.userAuth), {caseReference: caseId, hearingId: 'HER123123123'}, 'POST')
+      `${config.url.civilService}/serviceHearingValues`, getRequestHeaders(tokens.userAuth), {
+        caseReference: caseId,
+        hearingId: 'HER123123123'
+      }, 'POST')
       .then(
         async response =>
           await response.json()
       );
+  },
+
+  createAPBAPayment: async function (user, ccdCaseNumber, amount, feeCode, version, volume) {
+
+    const creditAccountPaymentEndPoint = '/credit-account-payments';
+    const userToken = await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const accountNumber = 'PBA0088192';
+
+    const saveBody = {
+      account_number: `${accountNumber}`,
+      amount: amount,
+      case_reference: `${ccdCaseNumber}`,
+      ccd_case_number: `${ccdCaseNumber}`,
+      currency: 'GBP',
+      customer_reference: 'string',
+      description: 'string',
+      fees: [
+        {
+          calculated_amount: amount,
+          code: `${feeCode}`,
+          fee_amount: amount,
+          version: version,
+          volume: volume
+        }
+      ],
+      organisation_name: 'string',
+      service: 'CIVIL',
+      site_id: 'AAA7'
+    };
+
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl() + creditAccountPaymentEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, saveBody, 'POST', 201);
+    }, 2, 30).then(response => response.text).catch(error => {
+      console.log(error);
+    });
+
+  },
+
+  rollbackPaymentDate: async function (user, ccdCaseNumber, expectedStatus = 204) {
+    const userToken = await idamHelper.accessToken(user);
+    const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2s.microservice,
+        oneTimePassword: totp(config.s2s.secret)
+      })
+      .then(response => response.text());
+    const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;
+    return retry(() => {
+      return restHelper.retriedRequest(getPaymentAPIBaseUrl() + rollbackPaymentDateByCCDNumberEndPoint,
+        {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${userToken}`,
+          'ServiceAuthorization': `Bearer ${s2sToken}`
+        }, '', 'PATCH', expectedStatus);
+    }, 2, 30).then(response => response.status);
   },
 };
