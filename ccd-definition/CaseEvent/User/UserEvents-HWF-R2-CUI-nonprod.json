@@ -4,7 +4,7 @@
     "ID": "FULL_REMISSION_HWF",
     "Name": "Full remission HwF - granted",
     "Description": "Full remission HWF - granted",
-    "PreConditionState(s)": "PENDING_CASE_ISSUED",
+    "PreConditionState(s)": "PENDING_CASE_ISSUED;HEARING_READINESS",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",

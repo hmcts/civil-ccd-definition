@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil"
         ],
         "CRUD": "CRU"
       }
@@ -17,7 +18,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil"
         ],
         "CRUD": "CRU"
       }
@@ -29,7 +31,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "caseworker-civil"
         ],
         "CRUD": "CRU"
       }
@@ -42,6 +45,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-civil",
           "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile"
         ],
