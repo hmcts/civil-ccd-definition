@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "MORE_INFORMATION_HWF",
+    "CaseFieldID": "hwFeesDetails",
+    "ListElementCode": "claimFee",
+    "EventElementLabel": "Help with Fees type:HwF Claim fee",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "MORE_INFORMATION_HWF",
+    "CaseFieldID": "hwFeesDetails",
+    "ListElementCode": "hearingFee",
+    "EventElementLabel": "Help with Fees type:HwF Hearing Fee",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]
