@@ -163,7 +163,6 @@ const midEventFieldForPage = {
   }
 };
 const midEventSDOData = {
-  ClaimsTrack: {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
     fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
     fastTrackHearingTime: (d) =>
@@ -207,7 +206,6 @@ const midEventSDOData = {
       return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
         && typeof data.text === 'string';
     }
-  }
 };
 
 let caseId, eventName, legacyCaseReference;
