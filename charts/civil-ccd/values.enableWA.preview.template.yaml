@@ -13,7 +13,7 @@ global:
   jobKind: CronJob
 
 camunda-bpm:
-  enabled: true
+  enabled: false
 
 civil-wa:
   enabled: true
@@ -26,8 +26,6 @@ wa:
 #    postgresHost: civil-preview.postgres.database.azure.com
 #    databaseNamePrefix: "pr-${CHANGE_ID}-"
   wa:
-    camunda:
-      enabled: false
     postgresql:
       enabled: false
   wa-case-event-handler:
@@ -92,7 +90,20 @@ wa:
         secretRef: "{{ .Values.global.postgresSecret }}"
         key: PASSWORD
         disabled: true
-
+  camunda-bpm:
+    java:
+      environment:
+        CAMUNDA_DB_USER_NAME: "hmcts"
+        CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_DB_NAME: 'camunda'
+        TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
+        CAMUNDA_API_AUTH_ENABLED: false
+      secrets:
+        CAMUNDA_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 ccd-message-publisher:
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
