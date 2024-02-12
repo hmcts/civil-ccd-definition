@@ -64,10 +64,14 @@ wa:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
         POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
+        POSTGRES_REPLICA_HOST: "{{ .Release.Name }}-postgresql"
         POSTGRES_REPLICA_PORT: 5432
         POSTGRES_NAME: "cft_task_db"
+        POSTGRES_REPLICA_NAME: "cft_task_db_replica"
         POSTGRES_USERNAME: postgres
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        REPLICATION_USERNAME: postgres
+        REPLICATION_PASSWORD: ${POSTGRES_PASSWORD}
         SPRING_PROFILES_ACTIVE: "preview"
         DB_READER_USERNAME: postgres
       secrets:
