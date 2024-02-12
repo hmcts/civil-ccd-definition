@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-3999'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -67,6 +67,7 @@ civil-service:
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
 #      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
+    WA_TOGGLE: WA3.5
     secrets:
       CMC_DB_PASSWORD:
         secretRef: postgres
