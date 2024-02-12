@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "SdoR2SmallClaimsHearingFromTo",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "sdoR2SmallClaimsHearingWindow.listFrom",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearingFromTo",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "sdoR2SmallClaimsHearingWindow.dateTo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX"
+  }
+]

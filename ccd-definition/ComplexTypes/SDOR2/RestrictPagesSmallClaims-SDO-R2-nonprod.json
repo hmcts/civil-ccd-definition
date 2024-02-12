@@ -1,6 +1,6 @@
 [
   {
-    "ID": "SdoR2RestrictNoOfPagesDetails",
+    "ID": "SdoR2SmallClaimsRestrictPages",
     "ListElementCode": "witnessShouldNotMoreThanTxt",
     "FieldType": "Text",
     "ElementLabel": " ",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2RestrictNoOfPagesDetails",
+    "ID": "SdoR2SmallClaimsRestrictPages",
     "ListElementCode": "noOfPages",
     "FieldType": "Number",
     "HintText":"For example,4",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2RestrictNoOfPagesDetails",
+    "ID": "SdoR2SmallClaimsRestrictPages",
     "ListElementCode": "fontDetails",
     "FieldType": "TextArea",
     "ElementLabel": " ",

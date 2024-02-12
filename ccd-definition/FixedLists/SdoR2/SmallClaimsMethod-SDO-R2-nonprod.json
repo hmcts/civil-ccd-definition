@@ -1,0 +1,20 @@
+[
+  {
+    "ID": "SmallClaimsSdoR2HearingMethod",
+    "ListElementCode": "VIDEO_CONFERENCE",
+    "ListElement": "Video",
+    "DisplayOrder": 1
+   },
+  {
+    "ID": "SmallClaimsSdoR2HearingMethod",
+    "ListElementCode": "TELEPHONE_HEARING",
+    "ListElement": "Telephone",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "SmallClaimsSdoR2HearingMethod",
+    "ListElementCode": "IN_PERSON",
+    "ListElement": "In Person",
+    "DisplayOrder": 3
+  }
+]

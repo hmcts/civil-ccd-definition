@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "SdoR2SmallClaimsFirstOpenDateAfter",
+    "ListElementCode": "listFrom",
+    "FieldType": "Date",
+    "ElementLabel": "List from",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

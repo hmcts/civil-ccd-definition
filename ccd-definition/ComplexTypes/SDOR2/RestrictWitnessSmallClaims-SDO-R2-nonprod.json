@@ -1,19 +1,28 @@
 [
   {
-    "ID": "SdoR2RestrictWitness",
-    "ListElementCode": "isRestrictWitness",
-    "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+  "ID": "SdoR2SmallClaimsRestrictWitness",
+  "ListElementCode": "noOfWitnessClaimant",
+  "FieldType": "Number",
+  "HintText":"For example,4",
+  "ElementLabel": "Number of witnesses (claimant)",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2SmallClaimsRestrictWitness",
+    "ListElementCode": "noOfWitnessDefendant",
+    "FieldType": "Number",
+    "HintText":"For example,4",
+    "ElementLabel": "Number of witnesses (defendant)",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "ID": "SdoR2RestrictWitness",
-    "ListElementCode": "restrictNoOfWitnessDetails",
-    "FieldType": "SdoR2RestrictNoOfWitnessDetails",
-    "ElementLabel": " ",
+    "ID": "SdoR2SmallClaimsRestrictWitness",
+    "ListElementCode": "partyIsCountedAsWitnessTxt",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "isRestrictWitness = \"Yes\""
+    "ElementLabel": " "
   }
 ]

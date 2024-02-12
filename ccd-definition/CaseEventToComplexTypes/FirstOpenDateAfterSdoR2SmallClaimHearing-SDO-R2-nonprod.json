@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "SdoR2SmallClaimsFirstOpenDateAfter",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX"
+  }
+]

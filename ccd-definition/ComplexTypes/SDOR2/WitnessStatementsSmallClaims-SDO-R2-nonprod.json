@@ -1,17 +1,9 @@
 [
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
-    "ListElementCode": "includeInOrderToggle",
-    "FieldType": "IncludeInOrderToggle",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "SdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": "###Statements of witnesses",
+    "ElementLabel": "### Statements of witnesses",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -25,25 +17,51 @@
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
-    "ListElementCode": "sdoR2RestrictWitness",
-    "FieldType": "SdoR2RestrictWitness",
+    "ListElementCode": "isRestrictWitness",
+    "FieldType": "YesOrNo",
     "ElementLabel": "Restrict number of witnesses",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
-    "ListElementCode": "sdoRestrictPages",
-    "FieldType": "SdoR2RestrictPages",
+    "ListElementCode": "sdoR2SmallClaimsRestrictWitness",
+    "FieldType": "SdoR2SmallClaimsRestrictWitness",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "isRestrictWitness = \"Yes\""
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "ListElementCode": "isRestrictPages",
+    "FieldType": "YesOrNo",
     "ElementLabel": "Restrict number of pages",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
-    "ListElementCode": "label",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages",
+    "FieldType": "SdoR2SmallClaimsRestrictPages",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "isRestrictPages = \"Yes\""
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "ListElementCode": "label1",
     "FieldType": "Label",
-    "ElementLabel": "###A witness statement must\n a) Start with the name of the case and the claim number;) State the full name and address of the witness;) Set out the witness’s evidence clearly in numbered paragraphs on numbered pages;) End with this paragraph: ‘I believe that the facts stated in this witness statement are true. I understand that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth’;) Be signed by the witness and dated;) If a witness is unable to read the statement there must be a certificate that it has been read or interpreted to the witness by a suitably qualified person and at the final hearing there must be an independent interpreter who will not be provided by the Court.\nThe Judge may refuse to allow a witness to give evidence or consider any statement of any witness whose statement has not been uploaded to the Digital Portal in accordance with the paragraphs above.\\nA witness whose statement has been uploaded in accordance with the above must attend the hearing. If they do not attend, it will be for the Court to decide how much reliance, if any, to place on their evidence.",
+    "ElementLabel": "### A witness statement must",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "ListElementCode": "text",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

@@ -1,6 +1,6 @@
 [
   {
-    "ID":"SdoR2AddNewDirection",
+    "ID":"SdoR2SmallClaimsAddNewDirection",
     "ListElementCode":"directionComment",
     "FieldType":"TextArea",
     "ElementLabel":"Enter the direction",

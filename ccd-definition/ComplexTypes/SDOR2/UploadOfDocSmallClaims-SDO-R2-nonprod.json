@@ -1,13 +1,5 @@
 [
   {
-    "ID": "SdoR2SmallClaimsWitnessStatements",
-    "ListElementCode": "includeInOrderToggle",
-    "FieldType": "IncludeInOrderToggle",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
     "ID": "SdoR2SmallClaimsUploadDoc",
     "ListElementCode": "sdoUploadOfDocumentsLbl",
     "FieldType": "Label",
