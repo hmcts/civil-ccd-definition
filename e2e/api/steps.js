@@ -97,7 +97,51 @@ const data = {
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
   MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
-
+const calculatedClaimsTrackDRH = {
+    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+    fastTrackHearingTime: (d) =>
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+    disposalHearingHearingTime: (d) =>
+      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+      && d.dateTo,
+    sdoR2SmallClaimsJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatements: (data) => {
+      return typeof data.sdoStatementOfWitness === 'string'
+        && typeof data.isRestrictWitness === 'string'
+        && typeof data.isRestrictPages === 'string'
+        && typeof data.text === 'string';
+    },
+    sdoR2SmallClaimsUploadDoc: (data) => {
+      return typeof data.sdoUploadOfDocumentsTxt === 'string';
+    },
+    sdoR2SmallClaimsHearing: (data) => {
+      return typeof data.trialOnOptions === 'string'
+        && typeof data.trialOnOptions === 'string'
+        && typeof data.hearingCourtLocationList === 'object'
+        && typeof data.methodOfHearing === 'string'
+        && typeof data.physicalBundleOptions === 'string'
+        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsImpNotes: (data) => {
+      return typeof data.text === 'string'
+        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsPPI: (data) => {
+      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.text === 'string';
+    }
+};
 const eventData = {
   acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -178,7 +222,6 @@ module.exports = {
     const sdoR2 = await checkToggleEnabled(SDOR2);
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
 
-
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -200,7 +243,7 @@ module.exports = {
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -1521,7 +1564,7 @@ const expectedWarnings = async (pageId, eventData, expectedWarningMessages, resp
   }
 };
 
-const assertSubmittedEvent = async (  expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -1598,7 +1641,9 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-
+  if(checkToggleEnabled(SDOR2) && (pageId === 'ClaimsTrack' || pageId === 'OrderType')) {
+    calculated = {...calculated, ...calculatedClaimsTrackDRH};
+  }
   if(eventName === 'CREATE_CLAIM'){
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
   } else if(eventName === 'CLAIMANT_RESPONSE'){
@@ -1613,6 +1658,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
+
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
@@ -1620,10 +1666,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
-  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack') {
-    let sdoR2SmallClaimsJudgesRecital = {['sdoR2SmallClaimsJudgesRecital']:{'input':'Upon considering the statements of case and loaded, or uploaded late, will not be permitted except with permission from the Court.'}};
-    midEventData = {...midEventData, ...sdoR2SmallClaimsJudgesRecital};
-  }
+
 
   caseData = {...caseData, ...midEventData};
   if (midEventField) {
