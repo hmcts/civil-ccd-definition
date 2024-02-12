@@ -162,51 +162,6 @@ const midEventFieldForPage = {
     },
   }
 };
-const midEventSDOData = {
-    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
-    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
-    fastTrackHearingTime: (d) =>
-      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
-      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
-      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
-      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
-      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
-    disposalHearingHearingTime: (d) =>
-      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
-      && d.dateTo,
-    sdoR2SmallClaimsJudgesRecital: (data) => {
-      return typeof data.input === 'string';
-    },
-    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsWitnessStatements: (data) => {
-      return typeof data.sdoStatementOfWitness === 'string'
-        && typeof data.isRestrictWitness === 'string'
-        && typeof data.isRestrictPages === 'string'
-        && typeof data.text === 'string';
-    },
-    sdoR2SmallClaimsUploadDoc: (data) => {
-      return typeof data.sdoUploadOfDocumentsTxt === 'string';
-    },
-    sdoR2SmallClaimsHearing: (data) => {
-      return typeof data.trialOnOptions === 'string'
-        && typeof data.trialOnOptions === 'string'
-        && typeof data.hearingCourtLocationList === 'object'
-        && typeof data.methodOfHearing === 'string'
-        && typeof data.physicalBundleOptions === 'string'
-        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
-    },
-    sdoR2SmallClaimsImpNotes: (data) => {
-      return typeof data.text === 'string'
-        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
-    },
-    sdoR2SmallClaimsPPI: (data) => {
-      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
-        && typeof data.text === 'string';
-    }
-};
 
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
@@ -1666,7 +1621,8 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     midEventData = {...midEventData, ...sdoR2Var};
   }
   if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack') {
-    midEventData = {...midEventData, ...midEventSDOData};
+    let sdoR2SmallClaimsJudgesRecital = {['sdoR2SmallClaimsJudgesRecital']:{'input':'Upon considering the statements of case and loaded, or uploaded late, will not be permitted except with permission from the Court.'}};
+    midEventData = {...midEventData, ...sdoR2SmallClaimsJudgesRecital};
   }
 
   caseData = {...caseData, ...midEventData};
