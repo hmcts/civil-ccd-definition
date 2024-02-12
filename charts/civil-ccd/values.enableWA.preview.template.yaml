@@ -85,6 +85,7 @@ wa:
         DB_READER_USERNAME: "hmcts"
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
     secrets:
       POSTGRES_PASSWORD:
         secretRef: "{{ .Values.global.postgresSecret }}"
@@ -99,7 +100,6 @@ wa:
         CAMUNDA_DB_NAME: 'camunda'
         TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
         CAMUNDA_API_AUTH_ENABLED: false
-        CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
       secrets:
         CAMUNDA_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
