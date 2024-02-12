@@ -1,0 +1,31 @@
+[
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
+    "CaseFieldID": "hwFeesDetails",
+    "ListElementCode": "hwfReferenceNumber",
+    "EventElementLabel": "HwF reference number",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
+    "CaseFieldID": "hwFeesDetails",
+    "ListElementCode": "claimFee",
+    "EventElementLabel": "Help with Fees type:HwF Claim fee",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
+    "CaseFieldID": "hwFeesDetails",
+    "ListElementCode": "hearingFee",
+    "EventElementLabel": "Help with Fees type:HwF Hearing Fee",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

@@ -2545,7 +2545,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
