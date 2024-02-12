@@ -79,6 +79,7 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -132,7 +133,8 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
   }
 };
 
@@ -1518,7 +1520,7 @@ const expectedWarnings = async (pageId, eventData, expectedWarningMessages, resp
   }
 };
 
-const assertSubmittedEvent = async (expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
+const assertSubmittedEvent = async (  expectedState, submittedCallbackResponseContains, hasSubmittedCallback = true) => {
   await apiRequest.startEvent(eventName, caseId);
 
   const response = await apiRequest.submitEvent(eventName, caseData, caseId);
@@ -1612,6 +1614,10 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   }
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};

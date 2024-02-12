@@ -107,11 +107,18 @@
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
+    "ListElementCode": "hearingNotesLbl",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ElementLabel": "Hearing notes"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesTxt",
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "ElementLabel": "Hearing notes\n This is only seen by the Listing Officer",
-    "Hint": "This is only seen by the Listing Officer"
+    "ElementLabel": "This is only seen by the Listing Officer"
   }
 ]
