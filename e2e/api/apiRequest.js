@@ -104,8 +104,6 @@ module.exports = {
   startEventForCitizen: async (eventName, caseId, payload) => {
     let url = getCivilServiceUrl();
     const userId = await idamHelper.userId(tokens.userAuth);
-    console.log('The value of the userId from the startEventForCitizen() : ' + userId);
-    console.log('The value of the Auth Token from the startEventForCitizen() : ' + tokens.userAuth);
     if (caseId) {
       url += `/cases/${caseId}`;
     }
