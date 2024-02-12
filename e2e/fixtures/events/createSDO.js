@@ -1,5 +1,4 @@
-const {date, element, listElement} = require('../../api/dataHelper');
-const config = require("../../config");
+const {date, element} = require('../../api/dataHelper');
 
 const calculatedClaimsTrackWOSum = {
   ClaimsTrack: {
@@ -207,7 +206,7 @@ const calculatedClaimsTrackDRH = {
       return typeof data.sdoStatementOfWitness === 'string'
       && typeof data.isRestrictWitness === 'string'
       && typeof data.isRestrictPages === 'string'
-        && typeof data.text === 'string'
+        && typeof data.text === 'string';
     },
     sdoR2SmallClaimsUploadDoc: (data) => {
       return typeof data.sdoUploadOfDocumentsTxt === 'string';
@@ -218,15 +217,15 @@ const calculatedClaimsTrackDRH = {
       && typeof data.hearingCourtLocationList === 'object'
       && typeof data.methodOfHearing === 'string'
         && typeof data.physicalBundleOptions === 'string'
-        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
     },
     sdoR2SmallClaimsImpNotes: (data) => {
       return typeof data.text === 'string'
-      && typeof data.date.match(/\d{4}-\d{2}-\d{2}/)
+      && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
     },
     sdoR2SmallClaimsPPI: (data) => {
       return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
-       && typeof data.text === 'string'
+       && typeof data.text === 'string';
     }
   }
 };
