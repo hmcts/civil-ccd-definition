@@ -4,7 +4,7 @@
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "CaseFieldID": "hwFeesDetails",
     "ListElementCode": "claimFee",
-    "EventElementLabel": "Help with Fees type:HwF Claim fee",
+    "EventElementLabel": "### Help with Fees type:  HwF Claim fee",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
@@ -14,7 +14,7 @@
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "CaseFieldID": "hwFeesDetails",
     "ListElementCode": "hearingFee",
-    "EventElementLabel": "Help with Fees type:HwF Hearing Fee",
+    "EventElementLabel": "### Help with Fees type:  HwF Hearing Fee",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y"
