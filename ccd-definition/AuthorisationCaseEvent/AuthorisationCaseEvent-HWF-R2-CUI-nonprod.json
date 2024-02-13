@@ -1,11 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantResponseSubmittedDate",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
