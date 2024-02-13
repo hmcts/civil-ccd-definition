@@ -2,30 +2,21 @@
   {
     "ID": "HelpWithFeesDetails",
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hwFeesDetails",
-    "ListElementCode": "claimFee",
-    "EventElementLabel": "### Help with Fees type:  HwF Claim fee",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "ID": "HelpWithFeesDetails",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hwFeesDetails",
-    "ListElementCode": "hearingFee",
-    "EventElementLabel": "### Help with Fees type:  HwF Hearing Fee",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "ID": "HelpWithFeesDetails",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hwFeesDetails",
+    "CaseFieldID": "claimIssuedHwfDetails",
     "ListElementCode": "hwfReferenceNumber",
     "EventElementLabel": "HwF reference number",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
+    "CaseFieldID": "hearingHwfDetails",
+    "ListElementCode": "hwfReferenceNumber",
+    "EventElementLabel": "HwF reference number",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   }
 ]

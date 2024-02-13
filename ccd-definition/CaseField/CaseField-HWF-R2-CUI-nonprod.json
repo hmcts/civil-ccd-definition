@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHWFFeeNumber",
-    "Label": "### ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -10,16 +10,57 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFHearingNumber",
-    "Label": "### ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwFeesDetails",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimFeeLabel",
+    "FieldType": "Label",
+    "Label": "Help with Fees type:HwF Claim fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeeLabel",
+    "FieldType": "Label",
+    "Label": "Help with Fees type:HwF Hearing fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedHwfDetails",
     "Label": " ",
     "FieldType": "HelpWithFeesDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingHwfDetails",
+    "Label": " ",
+    "FieldType": "HelpWithFeesDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfSubTitle",
+    "FieldType": "Label",
+    "Label": "<h2 class=\"govuk-heading-1\"> HwF Details </h2>",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
