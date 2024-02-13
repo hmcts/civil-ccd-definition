@@ -65,7 +65,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
-    "CaseFieldID": "hwFeesDetails",
+    "CaseFieldID": "claimIssuedHwfDetails",
+    "DisplayContext": "COMPLEX",
+    "PageID": "partRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/remission-amount",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
+    "CaseFieldID": "hearingHwfDetails",
     "DisplayContext": "COMPLEX",
     "PageID": "partRemissionHWF",
     "PageDisplayOrder": 1,

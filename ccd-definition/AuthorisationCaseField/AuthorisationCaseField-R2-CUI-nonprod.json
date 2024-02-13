@@ -2540,7 +2540,9 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "citizen-profile",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "caseworker-civil",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
