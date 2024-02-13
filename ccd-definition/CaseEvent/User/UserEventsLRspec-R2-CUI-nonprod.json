@@ -42,7 +42,7 @@
     "ID": "INVALID_HWF_REFERENCE",
     "Name": "Invalid HwF Reference",
     "Description": "Invalid HwF Reference",
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "HEARING_READINESS;PENDING_CASE_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
