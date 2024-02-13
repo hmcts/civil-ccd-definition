@@ -5,8 +5,8 @@ module.exports = {
     employmentType: {
       id: '#defenceAdmitPartEmploymentTypeRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#defenceAdmitPartEmploymentTypeRequired_Yes',
+        no: '#defenceAdmitPartEmploymentTypeRequired_No'
       },
     },
    unemployedType: {
