@@ -15,6 +15,6 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "hwFeesDetails.hwfFeeType = \"CLAIMISSUED\" OR hwFeesDetails.hwfFeeType = \"HEARING\""
+    "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   }
 ]
