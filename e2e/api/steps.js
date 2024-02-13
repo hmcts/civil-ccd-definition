@@ -168,6 +168,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
   createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -1108,8 +1109,11 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    let expectedState = 'HEARING_READINESS';
+    if (allocatedTrack === 'OTHER') {
+      expectedState = 'PREPARE_FOR_HEARING_CONDUCT_HEARING';
+    }
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -1624,6 +1628,11 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
+  if(checkToggleEnabled(SDOR2) && pageId === 'OrderType') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+      midEventData = {...midEventData, ...sdoR2Var};
+  }
+
   caseData = {...caseData, ...midEventData};
   if (midEventField) {
     responseBody.data[midEventField.id] = caseData[midEventField.id];
@@ -1885,6 +1894,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['isSdoR2NewScreen'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];

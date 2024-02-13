@@ -548,7 +548,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2AddNewDirection",
     "PageFieldDisplayOrder": 47,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "SdoR2FastTrack",
     "PageDisplayOrder":7,
     "PageColumnNumber": 1,

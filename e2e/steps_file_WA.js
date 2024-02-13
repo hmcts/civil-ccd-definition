@@ -123,7 +123,6 @@ module.exports = function (){
     createBooking: async function (location) {
       await this.amOnPage(config.url.manageCase + '/booking');
       await this.waitForText('Create a new booking');
-      await this.waitForClickable('input#type-1');
       await this.click({css: 'input#type-1'});
       await this.click('Continue');
       await this.fillField({css: 'input#inputLocationSearch'}, location);
