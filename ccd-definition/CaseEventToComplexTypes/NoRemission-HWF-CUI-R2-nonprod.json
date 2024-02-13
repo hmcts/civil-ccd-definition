@@ -2,38 +2,42 @@
   {
     "ID": "HelpWithFeesDetails",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwFeesDetails",
+    "CaseFieldID": "claimIssuedHwfDetails",
     "ListElementCode": "noRemissionDetails",
     "EventElementLabel": "Details",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "ID": "HelpWithFeesDetails",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwFeesDetails",
+    "CaseFieldID": "claimIssuedHwfDetails",
     "ListElementCode": "noRemissionDetailsSummary",
     "EventElementLabel": "Summary",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "ID": "HelpWithFeesDetails",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwFeesDetails",
-    "ListElementCode": "claimFee",
-    "EventElementLabel": "Help with Fees type:HwF Claim fee",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "CaseFieldID": "hearingHwfDetails",
+    "ListElementCode": "noRemissionDetails",
+    "EventElementLabel": "Details",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
     "ID": "HelpWithFeesDetails",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwFeesDetails",
-    "ListElementCode": "hearingFee",
-    "EventElementLabel": "Help with Fees type:HwF Hearing Fee",
+    "CaseFieldID": "hearingHwfDetails",
+    "ListElementCode": "noRemissionDetailsSummary",
+    "EventElementLabel": "Summary",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   }
 
 ]

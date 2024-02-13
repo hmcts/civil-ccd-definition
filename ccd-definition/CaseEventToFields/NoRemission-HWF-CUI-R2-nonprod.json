@@ -27,7 +27,8 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"CLAIMISSUED\""
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -37,16 +38,60 @@
     "PageID": "NoRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "FieldShowCondition": "hwFeesDetails.hwfFeeType = \"HEARING\""
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NO_REMISSION_HWF",
-    "CaseFieldID": "hwFeesDetails",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "CaseFieldID": "claimIssuedHwfDetails",
     "DisplayContext": "COMPLEX",
     "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "hearingHwfDetails",
+    "DisplayContext": "COMPLEX",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "claimFeeLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "hearingFeeLabel",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "hwfFeeType=\"HEARING\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseFieldID": "hwfFeeType",
+    "DisplayContext": "READONLY",
+    "PageID": "NoRemissionHWF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   }
 ]
