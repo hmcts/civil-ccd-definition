@@ -77,9 +77,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -91,9 +89,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
 
         ],
         "CRUD": "CRU"
