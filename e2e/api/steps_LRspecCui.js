@@ -7,11 +7,12 @@ chai.config.truncateThreshold = 0;
 const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
-const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers, assignCaseToCitizen} = require('./caseRoleAssignmentHelper');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const claimDataSpecFastLRvLiP = require('../fixtures/events/cui/createClaimSpecFastTrackCui.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/events/cui/createClaimSpecSmallCui.js');
+const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepresentedClaimant');
 const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.js');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -20,6 +21,8 @@ const {dateNoWeekends} = require('./dataHelper');
 const {checkToggleEnabled} = require('./testingSupport');
 const {PBAv3} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
+const {fetchCaseDetails} = require('./apiRequest');
+const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
 
 let caseId, eventName;
 let caseData = {};
@@ -29,7 +32,7 @@ const data = {
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
-  CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse),
+  CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
@@ -48,7 +51,10 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
-      FULL_DEFENCE_CITIZEN_DEFENDANT: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true),
+      FULL_DEFENCE_CITIZEN_DEFENDANT:  {
+        Yes: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'Yes'),
+        No: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'No'),
+      },
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM'),
@@ -99,6 +105,32 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false) => {
+    console.log('Starting to create claim');
+    let payload = {};
+    await apiRequest.setupTokens(user);
+    let userId = await apiRequest.fetchUserId();
+    if (claimType === 'FastTrack') {
+      console.log('FastTrack claim...');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
+    } else {
+      console.log('SmallClaim...');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId);
+    }
+    caseId = await apiRequest.startCreateCaseForCitizen(payload);
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('Claim submitted');
+
+    // issue claim
+    payload = createClaimLipClaimant.issueClaim();
+    await apiRequest.startCreateCaseForCitizen(payload, caseId);
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('Claim issued');
+    await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    return caseId;
+  },
+
   createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
     console.log(' Creating specified claim');
     eventName = 'CREATE_CLAIM_SPEC';
@@ -130,7 +162,7 @@ module.exports = {
     }
     await waitForFinishedBusinessProcess(caseId);
     if (claimType !== 'pinInPost') {
-      await assignCaseToCitizen(caseId, multipartyScenario);
+      await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     }
 
     //field is deleted in about to submit callback
@@ -141,22 +173,33 @@ module.exports = {
     return caseId;
   },
 
-  performCitizenResponse: async (user, caseId, claimType = 'SmallClaims') => {
-    console.log('This is inside performCitizenResponse : ' + caseId);
+  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false) => {
     let eventName = 'DEFENDANT_RESPONSE_CUI';
     let payload = {};
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
-      payload = defendantResponse.createDefendantResponse('15000');
+      payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
     } else {
       console.log('SmallClaim...');
-      payload = defendantResponse.createDefendantResponse('1500');
+      payload = defendantResponse.createDefendantResponse('1500', carmEnabled);
     }
     //console.log('The payload : ' + payload);
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload);
     await waitForFinishedBusinessProcess(caseId);
-    console.log('End of performCitizenResponse()');
+  },
+
+  performCitizenClaimantResponse: async (user, caseId, expectedEndState) => {
+    let eventName = 'CLAIMANT_RESPONSE_CUI';
+    let payload = lipClaimantResponse.claimantResponse();
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
+    await waitForFinishedBusinessProcess(caseId);
+    if (expectedEndState) {
+      const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
+      assert.equal(response.state, expectedEndState);
+    }
   },
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {
@@ -205,7 +248,7 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
+  claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', freeMediation = 'Yes',
                            expectedCcdState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
@@ -215,7 +258,7 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
+    let claimantResponseData = eventData['claimantResponses'][scenario][response][freeMediation];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -227,6 +270,12 @@ module.exports = {
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  checkUserCaseAccess: async (user, shouldHaveAccess) => {
+    console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
+    const expectedStatus = shouldHaveAccess ? 200 : 403;
+    return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 
   requestJudgement: async (user, response = 'FULL_ADMISSION', scenario = 'ONE_V_ONE') => {
