@@ -1938,6 +1938,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2SmallClaimsPPI'];
   delete responseBody.data['sdoR2SmallClaimsHearing'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
+  delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
