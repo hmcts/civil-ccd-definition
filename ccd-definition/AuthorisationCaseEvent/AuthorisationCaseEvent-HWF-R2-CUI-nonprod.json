@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseSubmittedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
