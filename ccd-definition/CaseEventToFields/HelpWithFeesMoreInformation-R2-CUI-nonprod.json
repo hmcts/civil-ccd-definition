@@ -103,7 +103,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "moreInformationHwf",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
+    "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/more-information-hwf"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -114,6 +115,7 @@
     "DisplayContext": "MANDATORY",
     "PageID": "moreInformationHwf",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"HEARING\""
+    "FieldShowCondition": "hwfFeeType = \"HEARING\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/more-information-hwf"
   }
 ]
