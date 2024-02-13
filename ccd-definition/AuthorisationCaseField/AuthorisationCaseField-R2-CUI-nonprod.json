@@ -2451,6 +2451,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantResponseSubmittedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSignSettlementAgreement",
     "AccessControl": [
       {
@@ -2527,9 +2539,7 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },

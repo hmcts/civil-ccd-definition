@@ -10,7 +10,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHwFReference",
+    "ID": "caseTitleWithoutHwFReference",
     "Label": "# ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
@@ -31,5 +31,22 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwFeesDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
