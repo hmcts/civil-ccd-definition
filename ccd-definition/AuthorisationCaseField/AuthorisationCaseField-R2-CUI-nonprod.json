@@ -2539,7 +2539,11 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile",
+          "caseworker-civil",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
