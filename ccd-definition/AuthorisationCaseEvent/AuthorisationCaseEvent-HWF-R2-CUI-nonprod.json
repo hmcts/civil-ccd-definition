@@ -5,9 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
