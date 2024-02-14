@@ -5,6 +5,9 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
-  }
+    "Searchable": "N",
+    "HintText": "For example, HWF-A1B-23C",
+    "Max": 11,
+    "RegularExpression": "[0-9A-Za-z-]*"
+ }
 ]

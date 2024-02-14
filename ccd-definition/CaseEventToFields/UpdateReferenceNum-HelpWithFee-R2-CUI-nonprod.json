@@ -40,7 +40,7 @@
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
@@ -51,7 +51,7 @@
     "PageID": "updateHwfNumber",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
