@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "FEE_PAYMENT_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]

@@ -1,0 +1,72 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitle2",
+    "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfNumberAvailable",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfNumberForFeePaymentOutcome",
+    "Label": "Enter the reference number",
+    "FieldType": "Text",
+    "HintText": "For example, HWF-A1B-23C",
+    "RegularExpression": "HWF-[0-9A-Za-z]{3}-[0-9A-Za-z]{3}",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFullRemissionGrantedForClaimIssue",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfPartRemissionPaymentDoneForClaimIssue",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmPaymentMade",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFullRemissionGrantedForHearingFee",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfPartRemissionPaymentDoneForHearingFee",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmPaymentMade",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

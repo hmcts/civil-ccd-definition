@@ -201,6 +201,6 @@
     "Label": "Hearing reference",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   }
 ]
