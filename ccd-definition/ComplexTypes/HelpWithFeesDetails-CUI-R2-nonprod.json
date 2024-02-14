@@ -2,10 +2,9 @@
  {
     "ID": "HelpWithFeesDetails",
     "ListElementCode": "hwfReferenceNumber",
-    "ElementLabel": "HwF reference number",
+    "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "RegularExpression": "[0-9A-Za-z]*"
+    "Searchable": "N"
   }
 ]
