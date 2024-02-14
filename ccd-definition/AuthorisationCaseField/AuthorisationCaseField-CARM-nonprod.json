@@ -215,12 +215,53 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "contactDetailsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "mediationUnavailabilityLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "resp1MediationContactInfo",
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
           "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -232,8 +273,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -245,8 +291,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
           "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -258,8 +309,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+           "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
