@@ -61,12 +61,8 @@ module.exports = {
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
               responseCourtLocations: {
-                list_items: [
-                  listElement(config.defendantSelectedCourt)
-                ],
-                value: listElement(config.defendantSelectedCourt)
+                requestHearingAtSpecificCourt: 'No'
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
             },
             respondent1DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',

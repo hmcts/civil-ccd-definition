@@ -1,7 +1,7 @@
 const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE', citizenDefendantResponse = false) => {
+  claimantResponse: (response = 'FULL_DEFENCE', citizenDefendantResponse = false, freeMediation = 'Yes') => {
     const responseData = {
     };
     switch (response) {
@@ -13,7 +13,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           },
           SmallClaimExperts: {
@@ -109,7 +109,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           },
         };
@@ -129,7 +129,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           }
         };
@@ -159,7 +159,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           }
         };
