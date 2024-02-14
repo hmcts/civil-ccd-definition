@@ -79,6 +79,7 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -96,7 +97,51 @@ const data = {
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
   MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
-
+const calculatedClaimsTrackDRH = {
+    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+    fastTrackHearingTime: (d) =>
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+    disposalHearingHearingTime: (d) =>
+      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+      && d.dateTo,
+    sdoR2SmallClaimsJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatements: (data) => {
+      return typeof data.sdoStatementOfWitness === 'string'
+        && typeof data.isRestrictWitness === 'string'
+        && typeof data.isRestrictPages === 'string'
+        && typeof data.text === 'string';
+    },
+    sdoR2SmallClaimsUploadDoc: (data) => {
+      return typeof data.sdoUploadOfDocumentsTxt === 'string';
+    },
+    sdoR2SmallClaimsHearing: (data) => {
+      return typeof data.trialOnOptions === 'string'
+        && typeof data.trialOnOptions === 'string'
+        && typeof data.hearingCourtLocationList === 'object'
+        && typeof data.methodOfHearing === 'string'
+        && typeof data.physicalBundleOptions === 'string'
+        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsImpNotes: (data) => {
+      return typeof data.text === 'string'
+        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsPPI: (data) => {
+      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.text === 'string';
+    }
+};
 const eventData = {
   acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -132,7 +177,8 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
   }
 };
 
@@ -1595,7 +1641,9 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-
+  if(checkToggleEnabled(SDOR2) && (pageId === 'ClaimsTrack' || pageId === 'OrderType')) {
+    calculated = {...calculated, ...calculatedClaimsTrackDRH};
+  }
   if(eventName === 'CREATE_CLAIM'){
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
   } else if(eventName === 'CLAIMANT_RESPONSE'){
@@ -1610,9 +1658,15 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
+
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
+  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
+  }
+
 
   caseData = {...caseData, ...midEventData};
   if (midEventField) {
@@ -1875,6 +1929,16 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['sdoR2SmallClaimsJudgesRecital'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDocToggle'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
+  delete responseBody.data['sdoR2SmallClaimsImpNotes'];
+  delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['sdoR2SmallClaimsPPI'];
+  delete responseBody.data['sdoR2SmallClaimsHearing'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
+  delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
