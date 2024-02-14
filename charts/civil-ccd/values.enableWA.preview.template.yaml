@@ -13,7 +13,7 @@ global:
   jobKind: CronJob
 
 camunda-bpm:
-  enabled: true
+  enabled: false
 
 civil-wa:
   enabled: true
@@ -26,8 +26,6 @@ wa:
 #    postgresHost: civil-preview.postgres.database.azure.com
 #    databaseNamePrefix: "pr-${CHANGE_ID}-"
   wa:
-    camunda:
-      enabled: false
     postgresql:
       enabled: false
   wa-case-event-handler:
@@ -87,12 +85,26 @@ wa:
         DB_READER_USERNAME: "hmcts"
         POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
     secrets:
       POSTGRES_PASSWORD:
         secretRef: "{{ .Values.global.postgresSecret }}"
         key: PASSWORD
         disabled: true
-
+  camunda-bpm:
+    java:
+      environment:
+        CAMUNDA_DB_USER_NAME: "hmcts"
+        CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_DB_NAME: 'camunda'
+        TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
+        CAMUNDA_API_AUTH_ENABLED: false
+      secrets:
+        CAMUNDA_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 ccd-message-publisher:
   java:
     ingressHost: ccd-message-publisher-${SERVICE_FQDN}
@@ -110,6 +122,7 @@ ccd-message-publisher:
       DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
       DATA_STORE_DB_NAME: "data-store"
       DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
       DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
       CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events
     secrets:
