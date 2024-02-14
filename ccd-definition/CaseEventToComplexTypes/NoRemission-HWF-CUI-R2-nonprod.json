@@ -5,7 +5,7 @@
     "CaseFieldID": "claimIssuedHwfDetails",
     "ListElementCode": "noRemissionDetails",
     "EventElementLabel": "Details",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
@@ -15,7 +15,7 @@
     "CaseFieldID": "claimIssuedHwfDetails",
     "ListElementCode": "noRemissionDetailsSummary",
     "EventElementLabel": "Summary",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
@@ -25,7 +25,7 @@
     "CaseFieldID": "hearingHwfDetails",
     "ListElementCode": "noRemissionDetails",
     "EventElementLabel": "Details",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
@@ -35,7 +35,7 @@
     "CaseFieldID": "hearingHwfDetails",
     "ListElementCode": "noRemissionDetailsSummary",
     "EventElementLabel": "Summary",
-    "FieldDisplayOrder": 2,
+    "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   }
