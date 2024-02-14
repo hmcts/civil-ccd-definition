@@ -53,50 +53,99 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 3,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
-    "CaseFieldID": "totalClaimAmount",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 4,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
-    "CaseFieldID": "responseClaimTrack",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 5,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
-    "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 6,
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "APPLY_HELP_WITH_HEARING_FEE",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "responseClaimTrack",
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 7,
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  }
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 14,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
     "Publish": "Y"
   }
 ]
