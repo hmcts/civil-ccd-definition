@@ -3,11 +3,14 @@ const config = require('../../config.js');
 
 const changeLocation = () => {
   return {
-    TransferCase: {
+    NotSuitableSDO: {
       notSuitableSdoOptions: 'CHANGE_LOCATION',
-      tocTransferCaseReason:{
+      reasonNotSuitableSDO:{
+        input: 'Other reason for not suitable SDO'
+      },
+      tocTransferCaseReason: {
         reasonForCaseTransferJudgeTxt: 'Reason for transferring case'
-      }
+      },
     }
   };
 };

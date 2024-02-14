@@ -353,9 +353,25 @@ module.exports = function (){
     }
   },
 
-  createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
-    console.log('SDO for case id ' + caseId);
-    await apiRequest.setupTokens(user);
+    notSuitableSdoChangeLocation: async (user, option) => {
+      console.log(`case in CASE PROGRESSION  ${caseId}`);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'NotSuitable_SDO';
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.NOT_SUITABLE_SDO(option);
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertNotValidData(disposalData, pageId);
+      }
+
+    },
+
+    createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
+      console.log('SDO for case id ' + caseId);
+      await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
@@ -526,6 +542,31 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const assertNotValidData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  let userData;
+
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId,
+    422
+  );
+  let responseBody = await response.json();
+  if (responseBody.callbackErrors != null) {
+    assert.equal(responseBody.callbackErrors[0], 'Unable to process this request. To transfer the case to another court you need to issue a General Order.');
+  }
+
 };
 
 const clearDataForSearchCriteria = (responseBody) => {
