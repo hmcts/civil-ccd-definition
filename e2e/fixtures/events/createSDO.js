@@ -380,7 +380,7 @@ module.exports = {
         },
         SmallClaims: {
           smallClaims: [
-
+      
           ],
           smallClaimsJudgesRecital: {
             input: 'string'
@@ -1271,121 +1271,5 @@ module.exports = {
         }
       }
     };
-  },
-
-  //SmallTrack Claims Flight Delay
-  createSDOSmallFlightDelay: () => {
-    const data = {
-      valid: {
-        SDO: {
-          drawDirectionsOrderRequired: 'Yes',
-          drawDirectionsOrder: {
-            judgementSum: '20'
-          }
-        },
-        ClaimsTrack: {
-          claimsTrack: 'smallClaimsTrack',
-          drawDirectionsOrderSmallClaims: 'Yes',
-          setSmallClaimsFlag: 'Yes',
-          setFastTrackFlag: 'No',
-          isSdoR2NewScreen: 'Yes',
-          sdoFastTrackJudgesRecital: {
-            input: 'Upon considering the statements of case and the information provided by the parties.'
-          },
-          sdoR2Trial: {
-            altHearingCourtLocationList: {
-              list_items: [
-                {
-                  code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-                },
-                {
-                  code: '111100',
-                  label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
-                },
-                {
-                  code: '222200',
-                  label: 'High Wycombe Law Courts - THE LAW COURTS, EASTON STREET - HP11 1LR'
-                },
-                {
-                  code: '333300',
-                  label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
-                }
-              ]
-            },
-            hearingCourtLocationList: {
-              list_items: [
-                {
-                  code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-                },
-                {
-                  code: 'OTHER_LOCATION',
-                  label: 'Other location'
-                }
-              ],
-            },
-            physicalBundlePartyTxt: 'The Claimant shall deliver to the court a physical copy of the court generated bundle no later than 10 days before the trial.',
-            sdoR2TrialFirstOpenDateAfter: {
-              listFrom: date(+434)
-            },
-            sdoR2TrialWindow: {
-              listFrom: date(+434),
-              dateTo: date(+455)
-            }
-
-          }
-        },
-        SmallClaims: {
-          smallClaimsJudgesRecital: {
-            input: 'string'
-          },
-          smallClaimsHearing: {
-            input1: 'string',
-            input2: 'string',
-            time: 'THIRTY_MINUTES'
-          },
-          smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
-          smallClaimsDocuments: {
-            input1: 'string',
-            input2: 'string'
-          },
-          smallClaimsWitnessStatement: {
-            input1: 'string',
-            input2: '1',
-            input3: '1',
-            input4: 'string'
-          },
-          smallClaimsAddNewDirections: [
-            element({
-              directionComment: 'string'
-            }),
-            element({
-              directionComment: 'string'
-            })
-          ],
-          smallClaimsNotes: {
-            input: 'string',
-            date: date(1)
-          }
-        }
-      },
-      midEventData: {
-        ClaimsTrack: {
-          isSdoR2NewScreen : 'Yes',
-          setSmallClaimsFlag: 'Yes',
-          setFastTrackFlag: 'No'
-        },
-        SmallClaims: {
-        }
-      },
-      calculated: calculatedClaimsTrackWSum
-    };
-    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
-      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
-      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
-    };
-    return data;
-  },
+  }
 };
