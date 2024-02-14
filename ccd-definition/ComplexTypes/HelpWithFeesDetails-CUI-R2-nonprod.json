@@ -2,7 +2,7 @@
  {
     "ID": "HelpWithFeesDetails",
     "ListElementCode": "hwfReferenceNumber",
-    "ElementLabel": " ",
+    "ElementLabel": "Help with reference number",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
