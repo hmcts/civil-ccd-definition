@@ -2,25 +2,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFClaimFeeNumber",
-    "Label": "<h2 class=\"govuk-heading-1\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "Label": "<h2 class=\"govuk-heading-1\">  ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "ShowSummaryChangeOption": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFHearingNumber",
-    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "remissionFeeAmountWarningMessage",
-    "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -38,7 +28,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "claimFeeLabel",
     "FieldType": "Label",
-    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Claim fee</h4>",
+    "Label": "Help with Fees type: HwF Claim fee",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -46,7 +36,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingFeeLabel",
     "FieldType": "Label",
-    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Hearing fee</h4> ",
+    "Label": "Help with Fees type: HwF Hearing fee",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -63,6 +53,14 @@
     "ID": "hearingHwfDetails",
     "FieldType": "HelpWithFeesDetails",
     "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "remissionFeeAmountWarningMessage",
+    "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
