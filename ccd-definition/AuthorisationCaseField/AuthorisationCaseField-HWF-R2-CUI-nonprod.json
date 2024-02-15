@@ -80,6 +80,7 @@
       {
         "UserRoles": [
           "cui-admin-profile"
+
         ],
         "CRUD": "CRU"
       }

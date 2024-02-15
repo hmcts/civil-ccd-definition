@@ -1,10 +1,27 @@
 [
- {
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "noRemissionDetails",
+    "ElementLabel": "Details",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "noRemissionDetailsSummary",
+    "ElementLabel": "Summary",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "HWFFeesSummaryType",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
     "ID": "HelpWithFeesDetails",
     "ListElementCode": "hwfReferenceNumber",
     "ElementLabel": "HwF reference number",
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
- }
+  }
 ]
