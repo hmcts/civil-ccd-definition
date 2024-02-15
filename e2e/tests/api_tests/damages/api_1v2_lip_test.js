@@ -11,7 +11,7 @@ Scenario('Create claim where one respondent is LIP one is LR and notify/notify d
                                   'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
 });
 
-Scenario('Create claim where two respondents are LIP and notify/notify details', async ({api}) => {
+Scenario('Create claim where two respondents are LIP and notify/notify details @123', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
                                                       'ONE_V_TWO_LIPS');
   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
@@ -19,5 +19,5 @@ Scenario('Create claim where two respondents are LIP and notify/notify details',
 });
 
 AfterSuite(async  ({api}) => {
-    await api.cleanUp();
+    // await api.cleanUp();
 });

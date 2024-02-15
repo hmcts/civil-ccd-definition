@@ -37,7 +37,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState);
 }
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled @123', async ({noc, api_spec_cui}) => {
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 
@@ -55,7 +55,7 @@ async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
 }
 
-Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled @123', async ({noc, api_spec_cui}) => {
   await  prepareClaimLRvLiP(api_spec_cui, noc, false);
 });
 
@@ -79,7 +79,7 @@ Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui
 });
 
 AfterSuite(async  ({api_spec_cui}) => {
-  await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  // await api_spec_cui.cleanUp();
+  // await deleteAccount(config.defendantCitizenUser2.email);
 });
 

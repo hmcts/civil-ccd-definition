@@ -25,7 +25,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
 });
 
-Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
+Scenario('notice of change - 1v1 - unrepresented defendant @123', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
 
   let caseId = await api.getCaseId();
