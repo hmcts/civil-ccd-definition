@@ -70,19 +70,10 @@
     "Publish": "Y"
   },
   {
-    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
-    "CaseFieldID": "totalClaimAmount",
-    "PageFieldDisplayOrder": 8,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 2,
-    "Publish": "Y"
-  },
-  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "totalClaimAmount",
-    "PageFieldDisplayOrder": 9,
+    "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
