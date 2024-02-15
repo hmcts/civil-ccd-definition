@@ -189,6 +189,19 @@
     "PageDisplayOrder": 4,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "setRequestDJDamagesFlagForWA",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "HearingSupportRequirementsFieldDJ",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "hearingDirectionsLabel=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
 

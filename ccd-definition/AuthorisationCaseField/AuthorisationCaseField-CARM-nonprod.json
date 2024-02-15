@@ -143,7 +143,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -162,7 +164,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
