@@ -10,7 +10,7 @@
     "FieldShowCondition": "helpWithFeesReferenceNumber != \"\""
   },
   {
-    "ID": "HelpWithFeesYesOrNo",
+    "ID": "HelpWithFees",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "helpWithFees",
     "ListElementCode": "helpWithFee",
