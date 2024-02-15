@@ -99,7 +99,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "claimFeeLabel",
     "FieldType": "Label",
-    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Claim fee</h4>",
+    "Label": "Help with Fees type : HwF Claim fee",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -107,7 +107,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "hearingFeeLabel",
     "FieldType": "Label",
-    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Hearing fee</h4> ",
+    "Label": "Help with Fees type : HwF Hearing fee",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
