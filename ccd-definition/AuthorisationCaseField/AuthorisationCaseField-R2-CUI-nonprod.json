@@ -2401,6 +2401,12 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2536,6 +2542,31 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1JudgmentByDeterminationForm",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseWorkerDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   }

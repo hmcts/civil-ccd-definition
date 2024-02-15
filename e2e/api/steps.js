@@ -166,6 +166,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
   createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -988,6 +989,10 @@ module.exports = {
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    // will be assigned on about to submit, based on judges decision
+    delete caseData['allocatedTrack'];
+    delete caseData['responseClaimTrack'];
+
     let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
@@ -1103,8 +1108,11 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    let expectedState = 'HEARING_READINESS';
+    if (allocatedTrack === 'OTHER') {
+      expectedState = 'PREPARE_FOR_HEARING_CONDUCT_HEARING';
+    }
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 

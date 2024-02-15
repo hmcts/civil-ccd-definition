@@ -103,6 +103,8 @@ const documentType = require('./pages/mediationDocumentsUpload/documentType');
 const documentUpload = require('./pages/mediationDocumentsUpload/documentUpload');
 const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightDelay.page');
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
+const requestForRR = require('./pages/requestForReconsideration/reasonForReconsideration.page');
+const requestForDecision = require('./pages/decisionOnReconsideration/decisionOnReconsideration.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -170,9 +172,10 @@ module.exports = function () {
 
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (loggedInUser !== user) {
-        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.signOut();
+        if (loggedInUser !== user) {
+          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+            await this.signOut();
+          }
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
@@ -185,7 +188,6 @@ module.exports = function () {
         }, SIGNED_IN_SELECTOR);
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
-      }
     },
 
     grabCaseNumber: async function () {
@@ -199,12 +201,12 @@ module.exports = function () {
         this.click('Sign out');
       }, SIGNED_OUT_SELECTOR);
     },
-        
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
     },
-    
+
     async setCaseId(argCaseNumber) {
       caseId = argCaseNumber;
     },
@@ -832,6 +834,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
@@ -867,6 +870,63 @@ module.exports = function () {
         await serviceRequest.openServiceRequestTab();
         await serviceRequest.payFee(caseId, true);
       }
-    }
+    },
+
+    async requestForReconsiderationForUI() {
+      eventName = 'Request for Reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForRR(eventName, caseId),
+        () => requestForRR.reasonForReconsideration(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Testing Request for Reconsideration'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsideration() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectCreateNewSDO(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsiderationYesOption() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectYesOptionToUpholdThePreviousOrderMade(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async decisionForReconsiderationNoOptionForAmending() {
+      eventName = 'Decision on reconsideration';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDR(caseId),
+        () => requestForDecision.selectNoOptionForPreviousOrderNeedsAmending(),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
   });
 };

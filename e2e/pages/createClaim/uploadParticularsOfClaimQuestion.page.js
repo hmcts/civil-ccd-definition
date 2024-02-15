@@ -6,8 +6,8 @@ module.exports = {
     uploadQuestion: {
       id: '#uploadParticularsOfClaim',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#uploadParticularsOfClaim_Yes',
+        no: '#uploadParticularsOfClaim_No'
       }
     },
   },
