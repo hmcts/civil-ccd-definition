@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "NextHearingDetails",
+    "ListElementCode": "hearingID",
+    "FieldType": "Text",
+    "ElementLabel": "ID",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "NextHearingDetails",
+    "ListElementCode": "hearingDateTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
