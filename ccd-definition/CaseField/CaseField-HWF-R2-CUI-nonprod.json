@@ -45,15 +45,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfPartRemissionPaymentDoneForClaimIssue",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "ConfirmPaymentMade",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "hwfFullRemissionGrantedForHearingFee",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -62,10 +53,77 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfPartRemissionPaymentDoneForHearingFee",
-    "Label": " ",
+    "ID": "hwfPartRemissionPaymentDoneForClaimIssue",
+    "Label": "Confirm payment of £${claimIssuedHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfPartRemissionPaymentDoneForHearingFee",
+    "Label": "Confirm payment of £${hearingHwfDetails.outstandingFeeInPounds} has been taken.",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmPaymentMade",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFHearingNumber",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "remissionFeeAmountWarningMessage",
+    "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimFeeLabel",
+    "FieldType": "Label",
+    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Claim fee</h4>",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeeLabel",
+    "FieldType": "Label",
+    "Label": "<h4 class=\"govuk-heading-1\">Help with Fees type: HwF Hearing fee</h4> ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
