@@ -276,8 +276,7 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -288,8 +287,7 @@
     "PageID": "DisposalHearing",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -298,8 +296,7 @@
     "PageFieldDisplayOrder": 22,
     "DisplayContext": "MANDATORY",
     "PageID": "DisposalHearing",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "disposalHearingFinalDisposalHearingDJToggle=\"SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
