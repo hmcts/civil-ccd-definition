@@ -54,7 +54,6 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
           "citizen-profile",
           "cui-admin-profile"
         ],
