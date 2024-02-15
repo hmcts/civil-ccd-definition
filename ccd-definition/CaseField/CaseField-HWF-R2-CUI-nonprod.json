@@ -21,7 +21,8 @@
     "Label": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -36,6 +37,22 @@
     "ID": "hearingFeeLabel",
     "FieldType": "Label",
     "Label": "Help with Fees type:HwF Hearing fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
