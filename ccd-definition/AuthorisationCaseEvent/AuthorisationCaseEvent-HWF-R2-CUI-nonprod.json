@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "FEE_PAYMENT_OUTCOME",
+    "CaseEventID": "NO_REMISSION_HWF",
     "AccessControl": [
       {
         "UserRoles": [
@@ -17,8 +17,19 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "FEE_PAYMENT_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
