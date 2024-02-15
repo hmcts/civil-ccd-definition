@@ -69,7 +69,7 @@
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "caseTitle2",
     "DisplayContext": "READONLY",
-    "PageID": "FeePaymentOutcome",
+    "PageID": "FeePaymentOutcomeGrantedRemission",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"
