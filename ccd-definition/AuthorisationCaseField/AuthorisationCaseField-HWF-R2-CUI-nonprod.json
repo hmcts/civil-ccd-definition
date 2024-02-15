@@ -1,0 +1,17 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hwfFeeType",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
