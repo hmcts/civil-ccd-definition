@@ -91,7 +91,6 @@
     "PageID": "FullRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
   },
   {
@@ -102,7 +101,6 @@
     "PageID": "FullRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType=\"HEARING\""
   }
 ]
