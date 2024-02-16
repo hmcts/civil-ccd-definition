@@ -19,8 +19,6 @@ civil-general-applications:
           - cross-access-user-password
           - prd-admin-user-username
           - prd-admin-user-password
-          - name: AppInsightsInstrumentationKeyGeneralApplications
-            alias: azure.application-insights.instrumentation-key
           - docmosis-api-key
           - gov-notify-api-key
           - sendgrid-api-key
@@ -78,10 +76,6 @@ civil-service:
             alias: CIVIL_PRD_ADMIN_USERNAME
           - name: prd-admin-user-password
             alias: CIVIL_PRD_ADMIN_PASSWORD
-          - name: appinsights-connection-string
-            alias: appinsights-connection-string
-          - name: AppInsightsInstrumentationKey
-            alias: azure.application-insights.instrumentation-key
           - name: docmosis-api-key
             alias: docmosis.tornado.key
           - name: gov-notify-api-key
