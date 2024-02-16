@@ -362,6 +362,8 @@
   {"ID": "BulkPrintRequestType", "ListElementCode": "LEGAL_ORDER", "ListElement": "Legal order to parties", "DisplayOrder":2},
   {"ID": "BulkPrintRequestType", "ListElementCode": "GENERAL_LETTER", "ListElement": "General letter", "DisplayOrder":3},
   {"ID": "BulkPrintRequestType", "ListElementCode": "BULK_PRINT_TRANSFER", "ListElement": "Bulk print transfer of case", "DisplayOrder":4},
+  {"ID": "BulkPrintRequestType", "ListElementCode": "PAPER_DEFENCE", "ListElement": "Paper defence letter", "DisplayOrder":5},
+  {"ID": "BulkPrintRequestType", "ListElementCode": "CLAIMANT_MEDIATION_REFUSED", "ListElement": "Mediation refused", "DisplayOrder":6},
   {"ID": "ScannedDocumentSubType", "ListElementCode": "Non_prescribed_documents", "ListElement": "Non prescribed documents"},
   {"ID": "ScannedDocumentSubType", "ListElementCode": "OCON9x", "ListElement": "OCON9x (Paper response (All))"},
   {"ID": "ScannedDocumentSubType", "ListElementCode": "EX160", "ListElement": "EX160 (Help with court fees)"},
