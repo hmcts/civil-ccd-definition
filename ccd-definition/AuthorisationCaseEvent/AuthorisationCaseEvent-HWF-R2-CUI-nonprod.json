@@ -5,7 +5,23 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile",
+          "caseworker-civil",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_LIP_CLAIMANT_HWF_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
