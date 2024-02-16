@@ -121,5 +121,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayTittle1",
+    "Label": "Related claims",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayTittle2",
+    "Label": "Legal arguments",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -12,25 +12,41 @@
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "input1",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SmallClaimsFlightDelay",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsFlightDelay",
     "ListElementCode": "smallClaimsNumberOfWitnessesToggle",
-    "FieldDisplayOrder": 3,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "input2",
+    "ListElementCode": "title1",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "input1",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "EventHintText": "Limit number of witnesses (claimant), e.g. 4"
+    "DisplayContext": "MANDATORY"
+  },
+
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "title2",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]
