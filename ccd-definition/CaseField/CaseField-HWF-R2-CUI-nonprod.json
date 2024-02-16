@@ -53,7 +53,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfPartRemissionPaymentDoneForClaimIssue",
+    "ID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "Label": "Confirm payment of £${claimIssuedHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",
@@ -62,7 +62,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfPartRemissionPaymentDoneForHearingFee",
+    "ID": "hwfOutstandingFeePaymentDoneForHearingFee",
     "Label": "Confirm payment of £${hearingHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",

@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwfPartRemissionPaymentDoneForClaimIssue",
+    "CaseFieldID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "AccessControl": [
       {
         "UserRoles": [
@@ -62,7 +62,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwfPartRemissionPaymentDoneForHearingFee",
+    "CaseFieldID": "hwfOutstandingFeePaymentDoneForHearingFee",
     "AccessControl": [
       {
         "UserRoles": [
