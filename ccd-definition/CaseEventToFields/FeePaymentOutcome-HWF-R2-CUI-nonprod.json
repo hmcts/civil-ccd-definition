@@ -106,6 +106,7 @@
     "PageFieldDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
     "CaseEventFieldLabel": "Was this a Full Remission HwF - granted outcome?",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/remission-type",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
