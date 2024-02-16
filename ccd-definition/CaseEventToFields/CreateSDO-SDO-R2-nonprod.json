@@ -33,7 +33,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
+    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
   },
   {
     "CaseTypeID": "CIVIL",

@@ -208,19 +208,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "smallClaimsFlightDelayTitle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsFlightDelayToggle",
     "AccessControl": [
       {
@@ -235,19 +222,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "smallClaimsFlightDelayEndLine",
     "AccessControl": [
       {
         "UserRoles": [
