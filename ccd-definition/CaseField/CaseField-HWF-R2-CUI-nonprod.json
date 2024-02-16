@@ -58,7 +58,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfSubTitle",
+    "ID": "subTitleHwfDetails",
     "FieldType": "Label",
     "Label": "<h2 class=\"govuk-heading-1\"> HwF Details </h2>",
     "SecurityClassification": "Public",
