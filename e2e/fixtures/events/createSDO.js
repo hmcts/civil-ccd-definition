@@ -41,6 +41,10 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.text === 'string'
         && typeof data.input4 === 'string';
     },
+    smallClaimsFlightDelay: (data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string';
+    },
     disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodInPerson: (data) => {
       return data.value.code && data.value.label && Array.isArray(data.list_items);
@@ -73,6 +77,7 @@ const calculatedClaimsTrackWOSum = {
     },
     disposalHearingCostsToggle: (data) => Array.isArray(data),
     smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
+    smallClaimsFlightDelayToggle: (data) => Array.isArray(data),
     smallClaimsHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodToggle: (data) => Array.isArray(data),
     disposalHearingBundle: (data) => {
@@ -339,6 +344,10 @@ module.exports = {
             input3: '1',
             input4: 'string'
           },
+          smallClaimsFlightDelay: {
+            input1: 'string',
+            input2: 'string'
+          },
           smallClaimsAddNewDirections: [
             element({
               directionComment: 'string'
@@ -380,7 +389,7 @@ module.exports = {
         },
         SmallClaims: {
           smallClaims: [
-      
+
           ],
           smallClaimsJudgesRecital: {
             input: 'string'
@@ -401,6 +410,10 @@ module.exports = {
             input2: '1',
             input3: '1',
             input4: 'string'
+          },
+          smallClaimsFlightDelay: {
+            input1: 'string',
+            input2: 'string'
           },
           smallClaimsAddNewDirections: [
             element({
@@ -791,6 +804,10 @@ module.exports = {
             input3: '1',
             input4: 'string'
           },
+          smallClaimsFlightDelay: {
+            input1: 'string',
+            input2: 'string'
+          },
           smallClaimsCreditHire: {
             input1: 'string',
             input2: 'string',
@@ -894,6 +911,10 @@ module.exports = {
             input2: '1',
             input3: '1',
             input4: 'string'
+          },
+          smallClaimsFlightDelay: {
+            input1: 'string',
+            input2: 'string'
           },
           smallClaimsCreditHire: {
             input1: 'string',

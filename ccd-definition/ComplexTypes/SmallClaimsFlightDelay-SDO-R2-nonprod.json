@@ -1,0 +1,37 @@
+[
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "ListElementCode": "label",
+    "FieldType": "Label",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "ListElementCode": "smallClaimsFlightDelayToggle",
+    "FieldType": "MultiSelectList",
+    "ElementLabel": " ",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "ListElementCode": "input1",
+    "FieldType": "TextArea",
+    "ElementLabel": "Related claims",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "ListElementCode": "input2",
+    "FieldType": "TextArea",
+    "ElementLabel": "Legal arguments",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
+  }
+]

@@ -1,0 +1,36 @@
+[
+
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "smallClaimsNumberOfWitnessesToggle",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsFlightDelay",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelay",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "EventHintText": "Limit number of witnesses (claimant), e.g. 4"
+  }
+]
