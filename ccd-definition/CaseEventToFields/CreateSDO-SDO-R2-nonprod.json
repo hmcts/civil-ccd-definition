@@ -8,7 +8,8 @@
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,7 +20,8 @@
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -31,7 +33,7 @@
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,6 +44,7 @@
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
   }
 ]

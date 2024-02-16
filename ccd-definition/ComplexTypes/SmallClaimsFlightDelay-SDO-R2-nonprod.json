@@ -22,8 +22,7 @@
     "FieldType": "TextArea",
     "ElementLabel": "Related claims",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
+    "Searchable": "N"
   },
   {
     "ID": "SmallClaimsFlightDelay",
@@ -31,7 +30,6 @@
     "FieldType": "TextArea",
     "ElementLabel": "Legal arguments",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
+    "Searchable": "N"
   }
 ]
