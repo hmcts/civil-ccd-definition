@@ -15,5 +15,13 @@
     "FieldTypeParameter": "HWFFeesSummaryType",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "remissionAmount",
+    "ElementLabel": "Remission Amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
