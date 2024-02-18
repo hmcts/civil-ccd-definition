@@ -58,6 +58,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "helpWithFeesMoreInformationClaimIssue",
+    "Label": " ",
+    "FieldType": "HelpWithFeesMoreInformation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "helpWithFeesMoreInformationHearing",
+    "Label": " ",
+    "FieldType": "HelpWithFeesMoreInformation",
+     "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+    {
+    "CaseTypeID": "CIVIL",
     "ID": "remissionFeeAmountWarningMessage",
     "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
     "FieldType": "Label",
