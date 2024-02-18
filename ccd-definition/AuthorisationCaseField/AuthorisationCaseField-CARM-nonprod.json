@@ -23,28 +23,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "showCarmFields",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil",
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "uploadMediationDocumentsPartyChosen",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
@@ -165,7 +143,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -184,7 +164,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -230,6 +212,80 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "resp1MediationAvailability",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "resp2MediationAvailability",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1LiPResponseCarm",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
