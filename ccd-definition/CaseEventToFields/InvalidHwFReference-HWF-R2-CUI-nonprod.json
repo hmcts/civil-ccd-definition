@@ -2,11 +2,31 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "hwfFeeType",
+    "CaseFieldID": "helpWithFees",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "hwfFeeType",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
@@ -17,7 +37,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 4,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
@@ -28,7 +48,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 5,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
@@ -39,7 +59,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 6,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
@@ -49,7 +69,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 7,
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
@@ -59,7 +79,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 8,
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -69,7 +89,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 9,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
@@ -79,7 +99,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 8,
+    "PageFieldDisplayOrder": 10,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
   },
@@ -90,7 +110,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 9,
+    "PageFieldDisplayOrder": 11,
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
@@ -100,7 +120,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 10,
+    "PageFieldDisplayOrder": 12,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hwfFeeType=\"HEARING\""
   }
