@@ -73,6 +73,10 @@ const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 
+const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
+const updateHearingPage = require('./pages/hearing/updateHearing.page');
+const cancelHearingPage = require('./pages/hearing/cancelHearing.page');
+
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
 const fixedRecoverableCostsPage = require('./fragments/dq/fixedRecoverableCosts.page');
@@ -144,6 +148,7 @@ const manageWitnesses = require('./pages/manageContactInformation/manageWitnesse
 const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
 const manageLitigationFriend = require('./pages/manageContactInformation/manageLitigationFriend.page');
 const manageDefendant1 = require('./pages/manageContactInformation/manageDefendant1.page');
+//const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -153,6 +158,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const CLAIMANT_NAME = 'Test Inc';
 const DEFENDANT1_NAME = 'Sir John Doe';
 const DEFENDANT2_NAME = 'Dr Foo Bar';
+
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -232,12 +238,47 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
 
 module.exports = function () {
   return actor({
+
+    fields: {
+      pbaNumber: {
+        id: '#pbaAccountNumber',
+        options: {
+          activeAccount1: 'PBA0088192',
+          activeAccount2: 'PBA0078095'
+        }
+      },
+      reviewLinks: '.govuk-table__body td a'
+    },
+
+    navigateToRefundsList: async function (user) {
+      await this.login(user);
+      this.amOnPage(config.url.manageCase + '/refunds');
+      this.waitForInvisible('.spinner-container', 60);
+    },
+
+
+    navigateToServiceRequest: async function (user, caseId) {
+      await this.login(user);
+      this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      //await this.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
+      let urlBefore = await this.grabCurrentUrl();
+      console.log('openServiceRequestTab urlBefore ..', urlBefore);
+      this.refreshPage();
+      this.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 60);
+
+      await this.retryUntilUrlChanges(async () => {
+        this.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
+        this.waitForInvisible('.spinner-container', 60);
+      }, urlBefore);
+    },
+
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
-      if (loggedInUser !== user) {
-        if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
-          await this.signOut();
+        if (loggedInUser !== user) {
+          if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
+            await this.signOut();
+          }
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
@@ -251,7 +292,6 @@ module.exports = function () {
 
         loggedInUser = user;
         console.log('Logged in user..', loggedInUser);
-      }
     },
 
     grabCaseNumber: async function () {
@@ -679,6 +719,11 @@ module.exports = function () {
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
 
+      if (['demo'].includes(config.runningEnv)) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+        await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
+        await this.click('#action_claim');
+      }
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
       await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
@@ -958,9 +1003,32 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToCaseDetailsForRR(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('.ccd-dropdown');
+    },
+
+    async navigateToCaseDetailsForDR(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#decisionOnRequestReconsiderationOptions-CREATE_SDO');
     },
 
     async initiateNoticeOfChange(caseId, clientName) {
@@ -978,6 +1046,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForSelector(SIGNED_IN_SELECTOR);
         await this.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
       }, SIGNED_IN_SELECTOR);
@@ -1084,5 +1153,40 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
+
+    async requestNewHearing() {
+      eventName = 'Request Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => requestNewHearingPage.openHearingTab(),
+        () => requestNewHearingPage.selectAdditionalFacilities(),
+        () => requestNewHearingPage.selectHearingStage(),
+        () => requestNewHearingPage.selectParticipantAttendance(),
+        () => requestNewHearingPage.selectHearingVenues(),
+        () => requestNewHearingPage.selectJudges(),
+        () => requestNewHearingPage.selectLengthDatePriority(),
+        () => requestNewHearingPage.enterAdditionalInstructions(),
+        () => requestNewHearingPage.submitHearing(),
+        () => requestNewHearingPage.verifyWaitingForHearingToBeListed()
+      ]);
+    },
+
+    async updateHearing() {
+      eventName = 'Update Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.updateHearingValues(),
+        () => updateHearingPage.submitUpdatedHearing(),
+        () => updateHearingPage.verifyUpdatedHearingDetails()
+      ]);
+    },
+
+    async cancelHearing() {
+      eventName = 'Cancel Hearing';
+      await this.triggerStepsWithScreenshot([
+        () => cancelHearingPage.clickCancelHearing(),
+        () => cancelHearingPage.verifyHearingCancellation()
+      ]);
+    },
+
   });
 };

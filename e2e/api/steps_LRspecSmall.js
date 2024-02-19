@@ -27,6 +27,10 @@ const requestForReconsideration = require('../fixtures/events/requestForReconsid
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {updateExpert} = require('./manageContactInformationHelper');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
+const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
+const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
+const {fetchCaseDetails} = require('./apiRequest');
 
 let caseId, eventName;
 let caseData = {};
@@ -45,6 +49,7 @@ const data = {
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
+  NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
 };
 
 const eventData = {
@@ -77,7 +82,8 @@ const eventData = {
   }
 };
 
-module.exports = {
+module.exports = function (){
+  return actor({
 
   /**
    * Creates a claim
@@ -225,10 +231,12 @@ module.exports = {
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes') => {
+  claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes', carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 
@@ -243,8 +251,12 @@ module.exports = {
       await assertValidData(claimantResponseData, pageId);
     }
 
-    if (judicialReferral) {
-      await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    let expectedEndState;
+
+    carmEnabled ? expectedEndState = 'IN_MEDIATION' : judicialReferral ? expectedEndState = 'JUDICIAL_REFERRAL' : null;
+
+    if (expectedEndState) {
+      await assertSubmittedEvent(expectedEndState);
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -253,6 +265,17 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
+  },
+
+  mediationUnsuccessful: async (user, carmEnabled = false) => {
+    eventName = 'MEDIATION_UNSUCCESSFUL';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of unsuccessful mediation');
   },
 
   uploadMediationDocuments: async (user) => {
@@ -299,9 +322,56 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
-    console.log('SDO for case id ' + caseId);
+  notSuitableSDO: async (user, option) => {
+    console.log(`case in CASE PROGRESSION  ${caseId}`);
     await apiRequest.setupTokens(user);
+
+    eventName = 'NotSuitable_SDO';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.NOT_SUITABLE_SDO(option);
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (option === 'CHANGE_LOCATION') {
+      await assertSubmittedEvent('CASE_PROGRESSION', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', {
+        header: '',
+        body: ''
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+      const caseData = await fetchCaseDetails(config.adminUser, caseId, 200);
+      assert(caseData.state === 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    }
+  },
+
+    notSuitableSdoChangeLocation: async (user, option) => {
+      console.log(`case in CASE PROGRESSION  ${caseId}`);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'NotSuitable_SDO';
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.NOT_SUITABLE_SDO(option);
+
+      for (let pageId of Object.keys(disposalData.valid)) {
+        await assertNotValidData(disposalData, pageId);
+      }
+
+    },
+
+    createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
+      console.log('SDO for case id ' + caseId);
+      await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
@@ -437,6 +507,7 @@ module.exports = {
     console.log(`case created: ${caseId}`);
     return caseId;
   },
+  });
 };
 
 // Functions
@@ -445,7 +516,7 @@ const assertValidData = async (data, pageId) => {
 
   let userData;
 
-  if (eventName === 'CREATE_SDO') {
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];
@@ -471,6 +542,31 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const assertNotValidData = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  let userData;
+
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
+  caseData = update(caseData, userData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId,
+    422
+  );
+  let responseBody = await response.json();
+  if (responseBody.callbackErrors != null) {
+    assert.equal(responseBody.callbackErrors[0], 'Unable to process this request. To transfer the case to another court you need to issue a General Order.');
+  }
+
 };
 
 const clearDataForSearchCriteria = (responseBody) => {

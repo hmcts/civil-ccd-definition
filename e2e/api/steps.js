@@ -17,7 +17,7 @@ const genAppClaimData = require('../fixtures/events/createGeneralApplication.js'
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -41,7 +41,7 @@ const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastT
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3) => claimData.createClaim(mpScenario, claimAmount, pbaV3),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -166,13 +166,15 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
   createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3);
+    const sdoR2 = await checkToggleEnabled(SDOR2);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
 
     //==============================================================
 
@@ -253,6 +255,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     const pbaV3 = await checkToggleEnabled(PBAv3);
+    const sdoR2 = await checkToggleEnabled(SDOR2);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -269,6 +272,11 @@ module.exports = {
     //==============================================================
     if (pbaV3) {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
+    }
+    if (sdoR2) {
+      createClaimData.valid.ClaimTypeUnSpec = {
+        claimTypeUnSpec: 'CONSUMER_CREDIT'
+      };
     }
     await validateEventPages(createClaimData);
 
@@ -981,6 +989,10 @@ module.exports = {
     }
 
     caseData = await apiRequest.startEvent(eventName, caseId);
+    // will be assigned on about to submit, based on judges decision
+    delete caseData['allocatedTrack'];
+    delete caseData['responseClaimTrack'];
+
     let disposalData = eventData['sdoTracks'][response];
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
@@ -1096,8 +1108,11 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    let expectedState = 'HEARING_READINESS';
+    if (allocatedTrack === 'OTHER') {
+      expectedState = 'PREPARE_FOR_HEARING_CONDUCT_HEARING';
+    }
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 

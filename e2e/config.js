@@ -46,6 +46,7 @@ module.exports = {
     waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
+    paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
     wiremockService: 'http://localhost:8765'
   },
   s2s: {
@@ -100,6 +101,11 @@ module.exports = {
   nbcUserWithRegionId1: {
     password: defaultPassword,
     email: 'nbc_admin_region1@justice.gov.uk',
+    type: 'admin'
+  },
+  nbcUserWithRegionId4: {
+    password: defaultPassword,
+    email: 'nbc_admin_region4@justice.gov.uk',
     type: 'admin'
   },
   nbcUserLocal: {
@@ -311,9 +317,14 @@ module.exports = {
     type: 'bulk_system_user',
     orgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2'
   },
-  defendantCitizenUser: {
+  applicantCitizenUser: {
     password: defaultPassword,
-    email: 'citizen2.user@gmail.com',
+    email: 'civilmoneyclaimsdemo@gmail.com',
+    type: 'claimant',
+  },
+  defendantCitizenUser2: {
+    password: defaultPassword,
+    email: `citizen.${new Date().getTime()}.${Math.random()}.user@gmail.com`,
     type: 'defendant',
   },
   defendantLRCitizenUser:{

@@ -7,7 +7,7 @@
     "DisplayContext": "READONLY",
     "PageID": "NotSuitableSDO",
     "PageDisplayOrder": 11,
-    "FieldShowCondition": "lblRecordJudgment=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "lblTransferCaseDetails=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
 ]

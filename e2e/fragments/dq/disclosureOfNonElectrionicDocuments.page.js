@@ -14,8 +14,8 @@ module.exports = {
       standardDirectionsRequired: {
         id: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired`,
         options: {
-          yes: 'Yes',
-          no: 'No'
+          yes: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_Yes`,
+          no: `#${party}DQDisclosureOfNonElectronicDocuments_standardDirectionsRequired_No`
         }
       },
       bespokeDirections: `#${party}DQDisclosureOfNonElectronicDocuments_bespokeDirections`

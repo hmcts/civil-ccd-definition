@@ -31,6 +31,8 @@ const transferOnlineCaseSpec = require('../fixtures/events/transferOnlineCaseSpe
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const mediationDocuments = require('../fixtures/events/mediation/uploadMediationDocuments');
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
+const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
+const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -40,6 +42,8 @@ const data = {
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE2_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_2v1: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response, camundaEvent),
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
   CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
@@ -89,6 +93,7 @@ const eventData = {
     ONE_V_ONE_DIF_SOL: {
       FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE1_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE1_PBAv3_Mediation: data.DEFENDANT_RESPONSE_1v2_Mediation('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION1_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
@@ -98,6 +103,7 @@ const eventData = {
 
       FULL_DEFENCE2: data.DEFENDANT_RESPONSE2('FULL_DEFENCE'),
       FULL_DEFENCE2_PBAv3: data.DEFENDANT_RESPONSE2('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE2_PBAv3_Mediation: data.DEFENDANT_RESPONSE2_1v2_Mediation('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION2: data.DEFENDANT_RESPONSE2('FULL_ADMISSION'),
       FULL_ADMISSION2_PBAv3: data.DEFENDANT_RESPONSE2('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION2: data.DEFENDANT_RESPONSE2('PART_ADMISSION'),
@@ -153,7 +159,7 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE') => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false) => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -205,6 +211,8 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     return caseId;
   },
 
@@ -275,13 +283,19 @@ module.exports = {
   },
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                            expectedEvent = 'AWAITING_APPLICANT_INTENTION') => {
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false) => {
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
     if(pbaV3){
       response = response+'_PBAv3';
+    }
+
+    if(carmEnabled){
+      response = response+'_Mediation';
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -331,10 +345,12 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState) => {
+                           expectedEndState, carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
+
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 
@@ -348,10 +364,11 @@ module.exports = {
     }
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-    if (response == 'FULL_DEFENCE') {
+    if (response === 'FULL_DEFENCE') {
       validState = 'JUDICIAL_REFERRAL';
     }
 
+    carmEnabled ? validState = 'IN_MEDIATION' : validState;
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -363,19 +380,26 @@ module.exports = {
     }
   },
 
+  mediationUnsuccessful: async (user, carmEnabled = false) => {
+    eventName = 'MEDIATION_UNSUCCESSFUL';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
+    await apiRequest.setupTokens(user);
+    await assertSubmittedEvent('JUDICIAL_REFERRAL');
+    await waitForFinishedBusinessProcess(caseId);
+    console.log('End of unsuccessful mediation');
+  },
+
   uploadMediationDocuments: async (user, sameDefendantSolicitor = false) => {
     await apiRequest.setupTokens(user);
 
     let eventData;
     if (user === config.applicantSolicitorUser) {
       eventData = mediationDocuments.uploadMediationDocuments('claimant');
-    } else {
-      if (sameDefendantSolicitor) {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant', true);
-      } else {
-        eventData = mediationDocuments.uploadMediationDocuments('defendant');
-      }
-    }
+    }  else {
+          eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
+        }
 
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -525,6 +549,16 @@ module.exports = {
 
 
 
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  requestForReconsideration: async (user) => {
+    console.log('RequestForReconsideration for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'REQUEST_FOR_RECONSIDERATION';
+
+    let response = await apiRequest.startEventForCallbackError(eventName, caseId);
+    assert(response === 'You can only request a reconsideration for claims of £1,000 or less.');
     await waitForFinishedBusinessProcess(caseId);
   },
 
