@@ -34,7 +34,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
-  },  
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "MORE_INFORMATION_HWF",
