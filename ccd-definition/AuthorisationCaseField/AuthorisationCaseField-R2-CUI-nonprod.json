@@ -2539,6 +2539,8 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil",
+          "caseworker-civil-admin",
           "citizen-profile",
           "cui-admin-profile"
         ],
