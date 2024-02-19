@@ -63,47 +63,40 @@ module.exports = {
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
 
     AWAITING_DEFENDANT_RESPONSE: [
       events.ADD_CASE_NOTE,
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ]
   }
 };
