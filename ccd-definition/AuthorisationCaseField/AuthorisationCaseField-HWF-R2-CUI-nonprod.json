@@ -49,18 +49,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseWithHwFLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFeeLabel",
     "AccessControl": [
       {

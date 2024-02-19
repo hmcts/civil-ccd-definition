@@ -34,14 +34,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseWithHwFLabel",
-    "Label": "### Hwf reference number",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimFeeLabel",
     "FieldType": "Label",
     "Label": "Help with Fees type:HwF Claim fee",
