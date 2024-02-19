@@ -10,6 +10,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHwFHearingReference",
+    "Label": "# ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHwFReference",
+    "Label": "# ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFClaimFeeNumber",
     "Label": "<h2 class=\"govuk-heading-1\">  ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
