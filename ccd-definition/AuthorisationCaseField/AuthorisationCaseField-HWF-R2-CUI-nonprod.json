@@ -5,11 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -21,11 +17,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -39,10 +31,8 @@
         "UserRoles": [
           "cui-admin-profile",
           "CITIZEN-CLAIMANT-PROFILE",
-          "caseworker-civil-systemupdate",
           "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -54,11 +44,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -70,11 +56,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -87,10 +69,6 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -104,10 +82,6 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "caseworker-civil",
-          "caseworker-civil-admin",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
