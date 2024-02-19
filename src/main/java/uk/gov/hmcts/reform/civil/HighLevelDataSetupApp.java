@@ -8,6 +8,7 @@ import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import javax.crypto.AEADBadTagException;
 import javax.net.ssl.SSLException;
 import java.util.List;
 import java.util.Locale;
@@ -50,6 +51,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("cui-admin-profile", "PUBLIC"),
         new CcdRoleConfig("cui-nbc-profile", "PUBLIC"),
         new CcdRoleConfig("citizen-profile", "PUBLIC"),
+        new CcdRoleConfig("citizen", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-citizen-ui-pcqextractor", "PUBLIC"),
         new CcdRoleConfig("judge", "PUBLIC"),
         new CcdRoleConfig("hearing-centre-admin", "PUBLIC"),
@@ -104,6 +106,9 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
             return importException.getHttpStatusCode() == httpStatusCode504;
         }
         if(e instanceof SSLException){
+            return true;
+        }
+        if(e instanceof AEADBadTagException){
             return true;
         }
         return false;
