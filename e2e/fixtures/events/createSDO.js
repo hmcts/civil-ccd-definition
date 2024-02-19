@@ -160,6 +160,10 @@ const calculatedClaimsTrackWOSum = {
     smallClaimsRoadTrafficAccident:(data) => {
       return typeof data.input === 'string';
     },
+    smallClaimFlightDelay:(data) => {
+      return typeof data.input1 === 'string'
+        && typeof data.input2 === 'string';
+    },
     fastTrackCostsToggle: (data) => Array.isArray(data),
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
     fastTrackVariationOfDirectionsToggle: (data) => Array.isArray(data),
@@ -876,6 +880,92 @@ module.exports = {
     };
     return data;
   },
+
+  //Small Claims FlightDelay WITHOUT Sum of Damages
+
+  createSDOSmallFlightDelayWODamageSum: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'No',
+        },
+        ClaimsTrack: {
+          claimsTrack: 'smallClaimsTrack',
+          smallClaims: [
+            'smallClaimFlightDelay'
+          ],
+        },
+        SmallClaims: {
+          smallClaimsJudgesRecital: {
+            input: 'string'
+          },
+          smallClaimsHearing: {
+            input1: 'string',
+            input2: 'string',
+            time: 'THIRTY_MINUTES'
+          },
+          smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
+          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsDocuments: {
+            input1: 'string',
+            input2: 'string'
+          },
+          smallClaimsFlightDelay: {
+            input1: 'string',
+            input2: 'string'
+          },
+          smallClaimsAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          smallClaimsNotes: {
+            input: 'string',
+            date: date(1)
+          }
+        }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackWOSum
+    };
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
+    const disposalChecks = {
+      fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+      disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+      fastTrackHearingTime: (d) =>
+        d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+        && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+        + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+        + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+        + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+      disposalHearingHearingTime: (d) =>
+        d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+        && d.dateTo
+    };
+    data.calculated.ClaimsTrack = {
+      ...data.calculated.ClaimsTrack,
+      ...disposalChecks
+    };
+    data.calculated.SmallClaims = {
+      ...data.calculated.SmallClaims,
+      ...disposalChecks
+    };
+    return data;
+  },
+
 
   //Small Claims WITHOUT Sum of Damages in person
 
