@@ -84,5 +84,29 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "helpWithFeesMoreInformationClaimIssue",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "helpWithFeesMoreInformationHearing",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
