@@ -99,6 +99,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsFlightDelayToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -111,30 +119,6 @@
     "ID": "smallClaimsFlightDelay",
     "Label": " ",
     "FieldType": "SmallClaimsFlightDelay",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsFlightDelayEndLine",
-    "Label": "****",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsFlightDelayTittle1",
-    "Label": "Related claims",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "smallClaimsFlightDelayTittle2",
-    "Label": "Legal arguments",
-    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

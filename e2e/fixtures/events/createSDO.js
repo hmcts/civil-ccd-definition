@@ -348,10 +348,6 @@ module.exports = {
             input3: '1',
             input4: 'string'
           },
-          smallClaimsFlightDelay: {
-            input1: 'string',
-            input2: 'string'
-          },
           smallClaimsAddNewDirections: [
             element({
               directionComment: 'string'
@@ -414,10 +410,6 @@ module.exports = {
             input2: '1',
             input3: '1',
             input4: 'string'
-          },
-          smallClaimsFlightDelay: {
-            input1: 'string',
-            input2: 'string'
           },
           smallClaimsAddNewDirections: [
             element({
@@ -808,10 +800,6 @@ module.exports = {
             input3: '1',
             input4: 'string'
           },
-          smallClaimsFlightDelay: {
-            input1: 'string',
-            input2: 'string'
-          },
           smallClaimsCreditHire: {
             input1: 'string',
             input2: 'string',
@@ -911,8 +899,8 @@ module.exports = {
             input2: 'string'
           },
           smallClaimsFlightDelay: {
-            input1: 'string',
-            input2: 'string'
+            relatedClaimsInput: 'string',
+            legalDocumentsInput: 'string'
           },
           smallClaimsAddNewDirections: [
             element({
@@ -1001,10 +989,6 @@ module.exports = {
             input2: '1',
             input3: '1',
             input4: 'string'
-          },
-          smallClaimsFlightDelay: {
-            input1: 'string',
-            input2: 'string'
           },
           smallClaimsCreditHire: {
             input1: 'string',

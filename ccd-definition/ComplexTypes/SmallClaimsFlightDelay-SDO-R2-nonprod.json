@@ -18,7 +18,7 @@
   },
   {
     "ID": "SmallClaimsFlightDelay",
-    "ListElementCode": "title1",
+    "ListElementCode": "relatedClaimsTitle",
     "FieldType": "Label",
     "ElementLabel": "## Related claims",
     "SecurityClassification": "Public",
@@ -26,7 +26,7 @@
   },
   {
     "ID": "SmallClaimsFlightDelay",
-    "ListElementCode": "input1",
+    "ListElementCode": "relatedClaimsInput",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
@@ -34,7 +34,7 @@
   },
   {
     "ID": "SmallClaimsFlightDelay",
-    "ListElementCode": "title2",
+    "ListElementCode": "legalDocumentsTitle",
     "FieldType": "Label",
     "ElementLabel": "## Legal arguments",
     "SecurityClassification": "Public",
@@ -42,7 +42,7 @@
   },
   {
     "ID": "SmallClaimsFlightDelay",
-    "ListElementCode": "input2",
+    "ListElementCode": "legalDocumentsInput",
     "FieldType": "TextArea",
     "ElementLabel": " ",
     "SecurityClassification": "Public",

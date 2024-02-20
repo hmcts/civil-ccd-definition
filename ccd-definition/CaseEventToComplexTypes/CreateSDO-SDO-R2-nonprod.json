@@ -20,7 +20,7 @@
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "title1",
+    "ListElementCode": "relatedClaimsTitle",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -28,7 +28,7 @@
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "input1",
+    "ListElementCode": "relatedClaimsInput",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -37,7 +37,7 @@
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "title2",
+    "ListElementCode": "legalDocumentsTitle",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -45,7 +45,7 @@
     "ID": "SmallClaimsFlightDelay",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelay",
-    "ListElementCode": "input2",
+    "ListElementCode": "legalDocumentsInput",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }

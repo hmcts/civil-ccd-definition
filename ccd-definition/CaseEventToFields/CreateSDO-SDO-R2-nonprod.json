@@ -2,6 +2,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsFlightDelayStartLine",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsFlightDelayTitle",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
@@ -34,17 +46,5 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "smallClaimsFlightDelayToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsFlightDelayEndLine",
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "SmallClaims",
-    "PageDisplayOrder": 5,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "smallClaims CONTAINS \"smallClaimFlightDelay\" OR drawDirectionsOrderSmallClaimsAdditionalDirections CONTAINS \"smallClaimFlightDelay\""
   }
 ]

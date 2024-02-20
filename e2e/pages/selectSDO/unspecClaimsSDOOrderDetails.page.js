@@ -13,11 +13,6 @@ module.exports = {
        claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
        defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
     },
-    smallClaimsFlightDelay : {
-      checkbox: '#smallClaimsFlightDelay_smallClaimsFlightDelayToggle-SHOW',
-      input1: '#smallClaimsFlightDelay_input1',
-      input2: '#smallClaimsFlightDelay_input2'
-    },
     smallClaimsMethodInPerson: {
       id: '#smallClaimsMethod-smallClaimsMethodInPerson'
     },
@@ -82,9 +77,6 @@ module.exports = {
       await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
       await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
       await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
-      await I.checkOption(this.fields.smallClaimsFlightDelay.checkbox);
-      await I.fillField(this.fields.smallClaimsFlightDelay.input1, '1');
-      await I.fillField(this.fields.smallClaimsFlightDelay.defendantWitnessCount, '2');
       await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
       await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
