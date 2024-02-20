@@ -4,7 +4,7 @@
 import uk.gov.hmcts.contino.GithubAPI
 
 def type = "nodejs"
-def product = "feat/CIV-8308"
+def product = "feat/CIV-8308-Test"
 def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
