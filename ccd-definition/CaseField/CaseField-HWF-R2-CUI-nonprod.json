@@ -43,11 +43,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "subTitleHwfDetails",
+    "Label": "<h4 class=\"govuk-heading-1\"> HwF Details</h4>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHwFDetails",
     "Label": "## Hwf Details",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -64,15 +81,6 @@
     "Label": "Help with Fees type: HwF Hearing fee",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hwfFeeType",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
