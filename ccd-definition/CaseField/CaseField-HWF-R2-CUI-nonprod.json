@@ -1,0 +1,91 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFClaimFeeNumber",
+    "Label": "<h2 class=\"govuk-heading-1\">  ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseTitleWithHWFHearingNumber",
+    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName} </h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "subTitleHwfDetails",
+    "Label": "<h4 class=\"govuk-heading-1\"> HwF Details</h4>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hwfFeeType",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimFeeLabel",
+    "FieldType": "Label",
+    "Label": "Help with Fees type: HwF Claim fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingFeeLabel",
+    "FieldType": "Label",
+    "Label": "Help with Fees type: HwF Hearing fee",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimIssuedHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingHwfDetails",
+    "FieldType": "HelpWithFeesDetails",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "helpWithFeesMoreInformationClaimIssue",
+    "Label": " ",
+    "FieldType": "HelpWithFeesMoreInformation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "helpWithFeesMoreInformationHearing",
+    "Label": " ",
+    "FieldType": "HelpWithFeesMoreInformation",
+     "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+    {
+    "CaseTypeID": "CIVIL",
+    "ID": "remissionFeeAmountWarningMessage",
+    "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

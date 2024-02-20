@@ -13,7 +13,7 @@ global:
   jobKind: CronJob
 
 camunda-bpm:
-  enabled: true
+  enabled: false
 
 civil-wa:
   enabled: true
@@ -26,8 +26,6 @@ wa:
     postgresHost: civil-preview.postgres.database.azure.com
     databaseNamePrefix: "pr-${CHANGE_ID}-"
   wa:
-    camunda:
-      enabled: false
     postgresql:
       enabled: false
   wa-case-event-handler:
@@ -77,6 +75,7 @@ wa:
         DB_READER_USERNAME: "hmcts"
 #        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
 #        POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
     secrets:
       POSTGRES_PASSWORD:
         secretRef: "{{ .Values.global.postgresSecret }}"
