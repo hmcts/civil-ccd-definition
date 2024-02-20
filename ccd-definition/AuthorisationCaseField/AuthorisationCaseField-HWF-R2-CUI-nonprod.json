@@ -25,7 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseTitleWithHwFReference",
+    "CaseFieldID": "caseLabelClaimIssueReference",
     "AccessControl": [
       {
         "UserRoles": [
@@ -37,7 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseTitleWithHwFHearingReference",
+    "CaseFieldID": "caseLabelHearingReference",
     "AccessControl": [
       {
         "UserRoles": [

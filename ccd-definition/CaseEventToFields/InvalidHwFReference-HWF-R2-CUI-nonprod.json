@@ -2,32 +2,75 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "hwfFeeType",
+    "CaseFieldID": "helpWithFees",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "caseTitleWithHwFReference=\"DO_NOT_SHOW_IN_UI\""
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "caseTitleWithHwFReference",
+    "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "applicant1",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "respondent1",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
+    "DisplayContext": "READONLY",
+    "PageID": "InvalidHwF",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "caseTitleWithHwFHearingReference",
+    "CaseFieldID": "caseTitleWithHWFHearingNumber",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 7,
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
@@ -37,7 +80,7 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 8,
     "ShowSummaryChangeOption": "N"
   },
   {
@@ -47,17 +90,17 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 9,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "helpWithFees",
-    "DisplayContext": "COMPLEX",
+    "CaseFieldID": "caseLabelClaimIssueReference",
+    "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 10,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
   },
@@ -68,17 +111,17 @@
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 11,
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "CaseFieldID": "caseLabelHearingReference",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 8,
+    "PageFieldDisplayOrder": 12,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hwfFeeType=\"HEARING\""
   }

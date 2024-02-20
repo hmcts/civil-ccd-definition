@@ -10,8 +10,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHwFHearingReference",
-    "Label": "# ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "ID": "caseLabelHearingReference",
+    "Label": "${hearingHelpFeesReferenceNumber}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -19,8 +19,8 @@
 
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHwFReference",
-    "Label": "# ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}",
+    "ID": "caseLabelClaimIssueReference",
+    "Label": "${helpWithFees.helpWithFeesReferenceNumber}",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
