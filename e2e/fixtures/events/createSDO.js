@@ -73,7 +73,6 @@ const calculatedClaimsTrackWOSum = {
     },
     disposalHearingCostsToggle: (data) => Array.isArray(data),
     smallClaimsWitnessStatementToggle: (data) => Array.isArray(data),
-    smallClaimsFlightDelayToggle: (data) => Array.isArray(data),
     smallClaimsHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodToggle: (data) => Array.isArray(data),
     disposalHearingBundle: (data) => {
@@ -155,10 +154,6 @@ const calculatedClaimsTrackWOSum = {
     },
     smallClaimsRoadTrafficAccident:(data) => {
       return typeof data.input === 'string';
-    },
-    smallClaimFlightDelay:(data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
     },
     fastTrackCostsToggle: (data) => Array.isArray(data),
     smallClaimsDocumentsToggle: (data) => Array.isArray(data),
