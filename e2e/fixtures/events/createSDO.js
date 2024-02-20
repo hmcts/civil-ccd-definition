@@ -41,10 +41,6 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.text === 'string'
         && typeof data.input4 === 'string';
     },
-    smallClaimsFlightDelay: (data) => {
-      return typeof data.input1 === 'string'
-        && typeof data.input2 === 'string';
-    },
     disposalHearingFinalDisposalHearingToggle: (data) => Array.isArray(data),
     fastTrackMethodInPerson: (data) => {
       return data.value.code && data.value.label && Array.isArray(data.list_items);
