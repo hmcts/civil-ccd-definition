@@ -38,6 +38,7 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "national-business-centre"
 ./bin/utils/ccd-add-role.sh "hearing-centre-team-leader"
 
+
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"
 do
