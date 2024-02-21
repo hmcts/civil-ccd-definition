@@ -26,6 +26,14 @@
   },
   {
     "ID": "HelpWithFeesDetails",
+    "ListElementCode": "hwfReferenceNumber",
+    "ElementLabel": "HwF reference number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
     "ListElementCode": "hwfCaseEvent",
     "ElementLabel": " ",
     "FieldType": "Text",

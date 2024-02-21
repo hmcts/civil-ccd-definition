@@ -69,6 +69,7 @@
       {
         "UserRoles": [
           "cui-admin-profile",
+          "citizen-profile",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
@@ -82,6 +83,7 @@
       {
         "UserRoles": [
           "cui-admin-profile",
+          "citizen-profile",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
