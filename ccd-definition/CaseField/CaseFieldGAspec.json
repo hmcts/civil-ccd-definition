@@ -525,52 +525,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "gaAddlDoc",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload addl Doc casefile view",
-    "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlDocStaff",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload addl Doc casefile view",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlDocClaimant",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload addl Doc casefile view",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlDocRespondentSol",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload addl Doc casefile view",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "gaAddlDocRespondentSolTwo",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "Label": "Upload addl Doc casefile view",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "hearingOrderDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",

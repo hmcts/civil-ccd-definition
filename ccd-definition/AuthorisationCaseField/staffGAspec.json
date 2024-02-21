@@ -361,12 +361,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaAddlDocStaff",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
