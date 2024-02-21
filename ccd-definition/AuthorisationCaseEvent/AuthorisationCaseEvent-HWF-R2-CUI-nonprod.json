@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "CaseEventID": "NO_REMISSION_HWF",
     "AccessControl": [
       {
         "UserRoles": [
@@ -13,7 +13,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NO_REMISSION_HWF",
+    "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MORE_INFORMATION_HWF",
     "AccessControl": [
       {
         "UserRoles": [
@@ -38,6 +50,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
     "AccessControl": [
       {
         "UserRoles": [
