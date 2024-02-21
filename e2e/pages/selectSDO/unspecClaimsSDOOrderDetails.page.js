@@ -114,13 +114,7 @@ module.exports = {
 
   async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
     let linkXPath;
-    if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
-      linkXPath = '//a[contains(text(), \'small_claims_sdo_\')]';
-    } else if (orderType == 'disposal') {
-      linkXPath = '//a[contains(text(), \'disposal_hearing_sdo_\')]';
-    } else if (orderType == 'decideDamages' || trackType == 'fastTrack') {
-      linkXPath = '//a[contains(text(), \'fast_track_sdo_\')]';
-    }
+    linkXPath = '//a[contains(text(), \'.pdf\')]';
     await I.waitForElement(linkXPath, 60);
     await I.clickContinue();
   }
