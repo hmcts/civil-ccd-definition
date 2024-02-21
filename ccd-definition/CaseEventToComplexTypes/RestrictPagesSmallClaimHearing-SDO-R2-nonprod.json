@@ -5,7 +5,7 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictPages.witnessShouldNotMoreThanTxt",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SdoR2SmallClaimsRestrictPages",
@@ -13,7 +13,7 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictPages.noOfPages",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SdoR2SmallClaimsRestrictPages",
@@ -21,6 +21,6 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictPages.fontDetails",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   }
 ]
