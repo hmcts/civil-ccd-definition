@@ -201,7 +201,7 @@ module.exports = {
     }
   },
 
-  createRespondentEvidenceUploadDRH: (mpScenario) => {
+  createRespondentEvidenceUploadDRH: () => {
         console.log('respondent: one_v_one drh small claims');
         return {
           valid: {

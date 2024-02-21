@@ -122,7 +122,7 @@ module.exports = {
     }
   },
 
-  createApplicantEvidenceUploadDRH: (claimTypeSmall) => {
+  createApplicantEvidenceUploadDRH: () => {
         console.log('Applicant small claims');
         return {
           valid: {
