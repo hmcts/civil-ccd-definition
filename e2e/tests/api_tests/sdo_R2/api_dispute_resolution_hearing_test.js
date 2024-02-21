@@ -5,6 +5,7 @@ const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2
 const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
+//const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const claimAmount = '100';
 
 Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
@@ -22,8 +23,8 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_SMALL_DRH');
-    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario1v1, 'DRH');
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1, 'DRH');
     await api.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
     await api.hearingFeePaid(hearingCenterAdminToBeUsed);
