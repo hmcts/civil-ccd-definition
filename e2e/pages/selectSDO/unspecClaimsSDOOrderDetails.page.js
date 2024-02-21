@@ -112,7 +112,7 @@ module.exports = {
     await I.click(`#${inputId}`);
   },
 
-  async verifyOrderPreview(allocateSmallClaims, trackType, orderType) {
+  async verifyOrderPreview() {
     let linkXPath;
     linkXPath = '//a[contains(text(), \'.pdf\')]';
     await I.waitForElement(linkXPath, 60);
