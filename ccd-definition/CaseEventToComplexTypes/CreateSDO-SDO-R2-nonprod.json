@@ -147,7 +147,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "physicalBundlePartyTxt",
+    "ListElementCode": "sdoR2SmallClaimsBundleOfDocs",
     "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
@@ -156,7 +156,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesLbl",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "READONLY"
   },
   {
@@ -164,7 +164,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesTxt",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
   },
   {

@@ -130,11 +130,11 @@
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
-    "ListElementCode": "physicalBundlePartyTxt",
-    "FieldType": "TextArea",
+    "ListElementCode": "sdoR2SmallClaimsBundleOfDocs",
+    "FieldType": "SdoR2SmallClaimsBundleOfDocs",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "ElementLabel": "Bundle of documents",
+    "ElementLabel": " ",
     "FieldShowCondition": "physicalBundleOptions = \"PARTY\""
   },
   {
