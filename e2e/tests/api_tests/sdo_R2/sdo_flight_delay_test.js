@@ -17,7 +17,6 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
   }
 });
 
-AfterSuite(async ({api_spec_small, api_spec}) => {
+AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
-  await api_spec.cleanUp();
 });
