@@ -4,7 +4,7 @@
     "ListElementCode": "trialOnOptions",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialOnRadioOptions",
-    "ElementLabel": "First open date after",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -28,10 +28,18 @@
   },
   {
     "ID": "SdoR2Trial",
+    "ListElementCode": "lengthListLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Length of trial",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
     "ListElementCode": "lengthList",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "FastTrackTimeEstimate",
-    "ElementLabel": "Length of trial",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -54,28 +62,61 @@
   },
   {
     "ID": "SdoR2Trial",
-    "ListElementCode": "hearingCourtLocationList",
-    "FieldType": "DynamicRadioList",
-    "ElementLabel": "Hearing location",
+    "ListElementCode": "hearingCourtLocationListLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Hearing location",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "SdoR2Trial",
-    "ListElementCode": "altHearingCourtLocationList",
-    "FieldType": "DynamicList",
-    "ElementLabel": "Alternative hearing location",
+    "ListElementCode": "hearingCourtLocationList",
+    "FieldType": "DynamicRadioList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "ListElementCode": "altHearingCourtLocationListLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Alternative hearing location",
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "hearingCourtLocationList=\"OTHER_LOCATION\""
   },
   {
     "ID": "SdoR2Trial",
+    "ListElementCode": "altHearingCourtLocationList",
+    "FieldType": "DynamicList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "hearingCourtLocationList=\"OTHER_LOCATION\""
+  },
+  {
+    "ID": "SdoR2Trial",
+    "ListElementCode": "methodOfHearingLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Method of hearing",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
     "ListElementCode": "methodOfHearing",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SdoR2FastTrackMethod",
-    "ElementLabel": "Method of hearing",
+    "ElementLabel": " ",
     "HintText": "If you want to include any extra information or want to request a certain hearing platform, please include this in the Hearing notes section below",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "ListElementCode": "physicalBundleOptionsLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Physical trial bundle",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -84,9 +125,18 @@
     "ListElementCode": "physicalBundleOptions",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PhysicalTrialBundleOptions",
-    "ElementLabel": "Physical trial bundle",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "ListElementCode": "physicalBundlePartyTxtLabel",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "ElementLabel": "### Bundle of documents",
+    "FieldShowCondition": "physicalBundleOptions = \"PARTY\""
   },
   {
     "ID": "SdoR2Trial",
@@ -94,14 +144,14 @@
     "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "ElementLabel": "Bundle of documents",
+    "ElementLabel": " ",
     "FieldShowCondition": "physicalBundleOptions = \"PARTY\""
   },
   {
     "ID": "SdoR2Trial",
     "ListElementCode": "hearingNotesLbl",
     "FieldType": "Label",
-    "ElementLabel": "Hearing notes.",
+    "ElementLabel": "### Hearing notes",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
