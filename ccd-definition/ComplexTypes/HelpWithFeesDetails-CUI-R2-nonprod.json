@@ -34,7 +34,7 @@
   },
   {
     "ID": "HelpWithFeesDetails",
-    "ListElementCode": "hwfCaseEvent",
+    "ListElementCode": "outstandingFeeInPounds",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -42,7 +42,7 @@
   },
   {
     "ID": "HelpWithFeesDetails",
-    "ListElementCode": "outstandingFeeInPounds",
+    "ListElementCode": "hwfCaseEvent",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
