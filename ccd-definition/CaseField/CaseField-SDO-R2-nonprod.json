@@ -164,7 +164,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2SmallClaimsJudgesPowersDRH",
-    "Label": "#### Judges powers at DRH\n  At the Dispute Resolution Hearing the Judge may:",
+    "Label": "#### Judges powers at DRH",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -172,7 +172,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2SmallClaimsJudgesPowersDRH2",
-    "Label": "a) Strike out the claim, the defence, and any counterclaim and/or any defence to counterclaim if the court finds that the statement of case discloses no reasonable grounds for bringing or defending the claim or if it is considered a party has no real prospect of success at a final hearing.  \n  b) If a party fails to provide a contact number for the hearing, fails to attend the hearing, or fails to comply with the directions set out in this Order the court may strike out the claim, defence, and/or counterclaim.  \n  c) Conduct mediation with the parties’ consent, to assist the parties to reach an agreed resolution of the claim so that the dispute can be resolved completely at the Dispute Resolution Hearing and/or identify the real issues in the dispute.  \n  d) List any further hearing including final hearing and/or make an Order requiring the parties to take further steps prior to a further or final hearing and provide that if the same are not carried out, that the Statement of Case of any party in default will be struck out.  \n  e) Make any other Order which the court considers appropriate.",
+    "Label": " At the Dispute Resolution Hearing the Judge may:  \n  a) Strike out the claim, the defence, and any counterclaim and/or any defence to counterclaim if the court finds that the statement of case discloses no reasonable grounds for bringing or defending the claim or if it is considered a party has no real prospect of success at a final hearing.  \n  b) If a party fails to provide a contact number for the hearing, fails to attend the hearing, or fails to comply with the directions set out in this Order the court may strike out the claim, defence, and/or counterclaim.  \n  c) Conduct mediation with the parties’ consent, to assist the parties to reach an agreed resolution of the claim so that the dispute can be resolved completely at the Dispute Resolution Hearing and/or identify the real issues in the dispute.  \n  d) List any further hearing including final hearing and/or make an Order requiring the parties to take further steps prior to a further or final hearing and provide that if the same are not carried out, that the Statement of Case of any party in default will be struck out.  \n  e) Make any other Order which the court considers appropriate.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

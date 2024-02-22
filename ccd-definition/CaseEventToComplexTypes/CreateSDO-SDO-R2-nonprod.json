@@ -67,15 +67,15 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "lengthListOther",
+    "ListElementCode": "lengthOtherLbl",
     "FieldDisplayOrder": 6,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "eitherPartyLabel",
+    "ListElementCode": "lengthListOther",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -83,7 +83,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "hearingCourtLocationList",
+    "ListElementCode": "eitherPartyLabel",
     "FieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY"
   },
@@ -91,15 +91,15 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "altHearingCourtLocationList",
+    "ListElementCode": "hearingLocationLbl",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "methodOfHearing",
+    "ListElementCode": "hearingCourtLocationList",
     "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
@@ -107,7 +107,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "physicalBundleOptions",
+    "ListElementCode": "altHearingCourtLocationList",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
@@ -115,8 +115,40 @@
     "ID": "SdoR2SmallClaimsHearing",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "ListElementCode": "physicalBundlePartyTxt",
+    "ListElementCode": "methodOfHearingLbl",
     "FieldDisplayOrder": 12,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "methodOfHearing",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "physicalBundleOptionsLbl",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "physicalBundleOptions",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsHearing",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsHearing",
+    "ListElementCode": "physicalBundlePartyTxt",
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -124,7 +156,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesLbl",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "READONLY"
   },
   {
@@ -132,7 +164,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
     "ListElementCode": "hearingNotesTxt",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL"
   },
   {
