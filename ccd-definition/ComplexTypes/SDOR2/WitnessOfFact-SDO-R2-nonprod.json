@@ -3,7 +3,7 @@
     "ID": "SdoR2WitnessOfFact",
     "ListElementCode": "label",
     "FieldType": "Label",
-    "ElementLabel": " ",
+    "ElementLabel": "### Statements of witnesses",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -11,7 +11,7 @@
     "ID": "SdoR2WitnessOfFact",
     "ListElementCode": "sdoStatementOfWitness",
     "FieldType": "TextArea",
-    "ElementLabel": "Statements of witnesses",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -33,9 +33,17 @@
   },
   {
     "ID": "SdoR2WitnessOfFact",
+    "ListElementCode": "sdoWitnessDeadlineLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Deadline",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2WitnessOfFact",
     "ListElementCode": "sdoWitnessDeadline",
     "FieldType": "TextArea",
-    "ElementLabel": "Deadline",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
