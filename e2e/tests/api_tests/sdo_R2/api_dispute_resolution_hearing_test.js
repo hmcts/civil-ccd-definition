@@ -8,7 +8,7 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const claimAmount = '100';
 
-Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
+Feature('Dispute resolution hearing API test - small claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, claimAmount);
@@ -27,11 +27,11 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
     await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1, 'DRH');
     await api.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
     await api.amendHearingDueDate(config.systemupdate);
-    await api.hearingFeePaid(hearingCenterAdminToBeUsed);
+    await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    await api.createFinalOrder(judgeUser, 'FREE_FORM_ORDER');
+    await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   }
 });
 

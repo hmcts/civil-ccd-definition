@@ -1201,6 +1201,17 @@ module.exports = {
     console.log('State moved to:'+updatedCaseState);
   },
 
+  hearingFeePaidDRH: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid DRH');
+  },
+
   hearingFeeUnpaid: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -1651,7 +1662,8 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  if(checkToggleEnabled(SDOR2) && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
+  const isSdoR2Enabled = checkToggleEnabled(SDOR2);
+  if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
     || pageId === 'SmallClaims')) {
     calculated = {...calculated, ...calculatedClaimsTrackDRH};
   }
@@ -1673,12 +1685,12 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(isSdoR2Enabled && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
-  if(checkToggleEnabled(SDOR2) && pageId === 'SmallClaims') {
+  if(isSdoR2Enabled && pageId === 'SmallClaims') {
     delete caseData.isSdoR2NewScreen;
   }
 
