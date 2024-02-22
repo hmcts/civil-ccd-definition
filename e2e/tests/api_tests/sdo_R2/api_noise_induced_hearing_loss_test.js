@@ -4,8 +4,10 @@ const mpScenario1v1 = 'ONE_V_ONE';
 const mpScenario1v1Nihl = 'ONE_V_ONE_NIHL';
 const claimAmount = '11000';
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 // To use on local because the idam images are different
-// const judgeUser = config.judgeUserWithRegionId1Local;
+//const judgeUser = config.judgeUserWithRegionId1Local;
+//const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
 
 Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
@@ -23,6 +25,17 @@ Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) =
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
+    if (['preview', 'demo'].includes(config.runningEnv)) {
+      await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+      await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
+      await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+      await api.amendHearingDueDate(config.systemupdate);
+      await api.hearingFeePaid(hearingCenterAdminToBeUsed);
+      if (['demo'].includes(config.runningEnv)) {
+        await api.triggerBundle(config.systemupdate);
+      }
+      await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
+    }
   }
 });
 
