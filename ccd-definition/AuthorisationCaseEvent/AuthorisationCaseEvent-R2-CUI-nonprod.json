@@ -1049,7 +1049,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_PAYMENT_STATUS_CUI",
+    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
