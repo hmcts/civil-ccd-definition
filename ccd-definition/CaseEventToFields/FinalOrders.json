@@ -583,18 +583,5 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderPreview",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderDocumentCollection",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "FinalOrderPreview",
-    "PageDisplayOrder": 3,
-    "PageColumnNumber": 1,
-    "RetainHiddenValue": "Y",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "orderWithoutNotice=\"NOT_SHOWN\""
   }
 ]
