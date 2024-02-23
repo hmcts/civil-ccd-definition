@@ -23,5 +23,21 @@
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "hwfReferenceNumber",
+    "ElementLabel": "HwF reference number",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "HelpWithFeesDetails",
+    "ListElementCode": "outstandingFeeInPounds",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
