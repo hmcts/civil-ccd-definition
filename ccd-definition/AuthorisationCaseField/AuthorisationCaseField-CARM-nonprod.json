@@ -77,7 +77,7 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -99,7 +99,7 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
