@@ -117,10 +117,15 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "citizen-profile",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -147,6 +152,12 @@
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "citizen-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
