@@ -1946,12 +1946,6 @@ const clearFinalOrderLocationData = (responseBody) => {
   return responseBody;
 };
 
-const clearHearingCourtLocationData = (responseBody) => {
-  delete responseBody.data.sdoR2Trial['altHearingCourtLocationList'];
-  delete responseBody.data.sdoR2Trial['hearingCourtLocationList'];
-  return responseBody;
-};
-
 const clearNihlDataFromCaseData = () => {
   delete caseData['sdoFastTrackJudgesRecital'];
   delete caseData['sdoAltDisputeResolution'];
