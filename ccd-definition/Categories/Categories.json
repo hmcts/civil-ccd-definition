@@ -979,25 +979,9 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "caseManagementOrders",
-    "CategoryLabel": "Case Management orders",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "orders"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "finalOrders",
     "CategoryLabel": "Orders",
     "DisplayOrder": "1",
-    "ParentCategoryID": "caseManagementOrders"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
-    "CategoryID": "sdo",
-    "CategoryLabel": "SDO",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "caseManagementOrders"
+    "ParentCategoryID": "orders"
   },
   {
     "LiveFrom": "05/12/2022",
