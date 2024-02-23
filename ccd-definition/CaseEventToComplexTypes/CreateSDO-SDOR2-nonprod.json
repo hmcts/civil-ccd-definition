@@ -147,15 +147,15 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "lengthList",
+    "ListElementCode": "lengthListLabel",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "lengthListOther",
+    "ListElementCode": "lengthList",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -163,7 +163,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "label",
+    "ListElementCode": "lengthListOther",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -171,7 +171,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingCourtLocationList",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -179,15 +179,15 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "altHearingCourtLocationList",
+    "ListElementCode": "hearingCourtLocationListLabel",
     "FieldDisplayOrder": 8,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "methodOfHearing",
+    "ListElementCode": "hearingCourtLocationList",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
@@ -195,15 +195,15 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "physicalBundleOptions",
+    "ListElementCode": "altHearingCourtLocationListLabel",
     "FieldDisplayOrder": 10,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "physicalBundlePartyTxt",
+    "ListElementCode": "altHearingCourtLocationList",
     "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
@@ -211,7 +211,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingNotesLbl",
+    "ListElementCode": "methodOfHearingLabel",
     "FieldDisplayOrder": 12,
     "DisplayContext": "READONLY"
   },
@@ -219,8 +219,56 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingNotesTxt",
+    "ListElementCode": "methodOfHearing",
     "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundleOptionsLabel",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundleOptions",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundlePartyTxtLabel",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "physicalBundlePartyTxt",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesLbl",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingNotesTxt",
+    "FieldDisplayOrder": 19,
     "DisplayContext": "OPTIONAL"
   },
   {
