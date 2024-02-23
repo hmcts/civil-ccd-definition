@@ -1,6 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "helpWithFeesReferenceNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "AccessControl": [
       {
@@ -13,7 +25,43 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseLabelClaimIssueReference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseLabelHearingReference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitleWithHWFHearingNumber",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseTitleWithHwFDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -75,7 +123,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHwfDetails",
+    "CaseFieldID": "helpWithFeesMoreInformationClaimIssue",
     "AccessControl": [
       {
         "UserRoles": [
@@ -87,7 +135,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "helpWithFeesMoreInformationClaimIssue",
+    "CaseFieldID": "hearingHwfDetails",
     "AccessControl": [
       {
         "UserRoles": [
