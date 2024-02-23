@@ -40,5 +40,11 @@
     "CaseEventID": "SET_SETTLEMENT_AGREEMENT_DEADLINE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DASHBOARD_APPLICANT1_AFTER_PAY_FEE_SCENARIO",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
