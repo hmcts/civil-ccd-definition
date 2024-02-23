@@ -1434,11 +1434,6 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.disposalHearingSchedulesOfLoss;
     }
   }
-  if (pageId === 'DocumentSelectionFastTrack'){
-    clearNihlDataFromResponse(responseBody);
-    delete responseBody.data['fastClaims'];
-  }
-
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
   }
@@ -1897,6 +1892,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
   delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['fastClaims'];
+  clearNihlDataFromResponse(responseBody);
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
