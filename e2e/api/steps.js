@@ -1970,7 +1970,6 @@ const clearNihlDataFromCaseData = () => {
   delete caseData['sdoR2FurtherAudiogram'];
   delete caseData['sdoR2SeparatorQuestionsClaimantExpertToggle'];
   delete caseData['sdoR2QuestionsClaimantExpert'];
-
   delete caseData['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
   delete caseData['sdoR2PermissionToRelyOnExpert'];
   delete caseData['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
@@ -2005,7 +2004,6 @@ const clearNihlDataFromResponse = (responseBody) => {
   delete responseBody.data['sdoR2FurtherAudiogram'];
   delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
   delete responseBody.data['sdoR2QuestionsClaimantExpert'];
-
   delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
   delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
   delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
