@@ -93,7 +93,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "UPDATE_CLAIM_STATE_AFTER_TRANSLATED_DOCUMENT_UPLOADED",
+    "ID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "Name": "Update claim state",
     "Description": "Update claim state",
     "PreConditionState(s)": "*",

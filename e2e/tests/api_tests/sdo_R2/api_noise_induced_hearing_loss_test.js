@@ -25,18 +25,16 @@ Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) =
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-      await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
-      await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
-      await api.amendHearingDueDate(config.systemupdate);
-      await api.hearingFeePaid(hearingCenterAdminToBeUsed);
-      if (['demo'].includes(config.runningEnv)) {
+    await api.evidenceUploadApplicant(config.applicantSolicitorUser);
+    await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
+    await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaid(hearingCenterAdminToBeUsed);
+    if (['demo'].includes(config.runningEnv)) {
         await api.triggerBundle(config.systemupdate);
       }
       await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
-    }
-  }
+     }
 });
 
 AfterSuite(async ({api}) => {
