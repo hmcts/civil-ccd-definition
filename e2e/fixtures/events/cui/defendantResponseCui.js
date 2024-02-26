@@ -1,55 +1,283 @@
 const {date} = require('../../../api/dataHelper');
+
+const lipDefendantData = {
+  PA_INSTALLMENTS_INDIVIDUAL: {
+    event: "DEFENDANT_RESPONSE_CUI",
+    caseDataUpdate: {
+      respondent1ClaimResponseTypeForSpec: "PART_ADMISSION",
+      defenceAdmitPartPaymentTimeRouteRequired: "SUGGESTION_OF_REPAYMENT_PLAN",
+      respondent1RepaymentPlan: {
+        paymentAmount: 5000,
+        repaymentFrequency: "ONCE_ONE_MONTH",
+        firstRepaymentDate: date(40),
+      },
+      respondToClaimAdmitPartLRspec: {
+        whenWillThisAmountBePaid: undefined,
+      },
+      responseClaimMediationSpecRequired: "No",
+      specAoSApplicantCorrespondenceAddressRequired: "Yes",
+      totalClaimAmount: 1500,
+      respondent1: {
+        individualDateOfBirth: "1995-01-01",
+        individualFirstName: "defendant",
+        individualLastName: "person",
+        individualTitle: "mr",
+        partyEmail: "civilmoneyclaimsdemo@gmail.com",
+        partyPhone: "07800000000",
+        primaryAddress: {
+          AddressLine1: "123",
+          AddressLine2: "Claim Road",
+          AddressLine3: "",
+          PostCode: "L7 2PZ",
+          PostTown: "Liverpool",
+        },
+        type: "INDIVIDUAL",
+      },
+      respondent1LiPResponse: {
+        timelineComment: "",
+        evidenceComment: "",
+        respondent1MediationLiPResponse: {
+          canWeUseMediationLiP: undefined,
+          canWeUseMediationPhoneLiP: undefined,
+          mediationDisagreementLiP: "No",
+          noMediationReasonLiP: "JUDGE_TO_DECIDE",
+          noMediationOtherReasonLiP: "",
+        },
+        respondent1DQExtraDetails: {
+          wantPhoneOrVideoHearing: "No",
+          whyPhoneOrVideoHearing: "",
+          whyUnavailableForHearing: undefined,
+          giveEvidenceYourSelf: "No",
+          triedToSettle: undefined,
+          determinationWithoutHearingRequired: "Yes",
+          determinationWithoutHearingReason: "",
+          requestExtra4weeks: undefined,
+          considerClaimantDocuments: undefined,
+          considerClaimantDocumentsDetails: "",
+          respondent1DQLiPExpert: {
+            caseNeedsAnExpert: "No",
+            expertCanStillExamineDetails: "",
+            expertReportRequired: undefined,
+            details: undefined,
+          },
+          applicant1DQLiPExpert: undefined,
+        },
+        respondent1DQHearingSupportLip: {
+          supportRequirementLip: "No",
+          requirementsLip: undefined,
+        },
+        respondent1ResponseLanguage: "ENGLISH",
+      },
+      respondent1LiPResponseCarm: undefined,
+      respondent1LiPFinancialDetails: {
+      },
+      specDefenceAdmittedRequired: "No",
+      respondToAdmittedClaimOwingAmountPounds: "800",
+      respondToAdmittedClaimOwingAmount: "80000",
+      detailsOfWhyDoesYouDisputeTheClaim: "disagree with the claim",
+      specClaimResponseTimelineList: "MANUAL",
+      specResponseTimelineOfEvents: [
+      ],
+      specResponselistYourEvidenceList: [
+      ],
+      disabilityPremiumPayments: "No",
+      respondent1DQHomeDetails: {
+        type: "PRIVATE_RENTAL",
+        typeOtherDetails: "",
+      },
+      respondent1PartnerAndDependent: {
+        liveWithPartnerRequired: "No",
+        partnerAgedOver: undefined,
+        haveAnyChildrenRequired: "No",
+        howManyChildrenByAgeGroup: {},
+        supportedAnyoneFinancialRequired: "No",
+      },
+      defenceAdmitPartEmploymentTypeRequired: "No",
+      specDefendant1SelfEmploymentDetails: {},
+      respondToClaimAdmitPartUnemployedLRspec: {
+        unemployedComplexTypeRequired: "RETIRED",
+        lengthOfUnemployment: {
+          numberOfYearsInUnemployment: null,
+          numberOfMonthsInUnemployment: null,
+        },
+        otherUnemployment: "",
+      },
+      respondent1CourtOrderPaymentOption: "No",
+      respondent1CourtOrderDetails: [
+      ],
+      respondent1LoanCreditOption: "No",
+      respondent1LoanCreditDetails: undefined,
+      responseToClaimAdmitPartWhyNotPayLRspec: "test",
+      respondent1DQCarerAllowanceCredit: "No",
+      respondent1DQLanguage: {
+        evidence: undefined,
+        court: "ENGLISH",
+        documents: "ENGLISH",
+      },
+      respondent1DQVulnerabilityQuestions: {
+        vulnerabilityAdjustmentsRequired: "No",
+        vulnerabilityAdjustments: undefined,
+      },
+      respondent1DQRequestedCourt: {
+        requestHearingAtSpecificCourt: "No",
+        otherPartyPreferredSite: "",
+        responseCourtCode: "",
+        responseCourtLocations: [
+        ],
+        caseLocation: {
+          region: undefined,
+          baseLocation: undefined,
+        },
+      },
+      respondent1DQWitnesses: {
+        witnessesToAppear: "No",
+        details: [
+          {
+            value: {
+              name: "",
+              firstName: "",
+              lastName: "",
+              emailAddress: "",
+              phoneNumber: "",
+              reasonForWitness: "",
+            },
+          },
+        ],
+      },
+      respondent1DQHearingSmallClaim: {
+        unavailableDatesRequired: "No",
+        smallClaimUnavailableDate: undefined,
+      },
+      respondent1DQExperts: {},
+    },
+  },
+  FA_SETDATE_INDIVIDUAL: {
+    event: "DEFENDANT_RESPONSE_CUI",
+    caseDataUpdate: {
+      respondent1ClaimResponseTypeForSpec: "FULL_ADMISSION",
+      defenceAdmitPartPaymentTimeRouteRequired: "BY_SET_DATE",
+      respondent1RepaymentPlan: undefined,
+      respondToClaimAdmitPartLRspec: {
+        whenWillThisAmountBePaid: date(40),
+      },
+      responseClaimMediationSpecRequired: "No",
+      specAoSApplicantCorrespondenceAddressRequired: "Yes",
+      totalClaimAmount: 1500,
+      respondent1: {
+        companyName: undefined,
+        individualDateOfBirth: "1993-08-28",
+        individualFirstName: "defendant",
+        individualLastName: "person",
+        individualTitle: "mr",
+        organisationName: undefined,
+        partyEmail: "civilmoneyclaimsdemo@gmail.com",
+        partyPhone: "07800000000",
+        primaryAddress: {
+          AddressLine1: "123",
+          AddressLine2: "Claim Road",
+          AddressLine3: "",
+          PostCode: "L7 2PZ",
+          PostTown: "Liverpool",
+        },
+        soleTraderDateOfBirth: null,
+        soleTraderFirstName: undefined,
+        soleTraderLastName: undefined,
+        soleTraderTitle: undefined,
+        soleTraderTradingAs: undefined,
+        type: "INDIVIDUAL",
+      },
+      respondent1LiPResponse: {
+        timelineComment: undefined,
+        evidenceComment: undefined,
+        respondent1MediationLiPResponse: undefined,
+        respondent1DQExtraDetails: {},
+        respondent1DQHearingSupportLip: {},
+        respondent1ResponseLanguage: "ENGLISH",
+      },
+      respondent1LiPResponseCarm: undefined,
+      respondent1LiPFinancialDetails: {},
+      specClaimResponseTimelineList: "MANUAL",
+      specResponseTimelineOfEvents: [],
+      disabilityPremiumPayments: "No",
+      respondent1DQHomeDetails: {
+        type: "PRIVATE_RENTAL",
+        typeOtherDetails: "",
+      },
+      respondent1PartnerAndDependent: {
+        liveWithPartnerRequired: "No",
+        partnerAgedOver: undefined,
+        haveAnyChildrenRequired: "No",
+        supportedAnyoneFinancialRequired: "No",
+      },
+      defenceAdmitPartEmploymentTypeRequired: "No",
+      respondToClaimAdmitPartUnemployedLRspec: {
+        unemployedComplexTypeRequired: "RETIRED",
+        lengthOfUnemployment: {
+          numberOfYearsInUnemployment: null,
+          numberOfMonthsInUnemployment: null,
+        },
+        otherUnemployment: "",
+      },
+      respondent1CourtOrderPaymentOption: "No",
+      respondent1CourtOrderDetails: [
+      ],
+      respondent1LoanCreditOption: "No",
+      responseToClaimAdmitPartWhyNotPayLRspec: "test",
+      respondent1DQCarerAllowanceCreditFullAdmission: "No",
+    },
+  }
+}
 module.exports = {
-  createDefendantResponse: (totalClaimAmount, carmEnabled = false) => {
+  createDefendantResponse: (totalClaimAmount, carmEnabled = false, typeOfResponse = "") => {
     const defendantResponseData = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
-        respondent1ClaimResponseTypeForSpec:'FULL_DEFENCE',
-        defenceAdmitPartPaymentTimeRouteRequired:'IMMEDIATELY',
-        respondToClaimAdmitPartLRspec:{
+        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+        respondToClaimAdmitPartLRspec: {
 
         },
-        responseClaimMediationSpecRequired:'No',
-        specAoSApplicantCorrespondenceAddressRequired:'No',
-        totalClaimAmount:totalClaimAmount,
-        respondent1:{
-          individualDateOfBirth:'1987-11-01T00:00:00.000Z',
-          individualFirstName:'John',
-          individualLastName:'Doe',
-          individualTitle:'Sir',
-          partyEmail:'civilmoneyclaimsdemo@gmail.com',
-          partyPhone:'07123456789',
-          primaryAddress:{
-            AddressLine1:'TestAddressLine1',
-            AddressLine2:'TestAddressLine2',
-            AddressLine3:'TestAddressLine3',
-            PostCode:'IG61JD',
-            PostTown:'TestCity',
+        responseClaimMediationSpecRequired: 'No',
+        specAoSApplicantCorrespondenceAddressRequired: 'No',
+        totalClaimAmount: totalClaimAmount,
+        respondent1: {
+          individualDateOfBirth: '1987-11-01T00:00:00.000Z',
+          individualFirstName: 'John',
+          individualLastName: 'Doe',
+          individualTitle: 'Sir',
+          partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+          partyPhone: '07123456789',
+          primaryAddress: {
+            AddressLine1: 'TestAddressLine1',
+            AddressLine2: 'TestAddressLine2',
+            AddressLine3: 'TestAddressLine3',
+            PostCode: 'IG61JD',
+            PostTown: 'TestCity',
           },
-          type:'INDIVIDUAL',
+          type: 'INDIVIDUAL',
         },
-        respondent1LiPResponse:{
-          respondent1LiPFinancialDetails:{
+        respondent1LiPResponse: {
+          respondent1LiPFinancialDetails: {
 
           },
-          respondent1DQExtraDetails:{
-            wantPhoneOrVideoHearing:'No',
-            giveEvidenceYourSelf:'No',
-            triedToSettle:'No',
-            determinationWithoutHearingRequired:'No',
-            determinationWithoutHearingReason:'TestReason',
-            requestExtra4weeks:'No',
-            considerClaimantDocuments:'No',
-            respondent1DQLiPExpert:{
-              caseNeedsAnExpert:'No',
+          respondent1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            giveEvidenceYourSelf: 'No',
+            triedToSettle: 'No',
+            determinationWithoutHearingRequired: 'No',
+            determinationWithoutHearingReason: 'TestReason',
+            requestExtra4weeks: 'No',
+            considerClaimantDocuments: 'No',
+            respondent1DQLiPExpert: {
+              caseNeedsAnExpert: 'No',
             },
           },
-          respondent1DQHearingSupportLip:{
-            supportRequirementLip:'No',
+          respondent1DQHearingSupportLip: {
+            supportRequirementLip: 'No',
           },
-          respondent1ResponseLanguage:'ENGLISH',
+          respondent1ResponseLanguage: 'ENGLISH',
         },
-        respondent1LiPResponseCarm:{
+        respondent1LiPResponseCarm: {
           isMediationPhoneCorrect: 'No',
           alternativeMediationTelephone: '01632960001',
           isMediationEmailCorrect: 'No',
@@ -79,52 +307,52 @@ module.exports = {
           isMediationContactNameCorrect: 'No',
           alternativeMediationContactPerson: 'aaa'
         },
-        detailsOfWhyDoesYouDisputeTheClaim:'Testreason',
-        specClaimResponseTimelineList:'MANUAL',
-        specResponseTimelineOfEvents:[
+        detailsOfWhyDoesYouDisputeTheClaim: 'Testreason',
+        specClaimResponseTimelineList: 'MANUAL',
+        specResponseTimelineOfEvents: [
 
         ],
-        specResponselistYourEvidenceList:[
+        specResponselistYourEvidenceList: [
 
         ],
-        defenceRouteRequired:'DISPUTES_THE_CLAIM',
-        respondToClaim:{
-          howMuchWasPaid:null,
+        defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+        respondToClaim: {
+          howMuchWasPaid: null,
         },
-        respondent1DQHomeDetails:{
+        respondent1DQHomeDetails: {
 
         },
-        respondent1PartnerAndDependent:{
-          howManyChildrenByAgeGroup:{
+        respondent1PartnerAndDependent: {
+          howManyChildrenByAgeGroup: {
 
           },
         },
-        specDefendant1SelfEmploymentDetails:{
+        specDefendant1SelfEmploymentDetails: {
 
         },
-        respondToClaimAdmitPartUnemployedLRspec:{
+        respondToClaimAdmitPartUnemployedLRspec: {
 
         },
-        respondent1DQLanguage:{
-          court:'ENGLISH',
-          documents:'ENGLISH',
+        respondent1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH',
         },
-        respondent1DQVulnerabilityQuestions:{
-          vulnerabilityAdjustmentsRequired:'No',
+        respondent1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No',
         },
-        respondent1DQRequestedCourt:{
-          requestHearingAtSpecificCourt:'No',
+        respondent1DQRequestedCourt: {
+          requestHearingAtSpecificCourt: 'No',
         },
-        respondent1DQWitnesses:{
-          witnessesToAppear:'No',
+        respondent1DQWitnesses: {
+          witnessesToAppear: 'No',
         },
-        respondent1DQHearingFastClaim:{
-          hearingLengthHours:'3',
-          hearingLengthDays:'1',
-          unavailableDatesRequired:'No',
+        respondent1DQHearingFastClaim: {
+          hearingLengthHours: '3',
+          hearingLengthDays: '1',
+          unavailableDatesRequired: 'No',
         },
-        respondent1DQExperts:{
-          expertRequired:'No',
+        respondent1DQExperts: {
+          expertRequired: 'No',
         },
       },
     };
@@ -301,6 +529,10 @@ module.exports = {
         respondent1DQExperts: {}
       }
     };
+    if (lipDefendantData[typeOfResponse]) {
+      lipDefendantData[typeOfResponse].caseDataUpdate.totalClaimAmount = totalClaimAmount;
+      return lipDefendantData[typeOfResponse];
+    }
     return carmEnabled ? defendantResponseDataCarm : defendantResponseData;
   },
 };
