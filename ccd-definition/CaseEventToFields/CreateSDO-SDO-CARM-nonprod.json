@@ -1,0 +1,61 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "smallClaimsMediationSectionTitle=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMediationSectionTitle",
+    "PageFieldDisplayOrder": 29,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMediationSectionToggle",
+    "PageFieldDisplayOrder": 30,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMediationSectionStatement",
+    "PageFieldDisplayOrder": 31,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "smallClaimsMediationSectionToggle=\"SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMediationSectionEndLine",
+    "PageFieldDisplayOrder": 32,
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  }
+]

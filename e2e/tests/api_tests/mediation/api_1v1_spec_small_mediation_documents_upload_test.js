@@ -39,6 +39,7 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM not enabl
   await prepareClaim1v1(api_spec_small, false);
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
+  await api_spec_small.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL', false);
 });
 
 Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
@@ -52,6 +53,7 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM enabled',
   await api_spec_small.mediationUnsuccessful(mediationAdminRegion4, true);
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
+  await api_spec_small.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL', true);
 });
 
 Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {

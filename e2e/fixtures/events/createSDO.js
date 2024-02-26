@@ -182,6 +182,12 @@ const calculatedClaimsTrackWSum = {
   }
 };
 
+const calculatedClaimsTrackCarmEnabled = {
+  ClaimsTrack: {...calculatedClaimsTrackWOSum.ClaimsTrack,
+    smallClaimsMediationSectionToggle: (data) => Array.isArray(data)
+  }
+};
+
 //Disposal Hearing
 module.exports = {
 
@@ -300,6 +306,71 @@ module.exports = {
       setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
     };
     data.calculated.ClaimsTrack = {...data.calculated.ClaimsTrack, ...disposalChecks};
+    return data;
+  },
+
+  createSDOSmallCarm: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'Yes',
+          drawDirectionsOrder: {
+            judgementSum: '20'
+          }
+        },
+        ClaimsTrack: {
+          drawDirectionsOrderSmallClaims: 'Yes'
+        },
+        SmallClaims: {
+          smallClaimsJudgesRecital: {
+            input: 'string'
+          },
+          smallClaimsHearing: {
+            input1: 'string',
+            input2: 'string',
+            time: 'THIRTY_MINUTES'
+          },
+          smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
+          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsDocuments: {
+            input1: 'string',
+            input2: 'string'
+          },
+          smallClaimsWitnessStatement: {
+            input1: 'string',
+            input2: '1',
+            input3: '1',
+            input4: 'string'
+          },
+          smallClaimsMediationSectionStatement: 'string',
+          smallClaimsAddNewDirections: [
+            element({
+              directionComment: 'string'
+            }),
+            element({
+              directionComment: 'string'
+            })
+          ],
+          smallClaimsNotes: {
+            input: 'string',
+            date: date(1)
+          }
+        }
+      },
+      midEventData: {
+        ClaimsTrack: {
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackCarmEnabled
+    };
+    data.calculated.SmallClaims = {...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.ClaimsTrack.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.ClaimsTrack.setFastTrackFlag
+    };
     return data;
   },
 
