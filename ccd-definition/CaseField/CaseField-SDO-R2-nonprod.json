@@ -88,5 +88,38 @@
     "FieldType": "JudgeDecisionOnReconsiderationSelect",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayTitle",
+    "Label": "## Flight Delay ",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayStartLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelayToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsFlightDelay",
+    "Label": " ",
+    "FieldType": "SmallClaimsFlightDelay",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
