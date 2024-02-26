@@ -32,7 +32,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "trialOnOptions = \"TRIAL_WINDOW\""
+    "FieldShowCondition": "trialOnOptions = \"HEARING_WINDOW\""
   },
   {
     "ID": "SdoR2SmallClaimsHearing",
@@ -115,7 +115,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "ListElementCode": "physicalBundleOptionsLbl",
     "FieldType": "Label",
-    "ElementLabel": "**Physical trial bundle**",
+    "ElementLabel": "**Physical hearing bundle**",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
