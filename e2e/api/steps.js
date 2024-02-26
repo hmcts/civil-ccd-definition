@@ -982,6 +982,7 @@ module.exports = {
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
+    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
@@ -993,6 +994,10 @@ module.exports = {
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
+    if(SdoR2){
+      delete caseData['smallClaimsFlightDelay'];
+      delete caseData['smallClaimsFlightDelayToggle'];
+    }
 
     let disposalData = eventData['sdoTracks'][response];
 
@@ -1389,6 +1394,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
+  if(sdoR2Flag){
+    delete responseBody.data['smallClaimsFlightDelayToggle'];
+    delete responseBody.data['smallClaimsFlightDelay'];
+  }
+
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
