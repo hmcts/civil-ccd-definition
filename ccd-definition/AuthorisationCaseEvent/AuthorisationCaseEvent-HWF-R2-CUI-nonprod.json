@@ -61,6 +61,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "INVALID_HWF_REFERENCE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "AccessControl": [
       {
