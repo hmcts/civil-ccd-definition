@@ -68,8 +68,7 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -90,8 +89,7 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -150,15 +148,15 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-systemupdate"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -171,15 +169,15 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-systemupdate"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
