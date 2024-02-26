@@ -7,8 +7,8 @@
   },
   {
     "ID": "TrialOnRadioOptions",
-    "ListElementCode": "TRIAL_WINDOW",
-    "ListElement": "Trial window",
+    "ListElementCode": "HEARING_WINDOW",
+    "ListElement": "Hearing window",
     "DisplayOrder": 2
   }
 ]
