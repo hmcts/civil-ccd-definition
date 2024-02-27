@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFICATION_APPLICANT1_AFTER_PAY_FEE",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_ISSUE_FOR_APPLICANT1",
     "Name": "Applicant1 Notification",
     "Description": "Generate dashboard for applicant1",
     "PreConditionState(s)": "*",
