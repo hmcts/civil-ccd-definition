@@ -53,8 +53,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "cui-nbc-profile"
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
