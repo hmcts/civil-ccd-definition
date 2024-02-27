@@ -12,7 +12,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "UserRole": "caseworker-civil-systemupdate",
+    "UserRoles": [
+      "caseworker-civil-systemupdate"
+    ],
     "CRUD": "CRUD"
   }
 ]
