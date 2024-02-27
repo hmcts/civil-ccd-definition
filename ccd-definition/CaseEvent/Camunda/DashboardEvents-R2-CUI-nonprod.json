@@ -1,8 +1,8 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GENERATE_DASHBOARD_NOTIFICATION_CUI",
-    "Name": "Generate Dashboard Notification",
+    "ID": "GENERATE_DASHBOARD_NOTIFICATION_CLAIM_FEE_REQUIRED_CLAIMANT1",
+    "Name": "ClaimFee Notification",
     "Description": "Generate Dashboard Notification in CUI",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
