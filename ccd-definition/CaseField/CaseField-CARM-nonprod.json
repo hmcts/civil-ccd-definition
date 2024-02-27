@@ -195,6 +195,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicant1LiPResponseCarm",
+    "Label": "Applicant 1 Mediation",
+    "FieldType": "MediationLiPCarm",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "contactDetailsLabel",
     "Label": "## Mediation contact information\n\nPlease provide the contact details of the individual who will conduct the mediation appointment.\n\nThis should be a party to the claim or their legal representative.",
     "FieldType": "Label",

@@ -2,12 +2,6 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1LiPResponseCarm",
-    "TabFieldDisplayOrder": 78
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
     "CaseFieldID": "resp1MediationContactInfo",
     "TabFieldDisplayOrder": 63
   },
@@ -28,5 +22,17 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "resp2MediationAvailability",
     "TabFieldDisplayOrder": 66
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1LiPResponseCarm",
+    "TabFieldDisplayOrder": 78
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1LiPResponseCarm",
+    "TabFieldDisplayOrder": 79
   }
 ]

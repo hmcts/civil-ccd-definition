@@ -143,7 +143,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -162,7 +164,9 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
@@ -305,6 +309,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1SettleClaim",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1LiPResponseCarm",
     "AccessControl": [
       {
@@ -320,6 +336,30 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1LiPResponseCarm",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
