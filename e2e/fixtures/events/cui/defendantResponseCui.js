@@ -49,36 +49,6 @@ module.exports = {
           },
           respondent1ResponseLanguage:'ENGLISH',
         },
-        respondent1LiPResponseCarm:{
-          isMediationPhoneCorrect: 'No',
-          alternativeMediationTelephone: '01632960001',
-          isMediationEmailCorrect: 'No',
-          alternativeMediationEmail: 'test@test.com',
-          hasUnavailabilityNextThreeMonths: 'Yes',
-          unavailableDatesForMediation: [
-            {
-              id: '8f76a758-733b-42c0-95b9-69b3ee2b7e6a',
-              value: {
-                who: 'defendant',
-                date: '2024-01-01',
-                fromDate: '2024-01-01',
-                unavailableDateType: 'SINGLE_DATE'
-              }
-            },
-            {
-              id: '38abd745-a52f-4ec1-86a9-2e2457b2f28b',
-              value: {
-                who: 'defendant',
-                date: '2024-03-13',
-                toDate: '2024-03-23',
-                fromDate: '2024-03-13',
-                unavailableDateType: 'DATE_RANGE'
-              }
-            }
-          ],
-          isMediationContactNameCorrect: 'No',
-          alternativeMediationContactPerson: 'aaa'
-        },
         detailsOfWhyDoesYouDisputeTheClaim:'Testreason',
         specClaimResponseTimelineList:'MANUAL',
         specResponseTimelineOfEvents:[
@@ -134,7 +104,7 @@ module.exports = {
         respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
         defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
         respondToClaimAdmitPartLRspec: {},
-        responseClaimMediationSpecRequired: 'Yes',
+        responseClaimMediationSpecRequired: 'No',
         specAoSApplicantCorrespondenceAddressRequired: 'Yes',
         totalClaimAmount: 1500,
         respondent1: {
@@ -153,34 +123,8 @@ module.exports = {
           type: 'ORGANISATION'
         },
         respondent1LiPResponse: {
-          timelineComment: '',
-          evidenceComment: '',
-          respondent1MediationLiPResponse: {
-            isMediationContactNameCorrect: 'Yes',
-            isMediationEmailCorrect: 'Yes',
-            isMediationPhoneCorrect: 'No',
-            alternativeMediationTelephone: '07777777777',
-            hasUnavailabilityNextThreeMonths: 'Yes',
-            unavailableDatesForMediation: [
-              {
-                value: {
-                  who: 'defendant',
-                  date: date(30),
-                  fromDate: date(30),
-                  unavailableDateType: 'SINGLE_DATE'
-                }
-              },
-              {
-                value: {
-                  who: 'defendant',
-                  date: date(40),
-                  fromDate: date(40),
-                  toDate: date(45),
-                  unavailableDateType: 'DATE_RANGE'
-                }
-              }
-            ]
-          },
+          timelineComment: 'Add any comments about their timeline (optional)',
+          evidenceComment: 'disagree',
           respondent1DQExtraDetails: {
             wantPhoneOrVideoHearing: 'Yes',
             whyPhoneOrVideoHearing: 'video',
@@ -212,6 +156,34 @@ module.exports = {
           },
           respondent1LiPContactPerson: 'contact person',
           respondent1ResponseLanguage: 'ENGLISH'
+        },
+        respondent1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'No',
+          alternativeMediationContactPerson: 'new defendant cp',
+          isMediationEmailCorrect: 'No',
+          alternativeMediationEmail: 'defendantmediation@email.com',
+          isMediationPhoneCorrect: 'No',
+          alternativeMediationTelephone: '07744444444',
+          hasUnavailabilityNextThreeMonths: 'Yes',
+          unavailableDatesForMediation: [
+            {
+              value: {
+                who: 'defendant',
+                date: date(30),
+                fromDate: date(30),
+                unavailableDateType: 'SINGLE_DATE'
+              }
+            },
+            {
+              value: {
+                who: 'defendant',
+                date: date(40),
+                fromDate: date(40),
+                toDate: date(45),
+                unavailableDateType: 'DATE_RANGE'
+              }
+            }
+          ]
         },
         respondent1LiPFinancialDetails: {},
         detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
