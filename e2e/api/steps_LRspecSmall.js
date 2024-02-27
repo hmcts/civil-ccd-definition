@@ -596,8 +596,14 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForDefendantResponse(responseBody, solicitor);
   }
-  if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+  if(eventName === 'EVIDENCE_UPLOAD_APPLICANT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+  }
+  if(eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete responseBody.data['businessProcess'];
+    delete responseBody.data['applicant1DQStatementOfTruth'];
+    delete responseBody.data['respondent1DQStatementOfTruth'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -861,7 +867,6 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
 };
 
 const clearDataForEvidenceUpload = (responseBody, eventName) => {
-  //delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNoteType'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['caseNotesTA'];
@@ -973,6 +978,12 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaims'];
   delete responseBody.data['smallClaimsFlightDelay'];
   delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['hearingMethodValuesDisposalHearing'];
+  delete responseBody.data['hearingMethodValuesFastTrack'];
+  delete responseBody.data['hearingMethodValuesSmallClaims'];
+  delete responseBody.data['smallClaimsAddNewDirections'];
+  //delete responseBody.data['applicant1DQStatementOfTruth'];
+  //delete responseBody.data['respondent1DQStatementOfTruth'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];

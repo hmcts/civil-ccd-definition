@@ -24,7 +24,15 @@ module.exports = {
             DocumentSelectionSmallClaim: {
               witnessSelectionEvidenceSmallClaim: ['WITNESS_STATEMENT'],
               expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
-              trialSelectionEvidenceSmallClaim: ['AUTHORITIES']
+              trialSelectionEvidenceSmallClaim: ['AUTHORITIES'],
+              witnessStatementFlag: 'do_not_show',
+              trialAuthorityFlag: 'do_not_show',
+              expertJointFlag: 'do_not_show',
+              witnessReferredStatementFlag: 'do_not_show',
+              expertReportFlag: 'do_not_show',
+              trialCostsFlag: 'show_trial_costs',
+              witnessSummaryFlag: 'show_witness_summary',
+              trialDocumentaryFlag: 'do_not_show'
             },
             DocumentUpload: {
               documentWitnessStatement: [{
@@ -114,7 +122,15 @@ module.exports = {
                   },
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
-              }]
+              }],
+              witnessStatementFlag: 'do_not_show',
+              trialAuthorityFlag: 'do_not_show',
+              expertJointFlag: 'do_not_show',
+              witnessReferredStatementFlag: 'do_not_show',
+              expertReportFlag: 'do_not_show',
+              trialCostsFlag: 'do_not_show',
+              witnessSummaryFlag: 'do_not_show',
+              trialDocumentaryFlag: 'do_not_show'
             }
           }
         };
