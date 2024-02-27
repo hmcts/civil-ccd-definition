@@ -309,9 +309,7 @@ module.exports = {
         },
         detailsOfWhyDoesYouDisputeTheClaim: 'Testreason',
         specClaimResponseTimelineList: 'MANUAL',
-        specResponseTimelineOfEvents: [
-
-        ],
+        specResponseTimelineOfEvents: [],
         specResponselistYourEvidenceList: [
 
         ],
@@ -362,7 +360,7 @@ module.exports = {
         respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
         defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
         respondToClaimAdmitPartLRspec: {},
-        responseClaimMediationSpecRequired: 'Yes',
+        responseClaimMediationSpecRequired: 'No',
         specAoSApplicantCorrespondenceAddressRequired: 'Yes',
         totalClaimAmount: 1500,
         respondent1: {
@@ -381,34 +379,8 @@ module.exports = {
           type: 'ORGANISATION'
         },
         respondent1LiPResponse: {
-          timelineComment: '',
-          evidenceComment: '',
-          respondent1MediationLiPResponse: {
-            isMediationContactNameCorrect: 'Yes',
-            isMediationEmailCorrect: 'Yes',
-            isMediationPhoneCorrect: 'No',
-            alternativeMediationTelephone: '07777777777',
-            hasUnavailabilityNextThreeMonths: 'Yes',
-            unavailableDatesForMediation: [
-              {
-                value: {
-                  who: 'defendant',
-                  date: date(30),
-                  fromDate: date(30),
-                  unavailableDateType: 'SINGLE_DATE'
-                }
-              },
-              {
-                value: {
-                  who: 'defendant',
-                  date: date(40),
-                  fromDate: date(40),
-                  toDate: date(45),
-                  unavailableDateType: 'DATE_RANGE'
-                }
-              }
-            ]
-          },
+          timelineComment: 'Add any comments about their timeline (optional)',
+          evidenceComment: 'disagree',
           respondent1DQExtraDetails: {
             wantPhoneOrVideoHearing: 'Yes',
             whyPhoneOrVideoHearing: 'video',
@@ -440,6 +412,34 @@ module.exports = {
           },
           respondent1LiPContactPerson: 'contact person',
           respondent1ResponseLanguage: 'ENGLISH'
+        },
+        respondent1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'No',
+          alternativeMediationContactPerson: 'new defendant cp',
+          isMediationEmailCorrect: 'No',
+          alternativeMediationEmail: 'defendantmediation@email.com',
+          isMediationPhoneCorrect: 'No',
+          alternativeMediationTelephone: '07744444444',
+          hasUnavailabilityNextThreeMonths: 'Yes',
+          unavailableDatesForMediation: [
+            {
+              value: {
+                who: 'defendant',
+                date: date(30),
+                fromDate: date(30),
+                unavailableDateType: 'SINGLE_DATE'
+              }
+            },
+            {
+              value: {
+                who: 'defendant',
+                date: date(40),
+                fromDate: date(40),
+                toDate: date(45),
+                unavailableDateType: 'DATE_RANGE'
+              }
+            }
+          ]
         },
         respondent1LiPFinancialDetails: {},
         detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
