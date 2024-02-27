@@ -111,7 +111,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         if(e instanceof AEADBadTagException){
             return true;
         }
-        return true;
+        return false;
     }
 
 }
