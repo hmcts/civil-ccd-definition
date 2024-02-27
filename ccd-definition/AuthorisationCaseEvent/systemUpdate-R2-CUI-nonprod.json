@@ -43,7 +43,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DASHBOARD_APPLICANT1_AFTER_PAY_FEE_SCENARIO",
+    "CaseEventID": "NOTIFICATION_APPLICANT1_AFTER_PAY_FEE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
