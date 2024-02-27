@@ -87,6 +87,8 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
+  EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -1199,6 +1201,17 @@ module.exports = {
     console.log('State moved to:'+updatedCaseState);
   },
 
+  hearingFeePaidDRH: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid DRH');
+  },
+
   hearingFeeUnpaid: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -1233,16 +1246,20 @@ module.exports = {
     assert.equal(response, 'success');
   },
 
-  evidenceUploadApplicant: async (user, mpScenario='') => {
+  evidenceUploadApplicant: async (user, mpScenario='', smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
-
+    let ApplicantEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim applicant for case id ' + caseId);
-      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_DRH();
+      } else {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      }
       await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1254,15 +1271,19 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  evidenceUploadRespondent: async (user, multipartyScenario) => {
+  evidenceUploadRespondent: async (user, multipartyScenario, smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-
+    let RespondentEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim respondent for case id ' + caseId);
-      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_DRH();
+      } else {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1641,7 +1662,9 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  if(checkToggleEnabled(SDOR2) && (pageId === 'ClaimsTrack' || pageId === 'OrderType')) {
+  const isSdoR2Enabled = checkToggleEnabled(SDOR2);
+  if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
+    || pageId === 'SmallClaims')) {
     calculated = {...calculated, ...calculatedClaimsTrackDRH};
   }
   if(eventName === 'CREATE_CLAIM'){
@@ -1662,11 +1685,14 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(isSdoR2Enabled && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
+  if(isSdoR2Enabled && pageId === 'SmallClaims') {
+    delete caseData.isSdoR2NewScreen;
+  }
 
   caseData = {...caseData, ...midEventData};
   if (midEventField) {
@@ -1939,6 +1965,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2SmallClaimsHearing'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
   delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
+  delete responseBody.data['smallClaims'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];

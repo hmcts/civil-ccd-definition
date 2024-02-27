@@ -17,9 +17,17 @@
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
+    "ListElementCode": "restrictWitnessLbl",
+    "FieldType": "Label",
+    "ElementLabel": "**Restrict number of witnesses**",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "isRestrictWitness",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Restrict number of witnesses",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -34,9 +42,17 @@
   },
   {
     "ID": "SdoR2SmallClaimsWitnessStatements",
+    "ListElementCode": "restrictPagesLbl",
+    "FieldType": "Label",
+    "ElementLabel": "**Restrict number of pages**",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "isRestrictPages",
     "FieldType": "YesOrNo",
-    "ElementLabel": "Restrict number of pages",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

@@ -5,7 +5,7 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictWitness.noOfWitnessClaimant",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SdoR2SmallClaimsRestrictWitness",
@@ -13,7 +13,7 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictWitness.noOfWitnessDefendant",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SdoR2SmallClaimsRestrictWitness",
@@ -21,6 +21,6 @@
     "CaseFieldID": "sdoR2SmallClaimsWitnessStatements",
     "ListElementCode": "sdoR2SmallClaimsRestrictWitness.partyIsCountedAsWitnessTxt",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "COMPLEX"
+    "DisplayContext": "MANDATORY"
   }
 ]
