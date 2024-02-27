@@ -241,5 +241,41 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "headingHelpWithFeesDetails",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimIssuedHwfForTab",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingHwfForTab",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
