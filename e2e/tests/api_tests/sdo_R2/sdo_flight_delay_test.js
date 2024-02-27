@@ -3,6 +3,8 @@ const config = require('../../../config.js');
 //const judgeUser = config.judgeUserWithRegionId1Local;
 const judgeUser = config.judgeUser2WithRegionId4;
 
+const mpScenario1v1 = 'ONE_V_ONE';
+
 async function prepareClaimSpec(api_spec_small) {
 await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
 await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
@@ -14,6 +16,15 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(judgeUser, 'CREATE_SMALL_FLIGHT_DELAY_NO_SUM');
+    await api_spec_small.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario1v1);
+    await api_spec_small.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
+    /*await api.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
+    await api.amendHearingDueDate(config.systemupdate);
+    await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
+    if (['demo'].includes(config.runningEnv)) {
+      await api.triggerBundle(config.systemupdate);
+    }
+    await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');*/
   }
 });
 

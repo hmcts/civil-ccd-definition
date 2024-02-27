@@ -145,24 +145,17 @@ module.exports = {
               caseProgAllocatedTrack: 'SMALL_CLAIM'
             },
             DocumentSelectionSmallClaim: {
-              witnessSelectionEvidenceSmallClaimRes: ['WITNESS_SUMMARY'],
-              expertSelectionEvidenceSmallClaimRes: ['QUESTIONS_FOR_EXPERTS'],
-              trialSelectionEvidenceSmallClaimRes: ['COSTS'],
-              witnessStatementFlag: 'do_not_show',
-              trialAuthorityFlag: 'do_not_show',
-              expertJointFlag: 'do_not_show',
-              witnessReferredStatementFlag: 'do_not_show',
-              expertReportFlag: 'do_not_show',
-              trialCostsFlag: 'show_trial_costs',
-              witnessSummaryFlag: 'show_witness_summary',
-              trialDocumentaryFlag: 'do_not_show'
+              caseTypeFlag: 'do_not_show',
+              witnessSelectionEvidenceSmallClaim: ['WITNESS_STATEMENT'],
+              expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
+              trialSelectionEvidenceSmallClaim: ['AUTHORITIES']
             },
             DocumentUpload: {
               documentWitnessSummaryRes:[{
                 value: {
-                  witnessOptionName:'test name',
+                  witnessOptionName: 'test name',
                   witnessOptionUploadDate: '2023-02-06',
-                  witnessOptionDocument:{
+                  witnessOptionDocument: {
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
                     document_filename: '${TEST_DOCUMENT_FILENAME}'
@@ -170,13 +163,12 @@ module.exports = {
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
               }],
-              documentQuestionsRes:[{
+              documentExpertReport: [{
                 value: {
-                  expertOptionName:'test name',
-                  expertOptionOtherParty:'text',
-                  expertDocumentQuestion:'question',
-                  expertOptionUploadDate:'2023-02-06',
-                  expertDocument:{
+                  expertOptionName: 'test name',
+                  expertOptionExpertise: 'expertise',
+                  expertOptionUploadDate: '2023-02-06',
+                  expertDocument: {
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
                     document_filename: '${TEST_DOCUMENT_FILENAME}'
@@ -184,16 +176,16 @@ module.exports = {
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
               }],
-              documentAuthoritiesRes:[{
+              documentAuthorities: [{
                 value: {
-                  documentUpload:{
+                  documentUpload: {
                     document_url: '${TEST_DOCUMENT_URL}',
                     document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
                     document_filename: '${TEST_DOCUMENT_FILENAME}'
                   },
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
-              }],
+              }]
             }
           }
         };
