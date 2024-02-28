@@ -172,7 +172,10 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile"
+          "cui-nbc-profile",
+          "GS_profile",
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
@@ -257,7 +260,10 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile"
+          "cui-nbc-profile",
+          "GS_profile",
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
