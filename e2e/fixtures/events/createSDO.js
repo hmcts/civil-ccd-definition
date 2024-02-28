@@ -1372,189 +1372,135 @@ module.exports = {
           claimsTrack: 'fastTrack',
           drawDirectionsOrderSmallClaims: 'No',
           fastClaims: [
-            'fastClaimBuildingDispute',
-            'fastClaimClinicalNegligence',
-            'fastClaimCreditHire',
-            'fastClaimEmployersLiability',
-            'fastClaimHousingDisrepair',
-            'fastClaimPersonalInjury',
-            'fastClaimRoadTrafficAccident',
             'fastClaimNoiseInducedHearingLoss'
           ],
           setSmallClaimsFlag: 'No',
           setFastTrackFlag: 'Yes',
           isSdoR2NewScreen: 'Yes',
-          sdoR2ImportantNotesTxt: 'This Order has been made without hearing. Each party has the right to apply to have this Order set aside or varied. Any such application must be received by the Court (together with the appropriate fee) by 4pm on',
-          sdoR2ImportantNotesDate: date(+7),
+        },
+        SdoR2FastTrack: {
+          sdoAltDisputeResolution: {
+            includeInOrderToggle: [
+              'INCLUDE'
+            ]
+          },
           sdoFastTrackJudgesRecital: {
             input: 'Upon considering the statements of case and the information provided by the parties.'
           },
-          sdoR2DisclosureOfDocuments: {
-            standardDisclosureTxt: 'Standard disclosure shall be provided by the parties by uploading to the Digital Portal their list of documents by 4pm on',
-            standardDisclosureDate: date(+28),
-            inspectionTxt: 'Any request to inspect a document, or for a copy of a document, shall be made directly to the other party by 4pm on',
-            inspectionDate: date(+42),
-            requestsWillBeCompiledLabel: 'within 7 days of receipt.'
+          sdoR2AddendumReport: {
+            sdoAddendumReportDate: date(+56),
+            sdoAddendumReportTxt: 'The Claimant may upload to the Digital Portal an addendum report from their expert ENT surgeon by 4pm on'
           },
-          sdoR2WitnessesOfFact: {
-            sdoStatementOfWitness: 'Each party must upload to the Digital Portal copies of the statements of all witnesses of fact on whom they intend to rely.',
-            sdoWitnessDeadline: 'Witness statements shall be uploaded to the Digital Portal by 4pm on',
-            sdoWitnessDeadlineDate: date(+70),
-            sdoWitnessDeadlineText: 'Evidence will not be permitted at trial from a witness whose statement has not been uploaded in accordance with the Order, except with permission from the Court.',
-            sdoR2RestrictWitness: {
-              isRestrictWitness: 'No',
-              restrictNoOfWitnessDetails: {
-                partyIsCountedAsWitnessTxt: 'For this limitation, a party is counted as a witness.'
-              }
-            },
-            sdoRestrictPages: {
-              isRestrictPages: 'No',
-              restrictNoOfPagesDetails: {
-                witnessShouldNotMoreThanTxt: 'Each witness statement should be no more than',
-                fontDetails: 'pages of A4 (including exhibits). Statements should be double spaced using a font size of 12.'
-              }
-            }
+          sdoR2DisclosureOfDocuments: {
+            inspectionDate: date(+42),
+            inspectionTxt: 'Any request to inspect a document, or for a copy of a document, shall be made directly to the other party by 4pm on',
+            requestsWillBeCompiledLabel: 'within 7 days of receipt.',
+            standardDisclosureDate: date(+28),
+            standardDisclosureTxt: 'standard disclosure shall be provided by the parties by uploading to the Digital Portal their list of documents by 4pm on'
+          },
+          sdoR2DisclosureOfDocumentsToggle: [
+            'INCLUDE'
+          ],
+          sdoR2EvidenceAcousticEngineer: {
+            sdoEvidenceAcousticEngineerTxt: 'The parties have permission to rely on the jointly instructed written evidence of an expert acoustic engineer.',
+            sdoExpertReportDate: date(+280),
+            sdoExpertReportDigitalPortalTxt: 'by the Claimant within 7 days of receipt.',
+            sdoExpertReportTxt: 'The expert will report to the instructing parties by',
+            sdoInstructionOfTheExpertDate: date(+42),
+            sdoInstructionOfTheExpertTxt: 'The expert shall be agreed and instructed by',
+            sdoInstructionOfTheExpertTxtArea: 'if no expert has been instructed by the date the Claimant must apply to court by 4pm the following day for further directions.',
+            sdoRepliesDate: date (+315),
+            sdoRepliesDigitalPortalTxt: 'by that party within 7 days of receipt.',
+            sdoRepliesTxt: 'send the answers to questions to the asking party by',
+            sdoServiceOfOrderTxt: 'A copy of this order must be served on the expert by the Claimant with the experts instructions.',
+            sdoWrittenQuestionsDate: date(+336),
+            sdoWrittenQuestionsDigitalPortalTxt: 'by the same date.',
+            sdoWrittenQuestionsTxt: 'Written questions may be posed by any party directly to the single jointly instructed expert by'
           },
           sdoR2ExpertEvidence: {
             sdoClaimantPermissionToRelyTxt: 'The Claimant has permission to rely upon the written expert evidence already uploaded to the Digital Portal with the particulars of claim.'
           },
-          sdoR2AddendumReport: {
-            sdoAddendumReportTxt: 'The Claimant may upload to the Digital Portal an addendum report from their expert ENT surgeon by 4pm on',
-            sdoAddendumReportDate: date(+56)
-          },
           sdoR2FurtherAudiogram: {
-            sdoClaimantShallUndergoTxt: 'The Claimant shall undergo a single further audiogram at the written request of any Defendant. Such request to be made no later than 4pm on',
             sdoClaimantShallUndergoDate: date(+42),
-            sdoServiceReportTxt: 'The further audiogram shall be arranged and paid for by the Defendant requesting it. The Defendant shall serve a copy of the further audiogram on the Claimant and upload to the Digital Portal by 4pm on',
-            sdoServiceReportDate: date(+98)
+            sdoClaimantShallUndergoTxt: 'The Claimant shall undergo a single further audiogram at the written request of any Defendant. Such request to be made no later than 4pm on',
+            sdoServiceReportDate: date(+98),
+            sdoServiceReportTxt: 'The further audiogram shall be arranged and paid for by the Defendant requesting it. The Defendant shall serve a copy of the further audiogram on the Claimant and upload to the Digital Portal by 4pm on'
           },
-          sdoR2QuestionsClaimantExpert: {
-            sdoDefendantMayAskTxt: 'The Defendant(s) may ask questions of the Claimant\'s expert which must be sent to the expert directly and uploaded to th Digital Portal by 4pm on',
-            sdoDefendantMayAskDate: date(+126),
-            sdoQuestionsShallBeAnsweredTxt: 'The questions shall be answered by the expert by',
-            sdoQuestionsShallBeAnsweredDate: date(+147),
-            sdoUploadedToDigitalPortalTxt: 'by the asking party within 7 days of receipt.',
-            sdoApplicationToRelyOnFurther: {
-              applicationToRelyOnFurtherDetails: {
-                applicationToRelyDetailsDate: date(+161),
-                applicationToRelyDetailsTxt: 'Any application by the Defendant for permission to rely on further expert medical evidence shall be made by 4pm on'
-              },
-              doRequireApplicationToRely: 'No'
-            }
-          },
+          sdoR2ImportantNotesDate: date(+7),
+          sdoR2ImportantNotesTxt: 'This Order has been made without hearing. Each party has the right to apply to have this Order set aside or varied. Any such application must be received by the Court (together with the appropriate fee) by 4pm on',
           sdoR2PermissionToRelyOnExpert: {
-            sdoPermissionToRelyOnExpertTxt: 'The Defendant has permission to rely on written expert evidence from a consultant ENT surgeon. Such report shall be uploaded to the Digital Portal by 4pm on',
-            sdoPermissionToRelyOnExpertDate: date(+119),
-            sdoJointMeetingOfExpertsTxt: 'The experts instructed by each party shall discuss their reports and shall prepare a schedule of agreement and disagreement which shall be provided to the parties by 4pm on',
             sdoJointMeetingOfExpertsDate: date(+147),
+            sdoJointMeetingOfExpertsTxt: 'The experts instructed by each party shall discuss their reports and shall prepare a schedule of agreement and disagreement which shall be provided to the parties by 4pm on',
+            sdoPermissionToRelyOnExpertDate: date(+119),
+            sdoPermissionToRelyOnExpertTxt: 'The Defendant has permission to rely on written expert evidence from a consultant ENT surgeon. Such report shall be uploaded to the Digital Portal by 4pm on',
             sdoUploadedToDigitalPortalTxt: 'by the Claimant within 7 days of receipt.'
           },
-          sdoR2EvidenceAcousticEngineer: {
-            sdoEvidenceAcousticEngineerTxt: 'The parties have permission to rely on the jointly instructed written evidence of an expert acoustic engineer.',
-            sdoInstructionOfTheExpertTxt: 'The expert shall be agreed and instructed by',
-            sdoInstructionOfTheExpertDate: date(+42),
-            sdoInstructionOfTheExpertTxtArea: 'If no expert has been instructed by the date the Claimant must apply to court by 4pm the following day for further directions.',
-            sdoExpertReportTxt: 'The expert will report to the instructing parties by',
-            sdoExpertReportDate: date(+280),
-            sdoExpertReportDigitalPortalTxt: 'by the Claimant within 7 days of receipt.',
-            sdoWrittenQuestionsTxt: 'Written questions may be posed by any party directly to the single jointly instructed expert by',
-            sdoWrittenQuestionsDate: date(+294),
-            sdoWrittenQuestionsDigitalPortalTxt: 'by the same date.',
-            sdoRepliesTxt: 'send the answers to questions to the asking party by',
-            sdoRepliesDate: date(+315),
-            sdoRepliesDigitalPortalTxt: 'by that party within 7 days of receipt.',
-            sdoServiceOfOrderTxt: 'A copy of this order must be served on the expert by the Claimant with the expert\'s instructions.'
+          sdoR2QuestionsClaimantExpert: {
+            sdoApplicationToRelyOnFurther: {
+              doRequireApplicationToRely: 'No'
+            },
+            sdoDefendantMayAskDate: date(+126),
+            sdoDefendantMayAskTxt: 'The Defendant(s) may ask questions of the Claimants expert which must be sent to the expert directly and uploaded to th Digital Portal by 4pm on',
+            sdoQuestionsShallBeAnsweredDate: date(+147),
+            sdoQuestionsShallBeAnsweredTxt: 'The questions shall be answered by the expert by',
+            sdoUploadedToDigitalPortalTxt: 'by the asking party within 7 days of receipt.'
           },
           sdoR2QuestionsToEntExpert: {
-            sdoWrittenQuestionsTxt: 'The parties may put written questions of an ENT engineering expert for whom permission has been given by 4pm on',
-            sdoWrittenQuestionsDate: date(+336),
-            sdoWrittenQuestionsDigPortalTxt: 'and shall upload the same to the Digital Portal by the same date.\nSuch questions shall be limited to issues arising from the single jointly instructed expert engineer\'s report and any answers to questions.',
-            sdoQuestionsShallBeAnsweredTxt: 'Such questions shall be answered by the ENT expert by',
             sdoQuestionsShallBeAnsweredDate: date(+350),
-            sdoShallBeUploadedTxt: 'within 7 days of receipt.'
+            sdoQuestionsShallBeAnsweredTxt: 'such questions shall be answered by the ENT expert by',
+            sdoShallBeUploadedTxt: 'within 7 days of receipt.',
+            sdoWrittenQuestionsDate: date(+336),
+            sdoWrittenQuestionsDigPortalTxt: 'and shall upload the same to the Digital Portal by the same date.\nSuch questions shall be limited to issues arising from the single jointly instructed expert engineers report and any answers to questions.',
+            sdoWrittenQuestionsTxt: 'The parties may put written questions of an ENT engineering expert for whom permission has been given by 4pm on'
           },
           sdoR2ScheduleOfLoss: {
             isClaimForPecuniaryLoss: 'No',
-            sdoR2ScheduleOfLossClaimantText: 'The Claimant must upload to the Digital Portal an up-to-date schedule of loss by 4pm on',
             sdoR2ScheduleOfLossClaimantDate: date(+364),
-            sdoR2ScheduleOfLossDefendantText: 'In the event of a challenge to the updated schedule of loss, a defendant shall upload to the Digital Portal a counter-schedule by 4pm on',
+            sdoR2ScheduleOfLossClaimantText: 'The Claimant must upload to the Digital Portal an up-to-date schedule of loss by 4pm on',
             sdoR2ScheduleOfLossDefendantDate: date(+378),
-            sdoR2ScheduleOfLossPecuniaryLossTxt: 'If there is a claim for future pecuniary loss and the parties have not already set out their case on periodical payments, they must do so in the respective schedule and counter-schedule.'
+            sdoR2ScheduleOfLossDefendantText: 'in the event of a challenge to the updated schedule of loss, a defendant shall upload to the Digital Portal a counter-schedule by 4pm on'
           },
-          sdoR2UploadOfDocuments: {
-            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.'
+          sdoR2ScheduleOfLossToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorAddendumReportToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorEvidenceAcousticEngineerToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorExpertEvidenceToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorFurtherAudiogramToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorPermissionToRelyOnExpertToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorQuestionsClaimantExpertToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorQuestionsToEntExpertToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorUploadOfDocumentsToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SeparatorWitnessesOfFactToggle: [
+            'INCLUDE'
+          ],
+          sdoR2Settlement: {
+            includeInOrderToggle: [
+              'INCLUDE'
+            ]
           },
           sdoR2Trial: {
-            altHearingCourtLocationList: {
-              list_items: [
-                {
-                  code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-                },
-                {
-                  code: '111100',
-                  label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
-                },
-                {
-                  code: '222200',
-                  label: 'High Wycombe Law Courts - THE LAW COURTS, EASTON STREET - HP11 1LR'
-                },
-                {
-                  code: '333300',
-                  label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
-                }
-              ]
-            },
             hearingCourtLocationList: {
               list_items: [
                 {
                   code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-                },
-                {
-                  code: 'OTHER_LOCATION',
-                  label: 'Other location'
-                }
-              ],
-            },
-            physicalBundlePartyTxt: 'The Claimant shall deliver to the court a physical copy of the court generated bundle no later than 10 days before the trial.',
-            sdoR2TrialFirstOpenDateAfter: {
-              listFrom: date(+434)
-            },
-            sdoR2TrialWindow: {
-              listFrom: date(+434),
-              dateTo: date(+455)
-            }
-
-          }
-        },
-        SdoR2FastTrack: {
-          sdoR2Trial: {
-            altHearingCourtLocationList: {
-              list_items: [
-                {
-                  code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-                },
-                {
-                  code: '111100',
-                  label: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX'
-                },
-                {
-                  code: '222200',
-                  label: 'High Wycombe Law Courts - THE LAW COURTS, EASTON STREET - HP11 1LR'
-                },
-                {
-                  code: '333300',
-                  label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
-                }
-              ]
-            },
-            hearingCourtLocationList: {
-              list_items: [
-                {
-                  code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+                  label: 'Barnet Civil and Family Centre - St Marys Court, Regents Park Road - N3 1BQ'
                 },
                 {
                   code: 'OTHER_LOCATION',
@@ -1563,19 +1509,40 @@ module.exports = {
               ],
               value: {
                 code: '000000',
-                label: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
-              },
+                label: 'Barnet Civil and Family Centre - St Marys Court, Regents Park Road - N3 1BQ'
+              }
             },
-            physicalBundlePartyTxt: 'The Claimant shall deliver to the court a physical copy of the court generated bundle no later than 10 days before the trial.',
+            lengthList: 'FIVE_HOURS',
+            methodOfHearing: 'fastTrackMethodInPerson',
+            physicalBundleOptions: 'NONE',
             sdoR2TrialFirstOpenDateAfter: {
-              listFrom: date(+434)
+              listFrom: date(434)
             },
-            sdoR2TrialWindow: {
-              listFrom: date(+434),
-              dateTo: date(+455)
-            }
-
+            trialOnOptions: 'OPEN_DATE'
           },
+          sdoR2TrialToggle: [
+            'INCLUDE'
+          ],
+          sdoR2UploadOfDocuments: {
+            sdoUploadOfDocumentsTxt: 'Each party must upload to the Digital Portal copies of those documents on which they wish to rely at trial 21 days before the hearing.'
+          },
+          sdoR2WitnessesOfFact: {
+            sdoR2RestrictWitness: {
+              isRestrictWitness: 'No'
+            },
+            sdoRestrictPages: {
+              isRestrictPages: 'No'
+            },
+            sdoStatementOfWitness: 'Each party must upload to the Digital Portal copies of the statements of all witnesses of fact on whom they intend to rely.',
+            sdoWitnessDeadline: 'Witness statements shall be uploaded to the Digital Portal by 4pm on',
+            sdoWitnessDeadlineDate: date(+70),
+            sdoWitnessDeadlineText: 'Evidence will not be permitted at trial from a witness whose statement has not been uploaded in accordance with the Order, except with permission from the Court.'
+          },
+          sdoVariationOfDirections: {
+            includeInOrderToggle: [
+              'INCLUDE'
+            ]
+          }
         }
       },
       midEventData: {
