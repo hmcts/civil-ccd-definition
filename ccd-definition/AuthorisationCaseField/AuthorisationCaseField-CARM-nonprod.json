@@ -181,9 +181,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
