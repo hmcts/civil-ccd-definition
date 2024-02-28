@@ -31,10 +31,11 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
-const evidenceUploadApplicant = require("../fixtures/events/evidenceUploadApplicant");
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const {cloneDeep} = require('lodash');
-const createFinalOrder = require("../fixtures/events/finalOrder");
+const createFinalOrder = require('../fixtures/events/finalOrder');
+const hearingScheduled = require('../fixtures/events/scheduleHearing');
 
 let caseId, eventName;
 let caseData = {};
@@ -58,7 +59,8 @@ const data = {
   CREATE_SMALL_FLIGHT_DELAY_NO_SUM: (userInput) => sdoTracks.createSDOSmallFlightDelayWODamageSum(userInput),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType)
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
 };
 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
@@ -529,8 +531,8 @@ module.exports = function (){
 
     let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
-    for (let pageId of Object.keys(scheduleData.userInput)) {
-      await assertValidData(scheduleData, pageId);
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidDataForEvidenceUpload(scheduleData, pageId);
     }
 
     await assertSubmittedEvent('HEARING_READINESS', null, false);
@@ -1094,6 +1096,94 @@ const assertValidData = async (data, pageId) => {
   }
 
   caseData = update(caseData, responseBody.data);
+};
+
+const assertValidDataHearing = async (data, pageId, solicitor) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const validDataForPage = data.valid[pageId];
+  caseData = {...caseData, ...validDataForPage};
+  caseData = adjustDataForSolicitor(solicitor, caseData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    addCaseId(pageId) ? caseId : null
+  );
+
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  responseBody = clearNoCData(responseBody);
+  if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    responseBody = clearDataForExtensionDate(responseBody, solicitor);
+  } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+  if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+  }
+  if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
+  {
+    responseBody = clearHearingLocationData(responseBody);
+  }
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    responseBody = clearFinalOrderLocationData(responseBody);
+  }
+  assert.equal(response.status, 200);
+
+  // eslint-disable-next-line no-prototype-builtins
+  let claimValue;
+  if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
+    && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
+    claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
+  }
+  if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+    caseData = removeUiFields(pageId, caseData);
+  } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+  }
+  if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
+    // CIV-3883 depends on backend having the field
+    responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
+  }
+  if (eventName === 'CREATE_SDO') {
+    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+      delete caseData.hearingMethodValuesDisposalHearing;
+      delete caseData.hearingMethodValuesFastTrack;
+      delete caseData.hearingMethodValuesSmallClaims;
+    }
+    if (responseBody.data.sdoOrderDocument) {
+      caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
+    }
+
+    // noinspection EqualityComparisonWithCoercionJS
+    if (caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
+      && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum !== responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum == responseBody.data.drawDirectionsOrder.judgementSum) {
+      // sometimes difference may be because of decimals .0, not an actual difference
+      caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
+    }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.disposalHearingSchedulesOfLoss;
+    }
+  }
+
+  if (pageId === 'Claimant') {
+    delete caseData.applicant1OrganisationPolicy;
+  }
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  }
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    console.error('Data different in page ' + pageId);
+    whatsTheDifference(caseData, responseBody.data);
+    throw err;
+  }
 };
 
 const assertNotValidData = async (data, pageId) => {
