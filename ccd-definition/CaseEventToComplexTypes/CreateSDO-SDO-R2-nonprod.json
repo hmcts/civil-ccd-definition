@@ -22,7 +22,7 @@
     "CaseFieldID": "smallClaimsFlightDelay",
     "ListElementCode": "relatedClaimsTitle",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsFlightDelay",
@@ -39,7 +39,7 @@
     "CaseFieldID": "smallClaimsFlightDelay",
     "ListElementCode": "legalDocumentsTitle",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SmallClaimsFlightDelay",
