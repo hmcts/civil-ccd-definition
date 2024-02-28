@@ -1,0 +1,11 @@
+[
+  {
+    "RoleName" : "idam:next-hearing-date-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL",
+    "AccessProfiles": "next-hearing-date-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  }
+]
