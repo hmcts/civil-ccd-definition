@@ -24,15 +24,7 @@ module.exports = {
             DocumentSelectionSmallClaim: {
               witnessSelectionEvidenceSmallClaim: ['WITNESS_STATEMENT'],
               expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
-              trialSelectionEvidenceSmallClaim: ['AUTHORITIES'],
-              witnessStatementFlag: 'do_not_show',
-              trialAuthorityFlag: 'do_not_show',
-              expertJointFlag: 'do_not_show',
-              witnessReferredStatementFlag: 'do_not_show',
-              expertReportFlag: 'do_not_show',
-              trialCostsFlag: 'show_trial_costs',
-              witnessSummaryFlag: 'show_witness_summary',
-              trialDocumentaryFlag: 'do_not_show'
+              trialSelectionEvidenceSmallClaim: ['AUTHORITIES']
             },
             DocumentUpload: {
               documentWitnessStatement: [{
@@ -74,6 +66,64 @@ module.exports = {
           }
         };
       }
+      default:
+      {
+        console.log('Applicant small claims');
+        return {
+          valid: {
+            EvidenceUpload: {
+              caseProgAllocatedTrack: 'SMALL_CLAIM'
+            },
+            DocumentSelectionSmallClaim: {
+              witnessSelectionEvidenceSmallClaim: ['WITNESS_STATEMENT'],
+              expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
+              trialSelectionEvidenceSmallClaim: ['AUTHORITIES']
+            },
+            DocumentUpload: {
+              documentWitnessStatement: [{
+                value: {
+                  witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
+                  witnessOptionDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentExpertReport: [{
+                value: {
+                  expertOptionName: 'test name',
+                  expertOptionExpertise: 'expertise',
+                  expertOptionUploadDate: '2023-02-06',
+                  expertDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentAuthorities: [{
+                value: {
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }]
+            }
+          }
+        };
+      }
+    }
+  },
+
+  createApplicantSmallClaimsEvidenceUploadFlightDelay: (mpScenario) => {
+    switch (mpScenario) {
       case 'ONE_V_ONE': {
         console.log('Applicant small claims for ONE_V_ONE');
         return {

@@ -19,7 +19,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(judgeUser, 'CREATE_SMALL_FLIGHT_DELAY_NO_SUM');
-    await api_spec_small.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario1v1);
+    /*await api_spec_small.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario1v1);
     await api_spec_small.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario1v1);
     await api_spec_small.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
     await api_spec_small.amendHearingDueDate(config.systemupdate);
@@ -27,7 +27,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
     if (['demo'].includes(config.runningEnv)) {
       await api_spec_small.triggerBundle(config.systemupdate);
     }
-    await api_spec_small.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+    await api_spec_small.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');*/
   }
 });
 

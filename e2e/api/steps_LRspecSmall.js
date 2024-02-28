@@ -57,8 +57,8 @@ const data = {
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   CREATE_SMALL_FLIGHT_DELAY_NO_SUM: (userInput) => sdoTracks.createSDOSmallFlightDelayWODamageSum(userInput),
-  EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
 };
@@ -531,8 +531,8 @@ module.exports = function (){
 
     let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
 
-    for (let pageId of Object.keys(scheduleData.valid)) {
-      await assertValidDataForEvidenceUpload(scheduleData, pageId);
+    for (let pageId of Object.keys(scheduleData.userInput)) {
+      await assertValidData(scheduleData, pageId);
     }
 
     await assertSubmittedEvent('HEARING_READINESS', null, false);

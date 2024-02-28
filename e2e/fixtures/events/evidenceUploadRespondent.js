@@ -146,6 +146,73 @@ module.exports = {
             },
             DocumentSelectionSmallClaim: {
               witnessSelectionEvidenceSmallClaimRes: ['WITNESS_SUMMARY'],
+              expertSelectionEvidenceSmallClaimRes: ['QUESTIONS_FOR_EXPERTS'],
+              trialSelectionEvidenceSmallClaimRes: ['COSTS'],
+              witnessStatementFlag: 'do_not_show',
+              trialAuthorityFlag: 'do_not_show',
+              expertJointFlag: 'do_not_show',
+              witnessReferredStatementFlag: 'do_not_show',
+              expertReportFlag: 'do_not_show',
+              trialCostsFlag: 'show_trial_costs',
+              witnessSummaryFlag: 'show_witness_summary',
+              trialDocumentaryFlag: 'do_not_show'
+            },
+            DocumentUpload: {
+              documentWitnessSummaryRes:[{
+                value: {
+                  witnessOptionName:'test name',
+                  witnessOptionUploadDate: '2023-02-06',
+                  witnessOptionDocument:{
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentQuestionsRes:[{
+                value: {
+                  expertOptionName:'test name',
+                  expertOptionOtherParty:'text',
+                  expertDocumentQuestion:'question',
+                  expertOptionUploadDate:'2023-02-06',
+                  expertDocument:{
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentAuthoritiesRes:[{
+                value: {
+                  documentUpload:{
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+            }
+          }
+        };
+      }
+    }
+  },
+
+  createRespondentSmallClaimsEvidenceUploadFlightDelay: (mpScenario) => {
+    switch (mpScenario) {
+      case 'ONE_V_ONE':
+      default: {
+        console.log('respondent: one_v_one small claims');
+        return {
+          valid: {
+            EvidenceUpload: {
+              caseProgAllocatedTrack: 'SMALL_CLAIM'
+            },
+            DocumentSelectionSmallClaim: {
+              witnessSelectionEvidenceSmallClaimRes: ['WITNESS_SUMMARY'],
               expertSelectionEvidenceSmallClaimRes: ['EXPERT_REPORT'],
               trialSelectionEvidenceSmallClaimRes: ['COSTS'],
               witnessStatementFlag: 'do_not_show',
