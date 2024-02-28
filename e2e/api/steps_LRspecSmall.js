@@ -452,7 +452,6 @@ module.exports = function (){
       await testingSupport.updateCaseData(caseId, hearingDueDate, user);
     },
 
-    //TODO: Added below method to similar to DRH - To confirm
     hearingFeePaid: async (user) => {
       await apiRequest.setupTokens(user);
 
@@ -719,7 +718,7 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
     delete caseData.applicant1OrganisationPolicy;
   }
   try {
-    assert.deepEqual(responseBody.data, caseData); //TODO: To uncomment later as this assertion is failing
+    assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
