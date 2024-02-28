@@ -115,7 +115,7 @@
     "ID": "MediationAvailability",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationAvailability",
-    "ListElementCode": "mediationUnavailablityLabel",
+    "ListElementCode": "isMediationUnavailablityExists",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
