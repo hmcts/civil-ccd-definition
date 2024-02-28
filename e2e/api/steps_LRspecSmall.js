@@ -34,6 +34,7 @@ const {fetchCaseDetails} = require('./apiRequest');
 const evidenceUploadApplicant = require("../fixtures/events/evidenceUploadApplicant");
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
 const {cloneDeep} = require('lodash');
+const createFinalOrder = require("../fixtures/events/finalOrder");
 
 let caseId, eventName;
 let caseData = {};
@@ -56,9 +57,18 @@ const data = {
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   CREATE_SMALL_FLIGHT_DELAY_NO_SUM: (userInput) => sdoTracks.createSDOSmallFlightDelayWODamageSum(userInput),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType)
+};
+
+const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
+  const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
+  for (let populatedCaseField of Object.keys(fixture)) {
+    // this property won't be here until civil service is merged
+    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
+      assert.property(returnedCaseData, populatedCaseField);
+    }
+  }
 };
 
 const eventData = {
@@ -366,7 +376,7 @@ module.exports = function (){
       if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
         console.log('evidence upload small claim applicant for case id ' + caseId);
         let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
-        await validateEventPagesForEvidenceUpload(ApplicantEvidenceSmallClaimData);
+        await validateEventPagesFlightDelay(ApplicantEvidenceSmallClaimData);
       }
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
       await waitForFinishedBusinessProcess(caseId);
@@ -381,7 +391,7 @@ module.exports = function (){
       if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
         console.log('evidence upload small claim respondent for case id ' + caseId);
         let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
-        await validateEventPagesForEvidenceUpload(RespondentEvidenceSmallClaimData);
+        await validateEventPagesFlightDelay(RespondentEvidenceSmallClaimData);
       }
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
       await waitForFinishedBusinessProcess(caseId);
@@ -432,6 +442,54 @@ module.exports = function (){
         await assertNotValidData(disposalData, pageId);
       }
 
+    },
+
+    amendHearingDueDate: async (user) => {
+      let hearingDueDate = {};
+      hearingDueDate = {'hearingDueDate': '2022-01-10'};
+      await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+    },
+
+    //TODO: Added below method to similar to DRH - To confirm
+    hearingFeePaid: async (user) => {
+      await apiRequest.setupTokens(user);
+
+      await apiRequest.paymentUpdate(caseId, '/service-request-update',
+        claimData.serviceUpdateDto(caseId, 'paid'));
+
+      const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+      assert.equal(response_msg.status, 200);
+      console.log('Hearing Fee Paid');
+    },
+
+    triggerBundle: async () => {
+      const response_msg = await apiRequest.bundleTriggerEvent(caseId);
+      const response = await response_msg.text();
+      assert.equal(response, 'success');
+    },
+
+    createFinalOrderJO: async (user, finalOrderRequestType) => {
+      console.log(`case in Final Order ${caseId}`);
+      await apiRequest.setupTokens(user);
+
+      eventName = 'GENERATE_DIRECTIONS_ORDER';
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      assertContainsPopulatedFields(returnedCaseData);
+
+      if (finalOrderRequestType === 'ASSISTED_ORDER') {
+        await validateEventPagesFlightDelay(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+      } else {
+        await validateEventPagesFlightDelay(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+      }
+
+      await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+        header: '',
+        body: ''
+      }, true);
+
+      await waitForFinishedBusinessProcess(caseId);
     },
 
     createLASDO: async (user, response = 'CREATE_DISPOSAL') => {
@@ -1167,7 +1225,7 @@ const validateEventPages = async (data, solicitor) => {
   }
 };
 
-const validateEventPagesForEvidenceUpload = async (data, solicitor) => {
+const validateEventPagesFlightDelay = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
