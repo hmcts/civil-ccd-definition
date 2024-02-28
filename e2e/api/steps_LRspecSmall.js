@@ -42,7 +42,7 @@ const data = {
   DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2_1V2_2ND_DEF: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim2(response),
-  CLAIMANT_RESPONSE: (hasAgreedFreeMediation) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation),
+  CLAIMANT_RESPONSE: (hasAgreedFreeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation, carmEnabled),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
@@ -245,7 +245,7 @@ module.exports = function (){
 
     caseData = await addFlagsToFixture(caseData);
 
-    let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation, carmEnabled);
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
