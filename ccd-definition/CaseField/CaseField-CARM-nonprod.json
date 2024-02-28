@@ -180,7 +180,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "resp2MediationAvailability",
-    "Label": "Defendant 1 Mediation Availability",
+    "Label": "Defendant 2 Mediation Availability",
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
