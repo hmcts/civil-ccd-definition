@@ -37,7 +37,7 @@ const getExpectedPayload = (serviceId) => {
         'autoListFlag': false,
         'hearingType': null,
         'hearingWindow': null,
-      'duration': 0,
+        'duration': 0,
         'hearingPriorityType': 'Standard',
         'numberOfPhysicalAttendees': 0,
         'hearingInWelshFlag': false,
@@ -158,7 +158,7 @@ const getExpectedPayload = (serviceId) => {
           'partyName': 'Sir John Doe',
           'partyRole': 'DEFE',
           'individualDetails': {
-            'title': null,
+            'title': 'Sir',
             'firstName': 'John',
             'lastName': 'Doe',
             'preferredHearingChannel': null,
@@ -474,7 +474,7 @@ const getExpectedPayload = (serviceId) => {
           'partyName': 'Sir John Doe',
           'partyRole': 'DEFE',
           'individualDetails': {
-            'title': null,
+            'title': 'Sir',
             'firstName': 'John',
             'lastName': 'Doe',
             'preferredHearingChannel': null,
@@ -576,7 +576,7 @@ const getExpectedPayload = (serviceId) => {
           'partyName': 'Dr Foo Bar',
           'partyRole': 'DEFE',
           'individualDetails': {
-            'title': null,
+            'title': 'Dr',
             'firstName': 'Foo',
             'lastName': 'Bar',
             'preferredHearingChannel': null,
