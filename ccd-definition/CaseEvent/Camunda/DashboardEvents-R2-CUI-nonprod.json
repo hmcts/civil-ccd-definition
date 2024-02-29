@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_ISSUE_FOR_APPLICANT1",
     "Name": "Applicant1 Notification",
-    "Description": "Generate dashboard for applicant1",
+    "Description": "Generate dashboard for applicant 1",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
