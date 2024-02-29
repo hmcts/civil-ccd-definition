@@ -193,9 +193,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  performCitizenClaimantResponse: async (user, caseId, expectedEndState) => {
+  performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
-    let payload = lipClaimantResponse.claimantResponse();
+    let payload = lipClaimantResponse.claimantResponse(carmEnabled);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
