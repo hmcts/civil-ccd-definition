@@ -6,6 +6,7 @@
     "ListElementCode": "isMediationUnavailablityExists",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y",
     "Searchable": "N"
   },
   {
@@ -16,6 +17,7 @@
     "FieldTypeParameter": "UnavailableDate",
     "FieldShowCondition": "isMediationUnavailablityExists = \"Yes\"",
     "SecurityClassification": "Public",
+    "RetainHiddenValue": "Y",
     "Searchable": "N"
   }
 ]
