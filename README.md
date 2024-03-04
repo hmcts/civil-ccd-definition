@@ -22,7 +22,7 @@ To set up complete local environment for Civil check [civil-sdk](https://github.
 ### Preview environment
 
 Preview environment will be created when opening new PR. Camunda BPMN definitions will be pulled from the latest GitHub
-release. Service instance will be running the latest image version deployed to ACR.
+release. Service instance will be running the latest image version deployed to ACR
 
 To access XUI visit url (make sure that it starts with `https`, otherwise IDAM won't let you log in):
 
