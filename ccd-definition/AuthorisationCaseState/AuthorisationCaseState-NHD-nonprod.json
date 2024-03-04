@@ -1,0 +1,27 @@
+
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_PROGRESSION",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "HEARING_READINESS",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  }
+]

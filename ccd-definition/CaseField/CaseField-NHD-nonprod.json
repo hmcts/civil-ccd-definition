@@ -5,7 +5,7 @@
     "Label": "Next hearing details",
     "FieldType": "NextHearingDetails",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "_Definition":  "Details of the next hearing on a case",
     "_Category":  "CIVIL",
     "Publish": "Y"
