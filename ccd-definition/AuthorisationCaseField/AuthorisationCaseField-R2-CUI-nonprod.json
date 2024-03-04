@@ -2346,6 +2346,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
+          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "RU"
