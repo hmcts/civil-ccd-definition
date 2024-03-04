@@ -10,5 +10,17 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "applicant1LiPResponseCarm",
     "TabFieldDisplayOrder": 79
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "app1MediationContactInfo",
+    "TabFieldDisplayOrder": 84
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "app1MediationAvailability",
+    "TabFieldDisplayOrder": 85
   }
 ]

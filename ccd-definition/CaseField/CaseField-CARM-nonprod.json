@@ -156,7 +156,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationContactInfo",
-    "Label": "Mediation contact information",
+    "Label": "Claimant Mediation Contact Information",
     "FieldType": "MediationContactInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -164,7 +164,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationAvailability",
-    "Label": "Mediation availability",
+    "Label": "Claimant Mediation Availability",
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -198,6 +198,14 @@
     "ID": "resp2MediationAvailability",
     "Label": "Mediation availability",
     "FieldType": "MediationAvailability",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "contactDetailsLabel",
+    "Label": "## Mediation contact information\n\nPlease provide the contact details of the individual who will conduct the mediation appointment.\n\nThis should be a party to the claim or their legal representative.",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

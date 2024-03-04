@@ -1,23 +1,6 @@
 [
   {
     "ID": "MediationContactInformation",
-    "ListElementCode": "contactDetailsLabel",
-    "ElementLabel": "Please provide the contact details of the individual who will conduct the mediation appointment.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "MediationContactInformation",
-    "ListElementCode": "contactDetailsHintText",
-    "ElementLabel": "This should be a party to the claim or their legal representative.",
-    "HintText": "This should be a party to the claim or their legal representative.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "MediationContactInformation",
     "ListElementCode": "firstName",
     "ElementLabel": "First name",
     "FieldType": "Text",
