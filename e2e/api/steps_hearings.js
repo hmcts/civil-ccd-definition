@@ -11,26 +11,351 @@ const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
 
 const runningOnLocal = () => !['aat', 'demo', 'preview'].includes(config.runningEnv);
-const locationId = () => runningOnLocal() ? '000000' : '229786';
+const locationId = () => runningOnLocal() ? '000000' : '424213';
 
 const getExpectedPayload = (serviceId) => {
-  if (serviceId === specServiceId) {
-    return {
-      'hmctsServiceID': 'AAA6',
-        'hmctsInternalCaseName': 'Test Inc v Sir John Doe',
-        'publicCaseName': '\'Test Inc\' v \'John Doe\'',
+    if (serviceId === specServiceId) {
+      return {
+        'hmctsServiceID': 'AAA6',
+        'hmctsInternalCaseName': '\'Test Inc\' v \'John Doe\', \'Second Defendant\'',
+        'publicCaseName': '\'Test Inc\' v \'John Doe\', \'Second Defendant\'',
         'caseAdditionalSecurityFlag': false,
         'caseCategories': [
-        {
-          'categoryType': 'caseType',
-          'categoryValue': 'AAA6-SMALL_CLAIM'
+          {
+            'categoryType': 'caseType',
+            'categoryValue': 'AAA6-FAST_CLAIM'
+          },
+          {
+            'categoryType': 'caseSubType',
+            'categoryValue': 'AAA6-FAST_CLAIM',
+            'categoryParent': 'AAA6-FAST_CLAIM'
+          }
+        ],
+        'externalCaseReference': null,
+        'caseManagementLocationCode': '424213',
+        'caseSLAStartDate': '2024-03-04',
+        'autoListFlag': false,
+        'hearingType': null,
+        'hearingWindow': null,
+        'duration': 0,
+        'hearingPriorityType': 'Standard',
+        'numberOfPhysicalAttendees': 0,
+        'hearingInWelshFlag': false,
+        'hearingLocations': [
+          {
+            'locationId': '424213',
+            'locationType': 'court'
+          }
+        ],
+        'facilitiesRequired': null,
+        'listingComments': null,
+        'hearingRequester': '',
+        'privateHearingRequiredFlag': false,
+        'caseInterpreterRequiredFlag': true,
+        'panelRequirements': null,
+        'leadJudgeContractType': '',
+        'judiciary': {},
+        'hearingIsLinkedFlag': false,
+        'parties': [
+          {
+            'partyID': '',
+            'partyType': 'ORG',
+            'partyName': 'Test Inc',
+            'partyRole': 'CLAI',
+            'organisationDetails': {
+              'name': 'Test Inc',
+              'organisationType': 'ORG',
+              'cftOrganisationID': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': 'Q1KOKP2',
+            'partyType': 'ORG',
+            'partyName': 'Civil - Organisation 1',
+            'partyRole': 'LGRP',
+            'organisationDetails': {
+              'name': 'Civil - Organisation 1',
+              'organisationType': 'ORG',
+              'cftOrganisationID': 'Q1KOKP2'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Doe',
+            'partyRole': 'EXPR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'john@doemail.com'
+              ],
+              'hearingChannelPhone': [
+                '07111111111'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null,
+              'otherReasonableAdjustmentDetails': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Smith',
+            'partyRole': 'WITN',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Smith',
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'johnsmith@email.com'
+              ],
+              'hearingChannelPhone': [
+                '07012345678'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null,
+              'otherReasonableAdjustmentDetails': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'Sir John Doe',
+            'partyRole': 'DEFE',
+            'individualDetails': {
+              'title': 'Sir',
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [
+                'RA0019'
+              ],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'seconddefendant@example.com'
+              ],
+              'hearingChannelPhone': [
+                '07898678902'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null,
+              'otherReasonableAdjustmentDetails': 'RA0019: Step free / wheelchair access: wheelchair'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '79ZRSOU',
+            'partyType': 'ORG',
+            'partyName': 'Civil - Organisation 2',
+            'partyRole': 'LGRP',
+            'organisationDetails': {
+              'name': 'Civil - Organisation 2',
+              'organisationType': 'ORG',
+              'cftOrganisationID': '79ZRSOU'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Doe',
+            'partyRole': 'EXPR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'john@doemail.com'
+              ],
+              'hearingChannelPhone': [
+                '07111111111'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null,
+              'otherReasonableAdjustmentDetails': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'ORG',
+            'partyName': 'Second Defendant',
+            'partyRole': 'DEFE',
+            'organisationDetails': {
+              'name': 'Second Defendant',
+              'organisationType': 'ORG',
+              'cftOrganisationID': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          }
+        ],
+        'screenFlow': [
+          {
+            'screenName': 'hearing-requirements',
+            'navigation': [
+              {
+                'resultValue': 'hearing-facilities'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-facilities',
+            'navigation': [
+              {
+                'resultValue': 'hearing-stage'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-stage',
+            'navigation': [
+              {
+                'resultValue': 'hearing-attendance'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-attendance',
+            'navigation': [
+              {
+                'resultValue': 'hearing-venue'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-venue',
+            'conditionKey': 'regionId',
+            'navigation': [
+              {
+                'conditionOperator': 'INCLUDE',
+                'conditionValue': '7',
+                'resultValue': 'hearing-welsh'
+              },
+              {
+                'conditionOperator': 'NOT INCLUDE',
+                'conditionValue': '7',
+                'resultValue': 'hearing-judge'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-welsh',
+            'navigation': [
+              {
+                'resultValue': 'hearing-judge'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-judge',
+            'navigation': [
+              {
+                'resultValue': 'hearing-timing'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-timing',
+            'navigation': [
+              {
+                'resultValue': 'hearing-additional-instructions'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-additional-instructions',
+            'navigation': [
+              {
+                'resultValue': 'hearing-create-edit-summary'
+              }
+            ]
+          }
+        ],
+        'vocabulary': [
+          {}
+        ],
+        'hearingChannels': [
+          'INTER'
+        ],
+        'caseFlags': {
+          'flags': [
+            {
+              'partyID': '',
+              'partyName': 'Sir John Doe',
+              'flagId': 'RA0019',
+              'flagDescription': 'Step free / wheelchair access',
+              'flagStatus': 'Active',
+              'dateTimeCreated': ''
+            },
+            {
+              'partyID': '',
+              'partyName': 'Test Inc',
+              'flagId': 'PF0015',
+              'flagDescription': 'Language Interpreter',
+              'flagStatus': 'Active',
+              'dateTimeCreated': ''
+            }
+          ]
         },
-        {
-          'categoryType': 'caseSubType',
-          'categoryValue': 'AAA6-SMALL_CLAIM',
-          'categoryParent': 'AAA6-SMALL_CLAIM'
-        }
-      ],
+        'caserestrictedFlag': false
+      };
+    }
+    if (serviceId === unspecServiceId) {
+      return {
+        'hmctsServiceID': 'AAA7',
+        'hmctsInternalCaseName': '\'Test Inc\' represented by \'Bob the litigant friend\' (litigation friend) v \'John Doe\', \'Foo Bar\'',
+        'publicCaseName': '\'Test Inc\' represented by \'Bob the litigant friend\' (litigation friend) v \'John Doe\', \'Foo Bar\'',
+        'caseAdditionalSecurityFlag': true,
+        'caseCategories': [
+          {
+            'categoryType': 'caseType',
+            'categoryValue': 'AAA7-FAST_CLAIM'
+          },
+          {
+            'categoryType': 'caseSubType',
+            'categoryValue': 'AAA7-FAST_CLAIM',
+            'categoryParent': 'AAA7-FAST_CLAIM'
+          }
+        ],
         'externalCaseReference': null,
         'caseManagementLocationCode': locationId(),
         'caseSLAStartDate': date(),
@@ -42,758 +367,482 @@ const getExpectedPayload = (serviceId) => {
         'numberOfPhysicalAttendees': 0,
         'hearingInWelshFlag': false,
         'hearingLocations': [
-        {
-          'locationId': locationId(),
-          'locationType': 'court'
-        }
-      ],
-        'facilitiesRequired': null,
+          {
+            'locationId': locationId(),
+            'locationType': 'court'
+          }
+        ],
+        'facilitiesRequired': [
+          '11'
+        ],
         'listingComments': null,
         'hearingRequester': '',
         'privateHearingRequiredFlag': false,
-        'caseInterpreterRequiredFlag': true,
+        'caseInterpreterRequiredFlag': false,
         'panelRequirements': null,
-      'leadJudgeContractType': '',
+        'leadJudgeContractType': '',
         'judiciary': {},
-      'hearingIsLinkedFlag': false,
+        'hearingIsLinkedFlag': false,
         'parties': [
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'Test Inc',
-          'partyRole': 'CLAI',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'Test',
-            'lastName': 'Inc',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': 'HUT',
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'testinc@example.com'
-            ],
-            'hearingChannelPhone': [
-              '07898878902'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': 'Q1KOKP2',
-          'partyType': 'ORG',
-          'partyName': 'Civil - Organisation 1',
-          'partyRole': 'LGRP',
-          'organisationDetails': {
-            'name': 'Civil - Organisation 1',
-            'organisationType': 'ORG',
-            'cftOrganisationID': 'Q1KOKP2'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Doe',
-          'partyRole': 'EXPR',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'john@doemail.com'
-            ],
-            'hearingChannelPhone': [
-              '07111111111'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Smith',
-          'partyRole': 'WITN',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Smith',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'johnsmith@email.com'
-            ],
-            'hearingChannelPhone': [
-              '07012345678'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'Sir John Doe',
-          'partyRole': 'DEFE',
-          'individualDetails': {
-            'title': 'Sir',
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [
-              'RA0019'
-            ],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'johndoe@example.com'
-            ],
-            'hearingChannelPhone': [
-              '07898678902'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '79ZRSOU',
-          'partyType': 'ORG',
-          'partyName': 'Civil - Organisation 2',
-          'partyRole': 'LGRP',
-          'organisationDetails': {
-            'name': 'Civil - Organisation 2',
-            'organisationType': 'ORG',
-            'cftOrganisationID': '79ZRSOU'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        }
-      ],
-        'screenFlow': [
-        {
-          'screenName': 'hearing-requirements',
-          'navigation': [
-            {
-              'resultValue': 'hearing-facilities'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-facilities',
-          'navigation': [
-            {
-              'resultValue': 'hearing-stage'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-stage',
-          'navigation': [
-            {
-              'resultValue': 'hearing-attendance'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-attendance',
-          'navigation': [
-            {
-              'resultValue': 'hearing-venue'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-venue',
-          'conditionKey': 'regionId',
-          'navigation': [
-            {
-              'conditionOperator': 'INCLUDE',
-              'conditionValue': '7',
-              'resultValue': 'hearing-welsh'
-            },
-            {
-              'conditionOperator': 'NOT INCLUDE',
-              'conditionValue': '7',
-              'resultValue': 'hearing-judge'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-welsh',
-          'navigation': [
-            {
-              'resultValue': 'hearing-judge'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-judge',
-          'navigation': [
-            {
-              'resultValue': 'hearing-timing'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-timing',
-          'navigation': [
-            {
-              'resultValue': 'hearing-additional-instructions'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-additional-instructions',
-          'navigation': [
-            {
-              'resultValue': 'hearing-create-edit-summary'
-            }
-          ]
-        }
-      ],
-        'vocabulary': [
-        {}
-      ],
-        'hearingChannels': ['INTER'],
-        'caseFlags': {
-        'flags': [
           {
-            'partyName': 'Sir John Doe',
-            'flagId': 'RA0019',
-            'flagDescription': 'Step free / wheelchair access',
-            'flagStatus': 'Active',
-            'partyID': ''
-          },
-          {
+            'partyID': '',
+            'partyType': 'ORG',
             'partyName': 'Test Inc',
-            'flagId': 'PF0015',
-            'flagDescription': 'Language Interpreter',
-            'flagStatus': 'Active',
-            'partyID': ''
-          }
-        ]
-      },
-      'caserestrictedFlag': false
-    };
-  }
-  if (serviceId === unspecServiceId) {
-    return {
-      'hmctsServiceID': 'AAA7',
-      'hmctsInternalCaseName': 'Test Inc v Sir John Doe and Dr Foo Bar',
-      'publicCaseName': '\'Test Inc\' represented by \'Bob the litigant friend\' (litigation friend) v \'John Doe\', \'Foo Bar\'',
-      'caseAdditionalSecurityFlag': true,
-      'caseCategories': [
-        {
-          'categoryType': 'caseType',
-          'categoryValue': 'AAA7-FAST_CLAIM'
-        },
-        {
-          'categoryType': 'caseSubType',
-          'categoryValue': 'AAA7-FAST_CLAIM',
-          'categoryParent': 'AAA7-FAST_CLAIM'
-        }
-      ],
-      'externalCaseReference': null,
-      'caseManagementLocationCode': locationId(),
-      'caseSLAStartDate': date(),
-      'autoListFlag': false,
-      'hearingType': null,
-      'hearingWindow': null,
-      'duration': 0,
-      'hearingPriorityType': 'Standard',
-      'numberOfPhysicalAttendees': 0,
-      'hearingInWelshFlag': false,
-      'hearingLocations': [
-        {
-          'locationId': locationId(),
-          'locationType': 'court'
-        }
-      ],
-      'facilitiesRequired': [
-        '11'
-      ],
-      'listingComments': null,
-      'hearingRequester': '',
-      'privateHearingRequiredFlag': false,
-      'caseInterpreterRequiredFlag': false,
-      'panelRequirements': null,
-      'leadJudgeContractType': '',
-      'judiciary': {},
-      'hearingIsLinkedFlag': false,
-      'parties': [
-        {
-          'partyID': '',
-          'partyType': 'ORG',
-          'partyName': 'Test Inc',
-          'partyRole': 'CLAI',
-          'organisationDetails': {
-            'name': 'Test Inc',
-            'organisationType': 'ORG',
-            'cftOrganisationID': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': [
-            {
+            'partyRole': 'CLAI',
+            'organisationDetails': {
+              'name': 'Test Inc',
+              'organisationType': 'ORG',
+              'cftOrganisationID': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': [
+              {
                 'unavailabilityType': 'All Day',
                 'unavailableFromDate': date(10),
                 'unavailableToDate': date(10)
-            },
-            {
-              'unavailabilityType': 'All Day',
-              'unavailableFromDate': date(30),
-              'unavailableToDate': date(35)
-            }
-          ],
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': 'Q1KOKP2',
-          'partyType': 'ORG',
-          'partyName': 'Civil - Organisation 1',
-          'partyRole': 'LGRP',
-          'organisationDetails': {
-            'name': 'Civil - Organisation 1',
-            'organisationType': 'ORG',
-            'cftOrganisationID': 'Q1KOKP2'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Doe',
-          'partyRole': 'EXPR',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'test@email.com'
+              },
+              {
+                'unavailabilityType': 'All Day',
+                'unavailableFromDate': date(30),
+                'unavailableToDate': date(35)
+              }
             ],
-            'hearingChannelPhone': [
-              '07000111000'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Smith',
-          'partyRole': 'WITN',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Smith',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'johnsmith@email.com'
-            ],
-            'hearingChannelPhone': [
-              '07012345678'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'Bob the litigant friend',
-          'partyRole': 'LIFR',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'Bob',
-            'lastName': 'the litigant friend',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'bobthelitigant@litigants.com'
-            ],
-            'hearingChannelPhone': [
-              '07123456789'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'Sir John Doe',
-          'partyRole': 'DEFE',
-          'individualDetails': {
-            'title': 'Sir',
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [],
-            'hearingChannelPhone': [],
-            'relatedParties': [],
-            'custodyStatus': 'C'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': [
-            {
-              'unavailabilityType': 'All Day',
-              'unavailableFromDate': date(10),
-              'unavailableToDate': date(10)
-            },
-            {
-              'unavailabilityType': 'All Day',
-              'unavailableFromDate': date(30),
-              'unavailableToDate': date(35)
-            }
-          ],
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '79ZRSOU',
-          'partyType': 'ORG',
-          'partyName': 'Civil - Organisation 2',
-          'partyRole': 'LGRP',
-          'organisationDetails': {
-            'name': 'Civil - Organisation 2',
-            'organisationType': 'ORG',
-            'cftOrganisationID': '79ZRSOU'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Doe',
-          'partyRole': 'EXPR',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'john@doemail.com'
-            ],
-            'hearingChannelPhone': [
-              '07111111111'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Smith',
-          'partyRole': 'WITN',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Smith',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'johnsmith@email.com'
-            ],
-            'hearingChannelPhone': [
-              '07012345678'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'Dr Foo Bar',
-          'partyRole': 'DEFE',
-          'individualDetails': {
-            'title': 'Dr',
-            'firstName': 'Foo',
-            'lastName': 'Bar',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [],
-            'hearingChannelPhone': [],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': [
-            {
-              'unavailabilityType': 'All Day',
-              'unavailableFromDate': date(10),
-              'unavailableToDate': date(10)
-            },
-            {
-              'unavailabilityType': 'All Day',
-              'unavailableFromDate': date(30),
-              'unavailableToDate': date(35)
-            }
-          ],          'hearingSubChannel': null
-        },
-        {
-          'partyID': 'H2156A0',
-          'partyType': 'ORG',
-          'partyName': 'Civil - Organisation 3',
-          'partyRole': 'LGRP',
-          'organisationDetails': {
-            'name': 'Civil - Organisation 3',
-            'organisationType': 'ORG',
-            'cftOrganisationID': 'H2156A0'
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Doe',
-          'partyRole': 'EXPR',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Doe',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [],
-            'vulnerableFlag': false,
-            'vulnerabilityDetails': null,
-            'hearingChannelEmail': [
-              'john@doemail.com'
-            ],
-            'hearingChannelPhone': [
-              '07111111111'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        },
-        {
-          'partyID': '',
-          'partyType': 'IND',
-          'partyName': 'John Smith',
-          'partyRole': 'WITN',
-          'individualDetails': {
-            'title': null,
-            'firstName': 'John',
-            'lastName': 'Smith',
-            'preferredHearingChannel': null,
-            'interpreterLanguage': null,
-            'reasonableAdjustments': [
-              'RA0026'
-            ],
-            'vulnerableFlag': true,
-            'vulnerabilityDetails': 'Support worker or carer with me - support worker comment',
-            'hearingChannelEmail': [
-              'johnsmith@email.com'
-            ],
-            'hearingChannelPhone': [
-              '07012345678'
-            ],
-            'relatedParties': [],
-            'custodyStatus': null
-          },
-          'unavailabilityDOW': null,
-          'unavailabilityRanges': null,
-          'hearingSubChannel': null
-        }
-      ],
-      'screenFlow': [
-        {
-          'screenName': 'hearing-requirements',
-          'navigation': [
-            {
-              'resultValue': 'hearing-facilities'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-facilities',
-          'navigation': [
-            {
-              'resultValue': 'hearing-stage'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-stage',
-          'navigation': [
-            {
-              'resultValue': 'hearing-attendance'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-attendance',
-          'navigation': [
-            {
-              'resultValue': 'hearing-venue'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-venue',
-          'conditionKey': 'regionId',
-          'navigation': [
-            {
-              'conditionOperator': 'INCLUDE',
-              'conditionValue': '7',
-              'resultValue': 'hearing-welsh'
-            },
-            {
-              'conditionOperator': 'NOT INCLUDE',
-              'conditionValue': '7',
-              'resultValue': 'hearing-judge'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-welsh',
-          'navigation': [
-            {
-              'resultValue': 'hearing-judge'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-judge',
-          'navigation': [
-            {
-              'resultValue': 'hearing-timing'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-timing',
-          'navigation': [
-            {
-              'resultValue': 'hearing-additional-instructions'
-            }
-          ]
-        },
-        {
-          'screenName': 'hearing-additional-instructions',
-          'navigation': [
-            {
-              'resultValue': 'hearing-create-edit-summary'
-            }
-          ]
-        }
-      ],
-      'vocabulary': [
-        {}
-      ],
-      'hearingChannels': null,
-      'caseFlags': {
-        'flags': [
-          {
-            'partyName': 'Sir John Doe',
-            'flagId': 'PF0019',
-            'flagDescription': 'Detained individual',
-            'flagStatus': 'Active',
-            'partyID': ''
+            'hearingSubChannel': null
           },
           {
-            'partyName': 'Sir John Doe',
-            'flagId': 'PF0007',
-            'flagDescription': 'Unacceptable/disruptive customer behaviour',
-            'flagStatus': 'Active',
-            'partyID': ''
-
+            'partyID': 'Q1KOKP2',
+            'partyType': 'ORG',
+            'partyName': 'Civil - Organisation 1',
+            'partyRole': 'LGRP',
+            'organisationDetails': {
+              'name': 'Civil - Organisation 1',
+              'organisationType': 'ORG',
+              'cftOrganisationID': 'Q1KOKP2'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
           },
           {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Doe',
+            'partyRole': 'EXPR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'test@email.com'
+              ],
+              'hearingChannelPhone': [
+                '07000111000'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
             'partyName': 'John Smith',
-            'flagId': 'RA0026',
-            'flagDescription': 'Support worker or carer with me',
-            'flagStatus': 'Active',
-            'partyID': ''
+            'partyRole': 'WITN',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Smith',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'johnsmith@email.com'
+              ],
+              'hearingChannelPhone': [
+                '07012345678'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'Bob the litigant friend',
+            'partyRole': 'LIFR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'Bob',
+              'lastName': 'the litigant friend',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'bobthelitigant@litigants.com'
+              ],
+              'hearingChannelPhone': [
+                '07123456789'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'Sir John Doe',
+            'partyRole': 'DEFE',
+            'individualDetails': {
+              'title': 'Sir',
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [],
+              'hearingChannelPhone': [],
+              'relatedParties': [],
+              'custodyStatus': 'C'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': [
+              {
+                'unavailabilityType': 'All Day',
+                'unavailableFromDate': date(10),
+                'unavailableToDate': date(10)
+              },
+              {
+                'unavailabilityType': 'All Day',
+                'unavailableFromDate': date(30),
+                'unavailableToDate': date(35)
+              }
+            ],
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '79ZRSOU',
+            'partyType': 'ORG',
+            'partyName': 'Civil - Organisation 2',
+            'partyRole': 'LGRP',
+            'organisationDetails': {
+              'name': 'Civil - Organisation 2',
+              'organisationType': 'ORG',
+              'cftOrganisationID': '79ZRSOU'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Doe',
+            'partyRole': 'EXPR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'john@doemail.com'
+              ],
+              'hearingChannelPhone': [
+                '07111111111'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Smith',
+            'partyRole': 'WITN',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Smith',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'johnsmith@email.com'
+              ],
+              'hearingChannelPhone': [
+                '07012345678'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'Dr Foo Bar',
+            'partyRole': 'DEFE',
+            'individualDetails': {
+              'title': 'Dr',
+              'firstName': 'Foo',
+              'lastName': 'Bar',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [],
+              'hearingChannelPhone': [],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': [
+              {
+                'unavailabilityType': 'All Day',
+                'unavailableFromDate': date(10),
+                'unavailableToDate': date(10)
+              },
+              {
+                'unavailabilityType': 'All Day',
+                'unavailableFromDate': date(30),
+                'unavailableToDate': date(35)
+              }
+            ], 'hearingSubChannel': null
+          },
+          {
+            'partyID': 'H2156A0',
+            'partyType': 'ORG',
+            'partyName': 'Civil - Organisation 3',
+            'partyRole': 'LGRP',
+            'organisationDetails': {
+              'name': 'Civil - Organisation 3',
+              'organisationType': 'ORG',
+              'cftOrganisationID': 'H2156A0'
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Doe',
+            'partyRole': 'EXPR',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Doe',
+              'otherReasonableAdjustmentDetails': null,
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [],
+              'vulnerableFlag': false,
+              'vulnerabilityDetails': null,
+              'hearingChannelEmail': [
+                'john@doemail.com'
+              ],
+              'hearingChannelPhone': [
+                '07111111111'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
+          },
+          {
+            'partyID': '',
+            'partyType': 'IND',
+            'partyName': 'John Smith',
+            'partyRole': 'WITN',
+            'individualDetails': {
+              'title': null,
+              'firstName': 'John',
+              'lastName': 'Smith',
+              'otherReasonableAdjustmentDetails': 'RA0026: Support worker or carer with me: support worker comment',
+              'preferredHearingChannel': null,
+              'interpreterLanguage': null,
+              'reasonableAdjustments': [
+                'RA0026'
+              ],
+              'vulnerableFlag': true,
+              'vulnerabilityDetails': 'Support worker or carer with me - support worker comment',
+              'hearingChannelEmail': [
+                'johnsmith@email.com'
+              ],
+              'hearingChannelPhone': [
+                '07012345678'
+              ],
+              'relatedParties': [],
+              'custodyStatus': null
+            },
+            'unavailabilityDOW': null,
+            'unavailabilityRanges': null,
+            'hearingSubChannel': null
           }
-        ]
-      },
-      'caserestrictedFlag': false
-    };
+        ],
+        'screenFlow': [
+          {
+            'screenName': 'hearing-requirements',
+            'navigation': [
+              {
+                'resultValue': 'hearing-facilities'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-facilities',
+            'navigation': [
+              {
+                'resultValue': 'hearing-stage'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-stage',
+            'navigation': [
+              {
+                'resultValue': 'hearing-attendance'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-attendance',
+            'navigation': [
+              {
+                'resultValue': 'hearing-venue'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-venue',
+            'conditionKey': 'regionId',
+            'navigation': [
+              {
+                'conditionOperator': 'INCLUDE',
+                'conditionValue': '7',
+                'resultValue': 'hearing-welsh'
+              },
+              {
+                'conditionOperator': 'NOT INCLUDE',
+                'conditionValue': '7',
+                'resultValue': 'hearing-judge'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-welsh',
+            'navigation': [
+              {
+                'resultValue': 'hearing-judge'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-judge',
+            'navigation': [
+              {
+                'resultValue': 'hearing-timing'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-timing',
+            'navigation': [
+              {
+                'resultValue': 'hearing-additional-instructions'
+              }
+            ]
+          },
+          {
+            'screenName': 'hearing-additional-instructions',
+            'navigation': [
+              {
+                'resultValue': 'hearing-create-edit-summary'
+              }
+            ]
+          }
+        ],
+        'vocabulary': [
+          {}
+        ],
+        'hearingChannels': null,
+        'caseFlags': {
+          'flags': [
+            {
+              'partyName': 'Sir John Doe',
+              'flagId': 'PF0019',
+              'flagDescription': 'Detained individual',
+              'dateTimeCreated': '',
+              'flagStatus': 'Active',
+              'partyID': ''
+            },
+            {
+              'partyName': 'Sir John Doe',
+              'flagId': 'PF0007',
+              'flagDescription': 'Unacceptable/disruptive customer behaviour',
+              'dateTimeCreated': '',
+              'flagStatus': 'Active',
+              'partyID': ''
+
+            },
+            {
+              'partyName': 'John Smith',
+              'flagId': 'RA0026',
+              'flagDescription': 'Support worker or carer with me',
+              'dateTimeCreated': '',
+              'flagStatus': 'Active',
+              'partyID': ''
+            }
+          ]
+        },
+        'caserestrictedFlag': false
+      };
+    }
   }
-};
+;
 
 module.exports = {
   createCaseFlags: async (user, caseId, flagLocation, flag) => {
-    if(!(await checkCaseFlagsEnabled())) {
+    if (!(await checkCaseFlagsEnabled())) {
       return;
     }
 
@@ -803,7 +852,7 @@ module.exports = {
   },
 
   generateHearingsPayload: async (user, caseId, serviceId = 'AAA7') => {
-    if(!(await checkCaseFlagsAndHmcEnabled())) {
+    if (!(await checkCaseFlagsAndHmcEnabled())) {
       return;
     }
 
@@ -816,14 +865,14 @@ module.exports = {
     // remove uniquely generated partyID for all parties except legal rep
     actualPayload.parties = actualPayload.parties.map(function (party) {
       if (party.partyRole !== 'LGRP') {
-        return {...party, partyID:''};
+        return {...party, partyID: ''};
       } else {
         return {...party};
       }
     });
     actualPayload.caseFlags.flags = actualPayload.caseFlags.flags.map(function (flag) {
       if (flag.partyRole !== 'LGRP') {
-        return {...flag, partyID:''};
+        return {...flag, partyID: '', dateTimeCreated: ''};
       } else {
         return {...flag};
       }
