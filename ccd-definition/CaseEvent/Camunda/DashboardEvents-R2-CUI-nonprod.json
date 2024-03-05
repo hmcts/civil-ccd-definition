@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_PAY_IMMEDIATELY_ACCEPTED",
-    "Name": "Dashboard Pay Immediately Accepted for defendant",
+    "Name": "Dashboard Pay Immedia Accepted",
     "Description": "Generate Dashboard Notification in CUI for defendant when Pay Immediately is accepted",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
