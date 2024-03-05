@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -33,9 +33,9 @@ const mediationDocuments = require('../fixtures/events/mediation/uploadMediation
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
-const evidenceUploadApplicant = require("../fixtures/events/evidenceUploadApplicant");
-const evidenceUploadRespondent = require("../fixtures/events/evidenceUploadRespondent");
-const {cloneDeep} = require("lodash");
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const {cloneDeep} = require('lodash');
 
 let caseId, eventName;
 let caseData = {};
@@ -299,6 +299,12 @@ function whatsTheDifference(caseData, responseBodyData, path) {
   });
 }
 
+function removeUuidsFromDynamicList(data, dynamicListField) {
+  const dynamicElements = data[dynamicListField].list_items;
+  // eslint-disable-next-line no-unused-vars
+  return dynamicElements.map(({code, ...item}) => item);
+}
+
 function appendToPath(path, key) {
   if (path) {
     return path.concat([key]);
@@ -319,7 +325,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   const isSdoR2Enabled = checkToggleEnabled(SDOR2);
   if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
     || pageId === 'SmallClaims')) {
-    calculated = {...calculated, ...calculatedClaimsTrackDRH};
+    calculated = {...calculated};
   }
   if(eventName === 'CREATE_CLAIM'){
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
