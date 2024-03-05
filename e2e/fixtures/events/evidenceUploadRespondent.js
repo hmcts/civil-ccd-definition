@@ -204,8 +204,6 @@ module.exports = {
   createRespondentSmallClaimsEvidenceUploadFlightDelay: (mpScenario) => {
     switch (mpScenario) {
       case 'ONE_V_ONE':
-      default: {
-        console.log('respondent: one_v_one small claims');
         return {
           valid: {
             EvidenceUpload: {
@@ -264,7 +262,6 @@ module.exports = {
             }
           }
         };
-      }
     }
   },
 
