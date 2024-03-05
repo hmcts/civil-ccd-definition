@@ -144,5 +144,14 @@
     "FieldTypeParameter": "JoConfirmReadOrderForSetAside",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  }
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "ConfirmReferToJudgeDefenceReceived",
+  "Label": " ",
+  "FieldType": "MultiSelectList",
+  "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+}
 ]
