@@ -68,19 +68,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT1_HWF_DASHBOARD_NOTIFICATION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
