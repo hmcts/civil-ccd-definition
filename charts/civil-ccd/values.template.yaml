@@ -201,7 +201,7 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:prod-30a6a28-20240229163042
+    image: hmctspublic.azurecr.io/xui/webapp:latest
     memoryRequests: 2Gi
     cpuRequests: 2000m
     memoryLimits: 4Gi
@@ -222,6 +222,10 @@ xui-webapp:
       SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://${SERVICE_NAME}-aac-manage-case-assignment
       FEATURE_REDIS_ENABLED: false
+      FEATURE_APP_INSIGHTS_ENABLED: false
+      FEATURE_SECURE_COOKIE_ENABLED: false
+      FEATURE_WORKALLOCATION_ENABLED: false
+      FEATURE_PROXY_ENABLED: false
 ccd:
   ccd:
     adminWeb:
