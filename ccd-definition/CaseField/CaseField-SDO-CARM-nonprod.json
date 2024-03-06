@@ -20,7 +20,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "smallClaimsMediationSectionStatement",
     "Label": " ",
-    "FieldType": "TextArea",
+    "FieldType": "SmallClaimsMediation",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

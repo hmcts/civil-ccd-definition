@@ -342,7 +342,9 @@ module.exports = {
             input3: '1',
             input4: 'string'
           },
-          smallClaimsMediationSectionStatement: 'string',
+          smallClaimsMediationSectionStatement: {
+            input : 'string'
+          },
           smallClaimsAddNewDirections: [
             element({
               directionComment: 'string'

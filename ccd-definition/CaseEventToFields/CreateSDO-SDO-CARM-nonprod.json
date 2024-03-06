@@ -28,7 +28,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsMediationSectionStatement",
     "PageFieldDisplayOrder": 35,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
     "PageColumnNumber": 1,
