@@ -46,9 +46,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_CLAIM_SETTLED_CLAIMANT1",
-    "Name": "Dashboard Notification Claim Settled Claimant",
-    "Description": "Generate Dashboard Notification Claim Settled Claimant",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_CLAIMANT_RESPONSE_CUI_APPLICANT1",
+    "Name": "Dashboard Notification Claimant Response Claimant 1",
+    "Description": "Generate Dashboard Notification Claimant Response Claimant 1",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
