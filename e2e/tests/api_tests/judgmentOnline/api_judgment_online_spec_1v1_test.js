@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const caseWorkerUser = config.hearingCenterAdminLocal;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 const judgeUser = config.judgeUserWithRegionId1;
 // to use on local because the idam images are different
 // const caseWorkerUser = config.judgeUserWithRegionId1Local;
