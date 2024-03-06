@@ -762,9 +762,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
-
 
     await assertSubmittedEvent('CLOSED', {
       header: '# Judgment marked as paid in full',
