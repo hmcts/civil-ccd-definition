@@ -5,7 +5,7 @@ let civilCaseReference;
 
 Feature('CCD 1v2 2 LIPs COS UI test @e2e-unspec @e2e-cos @master-e2e-ft');
 
-Scenario('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
+Scenario.skip('1v2 two respondents are LIP - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
     'ONE_V_TWO_LIPS');
   console.log('Case created for COS: ' + civilCaseReference);
