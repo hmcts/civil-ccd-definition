@@ -30,7 +30,7 @@ Scenario('Record Judgment with set aside Spec claim 1v2', async ({I, api_spec}) 
   }
 });
 
-Scenario.only('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
@@ -50,7 +50,7 @@ Scenario.only('Record Judgment with mark judgment paid Spec claim 1v2', async ({
   }
 });
 
-Scenario.only('Record Judgment with mark judgment paid Spec claim 1v2 - Mark judgment solicitor user', async ({I, api_spec}) => {
+Scenario('Record Judgment with mark judgment paid Spec claim 1v2 - Mark judgment solicitor user', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
