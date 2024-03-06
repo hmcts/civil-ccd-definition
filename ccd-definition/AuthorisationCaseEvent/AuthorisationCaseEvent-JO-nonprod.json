@@ -19,9 +19,10 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-staff",
           "caseworker-civil-admin",
-          "caseworker-civil",
-          "caseworker-civil-staff"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
