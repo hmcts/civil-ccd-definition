@@ -10,7 +10,7 @@ module.exports = {
 
   async signIn(user) {
     if (user.email && user.password) {
-      await I.retry(5).waitForElement(this.fields.username);
+      await I.retry(5).waitForElement(this.fields.username, 30);
       await I.fillField(this.fields.username, user.email);
       await I.fillField(this.fields.password, user.password);
 
