@@ -370,6 +370,7 @@
       "UserRoles": [
         "judge-profile",
         "caseworker-civil-admin",
+        "caseworker-civil-staff",
         "APP-SOL-SPEC-PROFILE"
       ],
       "CRUD": "CRU"
