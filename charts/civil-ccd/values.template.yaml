@@ -202,13 +202,13 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    memoryRequests: 2Gi
+    memoryRequests: 3Gi
     cpuRequests: 2000m
-    memoryLimits: 4Gi
+    memoryLimits: 5Gi
     cpuLimits: 3500m
-    devmemoryRequests: 6Gi
+    devmemoryRequests: 8Gi
     devcpuRequests: 2000m
-    devmemoryLimits: 8Gi
+    devmemoryLimits: 9Gi
     devcpuLimits: 4500m
     environment:
       HEALTH_CCD_COMPONENT_API: http://${SERVICE_NAME}-ccd-api-gw/health
