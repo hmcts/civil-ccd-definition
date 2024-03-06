@@ -46,9 +46,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_GO_TO_HEARING_FOR_APPLICANT1",
-    "Name": "Dashboard Notice Go To Hearing",
-    "Description": "Generate Dashboard Notification Go To Hearing for applicant 1",
+    "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
+    "Name": "Claimant Dashboard Notice For Claimant Response",
+    "Description": "Generate Claimant Dashboard Notice For Claimant Response",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
