@@ -2,11 +2,11 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-//const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
-//const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
 // to use on local because the idam images are different
-const judgeUser = config.judgeUserWithRegionId1Local;
-const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
+// const judgeUser = config.judgeUserWithRegionId1Local;
+// const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
 
