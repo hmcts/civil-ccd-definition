@@ -2,10 +2,12 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
+const legalAdvUser = config.judgeUserWithRegionId1;
 const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
-// to use on local because the idam images are different
-// const caseWorkerUser = config.judgeUserWithRegionId1Local;
-// const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
+
+// To use on local because the idam images are different:
+// const legalAdvUser = config.judgeUserWithRegionId1Local;
+// const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
 
@@ -21,9 +23,9 @@ Scenario('Record Judgment Spec claim 1v1 with set aside', async ({I, api_spec}) 
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'AWAITING_APPLICANT_INTENTION');
     console.log('--sdo--');
-    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
+    await api_spec.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
-    await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    await api_spec.createFinalOrderJO(legalAdvUser, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--setAsideJudgment--');
@@ -43,9 +45,9 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'AWAITING_APPLICANT_INTENTION');
     console.log('--sdo--');
-    await api_spec.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_NO_SUM');
+    await api_spec.createSDO(legalAdvUser, 'CREATE_FAST_NO_SUM');
     console.log('--createFinalOrderJO--');
-    await api_spec.createFinalOrderJO(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+    await api_spec.createFinalOrderJO(legalAdvUser, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--markJudgmentPaid--');
