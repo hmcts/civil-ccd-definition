@@ -1,4 +1,4 @@
-    package uk.gov.hmcts.reform.civil;
+package uk.gov.hmcts.reform.civil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
