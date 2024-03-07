@@ -94,7 +94,7 @@ const lipClaimantData = {
       totalClaimAmount: 1500,
     },
   }
-}
+};
 
 module.exports = {
   claimantResponse: (carmEnabled, typeOfData = '') => {

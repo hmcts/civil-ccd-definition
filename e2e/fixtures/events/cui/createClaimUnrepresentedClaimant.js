@@ -190,7 +190,7 @@ module.exports = {
 
     if (typeOfData === 'INDIVIDUAL') {
       individualClaim.caseDataUpdate.totalClaimAmount = claimAmount;
-      individualClaim.caseDataUpdate.claimAmountBreakup[0].value.claimAmount = claimAmount
+      individualClaim.caseDataUpdate.claimAmountBreakup[0].value.claimAmount = claimAmount;
       individualClaim.caseDataUpdate.claimantUserDetails.id=userId;
       return individualClaim;
     }
