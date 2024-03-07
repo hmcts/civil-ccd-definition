@@ -15,8 +15,9 @@ Scenario('1v1 LiP v LiP defendant response with full admit pay by set date', asy
 });
 
 async function respondWithFAPayBySetDate(api_spec_cui) {
-    caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser);
+    caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser,'SmallClaims',false,'INDIVIDUAL');
     await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled, 'FA_SETDATE_INDIVIDUAL');
+    await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'PROCEEDS_IN_HERITAGE_SYSTEM', carmEnabled,'FA_ACCEPT_CCJ');
 }
 
 AfterSuite(async ({ api_spec_cui }) => {

@@ -7,21 +7,20 @@ const lipDefendantData = {
       respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION',
       defenceAdmitPartPaymentTimeRouteRequired: 'SUGGESTION_OF_REPAYMENT_PLAN',
       respondent1RepaymentPlan: {
-        paymentAmount: 5000,
+        paymentAmount: 10000,
         repaymentFrequency: 'ONCE_ONE_MONTH',
         firstRepaymentDate: date(40),
-      },
-      respondToClaimAdmitPartLRspec: {
-        whenWillThisAmountBePaid: undefined,
       },
       responseClaimMediationSpecRequired: 'No',
       specAoSApplicantCorrespondenceAddressRequired: 'Yes',
       totalClaimAmount: 1500,
       respondent1: {
-        individualDateOfBirth: '1995-01-01',
+        companyName: undefined,
+        individualDateOfBirth: '1993-08-28',
         individualFirstName: 'defendant',
         individualLastName: 'person',
         individualTitle: 'mr',
+        organisationName: undefined,
         partyEmail: 'civilmoneyclaimsdemo@gmail.com',
         partyPhone: '07800000000',
         primaryAddress: {
@@ -31,14 +30,17 @@ const lipDefendantData = {
           PostCode: 'L7 2PZ',
           PostTown: 'Liverpool',
         },
+        soleTraderDateOfBirth: null,
+        soleTraderFirstName: undefined,
+        soleTraderLastName: undefined,
+        soleTraderTitle: undefined,
+        soleTraderTradingAs: undefined,
         type: 'INDIVIDUAL',
       },
       respondent1LiPResponse: {
         timelineComment: '',
         evidenceComment: '',
         respondent1MediationLiPResponse: {
-          canWeUseMediationLiP: undefined,
-          canWeUseMediationPhoneLiP: undefined,
           mediationDisagreementLiP: 'No',
           noMediationReasonLiP: 'JUDGE_TO_DECIDE',
           noMediationOtherReasonLiP: '',
@@ -46,21 +48,13 @@ const lipDefendantData = {
         respondent1DQExtraDetails: {
           wantPhoneOrVideoHearing: 'No',
           whyPhoneOrVideoHearing: '',
-          whyUnavailableForHearing: undefined,
           giveEvidenceYourSelf: 'No',
-          triedToSettle: undefined,
           determinationWithoutHearingRequired: 'Yes',
           determinationWithoutHearingReason: '',
-          requestExtra4weeks: undefined,
-          considerClaimantDocuments: undefined,
           considerClaimantDocumentsDetails: '',
           respondent1DQLiPExpert: {
-            caseNeedsAnExpert: 'No',
             expertCanStillExamineDetails: '',
-            expertReportRequired: undefined,
-            details: undefined,
-          },
-          applicant1DQLiPExpert: undefined,
+          }
         },
         respondent1DQHearingSupportLip: {
           supportRequirementLip: 'No',
@@ -68,18 +62,11 @@ const lipDefendantData = {
         },
         respondent1ResponseLanguage: 'ENGLISH',
       },
-      respondent1LiPResponseCarm: undefined,
-      respondent1LiPFinancialDetails: {
-      },
       specDefenceAdmittedRequired: 'No',
-      respondToAdmittedClaimOwingAmountPounds: '800',
-      respondToAdmittedClaimOwingAmount: '80000',
-      detailsOfWhyDoesYouDisputeTheClaim: 'disagree with the claim',
+      respondToAdmittedClaimOwingAmountPounds: '500',
+      respondToAdmittedClaimOwingAmount: '50000',
+      detailsOfWhyDoesYouDisputeTheClaim: 'test',
       specClaimResponseTimelineList: 'MANUAL',
-      specResponseTimelineOfEvents: [
-      ],
-      specResponselistYourEvidenceList: [
-      ],
       disabilityPremiumPayments: 'No',
       respondent1DQHomeDetails: {
         type: 'PRIVATE_RENTAL',
@@ -89,24 +76,15 @@ const lipDefendantData = {
         liveWithPartnerRequired: 'No',
         partnerAgedOver: undefined,
         haveAnyChildrenRequired: 'No',
-        howManyChildrenByAgeGroup: {},
         supportedAnyoneFinancialRequired: 'No',
       },
       defenceAdmitPartEmploymentTypeRequired: 'No',
-      specDefendant1SelfEmploymentDetails: {},
       respondToClaimAdmitPartUnemployedLRspec: {
         unemployedComplexTypeRequired: 'RETIRED',
-        lengthOfUnemployment: {
-          numberOfYearsInUnemployment: null,
-          numberOfMonthsInUnemployment: null,
-        },
         otherUnemployment: '',
       },
       respondent1CourtOrderPaymentOption: 'No',
-      respondent1CourtOrderDetails: [
-      ],
       respondent1LoanCreditOption: 'No',
-      respondent1LoanCreditDetails: undefined,
       responseToClaimAdmitPartWhyNotPayLRspec: 'test',
       respondent1DQCarerAllowanceCredit: 'No',
       respondent1DQLanguage: {
@@ -122,33 +100,14 @@ const lipDefendantData = {
         requestHearingAtSpecificCourt: 'No',
         otherPartyPreferredSite: '',
         responseCourtCode: '',
-        responseCourtLocations: [
-        ],
-        caseLocation: {
-          region: undefined,
-          baseLocation: undefined,
-        },
       },
       respondent1DQWitnesses: {
-        witnessesToAppear: 'No',
-        details: [
-          {
-            value: {
-              name: '',
-              firstName: '',
-              lastName: '',
-              emailAddress: '',
-              phoneNumber: '',
-              reasonForWitness: '',
-            },
-          },
-        ],
+        witnessesToAppear: 'No'
       },
       respondent1DQHearingSmallClaim: {
         unavailableDatesRequired: 'No',
         smallClaimUnavailableDate: undefined,
-      },
-      respondent1DQExperts: {},
+      }
     },
   },
   FA_SETDATE_INDIVIDUAL: {
@@ -179,11 +138,6 @@ const lipDefendantData = {
           PostCode: 'L7 2PZ',
           PostTown: 'Liverpool',
         },
-        soleTraderDateOfBirth: null,
-        soleTraderFirstName: undefined,
-        soleTraderLastName: undefined,
-        soleTraderTitle: undefined,
-        soleTraderTradingAs: undefined,
         type: 'INDIVIDUAL',
       },
       respondent1LiPResponse: {

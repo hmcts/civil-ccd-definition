@@ -1,6 +1,95 @@
 const {date} = require('../../../api/dataHelper');
+
+const individualClaim = {
+  event: 'CREATE_LIP_CLAIM',
+  caseDataUpdate: {
+    applicant1: {
+      individualDateOfBirth: '1995-08-28',
+      individualFirstName: 'Jane',
+      individualLastName: 'Doe',
+      individualTitle: 'Miss',
+      partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+      partyPhone: '07446777177',
+      primaryAddress: {
+        AddressLine1: '123',
+        AddressLine2: 'Fake Street',
+        AddressLine3: '',
+        PostCode: 'S12eu',
+        PostTown: 'sheffield',
+      },
+      type: 'INDIVIDUAL',
+    },
+    respondent1: {
+      individualDateOfBirth: null,
+      individualFirstName: 'John',
+      individualLastName: 'Doe',
+      individualTitle: 'Sir',
+      partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+      partyPhone: '07800000000',
+      primaryAddress: {
+        AddressLine1:'TestAddressLine1',
+        AddressLine2:'TestAddressLine2',
+        AddressLine3:'TestAddressLine3',
+        PostCode:'IG61JD',
+        PostTown:'TestCity',
+      },
+      type: 'INDIVIDUAL',
+    },
+    applicant1Represented: 'No',
+    totalClaimAmount: 0,
+    claimAmountBreakup: [
+      {
+        id: '0',
+        value: {
+          claimAmount: 0,
+          claimReason: 'Injury',
+        },
+      },
+    ],
+    detailsOfClaim: 'Injury',
+    claimInterest: 'No',
+    claimantUserDetails: {
+      email: 'civilmoneyclaimsdemo@gmail.com',
+      id: '',
+    },
+    specRespondent1Represented: 'No',
+    helpWithFees: {
+      helpWithFee: 'No',
+      helpWithFeesReferenceNumber: '',
+    },
+    pcqId: '4c10fec5-1278-45f3-89f0-d3d016d47f95',
+    respondent1AdditionalLipPartyDetails: {
+      contactPerson: 'Test Company',
+    },
+    applicant1AdditionalLipPartyDetails: {
+      correspondenceAddress: {
+        AddressLine1: '123',
+        AddressLine2: 'Test Street',
+        AddressLine3: '',
+        PostCode: 'L7 2pz',
+        PostTown: 'Liverpool',
+      },
+      contactPerson: 'Test Company',
+    },
+    timelineOfEvents: [
+      {
+        id: '0',
+        value: {
+          timelineDate: '2000-01-01',
+          timelineDescription: 'test',
+        },
+      },
+    ],
+    claimFee: {
+      calculatedAmountInPence: '45500',
+      version: '3',
+      code: 'FEE0208',
+    },
+    claimantBilingualLanguagePreference: undefined,
+  },
+};
 module.exports = {
-  createClaimUnrepresentedClaimant: (claimAmount, userId) => {
+  createClaimUnrepresentedClaimant: (claimAmount, userId, typeOfData = '') => {
     const createClaimData = {
       event: 'CREATE_LIP_CLAIM',
       caseDataUpdate: {
@@ -98,6 +187,15 @@ module.exports = {
         }
       }
     };
+
+    if (typeOfData === 'INDIVIDUAL') {
+      individualClaim.caseDataUpdate.totalClaimAmount = claimAmount;
+      individualClaim.caseDataUpdate.claimAmountBreakup[0].value.claimAmount = claimAmount
+      individualClaim.caseDataUpdate.claimantUserDetails.id=userId;
+      return individualClaim;
+    }
+
+
     return createClaimData;
   },
 

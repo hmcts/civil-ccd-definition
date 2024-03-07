@@ -105,7 +105,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false) => {
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '') => {
     console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
@@ -115,7 +115,7 @@ module.exports = {
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
     } else {
       console.log('SmallClaim...');
-      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId);
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
     }
     caseId = await apiRequest.startCreateCaseForCitizen(payload);
     await waitForFinishedBusinessProcess(caseId);
@@ -189,9 +189,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled) => {
+  performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled, typeOfData) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
-    let payload = lipClaimantResponse.claimantResponse(carmEnabled);
+    let payload = lipClaimantResponse.claimantResponse(carmEnabled, typeOfData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
