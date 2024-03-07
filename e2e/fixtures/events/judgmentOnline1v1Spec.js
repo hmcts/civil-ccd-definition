@@ -134,7 +134,7 @@ module.exports = {
     referJudgeDefenceReceived.userInput = {
       ...referJudgeDefenceReceived.userInput,
       ReferJudgeDefenceReceived: {
-        ConfirmReferToJudgeDefenceReceived:['CONFIRM']
+        confirmReferToJudgeDefenceReceived:['CONFIRM']
       }
     };
     return referJudgeDefenceReceived;
