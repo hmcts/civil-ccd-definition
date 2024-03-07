@@ -221,11 +221,7 @@ xui-webapp:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW"
       SERVICES_IDAM_ISS_URL: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICES_CCD_CASE_ASSIGNMENT_API: http://${SERVICE_NAME}-aac-manage-case-assignment
-      FEATURE_REDIS_ENABLED: false
-      FEATURE_APP_INSIGHTS_ENABLED: false
-      FEATURE_SECURE_COOKIE_ENABLED: false
-      FEATURE_WORKALLOCATION_ENABLED: false
-      FEATURE_PROXY_ENABLED: false
+
 ccd:
   ccd:
     adminWeb:
