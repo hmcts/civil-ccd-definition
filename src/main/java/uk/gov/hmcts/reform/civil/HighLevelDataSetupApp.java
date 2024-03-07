@@ -1,4 +1,4 @@
-package uk.gov.hmcts.reform.civil;
+    package uk.gov.hmcts.reform.civil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -102,6 +102,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
         int httpStatusCode504 = 504;
+        String[] lowerEnv = {"preview", "aat", "demo", "perftest", "ithc"};
+        if (Arrays.asList(lowerEnv).contains(System.getenv("ENVIRONMENT"))) {
+            return true;
+        }
         if (e instanceof ImportException) {
             ImportException importException = (ImportException) e;
             return importException.getHttpStatusCode() == httpStatusCode504;
