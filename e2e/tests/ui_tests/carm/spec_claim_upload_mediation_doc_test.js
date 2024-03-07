@@ -6,7 +6,7 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 let civilCaseReference;
 
-Feature('SDO Carm - Upload mediation documents @testing');
+Feature('SDO Carm - Upload mediation documents');
 
 Scenario('2v1 claimant and defendant upload mediation documents @carm @non-prod-e2e-ft', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
