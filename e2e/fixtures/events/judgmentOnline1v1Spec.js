@@ -128,5 +128,15 @@ module.exports = {
       }
     };
     return markJudgmentPaid;
-  }
+  },
+  referJudgeDefenceReceived: () => {
+    const referJudgeDefenceReceived = {};
+    referJudgeDefenceReceived.userInput = {
+      ...referJudgeDefenceReceived.userInput,
+      ReferJudgeDefenceReceived: {
+        ConfirmReferToJudgeDefenceReceived:['CONFIRM']
+      }
+    };
+    return referJudgeDefenceReceived;
+  },
 };

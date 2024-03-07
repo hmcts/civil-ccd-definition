@@ -61,7 +61,8 @@ const data = {
   SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
 };
 
 const eventData = {
@@ -746,6 +747,23 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.SET_ASIDE_JUDGMENT());
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  referToJudgeDefenceReceived: async (user) => {
+    console.log(`case in Refer To Judge ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'REFER_JUDGE_DEFENCE_RECEIVED';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
