@@ -2,8 +2,8 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
-const judgeUser = config.judgeUserWithRegionId1;
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 // to use on local because the idam images are different
 // const caseWorkerUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
