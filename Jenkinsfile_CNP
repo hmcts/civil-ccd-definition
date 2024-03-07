@@ -49,7 +49,9 @@ def secrets = [
     secret('default-password','DEFAULT_PASSWORD'),
     secret('judge-default-password','JUDGE_DEFAULT_PASSWORD'),
     secret('iac-default-password','IAC_DEFAULT_PASSWORD'),
-    secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
+    secret('system-update-user-password', 'SYSTEM_USER_PASSWORD'),
+    secret('playwright-service-url', 'PLAYWRIGHT_SERVICE_URL'),
+    secret('playwright-token', 'PLAYWRIGHT_SERVICE_ACCESS_TOKEN'),
   ]
 ]
 

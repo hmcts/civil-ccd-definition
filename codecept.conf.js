@@ -1,3 +1,7 @@
+const testConfig = require('./e2e/config.js');
+
+process.env.PLAYWRIGHT_SERVICE_RUN_ID = process.env.PLAYWRIGHT_SERVICE_RUN_ID || new Date().toISOString();
+
 exports.config = {
   tests: process.env.CCD_UI_TESTS == 'true' ? [
     './e2e/tests/*_test.js',
@@ -36,6 +40,25 @@ exports.config = {
       waitForAction: 500,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
+      video: true,
+      contextOptions : {
+        recordVideo:{
+          dir:'failed-videos',
+        },
+      },
+      chromium: process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN && {
+        timeout: 30000,
+        headers: {
+          'x-mpt-access-key': process.env.PLAYWRIGHT_SERVICE_ACCESS_TOKEN,
+        },
+        exposeNetwork: testConfig.manageCase ? '*.platform.hmcts.net' : '<loopback>',
+        browserWSEndpoint: {
+          wsEndpoint: `${process.env.PLAYWRIGHT_SERVICE_URL}?cap=${JSON.stringify({
+            os: 'linux',
+            runId: process.env.PLAYWRIGHT_SERVICE_RUN_ID,
+          })}`,
+        },
+      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
