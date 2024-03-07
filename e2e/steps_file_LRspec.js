@@ -109,6 +109,7 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-case-header > h1';
+const LOGIN_FORM = 'form[name="loginForm"]';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -179,6 +180,11 @@ module.exports = function () {
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
+
+          if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
+            this.amOnPage(config.url.manageCase, 90);
+            await this.waitForSelector(LOGIN_FORM, 15);
+          }
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
             console.log(`Signing in user: ${user.type}`);

@@ -159,6 +159,7 @@ const CLAIMANT_NAME = 'Test Inc';
 const DEFENDANT1_NAME = 'Sir John Doe';
 const DEFENDANT2_NAME = 'Dr Foo Bar';
 
+const LOGIN_FORM = 'form[name="loginForm"]';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -278,10 +279,15 @@ module.exports = function () {
         if (loggedInUser !== user) {
           if (await this.hasSelector(SIGNED_IN_SELECTOR)) {
             await this.signOut();
-          }
+          } 
         }
         await this.retryUntilExists(async () => {
           this.amOnPage(config.url.manageCase, 90);
+          
+          if (await this.waitForSelector(LOGIN_FORM, 15) === null) {
+            this.amOnPage(config.url.manageCase, 90);
+            await this.waitForSelector(LOGIN_FORM, 15);
+          }
 
           if (!config.idamStub.enabled || config.idamStub.enabled === 'false') {
             console.log(`Signing in user: ${user.type}`);
