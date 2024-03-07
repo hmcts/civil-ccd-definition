@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
-    "Name": "Claimant Dashboard Notice For Claimant Response",
+    "Name": "Notice For Claimant Response",
     "Description": "Generate Claimant Dashboard Notice For Claimant Response",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
