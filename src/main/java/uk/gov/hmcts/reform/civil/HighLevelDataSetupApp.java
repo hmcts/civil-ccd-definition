@@ -101,7 +101,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     protected boolean shouldTolerateDataSetupFailure(){
-        if((BeftaMain.getConfig().getDefinitionStoreUrl().contains("-preview.")){
+        if(BeftaMain.getConfig().getDefinitionStoreUrl().contains("-preview.")){
             return true;
         }
         return false;
