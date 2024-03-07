@@ -147,7 +147,7 @@
   },
   {
   "CaseTypeID": "CIVIL",
-  "ID": "ConfirmReferToJudgeDefenceReceived",
+  "ID": "confirmReferToJudgeDefenceReceived",
   "Label": " ",
   "FieldType": "MultiSelectList",
   "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",

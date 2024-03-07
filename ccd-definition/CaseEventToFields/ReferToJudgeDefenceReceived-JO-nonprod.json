@@ -25,7 +25,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
-    "CaseFieldID": "ConfirmReferToJudgeDefenceReceived",
+    "CaseFieldID": "confirmReferToJudgeDefenceReceived",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "ReferJudgeDefenceReceived",
