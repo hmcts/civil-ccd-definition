@@ -148,6 +148,7 @@ const manageWitnesses = require('./pages/manageContactInformation/manageWitnesse
 const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
 const manageLitigationFriend = require('./pages/manageContactInformation/manageLitigationFriend.page');
 const manageDefendant1 = require('./pages/manageContactInformation/manageDefendant1.page');
+//const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -157,6 +158,7 @@ const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const CLAIMANT_NAME = 'Test Inc';
 const DEFENDANT1_NAME = 'Sir John Doe';
 const DEFENDANT2_NAME = 'Dr Foo Bar';
+
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -236,6 +238,40 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
 
 module.exports = function () {
   return actor({
+
+    fields: {
+      pbaNumber: {
+        id: '#pbaAccountNumber',
+        options: {
+          activeAccount1: 'PBA0088192',
+          activeAccount2: 'PBA0078095'
+        }
+      },
+      reviewLinks: '.govuk-table__body td a'
+    },
+
+    navigateToRefundsList: async function (user) {
+      await this.login(user);
+      this.amOnPage(config.url.manageCase + '/refunds');
+      this.waitForInvisible('.spinner-container', 60);
+    },
+
+
+    navigateToServiceRequest: async function (user, caseId) {
+      await this.login(user);
+      this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      //await this.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
+      let urlBefore = await this.grabCurrentUrl();
+      console.log('openServiceRequestTab urlBefore ..', urlBefore);
+      this.refreshPage();
+      this.waitForVisible(locate('div.mat-tab-label-content').withText('Service Request'), 60);
+
+      await this.retryUntilUrlChanges(async () => {
+        this.forceClick(locate('div.mat-tab-label-content').withText('Service Request'));
+        this.waitForInvisible('.spinner-container', 60);
+      }, urlBefore);
+    },
+
     // Define custom steps here, use 'this' to access default methods of I.
     // It is recommended to place a general 'login' function here.
     async login(user) {
@@ -703,7 +739,7 @@ module.exports = function () {
         () => allocateClaimPage.selectTrackType(trackType)]),
 
         () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
-        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
     },

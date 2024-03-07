@@ -1,0 +1,21 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UpdateNextHearingInfo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "next-hearing-date-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]

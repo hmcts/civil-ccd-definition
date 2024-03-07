@@ -156,7 +156,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "resp1MediationContactInfo",
-    "Label": "Mediation contact information",
+    "Label": "Defendant 1 Mediation Contact Information",
     "FieldType": "MediationContactInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -164,7 +164,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "resp2MediationContactInfo",
-    "Label": "Mediation contact information",
+    "Label": "Defendant 2 Mediation Contact information",
     "FieldType": "MediationContactInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -172,7 +172,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "resp1MediationAvailability",
-    "Label": "Mediation availability",
+    "Label": "Defendant 1 Mediation Availability",
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -180,7 +180,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "resp2MediationAvailability",
-    "Label": "Mediation availability",
+    "Label": "Defendant 2 Mediation Availability",
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -190,6 +190,22 @@
     "ID": "respondent1LiPResponseCarm",
     "Label": "Defendant 1 Mediation",
     "FieldType": "MediationLiPCarm",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1LiPResponseCarm",
+    "Label": "Applicant 1 Mediation",
+    "FieldType": "MediationLiPCarm",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "contactDetailsLabel",
+    "Label": "## Mediation contact information\n\nPlease provide the contact details of the individual who will conduct the mediation appointment.\n\nThis should be a party to the claim or their legal representative.",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

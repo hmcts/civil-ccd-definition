@@ -166,6 +166,7 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
+
   createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
@@ -979,6 +980,7 @@ module.exports = {
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
+    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -991,6 +993,10 @@ module.exports = {
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
+    if(SdoR2){
+      delete caseData['smallClaimsFlightDelay'];
+      delete caseData['smallClaimsFlightDelayToggle'];
+    }
 
     let disposalData = eventData['sdoTracks'][response];
 
@@ -1107,8 +1113,11 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-
-    await assertSubmittedEvent('HEARING_READINESS', null, false);
+    let expectedState = 'HEARING_READINESS';
+    if (allocatedTrack === 'OTHER') {
+      expectedState = 'PREPARE_FOR_HEARING_CONDUCT_HEARING';
+    }
+    await assertSubmittedEvent(expectedState, null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -1351,7 +1360,7 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
+  const SdoR2 = await checkToggleEnabled(SDOR2);
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   caseData = adjustDataForSolicitor(solicitor, caseData);
@@ -1380,6 +1389,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
+  if(SdoR2){
+    delete responseBody.data['smallClaimsFlightDelayToggle'];
+    delete responseBody.data['smallClaimsFlightDelay'];
+  }
+
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins

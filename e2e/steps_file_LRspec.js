@@ -201,12 +201,12 @@ module.exports = function () {
         this.click('Sign out');
       }, SIGNED_OUT_SELECTOR);
     },
-        
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
     },
-    
+
     async setCaseId(argCaseNumber) {
       caseId = argCaseNumber;
     },
@@ -796,7 +796,7 @@ module.exports = function () {
         () => allocateClaimPage.selectTrackType(trackType)]),
 
         () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
-        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
     },

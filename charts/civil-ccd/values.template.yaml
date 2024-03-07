@@ -19,8 +19,6 @@ civil-general-applications:
           - cross-access-user-password
           - prd-admin-user-username
           - prd-admin-user-password
-          - name: AppInsightsInstrumentationKeyGeneralApplications
-            alias: azure.application-insights.instrumentation-key
           - docmosis-api-key
           - gov-notify-api-key
           - sendgrid-api-key
@@ -36,9 +34,6 @@ civil-general-applications:
     environment:
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
-      CMC_DB_HOST: ${SERVICE_NAME}-postgresql
-      CMC_DB_USERNAME: ${POSTGRES_USER}
-      CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       REFERENCE_DATABASE_MIGRATION: false
       FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
       FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
@@ -81,10 +76,6 @@ civil-service:
             alias: CIVIL_PRD_ADMIN_USERNAME
           - name: prd-admin-user-password
             alias: CIVIL_PRD_ADMIN_PASSWORD
-          - name: appinsights-connection-string
-            alias: appinsights-connection-string
-          - name: AppInsightsInstrumentationKey
-            alias: azure.application-insights.instrumentation-key
           - name: docmosis-api-key
             alias: docmosis.tornado.key
           - name: gov-notify-api-key
