@@ -764,7 +764,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
+      header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
