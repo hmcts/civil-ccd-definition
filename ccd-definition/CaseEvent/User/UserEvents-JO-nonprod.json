@@ -58,7 +58,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "REFER_JUDGE_DEFENCE_RECEIVED",
-    "Name": "Refer to judge for a decision",
+    "Name": "Refer to judge-defended claim",
     "Description": "Refer to judge (defence received in time)",
     "DisplayOrder": 3,
     "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",
