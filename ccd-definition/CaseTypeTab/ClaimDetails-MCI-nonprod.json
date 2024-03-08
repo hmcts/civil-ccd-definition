@@ -13,7 +13,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "CaseFieldID": "manageContactDetailsEventUsed",
-    "TabFieldDisplayOrder": 117,
+    "TabFieldDisplayOrder": 200,
     "FieldShowCondition": "legacyCaseReference = \"DO_NOT_SHOW_IN_UI\"",
     "Searchable": "N"
   }
