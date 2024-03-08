@@ -1182,19 +1182,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "changeOfRepresentation",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
   }
 ]
