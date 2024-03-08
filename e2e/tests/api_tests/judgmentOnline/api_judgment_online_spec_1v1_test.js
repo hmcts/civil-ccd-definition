@@ -76,5 +76,5 @@ Scenario.only('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({
 });
 
 AfterSuite(async  ({api_spec}) => {
-  // await api_spec.cleanUp();
+   await api_spec.cleanUp();
 });
