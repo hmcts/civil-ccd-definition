@@ -117,7 +117,8 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
