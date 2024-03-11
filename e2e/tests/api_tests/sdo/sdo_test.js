@@ -6,7 +6,7 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
-// const judgeUser = config.judgeUserWithRegionId1Local;
+// const judgeUser = judgeUserLocal;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
