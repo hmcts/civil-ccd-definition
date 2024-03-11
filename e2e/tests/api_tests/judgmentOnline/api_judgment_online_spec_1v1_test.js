@@ -54,7 +54,7 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
   }
 });
 
-Scenario.only('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
+Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
@@ -72,7 +72,7 @@ Scenario.only('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--referToJudgeDefenceReceived--');
-    await api_spec.referToJudgeDefenceReceived(config.adminUser);
+    await api_spec.referToJudgeDefenceReceived(caseWorkerUser);
   }
 });
 
