@@ -31,6 +31,7 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
+const hearingScheduled = require('../fixtures/events/scheduleHearing');
 
 let caseId, eventName;
 let caseData = {};
@@ -46,11 +47,12 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
+  CREATE_SDO_CARM: (userInput) => sdoTracks.createSDOSmallCarm(userInput),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
-  CREATE_SMALL_FLIGHT_DELAY_NO_SUM: (userInput) => sdoTracks.createSDOSmallFlightDelayWODamageSum(userInput)
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
 };
 
 const eventData = {
@@ -297,7 +299,7 @@ module.exports = function (){
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
   },
 
-  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+  createSDO: async (user, response = 'CREATE_DISPOSAL', carmEnabled = false) => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -309,6 +311,12 @@ module.exports = function (){
 
     caseData = await apiRequest.startEvent(eventName, caseId);
     let disposalData = data.CREATE_SDO();
+
+    if (carmEnabled) {
+      disposalData = data.CREATE_SDO_CARM();
+    } else {
+      disposalData = data.CREATE_SDO();
+    }
 
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
