@@ -74,6 +74,7 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_NIHL: (userInput) => sdoTracks.createSDOFastNIHL(userInput),
   CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
@@ -132,7 +133,8 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
   }
 };
 
@@ -982,7 +984,6 @@ module.exports = {
     console.log('SDO for case id ' + caseId);
     const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
-
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
@@ -1360,7 +1361,8 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  const SdoR2 = await checkToggleEnabled(SDOR2);
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
+
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   caseData = adjustDataForSolicitor(solicitor, caseData);
@@ -1370,6 +1372,9 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
+  if(sdoR2Flag && pageId === 'SmallClaims') {
+    delete caseData.isSdoR2NewScreen;
+  }
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
@@ -1388,7 +1393,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
-  if(SdoR2){
+  if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
   }
@@ -1412,10 +1417,13 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
-    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+    if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
+      if (sdoR2Flag) {
+        clearNihlDataFromCaseData();
+      }
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1434,8 +1442,12 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.showCarmFields)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.showCarmFields;
+    }
   }
-
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
   }
@@ -1621,6 +1633,15 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   }
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(checkToggleEnabled(SDOR2) && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
+  }
+
+  if(checkToggleEnabled(SDOR2) && pageId === 'OrderType') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+      midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};
@@ -1879,6 +1900,9 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['fastClaims'];
+  clearNihlDataFromResponse(responseBody);
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
@@ -1929,4 +1953,72 @@ const adjustDataForSolicitor = (user, data) => {
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
   return responseBody;
+};
+
+const clearNihlDataFromCaseData = () => {
+  delete caseData['sdoFastTrackJudgesRecital'];
+  delete caseData['sdoAltDisputeResolution'];
+  delete caseData['sdoVariationOfDirections'];
+  delete caseData['sdoR2Settlement'];
+  delete caseData['sdoR2DisclosureOfDocumentsToggle'];
+  delete caseData['sdoR2DisclosureOfDocuments'];
+  delete caseData['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete caseData['sdoR2WitnessesOfFact'];
+  delete caseData['sdoR2ScheduleOfLossToggle'];
+  delete caseData['sdoR2ScheduleOfLoss'];
+  delete caseData['sdoR2AddNewDirection'];
+  delete caseData['sdoR2TrialToggle'];
+  delete caseData['sdoR2Trial'];
+  delete caseData['sdoR2ImportantNotesTxt'];
+  delete caseData['sdoR2ImportantNotesDate'];
+  delete caseData['sdoR2SeparatorExpertEvidenceToggle'];
+  delete caseData['sdoR2ExpertEvidence'];
+  delete caseData['sdoR2SeparatorAddendumReportToggle'];
+  delete caseData['sdoR2AddendumReport'];
+  delete caseData['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete caseData['sdoR2FurtherAudiogram'];
+  delete caseData['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete caseData['sdoR2QuestionsClaimantExpert'];
+  delete caseData['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete caseData['sdoR2PermissionToRelyOnExpert'];
+  delete caseData['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete caseData['sdoR2EvidenceAcousticEngineer'];
+  delete caseData['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete caseData['sdoR2QuestionsToEntExpert'];
+  delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete caseData['sdoR2UploadOfDocuments'];
+};
+
+const clearNihlDataFromResponse = (responseBody) => {
+  delete responseBody.data['sdoFastTrackJudgesRecital'];
+  delete responseBody.data['sdoAltDisputeResolution'];
+  delete responseBody.data['sdoVariationOfDirections'];
+  delete responseBody.data['sdoR2Settlement'];
+  delete responseBody.data['sdoR2DisclosureOfDocumentsToggle'];
+  delete responseBody.data['sdoR2DisclosureOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete responseBody.data['sdoR2WitnessesOfFact'];
+  delete responseBody.data['sdoR2ScheduleOfLossToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLoss'];
+  delete responseBody.data['sdoR2AddNewDirection'];
+  delete responseBody.data['sdoR2TrialToggle'];
+  delete responseBody.data['sdoR2Trial'];
+  delete responseBody.data['sdoR2ImportantNotesTxt'];
+  delete responseBody.data['sdoR2ImportantNotesDate'];
+  delete responseBody.data['sdoR2SeparatorExpertEvidenceToggle'];
+  delete responseBody.data['sdoR2ExpertEvidence'];
+  delete responseBody.data['sdoR2SeparatorAddendumReportToggle'];
+  delete responseBody.data['sdoR2AddendumReport'];
+  delete responseBody.data['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete responseBody.data['sdoR2FurtherAudiogram'];
+  delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete responseBody.data['sdoR2QuestionsClaimantExpert'];
+  delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
+  delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete responseBody.data['sdoR2EvidenceAcousticEngineer'];
+  delete responseBody.data['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete responseBody.data['sdoR2QuestionsToEntExpert'];
+  delete responseBody.data['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete responseBody.data['sdoR2UploadOfDocuments'];
 };
