@@ -980,6 +980,7 @@ module.exports = {
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
+    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -992,6 +993,10 @@ module.exports = {
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
+    if(SdoR2){
+      delete caseData['smallClaimsFlightDelay'];
+      delete caseData['smallClaimsFlightDelayToggle'];
+    }
 
     let disposalData = eventData['sdoTracks'][response];
 
@@ -1355,7 +1360,7 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
+  const SdoR2 = await checkToggleEnabled(SDOR2);
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   caseData = adjustDataForSolicitor(solicitor, caseData);
@@ -1368,7 +1373,6 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1384,6 +1388,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
+  if(SdoR2){
+    delete responseBody.data['smallClaimsFlightDelayToggle'];
+    delete responseBody.data['smallClaimsFlightDelay'];
+  }
+
   assert.equal(response.status, 200);
 
   // eslint-disable-next-line no-prototype-builtins
@@ -1424,6 +1433,11 @@ const assertValidData = async (data, pageId, solicitor) => {
       && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
+    }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.showCarmFields)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.showCarmFields;
     }
   }
 
@@ -1722,11 +1736,6 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 const clearDataForSearchCriteria = (responseBody) => {
   delete responseBody.data['SearchCriteria'];
-  return responseBody;
-};
-
-const clearNoCData = (responseBody) => {
-  delete responseBody.data['changeOfRepresentation'];
   return responseBody;
 };
 

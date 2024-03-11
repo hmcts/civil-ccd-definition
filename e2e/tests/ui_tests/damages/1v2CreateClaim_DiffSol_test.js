@@ -33,7 +33,6 @@ Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.acknowledgeClaim('fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
@@ -41,7 +40,6 @@ Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.acknowledgeClaim(null, 'fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
@@ -66,7 +64,6 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
     claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
@@ -77,7 +74,6 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
     claimValue: 20000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
@@ -150,7 +146,6 @@ Scenario('Create a Hearing Request', async ({I}) => {
 Scenario('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId2);
     await I.transferOnlineCase();
-    await I.click('Sign out'); 
 }).retry(3);
 
 AfterSuite(async  () => {
