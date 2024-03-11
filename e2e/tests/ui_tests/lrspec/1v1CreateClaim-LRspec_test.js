@@ -44,7 +44,6 @@ Scenario('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
 Scenario('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.liftBreathingSpace();
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario('1v1 Defendant solicitor perform Inform Agreed Extension', async ({LRspec}) => {
@@ -67,13 +66,11 @@ Scenario('1v1 Respond To Claim - Defendants solicitor rejects claim for defendan
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
   //await waitForFinishedBusinessProcess(caseId());
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario('1v1 Claimant solicitor responds to defence - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario.skip('Add case flags', async ({LRspec}) => {
