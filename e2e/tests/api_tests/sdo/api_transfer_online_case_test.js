@@ -10,7 +10,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 const fastClaimAmount = '11000';
 
-Feature('Transfer Online Case 1v1 API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-nonprod');
+Feature('Transfer Online Case 1v1 API test - fast claim - unspec @api-unspec @api-nightly-prod');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, fastClaimAmount);
