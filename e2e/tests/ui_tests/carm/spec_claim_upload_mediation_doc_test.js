@@ -17,7 +17,6 @@ Scenario('2v1 claimant and defendant upload mediation documents @carm @non-prod-
 
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Both Claimants', 'Both docs');
-  await LRspec.click('Sign out');
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 });
@@ -35,20 +34,17 @@ Scenario('1v2 upload mediation documents in different SDO states @carm @e2e-nigh
 
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Claimant 1', 'Both docs');
-  await LRspec.click('Sign out');
 
   console.log('Schedule Hearing');
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
-  await LRspec.click('Sign out');
 
   console.log('Prepare for Hearing Conduct Hearing');
   await api_spec.amendHearingDueDate(config.systemupdate);
   await api_spec.hearingFeePaid(hearingCenterAdminToBeUsed);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 2', 'Both docs');
-  await LRspec.click('Sign out');
 });
 
 AfterSuite(async ({api_spec}) => {

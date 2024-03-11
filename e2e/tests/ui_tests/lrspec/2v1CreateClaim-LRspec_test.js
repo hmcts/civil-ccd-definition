@@ -43,7 +43,6 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor rejects claim for def
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario.skip('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
@@ -55,7 +54,6 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor Part Admit the claim 
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
 }).retry(3);
 
 Scenario.skip('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
@@ -68,7 +66,6 @@ Scenario.skip('2v1 Respond To Claim - Defendants solicitor Admits the claim and 
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
-  await LRspec.click('Sign out');
 }).retry(3);
 
 AfterSuite(async  () => {
