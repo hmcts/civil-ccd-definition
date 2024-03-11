@@ -68,6 +68,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT1_HWF_DASHBOARD_NOTIFICATION",
+     "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+   {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CCJ_REQUEST_FOR_APPLICANT1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
