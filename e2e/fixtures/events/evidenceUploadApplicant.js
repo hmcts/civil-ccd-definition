@@ -122,6 +122,64 @@ module.exports = {
     }
   },
 
+  createApplicantSmallClaimsEvidenceUploadFlightDelay: (mpScenario) => {
+    switch (mpScenario) {
+      case 'ONE_V_ONE': {
+        console.log('Applicant small claims for ONE_V_ONE');
+        return {
+          valid: {
+            EvidenceUpload: {
+              caseProgAllocatedTrack: 'SMALL_CLAIM'
+            },
+            DocumentSelectionSmallClaim: {
+              caseTypeFlag: 'do_not_show',
+              witnessSelectionEvidenceSmallClaim: ['WITNESS_STATEMENT'],
+              expertSelectionEvidenceSmallClaim: ['EXPERT_REPORT'],
+              trialSelectionEvidenceSmallClaim: ['AUTHORITIES']
+            },
+            DocumentUpload: {
+              documentWitnessStatement: [{
+                value: {
+                  witnessOptionName: 'test name',
+                  witnessOptionUploadDate: '2023-02-06',
+                  witnessOptionDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentExpertReport: [{
+                value: {
+                  expertOptionName: 'test name',
+                  expertOptionExpertise: 'expertise',
+                  expertOptionUploadDate: '2023-02-06',
+                  expertDocument: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }],
+              documentAuthorities: [{
+                value: {
+                  documentUpload: {
+                    document_url: '${TEST_DOCUMENT_URL}',
+                    document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                    document_filename: '${TEST_DOCUMENT_FILENAME}'
+                  },
+                  createdDatetime: '2023-02-06T13:11:52.466Z'
+                }
+              }]
+            }
+          }
+        };
+      }
+    }
+  },
+
   createApplicantFastClaimsEvidenceUpload: (mpScenario) => {
     console.log('Applicant fast claims1');
     switch (mpScenario) {
