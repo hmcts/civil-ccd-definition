@@ -15,7 +15,7 @@ async function prepareClaimSpec(api_spec) {
     'AWAITING_APPLICANT_INTENTION');
 }
 
-Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec @api-specified @api-nonprod');
+Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec @api-specified');
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay', async ({api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec);
