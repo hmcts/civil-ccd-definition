@@ -22,7 +22,8 @@
     "FieldType": "FixedList",
     "FieldTypeParameter": "ChooseHowToProceed",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "ID": "ClaimantLiPResponse",
