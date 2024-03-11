@@ -36,6 +36,12 @@ exports.config = {
       waitForAction: 500,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
+      video: true,
+      contextOptions : {
+        recordVideo:{
+          dir:'failed-videos',
+        },
+      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',
