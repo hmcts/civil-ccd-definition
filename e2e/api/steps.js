@@ -1311,7 +1311,6 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1372,6 +1371,11 @@ const assertValidData = async (data, pageId, solicitor) => {
       && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
+    }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.showCarmFields)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.showCarmFields;
     }
   }
 
@@ -1670,11 +1674,6 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 const clearDataForSearchCriteria = (responseBody) => {
   delete responseBody.data['SearchCriteria'];
-  return responseBody;
-};
-
-const clearNoCData = (responseBody) => {
-  delete responseBody.data['changeOfRepresentation'];
   return responseBody;
 };
 
