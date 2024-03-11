@@ -1434,6 +1434,11 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.showCarmFields)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.showCarmFields;
+    }
   }
 
   if (pageId === 'Claimant') {
