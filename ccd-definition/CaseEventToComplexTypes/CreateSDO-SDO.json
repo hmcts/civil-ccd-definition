@@ -592,7 +592,8 @@
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
     "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "showCarmFields=\"No\""
   },
   {
     "ID": "SmallClaimsOrderAndHearingDetails",
