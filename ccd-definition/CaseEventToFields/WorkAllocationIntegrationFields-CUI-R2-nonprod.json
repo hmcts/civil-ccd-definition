@@ -142,8 +142,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "applicant1LiPResponse",
+    "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 13,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
