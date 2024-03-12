@@ -124,6 +124,13 @@ redis:
   master:
     persistence:
       enabled: false
+    resources:
+      requests:
+      cpu: 200m
+      memory: 512Mi
+    limits:
+      cpu: 2
+      memory: 1024Mi
 ccd:
   global:
     postgresUsername: hmcts
