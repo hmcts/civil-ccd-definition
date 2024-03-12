@@ -48,11 +48,18 @@ To run tests with browser window open set `SHOW_BROWSER_WINDOW=true`. By default
 
 To run smoke tests enter `yarn test:smoke`.
 
+### Functional tests
+
+To run functional tests enter `yarn test:functional`.
+
+For running UI tests, set CCD_UI_TESTS=true
+
 ### API test
 
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
 To run API tests enter `yarn test:api`.
+set CCD_UI_TESTS=false
 
 ### Testing in IntelliJ (Ultimate Edition)
 1) Running a test_name.js

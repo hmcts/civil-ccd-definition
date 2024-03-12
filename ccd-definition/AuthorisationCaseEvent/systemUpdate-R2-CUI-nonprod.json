@@ -67,6 +67,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT1_HWF_DASHBOARD_NOTIFICATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+   {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
