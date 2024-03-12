@@ -43,7 +43,7 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
   }
 });
 
-Scenario.only('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
+Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     console.log('--referToJudgeDefenceReceived--');
