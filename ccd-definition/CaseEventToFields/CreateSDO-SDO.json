@@ -681,6 +681,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "setSmallClaimsFlag=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "setSmallClaimsFlag",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
