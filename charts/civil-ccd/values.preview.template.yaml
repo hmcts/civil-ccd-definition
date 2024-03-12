@@ -133,7 +133,7 @@ redis:
     enabled: false
   master:
     persistence:
-      enabled: false
+      enabled: true
     resources:
       requests:
         cpu: 200m
