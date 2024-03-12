@@ -65,7 +65,7 @@
     "ID": "CLAIMANT1_HWF_DASHBOARD_NOTIFICATION",
     "Name": "Dashboard: HWF Notification",
     "Description": "Dashboard Notification for HwF.",
-     "PreConditionState(s)": "*",
+    "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
