@@ -3,7 +3,7 @@
 const config = require('../../../config.js');
 const {checkCarmToggleEnabled} = require('../../../api/testingSupport');
 
-Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod @api-prod-specified');
+Feature('CCD 1v1 API test @api-spec-small @api-specified @api-nightly-prod @api-prod @api-nonprod-specified');
 
 Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim', async ({I, api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
