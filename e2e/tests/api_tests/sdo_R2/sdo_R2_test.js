@@ -48,6 +48,6 @@ Scenario('1v1 specified - flight delay other option Fast-claim', async ({api_spe
   }
 });
 
-AfterSuite(async ({api}) => {
-  await api.cleanUp();
+AfterSuite(async ({api_spec}) => {
+  await api_spec.cleanUp();
 });
