@@ -142,8 +142,6 @@ redis:
       limits:
         cpu: 2
         memory: 1024Mi
-  environment:
-    ALLOW_EMPTY_PASSWORD: yes
 ccd:
   global:
     postgresUsername: hmcts
