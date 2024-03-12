@@ -5,7 +5,8 @@ const claimType = 'SmallClaims';
 let carmEnabled = false;
 let claimRef;
 
-let mediationAdmin = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
+let mediationAdmin = config.localMediationTests ? config.nbcUserLocal :
+                                    (config.testEarlyAdopterCourts ? config.nbcUserWithRegionId2 : config.nbcUserWithRegionId1);
 
 async function prepareClaim(api_spec_cui, carmEnabled) {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
@@ -14,7 +15,7 @@ async function prepareClaim(api_spec_cui, carmEnabled) {
 }
 
 // set config.localMediationTests to true to run locally
-Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm @api-nonprod');
+Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm @api-nonprod @non-prod-e2e-ft');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
