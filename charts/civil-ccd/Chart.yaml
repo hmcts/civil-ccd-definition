@@ -53,6 +53,6 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
   - name: redis
-    version: 16.13.0
+    version: 18.19.2
     repository: "https://charts.bitnami.com/bitnami"
     condition: redis.enabled
