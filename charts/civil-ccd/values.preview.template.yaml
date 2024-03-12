@@ -118,6 +118,14 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
       REDISCLOUD_URL: redis://${SERVICE_NAME}-redis-master:6379
+    keyVaults:
+      rpx:
+        secrets:
+          - appinsights-instrumentationkey-mc
+          - mc-s2s-client-secret
+          - mc-idam-client-secret
+          - system-user-name
+          - system-user-password
 redis:
   enabled: true
   architecture: standalone
