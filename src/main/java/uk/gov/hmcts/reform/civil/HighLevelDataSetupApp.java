@@ -2,6 +2,8 @@ package uk.gov.hmcts.reform.civil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
@@ -100,6 +102,14 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
+    protected boolean shouldTolerateDataSetupFailure(){
+        if(BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
         int httpStatusCode504 = 504;
         if (e instanceof ImportException) {
@@ -112,7 +122,6 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         if(e instanceof AEADBadTagException){
             return true;
         }
-        return false;
+        return shouldTolerateDataSetupFailure();
     }
-
 }
