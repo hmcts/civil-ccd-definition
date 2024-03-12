@@ -9,7 +9,7 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo ');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nightly-prod');
 
 Scenario('Record Judgment with set aside Spec claim 1v2 with NO RTL', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
