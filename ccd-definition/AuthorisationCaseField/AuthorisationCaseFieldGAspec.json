@@ -230,7 +230,8 @@
       {
         "UserRoles": [
           "civil-administrator-standard",
-          "civil-administrator-basic"
+          "civil-administrator-basic",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
