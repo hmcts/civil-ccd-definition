@@ -2,8 +2,8 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
-const judgeUser = config.judgeUserWithRegionId1;
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
@@ -26,7 +26,8 @@ Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay insta
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUser);
   }
@@ -71,6 +72,7 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
     await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(caseWorkerUser);
   }
