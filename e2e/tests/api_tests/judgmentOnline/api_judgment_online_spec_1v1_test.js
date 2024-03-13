@@ -25,13 +25,13 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createFinalOrderJO--');
   await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   console.log('--recordJudgment--');
-  await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+  await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
 Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay instalments edit to Pay Immediately)', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUser);
   }
