@@ -139,7 +139,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "CaseFieldID": "joSetAsideOrderDate",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
@@ -147,14 +147,13 @@
     "CRUD": "CRU"
   },
   {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "joConfirmReadOrderForSetAside",
-  "UserRoles": [
-    "caseworker-civil-admin",
-    "APP-SOL-SPEC-PROFILE",
-    "caseworker-civil-staff"
-  ],
-  "CRUD": "CRU"
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
