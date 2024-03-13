@@ -148,13 +148,31 @@
   },
   {
   "CaseTypeID": "CIVIL",
-  "CaseFieldID": "joSetAsideReason",
+  "CaseFieldID": "joConfirmReadOrderForSetAside",
   "UserRoles": [
     "caseworker-civil-admin",
     "APP-SOL-SPEC-PROFILE",
     "caseworker-civil-staff"
   ],
   "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joIssuedDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joShowRegisteredWithRTLOption",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -192,24 +210,6 @@
     "UserRoles": [
       "caseworker-civil-admin",
       "APP-SOL-SPEC-PROFILE",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joIssuedDate",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joShowRegisteredWithRTLOption",
-    "UserRoles": [
-      "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"

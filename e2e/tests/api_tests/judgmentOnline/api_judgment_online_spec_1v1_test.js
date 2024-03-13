@@ -51,11 +51,11 @@ Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immed
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, "JUDGE_ORDER", "ORDER_AFTER_APPLICATION");
+    await api_spec.setAsideJudgment(caseWorkerUser, "JUDGE_ORDER", "ORDER_AFTER_DEFENCE");
   }
 });
 
-Scenario('Record Judgment Spec claim 1v1 with set aside', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 mark paid in full', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
