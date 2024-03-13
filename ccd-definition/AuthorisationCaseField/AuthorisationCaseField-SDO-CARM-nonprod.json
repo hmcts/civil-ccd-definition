@@ -1,12 +1,12 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "smallClaimsMediationSectionTitle",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -14,13 +14,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "JUDGMENT_PAID_IN_FULL",
+    "CaseFieldID": "smallClaimsMediationSectionToggle",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-staff",
-          "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -28,13 +27,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SET_ASIDE_JUDGMENT",
+    "CaseFieldID": "smallClaimsMediationSectionStatement",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil",
-          "caseworker-civil-staff"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -42,12 +40,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EDIT_JUDGMENT",
+    "CaseFieldID": "smallClaimsMediationSectionEndLine",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
