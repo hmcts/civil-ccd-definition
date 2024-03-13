@@ -203,7 +203,7 @@ module.exports = {
               joSetAsideDefenceReceivedDate: '2008-06-06',
               joSetAsideOrderType: setAsideOrderType,
               joSetAsideReason: setAsideReason,
-              joSetAsideJudgmentErrorText : "Some Text"
+              joSetAsideJudgmentErrorText : 'Some Text'
             }
           };
         }
