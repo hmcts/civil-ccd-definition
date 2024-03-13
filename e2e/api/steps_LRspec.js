@@ -735,7 +735,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user) => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType) => {
     console.log(`case in All set aside judgment ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -744,7 +744,7 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
+    await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
       body: ''
