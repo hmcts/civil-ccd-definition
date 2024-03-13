@@ -182,7 +182,6 @@ module.exports = {
     return editJudgment;
   },
 
-  setAsideJudgment: () => {
   setAsideJudgment: (setAsideReason, setAsideOrderType) => {
     const setAsideJudgment = {};
     switch (setAsideReason) {
