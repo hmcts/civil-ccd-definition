@@ -4,11 +4,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
-const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
-const judgeUser = config.judgeUserWithRegionId1;
 // to use on local because the idam images are different
-//const caseWorkerUser = config.adminUser;
-//const judgeUser =  config.judgeUserWithRegionId1Local;
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
