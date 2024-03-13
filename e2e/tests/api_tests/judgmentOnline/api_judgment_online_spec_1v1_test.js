@@ -27,6 +27,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--recordJudgment--');
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
 }
+
 Scenario('Record Judgment Spec claim 1v1 with set aside', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
@@ -62,6 +63,28 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
     await prepareClaimSpecRecordJudgment(api_spec);
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(caseWorkerUser);
+  }
+});
+
+Scenario('Record Judgment Spec claim 1v1 with mark paid in full - Mark Judgement solicitor user', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    console.log('--createClaimWithRepresentedRespondent--');
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    console.log('--informAgreedExtensionDate--');
+    await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+    console.log('--defendantResponse--');
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    console.log('--claimantResponse--');
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
+      'AWAITING_APPLICANT_INTENTION');
+    console.log('--sdo--');
+    await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+    console.log('--createFinalOrderJO--');
+    await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+    console.log('--recordJudgment--');
+    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    console.log('--markJudgmentPaid--');
+    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
   }
 });
 
