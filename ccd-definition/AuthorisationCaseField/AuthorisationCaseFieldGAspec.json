@@ -231,7 +231,7 @@
         "UserRoles": [
           "civil-administrator-standard",
           "civil-administrator-basic",
-          "hearing-schedule-access"
+          "GS_profile"
         ],
         "CRUD": "R"
       }

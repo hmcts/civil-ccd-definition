@@ -1233,68 +1233,6 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  recordJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
-    console.log(`case in All final orders issued ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'RECORD_JUDGMENT';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-    if (mpScenario === 'ONE_V_ONE') {
-      await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection));
-    } else {
-      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
-    }
-
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  markJudgmentPaid: async (user) => {
-    console.log(`case in All final orders issued ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'JUDGMENT_PAID_IN_FULL';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-
-    await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
-
-
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '# Judgment marked as paid in full',
-      body: 'The judgment has been marked as paid in full'
-    }, true);
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  setAsideJudgment: async (user) => {
-    console.log(`case in All set aside judgment ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'SET_ASIDE_JUDGMENT';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: '',
-      body: ''
-    }, true);
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
   notSuitableSDO: async (user, option) => {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);

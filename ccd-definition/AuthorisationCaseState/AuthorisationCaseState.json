@@ -361,5 +361,20 @@
         "CRUD": "R"
       }
     ]
-  }
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseStateID": "CLOSED",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "judge-profile",
+        "caseworker-civil-admin",
+        "caseworker-civil-staff",
+        "APP-SOL-SPEC-PROFILE"
+      ],
+      "CRUD": "CRU"
+    }
+  ]
+}
 ]
