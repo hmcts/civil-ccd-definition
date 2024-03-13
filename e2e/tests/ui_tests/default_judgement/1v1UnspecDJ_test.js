@@ -56,7 +56,6 @@ Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @maste
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
