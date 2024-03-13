@@ -148,7 +148,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "CaseFieldID": "joShowRegisteredWithRTLOption",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
@@ -158,15 +158,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIssuedDate",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joShowRegisteredWithRTLOption",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
