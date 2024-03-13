@@ -247,14 +247,18 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
-           "RES-SOL-ONE-SPEC-PROFILE",
-           "RES-SOL-TWO-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -264,6 +268,14 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "app1MediationContactInfo",
     "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      },
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
@@ -279,6 +291,14 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-solicitor"
         ],
@@ -292,7 +312,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
@@ -311,7 +334,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
@@ -330,7 +356,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
@@ -349,7 +378,10 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },

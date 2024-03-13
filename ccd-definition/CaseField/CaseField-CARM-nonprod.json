@@ -156,7 +156,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationContactInfo",
-    "Label": "Mediation contact information",
+    "Label": "Claimant Mediation Contact Information",
     "FieldType": "MediationContactInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -164,7 +164,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "app1MediationAvailability",
-    "Label": "Mediation availability",
+    "Label": "Claimant Mediation Availability",
     "FieldType": "MediationAvailability",
     "SecurityClassification": "Public",
     "Searchable": "N"
