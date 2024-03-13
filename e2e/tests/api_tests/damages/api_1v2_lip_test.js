@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-Feature('CCD 1v2 2 Lips API test @api-unspec @api-multiparty @api-tests-1v2 @api-cos @api-prod-cos');
+Feature('CCD 1v2 2 Lips API test @api-unspec @api-multiparty @api-tests-1v2 @api-cos @api-prod @api-nonprod-cos');
 
 Scenario('Create claim where one respondent is LIP one is LR and notify/notify details', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,

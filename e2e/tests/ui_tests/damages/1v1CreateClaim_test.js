@@ -55,7 +55,6 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim details', as
   await I.notifyClaimDetails();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
@@ -81,7 +80,6 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.respondToClaim({defendant1Response: 'fullDefence'});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Add case flags', async ({I}) => {
