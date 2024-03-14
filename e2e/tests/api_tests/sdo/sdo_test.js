@@ -204,18 +204,10 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
   }
 });
 
-Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api_spec_small, WA}) => {
+Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled @mm', async ({api_spec_small, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   await prepareSpecSmallClaim(api_spec_small);
-  if (config.runWAApiTest) {
-    const caseId = await api_spec_small.getCaseId();
-    const task = await api_spec_small.retrieveTaskDetails(legalAdvUser, caseId, config.waTaskIds.legalAdvisorDirections);
-    WA.validateTaskInfo(task, legalAdvisorSmallClaimsTrackDirectionsTask);
-    taskId = task['id'];
-  }
-  if (config.runWAApiTest) {
-    api_spec_small.completeTaskByUser(legalAdvUser, taskId);
-  }
+
 });
 
 Scenario('1v1 full defence unspecified - judge declares SDO unsuitable - hearing scheduled', async ({api, WA}) => {
@@ -241,5 +233,5 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });

@@ -10,13 +10,13 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
-    // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
-    // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
-    // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
-    // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
-    // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+    manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
+    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
+    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
+    dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
+    idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
+    civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
+    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
     // for preview
     // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
@@ -36,7 +36,7 @@ module.exports = {
     civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
     waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',*/
 
-    manageCase: process.env.URL || 'http://localhost:3333',
+    /*manageCase: process.env.URL || 'http://localhost:3333',
     authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
     ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
     dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
@@ -47,7 +47,7 @@ module.exports = {
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
-    wiremockService: 'http://localhost:8765'
+    wiremockService: 'http://localhost:8765'*/
   },
   s2s: {
     microservice: 'civil_service',
