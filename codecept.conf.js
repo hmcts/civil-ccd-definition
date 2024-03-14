@@ -23,6 +23,7 @@ exports.config = {
     './e2e/tests/api_tests/hearings/*_test.js',
     './e2e/tests/api_tests/bulkclaim/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
+    './e2e/tests/api_tests/lrspec_cui/*_test.js',
   ],
   output: 'test-results/functional',
   helpers: {
