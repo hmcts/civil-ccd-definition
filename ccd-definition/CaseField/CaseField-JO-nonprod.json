@@ -129,15 +129,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joConfirmReadOrderForSetAside",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "JoConfirmReadOrderForSetAside",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "joSetAsideReason",
     "Label": "Why is this judgment being set aside?",
     "FieldType": "FixedRadioList",
