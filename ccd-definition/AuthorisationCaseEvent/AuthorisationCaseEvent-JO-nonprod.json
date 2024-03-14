@@ -28,6 +28,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SET_ASIDE_JUDGMENT",
     "AccessControl": [
       {
