@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "gaAddlDocStaff",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  }
-]
