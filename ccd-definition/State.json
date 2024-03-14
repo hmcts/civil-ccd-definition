@@ -110,5 +110,12 @@
     "Name": "Case Stayed",
     "Description": "Case stayed",
     "DisplayOrder": 16
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CLOSED",
+    "Name": "Closed",
+    "Description": "Closed",
+    "DisplayOrder": 17
   }
 ]
