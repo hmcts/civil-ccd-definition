@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const {setupTokens} = require('../../../api/apiRequest');
 const mpScenario = 'ONE_V_ONE';
 
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-prod-unspec');
+//This test runs in api_judgment_online_1v1_test - so running only in nightly
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
