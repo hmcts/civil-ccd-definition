@@ -70,7 +70,8 @@ const data = {
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario)
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
 };
 
 const eventData = {
@@ -1344,6 +1345,23 @@ module.exports = {
     await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  referToJudgeDefenceReceived: async (user) => {
+    console.log(`case in Refer To Judge ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'REFER_JUDGE_DEFENCE_RECEIVED';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);

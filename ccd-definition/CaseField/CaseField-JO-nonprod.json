@@ -195,5 +195,14 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  }
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "confirmReferToJudgeDefenceReceived",
+  "Label": " ",
+  "FieldType": "MultiSelectList",
+  "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+}
 ]
