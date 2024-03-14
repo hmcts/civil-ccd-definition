@@ -8,7 +8,7 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nightly-prod');
 
 Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay instalments)', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
