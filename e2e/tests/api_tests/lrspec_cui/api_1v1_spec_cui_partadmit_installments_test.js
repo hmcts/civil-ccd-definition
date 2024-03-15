@@ -5,7 +5,7 @@ const claimType = 'SmallClaims';
 let caseId;
 let carmEnabled = false;
 
-Feature('CCD 1v1 API test @api-spec-cui @api-nonprod @non-prod-e2e-ft');
+Feature('CCD 1v1 API test @api-spec-cui @non-prod-e2e-ft');
 Before(async () => {
     await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   });
