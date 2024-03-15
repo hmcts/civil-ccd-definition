@@ -28,7 +28,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay instalments edit to Pay Immediately)', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay instalments edit to Pay Immediately) - Set Aside Order After Application', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
@@ -37,25 +37,21 @@ Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay insta
   }
 });
 
-Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immediately)', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immediately) -  Set Aside Order after defence', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    console.log('--createClaimWithRepresentedRespondent--');
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-    console.log('--informAgreedExtensionDate--');
-    await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
-    console.log('--defendantResponse--');
-    await api_spec.defendantResponse(config.defendantSolicitorUser);
-    console.log('--claimantResponse--');
-    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
-      'AWAITING_APPLICANT_INTENTION');
-    console.log('--sdo--');
-    await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
-    console.log('--createFinalOrderJO--');
-    await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
-    console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
+    await prepareClaimSpecRecordJudgment(api_spec);
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE');
+  }
+});
+
+Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immediately) -  Set Aside OrderJudgement error', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpecRecordJudgment(api_spec);
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    console.log('--setAsideJudgment--');
+    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGMENT_ERROR');
   }
 });
 
@@ -65,6 +61,15 @@ Scenario('Record Judgment Spec claim 1v1 mark paid in full', async ({I, api_spec
     await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(caseWorkerUser);
+  }
+});
+
+Scenario('Record Judgment Spec claim 1v1 mark paid in full-Mark Judgment Solicitor user', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimSpecRecordJudgment(api_spec);
+    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    console.log('--markJudgmentPaid--');
+    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
   }
 });
 
