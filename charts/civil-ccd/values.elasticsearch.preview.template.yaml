@@ -98,9 +98,9 @@ ccd:
       01_input.conf: |
         input  {
           jdbc {
-            jdbc_connection_string => "jdbc:postgresql://civil-ccd-pr-${CHANGE_ID}-postgresql:5432/data-store?stringtype=unspecified"
-            jdbc_user => "hmcts"
-            jdbc_password_filepath => "/etc/logstash/secrets/PASSWORD"
+            jdbc_connection_string => "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/data-store?stringtype=unspecified"
+            jdbc_user => "javapostgres"
+            jdbc_password => "javapassword"
             jdbc_validate_connection => true
             jdbc_driver_library => "/usr/share/logstash/ccd/postgresql.jar"
             jdbc_driver_class => "org.postgresql.Driver"
