@@ -50,13 +50,6 @@ ccd:
     imageTag: "7.16.1"
     imagePullPolicy: "IfNotPresent"
     logstashJavaOpts: "-Xmx1g -Xms512M"
-    resources:
-      requests:
-        cpu: "500m"
-        memory: "1024Mi"
-      limits:
-        cpu: "2500m"
-        memory: "1024Mi"
     extraInitContainers: |
       - name: download-postgres-jdbc
         image: hmctspublic.azurecr.io/curl:7.70.0
@@ -64,25 +57,12 @@ ccd:
         volumeMounts:
         - name: logstash-lib
           mountPath: /logstash-lib
-        resources:
-          requests:
-            cpu: "500m"
-            memory: "1024Mi"
-          limits:
-            cpu: "2500m"
-            memory: "1024Mi"
     extraVolumes: |
       - name: logstash-lib
         emptyDir: {}
-      - name: database-secret-volume
-        secret:
-          secretName: postgres
     extraVolumeMounts: |
       - name: logstash-lib
         mountPath: /usr/share/logstash/ccd
-      - name: database-secret-volume
-        mountPath: /etc/logstash/secrets
-        readOnly: true
     logstashConfig:
       logstash.yml: |
         http.host: 0.0.0.0
@@ -98,7 +78,7 @@ ccd:
       01_input.conf: |
         input  {
           jdbc {
-            jdbc_connection_string => "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/data-store?stringtype=unspecified"
+            jdbc_connection_string => "jdbc:postgresql://{{ .Release.Name }}-postgresql:5432/javadatabase?stringtype=unspecified"
             jdbc_user => "javapostgres"
             jdbc_password => "javapassword"
             jdbc_validate_connection => true
