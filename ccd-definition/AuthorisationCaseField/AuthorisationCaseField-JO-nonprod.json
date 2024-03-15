@@ -169,7 +169,6 @@
     "CaseFieldID": "joSetAsideReason",
     "UserRoles": [
       "caseworker-civil-admin",
-      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -179,7 +178,6 @@
     "CaseFieldID": "joSetAsideJudgmentErrorText",
     "UserRoles": [
       "caseworker-civil-admin",
-      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -189,7 +187,6 @@
     "CaseFieldID": "joSetAsideOrderType",
     "UserRoles": [
       "caseworker-civil-admin",
-      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -199,7 +196,6 @@
     "CaseFieldID": "joSetAsideDefenceReceivedDate",
     "UserRoles": [
       "caseworker-civil-admin",
-      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
