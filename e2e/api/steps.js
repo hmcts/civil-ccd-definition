@@ -1290,6 +1290,17 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  hearingFeePaidDRH: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid DRH');
+  },
+
   notSuitableSDO: async (user, option) => {
     console.log(`case in Judicial Referral ${caseId}`);
     await apiRequest.setupTokens(user);
@@ -1366,7 +1377,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
-  if(sdoR2Flag && pageId === 'SmallClaims') {
+  if(sdoR2Flag && (pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims')) {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -1906,7 +1917,6 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
   delete responseBody.data['sdoR2SmallClaimsImpNotes'];
-  delete responseBody.data['isSdoR2NewScreen'];
   delete responseBody.data['sdoR2SmallClaimsPPI'];
   delete responseBody.data['sdoR2SmallClaimsHearing'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
