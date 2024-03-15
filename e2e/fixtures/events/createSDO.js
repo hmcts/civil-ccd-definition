@@ -1713,7 +1713,6 @@ module.exports = {
           isSdoR2NewScreen: 'Yes'
         },
         SdoR2SmallClaims: {
-          isSdoR2NewScreen : 'Yes',
         },
       },
       midEventData: {
