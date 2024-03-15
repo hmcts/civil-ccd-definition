@@ -5,15 +5,15 @@ module.exports = {
     solicitor1Reference: {
       id: '#specAoSApplicantCorrespondenceAddressRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#specAoSApplicantCorrespondenceAddressRequired_Yes',
+        no: '#specAoSApplicantCorrespondenceAddressRequired_No'
       }
     },
     solicitor2Reference: {
       id: '#specAoSRespondent2HomeAddressRequired_radio',
       options: {
-        yes: 'Yes',
-        no: 'No'
+        yes: '#specAoSRespondent2HomeAddressRequired_Yes',
+        no: '#specAoSRespondent2HomeAddressRequired_No'
       }
     }
   },
