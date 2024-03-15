@@ -11,7 +11,7 @@
     "ID": "SdoR2SmallClaimsHearing",
     "ListElementCode": "trialOnOptions",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "TrialOnRadioOptions",
+    "FieldTypeParameter": "HearingOnRadioOptions",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

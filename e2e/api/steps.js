@@ -1639,11 +1639,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
 
   if(sdoR2Flag && pageId === 'OrderType') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
-      midEventData = {...midEventData, ...sdoR2Var};
-  }
-
-  if(sdoR2Flag && pageId === 'SmallClaims') {
-    delete caseData.isSdoR2NewScreen;
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};

@@ -787,6 +787,7 @@
     "PageFieldDisplayOrder": 15,
     "DisplayContext": "MANDATORY",
     "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
     "ShowSummaryChangeOption": "N"
   },
   {

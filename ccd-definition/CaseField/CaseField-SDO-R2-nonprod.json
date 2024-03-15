@@ -132,7 +132,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoPartiesNameDRH",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoWarningDateFormat",
+    "Label": "****\n<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\"></span>All dates should be in the format 16 4 2021</strong></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoWarningDateFormatDRH",
     "Label": "****\n<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\"></span>All dates should be in the format 16 4 2021</strong></div>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
