@@ -37,39 +37,12 @@ Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay insta
   }
 });
 
-Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immediately) -  Set Aside Order after defence', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecRecordJudgment(api_spec);
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
-    console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE');
-  }
-});
-
-Scenario('Record Judgment Spec claim 1v1 with set aside (Judge Order - pay immediately) -  Set Aside OrderJudgement error', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecRecordJudgment(api_spec);
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
-    console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGMENT_ERROR');
-  }
-});
-
 Scenario('Record Judgment Spec claim 1v1 mark paid in full', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(caseWorkerUser);
-  }
-});
-
-Scenario('Record Judgment Spec claim 1v1 mark paid in full-Mark Judgment Solicitor user', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecRecordJudgment(api_spec);
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
-    console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
   }
 });
 

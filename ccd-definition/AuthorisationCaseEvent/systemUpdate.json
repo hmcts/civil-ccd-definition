@@ -292,5 +292,11 @@
     "CaseEventID": "UPDATE_CASE_DETAILS_AFTER_NOC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
