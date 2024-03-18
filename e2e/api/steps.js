@@ -80,6 +80,7 @@ const data = {
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -87,6 +88,8 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
+  EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
   FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
   RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
@@ -97,7 +100,51 @@ const data = {
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
   MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
-
+const calculatedClaimsTrackDRH = {
+    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+    fastTrackHearingTime: (d) =>
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+    disposalHearingHearingTime: (d) =>
+      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+      && d.dateTo,
+    sdoR2SmallClaimsJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatements: (data) => {
+      return typeof data.sdoStatementOfWitness === 'string'
+        && typeof data.isRestrictWitness === 'string'
+        && typeof data.isRestrictPages === 'string'
+        && typeof data.text === 'string';
+    },
+    sdoR2SmallClaimsUploadDoc: (data) => {
+      return typeof data.sdoUploadOfDocumentsTxt === 'string';
+    },
+    sdoR2SmallClaimsHearing: (data) => {
+      return typeof data.trialOnOptions === 'string'
+        && typeof data.trialOnOptions === 'string'
+        && typeof data.hearingCourtLocationList === 'object'
+        && typeof data.methodOfHearing === 'string'
+        && typeof data.physicalBundleOptions === 'string'
+        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsImpNotes: (data) => {
+      return typeof data.text === 'string'
+        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsPPI: (data) => {
+      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.text === 'string';
+    }
+};
 const eventData = {
   acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -135,6 +182,7 @@ const eventData = {
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
     UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
     CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
+    CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
   }
 };
 
@@ -1193,16 +1241,20 @@ module.exports = {
     assert.equal(response, 'success');
   },
 
-  evidenceUploadApplicant: async (user, mpScenario='') => {
+  evidenceUploadApplicant: async (user, mpScenario='', smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
-
+    let ApplicantEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim applicant for case id ' + caseId);
-      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_DRH();
+      } else {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      }
       await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1214,15 +1266,19 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  evidenceUploadRespondent: async (user, multipartyScenario) => {
+  evidenceUploadRespondent: async (user, multipartyScenario, smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-
+    let RespondentEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim respondent for case id ' + caseId);
-      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_DRH();
+      } else {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1232,6 +1288,17 @@ module.exports = {
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  hearingFeePaidDRH: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid DRH');
   },
 
   notSuitableSDO: async (user, option) => {
@@ -1310,7 +1377,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
-  if(sdoR2Flag && pageId === 'SmallClaims') {
+  if(sdoR2Flag && (pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims')) {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -1554,7 +1621,10 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-
+  if(sdoR2Flag && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
+    || pageId === 'SmallClaims')) {
+    calculated = {...calculated, ...calculatedClaimsTrackDRH};
+  }
   if(eventName === 'CREATE_CLAIM'){
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
   } else if(eventName === 'CLAIMANT_RESPONSE'){
@@ -1569,6 +1639,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
+
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
@@ -1579,7 +1650,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
 
   if(sdoR2Flag && pageId === 'OrderType') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
-      midEventData = {...midEventData, ...sdoR2Var};
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};
@@ -1841,6 +1912,16 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['isSdoR2NewScreen'];
   delete responseBody.data['fastClaims'];
   clearNihlDataFromResponse(responseBody);
+  delete responseBody.data['sdoR2SmallClaimsJudgesRecital'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDocToggle'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
+  delete responseBody.data['sdoR2SmallClaimsImpNotes'];
+  delete responseBody.data['sdoR2SmallClaimsPPI'];
+  delete responseBody.data['sdoR2SmallClaimsHearing'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
+  delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
+  delete responseBody.data['smallClaims'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
