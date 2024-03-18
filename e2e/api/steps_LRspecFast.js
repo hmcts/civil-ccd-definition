@@ -12,16 +12,15 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecFast.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {checkToggleEnabled, checkCaseFlagsEnabled} = require('./testingSupport');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 const {assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {assertCaseFlags} = require('../helpers/assertions/caseFlagsAssertions');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
-const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData} = require('../helpers/fastTrackUpliftsHelper');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
-const sdoTracks = require('../fixtures/events/createSDO');
 
 
 
@@ -36,8 +35,7 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, true),
   CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2Fast.js').claimantResponse(response),
   CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1Fast.js').claimantResponse(response),
-  INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
-  CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput)
+  INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent)
 };
 
 const eventData = {
@@ -100,9 +98,6 @@ const eventData = {
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
     }
-  },
-  sdoTracks: {
-    CREATE_FAST: data.CREATE_FAST()
   }
 };
 
@@ -159,36 +154,6 @@ module.exports = {
   getCaseId: async () => {
     console.log (`case created: ${caseId}`);
     return caseId;
-  },
-
-  createSDO: async (user, response) => {
-    console.log('SDO for case id ' + caseId);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
-    await apiRequest.setupTokens(user);
-    eventName = 'CREATE_SDO';
-
-    caseData = await apiRequest.startEvent(eventName, caseId);
-    // will be assigned on about to submit, based on judges decision
-    delete caseData['allocatedTrack'];
-    delete caseData['responseClaimTrack'];
-    if(SdoR2){
-      delete caseData['smallClaimsFlightDelay'];
-      delete caseData['smallClaimsFlightDelayToggle'];
-    }
-
-    let sdoData = eventData['sdoTracks'][response];
-
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    if (!fastTrackUpliftsEnabled) {
-      removeFastTrackAllocationFromSdoData(sdoData);
-    }
-
-    for (let pageId of Object.keys(sdoData.valid)) {
-      await assertValidData(sdoData, pageId);
-    }
-
-    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -343,7 +308,7 @@ module.exports = {
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = (data.userInput||data.valid)[pageId];
+  const userData = data.userInput[pageId];
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
