@@ -22,5 +22,17 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "DisplayContext": "READONLY",
+    "PageID": "ReferJudgeDefenceReceived",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]
