@@ -2,7 +2,7 @@
   {
     "ID": "SmallTrack",
     "ListElementCode": "smallClaimDisputeResolutionHearing",
-    "ListElement": "Dispute resolution hearing",
+    "ListElement": "Dispute resolution hearing (Do not use with other options)",
     "DisplayOrder": 3
   },
   {
