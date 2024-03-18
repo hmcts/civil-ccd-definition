@@ -32,7 +32,7 @@
     "DisplayContext": "READONLY",
     "PageID": "ReferJudgeDefenceReceived",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "confirmReferToJudgeDefenceReceived=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }
 ]
