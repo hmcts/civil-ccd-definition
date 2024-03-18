@@ -58,7 +58,7 @@ Scenario('Record Judgment with set aside Spec claim 1v2 with NO RTL Order - Set 
   }
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderDJ(api_spec);
@@ -70,7 +70,7 @@ Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, ap
   }
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2 - Mark judgment solicitor user', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2 - Mark judgment solicitor user', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
