@@ -1005,6 +1005,13 @@ module.exports = {
     }
   },
 
+  amendClaimMovedToMediationDate: async (user, date) => {
+    await apiRequest.setupTokens(user);
+    let claimMovedToMediationDate ={};
+    claimMovedToMediationDate = {'claimMovedToMediationOn': date};
+    testingSupport.updateCaseData(caseId, claimMovedToMediationDate);
+  },
+
   amendRespondent1ResponseDeadline: async (user) => {
     await apiRequest.setupTokens(user);
     let respondent1deadline ={};

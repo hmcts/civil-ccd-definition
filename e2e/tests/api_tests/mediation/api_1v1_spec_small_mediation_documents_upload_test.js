@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-
+const {date} = require('../../../api/dataHelper');
 const config = require('../../../config.js');
 
 let mediationAdminRegion1 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
@@ -26,12 +26,14 @@ async function prepareClaim1v2DiffSol(api_spec, carmEnabled) {
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_APPLICANT_INTENTION', carmEnabled);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
+  await api_spec.amendClaimMovedToMediationDate(config.systemupdate, date(-1));
 }
 
 async function prepareClaim2v1(api_spec, carmEnabled) {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
-  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', carmEnabled);
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
+  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
+  await api_spec.amendClaimMovedToMediationDate(config.systemupdate, date(-1));
 }
 
 
