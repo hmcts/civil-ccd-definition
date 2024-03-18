@@ -182,14 +182,45 @@ module.exports = {
     return editJudgment;
   },
 
-  setAsideJudgment: () => {
+  setAsideJudgment: (setAsideReason, setAsideOrderType) => {
     const setAsideJudgment = {};
-    setAsideJudgment.userInput = {
-      ...setAsideJudgment.userInput,
-      SetAsideJudgment: {
-        joSetAsideDate: '2008-06-06'
+    switch (setAsideReason) {
+      case 'JUDGE_ORDER':{
+        if(setAsideOrderType === 'ORDER_AFTER_APPLICATION') {
+          setAsideJudgment.userInput = {
+            ...setAsideJudgment.userInput,
+            SetAsideJudgment: {
+              joSetAsideOrderDate: '2008-06-06',
+              joSetAsideOrderType: setAsideOrderType,
+              joSetAsideReason: setAsideReason
+            }
+          };
+
+        } else if (setAsideOrderType === 'ORDER_AFTER_DEFENCE'){
+          setAsideJudgment.userInput = {
+            ...setAsideJudgment.userInput,
+            SetAsideJudgment: {
+              joSetAsideDefenceReceivedDate: '2008-06-06',
+              joSetAsideOrderType: setAsideOrderType,
+              joSetAsideReason: setAsideReason,
+              joSetAsideJudgmentErrorText : 'Some Text'
+            }
+          };
+        }
       }
-    };
+        break;
+      case 'JUDGMENT_ERROR':{
+        setAsideJudgment.userInput = {
+          ...setAsideJudgment.userInput,
+          SetAsideJudgment: {
+            joSetAsideOrderDate: '2008-06-06'
+          }
+        };
+
+
+      }
+    }
+
     return setAsideJudgment;
   },
   markJudgmentPaidInFull: () => {
@@ -204,5 +235,15 @@ module.exports = {
       }
     };
     return markJudgmentPaid;
-  }
+  },
+  referJudgeDefenceReceived: () => {
+    const referJudgeDefenceReceived = {};
+    referJudgeDefenceReceived.userInput = {
+      ...referJudgeDefenceReceived.userInput,
+      ReferJudgeDefenceReceived: {
+        confirmReferToJudgeDefenceReceived:['CONFIRM']
+      }
+    };
+    return referJudgeDefenceReceived;
+  },
 };
