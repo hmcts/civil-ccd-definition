@@ -106,6 +106,82 @@ module.exports = {
     }
     return recordJudgment;
   },
+
+  editJudgment: (whyRecorded, paymentPlanSelection) => {
+    const editJudgment = {
+    };
+    switch (paymentPlanSelection) {
+      case 'PAY_IN_INSTALMENTS': {
+        if (whyRecorded === 'DETERMINATION_OF_MEANS') {
+          editJudgment.userInput = {
+            ...editJudgment.userInput,
+            EditJudgment: {
+              joJudgmentRecordReason: 'DETERMINATION_OF_MEANS',
+              joOrderMadeDate: date(-1),
+              joAmountOrdered: '40000',
+              joAmountCostOrdered: '20000',
+              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
+              joJudgmentInstalmentDetails: {
+                instalmentAmount: '10000',
+                paymentFrequency: 'MONTHLY',
+                firstInstalmentDate: date(1)
+              },
+              joIsRegisteredWithRTL: 'Yes'
+            },
+          };
+        } else if (whyRecorded === 'JUDGE_ORDER') {
+          editJudgment.userInput = {
+            ...editJudgment.userInput,
+            RecordJudgment: {
+              joJudgmentRecordReason: 'JUDGE_ORDER',
+              joOrderMadeDate: date(-1),
+              joAmountOrdered: '40000',
+              joAmountCostOrdered: '20000',
+              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
+              joJudgmentInstalmentDetails: {
+                instalmentAmount: '10000',
+                paymentFrequency: 'EVERY_TWO_WEEKS',
+                firstInstalmentDate: date(1)
+              },
+              joIsRegisteredWithRTL: 'No'
+            },
+          };
+        }
+      }
+        break;
+
+      case 'PAY_BY_DATE':{
+        if (whyRecorded === 'DETERMINATION_OF_MEANS') {
+          editJudgment.userInput = {
+            ...editJudgment.userInput,
+            EditJudgment: {
+              joJudgmentRecordReason: 'DETERMINATION_OF_MEANS',
+              joOrderMadeDate: date(-1),
+              joAmountOrdered: '40000',
+              joAmountCostOrdered: '20000',
+              joPaymentPlanSelection: 'PAY_BY_DATE',
+              joPaymentToBeMadeByDate: date(1)
+            },
+          };
+        } else if (whyRecorded === 'JUDGE_ORDER') {
+          editJudgment.userInput = {
+            ...editJudgment.userInput,
+            RecordJudgment: {
+              joJudgmentRecordReason: 'JUDGE_ORDER',
+              joOrderMadeDate: date(-1),
+              joAmountOrdered: '40000',
+              joAmountCostOrdered: '20000',
+              joPaymentPlanSelection: 'PAY_BY_DATE',
+              joPaymentToBeMadeByDate: date(1)
+            },
+          };
+        }
+      }
+        break;
+    }
+    return editJudgment;
+  },
+
   setAsideJudgment: () => {
     const setAsideJudgment = {};
     setAsideJudgment.userInput = {
@@ -128,5 +204,15 @@ module.exports = {
       }
     };
     return markJudgmentPaid;
-  }
+  },
+  referJudgeDefenceReceived: () => {
+    const referJudgeDefenceReceived = {};
+    referJudgeDefenceReceived.userInput = {
+      ...referJudgeDefenceReceived.userInput,
+      ReferJudgeDefenceReceived: {
+        confirmReferToJudgeDefenceReceived:['CONFIRM']
+      }
+    };
+    return referJudgeDefenceReceived;
+  },
 };
