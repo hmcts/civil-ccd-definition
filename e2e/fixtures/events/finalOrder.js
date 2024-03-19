@@ -72,7 +72,7 @@ const createAssistedOrder = (dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
   };
 };
 
-const createFreeFormOrder = () => {
+const createFreeFormOrder = (dayPlus7) => {
   return {
     FinalOrderSelect: {
       finalOrderSelection: 'FREE_FORM_ORDER',
