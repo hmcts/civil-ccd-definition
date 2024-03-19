@@ -1101,10 +1101,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario, dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario, dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
