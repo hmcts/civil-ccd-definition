@@ -42,6 +42,28 @@ module.exports = {
     }
   },
 
+  dateNoWeekendsBankHolidayNextDay: async function dateNoWeekendsBankHolidayNextDay(days = 0) {
+    const date = getDate(days);
+    let date_String = date.toISOString().slice(0, 10);
+    let isDateABankHoliday = false;
+    if (date.getDay() !== 6 && date.getDay() !== 0) {
+      try {
+        const rawBankHolidays = await fetch('https://www.gov.uk/bank-holidays.json');
+        const ukbankholidays = await rawBankHolidays.json();
+        isDateABankHoliday = JSON.stringify(ukbankholidays['england-and-wales'].events).includes(date_String);
+        if (!isDateABankHoliday) {
+          return date_String;
+        } else {
+          return await dateNoWeekends(days + 1);
+        }
+      } catch (err) {
+        console.warn('Error while fetching UK Bank Holidays...', err);
+      }
+    } else {
+      return await dateNoWeekends(days + 1);
+    }
+  },
+
   dateTime: (days = 0) => {
     return getDateTimeISOString(days);
   },

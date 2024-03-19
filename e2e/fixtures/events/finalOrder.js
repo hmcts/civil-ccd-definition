@@ -1,4 +1,4 @@
-const {date} = require('../../api/dataHelper');
+const {dateNoWeekendsBankHolidayNextDay} = require('../../api/dataHelper');
 
 const finalOrderDocument = {
   FinalOrderPreview: {
@@ -23,9 +23,9 @@ const createAssistedOrder = () => {
       assistedOrderMakeAnOrderForCosts: {
         assistedOrderAssessmentSecondDropdownList1: 'STANDARD_BASIS',
         assistedOrderAssessmentSecondDropdownList2: 'NO',
-        assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderCostsFirstDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
         assistedOrderClaimantDefendantFirstDropdown: 'SUBJECT_DETAILED_ASSESSMENT',
-        assistedOrderAssessmentThirdDropdownDate: date(14),
+        assistedOrderAssessmentThirdDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
         makeAnOrderForCostsList: 'CLAIMANT',
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
@@ -39,33 +39,33 @@ const createAssistedOrder = () => {
       finalOrderAppealComplex: {
         appealGrantedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
           }
         },
         appealRefusedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
           }
         }
       },
       finalOrderDateHeardComplex: {
         singleDateSelection: {
-          singleDate: date(0)
+          singleDate: dateNoWeekendsBankHolidayNextDay(0)
         }
       },
       orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: date(7),
+        ownInitiativeDate: dateNoWeekendsBankHolidayNextDay(7),
         ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
           ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: date(7),
+        withOutNoticeDate: dateNoWeekendsBankHolidayNextDay(7),
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
@@ -80,12 +80,12 @@ const createFreeFormOrder = () => {
     FinalOrderSelect: {
       finalOrderSelection: 'FREE_FORM_ORDER',
       orderOnCourtInitiative: {
-        onInitiativeSelectionDate: date(7),
+        onInitiativeSelectionDate: dateNoWeekendsBankHolidayNextDay(7),
         onInitiativeSelectionTextArea: 'As this order was made on the court\'s own initiative any party affected ' +
           'by the order may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderWithoutNotice: {
-        withoutNoticeSelectionDate: date(7),
+        withoutNoticeSelectionDate: dateNoWeekendsBankHolidayNextDay(7),
         withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
           ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 

@@ -1,4 +1,4 @@
-const {date} = require('../../api/dataHelper');
+const {dateNoWeekendsBankHolidayNextDay} = require('../../api/dataHelper');
 
 const finalOrderDocument = {FinalOrderPreview: {
   finalOrderDocument: {
@@ -25,8 +25,8 @@ module.exports = {
           FinalOrderSelect: {
             finalOrderSelection: 'ASSISTED_ORDER',
             assistedOrderMakeAnOrderForCosts: {
-              assistedOrderCostsFirstDropdownDate: date(14),
-              assistedOrderAssessmentThirdDropdownDate: date(14),
+              assistedOrderCostsFirstDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
+              assistedOrderAssessmentThirdDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
               makeAnOrderForCostsQOCSYesOrNo: 'No',
             },
             finalOrderRepresentation: {
@@ -39,25 +39,25 @@ module.exports = {
             finalOrderAppealComplex: {
               appealGrantedRefusedDropdown: {
                 appealChoiceSecondDropdownA: {
-                  appealGrantedRefusedDate: date(21),
+                  appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
                 },
                 appealChoiceSecondDropdownB: {
-                  appealGrantedRefusedDate: date(21),
+                  appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
                 }
               }
             },
             finalOrderDateHeardComplex: {
               singleDateSelection: {
-                singleDate: date(0)
+                singleDate: dateNoWeekendsBankHolidayNextDay(0)
               }
             },
             orderMadeOnDetailsOrderCourt: {
-              ownInitiativeDate: date(0),
+              ownInitiativeDate: dateNoWeekendsBankHolidayNextDay(0),
               ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
                 ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
             },
             orderMadeOnDetailsOrderWithoutNotice: {
-              withOutNoticeDate: date(0),
+              withOutNoticeDate: dateNoWeekendsBankHolidayNextDay(0),
               withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
                 ' set aside, vary or stay the order. Any such application must be made by 4pm on'
             },
@@ -72,12 +72,12 @@ module.exports = {
           FinalOrderSelect: {
             finalOrderSelection: 'FREE_FORM_ORDER',
             orderOnCourtInitiative: {
-              onInitiativeSelectionDate: date(0),
+              onInitiativeSelectionDate: dateNoWeekendsBankHolidayNextDay(0),
               onInitiativeSelectionTextArea: 'As this order was made on the court\'s own initiative any party affected ' +
                 'by the order may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
             },
             orderWithoutNotice: {
-              withoutNoticeSelectionDate: date(0),
+              withoutNoticeSelectionDate: dateNoWeekendsBankHolidayNextDay(0),
               withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
                 ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 
