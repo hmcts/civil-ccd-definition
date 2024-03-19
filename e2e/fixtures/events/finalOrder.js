@@ -16,6 +16,10 @@ const finalOrderDocument = {
   },
 };
 
+const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0)
+const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7)
+const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14)
+const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21)
 const createAssistedOrder = () => {
   return  {
     FinalOrderSelect: {
@@ -23,9 +27,9 @@ const createAssistedOrder = () => {
       assistedOrderMakeAnOrderForCosts: {
         assistedOrderAssessmentSecondDropdownList1: 'STANDARD_BASIS',
         assistedOrderAssessmentSecondDropdownList2: 'NO',
-        assistedOrderCostsFirstDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
+        assistedOrderCostsFirstDropdownDate: dayPlus14,
         assistedOrderClaimantDefendantFirstDropdown: 'SUBJECT_DETAILED_ASSESSMENT',
-        assistedOrderAssessmentThirdDropdownDate: dateNoWeekendsBankHolidayNextDay(14),
+        assistedOrderAssessmentThirdDropdownDate: dayPlus14,
         makeAnOrderForCostsList: 'CLAIMANT',
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
@@ -39,33 +43,33 @@ const createAssistedOrder = () => {
       finalOrderAppealComplex: {
         appealGrantedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
+            appealGrantedRefusedDate: dayPlus21,
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
+            appealGrantedRefusedDate: dayPlus21
           }
         },
         appealRefusedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
+            appealGrantedRefusedDate: dayPlus21,
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: dateNoWeekendsBankHolidayNextDay(21),
+            appealGrantedRefusedDate: dayPlus21,
           }
         }
       },
       finalOrderDateHeardComplex: {
         singleDateSelection: {
-          singleDate: dateNoWeekendsBankHolidayNextDay(0)
+          singleDate: dayPlus0
         }
       },
       orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: dateNoWeekendsBankHolidayNextDay(7),
+        ownInitiativeDate: dayPlus7,
         ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
           ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: dateNoWeekendsBankHolidayNextDay(7),
+        withOutNoticeDate: dayPlus7,
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
@@ -80,12 +84,12 @@ const createFreeFormOrder = () => {
     FinalOrderSelect: {
       finalOrderSelection: 'FREE_FORM_ORDER',
       orderOnCourtInitiative: {
-        onInitiativeSelectionDate: dateNoWeekendsBankHolidayNextDay(7),
+        onInitiativeSelectionDate: dayPlus7,
         onInitiativeSelectionTextArea: 'As this order was made on the court\'s own initiative any party affected ' +
           'by the order may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderWithoutNotice: {
-        withoutNoticeSelectionDate: dateNoWeekendsBankHolidayNextDay(7),
+        withoutNoticeSelectionDate: dayPlus7,
         withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
           ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 
