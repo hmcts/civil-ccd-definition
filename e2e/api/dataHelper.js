@@ -54,13 +54,13 @@ module.exports = {
         if (!isDateABankHoliday) {
           return date_String;
         } else {
-          return await dateNoWeekends(days + 1);
+          return await dateNoWeekendsBankHolidayNextDay(days + 1);
         }
       } catch (err) {
         console.warn('Error while fetching UK Bank Holidays...', err);
       }
     } else {
-      return await dateNoWeekends(days + 1);
+      return await dateNoWeekendsBankHolidayNextDay(days + 1);
     }
   },
 
