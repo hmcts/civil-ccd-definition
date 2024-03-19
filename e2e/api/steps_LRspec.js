@@ -70,7 +70,8 @@ const data = {
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario)
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
 };
 
 const eventData = {
@@ -627,6 +628,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['applicant1DQStatementOfTruth'];
   delete responseBody.data['respondent1DQStatementOfTruth'];
 
+  responseBody = clearNIHLDataFromResponseBody(responseBody);
+
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
   }
@@ -637,6 +640,41 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
     delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
     delete responseBody.data['applicantsProceedIntention'];
   }
+
+  return responseBody;
+};
+
+const clearNIHLDataFromResponseBody = (responseBody) => {
+  delete responseBody.data['sdoR2ImportantNotesTxt'];
+  delete responseBody.data['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete responseBody.data['sdoR2UploadOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorAddendumReportToggle'];
+  delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete responseBody.data['sdoR2Trial'];
+  delete responseBody.data['sdoR2EvidenceAcousticEngineer'];
+  delete responseBody.data['sdoR2TrialToggle'];
+  delete responseBody.data['sdoR2DisclosureOfDocumentsToggle'];
+  delete responseBody.data['sdoAltDisputeResolution'];
+  delete responseBody.data['sdoR2AddendumReport'];
+  delete responseBody.data['sdoR2DisclosureOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete responseBody.data['sdoR2QuestionsToEntExpert'];
+  delete responseBody.data['sdoR2SeparatorExpertEvidenceToggle'];
+  delete responseBody.data['sdoR2ExpertEvidence'];
+  delete responseBody.data['sdoR2Settlement'];
+  delete responseBody.data['sdoFastTrackJudgesRecital'];
+  delete responseBody.data['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete responseBody.data['sdoR2QuestionsClaimantExpert'];
+  delete responseBody.data['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLossToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLoss'];
+  delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete responseBody.data['sdoVariationOfDirections'];
+  delete responseBody.data['sdoR2FurtherAudiogram'];
+  delete responseBody.data['sdoR2WitnessesOfFact'];
+  delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
+  delete responseBody.data['sdoR2ImportantNotesDate'];
 
   return responseBody;
 };
@@ -1352,6 +1390,23 @@ module.exports = {
     await validateEventPages(data.SET_ASIDE_JUDGMENT());
     await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  referToJudgeDefenceReceived: async (user) => {
+    console.log(`case in Refer To Judge ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'REFER_JUDGE_DEFENCE_RECEIVED';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
