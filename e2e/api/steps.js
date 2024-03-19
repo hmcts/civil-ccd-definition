@@ -1077,10 +1077,10 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0)
-    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7)
-    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14)
-    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21)
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
