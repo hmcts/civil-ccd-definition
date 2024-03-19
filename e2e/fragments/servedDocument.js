@@ -9,7 +9,7 @@ module.exports = {
         I.click('Add new');
         if (fileType == '#servedDocumentFiles_certificateOfSuitability' || fileType == '#servedDocumentFiles_scheduleOfLoss') {
           await I.attachFile(fileType + '_0_document', file);
-        }else{
+        } else{
           await I.attachFile(fileType + '_value', file);
         }
         await I.waitForInvisible(locate('.error-message').withText('Uploading...'));
