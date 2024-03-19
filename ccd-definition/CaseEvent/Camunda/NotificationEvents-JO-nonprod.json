@@ -1,6 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_JUDGEMENT_VARIED_DETERMINATION_OF_MEANS",
+    "Name": "Notify Judgement Varied",
+    "Description": "Notify Judgement Varied to claimant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_JUDGEMENT_VARIED_DETERMINATION_OF_MEANS",
     "Name": "Notify Judgement Varied",
     "Description": "Notify Judgement Varied to claimant",
