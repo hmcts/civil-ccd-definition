@@ -15,12 +15,7 @@ const finalOrderDocument = {
     }
   },
 };
-
-const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0)
-const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7)
-const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14)
-const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21)
-const createAssistedOrder = () => {
+const createAssistedOrder = (dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
   return  {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
@@ -100,14 +95,14 @@ const createFreeFormOrder = () => {
 };
 
 module.exports = {
-  requestFinalOrder: (finalOrderRequestType) => {
+  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       return {
-        valid: createAssistedOrder(),
+        valid: createAssistedOrder(dayPlus0, dayPlus7, dayPlus14, dayPlus21),
       };
     } else {
       return {
-        valid: createFreeFormOrder(),
+        valid: createFreeFormOrder(dayPlus7),
       };
     }
 
