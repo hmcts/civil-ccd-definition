@@ -128,7 +128,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_MORE_TIME_REQUEST_FOR_RESPONDENT1",
-    "Name": "Dashboard Notice more time Requested",
+    "Name": "Dashboard Notice more time",
     "Description": "Generate Dashboard Notification in CUI for more time requested by defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
