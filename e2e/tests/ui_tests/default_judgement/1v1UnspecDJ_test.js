@@ -13,7 +13,7 @@ if (config.runWAApiTest) {
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleAHearing.js');
 }
 
-Feature('1v1 Unspec defaultJudgement');
+Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod');
 
 Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
