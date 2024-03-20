@@ -1,0 +1,43 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "caseParticipants",
+    "PageLabel": "Make an order",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "PopulateOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "courtOfficerOrderedLabel",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "PopulateOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "courtOfficerOrdered",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "PopulateOrder",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "courtOfficerFurtherHearingComplex",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "PopulateOrder",
+    "ShowSummaryChangeOption": "Y"
+  }
+]

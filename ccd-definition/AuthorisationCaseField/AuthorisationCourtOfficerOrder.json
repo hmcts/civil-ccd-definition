@@ -1,0 +1,34 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseParticipants",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerOrderedLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerOrdered",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerFurtherHearingComplex",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  }
+]
