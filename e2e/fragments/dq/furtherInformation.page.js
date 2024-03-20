@@ -19,9 +19,7 @@ module.exports = {
   async enterFurtherInformation(party) {
     I.waitForElement(this.fields(party).futureApplications.id);
     await I.runAccessibilityTest();
-    await within(this.fields(party).futureApplications.id, () => {
-      I.click(this.fields(party).futureApplications.options.yes);
-    });
+    I.click(this.fields(party).futureApplications.options.yes);
     I.fillField(this.fields(party).reasonForFutureApplications, 'Reason for future applications');
     I.fillField(this.fields(party).otherInformationForJudge, 'Other information for judge');
     await I.clickContinue();
