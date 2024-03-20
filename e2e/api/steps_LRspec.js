@@ -1393,7 +1393,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
