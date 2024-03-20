@@ -1107,9 +1107,9 @@ module.exports = {
     const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario, dayPlus0, dayPlus7, dayPlus14, dayPlus21));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario, dayPlus0, dayPlus7, dayPlus14, dayPlus21));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
