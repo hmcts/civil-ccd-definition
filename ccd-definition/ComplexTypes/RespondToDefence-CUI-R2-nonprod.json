@@ -56,13 +56,5 @@
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public"
-  },
-  {
-    "ID": "ClaimantLiPResponse",
-    "ListElementCode": "applicant1ClaimSettledDate",
-    "ElementLabel": " ",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
