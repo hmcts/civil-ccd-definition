@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement} = require('./dataHelper');
+const {listElement, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -90,7 +90,7 @@ const data = {
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
   EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
-  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
+  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
@@ -1077,10 +1077,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1096,10 +1101,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
