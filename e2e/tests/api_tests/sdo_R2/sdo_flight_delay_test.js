@@ -28,7 +28,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of
     if (['demo'].includes(config.runningEnv)) {
       await api_spec.triggerBundle(config.systemupdate);
     }
-    //await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+    await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   }
 });
 
