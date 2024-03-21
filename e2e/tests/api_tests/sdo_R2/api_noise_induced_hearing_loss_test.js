@@ -33,7 +33,7 @@ Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) =
     if (['demo'].includes(config.runningEnv)) {
         await api.triggerBundle(config.systemupdate);
       }
-      //await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
+      await api.createFinalOrder(judgeUser, 'ASSISTED_ORDER');
      }
 });
 
