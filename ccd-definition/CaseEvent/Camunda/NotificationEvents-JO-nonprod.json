@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SET_ASIDE_JUDGMENT_REQUEST",
+    "ID": "NOTIFY_SET_ASIDE_JUDGMENT",
     "Name": "Notify Set Aside Judgement",
     "Description": "Notify Set Aside Judgement",
     "PreConditionState(s)": "*",

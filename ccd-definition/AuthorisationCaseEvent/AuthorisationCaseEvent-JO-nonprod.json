@@ -81,7 +81,7 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -100,13 +100,13 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SET_ASIDE_JUDGMENT_REQUEST",
+    "CaseEventID": "NOTIFY_SET_ASIDE_JUDGMENT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -119,7 +119,7 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   }
