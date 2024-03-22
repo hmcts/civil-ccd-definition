@@ -31,7 +31,7 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
     if (['demo'].includes(config.runningEnv)) {
       await api.triggerBundle(config.systemupdate);
     }
-    //await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+    await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   }
 });
 
