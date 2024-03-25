@@ -1,7 +1,7 @@
 const config = require('../config.js');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {dateTime} = require('./dataHelper');
+const {dateTime, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -50,9 +50,9 @@ const data = {
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_2v1: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response, camundaEvent),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
-  CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
-  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
+  CLAIMANT_RESPONSE: (mpScenario, fastTrack, carmEnabled) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, fastTrack, carmEnabled),
+  CLAIMANT_RESPONSE_1v2: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response, carmEnabled),
+  CLAIMANT_RESPONSE_2v1: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response, carmEnabled),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
@@ -60,12 +60,12 @@ const data = {
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
-  FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
+  FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   EDIT_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.editJudgment(whyRecorded, paymentPlanSelection),
   EDIT_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.editJudgment(whyRecorded, paymentPlanSelection),
-  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
+  SET_ASIDE_JUDGMENT: (setAsideReason, setAsideOrderType) => judgmentOnline1v1Spec.setAsideJudgment(setAsideReason, setAsideOrderType),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
@@ -139,18 +139,21 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE('FULL_DEFENCE', false, true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE', true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
     },
     TWO_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE', true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
@@ -625,6 +628,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['applicant1DQStatementOfTruth'];
   delete responseBody.data['respondent1DQStatementOfTruth'];
 
+  responseBody = clearNIHLDataFromResponseBody(responseBody);
+
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
   }
@@ -635,6 +640,41 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
     delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
     delete responseBody.data['applicantsProceedIntention'];
   }
+
+  return responseBody;
+};
+
+const clearNIHLDataFromResponseBody = (responseBody) => {
+  delete responseBody.data['sdoR2ImportantNotesTxt'];
+  delete responseBody.data['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete responseBody.data['sdoR2UploadOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorAddendumReportToggle'];
+  delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete responseBody.data['sdoR2Trial'];
+  delete responseBody.data['sdoR2EvidenceAcousticEngineer'];
+  delete responseBody.data['sdoR2TrialToggle'];
+  delete responseBody.data['sdoR2DisclosureOfDocumentsToggle'];
+  delete responseBody.data['sdoAltDisputeResolution'];
+  delete responseBody.data['sdoR2AddendumReport'];
+  delete responseBody.data['sdoR2DisclosureOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete responseBody.data['sdoR2QuestionsToEntExpert'];
+  delete responseBody.data['sdoR2SeparatorExpertEvidenceToggle'];
+  delete responseBody.data['sdoR2ExpertEvidence'];
+  delete responseBody.data['sdoR2Settlement'];
+  delete responseBody.data['sdoFastTrackJudgesRecital'];
+  delete responseBody.data['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete responseBody.data['sdoR2QuestionsClaimantExpert'];
+  delete responseBody.data['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLossToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLoss'];
+  delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete responseBody.data['sdoVariationOfDirections'];
+  delete responseBody.data['sdoR2FurtherAudiogram'];
+  delete responseBody.data['sdoR2WitnessesOfFact'];
+  delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
+  delete responseBody.data['sdoR2ImportantNotesDate'];
 
   return responseBody;
 };
@@ -882,6 +922,11 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = await addFlagsToFixture(caseData);
+
+    if (carmEnabled) {
+      response = response+'_MEDIATION';
+    }
+
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
@@ -1271,10 +1316,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
@@ -1333,7 +1383,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user) => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType) => {
     console.log(`case in All set aside judgment ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1342,8 +1392,8 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
