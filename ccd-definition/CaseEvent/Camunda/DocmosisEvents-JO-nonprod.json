@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT1",
+    "ID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT",
     "Name": "SetAsideJudgment In Error Letter",
     "Description": "Set Aside Judgment In Error Letter to LiP Defendant 1",
     "PreConditionState(s)": "*",
