@@ -7,8 +7,8 @@ module.exports = {
           hearingType: {
             id: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_radio',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_Yes',
+              no: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_No'
             }
           },
         };

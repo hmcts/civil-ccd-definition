@@ -23,20 +23,14 @@ module.exports = {
     I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
     const options = this.fields.solicitor1Reference.options;
-    await within(this.fields.solicitor1Reference.id, () => {
-      I.click(options.yes);
-    });
+    await I.click(options.yes);
   }else{
       I.waitForElement(this.fields.solicitor2Reference.id);
       await I.runAccessibilityTest();
       const options2 = this.fields.solicitor2Reference.options;
-      await within(this.fields.solicitor2Reference.id, () => {
-        I.click(options2.yes);
-      });
+      await I.click(options2.yes);
     }
     await I.clickContinue();
 
   }
-
-
 };
