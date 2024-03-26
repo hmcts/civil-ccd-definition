@@ -13,7 +13,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_CLAIMANT",
+    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_CLAIMANT",
     "Name": "Notify Set Aside Judgement",
     "Description": "Notify Set Aside Judgement to claimant ",
     "PreConditionState(s)": "*",
@@ -26,7 +26,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_DEFENDANT1",
+    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT1",
     "Name": "Notify Set Aside Judgement",
     "Description": "Notify Set Aside Judgement to Defendant1",
     "PreConditionState(s)": "*",
@@ -39,7 +39,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_DEFENDANT2",
+    "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT2",
     "Name": "Notify Set Aside Judgement",
     "Description": "Notify Set Aside Judgement to Defendant2",
     "PreConditionState(s)": "*",
