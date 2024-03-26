@@ -68,7 +68,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_CLAIMANT",
+    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_CLAIMANT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -87,7 +87,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_DEFENDANT1",
+    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT1",
     "AccessControl": [
       {
         "UserRoles": [
@@ -106,7 +106,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGEMENT_DEFENDANT2",
+    "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT2",
     "AccessControl": [
       {
         "UserRoles": [
