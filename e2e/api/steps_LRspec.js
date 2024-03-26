@@ -65,7 +65,7 @@ const data = {
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   EDIT_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.editJudgment(whyRecorded, paymentPlanSelection),
   EDIT_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.editJudgment(whyRecorded, paymentPlanSelection),
-  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
+  SET_ASIDE_JUDGMENT: (setAsideReason, setAsideOrderType) => judgmentOnline1v1Spec.setAsideJudgment(setAsideReason, setAsideOrderType),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
@@ -1383,7 +1383,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user) => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType) => {
     console.log(`case in All set aside judgment ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1392,8 +1392,8 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
