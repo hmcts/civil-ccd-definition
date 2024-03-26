@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE', carmEnabled = true) => {
+  claimantResponse: (response = 'FULL_DEFENCE', carmEnabled = false) => {
     const responseData = {
     };
     switch (response) {
