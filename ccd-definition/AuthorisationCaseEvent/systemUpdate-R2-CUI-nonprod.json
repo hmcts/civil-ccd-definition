@@ -112,5 +112,17 @@
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_SETTLED_FOR_CLAIMANT1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE_DEADLINE_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+  "UserRole": "caseworker-civil-systemupdate",
+  "CRUD": "CRU"
   }
 ]
