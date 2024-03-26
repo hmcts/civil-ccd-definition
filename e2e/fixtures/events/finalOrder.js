@@ -1,5 +1,3 @@
-const {date} = require('../../api/dataHelper');
-
 const finalOrderDocument = {
   FinalOrderPreview: {
     finalOrderDocument: {
@@ -15,17 +13,16 @@ const finalOrderDocument = {
     }
   },
 };
-
-const createAssistedOrder = () => {
+const createAssistedOrder = (dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
   return  {
     FinalOrderSelect: {
       finalOrderSelection: 'ASSISTED_ORDER',
       assistedOrderMakeAnOrderForCosts: {
         assistedOrderAssessmentSecondDropdownList1: 'STANDARD_BASIS',
         assistedOrderAssessmentSecondDropdownList2: 'NO',
-        assistedOrderCostsFirstDropdownDate: date(14),
+        assistedOrderCostsFirstDropdownDate: dayPlus14,
         assistedOrderClaimantDefendantFirstDropdown: 'SUBJECT_DETAILED_ASSESSMENT',
-        assistedOrderAssessmentThirdDropdownDate: date(14),
+        assistedOrderAssessmentThirdDropdownDate: dayPlus14,
         makeAnOrderForCostsList: 'CLAIMANT',
         makeAnOrderForCostsQOCSYesOrNo: 'No',
       },
@@ -39,33 +36,33 @@ const createAssistedOrder = () => {
       finalOrderAppealComplex: {
         appealGrantedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dayPlus21,
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dayPlus21
           }
         },
         appealRefusedDropdown: {
           appealChoiceSecondDropdownA: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dayPlus21,
           },
           appealChoiceSecondDropdownB: {
-            appealGrantedRefusedDate: date(21),
+            appealGrantedRefusedDate: dayPlus21,
           }
         }
       },
       finalOrderDateHeardComplex: {
         singleDateSelection: {
-          singleDate: date(0)
+          singleDate: dayPlus0
         }
       },
       orderMadeOnDetailsOrderCourt: {
-        ownInitiativeDate: date(7),
+        ownInitiativeDate: dayPlus7,
         ownInitiativeText: 'As this order was made on the court\'s own initiative any party affected by the order' +
           ' may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderMadeOnDetailsOrderWithoutNotice: {
-        withOutNoticeDate: date(7),
+        withOutNoticeDate: dayPlus7,
         withOutNoticeText: 'If you were not notified of the application before this order was made, you may apply to' +
           ' set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
@@ -75,17 +72,17 @@ const createAssistedOrder = () => {
   };
 };
 
-const createFreeFormOrder = () => {
+const createFreeFormOrder = (dayPlus7) => {
   return {
     FinalOrderSelect: {
       finalOrderSelection: 'FREE_FORM_ORDER',
       orderOnCourtInitiative: {
-        onInitiativeSelectionDate: date(7),
+        onInitiativeSelectionDate: dayPlus7,
         onInitiativeSelectionTextArea: 'As this order was made on the court\'s own initiative any party affected ' +
           'by the order may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
       },
       orderWithoutNotice: {
-        withoutNoticeSelectionDate: date(7),
+        withoutNoticeSelectionDate: dayPlus7,
         withoutNoticeSelectionTextArea: 'If you were not notified of the application before this order was made,' +
           ' you may apply to set aside, vary or stay the order. Any such application must be made by 4pm on'
 
@@ -96,14 +93,14 @@ const createFreeFormOrder = () => {
 };
 
 module.exports = {
-  requestFinalOrder: (finalOrderRequestType) => {
+  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       return {
-        valid: createAssistedOrder(),
+        valid: createAssistedOrder(dayPlus0, dayPlus7, dayPlus14, dayPlus21),
       };
     } else {
       return {
-        valid: createFreeFormOrder(),
+        valid: createFreeFormOrder(dayPlus7),
       };
     }
 
