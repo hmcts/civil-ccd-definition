@@ -179,9 +179,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
-    "Name": "Check respondent deadline",
-    "Description": "Check whether respondent response deadline passed",
+    "ID": "DEFENDANT_RESPONSE_DEADLINE_CHECK",
+    "Name": "Check defendant deadline",
+    "Description": "Check whether defendant response deadline passed",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

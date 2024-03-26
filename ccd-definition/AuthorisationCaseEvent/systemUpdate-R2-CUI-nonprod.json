@@ -121,7 +121,7 @@
   },
   {
   "CaseTypeID": "CIVIL",
-  "CaseEventID": "RESPONDENT_RESPONSE_DEADLINE_CHECK",
+  "CaseEventID": "DEFENDANT_RESPONSE_DEADLINE_CHECK",
   "UserRole": "caseworker-civil-systemupdate",
   "CRUD": "CRU"
   }
