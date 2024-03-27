@@ -51,6 +51,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "RECORD_JUDGMENT_NOTIFICATION",
+    "Name": "Record judgment notification",
+    "Description": "Notification for record judgment determination of means",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_RESPONDENT1_FOR_RECORD_JUDGMENT",
     "Name": "Respondent1 notification",
     "Description": "Notify respondent solicitor1 for record judgment determination means",
