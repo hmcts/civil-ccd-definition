@@ -38,6 +38,7 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "national-business-centre"
 ./bin/utils/ccd-add-role.sh "hearing-centre-team-leader"
 ./bin/utils/ccd-add-role.sh "next-hearing-date-admin"
+./bin/utils/ccd-add-role.sh "court-officer-order"
 
 
 roles=("solicitor" "systemupdate" "admin" "staff")
