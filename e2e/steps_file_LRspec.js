@@ -239,7 +239,10 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => {
+        this.click('Continue');
+        this.wait(5);
+      }, urlBefore);
     },
 
     /**
