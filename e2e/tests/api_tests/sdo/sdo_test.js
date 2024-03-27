@@ -37,7 +37,7 @@ async function prepareSpecSmallClaim(api_spec_small) {
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, 'true', 'No');
 }
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled', async ({api}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of damages - hearing scheduled @pc_run', async ({api}) => {
   // sdo requires judicial_referral, which is not past preview
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
