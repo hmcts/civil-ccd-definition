@@ -139,7 +139,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joSetAsideDate",
+    "CaseFieldID": "joSetAsideOrderDate",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
@@ -148,7 +148,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "CaseFieldID": "joShowRegisteredWithRTLOption",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
@@ -166,7 +166,34 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joShowRegisteredWithRTLOption",
+    "CaseFieldID": "joSetAsideReason",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideJudgmentErrorText",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideOrderType",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideDefenceReceivedDate",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
