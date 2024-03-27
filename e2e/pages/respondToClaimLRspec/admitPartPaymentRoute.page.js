@@ -11,23 +11,21 @@ module.exports = {
 
       },
     },
-    dayOfPayment: '#whenWillThisAmountBePaid-day',
-    monthOfPayment: '#whenWillThisAmountBePaid-month',
-    yearOfPayment: '#whenWillThisAmountBePaid-year',
+    dayOfPayment: 'input[id$="whenWillThisAmountBePaid-day"]',
+    monthOfPayment: 'input[id$="whenWillThisAmountBePaid-month"]',
+    yearOfPayment: 'input[id$="whenWillThisAmountBePaid-year"]',
   },
 
  async selectPaymentRoute(partAdmitType) {
    I.waitForElement(this.fields.partAdmitType.id);
    await I.runAccessibilityTest();
-   await within(this.fields.partAdmitType.id, () => {
-   I.click(this.fields.partAdmitType.options[partAdmitType]);
-   });
-   if ('setDate' === partAdmitType) {
-         await I.fillField(this.fields.dayOfPayment, 1);
-         await I.fillField(this.fields.monthOfPayment, 3);
-         await I.fillField(this.fields.yearOfPayment, 2023);
+   await I.click(this.fields.partAdmitType.options[partAdmitType]);
+   if ('setDate' == partAdmitType) {
+      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-day\')])[2]', 1);
+      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-month\')])[2]', 3);
+      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-year\')])[2]', 2023);
     }
 
    await I.clickContinue();
-  }
+  },
 };

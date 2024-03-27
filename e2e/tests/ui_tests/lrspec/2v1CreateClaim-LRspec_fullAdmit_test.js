@@ -37,6 +37,7 @@ Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defen
   await LRspec.respondToClaimFullAdmit({
     twoDefendants: false,
     defendant1Response: 'fullAdmission',
+    twoClaimants: true,
     claimType: 'fast',
     defenceType: 'setDate'
   });
