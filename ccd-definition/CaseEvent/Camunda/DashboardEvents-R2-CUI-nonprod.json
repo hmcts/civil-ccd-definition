@@ -221,9 +221,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE_DEADLINE_DEFENDANT",
-    "Name": "Dashboard Response Deadline",
-    "Description": "Create dashboard notice for dashboard respondent response deadline",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_RESPONSE_DEADLINE_DEFENDANT",
+    "Name": "Response Deadline Defendant",
+    "Description": "Create dashboard notice for dashboard response deadline passed",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
