@@ -147,7 +147,7 @@ const getExpectedPayload = (serviceId) => {
             'partyName': 'Sir John Doe',
             'partyRole': 'DEFE',
             'individualDetails': {
-              'title': 'Sir',
+              'title': null,
               'firstName': 'John',
               'lastName': 'Doe',
               'preferredHearingChannel': null,
@@ -513,7 +513,7 @@ const getExpectedPayload = (serviceId) => {
             'partyName': 'Sir John Doe',
             'partyRole': 'DEFE',
             'individualDetails': {
-              'title': 'Sir',
+              'title': null,
               'firstName': 'John',
               'lastName': 'Doe',
               'otherReasonableAdjustmentDetails': null,
@@ -618,7 +618,7 @@ const getExpectedPayload = (serviceId) => {
             'partyName': 'Dr Foo Bar',
             'partyRole': 'DEFE',
             'individualDetails': {
-              'title': 'Dr',
+              'title': null,
               'firstName': 'Foo',
               'lastName': 'Bar',
               'otherReasonableAdjustmentDetails': null,
