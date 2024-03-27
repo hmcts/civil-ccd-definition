@@ -17,8 +17,8 @@ module.exports = {
     I.waitForElement(this.fields.solicitor1Reference.id);
     await I.runAccessibilityTest();
     const options = this.fields.solicitor1Reference.options;
-    await within(this.fields.solicitor1Reference.id, () => {
-      I.click(options.yes);
+    await within(this.fields.solicitor1Reference.id, async () => {
+      await I.click(options.yes);
     });
 
     await I.clickContinue();
