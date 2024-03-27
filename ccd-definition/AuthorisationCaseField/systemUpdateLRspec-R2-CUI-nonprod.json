@@ -58,5 +58,11 @@
     "CaseFieldID": "applicant1FullDefenceConfirmAmountPaidSpec",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1ResponseDeadlineChecked",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
