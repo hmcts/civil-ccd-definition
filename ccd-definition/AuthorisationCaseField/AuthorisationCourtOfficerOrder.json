@@ -1,0 +1,66 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseParticipants",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerOrderedLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerOrdered",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerFurtherHearingComplex",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerGiveReasonsLabel",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerGiveReasonsYesNo",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "courtOfficerGiveReasonsComplex",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "previewCourtOfficerOrder",
+    "UserRoles": [
+      "hearing-schedule-access"
+    ],
+    "CRUD": "CRU"
+  }
+]
