@@ -32,7 +32,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
 }).retry(3);
 
 Scenario('2v1 Respond To Claim - Defendants solicitor Part Admit the claim and defendant wants to pay by repaymentPlan', async ({LRspec}) => {
-  //await assignCaseToLRSpecDefendant(caseId());
+  await assignCaseToLRSpecDefendant(caseId());
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimPartAdmit({
     twoDefendants: false,

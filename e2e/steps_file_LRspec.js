@@ -71,7 +71,6 @@ const respondentEmploymentTypePage = require('./pages/respondToClaimLRspec/respo
 const respondentCourtOrderTypePage = require('./pages/respondToClaimLRspec/respondentCourtOrderType.page');
 const respondentDebtsDetailsPage = require('./pages/respondToClaimLRspec/respondentDebtsDetails.page');
 const respondentIncomeExpensesDetailsPage = require('./pages/respondToClaimLRspec/respondentIncomeExpensesDetails.page');
-const respondentCarerAllowanceDetailsPage = require('./pages/respondToClaimLRspec/respondentCarerAllowanceDetails.page');
 const respondentRepaymentPlanPage = require('./pages/respondToClaimLRspec/respondentRepaymentPlan.page');
 const respondentPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay.page');
 const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/respondent2SameLegalRepresentativeLRspec.page');
@@ -686,6 +685,11 @@ module.exports = function () {
                ... conditionalSteps(twoDefendants, [
                  () => this.clickContinue(),
                ]),
+               ... conditionalSteps(claimType, [
+                () => {
+                  console.log('claimType...', claimType);
+                },
+              ]),
                ... conditionalSteps(twoClaimants, [
                 () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
                ]),
