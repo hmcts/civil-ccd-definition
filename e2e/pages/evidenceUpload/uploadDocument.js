@@ -144,7 +144,6 @@ module.exports = {
     }
     else {
       await within(this.fields.documentWitnessStatement.id, () => {
-        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentWitnessStatement.button);
         I.fillField(this.fields.documentWitnessStatement.name, 'test name');
         I.fillField(this.fields.documentWitnessStatement.day, '1');
