@@ -127,6 +127,7 @@ module.exports = {
         I.attachFile(this.fields.documentWitnessStatementRes.document, file);
       });
       await within(this.fields.documentExpertReportRes.id, () => {
+        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentExpertReportRes.button);
         I.fillField(this.fields.documentExpertReportRes.name, 'test name');
         I.fillField(this.fields.documentExpertReportRes.expertise, 'test expertise');
@@ -136,12 +137,14 @@ module.exports = {
         I.attachFile(this.fields.documentExpertReportRes.document, file);
       });
       await within(this.fields.documentAuthoritiesRes.id, () => {
+        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentAuthoritiesRes.button);
         I.attachFile(this.fields.documentAuthoritiesRes.document, file);
       });
     }
     else {
       await within(this.fields.documentWitnessStatement.id, () => {
+        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentWitnessStatement.button);
         I.fillField(this.fields.documentWitnessStatement.name, 'test name');
         I.fillField(this.fields.documentWitnessStatement.day, '1');
@@ -150,6 +153,7 @@ module.exports = {
         I.attachFile(this.fields.documentWitnessStatement.document, file);
       });
       await within(this.fields.documentExpertReport.id, () => {
+        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentExpertReport.button);
         I.fillField(this.fields.documentExpertReport.name, 'test name');
         I.fillField(this.fields.documentExpertReport.expertise, 'test expertise');
@@ -159,6 +163,7 @@ module.exports = {
         I.attachFile(this.fields.documentExpertReport.document, file);
       });
       await within(this.fields.documentAuthorities.id, () => {
+        I.wait(6); // wait is in order to avoid failure due to rate limiting EXUI-1194
         I.click(this.fields.documentAuthorities.button);
         I.attachFile(this.fields.documentAuthorities.document, file);
       });
