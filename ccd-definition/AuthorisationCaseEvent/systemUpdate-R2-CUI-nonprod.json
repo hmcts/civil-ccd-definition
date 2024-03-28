@@ -160,5 +160,11 @@
   "CaseEventID": "DEFENDANT_RESPONSE_DEADLINE_CHECK",
   "UserRole": "caseworker-civil-systemupdate",
   "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_RESPONSE_DEADLINE_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
