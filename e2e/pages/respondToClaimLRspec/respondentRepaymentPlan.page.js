@@ -24,8 +24,8 @@ module.exports = {
     });
 
     await I.fillField(this.fields.dayOfPayment, 30);
-    await I.fillField(this.fields.monthOfPayment, 3);
-    await I.fillField(this.fields.yearOfPayment, 2023);
+    await I.fillField(this.fields.monthOfPayment, 12);
+    await I.fillField(this.fields.yearOfPayment, 2024);
 
 
     await I.clickContinue();
