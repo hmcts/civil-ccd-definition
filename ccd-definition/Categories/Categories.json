@@ -147,7 +147,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendant1DefenseDirectionsQuestionnaire",
-    "CategoryLabel": "Defence (Including Directions questionnaire)",
+    "CategoryLabel": "Defence",
     "DisplayOrder": "1",
     "ParentCategoryID": "defendantOne"
   },
@@ -171,7 +171,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "defendant2DefenseDirectionsQuestionnaire",
-    "CategoryLabel": "Defence (Including Directions questionnaire)",
+    "CategoryLabel": "Defence",
     "DisplayOrder": "1",
     "ParentCategoryID": "defendantTwo"
   },
@@ -203,7 +203,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "DQApplicant",
-    "CategoryLabel": "Directions questionnaire",
+    "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
     "ParentCategoryID": "ApplicantDQ"
   },
@@ -219,7 +219,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "DQApplicantTwo",
-    "CategoryLabel": "Directions questionnaire",
+    "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
     "ParentCategoryID": "ApplicantTwoDQ"
   },
@@ -235,7 +235,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "DQRespondent",
-    "CategoryLabel": "Defence (Including directions questionnaire)",
+    "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
     "ParentCategoryID": "RespondentDQ"
   },
@@ -251,7 +251,7 @@
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
     "CategoryID": "DQRespondentTwo",
-    "CategoryLabel": "Defence (Including directions questionnaire)",
+    "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
     "ParentCategoryID": "RespondentTwoDQ"
   },

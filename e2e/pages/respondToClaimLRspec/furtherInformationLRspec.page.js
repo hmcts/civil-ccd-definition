@@ -19,10 +19,8 @@ module.exports = {
   async enterFurtherInformation(party) {
     I.waitForElement(this.fields(party).futureApplications.id);
     await I.runAccessibilityTest();
-    await within(this.fields(party).futureApplications.id, () => {
-      I.click(this.fields(party).futureApplications.options.no);
-    });
 
+    I.click(this.fields(party).futureApplications.options.no);
     await I.clickContinue();
   },
 };
