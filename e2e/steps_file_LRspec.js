@@ -618,7 +618,6 @@ module.exports = function () {
         },
 
     async respondToClaimPartAdmit({twoDefendants = false, defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan', twoClaimants = false}) {
-      caseId = '1711553455040531';
               eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),
