@@ -17,8 +17,8 @@ module.exports = {
       role: 'input[id$="uiStatementOfTruth_role"]',    }
   },
 
-  async enterNameAndRole(type = '', name = 'John Smith', role = 'Solicitor') {
-    I.waitForElement(this.fields[type].name);
+  async enterNameAndRole(type = 'claim', name = 'John Smith', role = 'Solicitor') {
+    await I.waitForElement(this.fields[type].name);
     await I.runAccessibilityTest();
     I.fillField(this.fields[type].name, name);
     I.fillField(this.fields[type].role, role);
