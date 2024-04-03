@@ -582,7 +582,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "hearing-schedule-access"
+          "court-officer-order"
         ],
         "CRUD": "CRU"
       },
