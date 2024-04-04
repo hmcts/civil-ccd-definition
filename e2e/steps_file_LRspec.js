@@ -71,11 +71,11 @@ const respondentEmploymentTypePage = require('./pages/respondToClaimLRspec/respo
 const respondentCourtOrderTypePage = require('./pages/respondToClaimLRspec/respondentCourtOrderType.page');
 const respondentDebtsDetailsPage = require('./pages/respondToClaimLRspec/respondentDebtsDetails.page');
 const respondentIncomeExpensesDetailsPage = require('./pages/respondToClaimLRspec/respondentIncomeExpensesDetails.page');
-const respondentCarerAllowanceDetailsPage = require('./pages/respondToClaimLRspec/respondentCarerAllowanceDetails.page');
 const respondentRepaymentPlanPage = require('./pages/respondToClaimLRspec/respondentRepaymentPlan.page');
 const respondentPage = require('./pages/respondToClaimLRspec/respondentWhyNotPay.page');
 const respondent2SameLegalRepresentativeLRspec = require('./pages/createClaim/respondent2SameLegalRepresentativeLRspec.page');
 const vulnerabilityPage = require('./pages/respondToClaimLRspec/vulnerabilityLRspec.page');
+const supportAccessLRspecPage = require('./pages/respondToClaimLRspec/supportAccessLRspec.page');
 const vulnerabilityQuestionsPage = require('./fragments/dq/vulnerabilityQuestions.page');
 const enterBreathingSpacePage = require('./pages/respondToClaimLRspec/enterBreathingSpace.page');
 const liftBreathingSpacePage = require('./pages/respondToClaimLRspec/liftBreathingSpace.page');
@@ -239,7 +239,10 @@ module.exports = function () {
 
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.click('Continue'), urlBefore);
+      await this.retryUntilUrlChanges(() => {
+        this.click('Continue');
+        this.wait(5);
+      }, urlBefore);
     },
 
     /**
@@ -614,27 +617,29 @@ module.exports = function () {
 
         },
 
-    async respondToClaimPartAdmit({defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan'}) {
+    async respondToClaimPartAdmit({twoDefendants = false, defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan', twoClaimants = false}) {
               eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),
                () => respondentCheckListPage.claimTimelineTemplate(),
                () => specConfirmDefendantsDetails.confirmDetails(),
                () => specConfirmLegalRepDetails.confirmDetails(),
-               () => this.clickContinue(),
-               () => responseTypeSpecPage.selectResponseType(defendant1Response),
+               ... conditionalSteps(twoClaimants, [
+                () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
+               ]),
+               () => responseTypeSpecPage.selectResponseType(twoDefendants, defendant1Response),
                () => partAdmittedAmountPage.selectFullAdmitType('no'),
                () => disputeClaimDetailsPage.enterReasons(),
                () => claimResponseTimelineLRspecPage.addManually(),
                () => this.clickContinue(),
                () => admitPartPaymentRoutePage.selectPaymentRoute('repaymentPlan'),
-               () => this.clickContinue(),
+              /* () => this.clickContinue(),
                () => this.clickContinue(),
                () => respondentHomeDetailsLRspecPage.selectRespondentHomeType(),
                () => respondentEmploymentTypePage.selectRespondentEmploymentType(),
                () => respondentCourtOrderTypePage.selectRespondentCourtOrderType(),
                () => respondentDebtsDetailsPage.selectDebtsDetails(),
-               () => respondentCarerAllowanceDetailsPage.selectIncomeExpenses(),
+               () => respondentCarerAllowanceDetailsPage.selectIncomeExpenses(),*/
                () => respondentPage.enterReasons(),
                 ... conditionalSteps(defenceType === 'repaymentPlan', [
                  () => respondentRepaymentPlanPage.selectRepaymentPlan(),
@@ -659,8 +664,8 @@ module.exports = function () {
 
               ]),
                  () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
+                 () => supportAccessLRspecPage.selectSupportAccess('no'),
                  () => vulnerabilityPage.selectVulnerability('no'),
-                 () => this.clickContinue(),
                  () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
                  () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
                  () => event.submit('Submit', ''),
@@ -669,7 +674,7 @@ module.exports = function () {
 
      },
 
-     async respondToClaimFullAdmit({twoDefendants = false, defendant1Response = 'fullAdmission'}) {
+     async respondToClaimFullAdmit({twoDefendants = false, defendant1Response = 'fullAdmission', twoClaimants = false, claimType, defenceType}) {
               eventName = 'Respond to claim';
               await this.triggerStepsWithScreenshot([
                () => caseViewPage.startEvent(eventName, caseId),
@@ -679,18 +684,30 @@ module.exports = function () {
                ... conditionalSteps(twoDefendants, [
                  () => this.clickContinue(),
                ]),
-               () => responseTypeSpecPage.selectResponseType(defendant1Response),
+               ... conditionalSteps(claimType, [
+                () => {
+                  console.log('claimType...', claimType);
+                },
+              ]),
+               ... conditionalSteps(twoClaimants, [
+                () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
+               ]),
+               () => responseTypeSpecPage.selectResponseType(twoDefendants, defendant1Response),
                () => fullAdmitTypeLRspecPage.selectFullAdmitType('no'),
                () => admitPartPaymentRoutePage.selectPaymentRoute('setDate'),
+               ... conditionalSteps(defenceType == 'payByInstallments', [
                () => this.clickContinue(),
                () => this.clickContinue(),
                () => respondentHomeDetailsLRspecPage.selectRespondentHomeType(),
                () => respondentEmploymentTypePage.selectRespondentEmploymentType(),
                () => respondentCourtOrderTypePage.selectRespondentCourtOrderType(),
                () => respondentDebtsDetailsPage.selectDebtsDetails(),
-               () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
+               () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(), 
+               ]),
                () => respondentPage.enterReasons(),
+               ... conditionalSteps(defenceType == 'payByInstallments', [
                () => vulnerabilityPage.selectVulnerability('no'),
+              ]),
                () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
                () => event.submit('Submit', ''),
                () => event.returnToCaseDetails()
