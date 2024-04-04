@@ -287,7 +287,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_HEARING_FEE_UNPAID_FOR_CLAIMANT",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_HEARING_FEE_UNPAID_FOR_CLAIMANT1",
     "Name": "Unpaid hearing - claimant",
     "Description": "Create claimant dashboard notice for hearing fee unpaid",
     "PreConditionState(s)": "*",
