@@ -1,7 +1,7 @@
 const config = require('../config.js');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {dateTime} = require('./dataHelper');
+const {dateTime, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -33,9 +33,14 @@ const mediationDocuments = require('../fixtures/events/mediation/uploadMediation
 const hearingScheduled = require('../fixtures/events/specScheduleHearing');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const {cloneDeep} = require('lodash');
 
 let caseId, eventName;
 let caseData = {};
+
+let mpScenario = 'ONE_V_ONE';
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
@@ -45,9 +50,9 @@ const data = {
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_2v1: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec2v1.js').respondToClaim(response, camundaEvent),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario),
-  CLAIMANT_RESPONSE_1v2: (response) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response),
-  CLAIMANT_RESPONSE_2v1: (response) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response),
+  CLAIMANT_RESPONSE: (mpScenario, fastTrack, carmEnabled) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, fastTrack, carmEnabled),
+  CLAIMANT_RESPONSE_1v2: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response, carmEnabled),
+  CLAIMANT_RESPONSE_2v1: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response, carmEnabled),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
@@ -55,13 +60,18 @@ const data = {
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
-  FINAL_ORDERS_SPEC: (finalOrdersRequestType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType),
+  FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
-  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1Spec.setAsideJudgment(),
+  EDIT_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.editJudgment(whyRecorded, paymentPlanSelection),
+  EDIT_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.editJudgment(whyRecorded, paymentPlanSelection),
+  SET_ASIDE_JUDGMENT: (setAsideReason, setAsideOrderType) => judgmentOnline1v1Spec.setAsideJudgment(setAsideReason, setAsideOrderType),
   JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1Spec.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO_SPEC: (option) => transferOnlineCaseSpec.notSuitableSDOspec(option),
-  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec()
+  TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
+  EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
 };
 
 const eventData = {
@@ -129,18 +139,21 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE('FULL_DEFENCE', false, true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM')
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE', true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
     },
     TWO_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE'),
+      FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE_2v1('FULL_DEFENCE', true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_2v1('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_2v1('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_2v1('NOT_PROCEED')
@@ -149,6 +162,558 @@ const eventData = {
   sdoTracks: {
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM_SPEC(),
   }
+};
+
+const validateEventPagesFlightDelay = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.valid)) {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    // data = await updateCaseDataWithPlaceholders(data);
+    await assertValidDataForEvidenceUpload(data, pageId, solicitor);
+  }
+};
+
+const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+
+  const validDataForPage = data.valid[pageId];
+  caseData = {...caseData, ...validDataForPage};
+  caseData = adjustDataForSolicitor(solicitor, caseData);
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    addCaseId(pageId) ? caseId : null
+  );
+
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  responseBody = clearNoCData(responseBody);
+  if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    responseBody = clearDataForExtensionDate(responseBody, solicitor);
+  } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    responseBody = clearDataForDefendantResponse(responseBody, solicitor);
+  }
+
+  if(eventName === 'EVIDENCE_UPLOAD_APPLICANT') {
+    responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete responseBody.data['respondent1DQExperts'];
+    delete responseBody.data['responseClaimMediationSpecRequired'];
+    delete responseBody.data['responseClaimExpertSpecRequired'];
+    delete responseBody.data['responseClaimCourtLocationRequired'];
+    delete responseBody.data['responseClaimWitnesses'];
+    delete responseBody.data['respondent1DQRequestedCourt'];
+    delete responseBody.data['respondent1DQWitnessesSmallClaim'];
+    delete responseBody.data['respondent1DQWitnesses'];
+  } else if(eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete responseBody.data['businessProcess'];
+  }
+
+  if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
+  {
+    responseBody = clearHearingLocationData(responseBody);
+  }
+  if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    responseBody = clearFinalOrderLocationData(responseBody);
+  }
+  assert.equal(response.status, 200);
+
+  // eslint-disable-next-line no-prototype-builtins
+  let claimValue;
+  if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
+    && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
+    claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
+  }
+  if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+    caseData = removeUiFields(pageId, caseData);
+  } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+  }
+  if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
+    // CIV-3883 depends on backend having the field
+    responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
+  }
+  if (eventName === 'CREATE_SDO') {
+    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+      delete caseData.hearingMethodValuesDisposalHearing;
+      delete caseData.hearingMethodValuesFastTrack;
+      delete caseData.hearingMethodValuesSmallClaims;
+    }
+    if (responseBody.data.sdoOrderDocument) {
+      caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
+    }
+
+    // noinspection EqualityComparisonWithCoercionJS
+    if (caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
+      && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum !== responseBody.data.drawDirectionsOrder.judgementSum
+      && caseData.drawDirectionsOrder.judgementSum == responseBody.data.drawDirectionsOrder.judgementSum) {
+      // sometimes difference may be because of decimals .0, not an actual difference
+      caseData.drawDirectionsOrder.judgementSum = responseBody.data.drawDirectionsOrder.judgementSum;
+    }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.disposalHearingSchedulesOfLoss)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.disposalHearingSchedulesOfLoss;
+    }
+  }
+
+  if (pageId === 'Claimant') {
+    delete caseData.applicant1OrganisationPolicy;
+  }
+  try {
+    assert.deepEqual(responseBody.data, caseData);
+  }
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    console.error('Data different in page ' + pageId);
+    whatsTheDifference(caseData, responseBody.data);
+    throw err;
+  }
+};
+
+/**
+ * helper function to help locate differences between expected and actual.
+ *
+ * @param caseData expected
+ * @param responseBodyData actual
+ * @param path initially undefined
+ */
+function whatsTheDifference(caseData, responseBodyData, path) {
+  Object.keys(caseData).forEach(key => {
+    if (Object.keys(responseBodyData).indexOf(key) < 0) {
+      console.log('response does not have ' + appendToPath(path, key)
+        + '. CaseData has ' + JSON.stringify(caseData[key]));
+    } else if (typeof caseData[key] === 'object') {
+      whatsTheDifference(caseData[key], responseBodyData[key], [key]);
+    } else if (caseData[key] !== responseBodyData[key]) {
+      console.log('response and case data are different on ' + appendToPath(path, key));
+      console.log('caseData has ' + caseData[key] + ' while response has ' + responseBodyData[key]);
+    }
+  });
+  Object.keys(responseBodyData).forEach(key => {
+    if (Object.keys(caseData).indexOf(key) < 0) {
+      console.log('caseData does not have ' + appendToPath(path, key)
+        + '. Response has ' + JSON.stringify(responseBodyData[key]));
+    }
+  });
+}
+
+function removeUuidsFromDynamicList(data, dynamicListField) {
+  const dynamicElements = data[dynamicListField].list_items;
+  // eslint-disable-next-line no-unused-vars
+  return dynamicElements.map(({code, ...item}) => item);
+}
+
+function appendToPath(path, key) {
+  if (path) {
+    return path.concat([key]);
+  } else {
+    return [key];
+  }
+}
+
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
+  console.log(`Adding mid event fields for pageId: ${pageId}`);
+  const midEventField = midEventFieldForPage[pageId];
+  let midEventData;
+  let calculated;
+
+  if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
+    calculated = instanceData.calculated[pageId];
+  }
+  const isSdoR2Enabled = checkToggleEnabled(SDOR2);
+  if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
+    || pageId === 'SmallClaims')) {
+    calculated = {...calculated};
+  }
+  if(eventName === 'CREATE_CLAIM'){
+    midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
+  } else if(eventName === 'CLAIMANT_RESPONSE'){
+    midEventData = data[eventName](mpScenario).midEventData[pageId];
+  } else if(eventName === 'DEFENDANT_RESPONSE'){
+    midEventData = data[eventName]().midEventData[pageId];
+  } else if (instanceData && instanceData.midEventData && instanceData.midEventData[pageId]) {
+    midEventData = instanceData.midEventData[pageId];
+  } else {
+    midEventData = data[eventName].midEventData[pageId];
+  }
+  if (calculated) {
+    checkCalculated(calculated, responseBody.data);
+  }
+
+  if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
+    assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(isSdoR2Enabled && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
+  }
+
+  if(isSdoR2Enabled && pageId === 'SmallClaims') {
+    delete caseData.isSdoR2NewScreen;
+  }
+
+  caseData = {...caseData, ...midEventData};
+  if (midEventField) {
+    responseBody.data[midEventField.id] = caseData[midEventField.id];
+  }
+}
+
+function checkCalculated(calculated, responseBodyData) {
+  const checked = {};
+  // strictly check
+  Object.keys(calculated).forEach(key => {
+    if (caseData[key]) {
+      if (calculated[key].call(null, caseData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on caseData ' + key);
+      }
+    } else if (responseBodyData[key]) {
+      if (calculated[key].call(null, responseBodyData[key]) !== false) {
+        checked[key] = caseData[key];
+      } else {
+        console.log('Failed calculated key on responseBody' + key);
+      }
+    }
+  });
+  // update
+  Object.keys(checked).forEach((key) => {
+    if (caseData[key]) {
+      responseBodyData[key] = caseData[key];
+    } else {
+      caseData[key] = responseBodyData[key];
+    }
+  });
+}
+
+function assertDynamicListListItemsHaveExpectedLabels(responseBody, dynamicListFieldName, midEventData) {
+  const actualDynamicElementLabels = removeUuidsFromDynamicList(responseBody.data, dynamicListFieldName);
+  const expectedDynamicElementLabels = removeUuidsFromDynamicList(midEventData, dynamicListFieldName);
+
+  expect(actualDynamicElementLabels).to.deep.equalInAnyOrder(expectedDynamicElementLabels);
+}
+
+function removeUiFields(pageId, caseData) {
+  console.log(`Removing ui fields for pageId: ${pageId}`);
+  const midEventField = midEventFieldForPage[pageId];
+
+  if (midEventField.uiField.remove === true) {
+    const fieldToRemove = midEventField.uiField.field;
+    delete caseData[fieldToRemove];
+  }
+  return caseData;
+}
+
+const midEventFieldForPage = {
+  ClaimValue: {
+    id: 'applicantSolicitor1PbaAccounts',
+    dynamicList: true,
+    uiField: {
+      remove: false,
+    },
+  },
+  ClaimantLitigationFriend: {
+    id: 'applicantSolicitor1CheckEmail',
+    dynamicList: false,
+    uiField: {
+      remove: false,
+    },
+  },
+  StatementOfTruth: {
+    id: 'applicantSolicitor1ClaimStatementOfTruth',
+    dynamicList: false,
+    uiField: {
+      remove: true,
+      field: 'uiStatementOfTruth'
+    },
+  }
+};
+
+const clearNoCData = (responseBody) => {
+  delete responseBody.data['changeOfRepresentation'];
+  return responseBody;
+};
+
+const clearHearingLocationData = (responseBody) => {
+  delete responseBody.data['hearingLocation'];
+  return responseBody;
+};
+
+const clearDataForExtensionDate = (responseBody, solicitor) => {
+  delete responseBody.data['businessProcess'];
+  delete responseBody.data['caseNotes'];
+  delete responseBody.data['systemGeneratedCaseDocuments'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
+
+
+  // solicitor cannot see data from respondent they do not represent
+  if (solicitor === 'solicitorOne') {
+    delete responseBody.data['respondent2ResponseDeadline'];
+  }
+
+  if (solicitor === 'solicitorTwo') {
+    delete responseBody.data['respondent1'];
+    delete responseBody.data['respondent1ResponseDeadline'];
+  } else {
+    delete responseBody.data['respondent2'];
+  }
+  return responseBody;
+};
+
+const clearDataForDefendantResponse = (responseBody, solicitor) => {
+  delete responseBody.data['businessProcess'];
+  delete responseBody.data['caseNotes'];
+  delete responseBody.data['systemGeneratedCaseDocuments'];
+  delete responseBody.data['respondentSolicitor2Reference'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
+
+  // solicitor cannot see data from respondent they do not represent
+  if (solicitor === 'solicitorOne') {
+    delete responseBody.data['respondent2ResponseDeadline'];
+  }
+  if (solicitor === 'solicitorTwo') {
+    delete responseBody.data['respondent1'];
+    delete responseBody.data['respondent1ClaimResponseType'];
+    delete responseBody.data['respondent1ClaimResponseDocument'];
+    delete responseBody.data['respondent1DQFileDirectionsQuestionnaire'];
+    delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
+    delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
+    delete responseBody.data['respondent1DQExperts'];
+    delete responseBody.data['respondent1DQWitnesses'];
+    delete responseBody.data['respondent1DQLanguage'];
+    delete responseBody.data['respondent1DQHearing'];
+    delete responseBody.data['respondent1DQHearingSupport'];
+    delete responseBody.data['respondent1DQVulnerabilityQuestions'];
+    delete responseBody.data['respondent1DQDraftDirections'];
+    delete responseBody.data['respondent1DQRequestedCourt'];
+    delete responseBody.data['respondent1DQRemoteHearing'];
+    delete responseBody.data['respondent1DQFurtherInformation'];
+    delete responseBody.data['respondent1DQFurtherInformation'];
+    delete responseBody.data['respondent1ResponseDeadline'];
+    delete responseBody.data['respondent1Experts'];
+    delete responseBody.data['respondent1Witnesses'];
+    delete responseBody.data['respondent1DetailsForClaimDetailsTab'];
+  } else {
+    delete responseBody.data['respondent2'];
+  }
+  return responseBody;
+};
+
+const clearDataForEvidenceUpload = (responseBody, eventName) => {
+  delete responseBody.data['caseNoteType'];
+  delete responseBody.data['caseNotes'];
+  delete responseBody.data['caseNotesTA'];
+  delete responseBody.data['disposalHearingFinalDisposalHearingTimeDJ'];
+  delete responseBody.data['disposalHearingHearingNotesDJ'];
+  delete responseBody.data['disposalHearingOrderMadeWithoutHearingDJ'];
+  delete responseBody.data['documentAndName'];
+  delete responseBody.data['documentAndNote'];
+  delete responseBody.data['hearingNotes'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
+  delete responseBody.data['applicantExperts'];
+  delete responseBody.data['applicantWitnesses'];
+  delete responseBody.data['disposalHearingBundle'];
+  delete responseBody.data['disposalHearingBundleToggle'];
+  delete responseBody.data['disposalHearingClaimSettlingToggle'];
+  delete responseBody.data['disposalHearingCostsToggle'];
+  delete responseBody.data['disposalHearingDisclosureOfDocuments'];
+  delete responseBody.data['disposalHearingDisclosureOfDocumentsToggle'];
+  delete responseBody.data['disposalHearingFinalDisposalHearing'];
+  delete responseBody.data['disposalHearingFinalDisposalHearingToggle'];
+  delete responseBody.data['disposalHearingJudgementDeductionValue'];
+  delete responseBody.data['disposalHearingJudgesRecital'];
+  delete responseBody.data['disposalHearingMedicalEvidence'];
+  delete responseBody.data['disposalHearingMedicalEvidenceToggle'];
+  delete responseBody.data['disposalHearingMethodInPerson'];
+  delete responseBody.data['disposalHearingMethodToggle'];
+  delete responseBody.data['disposalHearingNotes'];
+  delete responseBody.data['disposalHearingQuestionsToExperts'];
+  delete responseBody.data['disposalHearingQuestionsToExpertsToggle'];
+  delete responseBody.data['disposalHearingSchedulesOfLossToggle'];
+  delete responseBody.data['disposalHearingWitnessOfFact'];
+  delete responseBody.data['disposalHearingWitnessOfFactToggle'];
+  delete responseBody.data['drawDirectionsOrder'];
+  delete responseBody.data['drawDirectionsOrderRequired'];
+  delete responseBody.data['drawDirectionsOrderSmallClaims'];
+  delete responseBody.data['fastTrackAddNewDirections'];
+  delete responseBody.data['fastTrackAllocation'];
+  delete responseBody.data['fastTrackAltDisputeResolutionToggle'];
+  delete responseBody.data['fastTrackBuildingDispute'];
+  delete responseBody.data['fastTrackClinicalNegligence'];
+  delete responseBody.data['fastTrackCostsToggle'];
+  delete responseBody.data['fastTrackCreditHire'];
+  delete responseBody.data['fastTrackDisclosureOfDocuments'];
+  delete responseBody.data['fastTrackDisclosureOfDocumentsToggle'];
+  delete responseBody.data['fastTrackHearingNotes'];
+  delete responseBody.data['fastTrackHearingTime'];
+  delete responseBody.data['fastTrackHousingDisrepair'];
+  delete responseBody.data['fastTrackJudgementDeductionValue'];
+  delete responseBody.data['fastTrackJudgesRecital'];
+  delete responseBody.data['fastTrackMethod'];
+  delete responseBody.data['fastTrackMethodInPerson'];
+  delete responseBody.data['fastTrackMethodTelephoneHearing'];
+  delete responseBody.data['fastTrackMethodToggle'];
+  delete responseBody.data['fastTrackNotes'];
+  delete responseBody.data['fastTrackOrderWithoutJudgement'];
+  delete responseBody.data['fastTrackPersonalInjury'];
+  delete responseBody.data['fastTrackRoadTrafficAccident'];
+  delete responseBody.data['fastTrackSchedulesOfLoss'];
+  delete responseBody.data['fastTrackSchedulesOfLossToggle'];
+  delete responseBody.data['fastTrackSettlementToggle'];
+  delete responseBody.data['fastTrackTrial'];
+  delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
+  delete responseBody.data['fastTrackWitnessOfFact'];
+  delete responseBody.data['fastTrackWitnessOfFactToggle'];
+  delete responseBody.data['orderType'];
+  delete responseBody.data['respondent1Experts'];
+  delete responseBody.data['respondent1Witnesses'];
+  delete responseBody.data['setFastTrackFlag'];
+  delete responseBody.data['setSmallClaimsFlag'];
+  delete responseBody.data['smallClaimsCreditHire'];
+  delete responseBody.data['smallClaimsDocuments'];
+  delete responseBody.data['smallClaimsDocumentsToggle'];
+  delete responseBody.data['smallClaimsHearing'];
+  delete responseBody.data['smallClaimsHearingToggle'];
+  delete responseBody.data['smallClaimsJudgementDeductionValue'];
+  delete responseBody.data['smallClaimsJudgesRecital'];
+  delete responseBody.data['smallClaimsMethod'];
+  delete responseBody.data['smallClaimsMethodInPerson'];
+  delete responseBody.data['smallClaimsMethodToggle'];
+  delete responseBody.data['smallClaimsNotes'];
+  delete responseBody.data['smallClaimsWitnessStatementToggle'];
+  delete responseBody.data['smallClaimsWitnessStatement'];
+  delete responseBody.data['smallClaimsRoadTrafficAccident'];
+  delete responseBody.data['documentAndNoteToAdd'];
+  delete responseBody.data['documentAndNameToAdd'];
+  delete responseBody.data['channel'];
+  delete responseBody.data['disposalHearingMethodTelephoneHearing'];
+  delete responseBody.data['disposalHearingSchedulesOfLoss'];
+  delete responseBody.data['disposalHearingMethod'];
+  delete responseBody.data['hearingNoticeList'];
+  delete responseBody.data['information'];
+  delete responseBody.data['hearingDueDate'];
+  delete responseBody.data['disposalHearingAddNewDirections'];
+  delete responseBody.data['hearingFee'];
+  delete responseBody.data['hearingFeePBADetails'];
+  delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['sdoR2SmallClaimsJudgesRecital'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDocToggle'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
+  delete responseBody.data['sdoR2SmallClaimsImpNotes'];
+  delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['sdoR2SmallClaimsPPI'];
+  delete responseBody.data['sdoR2SmallClaimsHearing'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
+  delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
+  delete responseBody.data['smallClaims'];
+  delete responseBody.data['smallClaimsFlightDelay'];
+  delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['hearingMethodValuesDisposalHearing'];
+  delete responseBody.data['hearingMethodValuesFastTrack'];
+  delete responseBody.data['hearingMethodValuesSmallClaims'];
+  delete responseBody.data['smallClaimsAddNewDirections'];
+  delete responseBody.data['applicant1DQStatementOfTruth'];
+  delete responseBody.data['respondent1DQStatementOfTruth'];
+
+  responseBody = clearNIHLDataFromResponseBody(responseBody);
+
+  if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    delete responseBody.data['evidenceUploadOptions'];
+  }
+
+  if ( eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
+    delete responseBody.data['claimantResponseScenarioFlag'];
+    delete responseBody.data['claimant2ResponseFlag'];
+    delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
+    delete responseBody.data['applicantsProceedIntention'];
+  }
+
+  return responseBody;
+};
+
+const clearNIHLDataFromResponseBody = (responseBody) => {
+  delete responseBody.data['sdoR2ImportantNotesTxt'];
+  delete responseBody.data['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete responseBody.data['sdoR2UploadOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorAddendumReportToggle'];
+  delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete responseBody.data['sdoR2Trial'];
+  delete responseBody.data['sdoR2EvidenceAcousticEngineer'];
+  delete responseBody.data['sdoR2TrialToggle'];
+  delete responseBody.data['sdoR2DisclosureOfDocumentsToggle'];
+  delete responseBody.data['sdoAltDisputeResolution'];
+  delete responseBody.data['sdoR2AddendumReport'];
+  delete responseBody.data['sdoR2DisclosureOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete responseBody.data['sdoR2QuestionsToEntExpert'];
+  delete responseBody.data['sdoR2SeparatorExpertEvidenceToggle'];
+  delete responseBody.data['sdoR2ExpertEvidence'];
+  delete responseBody.data['sdoR2Settlement'];
+  delete responseBody.data['sdoFastTrackJudgesRecital'];
+  delete responseBody.data['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete responseBody.data['sdoR2QuestionsClaimantExpert'];
+  delete responseBody.data['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLossToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLoss'];
+  delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete responseBody.data['sdoVariationOfDirections'];
+  delete responseBody.data['sdoR2FurtherAudiogram'];
+  delete responseBody.data['sdoR2WitnessesOfFact'];
+  delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
+  delete responseBody.data['sdoR2ImportantNotesDate'];
+
+  return responseBody;
+};
+
+const clearFinalOrderLocationData = (responseBody) => {
+  delete responseBody.data['finalOrderFurtherHearingComplex'];
+  return responseBody;
+};
+
+const adjustDataForSolicitor = (user, data) => {
+  let fixtureClone = cloneDeep(data);
+  if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
+    delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
+  }
+  if (user === 'solicitorOne') {
+    delete fixtureClone['respondent2ResponseDeadline'];
+  } else if (user === 'solicitorTwo') {
+    delete fixtureClone['respondent1ResponseDeadline'];
+  }
+  return fixtureClone;
+};
+
+const addCaseId = (pageId) => {
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation();
+};
+
+const isEvidenceUpload = (pageId) => {
+  return (pageId === 'DocumentSelectionFastTrack'
+      || pageId === 'DocumentSelectionSmallClaim')
+    && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
+      || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
+};
+
+const isManageContactInformation = () => {
+  return eventName === 'MANAGE_CONTACT_INFORMATION';
+};
+
+const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
+  return (mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP' && (eventName === 'DEFENDANT_RESPONSE' || eventName === 'INFORM_AGREED_EXTENSION_DATE'));
 };
 
 module.exports = {
@@ -357,6 +922,11 @@ module.exports = {
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = await addFlagsToFixture(caseData);
+
+    if (carmEnabled) {
+      response = response+'_MEDIATION';
+    }
+
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
@@ -597,6 +1167,37 @@ module.exports = {
 
   },
 
+  evidenceUploadApplicant: async (user, mpScenario='') => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_APPLICANT';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      console.log('evidence upload small claim applicant for case id ' + caseId);
+      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      await validateEventPagesFlightDelay(ApplicantEvidenceSmallClaimData);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  evidenceUploadRespondent: async (user, multipartyScenario) => {
+    await apiRequest.setupTokens(user);
+    eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
+    mpScenario = multipartyScenario;
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
+      console.log('evidence upload small claim respondent for case id ' + caseId);
+      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      await validateEventPagesFlightDelay(RespondentEvidenceSmallClaimData);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   scheduleHearing: async (user, allocatedTrack) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
@@ -622,6 +1223,12 @@ module.exports = {
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },
 
+  triggerBundle: async () => {
+    const response_msg = await apiRequest.bundleTriggerEvent(caseId);
+    const response = await response_msg.text();
+    assert.equal(response, 'success');
+  },
+
   hearingFeePaid: async (user) => {
     await apiRequest.setupTokens(user);
 
@@ -636,6 +1243,18 @@ module.exports = {
     const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
     assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
     console.log('State moved to:'+updatedCaseState);
+  },
+
+  hearingFeePaidFlightDelay: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+
   },
 
   createCaseFlags: async (user) => {
@@ -697,10 +1316,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
@@ -735,7 +1359,31 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user) => {
+  editJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
+    console.log(`case in edit judgement ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'EDIT_JUDGMENT';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    if (mpScenario === 'ONE_V_ONE') {
+      await validateEventPages(data.EDIT_JUDGMENT_SPEC(whyRecorded, paymentPlanSelection));
+    } else {
+      await validateEventPages(data.EDIT_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
+    }
+
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment edited',
+      body: 'The judgment has been edited'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType) => {
     console.log(`case in All set aside judgment ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -744,9 +1392,26 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  referToJudgeDefenceReceived: async (user) => {
+    console.log(`case in Refer To Judge ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'REFER_JUDGE_DEFENCE_RECEIVED';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+    await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
@@ -762,11 +1427,9 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
-
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
 
-
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('CLOSED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);

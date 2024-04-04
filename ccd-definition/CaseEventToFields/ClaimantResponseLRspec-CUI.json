@@ -805,7 +805,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ADMIT_PAID_ONE_V_ONE\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_TWO\" OR showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_TWO_V_ONE\" AND showCarmFields=\"No\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CLAIMANT_MEDIATION_ONE_V_ONE\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
