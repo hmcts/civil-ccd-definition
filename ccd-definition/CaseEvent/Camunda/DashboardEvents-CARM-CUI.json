@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL_FOR_APPLICANT",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL_APPLICANT",
     "Name": "Mediation Unsuccessful",
     "Description": "Generate Dashboard Notification in CUI",
     "PreConditionState(s)": "*",
@@ -16,7 +16,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },  {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL_FOR_RESPONDENT",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL_RESPONDENT",
     "Name": "Mediation Unsuccessful",
     "Description": "Generate Dashboard Notification in CUI",
     "PreConditionState(s)": "*",
