@@ -410,6 +410,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackPersonalInjury",
+    "Label": " ",
+    "FieldType": "SdoR2FastTrackPersonalInjury",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoSeparatorAddendumReport",
     "Label": "****\n ### Addendum report",
     "FieldType": "Label",

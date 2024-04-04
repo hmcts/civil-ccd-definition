@@ -1751,7 +1751,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackPersonalInjury",
+    "CaseFieldID": "sdoR2FastTrackPersonalInjury",
     "PageFieldDisplayOrder": 52,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
