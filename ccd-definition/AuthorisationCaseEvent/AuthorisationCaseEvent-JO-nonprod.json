@@ -312,5 +312,24 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
