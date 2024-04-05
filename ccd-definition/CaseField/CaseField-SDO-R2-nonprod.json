@@ -787,5 +787,13 @@
     "FieldType": "SdoR2SmallClaimsImpNotes",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsWitnessStatementOther",
+    "Label": " ",
+    "FieldType": "SdoR2SmallClaimsWitnessStatements",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

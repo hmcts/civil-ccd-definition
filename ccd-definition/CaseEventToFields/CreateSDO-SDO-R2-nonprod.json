@@ -217,7 +217,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsWitnessStatement",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
     "PageFieldDisplayOrder": 27,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",

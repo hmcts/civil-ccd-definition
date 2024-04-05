@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatement",
+    "Label": " ",
+    "FieldType": "SmallClaimsWitnessStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
