@@ -42,12 +42,32 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM not enabl
   await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', false);
 });
 
+Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
+  await prepareClaim1v2SameSol(api_spec, false);
+  await api_spec.uploadMediationDocuments(config.applicantSolicitorUser );
+  await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
+});
+
 Scenario.only('1v1 claimant and defendant upload mediation documents - CARM enabled', async ({api_spec_small}) => {
   await prepareClaim1v1(api_spec_small, true);
   await api_spec_small.mediationUnsuccessful(mediationAdminRegion4, true);
   // await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   // await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
   // await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', true);
+});
+
+Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
+  await prepareClaim1v2SameSol(api_spec, true);
+  await api_spec.mediationUnsuccessful(mediationAdminRegion1, true);
+  await api_spec.uploadMediationDocuments(config.applicantSolicitorUser );
+  await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
+});
+
+Scenario('1v2 different solicitor claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
+  await prepareClaim1v2DiffSol(api_spec, false);
+  await api_spec.uploadMediationDocuments(config.applicantSolicitorUser);
+  await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
+  await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
 });
 
 Scenario('1v2 different solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
