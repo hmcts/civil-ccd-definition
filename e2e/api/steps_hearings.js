@@ -33,7 +33,7 @@ const getExpectedPayload = (serviceId) => {
         ],
         'externalCaseReference': null,
         'caseManagementLocationCode': '424213',
-        'caseSLAStartDate': '2024-03-04',
+        'caseSLAStartDate': date(),
         'autoListFlag': false,
         'hearingType': null,
         'hearingWindow': null,
