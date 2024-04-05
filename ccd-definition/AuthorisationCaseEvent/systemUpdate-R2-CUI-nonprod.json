@@ -139,7 +139,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_BOTH_PARTIES",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
