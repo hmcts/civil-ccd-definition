@@ -1929,7 +1929,8 @@
     "CaseFieldID": "fastTrackPersonalInjury",
     "ListElementCode": "date1",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "fastTrackPersonalInjury.date1 != \"\""
   },
   {
     "ID": "FastTrackPersonalInjury",
