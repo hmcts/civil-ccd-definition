@@ -714,6 +714,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "smallClaimsWitnessStatement",
+    "Label": " ",
+    "FieldType": "SmallClaimsWitnessStatement",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsWitnessStatementEndLine",
     "Label": "****",
     "FieldType": "Label",
