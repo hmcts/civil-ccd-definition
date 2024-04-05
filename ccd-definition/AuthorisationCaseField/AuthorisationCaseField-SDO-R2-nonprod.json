@@ -440,18 +440,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2FastTrackPersonalInjury",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2SeparatorExpertEvidenceToggle",
     "AccessControl": [
       {
