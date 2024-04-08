@@ -9,10 +9,16 @@ const serviceId = 'AAA7';
 let caseId;
 let caseFlagsAndHmcEnabled = false;
 
-let continueWithScenario = () => [
+let continueWithScenario = () => {
+  const continueWithScenario = [
     config.testEarlyAdopterCourts,
     caseFlagsAndHmcEnabled
-  ].filter(condition => !condition).length == 0;
+  ].filter(condition => !condition).length > 0;
+
+  console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? ' not ' : ''}enabled...`);
+
+  return continueWithScenario;
+};
 
 Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod');
 

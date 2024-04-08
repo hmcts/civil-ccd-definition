@@ -7,10 +7,16 @@ const serviceId = 'AAA6';
 let caseId;
 let caseFlagsAndHmcEnabled = false;
 
-let continueWithScenario = () => [
-  config.testEarlyAdopterCourts,
-  caseFlagsAndHmcEnabled
-].filter(condition => !condition).length == 0;
+let continueWithScenario = () => {
+  const continueWithScenario = [
+    config.testEarlyAdopterCourts,
+    caseFlagsAndHmcEnabled
+  ].filter(condition => !condition).length > 0;
+
+  console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? ' not ' : ''}enabled...`);
+
+  return continueWithScenario;
+};
 
 Feature('CCD 1v2 Spec fast hearings API test @api-hearings @api-hearings-spec @api-nonprod');
 
