@@ -106,5 +106,13 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1ResponseDeadlineChecked",
+    "Label": "Was respondent response deadline checked?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
