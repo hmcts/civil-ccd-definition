@@ -166,5 +166,17 @@
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_RESPONSE_DEADLINE_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FINAL_ORDER_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FINAL_ORDER_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
