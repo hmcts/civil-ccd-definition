@@ -222,7 +222,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_CLAIMANT",
-    "Name": "Dashboard Notice Claimant Trial",
+    "Name": "Dashboard Claimant Trial",
     "Description": "Dashboard Claimant Notification For Trial Arrangements",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -235,7 +235,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_DEFENDANT",
-    "Name": "Dashboard Notice Defendant Trial",
+    "Name": "Dashboard Defendant Trial",
     "Description": "Dashboard Defendant Notification For Trial Arrangements",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
