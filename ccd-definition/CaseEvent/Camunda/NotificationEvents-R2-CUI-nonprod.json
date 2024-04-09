@@ -249,7 +249,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_SOLICITOR_AFTER_NOC_APPROVAL",
-    "Name": "Email: Notice Defendant Solicitor NOC",
+    "Name": "Email: Notice Def Sol NOC",
     "Description": "Notify defendant solicitor after notice of change",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
