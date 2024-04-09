@@ -1044,6 +1044,11 @@ module.exports = {
     if(SdoR2){
       delete caseData['smallClaimsFlightDelay'];
       delete caseData['smallClaimsFlightDelayToggle'];
+      delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+      delete caseData['sdoR2NihlUseOfWelshLanguage'];
+      delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+      delete caseData['sdoR2DrhUseOfWelshLanguage'];
+      delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
