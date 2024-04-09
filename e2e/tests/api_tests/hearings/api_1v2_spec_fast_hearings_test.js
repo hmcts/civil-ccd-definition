@@ -13,7 +13,7 @@ let continueWithScenario = () => {
     caseFlagsAndHmcEnabled
   ].filter(condition => !condition).length == 0;
 
-  console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? ' not ' : ''}enabled...`);
+  console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? '' : ' not '}enabled...`);
 
   return continueWithScenario;
 };
