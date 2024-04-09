@@ -955,7 +955,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2NIHLUseOfWelshIncludeInOrderToggle",
+    "CaseFieldID": "sdoR2NihlUseOfWelshIncludeInOrderToggle",
     "PageFieldDisplayOrder": 52,
     "DisplayContext": "OPTIONAL",
     "PageID": "SdoR2FastTrack",
@@ -966,14 +966,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2NIHLUseOfWelshLanguage",
+    "CaseFieldID": "sdoR2NihlUseOfWelshLanguage",
     "PageFieldDisplayOrder": 53,
     "DisplayContext": "COMPLEX",
     "PageID": "SdoR2FastTrack",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2NIHLUseOfWelshIncludeInOrderToggle = \"INCLUDE\""
+    "FieldShowCondition": "sdoR2NihlUseOfWelshIncludeInOrderToggle = \"INCLUDE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1317,7 +1317,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2DRHUseOfWelshIncludeInOrderToggle",
+    "CaseFieldID": "sdoR2DrhUseOfWelshIncludeInOrderToggle",
     "PageFieldDisplayOrder": 27,
     "DisplayContext": "OPTIONAL",
     "PageID": "SdoR2SmallClaims",
@@ -1328,14 +1328,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2DRHUseOfWelshLanguage",
+    "CaseFieldID": "sdoR2DrhUseOfWelshLanguage",
     "PageFieldDisplayOrder": 28,
     "DisplayContext": "COMPLEX",
     "PageID": "SdoR2SmallClaims",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sdoR2DRHUseOfWelshIncludeInOrderToggle = \"INCLUDE\""
+    "FieldShowCondition": "sdoR2DrhUseOfWelshIncludeInOrderToggle = \"INCLUDE\""
   },
   {
     "CaseTypeID": "CIVIL",

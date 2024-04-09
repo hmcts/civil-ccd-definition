@@ -1296,7 +1296,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2NIHLUseOfWelshLanguage",
+    "CaseFieldID": "sdoR2NihlUseOfWelshLanguage",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1309,7 +1309,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2NIHLUseOfWelshIncludeInOrderToggle",
+    "CaseFieldID": "sdoR2NihlUseOfWelshIncludeInOrderToggle",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1335,7 +1335,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2DRHUseOfWelshLanguage",
+    "CaseFieldID": "sdoR2DrhUseOfWelshLanguage",
     "AccessControl": [
       {
         "UserRoles": [
@@ -1348,7 +1348,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2DRHUseOfWelshIncludeInOrderToggle",
+    "CaseFieldID": "sdoR2DrhUseOfWelshIncludeInOrderToggle",
     "AccessControl": [
       {
         "UserRoles": [

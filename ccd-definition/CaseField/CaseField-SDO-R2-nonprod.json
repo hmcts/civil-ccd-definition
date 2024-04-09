@@ -798,7 +798,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoR2NIHLUseOfWelshIncludeInOrderToggle",
+    "ID": "sdoR2NihlUseOfWelshIncludeInOrderToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "IncludeInOrderToggle",
@@ -807,7 +807,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoR2NIHLUseOfWelshLanguage",
+    "ID": "sdoR2NihlUseOfWelshLanguage",
     "Label": " ",
     "FieldType": "SdoR2WelshLanguageUsage",
     "SecurityClassification": "Public",
@@ -823,7 +823,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoR2DRHUseOfWelshIncludeInOrderToggle",
+    "ID": "sdoR2DrhUseOfWelshIncludeInOrderToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "IncludeInOrderToggle",
@@ -832,7 +832,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sdoR2DRHUseOfWelshLanguage",
+    "ID": "sdoR2DrhUseOfWelshLanguage",
     "Label": " ",
     "FieldType": "SdoR2WelshLanguageUsage",
     "SecurityClassification": "Public",
