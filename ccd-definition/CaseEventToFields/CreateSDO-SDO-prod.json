@@ -47,7 +47,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsHearingEndLine",
+    "CaseFieldID": "smallClaimsMethodTitle",
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaims",
@@ -58,8 +58,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "smallClaimsMethodTitle",
+    "CaseFieldID": "hearingMethodValuesSmallClaims",
     "PageFieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMethodInPerson",
+    "PageFieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SmallClaims",
+    "PageDisplayOrder": 5,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsHearingEndLine",
+    "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaims",
     "PageDisplayOrder": 5,
@@ -895,5 +916,28 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hearingMethodValuesFastTrack=\"DO NOT SHOW\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalOrderWithoutHearing",
+    "PageFieldDisplayOrder": 56,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingNotes",
+    "PageFieldDisplayOrder": 57,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingCostsToggle=\"DONT SHOW IN UI\""
   }
 ]
