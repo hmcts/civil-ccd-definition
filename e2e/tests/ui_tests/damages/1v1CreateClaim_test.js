@@ -25,7 +25,7 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
+Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod ');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -45,6 +45,7 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
   await I.notifyClaim();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
@@ -52,6 +53,8 @@ Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}
 }).retry(3);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim details', async ({I}) => {
+
+  await I.login(config.applicantSolicitorUser);
   await I.notifyClaimDetails();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
@@ -65,18 +68,21 @@ Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
 }).retry(3);
 
 Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
   await I.informAgreedExtensionDate(1);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Inform agreed extension date'));
 }).retry(3);
 
 Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
   await I.addDefendantLitigationFriend();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Add litigation friend'));
 });
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
+  await I.login(config.defendantSolicitorUser);
   await I.respondToClaim({defendant1Response: 'fullDefence'});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
