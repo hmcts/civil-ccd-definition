@@ -11,7 +11,7 @@ let continueWithScenario = () => {
   const continueWithScenario = [
     config.testEarlyAdopterCourts,
     caseFlagsAndHmcEnabled
-  ].filter(condition => !condition).length > 0;
+  ].filter(condition => !condition).length == 0;
 
   console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? ' not ' : ''}enabled...`);
 
