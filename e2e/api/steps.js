@@ -1415,6 +1415,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
+    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
   }
 
   assert.equal(response.status, 200);
