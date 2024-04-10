@@ -96,7 +96,7 @@ module.exports = function (){
    * @param hearings
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false) => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false, carmEnabled = false) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -144,6 +144,7 @@ module.exports = function (){
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -268,6 +269,13 @@ module.exports = function (){
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, 'FULL_DEFENCE');
     }
+  },
+
+  amendClaimMovedToMediationDate: async (user, date) => {
+    await apiRequest.setupTokens(user);
+    let claimMovedToMediationDate ={};
+    claimMovedToMediationDate = {'claimMovedToMediationOn': date};
+    testingSupport.updateCaseData(caseId, claimMovedToMediationDate);
   },
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {
