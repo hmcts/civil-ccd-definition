@@ -313,6 +313,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL",
+    "Name": "Notice Mediation Unsuccessful",
+    "Description": "Generate Dashboard Notification in CUI for Mediation Unsuccessful",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL",
     "Name": "Dashboard Mediation Unsuccess",
     "Description": "Generate Dashboard Notification in CUI for CCJ requested by claimant",
