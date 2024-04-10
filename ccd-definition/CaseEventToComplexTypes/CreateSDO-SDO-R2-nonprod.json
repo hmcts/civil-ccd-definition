@@ -1110,5 +1110,102 @@
     "ListElementCode": "text",
     "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "text",
+    "EventElementLabel": "A failure to comply with the paragraph above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "detailsShowToggle",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "sdoR2FastTrackCreditHireDetails",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input5",
+    "FieldDisplayOrder": 12,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input6",
+    "FieldDisplayOrder": 13,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 14,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input7",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "date4",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 18,
+    "DisplayContext": "READONLY"
   }
 ]

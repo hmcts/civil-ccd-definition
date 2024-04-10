@@ -787,5 +787,13 @@
     "FieldType": "SdoR2SmallClaimsImpNotes",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "SdoR2FastTrackCreditHire",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

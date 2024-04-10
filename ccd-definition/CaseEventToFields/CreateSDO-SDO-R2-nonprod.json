@@ -1715,7 +1715,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCreditHire",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
     "PageFieldDisplayOrder": 49,
     "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
