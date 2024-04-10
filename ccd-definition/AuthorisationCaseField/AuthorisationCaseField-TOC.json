@@ -115,8 +115,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile",
-          "caseworker-civil-admin"
+          "judge-profile"
         ],
         "CRUD": "CRU"
       }
