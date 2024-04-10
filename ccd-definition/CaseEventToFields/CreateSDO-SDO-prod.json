@@ -939,5 +939,17 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "disposalHearingCostsToggle=\"DONT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "disposalHearingFinalDisposalHearing",
+    "PageFieldDisplayOrder": 58,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DisposalHearing",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "disposalHearingFinalDisposalHearingToggle=\"DONT SHOW UI BEING UPDATED\""
   }
 ]
