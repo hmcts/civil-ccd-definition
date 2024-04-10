@@ -129,7 +129,33 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joSetAsideDate",
+    "ID": "joSetAsideReason",
+    "Label": "Why is this judgment being set aside?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "JoSetAsideReasonList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joSetAsideJudgmentErrorText",
+    "Label": "Enter any additional information. This will be shown to the parties in the case.",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "joSetAsideOrderType",
+  "Label": "Which type of order has been made?",
+  "FieldType": "FixedRadioList",
+  "FieldTypeParameter": "JoSetAsideOrderTypeList",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+   },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joSetAsideOrderDate",
     "Label": "Enter the date of the order setting aside the judgment",
     "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
@@ -138,10 +164,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joConfirmReadOrderForSetAside",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "JoConfirmReadOrderForSetAside",
+    "ID": "joSetAsideDefenceReceivedDate",
+    "Label": "Enter the date of the defence was received",
+    "HintText": "For example, 16 04 2021",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
