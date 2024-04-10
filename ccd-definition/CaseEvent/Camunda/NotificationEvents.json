@@ -157,7 +157,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_RES_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC_MULTITRACK",
+    "ID": "NOTIFY_APP_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC_MULTITRACK",
     "Name": "Email: Transferred offline",
     "Description": "Notify respondent solicitor 1 for claimant confirms to proceed",
     "PreConditionState(s)": "*",
