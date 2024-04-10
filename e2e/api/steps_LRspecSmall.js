@@ -271,13 +271,6 @@ module.exports = function (){
     }
   },
 
-  amendClaimMovedToMediationDate: async (user, date) => {
-    await apiRequest.setupTokens(user);
-    let claimMovedToMediationDate ={};
-    claimMovedToMediationDate = {'claimMovedToMediationOn': date};
-    testingSupport.updateCaseData(caseId, claimMovedToMediationDate);
-  },
-
   mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
 
