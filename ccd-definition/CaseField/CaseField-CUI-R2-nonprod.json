@@ -114,5 +114,13 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1ClaimSettledLink",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
