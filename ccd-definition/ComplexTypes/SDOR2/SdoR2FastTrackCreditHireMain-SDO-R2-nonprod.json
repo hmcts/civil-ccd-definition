@@ -34,7 +34,7 @@
   },
   {
     "ID": "SdoR2FastTrackCreditHire",
-    "ListElementCode": "fastTrackCreditHireOptional",
+    "ListElementCode": "sdoR2FastTrackCreditHireDetails",
     "FieldType": "SdoR2FastTrackCreditHireDetails",
     "ElementLabel": "Test",
     "SecurityClassification": "Public",

@@ -1157,7 +1157,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "input5",
-    "FieldDisplayOrder": 12,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1165,7 +1165,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "input6",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1173,7 +1173,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "date3",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1181,7 +1181,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "input7",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1189,7 +1189,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "date4",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1197,7 +1197,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "input8",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1205,7 +1205,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "line",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "READONLY"
   }
 ]
