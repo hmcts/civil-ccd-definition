@@ -1499,9 +1499,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackWitnessOfFact",
+    "CaseFieldID": "sdoR2FastTrackWitnessOfFact",
     "PageFieldDisplayOrder": 26,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "FastTrack",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,
