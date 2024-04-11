@@ -26,16 +26,13 @@ async function prepareClaim1v2DiffSol(api_spec, carmEnabled) {
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_APPLICANT_INTENTION', carmEnabled);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
-  await api_spec.amendClaimMovedToMediationDate(config.systemupdate, date(-1));
 }
 
 async function prepareClaim2v1(api_spec, carmEnabled) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE', carmEnabled);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
-  await api_spec.amendClaimMovedToMediationDate(config.systemupdate, date(-1));
 }
-
 
 Scenario('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
   await prepareClaim1v1(api_spec_small, false);
