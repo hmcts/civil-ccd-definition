@@ -953,9 +953,9 @@ module.exports = {
   mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
 
+    await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
-    await apiRequest.setupTokens(user);
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseId);
     console.log('End of unsuccessful mediation');
