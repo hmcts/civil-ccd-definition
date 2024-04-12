@@ -191,16 +191,16 @@ const calculatedClaimsTrackCarmEnabled = {
 const welshLanFields = {
   sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
   sdoR2DrhUseOfWelshLanguage: (data) => {
-    return typeof data.description === 'string'
+    return typeof data.description === 'string';
   },
   sdoR2SmallClaimsUseOfWelshLanguage: (data) => {
-    return typeof data.description === 'string'
+    return typeof data.description === 'string';
   },
   sdoR2FastTrackUseOfWelshLanguage: (data) => {
-    return typeof data.description === 'string'
+    return typeof data.description === 'string';
   },
   sdoR2DisposalHearingUseOfWelshLanguage: (data) => {
-    return typeof data.description === 'string'
+    return typeof data.description === 'string';
   }
 };
 
@@ -1707,7 +1707,7 @@ module.exports = {
     data.calculated.ClaimsTrack = {
       ...data.calculated.ClaimsTrack,
       ...welshLanFields
-    }
+    };
     data.calculated.FastTrack = {
       ...data.calculated.OrderType,
       setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,

@@ -129,7 +129,7 @@ const calculatedClaimsTrackDRH = {
     },
     sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
     sdoR2DrhUseOfWelshLanguage: (data) => {
-      return typeof data.description === 'string'
+      return typeof data.description === 'string';
     },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
