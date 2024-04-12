@@ -40,5 +40,11 @@
     "CaseEventID": "SET_SETTLEMENT_AGREEMENT_DEADLINE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_LIP_SOLICITOR",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
