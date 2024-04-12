@@ -953,9 +953,9 @@ module.exports = {
   mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
 
+    await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
-    await apiRequest.setupTokens(user);
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseId);
     console.log('End of unsuccessful mediation');
@@ -1011,6 +1011,13 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
+  },
+
+  amendClaimMovedToMediationDate: async (user, date) => {
+    await apiRequest.setupTokens(user);
+    let claimMovedToMediationDate ={};
+    claimMovedToMediationDate = {'claimMovedToMediationOn': date};
+    testingSupport.updateCaseData(caseId, claimMovedToMediationDate);
   },
 
   amendRespondent1ResponseDeadline: async (user) => {
