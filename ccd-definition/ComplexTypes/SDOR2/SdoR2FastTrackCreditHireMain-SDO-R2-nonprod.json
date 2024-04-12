@@ -36,7 +36,7 @@
     "ID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails",
     "FieldType": "SdoR2FastTrackCreditHireDetails",
-    "ElementLabel": "Test",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "detailsShowToggle = \"ADD\""

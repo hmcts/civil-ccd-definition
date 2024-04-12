@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "TrialCreditHire",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
+
+
+
