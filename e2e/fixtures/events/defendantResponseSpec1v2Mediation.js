@@ -43,7 +43,27 @@ module.exports = {
           },
           MediationAvailability: {
             resp1MediationAvailability: {
-              isMediationUnavailablityExists: 'No'
+              isMediationUnavailablityExists: 'Yes',
+              unavailableDatesForMediation: [
+                element({
+                  unavailableDateType: 'SINGLE_DATE',
+                  date: date(10)
+                }),
+                element({
+                  unavailableDateType: 'SINGLE_DATE',
+                  date: date(55)
+                }),
+                element({
+                  fromDate: date(30),
+                  toDate: date(35),
+                  unavailableDateType: 'DATE_RANGE',
+                }),
+                element({
+                  fromDate: date(40),
+                  toDate: date(45),
+                  unavailableDateType: 'DATE_RANGE',
+                })
+              ]
             }
           },
           SmallClaimExperts: {
