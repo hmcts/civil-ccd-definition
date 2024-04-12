@@ -127,6 +127,10 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsUploadDoc: (data) => {
       return typeof data.sdoUploadOfDocumentsTxt === 'string';
     },
+    sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+    sdoR2DrhUseOfWelshLanguage: (data) => {
+      return typeof data.description === 'string'
+    },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
         && typeof data.trialOnOptions === 'string'
@@ -1044,6 +1048,7 @@ module.exports = {
     if(SdoR2){
       delete caseData['smallClaimsFlightDelay'];
       delete caseData['smallClaimsFlightDelayToggle'];
+      //required to fix existing prod api tests for sdo
       delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
       delete caseData['sdoR2NihlUseOfWelshLanguage'];
       delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
@@ -1415,6 +1420,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
+    //required to fix existing prod api tests for sdo
     delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
     delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
