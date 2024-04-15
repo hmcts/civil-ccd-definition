@@ -1112,6 +1112,118 @@
     "DisplayContext": "READONLY"
   },
   {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "input2",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "date2",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "input3",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "input4",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "date4",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FastTrackPersonalInjury",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackPersonalInjury",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2NIHLWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2NihlUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DRHWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DrhUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DisposalHearingWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
     "ID": "SdoR2SmallClaimsMediation",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
