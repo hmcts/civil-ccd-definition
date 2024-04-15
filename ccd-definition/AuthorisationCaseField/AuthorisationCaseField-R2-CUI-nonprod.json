@@ -2381,7 +2381,8 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
       }
