@@ -15,7 +15,7 @@ serviceToken=$(${dir}/idam-lease-service-token.sh ccd_gw $(docker run --rm toolb
 version="n/a"
 newVersion="n/a"
 
-if [[ "${ENVIRONMENT}" == "preview" ] || [ "${ENVIRONMENT}" == "aat" ]]; then
+if ["${ENVIRONMENT}" == "preview"  ||"${ENVIRONMENT}" == "aat"]; then
   version=$(curl --insecure --silent --show-error -X GET \
     ${CCD_DEFINITION_STORE_API_BASE_URL:-http://localhost:4451}/api/data/case-type/CIVIL/version \
     -H "Authorization: Bearer ${userToken}" \
