@@ -33,7 +33,7 @@ uploadResponse=$(curl --insecure --silent -w "\n%{http_code}"  --show-error --ma
 upload_http_code=$(echo "$uploadResponse" | tail -n1)
 upload_response_content=$(echo "$uploadResponse" | sed '$d')
 
-if [ [ "${ENVIRONMENT}" == "preview"] || [ "${ENVIRONMENT}" == "aat"] ] && [ "${upload_http_code}" != "201" ]; then
+if [ [ [ "${ENVIRONMENT}" == "preview"] || [ "${ENVIRONMENT}" == "aat"] ] && [ "${upload_http_code}" != "201" ] ]; then
   echo "Bypassing audit check as on preview - will wait 45s and then verify the version has changed"
   sleep 45
 
