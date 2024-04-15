@@ -627,6 +627,11 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['smallClaimsAddNewDirections'];
   delete responseBody.data['applicant1DQStatementOfTruth'];
   delete responseBody.data['respondent1DQStatementOfTruth'];
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
 
   responseBody = clearNIHLDataFromResponseBody(responseBody);
 
@@ -1142,7 +1147,7 @@ module.exports = {
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
-
+    const SdoR2 = await checkToggleEnabled(SDOR2);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
@@ -1150,6 +1155,13 @@ module.exports = {
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    if(SdoR2){
+      delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+      delete caseData['sdoR2NihlUseOfWelshLanguage'];
+      delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+      delete caseData['sdoR2DrhUseOfWelshLanguage'];
+      delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+    }
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
@@ -1495,7 +1507,7 @@ module.exports = {
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO') {
@@ -1512,6 +1524,13 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+  if(sdoR2Flag){
+    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  }
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
