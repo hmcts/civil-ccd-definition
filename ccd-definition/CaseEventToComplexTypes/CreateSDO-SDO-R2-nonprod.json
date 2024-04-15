@@ -1110,5 +1110,13 @@
     "ListElementCode": "text",
     "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsMediation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   }
 ]

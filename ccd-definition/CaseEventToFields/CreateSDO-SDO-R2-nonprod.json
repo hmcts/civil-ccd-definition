@@ -965,7 +965,8 @@
     "PageID": "SdoR2SmallClaims",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"No\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1205,8 +1206,44 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2SmallClaimsImpNotesLbl",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionTitle",
     "PageFieldDisplayOrder": 26,
+    "DisplayContext": "READONLY",
+    "PageID": "SdoR2SmallClaims",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionToggle",
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "SdoR2SmallClaims",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "showCarmFields=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
+    "PageFieldDisplayOrder": 28,
+    "DisplayContext": "COMPLEX",
+    "PageID": "SdoR2SmallClaims",
+    "PageDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "sdoR2SmallClaimsMediationSectionToggle=\"INCLUDE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsImpNotesLbl",
+    "PageFieldDisplayOrder": 30,
     "DisplayContext": "READONLY",
     "PageID": "SdoR2SmallClaims",
     "PageDisplayOrder": 6,
@@ -1217,7 +1254,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsImpNotes",
-    "PageFieldDisplayOrder": 27,
+    "PageFieldDisplayOrder": 31,
     "DisplayContext": "MANDATORY",
     "PageID": "SdoR2SmallClaims",
     "PageDisplayOrder": 6,
