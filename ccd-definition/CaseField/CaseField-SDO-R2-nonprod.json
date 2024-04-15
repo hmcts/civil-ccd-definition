@@ -790,6 +790,147 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoR2NIHLUseOfWelshLanguageTitle",
+    "Label": "****\n ### Use of the Welsh Language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2NihlUseOfWelshIncludeInOrderToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2NihlUseOfWelshLanguage",
+    "Label": " ",
+    "FieldType": "SdoR2WelshLanguageUsage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DRHUseOfWelshLanguageTitle",
+    "Label": "****\n ### Use of the Welsh Language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DrhUseOfWelshIncludeInOrderToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DrhUseOfWelshLanguage",
+    "Label": " ",
+    "FieldType": "SdoR2WelshLanguageUsage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackUseOfWelshLanguageTitle",
+    "Label": "### Use of the Welsh Language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackUseOfWelshToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackUseOfWelshLanguage",
+    "Label": " ",
+    "FieldType": "SdoR2WelshLanguageUsage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackWelshLangEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsUseOfWelshLanguageTitle",
+    "Label": "****\n ### Use of the Welsh Language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsUseOfWelshToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsUseOfWelshLanguage",
+    "Label": " ",
+    "FieldType": "SdoR2WelshLanguageUsage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsWelshLangEndLine",
+    "Label": "****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DisposalHearingUseOfWelshLanguageTitle",
+    "Label": "****\n ### Use of the Welsh Language",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DisposalHearingUseOfWelshToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2DisposalHearingUseOfWelshLanguage",
+    "Label": " ",
+    "FieldType": "SdoR2WelshLanguageUsage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoR2FastTrackCreditHire",
     "Label": "Credit hire",
     "FieldType": "SdoR2FastTrackCreditHire",

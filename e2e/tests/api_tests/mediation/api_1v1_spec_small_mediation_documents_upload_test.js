@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-
+const {date} = require('../../../api/dataHelper');
 const config = require('../../../config.js');
 
 let mediationAdminRegion1 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
@@ -8,7 +8,7 @@ let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : c
 Feature('Spec small claims mediation API test @api-spec-mediation @api-nonprod');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
-  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', carmEnabled);
 }
@@ -33,7 +33,6 @@ async function prepareClaim2v1(api_spec, carmEnabled) {
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
 }
-
 
 Scenario('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
   await prepareClaim1v1(api_spec_small, false);
