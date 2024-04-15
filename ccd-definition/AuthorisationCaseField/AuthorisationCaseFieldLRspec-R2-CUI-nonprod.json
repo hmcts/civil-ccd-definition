@@ -2375,10 +2375,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2388,10 +2393,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2401,10 +2411,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2414,10 +2429,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2427,10 +2447,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2440,10 +2465,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+         "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
