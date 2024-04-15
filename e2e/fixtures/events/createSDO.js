@@ -188,8 +188,25 @@ const calculatedClaimsTrackCarmEnabled = {
   }
 };
 
+const welshLanFields = {
+  sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+  sdoR2DrhUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2SmallClaimsUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2FastTrackUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2DisposalHearingUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  }
+};
+
 const calculatedClaimsTrackDRH = {
   ClaimsTrack: {...calculatedClaimsTrackWOSum.ClaimsTrack,
+    ...welshLanFields,
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
     fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
     fastTrackHearingTime: (d) =>
@@ -1663,7 +1680,10 @@ module.exports = {
             includeInOrderToggle: [
               'INCLUDE'
             ]
-          }
+          },
+          sdoR2NihlUseOfWelshLanguage: {
+            description: 'If any party is legally represented then when filing any witness evidence, the legal representatives must notify the Court in writing that:\na) they have advised their client of the entitlement of any party or witness to give evidence in the Welsh Language in accordance with the Welsh Language Act 1993(which is not dependant on whether they are fluent in English)\nb) instructions have been taken as to whether any party or witness will exercise that entitlement, in which case the legal representatives must so inform the Court so that arrangements can be made by the Court for instantaneous translation facilities to be made available without charge\n\nAny unrepresented party or witness for such a party being entitled to give evidence in the Welsh Language in accordance with the principle of the Welsh Language Act 1993 must notify the Court when sending to the Court their witness evidence whether any party or witness will exercise that entitlement whereupon the Court will make arrangements for instantaneous translation facilities to be made available without charge.'
+          },
         }
       },
       midEventData: {
@@ -1683,6 +1703,10 @@ module.exports = {
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.ClaimsTrack = {
+      ...data.calculated.ClaimsTrack,
+      ...welshLanFields
     };
     data.calculated.FastTrack = {
       ...data.calculated.OrderType,
