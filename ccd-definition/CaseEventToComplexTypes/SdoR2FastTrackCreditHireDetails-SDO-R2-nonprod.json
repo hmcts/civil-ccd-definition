@@ -18,7 +18,7 @@
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "SdoR2FastTrackCreditHireDetails",
+    "CaseFieldID": "SdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.date1",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
@@ -42,7 +42,7 @@
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2FastTrackCreditHireDetails",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.date2",
     "FieldDisplayOrder": 11,
     "DisplayContext": "OPTIONAL"

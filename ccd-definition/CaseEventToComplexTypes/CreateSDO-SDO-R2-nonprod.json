@@ -1254,7 +1254,7 @@
     "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "detailsShowToggle",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "SdoR2FastTrackCreditHire",
