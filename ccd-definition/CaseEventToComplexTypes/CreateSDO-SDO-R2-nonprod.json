@@ -1182,5 +1182,45 @@
     "ListElementCode": "line",
     "FieldDisplayOrder": 9,
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2NIHLWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2NihlUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DRHWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DrhUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2DisposalHearingWelshLanguageUsage",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLanguage",
+    "ListElementCode": "description",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
   }
 ]
