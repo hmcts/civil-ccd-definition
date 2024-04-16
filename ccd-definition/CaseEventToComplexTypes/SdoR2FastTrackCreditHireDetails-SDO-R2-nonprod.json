@@ -18,7 +18,7 @@
   {
     "ID": "SdoR2FastTrackCreditHireDetails",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "SdoR2FastTrackCreditHire",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
     "ListElementCode": "sdoR2FastTrackCreditHireDetails.date1",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL"
