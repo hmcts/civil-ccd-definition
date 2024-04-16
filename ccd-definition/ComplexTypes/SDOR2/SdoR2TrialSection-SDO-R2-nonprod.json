@@ -1,6 +1,14 @@
 [
   {
     "ID": "SdoR2Trial",
+    "ListElementCode": "sdoR2TrialLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### A trial will take place on",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2Trial",
     "ListElementCode": "trialOnOptions",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "TrialOnRadioOptions",
@@ -12,7 +20,7 @@
     "ID": "SdoR2Trial",
     "ListElementCode": "sdoR2TrialFirstOpenDateAfter",
     "FieldType": "SdoR2FirstOpenDateAfter",
-    "ElementLabel": "First open date after",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "trialOnOptions = \"OPEN_DATE\""
@@ -21,7 +29,7 @@
     "ID": "SdoR2Trial",
     "ListElementCode": "sdoR2TrialWindow",
     "FieldType": "SdoR2TrialFromTo",
-    "ElementLabel": "Trial window",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "trialOnOptions = \"TRIAL_WINDOW\""
