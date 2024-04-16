@@ -43,6 +43,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_LIP_SOLICITOR",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_ISSUE_FOR_RESPONDENT1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -229,6 +235,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_APPLICANT_LIP_SOLICITOR",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_BUNDLE_CREATED_FOR_DEFENDANT1",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -236,12 +248,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_BUNDLE_CREATED_FOR_CLAIMANT1",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_APPLICANT_LIP_SOLICITOR",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
