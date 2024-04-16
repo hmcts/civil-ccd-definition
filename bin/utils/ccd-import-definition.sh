@@ -34,7 +34,7 @@ upload_http_code=$(echo "$uploadResponse" | tail -n1)
 upload_response_content=$(echo "$uploadResponse" | sed '$d')
 
 if [ "${ENVIRONMENT}" == "preview" ] || [ "${ENVIRONMENT}" == "aat" ]; then
-if [ "${upload_http_code}" != "201" ]; then
+ if [ "${upload_http_code}" != "201" ]; then
   echo "Bypassing audit check as on preview - will wait 45s and then verify the version has changed"
   sleep 45
 
@@ -48,7 +48,7 @@ if [ "${upload_http_code}" != "201" ]; then
       echo "Version has not changed - the definition was not imported successfully"
       exit 1
     fi
-fi
+ fi
   echo "CCD definition version has changed, definition successfully uploaded"
   exit 0
 fi
