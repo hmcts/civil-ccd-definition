@@ -250,7 +250,7 @@ module.exports = {
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
     let bodyText = 'Your claim will not be issued until payment is confirmed.';
-    let headerText = '# Please now pay your claim fee\n# using the link below';
+    let headerText = '# Please now pay your claim fee';
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
       header: headerText,
       body: bodyText
@@ -1449,6 +1449,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesSmallClaims;
       if (sdoR2Flag) {
         clearNihlDataFromCaseData();
+        delete caseData.sdoR2SmallClaimsHearing;
       }
     }
     if (responseBody.data.sdoOrderDocument) {
