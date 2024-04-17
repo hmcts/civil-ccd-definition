@@ -168,6 +168,7 @@ camunda-bpm:
   java:
     disableKeyVaults: true
     environment:
+      CAMUNDA_URL: http://${SERVICE_NAME}-camunda/engine-rest/
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
 #      CAMUNDA_DB_USER_NAME: hmcts
 #      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
