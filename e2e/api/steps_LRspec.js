@@ -1027,9 +1027,10 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
-  defaultJudgmentSpec: async (user, scenario) => {
+  defaultJudgmentSpec: async (user, scenario, isNonDivergent) => {
     await apiRequest.setupTokens(user);
 
+    let state;
     let registrationData;
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -1084,6 +1085,7 @@ module.exports = {
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
+      state = isNonDivergent ? 'All_FINAL_ORDERS_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
@@ -1096,6 +1098,7 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
+      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
     } else {
       registrationData = {
@@ -1108,11 +1111,12 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
+      state = 'All_FINAL_ORDERS_ISSUED';
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
     }
 
     caseData = update(caseData, registrationData);
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    await assertSubmittedEvent(state, {
       header: '',
       body: ''
     }, true);
