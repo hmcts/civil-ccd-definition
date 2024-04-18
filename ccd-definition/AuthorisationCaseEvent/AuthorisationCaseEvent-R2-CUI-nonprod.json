@@ -349,6 +349,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT2_MEDIATION_AGREEMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_PART_ADMIT_CLAIM_SETTLED",
     "AccessControl": [
       {
@@ -1044,6 +1056,30 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

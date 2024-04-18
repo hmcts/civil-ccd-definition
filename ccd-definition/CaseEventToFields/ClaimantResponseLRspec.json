@@ -236,5 +236,16 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmediately",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "responseClaimTrack=\"DO NOT SHOW IN UI\""
   }
 ]
