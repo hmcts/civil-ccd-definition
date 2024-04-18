@@ -1050,6 +1050,8 @@ module.exports = {
       delete caseData['smallClaimsFlightDelayToggle'];
       //required to fix existing prod api tests for sdo
       clearWelshParaFromCaseData();
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
@@ -1422,6 +1424,8 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
   }
 
   assert.equal(response.status, 200);
