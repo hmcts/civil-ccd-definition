@@ -632,6 +632,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
 
   responseBody = clearNIHLDataFromResponseBody(responseBody);
 
@@ -1161,6 +1163,8 @@ module.exports = {
       delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
       delete caseData['sdoR2DrhUseOfWelshLanguage'];
       delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
@@ -1530,6 +1534,8 @@ const assertValidData = async (data, pageId) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
   assert.equal(response.status, 200);
 
