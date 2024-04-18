@@ -994,7 +994,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQFurtherInformation",
-    "Label": "Applicant 1 Further information",
+    "Label": "Claimant 1 Further information",
     "FieldType": "FurtherInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2255,7 +2255,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQFurtherInformation",
-    "Label": "Applicant 2 Further information",
+    "Label": "Claimant 2 Further information",
     "FieldType": "FurtherInformation",
     "SecurityClassification": "Public",
     "Searchable": "N"
