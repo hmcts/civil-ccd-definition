@@ -1448,8 +1448,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
       if (sdoR2Flag) {
-        clearNihlDataFromCaseData();
-        delete caseData.sdoR2SmallClaimsHearing;
+        clearNihlAndDRHDataFromCaseData();
       }
     }
     if (responseBody.data.sdoOrderDocument) {
@@ -1999,7 +1998,7 @@ const clearFinalOrderLocationData = (responseBody) => {
   return responseBody;
 };
 
-const clearNihlDataFromCaseData = () => {
+const clearNihlAndDRHDataFromCaseData = () => {
   delete caseData['sdoFastTrackJudgesRecital'];
   delete caseData['sdoAltDisputeResolution'];
   delete caseData['sdoVariationOfDirections'];
@@ -2032,6 +2031,7 @@ const clearNihlDataFromCaseData = () => {
   delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
   delete caseData['sdoR2UploadOfDocuments'];
   delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2SmallClaimsHearing']
 };
 
 const clearWelshParaFromCaseData= () => {
