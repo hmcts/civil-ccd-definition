@@ -2731,18 +2731,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "documentForDisclosureRes",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentWitnessStatementRes",
     "AccessControl": [
       {
