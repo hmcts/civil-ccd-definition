@@ -214,6 +214,15 @@ const midEventFieldForPage = {
   }
 };
 
+const newSdoR2FieldsFastTrack = {
+  sdoR2FastTrackWitnessOfFact: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.isRestrictWitness === 'string'
+      && typeof data.isRestrictPages === 'string'
+      && typeof data.text === 'string';
+  }
+};
+
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
@@ -1055,6 +1064,11 @@ module.exports = {
     }
 
     let disposalData = eventData['sdoTracks'][response];
+
+    if (SdoR2 && response === 'CREATE_FAST') {
+      delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
+    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {

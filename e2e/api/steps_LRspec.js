@@ -278,6 +278,15 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   }
 };
 
+const newSdoR2FieldsSmallClaims = {
+  sdoR2SmallClaimsWitnessStatementOther: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.isRestrictWitness === 'string'
+      && typeof data.isRestrictPages === 'string'
+      && typeof data.text === 'string';
+  },
+};
+
 /**
  * helper function to help locate differences between expected and actual.
  *
@@ -1170,6 +1179,10 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
+      if (SdoR2) {
+        delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
+        disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
