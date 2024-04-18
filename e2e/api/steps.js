@@ -2031,7 +2031,7 @@ const clearNihlAndDRHDataFromCaseData = () => {
   delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
   delete caseData['sdoR2UploadOfDocuments'];
   delete caseData['sdoR2NihlUseOfWelshLanguage'];
-  delete caseData['sdoR2SmallClaimsHearing']
+  delete caseData['sdoR2SmallClaimsHearing'];
 };
 
 const clearWelshParaFromCaseData= () => {
