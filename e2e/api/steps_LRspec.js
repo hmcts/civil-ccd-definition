@@ -56,6 +56,7 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
+  DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT: require('../fixtures/events/defaultJudgment1v2DivergentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
@@ -724,7 +725,7 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false) => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false, isNonDivergent = false) => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -732,7 +733,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isNonDivergent);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -1086,7 +1087,8 @@ module.exports = {
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
       state = isNonDivergent ? 'All_FINAL_ORDERS_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
+      let DJSpec = isNonDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2 : data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT;
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario, isNonDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1099,7 +1101,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario, isNonDivergent);
     } else {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1112,7 +1114,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       state = 'All_FINAL_ORDERS_ISSUED';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario, isNonDivergent);
     }
 
     caseData = update(caseData, registrationData);
@@ -1659,15 +1661,15 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
   }
 };
 
-const validateEventPagesDefaultJudgments = async (data, scenario) => {
+const validateEventPagesDefaultJudgments = async (data, scenario, isNonDivergent) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.userInput)) {
-    await assertValidDataDefaultJudgments(data, pageId, scenario);
+    await assertValidDataDefaultJudgments(data, pageId, scenario, isNonDivergent);
   }
 };
 
-const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
+const assertValidDataDefaultJudgments = async (data, pageId, scenario, isNonDivergent) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
 
@@ -1700,6 +1702,10 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
+  }
+
+  if (pageId === 'repaymentInformation' && !isNonDivergent) {
+    responseBody.data.currentDefendantName = 'Sir John Doe';
   }
 
   try {
