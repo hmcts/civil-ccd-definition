@@ -2592,11 +2592,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseBundles",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "R"
   }
 ]
