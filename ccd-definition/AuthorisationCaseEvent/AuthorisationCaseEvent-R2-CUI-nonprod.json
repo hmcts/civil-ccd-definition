@@ -151,7 +151,26 @@
       {
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "cui-admin-profile",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -501,6 +520,15 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1080,6 +1108,15 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
