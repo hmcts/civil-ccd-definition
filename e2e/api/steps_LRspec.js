@@ -1,7 +1,7 @@
 const config = require('../config.js');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {dateTime, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
+const {dateTime, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
