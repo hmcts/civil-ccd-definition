@@ -63,7 +63,7 @@ Scenario('Manage contact information', async ({api}) => {
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
 });
 
-Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
+Scenario.only('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimLip(config.applicantSolicitorUser);
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, mpScenario);
@@ -81,5 +81,5 @@ Scenario.skip('Resubmit claim after payment failure on PBA account ', async ({ap
 });
 
 AfterSuite(async  ({api}) => {
-  await api.cleanUp();
+  //await api.cleanUp();
 });
