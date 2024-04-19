@@ -36,6 +36,8 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const {cloneDeep} = require('lodash');
+const multiClaim = 'MULTI_CLAIM'
+const intermediateClaim = 'INTERMEDIATE_CLAIM'
 
 let caseId, eventName;
 let caseData = {};
@@ -43,8 +45,8 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
-  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  CREATE_CLAIM: (scenario, pbaV3, multiOrIntermediate) => claimData.createClaim(scenario, pbaV3, multiOrIntermediate),
+  DEFENDANT_RESPONSE: (response, camundaEvent, multiOrIntermediate) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, multiOrIntermediate),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -80,6 +82,8 @@ const eventData = {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_PBAv3_MULTI: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', multiClaim),
+      FULL_DEFENCE_PBAv3_INTERMEDIATE: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', intermediateClaim),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
@@ -753,15 +757,15 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false) => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
+                                               multiIntermediate = 'FALSE') => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
-
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, multiIntermediate);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -806,7 +810,7 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
     return caseId;
   },
 
@@ -877,9 +881,10 @@ module.exports = {
   },
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                            expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false) => {
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
+                            multiIntermediate = 'FALSE') => {
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -890,6 +895,14 @@ module.exports = {
 
     if(carmEnabled){
       response = response+'_Mediation';
+    }
+
+    if(!carmEnabled && multiIntermediate === 'MULTI_CLAIM'){
+      response = response+'_MULTI';
+    }
+
+    if(!carmEnabled && multiIntermediate === 'INTERMEDIATE_CLAIM'){
+      response = response+'_INTERMEDIATE';
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);

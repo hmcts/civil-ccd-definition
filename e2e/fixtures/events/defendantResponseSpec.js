@@ -1,7 +1,9 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false,
+                   multiOrIntermediate = 'FALSE') => {
+
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -130,11 +132,25 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-
-          defenceRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          }
+          // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+          ...(multiOrIntermediate !== 'FALSE') ? {
+            defenceRoute: {
+              responseClaimTrack: 'SMALL_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(multiOrIntermediate === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
       case 'FULL_ADMISSION':
