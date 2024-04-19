@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
+const {listElement, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -211,6 +211,17 @@ const midEventFieldForPage = {
       remove: true,
       field: 'uiStatementOfTruth'
     },
+  }
+};
+
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+  return typeof data.input1 === 'string'
+    && typeof data.input5 === 'string'
+    && typeof data.input6 === 'string'
+    && typeof data.input7 === 'string'
+    && typeof data.input8 === 'string';
   }
 };
 
@@ -1055,6 +1066,11 @@ module.exports = {
     }
 
     let disposalData = eventData['sdoTracks'][response];
+
+    if (SdoR2 && response === 'CREATE_FAST') {
+      delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+      disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
