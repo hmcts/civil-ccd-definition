@@ -1702,7 +1702,6 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
   if (pageId === 'paymentConfirmationSpec') {
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
-      //delete responseBody.data['bothDefendantsSpec'];
     } else {
       responseBody.data.currentDefendantName = 'both defendants';
     }
