@@ -6,8 +6,7 @@ const multiTrack = '200001'
 const intermediateTrack = '99000'
 
 
-//This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test unspec intermediate and multi track @api-unspec-multi-intermediate @api-nonprod');
+Feature('CCD 1v1 API test unspec intermediate and multi track @api-unspec-multi-intermediate @api-nonprod @SAME');
 
 Scenario('Create Multi Track claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, multiTrack);
