@@ -8,6 +8,8 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const claimAmount = '100';
 
+let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
+
 Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod');
 
 async function prepareClaim(api) {
@@ -17,6 +19,12 @@ async function prepareClaim(api) {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario1v1, null);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
+}
+
+async function prepareClaim1v1(api_spec_small, carmEnabled) {
+  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
+  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+  await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', carmEnabled);
 }
 
 Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
@@ -33,6 +41,21 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
     }
     await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   }
+});
+
+Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
+  await prepareClaim1v1(api_spec_small, true);
+  await api_spec_small.mediationUnsuccessful(mediationAdminRegion4, true);
+  await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
+  await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
+  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL_DRH_CARM', true);
+});
+
+Scenario('1v1 spec small create SDO for DRH - CARM disabled', async ({api_spec_small}) => {
+  await prepareClaim1v1(api_spec_small, false);
+  await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
+  await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
+  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL_DRH', false);
 });
 
 AfterSuite(async ({api}) => {
