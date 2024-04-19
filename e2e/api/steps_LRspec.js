@@ -725,7 +725,7 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false, isNonDivergent = false) => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false) => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -733,7 +733,7 @@ module.exports = {
 
     let createClaimData  = {};
 
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isNonDivergent);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -1028,7 +1028,7 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
-  defaultJudgmentSpec: async (user, scenario, isNonDivergent) => {
+  defaultJudgmentSpec: async (user, scenario, isDivergent) => {
     await apiRequest.setupTokens(user);
 
     let state;
@@ -1086,9 +1086,9 @@ module.exports = {
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
-      state = isNonDivergent ? 'All_FINAL_ORDERS_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      let DJSpec = isNonDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2 : data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT;
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario, isNonDivergent);
+      state = isDivergent ? 'All_FINAL_ORDERS_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2 : data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT;
+      await validateEventPagesDefaultJudgments(DJSpec, scenario, isDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1101,7 +1101,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario, isNonDivergent);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario, isDivergent);
     } else {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1114,7 +1114,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       state = 'All_FINAL_ORDERS_ISSUED';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario, isNonDivergent);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario, isDivergent);
     }
 
     caseData = update(caseData, registrationData);
@@ -1661,15 +1661,15 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
   }
 };
 
-const validateEventPagesDefaultJudgments = async (data, scenario, isNonDivergent) => {
+const validateEventPagesDefaultJudgments = async (data, scenario, isDivergent) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.userInput)) {
-    await assertValidDataDefaultJudgments(data, pageId, scenario, isNonDivergent);
+    await assertValidDataDefaultJudgments(data, pageId, scenario, isDivergent);
   }
 };
 
-const assertValidDataDefaultJudgments = async (data, pageId, scenario, isNonDivergent) => {
+const assertValidDataDefaultJudgments = async (data, pageId, scenario, isDivergent) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
 
@@ -1702,10 +1702,6 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario, isNonDive
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
-  }
-
-  if (pageId === 'repaymentInformation' && !isNonDivergent) {
-    responseBody.data.currentDefendantName = 'Sir John Doe';
   }
 
   try {
