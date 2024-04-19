@@ -217,9 +217,8 @@ const midEventFieldForPage = {
 const newSdoR2FieldsFastTrack = {
   sdoR2FastTrackWitnessOfFact: (data) => {
     return typeof data.sdoStatementOfWitness === 'string'
-      && typeof data.isRestrictWitness === 'string'
-      && typeof data.isRestrictPages === 'string'
-      && typeof data.text === 'string';
+      && typeof data.sdoWitnessDeadline === 'string'
+      && typeof data.sdoWitnessDeadlineText === 'string';
   }
 };
 
