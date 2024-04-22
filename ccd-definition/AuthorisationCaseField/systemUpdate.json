@@ -133,6 +133,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDocuments",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentDetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -574,5 +580,11 @@
     "CaseFieldID": "claimantResponseDocuments",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1TimeExtensionDate",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]

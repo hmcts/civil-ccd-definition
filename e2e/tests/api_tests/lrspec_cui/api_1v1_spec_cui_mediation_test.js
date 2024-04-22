@@ -5,12 +5,13 @@ const claimType = 'SmallClaims';
 let carmEnabled = false;
 let claimRef;
 
-let mediationAdmin = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
+let mediationAdmin = config.localMediationTests ? config.nbcUserLocal :
+                                    (config.testEarlyAdopterCourts ? config.nbcUserWithRegionId2 : config.nbcUserWithRegionId1);
 
 async function prepareClaim(api_spec_cui, carmEnabled) {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION');
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
 }
 
 // set config.localMediationTests to true to run locally
