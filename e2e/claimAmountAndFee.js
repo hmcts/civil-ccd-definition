@@ -27,14 +27,14 @@ module.exports = {
             version: '3'
           };
       case '200001':
-        console.log("Use multi track claim fee");
+        console.log('Use multi track claim fee');
         return {
           calculatedAmountInPence: '1000000',
           code: 'FEE0210',
           version: '3'
         };
       case '99000':
-        console.log("Use intermediate track claim fee");
+        console.log('Use intermediate track claim fee');
         return {
           calculatedAmountInPence: '150000',
           code: 'FEE0209',

@@ -36,8 +36,8 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const {cloneDeep} = require('lodash');
-const multiClaim = 'MULTI_CLAIM'
-const intermediateClaim = 'INTERMEDIATE_CLAIM'
+const multiClaim = 'MULTI_CLAIM';
+const intermediateClaim = 'INTERMEDIATE_CLAIM';
 
 let caseId, eventName;
 let caseData = {};

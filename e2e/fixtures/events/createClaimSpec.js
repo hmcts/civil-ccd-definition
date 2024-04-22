@@ -91,7 +91,7 @@ module.exports = {
             respondentSolicitor1Reference: 'Respondent reference'
           },
           // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-          ...(multiOrIntermediate != null && multiOrIntermediate !== 'FALSE') ? {
+          ...(multiOrIntermediate !== null && multiOrIntermediate !== 'FALSE') ? {
             submittedDate:'2025-02-20T15:59:50'
           }: {},
         },
@@ -170,15 +170,15 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(multiOrIntermediate === 'FALSE') ? {
+              ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
                 claimReason: 'amount reason',
                 claimAmount: claimAmount,
               }: {},
-              ...(multiOrIntermediate === 'MULTI_CLAIM') ? {
+              ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
                 claimReason: 'amount reason multi claim',
                 claimAmount: claimAmountMulti,
               }: {},
-              ...(multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+              ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
                 claimReason: 'amount reason intermediate claim',
                 claimAmount: claimAmountIntermediate,
               }: {},
@@ -221,13 +221,13 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          ...(multiOrIntermediate === 'FALSE') ? {
+          ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
             totalClaimAmount: claimAmount / 100
           }: {},
-          ...(multiOrIntermediate === 'MULTI_CLAIM') ? {
+          ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
             totalClaimAmount: claimAmountMulti / 100
           }: {},
-          ...(multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+          ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
             totalClaimAmount: claimAmountIntermediate / 100
           }: {},
         },

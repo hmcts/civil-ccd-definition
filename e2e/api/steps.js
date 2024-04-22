@@ -235,12 +235,12 @@ module.exports = {
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let multiOrIntermediate = 'FALSE'
+    let multiOrIntermediate = 'FALSE';
     if(claimAmount === '200001') {
-      multiOrIntermediate = 'MULTI_CLAIM'
+      multiOrIntermediate = 'MULTI_CLAIM';
     }
     if(claimAmount === '99000') {
-      multiOrIntermediate = 'INTERMEDIATE_CLAIM'
+      multiOrIntermediate = 'INTERMEDIATE_CLAIM';
     }
     let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, multiOrIntermediate);
 
