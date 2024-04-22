@@ -279,11 +279,15 @@ module.exports = {
           vulnerabilityAdjustments: 'vulnerable'
         },
         applicant1DQRequestedCourt: {
-          requestHearingAtSpecificCourt: 'No',
+          requestHearingAtSpecificCourt: 'Yes',
           otherPartyPreferredSite: '',
           responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'reasons',
           responseCourtLocations: [],
-          caseLocation: {}
+          caseLocation: {
+            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+          }
         },
         applicant1DQWitnesses: {
           witnessesToAppear: 'Yes',
