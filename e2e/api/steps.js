@@ -41,7 +41,7 @@ const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastT
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, multiOrIntermediate) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, multiOrIntermediate),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -246,14 +246,14 @@ module.exports = {
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let multiOrIntermediate = 'FALSE';
-    if(claimAmount === '200001') {
-      multiOrIntermediate = 'MULTI_CLAIM';
+    let isMintiEnabled = 'FALSE';
+    if(parseFloat(claimAmount) > '100000') {
+      isMintiEnabled = 'MULTI_CLAIM';
     }
-    if(claimAmount === '99000') {
-      multiOrIntermediate = 'INTERMEDIATE_CLAIM';
+    if(parseFloat(claimAmount) > '25000' && parseFloat(claimAmount) < '100000') {
+      isMintiEnabled = 'INTERMEDIATE_CLAIM';
     }
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, multiOrIntermediate);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled);
 
     //==============================================================
 

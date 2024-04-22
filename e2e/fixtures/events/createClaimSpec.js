@@ -81,7 +81,7 @@ const flightDelayDetails ={
 };
 
 module.exports = {
-  createClaim: (mpScenario, pbaV3, multiOrIntermediate) => {
+  createClaim: (mpScenario, pbaV3, isMintiEnabled) => {
     const userData = {
       userInput: {
         References: {
@@ -91,7 +91,7 @@ module.exports = {
             respondentSolicitor1Reference: 'Respondent reference'
           },
           // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-          ...(multiOrIntermediate !== null && multiOrIntermediate !== 'FALSE') ? {
+          ...(isMintiEnabled !== null && isMintiEnabled !== 'FALSE') ? {
             submittedDate:'2025-02-20T15:59:50'
           }: {},
         },
@@ -170,15 +170,15 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
+              ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
                 claimReason: 'amount reason',
                 claimAmount: claimAmount,
               }: {},
-              ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
+              ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
                 claimReason: 'amount reason multi claim',
                 claimAmount: claimAmountMulti,
               }: {},
-              ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+              ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
                 claimReason: 'amount reason intermediate claim',
                 claimAmount: claimAmountIntermediate,
               }: {},
@@ -221,13 +221,13 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
+          ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
             totalClaimAmount: claimAmount / 100
           }: {},
-          ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
+          ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
             totalClaimAmount: claimAmountMulti / 100
           }: {},
-          ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+          ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
             totalClaimAmount: claimAmountIntermediate / 100
           }: {},
         },
