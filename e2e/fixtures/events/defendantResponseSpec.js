@@ -132,20 +132,19 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-          // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-          ...(multiOrIntermediate !== 'FALSE') ? {
+          ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
             defenceRoute: {
               responseClaimTrack: 'SMALL_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(multiOrIntermediate === 'MULTI_CLAIM') ? {
+          ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'MULTI_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+          ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'INTERMEDIATE_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
