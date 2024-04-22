@@ -2,7 +2,7 @@ const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false,
-                   multiOrIntermediate = 'FALSE') => {
+                   isMintiEnabled) => {
 
     const responseData = {
       userInput: {
@@ -132,19 +132,19 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-          ...(multiOrIntermediate === null || multiOrIntermediate === 'FALSE') ? {
+          ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
             defenceRoute: {
               responseClaimTrack: 'SMALL_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(multiOrIntermediate !== null && multiOrIntermediate === 'MULTI_CLAIM') ? {
+          ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'MULTI_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(multiOrIntermediate !== null && multiOrIntermediate === 'INTERMEDIATE_CLAIM') ? {
+          ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'INTERMEDIATE_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
