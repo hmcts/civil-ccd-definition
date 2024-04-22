@@ -3,7 +3,7 @@ const config = require('../config.js');
 const testingSupport = require('./../api/testingSupport');
 
 module.exports = {
-  adjustCaseSubmittedDateForCarm: async (caseId, carmEnabled = false, multiIntermediate = 'FALSE') => {
+  adjustCaseSubmittedDateForCarm: async (caseId, carmEnabled = false, isMintiEnabled = 'FALSE') => {
     if (carmEnabled) {
       console.log('carm enabled, updating submitted date');
       await apiRequest.setupTokens(config.systemupdate);
@@ -18,12 +18,12 @@ module.exports = {
       await testingSupport.updateCaseData(caseId, submittedDate);
       console.log('submitted date update to before carm date');
     }
-    if (!carmEnabled && multiIntermediate !== 'FALSE') {
-      console.log('carm not enabled, multiIntermediate is enabled');
+    if (!carmEnabled && isMintiEnabled !== 'FALSE') {
+      console.log('carm not enabled, multi Intermediate track is enabled');
       await apiRequest.setupTokens(config.systemupdate);
       const submittedDate = {'submittedDate':'2025-02-20T15:59:50'};
       await testingSupport.updateCaseData(caseId, submittedDate);
-      console.log('submitted date update to after multiIntermediate live date');
+      console.log('submitted date update to after multi Intermediate track live date');
     }
   },
 };
