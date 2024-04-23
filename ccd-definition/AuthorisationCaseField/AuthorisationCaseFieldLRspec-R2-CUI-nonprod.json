@@ -586,8 +586,8 @@
     "CaseFieldID": "specResponselistYourEvidenceList",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
-    ],
-    "CRUD": "CUR"
+      ],
+      "CRUD": "CUR"
   },
   {
     "CaseTypeID": "CIVIL",
