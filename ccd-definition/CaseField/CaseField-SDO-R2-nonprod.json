@@ -346,7 +346,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "sdoR2Trial",
-    "Label": "A trial will take place on",
+    "Label": " ",
     "FieldType": "SdoR2Trial",
     "SecurityClassification": "Public",
     "Searchable": "N"
