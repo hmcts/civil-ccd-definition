@@ -135,6 +135,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   },
+
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
@@ -283,7 +284,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "CaseFieldID": "smallClaimsWitnessStatement",
     "PageFieldDisplayOrder": 32,
     "DisplayContext": "COMPLEX",
     "PageID": "SmallClaims",
@@ -1633,9 +1634,9 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2FastTrackWitnessOfFact",
+    "CaseFieldID": "fastTrackWitnessOfFact",
     "PageFieldDisplayOrder": 26,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "FastTrack",
     "PageDisplayOrder": 7,
     "PageColumnNumber": 1,

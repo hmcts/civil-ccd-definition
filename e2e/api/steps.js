@@ -214,14 +214,6 @@ const midEventFieldForPage = {
   }
 };
 
-const newSdoR2FieldsFastTrack = {
-  sdoR2FastTrackWitnessOfFact: (data) => {
-    return typeof data.sdoStatementOfWitness === 'string'
-      && typeof data.sdoWitnessDeadline === 'string'
-      && typeof data.sdoWitnessDeadlineText === 'string';
-  }
-};
-
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
@@ -1058,16 +1050,9 @@ module.exports = {
       delete caseData['smallClaimsFlightDelayToggle'];
       //required to fix existing prod api tests for sdo
       clearWelshParaFromCaseData();
-      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
-      delete caseData['sdoR2FastTrackWitnessOfFact'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
-
-    if (SdoR2 && response === 'CREATE_FAST') {
-      delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
-      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
-    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
@@ -1437,8 +1422,6 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
-    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
   }
 
   assert.equal(response.status, 200);
