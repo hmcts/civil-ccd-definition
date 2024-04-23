@@ -278,6 +278,16 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   }
 };
 
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+    return typeof data.input1 === 'string'
+      && typeof data.input5 === 'string'
+      && typeof data.input6 === 'string'
+      && typeof data.input7 === 'string'
+      && typeof data.input8 === 'string';
+  }
+};
+
 /**
  * helper function to help locate differences between expected and actual.
  *
@@ -1175,6 +1185,10 @@ module.exports = {
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      if (SdoR2 && response === 'CREATE_FAST') {
+        delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+        disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
