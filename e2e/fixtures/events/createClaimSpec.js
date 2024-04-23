@@ -91,7 +91,7 @@ module.exports = {
             respondentSolicitor1Reference: 'Respondent reference'
           },
           // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-          ...(isMintiEnabled !== null && isMintiEnabled !== 'FALSE') ? {
+          ...(isMintiEnabled !== undefined && isMintiEnabled !== 'FALSE') ? {
             submittedDate:'2025-02-20T15:59:50'
           }: {},
         },
@@ -170,15 +170,15 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
+              ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
                 claimReason: 'amount reason',
                 claimAmount: claimAmount,
               }: {},
-              ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
+              ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
                 claimReason: 'amount reason multi claim',
                 claimAmount: claimAmountMulti,
               }: {},
-              ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
+              ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
                 claimReason: 'amount reason intermediate claim',
                 claimAmount: claimAmountIntermediate,
               }: {},
@@ -221,13 +221,13 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
+          ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
             totalClaimAmount: claimAmount / 100
           }: {},
-          ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
+          ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
             totalClaimAmount: claimAmountMulti / 100
           }: {},
-          ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
+          ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
             totalClaimAmount: claimAmountIntermediate / 100
           }: {},
         },
