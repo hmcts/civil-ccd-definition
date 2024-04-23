@@ -44,7 +44,8 @@ let mpScenario = 'ONE_V_ONE';
 
 const data = {
   CREATE_CLAIM: (scenario, pbaV3, isMintiEnabled) => claimData.createClaim(scenario, pbaV3, isMintiEnabled),
-  DEFENDANT_RESPONSE: (response, camundaEvent, isMintiEnabled) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, isMintiEnabled),
+  DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE_MINTI_ENABLED: (response, camundaEvent, isMintiEnabled) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, false,  isMintiEnabled),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -79,8 +80,8 @@ const eventData = {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
-      FULL_DEFENCE_PBAv3_MULTI: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
-      FULL_DEFENCE_PBAv3_INTERMEDIATE: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
+      FULL_DEFENCE_PBAv3_MULTI: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE_PBAv3_INTERMEDIATE: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
