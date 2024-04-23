@@ -19,7 +19,7 @@
     "ID": "SdoR2WitnessOfFact",
     "ListElementCode": "sdoR2RestrictWitness",
     "FieldType": "SdoR2RestrictWitness",
-    "ElementLabel": "Restrict number of witnesses",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -27,7 +27,7 @@
     "ID": "SdoR2WitnessOfFact",
     "ListElementCode": "sdoRestrictPages",
     "FieldType": "SdoR2RestrictPages",
-    "ElementLabel": "Restrict number of pages",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

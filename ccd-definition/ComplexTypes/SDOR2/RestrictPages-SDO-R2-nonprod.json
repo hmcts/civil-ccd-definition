@@ -1,6 +1,14 @@
 [
   {
     "ID": "SdoR2RestrictPages",
+    "ListElementCode": "sdoR2RestrictPagesLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### Restrict number of pages",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2RestrictPages",
     "ListElementCode": "isRestrictPages",
     "FieldType": "YesOrNo",
     "ElementLabel": " ",
