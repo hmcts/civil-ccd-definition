@@ -928,5 +928,21 @@
     "FieldType": "SdoR2WelshLanguageUsage",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsWitnessStatementOther",
+    "Label": " ",
+    "FieldType": "SdoR2SmallClaimsWitnessStatements",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackWitnessOfFact",
+    "Label": " ",
+    "FieldType": "SdoR2WitnessOfFact",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
