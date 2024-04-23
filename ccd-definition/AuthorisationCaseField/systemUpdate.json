@@ -345,13 +345,13 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
