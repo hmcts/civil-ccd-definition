@@ -3,7 +3,7 @@
     "ID": "SdoR2FirstOpenDateAfter",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "sdoR2TrialFirstOpenDateAfter.listFromLabel",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter.sdoR2FirstOpenDateAfterLabel",
     "FieldDisplayOrder": 1,
     "DisplayContext": "READONLY"
   },
@@ -11,8 +11,16 @@
     "ID": "SdoR2FirstOpenDateAfter",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "sdoR2TrialFirstOpenDateAfter.listFrom",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter.listFromLabel",
     "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FirstOpenDateAfter",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter.listFrom",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX"
   }
 ]
