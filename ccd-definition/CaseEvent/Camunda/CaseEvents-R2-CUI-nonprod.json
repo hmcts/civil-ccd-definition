@@ -104,7 +104,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM1\""
+    "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_THIS_EVENT\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -132,7 +132,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM1\""
+    "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_THIS_EVENT\""
   },
   {
     "CaseTypeID": "CIVIL",

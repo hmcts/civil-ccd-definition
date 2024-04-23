@@ -30,7 +30,7 @@
     "PageID": "Email",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1Represented != \"No\""
+    "FieldShowCondition": "respondent1Represented = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -42,7 +42,7 @@
     "PageID": "Email",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1Represented != \"No\""
+    "FieldShowCondition": "respondent1Represented = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
