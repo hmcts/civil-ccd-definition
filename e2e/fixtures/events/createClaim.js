@@ -76,7 +76,7 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
   const claimData = {
     References: {
       // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-      ...(isMintiEnabled !== null && isMintiEnabled !== 'FALSE') ? {
+      ...(isMintiEnabled !== undefined && isMintiEnabled !== 'FALSE') ? {
         submittedDate:'2025-02-20T15:59:50'
       }: {},
       CaseAccessCategory: 'UNSPEC_CLAIM',

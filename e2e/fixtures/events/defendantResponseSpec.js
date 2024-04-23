@@ -132,19 +132,19 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-          ...(isMintiEnabled === null || isMintiEnabled === 'FALSE') ? {
+          ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
             defenceRoute: {
               responseClaimTrack: 'SMALL_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(isMintiEnabled !== null && isMintiEnabled === 'MULTI_CLAIM') ? {
+          ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'MULTI_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
           }: {},
-          ...(isMintiEnabled !== null && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
+          ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
             defenceRoute: {
               responseClaimTrack: 'INTERMEDIATE_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
