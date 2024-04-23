@@ -103,8 +103,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y",
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM1\""
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -131,8 +130,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "Publish": "Y",
-    "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM1\""
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

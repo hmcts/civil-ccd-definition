@@ -8,7 +8,6 @@
     "CaseEventFieldLabel": "Defendant's legal representative's details",
     "PageID": "Email",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent1Represented = \"Yes\""
+    "ShowSummaryChangeOption": "Y"
   }
 ]
