@@ -2,7 +2,7 @@ const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false,
-                   isMintiEnabled) => {
+                   isMintiEnabled = 'FALSE') => {
 
     const responseData = {
       userInput: {
