@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT",
+    "ListElement": "Default Judgment claimant",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT",
+    "ListElement": "Default Judgment defendant",
+    "DisplayOrder": 16
+  }
+]
