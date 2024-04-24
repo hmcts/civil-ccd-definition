@@ -162,6 +162,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
