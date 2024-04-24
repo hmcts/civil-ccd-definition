@@ -774,6 +774,31 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsMediationSectionTitle",
+    "Label": "****\n ### Mediation representation",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsMediationSectionToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "IncludeInOrderToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2SmallClaimsMediationSectionStatement",
+    "Label": " ",
+    "FieldType": "SdoR2SmallClaimsMediation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sdoR2SmallClaimsImpNotesLbl",
     "Label": "****\n ### Important notes",
     "FieldType": "Label",

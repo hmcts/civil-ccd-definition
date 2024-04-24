@@ -253,6 +253,12 @@ const calculatedClaimsTrackDRH = {
   }
 };
 
+const calculatedClaimsTrackDRHCarm = {
+  ClaimsTrack: {...calculatedClaimsTrackDRH.ClaimsTrack,
+    sdoR2SmallClaimsMediationSectionToggle: (data) => Array.isArray(data),
+  }
+};
+
 //Disposal Hearing
 module.exports = {
 
@@ -1753,6 +1759,66 @@ module.exports = {
         }
       },
       calculated: calculatedClaimsTrackDRH
+    };
+    data.calculated.OrderType = {
+      ...data.calculated.ClaimsTrack,
+      orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.SdoR2SmallClaims = {
+      ...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
+    };
+    return data;
+  },
+
+  //DRHCarm
+  createSDOSmallDRHCarm: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'No',
+          drawDirectionsOrder: {
+            judgementSum: 20
+          },
+        },
+        ClaimsTrack: {
+          claimsTrack: 'smallClaimsTrack',
+          drawDirectionsOrderSmallClaims: 'No',
+          smallClaims: [
+            'smallClaimDisputeResolutionHearing'
+          ],
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'Yes',
+          isSdoR2NewScreen: 'Yes'
+        },
+        SdoR2SmallClaims: {
+          sdoR2SmallClaimsMediationSectionToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SmallClaimsMediationSectionStatement: {
+            input: 'If you failed to attend a mediation appointment, then the judge at the hearing may impose a '
+            + 'sanction. This could require you to pay costs, or could result in your claim or defence being '
+            + 'dismissed. You should deliver to every other party, and to the court, your explanation for '
+            + 'non-attendance, with any supporting documents, at least 14 days before the hearing. Any other party who '
+            + 'wishes to comment on the failure to attend the mediation appointment should deliver their comments, '
+            + 'with any supporting documents, to all parties and to the court at least 14 days before the hearing.'
+          },        },
+      },
+      midEventData: {
+        ClaimsTrack: {
+          isSdoR2NewScreen : 'Yes',
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        OrderType: {
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        SdoR2SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackDRHCarm
     };
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,
