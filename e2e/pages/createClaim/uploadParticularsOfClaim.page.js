@@ -17,6 +17,7 @@ module.exports = {
     await I.runAccessibilityTest();
     await servedDocuments.upload(file, this.fields.servedDocumentFiles.options);
 
+    await I.wait(5);
     await I.clickContinue();
   },
 };
