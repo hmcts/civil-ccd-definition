@@ -1,14 +1,26 @@
 [
   {
     "ID": "DocumentType",
-    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT",
+    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT1",
     "ListElement": "Default Judgment claimant",
     "DisplayOrder": 15
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT",
-    "ListElement": "Default Judgment defendant",
+    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT2",
+    "ListElement": "Default Judgment claimant",
     "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT1",
+    "ListElement": "Default Judgment defendant",
+    "DisplayOrder": 17
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT2",
+    "ListElement": "Default Judgment defendant",
+    "DisplayOrder": 18
   }
 ]
