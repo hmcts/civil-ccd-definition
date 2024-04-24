@@ -13,7 +13,7 @@ const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHearings.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -48,6 +48,7 @@ const data = {
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   CREATE_SDO_CARM: (userInput) => sdoTracks.createSDOSmallCarm(userInput),
+  CREATE_SMALL_DRH_CARM: () => sdoTracks.createSDOSmallDRHCarm(),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpec(userType),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
@@ -96,7 +97,7 @@ module.exports = function (){
    * @param hearings
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false) => {
+  createClaimWithRepresentedRespondent: async (user,scenario = 'ONE_V_ONE', hearings = false, carmEnabled = false) => {
 
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -144,6 +145,7 @@ module.exports = function (){
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -301,6 +303,7 @@ module.exports = function (){
 
   createSDO: async (user, response = 'CREATE_DISPOSAL', carmEnabled = false) => {
     console.log('SDO for case id ' + caseId);
+    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -326,6 +329,13 @@ module.exports = function (){
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    }
+
+    if(SdoR2){
+      delete caseData['smallClaimsFlightDelay'];
+      delete caseData['smallClaimsFlightDelayToggle'];
+      //required to fix existing prod api tests for sdo
+      clearWelshParaFromCaseData();
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -523,6 +533,7 @@ module.exports = function (){
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
@@ -548,6 +559,20 @@ const assertValidData = async (data, pageId) => {
 
   if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  if(sdoR2Flag){
+    delete responseBody.data['smallClaimsFlightDelayToggle'];
+    delete responseBody.data['smallClaimsFlightDelay'];
+    //required to fix existing prod api tests for sdo
+    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  }
+  if (pageId === 'SdoR2FastTrack') {
+    clearWelshParaFromCaseData();
   }
 
   caseData = update(caseData, responseBody.data);
@@ -731,4 +756,12 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
+};
+
+const clearWelshParaFromCaseData= () => {
+  delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+  delete caseData['sdoR2DrhUseOfWelshLanguage'];
+  delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
 };

@@ -188,8 +188,25 @@ const calculatedClaimsTrackCarmEnabled = {
   }
 };
 
+const welshLanFields = {
+  sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+  sdoR2DrhUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2SmallClaimsUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2FastTrackUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2DisposalHearingUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  }
+};
+
 const calculatedClaimsTrackDRH = {
   ClaimsTrack: {...calculatedClaimsTrackWOSum.ClaimsTrack,
+    ...welshLanFields,
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
     fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
     fastTrackHearingTime: (d) =>
@@ -233,6 +250,12 @@ const calculatedClaimsTrackDRH = {
       return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
        && typeof data.text === 'string';
     }
+  }
+};
+
+const calculatedClaimsTrackDRHCarm = {
+  ClaimsTrack: {...calculatedClaimsTrackDRH.ClaimsTrack,
+    sdoR2SmallClaimsMediationSectionToggle: (data) => Array.isArray(data),
   }
 };
 
@@ -1634,7 +1657,6 @@ module.exports = {
               }
             },
             lengthList: 'FIVE_HOURS',
-            methodOfHearing: 'fastTrackMethodInPerson',
             physicalBundleOptions: 'NONE',
             sdoR2TrialFirstOpenDateAfter: {
               listFrom: date(434)
@@ -1663,7 +1685,10 @@ module.exports = {
             includeInOrderToggle: [
               'INCLUDE'
             ]
-          }
+          },
+          sdoR2NihlUseOfWelshLanguage: {
+            description: 'If any party is legally represented then when filing any witness evidence, the legal representatives must notify the Court in writing that:\na) they have advised their client of the entitlement of any party or witness to give evidence in the Welsh Language in accordance with the Welsh Language Act 1993(which is not dependant on whether they are fluent in English)\nb) instructions have been taken as to whether any party or witness will exercise that entitlement, in which case the legal representatives must so inform the Court so that arrangements can be made by the Court for instantaneous translation facilities to be made available without charge\n\nAny unrepresented party or witness for such a party being entitled to give evidence in the Welsh Language in accordance with the principle of the Welsh Language Act 1993 must notify the Court when sending to the Court their witness evidence whether any party or witness will exercise that entitlement whereupon the Court will make arrangements for instantaneous translation facilities to be made available without charge.'
+          },
         }
       },
       midEventData: {
@@ -1683,6 +1708,10 @@ module.exports = {
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,
       orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.ClaimsTrack = {
+      ...data.calculated.ClaimsTrack,
+      ...welshLanFields
     };
     data.calculated.FastTrack = {
       ...data.calculated.OrderType,
@@ -1729,6 +1758,66 @@ module.exports = {
         }
       },
       calculated: calculatedClaimsTrackDRH
+    };
+    data.calculated.OrderType = {
+      ...data.calculated.ClaimsTrack,
+      orderTypeTrialAdditionalDirections: (d) => Array.isArray(d)
+    };
+    data.calculated.SdoR2SmallClaims = {
+      ...data.calculated.ClaimsTrack,
+      setSmallClaimsFlag: (d) => d === data.midEventData.OrderType.setSmallClaimsFlag,
+      setFastTrackFlag: (d) => d === data.midEventData.OrderType.setFastTrackFlag
+    };
+    return data;
+  },
+
+  //DRHCarm
+  createSDOSmallDRHCarm: () => {
+    const data = {
+      valid: {
+        SDO: {
+          drawDirectionsOrderRequired: 'No',
+          drawDirectionsOrder: {
+            judgementSum: 20
+          },
+        },
+        ClaimsTrack: {
+          claimsTrack: 'smallClaimsTrack',
+          drawDirectionsOrderSmallClaims: 'No',
+          smallClaims: [
+            'smallClaimDisputeResolutionHearing'
+          ],
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'Yes',
+          isSdoR2NewScreen: 'Yes'
+        },
+        SdoR2SmallClaims: {
+          sdoR2SmallClaimsMediationSectionToggle: [
+            'INCLUDE'
+          ],
+          sdoR2SmallClaimsMediationSectionStatement: {
+            input: 'If you failed to attend a mediation appointment, then the judge at the hearing may impose a '
+            + 'sanction. This could require you to pay costs, or could result in your claim or defence being '
+            + 'dismissed. You should deliver to every other party, and to the court, your explanation for '
+            + 'non-attendance, with any supporting documents, at least 14 days before the hearing. Any other party who '
+            + 'wishes to comment on the failure to attend the mediation appointment should deliver their comments, '
+            + 'with any supporting documents, to all parties and to the court at least 14 days before the hearing.'
+          },        },
+      },
+      midEventData: {
+        ClaimsTrack: {
+          isSdoR2NewScreen : 'Yes',
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        OrderType: {
+          setSmallClaimsFlag: 'Yes',
+          setFastTrackFlag: 'No'
+        },
+        SdoR2SmallClaims: {
+        }
+      },
+      calculated: calculatedClaimsTrackDRHCarm
     };
     data.calculated.OrderType = {
       ...data.calculated.ClaimsTrack,

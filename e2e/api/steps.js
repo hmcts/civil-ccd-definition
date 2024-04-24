@@ -127,6 +127,10 @@ const calculatedClaimsTrackDRH = {
     sdoR2SmallClaimsUploadDoc: (data) => {
       return typeof data.sdoUploadOfDocumentsTxt === 'string';
     },
+    sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+    sdoR2DrhUseOfWelshLanguage: (data) => {
+      return typeof data.description === 'string';
+    },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
         && typeof data.trialOnOptions === 'string'
@@ -1044,6 +1048,8 @@ module.exports = {
     if(SdoR2){
       delete caseData['smallClaimsFlightDelay'];
       delete caseData['smallClaimsFlightDelayToggle'];
+      //required to fix existing prod api tests for sdo
+      clearWelshParaFromCaseData();
     }
 
     let disposalData = eventData['sdoTracks'][response];
@@ -1410,6 +1416,12 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
+    //required to fix existing prod api tests for sdo
+    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
   }
 
   assert.equal(response.status, 200);
@@ -1436,7 +1448,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
       if (sdoR2Flag) {
-        clearNihlDataFromCaseData();
+        clearNihlAndDRHDataFromCaseData();
       }
     }
     if (responseBody.data.sdoOrderDocument) {
@@ -1464,6 +1476,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
+  }
+  if (pageId === 'SdoR2FastTrack') {
+    clearWelshParaFromCaseData();
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
@@ -1983,7 +1998,7 @@ const clearFinalOrderLocationData = (responseBody) => {
   return responseBody;
 };
 
-const clearNihlDataFromCaseData = () => {
+const clearNihlAndDRHDataFromCaseData = () => {
   delete caseData['sdoFastTrackJudgesRecital'];
   delete caseData['sdoAltDisputeResolution'];
   delete caseData['sdoVariationOfDirections'];
@@ -2015,6 +2030,16 @@ const clearNihlDataFromCaseData = () => {
   delete caseData['sdoR2QuestionsToEntExpert'];
   delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
   delete caseData['sdoR2UploadOfDocuments'];
+  delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2SmallClaimsHearing'];
+};
+
+const clearWelshParaFromCaseData= () => {
+  delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+  delete caseData['sdoR2DrhUseOfWelshLanguage'];
+  delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
 };
 
 const clearNihlDataFromResponse = (responseBody) => {
