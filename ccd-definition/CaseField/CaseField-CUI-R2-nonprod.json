@@ -69,9 +69,9 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondent1RespondToSettlementAgreementDeadline",
     "Label": " ",
-    "FieldType": "Text",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
