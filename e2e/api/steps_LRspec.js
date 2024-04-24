@@ -278,6 +278,15 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   }
 };
 
+const newSdoR2FieldsSmallClaims = {
+  sdoR2SmallClaimsWitnessStatementOther: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.isRestrictWitness === 'string'
+      && typeof data.isRestrictPages === 'string'
+      && typeof data.text === 'string';
+  },
+};
+
 const newSdoR2FastTrackCreditHireFields ={
   sdoR2FastTrackCreditHire: (data) => {
     return typeof data.input1 === 'string'
@@ -642,6 +651,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
   delete responseBody.data['sdoR2FastTrackCreditHire'];
   delete responseBody.data['sdoDJR2TrialCreditHire'];
 
@@ -1173,6 +1184,8 @@ module.exports = {
       delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
       delete caseData['sdoR2DrhUseOfWelshLanguage'];
       delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
       delete caseData['sdoR2FastTrackCreditHire'];
       delete caseData['sdoDJR2TrialCreditHire'];
     }
@@ -1180,6 +1193,10 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
+      if (SdoR2) {
+        delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
+        disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
@@ -1548,6 +1565,8 @@ const assertValidData = async (data, pageId) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
     delete responseBody.data['sdoR2FastTrackCreditHire'];
     delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
