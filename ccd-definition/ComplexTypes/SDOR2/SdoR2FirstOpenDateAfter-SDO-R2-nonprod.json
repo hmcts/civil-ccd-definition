@@ -1,6 +1,14 @@
 [
   {
     "ID": "SdoR2FirstOpenDateAfter",
+    "ListElementCode": "sdoR2FirstOpenDateAfterLabel",
+    "FieldType": "Label",
+    "ElementLabel": "### First open date after",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SdoR2FirstOpenDateAfter",
     "ListElementCode": "listFromLabel",
     "FieldType": "Label",
     "ElementLabel": "### List from",
