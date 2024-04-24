@@ -648,7 +648,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "showCarmFields",
     "DisplayContext": "READONLY",
-    "PageID": "SmallClaims",
+    "PageID": "SDO",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 1,
     "ShowSummaryChangeOption": "N",
