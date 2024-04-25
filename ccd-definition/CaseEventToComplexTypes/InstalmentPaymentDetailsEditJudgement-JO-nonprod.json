@@ -3,7 +3,7 @@
     "ID": "InstalmentPaymentDetails",
     "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joInstalmentDetails",
-    "ListElementCode": "instalmentAmount",
+    "ListElementCode": "amount",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -19,7 +19,7 @@
     "ID": "InstalmentPaymentDetails",
     "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joInstalmentDetails",
-    "ListElementCode": "firstInstalmentDate",
+    "ListElementCode": "startDate",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }

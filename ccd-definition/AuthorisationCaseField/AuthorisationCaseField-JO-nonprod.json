@@ -74,7 +74,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joPaymentPlanSelection",
+    "CaseFieldID": "joPaymentPlan",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
@@ -84,15 +84,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joInstalmentDetails",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joPaymentToBeMadeByDate",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"

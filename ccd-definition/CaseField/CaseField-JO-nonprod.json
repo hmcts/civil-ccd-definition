@@ -69,10 +69,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joPaymentPlanSelection",
+    "ID": "joPaymentPlan",
     "Label": "Select how the judgment will be paid",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "JoPaymentPlanSelectionList",
+    "FieldType": "JoPaymentPlan",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -81,15 +80,6 @@
     "ID": "joInstalmentDetails",
     "Label": " ",
     "FieldType": "InstalmentPaymentDetails",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joPaymentToBeMadeByDate",
-    "Label": "Enter the date the judgment will be paid by",
-    "HintText": "For example, 16 4 2021",
-    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
