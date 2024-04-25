@@ -1128,7 +1128,11 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      if (isJudgmentOnlineLive) {
+        state = 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
       registrationData = {
