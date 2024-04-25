@@ -89,7 +89,6 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
   EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
   FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
-  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
