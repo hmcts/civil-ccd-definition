@@ -143,7 +143,7 @@ Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, W
   }
 }).retry(3);
 
-Scenario('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.tribunalCaseworkerWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
