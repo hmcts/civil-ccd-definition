@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, isJOLive} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -277,6 +277,15 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
     whatsTheDifference(caseData, responseBody.data);
     throw err;
   }
+};
+
+const newSdoR2FieldsSmallClaims = {
+  sdoR2SmallClaimsWitnessStatementOther: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.isRestrictWitness === 'string'
+      && typeof data.isRestrictPages === 'string'
+      && typeof data.text === 'string';
+  },
 };
 
 /**
@@ -633,6 +642,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
   delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
 
   responseBody = clearNIHLDataFromResponseBody(responseBody);
 
@@ -1051,6 +1062,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
     if(pbaV3){
       let claimIssuedPBADetails = {
         claimIssuedPBADetails:{
@@ -1098,9 +1110,13 @@ module.exports = {
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
-      state = isDivergent ? 'All_FINAL_ORDERS_ISSUED' : 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2 : data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT;
-      await validateEventPagesDefaultJudgments(DJSpec, scenario, isDivergent);
+      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT : data.DEFAULT_JUDGEMENT_SPEC_1V2;
+      if (isJudgmentOnlineLive) {
+        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
+      await validateEventPagesDefaultJudgments(DJSpec, scenario,isDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1113,7 +1129,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario, isDivergent);
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1125,8 +1141,12 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      state = 'All_FINAL_ORDERS_ISSUED';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario, isDivergent);
+      if (isJudgmentOnlineLive) {
+        state = 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario,isDivergent);
     }
 
     caseData = update(caseData, registrationData);
@@ -1167,11 +1187,17 @@ module.exports = {
       delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
       delete caseData['sdoR2DrhUseOfWelshLanguage'];
       delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
     }
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
+      if (SdoR2) {
+        delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
+        disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
@@ -1536,6 +1562,8 @@ const assertValidData = async (data, pageId) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
   }
   assert.equal(response.status, 200);
 
@@ -1687,15 +1715,15 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
   }
 };
 
-const validateEventPagesDefaultJudgments = async (data, scenario, isDivergent) => {
+const validateEventPagesDefaultJudgments = async (data, scenario,isDivergent) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.userInput)) {
-    await assertValidDataDefaultJudgments(data, pageId, scenario, isDivergent);
+    await assertValidDataDefaultJudgments(data, pageId, scenario,isDivergent);
   }
 };
 
-const assertValidDataDefaultJudgments = async (data, pageId, scenario, isDivergent) => {
+const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergent) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
 
@@ -1717,7 +1745,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario, isDiverge
     delete responseBody.data['registrationTypeRespondentTwo'];
   }
   if (pageId === 'paymentConfirmationSpec') {
-    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
     } else {
       responseBody.data.currentDefendantName = 'both defendants';
