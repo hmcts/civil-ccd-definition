@@ -113,8 +113,7 @@
   {
     "ID": "SdoR2Trial",
     "ListElementCode": "methodOfHearing",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "SdoR2FastTrackMethod",
+    "FieldType": "DynamicRadioList",
     "ElementLabel": " ",
     "HintText": "If you want to include any extra information or want to request a certain hearing platform, please include this in the Hearing notes section below",
     "SecurityClassification": "Public",
