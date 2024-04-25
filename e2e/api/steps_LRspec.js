@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, isJOLive} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -56,6 +56,7 @@ const data = {
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
+  DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT: require('../fixtures/events/defaultJudgment1v2DivergentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
@@ -1062,9 +1063,10 @@ module.exports = {
     testingSupport.updateCaseData(caseId, respondent2deadline);
   },
 
-  defaultJudgmentSpec: async (user, scenario) => {
+  defaultJudgmentSpec: async (user, scenario, isDivergent) => {
     await apiRequest.setupTokens(user);
 
+    let state;
     let registrationData;
     eventName = 'DEFAULT_JUDGEMENT_SPEC';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -1072,6 +1074,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
     if(pbaV3){
       let claimIssuedPBADetails = {
         claimIssuedPBADetails:{
@@ -1119,7 +1122,13 @@ module.exports = {
             },
             id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
       };
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_1V2, scenario);
+      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT : data.DEFAULT_JUDGEMENT_SPEC_1V2;
+      if (isJudgmentOnlineLive) {
+        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
+      await validateEventPagesDefaultJudgments(DJSpec, scenario,isDivergent);
     } else if (scenario === 'TWO_V_ONE') {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1131,7 +1140,8 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario);
+      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
       registrationData = {
         registrationTypeRespondentOne: [
@@ -1143,11 +1153,16 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario);
+      if (isJudgmentOnlineLive) {
+        state = 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
+      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario,isDivergent);
     }
 
     caseData = update(caseData, registrationData);
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    await assertSubmittedEvent(state, {
       header: '',
       body: ''
     }, true);
@@ -1720,15 +1735,15 @@ const assertSubmittedEventFlightDelay = async (expectedState, submittedCallbackR
   }
 };
 
-const validateEventPagesDefaultJudgments = async (data, scenario) => {
+const validateEventPagesDefaultJudgments = async (data, scenario,isDivergent) => {
   //transform the data
   console.log('validateEventPages');
   for (let pageId of Object.keys(data.userInput)) {
-    await assertValidDataDefaultJudgments(data, pageId, scenario);
+    await assertValidDataDefaultJudgments(data, pageId, scenario,isDivergent);
   }
 };
 
-const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
+const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergent) => {
   console.log(`asserting page: ${pageId} has valid data`);
   const userData = data.userInput[pageId];
 
@@ -1750,7 +1765,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario) => {
     delete responseBody.data['registrationTypeRespondentTwo'];
   }
   if (pageId === 'paymentConfirmationSpec') {
-    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE') {
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
     } else {
       responseBody.data.currentDefendantName = 'both defendants';
