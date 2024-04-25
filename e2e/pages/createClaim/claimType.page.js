@@ -12,7 +12,7 @@ module.exports = {
   },
 
   async selectClaimType() {
-    I.waitForElement(this.fields.claimType.options.personalInjury);
+    I.waitForText(this.fields.claimType.options.personalInjury, 60);
     await I.runAccessibilityTest();
     I.click(this.fields.claimType.options.personalInjury);
     await I.clickContinue();
