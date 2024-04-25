@@ -8,11 +8,12 @@ module.exports = {
     smallClaimsHearingTime: {
       id: '#smallClaimsHearing_time'
     },
-    smallClaimsWitnessStatement : {
-      checkbox: '#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW',
-       claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
-       defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
-    },
+    // CIV-13068 temporarily disabling check (need to add new fields)
+    // smallClaimsWitnessStatement : {
+    //   checkbox: '#smallClaimsWitnessStatement_smallClaimsNumberOfWitnessesToggle-SHOW',
+    //    claimantWitnessCount: '#smallClaimsWitnessStatement_input2',
+    //    defendantWitnessCount: '#smallClaimsWitnessStatement_input3'
+    // },
     smallClaimsMethodInPerson: {
       id: '#smallClaimsMethod-smallClaimsMethodInPerson'
     },
@@ -35,11 +36,12 @@ module.exports = {
       },
       reasons: '#fastTrackAllocation_reasons',
     },
-    fastTrackWitnessOfFact : {
-       claimantWitnessCount: '#fastTrackWitnessOfFact_input2',
-       defendantWitnessCount: '#fastTrackWitnessOfFact_input3',
-       numberOfPage: '#fastTrackWitnessOfFact_input6'
-    },
+    // CIV-13068 temporarily disabling check (need to add new fields)
+    // fastTrackWitnessOfFact : {
+    //    claimantWitnessCount: '#fastTrackWitnessOfFact_input2',
+    //    defendantWitnessCount: '#fastTrackWitnessOfFact_input3',
+    //    numberOfPage: '#fastTrackWitnessOfFact_input6'
+    // },
     fastTrackHearingTime: {
       hearingDuration: '#fastTrackHearingTime_hearingDuration-ONE_HOUR'
     },
@@ -74,9 +76,10 @@ module.exports = {
     if (allocateSmallClaims == 'yes' || trackType == 'smallClaims') {
       await I.waitForElement(this.fields.smallClaimsHearingTime.id);
       await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
-      await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
-      await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
-      await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
+      // CIV-13068 temporarily disabling check (need to add new fields)
+      // await I.checkOption(this.fields.smallClaimsWitnessStatement.checkbox);
+      // await I.fillField(this.fields.smallClaimsWitnessStatement.claimantWitnessCount, '2');
+      // await I.fillField(this.fields.smallClaimsWitnessStatement.defendantWitnessCount, '3');
       await date.enterDate(this.fields.orderDetailsHearingTime.hearingDateFromId, 40);
       await I.click(this.fields.orderDetailsHearingTime.hearingTimeEstimate.thirtyMinutes);
     } else if (orderType == 'disposal') {
@@ -96,9 +99,10 @@ module.exports = {
 
         I.fillField(this.fields.fastTrackAllocation.reasons, 'A very good reason');
       }
-      await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
-      await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
-      await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
+      // CIV-13068 temporarily disabling check (need to add new fields)
+      // await I.fillField(this.fields.fastTrackWitnessOfFact.claimantWitnessCount, '2');
+      // await I.fillField(this.fields.fastTrackWitnessOfFact.defendantWitnessCount, '3');
+      // await I.fillField(this.fields.fastTrackWitnessOfFact.numberOfPage, '5');
 
       await this.selectHearingMethodOption('In Person');
       await I.click(this.fields.fastTrackHearingTime.hearingDuration);

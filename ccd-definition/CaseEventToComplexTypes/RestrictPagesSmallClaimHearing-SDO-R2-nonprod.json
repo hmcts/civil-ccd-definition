@@ -22,5 +22,29 @@
     "ListElementCode": "sdoR2SmallClaimsRestrictPages.fontDetails",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsRestrictPages",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages.witnessShouldNotMoreThanTxt",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsRestrictPages",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages.noOfPages",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsRestrictPages",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages.fontDetails",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
   }
 ]
