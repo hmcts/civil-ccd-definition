@@ -236,7 +236,6 @@ const calculatedClaimsTrackDRH = {
     },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
-      && typeof data.trialOnOptions === 'string'
       && typeof data.hearingCourtLocationList === 'object'
       && typeof data.methodOfHearing === 'string'
         && typeof data.physicalBundleOptions === 'string'
@@ -1453,6 +1452,25 @@ module.exports = {
             date4: date(1),
             input8: 'string'
           },
+          sdoR2FastTrackCreditHire: {
+            input1: 'string',
+            input5: 'string',
+            input6: 'string',
+            date3: date(1),
+            input7: 'string',
+            date4: date(1),
+            input8: 'string',
+            detailsShowToggle: [
+              'ADD'
+            ],
+            sdoR2FastTrackCreditHireDetails: {
+              input2: 'string',
+              date1: date(1),
+              input3: 'string',
+              input4: 'string',
+              date2: date(1),
+            }
+          },
           fastTrackHousingDisrepair: {
             input1: 'string',
             input2: 'string',
@@ -1657,7 +1675,6 @@ module.exports = {
               }
             },
             lengthList: 'FIVE_HOURS',
-            methodOfHearing: 'fastTrackMethodInPerson',
             physicalBundleOptions: 'NONE',
             sdoR2TrialFirstOpenDateAfter: {
               listFrom: date(434)
