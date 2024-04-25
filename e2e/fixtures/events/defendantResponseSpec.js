@@ -17,140 +17,320 @@ module.exports = {
 
     switch (response) {
       case 'FULL_DEFENCE':
-        responseData.userInput = {
-          ...responseData.userInput,
-          RespondentResponseTypeSpec: {
-            respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
-          },
-          defenceRoute: {
-            defenceRouteRequired: 'DISPUTES_THE_CLAIM'
-          },
-          Mediation: {
-            responseClaimMediationSpecRequired: 'No'
-          },
-          ...(fastTrack ? {
-            FixedRecoverableCosts: {
-              respondent1DQFixedRecoverableCosts: {
-                isSubjectToFixedRecoverableCostRegime: 'Yes',
-                band: 'BAND_4',
-                complexityBandingAgreed: 'Yes',
-                reasons: 'some reasons'
-              }
-            }
-          } : {}),
-          SmallClaimExperts: {
-            respondent1DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
-            }
-          },
-          SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
-              witnessesToAppear: 'Yes',
-              details: [
-                element({
-                  firstName: 'Witness',
-                  lastName: 'One',
-                  emailAddress: 'witness@email.com',
-                  phoneNumber: '07116778998',
-                  reasonForWitness: 'None'
-                })
-              ]
-            }
-          },
-          Language: {
-            respondent1DQLanguage: {
-              court: 'WELSH',
-              documents: 'WELSH'
-            }
-          },
-          SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription: 'test',
-            SmallClaimHearingInterpreterRequired: 'Yes',
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
+        if(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') {
+          responseData.userInput = {
+            ...responseData.userInput,
+            RespondentResponseTypeSpec: {
+              respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
             },
-          },
-          RequestedCourtLocationLRspec: {
-            respondToCourtLocation: {
-              responseCourtLocations: {
-                list_items: [
-                  listElement(config.defendantSelectedCourt)
-                ],
-                value: listElement()
+            defenceRoute: {
+              defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+            },
+            Mediation: {
+              responseClaimMediationSpecRequired: 'No'
+            },
+            ...(fastTrack ? {
+              FixedRecoverableCosts: {
+                respondent1DQFixedRecoverableCosts: {
+                  isSubjectToFixedRecoverableCostRegime: 'Yes',
+                  band: 'BAND_4',
+                  complexityBandingAgreed: 'Yes',
+                  reasons: 'some reasons'
+                }
+              }
+            } : {}),
+            SmallClaimExperts: {
+              respondent1DQExperts: {
+                expertRequired: 'Yes',
+                expertReportsSent: 'NOT_OBTAINED',
+                jointExpertSuitable: 'Yes',
+                details: [
+                  element({
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    emailAddress: 'john@doemail.com',
+                    phoneNumber: '07111111111',
+                    fieldOfExpertise: 'None',
+                    whyRequired: 'Testing',
+                    estimatedCost: '10000'
+                  })
+                ]
+              }
+            },
+            SmallClaimWitnesses: {
+              respondent1DQWitnessesSmallClaim: {
+                witnessesToAppear: 'Yes',
+                details: [
+                  element({
+                    firstName: 'Witness',
+                    lastName: 'One',
+                    emailAddress: 'witness@email.com',
+                    phoneNumber: '07116778998',
+                    reasonForWitness: 'None'
+                  })
+                ]
+              }
+            },
+            Language: {
+              respondent1DQLanguage: {
+                court: 'WELSH',
+                documents: 'WELSH'
+              }
+            },
+            SmaillClaimHearing: {
+              SmallClaimHearingInterpreterDescription: 'test',
+              SmallClaimHearingInterpreterRequired: 'Yes',
+              respondent1DQHearingSmallClaim: {
+                unavailableDatesRequired: 'No',
               },
-              reasonForHearingAtSpecificCourt: 'Reasons',
-              caseLocation: {
-                region: '2',
-                baseLocation: '420219'
+            },
+            RequestedCourtLocationLRspec: {
+              respondToCourtLocation: {
+                responseCourtLocations: {
+                  list_items: [
+                    listElement(config.defendantSelectedCourt)
+                  ],
+                  value: listElement()
+                },
+                reasonForHearingAtSpecificCourt: 'Reasons',
+                caseLocation: {
+                  region: '2',
+                  baseLocation: '420219'
+                }
+              },
+              respondent1DQRemoteHearingLRspec: {
+                remoteHearingRequested: 'Yes',
+                reasonForRemoteHearing: 'Some reason'
               }
             },
-            respondent1DQRemoteHearingLRspec: {
-              remoteHearingRequested: 'Yes',
-              reasonForRemoteHearing: 'Some reason'
-            }
-          },
-          HearingSupport: {
-            respondent1DQHearingSupport: {
-              supportRequirements: 'Yes',
-              supportRequirementsAdditional: 'Additional support reasons'
-            }
-          },
-          VulnerabilityQuestions: {
-            respondent1DQVulnerabilityQuestions: {
-              vulnerabilityAdjustmentsRequired: 'Yes',
-              vulnerabilityAdjustments: 'test'
-            }
-          },
-          StatementOfTruth: {
-            uiStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
+            HearingSupport: {
+              respondent1DQHearingSupport: {
+                supportRequirements: 'Yes',
+                supportRequirementsAdditional: 'Additional support reasons'
+              }
             },
-            respondent1DQHearing: {
-              unavailableDatesRequired: 'No'
+            VulnerabilityQuestions: {
+              respondent1DQVulnerabilityQuestions: {
+                vulnerabilityAdjustmentsRequired: 'Yes',
+                vulnerabilityAdjustments: 'test'
+              }
+            },
+            StatementOfTruth: {
+              uiStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              },
+              respondent1DQHearing: {
+                unavailableDatesRequired: 'No'
+              }
             }
-          }
-        };
-        responseData.midEventData = {
-          ...responseData.midEventData,
-          RespondentResponseTypeSpec: {
-            specFullDefenceOrPartAdmission: 'Yes',
-            multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
-          },
-          ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
+          };
+          responseData.midEventData = {
+            ...responseData.midEventData,
+            RespondentResponseTypeSpec: {
+              specFullDefenceOrPartAdmission: 'Yes',
+              multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+              specDefenceFullAdmittedRequired: 'No',
+              respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            },
             defenceRoute: {
               responseClaimTrack: 'SMALL_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
+          };
+        }
+        if (isMintiEnabled === 'MULTI_CLAIM') {
+          responseData.userInput = {
+            ...responseData.userInput,
+            RespondentResponseTypeSpec: {
+              respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            },
+            defenceRoute: {
+              defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+            },
+            HowToAddTimeline: {
+              specClaimResponseTimelineList: 'MANUAL'
+            },
+            FileDirectionsQuestionnaire: {
+              respondent1DQFileDirectionsQuestionnaire: {
+                explainedToClient: ['CONFIRM'],
+                oneMonthStayRequested: 'Yes',
+                reactionProtocolCompliedWith: 'Yes'
+              }
+            },
+            DisclosureOfElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'Yes'
+              }
+            },
+            DisclosureReport: {
+              respondent1DQDisclosureReport: {
+                disclosureFormFiledAndServed: 'Yes',
+                disclosureProposalAgreed: 'Yes'
+              }
+            },
+            Experts: {
+              respondent1DQExperts: {
+                expertRequired: 'No'
+              }
+            },
+            Language: {
+              respondent1DQLanguage: {
+                court: 'WELSH',
+                documents: 'WELSH'
+              }
+            },
+            RequestedCourtLocationLRspec: {
+              respondToCourtLocation: {
+                responseCourtLocations: {
+                  list_items: [
+                    listElement(config.defendantSelectedCourt)
+                  ],
+                  value: listElement()
+                },
+                reasonForHearingAtSpecificCourt: 'Reasons',
+                caseLocation: {
+                  region: '2',
+                  baseLocation: '420219'
+                }
+              },
+              respondent1DQRemoteHearingLRspec: {
+                remoteHearingRequested: 'Yes',
+                reasonForRemoteHearing: 'Some reason'
+              }
+            },
+            HearingSupport: {
+              respondent1DQHearingSupport: {
+                supportRequirements: 'Yes',
+                supportRequirementsAdditional: 'Additional support reasons'
+              }
+            },
+            VulnerabilityQuestions: {
+              respondent1DQVulnerabilityQuestions: {
+                vulnerabilityAdjustmentsRequired: 'Yes',
+                vulnerabilityAdjustments: 'test'
+              }
+            },
+            StatementOfTruth: {
+              uiStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              },
+              respondent1DQHearing: {
+                unavailableDatesRequired: 'No'
+              }
+            }
+          };
+          responseData.midEventData = {
+            ...responseData.midEventData,
+            RespondentResponseTypeSpec: {
+              specFullDefenceOrPartAdmission: 'Yes',
+              multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+              specDefenceFullAdmittedRequired: 'No',
+              respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            },
             defenceRoute: {
               responseClaimTrack: 'MULTI_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
+          };
+        }
+        if (isMintiEnabled === 'INTERMEDIATE_CLAIM') {
+          responseData.userInput = {
+            ...responseData.userInput,
+            RespondentResponseTypeSpec: {
+              respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+            },
+            defenceRoute: {
+              defenceRouteRequired: 'DISPUTES_THE_CLAIM'
+            },
+            HowToAddTimeline: {
+              specClaimResponseTimelineList: 'MANUAL'
+            },
+            FileDirectionsQuestionnaire: {
+              respondent1DQFileDirectionsQuestionnaire: {
+                explainedToClient: ['CONFIRM'],
+                oneMonthStayRequested: 'Yes',
+                reactionProtocolCompliedWith: 'Yes'
+              }
+            },
+            DisclosureOfElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'Yes'
+              }
+            },
+            DisclosureReport: {
+              respondent1DQDisclosureReport: {
+                disclosureFormFiledAndServed: 'Yes',
+                disclosureProposalAgreed: 'Yes'
+              }
+            },
+            Experts: {
+              respondent1DQExperts: {
+                expertRequired: 'No'
+              }
+            },
+            Language: {
+              respondent1DQLanguage: {
+                court: 'WELSH',
+                documents: 'WELSH'
+              }
+            },
+            RequestedCourtLocationLRspec: {
+              respondToCourtLocation: {
+                responseCourtLocations: {
+                  list_items: [
+                    listElement(config.defendantSelectedCourt)
+                  ],
+                  value: listElement()
+                },
+                reasonForHearingAtSpecificCourt: 'Reasons',
+                caseLocation: {
+                  region: '2',
+                  baseLocation: '420219'
+                }
+              },
+              respondent1DQRemoteHearingLRspec: {
+                remoteHearingRequested: 'Yes',
+                reasonForRemoteHearing: 'Some reason'
+              }
+            },
+            HearingSupport: {
+              respondent1DQHearingSupport: {
+                supportRequirements: 'Yes',
+                supportRequirementsAdditional: 'Additional support reasons'
+              }
+            },
+            VulnerabilityQuestions: {
+              respondent1DQVulnerabilityQuestions: {
+                vulnerabilityAdjustmentsRequired: 'Yes',
+                vulnerabilityAdjustments: 'test'
+              }
+            },
+            StatementOfTruth: {
+              uiStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              },
+              respondent1DQHearing: {
+                unavailableDatesRequired: 'No'
+              }
+            }
+          };
+          responseData.midEventData = {
+            ...responseData.midEventData,
+            RespondentResponseTypeSpec: {
+              specFullDefenceOrPartAdmission: 'Yes',
+              multiPartyResponseTypeFlags: 'FULL_DEFENCE',
+              specDefenceFullAdmittedRequired: 'No',
+              respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            },
             defenceRoute: {
               responseClaimTrack: 'INTERMEDIATE_CLAIM',
               respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
             }
-          }: {}
-        };
+          };
+        }
         break;
       case 'FULL_ADMISSION':
         responseData.userInput = {
