@@ -15,10 +15,10 @@ module.exports = {
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
               joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -33,10 +33,10 @@ module.exports = {
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
               joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -92,10 +92,10 @@ module.exports = {
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
               joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -110,10 +110,10 @@ module.exports = {
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
               joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',

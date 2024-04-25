@@ -83,7 +83,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"

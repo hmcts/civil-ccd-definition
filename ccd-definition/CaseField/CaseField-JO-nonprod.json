@@ -78,7 +78,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgmentInstalmentDetails",
+    "ID": "joInstalmentDetails",
     "Label": " ",
     "FieldType": "InstalmentPaymentDetails",
     "SecurityClassification": "Public",

@@ -2,7 +2,7 @@
   {
     "ID": "InstalmentPaymentDetails",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "ListElementCode": "instalmentAmount",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -10,7 +10,7 @@
   {
     "ID": "InstalmentPaymentDetails",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "ListElementCode": "paymentFrequency",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -18,7 +18,7 @@
   {
     "ID": "InstalmentPaymentDetails",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "ListElementCode": "firstInstalmentDate",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"

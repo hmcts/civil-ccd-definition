@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "PageID": "EditJudgment",
