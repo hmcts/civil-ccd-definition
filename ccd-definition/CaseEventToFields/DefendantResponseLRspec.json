@@ -1429,7 +1429,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Witnesses",
-    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack= \"FAST_CLAIM\"",
+    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
