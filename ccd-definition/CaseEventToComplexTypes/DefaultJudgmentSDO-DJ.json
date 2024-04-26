@@ -575,7 +575,7 @@
     "CaseFieldID":"trialHearingTimeDJ",
     "ListElementCode":"date1",
     "FieldDisplayOrder":2,
-    "DisplayContext":"OPTIONAL"
+    "DisplayContext":"MANDATORY"
   },
   {
     "ID": "TrialHearingTimeDJ",
