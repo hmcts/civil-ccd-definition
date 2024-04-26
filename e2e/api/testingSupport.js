@@ -59,6 +59,10 @@ const checkCarmToggleEnabled = async () => {
   return checkFlagEnabled('carm');
 };
 
+const checkMintiToggleEnabled = async () => {
+  return checkFlagEnabled('minti');
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -309,5 +313,6 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkCarmToggleEnabled
+  checkCarmToggleEnabled,
+  checkMintiToggleEnabled
 };
