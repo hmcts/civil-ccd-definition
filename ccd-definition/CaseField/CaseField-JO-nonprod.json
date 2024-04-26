@@ -185,5 +185,22 @@
   "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
   "SecurityClassification": "Public",
   "Searchable": "N"
-}
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "activeJudgment",
+    "Label": " ",
+    "FieldType": "JoJudgment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "historicJudgment",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "JoJudgment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
 ]
