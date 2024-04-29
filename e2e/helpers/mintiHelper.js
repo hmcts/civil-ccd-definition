@@ -18,4 +18,12 @@ module.exports = {
       console.log('submitted date update to before multi Intermediate track live date');
     }
   },
+
+  getMintiClaimTrack(claimAmount) {
+    if(parseFloat(claimAmount) > '25000' && parseFloat(claimAmount) <= '100000') {
+      return 'INTERMEDIATE_CLAIM';
+    } else if (parseFloat(claimAmount) > '100000') {
+      return 'MULTI_CLAIM';
+    }
+  }
 };

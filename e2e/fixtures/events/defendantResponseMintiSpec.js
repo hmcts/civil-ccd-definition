@@ -1,7 +1,8 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', mintiClaimTrack) => {
+
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -9,6 +10,9 @@ module.exports = {
         },
         ResponseConfirmDetails: {
           specAoSRespondentCorrespondenceAddressRequired: 'Yes'
+        },
+        SingleResponse: {
+          respondentResponseIsSame: 'Yes',
         },
       },
     };
@@ -23,49 +27,44 @@ module.exports = {
           defenceRoute: {
             defenceRouteRequired: 'DISPUTES_THE_CLAIM'
           },
-          Mediation: {
-            responseClaimMediationSpecRequired: 'No'
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
           },
-          ...(fastTrack ? {
-            FixedRecoverableCosts: {
-              respondent1DQFixedRecoverableCosts: {
-                isSubjectToFixedRecoverableCostRegime: 'Yes',
-                band: 'BAND_4',
-                complexityBandingAgreed: 'Yes',
-                reasons: 'some reasons'
-              }
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          FileDirectionsQuestionnaire: {
+            respondent1DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'Yes',
+              reactionProtocolCompliedWith: 'Yes'
             }
-          } : {}),
-          SmallClaimExperts: {
+          },
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
+            }
+          },
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
+            }
+          },
+          Experts: {
             respondent1DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
+              expertRequired: 'No'
             }
           },
-          SmallClaimWitnesses: {
-            respondent1DQWitnessesSmallClaim: {
-              witnessesToAppear: 'Yes',
-              details: [
-                element({
-                  firstName: 'Witness',
-                  lastName: 'One',
-                  emailAddress: 'witness@email.com',
-                  phoneNumber: '07116778998',
-                  reasonForWitness: 'None'
-                })
-              ]
+          Witnesses: {
+            respondent1DQWitnesses: {
+              witnessesToAppear: 'No'
             }
           },
           Language: {
@@ -73,13 +72,6 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
-          },
-          SmaillClaimHearing: {
-            SmallClaimHearingInterpreterDescription: 'test',
-            SmallClaimHearingInterpreterRequired: 'Yes',
-            respondent1DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
-            },
           },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
@@ -130,11 +122,18 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-
-          defenceRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
       case 'FULL_ADMISSION':
@@ -173,13 +172,24 @@ module.exports = {
             multiPartyResponseTypeFlags: 'FULL_ADMISSION',
             specDefenceFullAdmittedRequired: 'No'
           },
-          defenceAdmittedPartRoute: {
-            responseClaimTrack: 'SMALL_CLAIM'
-          },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'MULTI_CLAIM'
+            },
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM'
+            },
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
       case 'PART_ADMISSION':
@@ -252,15 +262,26 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
-
-          defenceAdmittedPartRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
-            respondToAdmittedClaimOwingAmountPounds: '2000.00'
-          },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondToAdmittedClaimOwingAmountPounds: '2000.00'
+            },
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondToAdmittedClaimOwingAmountPounds: '2000.00'
+            },
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
       case 'COUNTER_CLAIM':
@@ -282,10 +303,18 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
           },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
 
@@ -300,7 +329,7 @@ module.exports = {
    * @param response type of response
    * @return data to respond as respondent 2.
    */
-  respondToClaim2: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim2: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', mintiClaimTrack) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -322,39 +351,34 @@ module.exports = {
           defenceRoute: {
             defenceRouteRequired2: 'DISPUTES_THE_CLAIM'
           },
-          Mediation: {
-            responseClaimMediationSpec2Required: 'No'
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim2: 'details'
           },
-          SmallClaimExperts: {
-            respondent2DQExperts: {
-              expertRequired: 'Yes',
-              expertReportsSent: 'NOT_OBTAINED',
-              jointExpertSuitable: 'Yes',
-              details: [
-                element({
-                  firstName: 'John',
-                  lastName: 'Doe',
-                  emailAddress: 'john@doemail.com',
-                  phoneNumber: '07111111111',
-                  fieldOfExpertise: 'None',
-                  whyRequired: 'Testing',
-                  estimatedCost: '10000'
-                })
-              ]
+          HowToAddTimeline: {
+            specClaimResponseTimelineList2: 'MANUAL'
+          },
+          FileDirectionsQuestionnaire: {
+            respondent2DQFileDirectionsQuestionnaire: {
+              explainedToClient: ['CONFIRM'],
+              oneMonthStayRequested: 'Yes',
+              reactionProtocolCompliedWith: 'Yes'
             }
           },
-          SmallClaimWitnesses: {
-            respondent2DQWitnessesSmallClaim: {
-              witnessesToAppear: 'Yes',
-              details: [
-                element({
-                  firstName: 'Witness',
-                  lastName: 'One',
-                  emailAddress: 'witness@email.com',
-                  phoneNumber: '07116778998',
-                  reasonForWitness: 'None'
-                })
-              ]
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent2DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
+            }
+          },
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent2DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            respondent2DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
             }
           },
           Language: {
@@ -362,13 +386,6 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
-          },
-          SmaillClaimHearing: {
-            smallClaimHearingInterpreterDescription2: 'test',
-            SmallClaimHearingInterpreter2Required: 'Yes',
-            respondent2DQHearingSmallClaim: {
-              unavailableDatesRequired: 'No',
-            },
           },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
@@ -412,14 +429,20 @@ module.exports = {
           RespondentResponseTypeSpec: {
             specFullDefenceOrPartAdmission: 'Yes',
             multiPartyResponseTypeFlags: 'FULL_DEFENCE',
-            specDefenceFullAdmittedRequired: 'No',
-            respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
+            specDefenceFullAdmittedRequired: 'No'
           },
-
-          defenceRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
       case 'FULL_ADMISSION':
@@ -458,13 +481,24 @@ module.exports = {
             multiPartyResponseTypeFlags: 'FULL_ADMISSION',
             specDefenceFullAdmittedRequired: 'No'
           },
-          defenceAdmittedPartRoute: {
-            responseClaimTrack: 'SMALL_CLAIM'
-          },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            },
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'SMALL_CLAIM'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            },
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'SMALL_CLAIM'
+            }
+          }: {}
         };
         break;
       case 'PART_ADMISSION':
@@ -537,15 +571,26 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
-
-          defenceAdmittedPartRoute: {
-            responseClaimTrack: 'SMALL_CLAIM',
-            respondToAdmittedClaimOwingAmountPounds: '2000.00'
-          },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            },
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'SMALL_CLAIM',
+              respondToAdmittedClaimOwingAmountPounds: '2000.00'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            },
+            defenceAdmittedPartRoute: {
+              responseClaimTrack: 'SMALL_CLAIM',
+              respondToAdmittedClaimOwingAmountPounds: '2000.00'
+            }
+          }: {}
         };
         break;
       case 'COUNTER_CLAIM':
@@ -567,10 +612,18 @@ module.exports = {
             specRespondent1Represented: 'Yes',
             respondentClaimResponseTypeForSpecGeneric: 'COUNTER_CLAIM'
           },
-          defenceRoute: {
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
-            responseClaimTrack: 'SMALL_CLAIM'
-          }
+          ...(mintiClaimTrack === 'MULTI_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'MULTI_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {},
+          ...(mintiClaimTrack === 'INTERMEDIATE_CLAIM') ? {
+            defenceRoute: {
+              responseClaimTrack: 'INTERMEDIATE_CLAIM',
+              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            }
+          }: {}
         };
         break;
 

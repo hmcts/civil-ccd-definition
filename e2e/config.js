@@ -1,4 +1,4 @@
-const defaultPassword = process.env.DEFAULT_PASSWORD;
+const defaultPassword = 'Password12!';
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
