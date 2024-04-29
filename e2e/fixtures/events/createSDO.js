@@ -1657,7 +1657,6 @@ module.exports = {
               }
             },
             lengthList: 'FIVE_HOURS',
-            methodOfHearing: 'fastTrackMethodInPerson',
             physicalBundleOptions: 'NONE',
             sdoR2TrialFirstOpenDateAfter: {
               listFrom: date(434)

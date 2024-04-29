@@ -174,7 +174,7 @@ const conditionalSteps = (condition, steps) => condition ? steps : [];
 
 const firstClaimantSteps = () => [
   () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
-  () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_1, address, TEST_FILE_PATH),
+  () => claimantLitigationDetails.enterLitigantFriend(parties.APPLICANT_SOLICITOR_1, false, TEST_FILE_PATH),
   () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
   () => claimantSolicitorOrganisation.enterOrganisationDetails(),
   () => claimantSolicitorServiceAddress.enterOrganisationServiceAddress()
