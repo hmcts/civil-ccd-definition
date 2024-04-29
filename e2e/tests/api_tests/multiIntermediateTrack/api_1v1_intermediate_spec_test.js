@@ -14,10 +14,10 @@ async function prepareClaim(api_spec, mpScenario) {
 Scenario('1v1 full defence Intermediate claim Specified @api-nonprod-specified', async ({I, api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario, defense);
-  //await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
+  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
 });
 
-// AfterSuite(async  ({api_spec}) => {
-//   await api_spec.cleanUp();
-// });
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});
 
