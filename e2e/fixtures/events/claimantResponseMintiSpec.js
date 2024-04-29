@@ -116,7 +116,7 @@ module.exports = {
               role: 'Solicitor role'
             }
           }
-        }
+        };
         }
         responseData.midEventData = {
           ...responseData.midEventData,

@@ -1,4 +1,4 @@
-const {listElement, element} = require('../../api/dataHelper');
+const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', mintiClaimTrack) => {
