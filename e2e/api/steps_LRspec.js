@@ -36,7 +36,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const {cloneDeep} = require('lodash');
-const {adjustCaseSubmittedDateForMinti, getMintiClaimTrack} = require("../helpers/mintiHelper");
+const {adjustCaseSubmittedDateForMinti, getMintiClaimTrack} = require('../helpers/mintiHelper');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -910,7 +910,7 @@ module.exports = {
     }
 
     if(isMintiCaseEnabled){
-      mintiClaimTrack = getMintiClaimTrack(claimAmountMinti)
+      mintiClaimTrack = getMintiClaimTrack(claimAmountMinti);
       response = response+ '_' + mintiClaimTrack;
     }
 
