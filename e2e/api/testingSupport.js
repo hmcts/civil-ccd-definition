@@ -306,7 +306,10 @@ module.exports =  {
   },
   checkCaseFlagsAndHmcEnabled: async () => {
     const caseFlagsEnabled = await checkCaseFlagsEnabled();
+    console.log(`caseFlagsEnabled: ${caseFlagsEnabled}`);
     const hmcEnabled = await checkHmcEnabled();
+    console.log(`hmcEnabled: ${hmcEnabled}`);
+
     return caseFlagsEnabled && hmcEnabled;
   },
   checkHmcEnabled,
