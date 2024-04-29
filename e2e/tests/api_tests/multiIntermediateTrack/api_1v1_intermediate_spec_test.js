@@ -6,7 +6,7 @@ const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const defense = 'FULL_DEFENCE';
 
-Feature('CCD 1v1 API test spec intermediate and multi track @api-spec-multi-intermediate @api-nonprod');
+Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate @api-nonprod');
 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
