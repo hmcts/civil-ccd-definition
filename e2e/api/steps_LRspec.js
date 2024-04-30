@@ -47,9 +47,9 @@ const data = {
   CREATE_CLAIM: (scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => claimData.createClaim(scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_MINTI_ENABLED: (response, camundaEvent, mintiClaimTrack) =>
-    require('../fixtures/events/defendantResponseMintiSpec.js').respondToClaim(response, camundaEvent, mintiClaimTrack),
+    require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim(response, camundaEvent, mintiClaimTrack),
   DEFENDANT_RESPONSE_MINTI_ENABLED_SECOND_SOL: (response, camundaEvent, mintiClaimTrack) =>
-    require('../fixtures/events/defendantResponseMintiSpec.js').respondToClaim2(response, camundaEvent, mintiClaimTrack),
+    require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim2(response, camundaEvent, mintiClaimTrack),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -58,7 +58,7 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario, fastTrack, carmEnabled) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, fastTrack, carmEnabled),
   CLAIMANT_RESPONSE_1v2: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response, carmEnabled),
   CLAIMANT_RESPONSE_2v1: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response, carmEnabled),
-  CLAIMANT_RESPONSE_MINTI_ENABLED: (mpScenario, mintiClaimTrack) => require('../fixtures/events/claimantResponseMintiSpec.js').claimantResponse(mpScenario, mintiClaimTrack),
+  CLAIMANT_RESPONSE_MINTI_ENABLED: (mpScenario, mintiClaimTrack) => require('../fixtures/events/claimantResponseMultiClaimSpec.js').claimantResponse(mpScenario, mintiClaimTrack),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
@@ -827,12 +827,9 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    if (carmEnabled) {
-      await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    } else {
-      const isMintiEnabled = await checkMintiToggleEnabled();
-      await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
-    }
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    const isMintiEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
 
     return caseId;
   },
