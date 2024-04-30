@@ -907,7 +907,7 @@ module.exports = {
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
                             isMintiCaseEnabled = false, claimAmountMinti) => {
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
