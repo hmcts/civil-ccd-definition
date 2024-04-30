@@ -1,38 +1,86 @@
 [
   {
     "ID": "HearingLengthEstimate",
+    "ListElementCode": "5_MINUTES",
+    "ListElement": "5 minutes",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "10_MINUTES",
+    "ListElement": "10 minutes",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "HearingLengthEstimate",
     "ListElementCode": "15_MINUTES",
     "ListElement": "15 minutes",
-    "DisplayOrder": 1
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "20_MINUTES",
+    "ListElement": "20 minutes",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "25_MINUTES",
+    "ListElement": "25 minutes",
+    "DisplayOrder": 5
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "30_MINUTES",
     "ListElement": "30 minutes",
-    "DisplayOrder": 2
+    "DisplayOrder": 6
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "35_MINUTES",
+    "ListElement": "35 minutes",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "40_MINUTES",
+    "ListElement": "40 minutes",
+    "DisplayOrder": 8
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "45_MINUTES",
     "ListElement": "45 minutes",
-    "DisplayOrder": 3
+    "DisplayOrder": 9
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "50_MINUTES",
+    "ListElement": "50 minutes",
+    "DisplayOrder": 10
+  },
+  {
+    "ID": "HearingLengthEstimate",
+    "ListElementCode": "55_MINUTES",
+    "ListElement": "55 minutes",
+    "DisplayOrder": 10
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "1_HOUR",
     "ListElement": "1 hour",
-    "DisplayOrder": 4
+    "DisplayOrder": 11
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "2_HOURS",
     "ListElement": "2 hours",
-    "DisplayOrder": 5
+    "DisplayOrder": 12
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 6
+    "DisplayOrder": 13
   }
 ]
