@@ -78,7 +78,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -101,7 +102,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -168,7 +170,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -191,7 +194,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "judge-profile",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
