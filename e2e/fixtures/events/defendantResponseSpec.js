@@ -1,9 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false,
-                   isMintiEnabled = 'FALSE') => {
-
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -132,24 +130,11 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No',
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
-          ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
-            defenceRoute: {
-              responseClaimTrack: 'SMALL_CLAIM',
-              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-            }
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
-            defenceRoute: {
-              responseClaimTrack: 'MULTI_CLAIM',
-              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-            }
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
-            defenceRoute: {
-              responseClaimTrack: 'INTERMEDIATE_CLAIM',
-              respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
-            }
-          }: {}
+
+          defenceRoute: {
+            responseClaimTrack: 'SMALL_CLAIM',
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+          }
         };
         break;
       case 'FULL_ADMISSION':
