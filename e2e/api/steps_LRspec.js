@@ -288,6 +288,16 @@ const newSdoR2FieldsSmallClaims = {
   },
 };
 
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+    return typeof data.input1 === 'string'
+      && typeof data.input5 === 'string'
+      && typeof data.input6 === 'string'
+      && typeof data.input7 === 'string'
+      && typeof data.input8 === 'string';
+  }
+};
+
 /**
  * helper function to help locate differences between expected and actual.
  *
@@ -644,6 +654,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
   delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
 
   responseBody = clearNIHLDataFromResponseBody(responseBody);
 
@@ -1189,6 +1201,8 @@ module.exports = {
       delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
       delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
       delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
@@ -1203,6 +1217,10 @@ module.exports = {
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      if (SdoR2 && response === 'CREATE_FAST') {
+        delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+        disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
@@ -1564,6 +1582,8 @@ const assertValidData = async (data, pageId) => {
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
     delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
     delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
   assert.equal(response.status, 200);
 
