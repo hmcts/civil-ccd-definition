@@ -48,6 +48,14 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoDJR2TrialCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "SdoDJR2TrialCreditHire",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
 
