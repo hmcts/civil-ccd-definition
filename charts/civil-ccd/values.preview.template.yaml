@@ -3,14 +3,14 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-4615'
     keyVaults:
       civil:
         resourceGroup: civil
         secrets:
           - name: civil-idam-client-secret
             alias: idam.client.secret
-          - name: microservicekey-civil-service
+          - name: microservicekey-civil-serviceF
             alias: idam.s2s-auth.totp_secret
           - name: system-update-user-username
             alias: CIVIL_SYSTEM_UPDATE_USERNAME
