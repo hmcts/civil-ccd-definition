@@ -63,24 +63,24 @@
     "ID": "HearingLengthEstimate",
     "ListElementCode": "55_MINUTES",
     "ListElement": "55 minutes",
-    "DisplayOrder": 10
+    "DisplayOrder": 11
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "1_HOUR",
     "ListElement": "1 hour",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "2_HOURS",
     "ListElement": "2 hours",
-    "DisplayOrder": 12
+    "DisplayOrder": 13
   },
   {
     "ID": "HearingLengthEstimate",
     "ListElementCode": "OTHER",
     "ListElement": "Other",
-    "DisplayOrder": 13
+    "DisplayOrder": 14
   }
 ]
