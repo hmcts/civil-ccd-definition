@@ -11,6 +11,7 @@ Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
 }
+
 Scenario('1v1 full defence Intermediate claim Specified @api-nonprod-specified', async ({I, api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario, defense);
