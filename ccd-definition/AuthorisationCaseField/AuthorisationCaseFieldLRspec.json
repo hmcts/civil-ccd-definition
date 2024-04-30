@@ -965,7 +965,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       },
