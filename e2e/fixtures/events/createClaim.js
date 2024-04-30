@@ -377,7 +377,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -413,7 +413,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2),
       },
       invalid: {
         Upload: {
