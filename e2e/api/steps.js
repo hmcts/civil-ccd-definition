@@ -222,6 +222,17 @@ const newSdoR2FieldsFastTrack = {
   }
 };
 
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+  return typeof data.input1 === 'string'
+    && typeof data.input5 === 'string'
+    && typeof data.input6 === 'string'
+    && typeof data.input7 === 'string'
+    && typeof data.input8 === 'string';
+  }
+};
+
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
@@ -1060,6 +1071,8 @@ module.exports = {
       clearWelshParaFromCaseData();
       delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
       delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
@@ -1067,6 +1080,8 @@ module.exports = {
     if (SdoR2 && response === 'CREATE_FAST') {
       delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
+      delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+      disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
     }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
@@ -1439,6 +1454,8 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
     delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
     delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
 
   assert.equal(response.status, 200);
@@ -1465,7 +1482,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
       if (sdoR2Flag) {
-        clearNihlAndDRHDataFromCaseData();
+        clearNihlDataFromCaseData();
       }
     }
     if (responseBody.data.sdoOrderDocument) {
@@ -1496,6 +1513,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
+    delete caseData['sdoR2FastTrackCreditHire'];
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
@@ -2015,7 +2033,7 @@ const clearFinalOrderLocationData = (responseBody) => {
   return responseBody;
 };
 
-const clearNihlAndDRHDataFromCaseData = () => {
+const clearNihlDataFromCaseData = () => {
   delete caseData['sdoFastTrackJudgesRecital'];
   delete caseData['sdoAltDisputeResolution'];
   delete caseData['sdoVariationOfDirections'];
