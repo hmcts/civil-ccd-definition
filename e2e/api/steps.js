@@ -29,7 +29,8 @@ const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+  checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -38,10 +39,11 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -239,21 +241,15 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000', isMintiCaseEnabled = false) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let isMintiEnabled = 'FALSE';
-    if(parseFloat(claimAmount) > '100000') {
-      isMintiEnabled = 'MULTI_CLAIM';
-    }
-    if(parseFloat(claimAmount) > '25000' && parseFloat(claimAmount) < '100000') {
-      isMintiEnabled = 'INTERMEDIATE_CLAIM';
-    }
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, isMintiEnabled);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
 
     //==============================================================
 
@@ -270,8 +266,6 @@ module.exports = {
       await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
         null, 'Case data validation failed');
     }
-
-
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -301,6 +295,9 @@ module.exports = {
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    const isMintiEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
   },
 
   manageDefendant1Details: async (user) => {
