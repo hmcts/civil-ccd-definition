@@ -1195,7 +1195,8 @@
     "DisplayContext": "MANDATORY",
     "PageID": "Mediation",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "isRespondent1 = \"Yes\" OR isApplicant1 = \"Yes\""
+    "FieldShowCondition": "isRespondent1 = \"Yes\" OR isApplicant1 = \"Yes\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
