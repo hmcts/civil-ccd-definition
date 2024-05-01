@@ -1216,7 +1216,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1259,6 +1259,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "PageDisplayOrder": 42,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FixedRecoverableCostsIntermediate",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack= \"INTERMEDIATE_CLAIM\"",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "PageDisplayOrder": 42,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FixedRecoverableCostsIntermediate",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 43,
     "PageFieldDisplayOrder": 1,
@@ -1287,7 +1310,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1334,7 +1357,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
@@ -1429,7 +1452,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "Witnesses",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "ShowSummaryChangeOption": "Y"
   },
   {

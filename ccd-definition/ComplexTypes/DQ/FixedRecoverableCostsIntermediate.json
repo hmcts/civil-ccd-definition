@@ -1,0 +1,92 @@
+[
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "explanationLabel",
+    "ElementLabel": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table</a></div><br /> for information on complexity bands. \n # Fixed Recoverable Costs \n ### Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity band?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "agreedWithOtherPartyLabel",
+    "FieldType": "Label",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "ElementLabel": "### Has the complexity been agreed with the other party?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "agreedWithOtherParty",
+    "FieldType": "YesOrNo",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "bandLabel",
+    "ElementLabel": "### Which complexity band do you believe this claim falls into?",
+    "FieldType": "Label",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "band",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "FieldTypeParameter": "ComplexityBandIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "reasonsLabel",
+    "ElementLabel": "### Please give your reasons (optional)",
+    "FieldType": "Label",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "reasons",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\" OR isSubjectToFixedRecoverableCostRegime = \"No\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "frcSupportingDocumentLabel",
+    "ElementLabel": "### Upload support evidence (optional)",
+    "FieldType": "Label",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "FixedRecoverableCostsIntermediate",
+    "ListElementCode": "frcSupportingDocument",
+    "ElementLabel": " ",
+    "FieldType": "Document",
+    "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "RetainHiddenValue": "Y"
+  }
+]

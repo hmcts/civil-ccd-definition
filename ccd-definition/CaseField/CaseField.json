@@ -2770,5 +2770,21 @@
     "FieldType": "FixedRecoverableCosts",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "Label": " ",
+    "FieldType": "FixedRecoverableCostsIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "Label": " ",
+    "FieldType": "FixedRecoverableCostsIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
