@@ -17,9 +17,9 @@ const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.j
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends, dateTime} = require('./dataHelper');
+const {dateNoWeekends} = require('./dataHelper');
 const {checkToggleEnabled} = require('./testingSupport');
-const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
@@ -36,64 +36,6 @@ const data = {
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
-};
-
-const assertContainsPopulatedFields = returnedCaseData => {
-  for (let populatedCaseField of Object.keys(caseData)) {
-    assert.property(returnedCaseData,  populatedCaseField);
-  }
-};
-
-const validateEventPagesDefaultJudgments = async (data, scenario,isDivergent) => {
-  //transform the data
-  console.log('validateEventPages');
-  for (let pageId of Object.keys(data.userInput)) {
-    await assertValidDataDefaultJudgments(data, pageId, scenario,isDivergent);
-  }
-};
-
-const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergent) => {
-  console.log(`asserting page: ${pageId} has valid data`);
-  const userData = data.userInput[pageId];
-
-  caseData = update(caseData, userData);
-
-  const response = await apiRequest.validatePage(
-    eventName,
-    pageId,
-    caseData,
-    caseId
-  );
-  let responseBody = await response.json();
-  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-
-  assert.equal(response.status, 200);
-
-  if (pageId === 'defendantDetailsSpec') {
-    delete responseBody.data['registrationTypeRespondentOne'];
-    delete responseBody.data['registrationTypeRespondentTwo'];
-  }
-  if (pageId === 'paymentConfirmationSpec') {
-    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
-      responseBody.data.currentDefendantName = 'Sir John Doe';
-    } else {
-      responseBody.data.currentDefendantName = 'both defendants';
-    }
-
-  } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue= '1580.00';
-  }
-  if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
-    responseBody.data.currentDatebox = '25 August 2022';
-  }
-
-  try {
-    assert.deepEqual(responseBody.data, caseData);
-  }
-  catch(err) {
-    console.error('Validate data is failed due to a mismatch ..', err);
-    throw err;
-  }
 };
 
 const eventData = {
@@ -356,122 +298,6 @@ module.exports = {
     for (let pageId of Object.keys(requestJudgementData.userInput)) {
       await assertValidData(requestJudgementData, pageId);
     }
-  },
-
-  amendRespondent1ResponseDeadline: async (user) => {
-    await apiRequest.setupTokens(user);
-    let respondent1deadline ={};
-    respondent1deadline = {'respondent1ResponseDeadline':'2022-01-10T15:59:50'};
-    testingSupport.updateCaseData(caseId, respondent1deadline);
-  },
-
-  defaultJudgmentSpec: async (user, scenario, isDivergent) => {
-    await apiRequest.setupTokens(user);
-
-    let state;
-    let registrationData;
-    eventName = 'DEFAULT_JUDGEMENT_SPEC';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if(pbaV3){
-      let claimIssuedPBADetails = {
-        claimIssuedPBADetails:{
-          applicantsPbaAccounts: {
-            value: {
-              code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-              label:'PBAFUNC12345'
-            },
-            list_items:[
-              {
-                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBAFUNC12345'
-              },
-              {
-                code:'66b21c61-aed1-11ed-8aa3-494efce63912',
-                label:'PBA0078095'
-              }
-            ]
-          },
-          fee:{
-            calculatedAmountInPence:'8000',
-            code:'FEE0205',
-            version:'6'
-          },
-          serviceRequestReference:'2023-1676644996295'
-        }
-      };
-      caseData = update(caseData, claimIssuedPBADetails);
-    }
-
-    if (scenario === 'ONE_V_TWO') {
-      registrationData = {
-        registrationTypeRespondentOne: [
-          {
-            value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: [
-          {
-            value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-      };
-      let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT : data.DEFAULT_JUDGEMENT_SPEC_1V2;
-      if (isJudgmentOnlineLive) {
-        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'All_FINAL_ORDERS_ISSUED';
-      } else {
-        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      }
-      await validateEventPagesDefaultJudgments(DJSpec, scenario,isDivergent);
-    } else if (scenario === 'TWO_V_ONE') {
-      registrationData = {
-        registrationTypeRespondentOne: [
-          {
-            value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
-      };
-      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
-    } else {
-      registrationData = {
-        registrationTypeRespondentOne: [
-          {
-            value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
-      };
-      if (isJudgmentOnlineLive) {
-        state = 'All_FINAL_ORDERS_ISSUED';
-      } else {
-        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
-      }
-      await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC, scenario,isDivergent);
-    }
-
-    caseData = update(caseData, registrationData);
-    await assertSubmittedEvent(state, {
-      header: '',
-      body: ''
-    }, true);
-
-
-
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   extendResponseDeadline: async (user) => {
