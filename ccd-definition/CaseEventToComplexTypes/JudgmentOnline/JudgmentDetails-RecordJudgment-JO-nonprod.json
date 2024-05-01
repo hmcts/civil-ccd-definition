@@ -160,5 +160,14 @@
     "FieldDisplayOrder": 18,
     "DisplayContext": "READONLY",
     "FieldShowCondition": "lblRecordJudgment=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "JoJudgment",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joJudgment",
+    "ListElementCode": "paymentPlan",
+    "FieldDisplayOrder": 19,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "lblRecordJudgment=\"DO_NOT_SHOW_IN_UI\""
   }
 ]

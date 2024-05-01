@@ -145,5 +145,13 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "paymentPlan",
+    "ElementLabel": " ",
+    "FieldType": "JoPaymentPlan",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
