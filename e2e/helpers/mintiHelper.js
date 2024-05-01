@@ -8,34 +8,34 @@ const MaxTrackAmounts = {
   SMALL_CLAIM:  10000,
   FAST_CLAIM: 25000,
   MULTI_CLAIM: 100000
-}
+};
 
 const MintiMaxTrackAmounts = {
   SMALL_CLAIM:  10000,
   FAST_CLAIM: 25000,
   INTERMEDIATE_TRACK: 100000,
   MULTI_CLAIM: 10000000 // infinity
-}
+};
 
 function getTrackByClaimAmount(claimAmount) {
   if (claimAmount <= MaxTrackAmounts.SMALL_CLAIM) {
-    return "SMALL_CLAIM"
+    return 'SMALL_CLAIM';
   } else if (claimAmount > MaxTrackAmounts.SMALL_CLAIM && claimAmount <= MaxTrackAmounts.FAST_CLAIM) {
-    return "FAST_CLAIM"
+    return 'FAST_CLAIM';
   } else {
-    return "MULTI_CLAIM"
+    return 'MULTI_CLAIM';
   }
 }
 
 function getMintiTrackByClaimAmount(claimAmount) {
   if (claimAmount <= MintiMaxTrackAmounts.SMALL_CLAIM) {
-    return "SMALL_CLAIM"
+    return 'SMALL_CLAIM';
   } else if (claimAmount > MintiMaxTrackAmounts.SMALL_CLAIM && claimAmount <= MintiMaxTrackAmounts.FAST_CLAIM) {
-    return "FAST_CLAIM"
+    return 'FAST_CLAIM';
   } else if (claimAmount > MintiMaxTrackAmounts.FAST_CLAIM && claimAmount <= MintiMaxTrackAmounts.INTERMEDIATE_TRACK) {
-    return "INTERMEDIATE_TRACK"
+    return 'INTERMEDIATE_TRACK';
   } else {
-    return "MULTI_CLAIM"
+    return 'MULTI_CLAIM';
   }
 }
 
@@ -63,6 +63,6 @@ module.exports = {
     } else {
       assert.equal(caseAllocatedTrack, getTrackByClaimAmount(claimAmount));
     }
-    console.log("Allocated track is " + caseAllocatedTrack);
+    console.log('Allocated track is ' + caseAllocatedTrack);
   }
 };
