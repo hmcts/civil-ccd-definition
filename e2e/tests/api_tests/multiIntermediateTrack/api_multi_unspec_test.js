@@ -2,10 +2,11 @@
 
 const config = require('../../../config.js');
 const multiTrackClaimAmount = '200001';
+const mintiEnabled = true;
 
-Feature('CCD API test unspec multi track @api-unspec-multi-intermediate @api-nonprod');
+Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 
-Scenario('1v1 Create Unspecified Multi Track claim', async ({api}) => {
+Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   const track = 'MULTI_CLAIM';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount, track);
@@ -39,7 +40,7 @@ async function defendantResponse(api, mpScenario) {
 }
 
 async function prepareClaim(api, mpScenario, claimAmount, track) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, true);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await defendantResponse(api, mpScenario);
