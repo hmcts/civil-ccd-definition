@@ -147,5 +147,27 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EDIT_JUDGMENT",
+    "CaseFieldID": "activeJudgment",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "EditJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EDIT_JUDGMENT",
+    "CaseFieldID": "historicJudgment",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "EditJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
   }
 ]

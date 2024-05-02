@@ -1,7 +1,7 @@
 [
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "judgmentId",
     "FieldDisplayOrder": 1,
@@ -10,7 +10,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "defendants",
     "FieldDisplayOrder": 2,
@@ -19,7 +19,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "createdTimestamp",
     "FieldDisplayOrder": 3,
@@ -28,7 +28,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "lastUpdateTimeStamp",
     "FieldDisplayOrder": 4,
@@ -37,7 +37,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "cancelledTimeStamp",
     "FieldDisplayOrder": 5,
@@ -46,7 +46,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "state",
     "FieldDisplayOrder": 6,
@@ -55,7 +55,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "type",
     "FieldDisplayOrder": 7,
@@ -64,7 +64,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "isRegisterWithRTL",
     "FieldDisplayOrder": 8,
@@ -73,7 +73,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "requestDate",
     "FieldDisplayOrder": 9,
@@ -82,7 +82,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "issueDate",
     "FieldDisplayOrder": 10,
@@ -91,7 +91,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "setAsideDate",
     "FieldDisplayOrder": 11,
@@ -100,7 +100,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "fullyPaymentMadeDate",
     "FieldDisplayOrder": 12,
@@ -109,7 +109,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "isJointJudgment",
     "FieldDisplayOrder": 13,
@@ -118,7 +118,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "orderedAmount",
     "FieldDisplayOrder": 14,
@@ -127,7 +127,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "cancelDate",
     "FieldDisplayOrder": 15,
@@ -136,7 +136,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "costs",
     "FieldDisplayOrder": 16,
@@ -145,7 +145,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "totalAmount",
     "FieldDisplayOrder": 17,
@@ -154,7 +154,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "courtLocation",
     "FieldDisplayOrder": 18,
@@ -163,7 +163,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "paymentPlan",
     "FieldDisplayOrder": 19,
@@ -172,7 +172,7 @@
   },
   {
     "ID": "JoJudgment",
-    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseEventID": "EDIT_JUDGMENT",
     "CaseFieldID": "joJudgment",
     "ListElementCode": "instalmentDetails",
     "FieldDisplayOrder": 20,

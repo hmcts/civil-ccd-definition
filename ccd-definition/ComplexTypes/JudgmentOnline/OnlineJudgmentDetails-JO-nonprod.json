@@ -153,5 +153,13 @@
     "FieldType": "JoPaymentPlan",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "instalmentDetails",
+    "ElementLabel": " ",
+    "FieldType": "InstalmentPaymentDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
