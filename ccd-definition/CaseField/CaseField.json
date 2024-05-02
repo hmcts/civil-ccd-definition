@@ -645,7 +645,7 @@
     "Label": "Business process for camunda",
     "FieldType": "BusinessProcess",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
