@@ -1516,6 +1516,7 @@
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "frcSupportingDocument",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 10
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
   }
 ]
