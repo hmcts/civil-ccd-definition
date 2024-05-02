@@ -29,7 +29,8 @@ const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
 const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+  checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -38,10 +39,11 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -214,20 +216,40 @@ const midEventFieldForPage = {
   }
 };
 
+const newSdoR2FieldsFastTrack = {
+  sdoR2FastTrackWitnessOfFact: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.sdoWitnessDeadline === 'string'
+      && typeof data.sdoWitnessDeadlineText === 'string';
+  }
+};
+
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+  return typeof data.input1 === 'string'
+    && typeof data.input5 === 'string'
+    && typeof data.input6 === 'string'
+    && typeof data.input7 === 'string'
+    && typeof data.input8 === 'string';
+  }
+};
+
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000', isMintiCaseEnabled = false) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled);
 
     //==============================================================
 
@@ -244,8 +266,6 @@ module.exports = {
       await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
         null, 'Case data validation failed');
     }
-
-
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -275,6 +295,10 @@ module.exports = {
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    const isMintiEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiEnabled && isMintiCaseEnabled));
   },
 
   manageDefendant1Details: async (user) => {
@@ -1050,9 +1074,20 @@ module.exports = {
       delete caseData['smallClaimsFlightDelayToggle'];
       //required to fix existing prod api tests for sdo
       clearWelshParaFromCaseData();
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
+
+    if (SdoR2 && response === 'CREATE_FAST') {
+      delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
+      delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+      disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
@@ -1422,6 +1457,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
 
   assert.equal(response.status, 200);
@@ -1479,6 +1518,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
+    delete caseData['sdoR2FastTrackCreditHire'];
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
@@ -2031,6 +2071,7 @@ const clearNihlDataFromCaseData = () => {
   delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
   delete caseData['sdoR2UploadOfDocuments'];
   delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2SmallClaimsHearing'];
 };
 
 const clearWelshParaFromCaseData= () => {

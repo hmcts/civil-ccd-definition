@@ -2598,5 +2598,23 @@
     "CaseFieldID": "caseBundles",
     "UserRole": "CITIZEN-CLAIMANT-PROFILE",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
