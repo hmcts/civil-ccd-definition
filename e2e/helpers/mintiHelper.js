@@ -13,7 +13,7 @@ const MaxTrackAmounts = {
 const MintiMaxTrackAmounts = {
   SMALL_CLAIM:  10000,
   FAST_CLAIM: 25000,
-  INTERMEDIATE_TRACK: 100000,
+  INTERMEDIATE_CLAIM: 100000,
   MULTI_CLAIM: 10000000 // infinity
 };
 
@@ -32,8 +32,8 @@ function getMintiTrackByClaimAmount(claimAmount) {
     return 'SMALL_CLAIM';
   } else if (claimAmount > MintiMaxTrackAmounts.SMALL_CLAIM && claimAmount <= MintiMaxTrackAmounts.FAST_CLAIM) {
     return 'FAST_CLAIM';
-  } else if (claimAmount > MintiMaxTrackAmounts.FAST_CLAIM && claimAmount <= MintiMaxTrackAmounts.INTERMEDIATE_TRACK) {
-    return 'INTERMEDIATE_TRACK';
+  } else if (claimAmount > MintiMaxTrackAmounts.FAST_CLAIM && claimAmount <= MintiMaxTrackAmounts.INTERMEDIATE_CLAIM) {
+    return 'INTERMEDIATE_CLAIM';
   } else {
     return 'MULTI_CLAIM';
   }
@@ -56,17 +56,28 @@ module.exports = {
     }
   },
 
-  getMintiClaimTrack(claimAmount) {
-    if(parseFloat(claimAmount) > '25000' && parseFloat(claimAmount) <= '100000') {
+  getMintiTrackByClaimAmount(claimAmount) {
+    if (claimAmount <= MintiMaxTrackAmounts.SMALL_CLAIM) {
+      return 'SMALL_CLAIM';
+    } else if (claimAmount > MintiMaxTrackAmounts.SMALL_CLAIM && claimAmount <= MintiMaxTrackAmounts.FAST_CLAIM) {
+      return 'FAST_CLAIM';
+    } else if (claimAmount > MintiMaxTrackAmounts.FAST_CLAIM && claimAmount <= MintiMaxTrackAmounts.INTERMEDIATE_CLAIM) {
       return 'INTERMEDIATE_CLAIM';
-    } else if (parseFloat(claimAmount) > '100000') {
+    } else {
       return 'MULTI_CLAIM';
     }
-  }
-    
-  assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled) => {
+  },
+
+  assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled, isSpecCase = false) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
-    let caseAllocatedTrack = case_data.allocatedTrack;
+    let caseAllocatedTrack;
+
+    if (isSpecCase) {
+      caseAllocatedTrack = case_data.responseClaimTrack;
+    } else {
+      caseAllocatedTrack = case_data.allocatedTrack;
+    }
+
     if(isMintiEnabled){
       assert.equal(caseAllocatedTrack, getMintiTrackByClaimAmount(claimAmount));
     } else {

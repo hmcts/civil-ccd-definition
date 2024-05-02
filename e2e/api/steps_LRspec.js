@@ -36,7 +36,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const {cloneDeep} = require('lodash');
-const {adjustCaseSubmittedDateForMinti, getMintiClaimTrack} = require('../helpers/mintiHelper');
+const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -776,14 +776,14 @@ module.exports = {
    * @return {Promise<void>}
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
-                                               isMintiCaseEnabled = false, mintiClaimAmount = '00000') => {
+                                               isMintiCase = false, mintiClaimAmount = '00000') => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isMintiCase, mintiClaimAmount);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -828,8 +828,8 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
+    const isMintiToggleEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
 
     return caseId;
   },
@@ -902,7 +902,7 @@ module.exports = {
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
-                            isMintiCaseEnabled = false, claimAmountMinti) => {
+                            isMintiCase = false, claimAmountMinti) => {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     await apiRequest.setupTokens(user);
@@ -917,8 +917,8 @@ module.exports = {
       response = response+'_Mediation';
     }
 
-    if(isMintiCaseEnabled){
-      mintiClaimTrack = getMintiClaimTrack(claimAmountMinti);
+    if(isMintiCase){
+      mintiClaimTrack = getMintiTrackByClaimAmount(claimAmountMinti);
       response = response+ '_' + mintiClaimTrack;
     }
 
@@ -966,6 +966,8 @@ module.exports = {
       await assertCaseFlags(caseId, user, response);
     }
     deleteCaseFields('respondent1Copy');
+    const isMintiToggleEnabled = await checkMintiToggleEnabled();
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmountMinti, (isMintiCase && isMintiToggleEnabled), true);
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
