@@ -967,7 +967,8 @@ module.exports = {
     }
     deleteCaseFields('respondent1Copy');
     const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmountMinti, (isMintiCase && isMintiToggleEnabled), true);
+    let claimAmount = caseData.totalClaimAmount;
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase && isMintiToggleEnabled), true);
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
