@@ -486,6 +486,25 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_JO_DEFENDANT1_PIN_IN_LETTER",
     "AccessControl": [
       {
