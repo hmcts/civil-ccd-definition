@@ -13,7 +13,6 @@
     "ListElementCode": "claimAmount",
     "FieldType": "MoneyGBP",
     "ElementLabel": "Amount",
-    "Max": "2500000",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
