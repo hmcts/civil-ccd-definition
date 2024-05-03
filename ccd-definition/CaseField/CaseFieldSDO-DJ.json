@@ -458,14 +458,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "trialCreditHire",
-    "Label": "Credit hire",
-    "FieldType": "TrialCreditHire",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "trialHousingDisrepair",
     "Label": "Housing Disrepair",
     "FieldType": "TrialHousingDisrepair",
