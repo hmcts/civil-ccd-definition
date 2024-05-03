@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "SEND_COVER_LETTER_DEFENDANT_LR",
-    "Name": "Send Cover Letter to Defendant LR",
+    "Name": "Send Cover Letter Defendant LR",
     "Description": "Send Cover Letter to Defendant LR Legal Org",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
