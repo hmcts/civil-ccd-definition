@@ -1359,28 +1359,10 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherPartyLabel",
-    "ElementLabel": "### Has the complexity been agreed with the other party?",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "agreedWithOtherParty",
     "ElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "bandLabel",
-    "ElementLabel": "### Which complexity band do you believe this claim falls into?",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
@@ -1396,28 +1378,10 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "reasonsLabel",
-    "ElementLabel": "### Please give your reasons",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "ElementLabel": " ",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "frcSupportingDocumentLabel",
-    "ElementLabel": "### Upload support evidence",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
@@ -1450,28 +1414,10 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherPartyLabel",
-    "ElementLabel": "### Has the complexity been agreed with the other party?",
-    "FieldDisplayOrder": 3,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "agreedWithOtherParty",
     "ElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "bandLabel",
-    "ElementLabel": "### Which complexity band do you believe this claim falls into?",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
@@ -1487,28 +1433,10 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "reasonsLabel",
-    "ElementLabel": "### Please give your reasons",
-    "FieldDisplayOrder": 7,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "ElementLabel": " ",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "frcSupportingDocumentLabel",
-    "ElementLabel": "### Upload support evidence",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "READONLY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
