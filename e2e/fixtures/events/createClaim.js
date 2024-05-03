@@ -71,10 +71,15 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2, isMintiEnabled) => {
   selectedPba = useValidPba ? validPba : invalidPba;
+
   const claimData = {
     References: {
+      // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+      ...isMintiEnabled ? {
+        submittedDate:'2025-02-20T15:59:50'
+      }: {},
       CaseAccessCategory: 'UNSPEC_CLAIM',
       solicitorReferences: {
         applicantSolicitor1Reference: 'Applicant reference',
@@ -379,7 +384,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -415,7 +420,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
       },
       invalid: {
         Upload: {
