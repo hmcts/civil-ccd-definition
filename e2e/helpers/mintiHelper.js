@@ -39,6 +39,14 @@ function getMintiTrackByClaimAmount(claimAmount) {
   }
 }
 
+function getCaseAllocatedTrack(case_data, isSpecCase) {
+  if (isSpecCase) {
+    return case_data.responseClaimTrack;
+  } else {
+    return case_data.allocatedTrack;
+  }
+}
+
 module.exports = {
   adjustCaseSubmittedDateForMinti: async (caseId, isMintiEnabled = false) => {
     if (isMintiEnabled) {
@@ -70,13 +78,7 @@ module.exports = {
 
   assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled, isSpecCase = false) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
-    let caseAllocatedTrack;
-
-    if (isSpecCase) {
-      caseAllocatedTrack = case_data.responseClaimTrack;
-    } else {
-      caseAllocatedTrack = case_data.allocatedTrack;
-    }
+    let caseAllocatedTrack = getCaseAllocatedTrack(case_data, isSpecCase);
 
     if(isMintiEnabled){
       assert.equal(caseAllocatedTrack, getMintiTrackByClaimAmount(claimAmount));
