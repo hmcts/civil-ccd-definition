@@ -6,7 +6,7 @@ const claimAmountPenniesMulti = '20000001';
 const claimAmountMulti = '200001';
 const defense = 'FULL_DEFENCE';
 
-Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate @api-nonprod-specified');
+Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
@@ -19,7 +19,7 @@ Scenario('1v1 full defence Multi claim Specified @api-nonprod-specified', async 
   await api_spec.claimantResponse(config.applicantSolicitorUser, defense, mpScenario, 'JUDICIAL_REFERRAL', false, true);
 });
 
-Scenario('1v2 full defence Multi claim Specified Different Solicitor @api-nonprod-specified', async ({api_spec}) => {
+Scenario('1v2 full defence Multi claim Specified Different Solicitor', async ({api_spec}) => {
   const mpScenario = 'ONE_V_TWO';
   await prepareClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
@@ -28,7 +28,7 @@ Scenario('1v2 full defence Multi claim Specified Different Solicitor @api-nonpro
     'AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);
 });
 
-Scenario('1v2  full defence Multi claim Specified same solicitor @api-nonprod-specified', async ({I, api_spec}) => {
+Scenario('1v2  full defence Multi claim Specified same solicitor', async ({I, api_spec}) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
   await prepareClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO','AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);
