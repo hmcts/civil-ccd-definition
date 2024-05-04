@@ -850,6 +850,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
