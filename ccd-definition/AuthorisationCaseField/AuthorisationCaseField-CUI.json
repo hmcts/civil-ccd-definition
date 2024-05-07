@@ -7,15 +7,10 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
