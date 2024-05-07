@@ -355,6 +355,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         ClaimType: {
           claimType: 'PERSONAL_INJURY'
         },
+        ClaimTypeUnSpec: {
+          claimTypeUnSpec: 'PERSONAL_INJURY'
+        },
         PersonalInjuryType: {
           personalInjuryType: 'NOISE_INDUCED_HEARING_LOSS'
         },
