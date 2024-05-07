@@ -123,15 +123,15 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "trialOnOptions",
+    "ListElementCode": "sdoR2TrialLabel",
     "FieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "READONLY"
   },
   {
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "sdoR2TrialFirstOpenDateAfter",
+    "ListElementCode": "trialOnOptions",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -139,7 +139,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "sdoR2TrialWindow",
+    "ListElementCode": "sdoR2TrialFirstOpenDateAfter",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -147,8 +147,16 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "lengthListLabel",
+    "ListElementCode": "sdoR2TrialWindow",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "lengthListLabel",
+    "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
@@ -156,14 +164,6 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "lengthList",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "SdoR2Trial",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "lengthListOther",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -171,7 +171,7 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "label",
+    "ListElementCode": "lengthListOther",
     "FieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY"
   },
@@ -179,8 +179,16 @@
     "ID": "SdoR2Trial",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
-    "ListElementCode": "hearingCourtLocationListLabel",
+    "ListElementCode": "label",
     "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2Trial",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2Trial",
+    "ListElementCode": "hearingCourtLocationListLabel",
+    "FieldDisplayOrder": 9,
     "DisplayContext": "READONLY"
   },
   {
@@ -188,7 +196,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "hearingCourtLocationList",
-    "FieldDisplayOrder": 9,
+    "FieldDisplayOrder": 10,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -196,7 +204,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "altHearingCourtLocationListLabel",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "READONLY"
   },
   {
@@ -204,7 +212,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "altHearingCourtLocationList",
-    "FieldDisplayOrder": 11,
+    "FieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -212,7 +220,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "methodOfHearingLabel",
-    "FieldDisplayOrder": 12,
+    "FieldDisplayOrder": 13,
     "DisplayContext": "READONLY"
   },
   {
@@ -220,7 +228,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "methodOfHearing",
-    "FieldDisplayOrder": 13,
+    "FieldDisplayOrder": 14,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -228,7 +236,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "physicalBundleOptionsLabel",
-    "FieldDisplayOrder": 14,
+    "FieldDisplayOrder": 15,
     "DisplayContext": "READONLY"
   },
   {
@@ -236,7 +244,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "physicalBundleOptions",
-    "FieldDisplayOrder": 15,
+    "FieldDisplayOrder": 16,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -244,7 +252,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "physicalBundlePartyTxtLabel",
-    "FieldDisplayOrder": 16,
+    "FieldDisplayOrder": 17,
     "DisplayContext": "READONLY"
   },
   {
@@ -252,7 +260,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "physicalBundlePartyTxt",
-    "FieldDisplayOrder": 17,
+    "FieldDisplayOrder": 18,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -260,7 +268,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "hearingNotesLbl",
-    "FieldDisplayOrder": 18,
+    "FieldDisplayOrder": 19,
     "DisplayContext": "READONLY"
   },
   {
@@ -268,7 +276,7 @@
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2Trial",
     "ListElementCode": "hearingNotesTxt",
-    "FieldDisplayOrder": 19,
+    "FieldDisplayOrder": 20,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1221,6 +1229,191 @@
     "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLanguage",
     "ListElementCode": "description",
     "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoStatementOfWitness",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "restrictWitnessLbl",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "isRestrictWitness",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictWitness",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "restrictPagesLbl",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "isRestrictPages",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "sdoR2SmallClaimsRestrictPages",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "label1",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsWitnessStatements",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsWitnessStatementOther",
+    "ListElementCode": "text",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsMediation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "label",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input1",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "text",
+    "EventElementLabel": "A failure to comply with the paragraph above will result in the claimant being debarred from asserting impecuniosity at the final hearing\n\n",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "detailsShowToggle",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "sdoR2FastTrackCreditHireDetails",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input5",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input6",
+    "FieldDisplayOrder": 7,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "date3",
+    "FieldDisplayOrder": 8,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input7",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "date4",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "input8",
+    "FieldDisplayOrder": 11,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2FastTrackCreditHire",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2FastTrackCreditHire",
+    "ListElementCode": "line",
+    "FieldDisplayOrder": 12,
     "DisplayContext": "READONLY"
   }
 ]
