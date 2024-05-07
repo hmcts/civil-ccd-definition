@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
-    "Name": "DJ Non Divergent PIN in Letter Defendant",
+    "Name": "DJ Non Divergent Defendant",
     "Description": "DJ Non-Divergent PIN in Letter for LiP Defendant1",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
