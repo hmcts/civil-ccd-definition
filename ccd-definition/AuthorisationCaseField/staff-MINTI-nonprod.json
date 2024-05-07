@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediateClaim",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  }
+]
