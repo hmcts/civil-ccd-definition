@@ -146,7 +146,7 @@
     "ElementLabel": " ",
     "FieldType": "BusinessProcess",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "GeneralApplicationGAspec",
