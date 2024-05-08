@@ -1263,6 +1263,7 @@
     "PageDisplayOrder": 42,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCostsIntermediate",
     "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack= \"INTERMEDIATE_CLAIM\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
@@ -1275,6 +1276,7 @@
     "PageDisplayOrder": 42,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCostsIntermediate",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "Y"

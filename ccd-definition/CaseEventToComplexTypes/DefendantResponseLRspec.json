@@ -1342,7 +1342,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "explanationLabel",
-    "ElementLabel": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table</a></div><br /> for information on complexity bands. \n # Fixed Recoverable Costs \n ### Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity band?",
+    "ElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },
@@ -1361,7 +1361,7 @@
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "agreedWithOtherParty",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1371,7 +1371,7 @@
     "ListElementCode": "band",
     "ElementLabel": " ",
     "FieldTypeParameter": "ComplexityBandIntermediate",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1380,7 +1380,7 @@
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1389,7 +1389,7 @@
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "frcSupportingDocument",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1397,7 +1397,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "explanationLabel",
-    "ElementLabel": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table</a></div><br /> for information on complexity bands. \n # Fixed Recoverable Costs \n ### Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity band?",
+    "ElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL"
   },
@@ -1416,7 +1416,7 @@
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "agreedWithOtherParty",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 4,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1426,7 +1426,7 @@
     "ListElementCode": "band",
     "ElementLabel": " ",
     "FieldTypeParameter": "ComplexityBandIntermediate",
-    "FieldDisplayOrder": 6,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
   {
@@ -1435,7 +1435,7 @@
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -1444,7 +1444,7 @@
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "frcSupportingDocument",
     "ElementLabel": " ",
-    "FieldDisplayOrder": 10,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   }
 ]
