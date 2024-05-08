@@ -644,7 +644,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dupeClaimantDefendantResponseDocs",
+    "CaseFieldID": "duplicateClaimantDefendantResponseDocs",
     "AccessControl": [
       {
         "UserRoles": [

@@ -589,7 +589,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dupeClaimantDefendantResponseDocs",
+    "CaseFieldID": "duplicateClaimantDefendantResponseDocs",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
