@@ -43,8 +43,9 @@ let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
+  CREATE_CLAIM: (scenario, pbaV3, isMintiEnabled) => claimData.createClaim(scenario, pbaV3, isMintiEnabled),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
+  DEFENDANT_RESPONSE_MINTI_ENABLED: (response, camundaEvent, isMintiEnabled) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, false,  isMintiEnabled),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -80,6 +81,8 @@ const eventData = {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_PBAv3_MULTI: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE_PBAv3_INTERMEDIATE: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
@@ -286,6 +289,16 @@ const newSdoR2FieldsSmallClaims = {
       && typeof data.isRestrictPages === 'string'
       && typeof data.text === 'string';
   },
+};
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+    return typeof data.input1 === 'string'
+      && typeof data.input5 === 'string'
+      && typeof data.input6 === 'string'
+      && typeof data.input7 === 'string'
+      && typeof data.input8 === 'string';
+  }
 };
 
 /**
@@ -644,6 +657,8 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
   delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
   delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
 
   responseBody = clearNIHLDataFromResponseBody(responseBody);
 
@@ -741,15 +756,15 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE',carmEnabled =false) => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
+                                               multiIntermediate = 'FALSE') => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
-
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, multiIntermediate);
     //==============================================================
 
     await apiRequest.setupTokens(user);
@@ -794,7 +809,7 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
     return caseId;
   },
 
@@ -865,9 +880,10 @@ module.exports = {
   },
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                            expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false) => {
+                            expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
+                            multiIntermediate = 'FALSE') => {
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -878,6 +894,14 @@ module.exports = {
 
     if(carmEnabled){
       response = response+'_Mediation';
+    }
+
+    if(!carmEnabled && multiIntermediate === 'MULTI_CLAIM'){
+      response = response+'_MULTI';
+    }
+
+    if(!carmEnabled && multiIntermediate === 'INTERMEDIATE_CLAIM'){
+      response = response+'_INTERMEDIATE';
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -1128,7 +1152,11 @@ module.exports = {
           id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
           registrationTypeRespondentTwo: []
       };
-      state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      if (isJudgmentOnlineLive) {
+        state = 'All_FINAL_ORDERS_ISSUED';
+      } else {
+        state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
+      }
       await validateEventPagesDefaultJudgments(data.DEFAULT_JUDGEMENT_SPEC_2V1, scenario,isDivergent);
     } else {
       registrationData = {
@@ -1189,6 +1217,8 @@ module.exports = {
       delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
       delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
       delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
@@ -1203,6 +1233,10 @@ module.exports = {
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
+      if (SdoR2 && response === 'CREATE_FAST') {
+        delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+        disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+      }
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
@@ -1564,6 +1598,8 @@ const assertValidData = async (data, pageId) => {
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
     delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
     delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
   assert.equal(response.status, 200);
 
