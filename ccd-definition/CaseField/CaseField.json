@@ -301,7 +301,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "dupeClaimantDefendantResponseDocs",
+    "ID": "duplicateClaimantDefendantResponseDocs",
     "Label": "Duplicate claimant and defendant response documents for case file view",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
