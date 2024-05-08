@@ -505,7 +505,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_COVER_LETTER_DEFENDANT_LR",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT2",
     "AccessControl": [
       {
         "UserRoles": [
