@@ -292,6 +292,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "duplicateSystemGeneratedCaseDocs",
+    "Label": "Duplicate system generated documents for case file view",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "dupeClaimantDefendantResponseDocs",
+    "Label": "Duplicate claimant and defendant response documents for case file view",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
