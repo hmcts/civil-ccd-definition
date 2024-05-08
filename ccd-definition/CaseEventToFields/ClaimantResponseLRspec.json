@@ -64,6 +64,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "PageID": "FixedRecoverableCostsIntermediate",
+    "FieldShowCondition": "applicant1ProceedWithClaim=\"Yes\" OR applicant1ProceedWithClaimSpec2v1=\"Yes\"",
+    "PageShowCondition": "applicant1ProceedWithClaim=\"Yes\" AND responseClaimTrack =\"INTERMEDIATE_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,

@@ -844,7 +844,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "FileDirectionsQuestionnaire",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -866,7 +866,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocuments",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -889,7 +889,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Experts",
     "CaseEventFieldLabel": "Experts",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/experts",
     "ShowSummaryChangeOption": "Y"
   },
@@ -925,7 +925,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Witnesses",
     "CaseEventFieldLabel": "Witnesses",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/witnesses",
     "ShowSummaryChangeOption": "Y"
   },
