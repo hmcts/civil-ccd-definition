@@ -19,23 +19,17 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'test'
             }
           },
-          DisclosureOfElectronicDocuments: {
-            applicant1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'No',
-              agreementLikely: 'No',
-              reasonForNoAgreement: 'issues'
+          FixedRecoverableCostsIntermediate: {
+            applicant1DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              agreedWithOtherParty:'Yes',
+              band: 'BAND_4',
+              reasons: 'some important reasons'
             }
           },
           DisclosureOfNonElectronicDocuments: {
             specApplicant1DQDisclosureOfNonElectronicDocuments: {
               bespokeDirections: 'directions'
-            }
-          },
-          DisclosureReport: {
-            applicant1DQDisclosureReport: {
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
             }
           },
           Experts: {
@@ -134,22 +128,28 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
-          }
+          },
+          FixedRecoverableCostsIntermediate: {
+            applicant1DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              agreedWithOtherParty:'Yes',
+              band: 'BAND_4',
+              reasons: 'some important reasons'
+            }
+          },
         };
         responseData.midEventData = {
           ...responseData.midEventData,
         };
         break;
-
       case 'FULL_ADMISSION':
         responseData.userInput = {
-          ...responseData.userInput,
+          ...responseData.userInput
         };
         responseData.midEventData = {
           ...responseData.midEventData,
         };
         break;
-
       case 'NOT_PROCEED':
         responseData.userInput = {
           ...responseData.userInput,

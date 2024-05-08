@@ -58,7 +58,8 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario, fastTrack, carmEnabled) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, fastTrack, carmEnabled),
   CLAIMANT_RESPONSE_1v2: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response, carmEnabled),
   CLAIMANT_RESPONSE_2v1: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response, carmEnabled),
-  CLAIMANT_RESPONSE_MINTI_ENABLED: (mpScenario, mintiClaimTrack) => require('../fixtures/events/claimantResponseMultiClaimSpec.js').claimantResponse(mpScenario, mintiClaimTrack),
+  CLAIMANT_RESPONSE_MULTI_CLAIM: (response) => require('../fixtures/events/claimantResponseMultiClaimSpec.js').claimantResponse(response),
+  CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM: (response) => require('../fixtures/events/claimantResponseIntermediateClaimSpec.js').claimantResponse(response),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
@@ -160,8 +161,12 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
-      FULL_DEFENCE_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'MULTI_CLAIM'),
-      FULL_DEFENCE_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'INTERMEDIATE_CLAIM'),
+      FULL_DEFENCE_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MULTI_CLAIM('FULL_DEFENCE'),
+      FULL_DEFENCE_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_DEFENCE'),
+      FULL_ADMISSION_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MULTI_CLAIM('FULL_ADMISSION'),
+      FULL_ADMISSION_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_ADMISSION'),
+      PART_ADMISSION_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MULTI_CLAIM('PART_ADMISSION'),
+      PART_ADMISSION_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM('PART_ADMISSION'),
       FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE('FULL_DEFENCE', false, true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
@@ -170,6 +175,8 @@ const eventData = {
     ONE_V_TWO: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE'),
       FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE_1v2('FULL_DEFENCE', true),
+      FULL_DEFENCE_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MULTI_CLAIM('FULL_DEFENCE'),
+      FULL_DEFENCE_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_DEFENCE'),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE_1v2('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE_1v2('PART_ADMISSION'),
       NOT_PROCEED: data.CLAIMANT_RESPONSE_1v2('NOT_PROCEED'),
@@ -974,12 +981,12 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState, carmEnabled = false, isMintiCaseEnabled = false) => {
+                           expectedEndState, carmEnabled = false, isMintiCase = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
 
     await apiRequest.setupTokens(user);
 
@@ -991,7 +998,7 @@ module.exports = {
       response = response+'_MEDIATION';
     }
 
-    if (isMintiCaseEnabled) {
+    if (isMintiCase) {
       response = response+ '_' + mintiClaimTrack;
     }
 
