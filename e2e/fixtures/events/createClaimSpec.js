@@ -166,8 +166,18 @@ module.exports = {
           }]
         },
         ClaimAmount: {
-          ...(!isMintiCaseEnabled) ? {claimReason: 'amount reason', claimAmount: claimAmount}
-            : {claimReason: 'amount reason', claimAmount: mintiClaimAmount}
+          claimAmountBreakup: [{
+            value: {
+              ...(!isMintiCaseEnabled) ? {
+                claimReason: 'amount reason',
+                claimAmount: claimAmount,
+              }: {},
+              ...(isMintiCaseEnabled) ? {
+                claimReason: 'amount reason',
+                claimAmount: mintiClaimAmount,
+              }: {}
+            }
+          }]
         },
         ClaimInterest: {
           claimInterest: 'No'
