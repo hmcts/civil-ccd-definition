@@ -842,6 +842,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
