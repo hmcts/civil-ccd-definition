@@ -121,10 +121,6 @@ module.exports = {
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
-            },
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
             }
           }
         };
