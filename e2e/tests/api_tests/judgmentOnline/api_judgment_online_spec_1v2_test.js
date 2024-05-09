@@ -25,7 +25,7 @@ async function prepareClaimSpecFinalOrderDJ(api_spec){
   await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 
 }
-Scenario.only('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
+Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
@@ -34,7 +34,7 @@ Scenario.only('Default judgment Spec claim 1v2 - Set Aside After Order  - Record
     await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false,
-      'FALSE',true);
+      false,'00000',true);
     console.log('--claimantResponse--');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
       'JUDICIAL_REFERRAL');
