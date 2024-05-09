@@ -1478,7 +1478,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: '',
       body: ''
     }, true);
