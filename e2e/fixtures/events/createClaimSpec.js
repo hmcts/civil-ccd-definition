@@ -168,14 +168,7 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(!isMintiCaseEnabled) ? {
-                claimReason: 'amount reason',
-                claimAmount: claimAmount,
-              }: {},
-              ...(isMintiCaseEnabled) ? {
-                claimReason: 'amount reason',
-                claimAmount: mintiClaimAmount,
-              }: {}
+              ...(!isMintiCaseEnabled) ? {claimReason: 'amount reason', claimAmount: claimAmount,} : {claimReason: 'amount reason minti', claimAmount: mintiClaimAmount},
             }
           }]
         },
