@@ -145,7 +145,6 @@ module.exports = {
           ...responseData.midEventData,
         };
         break;
-
       case 'NOT_PROCEED':
         responseData.userInput = {
           ...responseData.userInput,
