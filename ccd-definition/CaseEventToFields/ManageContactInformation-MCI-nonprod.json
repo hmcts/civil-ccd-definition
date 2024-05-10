@@ -644,7 +644,8 @@
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
     "FieldShowCondition": "partyChosen = \"CLAIMANT_1_LITIGATION_FRIEND\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/show-warning"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -656,7 +657,8 @@
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
     "FieldShowCondition": "partyChosen = \"CLAIMANT_2_LITIGATION_FRIEND\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/show-warning"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -668,7 +670,8 @@
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
     "FieldShowCondition": "partyChosen = \"DEFENDANT_1_LITIGATION_FRIEND\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/show-warning"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -680,6 +683,7 @@
     "CaseEventFieldLabel": " ",
     "PageID": "LitigationFriend",
     "FieldShowCondition": "partyChosen = \"DEFENDANT_2_LITIGATION_FRIEND\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/show-warning"
   }
 ]
