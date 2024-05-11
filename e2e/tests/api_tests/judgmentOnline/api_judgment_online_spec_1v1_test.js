@@ -8,7 +8,7 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod-test');
 
 async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -28,7 +28,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario.only('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
