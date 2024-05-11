@@ -113,6 +113,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "decisionOnReconsiderationDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "personalInjuryType",
     "AccessControl": [
       {

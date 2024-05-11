@@ -91,6 +91,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "decisionOnReconsiderationDocument",
+    "Label": "View directions order",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsFlightDelayTitle",
     "Label": "## Flight Delay ",
     "FieldType": "Label",
