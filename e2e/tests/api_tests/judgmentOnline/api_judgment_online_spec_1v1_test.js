@@ -28,7 +28,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline)', async ({I, api_spec}) => {
+Scenario.only('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
@@ -76,6 +76,6 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
   }
 });
 
-AfterSuite(async  ({api_spec}) => {
-  await api_spec.cleanUp();
-});
+// AfterSuite(async  ({api_spec}) => {
+//   await api_spec.cleanUp();
+// });

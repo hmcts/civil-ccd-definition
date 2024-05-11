@@ -1509,6 +1509,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
+    console.log(`setAside case ${caseId}  user : ${user}`);
     await assertSubmittedEvent(expectedState, {
       header: '',
       body: ''
