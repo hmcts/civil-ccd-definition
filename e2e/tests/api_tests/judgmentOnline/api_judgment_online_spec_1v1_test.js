@@ -28,13 +28,14 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline)', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','PROCEEDS_IN_HERITAGE_SYSTEM');
+    console.log(` user : ${caseWorkerUser.email} : config.testEarlyAdopterCourts : ${config.testEarlyAdopterCourts}`);
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','PROCEEDS_IN_HERITAGE_SYSTEM');
   }
 });
 
@@ -60,7 +61,7 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser);
     console.log('--claimantResponse--');
