@@ -8,7 +8,7 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod-test');
+Feature('Record Judgment 1v1 API test spec @api-spec-1v1 @api-jo @api-nonprod');
 
 async function prepareClaimSpecRecordJudgment(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
@@ -35,7 +35,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
     console.log(` user : ${caseWorkerUser.email} : config.testEarlyAdopterCourts : ${config.testEarlyAdopterCourts}`);
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','PROCEEDS_IN_HERITAGE_SYSTEM');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','PROCEEDS_IN_HERITAGE_SYSTEM');
   }
 });
 
@@ -61,7 +61,7 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser);
     console.log('--claimantResponse--');
@@ -77,6 +77,6 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
   }
 });
 
-// AfterSuite(async  ({api_spec}) => {
-//   await api_spec.cleanUp();
-// });
+AfterSuite(async  ({api_spec}) => {
+  await api_spec.cleanUp();
+});

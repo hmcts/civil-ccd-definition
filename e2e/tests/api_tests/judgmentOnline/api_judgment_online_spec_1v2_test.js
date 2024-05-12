@@ -9,9 +9,9 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nightly-prod');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test');
 
-async function prepareClaimSpecFinalOrderDJ(api_spec){
+async function prepareClaimSpecFinalOrderJO(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('--defendantResponse--');
@@ -31,7 +31,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false,
       false,'00000',true);
@@ -56,14 +56,14 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'PROCEEDS_IN_HERITAGE_SYSTEM');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'PROCEEDS_IN_HERITAGE_SYSTEM');
   }
 });
 
 Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
-    await prepareClaimSpecFinalOrderDJ(api_spec);
+    await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
     await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
