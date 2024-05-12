@@ -1503,9 +1503,7 @@ module.exports = {
     console.log(`case in All set aside judgment ${caseId}`);
     console.log(`calling setup token *** setAside case ${caseId}  user : ${user.email}`);
     await apiRequest.setupTokens(user);
-    console.log(`token obtained *** setAside case ${caseId}  user : ${user.email}`);
     eventName = 'SET_ASIDE_JUDGMENT';
-    console.log(`calling setup token *** setAside case ${caseId}tart event`);
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
