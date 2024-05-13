@@ -1,0 +1,8 @@
+[
+  {
+    "ID":"PersonalInjuryType",
+    "ListElementCode":"NOISE_INDUCED_HEARING_LOSS",
+    "ListElement":"Noise induced hearing loss",
+    "DisplayOrder":6
+  }
+]
