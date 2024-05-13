@@ -5,9 +5,9 @@ const intermediateTrackClaimAmount = '99000';
 const mintiEnabled = true;
 const track = 'INTERMEDIATE_CLAIM';
 
-Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate @api-nonprod @api-sher5');
+Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate @api-nonprod');
 
-Scenario('1v1 Create Unspecified Intermediate Track claim', async ({api}) => {
+Scenario('1v1 Create Unspecified Intermediate Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
 });
