@@ -70,17 +70,5 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "GENERATE_CLAIM_FORM_RECONSIDERATION",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
   }
 ]
