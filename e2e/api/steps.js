@@ -39,11 +39,11 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
-const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
+const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -249,7 +249,13 @@ module.exports = {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
+
+    // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+    const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
+    if (isMintiEnabled) {
+      addSubmittedDateInCaseData(createClaimData);
+    }
 
     //==============================================================
 
@@ -296,9 +302,8 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
 
-    const isMintiEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
-    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiEnabled && isMintiCaseEnabled));
+    await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
   },
 
   manageDefendant1Details: async (user) => {
@@ -1405,7 +1410,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }

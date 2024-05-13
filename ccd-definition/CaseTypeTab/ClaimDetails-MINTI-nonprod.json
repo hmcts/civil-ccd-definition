@@ -1,0 +1,50 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 37
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediateClaim",
+    "TabFieldDisplayOrder": 37
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 38
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediateClaim",
+    "TabFieldDisplayOrder": 38
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 68
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediateClaim",
+    "TabFieldDisplayOrder": 68
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 69
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediateClaim",
+    "TabFieldDisplayOrder": 69
+  }
+]

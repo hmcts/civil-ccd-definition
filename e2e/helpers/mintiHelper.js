@@ -40,6 +40,10 @@ function getMintiTrackByClaimAmount(claimAmount) {
 }
 
 module.exports = {
+  addSubmittedDateInCaseData: (caseData) => {
+    caseData.valid.References.submittedDate = '2025-02-20T15:59:50';
+    return caseData;
+  },
   adjustCaseSubmittedDateForMinti: async (caseId, isMintiEnabled = false) => {
     if (isMintiEnabled) {
       console.log('multi Intermediate track is enabled');

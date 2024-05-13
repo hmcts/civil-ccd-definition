@@ -20,5 +20,17 @@
     "PageID": "FixedRecoverableCosts",
     "FieldShowCondition": "allocatedTrack=\"INTERMEDIATE_CLAIM\" AND (respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediateClaim",
+    "PageDisplayOrder": 7,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "PageID": "FixedRecoverableCosts",
+    "FieldShowCondition": "allocatedTrack=\"INTERMEDIATE_CLAIM\" AND (respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\")",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
