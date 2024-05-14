@@ -388,23 +388,5 @@
     "CaseFieldID": "gaAddlDocStaff",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isGaApplicantLip",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isGaRespondentOneLip",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isGaRespondentTwoLip",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
   }
 ]
