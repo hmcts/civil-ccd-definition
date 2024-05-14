@@ -1190,6 +1190,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecRequired",
+    "CaseEventFieldLabel": "Defendant 1 accept mediation",
     "PageDisplayOrder": 41,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
