@@ -2,7 +2,7 @@
 {
     "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "updateLRIndividuals",
+    "CaseFieldID": "updateLRIndividualsForm",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
@@ -10,7 +10,7 @@
   {
     "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "updateLRIndividuals",
+    "CaseFieldID": "updateLRIndividualsForm",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
@@ -18,7 +18,7 @@
   {
     "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "updateLRIndividuals",
+    "CaseFieldID": "updateLRIndividualsForm",
     "EventHintText": "Please note this will not change your email for notifications",
     "ListElementCode": "email",
     "FieldDisplayOrder": 3,
@@ -27,7 +27,7 @@
   {
     "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "updateLRIndividuals",
+    "CaseFieldID": "updateLRIndividualsForm",
     "ListElementCode": "phone",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
