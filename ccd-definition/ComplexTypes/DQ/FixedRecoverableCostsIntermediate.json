@@ -1,14 +1,6 @@
 [
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "ListElementCode": "explanationLabel",
-    "ElementLabel": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table</a></div><br /> for information on complexity bands.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
     "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity band?",

@@ -620,15 +620,6 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "explanationLabel",
-    "ElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
     "ElementLabel": " ",
     "FieldDisplayOrder": 2,
