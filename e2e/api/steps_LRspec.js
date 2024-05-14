@@ -15,7 +15,7 @@ const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCaseFlagsEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled, checkMintiToggleEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {fetchCaseDetails} = require('./apiRequest');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
@@ -36,16 +36,20 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const {cloneDeep} = require('lodash');
+const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
-let caseId, eventName;
+let caseId, eventName, mintiClaimTrack;
 let caseData = {};
 
 let mpScenario = 'ONE_V_ONE';
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3, isMintiEnabled) => claimData.createClaim(scenario, pbaV3, isMintiEnabled),
+  CREATE_CLAIM: (scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => claimData.createClaim(scenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent),
-  DEFENDANT_RESPONSE_MINTI_ENABLED: (response, camundaEvent, isMintiEnabled) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim(response, camundaEvent, false,  isMintiEnabled),
+  DEFENDANT_RESPONSE_MINTI_ENABLED: (response, camundaEvent, mintiClaimTrack) =>
+    require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim(response, camundaEvent, mintiClaimTrack),
+  DEFENDANT_RESPONSE_MINTI_ENABLED_SECOND_SOL: (response, camundaEvent, mintiClaimTrack) =>
+    require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim2(response, camundaEvent, mintiClaimTrack),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -54,6 +58,7 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario, fastTrack, carmEnabled) => require('../fixtures/events/claimantResponseSpec.js').claimantResponse(mpScenario, fastTrack, carmEnabled),
   CLAIMANT_RESPONSE_1v2: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec1v2.js').claimantResponse(response, carmEnabled),
   CLAIMANT_RESPONSE_2v1: (response, carmEnabled) => require('../fixtures/events/claimantResponseSpec2v1.js').claimantResponse(response, carmEnabled),
+  CLAIMANT_RESPONSE_MINTI_ENABLED: (mpScenario, mintiClaimTrack) => require('../fixtures/events/claimantResponseMultiClaimSpec.js').claimantResponse(mpScenario, mintiClaimTrack),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   DEFAULT_JUDGEMENT_SPEC: require('../fixtures/events/defaultJudgmentSpec.js'),
   DEFAULT_JUDGEMENT_SPEC_1V2: require('../fixtures/events/defaultJudgment1v2Spec.js'),
@@ -81,18 +86,26 @@ const eventData = {
     ONE_V_ONE: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
-      FULL_DEFENCE_PBAv3_MULTI: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
-      FULL_DEFENCE_PBAv3_INTERMEDIATE: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
+      FULL_DEFENCE_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
+      FULL_ADMISSION_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_ADMISSION_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      PART_ADMISSION_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      PART_ADMISSION_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
       PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
-      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT')
+      COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      COUNTER_CLAIM_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      COUNTER_CLAIM_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION: data.DEFENDANT_RESPONSE_1v2('PART_ADMISSION'),
@@ -108,6 +121,8 @@ const eventData = {
       FULL_DEFENCE1: data.DEFENDANT_RESPONSE('FULL_DEFENCE'),
       FULL_DEFENCE1_PBAv3: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_DEFENCE1_PBAv3_Mediation: data.DEFENDANT_RESPONSE_1v2_Mediation('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE1_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE1_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION1: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION1_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION1: data.DEFENDANT_RESPONSE('PART_ADMISSION'),
@@ -118,6 +133,8 @@ const eventData = {
       FULL_DEFENCE2: data.DEFENDANT_RESPONSE2('FULL_DEFENCE'),
       FULL_DEFENCE2_PBAv3: data.DEFENDANT_RESPONSE2('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_DEFENCE2_PBAv3_Mediation: data.DEFENDANT_RESPONSE2_1v2_Mediation('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE2_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED_SECOND_SOL('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
+      FULL_DEFENCE2_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_MINTI_ENABLED_SECOND_SOL('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'INTERMEDIATE_CLAIM'),
       FULL_ADMISSION2: data.DEFENDANT_RESPONSE2('FULL_ADMISSION'),
       FULL_ADMISSION2_PBAv3: data.DEFENDANT_RESPONSE2('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION2: data.DEFENDANT_RESPONSE2('PART_ADMISSION'),
@@ -143,6 +160,8 @@ const eventData = {
   claimantResponses: {
     ONE_V_ONE: {
       FULL_DEFENCE: data.CLAIMANT_RESPONSE('FULL_DEFENCE'),
+      FULL_DEFENCE_MULTI_CLAIM: data.CLAIMANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'MULTI_CLAIM'),
+      FULL_DEFENCE_INTERMEDIATE_CLAIM: data.CLAIMANT_RESPONSE_MINTI_ENABLED('FULL_DEFENCE', 'INTERMEDIATE_CLAIM'),
       FULL_DEFENCE_MEDIATION: data.CLAIMANT_RESPONSE('FULL_DEFENCE', false, true),
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
@@ -757,15 +776,14 @@ module.exports = {
    * @return {Promise<void>}
    */
   createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
-                                               multiIntermediate = 'FALSE') => {
+                                               isMintiCase = false, mintiClaimAmount = '00000') => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
 
     let createClaimData  = {};
-    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, multiIntermediate);
-    //==============================================================
+    createClaimData = data.CREATE_CLAIM(scenario, pbaV3, isMintiCase, mintiClaimAmount);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
@@ -809,7 +827,10 @@ module.exports = {
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    const isMintiToggleEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+
     return caseId;
   },
 
@@ -881,9 +902,9 @@ module.exports = {
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
-                            multiIntermediate = 'FALSE') => {
+                            isMintiCase = false, claimAmountMinti) => {
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, multiIntermediate);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -896,12 +917,9 @@ module.exports = {
       response = response+'_Mediation';
     }
 
-    if(!carmEnabled && multiIntermediate === 'MULTI_CLAIM'){
-      response = response+'_MULTI';
-    }
-
-    if(!carmEnabled && multiIntermediate === 'INTERMEDIATE_CLAIM'){
-      response = response+'_INTERMEDIATE';
+    if(isMintiCase){
+      mintiClaimTrack = getMintiTrackByClaimAmount(claimAmountMinti);
+      response = response+ '_' + mintiClaimTrack;
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
@@ -948,10 +966,13 @@ module.exports = {
       await assertCaseFlags(caseId, user, response);
     }
     deleteCaseFields('respondent1Copy');
+    const isMintiToggleEnabled = await checkMintiToggleEnabled();
+    let claimAmount = caseData.totalClaimAmount;
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase && isMintiToggleEnabled), true);
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState, carmEnabled = false) => {
+                           expectedEndState, carmEnabled = false, isMintiCaseEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -966,6 +987,10 @@ module.exports = {
 
     if (carmEnabled) {
       response = response+'_MEDIATION';
+    }
+
+    if (isMintiCaseEnabled) {
+      response = response+ '_' + mintiClaimTrack;
     }
 
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
