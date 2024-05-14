@@ -39,6 +39,14 @@ function getMintiTrackByClaimAmount(claimAmount) {
   }
 }
 
+function getCaseAllocatedTrack(case_data, isSpecCase) {
+  if (isSpecCase) {
+    return case_data.responseClaimTrack;
+  } else {
+    return case_data.allocatedTrack;
+  }
+}
+
 module.exports = {
   adjustCaseSubmittedDateForMinti: async (caseId, isMintiEnabled = false) => {
     if (isMintiEnabled) {
@@ -55,9 +63,23 @@ module.exports = {
       console.log('submitted date update to before multi Intermediate track live date');
     }
   },
-  assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled) => {
+
+  getMintiTrackByClaimAmount(claimAmount) {
+    if (claimAmount <= MintiMaxTrackAmounts.SMALL_CLAIM) {
+      return 'SMALL_CLAIM';
+    } else if (claimAmount > MintiMaxTrackAmounts.SMALL_CLAIM && claimAmount <= MintiMaxTrackAmounts.FAST_CLAIM) {
+      return 'FAST_CLAIM';
+    } else if (claimAmount > MintiMaxTrackAmounts.FAST_CLAIM && claimAmount <= MintiMaxTrackAmounts.INTERMEDIATE_CLAIM) {
+      return 'INTERMEDIATE_CLAIM';
+    } else {
+      return 'MULTI_CLAIM';
+    }
+  },
+
+  assertTrackAfterClaimCreation: async (user, caseId, claimAmount, isMintiEnabled, isSpecCase = false) => {
     const {case_data} = await apiRequest.fetchCaseDetails(user, caseId);
-    let caseAllocatedTrack = case_data.allocatedTrack;
+    let caseAllocatedTrack = getCaseAllocatedTrack(case_data, isSpecCase);
+
     if(isMintiEnabled){
       assert.equal(caseAllocatedTrack, getMintiTrackByClaimAmount(claimAmount));
     } else {
