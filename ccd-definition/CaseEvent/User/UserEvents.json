@@ -215,7 +215,8 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "EventEnablingCondition": "respondent1Represented = \"Yes\" OR applicant1Represented != \"No\""
   },
 
   {

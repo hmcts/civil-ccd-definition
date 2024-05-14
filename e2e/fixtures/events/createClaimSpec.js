@@ -79,7 +79,7 @@ const flightDelayDetails ={
 };
 
 module.exports = {
-  createClaim: (mpScenario, pbaV3) => {
+  createClaim: (mpScenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => {
     const userData = {
       userInput: {
         References: {
@@ -87,7 +87,11 @@ module.exports = {
           solicitorReferences: {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
-          }
+          },
+          // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+          ...(isMintiCaseEnabled) ? {
+            submittedDate:'2025-02-20T15:59:50'
+          }: {},
         },
         Claimant: {
           applicant1: applicant1WithPartyName
@@ -164,8 +168,14 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              claimReason: 'amount reason',
-              claimAmount: claimAmount
+              ...(!isMintiCaseEnabled) ? {
+                claimReason: 'amount reason',
+                claimAmount: claimAmount,
+              }: {},
+              ...(isMintiCaseEnabled) ? {
+                claimReason: 'amount reason',
+                claimAmount: mintiClaimAmount,
+              }: {}
             }
           }]
         },
@@ -205,7 +215,12 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          totalClaimAmount: claimAmount / 100
+          ...(!isMintiCaseEnabled) ? {
+            totalClaimAmount: claimAmount / 100
+          }: {},
+          ...(isMintiCaseEnabled) ? {
+            totalClaimAmount: mintiClaimAmount / 100
+          }: {}
         },
         ClaimAmountDetails: {
           CaseAccessCategory: 'SPEC_CLAIM'
