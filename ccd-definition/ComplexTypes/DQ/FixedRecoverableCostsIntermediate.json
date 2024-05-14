@@ -17,7 +17,7 @@
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherParty",
+    "ListElementCode": "complexityBandingAgreed",
     "FieldType": "YesOrNo",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
     "ElementLabel": "Has the complexity been agreed with the other party?",

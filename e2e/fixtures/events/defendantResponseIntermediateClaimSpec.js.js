@@ -43,7 +43,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             respondent1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_2',
               reasons: 'some reasons'
             }
@@ -192,7 +192,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             respondent1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_2',
               reasons: 'some reasons'
             }
@@ -332,7 +332,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             respondent2DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_2',
               reasons: 'some reasons'
             }
@@ -476,7 +476,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             respondent2DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_2',
               reasons: 'some reasons'
             }

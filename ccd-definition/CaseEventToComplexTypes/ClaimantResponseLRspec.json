@@ -638,7 +638,7 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherParty",
+    "ListElementCode": "complexityBandingAgreed",
     "ElementLabel": " ",
     "FieldDisplayOrder":3,
     "DisplayContext": "MANDATORY"

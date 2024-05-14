@@ -1359,7 +1359,7 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherParty",
+    "ListElementCode": "complexityBandingAgreed",
     "ElementLabel": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -1414,7 +1414,7 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "agreedWithOtherParty",
+    "ListElementCode": "complexityBandingAgreed",
     "ElementLabel": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"

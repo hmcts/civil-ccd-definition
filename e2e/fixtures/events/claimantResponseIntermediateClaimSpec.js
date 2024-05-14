@@ -22,7 +22,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             applicant1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_4',
               reasons: 'some important reasons'
             }
@@ -128,7 +128,7 @@ module.exports = {
           FixedRecoverableCostsIntermediate: {
             applicant1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
-              agreedWithOtherParty:'Yes',
+              complexityBandingAgreed:'Yes',
               band: 'BAND_4',
               reasons: 'some important reasons'
             }
