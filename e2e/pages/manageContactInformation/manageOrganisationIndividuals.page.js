@@ -18,7 +18,7 @@ module.exports = {
     I.waitForElement(this.fields.updateOrgIndividualsForm.id);
     await I.runAccessibilityTest();
 
-    await I.addAnotherElementToCollection('//div[@id=\'applicant1OrgIndividuals\']//button[@type=\'button\' and contains(text(), \'Add new\')]');
+    await I.addAnotherElementToCollection('//div[@id=\'updateOrgIndividualsForm\']//button[@type=\'button\' and contains(text(), \'Add new\')]');
 
     I.waitForElement(this.fields.updateOrgIndividualsForm.element.firstName);
     I.fillField(this.fields.updateOrgIndividualsForm.element.firstName, 'Kendal');
