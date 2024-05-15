@@ -1,13 +1,5 @@
 [
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joJudgmentStatusDetails",
-    "Label": " ",
-    "FieldType": "JoJudgmentStatusDetails",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "ID": "joIsLiveJudgmentExists",
     "Label": " ",
@@ -69,27 +61,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joPaymentPlanSelection",
+    "ID": "joPaymentPlan",
     "Label": "Select how the judgment will be paid",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "JoPaymentPlanSelectionList",
+    "FieldType": "JoPaymentPlan",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgmentInstalmentDetails",
+    "ID": "joInstalmentDetails",
     "Label": " ",
     "FieldType": "InstalmentPaymentDetails",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joPaymentToBeMadeByDate",
-    "Label": "Enter the date the judgment will be paid by",
-    "HintText": "For example, 16 4 2021",
-    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -195,5 +177,22 @@
   "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
   "SecurityClassification": "Public",
   "Searchable": "N"
-}
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "activeJudgment",
+    "Label": " ",
+    "FieldType": "JoJudgment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "historicJudgment",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "JoJudgment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
 ]
