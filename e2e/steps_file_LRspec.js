@@ -124,25 +124,25 @@ let eventNumber = 0;
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
-const firstClaimantSteps = () => [
-  () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address),
+const firstClaimantSteps = (optionType) => [
+  () => party.enterParty(parties.APPLICANT_SOLICITOR_1, address, optionType),
 ];
 
-const secondClaimantSteps = (claimant2) => [
+const secondClaimantSteps = (claimant2, optionType) => [
   () => addAnotherClaimant.enterAddAnotherClaimant(claimant2),
 
   ...conditionalSteps(claimant2, [
-    () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address),
+    () => party.enterParty(parties.APPLICANT_SOLICITOR_2, address, optionType),
     ]),
 
   () => claimantSolicitorIdamDetailsPage.enterUserEmail(),
   () => claimantSolicitorOrganisationLRspec.enterOrganisationDetails(),
   () => specParty.enterSpecParty('Applicant', specClaimantLRPostalAddress),
-  () => party.enterParty('respondent1', address),
 ];
 
 
-const firstDefendantSteps = () => [
+const firstDefendantSteps = (optionType) => [
+  () => party.enterParty('respondent1', address, optionType),
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
@@ -150,9 +150,9 @@ const firstDefendantSteps = () => [
 
 ];
 
-const secondDefendantSteps = (respondent2, respondent1Represented) => [
+const secondDefendantSteps = (respondent2, respondent1Represented, optionType) => [
   ...conditionalSteps(respondent2, [
-    () => party.enterParty('respondent2', address),
+    () => party.enterParty('respondent2', address, optionType),
     () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(respondent2.represented),
     ...conditionalSteps(respondent2 && respondent2.represented, [
       ...conditionalSteps(respondent1Represented, [
@@ -362,7 +362,7 @@ module.exports = function () {
             () => this.clickContinue(),
             () => this.clickContinue(),
             () => solicitorReferencesPage.enterReferences(),
-            ...firstClaimantSteps(),
+            ...firstClaimantSteps(claimant1),
             ...secondClaimantSteps(claimant2),
             ...firstDefendantSteps(respondent1),
             ...conditionalSteps(claimant2 == null, [
@@ -564,8 +564,8 @@ module.exports = function () {
            ]),
            ... conditionalSteps(claimType === 'small', [
                       () => freeMediationPage.selectMediation('DefendantResponse'),
-                      () => useExpertPage.claimExpert('DefendantResponse'),
                       () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
+                      () => useExpertPage.claimExpert('DefendantResponse'),
                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                       () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
             ]),
@@ -721,7 +721,7 @@ module.exports = function () {
         await this.triggerStepsWithScreenshot([
           () => caseViewPage.startEvent(eventName, caseId),
           () => mediationFailurePage.selectMediationFailureReason(),
-          () => event.returnToCaseDetails()
+          () => event.submitWithoutHeader('Submit'),
         ]);
      },
 

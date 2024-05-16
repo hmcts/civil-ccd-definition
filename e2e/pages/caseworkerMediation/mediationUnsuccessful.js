@@ -18,7 +18,7 @@ module.exports = {
 
     I.waitForElement(this.fields().mediationFailureReason.id);
     await I.runAccessibilityTest();
-    I.fillField(this.fields().mediationFailureReason.id, this.fields().mediationFailureReason.options.one);
+    I.selectOption(this.fields().mediationFailureReason.id, this.fields().mediationFailureReason.options.one);
 
     await I.clickContinue();
   }
