@@ -5,10 +5,10 @@ module.exports = {
       case 'ClaimantResponse': {
         return {
           mediationType: {
-            id: '#applicant1ClaimMediationSpecRequired_hasAgreedFreeMediation_radio',
+            id: '#applicant1ClaimMediationSpecRequiredLip_hasAgreedFreeMediation',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1ClaimMediationSpecRequiredLip_hasAgreedFreeMediation-Yes',
+              no: '#applicant1ClaimMediationSpecRequiredLip_hasAgreedFreeMediation-No'
             }
           },
         };
@@ -34,9 +34,7 @@ module.exports = {
 
     I.waitForElement(this.fields(mpScenario).mediationType.id);
     await I.runAccessibilityTest();
-    await within(this.fields(mpScenario).mediationType.id, () => {
     I.click(this.fields(mpScenario).mediationType.options.yes);
-    });
 
     await I.clickContinue();
   }

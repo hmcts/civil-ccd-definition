@@ -21,6 +21,7 @@ const statementOfTruth = require('./fragments/statementOfTruth');
 const party = require('./fragments/party');
 const event = require('./fragments/event');
 const proceedPage = require('./pages/respondToDefence/proceed.page');
+const mediationFailurePage = require('./pages/caseworkerMediation/mediationUnsuccessful');
 
 // DQ fragments
 const fileDirectionsQuestionnairePage = require('./fragments/dq/fileDirectionsQuestionnaire.page');
@@ -713,6 +714,15 @@ module.exports = function () {
                () => event.returnToCaseDetails()
              ]);
 
+     },
+
+     async mediationUnsuccessful() {
+        eventName = 'Mediation Unsuccessful';
+        await this.triggerStepsWithScreenshot([
+          () => caseViewPage.startEvent(eventName, caseId),
+          () => mediationFailurePage.selectMediationFailureReason(),
+          () => event.returnToCaseDetails()
+        ]);
      },
 
      async respondToDefence({mpScenario = 'ONE_V_ONE', claimType = 'fast'}) {
