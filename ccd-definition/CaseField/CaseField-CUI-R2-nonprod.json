@@ -124,5 +124,21 @@
     "Searchable": "Y",
     "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
     "_Category":  "CIVIL"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
+    "FieldType": "Date",
+    "Label": "Date for claimant suggest pay immediately",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "previousCCDState",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -91,6 +91,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "decisionOnReconsiderationDocument",
+    "Label": "View directions order",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "smallClaimsFlightDelayTitle",
     "Label": "## Flight Delay ",
     "FieldType": "Label",
@@ -967,6 +975,14 @@
     "ID": "sdoR2FastTrackWitnessOfFact",
     "Label": " ",
     "FieldType": "SdoR2WitnessOfFact",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "sdoR2FastTrackCreditHire",
+    "Label": "Credit hire",
+    "FieldType": "SdoR2FastTrackCreditHire",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
