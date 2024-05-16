@@ -40,21 +40,17 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
-          DisclosureOfElectronicDocumentsLRspec: {
-            specRespondent1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+          FixedRecoverableCostsIntermediate: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              complexityBandingAgreed:'Yes',
+              band: 'BAND_2',
+              reasons: 'some reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfNonElectronicDocuments: {
               bespokeDirections: 'directions'
-            }
-          },
-          DisclosureReport: {
-            respondent1DQDisclosureReport: {
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
             }
           },
           Experts: {
@@ -123,7 +119,7 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'FULL_DEFENCE'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           }
         };
@@ -165,10 +161,10 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No'
           },
           defenceAdmittedPartRoute: {
-            responseClaimTrack: 'MULTI_CLAIM'
+            responseClaimTrack: 'INTERMEDIATE_CLAIM'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           }
         };
@@ -193,9 +189,17 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
-          DisclosureOfElectronicDocumentsLRspec: {
-            specRespondent1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+          FixedRecoverableCostsIntermediate: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              complexityBandingAgreed:'Yes',
+              band: 'BAND_2',
+              reasons: 'some reasons'
+            }
+          },
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
             }
           },
           Experts: {
@@ -248,11 +252,11 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
           defenceAdmittedPartRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondToAdmittedClaimOwingAmountPounds: '2000.00'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           }
         };
@@ -325,9 +329,12 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
-          DisclosureOfElectronicDocumentsLRspec: {
-            specRespondent2DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+          FixedRecoverableCostsIntermediate: {
+            respondent2DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              complexityBandingAgreed:'Yes',
+              band: 'BAND_2',
+              reasons: 'some reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
@@ -335,11 +342,14 @@ module.exports = {
               bespokeDirections: 'directions'
             }
           },
-          DisclosureReport: {
-            respondent2DQDisclosureReport: {
-              disclosureFormFiledAndServed: 'Yes',
-              disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
+          Experts: {
+            respondent2DQExperts: {
+              expertRequired: 'No'
+            }
+          },
+          Witnesses: {
+            respondent2DQWitnesses: {
+              witnessesToAppear: 'No'
             }
           },
           Language: {
@@ -354,13 +364,9 @@ module.exports = {
                 list_items: [
                   listElement(config.defendantSelectedCourt)
                 ],
-                value: listElement()
+                value: listElement(config.defendantSelectedCourt)
               },
-              reasonForHearingAtSpecificCourt: 'Reasons',
-              caseLocation: {
-                region: '2',
-                baseLocation: '420219'
-              }
+              reasonForHearingAtSpecificCourt: 'Reasons'
             },
             respondent2DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',
@@ -397,7 +403,7 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           }
         };
@@ -439,7 +445,7 @@ module.exports = {
             specDefenceFullAdmittedRequired: 'No'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
             respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
           defenceAdmittedPartRoute: {
@@ -467,9 +473,17 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
-          DisclosureOfElectronicDocumentsLRspec: {
-            specRespondent2DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+          FixedRecoverableCostsIntermediate: {
+            respondent2DQFixedRecoverableCostsIntermediate: {
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              complexityBandingAgreed:'Yes',
+              band: 'BAND_2',
+              reasons: 'some reasons'
+            }
+          },
+          DisclosureOfNonElectronicDocumentsLRspec: {
+            specRespondent2DQDisclosureOfNonElectronicDocuments: {
+              bespokeDirections: 'directions'
             }
           },
           Experts: {
@@ -522,8 +536,8 @@ module.exports = {
             respondentClaimResponseTypeForSpecGeneric: 'PART_ADMISSION'
           },
           defenceRoute: {
-            responseClaimTrack: 'MULTI_CLAIM',
-            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
+            responseClaimTrack: 'INTERMEDIATE_CLAIM',
+            respondent2ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY'
           },
           defenceAdmittedPartRoute: {
             responseClaimTrack: 'SMALL_CLAIM',
@@ -552,9 +566,7 @@ module.exports = {
           }
         };
         break;
-
     }
-
     return responseData;
   }
 };
