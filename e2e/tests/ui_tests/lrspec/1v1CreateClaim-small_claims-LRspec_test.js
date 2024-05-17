@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const {paymentUpdate} = require('../../../api/apiRequest');
 const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
-const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
+const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
@@ -13,7 +13,7 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('Claim creation 1v1 small claims @e2e-spec @e2e-nightly-prod @testing');
+Feature('Claim creation 1v1 small claims @e2e-spec @e2e-nightly-prod');
 
 Scenario('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec', async ({LRspec}) => {
   console.log('1v1 Applicant solicitor creates specified claim for fast track @create-claim-spec');
@@ -79,5 +79,5 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
 });
 
 AfterSuite(async  () => {
-  //await unAssignAllUsers();
+  await unAssignAllUsers();
 });

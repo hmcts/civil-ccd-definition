@@ -42,10 +42,7 @@ module.exports = {
   async enterParty(partyType, address, optionType = 'Company') {
     I.waitForElement(this.fields(partyType).type.id);
     await I.runAccessibilityTest();
-    if (optionType == 'Company') {
-      I.click(this.fields(partyType).type.options.company);
-      I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
-    } else if (optionType == 'Individual') {
+    if (optionType == 'Individual') {
       I.click(this.fields(partyType).type.options.individual);
       I.fillField(this.fields(partyType).individual.firstName, 'James Dan');
       I.fillField(this.fields(partyType).individual.lastName, 'Webb');
@@ -63,6 +60,9 @@ module.exports = {
       I.fillField(this.fields(partyType).soleTrader.dob_day, '9');
       I.fillField(this.fields(partyType).soleTrader.dob_month, '9');
       I.fillField(this.fields(partyType).soleTrader.dob_year, '1990');
+    } else {
+      I.click(this.fields(partyType).type.options.company);
+      I.fillField(this.fields(partyType).company.name, `Example ${partyType} company`);
     } 
 
     //==============================================================
