@@ -70,7 +70,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joPaymentPlanSelection",
+    "CaseFieldID": "joPaymentPlan",
     "PageFieldDisplayOrder": 7,
     "DisplayContext": "MANDATORY",
     "PageID": "EditJudgment",
@@ -81,26 +81,14 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "MANDATORY",
     "PageID": "EditJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_IN_INSTALMENTS\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "EDIT_JUDGMENT",
-    "CaseFieldID": "joPaymentToBeMadeByDate",
-    "PageFieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY",
-    "PageID": "EditJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "joPaymentPlanSelection = \"PAY_BY_DATE\""
+    "FieldShowCondition": "joPaymentPlan.type = \"PAY_IN_INSTALMENTS\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -110,7 +98,7 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "EditJudgment",
-    "FieldShowCondition": "joPaymentPlanSelection = \"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -133,7 +121,7 @@
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "EditJudgment",
-    "FieldShowCondition": "joPaymentPlanSelection = \"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
   },
@@ -158,6 +146,28 @@
     "PageID": "EditJudgment",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "FieldShowCondition": "joPaymentPlanSelection = \"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EDIT_JUDGMENT",
+    "CaseFieldID": "activeJudgment",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "EditJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "EDIT_JUDGMENT",
+    "CaseFieldID": "historicJudgment",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "EditJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
   }
 ]
