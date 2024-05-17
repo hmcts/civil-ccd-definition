@@ -1,20 +1,20 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "activeJudgment",
+    "CaseFieldID": "isGaApplicantLip",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "historicJudgment",
+    "CaseFieldID": "isGaRespondentOneLip",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgmentType",
+    "CaseFieldID": "isGaRespondentTwoLip",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]
