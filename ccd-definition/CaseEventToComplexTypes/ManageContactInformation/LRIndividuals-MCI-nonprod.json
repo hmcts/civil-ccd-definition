@@ -20,7 +20,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateLRIndividualsForm",
     "EventHintText": "Please note this will not change your email for notifications",
-    "ListElementCode": "email",
+    "ListElementCode": "emailAddress",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
@@ -28,7 +28,7 @@
     "ID": "LRIndividuals",
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateLRIndividualsForm",
-    "ListElementCode": "phone",
+    "ListElementCode": "phoneNumber",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
