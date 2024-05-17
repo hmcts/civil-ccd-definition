@@ -4,7 +4,7 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @api-unspec-fd');
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
