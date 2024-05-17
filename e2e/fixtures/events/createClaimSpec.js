@@ -33,8 +33,6 @@ const isPBAv3 = (pbaV3) => {
 
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
-const claimAmountMulti = '20000001';
-const claimAmountIntermediate = '9900000';
 
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
@@ -81,7 +79,7 @@ const flightDelayDetails ={
 };
 
 module.exports = {
-  createClaim: (mpScenario, pbaV3, isMintiEnabled) => {
+  createClaim: (mpScenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => {
     const userData = {
       userInput: {
         References: {
@@ -91,7 +89,7 @@ module.exports = {
             respondentSolicitor1Reference: 'Respondent reference'
           },
           // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
-          ...(isMintiEnabled !== undefined && isMintiEnabled !== 'FALSE') ? {
+          ...(isMintiCaseEnabled) ? {
             submittedDate:'2025-02-20T15:59:50'
           }: {},
         },
@@ -170,25 +168,13 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
-                claimReason: 'amount reason',
-                claimAmount: claimAmount,
-              }: {},
-              ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
-                claimReason: 'amount reason multi claim',
-                claimAmount: claimAmountMulti,
-              }: {},
-              ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
-                claimReason: 'amount reason intermediate claim',
-                claimAmount: claimAmountIntermediate,
-              }: {},
+              ...(!isMintiCaseEnabled) ? {claimReason: 'amount reason', claimAmount: claimAmount,} : {claimReason: 'amount reason minti', claimAmount: mintiClaimAmount},
             }
           }]
         },
         ClaimInterest: {
           claimInterest: 'No'
         },
-
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
@@ -221,15 +207,7 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          ...(isMintiEnabled === undefined || isMintiEnabled === 'FALSE') ? {
-            totalClaimAmount: claimAmount / 100
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'MULTI_CLAIM') ? {
-            totalClaimAmount: claimAmountMulti / 100
-          }: {},
-          ...(isMintiEnabled !== undefined && isMintiEnabled === 'INTERMEDIATE_CLAIM') ? {
-            totalClaimAmount: claimAmountIntermediate / 100
-          }: {},
+          ...(!isMintiCaseEnabled) ? {totalClaimAmount: claimAmount / 100} : {totalClaimAmount: mintiClaimAmount / 100}
         },
         ClaimAmountDetails: {
           CaseAccessCategory: 'SPEC_CLAIM'
