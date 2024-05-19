@@ -28,7 +28,7 @@
   },
   {
     "ID": "FixedRecoverableCosts",
-    "ListElementCode": "complexityBandingAgreed",
+    "ListElementCode": "complexityBandingAgreead",
     "ElementLabel": "Has this complexity band been agreed with the other party?",
     "FieldType": "YesOrNo",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"Yes\"",
@@ -47,7 +47,7 @@
   },
   {
     "ID": "FixedRecoverableCosts",
-    "ListElementCode": "file",
+    "ListElementCode": "frcSupportingDocument",
     "FieldType": "Document",
     "ElementLabel": "Upload supporting evidence",
     "FieldShowCondition": "isSubjectToFixedRecoverableCostRegime = \"DONOTSHOW\"",

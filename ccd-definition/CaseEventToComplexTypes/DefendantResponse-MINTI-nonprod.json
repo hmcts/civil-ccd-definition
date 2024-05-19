@@ -35,7 +35,7 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "file",
+    "ListElementCode": "frcSupportingDocument",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
@@ -75,7 +75,7 @@
     "ID": "FixedRecoverableCostsIntermediate",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "file",
+    "ListElementCode": "frcSupportingDocument",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   }

@@ -55,7 +55,7 @@ module.exports = {
         } : {}),
         ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
           FixedRecoverableCosts: {
-            respondent1DQFixedRecoverableCostsIntermediateClaim: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
               band: 'BAND_2',
               reasons: 'reasons',
               complexityBandingAgreed: 'Yes',

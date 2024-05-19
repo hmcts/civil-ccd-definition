@@ -6,7 +6,7 @@
     "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "FixedRecoverableCostsIntermediate",
+    "PageID": "FixedRecoverableCosts",
     "FieldShowCondition": "allocatedTrack=\"INTERMEDIATE_CLAIM\"",
     "ShowSummaryChangeOption": "N"
   },

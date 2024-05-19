@@ -65,7 +65,7 @@ const data = {
   DEFENDANT_RESPONSE_SOLICITOR_ONE: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1').defendantResponse(allocatedTrack),
   DEFENDANT_RESPONSE_SOLICITOR_TWO: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2').defendantResponse(allocatedTrack),
   DEFENDANT_RESPONSE_TWO_APPLICANTS: (allocatedTrack) => require('../fixtures/events/2v1Events/defendantResponse_2v1').defendantResponse(allocatedTrack),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE: (mpScenario, allocatedTrack) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario, allocatedTrack),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
@@ -817,9 +817,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
-      : data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
 
     caseData = await addFlagsToFixture(caseData);
 
