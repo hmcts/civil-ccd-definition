@@ -9,41 +9,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1DQFixedRecoverableCostsIntermediateClaim",
-    "Label": "Defendant 1 Fixed Recoverable Costs",
-    "FieldType": "FixedRecoverableCostsIntermediateClaim",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "respondent2DQFixedRecoverableCostsIntermediateClaim",
-    "Label": "Defendant 2 Fixed Recoverable Costs",
-    "FieldType": "FixedRecoverableCostsIntermediateClaim",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant1DQFixedRecoverableCostsIntermediateClaim",
-    "Label": "Claimant 1 Fixed Recoverable Costs",
-    "FieldType": "FixedRecoverableCostsIntermediateClaim",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "applicant2DQFixedRecoverableCostsIntermediateClaim",
+    "ID": "applicant2DQFixedRecoverableCostsIntermediate",
     "Label": "Claimant 2 Fixed Recoverable Costs",
-    "FieldType": "FixedRecoverableCostsIntermediateClaim",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "intermediateClaimFRCBandLabel",
-    "Label": "<div class='form-label'>You should discuss the complexity band allocation with the other party. Read</span> <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26#16' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table</a> for information on complexity bands.</div><br />",
-    "FieldType": "Label",
+    "FieldType": "FixedRecoverableCostsIntermediate",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

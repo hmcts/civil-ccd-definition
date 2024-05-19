@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "intermediateClaimFRCBandLabel",
+    "CaseFieldID": "respondentDQFixedRecoverableCostsIntermediateLabel",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
@@ -12,7 +12,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediateClaim",
+    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "COMPLEX",
@@ -24,7 +24,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediateClaim",
+    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",

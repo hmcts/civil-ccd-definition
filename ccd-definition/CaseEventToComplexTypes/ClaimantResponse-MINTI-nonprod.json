@@ -1,80 +1,80 @@
 [
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "complexityBandingAgreed",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "band",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "file",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "complexityBandingAgreed",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "band",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "ListElementCode": "file",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
