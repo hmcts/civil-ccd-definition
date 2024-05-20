@@ -1,13 +1,5 @@
 [
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joJudgmentStatusDetails",
-    "Label": " ",
-    "FieldType": "JoJudgmentStatusDetails",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
+ {
     "CaseTypeID": "CIVIL",
     "ID": "joIsLiveJudgmentExists",
     "Label": " ",
@@ -69,16 +61,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joPaymentPlanSelection",
+    "ID": "joPaymentPlan",
     "Label": "Select how the judgment will be paid",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "JoPaymentPlanSelectionList",
+    "FieldType": "JoPaymentPlan",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joJudgmentInstalmentDetails",
+    "ID": "joInstalmentDetails",
     "Label": " ",
     "FieldType": "InstalmentPaymentDetails",
     "SecurityClassification": "Public",
@@ -188,11 +179,28 @@
     "Searchable": "N"
   },
   {
+  "CaseTypeID": "CIVIL",
+  "ID": "confirmReferToJudgeDefenceReceived",
+  "Label": " ",
+  "FieldType": "MultiSelectList",
+  "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
+  "SecurityClassification": "Public",
+  "Searchable": "N"
+  },
+  {
     "CaseTypeID": "CIVIL",
-    "ID": "confirmReferToJudgeDefenceReceived",
+    "ID": "activeJudgment",
     "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "ConfirmReferToJudgeDefenceReceived",
+    "FieldType": "JoJudgment",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "historicJudgment",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "JoJudgment",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
