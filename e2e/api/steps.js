@@ -817,7 +817,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack);
 
     caseData = await addFlagsToFixture(caseData);
 
