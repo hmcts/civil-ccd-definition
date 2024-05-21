@@ -12,11 +12,21 @@ module.exports = {
   fields: (party) => ({
     respondentClaimResponseType: {
       id: `#${party}ClaimResponseType`,
-      options
+      options: {
+        fullDefence: `#${party}ClaimResponseType-FULL_DEFENCE`,
+        fullAdmission: `#${party}ClaimResponseType-FULL_ADMISSION`,
+        partAdmission: `#${party}ClaimResponseType-PART_ADMISSION`,
+        counterClaim: `#${party}ClaimResponseType-COUNTER_CLAIM`,
+      }
     },
     respondentClaimResponseTypeToApplicant2: {
       id: `#${party}ClaimResponseTypeToApplicant2`,
-      options
+      options: {
+        fullDefence: `#${party}ClaimResponseTypeToApplicant2-FULL_DEFENCE`,
+        fullAdmission: `#${party}ClaimResponseTypeToApplicant2-FULL_ADMISSION`,
+        partAdmission: `#${party}ClaimResponseTypeToApplicant2-PART_ADMISSION`,
+        counterClaim: `#${party}ClaimResponseTypeToApplicant2-COUNTER_CLAIM`,
+      }
     },
   }),
 
@@ -38,11 +48,9 @@ module.exports = {
 
   async inputResponse(responseField, responseType) {
     await this.checkResponseValidity(responseField, responseType);
-    I.waitForElement(responseField.id);
+    await I.waitForElement(responseField.id);
     await I.runAccessibilityTest();
-    await within(responseField.id, () => {
-      I.click(responseField.options[responseType]);
-    });
+    await I.click(responseField.options[responseType]);
   },
 
   async checkResponseValidity(responseField, responseType) {

@@ -141,8 +141,8 @@ const secondClaimantSteps = (claimant2, optionType) => [
 ];
 
 
-const firstDefendantSteps = (optionType) => [
-  () => party.enterParty('respondent1', address, optionType),
+const firstDefendantSteps = (respondent1) => [
+  () => party.enterParty('respondent1', address, respondent1.partyType),
   () => specRespondentRepresentedPage.enterRespondentRepresented('yes'),
   () => defendantSolicitorOrganisationLRspec.enterOrganisationDetails('respondent1'),
   () => specDefendantSolicitorEmailPage.enterSolicitorEmail('1'),
@@ -150,9 +150,9 @@ const firstDefendantSteps = (optionType) => [
 
 ];
 
-const secondDefendantSteps = (respondent2, respondent1Represented, optionType) => [
+const secondDefendantSteps = (respondent2, respondent1Represented) => [
   ...conditionalSteps(respondent2, [
-    () => party.enterParty('respondent2', address, optionType),
+    () => party.enterParty('respondent2', address, respondent2.partyType),
     () => respondent2SameLegalRepresentativeLRspec.enterRespondent2SameLegalRepresentative(respondent2.represented),
     ...conditionalSteps(respondent2 && respondent2.represented, [
       ...conditionalSteps(respondent1Represented, [
@@ -391,7 +391,7 @@ module.exports = function () {
             () => this.clickContinue(),
             () => this.clickContinue(),
             () => solicitorReferencesPage.enterReferences(),
-            ...firstClaimantSteps(),
+            ...firstClaimantSteps(claimant1),
             ...secondClaimantSteps(claimant2),
             ...firstDefendantSteps(respondent1),
             ...conditionalSteps(claimant2 == null, [
@@ -437,7 +437,7 @@ module.exports = function () {
         () => this.clickContinue(),
         () => this.clickContinue(),
         () => solicitorReferencesPage.enterReferences(),
-        ...firstClaimantSteps(),
+        ...firstClaimantSteps(claimant1),
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
         ...conditionalSteps(claimant2 == null, [
@@ -468,7 +468,7 @@ module.exports = function () {
         () => this.clickContinue(),
         () => this.clickContinue(),
         () => solicitorReferencesPage.enterReferences(),
-        ...firstClaimantSteps(),
+        ...firstClaimantSteps(claimant1),
         ...secondClaimantSteps(claimant2),
         ...firstDefendantSteps(respondent1),
         ...conditionalSteps(claimant2 == null, [
