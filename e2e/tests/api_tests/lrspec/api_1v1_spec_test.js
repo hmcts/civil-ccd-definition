@@ -25,7 +25,8 @@ Scenario('1v1 counter claim @api-spec-counterclaim', async ({I, api_spec}) => {
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM');
 });
 
-Scenario('1v1 full defence claimant and defendant response @api-prod @api-nonprod-specified @api-spec-full-defence', async ({I, api_spec}) => {
+
+Scenario('1v1 full defence claimant and defendant response @api-spec-full-defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);

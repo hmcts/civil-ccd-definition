@@ -4,7 +4,8 @@ const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
-Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-prod @api-nonprod-unspec @api-nightly-prod @api-unspec-fd');
+
+Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-nightly-prod @api-unspec-fd');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
