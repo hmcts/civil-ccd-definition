@@ -113,6 +113,26 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "decisionOnReconsiderationDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "legal-adviser",
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "personalInjuryType",
     "AccessControl": [
       {
@@ -803,45 +823,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2SmallClaimsHearing",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2SmallClaimsMediationSectionTitle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2SmallClaimsMediationSectionToggle",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
     "AccessControl": [
       {
         "UserRoles": [
