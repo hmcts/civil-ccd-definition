@@ -702,7 +702,7 @@ module.exports = function () {
                () => respondentEmploymentTypePage.selectRespondentEmploymentType(),
                () => respondentCourtOrderTypePage.selectRespondentCourtOrderType(),
                () => respondentDebtsDetailsPage.selectDebtsDetails(),
-               () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(), 
+               () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
                ]),
                () => respondentPage.enterReasons(),
                ... conditionalSteps(defenceType == 'payByInstallments', [

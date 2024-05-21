@@ -22,7 +22,8 @@ module.exports = {
       employersLiability: '#fastClaims-fastClaimEmployersLiability',
       housingDisrepair: '#fastClaims-fastClaimHousingDisrepair',
       personalInjury: '#fastClaims-fastClaimPersonalInjury',
-      roadTrafficAccident: '#fastClaims-fastClaimRoadTrafficAccident'
+      roadTrafficAccident: '#fastClaims-fastClaimRoadTrafficAccident',
+      nihl: '#fastClaims-fastClaimNoiseInducedHearingLoss'
     }
   },
 
@@ -38,6 +39,21 @@ module.exports = {
       I.waitForElement((this.fields.fastClaims.id));
       I.checkOption(this.fields.fastClaims.clinicalNegligence);
       I.checkOption(this.fields.fastClaims.roadTrafficAccident);
+    }
+    await I.clickContinue();
+  },
+
+  async selectTrackTypenihl(trackType) {
+    await I.runAccessibilityTest();
+    if(trackType === 'smallClaims'){
+      I.click(this.fields.claimsTrack.options.smallClaimsTrack);
+      I.waitForElement(this.fields.smallClaimIds.id);
+      I.checkOption(this.fields.smallClaimIds.creditHire);
+    }
+    else{
+      I.click(this.fields.claimsTrack.options.fastTrack);
+      I.waitForElement((this.fields.fastClaims.id));
+      I.checkOption(this.fields.fastClaims.nihl);
     }
     await I.clickContinue();
   }

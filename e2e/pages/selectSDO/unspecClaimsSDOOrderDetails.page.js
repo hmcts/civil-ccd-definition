@@ -110,6 +110,10 @@ module.exports = {
     await I.clickContinue();
   },
 
+  async selectOrderDetailsnihl(allocateSmallClaims, trackType, orderType) {
+    await I.clickContinue();
+  },
+
   async selectHearingMethodOption(text) {
     let xPath = `//label[contains(text(), '${text}')]`;
     let inputId = await I.grabAttributeFrom(xPath, 'for');

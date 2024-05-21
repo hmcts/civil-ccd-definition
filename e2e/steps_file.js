@@ -737,8 +737,34 @@ module.exports = function () {
 
         ...conditionalSteps(trackType, [
         () => allocateClaimPage.selectTrackType(trackType)]),
-
         () => smallClaimsSDOOrderDetailsPage.selectOrderDetails(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+    async initiateSDONIHL(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = 'Standard Direction Order';
+
+      if (['demo'].includes(config.runningEnv)) {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
+        await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
+        await this.click('#action_claim');
+      }
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
+      await this.waitForText('Standard Direction Order');
+      await this.triggerStepsWithScreenshot([
+        () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
+
+        ...conditionalSteps(damages, [
+          () => allocateSmallClaimsTrackPage.decideSmallClaimsTrack(allocateSmallClaims),
+          ...conditionalSteps(!allocateSmallClaims,[
+            () => sdoOrderTypePage.decideOrderType(orderType)])
+        ]),
+
+        ...conditionalSteps(trackType, [
+          () => allocateClaimPage.selectTrackTypenihl(trackType)]),
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetailsnihl(allocateSmallClaims, trackType, orderType),
         () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
