@@ -199,6 +199,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "duplicateSystemGeneratedCaseDocs",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentDetails",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
