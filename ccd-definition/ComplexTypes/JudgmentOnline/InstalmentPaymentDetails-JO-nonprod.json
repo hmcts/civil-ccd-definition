@@ -1,7 +1,7 @@
 [
   {
     "ID": "InstalmentPaymentDetails",
-    "ListElementCode": "instalmentAmount",
+    "ListElementCode": "amount",
     "ElementLabel": "Enter the amount of the instalments agreed",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
@@ -18,7 +18,7 @@
   },
   {
     "ID": "InstalmentPaymentDetails",
-    "ListElementCode": "firstInstalmentDate",
+    "ListElementCode": "startDate",
     "ElementLabel": "Enter the date of the first instalment",
     "HintText": "For example, 20 04 2021",
     "FieldType": "Date",
