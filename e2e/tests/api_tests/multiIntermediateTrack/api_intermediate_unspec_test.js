@@ -30,6 +30,6 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
 }
 
-// AfterSuite(async  ({api}) => {
-//   await api.cleanUp();
-// });
+AfterSuite(async  ({api}) => {
+  await api.cleanUp();
+});
