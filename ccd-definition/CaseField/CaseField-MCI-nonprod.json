@@ -420,5 +420,23 @@
     "Label": " ",
     "FieldType": "ContactDetailsChangedEvent",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateLRIndividualsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Individual attending for the legal representative details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "updateOrgIndividualsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Individuals attending for the organisation details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
