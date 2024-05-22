@@ -66,7 +66,9 @@ async function prepareClaimLRvLiP(api_spec_cui, noc) {
 }
 
 Scenario('1v1 LR v LiP defendant and claimant response - Full admission - claimant does NoC', async ({noc, api_spec_cui}) => {
-  await  prepareClaimLRvLiP(api_spec_cui, noc);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimLRvLiP(api_spec_cui, noc);
+  }
 });
 
 AfterSuite(async  ({api_spec}) => {
