@@ -1,19 +1,19 @@
 [
   {
     "ID": "DisposalHearingMethodTelephoneHearingDJ",
-    "ListElementCode": "telephoneTheClaimant",
+    "ListElementCode": "TELEPHONE_THE_CLAIMANT",
     "ListElement": "The claimant",
     "DisplayOrder": 1
   },
   {
     "ID": "DisposalHearingMethodTelephoneHearingDJ",
-    "ListElementCode": "telephoneTheDefendant",
+    "ListElementCode": "TELEPHONE_THE_DEFENDANT",
     "ListElement": "The defendant",
     "DisplayOrder": 2
   },
   {
     "ID": "DisposalHearingMethodTelephoneHearingDJ",
-    "ListElementCode": "telephoneTheCourt",
+    "ListElementCode": "TELEPHONE_THE_COURT",
     "ListElement": "The court",
     "DisplayOrder": 3
   }

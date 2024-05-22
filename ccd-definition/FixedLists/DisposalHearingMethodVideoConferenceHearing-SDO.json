@@ -1,19 +1,19 @@
 [
   {
     "ID": "DisposalHearingMethodVideoConferenceHearing",
-    "ListElementCode": "videoTheClaimant",
+    "ListElementCode": "VIDEO_THE_CLAIMANT",
     "ListElement": "The claimant",
     "DisplayOrder": 1
   },
   {
     "ID": "DisposalHearingMethodVideoConferenceHearing",
-    "ListElementCode": "videoTheDefendant",
+    "ListElementCode": "VIDEO_THE_DEFENDANT",
     "ListElement": "The defendant",
     "DisplayOrder": 2
   },
   {
     "ID": "DisposalHearingMethodVideoConferenceHearing",
-    "ListElementCode": "videoTheCourt",
+    "ListElementCode": "VIDEO_THE_COURT",
     "ListElement": "The court",
     "DisplayOrder": 3
   }

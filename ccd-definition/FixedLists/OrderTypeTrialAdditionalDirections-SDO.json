@@ -1,44 +1,44 @@
 [
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsBuildingDispute",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_BUILDING_DISPUTE",
     "ListElement": "Building Dispute",
     "DisplayOrder": 1
 
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsClinicalNegligence",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CLINICAL_NEGLIGENCE",
     "ListElement": "Clinical Negligence",
     "DisplayOrder": 2
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsCreditHire",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CREDIT_HIRE",
     "ListElement": "Credit Hire",
     "DisplayOrder": 3
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsEmployersLiability",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_EMPLOYERS_LIABILITY",
     "ListElement": "Employers Liability",
     "DisplayOrder": 4
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsHousingDisrepair",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_HOUSING_DISREPAIR",
     "ListElement": "Housing Disrepair",
     "DisplayOrder": 5
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsPersonalInjury",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_PERSONAL_INJURY",
     "ListElement": "Personal Injury",
     "DisplayOrder": 6
   },
   {
     "ID": "OrderTypeTrialAdditionalDirections",
-    "ListElementCode": "OrderTypeTrialAdditionalDirectionsRoadTrafficAccident",
+    "ListElementCode": "ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_ROAD_TRAFFIC_ACCIDENT",
     "ListElement": "Road Traffic Accident",
     "DisplayOrder": 7
   }

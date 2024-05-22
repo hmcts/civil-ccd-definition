@@ -66,7 +66,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsBuildingDispute\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_BUILDING_DISPUTE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -78,7 +78,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsClinicalNegligence\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CLINICAL_NEGLIGENCE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -90,7 +90,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsCreditHire\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CREDIT_HIRE\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -102,7 +102,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsEmployersLiability\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_EMPLOYERS_LIABILITY\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -114,7 +114,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsHousingDisrepair\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_HOUSING_DISREPAIR\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -126,7 +126,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsPersonalInjury\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_PERSONAL_INJURY\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -138,7 +138,7 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsRoadTrafficAccident\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_ROAD_TRAFFIC_ACCIDENT\""
   },
   {
     "CaseTypeID": "CIVIL",

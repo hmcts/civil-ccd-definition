@@ -44,7 +44,7 @@ module.exports = {
         disposalHearing: '#caseManagementOrderSelection-DISPOSAL_HEARING',
         trialHearing: '#caseManagementOrderSelection-TRIAL_HEARING'
       },
-      additionDirectionsBuildingDispute: '#caseManagementOrderAdditional-OrderTypeTrialAdditionalDirectionsBuildingDispute'
+      additionDirectionsBuildingDispute: '#caseManagementOrderAdditional-ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_BUILDING_DISPUTE'
     },
 
     selectOrderAndHearingDetailsForDJTask:{

@@ -9,6 +9,6 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"OrderTypeTrialAdditionalDirectionsCreditHire\""
+    "FieldShowCondition": "caseManagementOrderAdditional CONTAINS \"ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CREDIT_HIRE\""
   }
 ]

@@ -320,7 +320,7 @@ module.exports = {
             time: 'FIFTEEN_MINUTES'
           },
           disposalHearingMethod: 'disposalHearingMethodTelephoneHearing',
-          disposalHearingMethodTelephoneHearing: 'telephoneTheClaimant',
+          disposalHearingMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           disposalHearingBundle: {
             input: '',
             type: [
@@ -401,7 +401,7 @@ module.exports = {
             time: 'THIRTY_MINUTES'
           },
           smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           smallClaimsDocuments: {
             input1: 'string',
             input2: 'string'
@@ -471,7 +471,7 @@ module.exports = {
             time: 'THIRTY_MINUTES'
           },
           smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           smallClaimsDocuments: {
             input1: 'string',
             input2: 'string'
@@ -534,7 +534,7 @@ module.exports = {
             time: 'THIRTY_MINUTES'
           },
           smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           smallClaimsDocuments: {
             input1: 'string',
             input2: 'string'
@@ -594,13 +594,13 @@ module.exports = {
         OrderType: {
           orderType: 'DECIDE_DAMAGES',
           orderTypeTrialAdditionalDirections: [
-            'OrderTypeTrialAdditionalDirectionsBuildingDispute',
-            'OrderTypeTrialAdditionalDirectionsClinicalNegligence',
-            'OrderTypeTrialAdditionalDirectionsCreditHire',
-            'OrderTypeTrialAdditionalDirectionsEmployersLiability',
-            'OrderTypeTrialAdditionalDirectionsHousingDisrepair',
-            'OrderTypeTrialAdditionalDirectionsPersonalInjury',
-            'OrderTypeTrialAdditionalDirectionsRoadTrafficAccident',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_BUILDING_DISPUTE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CLINICAL_NEGLIGENCE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CREDIT_HIRE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_EMPLOYERS_LIABILITY',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_HOUSING_DISREPAIR',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_PERSONAL_INJURY',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_ROAD_TRAFFIC_ACCIDENT',
           ]
         },
         FastTrack: {
@@ -649,7 +649,7 @@ module.exports = {
             type: ['DOCUMENTS']
           },
           fastTrackMethod: 'fastTrackMethodTelephoneHearing',
-          fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
+          fastTrackMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           fastTrackBuildingDispute: {
             input1: 'string',
             input2: 'string',
@@ -754,13 +754,13 @@ module.exports = {
         OrderType: {
           orderType: 'DECIDE_DAMAGES',
           orderTypeTrialAdditionalDirections: [
-            'OrderTypeTrialAdditionalDirectionsBuildingDispute',
-            'OrderTypeTrialAdditionalDirectionsClinicalNegligence',
-            'OrderTypeTrialAdditionalDirectionsCreditHire',
-            'OrderTypeTrialAdditionalDirectionsEmployersLiability',
-            'OrderTypeTrialAdditionalDirectionsHousingDisrepair',
-            'OrderTypeTrialAdditionalDirectionsPersonalInjury',
-            'OrderTypeTrialAdditionalDirectionsRoadTrafficAccident',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_BUILDING_DISPUTE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CLINICAL_NEGLIGENCE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_CREDIT_HIRE',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_EMPLOYERS_LIABILITY',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_HOUSING_DISREPAIR',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_PERSONAL_INJURY',
+            'ORDER_TYPE_TRIAL_ADDITIONAL_DIRECTIONS_ROAD_TRAFFIC_ACCIDENT',
           ]
         },
         FastTrack: {
@@ -923,7 +923,7 @@ module.exports = {
             time: 'THIRTY_MINUTES'
           },
           smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           smallClaimsDocuments: {
             input1: 'string',
             input2: 'string'
@@ -1027,7 +1027,7 @@ module.exports = {
             time: 'THIRTY_MINUTES'
           },
           smallClaimsMethod: 'smallClaimsMethodTelephoneHearing',
-          smallClaimsMethodTelephoneHearing: 'telephoneTheClaimant',
+          smallClaimsMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           smallClaimsDocuments: {
             input1: 'string',
             input2: 'string'
@@ -1263,7 +1263,7 @@ module.exports = {
             type: ['DOCUMENTS']
           },
           fastTrackMethod: 'fastTrackMethodTelephoneHearing',
-          fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
+          fastTrackMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           fastTrackBuildingDispute: {
             input1: 'string',
             input2: 'string',
@@ -1423,7 +1423,7 @@ module.exports = {
             type: ['DOCUMENTS']
           },
           fastTrackMethod: 'fastTrackMethodTelephoneHearing',
-          fastTrackMethodTelephoneHearing: 'telephoneTheClaimant',
+          fastTrackMethodTelephoneHearing: 'TELEPHONE_THE_CLAIMANT',
           fastTrackBuildingDispute: {
             input1: 'string',
             input2: 'string',
