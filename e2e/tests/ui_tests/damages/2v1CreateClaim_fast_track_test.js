@@ -22,11 +22,11 @@ const respondent1 = {
 
 let caseNumber;
 
-Feature('2v1 Claim Journey @e2e-unspec @e2e-nightly @e2e-2v1 @e2e-nightly-prod');
+Feature('2v1 Claim Journey Fast track @e2e-unspec @e2e-nightly @e2e-2v1 @e2e-nightly-prod');
 
 Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, claimant2, respondent1, null);
+  await I.createCase(claimant1, claimant2, respondent1, null, 11000);
   caseNumber = await I.grabCaseNumber();
 
   const pbaV3 = await checkToggleEnabled(PBAv3);
@@ -84,7 +84,8 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
   await I.respondToClaim({
     twoDefendants: false,
     defendant1Response: 'fullDefence',
-    defendant1ResponseToApplicant2: 'fullDefence'
+    defendant1ResponseToApplicant2: 'fullDefence',
+    claimValue: '11000'
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
@@ -92,7 +93,7 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('TWO_V_ONE');
+  await I.respondToDefence('TWO_V_ONE', '11000');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseId());
