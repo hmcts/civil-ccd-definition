@@ -1,18 +1,16 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE', mintiClaimTrack) => {
+  claimantResponse: (response = 'FULL_DEFENCE') => {
     const responseData = {
     };
     switch (response) {
       case 'FULL_DEFENCE':
-        if (mintiClaimTrack === 'MULTI_CLAIM') {
         responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
-
           FileDirectionsQuestionnaire: {
             applicant1DQFileDirectionsQuestionnaire: {
               explainedToClient: ['CONFIRM'],
@@ -117,17 +115,12 @@ module.exports = {
             }
           }
         };
-        }
         responseData.midEventData = {
           ...responseData.midEventData,
           Hearing: {
             respondent1DQStatementOfTruth: {
               name: 'Test',
               role: 'Worker'
-            },
-            businessProcess: {
-              status: 'FINISHED',
-              camundaEvent: 'DEFENDANT_RESPONSE_SPEC'
             }
           }
         };
@@ -137,11 +130,6 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
-          },
-          Mediation: {
-            applicantMPClaimMediationSpecRequired: {
-              hasAgreedFreeMediation: 'Yes'
-            }
           }
         };
         responseData.midEventData = {
@@ -152,20 +140,11 @@ module.exports = {
       case 'FULL_ADMISSION':
         responseData.userInput = {
           ...responseData.userInput,
-          RespondentResponse: {
-            applicant1ProceedWithClaim: 'Yes',
-          },
-          Mediation: {
-            applicantMPClaimMediationSpecRequired: {
-              hasAgreedFreeMediation: 'Yes'
-            }
-          }
         };
         responseData.midEventData = {
           ...responseData.midEventData,
         };
         break;
-
       case 'NOT_PROCEED':
         responseData.userInput = {
           ...responseData.userInput,
