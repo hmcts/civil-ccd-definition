@@ -46,7 +46,6 @@ Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
   await I.notifyClaim();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -57,7 +56,7 @@ Scenario('Claimant solicitor notifies defendant solicitor of claim details', asy
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
-  await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence', null, 'fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed

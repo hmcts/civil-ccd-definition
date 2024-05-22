@@ -45,18 +45,13 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({n
   await  prepareClaimLiPvLR(api_spec_cui, noc, true);
 });
 
-async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled, typeOfResponse) {
-  let expectedEndState;
-  if (typeOfResponse === 'FULL_ADMISSION') {
-    expectedEndState = 'AWAITING_APPLICANT_INTENTION';
-  } else {
-    expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
-  }
+async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
+  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled);
   await noc.requestNoticeOfChangeForApplicant1Solicitor(caseId, config.applicantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
   await api_spec_cui.checkUserCaseAccess(config.applicantSolicitorUser, true);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled, typeOfResponse);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
