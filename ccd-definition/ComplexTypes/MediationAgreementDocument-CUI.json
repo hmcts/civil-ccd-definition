@@ -9,14 +9,6 @@
   },
   {
     "ID": "MediationAgreementDocument",
-    "ListElementCode": "test",
-    "ElementLabel": "test",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "MediationAgreementDocument",
     "ListElementCode": "documentType",
     "ElementLabel": "Document type",
     "FieldType": "FixedList",
