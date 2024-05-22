@@ -28,7 +28,7 @@ module.exports = {
       courtLocation: {
         id: `#${party}DQRequestedCourt_responseCourtLocations`,
         options: {
-          defendantPreferredCourt: config.liverpoolCourt
+          defendantPreferredCourt: config.defendantSelectedCourt
         }
       }
     };
