@@ -54,6 +54,21 @@ Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, ap
   }
 });
 
+async function prepareClaimLRvLiP(api_spec_cui, noc) {
+  const expectedEndState = 'AWAITING_APPLICANT_INTENTION';
+  const claimType = 'SmallClaims';
+  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType);
+  await noc.requestNoticeOfChangeForApplicant1Solicitor(caseId, config.applicantSolicitorUser);
+  await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
+  await api_spec_cui.checkUserCaseAccess(config.applicantSolicitorUser, true);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, 'FULL_ADMISSION');
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
+}
+
+Scenario('1v1 LR v LiP defendant and claimant response - Full admission - claimant does NoC', async ({noc, api_spec_cui}) => {
+  await  prepareClaimLRvLiP(api_spec_cui, noc);
+});
+
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });

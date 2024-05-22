@@ -68,10 +68,6 @@ Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CAR
   await  prepareClaimLRvLiP(api_spec_cui, noc, true);
 });
 
-Scenario('1v1 LR v LiP defendant and claimant response - Full admission - claimant does NoC - CARM not enabled', async ({noc, api_spec_cui}) => {
-  await  prepareClaimLRvLiP(api_spec_cui, noc, false, 'FULL_ADMISSION');
-});
-
 async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
