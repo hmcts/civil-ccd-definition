@@ -47,7 +47,6 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled', async ({n
 
 async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
-  
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled);
   await noc.requestNoticeOfChangeForApplicant1Solicitor(caseId, config.applicantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
