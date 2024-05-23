@@ -52,5 +52,11 @@
     "ListElementCode": "CLAIMANT_INTENTION_TRANSLATED_DOCUMENT",
     "ListElement": "Claimant Intention Translated Document",
     "DisplayOrder": 23
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFENDANT_RESPONSE",
+    "ListElement": "Defendant's response",
+    "DisplayOrder": 24
   }
 ]
