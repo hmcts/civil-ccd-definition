@@ -1294,18 +1294,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "specRespondent1DQDisclosureOfElectronicDocuments",
-    "PageDisplayOrder": 43,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfElectronicDocumentsLRspec",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "specRespondent2DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 43,
     "PageFieldDisplayOrder": 1,
@@ -1336,18 +1324,6 @@
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1DQDisclosureReport",
-    "PageDisplayOrder": 45,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DisclosureReport",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
-    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
