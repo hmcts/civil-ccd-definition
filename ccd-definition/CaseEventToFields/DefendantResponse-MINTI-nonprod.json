@@ -2,30 +2,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQDisclosureReport",
-    "PageDisplayOrder": 10,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "DisclosureReport",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND claimType!=\"PERSONAL_INJURY\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
-    "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
-    "PageDisplayOrder": 8,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentDQFixedRecoverableCostsIntermediateLabel",
     "PageDisplayOrder": 7,
     "PageFieldDisplayOrder": 3,
