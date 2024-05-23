@@ -27,9 +27,21 @@ module.exports = {
               reasons: 'some important reasons'
             }
           },
+          DisclosureOfElectronicDocuments: {
+            applicant1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
+            }
+          },
           DisclosureOfNonElectronicDocuments: {
             specApplicant1DQDisclosureOfNonElectronicDocuments: {
               bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            applicant1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              'disclosureProposalAgreed': 'Yes',
+              'draftOrderNumber': null
             }
           },
           Experts: {

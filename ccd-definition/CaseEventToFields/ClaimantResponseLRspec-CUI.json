@@ -855,7 +855,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -877,7 +877,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "(responseClaimTrack =\"FAST_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\") AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
