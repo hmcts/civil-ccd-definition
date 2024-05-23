@@ -11,6 +11,7 @@ exports.config = {
     './e2e/tests/ui_tests/refunds/*_test.js',
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/ui_tests/hearings/*_test.js',
+    './e2e/tests/api_tests/lrspec_cui/*_test.js',
   ] : [
     './e2e/tests/*_test.js',
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
@@ -18,11 +19,12 @@ exports.config = {
     './e2e/tests/api_tests/sdo_R2/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/sdo/*_test.js',
     './e2e/tests/api_tests/hearings/*_test.js',
     './e2e/tests/api_tests/bulkclaim/*_test.js',
     './e2e/tests/api_tests/lrspec/*_test.js',
+    './e2e/tests/api_tests/lrspec_cui/*_test.js',
+    './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
   ],
   output: 'test-results/functional',
   helpers: {
@@ -36,6 +38,12 @@ exports.config = {
       waitForAction: 500,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
+      video: true,
+      contextOptions : {
+        recordVideo:{
+          dir:'failed-videos',
+        },
+      },
     },
     BrowserHelpers: {
       require: './e2e/helpers/browser_helper.js',

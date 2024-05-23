@@ -431,7 +431,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -998,20 +999,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialClinicalNegligence",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialCreditHire",
     "AccessControl": [
       {
         "UserRoles": [

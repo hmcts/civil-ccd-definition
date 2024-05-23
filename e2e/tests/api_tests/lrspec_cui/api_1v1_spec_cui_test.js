@@ -16,7 +16,7 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState);
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
@@ -34,7 +34,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.checkUserCaseAccess(config.defendantCitizenUser2, false);
   await api_spec_cui.checkUserCaseAccess(config.defendantSolicitorUser, true);
   await api_spec_cui.defendantResponse(config.defendantSolicitorUser);
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState);
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
@@ -52,7 +52,7 @@ async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.checkUserCaseAccess(config.applicantCitizenUser, false);
   await api_spec_cui.checkUserCaseAccess(config.applicantSolicitorUser, true);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled', async ({noc, api_spec_cui}) => {
@@ -67,7 +67,7 @@ async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState);
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled', async ({api_spec_cui}) => {
@@ -75,7 +75,7 @@ Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui
 });
 
 Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled', async ({api_spec_cui}) => {
-  await prepareClaimLRvLiPExui(api_spec_cui, false);
+  await prepareClaimLRvLiPExui(api_spec_cui, true);
 });
 
 AfterSuite(async  ({api_spec_cui}) => {

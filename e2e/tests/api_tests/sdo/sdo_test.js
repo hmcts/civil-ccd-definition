@@ -6,7 +6,7 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // to use on local because the idam images are different
-// const judgeUser = judgeUserLocal;
+// const judgeUser = config.judgeUserWithRegionId1Local;
 // const legalAdvUser = config.tribunalCaseworkerWithRegionId1Local;
 const claimAmountJudge = '11000';
 const claimAmountAdvisor = '100';
@@ -54,7 +54,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod-sdo', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');

@@ -32,7 +32,7 @@ const data = {
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
-  CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation),
+  CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation, carmEnabled),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
@@ -54,6 +54,10 @@ const eventData = {
       FULL_DEFENCE_CITIZEN_DEFENDANT:  {
         Yes: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'Yes'),
         No: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'No'),
+      },
+      FULL_DEFENCE_CITIZEN_DEFENDANT_MEDIATION: {
+        Yes: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'Yes', true),
+        No: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'No', true)
       },
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
@@ -105,7 +109,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false) => {
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '') => {
     console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
@@ -115,7 +119,7 @@ module.exports = {
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
     } else {
       console.log('SmallClaim...');
-      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId);
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
     }
     caseId = await apiRequest.startCreateCaseForCitizen(payload);
     await waitForFinishedBusinessProcess(caseId);
@@ -173,7 +177,7 @@ module.exports = {
     return caseId;
   },
 
-  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false) => {
+  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false, typeOfResponse = '') => {
     let eventName = 'DEFENDANT_RESPONSE_CUI';
     let payload = {};
     if (claimType === 'FastTrack') {
@@ -181,7 +185,7 @@ module.exports = {
       payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
     } else {
       console.log('SmallClaim...');
-      payload = defendantResponse.createDefendantResponse('1500', carmEnabled);
+      payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
     }
     //console.log('The payload : ' + payload);
     await apiRequest.setupTokens(user);
@@ -189,9 +193,9 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  performCitizenClaimantResponse: async (user, caseId, expectedEndState) => {
+  performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled, typeOfData) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
-    let payload = lipClaimantResponse.claimantResponse();
+    let payload = lipClaimantResponse.claimantResponse(carmEnabled, typeOfData);
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
@@ -249,7 +253,7 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', freeMediation = 'Yes',
-                           expectedCcdState) => {
+                           expectedCcdState, carmEnabled = false) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -258,6 +262,11 @@ module.exports = {
 
     eventName = 'CLAIMANT_RESPONSE_SPEC';
     caseData = await apiRequest.startEvent(eventName, caseId);
+
+    if (carmEnabled) {
+      response = 'FULL_DEFENCE_CITIZEN_DEFENDANT_MEDIATION';
+    }
+
     let claimantResponseData = eventData['claimantResponses'][scenario][response][freeMediation];
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {

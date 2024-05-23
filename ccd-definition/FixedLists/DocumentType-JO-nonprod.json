@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT1",
+    "ListElement": "Default Judgment claimant",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_CLAIMANT2",
+    "ListElement": "Default Judgment claimant",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT1",
+    "ListElement": "Default Judgment defendant",
+    "DisplayOrder": 17
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_DEFENDANT2",
+    "ListElement": "Default Judgment defendant",
+    "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DEFAULT_JUDGMENT_COVER_LETTER",
+    "ListElement": "Default Judgment Cover Letter",
+    "DisplayOrder": 19
+  }
+]

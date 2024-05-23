@@ -2,7 +2,7 @@
   {
     "ID": "FastTrack",
     "ListElementCode": "fastClaimNoiseInducedHearingLoss",
-    "ListElement": "Noise Induced Hearing Loss (NIHL should not be selected in conjunction with any other option)",
+    "ListElement": "Noise Induced Hearing Loss (Do not use with other options)",
     "DisplayOrder": 8
   }
 ]

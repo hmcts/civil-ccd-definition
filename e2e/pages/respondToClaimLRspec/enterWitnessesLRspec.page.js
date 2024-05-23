@@ -11,6 +11,9 @@ module.exports = {
               no: '#applicant1DQWitnessesSmallClaim_witnessesToAppear_No'
             },
           },
+          claimWitnesses: {
+            id: '#applicant1ClaimWitnesses'
+          },
         };
       }
 
@@ -33,7 +36,10 @@ module.exports = {
  async howManyWitnesses(mpScenario) {
     I.waitForElement(this.fields(mpScenario).noOfWitnesses.id);
     await I.runAccessibilityTest();
-    await I.click(this.fields(mpScenario).noOfWitnesses.options.no);
+    await I.click(this.fields(mpScenario).noOfWitnesses.options.yes);
+    if (mpScenario == 'ClaimantResponse') {
+      await I.fillField(this.fields(mpScenario).claimWitnesses.id, 1);
+    }
     await I.clickContinue();
   }
 };
