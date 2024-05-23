@@ -1848,7 +1848,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
@@ -4144,7 +4145,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -4164,7 +4166,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },

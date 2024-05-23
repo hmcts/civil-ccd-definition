@@ -245,7 +245,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -257,7 +258,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
