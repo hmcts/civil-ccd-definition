@@ -283,18 +283,6 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
-    "TabFieldDisplayOrder": 37
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
-    "TabFieldDisplayOrder": 38
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
     "CaseFieldID": "respondent1DQExperts",
@@ -472,18 +460,6 @@
     "CaseFieldID": "headingClaimantDQ",
     "TabFieldDisplayOrder": 67,
     "FieldShowCondition": "applicant1DQExperts = \"*\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant1DQFixedRecoverableCosts",
-    "TabFieldDisplayOrder": 68
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "applicant2DQFixedRecoverableCosts",
-    "TabFieldDisplayOrder": 69
   },
   {
     "CaseTypeID": "CIVIL",
