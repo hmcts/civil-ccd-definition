@@ -61,7 +61,7 @@ AfterSuite(async ({api}) => {
   await api.cleanUp();
 });
 
-Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @api-nightly-prod');
+Feature('Transfer Online Case 1v2 API test - small claim - spec @api-spec-1v2 @api-nightly-prod @api-toc');
 
 Scenario('Transfer Online Spec claim 1v2 - not suitable SDO - Transfer Case', async ({api_spec}) => {
     await prepareClaimSpec(api_spec);

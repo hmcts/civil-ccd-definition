@@ -17,6 +17,7 @@
     "test:api-unspec-full-defence": "MOCHAWESOME_REPORTFILENAME=api-unspec npx codeceptjs run-workers --suites 4  --grep @api-unspec-full-defence --reporter mocha-multi --verbose",
     "test:e2e-unspec": "MOCHAWESOME_REPORTFILENAME=e2e-unspec npx codeceptjs run-workers --suites 4 --grep @e2e-unspec --reporter mocha-multi --verbose",
     "test:api-sdo": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run-workers --suites 4 --grep @api-sdo --reporter mocha-multi --verbose",
+    "test:api-toc": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run-workers --suites 4 --grep @api-toc --reporter mocha-multi --verbose",
     "test:e2e-sdo": "MOCHAWESOME_REPORTFILENAME=e2e-sdo npx codeceptjs run-workers --suites 3 --grep @e2e-sdo --reporter mocha-multi --verbose",
     "test:api-dj": "MOCHAWESOME_REPORTFILENAME=api-dj npx codeceptjs  run-workers --suites 4  --grep @api-dj --reporter mocha-multi --verbose",
     "test:api-dj-unspec": "MOCHAWESOME_REPORTFILENAME=api-dj npx codeceptjs  run-workers --suites 4  --grep @api-dj-unspec --reporter mocha-multi --verbose",
