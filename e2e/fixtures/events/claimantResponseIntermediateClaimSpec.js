@@ -40,8 +40,8 @@ module.exports = {
           DisclosureReport: {
             applicant1DQDisclosureReport: {
               disclosureFormFiledAndServed: 'Yes',
-              'disclosureProposalAgreed': 'Yes',
-              'draftOrderNumber': null
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '12345'
             }
           },
           Experts: {

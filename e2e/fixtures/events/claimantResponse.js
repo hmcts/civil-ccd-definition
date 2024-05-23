@@ -158,16 +158,16 @@ module.exports = {
           DisclosureReport: {
             applicant1DQDisclosureReport:
               {
-                disclosureFormFiledAndServed: "Yes",
-                disclosureProposalAgreed: "Yes",
-                draftOrderNumber: "012345"
+                disclosureFormFiledAndServed: 'Yes',
+                disclosureProposalAgreed: 'Yes',
+                draftOrderNumber: '012345'
               },
             ...(mpScenario === 'TWO_V_ONE' ? {
               applicant2DQDisclosureReport:
                 {
-                  disclosureFormFiledAndServed: "Yes",
-                  disclosureProposalAgreed: "Yes",
-                  draftOrderNumber: "012345"
+                  disclosureFormFiledAndServed: 'Yes',
+                  disclosureProposalAgreed: 'Yes',
+                  draftOrderNumber: '012345'
           }
             } : {})
           }
