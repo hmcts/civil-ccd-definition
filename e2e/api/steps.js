@@ -2,7 +2,7 @@ const config = require('../config.js');
 const lodash = require('lodash');
 const deepEqualInAnyOrder = require('deep-equal-in-any-order');
 const chai = require('chai');
-const {listElement} = require('./dataHelper');
+const {listElement, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 
 chai.use(deepEqualInAnyOrder);
 chai.config.truncateThreshold = 0;
@@ -25,11 +25,10 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
-const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+  checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -38,10 +37,11 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -74,11 +74,13 @@ const data = {
   REQUEST_DJ_ORDER: (djOrderType, mpScenario) => createDJDirectionOrder.judgeCreateOrder(djOrderType, mpScenario),
   CREATE_DISPOSAL: (userInput) => sdoTracks.createSDODisposal(userInput),
   CREATE_FAST: (userInput) => sdoTracks.createSDOFast(userInput),
+  CREATE_FAST_NIHL: (userInput) => sdoTracks.createSDOFastNIHL(userInput),
   CREATE_FAST_IN_PERSON: (userInput) => sdoTracks.createSDOFastInPerson(userInput),
   CREATE_SMALL: (userInput) => sdoTracks.createSDOSmall(userInput),
   CREATE_FAST_NO_SUM: (userInput) => sdoTracks.createSDOFastWODamageSum(userInput),
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
+  CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
@@ -86,17 +88,63 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
-  FINAL_ORDERS: (finalOrdersRequestType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType),
-  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
-  RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
-  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
-  SET_ASIDE_JUDGMENT: () => judgmentOnline1v1.setAsideJudgment(),
+  EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
+  EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
+  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
   MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
 };
-
+const calculatedClaimsTrackDRH = {
+    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+    fastTrackHearingTime: (d) =>
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+    disposalHearingHearingTime: (d) =>
+      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+      && d.dateTo,
+    sdoR2SmallClaimsJudgesRecital: (data) => {
+      return typeof data.input === 'string';
+    },
+    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
+    sdoR2SmallClaimsWitnessStatements: (data) => {
+      return typeof data.sdoStatementOfWitness === 'string'
+        && typeof data.isRestrictWitness === 'string'
+        && typeof data.isRestrictPages === 'string'
+        && typeof data.text === 'string';
+    },
+    sdoR2SmallClaimsUploadDoc: (data) => {
+      return typeof data.sdoUploadOfDocumentsTxt === 'string';
+    },
+    sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+    sdoR2DrhUseOfWelshLanguage: (data) => {
+      return typeof data.description === 'string';
+    },
+    sdoR2SmallClaimsHearing: (data) => {
+      return typeof data.trialOnOptions === 'string'
+        && typeof data.trialOnOptions === 'string'
+        && typeof data.hearingCourtLocationList === 'object'
+        && typeof data.methodOfHearing === 'string'
+        && typeof data.physicalBundleOptions === 'string'
+        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsImpNotes: (data) => {
+      return typeof data.text === 'string'
+        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+    },
+    sdoR2SmallClaimsPPI: (data) => {
+      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+        && typeof data.text === 'string';
+    }
+};
 const eventData = {
   acknowledgeClaims: {
     ONE_V_ONE: data.ACKNOWLEDGE_CLAIM,
@@ -132,7 +180,9 @@ const eventData = {
     CREATE_FAST_IN_PERSON: data.CREATE_FAST_IN_PERSON(),
     CREATE_SMALL_NO_SUM: data.CREATE_SMALL_NO_SUM(),
     CREATE_FAST_NO_SUM: data.CREATE_FAST_NO_SUM(),
-    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO()
+    UNSUITABLE_FOR_SDO: data.UNSUITABLE_FOR_SDO(),
+    CREATE_FAST_NIHL: data.CREATE_FAST_NIHL(),
+    CREATE_SMALL_DRH: data.CREATE_SMALL_DRH(),
   }
 };
 
@@ -161,20 +211,40 @@ const midEventFieldForPage = {
   }
 };
 
+const newSdoR2FieldsFastTrack = {
+  sdoR2FastTrackWitnessOfFact: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.sdoWitnessDeadline === 'string'
+      && typeof data.sdoWitnessDeadlineText === 'string';
+  }
+};
+
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+  return typeof data.input1 === 'string'
+    && typeof data.input5 === 'string'
+    && typeof data.input6 === 'string'
+    && typeof data.input7 === 'string'
+    && typeof data.input8 === 'string';
+  }
+};
+
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000', isMintiCaseEnabled = false) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, isMintiCaseEnabled);
 
     //==============================================================
 
@@ -191,8 +261,6 @@ module.exports = {
       await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
         null, 'Case data validation failed');
     }
-
-
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -222,6 +290,10 @@ module.exports = {
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    const isMintiEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiEnabled && isMintiCaseEnabled));
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiEnabled && isMintiCaseEnabled));
   },
 
   manageDefendant1Details: async (user) => {
@@ -982,7 +1054,6 @@ module.exports = {
     console.log('SDO for case id ' + caseId);
     const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
-
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
@@ -996,9 +1067,22 @@ module.exports = {
     if(SdoR2){
       delete caseData['smallClaimsFlightDelay'];
       delete caseData['smallClaimsFlightDelayToggle'];
+      //required to fix existing prod api tests for sdo
+      clearWelshParaFromCaseData();
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
+
+    if (SdoR2 && response === 'CREATE_FAST') {
+      delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
+      delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+      disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
@@ -1028,10 +1112,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER'));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1047,10 +1136,15 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
-      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     } else {
-      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', mpScenario));
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
     await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
@@ -1192,16 +1286,20 @@ module.exports = {
     assert.equal(response, 'success');
   },
 
-  evidenceUploadApplicant: async (user, mpScenario='') => {
+  evidenceUploadApplicant: async (user, mpScenario='', smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_APPLICANT';
     caseData = await apiRequest.startEvent(eventName, caseId);
 
     console.log('caseData.caseProgAllocatedTrack ..', caseData.caseProgAllocatedTrack );
-
+    let ApplicantEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim applicant for case id ' + caseId);
-      let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_DRH();
+      } else {
+        ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
+      }
       await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1213,15 +1311,19 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  evidenceUploadRespondent: async (user, multipartyScenario) => {
+  evidenceUploadRespondent: async (user, multipartyScenario, smallClaimType) => {
     await apiRequest.setupTokens(user);
     eventName = 'EVIDENCE_UPLOAD_RESPONDENT';
     mpScenario = multipartyScenario;
     caseData = await apiRequest.startEvent(eventName, caseId);
-
+    let RespondentEvidenceSmallClaimData;
     if(caseData.caseProgAllocatedTrack === 'SMALL_CLAIM') {
       console.log('evidence upload small claim respondent for case id ' + caseId);
-      let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      if (smallClaimType === 'DRH') {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_DRH();
+      } else {
+        RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
+      }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
     if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
@@ -1233,66 +1335,15 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  recordJudgment: async (user, mpScenario, whyRecorded, paymentPlanSelection) => {
-    console.log(`case in All final orders issued ${caseId}`);
+  hearingFeePaidDRH: async (user) => {
     await apiRequest.setupTokens(user);
 
-    eventName = 'RECORD_JUDGMENT';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
 
-    if (mpScenario === 'ONE_V_ONE') {
-      await validateEventPages(data.RECORD_JUDGMENT(whyRecorded, paymentPlanSelection));
-    } else {
-      await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO(whyRecorded, paymentPlanSelection));
-    }
-
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
-
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  markJudgmentPaid: async (user) => {
-    console.log(`case in All final orders issued ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'JUDGMENT_PAID_IN_FULL';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-
-
-    await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
-
-
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '# Judgment marked as paid in full',
-      body: 'The judgment has been marked as paid in full'
-    }, true);
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  setAsideJudgment: async (user) => {
-    console.log(`case in All set aside judgment ${caseId}`);
-    await apiRequest.setupTokens(user);
-
-    eventName = 'SET_ASIDE_JUDGMENT';
-    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
-    caseData = returnedCaseData;
-    assertContainsPopulatedFields(returnedCaseData);
-    await validateEventPages(data.SET_ASIDE_JUDGMENT());
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-      header: '',
-      body: ''
-    }, true);
-    await waitForFinishedBusinessProcess(caseId);
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid DRH');
   },
 
   notSuitableSDO: async (user, option) => {
@@ -1360,7 +1411,8 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  const SdoR2 = await checkToggleEnabled(SDOR2);
+  let sdoR2Flag = await checkToggleEnabled(SDOR2);
+
   const validDataForPage = data.valid[pageId];
   caseData = {...caseData, ...validDataForPage};
   caseData = adjustDataForSolicitor(solicitor, caseData);
@@ -1370,10 +1422,12 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
+  if(sdoR2Flag && (pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims')) {
+    delete caseData.isSdoR2NewScreen;
+  }
 
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-  responseBody = clearNoCData(responseBody);
   if (eventName === 'INFORM_AGREED_EXTENSION_DATE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
     responseBody = clearDataForExtensionDate(responseBody, solicitor);
   } else if (eventName === 'DEFENDANT_RESPONSE' && mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
@@ -1389,9 +1443,19 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
   }
-  if(SdoR2){
+  if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
+    //required to fix existing prod api tests for sdo
+    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
   }
 
   assert.equal(response.status, 200);
@@ -1403,20 +1467,23 @@ const assertValidData = async (data, pageId, solicitor) => {
     claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
   }
   if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
   }
   if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
     // CIV-3883 depends on backend having the field
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
-    if(['ClaimsTrack', 'OrderType'].includes(pageId)) {
+    if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
+      if (sdoR2Flag) {
+        clearNihlDataFromCaseData();
+      }
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1435,10 +1502,18 @@ const assertValidData = async (data, pageId, solicitor) => {
       // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
       delete caseData.disposalHearingSchedulesOfLoss;
     }
+    if (pageId === 'ClaimsTrack'
+      && !(responseBody.data.showCarmFields)) {
+      // disposalHearingSchedulesOfLoss is populated on pageId SDO but then in pageId ClaimsTrack has been removed
+      delete caseData.showCarmFields;
+    }
   }
-
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
+  }
+  if (pageId === 'SdoR2FastTrack') {
+    clearWelshParaFromCaseData();
+    delete caseData['sdoR2FastTrackCreditHire'];
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
@@ -1596,7 +1671,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR2Flag) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -1605,7 +1680,10 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-
+  if(sdoR2Flag && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
+    || pageId === 'SmallClaims')) {
+    calculated = {...calculated, ...calculatedClaimsTrackDRH};
+  }
   if(eventName === 'CREATE_CLAIM'){
     midEventData = data[eventName](mpScenario, claimAmount).midEventData[pageId];
   } else if(eventName === 'CLAIMANT_RESPONSE'){
@@ -1620,8 +1698,18 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (calculated) {
     checkCalculated(calculated, responseBody.data);
   }
+
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
+  }
+  if(sdoR2Flag && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
+  }
+
+  if(sdoR2Flag && pageId === 'OrderType') {
+    let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
+    midEventData = {...midEventData, ...sdoR2Var};
   }
 
   caseData = {...caseData, ...midEventData};
@@ -1732,11 +1820,6 @@ const clearDataForExtensionDate = (responseBody, solicitor) => {
 
 const clearDataForSearchCriteria = (responseBody) => {
   delete responseBody.data['SearchCriteria'];
-  return responseBody;
-};
-
-const clearNoCData = (responseBody) => {
-  delete responseBody.data['changeOfRepresentation'];
   return responseBody;
 };
 
@@ -1885,6 +1968,19 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['hearingFee'];
   delete responseBody.data['hearingFeePBADetails'];
   delete responseBody.data['hearingNoticeListOther'];
+  delete responseBody.data['isSdoR2NewScreen'];
+  delete responseBody.data['fastClaims'];
+  clearNihlDataFromResponse(responseBody);
+  delete responseBody.data['sdoR2SmallClaimsJudgesRecital'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDocToggle'];
+  delete responseBody.data['sdoR2SmallClaimsUploadDoc'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatements'];
+  delete responseBody.data['sdoR2SmallClaimsImpNotes'];
+  delete responseBody.data['sdoR2SmallClaimsPPI'];
+  delete responseBody.data['sdoR2SmallClaimsHearing'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementsToggle'];
+  delete responseBody.data['sdoR2SmallClaimsHearingToggle'];
+  delete responseBody.data['smallClaims'];
 
   if(mpScenario === 'TWO_V_ONE' && eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     delete responseBody.data['evidenceUploadOptions'];
@@ -1935,4 +2031,82 @@ const adjustDataForSolicitor = (user, data) => {
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
   return responseBody;
+};
+
+const clearNihlDataFromCaseData = () => {
+  delete caseData['sdoFastTrackJudgesRecital'];
+  delete caseData['sdoAltDisputeResolution'];
+  delete caseData['sdoVariationOfDirections'];
+  delete caseData['sdoR2Settlement'];
+  delete caseData['sdoR2DisclosureOfDocumentsToggle'];
+  delete caseData['sdoR2DisclosureOfDocuments'];
+  delete caseData['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete caseData['sdoR2WitnessesOfFact'];
+  delete caseData['sdoR2ScheduleOfLossToggle'];
+  delete caseData['sdoR2ScheduleOfLoss'];
+  delete caseData['sdoR2AddNewDirection'];
+  delete caseData['sdoR2TrialToggle'];
+  delete caseData['sdoR2Trial'];
+  delete caseData['sdoR2ImportantNotesTxt'];
+  delete caseData['sdoR2ImportantNotesDate'];
+  delete caseData['sdoR2SeparatorExpertEvidenceToggle'];
+  delete caseData['sdoR2ExpertEvidence'];
+  delete caseData['sdoR2SeparatorAddendumReportToggle'];
+  delete caseData['sdoR2AddendumReport'];
+  delete caseData['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete caseData['sdoR2FurtherAudiogram'];
+  delete caseData['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete caseData['sdoR2QuestionsClaimantExpert'];
+  delete caseData['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete caseData['sdoR2PermissionToRelyOnExpert'];
+  delete caseData['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete caseData['sdoR2EvidenceAcousticEngineer'];
+  delete caseData['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete caseData['sdoR2QuestionsToEntExpert'];
+  delete caseData['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete caseData['sdoR2UploadOfDocuments'];
+  delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2SmallClaimsHearing'];
+};
+
+const clearWelshParaFromCaseData= () => {
+  delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete caseData['sdoR2NihlUseOfWelshLanguage'];
+  delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+  delete caseData['sdoR2DrhUseOfWelshLanguage'];
+  delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+};
+
+const clearNihlDataFromResponse = (responseBody) => {
+  delete responseBody.data['sdoFastTrackJudgesRecital'];
+  delete responseBody.data['sdoAltDisputeResolution'];
+  delete responseBody.data['sdoVariationOfDirections'];
+  delete responseBody.data['sdoR2Settlement'];
+  delete responseBody.data['sdoR2DisclosureOfDocumentsToggle'];
+  delete responseBody.data['sdoR2DisclosureOfDocuments'];
+  delete responseBody.data['sdoR2SeparatorWitnessesOfFactToggle'];
+  delete responseBody.data['sdoR2WitnessesOfFact'];
+  delete responseBody.data['sdoR2ScheduleOfLossToggle'];
+  delete responseBody.data['sdoR2ScheduleOfLoss'];
+  delete responseBody.data['sdoR2AddNewDirection'];
+  delete responseBody.data['sdoR2TrialToggle'];
+  delete responseBody.data['sdoR2Trial'];
+  delete responseBody.data['sdoR2ImportantNotesTxt'];
+  delete responseBody.data['sdoR2ImportantNotesDate'];
+  delete responseBody.data['sdoR2SeparatorExpertEvidenceToggle'];
+  delete responseBody.data['sdoR2ExpertEvidence'];
+  delete responseBody.data['sdoR2SeparatorAddendumReportToggle'];
+  delete responseBody.data['sdoR2AddendumReport'];
+  delete responseBody.data['sdoR2SeparatorFurtherAudiogramToggle'];
+  delete responseBody.data['sdoR2FurtherAudiogram'];
+  delete responseBody.data['sdoR2SeparatorQuestionsClaimantExpertToggle'];
+  delete responseBody.data['sdoR2QuestionsClaimantExpert'];
+  delete responseBody.data['sdoR2SeparatorPermissionToRelyOnExpertToggle'];
+  delete responseBody.data['sdoR2PermissionToRelyOnExpert'];
+  delete responseBody.data['sdoR2SeparatorEvidenceAcousticEngineerToggle'];
+  delete responseBody.data['sdoR2EvidenceAcousticEngineer'];
+  delete responseBody.data['sdoR2SeparatorQuestionsToEntExpertToggle'];
+  delete responseBody.data['sdoR2QuestionsToEntExpert'];
+  delete responseBody.data['sdoR2SeparatorUploadOfDocumentsToggle'];
+  delete responseBody.data['sdoR2UploadOfDocuments'];
 };

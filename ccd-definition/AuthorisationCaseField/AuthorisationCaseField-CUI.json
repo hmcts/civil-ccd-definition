@@ -7,15 +7,10 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
@@ -263,14 +258,14 @@
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

@@ -64,6 +64,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicantDQFixedRecoverableCostsIntermediateLabel",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "FixedRecoverableCostsIntermediate",
+    "PageShowCondition": "applicant1ProceedWithClaim=\"Yes\" AND responseClaimTrack =\"INTERMEDIATE_CLAIM\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "CaseEventFieldLabel": "Fixed Recoverable Costs",
+    "PageID": "FixedRecoverableCostsIntermediate",
+    "FieldShowCondition": "applicant1ProceedWithClaim=\"Yes\" OR applicant1ProceedWithClaimSpec2v1=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
@@ -236,5 +259,16 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmediately",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "responseClaimTrack=\"DO NOT SHOW IN UI\""
   }
 ]
