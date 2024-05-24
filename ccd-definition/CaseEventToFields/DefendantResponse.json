@@ -954,7 +954,7 @@
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCosts",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"FAST_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM_CLAIM\")",
     "FieldShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND (respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
   },
