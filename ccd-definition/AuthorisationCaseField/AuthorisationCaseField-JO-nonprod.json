@@ -115,7 +115,8 @@
   "UserRoles": [
     "APP-SOL-SPEC-PROFILE",
     "caseworker-civil-admin",
-    "caseworker-civil-staff"
+    "caseworker-civil-staff",
+    "CITIZEN-CLAIMANT-PROFILE"
   ],
   "CRUD": "CRU"
   },
