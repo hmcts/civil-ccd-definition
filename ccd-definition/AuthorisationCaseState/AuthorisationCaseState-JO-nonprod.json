@@ -1,14 +1,14 @@
 [
   {
-  "CaseTypeID": "CIVIL",
-  "CaseStateID": "CLOSED",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "CITIZEN-CLAIMANT-PROFILE"
-      ],
-      "CRUD": "R"
-    }
-  ]
-}
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
 ]
