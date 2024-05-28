@@ -750,6 +750,7 @@ module.exports = function () {
         () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
+
     async initiateSDONIHL(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
 
@@ -771,7 +772,7 @@ module.exports = function () {
 
         ...conditionalSteps(trackType, [
           () => allocateClaimPage.selectTrackTypenihl(trackType)]),
-        () => smallClaimsSDOOrderDetailsPage.selectOrderDetailsnihl(allocateSmallClaims, trackType, orderType),
+        () => smallClaimsSDOOrderDetailsPage.selectOrderDetailsnihl(),
         () => smallClaimsSDOOrderDetailsPage.verifyOrderPreview(),
         () => event.submit('Submit', 'Your order has been issued')
       ]);

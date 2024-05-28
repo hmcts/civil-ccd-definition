@@ -2,8 +2,8 @@ const config = require('../../../config.js');
 //const {paymentUpdate} = require('../../../api/apiRequest');
 const parties = require('../../../helpers/party');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {waitForFinishedBusinessProcess, checkToggleEnabled, checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+// const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 //const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP_NIHL';
 

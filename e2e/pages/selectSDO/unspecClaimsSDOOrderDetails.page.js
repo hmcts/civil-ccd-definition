@@ -109,7 +109,7 @@ module.exports = {
     }
     await I.clickContinue();
   },
-  async selectOrderDetailsnihl(allocateSmallClaims, trackType, orderType) {
+  async selectOrderDetailsnihl() {
     await I.clickContinue();
   },
   async selectHearingMethodOption(text) {
