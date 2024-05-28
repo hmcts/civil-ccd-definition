@@ -850,7 +850,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQDisclosureOfElectronicDocuments",
+    "CaseFieldID": "specApplicant1DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
