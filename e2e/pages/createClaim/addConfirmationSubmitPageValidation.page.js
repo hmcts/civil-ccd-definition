@@ -9,7 +9,7 @@ module.exports = {
     I.see('Airline');
     I.see('Flight number');
     I.see('Date of flight');
-    I.see('KLM');
+    I.see('Air India');
   }
 };
 

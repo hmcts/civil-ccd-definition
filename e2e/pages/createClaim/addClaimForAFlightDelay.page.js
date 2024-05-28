@@ -41,7 +41,7 @@ module.exports = {
     I.see('Airline is required');
     I.see('Flight number is required');
     I.see('Date of flight is required');
-    I.selectOption('#flightDelayDetails_airlineList', 'KLM');
+    I.selectOption('#flightDelayDetails_airlineList', 'Air India');
     I.fillField('#flightDelayDetails_flightNumber', 10001);
     I.click('Continue');
     I.see('Date of flight is required');
