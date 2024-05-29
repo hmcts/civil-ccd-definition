@@ -71,8 +71,9 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2) => {
   selectedPba = useValidPba ? validPba : invalidPba;
+
   const claimData = {
     References: {
       CaseAccessCategory: 'UNSPEC_CLAIM',
@@ -350,6 +351,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         ClaimType: {
           claimType: 'PERSONAL_INJURY'
         },
+        ClaimTypeUnSpec: {
+          claimTypeUnSpec: 'PERSONAL_INJURY'
+        },
         PersonalInjuryType: {
           personalInjuryType: 'NOISE_INDUCED_HEARING_LOSS'
         },
@@ -376,7 +380,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -412,7 +416,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
       },
       invalid: {
         Upload: {

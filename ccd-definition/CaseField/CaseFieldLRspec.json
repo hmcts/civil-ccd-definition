@@ -23,14 +23,7 @@
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "specEligibilityQuestions",
-    "Label": "## Issue civil court proceedings\nTo use this service you must be:\n* issuing a claim for a specified (fixed) amount of money\n* have an address in England or Wales and an email address\n* able to pay the full issue fee using Payment by Account (PBA) or card payment\n* serving a claim form in English\n\nThe claimant must:\n\n* have an address in England or Wales\n* not have a civil proceedings order, civil restraint order, or all proceedings order against them\n\nThe claim you’re issuing must not:\n* ordinarily follow the Part 8 procedure\n* be brought under the Consumer Credit Act 1974\n* be against the Crown",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "specCheckList",
@@ -1409,7 +1402,7 @@
     "HintText": "For example 9 December 2020",
     "FieldType": "RespondToClaimAdmitPartLRspec",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2835,5 +2828,14 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicant1DQDisclosureOfElectronicDocuments",
+    "Label": "Disclosure of electronic documents",
+    "FieldType": "DisclosureOfElectronicDocuments",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "comment_": "workaround for generation of claimant DQs"
   }
 ]

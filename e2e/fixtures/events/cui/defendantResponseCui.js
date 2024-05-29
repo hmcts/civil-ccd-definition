@@ -186,11 +186,11 @@ module.exports = {
     const defendantResponseData = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
-        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        respondent1ClaimResponseTypeForSpec: typeOfResponse === 'FULL_ADMISSION' ? 'FULL_ADMISSION' : 'FULL_DEFENCE',
         defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
-        respondToClaimAdmitPartLRspec: {
-
-        },
+        respondToClaimAdmitPartLRspec: typeOfResponse === 'FULL_ADMISSION' ? {
+          whenWillThisAmountBePaid: '2020-01-01'
+        } : {},
         responseClaimMediationSpecRequired: 'No',
         specAoSApplicantCorrespondenceAddressRequired: 'No',
         totalClaimAmount: totalClaimAmount,
@@ -293,7 +293,15 @@ module.exports = {
           vulnerabilityAdjustmentsRequired: 'No',
         },
         respondent1DQRequestedCourt: {
-          requestHearingAtSpecificCourt: 'No',
+          requestHearingAtSpecificCourt: 'Yes',
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'court',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+          }
         },
         respondent1DQWitnesses: {
           witnessesToAppear: 'No',
@@ -437,11 +445,15 @@ module.exports = {
           vulnerabilityAdjustments: 'vulnerable'
         },
         respondent1DQRequestedCourt: {
-          requestHearingAtSpecificCourt: 'No',
+          requestHearingAtSpecificCourt: 'Yes',
           otherPartyPreferredSite: '',
           responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
-          caseLocation: {}
+          caseLocation: {
+            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+          }
         },
         respondent1DQWitnesses: {
           witnessesToAppear: 'Yes',

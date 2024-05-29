@@ -14,7 +14,7 @@
     "ElementLabel": "Enter the date your client will pay on.",
     "HintText": "For example 9 December 2020",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "Label": "When will this amount be paid?"
   }
 ]

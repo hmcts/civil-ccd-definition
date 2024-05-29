@@ -151,7 +151,28 @@
       {
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "cui-admin-profile",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -501,6 +522,16 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1061,11 +1092,33 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
+    "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "cui-admin-profile",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_AFTER_NOC_APPROVAL",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -1073,11 +1126,23 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
+    "CaseEventID": "NOTIFY_DEFENDANT_SOLICITOR_AFTER_NOC_APPROVAL",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CLAIMANT_DEFENDANT_REPRESENTED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
