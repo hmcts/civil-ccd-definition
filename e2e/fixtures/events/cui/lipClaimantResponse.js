@@ -333,7 +333,6 @@ module.exports = {
         },
         applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
         applicant1FullDefenceConfirmAmountPaidSpec: 'Yes',
-        applicant1ProceedWithClaim: 'Yes',
         applicant1SettleClaim: 'No'
       }
     };
