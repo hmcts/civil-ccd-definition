@@ -10,7 +10,7 @@ const claimAmount = '100';
 
 let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
 
-Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod @api-sdo-r2');
+Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-nonprod @api-r2-sdo');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1, claimAmount);
