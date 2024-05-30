@@ -51,7 +51,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "previewCourtOfficerOrder",
     "Label": "Order document",
-    "FieldType": "Document",
+    "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
