@@ -197,15 +197,5 @@
      "DisplayContext": "MANDATORY",
      "RetainHiddenValue": "Y",
      "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
-   },
-   {
-     "ID": "SecondClaimant",
-     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-     "CaseFieldID": "applicant2",
-     "ListElementCode": "flags",
-     "FieldDisplayOrder": 23,
-     "DisplayContext": "OPTIONAL",
-     "RetainHiddenValue": "Y",
-     "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
    }
 ]
