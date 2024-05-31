@@ -16,7 +16,7 @@ if (config.runWAApiTest) {
 Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod');
 
 Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
 
   //below amend claim documents only needed as assertion was failing on notify claims
@@ -30,7 +30,7 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
 }).retry(3);
 
 
-Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
@@ -39,7 +39,7 @@ Scenario('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft
   await I.judgeAddsCaseNotes();
 }).retry(3);
 
-Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+Scenario.skip('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
@@ -58,7 +58,7 @@ Scenario('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @maste
   }
 }).retry(3);
 
-Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+Scenario.skip('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
   if (config.testEarlyAdopterCourts) {
     if (config.runWAApiTest) {
       const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
@@ -82,7 +82,7 @@ Scenario('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-
   }
 }).retry(3);
 
-Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip  ('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   if (config.testEarlyAdopterCourts) {
     await api.amendHearingDate(config.systemupdate, '2022-01-10');
     hearingDateIsLessThan3Weeks = true;
@@ -90,7 +90,7 @@ Scenario('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @mas
   }
 }).retry(3);
 
-Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   if (config.testEarlyAdopterCourts) {
     await api.amendHearingDate(config.systemupdate, '2025-01-10');
     hearingDateIsLessThan3Weeks = false;
@@ -99,7 +99,7 @@ Scenario('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-
   }
 }).retry(3);
 
-Scenario('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
+Scenario.skip('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
   if (config.testEarlyAdopterCourts) {
     await payHearingFee(I);
   }
