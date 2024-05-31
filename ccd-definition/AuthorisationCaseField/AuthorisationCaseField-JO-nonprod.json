@@ -83,15 +83,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joPaymentToBeMadeByDate",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsRegisteredWithRTL",
     "UserRoles": [
       "caseworker-civil-admin",
@@ -218,21 +209,5 @@
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgmentType",
-    "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE",
-      "APP-SOL-SPEC-PROFILE",
-      "RES-SOL-ONE-UNSPEC-PROFILE",
-      "RES-SOL-TWO-UNSPEC-PROFILE",
-      "RES-SOL-ONE-SPEC-PROFILE",
-      "RES-SOL-TWO-SPEC-PROFILE",
-      "CITIZEN-DEFENDANT-PROFILE",
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "R"
   }
 ]
