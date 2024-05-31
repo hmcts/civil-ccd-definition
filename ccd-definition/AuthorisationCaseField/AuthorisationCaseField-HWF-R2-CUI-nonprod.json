@@ -37,30 +37,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseLabelHearingReference",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseTitleWithHWFHearingNumber",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitleWithHwFDetails",
     "AccessControl": [
       {
@@ -100,18 +76,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingFeeLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedHwfDetails",
     "AccessControl": [
       {
@@ -139,36 +103,6 @@
           "cui-admin-profile",
           "citizen-profile",
           "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHwfDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "citizen-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "helpWithFeesMoreInformationHearing",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       }
@@ -224,31 +158,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwfFullRemissionGrantedForHearingFee",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hwfOutstandingFeePaymentDoneForHearingFee",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitle2",
     "AccessControl": [
       {
@@ -274,18 +183,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedHwfForTab",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHwfForTab",
     "AccessControl": [
       {
         "UserRoles": [
