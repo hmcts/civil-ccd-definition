@@ -77,15 +77,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joPaymentToBeMadeByDate",
-    "Label": "Enter the date the judgment will be paid by",
-    "HintText": "For example, 16 4 2021",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "joIsRegisteredWithRTL",
     "Label": "Should this judgment be registered with RTL?",
     "HintText": "This judgment should only be registered with RTL if the judge has ordered the amount should be paid in instalments, or if the claimant has applied to enforce the judgment",
@@ -201,15 +192,6 @@
     "Label": " ",
     "FieldType": "Collection",
     "FieldTypeParameter": "JoJudgment",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "judgmentType",
-    "Label": " ",
-    "FieldType": "FixedList",
-    "FieldTypeParameter": "JudgmentType",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
