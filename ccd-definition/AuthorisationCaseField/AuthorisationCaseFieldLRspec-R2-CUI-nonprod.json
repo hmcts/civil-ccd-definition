@@ -592,8 +592,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "CR"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
