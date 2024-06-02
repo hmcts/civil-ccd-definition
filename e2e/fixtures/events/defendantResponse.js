@@ -89,12 +89,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
-        DisclosureReport: {
-          respondent1DQDisclosureReport: {
-            disclosureFormFiledAndServed: 'Yes',
-            disclosureProposalAgreed: 'No',
+        ...(allocatedTrack != 'SMALL_CLAIM' ? {
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
           }
-        },
+        } : {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',
