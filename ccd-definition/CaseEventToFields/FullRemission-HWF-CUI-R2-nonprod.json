@@ -29,7 +29,7 @@
     "PageID": "FullRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "FieldShowCondition": "caseTitleWithHWFHearingNumber=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
