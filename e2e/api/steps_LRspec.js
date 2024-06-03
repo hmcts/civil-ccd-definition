@@ -1260,6 +1260,7 @@ module.exports = {
       delete caseData['sdoR2FastTrackCreditHire'];
       delete caseData['sdoDJR2TrialCreditHire'];
     }
+    delete caseData['requestForReconsiderationDeadline'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
