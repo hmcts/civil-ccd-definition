@@ -72,6 +72,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
+          },
+        }: {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',
