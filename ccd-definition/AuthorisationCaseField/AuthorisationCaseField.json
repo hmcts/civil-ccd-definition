@@ -1958,7 +1958,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -1972,7 +1974,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -2002,7 +2006,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -2016,7 +2022,9 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -5474,6 +5482,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE"

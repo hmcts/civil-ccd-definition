@@ -53,6 +53,16 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
+              band: 'BAND_2',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes'
+            }
+          }
+        } : {}),
         DisclosureOfElectronicDocuments: {
           respondent1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',
