@@ -281,6 +281,10 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
     }
 
+    if (responseBody.data.requestForReconsiderationDeadline) {
+      caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
+    }
+
     // noinspection EqualityComparisonWithCoercionJS
     if (caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
       && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
@@ -1260,7 +1264,6 @@ module.exports = {
       delete caseData['sdoR2FastTrackCreditHire'];
       delete caseData['sdoDJR2TrialCreditHire'];
     }
-    delete caseData['requestForReconsiderationDeadline'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
