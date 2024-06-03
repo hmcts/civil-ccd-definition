@@ -5,6 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
