@@ -140,5 +140,13 @@
     "FieldType": "HelpWithFeesForTab",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hearingHwfForTab",
+    "Label": " ",
+    "FieldType": "HelpWithFeesForTab",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
