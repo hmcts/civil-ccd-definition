@@ -46,17 +46,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "moreInformationHwf",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "moreInformationHwf",
