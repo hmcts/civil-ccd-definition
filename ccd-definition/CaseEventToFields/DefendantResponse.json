@@ -740,7 +740,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND claimType!=\"PERSONAL_INJURY\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -882,7 +882,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -954,8 +954,8 @@
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCosts",
-    "PageShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"FAST_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
+    "FieldShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND (respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -967,7 +967,7 @@
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCosts",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND (respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
   },
   {

@@ -265,9 +265,10 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-data-store-api
       imagePullPolicy: Always
-      devcpuRequests: 1000m
-      devmemoryRequests: 2048Mi
-      devmemoryLimits: 4096Mi
+      devmemoryRequests: 3048Mi
+      devcpuRequests: 2000m
+      devmemoryLimits: 5096Mi
+      devcpuLimits: 3000m
       disableKeyVaults: true
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
@@ -312,15 +313,16 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       imagePullPolicy: Always
-      devcpuLimits: 2
-      devcpuRequests: 1000m
       devmemoryRequests: 2048Mi
+      devcpuRequests: 2000m
       devmemoryLimits: 4096Mi
+      devcpuLimits: 4000m
       environment:
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 35
+        DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 60
+        WELSH_TRANSLATION_ENABLED: false
       disableKeyVaults: true
   ccd-user-profile-api:
     java:
