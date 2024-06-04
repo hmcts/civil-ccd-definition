@@ -1264,7 +1264,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1310,7 +1310,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "(responseClaimTrack= \"FAST_CLAIM\"  OR responseClaimTrack= \"MULTI_CLAIM\") AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
+    "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
   },
