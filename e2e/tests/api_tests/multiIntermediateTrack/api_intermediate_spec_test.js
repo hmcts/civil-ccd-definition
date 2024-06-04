@@ -11,11 +11,11 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
 }
 
-Scenario('1v1 FULL_DEFENCE Intermediate claim Specified @api-nonprod-specified', async ({api_spec}) => {
+Scenario('1v1 FULL_DEFENCE Intermediate claim Specified @api-nonprod-specified @123', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
+  //await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
+  //await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
 });
 
 Scenario('1v1 FULL_ADMISSION Intermediate claim Specified', async ({api_spec}) => {
@@ -55,6 +55,6 @@ Scenario('1v2  full defence Intermediate claim Specified same solicitor', async 
 });
 
 AfterSuite(async  ({api_spec}) => {
-  await api_spec.cleanUp();
+  //await api_spec.cleanUp();
 });
 
