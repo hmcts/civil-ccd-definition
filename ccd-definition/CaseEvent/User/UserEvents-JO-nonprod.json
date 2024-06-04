@@ -25,7 +25,7 @@
     "Description": "Set aside judgment",
     "DisplayOrder": 1,
     "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",
-    "PostConditionState": "All_FINAL_ORDERS_ISSUED",
+    "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
@@ -34,7 +34,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\"  AND CaseAccessCategory=\"SPEC_CLAIM\""
+    "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\" AND activeJudgment.type = \"DEFAULT_JUDGMENT\""
   },
   {
   "CaseTypeID": "CIVIL",
@@ -111,7 +111,6 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "joIsLiveJudgmentExists != \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\""
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]
