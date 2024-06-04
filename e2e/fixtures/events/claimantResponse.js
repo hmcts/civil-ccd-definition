@@ -126,19 +126,52 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM' ? {
         DisclosureOfElectronicDocuments: {
           applicant1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',
               agreementLikely: 'Yes'
-          }
+            },
+            ...(mpScenario === 'TWO_V_ONE' ? {
+              applicant2DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'No',
+                agreementLikely: 'Yes'
         },
+            } : {})
+          }
+        } : {}),
         DisclosureOfNonElectronicDocuments: {
           applicant1DQDisclosureOfNonElectronicDocuments: {
             directionsForDisclosureProposed: 'Yes',
               standardDirectionsRequired: 'No',
               bespokeDirections: 'directions'
-          }
+          },
+          ...(mpScenario === 'TWO_V_ONE' ? {
+            applicant2DQDisclosureOfNonElectronicDocuments: {
+              directionsForDisclosureProposed: 'Yes',
+              standardDirectionsRequired: 'No',
+              bespokeDirections: 'directions'
+            },
+          } : {})
         },
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM' ? {
+          DisclosureReport: {
+            applicant1DQDisclosureReport:
+              {
+                disclosureFormFiledAndServed: 'Yes',
+                disclosureProposalAgreed: 'Yes',
+                draftOrderNumber: '012345'
+              },
+            ...(mpScenario === 'TWO_V_ONE' ? {
+              applicant2DQDisclosureReport:
+                {
+                  disclosureFormFiledAndServed: 'Yes',
+                  disclosureProposalAgreed: 'Yes',
+                  draftOrderNumber: '012345'
+          }
+            } : {})
+          }
+        } : {}),
         Experts: {
           applicant1DQExperts: {
             expertRequired: 'Yes',
