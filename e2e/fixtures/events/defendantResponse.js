@@ -61,6 +61,21 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
+              band: 'BAND_1',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          }
+        } : {}),
         DisclosureOfElectronicDocuments: {
           respondent1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',
@@ -74,12 +89,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
-        DisclosureReport: {
-          respondent1DQDisclosureReport: {
-            disclosureFormFiledAndServed: 'Yes',
-            disclosureProposalAgreed: 'No',
-          }
-        },
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
+          },
+        }: {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',

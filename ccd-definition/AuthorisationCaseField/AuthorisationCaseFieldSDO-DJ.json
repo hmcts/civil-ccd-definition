@@ -431,7 +431,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }

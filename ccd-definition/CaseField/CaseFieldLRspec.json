@@ -2831,6 +2831,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "specApplicant1DQDisclosureOfElectronicDocuments",
+    "Label": "Disclosure of electronic documents",
+    "FieldType": "DisclosureOfElectronicDocuments",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "comment_": "workaround for generation of claimant DQs"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "isFlightDelayClaimLbl",
     "Label": "## Is this an airline claim?",
     "FieldType": "Label",

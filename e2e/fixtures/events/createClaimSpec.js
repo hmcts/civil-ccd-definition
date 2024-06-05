@@ -168,21 +168,13 @@ module.exports = {
         ClaimAmount: {
           claimAmountBreakup: [{
             value: {
-              ...(!isMintiCaseEnabled) ? {
-                claimReason: 'amount reason',
-                claimAmount: claimAmount,
-              }: {},
-              ...(isMintiCaseEnabled) ? {
-                claimReason: 'amount reason',
-                claimAmount: mintiClaimAmount,
-              }: {}
+              ...(!isMintiCaseEnabled) ? {claimReason: 'amount reason', claimAmount: claimAmount,} : {claimReason: 'amount reason minti', claimAmount: mintiClaimAmount},
             }
           }]
         },
         ClaimInterest: {
           claimInterest: 'No'
         },
-
         InterestSummary: {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
@@ -215,12 +207,7 @@ module.exports = {
           }
         },
         ClaimAmount: {
-          ...(!isMintiCaseEnabled) ? {
-            totalClaimAmount: claimAmount / 100
-          }: {},
-          ...(isMintiCaseEnabled) ? {
-            totalClaimAmount: mintiClaimAmount / 100
-          }: {}
+          ...(!isMintiCaseEnabled) ? {totalClaimAmount: claimAmount / 100} : {totalClaimAmount: mintiClaimAmount / 100}
         },
         ClaimAmountDetails: {
           CaseAccessCategory: 'SPEC_CLAIM'

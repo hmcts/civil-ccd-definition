@@ -11,12 +11,14 @@ const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 const respondent1 = {
   represented: true,
   representativeRegistered: true,
-  representativeOrgNumber: 2
+  representativeOrgNumber: 2,
+  partyType: 'Organisation'
 };
 const respondent2 = {
   represented: true,
   sameLegalRepresentativeAsRespondent1: false,
-  representativeOrgNumber: 3
+  representativeOrgNumber: 3,
+  partyType: 'Organisation'
 };
 
 let caseNumber;
@@ -27,7 +29,8 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
     console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for flight delay @create-claim-spec');
     var user = config.applicantSolicitorUser;
     await LRspec.login(config.applicantSolicitorUser);
-    await LRspec.createCaseSpecifiedForFlightDelay('1v2 Different LRs fast claim','organisation', null, respondent1, respondent2, 15450);
+    //await LRspec.createCaseSpecified('1v2 Different LRs fast claim','Individual', null, respondent1, respondent2, 15450);
+    await LRspec.createCaseSpecifiedForFlightDelay('1v2 Different LRs fast claim','Organisation', null, respondent1, respondent2, 15450);
     caseNumber = await LRspec.grabCaseNumber();
 
     const pbaV3 = await checkToggleEnabled(PBAv3);

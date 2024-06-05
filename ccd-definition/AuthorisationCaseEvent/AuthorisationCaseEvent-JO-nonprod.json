@@ -20,7 +20,8 @@
         "UserRoles": [
           "caseworker-civil-staff",
           "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -486,7 +487,102 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_JO_DEFENDANT1_PIN_IN_LETTER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "JUDGMENT_BY_ADMISSION_DEFENDANT1_PIN_IN_LETTER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GEN_JUDGMENT_BY_ADMISSION_DOC",
     "AccessControl": [
       {
         "UserRoles": [
