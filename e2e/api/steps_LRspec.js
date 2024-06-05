@@ -91,6 +91,7 @@ const eventData = {
       FULL_DEFENCE_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MULTI_CLAIM('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT', 'MULTI_CLAIM'),
       FULL_ADMISSION_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_PBAv3_SetAside_DJ: data.DEFENDANT_RESPONSE('FULL_DEFENCE', 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE('FULL_ADMISSION'),
       FULL_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       PART_ADMISSION_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MULTI_CLAIM('PART_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
@@ -105,6 +106,7 @@ const eventData = {
     ONE_V_TWO: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
       FULL_DEFENCE_PBAv3: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_DEFENCE_PBAv3_SetAside_DJ: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE', 'DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC'),
       FULL_DEFENCE_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MULTI_CLAIM('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_DEFENCE_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_DEFENCE', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
@@ -296,6 +298,10 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
 
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
+  }
+
+  if (responseBody.data.requestForReconsiderationDeadline) {
+    caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
@@ -909,7 +915,7 @@ module.exports = {
 
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
-                            isMintiCase = false, claimAmountMinti) => {
+                            isMintiCase = false, claimAmountMinti, djSetaside=false) => {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
     await apiRequest.setupTokens(user);
@@ -918,6 +924,10 @@ module.exports = {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     if(pbaV3){
       response = response+'_PBAv3';
+    }
+
+    if(djSetaside){
+      response = response+'_SetAside_DJ';
     }
 
     if(carmEnabled){
@@ -1502,17 +1512,18 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user, setAsideReason, setAsideOrderType) => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType,expectedState = 'PROCEEDS_IN_HERITAGE_SYSTEM') => {
     console.log(`case in All set aside judgment ${caseId}`);
+    console.log(`calling setup token *** setAside case ${caseId}  user : ${user.email}`);
     await apiRequest.setupTokens(user);
-
     eventName = 'SET_ASIDE_JUDGMENT';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.SET_ASIDE_JUDGMENT(setAsideReason, setAsideOrderType));
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    console.log(`setAside case ${caseId}  user : ${user.email}`);
+    await assertSubmittedEvent(expectedState, {
       header: '',
       body: ''
     }, true);
