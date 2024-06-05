@@ -197,5 +197,15 @@
     "DisplayContext": "MANDATORY",
     "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent2",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 23,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
