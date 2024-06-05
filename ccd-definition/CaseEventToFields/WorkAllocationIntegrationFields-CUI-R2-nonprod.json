@@ -158,5 +158,45 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 18,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 19,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 21,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
   }
 ]
