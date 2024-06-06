@@ -1151,7 +1151,7 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);

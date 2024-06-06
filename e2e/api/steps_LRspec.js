@@ -1180,7 +1180,7 @@ module.exports = {
       };
       let DJSpec = isDivergent ? data.DEFAULT_JUDGEMENT_SPEC_1V2_DIVERGENT : data.DEFAULT_JUDGEMENT_SPEC_1V2;
       if (isJudgmentOnlineLive) {
-        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'All_FINAL_ORDERS_ISSUED';
+        state = isDivergent ? 'PROCEEDS_IN_HERITAGE_SYSTEM' : 'ALL_FINAL_ORDERS_ISSUED';
       } else {
         state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
       }
@@ -1197,7 +1197,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
-        state = 'All_FINAL_ORDERS_ISSUED';
+        state = 'ALL_FINAL_ORDERS_ISSUED';
       } else {
         state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
       }
@@ -1214,7 +1214,7 @@ module.exports = {
           registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
-        state = 'All_FINAL_ORDERS_ISSUED';
+        state = 'ALL_FINAL_ORDERS_ISSUED';
       } else {
         state = 'PROCEEDS_IN_HERITAGE_SYSTEM';
       }
@@ -1456,7 +1456,7 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
@@ -1480,7 +1480,7 @@ module.exports = {
       await validateEventPages(data.RECORD_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
@@ -1504,7 +1504,7 @@ module.exports = {
       await validateEventPages(data.EDIT_JUDGMENT_ONE_V_TWO_SPEC(whyRecorded, paymentPlanSelection));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# Judgment edited',
       body: 'The judgment has been edited'
     }, true);
@@ -1540,7 +1540,7 @@ module.exports = {
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     await validateEventPages(data.REFER_JUDGE_DEFENCE_RECEIVED());
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent('ALL_FINAL_ORDERS_ISSUED', {
       header: '# The case has been referred to a judge for a decision',
       body: ''
     }, true);

@@ -79,7 +79,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "CaseStateID": "ALL_FINAL_ORDERS_ISSUED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
   },

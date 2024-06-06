@@ -92,7 +92,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "All_FINAL_ORDERS_ISSUED",
+    "ID": "ALL_FINAL_ORDERS_ISSUED",
     "Name": "All final orders issued",
     "Description": "All final orders issued",
     "DisplayOrder": 14

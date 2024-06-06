@@ -130,7 +130,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "CaseStateID": "ALL_FINAL_ORDERS_ISSUED",
     "AccessControl": [
       {
         "UserRoles": [
@@ -183,7 +183,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "CaseStateID": "ALL_FINAL_ORDERS_ISSUED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
     ],
