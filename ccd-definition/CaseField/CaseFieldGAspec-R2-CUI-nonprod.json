@@ -22,5 +22,13 @@
     "Label": "Is GA Respondent Two LIP",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppAskForCosts",
+    "Label": "Ask For Costs",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
