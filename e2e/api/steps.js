@@ -1518,6 +1518,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     clearWelshParaFromCaseData();
     delete caseData['sdoR2FastTrackCreditHire'];
   }
+  if (responseBody.data.requestForReconsiderationDeadline) {
+    caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
+  }
+
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
