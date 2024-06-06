@@ -229,7 +229,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_JUDGMENT_BY_ADMISSION",
-    "Name": "Notify Claimant Judgment By Admission",
+    "Name": "Notify Claimant ByAdmission",
     "Description": "Notify Claimant Judgment By Admission",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -242,7 +242,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_JUDGMENT_BY_ADMISSION",
-    "Name": "Notify Defendant Judgment By admission",
+    "Name": "Notify Defendant By admission",
     "Description": "Notify Defendant Judgment By admission",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
