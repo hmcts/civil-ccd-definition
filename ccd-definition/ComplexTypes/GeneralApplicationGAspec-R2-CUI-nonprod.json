@@ -25,6 +25,14 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppAskForCosts",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppHelpWithFees",
     "FieldType": "HelpWithFees",
     "ElementLabel": " ",
