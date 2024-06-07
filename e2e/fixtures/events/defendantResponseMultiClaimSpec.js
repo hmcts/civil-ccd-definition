@@ -42,12 +42,14 @@ module.exports = {
           },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'non-electric directions'
             }
           },
           DisclosureReport: {
@@ -327,19 +329,21 @@ module.exports = {
           },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent2DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Defendant 2 Reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent2DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'Defendant 2 non-electric directions'
             }
           },
           DisclosureReport: {
             respondent2DQDisclosureReport: {
               disclosureFormFiledAndServed: 'Yes',
               disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
+              draftOrderNumber: 'def2:123'
             }
           },
           Language: {
