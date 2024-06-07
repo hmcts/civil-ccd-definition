@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppAskForCosts",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
