@@ -70,6 +70,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
+        ...(allocatedTrack != 'SMALL_CLAIM' ? {
+          DisclosureReport: {
+            respondent2DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
+          }
+        } : {}),
         Experts: {
           respondent2DQExperts: {
             expertRequired: 'Yes',
