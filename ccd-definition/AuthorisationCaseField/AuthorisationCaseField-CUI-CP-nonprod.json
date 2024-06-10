@@ -35,7 +35,8 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -49,7 +50,8 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
