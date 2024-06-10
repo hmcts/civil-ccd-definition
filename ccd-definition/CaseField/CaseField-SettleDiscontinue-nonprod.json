@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "settleReason",
-    "Label": "How was the claim been settled?",
+    "Label": "How has the claim been settled?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleReason",
     "SecurityClassification": "Public",

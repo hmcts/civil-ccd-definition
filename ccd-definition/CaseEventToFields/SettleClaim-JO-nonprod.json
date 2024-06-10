@@ -15,10 +15,10 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "settleReason",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "SettleClaim",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N"
   }
