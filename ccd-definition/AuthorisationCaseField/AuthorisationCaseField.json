@@ -2076,7 +2076,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
