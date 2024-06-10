@@ -229,7 +229,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_SOLICITOR1_DEFENDANT_SETTLE_CLAIM_MARKED_PAID_IN_FULL",
-    "Name": "Notify LR Defendant 1 for Settle Claim Event",
+    "Name": "Notify for Settle Claim Event",
     "Description": "Notify Settle Claim Paid in Full to LR Defendant 1 for Settle Claim",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -242,7 +242,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_SOLICITOR2_DEFENDANT_SETTLE_CLAIM_MARKED_PAID_IN_FULL",
-    "Name": "Notify LR Defendant 2 for Settle Claim Event",
+    "Name": "Notify for Settle Claim Event",
     "Description": "Notify Settle Claim Paid in Full to LR Defendant 2 for Settle Claim",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
