@@ -13,7 +13,7 @@ else
 fi
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
-   excludedFilenamePatterns="-e *-nonprod.json,UserProfile.json"
+   excludedFilenamePatterns="-e *-nonprod.json"
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == perftest ]; then
