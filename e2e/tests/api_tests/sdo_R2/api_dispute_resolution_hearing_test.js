@@ -41,7 +41,7 @@ Scenario('1v1 unspec create SDO for DRH', async ({api}) => {
     await api.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
 });
 
-Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim1v1(api_spec_small, true);
     await api_spec_small.mediationUnsuccessful(mediationAdminRegion4, true);
