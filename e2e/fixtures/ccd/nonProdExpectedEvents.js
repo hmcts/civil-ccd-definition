@@ -23,7 +23,7 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CLAIMANT_RESPONSE,
       events.CHANGE_SOLICITOR_EMAIL,
-      events.MANAGE_CONTACT_INFORMATION
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PENDING_CASE_ISSUED: [
       events.RESUBMIT_CLAIM,
@@ -45,24 +45,24 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.ADD_DEFENDANT_LITIGATION_FRIEND,
       events.CHANGE_SOLICITOR_EMAIL,
-      events.MANAGE_CONTACT_INFORMATION
+      events.INITIATE_GENERAL_APPLICATION
     ],
   },
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
+      events.ADD_CASE_NOTE
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
+      events.ADD_CASE_NOTE
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
+      events.ADD_CASE_NOTE
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.ADD_CASE_NOTE,
@@ -71,11 +71,9 @@ module.exports = {
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.ADD_CASE_NOTE,
-      events.MANAGE_CONTACT_INFORMATION
+      events.ADD_CASE_NOTE
     ],
     PENDING_CASE_ISSUED: [
-      events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS
     ]
   }
