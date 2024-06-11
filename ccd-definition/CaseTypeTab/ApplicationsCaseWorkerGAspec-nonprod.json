@@ -5,9 +5,9 @@
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
-      "cui-admin-profile"
+      "caseworker-civil-admin"
     ],
-    "CaseFieldID": "generalApplications",
+    "CaseFieldID": "gaDetailsMasterCollection",
     "TabFieldDisplayOrder": 1
   }
 ]
