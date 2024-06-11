@@ -48,9 +48,23 @@ module.exports = {
               reasons: 'some reasons'
             }
           },
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Reasons'
+            }
+          },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'non-electric directions'
+            }
+          },
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '123'
             }
           },
           Experts: {
@@ -337,9 +351,23 @@ module.exports = {
               reasons: 'some reasons'
             }
           },
+          DisclosureOfElectronicDocumentsLRspec: {
+            specRespondent2DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Defendant 2 Reasons'
+            }
+          },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent2DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'Defendant 2 non-electric directions'
+            }
+          },
+          DisclosureReport: {
+            respondent2DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: 'def2:123'
             }
           },
           Experts: {
