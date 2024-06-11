@@ -284,10 +284,6 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
     }
 
-    if (responseBody.data.requestForReconsiderationDeadline) {
-      caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
-    }
-
     // noinspection EqualityComparisonWithCoercionJS
     if (caseData.drawDirectionsOrder && caseData.drawDirectionsOrder.judgementSum
       && responseBody.data.drawDirectionsOrder && responseBody.data.drawDirectionsOrder.judgementSum
@@ -305,6 +301,10 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
 
   if (pageId === 'Claimant') {
     delete caseData.applicant1OrganisationPolicy;
+  }
+
+  if (responseBody.data.requestForReconsiderationDeadline) {
+    caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
   try {
     assert.deepEqual(responseBody.data, caseData);
