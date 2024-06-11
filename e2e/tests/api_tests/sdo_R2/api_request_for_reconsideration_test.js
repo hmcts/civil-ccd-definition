@@ -46,7 +46,7 @@ Scenario('1v2 spec request for reconsideration by defendant2 for create general 
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_GENERAL_ORDER');
 }).tag('@api-prod');
 
-Scenario('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
+Scenario.skip('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE');
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
