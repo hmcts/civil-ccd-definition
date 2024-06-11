@@ -747,6 +747,7 @@ module.exports = {
       deleteCaseFields('respondent1DQRequestedCourt');
       deleteCaseFields('respondent2DQRequestedCourt');
       deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQDisclosureReport');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
       //delete case flags DQ party fields
@@ -1518,6 +1519,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     clearWelshParaFromCaseData();
     delete caseData['sdoR2FastTrackCreditHire'];
   }
+  if (responseBody.data.requestForReconsiderationDeadline) {
+    caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
+  }
+
   try {
     assert.deepEqual(responseBody.data, caseData);
   }
@@ -1850,6 +1855,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFileDirectionsQuestionnaire'];
     delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
     delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
+    delete responseBody.data['respondent1DQDisclosureReport'];
     delete responseBody.data['respondent1DQExperts'];
     delete responseBody.data['respondent1DQWitnesses'];
     delete responseBody.data['respondent1DQLanguage'];
