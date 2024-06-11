@@ -2843,20 +2843,23 @@
     "ID": "isFlightDelayClaimLbl",
     "Label": "## Is this an airline claim?",
     "FieldType": "Label",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "isFlightDelayClaim",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "ID": "flightDelayDetails",
     "Label": " ",
     "FieldType": "FlightDelayDetails",
-    "SecurityClassification": "Public"
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
