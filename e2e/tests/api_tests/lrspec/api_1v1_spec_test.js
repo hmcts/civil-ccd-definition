@@ -48,7 +48,7 @@ Scenario('1v1 part admit defence claimant and defendant response @api-spec-part-
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario.only('1v1 Settle claim - full defence claimant and defendant response ', async ({I, api_spec}) => {
+Scenario('1v1 Settle claim - full defence claimant and defendant response ', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
