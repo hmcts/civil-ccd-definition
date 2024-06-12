@@ -52,5 +52,25 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hmcEaCourtLocation",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
