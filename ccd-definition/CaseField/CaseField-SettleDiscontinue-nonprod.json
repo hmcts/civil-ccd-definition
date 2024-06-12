@@ -39,5 +39,14 @@
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "settleReason",
+    "Label": "How has the claim been settled?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
  ]
