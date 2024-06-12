@@ -3,9 +3,7 @@ const config = require('../../../config.js');
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const judgeUser = config.judgeUser2WithRegionId4; //small claim specified goes to region4 judge
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId4;
 const mpScenario = 'ONE_V_ONE_FLIGHT_DELAY';
-const mpScenario1v1 = 'ONE_V_ONE';
 const claimAmountSmallTrack = '1500';
 
 async function prepareClaim(api_spec, claimAmount) {
