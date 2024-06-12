@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "AccessControl": [
       {
         "UserRoles": [
