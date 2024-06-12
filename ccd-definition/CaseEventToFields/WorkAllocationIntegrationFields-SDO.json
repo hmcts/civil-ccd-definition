@@ -116,5 +116,18 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 11,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "personalInjuryType",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "FieldShowCondition": "claimType=\"DO NOT SHOW IN UI\"",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "Publish": "Y"
   }
 ]
