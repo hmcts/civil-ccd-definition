@@ -59,7 +59,12 @@ module.exports = {
               band: 'BAND_2',
               reasons: 'reasons',
               complexityBandingAgreed: 'Yes',
-              isSubjectToFixedRecoverableCostRegime: 'Yes'
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: 'defendant1_fixedrecoverablecost.pdf'
+              }
             }
           }
         } : {}),

@@ -2,7 +2,6 @@ const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
-
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -40,12 +39,17 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
             }
           },
-          FixedRecoverableCostsIntermediate: {
+          FixedRecoverableCosts: {
             respondent1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
               complexityBandingAgreed:'Yes',
               band: 'BAND_2',
-              reasons: 'some reasons'
+              reasons: 'some reasons',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: 'respondent_fixedrecoverablecost.pdf'
+              }
             }
           },
           DisclosureOfElectronicDocumentsLRspec: {
@@ -208,8 +212,13 @@ module.exports = {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
               complexityBandingAgreed:'Yes',
               band: 'BAND_2',
-              reasons: 'some reasons'
-            }
+              reasons: 'some reasons',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: 'respondent_fixedrecoverablecost.pdf'
+              }
+            },
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfNonElectronicDocuments: {
@@ -348,7 +357,12 @@ module.exports = {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
               complexityBandingAgreed:'Yes',
               band: 'BAND_2',
-              reasons: 'some reasons'
+              reasons: 'some reasons',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: 'respondent2_fixedrecoverablecost.pdf'
+              }
             }
           },
           DisclosureOfElectronicDocumentsLRspec: {

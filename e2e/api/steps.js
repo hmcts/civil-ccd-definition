@@ -1856,6 +1856,7 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
     delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
     delete responseBody.data['respondent1DQDisclosureReport'];
+    delete responseBody.data['respondent1DQFixedRecoverableCostsIntermediate'];
     delete responseBody.data['respondent1DQExperts'];
     delete responseBody.data['respondent1DQWitnesses'];
     delete responseBody.data['respondent1DQLanguage'];
