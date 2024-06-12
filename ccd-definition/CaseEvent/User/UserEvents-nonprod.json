@@ -17,7 +17,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "ID": "DISCONTINUE_CLAIM",
     "Name": "Discontinue claim",
     "Description": "Discontinue a claim",
     "DisplayOrder": 11,
