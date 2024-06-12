@@ -1,5 +1,4 @@
 [
-
   {
     "CaseTypeID": "CIVIL",
     "ID": "SETTLE_CLAIM",
@@ -21,6 +20,21 @@
     "Name": "Settle this claim",
     "Description": "Settle this claim",
     "DisplayOrder": 13,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Settle claim",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "RetriesTimeoutAboutToStartEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DISCONTINUE_CLAIM",
+    "Name": "Discontinue this claim",
+    "Description": "Discontinue this claim",
+    "DisplayOrder": 14,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
