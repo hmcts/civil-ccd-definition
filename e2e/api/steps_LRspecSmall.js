@@ -32,6 +32,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
 const hearingScheduled = require('../fixtures/events/scheduleHearing');
+const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 
 let caseId, eventName;
 let caseData = {};
@@ -54,6 +55,7 @@ const data = {
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  SETTLE_CLAIM_MARK_PAID_FULL: () => settleClaim1v1Spec.settleClaim(),
 };
 
 const eventData = {
@@ -521,6 +523,26 @@ module.exports = function (){
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
+    settleClaim: async (user) => {
+      console.log('settleClaim for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+      eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.SETTLE_CLAIM_MARK_PAID_FULL();
+      for (let pageId of Object.keys(disposalData.userInput)) {
+        await assertValidData(disposalData, pageId);
+      }
+      await assertSubmittedEvent('CLOSED', {
+        header: '# Response has been submitted',
+        body: ''
+      }, true);
+
+      await waitForFinishedBusinessProcess(caseId);
+    },
 
   getCaseId: async () => {
     console.log(`case created: ${caseId}`);
