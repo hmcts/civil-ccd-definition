@@ -1,13 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialCreditHire",
+    "CaseFieldID": "generalAppAskForCosts",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
