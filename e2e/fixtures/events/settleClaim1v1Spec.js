@@ -1,7 +1,4 @@
-const {date} = require('../../api/dataHelper');
-
 module.exports = {
-
   settleClaim: (addApplicant2) => {
     const OptionsForSettlement ={};
     switch (addApplicant2){
@@ -27,7 +24,6 @@ module.exports = {
 
     return OptionsForSettlement;
   },
-
   claimantDetails: (addApplicant2) => {
     const ClaimantDetails ={};
     if (addApplicant2 === 'YES') {
