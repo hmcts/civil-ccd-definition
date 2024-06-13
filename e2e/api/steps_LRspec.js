@@ -35,6 +35,7 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
@@ -79,7 +80,9 @@ const data = {
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
-  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
+  SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
+  SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
 };
 
 const eventData = {
@@ -1612,7 +1615,45 @@ module.exports = {
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
-  }
+  },
+
+  settleClaim: async (user, addApplicant2) => {
+    console.log('settleClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL(addApplicant2));
+
+    await assertSubmittedEvent('CLOSED', {
+      header: '### The claim has been marked as paid in full',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  settleClaimSelectClaimant: async (user, addApplicant2) => {
+    console.log('settleClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT(addApplicant2));
+
+    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      header: '### Request is being reviewed',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
@@ -1848,6 +1889,34 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
   }
 };
 
+const assertValidDataSettleClaim = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  caseData = data.userInput[pageId];
+
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+
+  assert.equal(response.status, 200);
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
+
+};
+
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
@@ -1881,8 +1950,13 @@ const validateEventPages = async (data, solicitor) => {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
-    await assertValidData(data, pageId, solicitor);
+    if (pageId === 'OptionsForSettlement' || pageId === 'ClaimantDetails'){
+      await assertValidDataSettleClaim(data, pageId);
+    } else {
+      // data = await updateCaseDataWithPlaceholders(data);
+      await assertValidData(data, pageId, solicitor);
+    }
+
   }
 };
 
