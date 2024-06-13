@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "settleReason",
+    "Label": "How has the claim been settled?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
