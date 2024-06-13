@@ -5,7 +5,6 @@
     "CaseFieldID": "hmcEaCourtLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "drawDirectionsOrderRequired=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
@@ -16,7 +15,6 @@
     "CaseFieldID": "hmcEaCourtLocation",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "disposalHearingBundleDJ=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
