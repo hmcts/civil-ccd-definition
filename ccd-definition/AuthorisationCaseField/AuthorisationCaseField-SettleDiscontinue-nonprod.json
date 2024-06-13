@@ -18,6 +18,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
@@ -53,12 +55,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "settleReason",
+    "CaseFieldID": "markPaidConsent",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -66,12 +68,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "markPaidConsent",
+    "CaseFieldID": "settleReason",
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
