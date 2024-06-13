@@ -39,5 +39,16 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "hmcEaCourtLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "assistedOrderMakeAnOrderForCosts=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
   }
 ]
