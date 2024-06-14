@@ -7,7 +7,6 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
