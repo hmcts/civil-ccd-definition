@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "DELETE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
+    "ID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
     "Name": "RfR CUI",
-    "Description": "Delete notification CUI",
+    "Description": "Create notification CUI",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -14,9 +14,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "DELETE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_DEFENDANT",
+    "ID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_DEFENDANT",
     "Name": "RfR CUI",
-    "Description": "Delete notification CUI",
+    "Description": "Create notification CUI",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
