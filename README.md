@@ -32,6 +32,24 @@ To access Camunda visit url (login and password are both `admin`):
 
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
+
+Below labels are needed on the PR 
+
+'''
+  "enable_keep_helm" label to retain helm release on preview
+  "pr-values:enableNotifyEmails" label to be able to send live notifications on the PR
+  "pr-values:elasticsearch"
+ '''
+
+Running Crossbrowser tests:
+
+Install saucelabs on local machine
+
+```bash
+$ yarn test:crossbrowser
+```
+
+
 ## Testing
 
 The repo uses codeceptjs framework for e2e tests.
