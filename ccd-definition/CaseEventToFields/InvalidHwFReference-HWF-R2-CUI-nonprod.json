@@ -46,32 +46,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "InvalidHwF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "InvalidHwF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 6,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "caseTitleWithHWFHearingNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "InvalidHwF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 7,
-    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -103,26 +83,5 @@
     "PageFieldDisplayOrder": 10,
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "hearingFeeLabel",
-    "DisplayContext": "READONLY",
-    "PageID": "InvalidHwF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 11,
-    "FieldShowCondition": "hwfFeeType = \"HEARING\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "INVALID_HWF_REFERENCE",
-    "CaseFieldID": "caseLabelHearingReference",
-    "DisplayContext": "READONLY",
-    "PageID": "InvalidHwF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 12,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"HEARING\""
   }
 ]
