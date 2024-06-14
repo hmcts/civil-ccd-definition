@@ -46,6 +46,7 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0,
+    "Publish": "Y",
     "PageShowCondition": "addApplicant2=\"Yes\""
   },
   {
