@@ -2,7 +2,7 @@
   {
     "ID": "MarkPaidConsent",
     "ListElementCode": "CONFIRM",
-    "ListElement": "I confirm that claim is paid in full by the claimant",
+    "ListElement": "I confirm this claim should be marked paid in full",
     "DisplayOrder": 1
   }
 ]
