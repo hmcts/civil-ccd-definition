@@ -37,9 +37,13 @@ Below labels are needed on the PR
 
 ```
 
-  "enable_keep_helm" label to retain helm release on preview
-  "pr-values:enableNotifyEmails" label to be able to send live notifications on the PR
-  "pr-values:elasticsearch"
+  _"enable_keep_helm"_ label to retain helm release on preview
+
+  _"pr-values:enableNotifyEmails"_ label to be able to send live notifications on the PR
+
+  _"pr-values:elasticsearch"_ label to have elastic search running - needed for scheduler testing
+
+  _"pr-values:enableWA"_ label to verify work allocation task
   
 ```
 
