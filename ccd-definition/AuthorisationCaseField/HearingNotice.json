@@ -119,8 +119,7 @@
         "UserRoles": [
           "hearing-schedule-access",
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -149,8 +148,7 @@
     "CaseFieldID": "hearingDuration",
     "UserRoles": [
       "hearing-schedule-access",
-      "caseworker-civil-solicitor",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "caseworker-civil-solicitor"
     ],
     "CRUD": "CRU"
   },
@@ -181,9 +179,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -198,12 +194,6 @@
           "hearing-schedule-access"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -217,12 +207,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -233,8 +217,7 @@
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "caseworker-civil-staff",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       },
