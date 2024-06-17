@@ -53,6 +53,10 @@ def secrets = [
   ]
 ]
 
+def checkForEnableEmailNotifications(branch_name) {
+    return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:enableNotifyEmails").contains("pr-values:enableNotifyEmails")
+}
+
 def createGithubRelease() {
   sh """
     set -e
@@ -186,6 +190,9 @@ withPipeline(type, product, component) {
 
   afterAlways('smoketest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+    if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
+      error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
+    }
   }
 
   before('functionalTest:preview') {

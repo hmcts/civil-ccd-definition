@@ -113,20 +113,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CITIZEN_HEARING_FEE_PAYMENT",
-    "Name": "Citizen Hearing Fee Payment",
-    "Description": "Citizen Hearing Fee Payment",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "Name": "Citizen Claim Issue Payment",
     "Description": "Citizen Claim Issue Payment",
