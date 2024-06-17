@@ -115,5 +115,35 @@
     "DisplayContext": "READONLY",
     "FieldShowCondition": "applicant2LitigationFriend=\"DO_NOT_SHOW_IN_UI\"",
     "RetainHiddenValue": "Y"
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 15,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2LitigationFriend = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2LitigationFriend = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "LitigationFriend",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 17,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2LitigationFriend = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
