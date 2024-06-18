@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "markDiscontinueForAllClaimants",
+    "Label": "Do all claimants consent to the discontinuance?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

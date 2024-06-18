@@ -48,5 +48,13 @@
     "FieldTypeParameter": "SettleReason",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantWhoIsDiscontinuing",
+    "Label": "Which claimants are discontinuing?",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
  ]
