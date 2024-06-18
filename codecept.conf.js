@@ -26,7 +26,7 @@ exports.config = {
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
   ],
-  output: 'test-results/functional',
+  output:  process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
