@@ -188,24 +188,44 @@
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "applicant2.type = \"INDIVIDUAL\" OR applicant2.type = \"SOLE_TRADER\""
   },
-   {
-     "ID": "SecondClaimant",
-     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-     "CaseFieldID": "applicant2",
-     "ListElementCode": "partyID",
-     "FieldDisplayOrder": 22,
-     "DisplayContext": "MANDATORY",
-     "RetainHiddenValue": "Y",
-     "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
-   },
-   {
-     "ID": "SecondClaimant",
-     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-     "CaseFieldID": "applicant2",
-     "ListElementCode": "flags",
-     "FieldDisplayOrder": 23,
-     "DisplayContext": "OPTIONAL",
-     "RetainHiddenValue": "Y",
-     "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
-   }
+  {
+    "ID": "SecondClaimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2",
+    "ListElementCode": "partyID",
+    "FieldDisplayOrder": 22,
+    "DisplayContext": "MANDATORY",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondClaimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "applicant2",
+    "ListElementCode": "flags",
+    "FieldDisplayOrder": 23,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondClaimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 24,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondClaimant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 25,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "applicant2 = \"DO_NOT_SHOW_IN_UI\""
+  }
 ]
