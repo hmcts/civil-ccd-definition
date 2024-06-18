@@ -45,12 +45,12 @@
     "ID": "DocumentType",
     "ListElementCode": "JUDGMENT_BY_DETERMINATION_CLAIMANT",
     "ListElement": "Judgment by determination claimant",
-    "DisplayOrder": 20
+    "DisplayOrder": 22
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "JUDGMENT_BY_DETERMINATION_DEFENDANT",
     "ListElement": "Judgment by determination defendant",
-    "DisplayOrder": 21
+    "DisplayOrder": 23
   }
 ]
