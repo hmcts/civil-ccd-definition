@@ -12,6 +12,7 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpecSmall.js');
 const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHearings.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
 const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
@@ -32,6 +33,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase');
 const {fetchCaseDetails} = require('./apiRequest');
 const hearingScheduled = require('../fixtures/events/scheduleHearing');
+const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 
 let caseId, eventName;
 let caseData = {};
@@ -54,6 +56,7 @@ const data = {
   MANAGE_DEFENDANT1_EXPERT_INFORMATION: (caseData) => manageContactInformation.manageDefendant1ExpertsInformation(caseData),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  SETTLE_CLAIM_MARK_PAID_FULL: () => settleClaim1v1Spec.settleClaim(),
 };
 
 const eventData = {
@@ -522,6 +525,26 @@ module.exports = function (){
     await waitForFinishedBusinessProcess(caseId);
   },
 
+    settleClaim: async (user) => {
+      console.log('settleClaim for case id ' + caseId);
+      await apiRequest.setupTokens(user);
+      eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+      let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+      delete returnedCaseData['SearchCriteria'];
+      caseData = returnedCaseData;
+      let disposalData = data.SETTLE_CLAIM_MARK_PAID_FULL();
+      for (let pageId of Object.keys(disposalData.userInput)) {
+        await assertValidData(disposalData, pageId);
+      }
+      await assertSubmittedEvent('CLOSED', {
+        header: '# Response has been submitted',
+        body: ''
+      }, true);
+
+      await waitForFinishedBusinessProcess(caseId);
+    },
+
   getCaseId: async () => {
     console.log(`case created: ${caseId}`);
     return caseId;
@@ -750,7 +773,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
