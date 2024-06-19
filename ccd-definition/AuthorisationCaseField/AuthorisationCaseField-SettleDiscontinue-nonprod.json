@@ -1,11 +1,12 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLangToggleDJ",
+    "CaseFieldID": "settlementSummary",
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -13,73 +14,66 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageEndLineDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2TrialUseOfWelshLangToggleDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2TrialWelshLanguageDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoR2TrialWelshLanguageEndLineDJ",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sdoDJR2TrialCreditHire",
+    "CaseFieldID": "partiesNames",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "caseworker-civil-staff",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "markPaidForAllClaimants",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "claimantWhoIsSettling",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "markPaidConsent",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "settleReason",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
