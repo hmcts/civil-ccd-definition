@@ -1,4 +1,4 @@
-// in this file you can append custom step methods to 'I' object
+  // in this file you can append custom step methods to 'I' object
 
 const output = require('codeceptjs').output;
 
@@ -820,7 +820,7 @@ module.exports = function () {
      * @param maxNumberOfTries - maximum number to retry the function for before failing
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
-    async retryUntilExists(action, locator, maxNumberOfTries = 6) {
+    async retryUntilExists(action, locator, maxNumberOfTries = 3) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
