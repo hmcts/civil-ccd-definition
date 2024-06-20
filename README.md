@@ -32,6 +32,30 @@ To access Camunda visit url (login and password are both `admin`):
 
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
+
+Below labels are needed on the PR 
+
+```
+
+  "enable_keep_helm" label to retain helm release on preview
+
+  "pr-values:enableNotifyEmails" label to be able to send live notifications on the PR
+
+  "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
+
+  "pr-values:enableWA" label to verify work allocation task
+  
+```
+
+Running Crossbrowser tests:
+
+Install saucelabs on local machine
+
+```bash
+$ yarn test:crossbrowser
+```
+
+
 ## Testing
 
 The repo uses codeceptjs framework for e2e tests.
@@ -48,11 +72,18 @@ To run tests with browser window open set `SHOW_BROWSER_WINDOW=true`. By default
 
 To run smoke tests enter `yarn test:smoke`.
 
+### Functional tests
+
+To run functional tests enter `yarn test:functional`.
+
+For running UI tests, set CCD_UI_TESTS=true
+
 ### API test
 
 Before running API tests, you will need the `SENDGRID_API_KEY` environment variable setup and to be running the service locally along with all containers.
 
 To run API tests enter `yarn test:api`.
+set CCD_UI_TESTS=false
 
 ### Testing in IntelliJ (Ultimate Edition)
 1) Running a test_name.js

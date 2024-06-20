@@ -7,7 +7,7 @@ const {
 } = require('../../../config');
 const config = require('../../../config.js');
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod');
+Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod @api-nightly-prod');
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
@@ -23,7 +23,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
-});
+}).tag('@api-nonprod');
 
 Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');

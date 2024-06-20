@@ -1,19 +1,77 @@
 const {listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE', citizenDefendantResponse = false) => {
+  claimantResponse: (response = 'FULL_DEFENCE', citizenDefendantResponse = false, freeMediation = 'Yes', carmEnabled = false) => {
     const responseData = {
     };
     switch (response) {
       case 'FULL_DEFENCE':
-        responseData.userInput = {
+        carmEnabled ? responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponse: {
+            applicant1ProceedWithClaim: 'Yes',
+          },
+          MediationContactInformation:{
+            app1MediationContactInfo: {
+              firstName:'Jane',
+              lastName: 'Smith',
+              emailAddress:'jane.smith@doemail.com',
+              telephoneNumber:'07111111111'
+            }
+          },
+          MediationAvailability: {
+            app1MediationAvailability: {
+              isMediationUnavailablityExists: 'No'
+            }
+          },
+          SmallClaimExperts: {
+            applicant1ClaimExpertSpecRequired: 'No'
+          },
+          SmallClaimWitnesses: {
+            applicant1ClaimWitnesses: '10'
+          },
+          Language: {
+            applicant1DQLanguage: {
+              evidence: 'ENGLISH',
+              court: 'ENGLISH',
+              documents: 'ENGLISH'
+            }
+          },
+          Hearing: {
+            applicant1DQSmallClaimHearing: {
+              unavailableDatesRequired: 'No'
+            }
+          },
+          ApplicantCourtLocationLRspec: {
+            applicant1DQRequestedCourt: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement(config.claimantSelectedCourt)
+                ],
+                value: listElement(config.claimantSelectedCourt)
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            }
+          },
+          VulnerabilityQuestions: {
+            applicant1DQVulnerabilityQuestions: {
+              vulnerabilityAdjustmentsRequired: 'No'
+            }
+          },
+          StatementOfTruth: {
+            uiStatementOfTruth: {
+              name: 'Solicitor name',
+              role: 'Solicitor role'
+            }
+          }
+        } : responseData.userInput = {
           ...responseData.userInput,
           RespondentResponse: {
             applicant1ProceedWithClaim: 'Yes',
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           },
           SmallClaimExperts: {
@@ -109,7 +167,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           },
         };
@@ -129,7 +187,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           }
         };
@@ -159,7 +217,7 @@ module.exports = {
           },
           Mediation: {
             applicant1ClaimMediationSpecRequiredLip: {
-              hasAgreedFreeMediation: 'Yes'
+              hasAgreedFreeMediation: freeMediation
             }
           }
         };

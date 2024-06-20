@@ -46,7 +46,6 @@ Scenario('Claimant solicitor notifies defendant of claim', async ({I}) => {
   await I.notifyClaim();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim'));
-  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
 }).retry(3);
 
 Scenario('Claimant solicitor notifies defendant solicitor of claim details', async ({I}) => {
@@ -54,10 +53,10 @@ Scenario('Claimant solicitor notifies defendant solicitor of claim details', asy
   await I.notifyClaimDetails();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Notify claim details'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
+  await assignCaseRoleToUser(caseId(), 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence', null, 'fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
@@ -81,7 +80,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
 
 Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails('1642700629930139');
+  await I.navigateToCaseDetails(caseNumber);
   await I.respondToClaim({
     twoDefendants: false,
     defendant1Response: 'fullDefence',
@@ -89,7 +88,6 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-  await I.click('Sign out');
 }).retry(3);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {

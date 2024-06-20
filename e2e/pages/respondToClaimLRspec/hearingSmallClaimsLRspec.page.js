@@ -7,8 +7,8 @@ module.exports = {
           hearingType: {
             id: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_radio',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_Yes',
+              no: '#applicant1DQSmallClaimHearing_unavailableDatesRequired_No'
             }
           },
         };
@@ -19,12 +19,15 @@ module.exports = {
         return {
           hearingType: {
             id: '#SmallClaimHearingInterpreterRequired_radio',
-            id2: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_radio',
             options: {
-              yes: 'Yes',
-              no: 'No'
+              yes: '#SmallClaimHearingInterpreterRequired_Yes',
+              no: '#SmallClaimHearingInterpreterRequired_No'
+            },
+            id2: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_radio',
+            id2options: {
+              yes: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_Yes',
+              no: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_No'
             }
-
           }
         };
       }
@@ -43,7 +46,7 @@ module.exports = {
           I.waitForElement(this.fields(mpScenario).hearingType.id2);
           await I.runAccessibilityTest();
           await within(this.fields(mpScenario).hearingType.id2, () => {
-          I.click(this.fields(mpScenario).hearingType.options.no);
+          I.click(this.fields(mpScenario).hearingType.id2options.no);
       });
     }
 

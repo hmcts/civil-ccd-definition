@@ -13,7 +13,6 @@ ccd:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       environment:
-        DEFINITION_STORE_DB_HOST: ${SERVICE_NAME}-postgresql
         DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
         IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         ELASTIC_SEARCH_ENABLED: true
@@ -21,7 +20,8 @@ ccd:
         ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
   elasticsearch:
     nameOverride: ${SERVICE_NAME}-es
-    imageTag: "7.17.1"
+    clusterName: "es"
+    replicas: 1
     initResources:
       limits:
         cpu: "500m"
@@ -29,6 +29,22 @@ ccd:
       requests:
         cpu: "25m"
         memory: "512Mi"
+    minimumMasterNodes: 1
+    antiAffinity: "soft"
+    esJavaOpts: "-Xmx512m -Xms512m"
+    extraEnvs:
+      - name: discovery.type
+        value: single-node
+      - name: cluster.initial_master_nodes
+        value: ""
+      - name: action.auto_create_index
+        value: .security*,.watches,.triggered_watches,.watcher-history-*,.logstash_dead_letter,.ml*
+    persistence:
+      enabled: false
+    ingress:
+      enabled: false
+      className: traefik
+
   logstash:
     image: hmctspublic.azurecr.io/ccd/logstash
     imageTag: "latest"
@@ -67,3 +83,4 @@ ccd:
       es.data.nodes.url: http://${SERVICE_NAME}-es-master:9200
     livenessProbe:
       initialDelaySeconds: 90
+

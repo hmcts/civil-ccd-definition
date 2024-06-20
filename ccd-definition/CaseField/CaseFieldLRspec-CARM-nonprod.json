@@ -10,8 +10,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "showCarmFields",
-    "Label": "Show CARM field",
+    "ID": "applicant1SettleClaim",
+    "Label": "Does the claimant want to settle",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"

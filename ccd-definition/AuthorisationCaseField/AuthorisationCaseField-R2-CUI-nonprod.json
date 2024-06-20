@@ -627,8 +627,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1Copy",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "CRU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -850,6 +857,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -1180,6 +1193,12 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -1648,18 +1667,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "headingAmountClaiming",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "nextHearingDetails",
     "AccessControl": [
       {
         "UserRoles": [
@@ -2346,6 +2353,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
+          "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "RU"
@@ -2379,7 +2388,8 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
       }
@@ -2399,6 +2409,12 @@
       {
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "R"
       }
@@ -2528,11 +2544,103 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
+    "CaseFieldID": "applicant1JudgmentByDeterminationForm",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CR"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseWorkerDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1ClaimSettledDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "citizen-profile",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "previousCCDState",
     "AccessControl": [
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "caseworker-civil-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForReconsiderationDeadline",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForReconsiderationDeadlineChecked",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRU"

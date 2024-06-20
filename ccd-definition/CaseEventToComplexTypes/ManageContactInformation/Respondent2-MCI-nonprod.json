@@ -207,5 +207,25 @@
     "DisplayContext": "OPTIONAL",
     "RetainHiddenValue": "Y",
     "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.roleOnCase",
+    "FieldDisplayOrder": 24,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "SecondDefendant",
+    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
+    "CaseFieldID": "respondent1",
+    "ListElementCode": "flags.partyName",
+    "FieldDisplayOrder": 25,
+    "DisplayContext": "OPTIONAL",
+    "RetainHiddenValue": "Y",
+    "FieldShowCondition": "respondent2 = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

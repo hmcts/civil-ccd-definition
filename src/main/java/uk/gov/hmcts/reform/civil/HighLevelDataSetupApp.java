@@ -2,12 +2,16 @@ package uk.gov.hmcts.reform.civil;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import uk.gov.hmcts.befta.BeftaMain;
 import uk.gov.hmcts.befta.dse.ccd.CcdEnvironment;
 import uk.gov.hmcts.befta.dse.ccd.CcdRoleConfig;
 import uk.gov.hmcts.befta.dse.ccd.DataLoaderToDefinitionStore;
 import uk.gov.hmcts.befta.exception.ImportException;
 import uk.gov.hmcts.befta.util.BeftaUtils;
 
+import javax.crypto.AEADBadTagException;
+import javax.net.ssl.SSLException;
 import java.util.List;
 import java.util.Locale;
 
@@ -49,11 +53,14 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("cui-admin-profile", "PUBLIC"),
         new CcdRoleConfig("cui-nbc-profile", "PUBLIC"),
         new CcdRoleConfig("citizen-profile", "PUBLIC"),
+        new CcdRoleConfig("citizen", "PUBLIC"),
         new CcdRoleConfig("caseworker-civil-citizen-ui-pcqextractor", "PUBLIC"),
         new CcdRoleConfig("judge", "PUBLIC"),
         new CcdRoleConfig("hearing-centre-admin", "PUBLIC"),
         new CcdRoleConfig("national-business-centre", "PUBLIC"),
-        new CcdRoleConfig("hearing-centre-team-leader", "PUBLIC")
+        new CcdRoleConfig("hearing-centre-team-leader", "PUBLIC"),
+        new CcdRoleConfig("next-hearing-date-admin", "PUBLIC"),
+        new CcdRoleConfig("court-officer-order", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
@@ -96,13 +103,26 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
+    protected boolean shouldTolerateDataSetupFailure(){
+        if(BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
     protected boolean shouldTolerateDataSetupFailure(Throwable e) {
         int httpStatusCode504 = 504;
         if (e instanceof ImportException) {
             ImportException importException = (ImportException) e;
             return importException.getHttpStatusCode() == httpStatusCode504;
         }
-        return false;
+        if(e instanceof SSLException){
+            return true;
+        }
+        if(e instanceof AEADBadTagException){
+            return true;
+        }
+        return shouldTolerateDataSetupFailure();
     }
-
 }

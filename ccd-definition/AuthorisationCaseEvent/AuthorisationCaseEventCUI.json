@@ -109,30 +109,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_LIP_CLAIM",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-solicitor",
-          "citizen-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
     "AccessControl": [
       {
@@ -196,7 +172,10 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile"
+          "cui-nbc-profile",
+          "GS_profile",
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
@@ -281,7 +260,10 @@
       {
         "UserRoles": [
           "cui-admin-profile",
-          "cui-nbc-profile"
+          "cui-nbc-profile",
+          "GS_profile",
+          "caseworker-civil-admin",
+          "caseflags-admin"
         ],
         "CRUD": "CRU"
       },
@@ -431,6 +413,28 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT_MEDIATION_AGREEMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_RESPONDENT2_MEDIATION_AGREEMENT",
     "AccessControl": [
       {
         "UserRoles": [
@@ -702,5 +706,11 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]

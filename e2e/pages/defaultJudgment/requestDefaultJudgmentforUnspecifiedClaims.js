@@ -134,7 +134,7 @@ module.exports = {
     await within(this.fields.hearingRequirements.id, () => {
       I.click(this.fields.hearingRequirements.options.inPerson);
     });
-    I.fillField(this.fields.hearingRequirements.preferredLocation, config.djClaimantSelectedCourt);
+    I.selectOption(this.fields.hearingRequirements.preferredLocation, config.djClaimantSelectedCourt);
     I.fillField(this.fields.hearingRequirements.preferredPhone, '02087666666');
     I.fillField(this.fields.hearingRequirements.preferredEmail, 'test@test.com');
     I.click(this.fields.hearingRequirements.supportRequirement.yes);
@@ -179,7 +179,7 @@ module.exports = {
 
   async verifyOrderPreview() {
     await I.waitForText('View directions order', 60);
-    const linkXPath = '//a[contains(text(), \'Order_disposal_\')]';
+    const linkXPath = '//a[contains(text(), \'.pdf\')]';
     await I.waitForElement(linkXPath, 60);
     await I.clickContinue();
   },

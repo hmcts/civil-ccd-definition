@@ -4,7 +4,6 @@ set -eu
 
 environment=${1:-prod}
 activateShutter=${2:-false}
-
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
    excludedFilenamePatterns="-e *-prod.json"
@@ -18,11 +17,11 @@ elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == staging ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json,*GAspec.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 else
   echo "ERROR! You are passing an environment that is not known by the script!"
   echo "       Either add the new environment to the script or specify a supported environment!"

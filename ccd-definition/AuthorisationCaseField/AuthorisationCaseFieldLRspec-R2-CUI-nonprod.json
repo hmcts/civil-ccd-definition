@@ -592,8 +592,15 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "responseClaimTrack",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "CR"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL",
@@ -1819,6 +1826,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2302,13 +2315,6 @@
       }
     ]
   },
-
-
-
-
-
-
-
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
@@ -2378,6 +2384,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2390,6 +2402,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2402,6 +2420,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2414,6 +2438,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2426,6 +2456,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -2438,6 +2474,12 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },

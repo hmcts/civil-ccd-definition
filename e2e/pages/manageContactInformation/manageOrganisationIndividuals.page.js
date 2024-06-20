@@ -3,28 +3,28 @@ const {I} = inject();
 module.exports = {
 
   fields: {
-    applicant1OrgIndividuals: {
-      id: '#applicant1OrgIndividuals',
+    updateOrgIndividualsForm: {
+      id: '#updateOrgIndividualsForm',
       element: {
-        firstName: '#applicant1OrgIndividuals_0_firstName',
-        lastName: '#applicant1OrgIndividuals_0_lastName',
-        emailAddress: '#applicant1OrgIndividuals_0_email',
-        phoneNumber: '#applicant1OrgIndividuals_0_phone'
+        firstName: '#updateOrgIndividualsForm_0_firstName',
+        lastName: '#updateOrgIndividualsForm_0_lastName',
+        emailAddress: '#updateOrgIndividualsForm_0_emailAddress',
+        phoneNumber: '#updateOrgIndividualsForm_0_phoneNumber'
       }
     },
   },
 
   async addOrgIndividuals() {
-    I.waitForElement(this.fields.applicant1OrgIndividuals.id);
+    await I.waitForElement(this.fields.updateOrgIndividualsForm.id, 60);
     await I.runAccessibilityTest();
 
-    await I.addAnotherElementToCollection('//div[@id=\'applicant1OrgIndividuals\']//button[@type=\'button\' and contains(text(), \'Add new\')]');
+    await I.addAnotherElementToCollection('//div[@id=\'updateOrgIndividualsForm\']//button[@type=\'button\' and contains(text(), \'Add new\')]');
 
-    I.waitForElement(this.fields.applicant1OrgIndividuals.element.firstName);
-    I.fillField(this.fields.applicant1OrgIndividuals.element.firstName, 'Kendal');
-    I.fillField(this.fields.applicant1OrgIndividuals.element.lastName, 'Bloom');
-    I.fillField(this.fields.applicant1OrgIndividuals.element.emailAddress, 'kendalbloom@email.com');
-    I.fillField(this.fields.applicant1OrgIndividuals.element.phoneNumber, '07821016453');
+    I.waitForElement(this.fields.updateOrgIndividualsForm.element.firstName);
+    I.fillField(this.fields.updateOrgIndividualsForm.element.firstName, 'Kendal');
+    I.fillField(this.fields.updateOrgIndividualsForm.element.lastName, 'Bloom');
+    I.fillField(this.fields.updateOrgIndividualsForm.element.emailAddress, 'kendalbloom@email.com');
+    I.fillField(this.fields.updateOrgIndividualsForm.element.phoneNumber, '07821016453');
     await I.clickContinue();
   },
 };

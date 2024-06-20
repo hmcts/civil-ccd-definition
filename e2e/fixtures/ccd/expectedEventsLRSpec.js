@@ -3,6 +3,7 @@ const events = require('./events.js');
 module.exports = {
   applicant_solicitor: {
     CASE_ISSUED: [
+      events.INITIATE_GENERAL_APPLICATION,
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
@@ -19,7 +20,8 @@ module.exports = {
       events.CHANGE_SOLICITOR_EMAIL,
       events.ENTER_BREATHING_SPACE_SPEC,
       events.LIFT_BREATHING_SPACE_SPEC,
-      events.DEFAULT_JUDGEMENT_SPEC
+      events.DEFAULT_JUDGEMENT_SPEC,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -44,7 +46,8 @@ module.exports = {
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.DEFENDANT_RESPONSE_SPEC,
       events.INFORM_AGREED_EXTENSION_DATE_SPEC,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.CHANGE_SOLICITOR_EMAIL,
+      events.INITIATE_GENERAL_APPLICATION
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [],
     AWAITING_APPLICANT_INTENTION: [
@@ -63,47 +66,40 @@ module.exports = {
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_CASE_DETAILS_NOTIFICATION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_RESPONDENT_ACKNOWLEDGEMENT: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     PROCEEDS_IN_HERITAGE_SYSTEM: [
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     AWAITING_APPLICANT_INTENTION: [
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
     PENDING_CASE_ISSUED: [
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ],
 
     AWAITING_DEFENDANT_RESPONSE: [
       events.ADD_CASE_NOTE,
       events.CASE_PROCEEDS_IN_CASEMAN,
       events.AMEND_PARTY_DETAILS,
-      events.MANAGE_DOCUMENTS,
-      events.RESET_PIN
+      events.MANAGE_DOCUMENTS
     ]
   }
 };

@@ -817,7 +817,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialCreditHire",
+    "CaseFieldID": "sdoDJR2TrialCreditHire",
     "AccessControl": [
       {
         "UserRoles": [

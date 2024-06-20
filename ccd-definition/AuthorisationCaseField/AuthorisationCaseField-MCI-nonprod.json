@@ -546,6 +546,42 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "updateLRIndividualsForm",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "updateOrgIndividualsForm",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageContactDetailsEventUsed",
     "AccessControl": [
       {
@@ -956,5 +992,15 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "contactDetailsUpdatedEvent",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRUD"
   }
 ]

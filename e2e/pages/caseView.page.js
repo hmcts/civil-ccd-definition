@@ -19,6 +19,7 @@ module.exports = {
   goButton: '.button[type="submit"]',
 
   start: async function (event) {
+    await I.waitForElement(this.fields.eventDropdown, 90);
     await I.selectOption(this.fields.eventDropdown, event);
     /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
        Further investigation is required to find (hopefully) a cleaner solution
@@ -34,6 +35,21 @@ module.exports = {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
+    }, locate('.govuk-heading-l'));
+  },
+
+  async startEventForRR(event, caseId) {
+      await waitForFinishedBusinessProcess(caseId);
+      await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForRR(caseId);
+      await this.start(event);
+    }, locate('.govuk-heading-l'));
+  },
+
+  async startEventForDR(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForDR(caseId);
     }, locate('.govuk-heading-l'));
   },
 

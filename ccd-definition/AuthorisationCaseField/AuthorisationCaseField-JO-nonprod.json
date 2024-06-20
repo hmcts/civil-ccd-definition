@@ -1,20 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joJudgmentStatusDetails",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsLiveJudgmentExists",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -24,7 +13,6 @@
     "CaseFieldID": "lblRecordJudgment",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -34,7 +22,7 @@
     "CaseFieldID": "joPartiesNames",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
+      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -44,7 +32,6 @@
     "CaseFieldID": "joJudgmentRecordReason",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -54,7 +41,6 @@
     "CaseFieldID": "joOrderMadeDate",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -64,7 +50,6 @@
     "CaseFieldID": "joAmountOrdered",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -74,37 +59,24 @@
     "CaseFieldID": "joAmountCostOrdered",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joPaymentPlanSelection",
+    "CaseFieldID": "joPaymentPlan",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joJudgmentInstalmentDetails",
+    "CaseFieldID": "joInstalmentDetails",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joPaymentToBeMadeByDate",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -114,7 +86,6 @@
     "CaseFieldID": "joIsRegisteredWithRTL",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -124,7 +95,6 @@
     "CaseFieldID": "joConfirmSentToBothDef",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -134,7 +104,7 @@
     "CaseFieldID": "lblMarkPaidInFull",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
+      "APP-SOL-SPEC-PROFILE",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
@@ -143,28 +113,99 @@
   "CaseTypeID": "CIVIL",
   "CaseFieldID": "joJudgmentPaidInFull",
   "UserRoles": [
-    "caseworker-civil",
+    "APP-SOL-SPEC-PROFILE",
     "caseworker-civil-admin",
-    "caseworker-civil-staff"
+    "caseworker-civil-staff",
+    "CITIZEN-CLAIMANT-PROFILE"
   ],
   "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joSetAsideDate",
+    "CaseFieldID": "joSetAsideOrderDate",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "joConfirmReadOrderForSetAside",
+    "CaseFieldID": "joShowRegisteredWithRTLOption",
     "UserRoles": [
       "caseworker-civil-admin",
-      "caseworker-civil",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joIssuedDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideReason",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideJudgmentErrorText",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideOrderType",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joSetAsideDefenceReceivedDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "confirmReferToJudgeDefenceReceived",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "activeJudgment",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "historicJudgment",
+    "UserRoles": [
+      "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
     "CRUD": "CRU"
