@@ -24,17 +24,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "updateHwfNumber",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "caseTitleWithHWFHearingNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
     "PageID": "updateHwfNumber",
@@ -42,17 +31,6 @@
     "PageFieldDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "caseTitleWithHWFHearingNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "updateHwfNumber",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 3,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -78,17 +56,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hearingFeeLabel",
-    "DisplayContext": "READONLY",
-    "PageID": "updateHwfNumber",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "hwfFeeType=\"HEARING\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "CaseFieldID": "claimIssuedHwfDetails",
     "DisplayContext": "COMPLEX",
     "PageID": "updateHwfNumber",
@@ -96,16 +63,5 @@
     "PageFieldDisplayOrder": 6,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
-    "CaseFieldID": "hearingHwfDetails",
-    "DisplayContext": "COMPLEX",
-    "PageID": "updateHwfNumber",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "hwfFeeType = \"HEARING\""
   }
 ]
