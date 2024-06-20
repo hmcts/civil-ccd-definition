@@ -34,8 +34,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
