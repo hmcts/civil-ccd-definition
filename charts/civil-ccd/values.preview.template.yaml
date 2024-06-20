@@ -165,7 +165,6 @@ ccd:
 
 camunda-bpm:
   enabled: true
-
   java:
     disableKeyVaults: true
     environment:
