@@ -121,7 +121,7 @@ civil-service:
       POLLING_EVENT_EMITTER_ENABLED: false
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
-      CARM_DATE: '2022-08-01'
+      CARM_DATE: '2024-08-01'
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
