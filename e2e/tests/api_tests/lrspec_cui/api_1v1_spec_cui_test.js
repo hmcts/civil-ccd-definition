@@ -33,8 +33,10 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, config.defendantSolicitorUser);
   await api_spec_cui.checkUserCaseAccess(config.defendantCitizenUser2, false);
   await api_spec_cui.checkUserCaseAccess(config.defendantSolicitorUser, true);
-  await api_spec_cui.defendantResponse(config.defendantSolicitorUser);
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
+
+  //After CIV-14085 Case will be in PROCEEDS_IN_HERITAGE_SYSTEM, so no need to perform defendant or claimant response
+  //await api_spec_cui.defendantResponse(config.defendantSolicitorUser);
+  //await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
