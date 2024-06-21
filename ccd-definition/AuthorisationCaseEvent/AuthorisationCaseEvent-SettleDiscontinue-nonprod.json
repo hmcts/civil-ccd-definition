@@ -27,6 +27,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_SOLICITOR1_DEFENDANT_SETTLE_CLAIM_MARKED_PAID_IN_FULL",
     "AccessControl": [
       {
