@@ -29,6 +29,21 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partiesNames1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "markPaidForAllClaimants",
     "AccessControl": [
       {
