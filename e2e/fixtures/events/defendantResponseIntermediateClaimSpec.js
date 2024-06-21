@@ -48,7 +48,7 @@ module.exports = {
               frcSupportingDocument: {
                 document_url: '${TEST_DOCUMENT_URL}',
                 document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-                document_filename: 'respondent_fixedrecoverablecost.pdf'
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
               }
             }
           },
@@ -216,7 +216,7 @@ module.exports = {
               frcSupportingDocument: {
                 document_url: '${TEST_DOCUMENT_URL}',
                 document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-                document_filename: 'respondent_fixedrecoverablecost.pdf'
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
               }
             },
           },
@@ -361,7 +361,7 @@ module.exports = {
               frcSupportingDocument: {
                 document_url: '${TEST_DOCUMENT_URL}',
                 document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
-                document_filename: 'respondent2_fixedrecoverablecost.pdf'
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
               }
             }
           },
