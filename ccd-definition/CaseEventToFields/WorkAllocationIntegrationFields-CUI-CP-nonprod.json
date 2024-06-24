@@ -13,24 +13,28 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 2,
+    "PageShowCondition": "finalOrderSelection=\"DO NOT SHOW IN UI\"",
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "PageShowCondition": "finalOrderSelection=\"DO NOT SHOW IN UI\"",
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]
