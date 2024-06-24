@@ -28,7 +28,6 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 2,
-    "PageShowCondition": "finalOrderSelection=\"DO NOT SHOW IN UI\"",
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
