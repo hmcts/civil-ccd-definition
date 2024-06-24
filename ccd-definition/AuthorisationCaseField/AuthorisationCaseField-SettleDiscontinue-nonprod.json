@@ -120,7 +120,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "courtPermissionNeededCheckBox",
+    "CaseFieldID": "courtPermissionNeededChecked",
     "AccessControl": [
       {
         "UserRoles": [

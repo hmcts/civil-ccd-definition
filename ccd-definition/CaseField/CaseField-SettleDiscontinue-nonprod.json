@@ -76,7 +76,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "courtPermissionNeededCheckBox",
+    "ID": "courtPermissionNeededChecked",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmCourtPermissionNotNeeded",
     "Label": " ",

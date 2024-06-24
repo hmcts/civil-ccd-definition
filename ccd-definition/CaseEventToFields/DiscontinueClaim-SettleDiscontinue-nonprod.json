@@ -42,7 +42,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "courtPermissionNeededCheckBox",
+    "CaseFieldID": "courtPermissionNeededChecked",
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
     "PageDisplayOrder": 2,
