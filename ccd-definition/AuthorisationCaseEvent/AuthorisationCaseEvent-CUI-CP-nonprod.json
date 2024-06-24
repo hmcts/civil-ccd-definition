@@ -259,5 +259,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-centre-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
