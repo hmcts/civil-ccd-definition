@@ -15,6 +15,8 @@
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 6,
     "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
     "Publish": "Y"
@@ -25,6 +27,8 @@
     "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 1,
     "Publish": "Y"
