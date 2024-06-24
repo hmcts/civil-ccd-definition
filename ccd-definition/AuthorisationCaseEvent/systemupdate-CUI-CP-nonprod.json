@@ -127,7 +127,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "UPDATE_DASHBOARD_TASK_LIST_UPLOAD_DOCUMENTS_FINAL_ORDERS",
+    "CaseEventID": "UPDATE_DASHBOARD_DEFENDANT_TASK_LIST_UPLOAD_DOCUMENTS_FINAL_ORDERS",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_DASHBOARD_CLAIMANT_TASK_LIST_UPLOAD_DOCUMENTS_FINAL_ORDERS",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
