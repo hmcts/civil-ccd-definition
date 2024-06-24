@@ -1,0 +1,8 @@
+[
+  {
+    "ID": "ConfirmCourtPermissionNotNeeded",
+    "ListElementCode": "ConsentAgreementCheckBox",
+    "ListElement": "I confirm these conditions have been met",
+    "DisplayOrder": 1
+  }
+]

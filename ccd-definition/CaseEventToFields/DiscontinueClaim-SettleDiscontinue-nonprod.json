@@ -11,5 +11,46 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "courtPermissionNeeded",
+    "PageID": "CourtPermission",
+    "PageLabel": "Permission from the court",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseEventID":"DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID":"courtPermissionNeededText",
+    "PageID":"CourtPermission",
+    "PageLabel":"Permissionfromthecourt",
+    "PageDisplayOrder":2,
+    "PageFieldDisplayOrder":2,
+    "PageColumnNumber":1,
+    "DisplayContext":"READONLY",
+    "ShowSummaryChangeOption":"N",
+    "RetriesTimeoutURLMidEvent":0,
+    "FieldShowCondition":"courtPermissionNeeded=\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "courtPermissionNeededCheckBox",
+    "PageID": "CourtPermission",
+    "PageLabel": "Permission from the court",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "DisplayContext": "OPTIONAL",
+    "ShowSummaryChangeOption": "N",
+    "RetriesTimeoutURLMidEvent": 0,
+    "FieldShowCondition": "courtPermissionNeeded=\"No\""
   }
 ]
