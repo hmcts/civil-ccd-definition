@@ -962,7 +962,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
