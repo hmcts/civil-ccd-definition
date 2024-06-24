@@ -12,7 +12,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "evidenceComment",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY"
   },
   {
@@ -20,7 +20,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1LiPFinancialDetails",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY"
   },
   {
@@ -28,7 +28,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1MediationLiPResponse",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 4,
     "DisplayContext": "READONLY"
   },
   {
@@ -36,7 +36,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1DQExtraDetails",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 5,
     "DisplayContext": "READONLY"
   },
   {
@@ -44,7 +44,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1DQHearingSupportLip",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 6,
     "DisplayContext": "READONLY"
   },
   {
@@ -52,7 +52,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1LiPContactPerson",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 7,
     "DisplayContext": "READONLY"
   },
   {
@@ -60,7 +60,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1LiPCorrespondenceAddress",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 8,
     "DisplayContext": "READONLY"
   },
   {
@@ -68,7 +68,7 @@
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "ListElementCode": "respondent1ResponseLanguage",
-    "FieldDisplayOrder": 1,
+    "FieldDisplayOrder": 9,
     "DisplayContext": "READONLY"
   }
 ]
