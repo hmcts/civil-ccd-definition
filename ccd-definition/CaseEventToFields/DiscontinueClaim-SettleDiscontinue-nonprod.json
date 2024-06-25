@@ -79,7 +79,7 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N"
   },
   {
