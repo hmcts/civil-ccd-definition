@@ -14,5 +14,13 @@
     "FieldType": "FixedRecoverableCostsIntermediate",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQClaimantDocumentsToBeConsidered",
+    "Label": "Claimant documents to be considered",
+    "FieldType": "DocumentsToBeConsidered",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
