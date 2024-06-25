@@ -50,7 +50,7 @@ const data = {
   DEFENDANT_RESPONSE_MULTI_CLAIM: (response, camundaEvent) => require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_MULTI_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim2(response, camundaEvent),
-  DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js.js').respondToClaim2(response, camundaEvent),
+  DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -952,9 +952,7 @@ module.exports = {
 
     console.log(`${response} ${scenario}`);
 
-    for (let pageId of Object.keys(defendantResponseData.userInput)) {
-      await assertValidData(defendantResponseData, pageId);
-    }
+    await validateEventPages(defendantResponseData);
 
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
@@ -1017,9 +1015,7 @@ module.exports = {
 
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidData(claimantResponseData, pageId);
-    }
+    await validateEventPages(claimantResponseData);
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (response === 'FULL_DEFENCE') {
@@ -1946,7 +1942,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.userInput)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
