@@ -135,32 +135,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "claimantsConsentToDiscontinuance",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "selectedClaimantForDiscontinuance",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtPermissionNeeded",
     "AccessControl": [
       {
@@ -172,45 +146,6 @@
       }
     ]
   },
-  {
-    "CaseTypeID":"CIVIL",
-    "CaseFieldID":"courtPermissionNeededText",
-    "AccessControl":[
-      {
-        "UserRoles":[
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD":"CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "courtPermissionNeededChecked",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-  "CaseTypeID": "CIVIL",
-  "CaseFieldID": "courtPermissionNeeded",
-  "AccessControl": [
-    {
-      "UserRoles": [
-        "APP-SOL-UNSPEC-PROFILE",
-        "APP-SOL-SPEC-PROFILE"
-      ],
-      "CRUD": "CRU"
-    }
-  ]
-},
   {
     "CaseTypeID":"CIVIL",
     "CaseFieldID":"courtPermissionNeededText",
