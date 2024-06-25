@@ -79,9 +79,8 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y",
-    "RetriesTimeoutURLMidEvent": 0
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID":"CIVIL",
