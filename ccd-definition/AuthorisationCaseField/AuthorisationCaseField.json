@@ -4708,6 +4708,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
