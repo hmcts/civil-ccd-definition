@@ -11,7 +11,7 @@ module.exports = {
             }
           }
         },
-        claimantConsent:{
+        ClaimantConsent:{
           selectedClaimantForDiscontinuance : 'Test Inc',
           claimantsConsentToDiscontinuance : 'Yes'
         }
