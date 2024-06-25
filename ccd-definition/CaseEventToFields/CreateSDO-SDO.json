@@ -2450,51 +2450,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCostsTitle",
-    "PageFieldDisplayOrder": 32,
-    "DisplayContext": "READONLY",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCostsToggle",
-    "PageFieldDisplayOrder": 33,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCosts",
-    "PageFieldDisplayOrder": 34,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "fastTrackCostsToggle=\"SHOW\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackCostsEndLine",
-    "PageFieldDisplayOrder": 35,
-    "DisplayContext": "READONLY",
-    "PageID": "FastTrack",
-    "PageDisplayOrder": 7,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackTrialTitle",
     "PageFieldDisplayOrder": 36,
     "DisplayContext": "READONLY",
