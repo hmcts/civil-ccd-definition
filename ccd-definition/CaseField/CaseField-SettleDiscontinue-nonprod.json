@@ -108,5 +108,22 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "courtPermissionNeeded = \"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "discontinuingAgainstDefendantsLbl",
+    "Label": "### Is the discontinuance against all defendants?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "discontinuingAgainstDefendants",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "IsDiscontAgainstAllDefList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

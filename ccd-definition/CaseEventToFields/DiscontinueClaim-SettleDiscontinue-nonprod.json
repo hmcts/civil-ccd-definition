@@ -109,5 +109,30 @@
     "ShowSummaryChangeOption": "N",
     "RetriesTimeoutURLMidEvent": 0,
     "FieldShowCondition": "courtPermissionNeeded=\"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "PageID": "DiscontinuingAgainstDefendants",
+    "PageLabel": "Discontinuing against defendants",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "courtPermissionNeeded=\"YES\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "discontinuingAgainstDefendants",
+    "PageID": "DiscontinuingAgainstDefendants",
+    "PageLabel": "Discontinuing against defendants",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "N"
   }
 ]

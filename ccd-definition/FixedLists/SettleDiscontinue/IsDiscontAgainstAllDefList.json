@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "IsDiscontAgainstAllDefList",
+    "ListElementCode": "YES",
+    "ListElement": "Yes",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "IsDiscontAgainstAllDefList",
+    "ListElementCode": "NO",
+    "ListElement": "No",
+    "DisplayOrder": 2
+  }
+]
