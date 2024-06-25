@@ -1,4 +1,3 @@
-const {date, element} = require("../../api/dataHelper");
 module.exports = {
   discontinueClaim: () => {
     const data = {

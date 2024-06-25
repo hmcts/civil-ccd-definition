@@ -1653,7 +1653,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  discontinueClaim: async (user, addApplicant2) => {
+  discontinueClaim: async (user) => {
     console.log('discontinueClaim for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'DISCONTINUE_CLAIM_CLAIMANT';
