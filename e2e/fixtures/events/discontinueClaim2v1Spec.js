@@ -14,6 +14,12 @@ module.exports = {
         claimantConsent:{
           selectedClaimantForDiscontinuance : 'Test Inc',
           claimantsConsentToDiscontinuance : 'Yes'
+        },
+        courtPermission:{
+          courtPermissionNeeded: 'NO',
+          courtPermissionNeededChecked: [
+            'CourtPermissionNeededChecked'
+          ]
         }
       }
     };
