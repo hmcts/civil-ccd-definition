@@ -17,5 +17,5 @@ Scenario.only('Discontinue claim 2v1 scenario', async ({I, api_spec}) => {
 });
 
 AfterSuite(async  ({api_spec}) => {
-  //await api_spec.cleanUp();
+  await api_spec.cleanUp();
 });
