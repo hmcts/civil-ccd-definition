@@ -10,7 +10,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames",
-    "Label": "**${caseNameHmctsInternal}** <br> <br>",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames1",
+    "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -59,6 +67,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "claimantsConsentToDiscontinuance",
+    "Label": "Do all claimants consent to the discontinuance?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectedClaimantForDiscontinuance",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
     "Label": "Is the court's permission needed to discontinue?",
     "FieldType": "YesOrNo",
@@ -68,7 +92,7 @@
   {
     "CaseTypeID":"CIVIL",
     "ID":"courtPermissionNeededText",
-    "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the discontinuance",
+    "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the   discontinuance",
     "FieldType":"Label",
     "SecurityClassification":"Public",
     "Searchable":"N",
