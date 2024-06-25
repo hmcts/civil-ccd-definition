@@ -639,7 +639,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_CLAIMANT",
+    "CaseEventID": "NOTIFY_DEFENDANT_JUDGMENT_BY_ADMISSION",
     "AccessControl": [
       {
         "UserRoles": [
