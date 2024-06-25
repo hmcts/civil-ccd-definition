@@ -88,14 +88,14 @@
     "CaseEventID":"DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID":"courtPermissionNeededText",
     "PageID":"CourtPermission",
-    "PageLabel":"Permissionfromthecourt",
+    "PageLabel":"Permission from the court",
     "PageDisplayOrder":3,
     "PageFieldDisplayOrder":2,
     "PageColumnNumber":1,
     "DisplayContext":"READONLY",
     "ShowSummaryChangeOption":"N",
     "RetriesTimeoutURLMidEvent":0,
-    "FieldShowCondition":"courtPermissionNeeded=\"No\""
+    "FieldShowCondition":"courtPermissionNeeded=\"NO\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -106,9 +106,9 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
-    "DisplayContext": "OPTIONAL",
+    "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N",
     "RetriesTimeoutURLMidEvent": 0,
-    "FieldShowCondition": "courtPermissionNeeded=\"No\""
+    "FieldShowCondition": "courtPermissionNeeded=\"NO\""
   }
 ]

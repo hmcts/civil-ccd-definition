@@ -85,18 +85,19 @@
     "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
     "Label": "Is the court's permission needed to discontinue?",
-    "FieldType": "YesOrNo",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "CourtPermissionIsNeededList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID":"CIVIL",
     "ID":"courtPermissionNeededText",
-    "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the   discontinuance",
+    "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the <br />&nbsp; discontinuance",
     "FieldType":"Label",
     "SecurityClassification":"Public",
     "Searchable":"N",
-    "FieldShowCondition":"courtPermissionNeeded=\"No\""
+    "FieldShowCondition":"courtPermissionNeeded=\"NO\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -106,6 +107,6 @@
     "Label": " ",
     "SecurityClassification": "Public",
     "Searchable": "N",
-    "FieldShowCondition": "courtPermissionNeeded = \"No\""
+    "FieldShowCondition": "courtPermissionNeeded = \"NO\""
   }
  ]
