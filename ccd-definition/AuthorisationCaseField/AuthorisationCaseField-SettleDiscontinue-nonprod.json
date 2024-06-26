@@ -185,7 +185,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "discontinuingAgainstDefendants",
+    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
     "AccessControl": [
       {
         "UserRoles": [

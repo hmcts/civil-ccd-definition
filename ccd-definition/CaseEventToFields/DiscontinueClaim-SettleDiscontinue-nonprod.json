@@ -160,7 +160,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "discontinuingAgainstDefendants",
+    "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
     "PageID": "DiscontinuingAgainstDefendants",
     "PageLabel": "Discontinuing against defendants",
     "PageDisplayOrder": 5,
@@ -180,6 +180,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "discontinuingAgainstDefendants=\"NO\""
+    "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
   }
 ]

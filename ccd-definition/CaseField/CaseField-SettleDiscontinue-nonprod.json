@@ -127,7 +127,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "discontinuingAgainstDefendants",
+    "ID": "isDiscontinuingAgainstBothDefendants",
     "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "IsDiscontAgainstAllDefList",
@@ -140,7 +140,6 @@
     "Label": "Which defendant is the discontinuance against?",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "discontinuingAgainstDefendants=\"NO\""
+    "Searchable": "N"
   }
 ]
