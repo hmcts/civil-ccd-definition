@@ -182,5 +182,18 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"discontinuingAgainstOneDefendant",
+    "AccessControl":[
+      {
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD":"CRU"
+      }
+    ]
   }
 ]
