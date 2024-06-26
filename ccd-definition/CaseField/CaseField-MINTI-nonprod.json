@@ -22,5 +22,13 @@
     "FieldType": "DocumentsToBeConsidered",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQDefendantDocumentsToBeConsidered",
+    "Label": "Defendant documents to be considered",
+    "FieldType": "DocumentsToBeConsidered",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
