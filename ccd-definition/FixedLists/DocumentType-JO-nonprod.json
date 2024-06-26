@@ -40,5 +40,17 @@
     "ListElementCode": "JUDGMENT_BY_ADMISSION_DEFENDANT",
     "ListElement": "Judgment by admission defendant",
     "DisplayOrder": 21
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "JUDGMENT_BY_DETERMINATION_CLAIMANT",
+    "ListElement": "Judgment by determination claimant",
+    "DisplayOrder": 22
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "JUDGMENT_BY_DETERMINATION_DEFENDANT",
+    "ListElement": "Judgment by determination defendant",
+    "DisplayOrder": 23
   }
 ]
