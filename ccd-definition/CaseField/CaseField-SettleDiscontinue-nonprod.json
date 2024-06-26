@@ -83,8 +83,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "partiesNames3",
+    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the court's permission needed to discontinue?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
-    "Label": "Is the court's permission needed to discontinue?",
+    "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "CourtPermissionIsNeededList",
     "SecurityClassification": "Public",
