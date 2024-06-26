@@ -133,6 +133,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partiesNames3",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtPermissionNeeded",
     "AccessControl": [
       {
