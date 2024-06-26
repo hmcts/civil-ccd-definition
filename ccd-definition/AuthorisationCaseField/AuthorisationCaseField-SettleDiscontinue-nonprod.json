@@ -42,6 +42,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partiesNamesTD",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "markPaidForAllClaimants",
     "AccessControl": [
       {
@@ -167,6 +180,32 @@
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"typeOfDiscontinuance",
+    "AccessControl":[
+      {
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD":"CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"partDiscontinuanceDetails",
+    "AccessControl":[
+      {
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD":"CRU"
       }
     ]
   }

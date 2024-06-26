@@ -109,5 +109,42 @@
     "ShowSummaryChangeOption": "N",
     "RetriesTimeoutURLMidEvent": 0,
     "FieldShowCondition": "courtPermissionNeeded=\"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "partiesNamesTD",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "typeOfDiscontinuance",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseEventID":"DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID":"partDiscontinuanceDetails",
+    "PageID":"DiscontinuanceType",
+    "PageLabel":"Type of Discontinuance",
+    "PageDisplayOrder":4,
+    "PageFieldDisplayOrder":3,
+    "PageColumnNumber":1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption":"Y",
+    "FieldShowCondition":"typeOfDiscontinuance=\"PART_DISCONTINUANCE\""
   }
 ]
