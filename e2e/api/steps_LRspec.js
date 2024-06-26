@@ -1669,6 +1669,7 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
+    //TODO: Check the correct final submit state dor discontinue claim
     /*await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: '### Request is being reviewed',
       body: ''
