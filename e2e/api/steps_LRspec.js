@@ -1975,7 +1975,7 @@ const validateEventPages = async (data, solicitor) => {
     }
     if (pageId === 'OptionsForSettlement' || pageId === 'ClaimantDetails'){
       await assertValidDataSettleClaim(data, pageId);
-    } if (pageId === 'MultipleClaimant' || pageId === 'claimantConsent'){
+    } if (pageId === 'MultipleClaimant' || pageId === 'ClaimantConsent'){
       await assertValidDataSettleClaim(data, pageId);
     } else {
       // data = await updateCaseDataWithPlaceholders(data);
