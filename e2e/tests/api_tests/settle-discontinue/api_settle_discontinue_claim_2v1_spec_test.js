@@ -12,10 +12,19 @@ Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
   }
 });
 
+Scenario('Discontinue claim 1v2 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_TWO';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+  }
+});
+
 Scenario('Discontinue claim 2v1 scenario', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
-    await api_spec.discontinueClaim(config.applicantSolicitorUser);
+    let mpScenario = 'TWO_V_ONE';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
   }
 });
 
