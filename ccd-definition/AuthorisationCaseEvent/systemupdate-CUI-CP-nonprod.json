@@ -119,6 +119,18 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
+    {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  }
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_DECISION_RECONSIDERATION_CLAIMANT1",
