@@ -205,16 +205,11 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
