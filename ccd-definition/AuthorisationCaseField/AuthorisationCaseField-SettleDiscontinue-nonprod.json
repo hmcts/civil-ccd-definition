@@ -187,6 +187,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNames4",
     "AccessControl": [
       {
@@ -205,16 +218,11 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
