@@ -17,6 +17,46 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "applicantDQFixedRecoverableCostsIntermediateLabel",
+    "Label": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table 2</a></div><br /> for information on complexity bands.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1DQFixedRecoverableCostsIntermediate",
+    "Label": "Claimant 1 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCostsIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1DQFixedRecoverableCostsIntermediate",
+    "Label": "Defendant 1 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCostsIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondentDQFixedRecoverableCostsIntermediateLabel",
+    "Label": "You should discuss the complexity band allocation with the other party. Read <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table 2</a></div><br /> for information on complexity bands.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2DQFixedRecoverableCostsIntermediate",
+    "Label": "Defendant 2 Fixed Recoverable Costs",
+    "FieldType": "FixedRecoverableCostsIntermediate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1DQClaimantDocumentsToBeConsidered",
     "Label": "Claimant documents to be considered",
     "FieldType": "DocumentsToBeConsidered",
