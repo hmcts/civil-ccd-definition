@@ -141,5 +141,30 @@
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames4",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isPermissionGranted",
+    "Label": "Has permission been granted by a Judge to discontinue",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "permissionGrantedComplex",
+    "Label": " ",
+    "FieldType": "PermissionGrantedFields",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

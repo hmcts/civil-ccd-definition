@@ -1,0 +1,19 @@
+[
+  {
+    "ID": "PermissionGrantedFields",
+    "ListElementCode": "permissionGrantedJudge",
+    "ElementLabel": "### Permission granted by:\n**Judge name**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "PermissionGrantedFields",
+    "ListElementCode": "permissionGrantedDate",
+    "ElementLabel": "### On data\n**For example, 16 4 2021**",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
+
