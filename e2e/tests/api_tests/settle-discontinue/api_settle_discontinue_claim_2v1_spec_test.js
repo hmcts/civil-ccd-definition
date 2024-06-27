@@ -5,7 +5,7 @@ const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdmin
 // To use on local because the idam images are different
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
-Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-sd');
+Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
 Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
