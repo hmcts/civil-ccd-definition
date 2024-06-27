@@ -246,7 +246,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DECISION_RECONSIDERATION_CLAIMANT1",
     "Name": "Decision reconsideration",
