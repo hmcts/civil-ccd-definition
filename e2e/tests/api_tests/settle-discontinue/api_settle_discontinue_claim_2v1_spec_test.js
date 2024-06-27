@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
