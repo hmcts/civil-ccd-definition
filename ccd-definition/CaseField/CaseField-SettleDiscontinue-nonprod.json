@@ -94,7 +94,7 @@
     "ID": "courtPermissionNeeded",
     "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "CourtPermissionIsNeededList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -130,7 +130,7 @@
     "ID": "isDiscontinuingAgainstBothDefendants",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "IsDiscontAgainstAllDefList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
