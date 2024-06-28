@@ -36,6 +36,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
+const discontinueClaim2v1Spec = require('../fixtures/events/discontinueClaim2v1Spec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
@@ -83,6 +84,7 @@ const data = {
   REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
+  DISCONTINUE_CLAIM: () => discontinueClaim2v1Spec.discontinueClaim(),
 };
 
 const eventData = {
@@ -1650,6 +1652,31 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
+  discontinueClaim: async (user) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.DISCONTINUE_CLAIM();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    //TODO: Check the correct final submit state dor discontinue claim
+    /*await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+      header: '### Request is being reviewed',
+      body: ''
+    }, true);*/
+
+    await waitForFinishedBusinessProcess(caseId);
+  }
 };
 
 // Functions
@@ -1947,6 +1974,8 @@ const validateEventPages = async (data, solicitor) => {
       data = await updateCaseDataWithPlaceholders(data, document);
     }
     if (pageId === 'OptionsForSettlement' || pageId === 'ClaimantDetails'){
+      await assertValidDataSettleClaim(data, pageId);
+    } if (pageId === 'MultipleClaimant' || pageId === 'ClaimantConsent'){
       await assertValidDataSettleClaim(data, pageId);
     } else {
       // data = await updateCaseDataWithPlaceholders(data);
