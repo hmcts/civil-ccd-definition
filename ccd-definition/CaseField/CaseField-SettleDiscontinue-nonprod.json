@@ -166,5 +166,13 @@
     "FieldType": "PermissionGrantedFields",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "permissionNotGrantedText",
+    "Label": "### Unable to discontinue this claim \n To discontinue from this claim you need to get permission from the court.\n Click cancel to return to the case summary screen and select 'Make\n an application' from the next steps menu and select 'Other'",
+    "FieldType": "Label",
+    "SecurityClassification":"Public",
+    "Searchable": "N"
   }
 ]
