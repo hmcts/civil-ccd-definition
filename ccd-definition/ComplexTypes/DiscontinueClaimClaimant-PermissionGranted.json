@@ -1,16 +1,32 @@
 [
   {
     "ID": "PermissionGrantedFields",
-    "ListElementCode": "permissionGrantedJudge",
+    "ListElementCode": "permissionGrantedJudgeLabel",
     "ElementLabel": "### Permission granted by:\n**Judge name**",
+    "FieldType":"Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "PermissionGrantedFields",
+    "ListElementCode": "permissionGrantedJudge",
+    "ElementLabel": " ",
     "FieldType":"Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "PermissionGrantedFields",
+    "ListElementCode": "permissionGrantedDateLabel",
+    "ElementLabel": "### On date\n**For example, 16 4 2021**",
+    "FieldType":"Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "PermissionGrantedFields",
     "ListElementCode": "permissionGrantedDate",
-    "ElementLabel": "### On data\n**For example, 16 4 2021**",
+    "ElementLabel": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -158,7 +158,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "RetriesTimeoutURLMidEvent": 0,
     "FieldShowCondition": "isPermissionGranted=\"YES\""
   },
   {
@@ -172,7 +171,6 @@
     "PageColumnNumber":1,
     "DisplayContext":"READONLY",
     "ShowSummaryChangeOption":"N",
-    "RetriesTimeoutURLMidEvent":0,
     "FieldShowCondition":"isPermissionGranted=\"NO\""
   },
   {
