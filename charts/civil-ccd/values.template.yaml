@@ -3,7 +3,7 @@ civil-ccd-stack:
 
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-5022'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     imagePullPolicy: Always
     ingressHost: ga-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ga
