@@ -144,7 +144,8 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkPermissionGranted"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -159,6 +160,20 @@
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0,
     "FieldShowCondition": "isPermissionGranted=\"YES\""
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseEventID":"DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID":"permissionNotGrantedText",
+    "PageID":"PermissionGranted",
+    "PageLabel":"Permission granted by the court",
+    "PageDisplayOrder":4,
+    "PageFieldDisplayOrder":4,
+    "PageColumnNumber":1,
+    "DisplayContext":"READONLY",
+    "ShowSummaryChangeOption":"N",
+    "RetriesTimeoutURLMidEvent":0,
+    "FieldShowCondition":"isPermissionGranted=\"NO\""
   },
   {
     "CaseTypeID": "CIVIL",

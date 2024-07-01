@@ -3,7 +3,7 @@
     "ID": "PermissionGrantedFields",
     "ListElementCode": "permissionGrantedJudge",
     "ElementLabel": "### Permission granted by:\n**Judge name**",
-    "FieldType": "Label",
+    "FieldType":"Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
