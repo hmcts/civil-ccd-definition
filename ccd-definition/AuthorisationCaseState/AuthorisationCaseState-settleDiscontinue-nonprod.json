@@ -15,7 +15,8 @@
     "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
-      "caseworker-civil"
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE"
     ],
     "CRUD": "R"
   }
