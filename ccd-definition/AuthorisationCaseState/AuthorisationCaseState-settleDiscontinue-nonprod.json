@@ -10,5 +10,13 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_SETTLED",
+    "UserRoles": [
+      "caseworker-civil"
+    ],
+    "CRUD": "R"
   }
 ]
