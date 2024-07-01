@@ -104,7 +104,9 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil"
+          "caseworker-civil",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
