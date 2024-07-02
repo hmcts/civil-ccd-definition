@@ -9,6 +9,13 @@
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
