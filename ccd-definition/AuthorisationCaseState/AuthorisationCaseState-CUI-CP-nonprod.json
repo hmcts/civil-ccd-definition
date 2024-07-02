@@ -6,6 +6,7 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
@@ -76,6 +77,7 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-caa",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
