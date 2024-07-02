@@ -25,5 +25,14 @@
     "FieldTypeParameter": "PartyFlagStructure",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "hmcEaCourtLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "Searchable": "N",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
   }
 ]
