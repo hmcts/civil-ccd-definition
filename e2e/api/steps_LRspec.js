@@ -84,7 +84,7 @@ const data = {
   REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
-  DISCONTINUE_CLAIM: () => discontinueClaim2v1Spec.discontinueClaim(),
+  DISCONTINUE_CLAIM: (mpScenario) => discontinueClaim2v1Spec.discontinueClaim(mpScenario),
 };
 
 const eventData = {
@@ -1645,7 +1645,7 @@ module.exports = {
 
     await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT(addApplicant2));
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '### Request is being reviewed',
       body: ''
     }, true);
@@ -1653,7 +1653,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  discontinueClaim: async (user) => {
+  discontinueClaim: async (user, mpScenario) => {
     console.log('discontinueClaim for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'DISCONTINUE_CLAIM_CLAIMANT';
@@ -1664,12 +1664,12 @@ module.exports = {
 
     assertContainsPopulatedFields(returnedCaseData);
 
-    let disposalData = data.DISCONTINUE_CLAIM();
+    let disposalData = data.DISCONTINUE_CLAIM(mpScenario);
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
 
-    //TODO: Check the correct final submit state dor discontinue claim
+    //TODO: Check the correct final submit state for discontinue claim
     /*await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
       header: '### Request is being reviewed',
       body: ''
