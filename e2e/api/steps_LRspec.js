@@ -1645,7 +1645,7 @@ module.exports = {
 
     await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT(addApplicant2));
 
-    await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
       header: '### Request is being reviewed',
       body: ''
     }, true);
