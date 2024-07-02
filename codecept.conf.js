@@ -25,6 +25,7 @@ exports.config = {
     './e2e/tests/api_tests/lrspec/*_test.js',
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
+    './e2e/tests/api_tests/settle-discontinue/*_test.js',
   ],
   output:  process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
