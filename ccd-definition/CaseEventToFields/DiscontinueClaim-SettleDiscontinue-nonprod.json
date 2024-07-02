@@ -132,7 +132,8 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "courtPermissionNeeded = \"YES\""
   },
   {
     "CaseTypeID": "CIVIL",
