@@ -104,8 +104,7 @@
     "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the <br />&nbsp; discontinuance",
     "FieldType": "Label",
     "SecurityClassification":"Public",
-    "Searchable": "N",
-    "FieldShowCondition": "courtPermissionNeeded=\"NO\""
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -114,8 +113,7 @@
     "FieldTypeParameter": "ConfirmCourtPermissionNotNeeded",
     "Label": " ",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "courtPermissionNeeded = \"NO\""
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -170,7 +168,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "permissionNotGrantedText",
-    "Label": "### Unable to discontinue this claim \n To discontinue from this claim you need to get permission from the court.\n Click cancel to return to the case summary screen and select 'Make\n an application' from the next steps menu and select 'Other'",
+    "Label": "### Unable to discontinue this claim \n To discontinue this claim you need to get permission from the court.\n Click cancel to return to the case summary screen and select 'Make\n an application' from the next steps menu and select 'Other'",
     "FieldType": "Label",
     "SecurityClassification":"Public",
     "Searchable": "N"

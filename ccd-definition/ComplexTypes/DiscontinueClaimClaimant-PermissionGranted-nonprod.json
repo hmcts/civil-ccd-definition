@@ -2,7 +2,8 @@
   {
     "ID": "PermissionGrantedFields",
     "ListElementCode": "permissionGrantedJudge",
-    "ElementLabel": "### Permission granted by:\n**Judge name**",
+    "HintText": "Judge name",
+    "ElementLabel": "Permission granted by:",
     "FieldType":"Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -10,7 +11,8 @@
   {
     "ID": "PermissionGrantedFields",
     "ListElementCode": "permissionGrantedDate",
-    "ElementLabel": "### On data\n**For example, 16 4 2021**",
+    "ElementLabel": "On date",
+    "HintText": "For example, 16 04 2021",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
