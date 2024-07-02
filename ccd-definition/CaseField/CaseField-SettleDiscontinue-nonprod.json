@@ -10,7 +10,15 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames",
-    "Label": "**${caseNameHmctsInternal}** <br> <br>",
+    "Label": "**${caseNameHmctsInternal}**",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames1",
+    "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -48,5 +56,90 @@
     "FieldTypeParameter": "SettleReason",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantWhoIsDiscontinuing",
+    "Label": "Which claimants are discontinuing?",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "claimantsConsentToDiscontinuance",
+    "Label": "Do all claimants consent to the discontinuance?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectedClaimantForDiscontinuance",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames3",
+    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the court's permission needed to discontinue?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "courtPermissionNeeded",
+    "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "courtPermissionNeededText",
+    "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the <br />&nbsp; discontinuance",
+    "FieldType": "Label",
+    "SecurityClassification":"Public",
+    "Searchable": "N",
+    "FieldShowCondition": "courtPermissionNeeded=\"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "courtPermissionNeededChecked",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmCourtPermissionNotNeeded",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "FieldShowCondition": "courtPermissionNeeded = \"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "discontinuingAgainstDefendantsLbl",
+    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the discontinuance against all defendants?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isDiscontinuingAgainstBothDefendants",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "discontinuingAgainstOneDefendant",
+    "Label": "Which defendant is the discontinuance against?",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
- ]
+]
