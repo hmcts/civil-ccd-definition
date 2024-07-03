@@ -14,7 +14,7 @@ if [[ ! -e ${definition_output_file} ]]; then
    touch ${definition_output_file}
 fi
 
-docker run --rm --name hmctspublic.azurecr.io/imported/json2xlsx \
+docker run --rm --name json2xlsx \
   -v ${definition_input_dir}:/tmp/ccd-definition \
   -v ${definition_output_file}:/tmp/ccd-definition.xlsx \
   -e CCD_DEF_CASE_SERVICE_BASE_URL=${CCD_DEF_CASE_SERVICE_BASE_URL:-http://docker.for.mac.localhost:4000} \
