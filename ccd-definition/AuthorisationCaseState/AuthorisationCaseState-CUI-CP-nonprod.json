@@ -6,8 +6,9 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-caa",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-approver"
         ],
         "CRUD": "CRU"
       },
@@ -77,8 +78,9 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-caa",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-approver"
         ],
         "CRUD": "CRU"
       },
