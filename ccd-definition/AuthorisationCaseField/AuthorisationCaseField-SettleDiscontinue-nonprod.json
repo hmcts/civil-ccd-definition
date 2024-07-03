@@ -263,7 +263,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "CaseFieldID": "partiesNamesDD",
     "AccessControl": [
       {
         "UserRoles": [

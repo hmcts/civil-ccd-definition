@@ -92,7 +92,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames3",
-    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the court's permission needed to discontinue?",
+    "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -100,7 +100,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
-    "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
+    "Label": "Is the court's permission needed to discontinue?",
+    "HintText": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -125,8 +126,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "discontinuingAgainstDefendantsLbl",
-    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the discontinuance against all defendants?",
+    "ID": "partiesNamesDD",
+    "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -134,7 +135,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isDiscontinuingAgainstBothDefendants",
-    "Label": " ",
+    "Label": "Is the discontinuance against all defendants?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
