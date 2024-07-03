@@ -150,15 +150,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNamesDD",
-    "Label": "**${caseNameHmctsInternal}**",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "isDiscontinuingAgainstBothDefendantsLbl",
-    "Label": "### Is the discontinuance against all defendants?",
+    "Label": "**${caseNameHmctsInternal}** \n ### Is the discontinuance against all defendants?",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

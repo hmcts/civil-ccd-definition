@@ -109,7 +109,7 @@
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "courtPermissionNeededLbl",
     "PageID": "CourtPermission",
-    "PageLabel": "",
+    "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
@@ -121,7 +121,7 @@
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "courtPermissionNeeded",
     "PageID": "CourtPermission",
-    "PageLabel": "",
+    "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
@@ -256,18 +256,6 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "applicant1Represented != \"No\" AND respondent2Represented = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "isDiscontinuingAgainstBothDefendantsLbl",
-    "PageID": "DiscontinuingAgainstDefendants",
-    "PageLabel": "Discontinuing against defendants",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
