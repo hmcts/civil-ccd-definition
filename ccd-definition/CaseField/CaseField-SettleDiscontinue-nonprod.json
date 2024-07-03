@@ -174,8 +174,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "discontinuingAgainstOneDefendantLbl",
+    "Label": "### Which defendant is the discontinuance against?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "discontinuingAgainstOneDefendant",
-    "Label": "Which defendant is the discontinuance against?",
+    "Label": " ",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
