@@ -67,32 +67,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimantWhoIsDiscontinuingLbl",
-    "Label": "### Which claimants are discontinuing?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimantWhoIsDiscontinuing",
-    "Label": " ",
+    "Label": "Which claimants are discontinuing?",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "claimantsConsentToDiscontinuanceLbl",
-    "Label": "### Do all claimants consent to the discontinuance?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimantsConsentToDiscontinuance",
-    "Label": " ",
+    "Label": "Do all claimants consent to the discontinuance?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -115,16 +99,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "courtPermissionNeededLbl",
-    "Label": "### Is the court's permission needed to discontinue?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
-    "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
+    "Label": "Is the court's permission needed to discontinue?",
+    "HintText": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -150,7 +127,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNamesDD",
-    "Label": "**${caseNameHmctsInternal}** \n ### Is the discontinuance against all defendants?",
+    "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -158,7 +135,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isDiscontinuingAgainstBothDefendants",
-    "Label": " ",
+    "Label": "Is the discontinuance against all defendants?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -166,16 +143,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "discontinuingAgainstOneDefendantLbl",
-    "Label": "### Which defendant is the discontinuance against?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "discontinuingAgainstOneDefendant",
-    "Label": " ",
+    "Label": "Which defendant is the discontinuance against?",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -190,16 +159,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "isPermissionGrantedLbl",
-    "Label": "### Has permission been granted by a Judge to discontinue",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "isPermissionGranted",
-    "Label": " ",
+    "Label": "Has permission been granted by a Judge to discontinue",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -223,16 +184,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "typeOfDiscontinuanceLbl",
-    "Label": "### Is this a full or part discontinuance?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "typeOfDiscontinuance",
-    "Label": " ",
+    "Label": "Is this a full or part discontinuance?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DiscontinuanceTypeList",
     "SecurityClassification": "Public",

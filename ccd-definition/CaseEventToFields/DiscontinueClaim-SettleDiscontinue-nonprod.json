@@ -25,21 +25,10 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "claimantWhoIsDiscontinuingLbl",
-    "PageID": "MultipleClaimant",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "claimantWhoIsDiscontinuing",
     "PageID": "MultipleClaimant",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
     "PageShowCondition": "addApplicant2 = \"Yes\"",
     "DisplayContext": "MANDATORY",
@@ -73,17 +62,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "claimantsConsentToDiscontinuanceLbl",
-    "PageID": "ClaimantConsent",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "selectedClaimantForDiscontinuance != \"Both\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "claimantsConsentToDiscontinuance",
     "PageID": "ClaimantConsent",
     "PageDisplayOrder": 2,
@@ -100,18 +78,6 @@
     "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "courtPermissionNeededLbl",
-    "PageID": "CourtPermission",
-    "PageLabel": "Permission from the court",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
@@ -168,18 +134,6 @@
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "courtPermissionNeeded = \"YES\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "isPermissionGrantedLbl",
-    "PageID": "PermissionGranted",
-    "PageLabel": "Permission granted by the court",
-    "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -272,19 +226,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "discontinuingAgainstOneDefendantLbl",
-    "PageID": "DiscontinuingAgainstDefendants",
-    "PageLabel": "Discontinuing against defendants",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 6,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "discontinuingAgainstOneDefendant",
     "PageID": "DiscontinuingAgainstDefendants",
     "PageLabel": "Discontinuing against defendants",
@@ -303,18 +244,6 @@
     "PageLabel": "Type of Discontinuance",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "DisplayContext": "READONLY",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "typeOfDiscontinuanceLbl",
-    "PageID": "DiscontinuanceType",
-    "PageLabel": "Type of Discontinuance",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
