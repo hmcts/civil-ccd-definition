@@ -172,5 +172,55 @@
     "FieldType": "Label",
     "SecurityClassification":"Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "validateDiscontinuanceLbl",
+    "Label": "**${caseNameHmctsInternal}** \n****\n ### Permission granted by:",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeNameInput",
+    "Label": "Judge name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "onDateLbl",
+    "Label": "### On date",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "onDate",
+    "Label": " ",
+    "HintText": "For example, 16 4 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "confirmOrderGivesPermissionLbl",
+    "Label": "### Can you confirm the Order does give permission to discontinue all or part of the claim?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "confirmOrderGivesPermission",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ConfirmOrderGivesPermissionList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

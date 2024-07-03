@@ -55,7 +55,6 @@
     "DisplayOrder": 15,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME",
     "PostConditionState": "*",
-    "EventEnablingCondition": "isPermissionGranted = \"Yes\"",
     "SecurityClassification": "Public",
     "ShowSummary": "N",
     "ShowEventNotes": "N",

@@ -291,12 +291,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "CaseFieldID": "validateDiscontinuanceLbl",
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -304,27 +304,66 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
+    "CaseFieldID": "judgeNameInput",
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       }
     ]
   },
   {
-    "CaseTypeID":"CIVIL",
-    "CaseFieldID":"discontinuingAgainstOneDefendant",
-    "AccessControl":[
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "onDateLbl",
+    "AccessControl": [
       {
-        "UserRoles":[
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
-        "CRUD":"CRU"
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "onDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "confirmOrderGivesPermissionLbl",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "confirmOrderGivesPermission",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }
