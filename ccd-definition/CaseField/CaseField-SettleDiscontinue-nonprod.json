@@ -169,7 +169,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "permissionGrantedComplex",
-    "Label": " ",
+    "Label": "Permission granted by:",
     "FieldType": "PermissionGrantedFields",
     "SecurityClassification": "Public",
     "Searchable": "N"

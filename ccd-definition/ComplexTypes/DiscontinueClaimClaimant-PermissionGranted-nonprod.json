@@ -2,8 +2,7 @@
   {
     "ID": "PermissionGrantedFields",
     "ListElementCode": "permissionGrantedJudge",
-    "ElementLabel": "Permission granted by:",
-    "HintText": "Judge name",
+    "ElementLabel": "Judge name",
     "FieldType":"Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
