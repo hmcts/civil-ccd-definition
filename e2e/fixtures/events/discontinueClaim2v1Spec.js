@@ -11,10 +11,10 @@ module.exports = {
             ]
           },
           PermissionGranted: {
-            isPermissionGranted:"YES",
+            isPermissionGranted:'YES',
             permissionGrantedComplex:{
-              permissionGrantedJudge:"test",
-              permissionGrantedDate:"2023-02-01"
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
             }
           },
           DiscontinuingAgainstDefendants: {
@@ -28,7 +28,7 @@ module.exports = {
             }
           },
           DiscontinuanceType: {
-            typeOfDiscontinuance:"FULL_DISCONTINUANCE"
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE'
           }
         };
       }
@@ -55,15 +55,15 @@ module.exports = {
             ]
           },
           PermissionGranted: {
-            isPermissionGranted:"YES",
+            isPermissionGranted:'YES',
             permissionGrantedComplex:{
-              permissionGrantedJudge:"test",
-              permissionGrantedDate:"2023-02-01"
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
             }
           },
           DiscontinuanceType: {
-            typeOfDiscontinuance:"PART_DISCONTINUANCE",
-            partDiscontinuanceDetails:"test"
+            typeOfDiscontinuance:'PART_DISCONTINUANCE',
+            partDiscontinuanceDetails:'test'
           }
         };
       }
