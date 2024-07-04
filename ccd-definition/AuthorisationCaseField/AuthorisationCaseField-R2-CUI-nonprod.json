@@ -1678,18 +1678,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "nextHearingDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentResponseIsSame",
     "AccessControl": [
       {
@@ -2556,26 +2544,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1JudgmentByDeterminationForm",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CR"
@@ -2614,12 +2582,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseBundles",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
     "AccessControl": [
       {
@@ -2652,6 +2614,34 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForReconsiderationDeadline",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "requestForReconsiderationDeadlineChecked",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }

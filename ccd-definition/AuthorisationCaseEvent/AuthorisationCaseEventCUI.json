@@ -709,12 +709,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

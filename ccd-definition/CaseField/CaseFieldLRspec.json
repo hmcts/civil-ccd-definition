@@ -2828,5 +2828,38 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "specApplicant1DQDisclosureOfElectronicDocuments",
+    "Label": "Disclosure of electronic documents",
+    "FieldType": "DisclosureOfElectronicDocuments",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "comment_": "workaround for generation of claimant DQs"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isFlightDelayClaimLbl",
+    "Label": "## Is this an airline claim?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isFlightDelayClaim",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "flightDelayDetails",
+    "Label": " ",
+    "FieldType": "FlightDelayDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

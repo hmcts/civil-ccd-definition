@@ -75,15 +75,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingHelpFeesReferenceNumber",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1JudgmentByDeterminationForm",
     "Label": " ",
     "FieldType": "CaseDocument",

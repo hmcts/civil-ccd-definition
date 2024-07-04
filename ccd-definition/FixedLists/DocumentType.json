@@ -82,6 +82,17 @@
     "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
     "ListElement": "Defence Translated Document",
     "DisplayOrder": 14
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "COURT_OFFICER_ORDER",
+    "ListElement": "Court Officer Order",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
+    "ListElement": "Decision made on applications",
+    "DisplayOrder": 16
   }
-
 ]

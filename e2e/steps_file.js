@@ -1,4 +1,4 @@
-// in this file you can append custom step methods to 'I' object
+  // in this file you can append custom step methods to 'I' object
 
 const output = require('codeceptjs').output;
 
@@ -540,18 +540,22 @@ module.exports = function () {
 
     async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
       eventName = 'Respond to claim';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
         ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
-          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
-          () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
+          ...conditionalSteps(claimValue >= 10000, [
+            () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+            () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
+          ]),
           ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
           ),
-          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
+          ...conditionalSteps(claimValue >= 10000, [
+            () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
+            ]
+          ),
           () => expertsPage.enterExpertInformation(party),
           () => witnessPage.enterWitnessInformation(party),
           () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
@@ -574,14 +578,18 @@ module.exports = function () {
         () => caseViewPage.startEvent(eventName, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocuments(TEST_FILE_PATH, mpScenario),
-        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-        () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(claimValue >= 10000, [
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+        ]),
         ...conditionalSteps(claimValue >= 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
           ]
         ),
-        () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+        ...conditionalSteps(claimValue >= 10000, [
+          () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(parties.APPLICANT_SOLICITOR_1),
+        ]),
         () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
         () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
         () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
@@ -718,7 +726,6 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
-
       if (['demo'].includes(config.runningEnv)) {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
         await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
@@ -813,7 +820,7 @@ module.exports = function () {
      * @param maxNumberOfTries - maximum number to retry the function for before failing
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
-    async retryUntilExists(action, locator, maxNumberOfTries = 6) {
+    async retryUntilExists(action, locator, maxNumberOfTries = 3) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {

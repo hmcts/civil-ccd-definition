@@ -133,6 +133,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "duplicateSystemGeneratedCaseDocs",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDocuments",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -573,13 +579,19 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantResponseDocuments",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantResponseDocuments",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "duplicateClaimantDefResponseDocs",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",

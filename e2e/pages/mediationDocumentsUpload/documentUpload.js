@@ -31,7 +31,8 @@ module.exports = {
     I.fillField(this.fields.nonAttendanceStatementForm.day, '1');
     I.fillField(this.fields.nonAttendanceStatementForm.month, '1');
     I.fillField(this.fields.nonAttendanceStatementForm.year, '2022');
-    I.attachFile(this.fields.nonAttendanceStatementForm.document, file);
+    I.wait(5); //rate limiting on doc uplods - EXUI-1194
+    await I.attachFile(this.fields.nonAttendanceStatementForm.document, file);
   },
 
   async fillDocumentsReferredForm(file) {
@@ -42,6 +43,7 @@ module.exports = {
     I.fillField(this.fields.documentsReferredForm.day, '1');
     I.fillField(this.fields.documentsReferredForm.month, '10');
     I.fillField(this.fields.documentsReferredForm.year, '2022');
-    I.attachFile(this.fields.documentsReferredForm.document, file);
+    I.wait(5); //rate limiting on doc uplods - EXUI-1194
+    await I.attachFile(this.fields.documentsReferredForm.document, file);
   },
 };

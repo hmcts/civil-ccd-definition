@@ -186,11 +186,11 @@ module.exports = {
     const defendantResponseData = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
-        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        respondent1ClaimResponseTypeForSpec: typeOfResponse === 'FULL_ADMISSION' ? 'FULL_ADMISSION' : 'FULL_DEFENCE',
         defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
-        respondToClaimAdmitPartLRspec: {
-
-        },
+        respondToClaimAdmitPartLRspec: typeOfResponse === 'FULL_ADMISSION' ? {
+          whenWillThisAmountBePaid: '2020-01-01'
+        } : {},
         responseClaimMediationSpecRequired: 'No',
         specAoSApplicantCorrespondenceAddressRequired: 'No',
         totalClaimAmount: totalClaimAmount,

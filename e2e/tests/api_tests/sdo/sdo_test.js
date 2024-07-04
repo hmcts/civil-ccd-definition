@@ -54,7 +54,7 @@ Scenario('1v1 full defence unspecified - judge draws small claims WITH sum of da
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod @api-nonprod-sdo', async ({ api}) => {
+Scenario('1v1 full defence unspecified - judge draws fast track WITH sum of damages - hearing scheduled @api-sdo @api-prod', async ({ api}) => {
   // sdo requires judicial_referral, which is not past preview
     await prepareClaim(api, claimAmountJudge);
     await api.createSDO(judgeUser, 'CREATE_FAST');
@@ -204,7 +204,7 @@ Scenario('1v1 full defence unspecified - judge draws disposal order - hearing sc
   }
 });
 
-Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled @wa-r4', async ({api_spec_small, WA}) => {
+Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled @wa-r4 @sdo-spec @api-sdo', async ({api_spec_small, WA}) => {
   // sdo requires judicial_referral, which is not past preview
   await prepareSpecSmallClaim(api_spec_small);
   if (config.runWAApiTest) {

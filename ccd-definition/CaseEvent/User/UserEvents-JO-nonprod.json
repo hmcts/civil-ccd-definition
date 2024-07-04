@@ -16,7 +16,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "joIsLiveJudgmentExists != \"Yes\""
+    "EventEnablingCondition": "joIsLiveJudgmentExists != \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -25,7 +25,7 @@
     "Description": "Set aside judgment",
     "DisplayOrder": 1,
     "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",
-    "PostConditionState": "All_FINAL_ORDERS_ISSUED",
+    "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
@@ -34,7 +34,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\""
+    "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\" AND activeJudgment.type = \"DEFAULT_JUDGMENT\""
   },
   {
   "CaseTypeID": "CIVIL",
@@ -93,5 +93,24 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y",
     "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory = \"SPEC_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "DEFAULT_JUDGEMENT_SPEC",
+    "Name": "Request Default Judgment",
+    "Description": "Request Default Judgment",
+    "DisplayOrder": 18,
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
+    "PostConditionState": "*",
+    "EventEnablingCondition": "specRespondent1Represented = \"No\" OR specRespondent1Represented =  \"Yes\"",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "RetriesTimeoutURLSubmittedEvent": 0
   }
 ]

@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]

@@ -5,7 +5,7 @@ const config = require('../../../config.js');
 let mediationAdminRegion1 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
 let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
 
-Feature('Spec small claims mediation API test @api-spec-mediation @api-nonprod');
+Feature('Spec small claims mediation API test @api-spec-mediation');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
@@ -67,7 +67,7 @@ Scenario('1v2 different solicitor claimant and defendant upload mediation docume
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
-});
+}).tag('@api-nonprod');
 
 Scenario('1v2 different solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await prepareClaim1v2DiffSol(api_spec, true);
@@ -75,7 +75,7 @@ Scenario('1v2 different solicitor claimant and defendant upload mediation docume
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
-});
+}).tag('@api-nonprod');
 
 Scenario('2v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
   await prepareClaim2v1(api_spec, false);

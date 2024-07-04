@@ -19,17 +19,34 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'test'
             }
           },
-          FixedRecoverableCostsIntermediate: {
+          FixedRecoverableCosts: {
             applicant1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
               complexityBandingAgreed:'Yes',
               band: 'BAND_4',
-              reasons: 'some important reasons'
+              reasons: 'some important reasons',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          },
+          DisclosureOfElectronicDocuments: {
+            applicant1DQDisclosureOfElectronicDocuments: {
+              reachedAgreement: 'Yes'
             }
           },
           DisclosureOfNonElectronicDocuments: {
             specApplicant1DQDisclosureOfNonElectronicDocuments: {
               bespokeDirections: 'directions'
+            }
+          },
+          DisclosureReport: {
+            applicant1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'Yes',
+              draftOrderNumber: '12345'
             }
           },
           Experts: {

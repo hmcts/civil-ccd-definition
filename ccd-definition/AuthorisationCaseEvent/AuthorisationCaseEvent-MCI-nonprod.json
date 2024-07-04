@@ -9,6 +9,12 @@
           "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },

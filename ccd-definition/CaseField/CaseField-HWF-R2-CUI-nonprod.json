@@ -10,15 +10,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "caseLabelHearingReference",
-    "Label": "${hearingHelpFeesReferenceNumber}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "caseLabelClaimIssueReference",
     "Label": "${helpWithFees.helpWithFeesReferenceNumber}",
     "FieldType": "Label",
@@ -29,14 +20,6 @@
     "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFClaimFeeNumber",
     "Label": "<h2 class=\"govuk-heading-1\">  ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "caseTitleWithHWFHearingNumber",
-    "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -76,23 +59,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hearingFeeLabel",
-    "FieldType": "Label",
-    "Label": "Help with Fees type: HwF Hearing fee",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedHwfDetails",
-    "FieldType": "HelpWithFeesDetails",
-    "Label": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingHwfDetails",
     "FieldType": "HelpWithFeesDetails",
     "Label": " ",
     "SecurityClassification": "Public",
@@ -104,14 +71,6 @@
     "Label": " ",
     "FieldType": "HelpWithFeesMoreInformation",
     "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "helpWithFeesMoreInformationHearing",
-    "Label": " ",
-    "FieldType": "HelpWithFeesMoreInformation",
-     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
@@ -159,25 +118,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "hwfFullRemissionGrantedForHearingFee",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "Label": "Confirm payment of £${claimIssuedHwfDetails.outstandingFeeInPounds} has been taken.",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "ConfirmPaymentMade",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hwfOutstandingFeePaymentDoneForHearingFee",
-    "Label": "Confirm payment of £${hearingHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmPaymentMade",
     "SecurityClassification": "Public",

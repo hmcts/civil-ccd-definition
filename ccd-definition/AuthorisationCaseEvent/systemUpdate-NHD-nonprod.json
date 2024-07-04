@@ -3,6 +3,6 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_NEXT_HEARING_DETAILS",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   }
 ]
