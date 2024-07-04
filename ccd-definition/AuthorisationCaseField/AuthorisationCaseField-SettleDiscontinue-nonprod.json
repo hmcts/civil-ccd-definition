@@ -36,7 +36,20 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partiesNamesTD",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -140,7 +153,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -192,7 +205,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -203,9 +216,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -233,13 +244,26 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "hearingDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
         "CRUD": "CRU"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "CaseFieldID": "partiesNamesDD",
     "AccessControl": [
       {
         "UserRoles": [
@@ -277,15 +301,28 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingDate",
-    "AccessControl": [
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"typeOfDiscontinuance",
+    "AccessControl":[
       {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD":"CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"partDiscontinuanceDetails",
+    "AccessControl":[
+      {
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD":"CRU"
       }
     ]
   },
