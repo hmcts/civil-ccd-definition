@@ -14,19 +14,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "judgeNameInput",
+    "CaseFieldID": "permissionGrantedJudgeCopy",
     "PageID": "ValidateDiscontinuance",
     "PageLabel": "Validate order information",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "onDateLbl",
+    "CaseFieldID": "permissionGrantedDateCopy",
     "PageID": "ValidateDiscontinuance",
     "PageLabel": "Validate order information",
     "PageDisplayOrder": 1,
@@ -38,23 +38,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "onDate",
-    "PageID": "ValidateDiscontinuance",
-    "PageLabel": "Validate order information",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "confirmOrderGivesPermissionLbl",
     "PageID": "ValidateDiscontinuance",
     "PageLabel": "Validate order information",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N"
@@ -66,7 +54,7 @@
     "PageID": "ValidateDiscontinuance",
     "PageLabel": "Validate order information",
     "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N"

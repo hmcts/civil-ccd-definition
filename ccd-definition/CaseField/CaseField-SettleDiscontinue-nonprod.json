@@ -209,7 +209,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "judgeNameInput",
+    "ID": "permissionGrantedJudgeCopy",
     "Label": "Judge name",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -217,17 +217,8 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "onDateLbl",
-    "Label": "### On date",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "onDate",
-    "Label": " ",
-    "HintText": "For example, 16 4 2021",
+    "ID": "permissionGrantedDateCopy",
+    "Label": "On date",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -341,20 +341,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "judgeNameInput",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "onDateLbl",
+    "CaseFieldID": "permissionGrantedJudgeCopy",
     "AccessControl": [
       {
         "UserRoles": [
@@ -367,14 +354,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "onDate",
+    "CaseFieldID": "permissionGrantedDateCopy",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
