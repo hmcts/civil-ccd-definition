@@ -25,14 +25,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "partiesNamesTD",
-    "Label": "**${caseNameHmctsInternal}**",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "markPaidForAllClaimants",
     "Label": "Does marking this claim as paid in full relate to all claimants?",
     "FieldType": "YesOrNo",
@@ -92,7 +84,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames3",
-    "Label": "**${caseNameHmctsInternal}**",
+    "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -127,7 +119,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNamesDD",
-    "Label": "**${caseNameHmctsInternal}**",
+    "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -152,7 +144,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames4",
-    "Label": "**${caseNameHmctsInternal}**",
+    "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -184,6 +176,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "partiesNamesTD",
+    "Label": "**${caseNameHmctsInternal}** \n****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "typeOfDiscontinuance",
     "Label": "Is this a full or part discontinuance?",
     "FieldType": "FixedRadioList",
@@ -192,11 +192,11 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID":"CIVIL",
-    "ID":"partDiscontinuanceDetails",
+    "CaseTypeID": "CIVIL",
+    "ID": "partDiscontinuanceDetails",
     "Label": "Which part of the claim do you want to discontinue?",
     "FieldType": "TextArea",
     "SecurityClassification":"Public",
-    "Searchable":"N"
+    "Searchable": "N"
   }
 ]
