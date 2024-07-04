@@ -203,6 +203,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "activeJudgment",
+    "UserRoles": ["CITIZEN-DEFENDANT-PROFILE"],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "historicJudgment",
     "UserRoles": [
       "caseworker-civil-admin",
