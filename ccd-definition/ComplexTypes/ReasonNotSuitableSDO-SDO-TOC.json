@@ -20,7 +20,6 @@
     "ListElementCode": "input",
     "FieldType": "TextArea",
     "ElementLabel": " ",
-    "Max": 4000,
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
