@@ -37,22 +37,8 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "specApplicant2DQDisclosureOfElectronicDocuments",
-    "TabFieldDisplayOrder": 77,
-    "FieldShowCondition": "responseClaimTrack = \"INTERMEDIATE_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
     "CaseFieldID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
     "TabFieldDisplayOrder": 78,
-    "FieldShowCondition": "responseClaimTrack = \"INTERMEDIATE_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "specApplicant2DQDisclosureOfNonElectronicDocuments",
-    "TabFieldDisplayOrder": 79,
     "FieldShowCondition": "responseClaimTrack = \"INTERMEDIATE_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\""
   }
 ]

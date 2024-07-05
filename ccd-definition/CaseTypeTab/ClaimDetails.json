@@ -491,7 +491,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "TabFieldDisplayOrder": 75
-  }
+  },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
