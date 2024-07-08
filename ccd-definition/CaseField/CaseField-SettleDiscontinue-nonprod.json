@@ -236,7 +236,7 @@
     "ID": "confirmOrderGivesPermission",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ConfirmOrderGivesPermissionList",
+    "FieldTypeParameter": "ConfirmOrderGivesPermission",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
