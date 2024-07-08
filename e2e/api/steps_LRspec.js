@@ -1669,25 +1669,23 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-   if (mpScenario === 'TWO_V_ONE') { //divergent
+   if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
         body: ''
       }, true);
-      await waitForFinishedBusinessProcess(caseId);
-    } else if (mpScenario === 'ONE_V_TWO') { //non divergent
+    } else if (mpScenario === 'ONE_V_TWO') {
       await assertSubmittedEvent('CASE_DISCONTINUED', {
         header: '# Your claim has been discontinued',
         body: ''
       }, true);
-      await waitForFinishedBusinessProcess(caseId);
     } else {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: '# Your request is being reviewed',
         body: ''
       }, true);
-      await waitForFinishedBusinessProcess(caseId);
     }
+    await waitForFinishedBusinessProcess(caseId);
   }
 };
 
