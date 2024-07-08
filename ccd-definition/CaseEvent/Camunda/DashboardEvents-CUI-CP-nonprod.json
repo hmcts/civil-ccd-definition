@@ -222,6 +222,32 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "UPDATE_DASHBOARD_TASK_LIST_DEFENDANT_DECISION_OUTCOME",
+    "Name": "Dashboard defendant",
+    "Description": "Update defendant task list",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "UPDATE_DASHBOARD_TASK_LIST_CLAIMANT_DECISION_OUTCOME",
+    "Name": "Dashboard claimant",
+    "Description": "Update dashboard claimant task list",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
     "Name": "RfR CUI",
     "Description": "Create notification CUI",
