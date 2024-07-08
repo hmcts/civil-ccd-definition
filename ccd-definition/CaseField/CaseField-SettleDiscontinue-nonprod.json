@@ -35,7 +35,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "markPaidConsent",
     "Label": "I confirm this claim should be marked paid in full",
-    "FieldType": "MarkPaidConsent",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MarkPaidConsentList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
