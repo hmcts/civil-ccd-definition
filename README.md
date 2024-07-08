@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR 
+Below labels are needed on the PR
 
 ```
 
@@ -44,7 +44,7 @@ Below labels are needed on the PR
   "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
 
   "pr-values:enableWA" label to verify work allocation task
-  
+
 ```
 
 Running Crossbrowser tests:
@@ -135,6 +135,5 @@ additional information where necessary.
    Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards.
 
 ## License
-
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
