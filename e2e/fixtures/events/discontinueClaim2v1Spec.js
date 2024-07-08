@@ -10,15 +10,19 @@ module.exports = {
               'CourtPermissionNeededChecked'
             ]
           },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
           DiscontinuingAgainstDefendants: {
             respondent2Represented: 'Yes',
-            isDiscontinuingAgainstBothDefendants: 'NO',
-            discontinuingAgainstOneDefendant: {
-              value: {
-                code: '321820a6-36cf-4fb2-9e78-2f34874ea9e8',
-                label: 'Second Defendant'
-              }
-            }
+            isDiscontinuingAgainstBothDefendants: 'YES',
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE'
           }
         };
       }
@@ -43,6 +47,38 @@ module.exports = {
             courtPermissionNeededChecked: [
               'CourtPermissionNeededChecked'
             ]
+          },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'PART_DISCONTINUANCE',
+            partDiscontinuanceDetails:'test'
+          }
+        };
+      }
+        break;
+      case 'ONE_V_ONE': {
+        data.userInput = {
+          courtPermission: {
+            courtPermissionNeeded: 'YES',
+            courtPermissionNeededChecked: [
+              'CourtPermissionNeededChecked'
+            ]
+          },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE'
           }
         };
       }
