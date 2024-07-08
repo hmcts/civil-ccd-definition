@@ -1,0 +1,10 @@
+[
+  {
+    "ID": "MarkPaidConsent",
+    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
+    "CaseFieldID": "markPaidConsent",
+    "ListElementCode": "confirmation",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  }
+]

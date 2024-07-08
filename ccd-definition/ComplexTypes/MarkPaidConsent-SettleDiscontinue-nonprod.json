@@ -1,0 +1,11 @@
+[
+  {
+    "ID": "MarkPaidConsent",
+    "ListElementCode": "confirmation",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MarkPaidConsentList",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
