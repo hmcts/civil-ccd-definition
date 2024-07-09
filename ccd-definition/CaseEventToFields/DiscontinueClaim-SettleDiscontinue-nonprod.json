@@ -92,7 +92,7 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID":"CIVIL",
@@ -221,7 +221,7 @@
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
