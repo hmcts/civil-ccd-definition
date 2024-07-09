@@ -129,5 +129,16 @@
     "FieldDisplayOrder": 16,
     "DisplayContext": "READONLY",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseFieldID": "claimValue",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "defendantDetails=\"DO NOT SHOW IN UI\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 10,
+    "Publish": "Y"
   }
 ]
