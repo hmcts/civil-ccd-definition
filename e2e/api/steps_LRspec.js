@@ -1709,13 +1709,13 @@ module.exports = {
     if (permission === 'YES') {
       await assertSubmittedEvent('CASE_DISCONTINUED', {
         header: '# Information successfully validated',
-        body: '### Next steps:\n\n            No further action required.'
+        body: '### Next steps:\n\nNo further action required.'
       }, true);
       await waitForFinishedBusinessProcess(caseId);
     } else {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: '# Unable to validate information',
-        body: '### Next steps:\n\n            No further action required.'
+        body: '### Next steps:\n\nNo further action required.'
       }, true);
       await waitForFinishedBusinessProcess(caseId);
     }

@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
-// To use on local because the idam images are different
+// To use on local because the idam images are different:
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
