@@ -39,6 +39,36 @@ Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
   }
 });
 
+Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_ONE';
+    let permission = 'YES';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
+  }
+});
+
+Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_TWO';
+    let permission = 'YES';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
+  }
+});
+
+Scenario('Validate discontinue claim claimant 1v2 negative scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_TWO';
+    let permission = 'NO';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
+  }
+});
+
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });
