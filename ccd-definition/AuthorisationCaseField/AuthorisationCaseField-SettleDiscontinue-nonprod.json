@@ -36,7 +36,20 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "partiesNamesTD",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -160,7 +173,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -212,7 +225,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -251,7 +264,7 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
@@ -270,7 +283,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "CaseFieldID": "partiesNamesDD",
     "AccessControl": [
       {
         "UserRoles": [
@@ -297,6 +310,32 @@
   {
     "CaseTypeID":"CIVIL",
     "CaseFieldID":"discontinuingAgainstOneDefendant",
+    "AccessControl":[
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"typeOfDiscontinuance",
+    "AccessControl":[
+      {
+        "UserRoles":[
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD":"CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseFieldID":"partDiscontinuanceDetails",
     "AccessControl":[
       {
         "UserRoles":[
