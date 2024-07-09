@@ -132,13 +132,13 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "CaseFieldID": "claimValue",
-    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "defendantDetails=\"DO NOT SHOW IN UI\"",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 10,
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]
