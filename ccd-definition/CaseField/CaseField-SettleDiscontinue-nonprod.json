@@ -95,7 +95,7 @@
     "Label": "Is the court's permission needed to discontinue?",
     "HintText": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
+    "FieldTypeParameter": "CourtPermissionNeeded",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
