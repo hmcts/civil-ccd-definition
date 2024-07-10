@@ -1669,12 +1669,22 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-    //TODO: Check the correct final submit state for discontinue claim
-    /*await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: '### Request is being reviewed',
-      body: ''
-    }, true);*/
-
+   if (mpScenario === 'TWO_V_ONE') {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        body: ''
+      }, true);
+    } else if (mpScenario === 'ONE_V_TWO') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Your claim has been discontinued',
+        body: ''
+      }, true);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Your request is being reviewed',
+        body: ''
+      }, true);
+    }
     await waitForFinishedBusinessProcess(caseId);
   }
 };
