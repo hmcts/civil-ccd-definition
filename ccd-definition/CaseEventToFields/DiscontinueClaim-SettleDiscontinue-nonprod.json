@@ -75,7 +75,7 @@
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "partiesNames3",
     "PageID": "CourtPermission",
-    "PageLabel": " ",
+    "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -179,6 +179,7 @@
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "applicant1Represented",
     "PageID": "DiscontinuingAgainstDefendants",
+    "PageLabel": "Discontinuing against defendants",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -190,6 +191,7 @@
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "respondent2Represented",
     "PageID": "DiscontinuingAgainstDefendants",
+    "PageLabel": "Discontinuing against defendants",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
@@ -199,7 +201,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
-    "CaseFieldID": "discontinuingAgainstDefendantsLbl",
+    "CaseFieldID": "partiesNamesDD",
     "PageID": "DiscontinuingAgainstDefendants",
     "PageLabel": "Discontinuing against defendants",
     "PageDisplayOrder": 5,
@@ -233,5 +235,42 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "partiesNamesTD",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "typeOfDiscontinuance",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder":2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID":"CIVIL",
+    "CaseEventID":"DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID":"partDiscontinuanceDetails",
+    "PageID":"DiscontinuanceType",
+    "PageLabel":"Type of Discontinuance",
+    "PageDisplayOrder":6,
+    "PageFieldDisplayOrder":3,
+    "PageColumnNumber":1,
+    "DisplayContext": "MANDATORY",
+    "ShowSummaryChangeOption":"Y",
+    "FieldShowCondition":"typeOfDiscontinuance=\"PART_DISCONTINUANCE\""
   }
 ]
