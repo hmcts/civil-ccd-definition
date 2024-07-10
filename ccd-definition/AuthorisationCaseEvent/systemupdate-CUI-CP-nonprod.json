@@ -121,6 +121,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_DASHBOARD_TASK_LIST_DEFENDANT_DECISION_OUTCOME",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "UPDATE_DASHBOARD_TASK_LIST_CLAIMANT_DECISION_OUTCOME",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -140,6 +152,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_DECISION_RECONSIDERATION_DEFENDANT1",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CLAIMANT_UPLOADED_DOCUMENT_ORDER_NOTICE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_UPLOADED_DOCUMENT_ORDER_NOTICE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }
