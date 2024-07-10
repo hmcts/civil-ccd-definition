@@ -10,6 +10,13 @@ module.exports = {
               'CourtPermissionNeededChecked'
             ]
           },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
           DiscontinuingAgainstDefendants: {
             respondent2Represented: 'Yes',
             isDiscontinuingAgainstBothDefendants: 'NO',
@@ -19,6 +26,9 @@ module.exports = {
                 label: 'Second Defendant'
               }
             }
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE'
           }
         };
       }
@@ -43,6 +53,17 @@ module.exports = {
             courtPermissionNeededChecked: [
               'CourtPermissionNeededChecked'
             ]
+          },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'PART_DISCONTINUANCE',
+            partDiscontinuanceDetails:'test'
           }
         };
       }

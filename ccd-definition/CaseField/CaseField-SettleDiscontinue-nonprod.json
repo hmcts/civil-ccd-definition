@@ -34,9 +34,9 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "markPaidConsent",
-    "Label": " ",
-    "FieldType": "MultiSelectList",
-    "FieldTypeParameter": "MarkPaidConsent",
+    "Label": "I confirm this claim should be marked paid in full",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "MarkPaidConsentList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -84,7 +84,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "partiesNames3",
-    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the court's permission needed to discontinue?",
+    "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -92,7 +92,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "courtPermissionNeeded",
-    "Label": "For more information, refer to the Civil Procedure Rules 38.2.",
+    "Label": "Is the court's permission needed to discontinue?",
+    "HintText": "For more information, refer to the Civil Procedure Rules 38.2.",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -104,8 +105,7 @@
     "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the <br />&nbsp; discontinuance",
     "FieldType": "Label",
     "SecurityClassification":"Public",
-    "Searchable": "N",
-    "FieldShowCondition": "courtPermissionNeeded=\"NO\""
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -114,13 +114,12 @@
     "FieldTypeParameter": "ConfirmCourtPermissionNotNeeded",
     "Label": " ",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "courtPermissionNeeded = \"NO\""
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "discontinuingAgainstDefendantsLbl",
-    "Label": "**${caseNameHmctsInternal}** \n****\n ### Is the discontinuance against all defendants?",
+    "ID": "partiesNamesDD",
+    "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -128,7 +127,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "isDiscontinuingAgainstBothDefendants",
-    "Label": " ",
+    "Label": "Is the discontinuance against all defendants?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
     "SecurityClassification": "Public",
@@ -140,6 +139,64 @@
     "Label": "Which defendant is the discontinuance against?",
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNames4",
+    "Label": "**${caseNameHmctsInternal}** \n****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isPermissionGranted",
+    "Label": "Has permission been granted by a Judge to discontinue",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SettleDiscontinueYesOrNoList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "permissionGrantedComplex",
+    "Label": "Permission granted by:",
+    "FieldType": "PermissionGrantedFields",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "permissionNotGrantedText",
+    "Label": "### Unable to discontinue this claim \n To discontinue this claim you need to get permission from the court.\n Click cancel to return to the case summary screen and select 'Make\n an application' from the next steps menu and select 'Other'",
+    "FieldType": "Label",
+    "SecurityClassification":"Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partiesNamesTD",
+    "Label": "**${caseNameHmctsInternal}** \n****",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "typeOfDiscontinuance",
+    "Label": "Is this a full or part discontinuance?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "DiscontinuanceTypeList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "partDiscontinuanceDetails",
+    "Label": "Which part of the claim do you want to discontinue?",
+    "FieldType": "TextArea",
+    "SecurityClassification":"Public",
     "Searchable": "N"
   }
 ]
