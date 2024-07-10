@@ -13,6 +13,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_SETTLED",
+    "UserRoles": [
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISCONTINUED",
     "AccessControl": [
       {
