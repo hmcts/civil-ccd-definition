@@ -16,7 +16,7 @@ module.exports = {
       case 'NO': {
         data.userInput = {
           ValidateDiscontinuance: {
-            confirmOrderGivesPermission: 'YES',
+            confirmOrderGivesPermission: 'NO',
             permissionGrantedDateCopy: '2024-08-04',
             permissionGrantedJudgeCopy: 'Judge name'
           }

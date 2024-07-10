@@ -54,7 +54,7 @@ Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec
     let mpScenario = 'ONE_V_TWO';
     let permission = 'YES';
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, 'ONE_V_TWO_P_NEEDED');
     await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
   }
 });
@@ -64,7 +64,7 @@ Scenario('Validate discontinue claim claimant 1v2 negative scenario', async ({I,
     let mpScenario = 'ONE_V_TWO';
     let permission = 'NO';
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, 'ONE_V_TWO_P_NEEDED');
     await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
   }
 });
