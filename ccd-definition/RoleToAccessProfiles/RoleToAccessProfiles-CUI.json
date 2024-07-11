@@ -25,14 +25,5 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": "SPEC_CLAIM"
-  },
-  {
-    "RoleName" : "idam:caseworker-civil-citizen-ui-pcqextractor",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL",
-    "AccessProfiles": "caseworker-civil-citizen-ui-pcqextractor",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": "SPEC_CLAIM"
   }
 ]
