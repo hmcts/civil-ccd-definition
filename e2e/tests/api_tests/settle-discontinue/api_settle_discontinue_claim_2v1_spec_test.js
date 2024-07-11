@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
-// To use on local because the idam images are different
+// To use on local because the idam images are different:
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
@@ -36,6 +36,36 @@ Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+  }
+});
+
+Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_ONE';
+    let permission = 'YES';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
+  }
+});
+
+Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_TWO';
+    let permission = 'YES';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, 'ONE_V_TWO_P_NEEDED');
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
+  }
+});
+
+Scenario('Validate discontinue claim claimant 1v2 negative scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_TWO';
+    let permission = 'NO';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, 'ONE_V_TWO_P_NEEDED');
+    await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
   }
 });
 

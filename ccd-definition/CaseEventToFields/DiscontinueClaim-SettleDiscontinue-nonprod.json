@@ -65,7 +65,7 @@
     "CaseFieldID": "claimantsConsentToDiscontinuance",
     "PageID": "ClaimantConsent",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "selectedClaimantForDiscontinuance != \"Both\""
