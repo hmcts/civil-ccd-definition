@@ -1995,7 +1995,6 @@
     "CaseFieldID": "caseManagementLocation",
     "ListElementCode": "region",
     "ElementLabel": "Region",
-    "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
   },
   {
@@ -2005,7 +2004,6 @@
     "ListElementCode": "baseLocation",
     "ElementLabel": "Base Location",
     "FieldType": "Text",
-    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   }
 ]

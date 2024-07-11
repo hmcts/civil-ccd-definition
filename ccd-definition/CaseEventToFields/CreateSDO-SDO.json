@@ -34,7 +34,8 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "N",
-    "CaseEventFieldLabel": " "
+    "FieldShowCondition": "drawDirectionsOrderRequired=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
