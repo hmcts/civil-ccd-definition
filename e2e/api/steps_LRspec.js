@@ -37,6 +37,7 @@ const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplic
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const discontinueClaim2v1Spec = require('../fixtures/events/discontinueClaim2v1Spec');
+const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
@@ -85,6 +86,7 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaim2v1Spec.discontinueClaim(mpScenario),
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
 };
 
 const eventData = {
@@ -1669,13 +1671,54 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-    //TODO: Check the correct final submit state for discontinue claim
-    /*await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', {
-      header: '### Request is being reviewed',
-      body: ''
-    }, true);*/
-
+   if (mpScenario === 'TWO_V_ONE') {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        body: ''
+      }, true);
+    } else if (mpScenario === 'ONE_V_TWO') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Your claim has been discontinued',
+        body: ''
+      }, true);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Your request is being reviewed',
+        body: ''
+      }, true);
+    }
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  validateDiscontinueClaimClaimant: async (user, permission) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT(permission);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (permission === 'YES') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Information successfully validated',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Unable to validate information',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    }
   }
 };
 
