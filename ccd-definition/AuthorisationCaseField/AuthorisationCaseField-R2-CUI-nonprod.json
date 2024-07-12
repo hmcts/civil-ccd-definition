@@ -2427,7 +2427,10 @@
       {
         "UserRoles": [
          "citizen-profile",
-         "CITIZEN-CLAIMANT-PROFILE"
+         "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil",
+          "caseworker-civil-admin"
+
         ],
         "CRUD": "CRU"
       },
