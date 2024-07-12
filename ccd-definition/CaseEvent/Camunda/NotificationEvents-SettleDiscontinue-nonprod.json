@@ -24,6 +24,18 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "NOTIFY_VALIDATION_FAILURE_CLAIMANT",
+    "Name": "Notify Validation Failure Claimant",
+    "Description": "Notify Validation Failure Claimant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
-
 ]
