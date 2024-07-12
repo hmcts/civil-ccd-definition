@@ -450,7 +450,8 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil"
+          "caseworker-civil",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
