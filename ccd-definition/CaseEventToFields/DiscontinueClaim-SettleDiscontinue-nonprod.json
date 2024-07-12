@@ -233,7 +233,7 @@
     "PageFieldDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
   },
   {
