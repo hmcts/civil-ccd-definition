@@ -65,7 +65,7 @@
     "CaseFieldID": "claimantsConsentToDiscontinuance",
     "PageID": "ClaimantConsent",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "selectedClaimantForDiscontinuance != \"Both\""
@@ -92,7 +92,7 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID":"CIVIL",
@@ -221,7 +221,7 @@
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -233,7 +233,7 @@
     "PageFieldDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
   },
   {
