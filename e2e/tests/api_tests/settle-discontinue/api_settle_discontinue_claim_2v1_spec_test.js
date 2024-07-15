@@ -69,6 +69,14 @@ Scenario('Validate discontinue claim claimant 1v2 negative scenario', async ({I,
   }
 });
 
+Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_ONE';
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+  }
+});
+
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });
