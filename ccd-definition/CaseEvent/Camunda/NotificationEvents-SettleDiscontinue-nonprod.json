@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_VALIDATION_FAILURE_CLAIMANT",
-    "Name": "Notify Validation Failure Claimant",
+    "Name": "Notify Validation Failure",
     "Description": "Notify Validation Failure Claimant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
