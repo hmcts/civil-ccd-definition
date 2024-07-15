@@ -2429,6 +2429,7 @@
          "citizen-profile",
          "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil",
+          "caseworker-civil-staff",
           "caseworker-civil-admin"
 
         ],
