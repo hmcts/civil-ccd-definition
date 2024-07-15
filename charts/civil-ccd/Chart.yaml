@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.44
+version: 0.0.45
 maintainers:
   - name: HMCTS Civil team
 
@@ -39,7 +39,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
-    version: 1.0.6
+    version: 1.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 # WA
