@@ -98,7 +98,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_VALIDATION_FAILURE_CLAIMANT",
+    "CaseEventID": "NOTIFY_CLAIMANT_LR_VALIDATION_DICONTINUANCE_FAILURE",
     "AccessControl": [
       {
         "UserRoles": [

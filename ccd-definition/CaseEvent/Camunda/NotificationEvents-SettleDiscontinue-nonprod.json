@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_VALIDATION_FAILURE_CLAIMANT",
+    "ID": "NOTIFY_CLAIMANT_LR_VALIDATION_DICONTINUANCE_FAILURE",
     "Name": "Notify Validation Failure",
     "Description": "Notify Validation Failure Claimant",
     "PreConditionState(s)": "*",
