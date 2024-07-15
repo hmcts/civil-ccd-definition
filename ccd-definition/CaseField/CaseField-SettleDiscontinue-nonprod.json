@@ -239,5 +239,13 @@
     "FieldTypeParameter": "ConfirmOrderGivesPermission",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "noticeOfDiscontinue",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
