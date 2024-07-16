@@ -1988,5 +1988,22 @@
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CaseLocationCivil",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "caseManagementLocation",
+    "ListElementCode": "region",
+    "ElementLabel": "Region",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CaseLocationCivil",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "caseManagementLocation",
+    "ListElementCode": "baseLocation",
+    "ElementLabel": "Base Location",
+    "FieldType": "Text",
+    "DisplayContext": "OPTIONAL"
   }
 ]
