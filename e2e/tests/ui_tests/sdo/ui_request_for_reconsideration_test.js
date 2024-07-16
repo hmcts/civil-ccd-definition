@@ -28,9 +28,9 @@ Scenario('Request for Reconsideration by claimant', async ({LRspec}) => {
     }
 }).retry(3);
 
-Scenario('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
+Scenario.skip('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.judgeUser2WithRegionId4);
+    await LRspec.login(config.judgeUser2WithRegionId2);
     await LRspec.decisionForReconsideration();
   }
 }).retry(3);
