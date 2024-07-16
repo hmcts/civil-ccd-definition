@@ -242,7 +242,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "noticeOfDiscontinue",
+    "ID": "noticeOfDiscontinueCWDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "noticeOfDiscontinueAllParitiesDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",

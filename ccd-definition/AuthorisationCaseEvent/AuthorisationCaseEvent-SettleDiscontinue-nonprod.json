@@ -39,10 +39,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -105,9 +102,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
