@@ -76,6 +76,7 @@
     "CaseFieldID": "partiesNames3",
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
+    "PageShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -89,10 +90,11 @@
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimantsConsentToDiscontinuance !=\"No\""
   },
   {
     "CaseTypeID":"CIVIL",
@@ -101,7 +103,7 @@
     "PageID":"CourtPermission",
     "PageLabel":"Permission from the court",
     "PageDisplayOrder":3,
-    "PageFieldDisplayOrder":4,
+    "PageFieldDisplayOrder":3,
     "PageColumnNumber":1,
     "DisplayContext":"READONLY",
     "ShowSummaryChangeOption":"N",
@@ -115,7 +117,7 @@
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
     "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N",
@@ -133,7 +135,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "courtPermissionNeeded = \"YES\""
+    "PageShowCondition": "courtPermissionNeeded = \"YES\" OR (courtPermissionNeeded != \"YES\" AND claimantsConsentToDiscontinuance =\"No\")"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -142,7 +144,7 @@
     "PageID": "PermissionGranted",
     "PageLabel": "Permission granted by the court",
     "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
@@ -155,7 +157,7 @@
     "PageID": "PermissionGranted",
     "PageLabel": "Permission granted by the court",
     "PageDisplayOrder": 4,
-    "PageFieldDisplayOrder": 4,
+    "PageFieldDisplayOrder": 3,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
@@ -168,7 +170,7 @@
     "PageID":"PermissionGranted",
     "PageLabel":"Permission granted by the court",
     "PageDisplayOrder":4,
-    "PageFieldDisplayOrder":5,
+    "PageFieldDisplayOrder":4,
     "PageColumnNumber":1,
     "DisplayContext":"READONLY",
     "ShowSummaryChangeOption":"N",
@@ -233,7 +235,7 @@
     "PageFieldDisplayOrder": 5,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "N",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "isDiscontinuingAgainstBothDefendants=\"NO\""
   },
   {
