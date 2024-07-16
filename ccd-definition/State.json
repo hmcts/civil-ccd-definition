@@ -117,5 +117,12 @@
     "Name": "Closed",
     "Description": "Closed",
     "DisplayOrder": 17
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "CASE_DISCONTINUED",
+    "Name": "Case Discontinued",
+    "Description": "Case Discontinued",
+    "DisplayOrder": 18
   }
 ]
