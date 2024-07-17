@@ -2427,7 +2427,11 @@
       {
         "UserRoles": [
          "citizen-profile",
-         "CITIZEN-CLAIMANT-PROFILE"
+         "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil",
+          "caseworker-civil-staff",
+          "caseworker-civil-admin"
+
         ],
         "CRUD": "CRU"
       },
@@ -2644,6 +2648,19 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "activeJudgment",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
