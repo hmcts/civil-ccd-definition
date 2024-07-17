@@ -1,8 +1,8 @@
 [
   {
-    "ID": "MarkPaidConsent",
-    "ListElementCode": "CONFIRM",
-    "ListElement": "I confirm that claim is paid in full by the claimant",
+    "ID": "MarkPaidConsentList",
+    "ListElementCode": "YES",
+    "ListElement": "Yes",
     "DisplayOrder": 1
   }
 ]

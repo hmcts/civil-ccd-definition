@@ -22,7 +22,7 @@
     "Label": "PCQ id",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -72,15 +72,6 @@
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingHelpFeesReferenceNumber",
-    "Label": " ",
-    "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",

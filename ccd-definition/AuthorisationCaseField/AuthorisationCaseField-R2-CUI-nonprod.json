@@ -1678,18 +1678,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "nextHearingDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentResponseIsSame",
     "AccessControl": [
       {
@@ -2439,7 +2427,11 @@
       {
         "UserRoles": [
          "citizen-profile",
-         "CITIZEN-CLAIMANT-PROFILE"
+         "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil",
+          "caseworker-civil-staff",
+          "caseworker-civil-admin"
+
         ],
         "CRUD": "CRU"
       },
@@ -2556,26 +2548,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile",
-          "cui-admin-profile"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1JudgmentByDeterminationForm",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CR"
@@ -2611,12 +2583,6 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseBundles",
-    "UserRole": "CITIZEN-CLAIMANT-PROFILE",
-    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -2682,6 +2648,19 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "activeJudgment",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
+          "citizen-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }

@@ -24,33 +24,12 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "FULL_REMISSION_HWF",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "FullRemissionHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "FieldShowCondition": "caseTitleWithHWFHearingNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "FULL_REMISSION_HWF",
     "CaseFieldID": "claimIssuedHwfDetails",
     "DisplayContext": "READONLY",
     "PageID": "FullRemissionHWF",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
-    "FieldShowCondition": "caseTitleWithHWFHearingNumber=\"DO_NOT_SHOW_IN_UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "FULL_REMISSION_HWF",
-    "CaseFieldID": "hearingHwfDetails",
-    "DisplayContext": "READONLY",
-    "PageID": "FullRemissionHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "FieldShowCondition": "caseTitleWithHWFHearingNumber=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -61,17 +40,6 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "FULL_REMISSION_HWF",
-    "CaseFieldID": "caseTitleWithHWFHearingNumber",
-    "DisplayContext": "READONLY",
-    "PageID": "FullRemissionHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "FieldShowCondition": "hwfFeeType = \"HEARING\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -92,15 +60,5 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 4,
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "FULL_REMISSION_HWF",
-    "CaseFieldID": "hearingFeeLabel",
-    "DisplayContext": "READONLY",
-    "PageID": "FullRemissionHWF",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 4,
-    "FieldShowCondition": "hwfFeeType=\"HEARING\""
   }
 ]

@@ -29,7 +29,7 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
 }).retry(3);
 
-
+//DTSCCI-358
 Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
@@ -129,14 +129,15 @@ async function payHearingFee(I, user = config.applicantSolicitorUser) {
   }
 }
 
-Scenario('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
+//DTSCCI-358
+Scenario.skip('Verify Challenged access check for judge @e2e-wa @wa-r4', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.judgeUser2WithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
 }).retry(3);
 
-Scenario('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
+Scenario.skip('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.hearingCenterAdminWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);

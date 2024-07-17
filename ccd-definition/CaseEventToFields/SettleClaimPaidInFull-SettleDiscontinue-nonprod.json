@@ -39,32 +39,21 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "CaseFieldID": "markPaidForAllClaimants",
-    "PageID": "ClaimantDetails",
+    "PageID": "MultipleClaimant",
     "PageLabel": "Which claimants are settling",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0,
-    "FieldShowCondition": "addApplicant2=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
-    "CaseFieldID": "markPaidConsent",
-    "DisplayContext": "MANDATORY",
-    "PageID": "ClaimantDetails",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "addApplicant2 = \"No\""
+    "Publish": "Y",
+    "PageShowCondition": "addApplicant2=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "CaseFieldID": "claimantWhoIsSettling",
-    "PageID": "ClaimantDetails",
+    "PageID": "MultipleClaimant",
     "PageLabel": "Which claimants are settling",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
@@ -72,5 +61,31 @@
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0,
     "FieldShowCondition": "markPaidForAllClaimants = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
+    "CaseFieldID": "markPaidConsent",
+    "DisplayContext": "MANDATORY",
+    "PageID": "SingleClaimant",
+    "PageLabel": "Confirm marking as paid in full",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "addApplicant2 = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
+    "CaseFieldID": "hearingDate",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "OptionsForSettlement",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "markPaidForAllClaimants=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
   }
 ]

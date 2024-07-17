@@ -156,8 +156,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -258,8 +257,7 @@
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
@@ -326,8 +324,7 @@
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },

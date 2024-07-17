@@ -61,16 +61,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "APPLY_HELP_WITH_HEARING_FEE",
-    "CaseFieldID": "hearingHelpFeesReferenceNumber",
-    "PageFieldDisplayOrder": 7,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 2,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 8,

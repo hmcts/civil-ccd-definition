@@ -52,12 +52,15 @@ Scenario('1v1 spec small create SDO for DRH - CARM enabled', async ({api_spec_sm
 });
 
 Scenario('1v1 spec small create SDO for DRH - CARM disabled', async ({api_spec_small}) => {
-  await prepareClaim1v1(api_spec_small, false);
-  await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
-  await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
-  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL_DRH', false);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaim1v1(api_spec_small, false);
+    await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
+    await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
+    await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL_DRH', false);
+  }
 });
 
-AfterSuite(async ({api}) => {
+AfterSuite(async ({api, api_spec_small}) => {
   await api.cleanUp();
+  await api_spec_small.cleanUp();
 });

@@ -105,9 +105,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "GEN_JUDGMENT_BY_ADMISSION_DOC",
-    "Name": "Gen Judgment By Admission",
-    "Description": "Gen Judgment By Admission Letter to LiP Defendant 1",
+    "ID": "GEN_JUDGMENT_BY_ADMISSION_DOC_CLAIMANT",
+    "Name": "Claimant judgment admission",
+    "Description": "Generate Judgment by admission doc",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -115,5 +115,44 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_DEFENDANT",
+    "Name": "Judgment by determination res",
+    "Description": "Gen Judgment By determination defendant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_CLAIMANT",
+    "Name": "Judgment by determination app",
+    "Description": "Gen Judgment By determination claimant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "ID": "GEN_JUDGMENT_BY_ADMISSION_DOC_DEFENDANT",
+  "Name": "Defendant Judgment admission",
+  "Description": "Generate Judgment by admission doc",
+  "PreConditionState(s)": "*",
+  "PostConditionState": "*",
+  "SecurityClassification": "Public",
+  "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+  "ShowSummary": "N",
+  "ShowEventNotes": "N",
+  "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]

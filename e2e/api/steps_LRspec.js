@@ -35,6 +35,9 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
+const discontinueClaim2v1Spec = require('../fixtures/events/discontinueClaim2v1Spec');
+const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
@@ -49,7 +52,7 @@ const data = {
   DEFENDANT_RESPONSE_MULTI_CLAIM: (response, camundaEvent) => require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_MULTI_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseMultiClaimSpec.js').respondToClaim2(response, camundaEvent),
-  DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js.js').respondToClaim2(response, camundaEvent),
+  DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM_SECOND_SOL: (response, camundaEvent) => require('../fixtures/events/defendantResponseIntermediateClaimSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec.js').respondToClaim2(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_1v2_Mediation: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2Mediation.js').respondToClaim(response, camundaEvent),
@@ -79,7 +82,11 @@ const data = {
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
-  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived()
+  REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
+  SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
+  SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
+  DISCONTINUE_CLAIM: (mpScenario) => discontinueClaim2v1Spec.discontinueClaim(mpScenario),
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
 };
 
 const eventData = {
@@ -949,9 +956,7 @@ module.exports = {
 
     console.log(`${response} ${scenario}`);
 
-    for (let pageId of Object.keys(defendantResponseData.userInput)) {
-      await assertValidData(defendantResponseData, pageId);
-    }
+    await validateEventPages(defendantResponseData);
 
     switch (scenario) {
       case 'ONE_V_ONE_DIF_SOL':
@@ -1014,9 +1019,7 @@ module.exports = {
 
     let claimantResponseData = eventData['claimantResponses'][scenario][response];
 
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidData(claimantResponseData, pageId);
-    }
+    await validateEventPages(claimantResponseData);
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
     if (response === 'FULL_DEFENCE') {
@@ -1612,6 +1615,110 @@ module.exports = {
       body: ''
     }, true);
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  settleClaim: async (user, addApplicant2) => {
+    console.log('settleClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL(addApplicant2));
+
+    await assertSubmittedEvent('CLOSED', {
+      header: '### The claim has been marked as paid in full',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  settleClaimSelectClaimant: async (user, addApplicant2) => {
+    console.log('settleClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SETTLE_CLAIM_MARK_PAID_FULL';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT(addApplicant2));
+
+    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+      header: '### Request is being reviewed',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  discontinueClaim: async (user, mpScenario) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.DISCONTINUE_CLAIM(mpScenario);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+   if (mpScenario === 'TWO_V_ONE') {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        body: ''
+      }, true);
+    } else if (mpScenario === 'ONE_V_TWO') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Your claim has been discontinued',
+        body: ''
+      }, true);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Your request is being reviewed',
+        body: ''
+      }, true);
+    }
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  validateDiscontinueClaimClaimant: async (user, permission) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT(permission);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (permission === 'YES') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Information successfully validated',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Unable to validate information',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    }
   }
 };
 
@@ -1848,6 +1955,34 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
   }
 };
 
+const assertValidDataSettleClaim = async (data, pageId) => {
+  console.log(`asserting page: ${pageId} has valid data`);
+  caseData = data.userInput[pageId];
+
+  const response = await apiRequest.validatePage(
+    eventName,
+    pageId,
+    caseData,
+    caseId
+  );
+  let responseBody = await response.json();
+  responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
+
+  assert.equal(response.status, 200);
+  assert.equal(response.status, 200);
+
+  if (data.midEventData && data.midEventData[pageId]) {
+    checkExpected(responseBody.data, data.midEventData[pageId]);
+  }
+
+  if (data.midEventGeneratedData && data.midEventGeneratedData[pageId]) {
+    checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
+  }
+
+  caseData = update(caseData, responseBody.data);
+
+};
+
 // Mid event will not return case fields that were already filled in another event if they're present on currently processed event.
 // This happens until these case fields are set again as a part of current event (note that this data is not removed from the case).
 // Therefore these case fields need to be removed from caseData, as caseData object is used to make assertions
@@ -1877,12 +2012,19 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.userInput)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
-    await assertValidData(data, pageId, solicitor);
+    if (pageId === 'OptionsForSettlement' || pageId === 'ClaimantDetails'){
+      await assertValidDataSettleClaim(data, pageId);
+    } if (pageId === 'MultipleClaimant' || pageId === 'ClaimantConsent'){
+      await assertValidDataSettleClaim(data, pageId);
+    } else {
+      // data = await updateCaseDataWithPlaceholders(data);
+      await assertValidData(data, pageId, solicitor);
+    }
+
   }
 };
 
