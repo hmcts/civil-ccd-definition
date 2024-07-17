@@ -58,6 +58,7 @@
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
+    "PageShowCondition": "reasonForReconsiderationSeparator=\"DO NOT SHOW IN UI\"",
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
