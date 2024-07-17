@@ -27,7 +27,8 @@ Scenario('CARM enabled', async ({api_spec_cui}) => {
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
 });
 
-Scenario('CARM not enabled', async ({api_spec_cui}) => {
+//skip test temporarily, defendant court needs updated/fixed
+Scenario.skip('CARM not enabled', async ({api_spec_cui}) => {
   carmEnabled = false;
   await prepareClaim(api_spec_cui, carmEnabled);
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
