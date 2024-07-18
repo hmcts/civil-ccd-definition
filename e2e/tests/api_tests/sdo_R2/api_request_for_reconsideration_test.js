@@ -1,7 +1,6 @@
 const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
-//const judgeUser = config.judgeUserWithRegionId1Local;
 const judgeUserReg2 = config.judgeUser2WithRegionId2;
 const judgeUserForFastClaim = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
@@ -26,7 +25,7 @@ Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser, 'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_SDO');
     // Create a new SDO again
-    await api_spec_small.createSDO(judgeUser, 'CREATE_SMALL_NO_SUM');
+    await api_spec_small.createSDO(judgeUserReg2, 'CREATE_SMALL_NO_SUM');
 });
 
 Scenario('1v1 spec request for reconsideration for create general order', async ({api_spec_small}) => {
