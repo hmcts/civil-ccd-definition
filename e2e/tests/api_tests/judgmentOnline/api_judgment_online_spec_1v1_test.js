@@ -28,7 +28,7 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
 
-Scenario.skip('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
@@ -39,7 +39,7 @@ Scenario.skip('SetAside Default Judgment after judgment error - Spec claim 1v1 -
   }
 });
 
-Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
+Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
@@ -48,7 +48,7 @@ Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I
   }
 });
 
-Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
+Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     console.log('--referToJudgeDefenceReceived--');
@@ -56,7 +56,7 @@ Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({
   }
 });
 
-Scenario.skip('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
+Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
