@@ -83,6 +83,31 @@ module.exports = {
         };
       }
         break;
+      case 'ONE_V_TWO_P_NEEDED': {
+        data.userInput = {
+          courtPermission: {
+            courtPermissionNeeded: 'YES',
+            courtPermissionNeededChecked: [
+              'CourtPermissionNeededChecked'
+            ]
+          },
+          PermissionGranted: {
+            isPermissionGranted:'YES',
+            permissionGrantedComplex:{
+              permissionGrantedJudge:'test',
+              permissionGrantedDate:'2023-02-01'
+            }
+          },
+          DiscontinuingAgainstDefendants: {
+            respondent2Represented: 'Yes',
+            isDiscontinuingAgainstBothDefendants: 'YES',
+          },
+          DiscontinuanceType: {
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE'
+          }
+        };
+      }
+        break;
     }
     return data;
   }
