@@ -51,6 +51,7 @@ module.exports = {
   admin: {
     CASE_ISSUED: [
       events.CASE_PROCEEDS_IN_CASEMAN,
+      events.TRANSFER_ONLINE_CASE,
       events.AMEND_PARTY_DETAILS,
       events.ADD_CASE_NOTE
     ],

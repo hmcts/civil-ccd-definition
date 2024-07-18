@@ -178,5 +178,11 @@ module.exports = {
     name: 'Reset Pin',
     description: 'Reset Pin for case',
     order: 7
+  },
+  TRANSFER_ONLINE_CASE: {
+    id: 'TRANSFER_ONLINE_CASE',
+    name: 'Transfer online case',
+    description: 'Transfer online case',
+    order: 1
   }
 };
