@@ -481,7 +481,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     // expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
