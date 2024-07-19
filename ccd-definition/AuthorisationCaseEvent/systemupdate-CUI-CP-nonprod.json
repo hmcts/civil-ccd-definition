@@ -166,5 +166,17 @@
     "CaseEventID": "NOTIFY_DEFENDANT_UPLOADED_DOCUMENT_ORDER_NOTICE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_TRANSLATED_ORDER_TO_LIP_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_TRANSLATED_ORDER_TO_LIP_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
