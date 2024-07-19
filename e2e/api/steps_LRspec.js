@@ -40,9 +40,6 @@ const discontinueClaim2v1Spec = require('../fixtures/events/discontinueClaim2v1S
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
-const defendantResponse = require('../fixtures/events/cui/defendantResponseCui');
-const claimDataSpecSmallLRvLiP = require('../fixtures/events/cui/createClaimSpecSmallCui');
-const claimDataSpecFastLRvLiP = require('../fixtures/events/cui/createClaimSpecFastTrackCui');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -90,8 +87,6 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaim2v1Spec.discontinueClaim(mpScenario),
   VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
-  CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
-  CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
 };
 
 const eventData = {
@@ -1692,94 +1687,6 @@ module.exports = {
         body: ''
       }, true);
     }
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-  createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
-    console.log(' Creating specified claim');
-    eventName = 'CREATE_CLAIM_SPEC';
-    caseId = null;
-    caseData = {};
-    let createClaimSpecData;
-    if (claimType === 'FastTrack') {
-      console.log('Creating FastTrack claim...');
-      createClaimSpecData = data.CREATE_SPEC_CLAIM_FASTTRACK(multipartyScenario);
-    } else {
-      console.log('Creating small claims...');
-      createClaimSpecData = data.CREATE_SPEC_CLAIM(multipartyScenario);
-    }
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName);
-    for (let pageId of Object.keys(createClaimSpecData.userInput)) {
-      await assertValidData(createClaimSpecData, pageId);
-    }
-
-    await assertSubmittedEvent('PENDING_CASE_ISSUED');
-    await waitForFinishedBusinessProcess(caseId);
-
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
-    await waitForFinishedBusinessProcess(caseId);
-    if (claimType !== 'pinInPost') {
-      await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
-    }
-
-    //field is deleted in about to submit callback
-    deleteCaseFields('applicantSolicitor1CheckEmail');
-
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-
-    return caseId;
-  },
-
-  performCitizenDefendantResponse: async (user, caseId, claimType = 'SmallClaims', carmEnabled = false, typeOfResponse = '') => {
-    let eventName = 'DEFENDANT_RESPONSE_CUI';
-    let payload = {};
-    if (claimType === 'FastTrack') {
-      console.log('FastTrack claim...');
-      payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
-    } else {
-      console.log('SmallClaim...');
-      payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
-    }
-    //console.log('The payload : ' + payload);
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEventForCitizen(eventName, caseId, payload);
-    await waitForFinishedBusinessProcess(caseId);
-  },
-
-
-  claimantResponseLRvLIP: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', freeMediation = 'Yes',
-                           expectedCcdState, carmEnabled = false) => {
-    // workaround
-    deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
-    deleteCaseFields('respondentResponseIsSame');
-
-    await apiRequest.setupTokens(user);
-
-    eventName = 'CLAIMANT_RESPONSE_SPEC';
-    caseData = await apiRequest.startEvent(eventName, caseId);
-
-    if (carmEnabled) {
-      response = 'FULL_DEFENCE_CITIZEN_DEFENDANT_MEDIATION';
-    }
-
-    let claimantResponseData = eventData['claimantResponses'][scenario][response][freeMediation];
-
-    for (let pageId of Object.keys(claimantResponseData.userInput)) {
-      await assertValidData(claimantResponseData, pageId);
-    }
-
-
-    let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
-
-    await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
-
     await waitForFinishedBusinessProcess(caseId);
   },
 
