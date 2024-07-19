@@ -4,6 +4,7 @@ const config = require('../../../config.js');
 
 let mediationAdminRegion1 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId1;
 let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
+let mediationAdminRegion2 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId2;
 
 Feature('Spec small claims mediation API test @api-spec-mediation');
 
@@ -57,7 +58,7 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM enabled',
 
 Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await prepareClaim1v2SameSol(api_spec, true);
-  await api_spec.mediationUnsuccessful(mediationAdminRegion1, true);
+  await api_spec.mediationUnsuccessful(mediationAdminRegion2, true);
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser );
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
 });
@@ -71,7 +72,7 @@ Scenario('1v2 different solicitor claimant and defendant upload mediation docume
 
 Scenario('1v2 different solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await prepareClaim1v2DiffSol(api_spec, true);
-  await api_spec.mediationUnsuccessful(mediationAdminRegion1, true);
+  await api_spec.mediationUnsuccessful(mediationAdminRegion2, true);
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
