@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 
 const config = require('../../../config.js');
-const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
+//const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different:
-// const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
+ const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
+
+const claimType = 'SmallClaims';
+let caseId;
 
 Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
 Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
@@ -73,6 +76,21 @@ Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     let mpScenario = 'ONE_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+    await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
+  }
+});
+
+async function prepareClaimLRvLiPExui(api_spec, carmEnabled) {
+  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
+  caseId = await api_spec.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
+  await api_spec.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
+  await api_spec.claimantResponseLRvLIP(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
+}
+
+Scenario.only('Discontinue claim 1v1 LRvLip scenario', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    let mpScenario = 'ONE_V_ONE_NO_P_NEEDED';
+    await prepareClaimLRvLiPExui(api_spec, false);
     await api_spec.discontinueClaim(config.applicantSolicitorUser, mpScenario);
   }
 });
