@@ -90,14 +90,14 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "judge-profile"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil"
+          "caseworker-civil",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
