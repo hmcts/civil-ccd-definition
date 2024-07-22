@@ -2,7 +2,7 @@
 
 Civil CCD Definition and E2E tests
 
-### Contents:
+### Contents: 
 
 - [Building and deploying application](#building-and-deploying-the-application)
 - [Testing](#testing)
@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR 
+Below labels are needed on the PR
 
 ```
 
@@ -44,7 +44,7 @@ Below labels are needed on the PR
   "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
 
   "pr-values:enableWA" label to verify work allocation task
-  
+
 ```
 
 Running Crossbrowser tests:
