@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
+    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
     "AccessControl": [
       {
         "UserRoles": [
