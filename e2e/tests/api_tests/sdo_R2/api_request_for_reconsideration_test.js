@@ -63,7 +63,7 @@ Scenario.skip('1v1 spec request for reconsideration for create a new SDO ', asyn
     await api_spec_small.notSuitableSdoChangeLocation(judgeUserReg2, 'CHANGE_LOCATION');
 });
 
-AfterSuite(async ({api_spec_small, api_spec}) => {
-  await api_spec_small.cleanUp();
-  await api_spec.cleanUp();
-});
+// AfterSuite(async ({api_spec_small, api_spec}) => {
+//   await api_spec_small.cleanUp();
+//   await api_spec.cleanUp();
+// });
