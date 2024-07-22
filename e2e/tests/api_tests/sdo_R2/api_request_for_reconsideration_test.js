@@ -10,16 +10,16 @@ await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFE
 await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 }
 
-Feature('Request for reconsideration - 1v1 - spec @api-specified @api-nightly-prod @api-r2-sdo');
+Feature('Request for reconsideration - 1v1 - spec @cui-carm @api-nonprod @api-specified @api-nightly-prod @api-r2-sdo');
 
-Scenario('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.applicantSolicitorUser, 'Applicant');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'YES');
 });
 
-Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec request for reconsideration for create new SDO', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser, 'Respondent1');
@@ -28,14 +28,14 @@ Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_
     await api_spec_small.createSDO(judgeUserReg2, 'CREATE_SMALL_NO_SUM');
 });
 
-Scenario('1v1 spec request for reconsideration for create general order', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec request for reconsideration for create general order', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_GENERAL_ORDER');
 });
 
-Scenario.only('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
+Scenario('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
     await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_TWO_DIF_SOL',true);
     await api_spec_small.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_TWO_DIF_SOL',true);
@@ -43,7 +43,7 @@ Scenario.only('1v2 spec request for reconsideration by defendant2 for create gen
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.secondDefendantSolicitorUser,'Respondent2');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_GENERAL_ORDER');
-}).tag('@api-prod');
+});
 
 Scenario.skip('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
@@ -55,7 +55,7 @@ Scenario.skip('1v1 spec request for reconsideration when claim amount is greater
     await api_spec.requestForReconsideration(config.defendantSolicitorUser);
 });
 
-Scenario('1v1 spec request for reconsideration for create a new SDO ', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec request for reconsideration for create a new SDO ', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
