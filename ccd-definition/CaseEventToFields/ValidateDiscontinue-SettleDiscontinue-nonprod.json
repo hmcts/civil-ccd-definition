@@ -70,7 +70,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -83,7 +84,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -96,7 +98,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -109,7 +112,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -122,6 +126,21 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "hearingDate",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder":11,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition":"confirmOrderGivesPermission=\"DO NOT SHOW ON UI\"",
+    "Publish": "Y"
   }
 ]
