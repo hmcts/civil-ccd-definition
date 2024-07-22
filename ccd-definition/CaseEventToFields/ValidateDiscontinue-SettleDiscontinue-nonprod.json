@@ -58,5 +58,70 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "selectedClaimantForDiscontinuance",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 6,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "courtPermissionNeeded",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 7,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "confirmOrderGivesPermission",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 8,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "typeOfDiscontinuance",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 9,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
+    "PageID": "ValidateDiscontinuance",
+    "PageLabel": "Validate order information",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "confirmOrderGivesPermission = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
