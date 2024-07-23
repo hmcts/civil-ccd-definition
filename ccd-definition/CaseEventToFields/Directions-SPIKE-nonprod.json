@@ -1,0 +1,70 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "directionsCreationMethodLabel",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "CreateDirectionsMethod",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/create-directions-template"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "directionsCreationMethod",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "CreateDirectionsMethod",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/create-directions-template"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "judgeDraftDirectionsLabel",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "DownloadDraftDirections",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "judgeDraftDirections",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "DownloadDraftDirections",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "judgeDirectionsLabel",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "UploadDirections",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "judgeDirections",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "UploadDirections",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

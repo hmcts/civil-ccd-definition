@@ -1,0 +1,52 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionsCreationMethodLabel",
+    "Label": "## How do you want to create/provide the directions?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "directionsCreationMethod",
+    "Label": "Select documents to be added to template",
+    "FieldType": "DynamicMultiSelectList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeDraftDirectionsLabel",
+    "Label": "## Download directions template",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeDraftDirections",
+    "Label": " ",
+    "FieldType": "Document",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeDirectionsLabel",
+    "Label": "## Upload directions",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "judgeDirections",
+    "Label": " ",
+    "HintText": "We accept documents sized 10MB or smaller, in these formats: .docx",
+    "FieldType": "Document",
+    "RegularExpression": ".docx",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
