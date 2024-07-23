@@ -57,7 +57,8 @@
     "PageShowCondition": "addApplicant2 = \"Yes\" AND selectedClaimantForDiscontinuance != \"Both\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "partiesNames = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "partiesNames = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -94,7 +95,8 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimantsConsentToDiscontinuance !=\"No\""
+    "FieldShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID":"CIVIL",
@@ -223,7 +225,8 @@
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -260,7 +263,8 @@
     "PageFieldDisplayOrder":2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID":"CIVIL",

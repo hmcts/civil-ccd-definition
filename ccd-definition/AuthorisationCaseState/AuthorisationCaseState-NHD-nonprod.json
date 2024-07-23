@@ -1,4 +1,3 @@
-
 [
   {
     "CaseTypeID": "CIVIL",
@@ -19,6 +18,54 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseStateID": "HEARING_READINESS",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "All_FINAL_ORDERS_ISSUED",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_STAYED",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_SETTLED",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_DISMISSED",
+    "UserRoles": [
+      "next-hearing-date-admin"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "next-hearing-date-admin"
     ],
