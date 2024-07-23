@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-5151'
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -53,7 +53,6 @@ civil-service:
           - name: hmc-servicebus-shared-access-key-tf
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     environment:
-      WA_TOGGLE: SD
       LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
