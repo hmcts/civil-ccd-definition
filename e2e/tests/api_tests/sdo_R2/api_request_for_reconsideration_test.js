@@ -24,7 +24,7 @@ Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser, 'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_SDO');
-    // Create a new SDO again
+    // Create a new SDO againn
     await api_spec_small.createSDO(judgeUserReg2, 'CREATE_SMALL_NO_SUM');
 });
 
