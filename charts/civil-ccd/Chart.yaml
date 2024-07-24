@@ -39,12 +39,12 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
-    version: 1.0.4
+    version: 1.0.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 # WA
   - name: wa
-    version: ~1.0.5
+    version: 1.0.6-alpha
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
 # CCD message publisher
