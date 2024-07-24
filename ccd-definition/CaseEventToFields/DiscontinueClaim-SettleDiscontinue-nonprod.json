@@ -278,5 +278,19 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption":"Y",
     "FieldShowCondition":"typeOfDiscontinuance=\"PART_DISCONTINUANCE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "hearingDate",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder":2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition":"typeOfDiscontinuance=\"DO NOT SHOW ON UI\"",
+    "Publish": "Y"
   }
 ]
