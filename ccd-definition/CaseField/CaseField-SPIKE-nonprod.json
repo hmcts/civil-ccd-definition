@@ -1,6 +1,15 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "ID": "testDocuments",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "directionsCreationMethodLabel",
     "Label": "## How do you want to create/provide the directions?",
     "FieldType": "Label",

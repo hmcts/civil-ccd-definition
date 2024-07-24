@@ -1,6 +1,18 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "testDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionsCreationMethodLabel",
     "AccessControl": [
       {
