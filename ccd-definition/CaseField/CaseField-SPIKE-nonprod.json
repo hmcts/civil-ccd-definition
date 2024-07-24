@@ -6,6 +6,7 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
     "SecurityClassification": "Public",
+    "RegularExpression": ".docx",
     "Searchable": "N"
   },
   {
