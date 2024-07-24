@@ -2,6 +2,7 @@ const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 const judgeUserReg2 = config.judgeUser2WithRegionId2;
+const judgeUserReg1 = config.judgeUserWithRegionId1;
 const judgeUserForFastClaim = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
 async function prepareClaimSpec(api_spec_small) {
@@ -35,14 +36,14 @@ Scenario('1v1 spec request for reconsideration for create general order', async 
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_GENERAL_ORDER');
 });
 
-Scenario.skip('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
+Scenario('1v2 spec request for reconsideration by defendant2 for create general order', async ({api_spec_small}) => {
     await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
     await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_TWO_DIF_SOL',true);
     await api_spec_small.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_TWO_DIF_SOL',true);
     await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.secondDefendantSolicitorUser,'Respondent2');
-    await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'CREATE_GENERAL_ORDER');
+    await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg1, 'CREATE_GENERAL_ORDER');
 }).tag('@api-prod');
 
 Scenario.skip('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
