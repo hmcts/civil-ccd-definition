@@ -22,5 +22,17 @@
     "PageShowCondition": "settleReason=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "featureToggleWA",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageShowCondition": "partiesNames = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
