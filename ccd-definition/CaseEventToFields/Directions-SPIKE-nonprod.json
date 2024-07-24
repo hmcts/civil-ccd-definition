@@ -1,11 +1,32 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "MANAGE_CONTACT_INFORMATION",
-    "CaseFieldID": "testDocuments",
-    "PageDisplayOrder": 1,
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "testDocument1",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Test Documents",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "testDocument2",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "Test Documents",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DIRECTIONS_SPIKE",
+    "CaseFieldID": "testDocument3",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
     "PageID": "Test Documents",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,

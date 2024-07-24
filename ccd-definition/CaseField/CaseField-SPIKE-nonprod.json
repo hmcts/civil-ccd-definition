@@ -1,10 +1,27 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "testDocuments",
-    "Label": " ",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "Document",
+    "ID": "testDocument1",
+    "Label": "Document 1",
+    "FieldType": "Document",
+    "SecurityClassification": "Public",
+    "RegularExpression": ".docx",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "testDocument2",
+    "Label": "Document 2",
+    "FieldType": "Document",
+    "SecurityClassification": "Public",
+    "RegularExpression": ".docx",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "testDocument3",
+    "Label": "Document 3",
+    "FieldType": "Document",
     "SecurityClassification": "Public",
     "RegularExpression": ".docx",
     "Searchable": "N"

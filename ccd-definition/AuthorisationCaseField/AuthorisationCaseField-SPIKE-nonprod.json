@@ -1,7 +1,31 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "testDocuments",
+    "CaseFieldID": "testDocument1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "testDocument2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "testDocument3",
     "AccessControl": [
       {
         "UserRoles": [
