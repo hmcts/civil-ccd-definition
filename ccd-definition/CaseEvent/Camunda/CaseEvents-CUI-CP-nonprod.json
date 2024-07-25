@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_AMEND_RESTITCH_BUNDLE",
-    "Name": "Notify Claimant",
-    "Description": "Notify Claimant",
+    "Name": "Notify Claimant Amend Bundle",
+    "Description": "Notify Claimant Amend Bundle",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -28,8 +28,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_AMEND_RESTITCH_BUNDLE",
-    "Name": "Notify Defendant",
-    "Description": "Notify Defendant",
+    "Name": "Notify Defendant Amend Bundle",
+    "Description": "Notify Defendant Amend Bundle",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
