@@ -18,7 +18,8 @@ async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled) {
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
-Scenario.only('Discontinue claim 1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled', async ({api_spec_cui}) => {
+
+Scenario('Discontinue claim 1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     let mpScenario = 'ONE_V_ONE_NO_P_NEEDED';
     await prepareClaimLRvLiPExui(api_spec_cui, false);
