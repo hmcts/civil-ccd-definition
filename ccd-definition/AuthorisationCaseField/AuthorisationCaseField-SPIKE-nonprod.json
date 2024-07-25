@@ -5,7 +5,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -17,7 +18,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
@@ -29,7 +31,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       }
