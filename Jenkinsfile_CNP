@@ -8,7 +8,7 @@ def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
 def dmnBranch = "master"
-def waStandaloneBranch = "master"
+def waStandaloneBranch = "DTSCCI-292-small-claim-damage-v1"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
