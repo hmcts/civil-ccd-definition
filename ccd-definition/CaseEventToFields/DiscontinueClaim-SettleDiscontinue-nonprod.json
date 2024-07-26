@@ -57,7 +57,8 @@
     "PageShowCondition": "addApplicant2 = \"Yes\" AND selectedClaimantForDiscontinuance != \"Both\"",
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "partiesNames = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "partiesNames = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -65,7 +66,7 @@
     "CaseFieldID": "claimantsConsentToDiscontinuance",
     "PageID": "ClaimantConsent",
     "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "selectedClaimantForDiscontinuance != \"Both\""
@@ -76,6 +77,7 @@
     "CaseFieldID": "partiesNames3",
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
+    "PageShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -92,7 +94,9 @@
     "PageFieldDisplayOrder": 2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
+    "Publish": "Y"
   },
   {
     "CaseTypeID":"CIVIL",
@@ -133,7 +137,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "courtPermissionNeeded = \"YES\""
+    "PageShowCondition": "courtPermissionNeeded = \"YES\" OR (courtPermissionNeeded != \"YES\" AND claimantsConsentToDiscontinuance =\"No\")"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -221,7 +225,8 @@
     "PageFieldDisplayOrder": 4,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -258,7 +263,8 @@
     "PageFieldDisplayOrder":2,
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID":"CIVIL",
@@ -272,5 +278,19 @@
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption":"Y",
     "FieldShowCondition":"typeOfDiscontinuance=\"PART_DISCONTINUANCE\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "hearingDate",
+    "PageID": "DiscontinuanceType",
+    "PageLabel": "Type of Discontinuance",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder":2,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition":"typeOfDiscontinuance=\"DO NOT SHOW ON UI\"",
+    "Publish": "Y"
   }
 ]

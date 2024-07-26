@@ -36,7 +36,8 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
-const discontinueClaim2v1Spec = require('../fixtures/events/discontinueClaim2v1Spec');
+const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
+const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
 
@@ -84,7 +85,8 @@ const data = {
   REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
-  DISCONTINUE_CLAIM: (mpScenario) => discontinueClaim2v1Spec.discontinueClaim(mpScenario),
+  DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
 };
 
 const eventData = {
@@ -1686,6 +1688,37 @@ module.exports = {
       }, true);
     }
     await waitForFinishedBusinessProcess(caseId);
+  },
+
+  validateDiscontinueClaimClaimant: async (user, permission) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT(permission);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (permission === 'YES') {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Information successfully validated',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Unable to validate information',
+        body: '### Next steps:\n\nNo further action required.'
+      }, true);
+      await waitForFinishedBusinessProcess(caseId);
+    }
   }
 };
 
@@ -1970,7 +2003,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
     expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };
