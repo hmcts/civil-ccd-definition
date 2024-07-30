@@ -4759,7 +4759,23 @@
           "caseworker-civil-admin",
           "caseworker-civil-systemupdate",
           "GS_profile",
-          "judge-profile"
+          "judge-profile",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "legal-adviser",
+          "caseflags-viewer",
+          "court-officer-order",
+          "cui-admin-profile",
+          "hearing-schedule-access",
+          "cui-nbc-profile",
+          "caseworker-wa-task-configuration",
+          "caseworker-ras-validation",
+          "payment-access"
         ],
         "CRUD": "R"
       }
