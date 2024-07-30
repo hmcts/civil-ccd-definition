@@ -159,14 +159,15 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
