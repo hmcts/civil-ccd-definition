@@ -7,8 +7,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RestitchBundle",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/create-bundle"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
