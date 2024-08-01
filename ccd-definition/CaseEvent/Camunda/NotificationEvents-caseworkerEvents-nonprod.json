@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_AMEND_RESTITCH_BUNDLE_CLAIMANT",
-    "Name": "Dashboard Claimant Amend Bundle",
+    "Name": "Claimant Notice Restitch",
     "Description": "Dashboard Notice Claimant Amend Bundle",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_AMEND_RESTITCH_BUNDLE_DEFENDANT",
-    "Name": "Dashboard Defendant Amend Bundle",
+    "Name": "Claimant Notice Restitch",
     "Description": "Dashboard Notice Defendant Amend Bundle",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
