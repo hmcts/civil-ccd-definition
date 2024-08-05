@@ -9,10 +9,49 @@
   },
   {
     "ID": "JoJudgment",
-    "ListElementCode": "defendants",
+    "ListElementCode": "defendant1Name",
     "ElementLabel": " ",
-    "FieldType": "DynamicList",
-    "FieldTypeParameter": "Party",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Name",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant1Address",
+    "ElementLabel": " ",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Address",
+    "ElementLabel": " ",
+    "FieldType": "AddressUK",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant1Dob",
+    "ElementLabel": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Dob",
+    "ElementLabel": " ",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
