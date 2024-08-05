@@ -1,22 +1,29 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
+    "CaseFieldID": "bundleText",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
           "cui-admin-profile"
         ],
-        "CRUD": "CRU"
-      },
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "bundleWarning",
+    "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
     ]
   }
 ]
+
