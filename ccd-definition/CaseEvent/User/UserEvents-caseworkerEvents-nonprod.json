@@ -16,7 +16,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "STAY_CASE",
-    "Name": "Stay the case",
+    "Name": "Stay case",
     "Description": "Stay the case",
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT, AWAITING_APPLICANT_INTENTION, IN_MEDIATION, JUDICIAL_REFERRAL, CASE_PROGRESSION, HEARING_READINESS, PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "PostConditionState": "CASE_STAYED",
