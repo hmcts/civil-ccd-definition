@@ -27,22 +27,22 @@ exports.config = {
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
     './e2e/tests/api_tests/settle-discontinue/*_test.js',
   ],
-  output:  process.env.REPORT_DIR || 'test-results/functional',
+  output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
-      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
+      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 30000),
       windowSize: '1280x960',
       browser: 'chromium',
-      timeout: 20000,
-      waitForAction: 500,
+      timeout: 10000,
+      waitForAction: 200,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
-      video: true,
-      contextOptions : {
-        recordVideo:{
-          dir:'failed-videos',
+      video: process.env.RECORD_VIDEO === 'true' || false,
+      contextOptions: {
+        recordVideo: {
+          dir: 'failed-videos',
         },
       },
     },
@@ -110,6 +110,12 @@ exports.config = {
           json: false,
         },
       },
+    },
+  },
+  multiple: {
+    parallel: {
+      chunks: 4,
+      browsers: ['chromium'],
     },
   },
 };
