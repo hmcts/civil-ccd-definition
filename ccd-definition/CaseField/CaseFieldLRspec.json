@@ -1243,7 +1243,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1251,7 +1251,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1259,7 +1259,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1267,7 +1267,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specRespondent2DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 2 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2293,7 +2293,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2301,7 +2301,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specApplicant2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocumentsLRspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2823,7 +2823,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "specApplicant1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Claimant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N",
