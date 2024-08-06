@@ -37,7 +37,7 @@ module.exports = {
             reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             respondent2DQFixedRecoverableCosts: {
               band: 'BAND_3',

@@ -293,6 +293,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y"
@@ -305,6 +306,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\""
   },
@@ -316,6 +318,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND applicantsProceedIntention = \"Yes\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y"
@@ -328,6 +331,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\""
   },
@@ -339,6 +343,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "PageShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\") AND claimType!=\"PERSONAL_INJURY\" AND applicantsProceedIntention = \"Yes\"",
     "FieldShowCondition": "claimant2ResponseFlag=\"No\"",
     "ShowSummaryChangeOption": "Y"
@@ -351,6 +356,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "FieldShowCondition": "claimant2ResponseFlag=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
