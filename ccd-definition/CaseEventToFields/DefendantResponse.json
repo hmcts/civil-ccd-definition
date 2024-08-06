@@ -705,6 +705,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -740,6 +741,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND claimType!=\"PERSONAL_INJURY\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
@@ -776,6 +778,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -810,6 +813,7 @@
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "PageID": "DisclosureOfNonElectronicDocuments",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
@@ -846,6 +850,7 @@
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "PageID": "DisclosureOfElectronicDocuments",
     "ShowSummaryChangeOption": "Y"
@@ -881,6 +886,7 @@
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "PageID": "DisclosureOfElectronicDocuments",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
