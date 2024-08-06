@@ -1264,6 +1264,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
@@ -1276,6 +1277,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocumentsLRspec",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
@@ -1287,6 +1289,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
@@ -1300,6 +1303,7 @@
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocumentsLRspec",
     "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
@@ -1310,6 +1314,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND showConditionFlags CONTAINS \"SOMEONE_DISPUTES\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
     "ShowSummaryChangeOption": "Y"
@@ -1323,6 +1328,7 @@
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
     "ShowSummaryChangeOption": "Y",
+    "CaseEventFieldLabel": "Disclosure report",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\""
   },
   {
