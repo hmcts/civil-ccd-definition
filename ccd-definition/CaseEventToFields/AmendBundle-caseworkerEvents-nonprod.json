@@ -7,8 +7,7 @@
     "DisplayContext": "READONLY",
     "PageID": "RestitchBundle",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/create-bundle"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -19,17 +18,5 @@
     "PageID": "RestitchBundle",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
-    "CaseFieldID": "bundleError",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "BundleError",
-    "PageDisplayOrder": 2,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "bundleText = \"DO_NOT_SHOW_IN_UI\"",
-    "PageShowCondition": "bundleError = \"Yes\""
   }
 ]

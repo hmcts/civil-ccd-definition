@@ -855,6 +855,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "PageShowCondition": "responseClaimTrack !=\"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -866,6 +867,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "DisclosureOfNonElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
@@ -877,6 +879,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "PageShowCondition": "responseClaimTrack != \"SMALL_CLAIM\" AND applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y"
   },
