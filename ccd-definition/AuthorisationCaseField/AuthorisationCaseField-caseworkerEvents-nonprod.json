@@ -1,26 +1,29 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "generalAppHelpWithFees",
+    "CaseFieldID": "bundleText",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "R"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondentSolGaAppDetails",
+    "CaseFieldID": "bundleWarning",
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
     ]
   }
 ]
+
