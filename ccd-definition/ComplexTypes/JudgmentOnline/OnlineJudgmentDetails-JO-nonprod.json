@@ -43,7 +43,7 @@
     "ID": "JoJudgment",
     "ListElementCode": "defendant1Dob",
     "ElementLabel": " ",
-    "FieldType": "DateTime",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -51,7 +51,7 @@
     "ID": "JoJudgment",
     "ListElementCode": "defendant2Dob",
     "ElementLabel": " ",
-    "FieldType": "DateTime",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -85,6 +85,14 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "JudgmentState",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "rtlState",
+    "ElementLabel": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
