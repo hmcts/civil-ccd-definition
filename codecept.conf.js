@@ -44,7 +44,7 @@ exports.config = {
       windowSize: '1280x960',
       browser: 'chromium',
       timeout: 20000,
-      waitForAction: 300,
+      waitForAction: 1000,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
       video: process.env.RECORD_VIDEO === 'true' || false,
@@ -122,7 +122,7 @@ exports.config = {
   },
   multiple: {
     parallel: {
-      chunks: 10,
+      chunks: 15,
       browsers: ['chromium'],
     },
   },
