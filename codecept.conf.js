@@ -2,7 +2,6 @@ exports.config = {
   tests: process.env.CCD_UI_TESTS == 'true' ? [
     './e2e/tests/ui_tests/*.js',
     './e2e/tests/ui_tests/damages/*_test.js',
-    './e2e/tests/ui_tests/lrspec/*_test.js',
     './e2e/tests/ui_tests/lrspec/1v1CreateClaim-LRspec_test.js',
     './e2e/tests/ui_tests/lrspec/1v1CreateClaim-small_claims-LRspec_test.js',
     './e2e/tests/ui_tests/lrspec/1v2CreateClaim-LRspec_DiffSol_FlightDelay_test.js',
