@@ -1446,6 +1446,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-staff",
           "caseworker-civil-admin",
           "caseworker-civil-solicitor"
         ],
