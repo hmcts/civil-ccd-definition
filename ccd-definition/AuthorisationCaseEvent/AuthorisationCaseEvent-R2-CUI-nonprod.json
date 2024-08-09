@@ -502,6 +502,28 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_SDO_ORDER_TO_LIP_CLAIMANT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
     "AccessControl": [
       {
