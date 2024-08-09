@@ -2,7 +2,15 @@ exports.config = {
   tests: process.env.CCD_UI_TESTS == 'true' ? [
     './e2e/tests/ui_tests/*.js',
     './e2e/tests/ui_tests/damages/*_test.js',
-    './e2e/tests/ui_tests/lrspec/*_test.js',
+    './e2e/tests/ui_tests/lrspec/1v1CreateClaim-LRspec_test.js',
+    './e2e/tests/ui_tests/lrspec/1v1CreateClaim-small_claims-LRspec_test.js',
+    './e2e/tests/ui_tests/lrspec/1v2CreateClaim-LRspec_DiffSol_FlightDelay_test.js',
+    './e2e/tests/ui_tests/lrspec/1v2CreateClaim-LRspec_DiffSol_test.js',
+    './e2e/tests/ui_tests/lrspec/1v2SameSolicitor-LRspec-FastTrackClaims_test.js',
+    './e2e/tests/ui_tests/lrspec/1v2SameSolicitor-LRspec-SmallClaims_test.js',
+    './e2e/tests/ui_tests/lrspec/2v1CreateClaim-LRspec_fullAdmit_test.js',
+    './e2e/tests/ui_tests/lrspec/2v1CreateClaim-LRspec_fullDefence_test.js',
+    './e2e/tests/ui_tests/lrspec/2v1CreateClaim-LRspec_partAdmit_test.js',
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/noticeofchange/*_test.js',
     './e2e/tests/ui_tests/manageContactInformation/*_test.js',
@@ -27,22 +35,22 @@ exports.config = {
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
     './e2e/tests/api_tests/settle-discontinue/*_test.js',
   ],
-  output:  process.env.REPORT_DIR || 'test-results/functional',
+  output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
       show: process.env.SHOW_BROWSER_WINDOW === 'true' || false,
-      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 90000),
+      waitForTimeout: parseInt(process.env.WAIT_FOR_TIMEOUT_MS || 50000),
       windowSize: '1280x960',
       browser: 'chromium',
       timeout: 20000,
-      waitForAction: 500,
+      waitForAction: 300,
       bypassCSP: true,
       ignoreHTTPSErrors: true,
-      video: true,
-      contextOptions : {
-        recordVideo:{
-          dir:'failed-videos',
+      video: process.env.RECORD_VIDEO === 'true' || false,
+      contextOptions: {
+        recordVideo: {
+          dir: 'failed-videos',
         },
       },
     },
@@ -110,6 +118,12 @@ exports.config = {
           json: false,
         },
       },
+    },
+  },
+  multiple: {
+    parallel: {
+      chunks: 20,
+      browsers: ['chromium'],
     },
   },
 };
