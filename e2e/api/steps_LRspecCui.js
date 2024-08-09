@@ -30,7 +30,7 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
 const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
-const trialReadiness = require("../fixtures/events/trialReadiness.js");
+const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 
