@@ -45,6 +45,34 @@ const trialReadyDefendant2 = {
   }
 };
 
+const trialReadyDefendantLip = {
+  event: 'TRIAL_READINESS',
+  caseDataUpdate: {
+    trialReadyRespondent1: 'Yes',
+    respondent1RevisedHearingRequirements: {
+      revisedHearingRequirements: 'Yes',
+      revisedHearingComments: 'Nothing Special',
+    },
+    respondent1HearingOtherComments: {
+      hearingOtherComments: 'Optional information....',
+    }
+  }
+};
+
+const trialReadyClaimantLip = {
+  event: 'TRIAL_READINESS',
+  caseDataUpdate: {
+    trialReadyApplicant: 'Yes',
+    applicantRevisedHearingRequirements: {
+      revisedHearingRequirements: 'Yes',
+      revisedHearingComments: 'Nothing Special',
+    },
+    applicantHearingOtherComments: {
+      hearingOtherComments: 'Optional information....',
+    }
+  }
+};
+
 module.exports = {
 
   confirmTrialReady: (user) => {
@@ -57,6 +85,10 @@ module.exports = {
         return trialReadyDefendant1;
       case config.secondDefendantSolicitorUser:
         return trialReadyDefendant2;
+      case config.defendantCitizenUser2:
+        return trialReadyDefendantLip;
+      case config.applicantCitizenUser:
+        return trialReadyClaimantLip;
     }
   }
 };
