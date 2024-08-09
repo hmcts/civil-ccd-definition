@@ -381,7 +381,7 @@ module.exports = {
     }
   },
 
-  createClaimantSmallClaimsEvidenceUpload: (mpScenario) => {
+  createClaimantSmallClaimsEvidenceUpload: () => {
     return {
       event: 'EVIDENCE_UPLOAD_APPLICANT',
       caseDataUpdate: {

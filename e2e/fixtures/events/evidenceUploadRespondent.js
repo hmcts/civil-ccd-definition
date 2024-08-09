@@ -560,7 +560,7 @@ module.exports = {
     }
   },
 
-  createDefendantSmallClaimsEvidenceUpload: (mpScenario) => {
+  createDefendantSmallClaimsEvidenceUpload: () => {
     return {
       event: 'EVIDENCE_UPLOAD_RESPONDENT',
       caseDataUpdate: {

@@ -25,14 +25,14 @@ const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
-const sdoTracks = require("../fixtures/events/createSDO");
-const hearingScheduled = require("../fixtures/events/scheduleHearing");
-const evidenceUploadApplicant = require("../fixtures/events/evidenceUploadApplicant");
-const evidenceUploadRespondent = require("../fixtures/events/evidenceUploadRespondent");
-const requestForReconsideration = require("../fixtures/events/requestForReconsideration");
+const sdoTracks = require('../fixtures/events/createSDO');
+const hearingScheduled = require('../fixtures/events/scheduleHearing');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
 const trialReadiness = require("../fixtures/events/trialReadiness.js");
-const lodash = require("lodash");
-const createFinalOrder = require("../fixtures/events/finalOrder.js");
+const lodash = require('lodash');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
 
 let caseId, eventName;
 let caseData = {};
@@ -206,7 +206,7 @@ module.exports = {
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
       payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
-    } else if ('Request for reconsideration track') {
+    } else if (claimType === 'Request for reconsideration track') {
       console.log('Request for reconsideration claim');
       payload = defendantResponse.createDefendantResponse('500', carmEnabled);
     } else {
@@ -232,7 +232,7 @@ module.exports = {
     }
   },
 
-  createSDO: async (user, response = 'CREATE_DISPOSAL', carmEnabled = false) => {
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
     let disposalData;
@@ -300,7 +300,7 @@ module.exports = {
   },
 
   amendHearingDueDate: async (user) => {
-    let hearingDueDate = {};
+    let hearingDueDate;
     hearingDueDate = {'hearingDueDate': '2022-01-10'};
     await testingSupport.updateCaseData(caseId, hearingDueDate, user);
   },

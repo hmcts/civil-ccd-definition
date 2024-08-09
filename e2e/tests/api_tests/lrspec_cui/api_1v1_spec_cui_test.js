@@ -19,12 +19,41 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'Small
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
+async function prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, carmEnabled) {
+  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
+  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'Request for reconsideration track', carmEnabled);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'Request for reconsideration track', carmEnabled, 'FULL_DEFENCE');
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
+}
+
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, true);
+});
+
+Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
+    await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
+    await api_spec_cui.evidenceUploadApplicant(config.applicantCitizenUser);
+    await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
+    await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL', 'CUI');
+    await api_spec_cui.trialReadinessCitizen(config.applicantCitizenUser);
+    await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
+    await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
+  }
+});
+
+Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, false);
+    await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
+    await api_spec_cui.requestForReconsiderationCitizen(config.applicantCitizenUser);
+    await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
+  }
 });
 
 async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
@@ -93,40 +122,11 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui}) => {
   }
 });
 
-Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
-    await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
-    await api_spec_cui.evidenceUploadApplicant(config.applicantCitizenUser);
-    await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
-    await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL', 'CUI');
-    await api_spec_cui.trialReadinessCitizen(config.applicantCitizenUser);
-    await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
-    await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
-  }
-});
-
-Scenario('1v1 LR v LiP Request for reconsideration', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await  prepareClaimLRvLiPExui(api_spec_cui, false);
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
     await api_spec_cui.requestForReconsiderationCitizen(config.defendantCitizenUser2);
-    await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
-  }
-});
-
-async function prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, carmEnabled) {
-  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
-  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'Request for reconsideration track', carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'Request for reconsideration track', carmEnabled, 'FULL_DEFENCE');
-  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
-}
-
-Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, false);
-    await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
-    await api_spec_cui.requestForReconsiderationCitizen(config.applicantCitizenUser);
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1);
   }
 });
