@@ -1,0 +1,3 @@
+module.exports = {
+  AUTOMATED_HEARING_NOTICE: 'NOTIFY_HEARING_PARTIES'
+};

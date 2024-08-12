@@ -15,11 +15,15 @@ const getStubs = async () => {
     });
 };
 
-const getStubByRequestUrl = async (stubRequestUrl) => {
+const getStub = async (stubUrl) => {
   const allStubs = await getStubs();
-  const targetStub = allStubs.find(stub => stub.request.urlPath == stubRequestUrl);
+  return allStubs.find(stub => stub.request.urlPath == stubUrl);
+};
+
+const getStubByRequestUrl = async (stubRequestUrl) => {
+  const targetStub = await getStub(stubRequestUrl);
   if (targetStub == null) {
-    throw new Error(`Could not locate stub for: ${stubRequestUrl} request url`);
+   console.log(`Could not locate stub for: ${stubRequestUrl} request url`);
   }
   return targetStub;
 };
@@ -30,6 +34,17 @@ const updateStubById = async (stubId, mappingContent) => {
     .then(response => {
       response.json();
     });
+};
+const createStub = async (mappingContent) => {
+  return restHelper.request(
+    `${wireMockUrl}`, {}, mappingContent, 'POST');
+};
+
+const createUpdateStub = async (mappingContent) => {
+  const existingStub = await getStub(mappingContent.request.url || mappingContent.request.urlPath);
+  return existingStub ?
+    await updateStubBodyByRequestUrl(existingStub.request.url, mappingContent.response.body)
+    : await createStub(mappingContent);
 };
 
 const updateStubResponseFileByRequestUrl = async (stubRequestUrl, bodyFileName) => {
@@ -44,9 +59,37 @@ const updateStubResponseFileByRequestUrl = async (stubRequestUrl, bodyFileName) 
     );
 };
 
+const updateStubBodyByRequestUrl = async (stubRequestUrl, body) => {
+  return getStubByRequestUrl(stubRequestUrl)
+    .then(stub => stub ? updateStubById(stub.id, {
+        ...stub,
+        response: {
+          ...stub.response,
+          body
+        }
+      }): null
+    );
+};
+
+const updateStubResponseByRequestUrl = async (stubRequestUrl, responseContent) => {
+  return getStubByRequestUrl(stubRequestUrl)
+    .then(stub => updateStubById(stub.id, {
+        ...stub,
+        response: {
+          ...stub.response,
+          bodyFileName: null,
+          body: responseContent
+        }
+      })
+    );
+};
+
 module.exports = {
   getStubs,
+  createStub,
+  createUpdateStub,
   getStubByRequestUrl,
   updateStubById,
-  updateStubResponseFileByRequestUrl
+  updateStubResponseFileByRequestUrl,
+  updateStubResponseByRequestUrl
 };
