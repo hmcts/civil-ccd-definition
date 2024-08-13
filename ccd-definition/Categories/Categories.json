@@ -1012,7 +1012,7 @@
     "CaseTypeID": "CIVIL",
     "CategoryID": "judgments",
     "CategoryLabel": "Judgments",
-    "DisplayOrder": "5",
+    "DisplayOrder": "6",
     "ParentCategoryID": "orders"
   },
   {
