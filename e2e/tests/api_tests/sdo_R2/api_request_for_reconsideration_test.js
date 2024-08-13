@@ -2,7 +2,7 @@ const config = require('../../../config.js');
 const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 // To use on local because the idam images are different
 const judgeUserReg2 = config.judgeUser2WithRegionId2;
-const judgeUserReg1 = config.judgeUserWithRegionId1;
+//const judgeUserReg1 = config.judgeUserWithRegionId1;
 const judgeUserForFastClaim = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
 async function prepareClaimSpec(api_spec_small) {
