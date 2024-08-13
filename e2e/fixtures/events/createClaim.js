@@ -316,7 +316,6 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       };
     }
     case 'ONE_V_TWO_LIPS': {
-      delete claimData.SecondDefendantLegalRepresentation;
       return {
         ...claimData,
         AddAnotherClaimant: {
@@ -328,10 +327,10 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         SecondDefendant: {
           respondent2: respondent2WithPartyName,
         },
-        LegalRepresentation: {
-          respondent1Represented: 'No',
-          respondent2Represented: 'No'
-        },
+        SecondDefendantLegalRepresentation: {
+          respondent2Represented: 'No',
+          respondent2SameLegalRepresentative: 'No'
+        }
       };
     }
 
