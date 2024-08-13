@@ -1,8 +1,12 @@
 module.exports = {
-  listedHearing: (hearingId, hearingType, caseId) => ({
+  listedHearing: (caseId, hearingId, hearingType) => {
+    const today = new Date();
+    const hearingDate = incrementDate(today, 5, null, null);
+
+    return {
     'requestDetails': {
       'status': 'LISTED',
-      'timestamp': '2025-01-01T15:12:01.819258',
+        'timestamp': `${today.toISOString()}`,
       'versionNumber': 1,
       'hearingRequestID': `${hearingId}`
     },
@@ -257,8 +261,8 @@ module.exports = {
     'hearingResponse': {
       'hearingDaySchedule': [
         {
-          'hearingStartDateTime': '2025-02-09T09:00:00',
-          'hearingEndDateTime': '2025-02-016T10:00:00',
+            'hearingStartDateTime': `${appendTime(hearingDate, 9, 0).toISOString()}`,
+            'hearingEndDateTime': `${appendTime(hearingDate, 16, 0).toISOString()}`,
           'hearingVenueId': '739514',
           'hearingRoomId': 'Clerkenwell and Shoreditch Floating List',
           'hearingJudgeId': null,
@@ -306,8 +310,9 @@ module.exports = {
       ],
       'laCaseStatus': 'LISTED',
       'listingStatus': 'FIXED',
-      'receivedDateTime': '2025-01-01T15:20:00',
+        'receivedDateTime': `${today.toISOString()}`,
       'requestVersion': 1
     }
-  })
+    };
+  }
 };
