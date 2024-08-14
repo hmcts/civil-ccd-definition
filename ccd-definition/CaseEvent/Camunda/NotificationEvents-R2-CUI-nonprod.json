@@ -236,7 +236,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "SEND_SDO_ORDER_TO_LIP_CLAIMANT",
     "Name": "Send SDO order to Claimant.",
-    "Description": "Send SDO order to Claimant",
+    "Description": "Send SDO order to Claimant.",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
