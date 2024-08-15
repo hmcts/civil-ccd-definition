@@ -152,7 +152,7 @@ const manageDefendant1 = require('./pages/manageContactInformation/manageDefenda
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
-const CASE_HEADER = 'ccd-case-header > h1';
+const CASE_HEADER = 'ccd-markdown >> h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const CLAIMANT_NAME = 'Test Inc';
