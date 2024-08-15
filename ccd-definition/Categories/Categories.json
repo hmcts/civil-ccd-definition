@@ -1010,14 +1010,6 @@
   {
     "LiveFrom": "05/12/2022",
     "CaseTypeID": "CIVIL",
-    "CategoryID": "judgments",
-    "CategoryLabel": "Judgments",
-    "DisplayOrder": "6",
-    "ParentCategoryID": "orders"
-  },
-  {
-    "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
     "CategoryID": "applicationOrders",
     "CategoryLabel": "Orders",
     "DisplayOrder": "1",
