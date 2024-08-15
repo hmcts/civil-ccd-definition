@@ -109,7 +109,7 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
-const CASE_HEADER = 'ccd-case-header > h1';
+const CASE_HEADER = 'ccd-markdown >> h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
