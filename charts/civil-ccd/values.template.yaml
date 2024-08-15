@@ -215,10 +215,10 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    memoryRequests: 4Gi
+    memoryRequests: 6Gi
     cpuRequests: 4000m
-    memoryLimits: 4Gi
-    cpuLimits: 3500m
+    memoryLimits: 6Gi
+    cpuLimits: 4500m
     devmemoryRequests: 8Gi
     devcpuRequests: 4000m
     devmemoryLimits: 8Gi
