@@ -104,7 +104,7 @@
     "playwright": "^1.41.1",
     "totp-generator": "^0.0.14",
     "uuid": "^3.4.0",
-    "webdriverio": "^6.12.1"
+    "webdriverio": "^9.0.0"
   },
   "resolutions": {
     "minimatch": "^3.0.5"
