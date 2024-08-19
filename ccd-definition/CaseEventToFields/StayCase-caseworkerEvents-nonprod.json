@@ -1,11 +1,11 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
-    "CaseFieldID": "bundleText",
+    "CaseEventID": "STAY_CASE",
+    "CaseFieldID": "stayCaseText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "RestitchBundle",
+    "PageID": "StayCase",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"
   }
