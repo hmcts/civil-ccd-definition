@@ -101,7 +101,7 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             applicant1DQFixedRecoverableCosts: {
               band: 'BAND_1',
