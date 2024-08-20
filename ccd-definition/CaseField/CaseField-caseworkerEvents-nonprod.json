@@ -18,7 +18,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "stayCaseText",
-    "Label": "### Stay the case \n\n All parties will be notified",
+    "Label": "### Stay the case \n\n All parties will be notified.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
