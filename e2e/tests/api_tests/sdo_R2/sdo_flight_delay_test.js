@@ -18,12 +18,12 @@ async function prepareClaimOtherOption(api_spec, claimAmount) {
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
 }
 
-Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec @api-specified @api-prod  @api-r2-sdo');
+Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec');
 
 Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay @api-r2-sdo', async ({api_spec}) => {
   await prepareClaim(api_spec, claimAmountSmallTrack);
   await api_spec.createSDO(judgeUser, 'CREATE_SMALL');
-});
+}).tag('@smoke-tests-unspec');
 
 Scenario('1v1 specified - flight delay other option Small-claim @api-spec-full-defence', async ({api_spec}) => {
     await prepareClaimOtherOption(api_spec, claimAmountSmallTrack);
