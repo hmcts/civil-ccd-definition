@@ -44,7 +44,7 @@ Scenario('1v2 spec request for reconsideration by defendant2 for create general 
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.secondDefendantSolicitorUser,'Respondent2');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg1, 'CREATE_GENERAL_ORDER');
-}).tag('@smoke-tests-unspec');
+}).tag('@api-nonprod');
 
 Scenario.skip('1v1 spec request for reconsideration when claim amount is greater than 1000', async ({api_spec}) => {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
