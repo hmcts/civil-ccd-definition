@@ -55,7 +55,7 @@ Scenario('1v1 Settle claim - full defence claimant and defendant response ', asy
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
   await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
-});
+}).tag('1v1 Settle claim - full defence claimant and defendant response');
 
 
 AfterSuite(async  ({api_spec}) => {
