@@ -715,7 +715,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "SEND_JUDGMENT_DETAILS_CJES_SET_ASIDE",
+    "CaseEventID": "SEND_JUDGMENT_DETAILS_CJES_SA",
     "AccessControl": [
       {
         "UserRoles": [
