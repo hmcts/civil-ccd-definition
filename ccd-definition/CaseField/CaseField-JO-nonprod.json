@@ -1,5 +1,21 @@
 [
- {
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joDefendantName1",
+    "Label": "Defendant Details 1",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPaymentPlanSelected",
+    "Label": "Payment type",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "joIsLiveJudgmentExists",
     "Label": " ",
