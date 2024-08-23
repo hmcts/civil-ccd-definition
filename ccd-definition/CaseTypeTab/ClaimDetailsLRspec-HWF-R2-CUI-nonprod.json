@@ -4,18 +4,18 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "headingHelpWithFeesDetails",
     "FieldShowCondition": "claimIssuedHwfForTab = \"*\" OR hearingHwfForTab = \"*\"",
-    "TabFieldDisplayOrder": 117
+    "TabFieldDisplayOrder": 128
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "claimIssuedHwfForTab",
-    "TabFieldDisplayOrder": 118
+    "TabFieldDisplayOrder": 129
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "ClaimDetails",
     "CaseFieldID": "hearingHwfForTab",
-    "TabFieldDisplayOrder": 119
+    "TabFieldDisplayOrder": 130
   }
 ]

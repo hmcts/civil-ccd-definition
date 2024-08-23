@@ -684,7 +684,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -700,7 +700,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 2 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -716,7 +716,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -724,7 +724,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -732,7 +732,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Defendant 1 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -740,7 +740,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent2DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Defendant 2 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -928,7 +928,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Claimant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -936,7 +936,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -944,7 +944,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant1DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Claimant 1 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2182,7 +2182,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Claimant 2 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2190,7 +2190,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2198,7 +2198,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "applicant2DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Claimant 2 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
