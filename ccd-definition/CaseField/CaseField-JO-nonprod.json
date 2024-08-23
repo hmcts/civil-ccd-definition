@@ -87,7 +87,7 @@
     "ID": "joState",
     "Label": "Status of active judgment",
     "FieldType": "FixedList",
-    "FieldTypeParameter": "JudgmentState",
+    "FieldTypeParameter": "JudgmentStatePaidInFull",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
