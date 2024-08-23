@@ -20,6 +20,8 @@ ccd:
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
+        WELSH_TRANSLATION_ENABLED: true
+        TS_TRANSLATION_SERVICE_HOST: http://${SERVICE_NAME}-translation-service
   ccd-admin-web:
     nodejs:
       image: hmctspublic.azurecr.io/ccd/admin-web:latest
@@ -97,3 +99,13 @@ ccd:
     livenessProbe:
       initialDelaySeconds: 90
 
+civil-translation:
+  enabled: true
+
+ts-translation-service:
+  java:
+    releaseNameOverride: ${SERVICE_NAME}-translation-service
+    imagePullPolicy: Always
+    keyVaults: [ ]
+    environment:
+      TS_TRANSLATION_SERVICE_DB_HOST: ${SERVICE_NAME}-postgresql
