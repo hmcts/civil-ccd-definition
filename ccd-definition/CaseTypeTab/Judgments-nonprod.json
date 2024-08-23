@@ -1,0 +1,98 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joDefendantName1",
+    "TabFieldDisplayOrder": 1
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joDefendantName2",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joOrderedAmount",
+    "TabFieldDisplayOrder": 3
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joCosts",
+    "TabFieldDisplayOrder": 4
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joTotalAmount",
+    "TabFieldDisplayOrder": 5
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joPaymentPlanSelected",
+    "TabFieldDisplayOrder": 6
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joRepaymentAmount",
+    "TabFieldDisplayOrder": 7
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joRepaymentFrequency",
+    "TabFieldDisplayOrder": 8
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joRepaymentStartDate",
+    "TabFieldDisplayOrder": 9
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joIssueDate",
+    "TabFieldDisplayOrder": 10
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joState",
+    "TabFieldDisplayOrder": 11
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "Judgments",
+    "TabLabel": "Judgments",
+    "TabDisplayOrder": 14,
+    "CaseFieldID": "joFullyPaymentMadeDate",
+    "TabFieldDisplayOrder": 12
+  }
+]

@@ -10,7 +10,97 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joDefendantName2",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "joPaymentPlanSelected",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joRepaymentAmount",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joRepaymentStartDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joRepaymentFrequency",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joIssueDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joState",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joFullyPaymentMadeDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joOrderedAmount",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joCosts",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joTotalAmount",
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff"
