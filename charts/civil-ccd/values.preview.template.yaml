@@ -106,6 +106,8 @@ idam-pr:
   redirect_uris:
     XUI:
       - https://xui-${SERVICE_FQDN}/oauth2/callback
+    CCD Admin:
+      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
 
 aac-manage-case-assignment:
   java:
