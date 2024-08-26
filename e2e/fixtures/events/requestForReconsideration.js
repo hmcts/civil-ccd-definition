@@ -45,23 +45,5 @@ module.exports = {
         }
       };
     }
-  },
-
-  createRequestForReconsiderationSpecCitizen : (userType) => {
-    if (userType === 'Claimant') {
-      return {
-        event: 'REQUEST_FOR_RECONSIDERATION',
-        caseDataUpdate: {
-          requestForReviewCommentsClaimant: 'The legal adviser overlooked some factors'
-        }
-      };
-    } else {
-      return {
-        event: 'REQUEST_FOR_RECONSIDERATION',
-        caseDataUpdate: {
-          requestForReviewCommentsDefendant: 'The legal adviser overlooked some factors'
-        }
-      };
-    }
   }
 };
