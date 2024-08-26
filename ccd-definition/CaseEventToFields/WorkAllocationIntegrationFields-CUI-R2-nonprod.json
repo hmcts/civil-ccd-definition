@@ -238,5 +238,15 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 25,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
   }
 ]
