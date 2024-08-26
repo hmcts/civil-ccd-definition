@@ -58,11 +58,5 @@
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_DISMISS_CASE_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISMISS_CASE_BLOCK_PROGRESS",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   }
 ]
