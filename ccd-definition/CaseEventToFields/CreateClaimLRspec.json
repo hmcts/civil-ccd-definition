@@ -966,7 +966,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "applicantSolicitor1PbaAccounts",
