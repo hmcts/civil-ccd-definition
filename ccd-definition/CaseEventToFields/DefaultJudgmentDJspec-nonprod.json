@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "fullyPaymentMadeDate",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "repaymentInformation",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
+  }
+]
+
+

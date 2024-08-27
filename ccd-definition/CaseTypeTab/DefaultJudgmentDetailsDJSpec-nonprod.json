@@ -1,0 +1,85 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "fullyPaymentMadeDate",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "defendantDetailsSpec",
+    "TabFieldDisplayOrder": 2,
+    "FieldShowCondition": "paymentTypeSelection = \"*\"",
+    "TabShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentSummaryLabel",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentSummaryObject",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "paymentTypeSelection",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "paymentSetDate",
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentSuggestion",
+    "TabFieldDisplayOrder": 7,
+    "FieldShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentFrequency",
+    "TabFieldDisplayOrder": 8,
+    "FieldShowCondition": "paymentTypeSelection = \"*\" AND fullyPaymentMadeDate = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "DefaultJudgmentSpec",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentDate",
+    "TabFieldDisplayOrder": 9,
+    "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
+  }
+
+]

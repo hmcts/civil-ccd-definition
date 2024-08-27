@@ -1,0 +1,20 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "fullyPaymentMadeDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]

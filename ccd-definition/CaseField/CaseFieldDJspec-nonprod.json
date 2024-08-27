@@ -1,0 +1,10 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "fullyPaymentMadeDate",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

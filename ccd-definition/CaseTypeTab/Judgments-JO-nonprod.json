@@ -4,8 +4,19 @@
     "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
+    "CaseFieldID": "joIsDisplayInJudgmentTab",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "TabShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joDefendantName1",
-    "TabFieldDisplayOrder": 1
+    "TabFieldDisplayOrder": 2,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -13,31 +24,26 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joDefendantName2",
-    "TabFieldDisplayOrder": 2
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
-    "CaseFieldID": "joOrderedAmount",
-    "TabFieldDisplayOrder": 3
+    "CaseFieldID": "repaymentSummaryLabel",
+    "TabFieldDisplayOrder": 4,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
-    "CaseFieldID": "joCosts",
-    "TabFieldDisplayOrder": 4
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "TabID": "JudgmentTab",
-    "TabLabel": "Judgment",
-    "TabDisplayOrder": 9,
-    "CaseFieldID": "joTotalAmount",
-    "TabFieldDisplayOrder": 5
+    "CaseFieldID": "repaymentSummaryObject",
+    "TabFieldDisplayOrder": 5,
+    "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -45,7 +51,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joPaymentPlanSelected",
-    "TabFieldDisplayOrder": 6
+    "TabFieldDisplayOrder": 6,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -53,7 +60,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentAmount",
-    "TabFieldDisplayOrder": 7
+    "TabFieldDisplayOrder": 7,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -61,7 +69,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentFrequency",
-    "TabFieldDisplayOrder": 8
+    "TabFieldDisplayOrder": 8,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -69,7 +78,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentStartDate",
-    "TabFieldDisplayOrder": 9
+    "TabFieldDisplayOrder": 9,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -77,7 +87,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joIssueDate",
-    "TabFieldDisplayOrder": 10
+    "TabFieldDisplayOrder": 10,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -85,7 +96,8 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joState",
-    "TabFieldDisplayOrder": 11
+    "TabFieldDisplayOrder": 11,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -93,6 +105,7 @@
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "joFullyPaymentMadeDate",
-    "TabFieldDisplayOrder": 12
+    "TabFieldDisplayOrder": 12,
+    "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   }
 ]

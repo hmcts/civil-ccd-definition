@@ -289,5 +289,27 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "repaymentSummaryObject",
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "READONLY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "lblRecordJudgment = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "RECORD_JUDGMENT",
+    "CaseFieldID": "joIsDisplayInJudgmentTab",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "RecordJudgment",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   }
 ]
