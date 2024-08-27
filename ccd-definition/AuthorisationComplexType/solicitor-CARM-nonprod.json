@@ -1,0 +1,30 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "app1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "app1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.date",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
