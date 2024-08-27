@@ -1,16 +1,15 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "defendantDetailsSpec",
-    "TabFieldDisplayOrder": 1,
-    "TabShowCondition": "paymentTypeSelection = \"*\""
+    "TabFieldDisplayOrder": 1
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentSummaryLabel",
@@ -18,7 +17,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentSummaryObject",
@@ -27,7 +26,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "paymentTypeSelection",
@@ -35,7 +34,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "paymentSetDate",
@@ -43,7 +42,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentSuggestion",
@@ -51,7 +50,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentFrequency",
@@ -59,7 +58,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "TabID": "DefaultJudgmentSpec",
+    "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentDate",

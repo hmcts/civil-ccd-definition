@@ -2,96 +2,96 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joDefendantName1",
     "TabFieldDisplayOrder": 1
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joDefendantName2",
     "TabFieldDisplayOrder": 2
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joOrderedAmount",
     "TabFieldDisplayOrder": 3
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joCosts",
     "TabFieldDisplayOrder": 4
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joTotalAmount",
     "TabFieldDisplayOrder": 5
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joPaymentPlanSelected",
     "TabFieldDisplayOrder": 6
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentAmount",
     "TabFieldDisplayOrder": 7
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentFrequency",
     "TabFieldDisplayOrder": 8
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joRepaymentStartDate",
     "TabFieldDisplayOrder": 9
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joIssueDate",
     "TabFieldDisplayOrder": 10
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joState",
     "TabFieldDisplayOrder": 11
   },
   {
     "CaseTypeID": "CIVIL",
     "TabID": "JudgmentTab",
-    "TabLabel": "Judgments",
-    "TabDisplayOrder": 14,
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
     "CaseFieldID": "joFullyPaymentMadeDate",
     "TabFieldDisplayOrder": 12
   }
