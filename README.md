@@ -149,7 +149,7 @@ npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh
 You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
 
 ```shell
-npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh ccdBranchName camundaBranchName
+npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh ccdBranchName camundaBranchName dmnBranch waStandaloneBranch
 ```
 
 Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
@@ -161,8 +161,11 @@ If you want to clean up the environment just run:
 npx @hmcts/dev-env --delete
 ```
 
+To run the specialised charts, where you can get Work Allocation for instance, run:
 
-
+```shell
+npx @hmcts/dev-env --template values.enableWA.preview.template.yaml && ./bin/setup-devuser-preview-env.sh
+```
 
 ## License
 
