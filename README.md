@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR 
+Below labels are needed on the PR
 
 ```
 
@@ -44,7 +44,7 @@ Below labels are needed on the PR
   "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
 
   "pr-values:enableWA" label to verify work allocation task
-  
+
 ```
 
 Running Crossbrowser tests:
@@ -133,6 +133,39 @@ additional information where necessary.
    `git config --local --unset core.hooksPath`
 
    Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards.
+
+
+## Development / Debugging Environment - Preview with Mirrord
+
+As an alternative for a development environment there is a procedure in place where after running the command
+below the required services for Civil are created in Preview under the developer's name, so these will be exclusively
+for the named developer use.
+
+While connected to the VPN simply run:
+Note: be sure to have Docker running
+```shell
+npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh
+```
+You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
+
+```shell
+npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh ccdBranchName camundaBranchName dmnBranch waStandaloneBranch
+```
+
+Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
+https://mirrord.dev
+
+If you want to clean up the environment just run:
+
+```shell
+npx @hmcts/dev-env --delete
+```
+
+To run the specialised charts, where you can get Work Allocation for instance, run:
+
+```shell
+npx @hmcts/dev-env --template values.enableWA.preview.template.yaml && ./bin/setup-devuser-preview-env.sh
+```
 
 ## License
 
