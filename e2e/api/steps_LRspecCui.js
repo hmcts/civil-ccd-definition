@@ -33,7 +33,7 @@ const requestForReconsideration = require('../fixtures/events/requestForReconsid
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const judgeDecisionToReconsiderationRequest = require("../fixtures/events/judgeDecisionOnReconsiderationRequest");
+const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 
 let caseId, eventName;
 let caseData = {};
