@@ -149,7 +149,7 @@ npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh
 You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
 
 ```shell
-npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh ccdBranchName camundaBranchName dmnBranch waStandaloneBranch
+npx @hmcts/dev-env && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
 ```
 
 Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
