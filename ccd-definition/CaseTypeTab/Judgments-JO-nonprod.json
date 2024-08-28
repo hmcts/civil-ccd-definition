@@ -32,7 +32,7 @@
     "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
-    "CaseFieldID": "repaymentSummaryLabel",
+    "CaseFieldID": "joRepaymentSummaryLabel",
     "TabFieldDisplayOrder": 4,
     "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
   },
@@ -41,7 +41,7 @@
     "TabID": "JudgmentTab",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
-    "CaseFieldID": "repaymentSummaryObject",
+    "CaseFieldID": "joRepaymentSummaryObject",
     "TabFieldDisplayOrder": 5,
     "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
   },

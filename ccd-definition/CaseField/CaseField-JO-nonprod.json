@@ -33,6 +33,22 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentSummaryLabel",
+    "Label": "${joRepaymentSummaryObject}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentSummaryObject",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "joOrderedAmount",
     "Label": "Claim amount",
     "FieldType": "MoneyGBP",
@@ -102,7 +118,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "joFullyPaymentMadeDate",
-    "Label": "Default judgment amount paid in full",
+    "Label": "Date judgment amount paid in full",
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"

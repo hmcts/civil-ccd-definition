@@ -293,7 +293,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "repaymentSummaryObject",
+    "CaseFieldID": "joRepaymentSummaryObject",
     "PageFieldDisplayOrder": 27,
     "DisplayContext": "READONLY",
     "PageID": "RecordJudgment",
