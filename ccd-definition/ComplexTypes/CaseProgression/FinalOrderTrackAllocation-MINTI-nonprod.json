@@ -1,0 +1,21 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "label",
+    "ID": "FinalOrderTrackAllocation",
+    "ElementLabel": "### What track are you allocating the claim to?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ListElementCode": "trackList",
+    "ID": "FinalOrderTrackAllocation",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrdersAllocatedTrackList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

@@ -70,5 +70,37 @@
     "FieldType": "DocumentsToBeConsidered",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trackAllocationCaseParticipants",
+    "Label": "${caseNameHmctsInternal}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAllocateToTrackLabel",
+    "Label": "**** \n ### Are you allocating the claim to a track?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAllocateToTrack",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderTrackAllocation",
+    "Label": " ",
+    "FieldType": "FinalOrderTrackAllocation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
