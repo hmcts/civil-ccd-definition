@@ -33,6 +33,7 @@ const requestForReconsideration = require('../fixtures/events/requestForReconsid
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
+const judgeDecisionToReconsiderationRequest = require("../fixtures/events/judgeDecisionOnReconsiderationRequest");
 
 let caseId, eventName;
 let caseData = {};
@@ -56,6 +57,7 @@ const data = {
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpecCitizen(userType),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
 };
 
 const eventData = {
@@ -257,6 +259,26 @@ module.exports = {
     } else {
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
+    console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '# Response has been submitted',
+      body: ''
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
