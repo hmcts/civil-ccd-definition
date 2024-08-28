@@ -1,7 +1,6 @@
 camundaBranch=${1:-master}
-ccdBranch=${2:-master}
 dmnBranch=${2:-master}
-waStandaloneBranch=${2:-master}
+waStandaloneBranch=${3:-master}
 
 echo "Loading Environment Variables"
 source ./bin/variables/load-dev-user-preview-environment-variables.sh
