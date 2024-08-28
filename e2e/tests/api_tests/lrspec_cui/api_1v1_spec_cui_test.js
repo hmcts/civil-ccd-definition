@@ -127,7 +127,7 @@ Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
     await  prepareClaimLRvLiPExui(api_spec_cui, false);
     await api_spec_cui.createSDO(config.tribunalCaseworkerWithRegionId4);
     await api_spec_cui.requestForReconsiderationCitizen(config.defendantCitizenUser2);
-    await api_spec_cui.judgeDecisionOnReconsiderationRequest(config.judgeUserWithRegionId1, 'CREATE_SDO');
+    await api_spec_cui.judgeDecisionOnReconsiderationRequestSpec(config.judgeUserWithRegionId1, 'CREATE_SDO');
   }
 });
 
