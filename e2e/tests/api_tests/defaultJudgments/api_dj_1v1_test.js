@@ -58,6 +58,7 @@ Scenario('Verify Case progression trial bundle', async ({I, api, WA}) => {
   if (['demo'].includes(config.runningEnv)) {
     await api.triggerBundle(config.systemupdate);
   }
+  // test
 });
 
 Scenario.skip('Verify Case progression caseProgressionTakeCaseOfflineTask hearing center admin task', async ({I, api, WA}) => {
