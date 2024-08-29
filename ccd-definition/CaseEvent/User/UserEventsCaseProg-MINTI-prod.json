@@ -53,5 +53,16 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "EVIDENCE_UPLOAD_CHECK",
+    "Name": "EVIDENCE_UPLOAD_CHECK",
+    "Description": "EVIDENCE_UPLOAD_CHECK",
+    "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N"
   }
 ]

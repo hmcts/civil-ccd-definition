@@ -186,17 +186,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "EVIDENCE_UPLOAD_CHECK",
-    "Name": "EVIDENCE_UPLOAD_CHECK",
-    "Description": "EVIDENCE_UPLOAD_CHECK",
-    "PreConditionState(s)": "CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "DocumentUpdated",
     "Name": "DocumentUpdated",
     "Description": "Shows document was moved in case history",
