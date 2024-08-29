@@ -260,39 +260,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joOrderedAmount",
-    "PageFieldDisplayOrder": 24,
-    "DisplayContext": "READONLY",
-    "PageID": "RecordJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joCosts",
-    "PageFieldDisplayOrder": 25,
-    "DisplayContext": "READONLY",
-    "PageID": "RecordJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
-    "CaseFieldID": "joTotalAmount",
-    "PageFieldDisplayOrder": 26,
-    "DisplayContext": "READONLY",
-    "PageID": "RecordJudgment",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joRepaymentSummaryObject",
     "PageFieldDisplayOrder": 27,
     "DisplayContext": "READONLY",
