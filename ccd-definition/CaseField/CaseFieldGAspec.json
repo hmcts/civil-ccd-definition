@@ -917,5 +917,13 @@
     "Label": "Is GA Respondent Two LIP",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "caseNameGaInternal",
+    "FieldType": "Text",
+    "Label": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

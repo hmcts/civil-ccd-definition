@@ -288,6 +288,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "caseNameGaInternal",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppParentClaimantIsApplicant",
     "AccessControl": [
       {
