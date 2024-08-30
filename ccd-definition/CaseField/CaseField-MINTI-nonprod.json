@@ -122,7 +122,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderIntermediateTrackComplexityBandLabel",
-    "Label": "**** \n ### Allocation \n For information on which complexity band the claim should be in see <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26#16' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table 1</a>. \n\nThe claim is allocated to the Intermediate Track.",
+    "Label": "**** \n ### Allocation \n For information on which complexity band the claim should be in see <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26#16' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table 2</a>. \n\nThe claim is allocated to the Intermediate Track.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
