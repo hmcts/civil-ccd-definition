@@ -105,6 +105,7 @@ civil-translation:
 ts-translation-service:
   java:
     releaseNameOverride: ${SERVICE_NAME}-translation-service
+    ingressHost: ts-${SERVICE_FQDN}
     imagePullPolicy: Always
     keyVaults: [ ]
     environment:
