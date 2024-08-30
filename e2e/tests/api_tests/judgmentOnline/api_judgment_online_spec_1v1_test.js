@@ -35,7 +35,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
     console.log(` user : ${caseWorkerUser.email} : config.testEarlyAdopterCourts : ${config.testEarlyAdopterCourts}`);
-    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','PROCEEDS_IN_HERITAGE_SYSTEM');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
   }
 });
 
