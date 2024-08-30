@@ -87,6 +87,12 @@ module.exports = {
               documents: 'WELSH'
             }
           },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
           DraftDirections: {
             respondent1DQDraftDirections: {
               document_url: '${TEST_DOCUMENT_URL}',
@@ -406,6 +412,12 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
+          },
+          HearingLRspec: {
+            respondent2DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
           },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {

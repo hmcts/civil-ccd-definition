@@ -37,6 +37,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingFastClaimLabel",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingLRspec",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND (responseClaimTrack= \"FAST_CLAIM\" OR responseClaimTrack= \"INTERMEDIATE_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\")",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "",
+    "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
     "PageDisplayOrder": 50,
     "PageFieldDisplayOrder": 1,
