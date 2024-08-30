@@ -134,5 +134,21 @@
     "FieldType": "FinalOrderIntermediateTrackAllocation",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectTemplateLabel",
+    "Label": "**** \n ### Which template do you wish to use?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderDownloadTemplateOptions",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
