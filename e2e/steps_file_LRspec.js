@@ -914,6 +914,91 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
+    async requestForSettleThisClaimForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSD(eventName, caseId),
+        () => this.click('Continue'),
+        () => this.waitForText('Confirm marking as paid in full'),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('The claim has been marked as paid in full'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSettleThisClaimJudgesOrderForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => this.click('Settled following judge\'s order'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSettleThisClaimConsentOrderForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => this.click('Consent order approved'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestForDiscontinueThisClaimForUI() {
+      eventName = 'Discontinue this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDiscontinueThisClaim(eventName, caseId),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Permission granted by the court'),
+        () => this.click('Yes'),
+        () => caseViewPage.permissionGrantedByJudge(),
+        () => this.waitForText('Type of Discontinuance'),
+        () => this.click('Full discontinuance'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForValidateDiscontinuanceForUI() {
+      eventName = 'Validate discontinuance';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForValidateDiscontinuance(eventName, caseId),
+        () => this.click('Yes - generate a Notice of Discontinuance'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
     async decisionForReconsideration() {
       eventName = 'Decision on reconsideration';
       await this.triggerStepsWithScreenshot([
