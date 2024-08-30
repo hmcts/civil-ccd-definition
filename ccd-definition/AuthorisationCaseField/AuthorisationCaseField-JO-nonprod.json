@@ -3,6 +3,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joDefendantName1",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -12,6 +13,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsDisplayInJudgmentTab",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -21,6 +23,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joDefendantName2",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -30,6 +33,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joPaymentPlanSelected",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -39,6 +43,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joRepaymentAmount",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -48,6 +53,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joRepaymentStartDate",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -57,6 +63,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joRepaymentFrequency",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -66,6 +73,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIssueDate",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -75,6 +83,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joState",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -84,6 +93,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joFullyPaymentMadeDate",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -93,6 +103,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joRepaymentSummaryObject",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -102,6 +113,37 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joRepaymentSummaryLabel",
     "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joOrderedAmount",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joCosts",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-staff"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "joTotalAmount",
+    "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
@@ -111,6 +153,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsLiveJudgmentExists",
     "UserRoles": [
+      "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-civil-staff"
     ],
