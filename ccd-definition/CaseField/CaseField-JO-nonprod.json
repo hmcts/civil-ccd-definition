@@ -49,30 +49,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "joOrderedAmount",
-    "Label": "Claim amount",
-    "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joCosts",
-    "Label": "Claim fee amount",
-    "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "joTotalAmount",
-    "Label": "Total amount owed",
-    "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "joRepaymentAmount",
     "Label": "Regular payments of",
     "HintText": "For example, £10",

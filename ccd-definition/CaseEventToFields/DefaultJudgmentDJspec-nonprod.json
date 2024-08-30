@@ -101,39 +101,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "joOrderedAmount",
-    "PageFieldDisplayOrder": 17,
-    "DisplayContext": "READONLY",
-    "PageID": "repaymentInformation",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "joCosts",
-    "PageFieldDisplayOrder": 18,
-    "DisplayContext": "READONLY",
-    "PageID": "repaymentInformation",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "joTotalAmount",
-    "PageFieldDisplayOrder": 19,
-    "DisplayContext": "READONLY",
-    "PageID": "repaymentInformation",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joRepaymentSummaryObject",
     "PageFieldDisplayOrder": 20,
     "DisplayContext": "READONLY",
