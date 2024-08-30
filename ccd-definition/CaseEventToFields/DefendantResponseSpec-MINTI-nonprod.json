@@ -33,5 +33,38 @@
     "PageID": "FixedRecoverableCostsIntermediate",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQDraftDirectionsLabel",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "DraftDirections",
+    "PageShowCondition": "(respondent1ClaimResponseTypeForSpec = \"FULL_DEFENCE\" OR respondent2ClaimResponseTypeForSpec = \"FULL_DEFENCE\") AND (responseClaimTrack =\"INTERMEDIATE_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\")",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQDraftDirections",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DraftDirections",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\"",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2DQDraftDirections",
+    "PageDisplayOrder": 50,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DraftDirections",
+    "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]

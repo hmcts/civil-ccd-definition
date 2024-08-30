@@ -87,6 +87,13 @@ module.exports = {
               documents: 'WELSH'
             }
           },
+          DraftDirections: {
+            respondent1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
               responseCourtLocations: {
@@ -542,6 +549,13 @@ module.exports = {
             respondent2DQLanguage: {
               court: 'ENGLISH',
               documents: 'ENGLISH'
+            }
+          },
+          DraftDirections: {
+            respondent2DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
             }
           },
           RequestedCourtLocationLRspec: {
