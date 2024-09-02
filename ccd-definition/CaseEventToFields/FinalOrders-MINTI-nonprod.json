@@ -120,6 +120,29 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "selectTemplateLabel",
+    "EventHintText": "Select a template to download a Word document and edit offline",
+    "PageLabel": "Select template",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "SelectTemplate",
+    "PageShowCondition": "finalOrderSelection=\"DOWNLOAD_ORDER_TEMPLATE\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderDownloadTemplateOptions",
+    "PageDisplayOrder": 4,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "SelectTemplate",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "PageLabel": "Make an order",
     "PageDisplayOrder": 4,
