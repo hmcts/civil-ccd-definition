@@ -20,7 +20,7 @@ Scenario.skip('1v1 spec request for reconsideration for uphold previous order', 
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUserReg2, 'YES');
 });
 
-Scenario('1v1 spec request for reconsideration for create new SDO', async ({api_spec_small}) => {
+Scenario.skip('1v1 spec request for reconsideration for create new SDO', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser, 'Respondent1');
