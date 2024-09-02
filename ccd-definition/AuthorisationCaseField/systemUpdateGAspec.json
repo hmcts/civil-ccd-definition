@@ -127,12 +127,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNameGaInternal",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUD"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppParentClaimantIsApplicant",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"

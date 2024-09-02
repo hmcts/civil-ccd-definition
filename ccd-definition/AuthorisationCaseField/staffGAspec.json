@@ -181,12 +181,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "caseNameGaInternal",
-    "CRUD": "R",
-    "UserRole": "caseworker-civil-staff"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppParentClaimantIsApplicant",
     "CRUD": "R",
     "UserRole": "caseworker-civil-staff"
