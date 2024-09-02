@@ -70,7 +70,7 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
-    "CaseFieldID": "bundleSelectionEvidenceRes",
+    "CaseFieldID": "bundleSelectionEvidence",
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
@@ -80,13 +80,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
-    "CaseFieldID": "bundleEvidenceRes",
+    "CaseFieldID": "bundleEvidence",
     "PageFieldDisplayOrder": 17,
     "DisplayContext": "MANDATORY",
     "PageID": "DocumentUpload",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "Y",
     "RetainHiddenValue": "Y",
-    "FieldShowCondition":"bundleSelectionEvidenceRes CONTAINS \"BUNDLE_UPLOAD\""
+    "FieldShowCondition":"bundleSelectionEvidence CONTAINS \"BUNDLE_UPLOAD\""
   }
 ]
