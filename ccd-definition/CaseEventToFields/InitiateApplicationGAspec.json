@@ -206,17 +206,5 @@
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "INITIATE_GENERAL_APPLICATION",
-    "CaseFieldID": "caseNameGaInternal",
-    "DisplayContext": "OPTIONAL",
-    "PageID": "GAPBADetailsGAspec",
-    "PageDisplayOrder": 9,
-    "PageFieldDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "FieldShowCondition": "generalAppType.types = \"DO_NOT_SHOW_IN_UI\"",
-    "ShowSummaryChangeOption": "N"
   }
 ]
