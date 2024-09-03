@@ -1,18 +1,10 @@
 [
   {
     "ID": "FinalOrderFastTrackAllocation",
-    "ListElementCode": "label",
-    "FieldType": "Label",
-    "ElementLabel": "Do you assign a complexity band to the case?",
-    "HintText": "Please note, noise induced deafness claims are not within the scope of CPR 26.16",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "FinalOrderFastTrackAllocation",
     "ListElementCode": "assignComplexityBand",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Do you assign a complexity band to the case?",
+    "HintText": "Please note, noise induced deafness claims are not within the scope of CPR 26.15",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

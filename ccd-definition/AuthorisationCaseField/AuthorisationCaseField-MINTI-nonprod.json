@@ -198,18 +198,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trackAllocationCaseParticipants",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderTrackAllocation",
     "AccessControl": [
       {
@@ -223,18 +211,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderAllocateToTrack",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "finalOrderAllocateToTrackLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -307,6 +283,66 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderDownloadTemplateOptions",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "downloadTemplateLabel1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderDownloadTemplateDocument",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "downloadTemplateLabel2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "uploadOrderDocumentFromTemplateLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "uploadOrderDocumentFromTemplate",
     "AccessControl": [
       {
         "UserRoles": [
