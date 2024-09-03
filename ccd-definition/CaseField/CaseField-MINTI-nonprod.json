@@ -73,22 +73,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "trackAllocationCaseParticipants",
-    "Label": "${caseNameHmctsInternal}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "finalOrderAllocateToTrackLabel",
-    "Label": "**** \n ### Are you allocating the claim to a track?",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "finalOrderAllocateToTrack",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -99,7 +83,8 @@
     "CaseTypeID": "CIVIL",
     "ID": "finalOrderTrackAllocation",
     "Label": " ",
-    "FieldType": "FinalOrderTrackAllocation",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrdersAllocatedTrackList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -148,6 +133,47 @@
     "ID": "finalOrderDownloadTemplateOptions",
     "Label": " ",
     "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "downloadTemplateLabel1",
+    "Label": "**** \n ## You must now download the template \n Open the selected template and download it to your computer to complete the order.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderDownloadTemplateDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "downloadTemplateLabel2",
+    "Label": "\n Once you've completed the order, you can save and upload it on the next screen.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadOrderDocumentFromTemplateLabel",
+    "Label": "**** \n ## Add document \n Make sure your file is named either directions or order, the party names and the date. Upload your completed order in DOC/DOCX (Word) format.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadOrderDocumentFromTemplate",
+    "Label": " ",
+    "FieldType": "Document",
+    "RegularExpression": ".doc,.docx",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

@@ -1,17 +1,9 @@
 [
   {
     "ID": "FinalOrderIntermediateTrackAllocation",
-    "ListElementCode": "label",
-    "FieldType": "Label",
-    "ElementLabel": "Do you assign a complexity band to the case?",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "FinalOrderIntermediateTrackAllocation",
     "ListElementCode": "assignComplexityBand",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
+    "ElementLabel": "Do you assign a complexity band to the case?",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
