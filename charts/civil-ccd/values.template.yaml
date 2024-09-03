@@ -1,6 +1,9 @@
 civil-ccd-stack:
   enabled: true
 
+civil-translation:
+  enabled: false
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
