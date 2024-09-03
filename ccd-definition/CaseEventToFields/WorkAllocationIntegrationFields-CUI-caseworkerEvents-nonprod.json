@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_BUNDLE",
+    "CaseEventID": "asyncStitchingComplete",
     "CaseFieldID": "bundleError",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
