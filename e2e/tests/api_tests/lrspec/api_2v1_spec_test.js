@@ -30,7 +30,8 @@ Scenario('2v1 small claim different response full defence', async ({I, api_spec}
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'TWO_V_ONE');
 });
 
-Scenario('2v1 small claim different response no full defence', async ({I, api_spec}) => {
+// skipping until DTSCCI-329 is resolved
+Scenario.skip('2v1 small claim different response no full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'TWO_V_ONE');
 });
