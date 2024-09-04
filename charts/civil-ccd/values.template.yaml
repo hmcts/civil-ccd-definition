@@ -1,6 +1,9 @@
 civil-ccd-stack:
   enabled: true
 
+civil-translation:
+  enabled: false
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -161,6 +164,7 @@ civil-service:
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "ts_translation_service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
@@ -259,6 +263,7 @@ ccd:
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store-api
     ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
+    ccdAdminWebIngress: ${SERVICE_NAME}-ccd-admin-web
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
