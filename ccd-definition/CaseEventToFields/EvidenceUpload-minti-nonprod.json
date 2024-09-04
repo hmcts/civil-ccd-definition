@@ -19,6 +19,8 @@
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "DocumentSelectionFastTrack",
+    "FieldShowCondition": "caseProgAllocatedTrack = \"MULTI_CLAIM\" OR caseProgAllocatedTrack = \"INTERMEDIATE_CLAIM\"",
+    "RetainHiddenValue": "Y",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
   },
@@ -29,6 +31,8 @@
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
+    "FieldShowCondition": "caseProgAllocatedTrack = \"MULTI_CLAIM\" OR caseProgAllocatedTrack = \"INTERMEDIATE_CLAIM\"",
+    "RetainHiddenValue": "Y",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
   },
@@ -64,6 +68,8 @@
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "DocumentSelectionFastTrack",
+    "FieldShowCondition": "caseProgAllocatedTrack = \"MULTI_CLAIM\" OR caseProgAllocatedTrack = \"INTERMEDIATE_CLAIM\"",
+    "RetainHiddenValue": "Y",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
   },
@@ -74,6 +80,8 @@
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "OPTIONAL",
     "PageID": "DocumentSelectionFastTrack",
+    "FieldShowCondition": "caseProgAllocatedTrack = \"MULTI_CLAIM\" OR caseProgAllocatedTrack = \"INTERMEDIATE_CLAIM\"",
+    "RetainHiddenValue": "Y",
     "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "N"
   },
