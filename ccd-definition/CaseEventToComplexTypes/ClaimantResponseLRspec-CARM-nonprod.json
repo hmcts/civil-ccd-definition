@@ -60,6 +60,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "app1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.date",
+    "FieldShowCondition": "app1MediationAvailability.unavailableDateType = \"SINGLE_DATE\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -68,6 +69,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "app1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.fromDate",
+    "FieldShowCondition": "app1MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -76,6 +78,7 @@
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "app1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.toDate",
+    "FieldShowCondition": "app1MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }

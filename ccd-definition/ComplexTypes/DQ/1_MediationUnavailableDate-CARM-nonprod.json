@@ -15,7 +15,6 @@
     "ElementLabel": "Unavailable date",
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"SINGLE_DATE\"",
     "Searchable": "N"
   },
   {
@@ -25,7 +24,6 @@
     "ElementLabel": "Date from",
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
     "Searchable": "N"
   },
   {
@@ -35,7 +33,6 @@
     "ElementLabel": "Date to",
     "HintText": "This date cannot be in the past and must not be more than three months in the future",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "unavailableDateType = \"DATE_RANGE\"",
     "Searchable": "N"
   }
 ]
