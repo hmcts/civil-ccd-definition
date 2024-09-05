@@ -60,7 +60,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.date",
-    "FieldShowCondition": "resp1MediationAvailability.unavailableDateType = \"SINGLE_DATE\"",
+    "FieldShowCondition": "resp1MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"SINGLE_DATE\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -69,7 +69,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.fromDate",
-    "FieldShowCondition": "resp1MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
+    "FieldShowCondition": "resp1MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -78,7 +78,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp1MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.toDate",
-    "FieldShowCondition": "resp1MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
+    "FieldShowCondition": "resp1MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   },
@@ -143,7 +143,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.date",
-    "FieldShowCondition": "resp2MediationAvailability.unavailableDateType = \"SINGLE_DATE\"",
+    "FieldShowCondition": "resp2MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"SINGLE_DATE\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
@@ -152,7 +152,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.fromDate",
-    "FieldShowCondition": "resp2MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
+    "FieldShowCondition": "resp2MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY"
   },
@@ -161,7 +161,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "resp2MediationAvailability",
     "ListElementCode": "unavailableDatesForMediation.toDate",
-    "FieldShowCondition": "resp2MediationAvailability.unavailableDateType = \"DATE_RANGE\"",
+    "FieldShowCondition": "resp2MediationAvailability.unavailableDatesForMediation.unavailableDateType = \"DATE_RANGE\"",
     "FieldDisplayOrder": 6,
     "DisplayContext": "MANDATORY"
   }
