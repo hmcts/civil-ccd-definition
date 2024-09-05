@@ -70,6 +70,6 @@
     "ListElementCode": "documentLink",
     "FieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "EventElementLabel": "Download"
+    "EventElementLabel": "Order Template (Opens in new tab)"
   }
 ]
