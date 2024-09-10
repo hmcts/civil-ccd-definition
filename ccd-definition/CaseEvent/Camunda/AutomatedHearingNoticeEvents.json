@@ -25,32 +25,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_DEFENDANT1_HEARING_HMC",
-    "Name": "Email: Notify hearing",
-    "Description": "Notify defendant solicitor 1 about hearing",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_DEFENDANT2_HEARING_HMC",
-    "Name": "Email: Notify hearing",
-    "Description": "Notify defendant solicitor 2 about hearing",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
+
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_SERVICE_REQUEST_API_HMC",
