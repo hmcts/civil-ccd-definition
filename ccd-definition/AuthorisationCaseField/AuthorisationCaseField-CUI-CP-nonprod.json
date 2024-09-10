@@ -557,6 +557,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentForDisclosureRes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentDisclosureListRes",
     "AccessControl": [
       {
