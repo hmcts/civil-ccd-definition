@@ -2069,7 +2069,8 @@
           "legal-adviser",
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "next-hearing-date-admin"
         ],
         "CRUD": "R"
       },
@@ -5527,18 +5528,6 @@
           "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "nextHearingDetails",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "next-hearing-date-admin"
-        ],
-        "CRUD": "CRUD"
       }
     ]
   }
