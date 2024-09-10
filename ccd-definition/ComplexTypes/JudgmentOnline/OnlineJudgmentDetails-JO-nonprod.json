@@ -179,6 +179,22 @@
   },
   {
     "ID": "JoJudgment",
+    "ListElementCode": "claimFeeAmount",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "amountAlreadyPaid",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
     "ListElementCode": "totalAmount",
     "ElementLabel": " ",
     "FieldType": "MoneyGBP",

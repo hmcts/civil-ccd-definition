@@ -1,5 +1,129 @@
 [
- {
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joDefendantName1",
+    "Label": "Defendant 1",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joDefendantName2",
+    "Label": "Defendant 2",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIsDisplayInJudgmentTab",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joPaymentPlanSelected",
+    "Label": "Payment type",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentSummaryLabel",
+    "Label": "${joRepaymentSummaryObject}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentSummaryObject",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joOrderedAmount",
+    "Label": "Claim amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joCosts",
+    "Label": "Claim fee amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joTotalAmount",
+    "Label": "Total amount owed",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentAmount",
+    "Label": "Regular payments of",
+    "HintText": "For example, £10",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentFrequency",
+    "Label": "How often do you want to receive payments?",
+    "FieldTypeParameter": "PaymentFrequencyList",
+    "FieldType": "FixedRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joRepaymentStartDate",
+    "Label": "Date for first instalment",
+    "HintText": "This must be after ${currentDatebox}",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joIssueDate",
+    "Label": "Date judgment order is issued",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joState",
+    "Label": "Status of active judgment",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "JudgmentStatePaidInFull",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "joFullyPaymentMadeDate",
+    "Label": "Date judgment amount paid in full",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "joIsLiveJudgmentExists",
     "Label": " ",
