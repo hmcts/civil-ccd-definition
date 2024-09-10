@@ -112,18 +112,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "NOTIFY_SET_ASIDE_JUDGMENT",
-    "Name": "Notify Set Aside Judgement",
-    "Description": "Notify Set Aside Judgement",
-    "PreConditionState(s)": "*",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_CLAIMANT",
     "Name": "Notify Set Aside Judgement",
     "Description": "Notify Set Aside Judgement to claimant ",
