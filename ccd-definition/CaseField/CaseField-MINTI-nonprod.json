@@ -70,5 +70,111 @@
     "FieldType": "DocumentsToBeConsidered",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderAllocateToTrack",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderTrackAllocation",
+    "Label": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "FinalOrdersAllocatedTrackList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderFastTrackComplexityBandLabel",
+    "Label": "**** \n ### Allocation \n For information on which complexity band the claim should be in see <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26#15' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.15 Table 1</a>. \n\nThe claim is allocated to the Fast Track.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderFastTrackComplexityBand",
+    "Label": " ",
+    "FieldType": "FinalOrderFastTrackAllocation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderIntermediateTrackComplexityBandLabel",
+    "Label": "**** \n ### Allocation \n For information on which complexity band the claim should be in see <a href='https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part26#16' rel=\"noreferrer noopener\" target=\"_blank\">CPR26.16 Table 2</a>. \n\nThe claim is allocated to the Intermediate Track.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderIntermediateTrackComplexityBand",
+    "Label": " ",
+    "FieldType": "FinalOrderIntermediateTrackAllocation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "selectTemplateLabel",
+    "Label": "**** \n ### Which template do you wish to use?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderDownloadTemplateOptions",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "downloadTemplateLabel1",
+    "Label": "**** \n ## You must now download the template \n Open the selected template and download it to your computer to complete the order.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "finalOrderDownloadTemplateDocument",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "downloadTemplateLabel2",
+    "Label": "\n Once you've completed the order, you can save and upload it on the next screen.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadOrderDocumentFromTemplateLabel",
+    "Label": "**** \n ## Add document \n Make sure your file is named either directions or order, the party names and the date. Upload your completed order in DOC/DOCX (Word) format.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "uploadOrderDocumentFromTemplate",
+    "Label": " ",
+    "FieldType": "Document",
+    "RegularExpression": ".doc,.docx",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -48,7 +48,8 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
@@ -298,25 +299,6 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "NOTIFY_SET_ASIDE_JUDGMENT",
     "AccessControl": [
       {
         "UserRoles": [
