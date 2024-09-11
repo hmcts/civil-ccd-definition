@@ -55,7 +55,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "DraftDirections",
-    "PageShowCondition": "(respondent1ClaimResponseTypeForSpec = \"FULL_DEFENCE\" OR respondent2ClaimResponseTypeForSpec = \"FULL_DEFENCE\") AND (responseClaimTrack =\"INTERMEDIATE_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\")",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND (responseClaimTrack =\"INTERMEDIATE_CLAIM\" OR responseClaimTrack =\"MULTI_CLAIM\")",
     "ShowSummaryChangeOption": "N"
   },
   {
