@@ -24,6 +24,7 @@ def secrets = [
   's2s-${env}': [
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_SECRET'),
     secret('microservicekey-ccd-data', 'CCD_DATA_STORE_S2S_SECRET'),
+    secret('microservicekey-ccd-admin', 'ADMIN_S2S_KEY'),
     secret('microservicekey-ccd-definition', 'CCD_DEFINITION_STORE_S2S_SECRET'),
     secret('microservicekey-xui-webapp', 'XUI_S2S_SECRET'),
   ],
@@ -36,6 +37,7 @@ def secrets = [
     secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
     secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
+    secret('ccd-admin-web-oauth2-client-secret', 'ADMIN_WEB_IDAM_SECRET'),
     secret('idam-data-store-system-user-username','ROLE_ASSIGNMENT_USER_EMAIL')
   ],
   'civil-${env}': [

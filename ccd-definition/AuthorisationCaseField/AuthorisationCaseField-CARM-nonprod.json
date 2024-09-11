@@ -461,5 +461,15 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "uploadMediationDocumentsExplanation",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
   }
 ]
