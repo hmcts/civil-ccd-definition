@@ -1,7 +1,7 @@
 [
   {
     "ID": "JudgmentAddress",
-    "ListElementCode": "addressLine1",
+    "ListElementCode": "defendantAddressLine1",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -9,7 +9,7 @@
   },
   {
     "ID": "JudgmentAddress",
-    "ListElementCode": "addressLine2",
+    "ListElementCode": "defendantAddressLine2",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -17,7 +17,7 @@
   },
   {
   "ID": "JudgmentAddress",
-  "ListElementCode": "addressLine3",
+  "ListElementCode": "defendantAddressLine3",
   "ElementLabel": " ",
   "FieldType": "Text",
   "SecurityClassification": "Public",
@@ -25,7 +25,7 @@
   },
   {
     "ID": "JudgmentAddress",
-    "ListElementCode": "addressLine4",
+    "ListElementCode": "defendantAddressLine4",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -33,7 +33,7 @@
   },
   {
     "ID": "JudgmentAddress",
-    "ListElementCode": "addressLine5",
+    "ListElementCode": "defendantAddressLine5",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
@@ -41,7 +41,7 @@
   },
   {
     "ID": "JudgmentAddress",
-    "ListElementCode": "postCode",
+    "ListElementCode": "defendantPostCode",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",
