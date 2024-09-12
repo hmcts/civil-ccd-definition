@@ -5,7 +5,7 @@ module.exports = {
   fields: {
     selectFacilities: '//input[@value="Laptop"]',
     selectHearingStage: '#AAA7-DIS',
-    selectAttendanceType: '//input[@value="Telephone"]',
+    selectAttendanceType: '//input[@value="In Person"]',
     partyChannel: '#partyChannel',
     noOfAttendees: '#attendance-number',
     hearingLocationEle: '//li[contains(@class, "location-selection")]',
@@ -56,7 +56,7 @@ module.exports = {
     let noOfIndividuals = await I.grabNumberOfVisibleElements('.party-row');
 
     for (let i=0; i<noOfIndividuals; i++) {
-      await I.selectOption(`${this.fields.partyChannel}`+i, 'Telephone');
+      await I.selectOption(`${this.fields.partyChannel}`+i, 'In Person');
     }
 
     await I.clearField(this.fields.noOfAttendees);

@@ -82,6 +82,7 @@
     "test:api-mediation": "MOCHAWESOME_REPORTFILENAME=api-mediation npx codeceptjs  run-workers --suites 4 --grep @api-spec-mediation --reporter mocha-multi --verbose",
     "test:api-multi-intermediate-spec": "MOCHAWESOME_REPORTFILENAME=api-multi-intermediate-spec npx codeceptjs  run-workers --suites 4 --grep @api-spec-multi-intermediate --reporter mocha-multi --verbose",
     "test:api-multi-intermediate-unspec": "MOCHAWESOME_REPORTFILENAME=api-multi-intermediate-unspec npx codeceptjs  run-workers --suites 4 --grep @api-unspec-multi-intermediate --reporter mocha-multi --verbose",
+    "test:e2e-hearing-request": "MOCHAWESOME_REPORTFILENAME=e2e-hearing-request npx codeceptjs run-workers --suites 4 --grep @e2e-hearing-request --reporter mocha-multi --verbose",
     "prepare": "husky install"
   },
   "license": "MIT",

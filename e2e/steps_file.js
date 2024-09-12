@@ -764,6 +764,11 @@ module.exports = function () {
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
 
+    async clickHearingRequest() {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.forceClick('Request a hearing'), urlBefore);
+    },
+
     async getCaseId(){
       console.log(`case created: ${caseId}`);
       return caseId;
