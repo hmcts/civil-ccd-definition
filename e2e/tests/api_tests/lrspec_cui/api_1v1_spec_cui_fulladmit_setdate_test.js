@@ -15,7 +15,7 @@ Scenario('1v1 LiP v LiP defendant response with full admit pay by set date - jud
 });
 
 Scenario('1v1 LiP v LiP defendant response with full admit pay by set date - judgementOrderOnlineLive enabled', async ({ api_spec_cui }) => {
-  await respondWithFAPayBySetDate(api_spec_cui, true);
+    await respondWithFAPayBySetDate(api_spec_cui, true);
 });
 
 async function respondWithFAPayBySetDate(api_spec_cui, joOnlineLiveEnabled) {
