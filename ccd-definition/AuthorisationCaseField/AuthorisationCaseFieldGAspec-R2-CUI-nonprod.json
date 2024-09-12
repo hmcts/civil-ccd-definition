@@ -344,7 +344,18 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalOrderDocRespondentSol",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
