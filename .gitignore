@@ -22,6 +22,9 @@ bin/main/application.yaml
 
 .DS_Store
 
+# dotenv environment variables file
+.env
+.env.test
 
 # node_modules
 package-lock.json
@@ -42,3 +45,7 @@ charts/civil-ccd/Chart.lock
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
