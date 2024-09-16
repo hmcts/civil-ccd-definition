@@ -7,7 +7,7 @@ const track = 'MULTI_CLAIM';
 
 Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 
-Scenario.only('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
+Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount);
 });
