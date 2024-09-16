@@ -6,6 +6,6 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "RespondentResponseTypeSpec",
     "SecurityClassification": "Public",
-    "Searchable": "Y"
+    "Searchable": "N"
   }
   ]
