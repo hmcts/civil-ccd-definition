@@ -20,7 +20,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 const {checkToggleEnabled} = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
@@ -228,6 +228,10 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
+    if (isJudgmentOnlineLive && typeOfData == 'FA_ACCEPT_CCJ') {
+      expectedEndState = 'All_FINAL_ORDERS_ISSUED';
+    }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
