@@ -37,6 +37,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_CLAIMANT_DISMISS_CASE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_DEFENDANT_DISMISS_CASE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_CASE_CLAIMANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
