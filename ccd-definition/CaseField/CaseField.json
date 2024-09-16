@@ -2788,5 +2788,13 @@
     "FieldType": "FixedRecoverableCosts",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "defaultJudgementOverallTotal",
+    "Label": "Default Judgement Overall Amount",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
