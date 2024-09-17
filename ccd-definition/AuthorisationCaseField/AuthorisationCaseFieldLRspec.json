@@ -1969,7 +1969,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
@@ -3856,7 +3857,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
