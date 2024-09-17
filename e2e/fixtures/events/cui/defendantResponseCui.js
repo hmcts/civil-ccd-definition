@@ -299,8 +299,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
+            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
           }
         },
         respondent1DQWitnesses: {
@@ -451,8 +451,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
+            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
           }
         },
         respondent1DQWitnesses: {
