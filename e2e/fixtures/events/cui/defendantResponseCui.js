@@ -1,4 +1,5 @@
 const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 const lipDefendantData = {
   PA_INSTALLMENTS_INDIVIDUAL: {
@@ -299,8 +300,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
-            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {
@@ -451,8 +452,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
-            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {

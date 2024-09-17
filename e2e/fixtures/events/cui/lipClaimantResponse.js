@@ -1,4 +1,5 @@
 const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 const lipClaimantData = {
   'PA_REJECT_NO_MEDIATION': {
@@ -146,8 +147,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'reasons',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
-            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
+            region: config.claimantSelectedCourt,
+            baseLocation:  config.claimantSelectedCourt
           }
         },
         applicant1DQWitnesses: {
@@ -285,8 +286,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'reasons',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL',
-            baseLocation: 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL'
+            region:  config.claimantSelectedCourt,
+            baseLocation:  config.claimantSelectedCourt
           }
         },
         applicant1DQWitnesses: {
