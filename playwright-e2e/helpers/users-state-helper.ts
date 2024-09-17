@@ -1,68 +1,68 @@
-import User from "../types/users/user";
+import User from "../types/user";
 import UserRole from "../enums/user-role";
 import FileSystemHelper from "./file-system-helper";
 import FileType from "../enums/file-type";
-import UserType from "../enums/user-type";
+import UserKey from "../enums/user-key";
 import filePaths from "../config/file-paths";
 import config from "../config/config";
 
 export default class UserStateHelper {
-  private static getUserStatePath = (userType: UserType) => `${filePaths.users}/${userType}-user.json`;
+  private static getUserStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-user.json`;
 
-  private static getUsersStatePath = (userType: UserType) => `${filePaths.users}/${userType}-users.json`;
+  private static getUsersStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-users.json`;
 
-  static generateCitizenUsers = (userType: UserType): User[] => {
+  static generateCitizenUsers = (userKey: UserKey): User[] => {
     return Array.from({ length: config.playwright.workers }, (_, index) => ({
-      email: `${userType}citizen-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
+      email: `${userKey}citizen-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
       password: process.env.SMOKE_TEST_USER_PASSWORD,
       role: UserRole.CITIZEN,
-      type: userType,
-      cookiesPath: `${filePaths.userCookies}/${userType}-${index + 1}.json`,
+      key: userKey,
+      cookiesPath: `${filePaths.userCookies}/${userKey}-${index + 1}.json`,
     }));
   };
 
   static addUsersToState = (users: User[]) => {
-    FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].type), FileType.JSON);
+    FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].key), FileType.JSON);
   };
 
   static addUserToState = (user: User) => {
-    FileSystemHelper.writeFile(user, this.getUserStatePath[user.type], FileType.JSON);
+    FileSystemHelper.writeFile(user, this.getUserStatePath[user.key], FileType.JSON);
   };
 
-  static getUserFromState = (userType: UserType): User => {
+  static getUserFromState = (userKey: UserKey): User => {
     let user: User;
     try {
-      user = FileSystemHelper.readFile(this.getUserStatePath(userType), FileType.JSON);
+      user = FileSystemHelper.readFile(this.getUserStatePath(userKey), FileType.JSON);
       return user;
     } catch {
       return null;
     }
   };
 
-  static getUsersFromState = (userType: UserType): User[] => {
+  static getUsersFromState = (userKey: UserKey): User[] => {
     let users: User[];
     try {
-      users = FileSystemHelper.readFile(this.getUsersStatePath(userType), FileType.JSON);
+      users = FileSystemHelper.readFile(this.getUsersStatePath(userKey), FileType.JSON);
       return users;
     } catch {
       return null;
     }
   };
 
-  static userStateExists = (userType: UserType) => {
-    return FileSystemHelper.exists(this.getUserStatePath(userType));
+  static userStateExists = (userKey: UserKey) => {
+    return FileSystemHelper.exists(this.getUserStatePath(userKey));
   };
 
-  static usersStateExists = (userType: UserType) => {
-    return FileSystemHelper.exists(this.getUsersStatePath(userType));
+  static usersStateExists = (userKey: UserKey) => {
+    return FileSystemHelper.exists(this.getUsersStatePath(userKey));
   };
 
-  static deleteUserState = (userType: UserType) => {
-    FileSystemHelper.delete(this.getUserStatePath(userType));
+  static deleteUserState = (userKey: UserKey) => {
+    FileSystemHelper.delete(this.getUserStatePath(userKey));
   };
 
-  static deleteUsersState = (userType: UserType) => {
-    FileSystemHelper.delete(this.getUsersStatePath(userType));
+  static deleteUsersState = (userKey: UserKey) => {
+    FileSystemHelper.delete(this.getUsersStatePath(userKey));
   };
 
   static deleteAllUsersState = () => {
