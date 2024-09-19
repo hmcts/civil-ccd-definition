@@ -2476,7 +2476,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "defaultJudgementOverallTotal",
     "Label": "Default Judgement Overall Amount",
-    "FieldType": "MoneyGBP",
+    "FieldType": "Number",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
