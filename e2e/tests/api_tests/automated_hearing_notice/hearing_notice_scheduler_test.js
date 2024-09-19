@@ -22,17 +22,17 @@ Scenario('Create Unspec claim with sdo', async ({api}) => {
 }).retry(3);
 
 Scenario('Generate Unspec Disposal hearing notice', async ({hearings}) => {
-  const hearingId = await hearings.createDisposalHearing(caseId);
+  const hearingId = await hearings.createUnspecDisposalHearing(caseId);
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
 Scenario('Generate Unspec Trial hearing notice', async ({hearings}) => {
-    const hearingId = await hearings.createTrialHearing(caseId);
+    const hearingId = await hearings.createUnspecTrialHearing(caseId);
     await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
 Scenario('Generate Unspec Dispute Resolution hearing notice', async ({hearings}) => {
-  const hearingId = await hearings.createDisputeResolutionHearing(caseId);
+  const hearingId = await hearings.createUnspecDisputeResolutionHearing(caseId);
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
@@ -44,17 +44,17 @@ Scenario('Create Spec claim with SDO', async ({api_spec_small}) => {
 }).retry(3);
 
 Scenario('Generate Spec Disposal hearing notice', async ({hearings}) => {
-  const hearingId = await hearings.createDisposalHearing(caseId);
+  const hearingId = await hearings.createSpecDisposalHearing(caseId);
   await hearings.triggerSpecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
 Scenario('Generate Spec Trial hearing notice', async ({hearings}) => {
-  const hearingId = await hearings.createTrialHearing(caseId);
+  const hearingId = await hearings.createSpecTrialHearing(caseId);
   await hearings.triggerSpecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
 Scenario('Generate Spec Dispute Resolution hearing notice', async ({hearings}) => {
-  const hearingId = await hearings.createDisputeResolutionHearing(caseId);
+  const hearingId = await hearings.createSpecDisputeResolutionHearing(caseId);
   await hearings.triggerSpecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 

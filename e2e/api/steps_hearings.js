@@ -853,9 +853,9 @@ const getExpectedPayload = (serviceId) => {
   }
 ;
 
-const createHearing = async (caseId, hearingType) => {
+const createHearing = async (caseId, hearingType, serviceCode) => {
   const hearingId = createHearingId();
-  const hearing = listedHearing(caseId, hearingId, hearingType);
+  const hearing = listedHearing(caseId, hearingId, hearingType, serviceCode);
   await createUpdateStub(hearingStubRequestBody(hearing, hearingId));
   console.log(`Created new hearing mock: [${hearingId} - ${hearingType}]`);
   return hearingId;
@@ -921,9 +921,12 @@ module.exports = {
     await createUpdateStub(getpartiesNotifiedStubRequestBody());
     await createUpdateStub(putPartiesNotifiedStubRequestBody());
   },
-  createTrialHearing: async (caseId) => createHearing(caseId, 'TRI'),
-  createDisposalHearing: async (caseId) => createHearing(caseId, 'DIS'),
-  createDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH'),
+  createUnspecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA7'),
+  createUnspecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA7'),
+  createUnspecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA7'),
+  createSpecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA6'),
+  createSpecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA6'),
+  createSpecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA6'),
   triggerUnspecAutomatedHearingNoticeScheduler: async (expectedHearingId) => {
     return await triggerHearingNoticeScheduler(expectedHearingId, UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER);
   },

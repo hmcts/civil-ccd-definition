@@ -1,6 +1,6 @@
 const {incrementDate, appendTime} = require('../../dataHelper');
 
-const listedHearing = (caseId, hearingId, hearingType) => {
+const listedHearing = (caseId, hearingId, hearingType, serviceCode) => {
   const today = new Date();
   const hearingDate = incrementDate(today, 5, null, null);
 
@@ -12,7 +12,7 @@ const listedHearing = (caseId, hearingId, hearingType) => {
       'hearingRequestID': `${hearingId}`
     },
     'hearingDetails': {
-      'hearingType': `AAA7-${hearingType}`,
+      'hearingType': `${serviceCode}-${hearingType}`,
       'hearingWindow': {},
       'duration': 60,
       'hearingPriorityType': 'Standard',
@@ -41,7 +41,7 @@ const listedHearing = (caseId, hearingId, hearingType) => {
       'autolistFlag': false
     },
     'caseDetails': {
-      'hmctsServiceCode': 'AAA7',
+      'hmctsServiceCode': `${serviceCode}`,
       'caseRef': `${caseId}`,
       'caseDeepLink': `https://manage-case.demo.platform.hmcts.net/cases/case-details/${caseId}`,
       'hmctsInternalCaseName': '\'New name\' represented by \'Gareth Lancaster\' (litigation friend) v \'John Doe\'',
@@ -51,12 +51,12 @@ const listedHearing = (caseId, hearingId, hearingType) => {
       'caseCategories': [
         {
           'categoryType': 'caseType',
-          'categoryValue': 'AAA7-FAST_CLAIM'
+          'categoryValue': `${serviceCode}-FAST_CLAIM`
         },
         {
           'categoryType': 'caseSubType',
-          'categoryValue': 'AAA7-FAST_CLAIM',
-          'categoryParent': 'AAA7-FAST_CLAIM'
+          'categoryValue': `${serviceCode}-FAST_CLAIM`,
+          'categoryParent': `${serviceCode}-FAST_CLAIM`
         }
       ],
       'caseManagementLocationCode': '424213',

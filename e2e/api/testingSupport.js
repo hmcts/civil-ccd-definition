@@ -3,7 +3,6 @@ const idamHelper = require('./idamHelper');
 const serviceAuthHelper = require('./serviceAuthorisationHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const totp = require('totp-generator');
 
 
 let incidentMessage;
