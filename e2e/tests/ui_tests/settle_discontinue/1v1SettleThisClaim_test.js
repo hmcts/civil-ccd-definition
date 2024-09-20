@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
+// const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
 async function prepareClaimSpec(api_spec_small) {
