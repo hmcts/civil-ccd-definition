@@ -3,7 +3,7 @@ import config from "../config";
 import Environment from "../../enums/environment";
 import UserRole from "../../enums/user-role";
 import User from "../../types/user";
-import { getUser, clearUserKeyToEmail } from "./user-utils";
+import { getUser, clearUserKeysBeingUsed } from "./user-utils";
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
@@ -140,4 +140,4 @@ export const ctscAdminUser: User = getUser({
   key: UserKey.CTSC_ADMIN,
 });
 
-clearUserKeyToEmail();
+clearUserKeysBeingUsed();
