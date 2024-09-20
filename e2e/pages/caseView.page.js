@@ -19,6 +19,7 @@ module.exports = {
     monthOfPermission: '#permissionGrantedDate-month',
     yearOfPermission: '#permissionGrantedDate-year',
     judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
+    caseNote: '#caseNote',
   },
   goButton: '.button[type="submit"]',
 
@@ -49,6 +50,11 @@ module.exports = {
     I.fillField(this.fields.yearOfPermission, 2024);
     await I.clickContinue();
   },
+  async caseNoteForClaimDiscontinuedRemoveHearing() {
+    await I.runAccessibilityTest();
+    I.fillField(this.fields.caseNote, 'Testing');
+    await I.clickContinue();
+  },
   async startEventForRR(event, caseId) {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
@@ -74,10 +80,22 @@ module.exports = {
       await I.navigateToCaseDetailsForDiscontinueThisClaim(caseId);
     }, locate('.govuk-heading-l'));
   },
+  async startEventForDiscontinueThisClaim2v1(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForDiscontinueThisClaim2v1(caseId);
+    }, locate('.govuk-heading-l'));
+  },
   async startEventForValidateDiscontinuance(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetailsForValidateDiscontinuance(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForClaimDiscontinuedRemoveHearing(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseId);
     }, locate('.govuk-heading-l'));
   },
   async startEventForDR(caseId) {

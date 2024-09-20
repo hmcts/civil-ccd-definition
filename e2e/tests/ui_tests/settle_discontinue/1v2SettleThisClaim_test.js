@@ -1,20 +1,16 @@
 const config = require('../../../config.js');
 const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const legalAdvUser = config.tribunalCaseworkerWithRegionId4;
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 let caseNumber;
-async function prepareClaimSpec(api_spec_small) {
-  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE');
-  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', true);
-  await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
+
+async function prepareClaimSpec1v2(api_spec_small) {
+  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 }
+Feature('Settle this Claim - Confirm marking as paid in full - 1v2 - spec @master-e2e-ft');
 
-Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec @master-e2e-ft');
-
-Scenario('1v1 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
+Scenario('1v2 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpec(api_spec_small);
-    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await prepareClaimSpec1v2(api_spec_small);
     caseNumber = await api_spec_small.getCaseId();
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
@@ -33,12 +29,11 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - judges order - 1v1 - spec @master-e2e-ft');
+Feature('Settle this Claim - Reason for settlement - judges order - 1v2 - spec @master-e2e-ft');
 
-Scenario('1v1 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
+Scenario('1v2 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpec(api_spec_small);
-    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await prepareClaimSpec1v2(api_spec_small);
     caseNumber = await api_spec_small.getCaseId();
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
@@ -47,7 +42,7 @@ Scenario('1v1 spec Reason for settlement - judges order', async ({api_spec_small
 
 Scenario('Reason for settlement - judges order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.login(config.hearingCenterAdminWithRegionId2);
     await LRspec.requestSettleThisClaimJudgesOrderForUI();
   }
 }).retry(3);
@@ -57,12 +52,11 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 1v1 - spec @master-e2e-ft');
+Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @e2e-nightly-prod');
 
-Scenario('1v1 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
+Scenario('1v2 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpec(api_spec_small);
-    await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
+    await prepareClaimSpec1v2(api_spec_small);
     caseNumber = await api_spec_small.getCaseId();
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
@@ -71,7 +65,7 @@ Scenario('1v1 spec Reason for settlement - Consent order', async ({api_spec_smal
 
 Scenario('Reason for settlement - Consent order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.login(config.hearingCenterAdminWithRegionId2);
     await LRspec.requestSettleThisClaimConsentOrderForUI();
   }
 }).retry(3);

@@ -1060,6 +1060,17 @@ module.exports = function () {
 
       await this.waitForSelector('#courtPermissionNeeded-YES');
     },
+    async navigateToCaseDetailsForDiscontinueThisClaim2v1(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#claimantWhoIsDiscontinuing');
+    },
     async navigateToCaseDetailsForValidateDiscontinuance(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -1070,6 +1081,17 @@ module.exports = function () {
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('#confirmOrderGivesPermission-YES');
+    },
+    async navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#caseNote');
     },
     async navigateToCaseDetailsForDR(caseNumber) {
       await this.retryUntilExists(async () => {
