@@ -1,18 +1,14 @@
-import UserKey from "../enums/user-key";
-import config from "./config";
-import Environment from "../enums/environment";
-import UserRole from "../enums/user-role";
-import User from "../types/user";
-import UserStateHelper from "../helpers/users-state-helper";
+import UserKey from "../../enums/user-key";
+import config from "../config";
+import Environment from "../../enums/environment";
+import UserRole from "../../enums/user-role";
+import User from "../../types/user";
+import { getUser, clearUserKeyToEmail } from "./user-utils";
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
-
-const getUser = (user: User): User => {
-  return UserStateHelper.getUserFromState(user.key) ?? user;
-};
 
 export const claimantSolicitorUser: User = getUser({
   email: "hmcts.civil+organisation.1.solicitor.1@gmail.com",
@@ -143,3 +139,5 @@ export const ctscAdminUser: User = getUser({
   role: UserRole.CASEWORKER,
   key: UserKey.CTSC_ADMIN,
 });
+
+clearUserKeyToEmail();
