@@ -9,7 +9,7 @@ source .env.local
 export ENVIRONMENT=preview
 # urls
 export URL=$XUI_WEBAPP_URL
-export CIVIL_SERVICE_URL=$TEST_URL
+export CIVIL_SERVICE_URL=$JAVA_URL
 export SERVICE_AUTH_PROVIDER_API_BASE_URL="http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
 export IDAM_API_BASE_URL="https://idam-api.aat.platform.hmcts.net"
 export IDAM_API_URL="https://idam-api.aat.platform.hmcts.net"
