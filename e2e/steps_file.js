@@ -1046,7 +1046,7 @@ module.exports = function () {
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
       }, SIGNED_IN_SELECTOR);
 
-      await this.waitForSelector('#settleReason');
+      await this.waitForSelector('#settleReason-JUDGE_ORDER');
     },
 
     async navigateToCaseDetailsForDiscontinueThisClaim(caseNumber) {
