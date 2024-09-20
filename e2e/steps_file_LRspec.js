@@ -954,7 +954,7 @@ module.exports = function () {
       eventName = 'Settle this claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
-        () => this.click("Settled following judge's order"),
+        () => this.click('locator=`text="Settled following judge\'s order"`'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
