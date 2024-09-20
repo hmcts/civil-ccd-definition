@@ -20,6 +20,7 @@ module.exports = {
     yearOfPermission: '#permissionGrantedDate-year',
     judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
     caseNote: '#caseNote',
+    judgeOrder: '#settleReason-JUDGE_ORDER',
   },
   goButton: '.button[type="submit"]',
 
@@ -48,6 +49,11 @@ module.exports = {
     I.fillField(this.fields.dayOfPermission, 29);
     I.fillField(this.fields.monthOfPermission, 8);
     I.fillField(this.fields.yearOfPermission, 2024);
+    await I.clickContinue();
+  },
+  async selectJudgeOrder() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.judgeOrder);
     await I.clickContinue();
   },
   async caseNoteForClaimDiscontinuedRemoveHearing() {
