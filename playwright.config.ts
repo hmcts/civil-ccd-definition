@@ -1,6 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
-import os from 'node:os';
 
 export default defineConfig({
   testDir: './playwright-e2e/tests',
