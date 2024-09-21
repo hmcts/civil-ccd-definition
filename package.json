@@ -6,7 +6,7 @@
     "lint": "eslint && yarn lint:no-dup-classes",
     "lint:no-dup-classes": "eslint --config ./custom-eslint-configs/no-dup-classes.config.mjs",
     "lint:fix": "eslint . --fix",
-    "prettier:fix": "prettier -w .",
+    "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
     "yarn-update": "yarn set version 3.x",
     "install-dependencies": "/usr/bin/yarn install --immutable --silent",
