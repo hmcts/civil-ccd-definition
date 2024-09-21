@@ -128,7 +128,7 @@
   },
   "lint-staged": {
     "*": [
-      "prettier -w .",
+      "prettier -w 'playwright-e2e/**/*.ts'",
       "eslint"
     ]
   },
