@@ -5,6 +5,7 @@
   "scripts": {
     "lint": "eslint && yarn lint:no-dup-classes",
     "lint:no-dup-classes": "eslint --config ./custom-eslint-configs/no-dup-classes.config.mjs",
+    "lint:staged": "lint-staged || true ; yarn lint:no-dup-classes",
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
