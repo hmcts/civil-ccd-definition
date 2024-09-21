@@ -3,7 +3,7 @@ import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginCodecept from 'eslint-plugin-codeceptjs'
-
+import customEslintPlugin from 'custom-eslint-plugin';
 
 export default [
   {
