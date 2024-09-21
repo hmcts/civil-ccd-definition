@@ -1,15 +1,17 @@
-import User from "../types/user";
-import UserRole from "../enums/user-role";
-import FileSystemHelper from "./file-system-helper";
-import FileType from "../enums/file-type";
-import UserKey from "../enums/user-key";
-import filePaths from "../config/file-paths";
-import config from "../config/config";
+import User from '../types/user';
+import UserRole from '../enums/user-role';
+import FileSystemHelper from './file-system-helper';
+import FileType from '../enums/file-type';
+import UserKey from '../enums/user-key';
+import filePaths from '../config/file-paths';
+import config from '../config/config';
 
 export default class UserStateHelper {
-  private static getUserStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-user.json`;
+  private static getUserStatePath = (userType: UserKey) =>
+    `${filePaths.users}/${userType}-user.json`;
 
-  private static getUsersStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-users.json`;
+  private static getUsersStatePath = (userType: UserKey) =>
+    `${filePaths.users}/${userType}-users.json`;
 
   static generateCitizenUsers = (userKey: UserKey): User[] => {
     return Array.from({ length: config.playwright.workers }, (_, index) => ({

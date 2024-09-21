@@ -1,13 +1,14 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import tseslint from "typescript-eslint";
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
-import eslintPluginCodecept from 'eslint-plugin-codeceptjs'
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import tseslint from 'typescript-eslint';
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
+import eslintPluginCodecept from 'eslint-plugin-codeceptjs';
 import customEslintPlugin from 'custom-eslint-plugin';
 
 export default [
   {
     ignores: [
+      'steps.d.ts',
       'node_modules/*',
       'govuk/*',
       'public/*',
@@ -18,6 +19,7 @@ export default [
       'allure-bootstrap-results/*',
       'allure-functional-report/*',
       'allure-functional-results/*',
+      'plugins/*',
       'coverage',
       '*.min.js',
       '**/*.js',
@@ -27,9 +29,9 @@ export default [
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["e2e/**/*.{js,mjs,cjs}"],  
-    languageOptions: {sourceType: "commonjs"},
-    plugins: {eslintPluginCodecept},
+    files: ['e2e/**/*.{js,mjs,cjs}'],
+    languageOptions: { sourceType: 'commonjs' },
+    plugins: { eslintPluginCodecept },
     env: {
       browser: true,
       commonjs: true,
@@ -79,7 +81,6 @@ export default [
       'customEslintPlugin/prefer-step-decorator': 'warn',
     },
   },
-  {languageOptions: { globals: globals.node }},
-  eslintPluginPrettierRecommended
-  
+  { languageOptions: { globals: globals.node } },
+  eslintPluginPrettierRecommended,
 ];
