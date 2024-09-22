@@ -58,6 +58,8 @@ export default [
     files: ['playwright-e2e/**/*.{ts,tsx}'],
     plugins: { customEslintPlugin },
     rules: {
+      ...pluginJs.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
       'comma-dangle': ['error', 'always-multiline'],
