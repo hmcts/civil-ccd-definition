@@ -53,7 +53,6 @@ export default [
     plugins: { customEslintPlugin },
     rules: {
       ...pluginJs.configs.recommended.rules,
-      ...eslintConfigPrettier.rules,
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
       'comma-dangle': ['error', 'always-multiline'],
@@ -67,6 +66,7 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-unsafe-function-type': 'off',
       '@typescript-eslint/no-unused-expressions': 'warn',
+      ...eslintConfigPrettier.rules,
     },
   },
   {

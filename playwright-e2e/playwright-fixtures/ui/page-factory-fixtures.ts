@@ -13,5 +13,5 @@ export const test = base.extend<PageFactoryFixtures>({
   },
   _idamFactory: async ({ page, _axeBuilder }, use) => {
     await use(new IdamFactory(page, _axeBuilder));
-  },
+  }
 });
