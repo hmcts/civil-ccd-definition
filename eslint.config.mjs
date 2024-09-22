@@ -22,32 +22,26 @@ export default [
       'plugins/*',
       'coverage',
       '*.min.js',
-      '**/*.js',
-      '**/*.cjs',
     ],
   },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['e2e/**/*.{js,mjs,cjs}'],
-    languageOptions: { sourceType: 'commonjs' },
-    plugins: { eslintPluginCodecept },
-    env: {
-      browser: true,
-      commonjs: true,
-      es2020: true,
-      'codeceptjs/codeceptjs': true,
-      node: true,
-      mocha: true,
-      jest: true,
-    },
-    parserOptions: {
+    files: ['e2e/**/*{.js,.mjs,.cjs}'],
+    languageOptions: { 
+      sourceType: 'commonjs',
       ecmaVersion: 11,
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        ...globals.es2020,
+        ...globals.mocha,
+        ...globals.jest,
+        'codeceptjs/codeceptjs': 'readonly'
+      }
+
     },
-    rules: {
-      quotes: ['error', 'single'],
-      semi: ['error', 'always'],
-    },
+    plugins: { eslintPluginCodecept },
   },
   {
     files: ['playwright-e2e/**/*{.ts,.tsx}'],
