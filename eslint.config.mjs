@@ -5,8 +5,6 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginCodecept from 'eslint-plugin-codeceptjs';
 import customEslintPlugin from 'custom-eslint-plugin';
 
-tseslint.config({ files: ['**/*.ts'] });
-
 export default [
   {
     ignores: [
