@@ -29,11 +29,11 @@ export const expect = baseExpect
       if (!pageResults.pass) {
         if (pageResults.violationsInfo)
           await testInfo.attach(pageResults.violationsInfo.fileName, {
-            path: pageResults.violationsInfo.filePath
+            path: pageResults.violationsInfo.filePath,
           });
         if (pageResults.screenshotInfo)
           await testInfo.attach(pageResults.screenshotInfo.fileName, {
-            path: pageResults.screenshotInfo.filePath
+            path: pageResults.screenshotInfo.filePath,
           });
       }
 
@@ -64,7 +64,7 @@ export const expect = baseExpect
         pass: pageResults.pass,
         name: assertionName,
         expected: 0,
-        actual: matcherResult?.actual
+        actual: matcherResult?.actual,
       };
     },
 
@@ -95,12 +95,12 @@ export const expect = baseExpect
 
         await test.info().attach(violationsFileName, {
           body: JSON.stringify(violations, null, 2),
-          contentType: 'application/json'
+          contentType: 'application/json',
         });
         const screenshot = await page.screenshot({ fullPage: true });
         await test.info().attach(screenshotFileName, {
           body: screenshot,
-          contentType: 'image/png'
+          contentType: 'image/png',
         });
       }
 
@@ -131,8 +131,8 @@ export const expect = baseExpect
         pass,
         name: assertionName,
         expected: 0,
-        actual: matcherResult?.actual
+        actual: matcherResult?.actual,
       };
-    }
+    },
   })
   .configure({ soft: config.playwright.softExpect });
