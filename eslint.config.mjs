@@ -24,12 +24,12 @@ export default [
       '**/*.min.js',
     ],
   },
-  ...[...tseslint.configs.recommended].map((conf) => ({
-    ...conf,
+  ...[...tseslint.configs.recommended].map((config) => ({
+    ...config,
     files: ['playwright-e2e/**/*.ts'],
   })),
   {
-    files: ['e2e/**/*{.js,.mjs,.cjs}'],
+    files: ['e2e/**/*.{js,mjs,cjs}'],
     languageOptions: {
       sourceType: 'commonjs',
       ecmaVersion: 11,
@@ -46,10 +46,12 @@ export default [
     plugins: { eslintPluginCodecept },
     rules: {
       'no-unused-vars': 'off',
+      'quotes': ['error', 'single'],
+      'semi': ['error', 'always']
     },
   },
   {
-    files: ['playwright-e2e/**/*{.ts,.tsx}'],
+    files: ['playwright-e2e/**/*.{ts,tsx}'],
     plugins: { customEslintPlugin },
     rules: {
       ...pluginJs.configs.recommended.rules,
