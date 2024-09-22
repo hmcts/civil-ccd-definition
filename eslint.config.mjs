@@ -5,6 +5,8 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import eslintPluginCodecept from 'eslint-plugin-codeceptjs';
 import customEslintPlugin from 'custom-eslint-plugin';
 
+tseslint.config({ files: ['**/*.ts'] });
+
 export default [
   {
     ignores: [
@@ -21,14 +23,17 @@ export default [
       'allure-functional-results/*',
       'plugins/*',
       'coverage',
-      '*.min.js',
+      '**/*.min.js',
     ],
   },
-  pluginJs.configs.recommended,
-  ...tseslint.configs.recommended,
+  ...[...tseslint.configs.recommended].map((conf) => ({
+    ...conf,
+    files: ['**/*.ts'],
+  })),
   {
     files: ['e2e/**/*{.js,.mjs,.cjs}'],
-    languageOptions: { 
+    ...pluginJs.configs.recommended,
+    languageOptions: {
       sourceType: 'commonjs',
       ecmaVersion: 11,
       globals: {
@@ -37,14 +42,18 @@ export default [
         ...globals.es2020,
         ...globals.mocha,
         ...globals.jest,
-        'codeceptjs/codeceptjs': 'readonly'
-      }
-
+        ...eslintPluginCodecept.environments.codeceptjs.globals,
+        'codeceptjs/codeceptjs': 'readonly',
+      },
     },
     plugins: { eslintPluginCodecept },
+    rules: {
+      'no-unused-vars': 'off',
+    },
   },
   {
     files: ['playwright-e2e/**/*{.ts,.tsx}'],
+    ...eslintPluginPrettierRecommended,
     plugins: { customEslintPlugin },
     rules: {
       indent: ['error', 2, { SwitchCase: 1 }],
@@ -76,5 +85,4 @@ export default [
     },
   },
   { languageOptions: { globals: globals.node } },
-  eslintPluginPrettierRecommended,
 ];
