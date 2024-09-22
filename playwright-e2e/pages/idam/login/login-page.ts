@@ -21,10 +21,6 @@ export default class LoginPage extends BasePage {
     await super.clickBySelector(buttons.submit.selector);
   }
 
-  async openCitizenFrontEnd() {
-    await super.goTo(urls.citizenFrontEnd);
-  }
-
   async openManageCase() {
     await super.goTo(urls.manageCase);
   }

@@ -8,12 +8,12 @@ export default [
   {
     plugins: { customEslintPlugin },
     files: [
-      'playwright/pages/**/*page.ts',
-      'playwright/pages/**/*fragment.ts',
-      'playwright/pages/**/*event.ts',
-      'playwright/steps/**/*steps.ts',
-      'playwright/base/base-page.ts',
-      'playwright/base/base-requests.ts',
+      'playwright-e2e/pages/**/*page.ts',
+      'playwright-e2e/pages/**/*fragment.ts',
+      'playwright-e2e/pages/**/*event.ts',
+      'playwright-e2e/steps/**/*steps.ts',
+      'playwright-e2e/base/base-page.ts',
+      'playwright-e2e/base/base-requests.ts',
     ],
     rules: {
       'customEslintPlugin/no-duplicate-class-names': 'error',
