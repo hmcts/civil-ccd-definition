@@ -8,5 +8,5 @@ type RequestsFactoryFixtures = {
 export const test = base.extend<RequestsFactoryFixtures>({
   _requestsFactory: async ({ request }, use) => {
     await use(new RequestsFactory(request));
-  },
+  }
 });

@@ -10,3 +10,5 @@ allure-functional-report/*
 allure-functional-results/*
 coverage
 *.min.js
+ccd-defintion/*
+e2e/*

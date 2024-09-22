@@ -45,16 +45,16 @@ export const expect = baseExpect
 
       const message = pageResults.pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${pageResults.violationsInfo.length} violation(s), please check attached file: ${pageResults.violationsInfo.fileName}, for more details.`;
@@ -112,16 +112,16 @@ export const expect = baseExpect
 
       const message = pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${violations.length} violation(s), please check attached file: ${violationsFileName}, for more details.`;

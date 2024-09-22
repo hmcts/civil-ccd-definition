@@ -127,10 +127,8 @@
     "webdriverio": "^6.12.1"
   },
   "lint-staged": {
-    "*": [
-      "prettier -w .",
-      "eslint"
-    ]
+    "playwright-e2e/**/*.{ts,tsx}": "prettier --write",
+    "*": "eslint"
   },
   "resolutions": {
     "minimatch": "^3.0.5"

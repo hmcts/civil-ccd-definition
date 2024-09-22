@@ -8,5 +8,5 @@ type UiStepsFixtures = {
 export const test = base.extend<UiStepsFixtures>({
   IdamSteps: async ({ _pageUtilsFactory, _idamFactory, _testData, _isSetupTest, _isTeardown, _verifyCookiesBanner }, use) => {
     await use(new IdamSteps(_pageUtilsFactory, _idamFactory, _isSetupTest, _isTeardown, _verifyCookiesBanner, _testData));
-  },
+  }
 });
