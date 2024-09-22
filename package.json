@@ -3,9 +3,9 @@
   "version": "0.0.1",
   "description": "Civil e2e tests",
   "scripts": {
-    "lint": "eslint && yarn lint:no-dup-classes",
+    "lint": "./bin/run-commands-series.sh -c \"eslint\" \"lint:no-dup-classes\"",
     "lint:no-dup-classes": "eslint --config ./custom-eslint-configs/no-dup-classes.config.mjs",
-    "lint:staged": "lint-staged && yarn lint:no-dup-classes",
+    "lint:staged": "./bin/run-commands-series.sh -c \"lint-staged\" \"lint:no-dup-classes\"",
     "lint:fix": "eslint . --fix",
     "prettier:fix": "prettier -w 'playwright-e2e/**/*.ts'",
     "setup": "echo yarn:setup",
@@ -86,7 +86,7 @@
     "test:api-mediation": "MOCHAWESOME_REPORTFILENAME=api-mediation npx codeceptjs  run-workers --suites 4 --grep @api-spec-mediation --reporter mocha-multi --verbose",
     "test:api-multi-intermediate-spec": "MOCHAWESOME_REPORTFILENAME=api-multi-intermediate-spec npx codeceptjs  run-workers --suites 4 --grep @api-spec-multi-intermediate --reporter mocha-multi --verbose",
     "test:api-multi-intermediate-unspec": "MOCHAWESOME_REPORTFILENAME=api-multi-intermediate-unspec npx codeceptjs  run-workers --suites 4 --grep @api-unspec-multi-intermediate --reporter mocha-multi --verbose",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "license": "MIT",
   "devDependencies": {
@@ -108,7 +108,7 @@
     "faker": "^5.5.3",
     "globals": "^15.9.0",
     "html_codesniffer": "^2.5.1",
-    "husky": "^8.0.0",
+    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "lodash": "^4.17.21",
     "mocha": "9.2.2",
@@ -121,14 +121,14 @@
     "playwright-core": "^1.47.2",
     "prettier": "^3.3.3",
     "totp-generator": "^0.0.14",
-    "typescript": "^5.6.2",
-    "typescript-eslint": "^8.6.0",
+    "typescript": "5.4.5",
+    "typescript-eslint": "8.0.0",
     "uuid": "^3.4.0",
     "webdriverio": "^6.12.1"
   },
   "lint-staged": {
     "*": [
-      "prettier -w 'playwright-e2e/**/*.ts'",
+      "prettier -w .",
       "eslint"
     ]
   },

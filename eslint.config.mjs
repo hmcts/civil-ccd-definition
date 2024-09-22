@@ -1,9 +1,9 @@
 import globals from 'globals';
 import pluginJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
-import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import eslintPluginCodecept from 'eslint-plugin-codeceptjs';
 import customEslintPlugin from 'custom-eslint-plugin';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
   {
@@ -26,11 +26,10 @@ export default [
   },
   ...[...tseslint.configs.recommended].map((conf) => ({
     ...conf,
-    files: ['**/*.ts'],
+    files: ['playwright-e2e/**/*.ts'],
   })),
   {
     files: ['e2e/**/*{.js,.mjs,.cjs}'],
-    ...pluginJs.configs.recommended,
     languageOptions: {
       sourceType: 'commonjs',
       ecmaVersion: 11,
@@ -51,9 +50,10 @@ export default [
   },
   {
     files: ['playwright-e2e/**/*{.ts,.tsx}'],
-    ...eslintPluginPrettierRecommended,
     plugins: { customEslintPlugin },
     rules: {
+      ...pluginJs.configs.recommended.rules,
+      ...eslintConfigPrettier.rules,
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
       'comma-dangle': ['error', 'always-multiline'],
