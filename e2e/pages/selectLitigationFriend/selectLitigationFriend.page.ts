@@ -24,7 +24,7 @@ module.exports = {
   },
 
   async checkOptionValidity(responseField, responseType) {
-    //eslint-disable-next-line no-prototype-builtins
+     
     if (!responseField.options.hasOwnProperty(responseType)) {
       throw new Error(`Option: ${responseType} does not exist`);
     }

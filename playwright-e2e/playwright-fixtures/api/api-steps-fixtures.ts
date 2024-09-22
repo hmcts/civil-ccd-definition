@@ -8,5 +8,5 @@ type ApiStepsFixtures = {
 export const test = base.extend<ApiStepsFixtures>({
   ApiUsersSteps: async ({ _testData, _requestsFactory }, use) => {
     await use(new ApiUsersSteps(_requestsFactory, _testData));
-  }
+  },
 });
