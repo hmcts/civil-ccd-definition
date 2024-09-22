@@ -157,7 +157,7 @@ export default abstract class BasePage {
     const locator = this.page.locator(selector);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
-      // eslint-disable-next-line no-empty
+       
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
   }
@@ -171,7 +171,7 @@ export default abstract class BasePage {
     const locator = this.page.getByText(text);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
-      // eslint-disable-next-line no-empty
+       
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
   }
@@ -269,7 +269,7 @@ export default abstract class BasePage {
     const locator = this.page.locator(selector);
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
-      // eslint-disable-next-line no-empty
+       
     } catch (err) {}
     await pageExpect(locator).toBeHidden(options);
   }
@@ -317,7 +317,7 @@ export default abstract class BasePage {
     const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
-      // eslint-disable-next-line no-empty
+       
     } catch (err) {}
     await pageExpect(locator).toBeHidden(options);
   }
