@@ -22,14 +22,16 @@ export default [
       'plugins/*',
       'coverage',
       '**/*.min.js',
+      '**/*.{mjs,cjs}'
     ],
   },
   ...[...tseslint.configs.recommended].map((config) => ({
     ...config,
     files: ['playwright-e2e/**/*.ts'],
   })),
+  pluginJs.configs.recommended,
   {
-    files: ['e2e/**/*.{js,mjs,cjs}'],
+    files: ['e2e/**/*.{js,jsx}'],
     languageOptions: {
       sourceType: 'commonjs',
       ecmaVersion: 11,
@@ -47,14 +49,15 @@ export default [
     rules: {
       'no-unused-vars': 'off',
       'quotes': ['error', 'single'],
-      'semi': ['error', 'always']
+      'semi': ['error', 'always'],
+      'no-constant-binary-expression': 'off',
+      'no-prototype-builtins': 'off',
     },
   },
   {
     files: ['playwright-e2e/**/*.{ts,tsx}'],
     plugins: { customEslintPlugin },
     rules: {
-      ...pluginJs.configs.recommended.rules,
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
       'comma-dangle': ['error', 'always-multiline'],
@@ -73,12 +76,12 @@ export default [
   },
   {
     files: [
-      'playwright/pages/**/*page.ts',
-      'playwright/pages/**/*fragment.ts',
-      'playwright/pages/**/*event.ts',
-      'playwright/steps/**/*steps.ts',
-      'playwright/base/base-page.ts',
-      'playwright/base/base-requests.ts',
+      'playwright-e2e/pages/**/*page.ts',
+      'playwright-e2e/pages/**/*fragment.ts',
+      'playwright-e2e/pages/**/*event.ts',
+      'playwright-e2e/steps/**/*steps.ts',
+      'playwright-e2e/base/base-page.ts',
+      'playwright-e2e/base/base-requests.ts',
     ],
     rules: {
       'customEslintPlugin/prefer-step-decorator': 'warn',
