@@ -216,7 +216,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "(respondent1Represented = \"Yes\" OR applicant1Represented != \"No\") AND (preStayText = \"JUDICIAL_REFERRAL\" OR preStayText = \"CASE_PROGRESSION\")"
+    "EventEnablingCondition": "(respondent1Represented = \"Yes\" OR applicant1Represented != \"No\") AND (preStayState = \"\" OR preStayState = \"JUDICIAL_REFERRAL\" OR preStayState = \"CASE_PROGRESSION\")"
   },
 
   {
