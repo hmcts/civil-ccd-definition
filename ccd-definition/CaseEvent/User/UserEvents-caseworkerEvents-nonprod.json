@@ -94,6 +94,6 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "preStayState != \"IN_MEDIATION\" AND preStayState != \"HEARING_READINESS\" AND preStayState = \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" AND ((respondent1Represented = \"Yes\" OR applicant1Represented != \"No\")"
+    "EventEnablingCondition": "preStayState != \"IN_MEDIATION\" AND preStayState != \"HEARING_READINESS\" AND preStayState != \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" AND (respondent1Represented = \"Yes\" OR applicant1Represented != \"No\")"
   }
 ]
