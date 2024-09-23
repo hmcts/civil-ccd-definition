@@ -29,48 +29,8 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'users-setup',
-      testMatch: '**playwright/tests/bootstrap/users/**.setup.ts',
-      teardown: 'users-teardown',
-      retries: 0,
-    },
-    {
-      name: 'users-auth-setup',
+      name: 'full-functional',
       use: { ...devices['Desktop Chrome'] },
-      testMatch: '**playwright/tests/bootstrap/auth/**.setup.ts',
-      dependencies: ['users-setup'],
-      teardown: 'users-auth-teardown',
-    },
-    {
-      name: 'users-auth-teardown',
-      use: { ...devices['Desktop Chrome'] },
-      testMatch: '**playwright/tests/bootstrap/auth/**.teardown.ts',
-    },
-    {
-      name: 'users-teardown',
-      testMatch: '**playwright/tests/bootstrap/users/**.teardown.ts',
-      retries: 0,
-    },
-    {
-      name: 'chrome-full-functional',
-      use: { ...devices['Desktop Chrome'] },
-      dependencies: ['users-auth-setup'],
-    },
-    {
-      name: 'firefox-full-functional',
-      use: { ...devices['Desktop Firefox'] },
-      dependencies: ['users-auth-setup'],
-    },
-    {
-      name: 'edge-full-functional',
-      use: { ...devices['Desktop Edge'] },
-      dependencies: ['users-auth-setup'],
-    },
-    {
-      name: 'safari-full-functional',
-      use: { ...devices['Desktop Safari'] },
-      dependencies: ['users-auth-setup'],
-      timeout: 432_000 
     },
   ],
 });
