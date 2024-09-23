@@ -82,5 +82,16 @@
     "DisplayContext": "COMPLEX",
     "PageID": "PreviewOrder",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "preStayState",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "PopulateOrder",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "caseParticipants = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

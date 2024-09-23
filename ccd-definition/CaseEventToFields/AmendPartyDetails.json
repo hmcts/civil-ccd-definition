@@ -56,5 +56,16 @@
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "applicant1Represented != \"No\""
+  },
+  {
+  "CaseTypeID": "CIVIL",
+  "CaseEventID": "AMEND_PARTY_DETAILS",
+  "CaseFieldID": "preStayState",
+  "PageFieldDisplayOrder": 8,
+  "DisplayContext": "READONLY",
+  "PageID": "Email",
+  "PageDisplayOrder": 1,
+  "ShowSummaryChangeOption": "N",
+  "FieldShowCondition": "applicant1Represented = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

@@ -216,7 +216,7 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "preStayState != \"HEARING_READINESS\" AND preStayState != \"IN_MEDIATION\" AND preStayState != \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" AND (respondent1Represented = \"Yes\" OR applicant1Represented != \"No\")"
+    "EventEnablingCondition": "(respondent1Represented = \"Yes\" OR applicant1Represented != \"No\") AND (preStayState = \"\" OR preStayState = \"JUDICIAL_REFERRAL\" OR preStayState = \"CASE_PROGRESSION\")"
   },
 
   {
