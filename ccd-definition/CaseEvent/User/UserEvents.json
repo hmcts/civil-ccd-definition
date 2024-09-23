@@ -201,26 +201,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "AMEND_PARTY_DETAILS",
-    "Name": "Amend party details",
-    "Description": "Update defendant and claimant solicitor email addresses",
-    "DisplayOrder": 13,
-    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;PROCEEDS_IN_HERITAGE_SYSTEM;JUDICIAL_REFERRAL;CASE_PROGRESSION;CASE_STAYED",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "(respondent1Represented = \"Yes\" OR applicant1Represented != \"No\") AND (preStayState = \"\" OR preStayState = \"JUDICIAL_REFERRAL\" OR preStayState = \"CASE_PROGRESSION\")"
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIM_AFTER_PAYMENT",
     "Name": "Case issued after payment",
     "Description": "Move to case issued when fee paid",
