@@ -25,10 +25,16 @@ export default class UserStateHelper {
 
   static addUsersToState = (users: User[]) => {
     FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].key), FileType.JSON);
+    console.log(
+      `Users with key: ${users[0].key} ${this.userStateExists(users[0].key) ? 'successfully updated' : 'successfully created'}`,
+    );
   };
 
   static addUserToState = (user: User) => {
     FileSystemHelper.writeFile(user, this.getUserStatePath[user.key], FileType.JSON);
+    console.log(
+      `User with key: ${user.key} ${this.userStateExists(user.key) ? 'successfully updated' : 'successfully created'}`,
+    );
   };
 
   static getUserFromState = (userKey: UserKey): User => {

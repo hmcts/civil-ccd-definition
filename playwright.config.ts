@@ -29,6 +29,7 @@ export default defineConfig({
     {
       name: 'full-functional',
       use: { ...devices['Desktop Chrome'] },
+      
     },
   ],
 });

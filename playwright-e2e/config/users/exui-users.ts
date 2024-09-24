@@ -3,7 +3,7 @@ import config from '../config';
 import Environment from '../../enums/environment';
 import UserRole from '../../enums/user-role';
 import User from '../../types/user';
-import { getUser, clearUserKeysBeingUsed } from './user-utils';
+import { getUser } from './user-utils';
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
@@ -140,4 +140,20 @@ export const ctscAdminUser: User = getUser({
   key: UserKey.CTSC_ADMIN,
 });
 
-clearUserKeysBeingUsed();
+export const exuiAuthSetupUsers = [
+  claimantSolicitorUser,
+  defendantSolicitor1User,
+  adminUser,
+  judgeRegion1User,
+];
+
+export const exuiUserDataSetupUsers = [
+  claimantSolicitorUser,
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+  adminUser,
+  judgeRegion1User,
+  judgeRegion4User,
+  hearingCenterAdminRegion1User,
+  hearingCenterAdminRegion4User,
+];
