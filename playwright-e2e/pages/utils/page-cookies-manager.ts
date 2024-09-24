@@ -5,6 +5,8 @@ import { acceptIdamCookies } from '../../fixtures/cookies/idam-cookies';
 import { generateAcceptExuiCookies } from '../../fixtures/cookies/exui-cookies';
 import PageError from '../../errors/page-error';
 import CookiesHelper from '../../helpers/cookies-helper';
+import UserStateHelper from '../../helpers/users-state-helper';
+import filePaths from '../../config/file-paths';
 
 @AllMethodsStep()
 export default class PageCookiesManager extends BasePage {
@@ -12,9 +14,11 @@ export default class PageCookiesManager extends BasePage {
     throw new Error('Method not implemented.');
   }
 
-  async saveCookies(filePath = '') {
+  async saveCookies(user: User) {
     const cookies = await super.getCookies();
-    CookiesHelper.writeCookies(cookies, filePath);
+    user.cookiesPath = `${filePaths.userCookies}/${user.key}.json`;
+    CookiesHelper.writeCookies(cookies, user.cookiesPath);
+    UserStateHelper.addUserToState(user);
   }
 
   async cookiesLogin(user: User, isTeardown: boolean) {
@@ -22,7 +26,6 @@ export default class PageCookiesManager extends BasePage {
       `Authenticating ${user.key} with email ${user.email} by setting cookies stored in path: ${user.cookiesPath}`,
     );
     const cookies = await CookiesHelper.getCookies(user.cookiesPath, isTeardown);
-    await super.clearCookies();
     await super.addCookies(cookies);
   }
 

@@ -1,6 +1,7 @@
 import BaseRequest from '../base/base-requests';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
+import UserStateHelper from '../helpers/users-state-helper';
 import IdamUser from '../types/idam-user';
 import RequestOptions from '../types/request-options';
 import User from '../types/user';
@@ -67,6 +68,18 @@ export default class IdamRequests extends BaseRequest {
     const json = await response.json();
     console.log(`User ID for user: ${email} fetched successfully`);
     return json.uid;
+  }
+
+  async getUserData(user: User) {
+    if (!user.accessToken || !user.userId) {
+      if (!user.accessToken) {
+        const accessToken = await this.getAccessToken(user);
+        user.accessToken = accessToken;
+      } else {
+        const userId = await this.getUserId(user);
+        user.userId = userId;
+      }
+    }
   }
 
   async getSecurityPin(letterHolderId: string) {

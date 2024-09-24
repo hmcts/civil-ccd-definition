@@ -6,10 +6,10 @@ type User = {
   readonly password: string;
   readonly role: UserRole;
   readonly key: UserKey;
-  readonly cookiesPath?: string;
+  readonly orgId?: string;
+  cookiesPath?: string;
   userId?: string;
   accessToken?: string;
-  orgId?: string;
 };
 
 export default User;
