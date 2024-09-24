@@ -42,10 +42,8 @@ export default [
         ...globals.mocha,
         ...globals.jest,
         ...eslintPluginCodecept.environments.codeceptjs.globals,
-        'codeceptjs/codeceptjs': 'readonly',
       },
     },
-    plugins: { eslintPluginCodecept },
     rules: {
       'no-unused-vars': 'off',
       'quotes': ['error', 'single'],
@@ -59,7 +57,6 @@ export default [
     plugins: { customEslintPlugin },
     rules: {
       ...pluginJs.configs.recommended.rules,
-      ...eslintConfigPrettier.rules,
       indent: ['error', 2, { SwitchCase: 1 }],
       'linebreak-style': ['error', 'unix'],
       'comma-dangle': ['error', 'always-multiline'],
