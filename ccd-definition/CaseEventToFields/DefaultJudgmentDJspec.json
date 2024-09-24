@@ -15,6 +15,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "defaultJudgementOverallTotal",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "",
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "CPRCertifySpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defendantDetailsSpec",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "defendantDetailsSpec",
     "DisplayContext": "MANDATORY",
     "PageID": "defendantDetailsSpec",
