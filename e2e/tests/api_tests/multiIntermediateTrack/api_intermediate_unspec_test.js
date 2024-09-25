@@ -4,6 +4,8 @@ const config = require('../../../config.js');
 const intermediateTrackClaimAmount = '99000';
 const mintiEnabled = true;
 const track = 'INTERMEDIATE_CLAIM';
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
 Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate');
 
@@ -28,7 +30,8 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
-
+  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 }
 
 AfterSuite(async  ({api}) => {
