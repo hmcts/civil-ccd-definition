@@ -6,7 +6,12 @@
       {
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
-          "[CREATOR]",
+          "[CREATOR]"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "caseworker-civil-admin",
           "judge-profile"
         ],

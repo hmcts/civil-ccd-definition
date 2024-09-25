@@ -373,12 +373,7 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil",
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
