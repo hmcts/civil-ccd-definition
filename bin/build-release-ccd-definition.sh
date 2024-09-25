@@ -3,6 +3,7 @@
 set -eu
 
 environment=${1:-prod}
+
 if [ ${environment} == prod ]; then
   echo "Running build for ${environment}"
   activateShutter=true;
