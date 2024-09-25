@@ -10,7 +10,7 @@ const {listedHearing} = require('./wiremock/data/hearings');
 const {createUpdateStub} = require('./wiremock/wiremock');
 const {hearingStubRequestBody, unnotifiedHearingStubRequestBody, getpartiesNotifiedStubRequestBody,
   putPartiesNotifiedStubRequestBody
-} = require('./wiremock/requestBodies/hearing');
+} = require('./wiremock/requests/hearings');
 const {
   AUTOMATED_HEARING_NOTICE,
   UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER,
