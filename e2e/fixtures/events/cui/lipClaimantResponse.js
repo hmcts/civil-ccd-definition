@@ -148,7 +148,7 @@ module.exports = {
           responseCourtLocations: [],
           caseLocation: {
             region: config.claimantSelectedCourt,
-            baseLocation:  config.claimantSelectedCourt
+            baseLocation:  config.claimantSelectedCourtEpimm
           }
         },
         applicant1DQWitnesses: {
@@ -287,7 +287,7 @@ module.exports = {
           responseCourtLocations: [],
           caseLocation: {
             region:  config.claimantSelectedCourt,
-            baseLocation:  config.claimantSelectedCourt
+            baseLocation:  config.claimantSelectedCourtEpimm
           }
         },
         applicant1DQWitnesses: {
