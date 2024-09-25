@@ -17,6 +17,7 @@ repositories {
   mavenCentral()
   mavenLocal()
   maven { url 'https://jitpack.io' }
+  jcenter()
 }
 
 task highLevelDataSetup(type: JavaExec) {
