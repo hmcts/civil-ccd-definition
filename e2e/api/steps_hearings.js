@@ -6,7 +6,7 @@ const chai = require('chai');
 const {expect} = chai;
 const {date} = require('../api/dataHelper');
 const config = require('../config');
-const {listedHearing} = require('./wiremock/dataTemplates/hearings');
+const {listedHearing} = require('./wiremock/data/hearings');
 const {createUpdateStub} = require('./wiremock/wiremock');
 const {hearingStubRequestBody, unnotifiedHearingStubRequestBody, getpartiesNotifiedStubRequestBody,
   putPartiesNotifiedStubRequestBody
