@@ -1,0 +1,16 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "componentLauncher",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "nbc-team-leader",
+          "ctsc",
+          "ctsc-team-leader"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
+]
