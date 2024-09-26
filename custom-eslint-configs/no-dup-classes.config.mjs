@@ -1,6 +1,8 @@
 import customEslintPlugin from 'custom-eslint-plugin';
 import tseslint from 'typescript-eslint';
 
+//When updating file glob patterns here, also update glob patterns in ./.husky/pre-commit.sh
+
 export default [
   {
     ignores: ['**/*.js', '**/*.cjs'],
@@ -8,12 +10,10 @@ export default [
   {
     plugins: { customEslintPlugin },
     files: [
-      'playwright-e2e/pages/**/*page.ts',
-      'playwright-e2e/pages/**/*fragment.ts',
-      'playwright-e2e/pages/**/*event.ts',
-      'playwright-e2e/steps/**/*steps.ts',
-      'playwright-e2e/base/base-page.ts',
-      'playwright-e2e/base/base-requests.ts',
+      'playwright-e2e/pages/**/*.ts',
+      'playwright-e2e/base/**/*.ts',
+      'playwright-e2e/steps/**/*.ts',
+      'playwright-e2e/requests/**/*.ts',
     ],
     rules: {
       'customEslintPlugin/no-duplicate-class-names': 'error',
