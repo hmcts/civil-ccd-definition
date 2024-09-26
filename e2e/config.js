@@ -3,8 +3,6 @@ const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
 const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL';
-const courtToBeSelectedEpimm = process.env.TEST_EA_COURTS == 'true' ? '424213' : '20262';
-
 
 module.exports = {
   idamStub: {
@@ -364,13 +362,8 @@ module.exports = {
   defendantSelectedCourt: courtToBeSelected,
   defendant2SelectedCourt: courtToBeSelected,
   djClaimantSelectedCourt: courtToBeSelected,
-  claimantSelectedCourtEpimm: courtToBeSelectedEpimm,
-  defendantSelectedCourtEpimm: courtToBeSelectedEpimm,
-  defendant2SelectedCourtEpimm: courtToBeSelectedEpimm,
-  djClaimantSelectedCourtEpimm: courtToBeSelectedEpimm,
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
-  sdoJudgeSelectedCourtEpimm: courtToBeSelectedEpimm,
   localNoCTests: false,
   localMediationTests: false
 };
