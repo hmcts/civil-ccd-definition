@@ -75,6 +75,19 @@ module.exports = {
               documents: 'WELSH'
             }
           },
+          DraftDirections: {
+            respondent1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
               responseCourtLocations: {
@@ -216,6 +229,19 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
+          DraftDirections: {
+            respondent1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
               responseCourtLocations: {
@@ -350,6 +376,19 @@ module.exports = {
             respondent2DQLanguage: {
               court: 'WELSH',
               documents: 'WELSH'
+            }
+          },
+          HearingLRspec: {
+            respondent2DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
+          DraftDirections: {
+            respondent2DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
             }
           },
           RequestedCourtLocationLRspec: {
