@@ -126,7 +126,7 @@ export const hearingCenterAdminRegion4User: User = getUser({
   key: UserKey.HEARING_CENTER_ADMIN_REGION_4,
 });
 
-export const tribunalCaseworkerWithRegionId4User: User = getUser({
+export const tribunalCaseworkerWithRegion4User: User = getUser({
   email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -157,3 +157,24 @@ export const exuiUserDataSetupUsers = [
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion4User,
 ];
+
+const exuiUsers = {
+  claimantSolicitorUser,
+  claimantSolicitorBulkScanUser,
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+  adminUser,
+  nbcRegion1User,
+  nbcRegion2User,
+  nbcRegion4User,
+  judgeRegion1User,
+  judgeRegion2User,
+  judgeRegion4User,
+  hearingCenterAdminRegion1User,
+  hearingCenterAdminRegion2User,
+  hearingCenterAdminRegion4User,
+  tribunalCaseworkerWithRegion4User,
+  ctscAdminUser,
+};
+
+export default exuiUsers;

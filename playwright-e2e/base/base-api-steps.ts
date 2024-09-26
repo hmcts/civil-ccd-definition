@@ -2,7 +2,6 @@ import BaseSteps from './base-steps';
 import TestData from '../types/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import User from '../types/user';
-import UserStateHelper from '../helpers/users-state-helper';
 
 export default abstract class BaseApiSteps extends BaseSteps {
   private _requestsFactory: RequestsFactory;
@@ -12,7 +11,20 @@ export default abstract class BaseApiSteps extends BaseSteps {
     this._requestsFactory = requestsFactory;
   }
 
-  get requestsFactory() {
+  protected get requestsFactory() {
     return this._requestsFactory;
+  }
+
+  protected async setupUserData(user: User) {
+    if (!user.accessToken || !user.userId) {
+      const { idamRequests } = this.requestsFactory;
+      if (!user.accessToken) {
+        const accessToken = await idamRequests.getAccessToken(user);
+        user.accessToken = accessToken;
+      } else {
+        const userId = await idamRequests.getUserId(user);
+        user.userId = userId;
+      }
+    }
   }
 }

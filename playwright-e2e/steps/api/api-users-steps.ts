@@ -12,16 +12,14 @@ export default class ApiUsersSteps extends BaseApiSteps {
   }
 
   async SetupUsersData(users: User[]) {
-    const { idamRequests } = this.requestsFactory;
     for (const user of users) {
-      await idamRequests.getUserData(user);
+      await this.setupUserData(user);
     }
     UserStateHelper.addUsersToState(users);
   }
 
   async SetupUserData(user: User) {
-    const { idamRequests } = this.requestsFactory;
-    await idamRequests.getUserData(user);
+    await this.setupUserData(user);
     UserStateHelper.addUserToState(user);
   }
 }

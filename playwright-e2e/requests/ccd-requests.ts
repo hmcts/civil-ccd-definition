@@ -1,4 +1,3 @@
-import { TOTP } from 'totp-generator';
 import BaseRequest from '../base/base-requests';
 import config from '../config/config';
 import urls from '../config/urls';
@@ -8,40 +7,21 @@ import { TruthyParams } from '../decorators/truthy-params';
 import CaseEvents from '../enums/events/case-events';
 import CCDCaseData from '../types/case-data/ccd-case-data';
 import User from '../types/user';
+import ServiceAuthProviderRequests from './service-auth-provider-requests.ts';
 
 const classKey = 'CcdRequests';
-export default class CcdRequests extends BaseRequest {
-  private static s2sToken: string;
-
+export default class CcdRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private getCcdDataStoreBaseUrl({ userId, role }: User) {
     return `${urls.ccdDataStore}/${role}s/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
   }
 
   private async getRequestHeaders({ accessToken }: User) {
-    const s2sToken = await this.fetchS2sToken();
+    const civilS2sToken = await this.fetchCivilS2sToken();
     return {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      ServiceAuthorization: s2sToken,
+      ServiceAuthorization: civilS2sToken,
     };
-  }
-
-  private async fetchS2sToken() {
-    if (!CcdRequests.s2sToken) {
-      console.log('Fetching s2s token...');
-      const url = `${urls.authProviderApi}/lease`;
-      const requestOptions: RequestOptions = {
-        method: 'POST',
-        body: {
-          microservice: config.s2s.microservice,
-          oneTimePassword: TOTP.generate(config.s2s.secret).otp,
-        },
-      };
-      const response = await super.retriedRequest(url, requestOptions);
-      console.log('s2s token fetched successfully');
-      CcdRequests.s2sToken = await response.text();
-    }
-    return CcdRequests.s2sToken;
   }
 
   @Step(classKey)
@@ -58,7 +38,7 @@ export default class CcdRequests extends BaseRequest {
   }
 
   @Step(classKey)
-  private async startEvent(event: CaseEvents, user: User, caseId?: number) {
+  async startEvent(event: CaseEvents, user: User, caseId?: number) {
     console.log(
       `Starting event: ${event}` + (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
     );
@@ -77,12 +57,7 @@ export default class CcdRequests extends BaseRequest {
   }
 
   @Step(classKey)
-  private async submit(
-    event: CaseEvents,
-    caseData: CCDCaseData,
-    user: User,
-    ccdEventToken: string,
-  ) {
+  async submit(event: CaseEvents, caseData: CCDCaseData, user: User, ccdEventToken: string) {
     console.log(
       `Submitting event: ${event}` +
         (typeof caseData.id !== 'undefined' ? ` caseId: ${caseData.id}` : ''),

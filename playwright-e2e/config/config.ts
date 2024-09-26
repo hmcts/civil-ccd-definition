@@ -1,5 +1,4 @@
 import 'dotenv/config';
-import '../enums/environment';
 import Environment from '../enums/environment';
 
 const config = {

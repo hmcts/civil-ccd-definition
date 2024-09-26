@@ -70,18 +70,6 @@ export default class IdamRequests extends BaseRequest {
     return json.uid;
   }
 
-  async getUserData(user: User) {
-    if (!user.accessToken || !user.userId) {
-      if (!user.accessToken) {
-        const accessToken = await this.getAccessToken(user);
-        user.accessToken = accessToken;
-      } else {
-        const userId = await this.getUserId(user);
-        user.userId = userId;
-      }
-    }
-  }
-
   async getSecurityPin(letterHolderId: string) {
     console.log('Fetching security pin for claim...');
     const url = `${urls.idamApi}/testing-support/accounts/pin/${letterHolderId}`;

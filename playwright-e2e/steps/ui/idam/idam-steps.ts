@@ -6,13 +6,10 @@ import TestData from '../../../types/test-data';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 import BaseApiSteps from '../../../base/base-api-steps';
 import RequestsFactory from '../../../requests/requests-factory';
-import {
-  claimantSolicitorUser,
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../config/users/exui-users';
+import exuiUsers from '../../../config/users/exui-users';
+import CookiesHelper from '../../../helpers/cookies-helper';
 
-@AllMethodsStep({ methodNamesToIgnore: ['manageCaseLogin'] })
+@AllMethodsStep({ methodNamesToIgnore: ['exuiLogin'] })
 export default class IdamSteps extends BaseApiSteps {
   private isTeardown: boolean;
   private verifyCookiesBanner: boolean;
@@ -35,23 +32,23 @@ export default class IdamSteps extends BaseApiSteps {
   }
 
   async ClaimantSolicitorLogin() {
-    await this.manageCaseLogin(claimantSolicitorUser);
+    await this.exuiLogin(exuiUsers.claimantSolicitorUser);
   }
 
   async DefendantSolicitor1Login() {
-    await this.manageCaseLogin(defendantSolicitor1User);
+    await this.exuiLogin(exuiUsers.defendantSolicitor1User);
   }
 
   async DefendantSolicitor2Login() {
-    await this.manageCaseLogin(defendantSolicitor2User);
+    await this.exuiLogin(exuiUsers.defendantSolicitor2User);
   }
 
-  private async manageCaseLogin(user: User) {
+  private async exuiLogin(user: User) {
     const { pageCookiesManager } = this.pageUtilsFactory;
+    await pageCookiesManager.cookiesSignOut();
 
     if (config.skipAuthSetup || !user.cookiesPath) {
       const { loginPage } = this.idamFactory;
-      await pageCookiesManager.cookiesSignOut();
 
       if (this.verifyCookiesBanner) {
         const { idamsCookiesBanner } = this.idamFactory;
@@ -60,16 +57,15 @@ export default class IdamSteps extends BaseApiSteps {
         await idamsCookiesBanner.acceptCookies();
       } else {
         await pageCookiesManager.addIdamCookies();
-        const { idamRequests } = this.requestsFactory;
-        await idamRequests.getUserData(user);
+        await this.setupUserData(user);
         await pageCookiesManager.addExuiCookies(user);
         await loginPage.openManageCase();
       }
       await loginPage.verifyContent();
       await loginPage.manageCaseLogin(user);
     } else {
-      await pageCookiesManager.cookiesSignOut();
-      await pageCookiesManager.cookiesLogin(user, this.isTeardown);
+      const cookies = await CookiesHelper.getCookies(user.cookiesPath, this.isTeardown);
+      await pageCookiesManager.cookiesLogin(user, cookies);
     }
   }
 }
