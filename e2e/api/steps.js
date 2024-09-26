@@ -1113,6 +1113,7 @@ module.exports = {
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
+    delete returnedCaseData['hmcEaCourtLocation'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1137,6 +1138,7 @@ module.exports = {
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
+    delete returnedCaseData['hmcEaCourtLocation'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
