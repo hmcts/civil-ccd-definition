@@ -34,7 +34,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
-    "TabLabel": "Hearings",
+    "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "applicant1DQRemoteHearing",
     "TabFieldDisplayOrder": 5,
@@ -75,7 +75,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
-    "TabLabel": "Hearings",
+    "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent1DQRemoteHearing",
     "TabFieldDisplayOrder": 10
@@ -83,7 +83,7 @@
   {
     "CaseTypeID": "CIVIL",
     "TabID": "Hearings",
-    "TabLabel": "Hearings",
+    "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
     "CaseFieldID": "respondent2DQRemoteHearing",
     "TabFieldDisplayOrder": 11
