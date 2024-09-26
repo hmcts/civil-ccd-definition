@@ -20,10 +20,7 @@
           "judge",
           "hearing-centre-admin",
           "national-business-centre",
-          "hearing-centre-team-leader",
-          "nbc-team-leader",
-          "ctsc",
-          "ctsc-team-leader"
+          "hearing-centre-team-leader"
         ],
         "CRUD": "CRU"
       }
