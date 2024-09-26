@@ -12,5 +12,19 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "systemGeneratedCaseDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "nbc-team-leader",
+          "ctsc",
+          "ctsc-team-leader"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

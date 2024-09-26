@@ -586,9 +586,7 @@
         "UserRoles": [
           "caseworker-civil-solicitor",
           "judge-profile",
-          "hearing-schedule-access",
-          "ctsc",
-          "ctsc-team-leader"
+          "hearing-schedule-access"
         ],
         "CRUD": "CRU"
       },
