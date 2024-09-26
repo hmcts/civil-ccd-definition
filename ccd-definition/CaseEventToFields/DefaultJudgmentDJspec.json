@@ -172,6 +172,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "defaultJudgementOverallTotal",
+    "PageDisplayOrder":5,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "paymentBreakdown",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentSummaryLabel",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
