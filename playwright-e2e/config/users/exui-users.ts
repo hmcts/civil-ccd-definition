@@ -11,6 +11,7 @@ const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
 
 export const claimantSolicitorUser: User = getUser({
+  name: 'Claimant Solicitor',
   email: 'hmcts.civil+organisation.1.solicitor.1@gmail.com',
   password: defaultPassword,
   key: UserKey.CLAIMANT_SOLICITOR,
@@ -19,6 +20,7 @@ export const claimantSolicitorUser: User = getUser({
 });
 
 export const claimantSolicitorBulkScanUser: User = getUser({
+  name: 'Claimant Solicitor Bulk Scan',
   email: 'hmcts.civil+organisation.1.solicitor.2@gmail.com',
   password: defaultPassword,
   key: UserKey.CLAIMANT_SOLICITOR_BULK_SCAN,
@@ -27,6 +29,7 @@ export const claimantSolicitorBulkScanUser: User = getUser({
 });
 
 export const defendantSolicitor1User: User = getUser({
+  name: 'Defendant Solicitor 1',
   email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
   password: defaultPassword,
   key: UserKey.DEFENDANT_SOLICITOR_1,
@@ -35,6 +38,7 @@ export const defendantSolicitor1User: User = getUser({
 });
 
 export const defendantSolicitor2User: User = getUser({
+  name: 'Defendant Solicitor 2',
   email: 'hmcts.civil+organisation.3.solicitor.1@gmail.com',
   password: defaultPassword,
   key: UserKey.DEFENDANT_SOLICITOR_2,
@@ -42,7 +46,8 @@ export const defendantSolicitor2User: User = getUser({
   orgId: process.env.ENVIRONMENT === Environment.DEMO ? 'LCVTI1I' : 'H2156A0',
 });
 
-export const adminUser: User = getUser({
+export const civilAdminUser: User = getUser({
+  name: 'Civil Admin',
   email: 'civil-admin@mailnesia.com',
   password: defaultPassword,
   key: UserKey.CIVIL_ADMIN,
@@ -50,6 +55,7 @@ export const adminUser: User = getUser({
 });
 
 export const nbcRegion1User: User = getUser({
+  name: 'NBC Region 1',
   email: 'nbc_admin_region1@justice.gov.uk',
   password: defaultPassword,
   key: UserKey.NBC_REGION_1,
@@ -57,6 +63,7 @@ export const nbcRegion1User: User = getUser({
 });
 
 export const nbcRegion2User: User = getUser({
+  name: 'NBC Region 2',
   email: 'nbc_admin_region2@justice.gov.uk',
   password: defaultPassword,
   key: UserKey.NBC_REGION_2,
@@ -64,6 +71,7 @@ export const nbcRegion2User: User = getUser({
 });
 
 export const nbcRegion4User: User = getUser({
+  name: 'NBC Region 4',
   email: 'nbc_admin_region4@justice.gov.uk',
   password: defaultPassword,
   key: UserKey.NBC_REGION_4,
@@ -71,6 +79,7 @@ export const nbcRegion4User: User = getUser({
 });
 
 export const nbcLocalUser: User = getUser({
+  name: 'NBC Local',
   email: 'nbc-team-leader@mailnesia.com',
   password: defaultPassword,
   key: UserKey.NBC_LOCAL,
@@ -78,6 +87,7 @@ export const nbcLocalUser: User = getUser({
 });
 
 export const judgeRegion1User: User = getUser({
+  name: 'Judge Region 1',
   email: '4917924EMP-@ejudiciary.net',
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
@@ -85,6 +95,7 @@ export const judgeRegion1User: User = getUser({
 });
 
 export const judgeRegion2User: User = getUser({
+  name: 'Judge Region 2',
   email: 'EMP42506@ejudiciary.net',
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
@@ -92,6 +103,7 @@ export const judgeRegion2User: User = getUser({
 });
 
 export const judgeRegion4User: User = getUser({
+  name: 'Judge Region 4',
   email: '4924246EMP-@ejudiciary.net',
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
@@ -99,6 +111,7 @@ export const judgeRegion4User: User = getUser({
 });
 
 export const hearingCenterAdminLocalUser: User = getUser({
+  name: 'Hearing Center Admin Local',
   email: 'hearing-centre-admin-01@example.com',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -106,6 +119,7 @@ export const hearingCenterAdminLocalUser: User = getUser({
 });
 
 export const hearingCenterAdminRegion1User: User = getUser({
+  name: 'Hearing Center Admin Region 1',
   email: 'hearing_center_admin_reg1@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -113,6 +127,7 @@ export const hearingCenterAdminRegion1User: User = getUser({
 });
 
 export const hearingCenterAdminRegion2User: User = getUser({
+  name: 'Hearing Center Admin Region 2',
   email: 'hearing_center_admin_reg2@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -120,13 +135,15 @@ export const hearingCenterAdminRegion2User: User = getUser({
 });
 
 export const hearingCenterAdminRegion4User: User = getUser({
+  name: 'Hearing Center Admin Region 4',
   email: 'hearing_center_admin_reg4@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_REGION_4,
 });
 
-export const tribunalCaseworkerWithRegion4User: User = getUser({
+export const tribunalCaseworkerRegion4User: User = getUser({
+  name: 'Tribunal Legal Caseworker Region 4',
   email: 'tribunal_legal_caseworker_reg4@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -134,6 +151,7 @@ export const tribunalCaseworkerWithRegion4User: User = getUser({
 });
 
 export const ctscAdminUser: User = getUser({
+  name: 'CTSC Admin',
   email: 'ctsc_admin@justice.gov.uk',
   password: defaultPassword,
   role: UserRole.CASEWORKER,
@@ -143,7 +161,7 @@ export const ctscAdminUser: User = getUser({
 export const exuiAuthSetupUsers = [
   claimantSolicitorUser,
   defendantSolicitor1User,
-  adminUser,
+  civilAdminUser,
   judgeRegion1User,
 ];
 
@@ -151,7 +169,7 @@ export const exuiUserDataSetupUsers = [
   claimantSolicitorUser,
   defendantSolicitor1User,
   defendantSolicitor2User,
-  adminUser,
+  civilAdminUser,
   judgeRegion1User,
   judgeRegion4User,
   hearingCenterAdminRegion1User,
@@ -163,7 +181,7 @@ const exuiUsers = {
   claimantSolicitorBulkScanUser,
   defendantSolicitor1User,
   defendantSolicitor2User,
-  adminUser,
+  civilAdminUser,
   nbcRegion1User,
   nbcRegion2User,
   nbcRegion4User,
@@ -173,7 +191,7 @@ const exuiUsers = {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
   hearingCenterAdminRegion4User,
-  tribunalCaseworkerWithRegion4User,
+  tribunalCaseworkerWithRegion4User: tribunalCaseworkerRegion4User,
   ctscAdminUser,
 };
 

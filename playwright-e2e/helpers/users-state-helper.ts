@@ -13,31 +13,21 @@ export default class UserStateHelper {
   private static getUsersStatePath = (userType: UserKey) =>
     `${filePaths.users}/${userType}-users.json`;
 
-  static generateCitizenUsers = (userKey: UserKey): User[] => {
-    return Array.from({ length: config.playwright.workers }, (_, index) => ({
-      email: `${userKey}citizen-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
-      password: process.env.SMOKE_TEST_USER_PASSWORD,
-      role: UserRole.CITIZEN,
-      key: userKey,
-      cookiesPath: `${filePaths.userCookies}/${userKey}-${index + 1}.json`,
-    }));
-  };
-
   static addUsersToState = (users: User[]) => {
     FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].key), FileType.JSON);
     console.log(
-      `Users with key: ${users[0].key} ${this.userStateExists(users[0].key) ? 'successfully updated' : 'successfully created'}`,
+      `Users with key: ${users[0].key} ${this.userStateExists(users[0]) ? 'successfully updated' : 'successfully created'}`,
     );
   };
 
   static addUserToState = (user: User) => {
     FileSystemHelper.writeFile(user, this.getUserStatePath[user.key], FileType.JSON);
     console.log(
-      `User with key: ${user.key} ${this.userStateExists(user.key) ? 'successfully updated' : 'successfully created'}`,
+      `User with key: ${user.key} ${this.userStateExists(user) ? 'successfully updated' : 'successfully created'}`,
     );
   };
 
-  static getUserFromState = (userKey: UserKey): User => {
+  static getUserFromState = ({ key: userKey }: User): User => {
     let user: User;
     try {
       user = FileSystemHelper.readFile(this.getUserStatePath(userKey), FileType.JSON);
@@ -47,7 +37,7 @@ export default class UserStateHelper {
     }
   };
 
-  static getUsersFromState = (userKey: UserKey): User[] => {
+  static getUsersFromState = ([{ key: userKey }]: User[]): User[] => {
     let users: User[];
     try {
       users = FileSystemHelper.readFile(this.getUsersStatePath(userKey), FileType.JSON);
@@ -57,19 +47,19 @@ export default class UserStateHelper {
     }
   };
 
-  static userStateExists = (userKey: UserKey) => {
+  static userStateExists = ({ key: userKey }: User) => {
     return FileSystemHelper.exists(this.getUserStatePath(userKey));
   };
 
-  static usersStateExists = (userKey: UserKey) => {
+  static usersStateExists = ([{ key: userKey }]: User[]) => {
     return FileSystemHelper.exists(this.getUsersStatePath(userKey));
   };
 
-  static deleteUserState = (userKey: UserKey) => {
+  static deleteUserState = ({ key: userKey }: User) => {
     FileSystemHelper.delete(this.getUserStatePath(userKey));
   };
 
-  static deleteUsersState = (userKey: UserKey) => {
+  static deleteUsersState = ([{ key: userKey }]: User[]) => {
     FileSystemHelper.delete(this.getUsersStatePath(userKey));
   };
 

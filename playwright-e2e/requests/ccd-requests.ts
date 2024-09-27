@@ -7,10 +7,10 @@ import { TruthyParams } from '../decorators/truthy-params';
 import CaseEvents from '../enums/events/case-events';
 import CCDCaseData from '../types/case-data/ccd-case-data';
 import User from '../types/user';
-import ServiceAuthProviderRequests from './service-auth-provider-requests.ts';
+import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
-const classKey = 'CcdRequests';
-export default class CcdRequests extends ServiceAuthProviderRequests(BaseRequest) {
+const classKey = 'CCDRequests';
+export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private getCcdDataStoreBaseUrl({ userId, role }: User) {
     return `${urls.ccdDataStore}/${role}s/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
   }

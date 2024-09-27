@@ -3,7 +3,7 @@ import CreateAccountPage from './create-account/create-account-page';
 import IdamCookiesBanner from './idam-cookies-banner.ts/idam-cookies-banner';
 import LoginPage from './login/login-page';
 
-export default class IdamFactory extends BasePageFactory {
+export default class IdamPageFactory extends BasePageFactory {
   get loginPage() {
     return new LoginPage(this.page, this.axeBuilder);
   }

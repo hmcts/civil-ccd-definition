@@ -3,7 +3,7 @@ import config from './playwright-e2e/config/config';
 
 export default defineConfig({
   testDir: './playwright-e2e/tests',
-  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
+  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown',
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,

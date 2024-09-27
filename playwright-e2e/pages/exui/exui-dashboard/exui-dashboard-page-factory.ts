@@ -3,7 +3,7 @@ import BasePageFactory from '../../../base/base-page-factory';
 import ExuiCookiesBanner from './exui-cookies-banner/exui-cookies-banner';
 import ExuiNavBar from './exui-nav-bar/exui-nav-bar';
 
-export default class ExuiDashboardFactory extends BasePageFactory {
+export default class ExuiDashboardPageFactory extends BasePageFactory {
   get exuiCookiesBanner() {
     return new ExuiCookiesBanner(this.page, this.axeBuilder);
   }
