@@ -1,5 +1,5 @@
 const {listElement} = require('../../api/dataHelper');
-const config = require('../../config');
+
 const finalOrderDocument = {
   FinalOrderPreview: {
     finalOrderDocument: {
