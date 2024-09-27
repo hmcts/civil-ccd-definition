@@ -15,6 +15,7 @@ GLOB_PATTERNS=(
 
 # Get the list of changed files
 CHANGED_FILES=$(git diff --cached --name-only)
+
 # Initialize a flag to check if we need to lint
 NEED_FULL_LINT=false
 
@@ -29,12 +30,11 @@ for FILE in $CHANGED_FILES; do
     done
 done
 
-echo $NEED_FULL_LINT
-# If we need to lint, run the lint command
+
 if $NEED_FULL_LINT; then
-    # Run your lint command here, for example:
+    #Run lint staged and ensure no duplicate classes
     yarn lint:staged:no-dup-classes
 else
-    # Run your alternative command here
+    #Only run lint staged
     yarn lint-staged
 fi
