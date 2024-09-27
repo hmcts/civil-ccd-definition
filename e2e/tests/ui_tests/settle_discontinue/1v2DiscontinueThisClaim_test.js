@@ -47,7 +47,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec @e2e-nightly-prod');
+Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec @master-e2e-ft');
 
 Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

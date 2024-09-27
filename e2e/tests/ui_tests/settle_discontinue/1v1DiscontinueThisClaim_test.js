@@ -21,7 +21,7 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Feature('Discontinue This Claim - Full discontinuance  - 1v1 - spec @master-e2e-ft');
+Feature('Discontinue This Claim - Full discontinuance  - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

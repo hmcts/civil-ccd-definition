@@ -52,7 +52,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @e2e-nightly-prod');
+Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @master-e2e-ft');
 
 Scenario('1v2 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
