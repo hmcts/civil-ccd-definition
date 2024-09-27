@@ -711,12 +711,15 @@ module.exports = {
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-
+ //   console.log('CASE DATA BEFORE DEF RESPONSE STARTS>>>>', returnedCaseData);
     solicitorSetup(solicitor);
 
     let defendantResponseData;
+ //   console.log('mpScenario>>>',mpScenario);
+ //   console.log('mpScenario>>>',allocatedTrack);
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       defendantResponseData = eventData['defendantResponses'][mpScenario](allocatedTrack);
+ //   console.log('defendantResponseData>>>', defendantResponseData);
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
     }
@@ -733,9 +736,17 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData, solicitor);
     caseData = returnedCaseData;
     caseData = await addFlagsToFixture(caseData);
-
+    console.log('BEFORE DELETE FIELDs>>>', caseData);
     deleteCaseFields('isRespondent1');
-    deleteCaseFields('respondent1', 'solicitorReferences');
+    console.log('>>>>>>>>>>>>>>>>>>>>');
+    console.log('>>>>>>>>>>>>>>>>>>>>');
+    console.log('>>>>>>>>>>>>>>>>>>>>');
+    console.log('AFTER DELETE FIELDS isRespondent1>>>', caseData);
+    //deleteCaseFields('respondent1', 'solicitorReferences');
+    console.log('!!!!!!!!!!!!!!!!!!!!');
+    console.log('!!!!!!!!!!!!!!!!!!!!');
+    console.log('!!!!!!!!!!!!!!!!!!!!');
+    console.log('AFTER DELETE FIELDS respondent1>>>', caseData);
     deleteCaseFields('systemGeneratedCaseDocuments');
     //this is for 1v2 diff sol 1
     deleteCaseFields('respondentSolicitor2Reference');
@@ -770,6 +781,7 @@ module.exports = {
       'From Date should be less than To Date');
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
+    console.log('Hearing>>>', caseData);
     if (solicitor === 'solicitorOne') {
       // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -777,7 +789,6 @@ module.exports = {
         body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
           + 'claimant\'s legal representative a notification.'
       });
-
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');

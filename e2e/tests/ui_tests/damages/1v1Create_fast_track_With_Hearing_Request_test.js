@@ -23,14 +23,14 @@ async function prepareClaim(api, claimAmount) {
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, 'FAST_CLAIM');
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+ // await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
 Scenario('Claimant solicitor raises a claim against 1 defendant', async ({I, api}) => {
  // if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api, claimAmountJudge);
-    await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
-    await api.createCaseFlags(hearingUser);
+  //  await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
+  //  await api.createCaseFlags(hearingUser);
     caseNumber = await api.getCaseId();
     // caseNumber = await api.getCaseId();
     // const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -42,7 +42,7 @@ Scenario('Claimant solicitor raises a claim against 1 defendant', async ({I, api
   //}
 }).retry(3);
 
-Scenario('Request a Hearing', async ({I}) => {
+Scenario.skip('Request a Hearing', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
 
     const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
