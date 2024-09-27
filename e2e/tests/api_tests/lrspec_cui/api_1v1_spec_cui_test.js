@@ -19,6 +19,13 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'Small
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
+async function prepareClaimLiPvLiPMintiTrack(api_spec_cui, carmEnabled, claimType = 'INTERMEDIATE') {
+  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
+  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled, '', true);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
+}
+
 async function prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'Request for reconsideration track', carmEnabled);
@@ -30,8 +37,8 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', asy
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled', async ({api_spec_cui}) => {
-  await prepareClaimLiPvLiP(api_spec_cui, true);
+Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled @TEST2', async ({api_spec_cui}) => {
+  await prepareClaimLiPvLiPMintiTrack(api_spec_cui, false);
 });
 
 Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
@@ -68,7 +75,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   //await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled ', async ({noc, api_spec_cui}) => {
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 
@@ -132,7 +139,7 @@ Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
 });
 
 AfterSuite(async  ({api_spec_cui}) => {
-  await api_spec_cui.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
+  // await api_spec_cui.cleanUp();
+  // await deleteAccount(config.defendantCitizenUser2.email);
 });
 
