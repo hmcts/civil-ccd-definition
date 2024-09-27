@@ -37,7 +37,7 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', asy
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP defendant and claimant response - CARM disabled - Minti Enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiPMintiTrack(api_spec_cui, false);
 });
 
