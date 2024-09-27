@@ -31,6 +31,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 }
 
