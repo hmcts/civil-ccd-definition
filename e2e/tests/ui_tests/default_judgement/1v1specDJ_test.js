@@ -11,7 +11,9 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
 
   await I.login(config.applicantSolicitorUser);
-  await I.initiateDJSpec(caseid, 'ONE_V_ONE');
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await I.initiateDJSpec(caseid, 'ONE_V_ONE');
+  }
 }).retry(3);
 
 AfterSuite(async  ({api_spec}) => {

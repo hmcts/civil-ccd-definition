@@ -398,7 +398,7 @@
     "CaseFieldID": "disposalHearingHearingTime",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "DisposalHearingHearingTime",
@@ -697,7 +697,7 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimsHearing",
