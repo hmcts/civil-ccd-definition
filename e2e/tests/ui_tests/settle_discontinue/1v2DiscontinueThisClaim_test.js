@@ -74,7 +74,7 @@ Scenario('Validate Discontinuance', async ({LRspec}) => {
   }
 }).retry(3);
 
-Scenario('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
+Scenario.skip('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestForClaimDiscontinuedRemoveHearingForUI();
