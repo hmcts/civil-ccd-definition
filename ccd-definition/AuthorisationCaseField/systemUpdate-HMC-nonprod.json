@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "hmcEaCourtLocation",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  }
-]
