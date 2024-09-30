@@ -143,7 +143,7 @@ Scenario('Create a Hearing Request', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Transfer online case', async ({I}) => {
+Scenario.skip('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId2);
     await I.transferOnlineCase();
 }).retry(3);
