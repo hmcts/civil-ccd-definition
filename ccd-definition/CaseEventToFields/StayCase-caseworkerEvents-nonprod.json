@@ -23,6 +23,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "preStayState",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "manageStayOptions",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "manageStayOptions = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -41,5 +52,16 @@
     "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "N",
     "PageShowCondition": "preStayState != \"JUDICIAL_REFERRAL\" AND preStayState != \"IN_MEDIATION\" AND manageStayOptions = \"manageStayLiftStay\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "manageStayRequestUpdateText",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "manageStayRequestUpdate",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "manageStayOptions = \"manageStayRequestUpdate\""
   }
 ]
