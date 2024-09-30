@@ -64,5 +64,15 @@
     "ElementLabel": "Phone number",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "Expert",
+    "ListElementCode": "partyID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "FieldShowCondition": "phoneNumber = \"DO NOT SHOW\"",
+    "RetainHiddenValue": "Y",
+    "Searchable": "N"
   }
 ]
