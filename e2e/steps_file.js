@@ -72,8 +72,16 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
+const intermediateTrackComplexityBandPage = require('./pages/directionsOrder/intermediateTrackComplexityBand.page');
+const finalOrderSelectPage = require('./pages/directionsOrder/finalOrderSelect.page');
+const selectOrderTemplatePage = require('./pages/directionsOrder/selectOrderTemplate.page');
+const downloadOrderTemplatePage = require('./pages/directionsOrder/downloadOrderTemplate.page');
+const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');
 
-const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
+
+
+  const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
 const updateHearingPage = require('./pages/hearing/updateHearing.page');
 const cancelHearingPage = require('./pages/hearing/cancelHearing.page');
 
@@ -721,6 +729,22 @@ module.exports = function () {
         () => event.submit('Submit', 'Availability updated'),
         () => event.returnToCaseDetails(),
         () => addUnavailableDatesPage.confirmSubmission(url + '#Listing%20notes'),
+      ]);
+    },
+
+    async initiateFinalOrder(caseId, trackType) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary', 20);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERTrackAllocation');
+      await this.waitForText('Make an order', 10);
+      await this.triggerStepsWithScreenshot([
+        () => orderTrackAllocationPage.allocationTrack('Yes', trackType),
+        () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        () => finalOrderSelectPage.selectOrder('Download order template'),
+        () => selectOrderTemplatePage.selectTemplateByText('Fix a date for CMC'),
+        () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 
