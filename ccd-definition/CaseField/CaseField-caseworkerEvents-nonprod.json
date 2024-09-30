@@ -46,5 +46,38 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "preStayState",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "manageStayOptions",
+    "Label": "What do you want to do?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "manageStayOptions",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "manageStayJudicialReferralInMediationText",
+    "Label": "## JR INM \n\n All parties will be notified.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
+    "Label": "## CP HR PDRCH \n\n All parties will be notified.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

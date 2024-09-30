@@ -1,0 +1,14 @@
+[
+  {
+    "ID": "manageStayOptions",
+    "ListElementCode": "manageStayLiftStay",
+    "ListElement": "Lift the stay from this case",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "manageStayOptions",
+    "ListElementCode": "manageStayRequestUpdate",
+    "ListElement": "Request an update on this case",
+    "DisplayOrder": 2
+   }
+]
