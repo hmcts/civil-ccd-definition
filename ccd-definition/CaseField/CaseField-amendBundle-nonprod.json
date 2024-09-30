@@ -22,5 +22,13 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "bundleText",
+    "Label": "## Amend and restitch bundle\nMake sure you have taken the correct action to amend the bundle before you restitch.  \nThe restitched bundle will replace the existing bundle.  \nAll parties will be notified.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
