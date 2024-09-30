@@ -32,6 +32,10 @@ export default class LoginPage extends BasePage {
 
   async manageCaseLogin(user: User) {
     await this.login(user);
-    await super.expectUrlEnd('/cases');
+    if (!user.wa) await super.expectUrlEnd('/cases');
+    else
+      await super.expectUrlEnd('/work/my-work/list', {
+        message: `User: ${user.email} has WA enabled`,
+      });
   }
 }

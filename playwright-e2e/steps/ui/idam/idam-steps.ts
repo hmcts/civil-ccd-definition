@@ -11,7 +11,8 @@ import CookiesHelper from '../../../helpers/cookies-helper';
 
 @AllMethodsStep({ methodNamesToIgnore: ['exuiLogin'] })
 export default class IdamSteps extends BaseApiSteps {
-  private isTeardown: boolean;
+  private isSetupTest: boolean;
+  private isTeardownTest: boolean;
   private verifyCookiesBanner: boolean;
   private pageUtilsFactory: PageUtilsFactory;
   private idamPageFactory: IdamPageFactory;
@@ -20,12 +21,14 @@ export default class IdamSteps extends BaseApiSteps {
     pageUtilsFactory: PageUtilsFactory,
     idamPageFactory: IdamPageFactory,
     requestsFactory: RequestsFactory,
+    isSetupTest: boolean,
     isTeardownTest: boolean,
     verifyCookiesBanner: boolean,
     testData: TestData,
   ) {
     super(requestsFactory, testData);
-    this.isTeardown = isTeardownTest;
+    this.isSetupTest = isSetupTest;
+    this.isTeardownTest = isTeardownTest;
     this.verifyCookiesBanner = verifyCookiesBanner;
     this.pageUtilsFactory = pageUtilsFactory;
     this.idamPageFactory = idamPageFactory;
@@ -98,7 +101,7 @@ export default class IdamSteps extends BaseApiSteps {
   private async exuiLogin(user: User) {
     const { pageCookiesManager } = this.pageUtilsFactory;
     await pageCookiesManager.cookiesSignOut();
-    if (config.skipAuthSetup || CookiesHelper.cookiesExist(user)) {
+    if (!config.runSetup || this.isSetupTest || !CookiesHelper.cookiesExist(user)) {
       const { loginPage } = this.idamPageFactory;
 
       if (this.verifyCookiesBanner) {
@@ -115,7 +118,7 @@ export default class IdamSteps extends BaseApiSteps {
       await loginPage.verifyContent();
       await loginPage.manageCaseLogin(user);
     } else {
-      const cookies = await CookiesHelper.getCookies(user, this.isTeardown);
+      const cookies = await CookiesHelper.getCookies(user, this.isTeardownTest);
       await pageCookiesManager.cookiesLogin(user, cookies);
     }
   }

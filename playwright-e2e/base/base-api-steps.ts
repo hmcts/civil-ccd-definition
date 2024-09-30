@@ -21,7 +21,8 @@ export default abstract class BaseApiSteps extends BaseSteps {
       if (!user.accessToken) {
         const accessToken = await idamRequests.getAccessToken(user);
         user.accessToken = accessToken;
-      } else {
+      }
+      if (!user.userId) {
         const userId = await idamRequests.getUserId(user);
         user.userId = userId;
       }

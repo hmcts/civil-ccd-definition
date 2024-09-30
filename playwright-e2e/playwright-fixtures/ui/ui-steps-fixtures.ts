@@ -8,7 +8,10 @@ type UiStepsFixtures = {
 };
 
 export const test = base.extend<UiStepsFixtures>({
-  IdamSteps: async ({ _pageUtilsFactory, _idamPageFactory, _requestsFactory, _testData, _isTeardown, _verifyCookiesBanner }, use) => {
-    await use(new IdamSteps(_pageUtilsFactory, _idamPageFactory, _requestsFactory, _isTeardown, _verifyCookiesBanner, _testData));
+  IdamSteps: async ({ _pageUtilsFactory, _idamPageFactory, _requestsFactory, _testData, _isSetupTest, _isTeardownTest, _verifyCookiesBanner }, use) => {
+    await use(new IdamSteps(_pageUtilsFactory, _idamPageFactory, _requestsFactory, _isSetupTest, _isTeardownTest, _verifyCookiesBanner, _testData));
+  },
+  ExuiDashboardSteps: async ({ _pageUtilsFactory, _exuiDashboardPageFactory, _testData }, use) => {
+    await use(new ExuiDashboardSteps(_pageUtilsFactory, _exuiDashboardPageFactory, _testData));
   }
 });

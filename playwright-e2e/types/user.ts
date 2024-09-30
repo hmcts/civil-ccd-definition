@@ -8,8 +8,8 @@ type User = {
   readonly role: UserRole;
   readonly key: UserKey;
   readonly orgId?: string;
+  readonly wa?: boolean;
   readonly cookiesPath?: string;
-  workerIndex?: number;
   userId?: string;
   accessToken?: string;
 };

@@ -27,9 +27,26 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'users-setup',
+      testMatch: '**playwright-e2e/tests/bootstrap/users/**.setup.ts',
+      retries: 0,
+    },
+    {
+      name: 'users-auth-setup',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**playwright-e2e/tests/bootstrap/auth/**.setup.ts',
+      dependencies: ['users-setup'],
+      teardown: 'users-auth-teardown',
+    },
+    {
+      name: 'users-auth-teardown',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**playwright-e2e/tests/bootstrap/auth/**.teardown.ts',
+    },
+    {
       name: 'full-functional',
       use: { ...devices['Desktop Chrome'] },
-      
+      dependencies: ['users-auth-setup'],
     },
   ],
 });

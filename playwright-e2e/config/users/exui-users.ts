@@ -52,6 +52,7 @@ export const civilAdminUser: User = getUser({
   password: defaultPassword,
   key: UserKey.CIVIL_ADMIN,
   role: UserRole.CASEWORKER,
+  wa: true,
 });
 
 export const nbcRegion1User: User = getUser({
@@ -60,6 +61,7 @@ export const nbcRegion1User: User = getUser({
   password: defaultPassword,
   key: UserKey.NBC_REGION_1,
   role: UserRole.CASEWORKER,
+  wa: true,
 });
 
 export const nbcRegion2User: User = getUser({
@@ -68,6 +70,7 @@ export const nbcRegion2User: User = getUser({
   password: defaultPassword,
   key: UserKey.NBC_REGION_2,
   role: UserRole.CASEWORKER,
+  wa: true,
 });
 
 export const nbcRegion4User: User = getUser({
@@ -76,6 +79,7 @@ export const nbcRegion4User: User = getUser({
   password: defaultPassword,
   key: UserKey.NBC_REGION_4,
   role: UserRole.CASEWORKER,
+  wa: true,
 });
 
 export const nbcLocalUser: User = getUser({
@@ -84,6 +88,7 @@ export const nbcLocalUser: User = getUser({
   password: defaultPassword,
   key: UserKey.NBC_LOCAL,
   role: UserRole.CASEWORKER,
+  wa: true,
 });
 
 export const judgeRegion1User: User = getUser({
@@ -92,6 +97,7 @@ export const judgeRegion1User: User = getUser({
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_1,
+  wa: true,
 });
 
 export const judgeRegion2User: User = getUser({
@@ -100,6 +106,7 @@ export const judgeRegion2User: User = getUser({
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_2,
+  wa: true,
 });
 
 export const judgeRegion4User: User = getUser({
@@ -108,6 +115,7 @@ export const judgeRegion4User: User = getUser({
   password: judgeDefaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.JUDGE_REGION_4,
+  wa: true,
 });
 
 export const hearingCenterAdminLocalUser: User = getUser({
@@ -116,6 +124,7 @@ export const hearingCenterAdminLocalUser: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_LOCAL,
+  wa: true,
 });
 
 export const hearingCenterAdminRegion1User: User = getUser({
@@ -124,6 +133,7 @@ export const hearingCenterAdminRegion1User: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_REGION_1,
+  wa: true,
 });
 
 export const hearingCenterAdminRegion2User: User = getUser({
@@ -132,6 +142,7 @@ export const hearingCenterAdminRegion2User: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_REGION_2,
+  wa: true,
 });
 
 export const hearingCenterAdminRegion4User: User = getUser({
@@ -140,6 +151,7 @@ export const hearingCenterAdminRegion4User: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.HEARING_CENTER_ADMIN_REGION_4,
+  wa: true,
 });
 
 export const tribunalCaseworkerRegion4User: User = getUser({
@@ -148,6 +160,7 @@ export const tribunalCaseworkerRegion4User: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.TRIBUNAL_CASEWORKER_REGION_4,
+  wa: true,
 });
 
 export const ctscAdminUser: User = getUser({
@@ -156,6 +169,7 @@ export const ctscAdminUser: User = getUser({
   password: defaultPassword,
   role: UserRole.CASEWORKER,
   key: UserKey.CTSC_ADMIN,
+  wa: true,
 });
 
 export const exuiAuthSetupUsers = [

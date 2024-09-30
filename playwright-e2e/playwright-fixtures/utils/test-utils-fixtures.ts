@@ -7,7 +7,7 @@ import FileSystemHelper from '../../helpers/file-system-helper';
 type TestDataFixture = {
   _axeBuilder?: AxeBuilder;
   _isSetupTest: boolean;
-  _isTeardown: boolean;
+  _isTeardownTest: boolean;
   _verifyCookiesBanner: boolean;
   _testData: TestData;
 };
@@ -27,7 +27,7 @@ export const test = base.extend<TestDataFixture>({
   _isSetupTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('setup'));
   },
-  _isTeardown: async ({}, use, testInfo) => {
+  _isTeardownTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('teardown'));
   },
   _verifyCookiesBanner: async ({}, use, testInfo) => {
@@ -35,9 +35,9 @@ export const test = base.extend<TestDataFixture>({
   },
   _testData: async ({}, use, testInfo) => {
     await use({
-      workerIndex: testInfo.parallelIndex,
+      workerIndex: testInfo.parallelIndex
     });
-  },
+  }
 });
 
 const pageTeardown = async (page: Page, testInfo: TestInfo) => {
