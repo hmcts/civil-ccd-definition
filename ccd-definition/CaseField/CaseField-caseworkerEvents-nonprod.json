@@ -66,6 +66,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "manageStayRequestUpdateHintText",
+    "Label": "A notification will be sent to all parties, asking for an update on the case. \n After 7 days, a new task will be created to progress the case.",
+    "FieldType": "Label",
+    "FieldTypeParameter": "manageStayOptions",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "manageStayJudicialReferralInMediationText",
     "Label": "By lifting the stay, this case will automatically be sent to a judge. \n\n This will also raise a work allocation task for a judge to make a standard directions order for this case.",
     "FieldType": "Label",

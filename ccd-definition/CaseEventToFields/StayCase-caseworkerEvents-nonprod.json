@@ -34,6 +34,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "manageStayRequestUpdateHintText",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "manageStayOptions",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "manageStayOptions = \"manageStayRequestUpdate\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
