@@ -57,8 +57,16 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "manageStayOptions",
+    "ID": "manageStayOptionsLabel",
     "Label": "What do you need to do?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "manageStayOptions",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "manageStayOptions",
     "SecurityClassification": "Public",

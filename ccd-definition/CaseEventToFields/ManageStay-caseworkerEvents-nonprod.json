@@ -2,8 +2,18 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
-    "CaseFieldID": "manageStayOptions",
+    "CaseFieldID": "manageStayOptionsLabel",
     "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "manageStayOptions",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "manageStayOptions",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "manageStayOptions",
     "PageDisplayOrder": 1,
@@ -25,7 +35,7 @@
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayRequestUpdateHintText",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
     "PageID": "manageStayOptions",
     "PageDisplayOrder": 1,
