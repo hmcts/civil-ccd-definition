@@ -104,7 +104,7 @@
     "mocha-multi": "^1.1.6",
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
-    "node-fetch": "^2.6.9",
+    "node-fetch": "^3.0.0",
     "playwright": "^1.41.1",
     "playwright-core": "^1.47.2",
     "totp-generator": "^0.0.14",
