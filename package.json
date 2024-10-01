@@ -89,7 +89,7 @@
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "^1.47.1",
     "@types/node": "^22.5.5",
-    "chai": "^4.3.4",
+    "chai": "^5.0.0",
     "codeceptjs": "^3.5.11",
     "deep-equal-in-any-order": "^1.0.28",
     "dotenv": "^16.4.5",
