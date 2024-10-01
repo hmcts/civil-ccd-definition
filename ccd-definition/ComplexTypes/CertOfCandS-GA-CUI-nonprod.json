@@ -19,7 +19,8 @@
   {
     "ID": "CertOfSC",
     "ListElementCode": "proofOfDebtDoc",
-    "FieldType": "Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Document",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
