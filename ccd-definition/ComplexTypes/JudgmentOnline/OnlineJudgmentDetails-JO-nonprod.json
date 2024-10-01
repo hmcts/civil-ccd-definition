@@ -27,7 +27,7 @@
     "ID": "JoJudgment",
     "ListElementCode": "defendant1Address",
     "ElementLabel": " ",
-    "FieldType": "AddressUK",
+    "FieldType": "JudgmentAddress",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -35,7 +35,7 @@
     "ID": "JoJudgment",
     "ListElementCode": "defendant2Address",
     "ElementLabel": " ",
-    "FieldType": "AddressUK",
+    "FieldType": "JudgmentAddress",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -172,6 +172,22 @@
   {
     "ID": "JoJudgment",
     "ListElementCode": "costs",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "claimFeeAmount",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "amountAlreadyPaid",
     "ElementLabel": " ",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",

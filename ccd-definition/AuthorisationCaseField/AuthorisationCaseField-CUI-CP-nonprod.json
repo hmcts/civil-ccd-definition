@@ -557,6 +557,24 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "documentForDisclosureRes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "documentDisclosureListRes",
     "AccessControl": [
       {
@@ -943,7 +961,11 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
+
         ],
         "CRUD": "CRU"
       },
@@ -963,7 +985,12 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "cui-nbc-profile",
+          "cui-admin-profile",
+          "judge-profile",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -982,7 +1009,9 @@
       {
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "cui-nbc-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },

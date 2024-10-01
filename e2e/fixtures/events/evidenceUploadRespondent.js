@@ -558,5 +558,30 @@ module.exports = {
         };
       }
     }
+  },
+
+  createDefendantSmallClaimsEvidenceUpload: () => {
+    return {
+      event: 'EVIDENCE_UPLOAD_RESPONDENT',
+      caseDataUpdate: {
+        documentWitnessStatementRes: [
+          {
+            id: 'd5d0e1c4-ce3b-4eeb-8baa-4ec3f95bd504',
+            value: {
+              witnessOptionName: 'John Doe',
+              witnessOptionUploadDate: '2000-02-02T00:00:00.000Z',
+              witnessOptionDocument: {
+                document_url: 'http://dm-store:8080/documents/3500cbfa-890b-4741-87bd-62febce88fba',
+                document_binary_url: 'http://dm-store:8080/documents/3500cbfa-890b-4741-87bd-62febce88fba/binary',
+                document_filename: 'TestingDoc A.pdf',
+                document_hash: '4a37221b446b3370b7b7bf16c75a362be0d753c57cb3fc79a01b08561401655b'
+              },
+            },
+            createdDatetime: '2024-08-07T08:26:23.000Z'
+          }
+        ],
+        caseDocumentUploadDateRes: '2024-08-07T08:27:11.018Z'
+      }
+    };
   }
 };
