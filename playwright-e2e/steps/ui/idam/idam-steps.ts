@@ -91,7 +91,7 @@ export default class IdamSteps extends BaseApiSteps {
   }
 
   async TribunalCaseworkerRegion4Login() {
-    await this.exuiLogin(exuiUsers.tribunalCaseworkerWithRegion4User);
+    await this.exuiLogin(exuiUsers.tribunalCaseworkerRegion4User);
   }
 
   async ExuiLogin(user: User) {

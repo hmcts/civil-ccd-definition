@@ -205,7 +205,7 @@ const exuiUsers = {
   hearingCenterAdminRegion1User,
   hearingCenterAdminRegion2User,
   hearingCenterAdminRegion4User,
-  tribunalCaseworkerWithRegion4User: tribunalCaseworkerRegion4User,
+  tribunalCaseworkerRegion4User,
   ctscAdminUser,
 };
 
