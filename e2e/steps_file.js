@@ -732,16 +732,18 @@ module.exports = function () {
       ]);
     },
 
-    async initiateFinalOrder(caseId, trackType) {
+    async initiateFinalOrder(caseId, trackType, optionText) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Summary', 20);
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERTrackAllocation');
       await this.waitForText('Make an order', 10);
       await this.triggerStepsWithScreenshot([
         () => orderTrackAllocationPage.allocationTrack('Yes', trackType),
-        () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        ... conditionalSteps(trackType === 'Intermediate Track', [
+          () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        ]),
         () => finalOrderSelectPage.selectOrder('Download order template'),
-        () => selectOrderTemplatePage.selectTemplateByText('Fix a date for CMC'),
+        () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
         () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
         () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
         () => event.submit('Submit', 'Your order has been issued')
