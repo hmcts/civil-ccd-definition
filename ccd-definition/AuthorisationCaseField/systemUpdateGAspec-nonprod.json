@@ -1,0 +1,8 @@
+[
+ {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalAppTypeLR",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  }
+]
