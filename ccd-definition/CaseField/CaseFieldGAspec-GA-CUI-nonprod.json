@@ -14,5 +14,21 @@
     "FieldType": "HelpWithFees",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "certOfSC",
+    "Label": " ",
+    "FieldType": "CertOfSC",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppTypeLR",
+    "Label": " ",
+    "FieldType": "GATypeGAspecLR",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
