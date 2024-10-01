@@ -1,0 +1,21 @@
+[
+  {
+    "ID": "DebtPaymentOptions",
+    "ListElementCode": "UPLOAD_EVIDENCE",
+    "ListElement": "I want to upload evidence that this debt has been paid in full",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "DebtPaymentOptions",
+    "ListElementCode": "MADE_FULL_PAYMENT",
+    "ListElement": "I made full payment to the court",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "DebtPaymentOptions",
+    "ListElementCode": "NO_EVIDENCE",
+    "ListElement": "I am unable to provide evidence of full payment",
+    "DisplayOrder": 3
+  }
+
+]
