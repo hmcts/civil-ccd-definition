@@ -6,6 +6,7 @@ exports.config = {
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/noticeofchange/*_test.js',
     './e2e/tests/ui_tests/manageContactInformation/*_test.js',
+    './e2e/tests/ui_tests/settle_discontinue/*_test.js',
     './e2e/tests/ui_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/carm/*_test.js',
     './e2e/tests/ui_tests/refunds/*_test.js',
