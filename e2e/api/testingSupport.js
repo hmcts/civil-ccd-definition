@@ -2,7 +2,7 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const totp = require('totp-generator');
+const {TOTP} = require('totp-generator');
 
 
 let incidentMessage;
@@ -17,7 +17,7 @@ const checkFlagEnabled = async (flag) => {
     {'Content-Type': 'application/json'},
     {
       microservice: config.s2s.microservice,
-      oneTimePassword: totp(config.s2s.secret)
+      oneTimePassword: TOTP.generate(config.s2s.secret).otp
     })
     .then(response => response.text());
 
@@ -71,7 +71,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -104,7 +104,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -138,7 +138,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -171,7 +171,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -207,7 +207,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -237,7 +237,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -267,7 +267,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
@@ -288,7 +288,7 @@ module.exports =  {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
 
