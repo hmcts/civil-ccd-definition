@@ -33,10 +33,10 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "manageStayOptions",
+    "ID": "manageStayOption",
     "Label": " ",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "manageStayOptions",
+    "FieldTypeParameter": "manageStayOption",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

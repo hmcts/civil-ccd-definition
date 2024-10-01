@@ -34,7 +34,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "manageStayOptions",
+    "CaseFieldID": "manageStayOption",
     "AccessControl": [
       {
         "UserRoles": [
