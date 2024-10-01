@@ -1,20 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "dismissText",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "cui-admin-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "preStayState",
+    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
     "AccessControl": [
       {
         "UserRoles": [
@@ -34,23 +21,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "manageStayOptions",
+    "CaseEventID": "asyncStitchingComplete",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "cui-admin-profile"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
     ]
   }
 ]
-
