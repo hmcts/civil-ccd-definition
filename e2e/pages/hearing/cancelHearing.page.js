@@ -11,8 +11,7 @@ module.exports = {
 
   async clickCancelHearing() {
     await I.waitForElement(this.fields.cancelEle);
-    await I.seeElement(this.fields.cancelEle);
-    await I.click(this.fields.cancelEle);
+    await I.clickHearingHyperLinkOrButton(this.fields.cancelEle);
     await I.waitForText('Are you sure you want to cancel this hearing?');
     await I.runAccessibilityTest();
     await I.forceClick(this.fields.cancelOption);

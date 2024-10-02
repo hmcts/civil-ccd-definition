@@ -30,7 +30,7 @@ module.exports = {
 
     }, urlBefore);
     await I.waitForText('Current and upcoming');
-    await I.click('Request a hearing');
+    await I.clickHearingHyperLinkOrButton(locate('div > exui-case-hearings > div > a').withText('Request a hearing'));
     await I.waitForText('Hearing requirements');
     await I.runAccessibilityTest();
     await I.clickContinue();
@@ -68,7 +68,7 @@ module.exports = {
 
   async selectHearingVenues() {
     await I.waitForText('What are the hearing venue details?');
-    await I.seeElement(this.fields.hearingLocationEle);
+    await I.waitForElement(this.fields.hearingLocationEle);
     await I.clickContinue();
   },
 
@@ -98,10 +98,10 @@ module.exports = {
 
   async submitHearing() {
     await I.waitForText('Check your answers before sending your request');
-    await I.click('Submit request');
+    await I.clickHearingHyperLinkOrButton('Submit request');
     await I.waitForText('Hearing request submitted');
     await I.runAccessibilityTest();
-    await I.click('view the status of this hearing in the hearings tab');
+    await I.clickHearingHyperLinkOrButton(locate('#content a').withText('view the status of this hearing in the hearings tab'));
     await I.waitForText(this.fields.waitingToBeListedText);
     await I.seeElement(this.fields.viewEle);
     await I.seeElement(this.fields.cancelEle);

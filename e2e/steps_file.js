@@ -763,10 +763,9 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
-
-    async clickHearingRequest() {
+    async clickHearingHyperLinkOrButton(element) {
       let urlBefore = await this.grabCurrentUrl();
-      await this.retryUntilUrlChanges(() => this.forceClick('Request a hearing'), urlBefore);
+      await this.retryUntilUrlChanges(() => this.forceClick(element), urlBefore);
     },
 
     async getCaseId(){

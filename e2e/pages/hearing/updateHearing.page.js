@@ -6,7 +6,8 @@ module.exports = {
     viewEle: 'a[id^="link-view-or-edit"]',
     deputyDistrictJudgeTypeEle: '//input[@value="24"]',
     amendReason: '#partyreq',
-    editHearingButton: '#edit-hearing',
+    editHearingButton: '//*[@id="edit-hearing"]/button',
+    submitUpdateButton: '//*[@id="content"]/button',
     additionFacilitiesLink: '#additionalFacilitiesRequired',
     judgeTypesLink: '#judgeTypes',
     selectFacilities: '//input[@value="Laptop"]',
@@ -25,23 +26,23 @@ module.exports = {
   },
 
   async clickOnViewEditHearing() {
-    await I.seeElement(this.fields.viewEle);
-    await I.click(this.fields.viewEle);
+    await I.waitForElement(this.fields.viewEle);
+    await I.clickHearingHyperLinkOrButton(this.fields.viewEle);
     await I.runAccessibilityTest();
   },
 
   async clickOnEditHearing() {
     await I.waitForText(this.fields.viewHearingText);
-    await I.click(this.fields.editHearingButton);
+    await I.clickHearingHyperLinkOrButton(this.fields.editHearingButton);
     await I.waitForText(this.fields.editHearingText);
     await I.runAccessibilityTest();
   },
 
   async updateHearingValues() {
-    await I.click(this.fields.additionFacilitiesLink);
+    await I.clickHearingHyperLinkOrButton(this.fields.additionFacilitiesLink);
     await I.click(this.fields.selectFacilities);
     await I.clickContinue();
-    await I.click(this.fields.judgeTypesLink);
+    await I.clickHearingHyperLinkOrButton(this.fields.judgeTypesLink);
     await I.waitForText('Select all judge types that apply');
     await I.click(this.fields.districtJudgeTypeEle);
     await I.clickContinue();
@@ -51,7 +52,7 @@ module.exports = {
     await I.see(this.fields.updatedJudgeListSummary);
     await I.see(this.fields.amendedLabel);
     await I.see(this.fields.originalHearingLengthHoursSummary);
-    await I.click(this.fields.hearingLengthLink);
+    await I.clickHearingHyperLinkOrButton(this.fields.hearingLengthLink);
     await I.waitForText('Length of hearing');
     await I.clearField(this.fields.hearingDurationHours);
     await I.fillField(this.fields.hearingDurationHours, '3');
@@ -62,25 +63,25 @@ module.exports = {
   },
 
   async submitUpdatedHearing() {
-    await I.click('Submit updated request');
+    await I.clickHearingHyperLinkOrButton(this.fields.submitUpdateButton);
     await I.waitForText('Provide a reason for changing this hearing');
     await I.click(this.fields.amendReason);
     await I.runAccessibilityTest();
-    await I.click('Submit change request');
+    await I.clickHearingHyperLinkOrButton(this.fields.submitUpdateButton);
     await I.see('Hearing request submitted');
-    await I.click('view the status of this hearing in the hearings tab');
+    await I.clickHearingHyperLinkOrButton(locate('#content a').withText('view the status of this hearing in the hearings tab'));
     await I.waitForText('Current and upcoming');
   },
 
   async verifyUpdatedHearingDetails() {
-    await I.see(this.fields.updateRequestedLabel);
+    await I.waitForText(this.fields.updateRequestedLabel);
     await this.clickOnViewEditHearing();
     await I.see(this.fields.originalAdditionalFacilitiesSummary);
     await I.dontSee(this.fields.originalJudgeListSummary);
     await I.see(this.fields.updatedJudgeListSummary);
     await I.see(this.fields.updatedHearingLengthHoursSummary);
     await I.dontSee(this.fields.originalHearingLengthHoursSummary);
-    await I.click('Back');
+    await I.clickHearingHyperLinkOrButton(locate('//*[@id="content"]/a').withText('Back'));
   },
 
 };
