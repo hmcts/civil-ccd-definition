@@ -11,7 +11,7 @@ const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2
 
 let civilCaseReference;
 
-Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @e2e-nightly-nonprod');
 
 Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({I, api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
