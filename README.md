@@ -169,5 +169,4 @@ npx @hmcts/dev-env@latest --template values.enableWA.preview.template.yaml && ./
 
 ## License
 
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

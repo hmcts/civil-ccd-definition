@@ -34,7 +34,7 @@ module.exports = {
     role_category: 'LEGAL_OPERATIONS',
     minor_priority: 500,
     major_priority: 5000
-  }
+  };
   
 /* {
     name: 'Legal Advisor Small Claims Track Directions',

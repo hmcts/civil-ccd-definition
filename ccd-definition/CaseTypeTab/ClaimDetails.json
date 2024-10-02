@@ -619,5 +619,23 @@
     "TabLabel": "Claim details",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "TabFieldDisplayOrder": 100
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "contactDetailsChangedLabel",
+    "TabFieldDisplayOrder": 1,
+    "FieldShowCondition": "manageContactDetailsEventUsed = \"Yes\"",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "CaseFieldID": "manageContactDetailsEventUsed",
+    "TabFieldDisplayOrder": 200,
+    "FieldShowCondition": "legacyCaseReference = \"DO_NOT_SHOW_IN_UI\"",
+    "Searchable": "N"
   }
 ]

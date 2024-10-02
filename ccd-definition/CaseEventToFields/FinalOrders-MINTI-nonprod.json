@@ -693,6 +693,16 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderDownloadTemplateDocument",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DownloadTemplate",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "downloadTemplateLabel2",
     "PageLabel": "Download template",
     "PageDisplayOrder": 5,

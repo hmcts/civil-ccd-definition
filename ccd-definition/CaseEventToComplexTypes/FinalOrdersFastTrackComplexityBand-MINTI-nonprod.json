@@ -62,5 +62,14 @@
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "FinalOrderIntermediateTrackAllocation",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderDownloadTemplateDocument",
+    "ListElementCode": "documentLink",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "Order Template (Opens in new tab)"
   }
 ]
