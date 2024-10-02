@@ -123,7 +123,9 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "joIsLiveJudgmentExists",
     "UserRoles": [
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE",
+      "citizen-profile"
     ],
     "CRUD": "CRU"
   },
