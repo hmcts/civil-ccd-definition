@@ -11,12 +11,12 @@ if [ ${environment} == preview ]; then
 elif [ ${environment} == demo ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
 elif [ ${environment} == perftest ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
 elif [ ${environment} == ithc ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
-  excludedFilenamePatterns="-e *-prod.json"
+  excludedFilenamePatterns="-e *-prod.json,*-beforeAmendBundle-nonprod.json"
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
