@@ -750,6 +750,33 @@ module.exports = function () {
       ]);
     },
 
+    async uploadBundleEvidence(caseId, loginType) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary', 20);
+
+      if (loginType === 'applicant') {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_APPLICANT/EVIDENCE_UPLOAD_APPLICANTEvidenceUpload');
+      } else if (loginType === 'respondent') {
+        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_RESPONDENT/EVIDENCE_UPLOAD_RESPONDENTEvidenceUpload');
+      } else {
+        throw new Error(`Invalid login type: ${loginType}`);
+      }
+
+      await this.waitForText('Upload your documents', 10);
+      await this.triggerStepsWithScreenshot([
+        () => orderTrackAllocationPage.allocationTrack('Yes', trackType),
+        ... conditionalSteps(trackType === 'Intermediate Track', [
+          () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        ]),
+        () => finalOrderSelectPage.selectOrder('Download order template'),
+        () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
+        () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
+
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
       if (['demo'].includes(config.runningEnv)) {
@@ -1021,12 +1048,12 @@ module.exports = function () {
       ]);
     },
 
-    async evidenceUpload(caseId, defendant) {
+    async evidenceUpload(caseId, defendant, isBundle = false, mpScenario = false, scenario = '') {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
-        () => unspecifiedEvidenceUpload.selectType(defendant),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant, isBundle, mpScenario, scenario),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant, isBundle, mpScenario),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },

@@ -11,9 +11,9 @@ const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2
 
 let civilCaseReference;
 
-Feature('Intermediate and Multi track - Download order template Journey');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle');
 
-Scenario('1v2 Same Solicitor Intermediate Track claim - Download order template', async ({I, api}) => {
+Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({I, api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -23,11 +23,17 @@ Scenario('1v2 Same Solicitor Intermediate Track claim - Download order template'
 
   await I.login(judgeUser);
   await I.initiateFinalOrder(civilCaseReference, 'Intermediate Track', 'Fix a date for CMC');
+
+  await I.login(config.applicantSolicitorUser);
+  await I.evidenceUpload(civilCaseReference, false, true);
+
+  await I.login(config.defendantSolicitorUser);
+  await I.evidenceUpload(civilCaseReference, true, true, true, mpScenario);
 });
 
-Scenario('1v2 Different Solicitor Multi Track claim - Download order template', async ({I, api}) => {
+Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({I, api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
+  civilCaseReference =  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
@@ -36,6 +42,9 @@ Scenario('1v2 Different Solicitor Multi Track claim - Download order template', 
 
   await I.login(judgeUser);
   await I.initiateFinalOrder(civilCaseReference, 'Multi Track', 'Fix a date for CCMC');
+
+  await I.login(config.secondDefendantSolicitorUser);
+  await I.evidenceUpload(civilCaseReference, true, true);
 });
 
 AfterSuite(async  () => {
