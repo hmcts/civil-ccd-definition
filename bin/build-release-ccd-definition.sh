@@ -7,16 +7,16 @@ activateShutter=${2:-false}
 
 # if any exclusions are updated here, please also update the exclusions map in e2e/tests/unit/utils/dataProvider.js
 if [ ${environment} == preview ]; then
-   excludedFilenamePatterns="-e *-prod.json,*-beforeAmendBundle-nonprod.json"
+   excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == demo ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == perftest ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == ithc ]; then
-  excludedFilenamePatterns="-e UserProfile.json,*-prod.json,*-beforeAmendBundle-nonprod.json"
+  excludedFilenamePatterns="-e UserProfile.json,*-prod.json"
 elif [ ${environment} == local ]; then
   # upload doesn't currently work with this command due to CUI files
-  excludedFilenamePatterns="-e *-prod.json,*-beforeAmendBundle-nonprod.json"
+  excludedFilenamePatterns="-e *-prod.json"
 elif [ ${environment} == aat ]; then
   excludedFilenamePatterns="-e UserProfile.json,*-nonprod.json"
 elif [ ${environment} == prod ]; then
