@@ -1,6 +1,19 @@
 [
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "stayCaseText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissText",
     "AccessControl": [
       {
