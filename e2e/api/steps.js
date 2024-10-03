@@ -299,6 +299,7 @@ module.exports = {
 
     await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
     await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
+    return caseId;
   },
 
   manageDefendant1Details: async (user) => {
