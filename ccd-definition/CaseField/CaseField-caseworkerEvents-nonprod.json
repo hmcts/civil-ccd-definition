@@ -25,6 +25,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "manageStayDummyField",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "manageStayOptionsLabel",
     "Label": "What do you need to do?",
     "FieldType": "Label",
