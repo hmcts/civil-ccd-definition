@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RECORD_JUDGMENT",
     "Name": "Record Judgment",
     "Description": "Record Judgment",
@@ -19,7 +19,7 @@
     "EventEnablingCondition": "joIsLiveJudgmentExists != \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SET_ASIDE_JUDGMENT",
     "Name": "Set aside judgment",
     "Description": "Set aside judgment",
@@ -38,7 +38,7 @@
     "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\" AND activeJudgment.type = \"DEFAULT_JUDGMENT\""
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "JUDGMENT_PAID_IN_FULL",
   "Name": "Mark judgment as paid in full",
   "Description": "Mark a judgment as paid in full",
@@ -57,7 +57,7 @@
   "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "EDIT_JUDGMENT",
     "Name": "Edit Judgment",
     "Description": "Edit Judgment",
@@ -76,7 +76,7 @@
     "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "Name": "Refer to judge-defended claim",
     "Description": "Refer to judge (defence received in time)",
@@ -96,7 +96,7 @@
     "EventEnablingCondition": "joIsLiveJudgmentExists = \"Yes\" AND CaseAccessCategory = \"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DEFAULT_JUDGEMENT_SPEC",
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",

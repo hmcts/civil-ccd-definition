@@ -5,10 +5,11 @@ const {
   noDuplicateFoundWB
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
+const config = require('../../config.js');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL');
+    return v.startsWith(config.definition.caseType);
   });
   expect(row.CaseFieldID).to.be.a('string').and.satisfy(isNotEmpty());
   expect(row.Label).to.be.a('string').and.satisfy(isNotEmpty());

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Case proceeds in Caseman",
     "Description": "Case will proceed offline in Caseman system",

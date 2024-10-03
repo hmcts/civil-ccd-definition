@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1AdditionalLipPartyDetails",
     "Label": "Defendant Additional Details",
     "FieldType": "AdditionalLipPartyDetails",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AdditionalLipPartyDetails",
     "Label": "Respondent Additional Details",
     "FieldType": "AdditionalLipPartyDetails",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantBilingualLanguagePreference",
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
@@ -25,7 +25,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDeadline",
     "Label": "Deadline Request Reconsideration",
     "FieldType": "DateTime",
@@ -33,7 +33,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDeadlineChecked",
     "Label": "Deadline Request Reconsideration",
     "FieldType": "YesOrNo",

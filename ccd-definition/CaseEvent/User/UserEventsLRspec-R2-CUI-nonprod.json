@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ENTER_BREATHING_SPACE_LIP",
     "Name": "Enter Breathing Space - LiP",
     "Description": "Enter Breathing Space - Citizen",
@@ -19,7 +19,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "LIFT_BREATHING_SPACE_LIP",
     "Name": "Lift Breathing Space - LiP",
     "Description": "Lift Breathing Space - Citizen",
@@ -38,7 +38,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ENTER_BREATHING_SPACE_SPEC",
     "Name": "Enter Breathing Space",
     "Description": "Enter Breathing Space",
@@ -58,7 +58,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "LIFT_BREATHING_SPACE_SPEC",
     "Name": "Lift Breathing Space",
     "Description": "Lift Breathing Space",

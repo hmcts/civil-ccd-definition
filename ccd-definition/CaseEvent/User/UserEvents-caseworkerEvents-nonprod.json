@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "AMEND_RESTITCH_BUNDLE",
     "Name": "Amend and restitch bundle",
     "Description": "Amend and restitch bundle",
@@ -14,7 +14,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "STAY_CASE",
     "Name": "Stay case",
     "Description": "Stay the case",
@@ -28,7 +28,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DISMISS_CASE",
     "Name": "Dismiss case",
     "Description": "Dismiss the case",
@@ -42,7 +42,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MANAGE_DOCUMENTS",
     "Name": "Manage Documents",
     "Description": "Manage Documents",
@@ -61,7 +61,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "asyncStitchingComplete",
     "Name": "Bundle Stitching Complete",
     "Description": "Bundle Stitching Complete",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CLAIMANT_RESPONSE_SPEC",
     "Name": "View and respond to defence",
     "Description": "View and respond to defendant (Specified)",
@@ -20,7 +20,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MEDIATION_SUCCESSFUL",
     "Name": "Mediation Successful",
     "Description": "Record mediation successful",
@@ -40,7 +40,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "Name": "Request Judgement by Admission",
     "Description": "Request Judgement by Admission (Specified)",

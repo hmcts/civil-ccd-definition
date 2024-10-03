@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "mediationUnsuccessfulReasonsMultiSelect",
     "Label": "Mediation failed reason",
     "FieldType": "MultiSelectList",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SettleClaim",
     "Label": "Does the claimant want to settle",
     "FieldType": "YesOrNo",

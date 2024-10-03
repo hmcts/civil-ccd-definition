@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR
+The below labels are options to get the different services running on the PR
 
 ```
 
@@ -45,6 +45,15 @@ Below labels are needed on the PR
 
   "pr-values:enableWA" label to verify work allocation task
 
+  "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
+
+
+```
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+curl -v -k -X DELETE \
+  'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/{PR_NUMBER}/?caseTypeIds=CIVIL'
 ```
 
 Running Crossbrowser tests:
@@ -167,6 +176,11 @@ To run the specialised charts, where you can get Work Allocation for instance, r
 npx @hmcts/dev-env@latest --template values.enableWA.preview.template.yaml && ./bin/setup-devuser-preview-env.sh
 ```
 
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+./bin/delete-dev-preview-definition-from-aat.sh
+```
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

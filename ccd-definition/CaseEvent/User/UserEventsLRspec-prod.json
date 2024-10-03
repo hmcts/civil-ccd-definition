@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ENTER_BREATHING_SPACE_SPEC",
     "Name": "Enter Breathing Space",
     "Description": "Enter Breathing Space",
@@ -19,7 +19,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "LIFT_BREATHING_SPACE_SPEC",
     "Name": "Lift Breathing Space",
     "Description": "Lift Breathing Space",

@@ -1,0 +1,29 @@
+civil-ccd-stack:
+  enabled: false
+
+civil-service:
+  java:
+    environment:
+      CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
+      HMC_API_URL: http://hmc-cft-hearing-service-aat.service.core-compute-aat.internal
+      HMC_HEARINGS_SUBSCRIPTION_ENABLED: true
+      HMC_HEARINGS_TOPIC_NAME: hmc-to-cft-aat
+      HMC_HEARINGS_TOPIC_NAMESPACE: hmc-servicebus-aat
+      HMC_HEARINGS_TOPIC_POLICY_NAME: SendAndListenSharedAccessKey
+      HMC_HEARINGS_TOPIC_SUBSCRIPTION_NAME: hmc-to-civil-subscription-aat
+      HMC_HEARINGS_TOPIC_THREAD_COUNT: 4
+
+civil-general-applications:
+  java:
+    environment:
+      CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
+
+xui-webapp:
+  enabled: true
+  nodejs:
+    environment:
+      HEALTH_CCD_COMPONENT_API: https://gateway-ccd.aat.platform.hmcts.net/health
+      HEALTH_CCD_DATA_API: http://ccd-data-store-api-aat.service.core-compute-aat.internal/health
+      SERVICES_CCD_COMPONENT_API: https://gateway-ccd.aat.platform.hmcts.net
+      SERVICES_EM_ANNO_API: https://gateway-ccd.aat.platform.hmcts.net
+      SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api-aat.service.core-compute-aat.internal
