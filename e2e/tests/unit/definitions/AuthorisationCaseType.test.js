@@ -2,7 +2,7 @@ const { expect, assert} = require('chai');
 const { uniqWith } = require('lodash');
 const { noDuplicateFoundACT } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
-const config = require('../../config.js');
+const config = require('../../../config.js');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {

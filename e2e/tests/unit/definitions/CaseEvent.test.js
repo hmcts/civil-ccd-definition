@@ -8,7 +8,7 @@ const {
   whenPopulated
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
-const config = require('../../config.js');
+const config = require('../../../config.js');
 
 function assertEventDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
