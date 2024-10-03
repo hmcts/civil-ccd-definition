@@ -5,11 +5,10 @@ const {
   noDuplicateFoundAccessProfiles
 } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
-const config = require('../../../config.js');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith(config.definition.caseType);
+    return v.startsWith('CIVIL');
   });
   expect(row.RoleName).to.be.a('string').and.satisfy(isNotEmpty());
   expect(row.AccessProfiles).to.be.a('string').and.satisfy(isNotEmpty());
