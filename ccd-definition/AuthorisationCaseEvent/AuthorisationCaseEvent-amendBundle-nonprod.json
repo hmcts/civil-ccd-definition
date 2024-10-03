@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "STAY_CASE",
+    "CaseEventID": "AMEND_RESTITCH_BUNDLE",
     "AccessControl": [
       {
         "UserRoles": [
@@ -21,19 +21,17 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "DISMISS_CASE",
+    "CaseEventID": "asyncStitchingComplete",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "cui-admin-profile"
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
