@@ -108,16 +108,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "respondent1ResponseDeadline",
-    "Label": "Defendant 1 solicitor deadline",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public",
-    "Searchable": "Y",
-    "_Definition":  "The date time by which the first respondent solicitor has to submit the response to the claim.",
-    "_Category":  "CIVIL"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
     "FieldType": "Date",
     "Label": "Date for claimant suggest pay immediately",
