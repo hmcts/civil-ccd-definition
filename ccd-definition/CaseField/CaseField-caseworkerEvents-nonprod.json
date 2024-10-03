@@ -43,7 +43,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "manageStayRequestUpdateHintText",
-    "Label": "A notification will be sent to all parties, asking them for an update on the case. \n\nAfter 7 days, a new task will be created to progress the case.",
+    "Label": "A notification will be sent to all parties, asking them for an update on the case. \nAfter 7 days, a new task will be created to progress the case.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
