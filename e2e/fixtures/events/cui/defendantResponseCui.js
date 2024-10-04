@@ -1,4 +1,5 @@
 const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 const lipDefendantData = {
   PA_INSTALLMENTS_INDIVIDUAL: {
@@ -299,8 +300,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {
@@ -451,8 +452,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {

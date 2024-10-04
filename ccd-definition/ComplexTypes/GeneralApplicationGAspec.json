@@ -348,5 +348,13 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseNameGaInternal",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

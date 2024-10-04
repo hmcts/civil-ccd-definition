@@ -2,7 +2,7 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
-const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
+const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL';
 
 module.exports = {
   idamStub: {
@@ -47,8 +47,8 @@ module.exports = {
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
-    wiremockService: 'http://localhost:8765'
-  },
+    wiremockService: process.env.WIREMOCK_URL || 'http://localhost:8765'
+    },
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
