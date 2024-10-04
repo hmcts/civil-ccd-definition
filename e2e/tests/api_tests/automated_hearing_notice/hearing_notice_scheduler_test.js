@@ -1,6 +1,6 @@
 const config = require('../../../config');
 
-Feature('Automated hearing notice schedulers @api-nonprod @AHN');
+Feature('Automated hearing notice schedulers @AHN');
 
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
