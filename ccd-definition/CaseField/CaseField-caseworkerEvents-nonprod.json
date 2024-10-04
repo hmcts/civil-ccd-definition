@@ -1,14 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "stayCaseText",
-    "Label": "## Stay the case \n\n All parties will be notified.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "ID": "dismissText",
     "Label": "## Dismiss the case\nThis case will be dismissed. Parties will be able to view the case details but not take any actions on it.",
     "FieldType": "Label",
