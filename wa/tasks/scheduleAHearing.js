@@ -33,4 +33,4 @@ module.exports = {
     role_category: 'ADMIN',
     minor_priority: 500,
     major_priority: 5000
-  }
+  };

@@ -6,14 +6,5 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ClaimResponseTypeForSpec",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "RespondentResponseTypeSpec",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
