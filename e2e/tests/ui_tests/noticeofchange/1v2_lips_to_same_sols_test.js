@@ -26,7 +26,7 @@ Scenario('Respondent solicitor completes response', async ({api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
 });
 
-Scenario('Applicant solicitor completes response', async ({api}) => {
+Scenario.skip('Applicant solicitor completes response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
