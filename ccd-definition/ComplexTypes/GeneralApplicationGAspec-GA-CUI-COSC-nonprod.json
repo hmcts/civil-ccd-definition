@@ -1,16 +1,16 @@
 [
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppAskForCosts",
-    "FieldType": "YesOrNo",
+    "ListElementCode": "certOfSC",
+    "FieldType": "CertOfSC",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "generalAppHelpWithFees",
-    "FieldType": "HelpWithFees",
+    "ListElementCode": "generalAppTypeLR",
+    "FieldType": "GATypeGAspecLR",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -1,17 +1,17 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppAskForCosts",
-    "Label": "Ask For Costs",
-    "FieldType": "YesOrNo",
+    "ID": "certOfSC",
+    "Label": " ",
+    "FieldType": "CertOfSC",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "generalAppHelpWithFees",
+    "ID": "generalAppTypeLR",
     "Label": " ",
-    "FieldType": "HelpWithFees",
+    "FieldType": "GATypeGAspecLR",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
