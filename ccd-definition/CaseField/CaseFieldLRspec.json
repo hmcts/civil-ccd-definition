@@ -2854,7 +2854,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseTypeForSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -2863,7 +2863,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ResponseDeadline",
     "Label": "Defendant 1 solicitor deadline",
     "FieldType": "DateTime",
