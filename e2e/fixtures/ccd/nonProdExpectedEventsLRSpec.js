@@ -5,8 +5,8 @@ module.exports = {
     CASE_ISSUED: [
       events.INITIATE_GENERAL_APPLICATION,
       events.CHANGE_SOLICITOR_EMAIL,
-      events.ENTER_BREATHING_SPACE_SPEC,
-      events.LIFT_BREATHING_SPACE_SPEC,
+      // events.ENTER_BREATHING_SPACE_SPEC,
+      // events.LIFT_BREATHING_SPACE_SPEC,
       events.DEFAULT_JUDGEMENT_SPEC,
       events.MANAGE_CONTACT_INFORMATION
     ],
