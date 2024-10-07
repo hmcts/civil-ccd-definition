@@ -330,7 +330,7 @@ module.exports = {
     },
     {
       code: '2e579978-4a43-4c73-8c93-123e8114b65a',
-      label: 'Nottingham County Court and Family Court (and Crown) - CANAL STREET - NG1 7EJ'
+      label: 'Nottingham County Court and Family Court - CANAL STREET - NG1 7EJ'
     },
     {
       code: 'ca9706a1-e269-44ac-83cb-c7cf78a949a8',
