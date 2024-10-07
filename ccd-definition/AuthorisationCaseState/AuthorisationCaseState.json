@@ -145,9 +145,7 @@
           "judge-profile",
           "hearing-schedule-access",
           "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       },
