@@ -147,6 +147,12 @@ withPipeline(type, product, component) {
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    if (isHmcEnabled(env.BRANCH_NAME)) {
+      env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
+    } else {
+      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-service-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    }
+
     env.TEST_EA_COURTS = true
   }
   onMaster {
