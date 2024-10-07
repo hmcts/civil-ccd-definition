@@ -12,7 +12,7 @@ Feature('CCD 1v2 API test @api-dj-1v2, @api-dj @dmn-task-dj @api-prod-dj @api-no
 
 let caseId;
 
-Scenario('Default Judgment claim 1v2', async ({I, api}) => {
+Scenario.only('Default Judgment claim 1v2', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
@@ -20,6 +20,7 @@ Scenario('Default Judgment claim 1v2', async ({I, api}) => {
   caseId = await api.getCaseId();
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await api.defaultJudgment(config.applicantSolicitorUser, 'TRIAL_HEARING');
+  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
 });
 
 Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
@@ -32,8 +33,7 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario.only('Default Judgment claim SDO', async ({I, api}) => {
-  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
+Scenario('Default Judgment claim SDO', async ({I, api}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
