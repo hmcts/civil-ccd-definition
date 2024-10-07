@@ -147,13 +147,15 @@ withPipeline(type, product, component) {
   onPR {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
+    env.TEST_EA_COURTS = true
     if (isHmcEnabled(env.BRANCH_NAME)) {
       env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
+      env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
+      env.CCD_DEF_VERSION = "-${CHANGE_ID}"
     } else {
-      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-service-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     }
-
-    env.TEST_EA_COURTS = true
   }
   onMaster {
     env.ENVIRONMENT = "aat"
@@ -178,14 +180,6 @@ withPipeline(type, product, component) {
 
   afterSuccess('akschartsinstall') {
     onPR {
-      if (isHmcEnabled(env.BRANCH_NAME)) {
-        env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
-        env.CCD_DATA_STORE_URL = "https://civil-ccd-data-store-staging-aat.aat.platform.hmcts.net"
-        env.CCD_DEF_VERSION = "-${CHANGE_ID}"
-      } else {
-        env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-service-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-        env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      }
       env.IDAM_API_URL = "https://idam-api.aat.platform.hmcts.net"
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
