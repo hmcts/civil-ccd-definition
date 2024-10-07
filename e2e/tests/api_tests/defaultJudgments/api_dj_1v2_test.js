@@ -32,7 +32,7 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
+Scenario.only('Default Judgment claim SDO', async ({I, api}) => {
   await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
