@@ -14,13 +14,17 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors fast track - Claim Journey @e2e-unspec @e2e-nightly @e2e-unspec-1v2DS @master-e2e-ft');
 
-Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
+Scenario.only('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   caseNumber = await api.getCaseId();
   await I.setCaseId(caseNumber);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await I.login(config.defendantSolicitorUser);
+  await I.respondToClaim({
+    defendant1Response: 'fullDefence',
+    claimValue: 20000});
 }).retry(3);
 
 Scenario('1v2 Diff   - Assign roles to defendants', async () => {

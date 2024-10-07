@@ -12,7 +12,7 @@ Feature('CCD 1v2 API test @api-dj-1v2, @api-dj @dmn-task-dj @api-prod-dj @api-no
 
 let caseId;
 
-Scenario.only('Default Judgment claim 1v2', async ({I, api}) => {
+Scenario('Default Judgment claim 1v2', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
