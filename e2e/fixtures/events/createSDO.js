@@ -1643,7 +1643,7 @@ module.exports = {
               list_items: [
                 {
                   code: '000000',
-                  label: 'Barnet Civil and Family Centre - St Marys Court, Regents Park Road - N3 1BQ'
+                  label: 'Barnet Civil And Family Courts Centre - St Marys Court, Regents Park Road - N3 1BQ'
                 },
                 {
                   code: 'OTHER_LOCATION',
@@ -1652,7 +1652,7 @@ module.exports = {
               ],
               value: {
                 code: '000000',
-                label: 'Barnet Civil and Family Centre - St Marys Court, Regents Park Road - N3 1BQ'
+                label: 'Barnet Civil And Family Courts Centre- St Marys Court, Regents Park Road - N3 1BQ'
               }
             },
             lengthList: 'FIVE_HOURS',
