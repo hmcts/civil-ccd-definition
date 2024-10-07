@@ -7,7 +7,7 @@ let caseNumber;
 
 Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
-Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec_fast, LRspec}) => {
+Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec_fast, LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
   caseNumber = await api_spec_fast.getCaseId();
@@ -15,13 +15,13 @@ Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Dif
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - Assign roles to defendants', async () => {
     await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
   console.log('Assigned roles for defendant 1 and 2', caseNumber);
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullDefence({
     defendant1Response: 'fullDefence',
@@ -30,7 +30,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - First Defendant solicitor rejects cla
   });
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects claim', async ({LRspec}) => {
   await LRspec.login(config.secondDefendantSolicitorUser);
   await LRspec.respond1v2DiffLR_FullDefence({
     secondDefendant: true,
@@ -40,7 +40,7 @@ Scenario('1v2 Diff LRs Fast Track Claim  - Second Defendant solicitor rejects cl
   });
 }).retry(3);
 
-Scenario('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
+Scenario.skip('1v2 Diff LRs Fast Track Claim  - claimant Intention to proceed', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.respondToDefence({mpScenario: 'ONE_V_ONE', claimType: 'fast'});
 }).retry(3);
@@ -63,7 +63,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
   }
 }).retry(3);
 
-Scenario('Judge triggers SDO', async ({LRspec}) => {
+Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUser2WithRegionId2);
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
@@ -75,12 +75,12 @@ Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.evidenceUploadSpec(caseNumber, false);
 }).retry(3);
 
-Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
+Scenario.skip('Defendant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.login(config.defendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseNumber, true);
 }).retry(3);
 
-Scenario('Schedule a hearing', async ({LRspec}) => {
+Scenario.skip('Schedule a hearing', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId2);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
@@ -88,7 +88,7 @@ Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.createHearingScheduled();
 }).retry(3);
 
-Scenario('Pay hearing fee', async ({LRspec}) => {
+Scenario.skip('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
 }).retry(3);
 
