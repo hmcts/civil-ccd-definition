@@ -1,4 +1,4 @@
-import BaseRequest from '../base/base-requests';
+import BaseRequest from '../base/base-request';
 import { TOTP } from 'totp-generator';
 import { AllMethodsStep } from '../decorators/test-steps';
 import config from '../config/config';

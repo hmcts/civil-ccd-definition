@@ -1,7 +1,6 @@
-import BaseRequest from '../base/base-requests';
+import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import IdamUser from '../types/idam-user';
 import RequestOptions from '../types/request-options';
 import User from '../types/user';
 

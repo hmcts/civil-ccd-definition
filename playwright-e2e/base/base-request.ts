@@ -3,7 +3,7 @@ import RequestOptions from '../types/request-options';
 import { expect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
 
-const classKey = 'BaseRequests';
+const classKey = 'BaseRequest';
 export default abstract class BaseRequest {
   private requestContext: APIRequestContext;
   private MAX_RETRY_TIMEOUT = 30000;
