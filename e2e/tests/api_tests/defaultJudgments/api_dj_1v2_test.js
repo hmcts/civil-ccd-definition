@@ -12,7 +12,7 @@ Feature('CCD 1v2 API test @api-dj-1v2, @api-dj @dmn-task-dj @api-prod-dj @api-no
 
 let caseId;
 
-Scenario('Default Judgment claim 1v2', async ({I, api}) => {
+Scenario('Default Judgment claim 1v2 and SDO', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api.addCaseNote(config.adminUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
@@ -33,7 +33,7 @@ Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', asy
   }
 });
 
-Scenario('Default Judgment claim SDO', async ({I, api}) => {
+Scenario('Summary judgment Directions task ', async ({I, api}) => {
   if (config.runWAApiTest) {
     api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
   }
