@@ -27,9 +27,3 @@ xui-webapp:
       SERVICES_CCD_COMPONENT_API: https://gateway-ccd.aat.platform.hmcts.net
       SERVICES_EM_ANNO_API: https://gateway-ccd.aat.platform.hmcts.net
       SERVICES_CCD_DATA_STORE_API: http://ccd-data-store-api-aat.service.core-compute-aat.internal
-
-ccd-def-cleanup:
-  enabled: true
-  change_id: ${CHANGE_ID}
-  case_type_ids:
-    - CIVIL
