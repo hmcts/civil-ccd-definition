@@ -13,6 +13,7 @@ module.exports = {
             individualDateOfBirth: date(-1),
             primaryAddress: buildAddress('respondent'),
             partyName: 'Sir John Doe',
+            partyID: 'c43c68cc-d06c-4b',
             partyTypeDisplayValue: 'Individual',
             flags: {
               partyName: 'Sir John Doe',
