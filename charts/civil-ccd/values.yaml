@@ -14,5 +14,3 @@ postgresql:
   enabled: false
 civil-translation:
   enabled: false
-ccd-def-cleanup:
-  enabled: false

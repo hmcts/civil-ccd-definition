@@ -56,8 +56,3 @@ dependencies:
     version: 0.1.7
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-translation.enabled
-## CCD AAT Definition cleanup for HMC deployments in Preview
-  - name: ccd-def-cleanup
-    version: 9.0.4
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: ccd-def-cleanup.enabled

@@ -180,24 +180,29 @@ withPipeline(type, product, component) {
 //    onPR{
 //      if (isHmcEnabled(env.BRANCH_NAME)) {
 //        sh """
-//          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
+//          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
 //            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          az servicebus topic subscription rule create --resource-group hmc-shared-aat \
-//            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \
-//            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \
-//            --name hmc-servicebus-aat-subscription-rule-civil \
+//          az servicebus topic subscription rule create --resource-group hmc-shared-aat \\
+//            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \\
+//            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \\
+//            --name hmc-servicebus-aat-subscription-rule-civil \\
 //            --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
 //        """
 //      }
 //    }
 //  }
 
-  before('helmUninstall') {
-    sh """
-          az servicebus topic subscription delete --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
-            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-        """
-  }
+//  before('helmUninstall') {
+//    onPR {
+//      if (isHmcEnabled(env.BRANCH_NAME)) {
+//      sh """
+//          az servicebus topic subscription delete --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
+//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
+//          curl -v -k -X DELETE \\
+//            'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/${CHANGE_ID}/?caseTypeIds=CIVIL'
+//        """
+//    }
+//  }
 
   afterSuccess('akschartsinstall') {
     onPR {
