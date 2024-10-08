@@ -78,7 +78,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SettleClaim",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

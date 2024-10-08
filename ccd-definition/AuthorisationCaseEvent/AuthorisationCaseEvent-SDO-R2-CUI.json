@@ -72,7 +72,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "AccessControl": [
       {
@@ -84,7 +84,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TAKE_CASE_OFFLINE",
     "AccessControl": [
       {
