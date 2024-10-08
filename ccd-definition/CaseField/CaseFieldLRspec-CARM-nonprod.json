@@ -7,13 +7,5 @@
     "FieldTypeParameter": "MediationUnsuccessfulReasonsMultiSelect",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "applicant1SettleClaim",
-    "Label": "Does the claimant want to settle",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]

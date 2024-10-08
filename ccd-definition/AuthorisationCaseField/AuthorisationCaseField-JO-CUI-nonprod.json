@@ -128,17 +128,5 @@
       "citizen-profile"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "activeJudgment",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
