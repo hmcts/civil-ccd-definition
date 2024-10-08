@@ -7,10 +7,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -21,10 +21,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -35,10 +35,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -49,10 +49,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -63,10 +63,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -77,10 +77,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -91,10 +91,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -105,10 +105,10 @@
     "DisplayContext": "READONLY",
     "EventElementLabel": "  ",
     "EventHintText": "  ",
-    "PageID": "manageStayOptions",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   }
 ]
