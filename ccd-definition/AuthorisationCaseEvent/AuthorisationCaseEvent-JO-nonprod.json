@@ -713,5 +713,24 @@
         "CRUD": "R"
       }
     ]
-  }
+  },
+ {
+   "CaseTypeID": "CIVIL",
+   "CaseEventID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+ }
 ]
