@@ -22,5 +22,13 @@
     "FieldType": "CaseManagementCategory",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "coscSchedulerDeadline",
+    "Label": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
