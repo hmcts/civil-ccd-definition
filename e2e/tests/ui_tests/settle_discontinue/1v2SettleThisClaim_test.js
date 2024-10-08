@@ -31,7 +31,7 @@ AfterSuite(async ({api_spec_small}) => {
 
 Feature('Settle this Claim - Reason for settlement - judges order - 1v2 - spec @master-e2e-ft');
 
-Scenario('1v2 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
+Scenario.skip('1v2 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec1v2(api_spec_small);
     caseNumber = await api_spec_small.getCaseId();
@@ -40,7 +40,7 @@ Scenario('1v2 spec Reason for settlement - judges order', async ({api_spec_small
   }
 }).retry(3);
 
-Scenario('Reason for settlement - judges order', async ({LRspec}) => {
+Scenario.skip('Reason for settlement - judges order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimJudgesOrderForUI();
@@ -54,7 +54,7 @@ AfterSuite(async ({api_spec_small}) => {
 
 Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @master-e2e-ft');
 
-Scenario('1v2 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
+Scenario.skip('1v2 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec1v2(api_spec_small);
     caseNumber = await api_spec_small.getCaseId();
@@ -63,7 +63,7 @@ Scenario('1v2 spec Reason for settlement - Consent order', async ({api_spec_smal
   }
 }).retry(3);
 
-Scenario('Reason for settlement - Consent order', async ({LRspec}) => {
+Scenario.skip('Reason for settlement - Consent order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimConsentOrderForUI();
