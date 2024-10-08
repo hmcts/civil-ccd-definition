@@ -24,7 +24,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -38,7 +37,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -52,7 +50,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -66,7 +63,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -80,7 +76,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -94,7 +89,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -108,7 +102,6 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   }
 ]
