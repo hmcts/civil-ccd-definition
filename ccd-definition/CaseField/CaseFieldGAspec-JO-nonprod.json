@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "coSCApplicationStatus",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CoscApplicationStatus",
+    "Label": "CoSC Application Status",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  }
+]
