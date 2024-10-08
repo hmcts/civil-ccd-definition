@@ -732,7 +732,7 @@ module.exports = function () {
       ]);
     },
 
-    async initiateFinalOrder(caseId, trackType, optionText) {
+    /*async initiateFinalOrder(caseId, trackType, optionText) {
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Summary', 20);
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERTrackAllocation');
@@ -774,7 +774,7 @@ module.exports = function () {
         () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
-    },
+    },*/
 
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
