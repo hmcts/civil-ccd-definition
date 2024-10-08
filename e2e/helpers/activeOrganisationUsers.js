@@ -1,4 +1,4 @@
-const {updateStubResponseFileByRequestUrl} = require('../api/wiremock');
+const {updateStubResponseFileByRequestUrl} = require('../api/wiremock/wiremock');
 
 const activeOrganisationUsersRequestUrl = '/refdata/external/v1/organisations/users';
 
