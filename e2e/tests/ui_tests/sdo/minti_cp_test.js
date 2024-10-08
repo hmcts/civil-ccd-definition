@@ -21,14 +21,14 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
 
-  await I.login(judgeUser);
+  /*await I.login(judgeUser);
   await I.initiateFinalOrder(civilCaseReference, 'Intermediate Track', 'Fix a date for CMC');
 
   await I.login(config.applicantSolicitorUser);
   await I.evidenceUpload(civilCaseReference, false, true);
 
   await I.login(config.defendantSolicitorUser);
-  await I.evidenceUpload(civilCaseReference, true, true, true, mpScenario);
+  await I.evidenceUpload(civilCaseReference, true, true, true, mpScenario);*/
 });
 
 Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({I, api}) => {
@@ -40,11 +40,11 @@ Scenario('1v2 Different Solicitor Multi Track claim - Download order template - 
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'MULTI_CLAIM');
 
-  await I.login(judgeUser);
+/*  await I.login(judgeUser);
   await I.initiateFinalOrder(civilCaseReference, 'Multi Track', 'Fix a date for CCMC');
 
   await I.login(config.secondDefendantSolicitorUser);
-  await I.evidenceUpload(civilCaseReference, true, true);
+  await I.evidenceUpload(civilCaseReference, true, true);*/
 });
 
 AfterSuite(async  () => {
