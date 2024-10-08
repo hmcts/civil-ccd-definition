@@ -82,5 +82,19 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "orderType",
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   }
 ]
