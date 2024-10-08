@@ -7,13 +7,13 @@ const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
 const track = 'INTERMEDIATE_CLAIM';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+/*const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 
-let civilCaseReference;
+let civilCaseReference;*/
 
 Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @e2e-nightly-nonprod');
 
-Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({I, api}) => {
+Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -31,7 +31,7 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
   await I.evidenceUpload(civilCaseReference, true, true, true, mpScenario);*/
 });
 
-Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({I, api}) => {
+Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   civilCaseReference =  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);

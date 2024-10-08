@@ -72,12 +72,12 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
-const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
+/*const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
 const intermediateTrackComplexityBandPage = require('./pages/directionsOrder/intermediateTrackComplexityBand.page');
 const finalOrderSelectPage = require('./pages/directionsOrder/finalOrderSelect.page');
 const selectOrderTemplatePage = require('./pages/directionsOrder/selectOrderTemplate.page');
 const downloadOrderTemplatePage = require('./pages/directionsOrder/downloadOrderTemplate.page');
-const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');
+const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');*/
 
 
 
