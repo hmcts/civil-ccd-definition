@@ -714,7 +714,7 @@
       }
     ]
   },
- {
+  {
    "CaseTypeID": "CIVIL",
    "CaseEventID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
     "AccessControl": [
@@ -732,5 +732,5 @@
         "CRUD": "R"
       }
     ]
- }
+  }
 ]
