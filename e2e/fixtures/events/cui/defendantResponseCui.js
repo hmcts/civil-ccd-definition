@@ -188,7 +188,9 @@ module.exports = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
         respondent1ClaimResponseTypeForSpec: typeOfResponse === 'FULL_ADMISSION' ? 'FULL_ADMISSION' : 'FULL_DEFENCE',
-        defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+        ...(typeOfResponse === 'FULL_ADMISSION' || typeOfResponse === 'PART_ADMISSION'? {
+          defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+        }: {}),
         respondToClaimAdmitPartLRspec: typeOfResponse === 'FULL_ADMISSION' ? {
           whenWillThisAmountBePaid: '2020-01-01'
         } : {},

@@ -45,6 +45,17 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "manageStayDummyField",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "manageStayDummyPage",
+    "PageDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "manageStayOption = \"\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
