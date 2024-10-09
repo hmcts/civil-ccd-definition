@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_DEFENDANT",
     "Name": "Hearing Notification",
     "Description": "Create dashboard notice hearing",
