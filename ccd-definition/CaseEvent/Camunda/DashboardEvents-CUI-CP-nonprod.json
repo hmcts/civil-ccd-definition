@@ -79,6 +79,19 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_CLAIMANT_HMC",
+    "Name": "Hearing Notification",
+    "Description": "Create dashboard notice hearing",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_DEFENDANT",
     "Name": "Hearing Notification",
     "Description": "Create dashboard notice hearing",
