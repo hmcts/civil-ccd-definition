@@ -83,6 +83,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "anyRepresented",
+    "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
