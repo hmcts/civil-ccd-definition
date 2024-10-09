@@ -12,7 +12,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "coscSchedulerDeadline",
     "Label": " ",
-    "FieldType": "DateTime",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "Y"
   }
