@@ -87,13 +87,13 @@ module.exports = {
         break;
       case 'DOWNLOAD_ORDER_TEMPLATE':
           if (orderType === 'INTERMEDIATE') {
-            return {
-              valid: createIntermediateDownloadOrder(),
-            };
+              requestFinalOrder.userInput = {
+              ...createIntermediateDownloadOrder()
+            }
           }
           if (orderType === 'MULTI') {
-            return {
-              valid: createMultiDownloadOrder(),
+            requestFinalOrder.userInput = {
+                ...createMultiDownloadOrder()
             };
           }
         break;

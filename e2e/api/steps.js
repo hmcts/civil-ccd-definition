@@ -87,7 +87,7 @@ const data = {
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
   EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario, claimTrack) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
   EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
   FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
@@ -1342,9 +1342,9 @@ module.exports = {
       }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
-    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload fast claim respondent for case id ' + caseId);
-      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPages(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
@@ -1535,17 +1535,14 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
 
-  //temp workaround, needa fix dynamic list for final order
-  if (eventName !== 'GENERATE_DIRECTIONS_ORDER') {
-    try {
-       assert.deepEqual(responseBody.data, caseData);
-    }
-    catch(err) {
-      console.error('Validate data is failed due to a mismatch ..', err);
-      console.error('Data different in page ' + pageId);
-      whatsTheDifference(caseData, responseBody.data);
-      throw err;
-    }
+  try {
+     assert.deepEqual(responseBody.data, caseData);
+  }
+  catch(err) {
+    console.error('Validate data is failed due to a mismatch ..', err);
+    console.error('Data different in page ' + pageId);
+    whatsTheDifference(caseData, responseBody.data);
+    throw err;
   }
 };
 
@@ -2056,6 +2053,15 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  console.log('SYNC finalOrderDownloadTemplateOptions')
+  if (responseBody.data.finalOrderDownloadTemplateOptions) {
+    console.log('SYNC DOCUMENTS')
+    caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
+  }
+  if (responseBody.data.finalOrderDownloadTemplateDocument) {
+    console.log('SYNC DOCUMENTS')
+    caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
+  }
   return responseBody;
 };
 

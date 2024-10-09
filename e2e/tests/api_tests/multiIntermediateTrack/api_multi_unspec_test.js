@@ -9,12 +9,23 @@ const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearin
 
 Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 
+async function prepareClaim(api, mpScenario, claimAmount) {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await defendantResponse(api, mpScenario);
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', track);
+  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+}
+
 Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount);
 });
 
-Scenario('1v2 Different Solicitors Create Unspecified Multi Track claim', async ({api}) => {
+Scenario('1v2 Different Solicitors Create Unspecified Multi Track claim ', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount);
 });
@@ -36,17 +47,6 @@ async function defendantResponse(api, mpScenario) {
   } else {
     await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
   }
-}
-
-async function prepareClaim(api, mpScenario, claimAmount) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
-  await api.notifyClaim(config.applicantSolicitorUser);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await defendantResponse(api, mpScenario);
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', track);
-  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
-  await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 }
 
 AfterSuite(async  ({api}) => {
