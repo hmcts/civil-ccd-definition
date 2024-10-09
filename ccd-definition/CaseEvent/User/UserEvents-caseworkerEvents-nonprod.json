@@ -28,7 +28,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MANAGE_STAY",
     "Name": "Manage stay",
     "Description": "Manage the stay",

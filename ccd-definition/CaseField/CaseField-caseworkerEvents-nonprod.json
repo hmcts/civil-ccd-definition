@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "preStayState",
     "Label": " ",
     "FieldType": "Text",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayDummyField",
     "Label": " ",
     "FieldType": "Text",
@@ -32,7 +32,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayOptionsLabel",
     "Label": "What do you need to do?",
     "FieldType": "Label",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayOption",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -49,7 +49,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayRequestUpdateHintText",
     "Label": "A notification will be sent to all parties, asking them for an update on the case. \n\n After 7 days, a new task will be created to progress the case.",
     "FieldType": "Label",
@@ -57,7 +57,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayJudicialReferralInMediationText",
     "Label": "By lifting the stay, this case will automatically be sent to a judge. \n\n This will also raise a work allocation task for a judge to make a standard directions order for this case.",
     "FieldType": "Label",
@@ -65,7 +65,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
     "Label": "By lifting the stay, this case will return to 'Case progression' state. \n\n A caseworker may need to schedule the next hearing for this case.",
     "FieldType": "Label",
@@ -73,7 +73,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayRequestUpdateText",
     "Label": "You are requesting an update on this case, the stay will not be lifted. \n\n A notification will be sent to all parties, asking for an update on the case. \n\n After 7 days, a new task will be created to progress the case.",
     "FieldType": "Label",
