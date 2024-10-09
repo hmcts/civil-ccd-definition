@@ -10,13 +10,13 @@ type PageFactoryFixtures = {
 };
 
 export const test = base.extend<PageFactoryFixtures>({
-  _pageUtilsFactory: async ({ page, _axeBuilder }, use) => {
-    await use(new PageUtilsFactory(page, _axeBuilder));
+  _pageUtilsFactory: async ({ page }, use) => {
+    await use(new PageUtilsFactory(page));
   },
-  _idamPageFactory: async ({ page, _axeBuilder }, use) => {
-    await use(new IdamPageFactory(page, _axeBuilder));
+  _idamPageFactory: async ({ page }, use) => {
+    await use(new IdamPageFactory(page));
   },
-  _exuiDashboardPageFactory: async ({ page, _axeBuilder }, use) => {
-    await use(new ExuiDashboardPageFactory(page, _axeBuilder));
+  _exuiDashboardPageFactory: async ({ page }, use) => {
+    await use(new ExuiDashboardPageFactory(page));
   }
 });

@@ -1,11 +1,8 @@
 import { test as base, Page, TestInfo } from '@playwright/test';
 import TestData from '../../types/test-data';
-import AxeBuilder from '@axe-core/playwright';
-import config from '../../config/config';
 import FileSystemHelper from '../../helpers/file-system-helper';
 
 type TestDataFixture = {
-  _axeBuilder?: AxeBuilder;
   _isSetupTest: boolean;
   _isTeardownTest: boolean;
   _verifyCookiesBanner: boolean;
@@ -16,13 +13,6 @@ export const test = base.extend<TestDataFixture>({
   page: async ({ page }, use, testInfo) => {
     await use(page);
     await pageTeardown(page, testInfo);
-  },
-  _axeBuilder: async ({ page }, use) => {
-    let axeBuilder: AxeBuilder | undefined;
-    if (config.runAxeTests) {
-      axeBuilder = new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa']).setLegacyMode(true);
-    }
-    await use(axeBuilder);
   },
   _isSetupTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('setup'));
