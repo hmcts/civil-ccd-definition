@@ -755,11 +755,9 @@ const clearNIHLDataFromResponseBody = (responseBody) => {
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
   if (responseBody.data.finalOrderDownloadTemplateOptions) {
-    console.log('SYNC DOCUMENTS')
     caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
   }
   if (responseBody.data.finalOrderDownloadTemplateDocument) {
-    console.log('SYNC DOCUMENTS')
     caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
   }
   return responseBody;
