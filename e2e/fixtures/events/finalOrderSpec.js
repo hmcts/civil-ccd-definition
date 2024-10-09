@@ -89,7 +89,7 @@ module.exports = {
           if (orderType === 'INTERMEDIATE') {
               requestFinalOrder.userInput = {
               ...createIntermediateDownloadOrder()
-            }
+            };
           }
           if (orderType === 'MULTI') {
             requestFinalOrder.userInput = {
