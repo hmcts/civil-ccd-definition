@@ -10,7 +10,7 @@ module.exports = {
     },
     {
       code: '7125a3e8-fd15-4126-ae82-022e20f95e4f',
-      label: 'Barnet Civil and Family Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
+      label: 'Barnet Civil And Family Courts Centre - ST MARY\'S COURT, REGENTS PARK ROAD - N3 1BQ'
     },
     {
       code: '9041a762-e5c5-4000-b800-797fc307a3eb',
@@ -330,7 +330,7 @@ module.exports = {
     },
     {
       code: '2e579978-4a43-4c73-8c93-123e8114b65a',
-      label: 'Nottingham County Court and Family Court (and Crown) - CANAL STREET - NG1 7EJ'
+      label: 'Nottingham County Court and Family Court - CANAL STREET - NG1 7EJ'
     },
     {
       code: 'ca9706a1-e269-44ac-83cb-c7cf78a949a8',

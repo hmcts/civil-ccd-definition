@@ -5,7 +5,7 @@ module.exports = {
     task_system: 'SELF',
     security_classification: 'PUBLIC',
     task_title: 'Legal Advisor Small Claims Track Directions',
-    location_name: 'Nottingham County Court and Family Court (and Crown)',
+    location_name: 'Nottingham County Court and Family Court',
     location: '192280',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
@@ -35,7 +35,7 @@ module.exports = {
     minor_priority: 500,
     major_priority: 5000
   };
-  
+
 /* {
     name: 'Legal Advisor Small Claims Track Directions',
     type: 'LegalAdvisorSmallClaimsTrackDirections',
