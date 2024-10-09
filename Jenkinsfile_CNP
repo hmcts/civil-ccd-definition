@@ -176,21 +176,21 @@ withPipeline(type, product, component) {
     archiveCoreCaseDataDefinitions()
   }
 
-//  before('akschartsinstall'){
-//    onPR{
-//      if (isHmcEnabled(env.BRANCH_NAME)) {
-//        sh """
-//          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
-//            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
-//          az servicebus topic subscription rule create --resource-group hmc-shared-aat \\
-//            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \\
-//            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \\
-//            --name hmc-servicebus-aat-subscription-rule-civil \\
-//            --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
-//        """
-//      }
-//    }
-//  }
+  before('akschartsinstall'){
+    onPR{
+      if (isHmcEnabled(env.BRANCH_NAME)) {
+        sh """
+          az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \\
+            --topic-name hmc-to-cft-aat --name hmc-to-civil-subscription-pr-${CHANGE_ID}
+          az servicebus topic subscription rule create --resource-group hmc-shared-aat \\
+            --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \\
+            --subscription-name hmc-to-civil-subscription-pr-${CHANGE_ID} \\
+            --name hmc-servicebus-aat-subscription-rule-civil \\
+            --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
+        """
+      }
+    }
+  }
 
 //  before('helmUninstall') {
 //    onPR {
