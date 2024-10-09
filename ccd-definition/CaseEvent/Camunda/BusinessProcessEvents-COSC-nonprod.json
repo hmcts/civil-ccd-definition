@@ -12,6 +12,6 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 3,
-    "RetriesTimeoutAboutToSubmitEvent": 3
+    "RetriesTimeoutURLSubmittedEvent": 3
   }
 ]
