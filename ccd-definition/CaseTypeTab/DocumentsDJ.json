@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 10,
@@ -9,7 +9,7 @@
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink)"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 10,
@@ -18,7 +18,7 @@
     "FieldShowCondition": "caseNameHmctsInternal=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 10,
@@ -27,7 +27,7 @@
     "FieldShowCondition": "caseManagementLocation=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Documents",
     "TabLabel": "Claim documents",
     "TabDisplayOrder": 10,

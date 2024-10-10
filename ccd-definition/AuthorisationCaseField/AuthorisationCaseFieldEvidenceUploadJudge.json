@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNoteType",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAndNameToAdd",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAndName",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNoteTypeNoteLabel",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNoteTA",
     "AccessControl": [
       {
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseNotesTA",
     "AccessControl": [
       {
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAndNoteToAdd",
     "AccessControl": [
       {
@@ -84,7 +84,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAndNote",
     "AccessControl": [
       {

@@ -1,7 +1,7 @@
 [
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_RESPONSE_CUI_SEALED",
     "Name": "Generate Sealed Form",
     "Description": "Generates Sealed Form Claim Response",
@@ -14,7 +14,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
     "Name": "Generate Sealed Form",
     "Description": "Generates Sealed DQ",

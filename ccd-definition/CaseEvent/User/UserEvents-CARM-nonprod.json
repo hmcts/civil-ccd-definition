@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UPLOAD_MEDIATION_DOCUMENTS",
     "Name": "Upload mediation documents",
     "Description": "Upload mediation documents",
@@ -18,7 +18,7 @@
     "EventEnablingCondition": "responseClaimTrack=\"SMALL_CLAIM\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CUI_UPLOAD_MEDIATION_DOCUMENTS",
     "Name": "Cui Upload mediation documents",
     "Description": "CUI Upload mediation documents this event is only for CUI application",

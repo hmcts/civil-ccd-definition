@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANTS_SOLICITOR_SDO_TRIGGERED",
     "Name": "Email: Notify SDO Triggered",
     "Description": "Notify applicant(s) solictor that a sdo has been triggered",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_SDO_TRIGGERED",
     "Name": "Email: Notify SDO Triggered",
     "Description": "Notify respondent solicitor 1 that a sdo has been triggered",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_SDO_TRIGGERED",
     "Name": "Email: Notify SDO Triggered",
     "Description": "Notify respondent solicitor 2 that a sdo has been triggered",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIM_RECONSIDERATION_UPHELD_CLAIMANT",
     "Name": "Notify Reconsideration",
     "Description": "Notify Reconsideration to claimant ",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIM_RECONSIDERATION_UPHELD_DEFENDANT",
     "Name": "Notify Reconsideration",
     "Description": "Notify Reconsideration to Defendant",

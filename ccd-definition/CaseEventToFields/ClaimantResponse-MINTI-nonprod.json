@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicantDQFixedRecoverableCostsIntermediateLabel",
     "PageDisplayOrder": 4,
@@ -11,7 +11,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "PageDisplayOrder": 4,
@@ -23,7 +23,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "PageDisplayOrder": 4,

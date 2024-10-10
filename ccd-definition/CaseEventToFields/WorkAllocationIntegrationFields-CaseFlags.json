@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageID": "WorkAllocationIntegrationFields",
@@ -12,7 +12,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "PageID": "WorkAllocationIntegrationFields",
@@ -24,7 +24,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageID": "WorkAllocationIntegrationFields",
@@ -36,7 +36,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQHearingSupport",
     "PageID": "WorkAllocationIntegrationFields",
@@ -48,7 +48,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQLanguage",
     "PageID": "WorkAllocationIntegrationFields",
@@ -60,7 +60,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQLanguage",
     "PageID": "WorkAllocationIntegrationFields",
@@ -72,7 +72,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageDisplayOrder": 12,
@@ -85,7 +85,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQHearingSupport",
     "PageDisplayOrder": 12,
@@ -98,7 +98,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageDisplayOrder": 13,
@@ -111,7 +111,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "PageDisplayOrder": 13,
@@ -124,7 +124,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQLanguage",
     "PageDisplayOrder": 9,
@@ -136,7 +136,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQLanguage",
     "PageDisplayOrder": 9,

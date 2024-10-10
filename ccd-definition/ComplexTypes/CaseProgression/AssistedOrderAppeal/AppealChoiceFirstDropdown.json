@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealChoiceListLabel",
     "ID": "AppealChoiceFirstDropdownGrant",
     "ElementLabel": "### An appeal lies from this order to",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "circuitOrHighCourtList",
     "ID": "AppealChoiceFirstDropdownGrant",
     "ElementLabel": " ",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealChoiceSecondDropdownA",
     "ID": "AppealChoiceFirstDropdownGrant",
     "ElementLabel": " ",
@@ -29,7 +29,7 @@
     "FieldShowCondition": "circuitOrHighCourtList = \"CIRCUIT_COURT\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealChoiceSecondDropdownB",
     "ID": "AppealChoiceFirstDropdownGrant",
     "ElementLabel": " ",

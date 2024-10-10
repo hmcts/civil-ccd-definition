@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "showCarmFields",
     "DisplayContext": "READONLY",
@@ -11,7 +11,7 @@
     "FieldShowCondition": "defendantName=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "unsuccessfulMediationReason",
     "DisplayContext": "MANDATORY",
@@ -22,7 +22,7 @@
     "FieldShowCondition": "showCarmFields=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "mediationUnsuccessfulReasonsMultiSelect",
     "DisplayContext": "MANDATORY",
