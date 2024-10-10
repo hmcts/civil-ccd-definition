@@ -85,12 +85,12 @@ const data = {
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario, claimTrack) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
   EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
-  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
+  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
@@ -299,6 +299,7 @@ module.exports = {
 
     await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
     await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
+    return caseId;
   },
 
   manageDefendant1Details: async (user) => {
@@ -1106,7 +1107,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  createFinalOrder: async (user, finalOrderRequestType) => {
+  createFinalOrder: async (user, finalOrderRequestType, orderTrack) => {
     console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1124,9 +1125,18 @@ module.exports = {
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
-    } else {
+    }
+    if (finalOrderRequestType === 'FREE_FORM_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
+    if (finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE') {
+      await validateEventPages(data.FINAL_ORDERS('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
+    }
+
+    await assertSubmittedEvent(finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE' ? 'CASE_PROGRESSION' : 'All_FINAL_ORDERS_ISSUED', {
+      header: '',
+      body: ''
+    }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1308,9 +1318,9 @@ module.exports = {
       }
       await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
-    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload applicant fast track for case id ' + caseId);
-      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST(mpScenario);
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPages(ApplicantEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
@@ -1332,9 +1342,9 @@ module.exports = {
       }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
-    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload fast claim respondent for case id ' + caseId);
-      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPages(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
@@ -1406,7 +1416,7 @@ const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
@@ -1526,7 +1536,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   try {
-    assert.deepEqual(responseBody.data, caseData);
+     assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
@@ -2043,6 +2053,12 @@ const adjustDataForSolicitor = (user, data) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  if (responseBody.data.finalOrderDownloadTemplateOptions) {
+    caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
+  }
+  if (responseBody.data.finalOrderDownloadTemplateDocument) {
+    caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
+  }
   return responseBody;
 };
 
