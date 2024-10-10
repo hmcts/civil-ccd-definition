@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "coSCApplicationStatus",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "coscSchedulerDeadline",
+    "Label": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  }
+]
