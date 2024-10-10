@@ -1,20 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleText",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "cui-admin-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleWarning",
+    "CaseFieldID": "stayCaseText",
     "AccessControl": [
       {
         "UserRoles": [
@@ -40,27 +27,41 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleError",
+    "CaseFieldID": "preStayState",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "cui-admin-profile",
-          "caseworker-civil-systemupdate"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleEvent",
+    "CaseFieldID": "manageStayOption",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }

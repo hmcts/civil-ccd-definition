@@ -1,4 +1,4 @@
-const {checkCaseFlagsEnabled, checkCaseFlagsAndHmcEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled, checkCaseFlagsAndHmcEnabled, triggerCamundaProcess, waitForCompletedCamundaProcess} = require('./testingSupport');
 const apiRequest = require('./apiRequest.js');
 const {addAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {getHearingsPayload} = require('./apiRequest');
@@ -6,12 +6,25 @@ const chai = require('chai');
 const {expect} = chai;
 const {date} = require('../api/dataHelper');
 const config = require('../config');
+const {listedHearing} = require('./wiremock/data/hearings');
+const {createUpdateStub} = require('./wiremock/wiremock');
+const {hearingStubRequestBody, unnotifiedHearingStubRequestBody, getpartiesNotifiedStubRequestBody,
+  putPartiesNotifiedStubRequestBody
+} = require('./wiremock/requests/hearings');
+const {
+  AUTOMATED_HEARING_NOTICE,
+  UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER,
+  SPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER
+} = require('../fixtures/camundaProcesses');
 
 const specServiceId = 'AAA6';
 const unspecServiceId = 'AAA7';
 
 const runningOnLocal = () => !['aat', 'demo', 'preview'].includes(config.runningEnv);
 const locationId = () => runningOnLocal() ? '000000' : '424213';
+
+const createHearingId = () => `${Math.floor(1000000000 + Math.random() * 9000000000)}`;
+const getUILink = (process)=> `${process.links[0].href.replace('engine-rest', 'app/cockpit/default/#')}`;
 
 const getExpectedPayload = (serviceId) => {
     if (serviceId === specServiceId) {
@@ -840,6 +853,28 @@ const getExpectedPayload = (serviceId) => {
   }
 ;
 
+const createHearing = async (caseId, hearingType, serviceCode) => {
+  const hearingId = createHearingId();
+  const hearing = listedHearing(caseId, hearingId, hearingType, serviceCode);
+  await createUpdateStub(hearingStubRequestBody(hearing, hearingId));
+  console.log(`Created new hearing mock: [${hearingId} - ${hearingType}]`);
+  return hearingId;
+};
+
+const triggerHearingNoticeScheduler = async (expectedHearingId, definitionKey) => {
+  //Update unnotified hearings stub
+  await createUpdateStub(unnotifiedHearingStubRequestBody([expectedHearingId]));
+
+  const process = await triggerCamundaProcess(definitionKey);
+  console.log(`Started hearing notice scheduler process: ${getUILink(process)}`);
+
+  // Wait for the hearing notice scheduler process
+  await waitForCompletedCamundaProcess(null, process.id, null);
+
+  // Wait for hearing notice process
+  await waitForCompletedCamundaProcess(AUTOMATED_HEARING_NOTICE, null, `hearingId_eq_${expectedHearingId}`);
+};
+
 module.exports = {
   createCaseFlags: async (user, caseId, flagLocation, flag) => {
     if (!(await checkCaseFlagsEnabled())) {
@@ -882,5 +917,21 @@ module.exports = {
     expect(actualPayload).deep.equal(expectedPayload);
     expect(caseDeepLink).deep.contain(`/cases/case-details/${caseId}`);
   },
+  setupStaticMocks: async () => {
+    await createUpdateStub(getpartiesNotifiedStubRequestBody());
+    await createUpdateStub(putPartiesNotifiedStubRequestBody());
+  },
+  createUnspecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA7'),
+  createUnspecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA7'),
+  createUnspecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA7'),
+  createSpecTrialHearing: async (caseId) => createHearing(caseId, 'TRI', 'AAA6'),
+  createSpecDisposalHearing: async (caseId) => createHearing(caseId, 'DIS', 'AAA6'),
+  createSpecDisputeResolutionHearing: async (caseId) => createHearing(caseId, 'DRH', 'AAA6'),
+  triggerUnspecAutomatedHearingNoticeScheduler: async (expectedHearingId) => {
+    return await triggerHearingNoticeScheduler(expectedHearingId, UNSPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER);
+  },
+  triggerSpecAutomatedHearingNoticeScheduler: async (expectedHearingId) => {
+    return await triggerHearingNoticeScheduler(expectedHearingId, SPEC_AUTOMATED_HEARING_NOTICE_SCHEDULER);
+  }
 };
 
