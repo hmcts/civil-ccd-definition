@@ -763,6 +763,10 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
+    async clickHearingHyperLinkOrButton(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.forceClick(element), urlBefore);
+    },
 
     async getCaseId(){
       console.log(`case created: ${caseId}`);
@@ -1247,7 +1251,8 @@ module.exports = function () {
     async updateHearing() {
       eventName = 'Update Hearing';
       await this.triggerStepsWithScreenshot([
-        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.clickOnViewEditHearing(),
+        () => updateHearingPage.clickOnEditHearing(),
         () => updateHearingPage.updateHearingValues(),
         () => updateHearingPage.submitUpdatedHearing(),
         () => updateHearingPage.verifyUpdatedHearingDetails()

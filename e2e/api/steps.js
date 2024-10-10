@@ -715,12 +715,12 @@ module.exports = {
     solicitorSetup(solicitor);
 
     let defendantResponseData;
+
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       defendantResponseData = eventData['defendantResponses'][mpScenario](allocatedTrack);
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
     }
-    console.log(defendantResponseData);
 
     //Todo: Remove after fast track uplifts release
     if(!await checkFastTrackUpliftsEnabled()) {
@@ -755,8 +755,15 @@ module.exports = {
       deleteCaseFields('respondent1Witnesses');
       deleteCaseFields('respondent1DetailsForClaimDetailsTab');
     }
-
     await validateEventPages(defendantResponseData, solicitor);
+
+    // need to add partyID back into respondent object
+    if (solicitor === 'solicitorOne'){
+      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
+    }
+    if (solicitor === 'solicitorTwo'){
+      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
+    }
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -770,6 +777,7 @@ module.exports = {
       'From Date should be less than To Date');
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
+   // console.log('Hearing>>>', caseData);
     if (solicitor === 'solicitorOne') {
       // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -777,7 +785,6 @@ module.exports = {
         body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
           + 'claimant\'s legal representative a notification.'
       });
-
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -1404,13 +1411,11 @@ module.exports = {
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
-  console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
     if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1420,7 +1425,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
+
   caseData = {...caseData, ...validDataForPage};
+
   caseData = adjustDataForSolicitor(solicitor, caseData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -2029,7 +2036,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-  let fixtureClone = cloneDeep(data);
+   let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }
@@ -2038,6 +2045,7 @@ const adjustDataForSolicitor = (user, data) => {
   } else if (user === 'solicitorTwo') {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
+
   return fixtureClone;
 };
 
