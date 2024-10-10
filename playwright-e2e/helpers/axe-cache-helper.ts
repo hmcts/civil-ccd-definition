@@ -61,7 +61,7 @@ export default class AxeCacheHelper {
       screenshotInfo = { fileName: screenshotFileName, filePath: screenshotFilePath };
     }
     const pageResults = {
-      test: testName,
+      testName,
       pass,
       violationsInfo,
       screenshotInfo,

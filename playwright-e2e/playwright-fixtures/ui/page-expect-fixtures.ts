@@ -27,14 +27,20 @@ export const expect = baseExpect
       }
 
       if (!pageResults.pass) {
-        if (pageResults.violationsInfo)
-          await testInfo.attach(pageResults.violationsInfo.fileName, {
-            path: pageResults.violationsInfo.filePath
-          });
-        if (pageResults.screenshotInfo)
-          await testInfo.attach(pageResults.screenshotInfo.fileName, {
-            path: pageResults.screenshotInfo.filePath
-          });
+        if (pageResults.violationsInfo) {
+          const violationsAttachmentExist = testInfo.attachments.some((attachment) => attachment.name === pageResults.violationsInfo.fileName);
+          if (!violationsAttachmentExist)
+            await testInfo.attach(pageResults.violationsInfo.fileName, {
+              path: pageResults.violationsInfo.filePath
+            });
+        }
+        if (pageResults.screenshotInfo) {
+          const screenshotAttachmentExists = testInfo.attachments.some((attachment) => attachment.name === pageResults.screenshotInfo.fileName);
+          if (!screenshotAttachmentExists)
+            await testInfo.attach(pageResults.screenshotInfo.fileName, {
+              path: pageResults.screenshotInfo.filePath
+            });
+        }
       }
 
       try {
