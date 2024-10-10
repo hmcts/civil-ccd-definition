@@ -37,8 +37,8 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', asy
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM disabled - Minti Enabled', async ({api_spec_cui}) => {
-  await prepareClaimLiPvLiPMintiTrack(api_spec_cui, false);
+Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
+  await prepareClaimLiPvLiPMintiTrack(api_spec_cui, true);
 });
 
 Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
@@ -75,7 +75,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   //await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled ', async ({noc, api_spec_cui}) => {
+Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled', async ({noc, api_spec_cui}) => {
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 

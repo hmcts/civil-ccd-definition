@@ -62,7 +62,7 @@ module.exports = {
     } else {
       console.log('multi Intermediate track not enabled, updating submitted date');
       await apiRequest.setupTokens(config.systemupdate);
-      const submittedDate = {'submittedDate':'2022-05-10T15:59:50'};
+      const submittedDate = {'submittedDate':'2024-11-10T15:59:50'};
       await testingSupport.updateCaseData(caseId, submittedDate);
       console.log('submitted date update to before multi Intermediate track live date');
     }
