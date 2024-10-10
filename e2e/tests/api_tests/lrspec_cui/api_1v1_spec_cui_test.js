@@ -139,7 +139,7 @@ Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
 });
 
 AfterSuite(async  ({api_spec_cui}) => {
-  // await api_spec_cui.cleanUp();
-  // await deleteAccount(config.defendantCitizenUser2.email);
+  await api_spec_cui.cleanUp();
+  await deleteAccount(config.defendantCitizenUser2.email);
 });
 

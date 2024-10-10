@@ -166,8 +166,10 @@ module.exports = {
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+    if (isMintiCase) {
+      const isMintiToggleEnabled = await checkMintiToggleEnabled();
+      await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+    }
     return caseId;
   },
 
