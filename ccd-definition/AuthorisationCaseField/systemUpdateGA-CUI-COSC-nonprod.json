@@ -1,14 +1,14 @@
 [
-  {
+ {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "respondent1LiPResponseCarm",
+    "CaseFieldID": "generalAppTypeLR",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "applicant1LiPResponseCarm",
+    "CaseFieldID": "certOfSC",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRUD"
   }
 ]
