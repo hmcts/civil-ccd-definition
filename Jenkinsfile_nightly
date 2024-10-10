@@ -46,6 +46,7 @@ def secrets = [
     secret('judge-default-password', 'JUDGE_DEFAULT_PASSWORD'),
     secret('iac-default-password', 'IAC_DEFAULT_PASSWORD'),
     secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
+    secret('gov-notify-pretends-api-key', 'GOV_NOTIFY_PRETENDS_KEY')
   ]
 ]
 
