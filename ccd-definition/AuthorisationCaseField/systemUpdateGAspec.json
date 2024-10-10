@@ -446,7 +446,7 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRUDD"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
