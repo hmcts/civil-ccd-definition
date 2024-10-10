@@ -8,9 +8,7 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   workers: 5,
-  reporter: process.env.CI
-    ? 'html'
-    : 'list',
+  reporter: process.env.CI ? 'html' : 'list',
   timeout: 360_000,
   expect: {
     timeout: 30_000,
@@ -31,6 +29,7 @@ export default defineConfig({
     {
       name: 'full-functional',
       use: { ...devices['Desktop Chrome'] },
+      
     },
   ],
 });

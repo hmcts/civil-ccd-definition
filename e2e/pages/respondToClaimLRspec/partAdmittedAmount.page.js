@@ -26,7 +26,7 @@ module.exports = {
   },
 
   async selectAdmitType(hasPaid) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     I.waitForElement(this.fields.partAdmitType.id);
     await I.runAccessibilityTest();
     await within(this.fields.partAdmitType.id, () => {

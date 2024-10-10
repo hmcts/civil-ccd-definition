@@ -3,6 +3,7 @@ const idamHelper = require('./idamHelper');
 const serviceAuthHelper = require('./serviceAuthorisationHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
+const {TOTP} = require('totp-generator');
 
 
 let incidentMessage;
@@ -218,7 +219,7 @@ module.exports =  {
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
-
+    
     return await restHelper.request(
       `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
       {

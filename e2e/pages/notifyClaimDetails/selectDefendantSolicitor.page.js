@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async selectSolicitorToNotify(solicitorToNotify = 'both') {
-    // eslint-disable-next-line no-prototype-builtins
+     
     await this.checkOptionValidity(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
     await this.inputResponse(this.fields.defendantSolicitorNotifyClaimDetailsOptions, solicitorToNotify);
     await I.clickContinue();

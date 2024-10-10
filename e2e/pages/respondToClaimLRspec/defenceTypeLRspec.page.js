@@ -35,7 +35,7 @@ module.exports = {
   async selectDefenceType(twoDefendants,defenceType,amountPaid) {
 
    if (twoDefendants) {
-     // eslint-disable-next-line no-prototype-builtins
+      
      if (!this.fields.DefenceType2.options.hasOwnProperty(defenceType)) {
        throw new Error(`Response type: ${defenceType} does not exist`);
      }
@@ -45,7 +45,7 @@ module.exports = {
      I.click(this.fields.DefenceType2.options[defenceType]);
      });
     } else {
-        // eslint-disable-next-line no-prototype-builtins
+         
         if (!this.fields.DefenceType.options.hasOwnProperty(defenceType)) {
           throw new Error(`Response type: ${defenceType} does not exist`);
         }

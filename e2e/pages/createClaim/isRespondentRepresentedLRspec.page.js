@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async enterRespondentRepresented(respondentRepresentedOption) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     if (!this.fields.respondent1Represented.options.hasOwnProperty(respondentRepresentedOption)) {
       throw new Error(`Respondent represented option: ${respondentRepresentedOption} does not exist`);
     }
