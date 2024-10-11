@@ -104,7 +104,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIMANT_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
@@ -117,7 +117,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
@@ -130,7 +130,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT2_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
