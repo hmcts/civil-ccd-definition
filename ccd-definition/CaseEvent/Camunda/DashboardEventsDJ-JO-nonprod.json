@@ -80,7 +80,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_SET_ASIDE_JUDGMENT_DEFENDANT",
     "Name": "DJ Defendant Notification",
     "Description": "Create DJ Set Aside Error Defendant Notification",
