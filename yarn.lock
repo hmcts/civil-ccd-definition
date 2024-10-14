@@ -2219,8 +2219,8 @@ __metadata:
 
 "custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
   version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=9827d5&locator=civil-ccd-definition%40workspace%3A."
-  checksum: 8fb5fbfe30521edbeca00b94eaeb65cbd56185e51e663c0fe248487999bf25b3d218b6b740bd52a14c5d0ffb725e928c89cb6360e30f2e82354881b93343782d
+  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=4ee97c&locator=civil-ccd-definition%40workspace%3A."
+  checksum: 5c1d115131a4780689435add226a1b63286624b387a8abd52028974e84186f9114c12818c5397bdf7c99a1a1c9e296387185e7761a1fa2037d679460ec91a0fe
   languageName: node
   linkType: hard
 
@@ -6506,19 +6506,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.5":
-  version: 5.6.2
-  resolution: "typescript@npm:5.6.2"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 48777e1dabd9044519f56cd012b0296e3b72bafe12b7e8e34222751d45c67e0eba5387ecdaa6c14a53871a29361127798df6dc8d1d35643a0a47cb0b1c65a33a
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>":
-  version: 5.6.2
-  resolution: "typescript@patch:typescript@npm%3A5.6.2#~builtin<compat/typescript>::version=5.6.2&hash=8c6c40"
+"typescript@npm:5.1.3":
+  version: 5.1.3
+  resolution: "typescript@npm:5.1.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
