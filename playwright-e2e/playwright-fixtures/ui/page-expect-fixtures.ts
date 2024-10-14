@@ -18,7 +18,7 @@ export const expect = baseExpect
         let pass = true;
         let screenshot: Buffer;
         const results = await axeBuilder.analyze();
-        const violations = violationFingerprints(results.violations);
+        const violations = violationFingerprints(results);
         if (violations.length > 0) {
           pass = false;
           screenshot = await page.screenshot({ fullPage: true });
@@ -81,7 +81,7 @@ export const expect = baseExpect
       let matcherResult: any;
 
       const results = await axeBuilder.analyze();
-      const violations = violationFingerprints(results.violations);
+      const violations = violationFingerprints(results);
 
       if (violations.length > 0) {
         pass = false;
