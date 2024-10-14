@@ -18,7 +18,7 @@ const createDJ = (responseType = 'DISPOSAL_HEARING', mpScenario = 'ONE_V_ONE') =
             hearingType: 'IN_PERSON',
             hearingTemporaryLocation: {
               value: {
-                code: '00c98f7b-8cd5-44c0-9132-c2a173f89e0e',
+                code: '11ba906a-46e9-4c22-8a43-c1cf8017de48-20262',
                 label: 'Central London County Court - THOMAS MORE BUILDING, ROYAL COURTS OF JUSTICE, STRAND, LONDON - WC2A 2LL'
               },
               list_items: courts.refDataList
