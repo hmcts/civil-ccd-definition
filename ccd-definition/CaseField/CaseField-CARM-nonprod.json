@@ -42,7 +42,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "mediationDocumentsType",
-    "Label": " ",
+    "Label": "Select the type of document you want to upload",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "MediationDocumentsType",
     "SecurityClassification": "Public",
