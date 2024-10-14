@@ -13,7 +13,8 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
-const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
+const genAppClaimData = require('../fixtures/events/createGeneralApplicationLR.js');
+const genAppClaimDataLR = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
@@ -38,9 +39,10 @@ const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
+const isProd = ['prod', 'demo', 'aat'].includes(config.runningEnv) ? true : false;
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
+  INITIATE_GENERAL_APPLICATION: isProd ? genAppClaimData.createGAData('Yes', null, '27500','FEE0442') : genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
