@@ -181,6 +181,27 @@ Please delete the same after use by running:
 ```shell
 ./bin/delete-dev-preview-definition-from-aat.sh
 ```
+
+## Hearings Development - Preview
+For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some manual setup.
+
+1 - Execute the commands below replacing ${PR_NUMBER} accordingly to create the topic subscription required
+
+```shell
+    az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
+      --topic-name hmc-to-cft-aat --subscription DCD-CNP-DEV --name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --subscription DCD-CNP-DEV && \
+    az servicebus topic subscription rule create --resource-group hmc-shared-aat --subscription DCD-CNP-DEV\
+      --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \
+      --subscription-name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --name hmc-servicebus-aat-subscription-rule-civil --subscription DCD-CNP-DEV\
+      --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
+```
+(Remember to delete this once finished with the PR)
+
+2 - Add the label pr-values:enableHmc on your GitHub PR
+
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
