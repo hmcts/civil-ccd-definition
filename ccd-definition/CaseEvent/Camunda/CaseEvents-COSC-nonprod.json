@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_CLAIMANT",
-    "Name": "Notify mark not paid in full",
-    "Description": "Trigger event to notify mark not paid in full",
+    "Name": "Claimant not mark paid in full",
+    "Description": "Claimant Dashboard Notice not mark paid in full",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
