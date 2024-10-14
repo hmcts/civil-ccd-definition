@@ -8,13 +8,6 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
-      generalAppTypeLR: {
-        types: [
-          'STRIKE_OUT',
-          'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
-        ]
-      },
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -91,12 +84,6 @@ module.exports = {
           'EXTEND_TIME'
         ]
       },
-      generalAppTypeLR: {
-        types: [
-          'SUMMARY_JUDGEMENT',
-          'EXTEND_TIME'
-        ]
-      },
       generalAppRespondentAgreement: {
         hasAgreed: 'No'
       },
@@ -168,11 +155,6 @@ module.exports = {
   gaTypeWithNoStrikeOut: () => {
     return {
       generalAppType: {
-        types: [
-          'EXTEND_TIME'
-        ]
-      },
-      generalAppTypeLR: {
         types: [
           'EXTEND_TIME'
         ]
