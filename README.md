@@ -201,6 +201,7 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 
 2 - Add the label pr-values:enableHmc on your GitHub PR
 
+3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
 
 ## License
 
