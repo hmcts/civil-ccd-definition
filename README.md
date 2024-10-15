@@ -197,7 +197,7 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
       --name hmc-servicebus-aat-subscription-rule-civil --subscription DCD-CNP-DEV\
       --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
 ```
-(Remember to delete this once finished with the PR)
+(Remember to delete this once finished with the PR using "az servicebus topic subscription delete")
 
 2 - Add the label pr-values:enableHmc on your GitHub PR
 
