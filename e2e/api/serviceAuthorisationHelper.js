@@ -1,6 +1,6 @@
 const restHelper = require('./restHelper');
 const config = require('../config');
-const {TOTP} = require('totp-generator');
+const totp = require('totp-generator');
 const {s2sForXUI, s2s} = require('../config');
 
 const getS2sToken = async ({microservice, secret}) => {
@@ -9,7 +9,7 @@ const getS2sToken = async ({microservice, secret}) => {
     {'Content-Type': 'application/json'},
     {
       microservice: microservice,
-      oneTimePassword: TOTP.generate(secret).otp
+      oneTimePassword: totp(secret)
     })
     .then(response => response.text());
 };
