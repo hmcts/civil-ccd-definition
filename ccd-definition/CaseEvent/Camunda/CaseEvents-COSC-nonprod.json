@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_DEFENDANT",
-    "Name": "Defendant not mark paid in full",
-    "Description": "Defendant Dashboard Notice not mark paid in full",
+    "Name": "Defendant not mark paid full",
+    "Description": "Defendant Dashboard Notice not mark paid full",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
