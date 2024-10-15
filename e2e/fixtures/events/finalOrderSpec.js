@@ -105,7 +105,7 @@ module.exports = {
 const createIntermediateDownloadOrder = () => {
   return {
     TrackAllocation: {
-      finalOrderTrackToggle: "INTERMEDIATE_CLAIM",
+      finalOrderTrackToggle: 'INTERMEDIATE_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM'
     },
@@ -139,7 +139,7 @@ const createIntermediateDownloadOrder = () => {
 const createMultiDownloadOrder = () => {
   return {
     TrackAllocation: {
-      finalOrderTrackToggle: "MULTI_CLAIM",
+      finalOrderTrackToggle: 'MULTI_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'MULTI_CLAIM'
     },
