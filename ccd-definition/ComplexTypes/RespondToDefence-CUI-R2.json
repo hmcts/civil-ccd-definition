@@ -64,5 +64,13 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "ClaimantLiPResponse",
+    "ListElementCode": "applicant1DQEvidenceConfirmDetails",
+    "ElementLabel": " ",
+    "FieldType": "EvidenceConfirmYourDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
