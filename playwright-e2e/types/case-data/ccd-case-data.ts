@@ -1,5 +1,5 @@
 type CCDCaseData = {
-  id: string
-}
+  id: string;
+};
 
 export default CCDCaseData;
