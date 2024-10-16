@@ -878,7 +878,7 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
 
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
+    var isCOSCEnabled = false;//await checkToggleEnabled(COSC);
     var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
     const response = await apiRequest.submitEvent(eventName, gaData, caseId);
     const responseBody = await response.json();
