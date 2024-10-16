@@ -26,7 +26,7 @@ module.exports = {
   async selectResponseType(twoDefendants, responseType) {
 
     if(twoDefendants){
-             // eslint-disable-next-line no-prototype-builtins
+              
              if (!this.fields.respondent2ClaimResponseType.options.hasOwnProperty(responseType)) {
                throw new Error(`Response type: ${responseType} does not exist`);
              }
@@ -34,7 +34,7 @@ module.exports = {
              await I.runAccessibilityTest();
              I.click(this.fields.respondent2ClaimResponseType.options[responseType]);
     } else {
-            // eslint-disable-next-line no-prototype-builtins
+             
              if (!this.fields.respondent1ClaimResponseType.options.hasOwnProperty(responseType)) {
                throw new Error(`Response type: ${responseType} does not exist`);
              }
