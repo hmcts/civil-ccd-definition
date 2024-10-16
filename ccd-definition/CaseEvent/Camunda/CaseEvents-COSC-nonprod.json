@@ -25,7 +25,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_DEFENDANT",
     "Name": "Defendant not mark paid full",
@@ -37,5 +37,18 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+   "CaseTypeID": "CIVIL",
+   "ID": "DB_NOTIFY_COSC_GEN_FOR_DEFENDANT",
+   "Name": "Defendant mark paid full",
+   "Description": "Defendant Dashboard Notification certificate generated",
+   "PreConditionState(s)": "*",
+   "PostConditionState": "*",
+   "SecurityClassification": "Public",
+   "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+   "ShowSummary": "N",
+   "ShowEventNotes": "N",
+   "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]
