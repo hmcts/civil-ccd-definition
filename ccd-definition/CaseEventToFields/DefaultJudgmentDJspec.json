@@ -179,6 +179,7 @@
     "PageLabel": "",
     "DisplayContext": "READONLY",
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "N",
     "PageID": "paymentBreakdown",
     "ShowSummaryChangeOption": "N"
   },
