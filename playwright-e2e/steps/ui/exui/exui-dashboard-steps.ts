@@ -1,43 +1,45 @@
-import ExuiDashboardFactory from '../../../pages/exui/exui-dashboard/exui-dashboard-factory';
+import ExuiDashboardPageFactory from '../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import BaseSteps from '../../../base/base-steps';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../types/test-data';
-import User from '../../../types/user';
+import TestData from '../../../models/test-data';
+import User from '../../../models/user';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
+import CookiesHelper from '../../../helpers/cookies-helper';
 
 @AllMethodsStep()
 export default class ExuiDashboardSteps extends BaseSteps {
   private pageUtilsFactory: PageUtilsFactory;
-  private exuiDashboardFactory: ExuiDashboardFactory;
+  private exuiDashboardPageFactory: ExuiDashboardPageFactory;
 
   constructor(
     pageUtilsFactory: PageUtilsFactory,
-    exuiDashboardFactory: ExuiDashboardFactory,
+    exuiDashboardPageFactory: ExuiDashboardPageFactory,
     testData: TestData,
   ) {
     super(testData);
     this.pageUtilsFactory = pageUtilsFactory;
-    this.exuiDashboardFactory = exuiDashboardFactory;
+    this.exuiDashboardPageFactory = exuiDashboardPageFactory;
   }
 
   async AcceptCookies() {
-    const { exuiCookiesBanner } = this.exuiDashboardFactory;
+    const { exuiCookiesBanner } = this.exuiDashboardPageFactory;
     await exuiCookiesBanner.verifyContent();
     await exuiCookiesBanner.acceptCookies();
   }
 
   async SaveCookies(user: User) {
     const { pageCookiesManager } = this.pageUtilsFactory;
-    await pageCookiesManager.saveCookies(user);
+    const cookies = await pageCookiesManager.getCookies();
+    CookiesHelper.writeCookies(cookies, user);
   }
 
   async GoToCaseList() {
-    const { caseListPage } = this.exuiDashboardFactory;
+    const { caseListPage } = this.exuiDashboardPageFactory;
     await caseListPage.openCaseList();
   }
 
   async SignOut() {
-    const { navBar } = this.exuiDashboardFactory;
+    const { navBar } = this.exuiDashboardPageFactory;
     await navBar.clickSignOut();
   }
 }

@@ -1,44 +1,11 @@
-import BaseRequest from '../base/base-requests';
+import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import IdamUser from '../types/idam-user';
-import RequestOptions from '../types/request-options';
-import User from '../types/user';
+import RequestOptions from '../models/request-options';
+import User from '../models/user';
 
 @AllMethodsStep()
 export default class IdamRequests extends BaseRequest {
-  async createCitizenUser({ email, password, role }: User): Promise<IdamUser> {
-    console.log(`Creating user with email: ${email}`);
-    const url = `${urls.idamApi}/testing-support/accounts`;
-    const requestOptions: RequestOptions = {
-      method: 'POST',
-      body: {
-        email: email,
-        password: password,
-        forename: 'John',
-        surname: 'Smith',
-        roles: [{ code: role.toString() }],
-      },
-    };
-    const response = await this.request(url, requestOptions, 201);
-    console.log(`User with email: ${email} successfully created`);
-    return await response.json();
-  }
-
-  async deleteUser({ email }: User): Promise<void> {
-    console.log(`Delete user: ${email}`);
-    const url = `${urls.idamApi}/testing-support/accounts/${email}`;
-    const requestOptions: RequestOptions = {
-      method: 'DELETE',
-    };
-    try {
-      await this.request(url, requestOptions, 204);
-      console.log(`User: ${email} successfully deleted`);
-    } catch (error) {
-      console.log(`error deleting user: ${email}` + error);
-    }
-  }
-
   async getAccessToken({ email, password }: User): Promise<string> {
     console.log(`Fetching access token for user: ${email}...`);
     const url = `${urls.idamApi}/loginUser`;
@@ -47,10 +14,9 @@ export default class IdamRequests extends BaseRequest {
       params: { username: email, password: password },
       method: 'POST',
     };
-    const response = await super.retriedRequest(url, requestOptions);
-    const json = await response.json();
+    const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log(`Access token for user: ${email} fetched successfully`);
-    return json.access_token;
+    return responseJson.access_token;
   }
 
   async getUserId({ accessToken, email }: User): Promise<string> {
@@ -63,33 +29,8 @@ export default class IdamRequests extends BaseRequest {
       },
       method: 'GET',
     };
-    const response = await super.retriedRequest(url, requestOptions);
-    const json = await response.json();
+    const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log(`User ID for user: ${email} fetched successfully`);
-    return json.uid;
-  }
-
-  async getUserData(user: User) {
-    if (!user.accessToken || !user.userId) {
-      if (!user.accessToken) {
-        const accessToken = await this.getAccessToken(user);
-        user.accessToken = accessToken;
-      } else {
-        const userId = await this.getUserId(user);
-        user.userId = userId;
-      }
-    }
-  }
-
-  async getSecurityPin(letterHolderId: string) {
-    console.log('Fetching security pin for claim...');
-    const url = `${urls.idamApi}/testing-support/accounts/pin/${letterHolderId}`;
-    const requestOptions: RequestOptions = {
-      method: 'GET',
-    };
-    const response = await super.retriedRequest(url, requestOptions);
-    const pin = await response.text();
-    console.log(`Security pin: ${pin} fetched successfully`);
-    return pin;
+    return responseJson.uid;
   }
 }

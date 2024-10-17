@@ -1,13 +1,10 @@
 import { test as base, Page, TestInfo } from '@playwright/test';
-import TestData from '../../types/test-data';
-import AxeBuilder from '@axe-core/playwright';
-import config from '../../config/config';
+import TestData from '../../models/test-data';
 import FileSystemHelper from '../../helpers/file-system-helper';
 
 type TestDataFixture = {
-  _axeBuilder?: AxeBuilder;
   _isSetupTest: boolean;
-  _isTeardown: boolean;
+  _isTeardownTest: boolean;
   _verifyCookiesBanner: boolean;
   _testData: TestData;
 };
@@ -17,17 +14,10 @@ export const test = base.extend<TestDataFixture>({
     await use(page);
     await pageTeardown(page, testInfo);
   },
-  _axeBuilder: async ({ page }, use) => {
-    let axeBuilder: AxeBuilder | undefined;
-    if (config.runAxeTests) {
-      axeBuilder = new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa']).setLegacyMode(true);
-    }
-    await use(axeBuilder);
-  },
   _isSetupTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('setup'));
   },
-  _isTeardown: async ({}, use, testInfo) => {
+  _isTeardownTest: async ({}, use, testInfo) => {
     await use(testInfo.project.name.endsWith('teardown'));
   },
   _verifyCookiesBanner: async ({}, use, testInfo) => {
@@ -35,9 +25,9 @@ export const test = base.extend<TestDataFixture>({
   },
   _testData: async ({}, use, testInfo) => {
     await use({
-      workerIndex: testInfo.parallelIndex,
+      workerIndex: testInfo.parallelIndex
     });
-  },
+  }
 });
 
 const pageTeardown = async (page: Page, testInfo: TestInfo) => {

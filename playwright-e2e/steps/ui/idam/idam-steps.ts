@@ -1,75 +1,125 @@
-import User from '../../../types/user';
+import User from '../../../models/user';
 import config from '../../../config/config';
-import IdamFactory from '../../../pages/idam/idam-factory';
+import IdamPageFactory from '../../../pages/idam/idam-page-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../types/test-data';
+import TestData from '../../../models/test-data';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 import BaseApiSteps from '../../../base/base-api-steps';
 import RequestsFactory from '../../../requests/requests-factory';
-import {
-  claimantSolicitorUser,
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../config/users/exui-users';
+import exuiUsers from '../../../config/users/exui-users';
+import CookiesHelper from '../../../helpers/cookies-helper';
 
-@AllMethodsStep({ methodNamesToIgnore: ['manageCaseLogin'] })
+@AllMethodsStep({ methodNamesToIgnore: ['exuiLogin'] })
 export default class IdamSteps extends BaseApiSteps {
-  private isTeardown: boolean;
+  private isSetupTest: boolean;
+  private isTeardownTest: boolean;
   private verifyCookiesBanner: boolean;
   private pageUtilsFactory: PageUtilsFactory;
-  private idamFactory: IdamFactory;
+  private idamPageFactory: IdamPageFactory;
 
   constructor(
     pageUtilsFactory: PageUtilsFactory,
-    idamFactory: IdamFactory,
+    idamPageFactory: IdamPageFactory,
     requestsFactory: RequestsFactory,
+    isSetupTest: boolean,
     isTeardownTest: boolean,
     verifyCookiesBanner: boolean,
     testData: TestData,
   ) {
     super(requestsFactory, testData);
-    this.isTeardown = isTeardownTest;
+    this.isSetupTest = isSetupTest;
+    this.isTeardownTest = isTeardownTest;
     this.verifyCookiesBanner = verifyCookiesBanner;
     this.pageUtilsFactory = pageUtilsFactory;
-    this.idamFactory = idamFactory;
+    this.idamPageFactory = idamPageFactory;
   }
 
   async ClaimantSolicitorLogin() {
-    await this.manageCaseLogin(claimantSolicitorUser);
+    await this.exuiLogin(exuiUsers.claimantSolicitorUser);
+  }
+
+  async ClaimantSolicitorBulkScanLogin() {
+    await this.exuiLogin(exuiUsers.claimantSolicitorBulkScanUser);
   }
 
   async DefendantSolicitor1Login() {
-    await this.manageCaseLogin(defendantSolicitor1User);
+    await this.exuiLogin(exuiUsers.defendantSolicitor1User);
   }
 
   async DefendantSolicitor2Login() {
-    await this.manageCaseLogin(defendantSolicitor2User);
+    await this.exuiLogin(exuiUsers.defendantSolicitor2User);
   }
 
-  private async manageCaseLogin(user: User) {
-    const { pageCookiesManager } = this.pageUtilsFactory;
+  async CivilAdminLogin() {
+    await this.exuiLogin(exuiUsers.civilAdminUser);
+  }
 
-    if (config.skipAuthSetup || !user.cookiesPath) {
-      const { loginPage } = this.idamFactory;
-      await pageCookiesManager.cookiesSignOut();
+  async NBCRegion1Login() {
+    await this.exuiLogin(exuiUsers.nbcRegion1User);
+  }
+
+  async NBCRegion2Login() {
+    await this.exuiLogin(exuiUsers.nbcRegion2User);
+  }
+
+  async NBCRegion4Login() {
+    await this.exuiLogin(exuiUsers.nbcRegion4User);
+  }
+
+  async JudgeRegion1Login() {
+    await this.exuiLogin(exuiUsers.judgeRegion1User);
+  }
+
+  async JudgeRegion2Login() {
+    await this.exuiLogin(exuiUsers.judgeRegion2User);
+  }
+
+  async JudgeRegion4Login() {
+    await this.exuiLogin(exuiUsers.judgeRegion4User);
+  }
+
+  async HearingCentreAdmin1Login() {
+    await this.exuiLogin(exuiUsers.hearingCenterAdminRegion1User);
+  }
+
+  async HearingCentreAdmin2Login() {
+    await this.exuiLogin(exuiUsers.hearingCenterAdminRegion2User);
+  }
+
+  async HearingCentreAdmin4Login() {
+    await this.exuiLogin(exuiUsers.hearingCenterAdminRegion4User);
+  }
+
+  async TribunalCaseworkerRegion4Login() {
+    await this.exuiLogin(exuiUsers.tribunalCaseworkerRegion4User);
+  }
+
+  async ExuiLogin(user: User) {
+    await this.exuiLogin(user);
+  }
+
+  private async exuiLogin(user: User) {
+    const { pageCookiesManager } = this.pageUtilsFactory;
+    await pageCookiesManager.cookiesSignOut();
+    if (!config.runSetup || this.isSetupTest || !CookiesHelper.cookiesExist(user)) {
+      const { loginPage } = this.idamPageFactory;
 
       if (this.verifyCookiesBanner) {
-        const { idamsCookiesBanner } = this.idamFactory;
+        const { idamsCookiesBanner } = this.idamPageFactory;
         await loginPage.openManageCase();
         await idamsCookiesBanner.verifyContent();
         await idamsCookiesBanner.acceptCookies();
       } else {
         await pageCookiesManager.addIdamCookies();
-        const { idamRequests } = this.requestsFactory;
-        await idamRequests.getUserData(user);
+        await this.setupUserData(user);
         await pageCookiesManager.addExuiCookies(user);
         await loginPage.openManageCase();
       }
       await loginPage.verifyContent();
       await loginPage.manageCaseLogin(user);
     } else {
-      await pageCookiesManager.cookiesSignOut();
-      await pageCookiesManager.cookiesLogin(user, this.isTeardown);
+      const cookies = await CookiesHelper.getCookies(user, this.isTeardownTest);
+      await pageCookiesManager.cookiesLogin(user, cookies);
     }
   }
 }

@@ -1,5 +1,5 @@
 import urls, { getDomain } from '../../config/urls';
-import Cookie from '../../types/cookie';
+import Cookie from '../../models/cookie';
 
 export const acceptIdamCookies: Cookie[] = [
   {

@@ -1,5 +1,5 @@
 import urls from '../../../config/urls';
-import User from '../../../types/user';
+import User from '../../../models/user';
 import BasePage from '../../../base/base-page';
 import { inputs, buttons } from './login-page-content';
 import { AllMethodsStep } from '../../../decorators/test-steps';
@@ -32,6 +32,10 @@ export default class LoginPage extends BasePage {
 
   async manageCaseLogin(user: User) {
     await this.login(user);
-    await super.expectUrlEnd('/cases');
+    if (!user.wa) await super.expectUrlEnd('/cases');
+    else
+      await super.expectUrlEnd('/work/my-work/list', {
+        message: `User: ${user.email} has WA enabled`,
+      });
   }
 }

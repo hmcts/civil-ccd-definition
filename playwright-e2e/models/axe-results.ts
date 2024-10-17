@@ -3,7 +3,7 @@ export type AxeResults = {
 };
 
 export type PageResult = {
-  test: string;
+  testName: string;
   pass: boolean;
   screenshotInfo?: {
     fileName: string;
