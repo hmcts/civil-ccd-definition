@@ -11,7 +11,7 @@ const refundDetails = require('../../../../pages/refunds/reviewRefund/refundDeta
 const reviewRefundCheckYourAnswers = require('../../../../pages/refunds/reviewRefund/refundChangeYourAnswers.page');
 
 
-const I = actor();  
+const I = actor(); // eslint-disable-line no-unused-vars
 /*const latestUpdateTab = new LatestUpdate();
 const documentsTab = new Documents();
 const bundlesTab = new Bundles();

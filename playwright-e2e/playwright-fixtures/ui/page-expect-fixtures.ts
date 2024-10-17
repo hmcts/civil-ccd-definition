@@ -23,7 +23,14 @@ export const expect = baseExpect
           pass = false;
           screenshot = await page.screenshot({ fullPage: true });
         }
-        pageResults = await AxeCacheHelper.writeAxePageResult(testInfo.project.name, pageName, testInfo.title, pass, violations, screenshot);
+        pageResults = await AxeCacheHelper.writeAxePageResult(
+          testInfo.project.name,
+          pageName,
+          testInfo.title,
+          pass,
+          violations,
+          screenshot,
+        );
       }
 
       if (!pageResults.pass) {
@@ -45,16 +52,16 @@ export const expect = baseExpect
 
       const message = pageResults.pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot,
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot,
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${pageResults.violationsInfo.length} violation(s), please check attached file: ${pageResults.violationsInfo.fileName}, for more details.`;
@@ -81,8 +88,16 @@ export const expect = baseExpect
         pass = false;
         violationsFileName = `${pageName}-accessibility-violations`;
         let screenshotFileName = `${pageName}-accessibility-failure`;
-        const violationsFilesLen = test.info().attachments.filter((attachment) => attachment.name.startsWith(violationsFileName)).length;
-        const violationsScreenshotLen = test.info().attachments.filter((attachment) => attachment.name.startsWith(violationsFileName)).length;
+        const violationsFilesLen = test
+          .info()
+          .attachments.filter((attachment) =>
+            attachment.name.startsWith(violationsFileName),
+          ).length;
+        const violationsScreenshotLen = test
+          .info()
+          .attachments.filter((attachment) =>
+            attachment.name.startsWith(violationsFileName),
+          ).length;
 
         if (violationsFilesLen > 0 || violationsScreenshotLen > 0) {
           const maxViolationNum = Math.max(violationsFilesLen, violationsScreenshotLen);
@@ -112,16 +127,16 @@ export const expect = baseExpect
 
       const message = pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot,
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot,
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${violations.length} violation(s), please check attached file: ${violationsFileName}, for more details.`;

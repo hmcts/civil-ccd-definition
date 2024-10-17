@@ -5,7 +5,7 @@ import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
 import RequestOptions from '../types/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
-import CaseEvents from '../enums/events/case-events';
+import CaseEvents from '../enums/events/case-events.ts';
 import CCDCaseData from '../types/case-data/ccd-case-data';
 import User from '../types/user';
 
