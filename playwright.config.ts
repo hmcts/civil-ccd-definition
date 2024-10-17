@@ -16,6 +16,7 @@ export default defineConfig({
       timeout: config.playwright.toPassTimeout,
     },
   },
+  outputDir: './playwright-test-results',
   use: {
     actionTimeout: config.playwright.actionTimeout,
     headless: !config.playwright.showBrowserWindow,
