@@ -1,5 +1,5 @@
 import urls from '../../../config/urls';
-import User from '../../../types/user';
+import User from '../../../models/user';
 import BasePage from '../../../base/base-page';
 import { inputs, buttons } from './login-page-content';
 import { AllMethodsStep } from '../../../decorators/test-steps';

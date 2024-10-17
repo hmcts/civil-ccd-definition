@@ -1,9 +1,9 @@
 import { test } from '../playwright-fixtures/index';
 import filePaths from '../config/file-paths';
 import FileType from '../enums/file-type';
-import Cookie from '../types/cookie';
+import Cookie from '../models/cookie';
 import FileSystemHelper from './file-system-helper';
-import User from '../types/user';
+import User from '../models/user';
 import FileError from '../errors/file-error';
 
 export default class CookiesHelper {

@@ -1,10 +1,10 @@
 import BasePage from '../../base/base-page';
-import User from '../../types/user';
+import User from '../../models/user';
 import { AllMethodsStep } from '../../decorators/test-steps';
 import { acceptIdamCookies } from '../../fixtures/cookies/idam-cookies';
 import { generateAcceptExuiCookies } from '../../fixtures/cookies/exui-cookies';
 import PageError from '../../errors/page-error';
-import Cookie from '../../types/cookie';
+import Cookie from '../../models/cookie';
 
 @AllMethodsStep()
 export default class PageCookiesManager extends BasePage {

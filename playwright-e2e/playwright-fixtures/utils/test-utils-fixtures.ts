@@ -1,5 +1,5 @@
 import { test as base, Page, TestInfo } from '@playwright/test';
-import TestData from '../../types/test-data';
+import TestData from '../../models/test-data';
 import FileSystemHelper from '../../helpers/file-system-helper';
 
 type TestDataFixture = {

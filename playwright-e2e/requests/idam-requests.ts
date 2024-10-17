@@ -1,8 +1,8 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
-import RequestOptions from '../types/request-options';
-import User from '../types/user';
+import RequestOptions from '../models/request-options';
+import User from '../models/user';
 
 @AllMethodsStep()
 export default class IdamRequests extends BaseRequest {
@@ -14,10 +14,9 @@ export default class IdamRequests extends BaseRequest {
       params: { username: email, password: password },
       method: 'POST',
     };
-    const response = await super.retriedRequest(url, requestOptions);
-    const json = await response.json();
+    const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log(`Access token for user: ${email} fetched successfully`);
-    return json.access_token;
+    return responseJson.access_token;
   }
 
   async getUserId({ accessToken, email }: User): Promise<string> {
@@ -30,9 +29,8 @@ export default class IdamRequests extends BaseRequest {
       },
       method: 'GET',
     };
-    const response = await super.retriedRequest(url, requestOptions);
-    const json = await response.json();
+    const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log(`User ID for user: ${email} fetched successfully`);
-    return json.uid;
+    return responseJson.uid;
   }
 }

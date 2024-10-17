@@ -1,8 +1,8 @@
 import ExuiDashboardPageFactory from '../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import BaseSteps from '../../../base/base-steps';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../types/test-data';
-import User from '../../../types/user';
+import TestData from '../../../models/test-data';
+import User from '../../../models/user';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 import CookiesHelper from '../../../helpers/cookies-helper';
 

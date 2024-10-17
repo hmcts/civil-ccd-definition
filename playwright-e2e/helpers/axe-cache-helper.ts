@@ -1,6 +1,6 @@
 import filePaths from '../config/file-paths';
 import FileType from '../enums/file-type';
-import { AxeResults, PageResult } from '../types/axe-results';
+import { AxeResults, PageResult } from '../models/axe-results';
 import FileSystemHelper from './file-system-helper';
 
 export default class AxeCacheHelper {

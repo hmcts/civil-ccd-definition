@@ -1,7 +1,7 @@
 import BaseSteps from './base-steps';
-import TestData from '../types/test-data';
+import TestData from '../models/test-data';
 import RequestsFactory from '../requests/requests-factory';
-import User from '../types/user';
+import User from '../models/user';
 
 export default abstract class BaseApiSteps extends BaseSteps {
   private _requestsFactory: RequestsFactory;

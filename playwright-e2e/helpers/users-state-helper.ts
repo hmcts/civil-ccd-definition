@@ -1,4 +1,4 @@
-import User from '../types/user';
+import User from '../models/user';
 import FileSystemHelper from './file-system-helper';
 import FileType from '../enums/file-type';
 import UserKey from '../enums/user-key';

@@ -1,8 +1,8 @@
-import User from '../../../types/user';
+import User from '../../../models/user';
 import config from '../../../config/config';
 import IdamPageFactory from '../../../pages/idam/idam-page-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import TestData from '../../../types/test-data';
+import TestData from '../../../models/test-data';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 import BaseApiSteps from '../../../base/base-api-steps';
 import RequestsFactory from '../../../requests/requests-factory';

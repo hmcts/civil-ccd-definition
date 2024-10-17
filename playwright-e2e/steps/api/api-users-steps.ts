@@ -1,8 +1,8 @@
 import { AllMethodsStep } from '../../decorators/test-steps';
-import User from '../../types/user';
+import User from '../../models/user';
 import BaseApiSteps from '../../base/base-api-steps';
 import RequestsFactory from '../../requests/requests-factory';
-import TestData from '../../types/test-data';
+import TestData from '../../models/test-data';
 import UserStateHelper from '../../helpers/users-state-helper';
 
 @AllMethodsStep()

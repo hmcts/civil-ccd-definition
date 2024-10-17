@@ -2,11 +2,11 @@ import BaseRequest from '../base/base-request';
 import config from '../config/config';
 import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
-import RequestOptions from '../types/request-options';
+import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
 import CaseEvents from '../enums/events/case-events';
-import CCDCaseData from '../types/case-data/ccd-case-data';
-import User from '../types/user';
+import CCDCaseData from '../models/case-data/ccd-case-data';
+import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
 const classKey = 'CCDRequests';
@@ -32,9 +32,9 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
-    const caseData = (await (await super.retriedRequest(url, requestOptions)).json()).case_data;
+    const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log('CCD case data fetched successfully');
-    return caseData;
+    return responseJson.case_data;
   }
 
   @Step(classKey)
@@ -51,7 +51,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
-    const response = await (await super.retriedRequest(url, requestOptions)).json();
+    const response = await super.retryRequestJson(url, requestOptions);
     console.log(`Event: ${event} started successfully`);
     return response.token;
   }
@@ -77,7 +77,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       },
       method: 'POST',
     };
-    const responseJson = await (await super.retriedRequest(url, requestOptions, 201)).json();
+    const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus: 201 });
     console.log(`Event: ${event} submitted successfully`);
     return responseJson;
   }

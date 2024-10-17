@@ -2,7 +2,7 @@ import test, { expect as baseExpect, Page } from '@playwright/test';
 import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
-import { PageResult } from '../../types/axe-results';
+import { PageResult } from '../../models/axe-results';
 
 export const expect = baseExpect
   .extend({

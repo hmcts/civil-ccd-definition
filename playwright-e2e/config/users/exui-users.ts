@@ -2,7 +2,7 @@ import UserKey from '../../enums/user-key';
 import config from '../config';
 import Environment from '../../enums/environment';
 import UserRole from '../../enums/user-role';
-import User from '../../types/user';
+import User from '../../models/user';
 import { getUser } from './user-utils';
 
 const defaultPassword = process.env.DEFAULT_PASSWORD;
