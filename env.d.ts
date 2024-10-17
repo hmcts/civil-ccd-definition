@@ -4,6 +4,7 @@ declare global {
       CI: string;
       CCD_UI_TESTS: string;
       FUNCTIONAL: string;
+      PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
       URL: string;
       SERVICE_AUTH_PROVIDER_API_BASE_URL: string;

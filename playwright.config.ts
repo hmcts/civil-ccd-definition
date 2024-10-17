@@ -7,7 +7,7 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
-  workers: 5,
+  workers: config.playwright.workers,
   reporter: process.env.CI ? 'html' : 'list',
   timeout: 360_000,
   expect: {

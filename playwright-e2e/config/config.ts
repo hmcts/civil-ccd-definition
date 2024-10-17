@@ -21,7 +21,7 @@ const config = {
   playwright: {
     softExpect: process.env.UI_SOFT_EXPECT === 'true',
     toPassTimeout: 25_000,
-    workers: 5,
+    workers: parseInt(process.env.PLAYWRIGHT_WORKERS),
     actionTimeout: 25_000,
     showBrowserWindow: process.env.SHOW_BROWSER_WINDOW === 'true',
   },
