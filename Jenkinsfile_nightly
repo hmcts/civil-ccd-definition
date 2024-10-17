@@ -4,6 +4,7 @@ properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
     string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
       description: 'The URL you want to run the full functional tests against'),
     string(name: 'IDAM_API_URL', defaultValue: 'https://idam-api.aat.platform.hmcts.net',
