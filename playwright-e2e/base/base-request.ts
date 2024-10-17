@@ -213,7 +213,7 @@ export default abstract class BaseRequest {
   }
 
   @BoxedDetailedStep(classKey)
-  protected async expectJsonResponseToEqual(
+  protected async expectResponseJsonToEqual(
     object: Record<string, unknown> | Array<unknown>,
     responseJson: Record<string, unknown>,
     options: { message?: string } = {},
@@ -222,7 +222,7 @@ export default abstract class BaseRequest {
   }
 
   @BoxedDetailedStep(classKey, 'text', 'responseText')
-  protected async expectTextResponseToEqual(
+  protected async expectResponseTextToEqual(
     text: string,
     responseText: string,
     options: { message?: string } = {},
