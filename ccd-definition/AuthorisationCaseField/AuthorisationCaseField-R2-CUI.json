@@ -2446,7 +2446,8 @@
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
+          "citizen-profile",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
