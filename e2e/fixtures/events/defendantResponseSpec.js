@@ -36,7 +36,19 @@ module.exports = {
                 complexityBandingAgreed: 'Yes',
                 reasons: 'some reasons'
               }
-            }
+            },
+            DisclosureOfElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'No',
+                agreementLikely: 'No',
+                reasonForNoAgreement: 'example specific reasons'
+              }
+            },
+            DisclosureOfNonElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfNonElectronicDocuments: {
+                bespokeDirections: 'Non electric document text'
+              }
+            },
           } : {}),
           SmallClaimExperts: {
             respondent1DQExperts: {
@@ -315,7 +327,7 @@ module.exports = {
    * @param response type of response
    * @return data to respond as respondent 2.
    */
-  respondToClaim2: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim2: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false) => {
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -340,6 +352,28 @@ module.exports = {
           Mediation: {
             responseClaimMediationSpec2Required: 'No'
           },
+          ...(fastTrack ? {
+            FixedRecoverableCosts: {
+              respondent1DQFixedRecoverableCosts: {
+                isSubjectToFixedRecoverableCostRegime: 'Yes',
+                band: 'BAND_4',
+                complexityBandingAgreed: 'Yes',
+                reasons: 'some reasons'
+              }
+            },
+            DisclosureOfElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'No',
+                agreementLikely: 'No',
+                reasonForNoAgreement: 'example specific reasons'
+              }
+            },
+            DisclosureOfNonElectronicDocumentsLRspec: {
+              specRespondent1DQDisclosureOfNonElectronicDocuments: {
+                bespokeDirections: 'Non electric document text'
+              }
+            },
+          } : {}),
           SmallClaimExperts: {
             respondent2DQExperts: {
               expertRequired: 'Yes',

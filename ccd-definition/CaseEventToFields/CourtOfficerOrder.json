@@ -79,7 +79,7 @@
     "CaseFieldID": "previewCourtOfficerOrder",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
+    "DisplayContext": "COMPLEX",
     "PageID": "PreviewOrder",
     "ShowSummaryChangeOption": "N"
   }

@@ -1,5 +1,7 @@
 ccd:
   ccd:
+    adminWeb:
+      enabled: true
     elastic:
       enabled: true
   ccd-data-store-api:
@@ -18,6 +20,20 @@ ccd:
         ELASTIC_SEARCH_ENABLED: true
         ELASTIC_SEARCH_HOST: ${SERVICE_NAME}-es-master
         ELASTIC_SEARCH_CASE_INDEX_MAPPING_FIELDS_LIMIT: 10000
+        WELSH_TRANSLATION_ENABLED: true
+        TS_TRANSLATION_SERVICE_HOST: http://${SERVICE_NAME}-translation-service
+  ccd-admin-web:
+    nodejs:
+      image: hmctspublic.azurecr.io/ccd/admin-web:latest
+      ingressHost: admin-web-${SERVICE_FQDN}
+      environment:
+        ADMINWEB_GLOBAL_SEARCH_INDEX_URL: http://${SERVICE_NAME}-ccd-definition-store/elastic-support/global-search/index
+        ADMINWEB_ELASTIC_CASE_TYPES_URL: http://${SERVICE_NAME}-ccd-definition-store/elastic-support/case-types
+        IDAM_ADMIN_WEB_SERVICE_KEY: ${ADMIN_S2S_KEY}
+        IDAM_OAUTH2_AW_CLIENT_SECRET: ${ADMIN_WEB_IDAM_SECRET}
+        ADMINWEB_GET_DICTIONARY_URL: http://${SERVICE_NAME}-translation-service/dictionary
+        ALLOW_CONFIG_MUTATIONS: true
+      keyVaults: [ ]
   elasticsearch:
     nameOverride: ${SERVICE_NAME}-es
     clusterName: "es"
@@ -84,3 +100,19 @@ ccd:
     livenessProbe:
       initialDelaySeconds: 90
 
+civil-translation:
+  enabled: true
+
+ts-translation-service:
+  java:
+    releaseNameOverride: ${SERVICE_NAME}-translation-service
+    ingressHost: ts-${SERVICE_FQDN}
+    imagePullPolicy: Always
+    keyVaults: [ ]
+    environment:
+      TS_TRANSLATION_SERVICE_DB_HOST: ${SERVICE_NAME}-postgresql
+      TS_TRANSLATION_SERVICE_DB_NAME: ts_translation_service
+      TS_TRANSLATION_SERVICE_DB_USERNAME: hmcts
+      TS_TRANSLATION_SERVICE_DB_PASSWORD: hmcts
+      TS_TRANSLATION_SERVICE_DB_PORT: 5432
+      TS_TRANSLATION_SERVICE_DB_OPTIONS: ?stringtype=unspecified

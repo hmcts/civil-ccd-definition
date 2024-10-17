@@ -446,31 +446,31 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocRespondentSol",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocClaimant",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocStaff",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocument",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
+    "CRUD": "CRUD"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -526,5 +526,23 @@
     "CaseFieldID": "gaAddlDocBundle",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isGaApplicantLip",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isGaRespondentOneLip",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "isGaRespondentTwoLip",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]

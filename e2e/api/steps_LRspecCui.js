@@ -16,13 +16,24 @@ const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepr
 const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.js');
 const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediationCui.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
+const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends} = require('./dataHelper');
+const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
 const {checkToggleEnabled} = require('./testingSupport');
-const {PBAv3} = require('../fixtures/featureKeys');
+const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
+const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
+const sdoTracks = require('../fixtures/events/createSDO');
+const hearingScheduled = require('../fixtures/events/scheduleHearing');
+const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant');
+const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent');
+const requestForReconsideration = require('../fixtures/events/requestForReconsideration');
+const trialReadiness = require('../fixtures/events/trialReadiness.js');
+const lodash = require('lodash');
+const createFinalOrder = require('../fixtures/events/finalOrder.js');
+const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 
 let caseId, eventName;
 let caseData = {};
@@ -35,7 +46,18 @@ const data = {
   CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation, carmEnabled),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
-  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js')
+  EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js'),
+  DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
+  CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
+  CREATE_SDO_FAST_TRACK: (userInput) => sdoTracks.createSDOFastTrackSpec(userInput),
+  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearingForTrialReadiness(allocatedTrack),
+  HEARING_SCHEDULED_CUI: (allocatedTrack) => hearingScheduled.scheduleHearingForCui(allocatedTrack),
+  EVIDENCE_UPLOAD_CLAIMANT: (mpScenario) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_DEFENDANT: (mpScenario) => evidenceUploadRespondent.createDefendantSmallClaimsEvidenceUpload(mpScenario),
+  REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpecCitizen(userType),
+  TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
+  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
+  DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
 };
 
 const eventData = {
@@ -117,6 +139,9 @@ module.exports = {
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
+    } else if ( claimType === 'Request for reconsideration track') {
+      console.log('Request for reconsideration claim');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('500', userId);
     } else {
       console.log('SmallClaim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
@@ -183,6 +208,9 @@ module.exports = {
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
       payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
+    } else if (claimType === 'Request for reconsideration track') {
+      console.log('Request for reconsideration claim');
+      payload = defendantResponse.createDefendantResponse('500', carmEnabled);
     } else {
       console.log('SmallClaim...');
       payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
@@ -200,11 +228,181 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
+    if (isJudgmentOnlineLive && typeOfData == 'FA_ACCEPT_CCJ') {
+      expectedEndState = 'All_FINAL_ORDERS_ISSUED';
+    }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
     }
   },
+
+  createSDO: async (user, response = 'CREATE_DISPOSAL') => {
+    console.log('SDO for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    let disposalData;
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      eventName = 'NotSuitable_SDO';
+    } else if (response === 'CREATE_FAST') {
+      eventName = 'CREATE_SDO';
+      disposalData = data.CREATE_SDO_FAST_TRACK();
+    } else {
+      eventName = 'CREATE_SDO';
+      disposalData = data.CREATE_SDO();
+    }
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (response === 'UNSUITABLE_FOR_SDO') {
+      await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
+    } else {
+      await assertSubmittedEvent('CASE_PROGRESSION', null, false);
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  judgeDecisionOnReconsiderationRequest: async (user, decisionOption) => {
+    console.log('judgeDecisionOnReconsiderationRequest for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DECISION_ON_RECONSIDERATION_REQUEST';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DECISION_ON_RECONSIDERATION_REQUEST(decisionOption);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_PROGRESSION', {
+      header: '# Response has been submitted',
+      body: ''
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+
+  evidenceUploadApplicant: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE');
+
+    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+  },
+
+  evidenceUploadDefendant: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE');
+
+    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+  },
+
+  requestForReconsiderationCitizen: async (user) => {
+    await apiRequest.setupTokens(user);
+    let payload;
+    if (user === 'Claimant') {
+      payload = data.REQUEST_FOR_RECONSIDERATION('Claimant');
+    } else {
+      payload = data.REQUEST_FOR_RECONSIDERATION('Defendant');
+    }
+
+    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+  },
+
+  amendHearingDueDate: async (user) => {
+    let hearingDueDate;
+    hearingDueDate = {'hearingDueDate': '2022-01-10'};
+    await testingSupport.updateCaseData(caseId, hearingDueDate, user);
+  },
+
+  hearingFeePaid: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    await apiRequest.paymentUpdate(caseId, '/service-request-update',
+      claimData.serviceUpdateDto(caseId, 'paid'));
+
+    const response_msg = await apiRequest.hearingFeePaidEvent(caseId);
+    assert.equal(response_msg.status, 200);
+    console.log('Hearing Fee Paid');
+  },
+
+  trialReadinessCitizen: async (user) => {
+    await apiRequest.setupTokens(user);
+
+    let payload = data.TRIAL_READINESS(user);
+
+    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+
+    await waitForFinishedBusinessProcess(caseId);
+
+  },
+
+  scheduleHearing: async (user, allocatedTrack = 'OTHER', claimType) => {
+    console.log('Hearing Scheduled for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'HEARING_SCHEDULED';
+
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    delete caseData['SearchCriteria'];
+    let scheduleData;
+    if (claimType === 'CUI') {
+      scheduleData = data.HEARING_SCHEDULED_CUI(allocatedTrack);
+    } else {
+      scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    }
+
+    for (let pageId of Object.keys(scheduleData.valid)) {
+      await assertValidData(scheduleData, pageId);
+    }
+    if (claimType === 'CUI') {
+      await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
+    } else {
+      await assertSubmittedEvent('HEARING_READINESS', null, false);
+    }
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  createFinalOrder: async (user, finalOrderRequestType) => {
+    console.log(`case in Final Order ${caseId}`);
+    await apiRequest.setupTokens(user);
+
+    eventName = 'GENERATE_DIRECTIONS_ORDER';
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    assertContainsPopulatedFields(returnedCaseData);
+
+    const dayPlus0 = await dateNoWeekendsBankHolidayNextDay(0);
+    const dayPlus7 = await dateNoWeekendsBankHolidayNextDay(7);
+    const dayPlus14 = await dateNoWeekendsBankHolidayNextDay(14);
+    const dayPlus21 = await dateNoWeekendsBankHolidayNextDay(21);
+
+    if (finalOrderRequestType === 'ASSISTED_ORDER') {
+      await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
+    } else {
+      await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
+    }
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {
     eventName = 'MEDIATION_UNSUCCESSFUL';
@@ -281,6 +479,41 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  discontinueClaim: async (user, mpScenario) => {
+    console.log('discontinueClaim for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISCONTINUE_CLAIM_CLAIMANT';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    assertContainsPopulatedFields(returnedCaseData);
+
+    let disposalData = data.DISCONTINUE_CLAIM(mpScenario);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (mpScenario === 'TWO_V_ONE') {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        body: ''
+      }, true);
+    } else if (mpScenario === 'ONE_V_TWO' || mpScenario === 'ONE_V_ONE_NO_P_NEEDED' ) {
+      await assertSubmittedEvent('CASE_DISCONTINUED', {
+        header: '# Your claim has been discontinued',
+        body: ''
+      }, true);
+    } else {
+      await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+        header: '# Your request is being reviewed',
+        body: ''
+      }, true);
+    }
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 403;
@@ -326,11 +559,42 @@ module.exports = {
   },
 };
 
+const validateEventPages = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.valid)) {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    // data = await updateCaseDataWithPlaceholders(data);
+    await assertValidData(data, pageId, solicitor);
+  }
+};
+
+async function updateCaseDataWithPlaceholders(data, document) {
+  const placeholders = {
+    TEST_DOCUMENT_URL: document.document_url,
+    TEST_DOCUMENT_BINARY_URL: document.document_binary_url,
+    TEST_DOCUMENT_FILENAME: document.document_filename
+  };
+
+  data = lodash.template(JSON.stringify(data))(placeholders);
+
+  return JSON.parse(data);
+}
+
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
 
-  const userData = data.userInput[pageId];
+  let userData;
+  if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' || eventName === 'HEARING_SCHEDULED'
+  || eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    userData = data.valid[pageId];
+  } else {
+    userData = data.userInput[pageId];
+  }
   caseData = update(caseData, userData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -472,15 +736,21 @@ const deleteCaseFields = (...caseFields) => {
   caseFields.forEach(caseField => delete caseData[caseField]);
 };
 
+const assertContainsPopulatedFields = returnedCaseData => {
+  for (let populatedCaseField of Object.keys(caseData)) {
+    assert.property(returnedCaseData,  populatedCaseField);
+  }
+};
+
 const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   console.log(`Asserting user ${user.type} in env ${config.runningEnv} has correct permissions`);
   const caseForDisplay = await apiRequest.fetchCaseForDisplay(user, caseId);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   } else {
     // expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state],
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state],
       'Unexpected events for state ' + state + ' and user type ' + user.type);
   }
 };

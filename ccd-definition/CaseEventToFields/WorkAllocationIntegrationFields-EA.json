@@ -101,5 +101,16 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "eaCourtLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "transferCourtLocationList=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
   }
 ]

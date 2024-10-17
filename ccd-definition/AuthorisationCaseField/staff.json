@@ -195,13 +195,13 @@
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "systemGeneratedCaseDocuments",
     "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "duplicateSystemGeneratedCaseDocs",
     "UserRole": "caseworker-civil-staff",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",

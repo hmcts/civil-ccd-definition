@@ -1,0 +1,134 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "stayCaseText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "dismissText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "preStayState",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayOption",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayJudicialReferralInMediationText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayRequestUpdateText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayOptionsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayRequestUpdateHintText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
+

@@ -50,7 +50,7 @@ function copyResources() {
 }
 
 function consoleReport(reportjson) {
-  /* eslint-disable no-console */
+   
   console.log('\t Total tests : ' + reportjson.tests.length);
   console.log('\t Passed tests : ' + reportjson.passCount);
   console.log('\t Failed tests : ' + reportjson.passCount);

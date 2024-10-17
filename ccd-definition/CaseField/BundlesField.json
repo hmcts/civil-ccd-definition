@@ -20,7 +20,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "TrialBundles",
-    "Label": "Trial Bundle",
+    "Label": "Bundles",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

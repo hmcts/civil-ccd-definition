@@ -367,29 +367,6 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_MEDIATION_AGREEMENT",
     "AccessControl": [
       {
@@ -706,12 +683,6 @@
         "CRUD": "CRU"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL",

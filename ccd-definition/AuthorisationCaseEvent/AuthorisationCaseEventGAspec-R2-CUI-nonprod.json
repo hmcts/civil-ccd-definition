@@ -5,6 +5,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
@@ -17,9 +18,10 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "citizen-profile",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "RU"
+        "CRUD": "CRU"
       }
     ]
   },

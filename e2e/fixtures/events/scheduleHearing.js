@@ -21,12 +21,70 @@ module.exports = {
           channel: 'IN_PERSON',
           hearingDate: date(60),
           hearingTimeHourMinute: '1015',
-          hearingDuration: 'MINUTES_90'
+          hearingDuration: 'MINUTES_55'
         },
         HearingInformation: {
           information: 'string'
         }
       }
     };
-  }
+  },
+
+  scheduleHearingForCui: (allocatedTrack) => {
+    return {
+      valid: {
+        HearingNoticeSelect: {
+          hearingNoticeList: allocatedTrack,
+          hearingNoticeListOther: allocatedTrack == 'OTHER' ? 'Text' : ' '
+        },
+        ListingOrRelisting: {
+          listingOrRelisting: 'RELISTING'
+        },
+        HearingDetails: {
+          hearingLocation: {
+            list_items: [
+              listElement(config.claimantSelectedCourt)
+            ],
+            value: listElement(config.claimantSelectedCourt)
+          },
+          channel: 'IN_PERSON',
+          hearingDate: date(28),
+          hearingTimeHourMinute: '1015',
+          hearingDuration: 'MINUTES_55'
+        },
+        HearingInformation: {
+          information: 'string'
+        }
+      }
+    };
+  },
+
+  scheduleHearingForTrialReadiness: (allocatedTrack) => {
+    return {
+      valid: {
+        HearingNoticeSelect: {
+          hearingNoticeList: allocatedTrack,
+          hearingNoticeListOther: allocatedTrack == 'OTHER' ? 'Text' : ' '
+        },
+        ListingOrRelisting: {
+          listingOrRelisting: 'LISTING'
+        },
+        HearingDetails: {
+          hearingLocation: {
+            list_items: [
+              listElement(config.claimantSelectedCourt)
+            ],
+            value: listElement(config.claimantSelectedCourt)
+          },
+          channel: 'IN_PERSON',
+          hearingDate: date(28),
+          hearingTimeHourMinute: '1015',
+          hearingDuration: 'MINUTES_55'
+        },
+        HearingInformation: {
+          information: 'string'
+        }
+      }
+    };
+  },
 };

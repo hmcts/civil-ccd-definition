@@ -188,7 +188,8 @@
     "PageDisplayOrder": 12,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimStarted=\"Yes\""
+    "PageShowCondition": "claimStarted=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent1"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -412,7 +413,8 @@
     "PageDisplayOrder": 18,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "addRespondent2=\"Yes\""
+    "PageShowCondition": "addRespondent2=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/respondent2"
   },
   {
     "CaseTypeID": "CIVIL",
@@ -508,17 +510,51 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicantSolicitor1PbaAccountsIsEmpty",
+    "CaseFieldID": "claimTypeUnSpec",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "OPTIONAL",
-    "PageID": "PbaNumber",
-    "PageDisplayOrder": 31,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimType",
+    "PageDisplayOrder": 25,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "CaseEventFieldLabel": "Pay fee using Payment by Account (PBA)",
-    "FieldShowCondition": "claimFee = \"DO_NOT_SHOW_IN_UI\"",
-    "Comment": "Hidden field to show noPbaAccountsLabel when applicantSolicitor1PbaAccounts is empty",
+    "CaseEventFieldLabel": "What type of claim is this?",
     "PageShowCondition": "claimStarted=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "claimTypeOther",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ClaimType",
+    "PageDisplayOrder": 25,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimTypeUnSpec = \"OTHER\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "personalInjuryType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "PersonalInjuryType",
+    "PageDisplayOrder": 26,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "claimTypeUnSpec = \"PERSONAL_INJURY\""
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "personalInjuryTypeOther",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "PersonalInjuryType",
+    "PageDisplayOrder": 26,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "personalInjuryType = \"PERSONAL_INJURY_OTHER\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -530,55 +566,6 @@
     "PageDisplayOrder": 31,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "applicantSolicitor1PbaAccounts",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "PbaNumber",
-    "PageDisplayOrder": 31,
-    "PageColumnNumber": 1,
-    "CaseEventFieldLabel": "Select a PBA",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "paymentTypePBA != \"PBAv3\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "pbaAccountsInformationLabel",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "PbaNumber",
-    "PageDisplayOrder": 31,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty != \"Yes\" AND paymentTypePBA != \"PBAv3\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "noPbaAccountsLabel",
-    "PageFieldDisplayOrder": 5,
-    "DisplayContext": "READONLY",
-    "PageID": "PbaNumber",
-    "PageDisplayOrder": 31,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"Yes\" AND paymentTypePBA != \"PBAv3\""
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CREATE_CLAIM",
-    "CaseFieldID": "claimIssuedPaymentDetails",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "COMPLEX",
-    "PageID": "PaymentReference",
-    "PageDisplayOrder": 32,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "claimStarted=\"Yes\" AND paymentTypePBA != \"PBAv3\""
   },
   {
     "CaseTypeID": "CIVIL",

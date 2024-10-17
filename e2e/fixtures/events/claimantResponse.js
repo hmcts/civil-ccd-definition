@@ -101,7 +101,7 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             applicant1DQFixedRecoverableCosts: {
               band: 'BAND_1',
@@ -111,19 +111,67 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
+          FixedRecoverableCosts: {
+            applicant1DQFixedRecoverableCostsIntermediate: {
+              band: 'BAND_1',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          }
+        } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM' ? {
         DisclosureOfElectronicDocuments: {
           applicant1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',
               agreementLikely: 'Yes'
-          }
+            },
+            ...(mpScenario === 'TWO_V_ONE' ? {
+              applicant2DQDisclosureOfElectronicDocuments: {
+                reachedAgreement: 'No',
+                agreementLikely: 'Yes'
         },
+            } : {})
+          }
+        } : {}),
         DisclosureOfNonElectronicDocuments: {
           applicant1DQDisclosureOfNonElectronicDocuments: {
             directionsForDisclosureProposed: 'Yes',
               standardDirectionsRequired: 'No',
               bespokeDirections: 'directions'
-          }
+          },
+          ...(mpScenario === 'TWO_V_ONE' ? {
+            applicant2DQDisclosureOfNonElectronicDocuments: {
+              directionsForDisclosureProposed: 'Yes',
+              standardDirectionsRequired: 'No',
+              bespokeDirections: 'directions'
+            },
+          } : {})
         },
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM' ? {
+          DisclosureReport: {
+            applicant1DQDisclosureReport:
+              {
+                disclosureFormFiledAndServed: 'Yes',
+                disclosureProposalAgreed: 'Yes',
+                draftOrderNumber: '012345'
+              },
+            ...(mpScenario === 'TWO_V_ONE' ? {
+              applicant2DQDisclosureReport:
+                {
+                  disclosureFormFiledAndServed: 'Yes',
+                  disclosureProposalAgreed: 'Yes',
+                  draftOrderNumber: '012345'
+          }
+            } : {})
+          }
+        } : {}),
         Experts: {
           applicant1DQExperts: {
             expertRequired: 'Yes',

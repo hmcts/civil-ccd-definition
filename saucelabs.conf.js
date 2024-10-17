@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+ 
 
 const supportedBrowsers = require('./e2e/crossbrowser/supportedBrowsers.js');
 const testConfig = require('./e2e/config');

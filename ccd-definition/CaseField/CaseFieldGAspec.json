@@ -893,5 +893,29 @@
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isGaApplicantLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Applicant Lip",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isGaRespondentOneLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Respondent One LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "isGaRespondentTwoLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Respondent Two LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

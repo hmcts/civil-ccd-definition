@@ -14,7 +14,7 @@
     "ListElementCode": "unavailableDatesForMediation",
     "ElementLabel": "Unavailable dates",
     "FieldType": "Collection",
-    "FieldTypeParameter": "UnavailableDate",
+    "FieldTypeParameter": "MediationUnavailableDate",
     "FieldShowCondition": "isMediationUnavailablityExists = \"Yes\"",
     "SecurityClassification": "Public",
     "RetainHiddenValue": "Y",

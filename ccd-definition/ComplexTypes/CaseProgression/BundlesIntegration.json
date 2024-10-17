@@ -141,7 +141,7 @@
     "ID": "Bundle",
     "ListElementCode": "title",
     "FieldType": "Text",
-    "ElementLabel": "Trial Bundle",
+    "ElementLabel": "Bundles",
     "Searchable": "N",
     "SecurityClassification": "Public"
   },

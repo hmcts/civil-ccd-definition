@@ -116,5 +116,29 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 11,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "personalInjuryType",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "FieldShowCondition": "claimType=\"DO NOT SHOW IN UI\"",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "CaseFieldID": "claimValue",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]

@@ -234,7 +234,9 @@ module.exports = {
         setAsideJudgment.userInput = {
           ...setAsideJudgment.userInput,
           SetAsideJudgment: {
-            joSetAsideOrderDate: '2008-06-06'
+            joSetAsideOrderDate: '2008-06-06',
+            joSetAsideReason: setAsideReason,
+            joSetAsideJudgmentErrorText: 'Set Aside Judgment error text'
           }
         };
 

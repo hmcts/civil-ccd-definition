@@ -1,4 +1,5 @@
 const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 const lipClaimantData = {
   'PA_REJECT_NO_MEDIATION': {
@@ -146,8 +147,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'reasons',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: config.claimantSelectedCourt,
+            baseLocation:  config.claimantSelectedCourt
           }
         },
         applicant1DQWitnesses: {
@@ -285,8 +286,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'reasons',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region:  config.claimantSelectedCourt,
+            baseLocation:  config.claimantSelectedCourt
           }
         },
         applicant1DQWitnesses: {
@@ -333,6 +334,7 @@ module.exports = {
         },
         applicant1PartAdmitIntentionToSettleClaimSpec: 'No',
         applicant1FullDefenceConfirmAmountPaidSpec: 'Yes',
+        applicant1ProceedWithClaim: 'Yes',
         applicant1SettleClaim: 'No'
       }
     };

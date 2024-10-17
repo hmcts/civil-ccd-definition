@@ -24,6 +24,7 @@ def secrets = [
   's2s-${env}': [
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_SECRET'),
     secret('microservicekey-ccd-data', 'CCD_DATA_STORE_S2S_SECRET'),
+    secret('microservicekey-ccd-admin', 'ADMIN_S2S_KEY'),
     secret('microservicekey-ccd-definition', 'CCD_DEFINITION_STORE_S2S_SECRET'),
     secret('microservicekey-xui-webapp', 'XUI_S2S_SECRET'),
   ],
@@ -36,6 +37,7 @@ def secrets = [
     secret('idam-data-store-system-user-username','IDAM_DATA_STORE_SYSTEM_USER_USERNAME'),
     secret('idam-data-store-system-user-password','IDAM_DATA_STORE_SYSTEM_USER_PASSWORD'),
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_KEY'),
+    secret('ccd-admin-web-oauth2-client-secret', 'ADMIN_WEB_IDAM_SECRET'),
     secret('idam-data-store-system-user-username','ROLE_ASSIGNMENT_USER_EMAIL')
   ],
   'civil-${env}': [
@@ -52,6 +54,10 @@ def secrets = [
     secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
   ]
 ]
+
+def checkForEnableEmailNotifications(branch_name) {
+    return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:enableNotifyEmails").contains("pr-values:enableNotifyEmails")
+}
 
 def createGithubRelease() {
   sh """
@@ -134,15 +140,12 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-    env.TEST_EA_COURTS = true
   }
   onMaster {
     env.ENVIRONMENT="aat"
-    env.TEST_EA_COURTS = true
   }
   onDemo {
     env.ENVIRONMENT = "demo"
-    env.TEST_EA_COURTS = true
   }
   onPerftest{
     env.ENVIRONMENT = "perftest"
@@ -186,6 +189,9 @@ withPipeline(type, product, component) {
 
   afterAlways('smoketest:preview') {
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/smokeTest/**/*'
+    if (checkForEnableEmailNotifications(env.BRANCH_NAME)) {
+      error "The 'pr-values:enableNotifyEmails' label is active on the PR. The build will be interrupted to avoid wasting build time needlessly."
+    }
   }
 
   before('functionalTest:preview') {
