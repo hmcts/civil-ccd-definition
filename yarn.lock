@@ -1169,6 +1169,40 @@ __metadata:
   languageName: node
   linkType: hard
 
+"allure-commandline@npm:^2.30.0":
+  version: 2.30.0
+  resolution: "allure-commandline@npm:2.30.0"
+  bin:
+    allure: bin/allure
+  checksum: ed7347a2966a1599513efa1ccf7ab2e86f70f2bf405bf49812e12c874a44bbdf9f62d61f687c71aef586352facafdfdd36c7b5fccc23fa9c7d562440e4586b8f
+  languageName: node
+  linkType: hard
+
+"allure-js-commons@npm:3.0.5":
+  version: 3.0.5
+  resolution: "allure-js-commons@npm:3.0.5"
+  dependencies:
+    md5: ^2.3.0
+  peerDependencies:
+    allure-playwright: 3.0.5
+  peerDependenciesMeta:
+    allure-playwright:
+      optional: true
+  checksum: 1bd04337b352de69ecd9f9a521618e295062e141c5ecdbb10b67c6bd6bfeca0844a29d25abecaeccdcd5a4ef4983e6c585839c8b38d4de9301c4a403a9e70bdf
+  languageName: node
+  linkType: hard
+
+"allure-playwright@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "allure-playwright@npm:3.0.5"
+  dependencies:
+    allure-js-commons: 3.0.5
+  peerDependencies:
+    "@playwright/test": ">=1.36.0"
+  checksum: f2c812126279533d6007d24a21ef4eaf516211e4887bdb6efe1c4ef786d48dc94fb746fdff9666bf58e57707e7de221c500b1708ca9dc52914db771894277bf8
+  languageName: node
+  linkType: hard
+
 "ansi-colors@npm:4.1.1":
   version: 4.1.1
   resolution: "ansi-colors@npm:4.1.1"
@@ -1860,6 +1894,8 @@ __metadata:
     "@typescript-eslint/eslint-plugin": ^5.62.0
     "@typescript-eslint/eslint-plugin-tslint": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
+    allure-commandline: ^2.30.0
+    allure-playwright: ^3.0.5
     chai: ^4.3.4
     codeceptjs: ^3.5.11
     concurrently: ^9.0.1

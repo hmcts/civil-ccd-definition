@@ -1,5 +1,6 @@
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
+import os from 'node:os';
 
 export default defineConfig({
   testDir: './playwright-e2e/tests',
@@ -8,7 +9,26 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   workers: config.playwright.workers,
-  reporter: process.env.CI ? 'html' : 'list',
+  reporter: process.env.CI
+    ? [
+        [
+          'allure-playwright',
+          {
+            outputFolder:
+              process.env.FUNCTIONAL === 'true'
+                ? 'allure-functional-results'
+                : 'allure-bootstrap-results',
+            environmentInfo: {
+              Environment: process.env.ENVIRONMENT,
+              Workers: process.env.WORKERS,
+              OS: os.platform(),
+              Architecture: os.arch(),
+              NodeVersion: process.version,
+            },
+          },
+        ],
+      ]
+    : 'list',
   timeout: 360_000,
   expect: {
     timeout: 30_000,
