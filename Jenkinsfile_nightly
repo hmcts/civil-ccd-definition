@@ -5,8 +5,11 @@ properties([
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', defaultValue: 'false', description: 'Runs accessibility tests for playwright during test execution'),
+    string(name: 'PLAYWRIGHT_RUN_SETUP', defaultValue: 'true', description: 'Runs setup projects before functional test suite'),
     string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
       description: 'The URL you want to run the full functional tests against'),
+      string(name: 'IDAM_WEB_URL', defaultValue: 'https://idam-web.aat.platform.hmcts.net', description: 'The URL of idam web'),
     string(name: 'IDAM_API_URL', defaultValue: 'https://idam-api.aat.platform.hmcts.net',
       description: 'The URL of idam api'),
     string(name: 'DM_STORE_URL', defaultValue: 'http://dm-store-aat.service.core-compute-aat.internal',
@@ -31,6 +34,7 @@ properties([
 def type = "nodejs"
 def product = "civil"
 def component = "ccd"
+def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
@@ -39,6 +43,28 @@ static Map<String, Object> secret(String secretName, String envVariable) {
    envVariable: envVariable
   ]
 }
+
+void publishBootstrapReport() {
+    publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'allure-bootstrap-report',
+            reportFiles: 'index.html',
+            reportName: 'Allure Bootstrap Report'
+        ])
+  }
+
+  void publishFunctionalReport() {
+    publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'allure-functional-report',
+            reportFiles: 'index.html',
+            reportName: 'Allure Functional Report'
+        ])
+  }
 
 def secrets = [
   'civil-${env}': [
@@ -51,30 +77,81 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
-  env.TEST_URL = params.CIVIL_SERVICE_URL
-  env.URL = params.FRONTEND_URL
+  env.ENVIRONMENT=params.ENVIRONMENT
+  env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
+  env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
+  env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
+  env.URL=params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
+  env.IDAM_WEB_URL=params.IDAM_WEB_URL
   env.IDAM_API_URL=params.IDAM_API_URL
   env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
   env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
   env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
-  env.TESTS_FOR_ACCESSIBILITY = false
   env.CCD_UI_TESTS = true
-  overrideVaultEnvironments([
-    'aat': params.ENVIRONMENT
-  ])
   loadVaultSecrets(secrets)
-
-  afterAlways('crossBrowserTest') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-  }
 
   enableFullFunctionalTest(200)
 
-  afterAlways('fullFunctionalTest') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+  boolean playwrightSetupPassed=true
+  boolean flowInterrupted = false
+
+  afterAlways('DependencyCheckNightly') {
+    if(env.PLAYWRIGHT_RUN_SETUP) {
+      stage('Playwright test setup') {
+        try {
+          yarnBuilder.yarn('test:playwright-setup:install')
+          yarnBuilder.yarn('test:playwright-setup:ci')
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          playwrightSetupPassed=false
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+        }
+      }
+    }
+
+    stage('Playwright/Codecept full functional test') {
+      try {
+        if(flowInterrupted) {
+          throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
+        }
+        if(playwrightSetupPassed) {
+          yarnBuilder.yarn('concurrently \'yarn test:codecept-nightly:ci\' \'yarn test:playwright-nightly:ci\'')
+        } else {
+          yarnBuilder.yarn('test:codecept-nightly:ci')
+        }
+      } catch (Exception error) {
+        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+          flowInterrupted = true
+        }
+        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+      } finally {
+        if(playwrightSetupPassed) {
+          yarnBuilder.yarn('test:playwright-functional:generate-report')
+          publishFunctionalReport()
+        }
+        archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+      }
+    }
+
+    if(env.PLAYWRIGHT_RUN_SETUP) {
+      stage('Playwright test teardown') {
+        try {
+          yarnBuilder.yarn('test:playwright-teardown:ci')
+        } catch (Exception error) {
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+          publishBootstrapReport()
+        }
+      }
+    }
   }
 }
 

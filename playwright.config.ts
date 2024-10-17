@@ -19,7 +19,7 @@ export default defineConfig({
                 ? 'allure-functional-results'
                 : 'allure-bootstrap-results',
             environmentInfo: {
-              Environment: process.env.ENVIRONMENT,
+              Environment: config.environment,
               Workers: process.env.WORKERS,
               OS: os.platform(),
               Architecture: os.arch(),
