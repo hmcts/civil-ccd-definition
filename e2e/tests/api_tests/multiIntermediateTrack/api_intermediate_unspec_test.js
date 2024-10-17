@@ -4,8 +4,21 @@ const config = require('../../../config.js');
 const intermediateTrackClaimAmount = '99000';
 const mintiEnabled = true;
 const track = 'INTERMEDIATE_CLAIM';
+const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
 
 Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate');
+
+async function prepareClaim(api, mpScenario, claimAmount) {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
+  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
+  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+}
 
 Scenario('1v1 Create Unspecified Intermediate Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
@@ -21,14 +34,6 @@ Scenario('2v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'TWO_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
 });
-
-async function prepareClaim(api, mpScenario, claimAmount) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
-  await api.notifyClaim(config.applicantSolicitorUser);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
-}
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
