@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "claimType",
     "PageDisplayOrder": 1,
@@ -21,7 +21,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQHearingSupport",
     "PageDisplayOrder": 13,
@@ -33,7 +33,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "PageDisplayOrder": 14,
@@ -45,7 +45,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageID": "WorkAllocationIntegrationFields",
@@ -56,7 +56,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "PageID": "WorkAllocationIntegrationFields",
@@ -67,7 +67,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageID": "WorkAllocationIntegrationFields",
@@ -78,7 +78,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQHearingSupport",
     "PageID": "WorkAllocationIntegrationFields",
@@ -89,7 +89,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1DQLanguage",
     "PageID": "WorkAllocationIntegrationFields",
@@ -100,7 +100,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2DQLanguage",
     "PageID": "WorkAllocationIntegrationFields",
@@ -111,7 +111,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -121,7 +121,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
@@ -132,7 +132,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 1,
@@ -143,7 +143,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseType",
     "PageDisplayOrder": 1,
@@ -154,7 +154,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "totalClaimAmount",
     "PageID": "WorkAllocationIntegrationFields",
@@ -166,7 +166,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
@@ -178,7 +178,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
@@ -190,7 +190,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 2,
@@ -200,7 +200,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE",
     "CaseFieldID": "personalInjuryType",
     "PageID": "WorkAllocationIntegrationFields",

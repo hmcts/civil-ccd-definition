@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "transferCourtLocationList",
     "AccessControl": [
       {
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "reasonForTransfer",
     "AccessControl": [
       {
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "lblReasonNotSuitableSDO",
     "AccessControl": [
       {
@@ -51,7 +51,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "notSuitableSdoOptions",
     "AccessControl": [
       {
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "tocTransferCaseReason",
     "AccessControl": [
       {
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "transferCaseDetails",
     "AccessControl": [
       {
@@ -97,7 +97,7 @@
     ]
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "CaseFieldID": "totalClaimAmount",
   "AccessControl": [
     {
@@ -110,7 +110,7 @@
   ]
 },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "responseClaimTrack",
     "AccessControl": [
       {
@@ -122,7 +122,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimValue",
     "AccessControl": [
       {
@@ -148,7 +148,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "allocatedTrack",
     "AccessControl": [
       {

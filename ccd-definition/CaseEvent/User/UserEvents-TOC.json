@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "TRANSFER_ONLINE_CASE",
     "Name": "Transfer online case",
     "Description": "Transfer online case",

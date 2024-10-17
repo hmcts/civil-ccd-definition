@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseTitleWithReference",
     "Label": "### ${legacyCaseReference} ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageDocuments",
     "Label": "Bulk scanned or emailed documents",
     "FieldType": "Collection",

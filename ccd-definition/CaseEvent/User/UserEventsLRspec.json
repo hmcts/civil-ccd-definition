@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "INFORM_AGREED_EXTENSION_DATE_SPEC",
     "Name": "Inform agreed extension date",
     "Description": "Specified Enter an extension date that has already been agreed with other parties",
@@ -18,7 +18,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ACKNOWLEDGEMENT_OF_SERVICE",
     "Name": "Acknowledgement of Service",
     "Description": "Acknowledgement of Service (AoS)",
@@ -37,7 +37,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_CLAIM_SPEC",
     "Name": "Create claim - Specified",
     "Description": "Case created, post actions triggered",
@@ -56,7 +56,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DEFENDANT_RESPONSE_SPEC",
     "Name": "Respond to claim",
     "Description": "Defendant response to Specified claim",
@@ -75,7 +75,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_CLAIM_SPEC_AFTER_PAYMENT",
     "Name": "Case issued after payment",
     "Description": "Move to case issued when fee paid",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_SERVICE_REQUEST",
     "Name": "Create service request",
     "Description": "Create service request specified",

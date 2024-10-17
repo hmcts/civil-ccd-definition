@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseNameHmctsInternal",
     "Label": "case Name Hmcts Internal",
     "FieldType": "Text",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SearchCriteria",
     "Label": "Search Criteria",
     "FieldType": "SearchCriteria",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseManagementCategory",
     "Label": " ",
     "FieldType": "CaseManagementCategory",

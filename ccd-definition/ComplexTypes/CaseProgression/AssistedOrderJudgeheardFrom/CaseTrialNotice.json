@@ -1,6 +1,6 @@
 [
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ListElementCode": "list",
   "ID": "TrialNoticeProcedure",
   "ElementLabel": " ",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label1",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantOneDynamic}, the claimant, did not attend the hearing, but the Judge was satisfied that they had received notice of the trial and it was reasonable to proceed in their absence.",
@@ -20,7 +20,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label2",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantOneDynamic}, the claimant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",
@@ -30,7 +30,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label3",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantOneDynamic}, the claimant, did not attend the hearing, The Judge was not satisfied that they had received notice of the hearing and determined that it was not reasonable to proceed in their absence.",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "listClaimTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": " ",
@@ -50,7 +50,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label1ClaimTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantTwoDynamic}, the claimant, did not attend the hearing, but the Judge was satisfied that they had received notice of the trial and it was reasonable to proceed in their absence.",
@@ -60,7 +60,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label2ClaimTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantTwoDynamic}, the claimant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",
@@ -70,7 +70,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label3ClaimTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationClaimantTwoDynamic}, the claimant, did not attend the hearing, The Judge was not satisfied that they had received notice of the hearing and determined that it was not reasonable to proceed in their absence.",
@@ -80,7 +80,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "listDef",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": " ",
@@ -90,7 +90,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label1Def",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, did not attend the hearing, but the Judge was satisfied that they had received notice of the trial, and it was reasonable to proceed in their absence.",
@@ -100,7 +100,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label2Def",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",    "FieldType": "Label",
@@ -109,7 +109,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label3Def",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, did not attend the hearing. The Judge was not satisfied that they had received notice of the hearing and determined that it was not reasonable to proceed in their absence.",
@@ -119,7 +119,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "listDefTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": " ",
@@ -129,7 +129,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label1DefTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantTwoDynamic}, the defendant, did not attend the hearing, but the Judge was satisfied that they had received notice of the trial, and it was reasonable to proceed in their absence.",
@@ -139,7 +139,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label2DefTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantTwoDynamic}, the defendant, did not attend the hearing and, whilst the Judge was satisfied that they had received notice of the trial, the Judge was not satisfied that it was reasonable to proceed in their absence.",
@@ -149,7 +149,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label3DefTwo",
     "ID": "TrialNoticeProcedure",
     "ElementLabel": "${typeRepresentationDefendantTwoDynamic}, the defendant, did not attend the hearing. The Judge was not satisfied that they had received notice of the hearing and determined that it was not reasonable to proceed in their absence.",

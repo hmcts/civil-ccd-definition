@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ASSIGN_CASE_TO_APPLICANT1",
     "Name": "Assign to applicant1",
     "Description": "Assign case to applicant 1",
