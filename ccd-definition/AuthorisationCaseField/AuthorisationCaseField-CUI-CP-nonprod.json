@@ -907,6 +907,12 @@
           "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
@@ -1080,6 +1086,19 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialReadyNotified",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "listingOrRelisting",
     "AccessControl": [
       {
         "UserRoles": [
