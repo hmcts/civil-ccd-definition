@@ -32,7 +32,6 @@ export default abstract class BaseRequest {
     }
   }
 
-  @BoxedDetailedStep(classKey, 'url')
   private async _request(
     url: string,
     {
