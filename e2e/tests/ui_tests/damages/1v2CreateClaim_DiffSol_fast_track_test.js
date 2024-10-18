@@ -117,6 +117,21 @@ Scenario('Judge triggers SDO', async ({I}) => {
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
+Scenario('Stay the case', async ({I}) => {
+  await I.stayCase();
+  await waitForFinishedBusinessProcess(caseNumber);
+}).retry(3);
+
+Scenario('Request update on the stay case - Manage stay', async ({I}) => {
+  await I.manageStay('REQ_UPDATE', 'JUDICIAL_REFERRAL');
+  await waitForFinishedBusinessProcess(caseNumber);
+}).retry(3);
+
+Scenario('Lift the stay case - Manage stay', async ({I}) => {
+  await I.manageStay('LIFT_STAY', 'JUDICIAL_REFERRAL');
+  await waitForFinishedBusinessProcess(caseNumber);
+}).retry(3);
+
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);

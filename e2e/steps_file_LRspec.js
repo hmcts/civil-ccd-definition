@@ -930,6 +930,7 @@ module.exports = function () {
           () => event.returnToCaseDetails(),
         ]);
       }
+      await this.waitForText('Case Progression');
     },
 
     async requestForReconsiderationForUI() {

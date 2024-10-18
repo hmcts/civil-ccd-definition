@@ -724,6 +724,40 @@ module.exports = function () {
       ]);
     },
 
+
+    async stayCase(user = config.ctscAdminUser) {
+      eventName = 'Stay case';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.waitForText('All parties will be notified.'),
+        () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
+        () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL') {
+      eventName = 'Manage stay';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+      ]);
+      if (manageStayType == 'REQ_UPDATE')  {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(caseState),
+          () => event.submit('Submit', 'You have requested an update on'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      } else {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyLiftCaseStaySteps(caseState),
+          () => event.submit('Submit', 'You have lifted the stay from this'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      }
+      await this.waitForText('Case Progression');
+    },
+
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
       if (['demo'].includes(config.runningEnv)) {
