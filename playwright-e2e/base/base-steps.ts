@@ -1,4 +1,4 @@
-import TestData from '../types/test-data';
+import TestData from '../models/test-data';
 
 export default abstract class BaseSteps {
   private _testData: TestData;
