@@ -3,7 +3,7 @@ enum Environment {
   DEMO = 'demo',
   PREVIEW = 'preview',
   PERFTEST = 'perftest',
-  ITHC = 'ITHC',
+  ITHC = 'ithc',
 }
 
 export default Environment;
