@@ -76,8 +76,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -92,8 +91,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -114,8 +112,7 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -189,8 +186,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -209,8 +205,7 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -248,8 +243,7 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -268,8 +262,7 @@
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -293,8 +286,7 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },

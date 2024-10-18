@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async addOrgIndividuals() {
-    I.waitForElement(this.fields.updateOrgIndividualsForm.id);
+    await I.waitForElement(this.fields.updateOrgIndividualsForm.id, 60);
     await I.runAccessibilityTest();
 
     await I.addAnotherElementToCollection('//div[@id=\'updateOrgIndividualsForm\']//button[@type=\'button\' and contains(text(), \'Add new\')]');

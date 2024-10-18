@@ -1,4 +1,5 @@
 const {date} = require('../../../api/dataHelper');
+const config = require('../../../config.js');
 
 const lipDefendantData = {
   PA_INSTALLMENTS_INDIVIDUAL: {
@@ -186,11 +187,13 @@ module.exports = {
     const defendantResponseData = {
       event: 'DEFENDANT_RESPONSE_CUI',
       caseDataUpdate: {
-        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
-        defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
-        respondToClaimAdmitPartLRspec: {
-
-        },
+        respondent1ClaimResponseTypeForSpec: typeOfResponse === 'FULL_ADMISSION' ? 'FULL_ADMISSION' : 'FULL_DEFENCE',
+        ...(typeOfResponse === 'FULL_ADMISSION' || typeOfResponse === 'PART_ADMISSION'? {
+          defenceAdmitPartPaymentTimeRouteRequired: 'IMMEDIATELY',
+        }: {}),
+        respondToClaimAdmitPartLRspec: typeOfResponse === 'FULL_ADMISSION' ? {
+          whenWillThisAmountBePaid: '2020-01-01'
+        } : {},
         responseClaimMediationSpecRequired: 'No',
         specAoSApplicantCorrespondenceAddressRequired: 'No',
         totalClaimAmount: totalClaimAmount,
@@ -299,8 +302,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {
@@ -451,8 +454,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'court',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ'
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
           }
         },
         respondent1DQWitnesses: {

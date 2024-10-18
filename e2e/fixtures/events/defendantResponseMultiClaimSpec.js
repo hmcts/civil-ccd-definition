@@ -42,12 +42,14 @@ module.exports = {
           },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent1DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'non-electric directions'
             }
           },
           DisclosureReport: {
@@ -72,6 +74,19 @@ module.exports = {
               court: 'WELSH',
               documents: 'WELSH'
             }
+          },
+          DraftDirections: {
+            respondent1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
           },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
@@ -214,6 +229,19 @@ module.exports = {
               documents: 'ENGLISH'
             }
           },
+          HearingLRspec: {
+            respondent1DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
+          DraftDirections: {
+            respondent1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
           RequestedCourtLocationLRspec: {
             respondToCourtLocation: {
               responseCourtLocations: {
@@ -327,25 +355,40 @@ module.exports = {
           },
           DisclosureOfElectronicDocumentsLRspec: {
             specRespondent2DQDisclosureOfElectronicDocuments: {
-              reachedAgreement: 'Yes'
+              reachedAgreement: 'No',
+              agreementLikely: 'No',
+              reasonForNoAgreement: 'Defendant 2 Reasons'
             }
           },
           DisclosureOfNonElectronicDocumentsLRspec: {
             specRespondent2DQDisclosureOfNonElectronicDocuments: {
-              bespokeDirections: 'directions'
+              bespokeDirections: 'Defendant 2 non-electric directions'
             }
           },
           DisclosureReport: {
             respondent2DQDisclosureReport: {
               disclosureFormFiledAndServed: 'Yes',
               disclosureProposalAgreed: 'Yes',
-              draftOrderNumber: '123'
+              draftOrderNumber: 'def2:123'
             }
           },
           Language: {
             respondent2DQLanguage: {
               court: 'WELSH',
               documents: 'WELSH'
+            }
+          },
+          HearingLRspec: {
+            respondent2DQHearing: {
+              hearingLength: 'ONE_DAY',
+              unavailableDatesRequired: 'No'
+            },
+          },
+          DraftDirections: {
+            respondent2DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
             }
           },
           RequestedCourtLocationLRspec: {

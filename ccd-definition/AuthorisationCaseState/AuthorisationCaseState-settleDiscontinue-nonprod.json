@@ -1,0 +1,48 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CLOSED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_SETTLED",
+    "UserRoles": [
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE"
+    ],
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "CASE_DISCONTINUED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseStateID": "DECISION_OUTCOME",
+    "UserRoles": [
+      "APP-SOL-UNSPEC-PROFILE",
+      "APP-SOL-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  }
+]

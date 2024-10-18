@@ -1,4 +1,4 @@
-// in this file you can append custom step methods to 'I' object
+  // in this file you can append custom step methods to 'I' object
 
 const output = require('codeceptjs').output;
 
@@ -152,7 +152,7 @@ const manageDefendant1 = require('./pages/manageContactInformation/manageDefenda
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
-const CASE_HEADER = 'ccd-case-header > h1';
+const CASE_HEADER = 'ccd-markdown >> h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const CLAIMANT_NAME = 'Test Inc';
@@ -763,6 +763,10 @@ module.exports = function () {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
     },
+    async clickHearingHyperLinkOrButton(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.forceClick(element), urlBefore);
+    },
 
     async getCaseId(){
       console.log(`case created: ${caseId}`);
@@ -820,7 +824,7 @@ module.exports = function () {
      * @param maxNumberOfTries - maximum number to retry the function for before failing
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
-    async retryUntilExists(action, locator, maxNumberOfTries = 6) {
+    async retryUntilExists(action, locator, maxNumberOfTries = 3) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
@@ -1026,6 +1030,73 @@ module.exports = function () {
       await this.waitForSelector('.ccd-dropdown');
     },
 
+    async navigateToCaseDetailsForSettleThisClaim(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLOptionsForSettlement`);
+      }, SIGNED_IN_SELECTOR);
+
+     await this.waitForSelector('#settlementSummary');
+    },
+    async navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#settleReason-JUDGE_ORDER');
+    },
+
+    async navigateToCaseDetailsForDiscontinueThisClaim(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTCourtPermission`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#courtPermissionNeeded-YES');
+    },
+    async navigateToCaseDetailsForDiscontinueThisClaim2v1(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#claimantWhoIsDiscontinuing');
+    },
+    async navigateToCaseDetailsForValidateDiscontinuance(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANTValidateDiscontinuance`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#confirmOrderGivesPermission-YES');
+    },
+    async navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#caseNote');
+    },
     async navigateToCaseDetailsForDR(caseNumber) {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
@@ -1180,7 +1251,8 @@ module.exports = function () {
     async updateHearing() {
       eventName = 'Update Hearing';
       await this.triggerStepsWithScreenshot([
-        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.clickOnViewEditHearing(),
+        () => updateHearingPage.clickOnEditHearing(),
         () => updateHearingPage.updateHearingValues(),
         () => updateHearingPage.submitUpdatedHearing(),
         () => updateHearingPage.verifyUpdatedHearingDetails()

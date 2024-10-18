@@ -479,5 +479,26 @@
     "ListElementCode": "generalAppHearingDate.hearingScheduledPreferenceYesNoLabel",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "isGaApplicantLip",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "isGaRespondentOneLip",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
+    "ListElementCode": "isGaRespondentTwoLip",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
   }
 ]

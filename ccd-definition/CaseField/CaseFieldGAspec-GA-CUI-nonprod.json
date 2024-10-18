@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppAskForCosts",
+    "Label": "Ask For Costs",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "generalAppHelpWithFees",
+    "Label": " ",
+    "FieldType": "HelpWithFees",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

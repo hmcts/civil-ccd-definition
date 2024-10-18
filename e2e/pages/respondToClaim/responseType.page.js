@@ -31,7 +31,7 @@ module.exports = {
   }),
 
   async selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     if(defendant1Response) {
       await this.inputResponse(this.fields('respondent1').respondentClaimResponseType, defendant1Response);
     }

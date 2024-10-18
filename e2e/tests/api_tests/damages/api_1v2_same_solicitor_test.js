@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
+ 
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 
 
-Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod');
+Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
