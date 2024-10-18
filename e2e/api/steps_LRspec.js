@@ -1562,7 +1562,7 @@ module.exports = {
 
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
 
-    await assertSubmittedEvent('CLOSED', {
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);
