@@ -16,8 +16,8 @@ export default defineConfig({
           {
             outputFolder:
               process.env.FUNCTIONAL === 'true'
-                ? 'allure-functional-results'
-                : 'allure-bootstrap-results',
+                ? 'playwright-allure-functional-results'
+                : 'playwright-allure-bootstrap-results',
             environmentInfo: {
               Environment: config.environment,
               Workers: process.env.WORKERS,

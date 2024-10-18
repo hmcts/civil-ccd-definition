@@ -49,7 +49,7 @@ void publishBootstrapReport() {
             allowMissing: true,
             alwaysLinkToLastBuild: true,
             keepAll: true,
-            reportDir: 'allure-bootstrap-report',
+            reportDir: 'playwright-allure-bootstrap-report',
             reportFiles: 'index.html',
             reportName: 'Allure Bootstrap Report'
         ])
@@ -60,7 +60,7 @@ void publishBootstrapReport() {
             allowMissing: true,
             alwaysLinkToLastBuild: true,
             keepAll: true,
-            reportDir: 'allure-functional-report',
+            reportDir: 'playwright-allure-functional-report',
             reportFiles: 'index.html',
             reportName: 'Allure Functional Report'
         ])
@@ -93,8 +93,6 @@ withNightlyPipeline(type, product, component) {
   env.CCD_UI_TESTS = true
   loadVaultSecrets(secrets)
 
-  enableFullFunctionalTest(200)
-
   boolean playwrightSetupPassed=true
   boolean flowInterrupted = false
 
@@ -116,7 +114,7 @@ withNightlyPipeline(type, product, component) {
       }
     }
 
-    stage('Playwright/Codecept full functional test') {
+    stage('Playwright and Codecept full functional test') {
       try {
         if(flowInterrupted) {
           throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
