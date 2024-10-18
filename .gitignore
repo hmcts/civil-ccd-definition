@@ -51,7 +51,7 @@ charts/civil-ccd/Chart.lock
 playwright/.cache/
 
 # Playwright
-test-results/
+playwright-test-results/
 allure-results/
 allure-functional-results/
 allure-bootstrap-results/
