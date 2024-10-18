@@ -67,7 +67,25 @@ module.exports = {
   dateTime: (days = 0) => {
     return getDateTimeISOString(days);
   },
-
+  incrementDate: (date = new Date(), dayIncrement, monthIncrement, yearIncrement) => {
+    const newDate = new Date(date);
+    if(dayIncrement) {
+      newDate.setDate(newDate.getDate() + dayIncrement);
+    }
+    if(monthIncrement) {
+      newDate.setMonth(newDate.getMonth() + monthIncrement);
+    }
+    if(yearIncrement) {
+      newDate.setYear(newDate.getFullYear() + yearIncrement);
+    }
+    return newDate;
+  },
+  appendTime: (date = new Date(), hours, minutes) => {
+    const newDate = new Date(date);
+    newDate.setHours(hours ? hours : date.getHours());
+    newDate.setMinutes(minutes ? minutes : date.getMinutes());
+    return newDate;
+  },
   document: filename => {
     const documentId = uuid.v1();
     return {

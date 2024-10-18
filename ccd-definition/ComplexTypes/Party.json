@@ -174,7 +174,7 @@
     "FieldType": "Email",
     "ElementLabel": "Email",
     "SecurityClassification": "Public",
-    "Max": "40",
+    "Max": "320",
     "Searchable": "N",
     "RetainHiddenValue": "Y"
   },

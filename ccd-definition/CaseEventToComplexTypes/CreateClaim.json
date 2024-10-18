@@ -498,7 +498,7 @@
     "ListElementCode": "medicalReport",
     "DisplayContext": "OPTIONAL",
     "FieldDisplayOrder": 4,
-    "FieldShowCondition": "claimType=\"CLINICAL_NEGLIGENCE\" OR claimType=\"PERSONAL_INJURY\"",
+    "FieldShowCondition": "claimTypeUnSpec=\"CLINICAL_NEGLIGENCE\" OR claimTypeUnSpec=\"PERSONAL_INJURY\"",
     "Comment": "medicalreports.document is just the document input,so this must be defined to hide the whole element"
   },
   {

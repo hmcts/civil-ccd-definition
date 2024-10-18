@@ -70,5 +70,13 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "RespondentLiPResponse",
+    "ListElementCode": "respondent1DQEvidenceConfirmDetails",
+    "ElementLabel": " ",
+    "FieldType": "EvidenceConfirmYourDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
