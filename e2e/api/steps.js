@@ -14,10 +14,11 @@ const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
+const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, COSC} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -39,8 +40,10 @@ const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/ca
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
 
+
 const data = {
   INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
+  INITIATE_GENERAL_APPLICATION_LR: genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
@@ -883,7 +886,9 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName, caseId);
 
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
+    var isCOSCEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
+    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
     const responseBody = await response.json();
     assert.equal(response.status, 201);
     assert.equal(responseBody.state, expectedState);
