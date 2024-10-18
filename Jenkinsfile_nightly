@@ -51,7 +51,7 @@ void publishBootstrapReport() {
             keepAll: true,
             reportDir: 'playwright-allure-bootstrap-report',
             reportFiles: 'index.html',
-            reportName: 'Allure Bootstrap Report'
+            reportName: 'Playwright Allure Bootstrap Report'
         ])
   }
 
@@ -62,7 +62,7 @@ void publishBootstrapReport() {
             keepAll: true,
             reportDir: 'playwright-allure-functional-report',
             reportFiles: 'index.html',
-            reportName: 'Allure Functional Report'
+            reportName: 'Playwright Allure Functional Report'
         ])
   }
 
@@ -97,18 +97,23 @@ withNightlyPipeline(type, product, component) {
   boolean flowInterrupted = false
 
   afterAlways('DependencyCheckNightly') {
-    if(env.PLAYWRIGHT_RUN_SETUP) {
-      stage('Playwright test setup') {
-        try {
-          yarnBuilder.yarn('test:playwright-setup:install')
+    
+    stage('Playwright test setup') {
+      try {
+        yarnBuilder.yarn('test:playwright-setup:install')
+        if(env.PLAYWRIGHT_RUN_SETUP) {
           yarnBuilder.yarn('test:playwright-setup:ci')
-        } catch (Exception error) {
-          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-            flowInterrupted = true
-          }
+        }
+      } catch (Exception error) {
+        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+          flowInterrupted = true
+        }
+        if(env.PLAYWRIGHT_RUN_SETUP) {
           playwrightSetupPassed=false
-          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-        } finally {
+        }
+        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+      } finally {
+        if(env.PLAYWRIGHT_RUN_SETUP) {
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
         }
       }
