@@ -92,6 +92,19 @@ Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
 }).retry(3);
 
+Scenario('Stay the case', async ({LRspec}) => {
+  await LRspec.stayCase();
+}).retry(3);
+
+Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
+  await LRspec.manageStay('REQ_UPDATE', 'HEARING_READINESS');
+}).retry(3);
+
+Scenario('Lift the stay case - Manage stay', async ({LRspec}) => {
+  await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
+}).retry(3);
+
+
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {
   await LRspec.login(config.adminUser);
