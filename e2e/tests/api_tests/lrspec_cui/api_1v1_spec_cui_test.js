@@ -19,6 +19,13 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'Small
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
+async function prepareClaimLiPvLiPMintiTrack(api_spec_cui, carmEnabled, claimType = 'INTERMEDIATE') {
+  let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
+  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, carmEnabled, '', true);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
+  await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
+}
+
 async function prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, carmEnabled) {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'Request for reconsideration track', carmEnabled);
@@ -30,8 +37,8 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', asy
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled', async ({api_spec_cui}) => {
-  await prepareClaimLiPvLiP(api_spec_cui, true);
+Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
+  await prepareClaimLiPvLiPMintiTrack(api_spec_cui, true);
 });
 
 Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
