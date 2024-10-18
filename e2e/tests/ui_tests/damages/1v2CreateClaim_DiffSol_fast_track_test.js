@@ -123,7 +123,7 @@ Scenario('Stay the case', async ({I}) => {
 }).retry(3);
 
 Scenario('Request update on the stay case - Manage stay', async ({I}) => {
-  await I.manageStay('REQ_UPDATE', 'JUDICIAL_REFERRAL');
+  await I.manageStay('REQ_UPDATE');
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 

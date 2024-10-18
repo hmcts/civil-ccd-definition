@@ -7,6 +7,7 @@ const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
+const stayAndLiftCasePage = require('./pages/stayAndLiftCase/stayAndLiftCase.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
@@ -742,7 +743,7 @@ module.exports = function () {
       ]);
       if (manageStayType == 'REQ_UPDATE')  {
         await this.triggerStepsWithScreenshot([
-          () => stayAndLiftCasePage.verifyReqUpdateSteps(caseState),
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
           () => event.submit('Submit', 'You have requested an update on'),
           () => this.waitForText('All parties have been notified'),
           () => event.returnToCaseDetails(),

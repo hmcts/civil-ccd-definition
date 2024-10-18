@@ -917,7 +917,7 @@ module.exports = function () {
       ]);
       if (manageStayType == 'REQ_UPDATE')  {
         await this.triggerStepsWithScreenshot([
-          () => stayAndLiftCasePage.verifyReqUpdateSteps(caseState),
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
           () => event.submit('Submit', 'You have requested an update on'),
           () => this.waitForText('All parties have been notified'),
           () => event.returnToCaseDetails(),

@@ -100,7 +100,7 @@ Scenario('Stay the case', async ({LRspec}) => {
 }).retry(3);
 
 Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
-  await LRspec.manageStay('REQ_UPDATE', 'HEARING_READINESS');
+  await LRspec.manageStay('REQ_UPDATE');
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
