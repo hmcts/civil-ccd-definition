@@ -122,7 +122,7 @@ withNightlyPipeline(type, product, component) {
           throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
         }
         if(playwrightSetupPassed) {
-          yarnBuilder.yarn('concurrently \'yarn test:codecept-nightly:ci\' \'yarn test:playwright-nightly:ci\'')
+          yarnBuilder.yarn('test:fullfunctional')
         } else {
           yarnBuilder.yarn('test:codecept-nightly:ci')
         }
