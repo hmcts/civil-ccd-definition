@@ -1,9 +1,9 @@
 [
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
-    "Name": "check if is paid in full",
-    "Description": "Trigger event to check if paid in full",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_APPLICATION_PROCEED_OFFLINE_CLAIMANT",
+    "Name": "Create Claimant Notice",
+    "Description": "Create Claimant Dashboard Notification for application case proceed offline",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -14,9 +14,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_CLAIMANT",
-    "Name": "Claimant not mark paid full",
-    "Description": "Claimant Dashboard Notice not mark paid in full",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_APPLICATION_PROCEED_OFFLINE_DEFENDANT",
+    "Name": "Create Defendant Notice",
+    "Description": "Create Defendant Dashboard Notification for application case proceed offline",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -24,5 +24,5 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
- }
+  }
 ]
