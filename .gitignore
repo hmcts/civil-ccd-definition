@@ -53,11 +53,9 @@ playwright/.cache/
 # Playwright
 playwright-test-results/
 allure-results/
-allure-functional-results/
-allure-bootstrap-results/
+playwright-allure-functional-results/
+playwright-allure-bootstrap-results/
 allure-report/
-allure-functional-report/
-allure-bootstrap-report/
 playwright-report/
 /playwright-e2e/fixtures/.users/
 /playwright-e2e/fixtures/.user-cookies/
