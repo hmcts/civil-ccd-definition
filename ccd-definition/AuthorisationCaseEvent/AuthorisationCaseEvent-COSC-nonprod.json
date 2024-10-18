@@ -41,5 +41,17 @@
         "CRUD": "CRU"
       }
     ]
-  }
+  },
+  {
+   "CaseTypeID": "CIVIL",
+   "CaseEventID": "DB_NOTIFY_COSC_GEN_FOR_DEFENDANT",
+   "AccessControl": [
+     {
+       "UserRoles": [
+         "caseworker-civil-systemupdate"
+       ],
+       "CRUD": "CRU"
+     }
+   ]
+ }
 ]
