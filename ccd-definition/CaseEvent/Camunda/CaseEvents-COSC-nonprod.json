@@ -25,7 +25,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
-    {
+  {
     "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_DEFENDANT",
     "Name": "Defendant not mark paid full",
