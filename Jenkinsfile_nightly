@@ -51,7 +51,7 @@ void publishBootstrapReport() {
             keepAll: true,
             reportDir: 'playwright-allure-bootstrap-report',
             reportFiles: 'index.html',
-            reportName: 'Allure Bootstrap Report'
+            reportName: 'Playwright Allure Bootstrap Report'
         ])
   }
 
@@ -62,7 +62,7 @@ void publishBootstrapReport() {
             keepAll: true,
             reportDir: 'playwright-allure-functional-report',
             reportFiles: 'index.html',
-            reportName: 'Allure Functional Report'
+            reportName: 'Playwright Allure Functional Report'
         ])
   }
 
