@@ -1,0 +1,13 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "BusinessProcess",
+    "TabLabel": "Business Process",
+    "TabDisplayOrder": 31,
+    "CaseFieldID": "businessProcess",
+    "UserRoles": [
+      "caseworker-civil-admin"
+    ],
+    "TabFieldDisplayOrder": 1
+  }
+]
