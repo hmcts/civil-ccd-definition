@@ -1,8 +1,8 @@
 import { AllMethodsStep } from '../../decorators/test-steps';
-import User from '../../types/user';
+import User from '../../models/user';
 import BaseApiSteps from '../../base/base-api-steps';
 import RequestsFactory from '../../requests/requests-factory';
-import TestData from '../../types/test-data';
+import TestData from '../../models/test-data';
 import UserStateHelper from '../../helpers/users-state-helper';
 
 @AllMethodsStep()
@@ -12,16 +12,14 @@ export default class ApiUsersSteps extends BaseApiSteps {
   }
 
   async SetupUsersData(users: User[]) {
-    const { idamRequests } = this.requestsFactory;
     for (const user of users) {
-      await idamRequests.getUserData(user);
+      await this.setupUserData(user);
     }
     UserStateHelper.addUsersToState(users);
   }
 
   async SetupUserData(user: User) {
-    const { idamRequests } = this.requestsFactory;
-    await idamRequests.getUserData(user);
+    await this.setupUserData(user);
     UserStateHelper.addUserToState(user);
   }
 }
