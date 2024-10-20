@@ -96,13 +96,14 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightSetupPassed=true
   boolean flowInterrupted = false
 
-  afterAlways('DependencyCheckNightly') {
-    
+  enableFullFunctionalTest(200)
+
+  before('fullFunctionalTest') {
     stage('Playwright test setup') {
       try {
         yarnBuilder.yarn('test:playwright-setup:install')
         if(env.PLAYWRIGHT_RUN_SETUP) {
-          yarnBuilder.yarn('test:playwright-setup:ci')
+          yarnBuilder.yarn('test:playwright-e2e-setup:ci')
         }
       } catch (Exception error) {
         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
@@ -114,20 +115,19 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(env.PLAYWRIGHT_RUN_SETUP) {
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
         }
       }
     }
 
-    stage('Playwright and Codecept full functional test') {
+    stage('Playwright full functional test') {
       try {
         if(flowInterrupted) {
           throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
         }
         if(playwrightSetupPassed) {
-          yarnBuilder.yarn('test:fullfunctional')
-        } else {
-          yarnBuilder.yarn('test:codecept-nightly:ci')
+          yarnBuilder.yarn('test:playwright-e2e-nightly:ci')
         }
       } catch (Exception error) {
         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
@@ -136,25 +136,30 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(playwrightSetupPassed) {
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-functional:generate-report')
           publishFunctionalReport()
         }
-        archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
       }
     }
 
     if(env.PLAYWRIGHT_RUN_SETUP) {
       stage('Playwright test teardown') {
         try {
-          yarnBuilder.yarn('test:playwright-teardown:ci')
+          yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
       }
     }
+  }
+
+  afterAlways('fullFunctionalTest') {
+    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
 
