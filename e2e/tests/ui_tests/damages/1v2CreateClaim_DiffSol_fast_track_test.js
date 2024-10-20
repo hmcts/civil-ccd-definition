@@ -148,6 +148,3 @@ Scenario('Transfer online case', async ({I}) => {
     await I.transferOnlineCase();
 }).retry(3);
 
-AfterSuite(async  () => {
-  await unAssignAllUsers();
-});
