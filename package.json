@@ -72,7 +72,7 @@
     "test:playwright-teardown:users-auth:ci": "npx playwright test --project users-auth-teardown --pass-with-no-tests --no-deps",
     "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"test:playwright-teardown:users-auth:ci\" \"ts-node ./playwright-e2e/global/teardown-ci\"",
     "test:playwright-debug:local": "npx playwright test --grep @debug",
-    "test:playwright-e2e-functional:local": "npx playwright test --project e2e-full-functional",
+    "test:playwright-e2e:local": "npx playwright test --project e2e-full-functional",
     "test:codecept-e2e-nightly:ci": "MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
     "test:fullfunctional": "concurrently \"yarn test:codecept-nightly:ci\" \"yarn test:playwright-nightly:ci\"",
     "test:e2e-nightly-prod": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
