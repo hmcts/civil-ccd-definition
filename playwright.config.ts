@@ -65,7 +65,7 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/auth/**.teardown.ts',
     },
     {
-      name: 'full-functional',
+      name: 'e2e-full-functional',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['users-auth-setup'],
     },
