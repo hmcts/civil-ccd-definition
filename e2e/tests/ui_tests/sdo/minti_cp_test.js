@@ -10,7 +10,7 @@ const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
 let civilCaseReference;
 
-Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @e2e-nightly-nonprod');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');
 
 Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
