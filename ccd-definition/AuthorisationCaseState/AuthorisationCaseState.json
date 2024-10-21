@@ -306,7 +306,6 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-wa-task-configuration",
-          "caseworker-civil-admin",
           "caseflags-admin"
         ],
         "CRUD": "CRU"
