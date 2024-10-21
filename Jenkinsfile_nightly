@@ -96,9 +96,7 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightSetupPassed=true
   boolean flowInterrupted = false
 
-  enableFullFunctionalTest(200)
-
-  before('fullFunctionalTest') {
+  afterAlways('DependencyCheckNightly') {
     stage('Playwright test setup') {
       try {
         yarnBuilder.yarn('test:playwright-setup:install')
@@ -154,6 +152,8 @@ withNightlyPipeline(type, product, component) {
       }
     }
   }
+
+  enableFullFunctionalTest(200)
 
   afterAlways('fullFunctionalTest') {
     archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
