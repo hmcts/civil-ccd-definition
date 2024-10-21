@@ -115,7 +115,6 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(env.PLAYWRIGHT_RUN_SETUP) {
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
         }
       }
@@ -136,7 +135,6 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(playwrightSetupPassed) {
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-functional:generate-report')
           publishFunctionalReport()
         }
@@ -150,7 +148,6 @@ withNightlyPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          archiveArtifacts allowEmptyArchive: true, artifacts: 'playwright-test-results/**/*'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
