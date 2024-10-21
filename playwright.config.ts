@@ -3,14 +3,12 @@ import config from './playwright-e2e/config/config';
 
 export default defineConfig({
   testDir: './playwright-e2e/tests',
-  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
+  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown',
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   workers: 5,
-  reporter: process.env.CI
-    ? 'html'
-    : 'list',
+  reporter: process.env.CI ? 'html' : 'list',
   timeout: 360_000,
   expect: {
     timeout: 30_000,
@@ -29,8 +27,26 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'users-setup',
+      testMatch: '**playwright-e2e/tests/bootstrap/users/**.setup.ts',
+      retries: 0,
+    },
+    {
+      name: 'users-auth-setup',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**playwright-e2e/tests/bootstrap/auth/**.setup.ts',
+      dependencies: ['users-setup'],
+      teardown: 'users-auth-teardown',
+    },
+    {
+      name: 'users-auth-teardown',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**playwright-e2e/tests/bootstrap/auth/**.teardown.ts',
+    },
+    {
       name: 'full-functional',
       use: { ...devices['Desktop Chrome'] },
+      dependencies: ['users-auth-setup'],
     },
   ],
 });

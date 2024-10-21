@@ -28,6 +28,7 @@ declare global {
       RUN_ACCESSIBILITY_TESTS: string;
       S2S_SECRET: string;
       XUI_S2S_SECRET: string;
+      RUN_SETUP: string;
     }
   }
 }

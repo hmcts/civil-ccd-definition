@@ -1,18 +1,18 @@
 import 'dotenv/config';
-import '../enums/environment'
 import Environment from '../enums/environment';
 
 const config = {
   environment: Environment[process.env.ENVIRONMENT] as Environment,
   idamStudEnabled: process.env.IDAM_STUB_ENABLED === 'true',
+  runSetup: process.env.RUN_SETUP === 'true',
   runAxeTests: process.env.RUN_ACCESSIBILITY_TESTS === 'true',
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
   },
   s2sForXUI: {
     microservice: 'xui_webapp',
-    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH',
   },
   definition: {
     jurisdiction: 'CIVIL',
@@ -25,6 +25,6 @@ const config = {
     actionTimeout: 25_000,
     showBrowserWindow: process.env.SHOW_BROWSER_WINDOW === 'true',
   },
-}
+};
 
 export default config;
