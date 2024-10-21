@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
     "Name": "check if is paid in full",
     "Description": "Trigger event to check if paid in full",

@@ -75,7 +75,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "subTitleHwfDetails",
     "AccessControl": [
       {
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimIssuedHwfDetails",
     "AccessControl": [
       {
