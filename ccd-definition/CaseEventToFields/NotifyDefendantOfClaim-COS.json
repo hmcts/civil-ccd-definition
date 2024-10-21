@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "defendant1LIPAtClaimIssued",
     "PageFieldDisplayOrder": 2,
@@ -23,7 +23,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "defendant2LIPAtClaimIssued",
     "PageFieldDisplayOrder": 3,
@@ -34,7 +34,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "defendantSolicitorNotifyClaimOptions",
     "PageFieldDisplayOrder": 4,
@@ -45,7 +45,7 @@
     "PageShowCondition": "respondent2SameLegalRepresentative=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "respondent1",
     "PageFieldDisplayOrder": 5,
@@ -56,7 +56,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "respondent2",
     "PageFieldDisplayOrder": 6,
@@ -67,7 +67,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "notifyClaimLabel",
     "PageFieldDisplayOrder": 1,
@@ -78,7 +78,7 @@
     "PageShowCondition": "defendant1LIPAtClaimIssued=\"No\" OR defendant2LIPAtClaimIssued=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabel",
     "PageFieldDisplayOrder": 2,
@@ -89,7 +89,7 @@
     "FieldShowCondition": "notifyClaimLabel=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelDef1",
     "PageFieldDisplayOrder": 3,
@@ -100,7 +100,7 @@
     "PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelForClaimant1_1",
     "PageFieldDisplayOrder": 4,
@@ -111,7 +111,7 @@
     "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelForDefendant1",
     "PageFieldDisplayOrder": 5,
@@ -122,7 +122,7 @@
     "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant1",
     "PageFieldDisplayOrder": 6,
@@ -136,7 +136,7 @@
     "_PageShowCondition": "defendant1LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelDef2",
     "PageFieldDisplayOrder": 2,
@@ -147,7 +147,7 @@
     "PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelForClaimant1_2",
     "PageFieldDisplayOrder": 3,
@@ -158,7 +158,7 @@
     "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosLabelForDefendant2",
     "PageFieldDisplayOrder": 4,
@@ -169,7 +169,7 @@
     "_PageShowCondition": "defendant2LIPAtClaimIssued=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "CaseFieldID": "cosNotifyClaimDefendant2",
     "PageFieldDisplayOrder": 5,

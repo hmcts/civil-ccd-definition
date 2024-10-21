@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT1",
     "Name": "Notify Set Aside Judgement",
     "Description": "Send Set Aside Judgment In Error Letter to LiP Defendant 1",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_DJ_FORM_NON_DIVERGENT_SPEC_CLAIMANT",
     "Name": "DJ form spec claimant",
     "Description": "Generate DJ form non divergent spec claimant",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_DJ_FORM_NON_DIVERGENT_SPEC_DEFENDANT",
     "Name": "DJ form spec claimant",
     "Description": "Generate DJ form non divergent spec defendant",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
     "Name": "DJ Non Divergent Defendant",
     "Description": "DJ Non-Divergent PIN in Letter for LiP Defendant1",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_JO_DEFENDANT1_PIN_IN_LETTER",
     "Name": "Notify Record Judgement",
     "Description": "Send Record Judgment Determination Of Means Letter to LiP Defendant 1",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT1",
     "Name": "Post DJ letter defendant1",
     "Description": "Post DJ letter defendant 1 Legal Org",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT2",
     "Name": "Post DJ letter defendant2",
     "Description": "Post DJ letter defendant 2 Legal Org",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "JUDGMENT_BY_ADMISSION_DEFENDANT1_PIN_IN_LETTER",
     "Name": "Notify Judgment By Admission",
     "Description": "Send Judgment By Admission Letter to LiP Defendant 1",
@@ -104,7 +104,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_JUDGMENT_BY_ADMISSION_DOC_CLAIMANT",
     "Name": "Claimant judgment admission",
     "Description": "Generate Judgment by admission doc",
@@ -117,7 +117,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_DEFENDANT",
     "Name": "Judgment by determination res",
     "Description": "Gen Judgment By determination defendant",
@@ -130,7 +130,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_CLAIMANT",
     "Name": "Judgment by determination app",
     "Description": "Gen Judgment By determination claimant",
@@ -143,7 +143,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "GEN_JUDGMENT_BY_ADMISSION_DOC_DEFENDANT",
   "Name": "Defendant Judgment admission",
   "Description": "Generate Judgment by admission doc",

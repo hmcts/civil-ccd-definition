@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "respondent1Represented",
     "PageFieldDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "FieldShowCondition": "applicant1Represented = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -22,7 +22,7 @@
     "FieldShowCondition": "respondent1Represented = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "amendPartyDetailsLabel",
     "PageFieldDisplayOrder": 1,
@@ -33,7 +33,7 @@
     "FieldShowCondition": "respondent1Represented = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "respondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 2,
@@ -45,7 +45,7 @@
     "FieldShowCondition": "respondent1Represented = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "applicantSolicitor1UserDetails",
     "PageFieldDisplayOrder": 3,

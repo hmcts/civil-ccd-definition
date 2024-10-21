@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_LIP_CLAIM",
     "CaseFieldID": "helpWithFees",
     "PageFieldDisplayOrder": 1,
@@ -10,7 +10,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_LIP_DEFENDANT_CLAIM_FORM_SPEC",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 2,
@@ -20,7 +20,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "PageFieldDisplayOrder": 3,
@@ -30,7 +30,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 4,
@@ -40,7 +40,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1DQHearingSupport",
     "PageFieldDisplayOrder": 5,
@@ -50,7 +50,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 6,
@@ -60,7 +60,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 8,
@@ -70,7 +70,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 9,
@@ -80,7 +80,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 10,
@@ -90,7 +90,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 11,
@@ -100,7 +100,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 12,
@@ -110,7 +110,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "PageFieldDisplayOrder": 13,
@@ -120,7 +120,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "PageFieldDisplayOrder": 14,
@@ -130,7 +130,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "PageFieldDisplayOrder": 15,
@@ -140,7 +140,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "PageFieldDisplayOrder": 16,
@@ -150,7 +150,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "CaseFieldID": "applicant1LiPResponse",
     "PageFieldDisplayOrder": 17,
@@ -160,7 +160,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "claimType",
     "PageFieldDisplayOrder": 18,
@@ -170,7 +170,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "CaseFieldID": "claimType",
     "PageFieldDisplayOrder": 19,
@@ -180,7 +180,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "claimType",
     "PageFieldDisplayOrder": 20,
@@ -190,7 +190,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 21,
@@ -200,7 +200,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 2,
@@ -210,7 +210,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageFieldDisplayOrder": 22,
@@ -220,7 +220,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "respondent1DQLanguage",
     "PageFieldDisplayOrder": 23,
@@ -230,7 +230,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageFieldDisplayOrder": 24,
@@ -240,7 +240,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 25,

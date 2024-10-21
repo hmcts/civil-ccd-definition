@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_CLAIM_ISSUE",
     "Name": "Issue claim",
     "Description": "Issue claim",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_PAYMENT_FAILED",
     "Name": "Payment failed",
     "Description": "Payment failed",
@@ -25,7 +25,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "Name": "Proceed in heritage system",
     "Description": "Proceed in heritage system",
@@ -39,7 +39,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_FULL_DEFENCE",
     "Name": "Full defence",
     "Description": "Full defence",
@@ -51,7 +51,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "JUDICIAL_REFERRAL",
     "Name": "Claim is moved onto judges",
     "Description": "Claim is moved onto judges",
@@ -65,7 +65,7 @@
     "publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UpdateNextHearingInfo",
     "Name": "Update Next Hearing Scheduler",
     "Description": "Automated process: Synchronising next hearing details.",
@@ -81,7 +81,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 3
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UPDATE_NEXT_HEARING_DETAILS",
     "Name": "Update Next Hearing (HMC)",
     "Description": "Reading message off HMC Service bus.",
@@ -95,7 +95,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 3
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_CVP_JOIN_LINK",
     "Name": "Send Join Link",
     "Description": "Triggered when hearing is in an EXCEPTION state",
@@ -113,7 +113,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "REVIEW_HEARING_EXCEPTION",
     "Name": "Review hearing exception",
     "Description": "Triggered when hearing is in an EXCEPTION state",

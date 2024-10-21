@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "finalOrderMadeRadioListLabel",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": "#### Enter date(s) of hearing",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "finalOrderMadeRadioList",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "singleDateSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
@@ -29,7 +29,7 @@
     "FieldShowCondition": "finalOrderMadeRadioList=\"SINGLE_DATE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "dateRangeSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",
@@ -40,7 +40,7 @@
   },
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "bespokeRangeSelection",
     "ID": "FinalOrderMadeDatesDropdown",
     "ElementLabel": " ",

@@ -2,7 +2,7 @@
   {
     "LiveFrom":"",
     "LiveTo": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "respondent1.partyName",
     "SearchPartyEmailAddress": "respondentSolicitor1EmailAddress",
@@ -14,7 +14,7 @@
   {
     "LiveFrom":"",
     "LiveTo": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "respondent2.partyName",
     "SearchPartyEmailAddress": "respondentSolicitor2EmailAddress",
@@ -26,7 +26,7 @@
   {
     "LiveFrom":"",
     "LiveTo": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "applicant1.partyName",
     "SearchPartyEmailAddress": "applicantSolicitor1UserDetails.email",
@@ -38,7 +38,7 @@
   {
     "LiveFrom":"",
     "LiveTo": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "SearchPartyCollectionsFieldName": "",
     "SearchPartyName": "applicant2.partyName",
     "SearchPartyEmailAddress": "",

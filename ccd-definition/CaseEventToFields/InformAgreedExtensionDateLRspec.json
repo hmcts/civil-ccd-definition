@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INFORM_AGREED_EXTENSION_DATE_SPEC",
     "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
     "PageFieldDisplayOrder": 1,

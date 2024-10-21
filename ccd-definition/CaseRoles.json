@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[APPLICANTSOLICITORONE]",
     "Name": "Applicant Solicitor 1",
     "Description": "Applicant Solicitor 1 role",
@@ -8,7 +8,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[APPLICANTSOLICITORTWO]",
     "Name": "Applicant Solicitor 2",
     "Description": "Applicant Solicitor 2 role",
@@ -16,7 +16,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[RESPONDENTSOLICITORONE]",
     "Name": "Respondent Solicitor 1",
     "Description": "Respondent Solicitor 1 role",
@@ -24,7 +24,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[RESPONDENTSOLICITORTWO]",
     "Name": "Respondent Solicitor 2",
     "Description": "Respondent Solicitor 2 role",
@@ -32,7 +32,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[CREATOR]",
     "Name": "Creator",
     "Description": "Creator of case",
@@ -40,7 +40,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[CLAIMANT]",
     "Name": "Citizen Claimant",
     "Description": "Citizen Claimant",
@@ -48,7 +48,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "[DEFENDANT]",
     "Name": "Citizen Defendant",
     "Description": "Citizen Defendant",

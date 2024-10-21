@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MANAGE_DOCUMENTS",
     "Name": "Manage Documents",
     "Description": "Manage Documents",
@@ -19,7 +19,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "asyncStitchingComplete",
     "Name": "Bundle Stitching Complete",
     "Description": "Bundle Stitching Complete",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT1_GENERIC_TEMPLATE",
     "Name": "Notify Applicant1 LIP",
     "Description": "Notify Applicant1 LIP",

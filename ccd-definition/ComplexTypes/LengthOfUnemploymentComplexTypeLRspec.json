@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "numberOfYearsInUnemployment",
     "ID": "LengthOfUnemploymentComplexTypeLRspec",
     "Label": " ",
@@ -18,7 +18,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "numberOfMonthsInUnemployment",
     "ID": "LengthOfUnemploymentComplexTypeLRspec",
     "Label": " ",

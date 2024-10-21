@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "flagLauncher",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "caseFlags",
     "PageLabel": " ",
@@ -25,7 +25,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant1",
     "PageLabel": " ",
@@ -38,7 +38,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant2",
     "PageLabel": " ",
@@ -51,7 +51,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1",
     "PageLabel": " ",
@@ -64,7 +64,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2",
     "PageLabel": " ",
@@ -77,7 +77,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant1LitigationFriend",
     "PageLabel": " ",
@@ -90,7 +90,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant2LitigationFriend",
     "PageLabel": " ",
@@ -103,7 +103,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1LitigationFriend",
     "PageLabel": " ",
@@ -116,7 +116,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2LitigationFriend",
     "PageLabel": " ",
@@ -129,7 +129,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicantWitnesses",
     "PageFieldDisplayOrder": 2,
@@ -142,7 +142,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicantExperts",
     "PageFieldDisplayOrder": 3,
@@ -155,7 +155,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1Witnesses",
     "PageFieldDisplayOrder": 4,
@@ -168,7 +168,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1Experts",
     "PageFieldDisplayOrder": 5,
@@ -181,7 +181,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2Witnesses",
     "PageFieldDisplayOrder": 6,
@@ -194,7 +194,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2Experts",
     "PageFieldDisplayOrder": 7,
@@ -207,7 +207,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant1LRIndividuals",
     "PageLabel": " ",
@@ -220,7 +220,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1LRIndividuals",
     "PageLabel": " ",
@@ -233,7 +233,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2LRIndividuals",
     "PageLabel": " ",
@@ -246,7 +246,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant1OrgIndividuals",
     "PageLabel": " ",
@@ -259,7 +259,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "applicant2OrgIndividuals",
     "PageLabel": " ",
@@ -272,7 +272,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent1OrgIndividuals",
     "PageLabel": " ",
@@ -285,7 +285,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_CASE_FLAGS",
     "CaseFieldID": "respondent2OrgIndividuals",
     "PageLabel": " ",
