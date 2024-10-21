@@ -5,14 +5,14 @@ import LoginPage from './login/login-page';
 
 export default class IdamFactory extends BasePageFactory {
   get loginPage() {
-    return new LoginPage(this.page, this.axeBuilder);
+    return new LoginPage(this.page);
   }
 
   get idamsCookiesBanner() {
-    return new IdamCookiesBanner(this.page, this.axeBuilder);
+    return new IdamCookiesBanner(this.page);
   }
 
   get createAccountPage() {
-    return new CreateAccountPage(this.page, this.axeBuilder);
+    return new CreateAccountPage(this.page);
   }
 }
