@@ -2,7 +2,7 @@ import test, { expect as baseExpect, Page } from '@playwright/test';
 import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
-import { PageResult } from '../../types/axe-results';
+import { PageResult } from '../../models/axe-results';
 
 export const expect = baseExpect
   .extend({
@@ -18,7 +18,7 @@ export const expect = baseExpect
         let pass = true;
         let screenshot: Buffer;
         const results = await axeBuilder.analyze();
-        const violations = results.violations;
+        const violations = violationFingerprints(results);
         if (violations.length > 0) {
           pass = false;
           screenshot = await page.screenshot({ fullPage: true });
@@ -27,14 +27,20 @@ export const expect = baseExpect
       }
 
       if (!pageResults.pass) {
-        if (pageResults.violationsInfo)
-          await testInfo.attach(pageResults.violationsInfo.fileName, {
-            path: pageResults.violationsInfo.filePath,
-          });
-        if (pageResults.screenshotInfo)
-          await testInfo.attach(pageResults.screenshotInfo.fileName, {
-            path: pageResults.screenshotInfo.filePath,
-          });
+        if (pageResults.violationsInfo) {
+          const violationsAttachmentExist = testInfo.attachments.some((attachment) => attachment.name === pageResults.violationsInfo.fileName);
+          if (!violationsAttachmentExist)
+            await testInfo.attach(pageResults.violationsInfo.fileName, {
+              path: pageResults.violationsInfo.filePath
+            });
+        }
+        if (pageResults.screenshotInfo) {
+          const screenshotAttachmentExists = testInfo.attachments.some((attachment) => attachment.name === pageResults.screenshotInfo.fileName);
+          if (!screenshotAttachmentExists)
+            await testInfo.attach(pageResults.screenshotInfo.fileName, {
+              path: pageResults.screenshotInfo.filePath
+            });
+        }
       }
 
       try {
@@ -45,16 +51,16 @@ export const expect = baseExpect
 
       const message = pageResults.pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${pageResults.violationsInfo.length} violation(s), please check attached file: ${pageResults.violationsInfo.fileName}, for more details.`;
@@ -64,7 +70,7 @@ export const expect = baseExpect
         pass: pageResults.pass,
         name: assertionName,
         expected: 0,
-        actual: matcherResult?.actual,
+        actual: matcherResult?.actual
       };
     },
 
@@ -75,7 +81,7 @@ export const expect = baseExpect
       let matcherResult: any;
 
       const results = await axeBuilder.analyze();
-      const violations = results.violations;
+      const violations = violationFingerprints(results);
 
       if (violations.length > 0) {
         pass = false;
@@ -95,12 +101,12 @@ export const expect = baseExpect
 
         await test.info().attach(violationsFileName, {
           body: JSON.stringify(violations, null, 2),
-          contentType: 'application/json',
+          contentType: 'application/json'
         });
         const screenshot = await page.screenshot({ fullPage: true });
         await test.info().attach(screenshotFileName, {
           body: screenshot,
-          contentType: 'image/png',
+          contentType: 'image/png'
         });
       }
 
@@ -112,16 +118,16 @@ export const expect = baseExpect
 
       const message = pass
         ? () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${this.isNot ? 'not ' : ''}${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with 0 violation(s)`
         : () =>
-          this.utils.matcherHint(assertionName, undefined, undefined, {
-            isNot: this.isNot,
-          }) +
+            this.utils.matcherHint(assertionName, undefined, undefined, {
+              isNot: this.isNot
+            }) +
             '\n\n' +
             `Expected: ${pageName} to have 0 violation(s)\n` +
             `Received: ${pageName} with ${violations.length} violation(s), please check attached file: ${violationsFileName}, for more details.`;
@@ -131,8 +137,18 @@ export const expect = baseExpect
         pass,
         name: assertionName,
         expected: 0,
-        actual: matcherResult?.actual,
+        actual: matcherResult?.actual
       };
-    },
+    }
   })
   .configure({ soft: config.playwright.softExpect });
+
+function violationFingerprints(accessibilityScanResults: any) {
+  const violationFingerprints = accessibilityScanResults.violations.map((violation: any) => ({
+    rule: violation.id,
+    // These are CSS selectors which uniquely identify each element with
+    // a violation of the rule in question.
+    targets: violation.nodes.map((node: any) => node.target)
+  }));
+  return violationFingerprints;
+}
