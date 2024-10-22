@@ -40,7 +40,7 @@
   },
   {
    "CaseTypeID": "CIVIL",
-   "ID": "DB_NOTIFY_COSC_GEN_FOR_DEFENDANT",
+   "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "Name": "Defendant mark paid full",
    "Description": "Defendant Dashboard Notification certificate generated",
    "PreConditionState(s)": "*",

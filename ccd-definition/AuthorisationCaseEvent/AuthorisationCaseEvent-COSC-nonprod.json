@@ -44,7 +44,7 @@
   },
   {
    "CaseTypeID": "CIVIL",
-   "CaseEventID": "DB_NOTIFY_COSC_GEN_FOR_DEFENDANT",
+   "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "AccessControl": [
      {
        "UserRoles": [
