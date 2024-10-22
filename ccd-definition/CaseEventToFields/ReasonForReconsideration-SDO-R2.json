@@ -47,8 +47,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\"",
-    "Publish": "Y"
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -61,8 +60,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\"",
-    "Publish": "Y"
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
   },
   {
     "CaseTypeID": "CIVIL",
@@ -75,8 +73,7 @@
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\"",
-    "Publish": "Y"
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
   },
   {
     "CaseTypeID": "CIVIL",
