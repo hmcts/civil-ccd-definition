@@ -50,7 +50,7 @@ export default class FileSystemHelper {
 
   private static validateFilePath = (filePath: string, fileType: FileType) => {
     if (!filePath) {
-      throw new FileError('File path cannot be an empty string');
+      throw new FileError('File path must be a string with a length greater than 0');
     }
     if (!filePath.endsWith(`.${fileType.toLowerCase()}`)) {
       throw new FileError(`File path ${filePath} should end with .${fileType}`);
