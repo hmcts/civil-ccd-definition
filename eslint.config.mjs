@@ -46,8 +46,8 @@ export default [
     },
     rules: {
       'no-unused-vars': 'off',
-      'quotes': ['error', 'single'],
-      'semi': ['error', 'always'],
+      quotes: ['error', 'single'],
+      semi: ['error', 'always'],
       'no-constant-binary-expression': 'off',
       'no-prototype-builtins': 'off',
     },
