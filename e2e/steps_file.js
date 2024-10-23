@@ -733,6 +733,7 @@ module.exports = function () {
 
     async stayCase(user = config.ctscAdminUser) {
       eventName = 'Stay case';
+      await this.login(user);
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => this.waitForText('All parties will be notified.'),
@@ -741,8 +742,9 @@ module.exports = function () {
       ]);
     },
 
-    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL') {
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
       eventName = 'Manage stay';
+      await this.login(user);
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
       ]);
