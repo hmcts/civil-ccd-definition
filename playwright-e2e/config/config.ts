@@ -2,7 +2,7 @@ import 'dotenv/config';
 import Environment from '../enums/environment';
 
 const config = {
-  environment: Environment[process.env.ENVIRONMENT] as Environment,
+  environment: process.env.ENVIRONMENT as Environment,
   idamStudEnabled: process.env.IDAM_STUB_ENABLED === 'true',
   runSetup: process.env.PLAYWRIGHT_RUN_SETUP === 'true',
   runAxeTests: process.env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS === 'true',
