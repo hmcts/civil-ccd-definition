@@ -6,7 +6,7 @@ civil-translation:
 
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1505'
     imagePullPolicy: Always
     ingressHost: ga-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ga
