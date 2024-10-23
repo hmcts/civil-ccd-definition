@@ -69,40 +69,8 @@ civil-service:
         key: PASSWORD
         disabled: true
     postgresql:
-      enabled: true
-      releaseNameOverride: ${SERVICE_NAME}-postgresql
-      auth:
-        username: ${POSTGRES_USER}
-        password: ${POSTGRES_PASSWORD}
-        database: cft_task_db
-        postgresPassword: ${POSTGRES_PASSWORD}
-      primary:
-        persistence:
-          enabled: false
-        extraEnvVars:
-          - name: POSTGRESQL_WAL_LEVEL
-            value: "logical"
-        resources:
-          requests:
-            cpu: 25m
-        initdb:
-          user: postgres
-          password: ${POSTGRES_PASSWORD}
-          scripts:
-            00_grant_superuser_role.sql: |
-              ALTER ROLE hmcts WITH SUPERUSER;
-            01_init_civil.sql: |
-              CREATE DATABASE cmc WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "ts_translation_service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-            02_init_wa.sql: |
-              CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "cft_task_db_replica" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+      enabled: false
+
 idam-pr:
   redirect_uris:
     XUI:
@@ -189,7 +157,7 @@ camunda-bpm:
         disabled: true
 
 postgresql:
-  enabled: false
+  enabled: true
   flexibleserver: civil-preview
   setup:
     databases:
