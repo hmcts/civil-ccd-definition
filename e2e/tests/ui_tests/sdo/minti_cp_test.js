@@ -12,7 +12,7 @@ let civilCaseReference;
 
 Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');
 
-Scenario.skip('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
+Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
   civilCaseReference =  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
