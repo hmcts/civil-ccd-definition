@@ -1,3 +1,4 @@
+const {listElement} = require('../../api/dataHelper');
 const finalOrderDocument = {FinalOrderPreview: {
   finalOrderDocument: {
     documentLink: {
@@ -13,7 +14,7 @@ const finalOrderDocument = {FinalOrderPreview: {
 }};
 
 module.exports = {
-  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
+  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => {
     const requestFinalOrder = {
     };
     switch (finalOrderRequestType) {
@@ -84,7 +85,85 @@ module.exports = {
           ...finalOrderDocument
         };
         break;
+      case 'DOWNLOAD_ORDER_TEMPLATE':
+          if (orderType === 'INTERMEDIATE') {
+              requestFinalOrder.userInput = {
+              ...createIntermediateDownloadOrder()
+            };
+          }
+          if (orderType === 'MULTI') {
+            requestFinalOrder.userInput = {
+                ...createMultiDownloadOrder()
+            };
+          }
+        break;
     }
     return requestFinalOrder;
   }
+};
+
+const createIntermediateDownloadOrder = () => {
+  return {
+    TrackAllocation: {
+      finalOrderAllocateToTrack: 'Yes',
+      finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM'
+    },
+    IntermediateTrackComplexityBand: {
+      finalOrderIntermediateTrackComplexityBand: {
+        assignComplexityBand: 'Yes',
+        band: 'BAND_1',
+        reasons: 'Test reasons'
+      }
+    },
+    FinalOrderSelect: {
+      finalOrderSelection: 'DOWNLOAD_ORDER_TEMPLATE',
+    },
+    SelectTemplate: {
+      finalOrderDownloadTemplateOptions: {
+        list_items: [
+          listElement('Blank template to be used after a hearing'),
+          listElement('Blank template to be used before a hearing/box work'),
+          listElement('Fix a date for CMC')
+        ],
+        value: listElement('Fix a date for CMC')
+      }
+    },
+    UploadOrder: {
+      uploadOrderDocumentFromTemplate: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
+    }
+  };
+};
+
+const createMultiDownloadOrder = () => {
+  return {
+    TrackAllocation: {
+      finalOrderAllocateToTrack: 'Yes',
+      finalOrderTrackAllocation: 'MULTI_CLAIM'
+    },
+    FinalOrderSelect: {
+      finalOrderSelection: 'DOWNLOAD_ORDER_TEMPLATE',
+
+    },
+    SelectTemplate: {
+      finalOrderDownloadTemplateOptions: {
+        list_items: [
+          listElement('Blank template to be used after a hearing'),
+          listElement('Blank template to be used before a hearing/box work'),
+          listElement('Fix a date for CMC')
+        ],
+        value: listElement('Fix a date for CMC')
+      }
+    },
+    UploadOrder: {
+      uploadOrderDocumentFromTemplate: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
+    }
+  };
 };
