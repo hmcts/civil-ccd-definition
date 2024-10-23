@@ -44,7 +44,7 @@
   "Description": "Mark a judgment as paid in full",
   "DisplayOrder": 2,
   "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",
-  "PostConditionState": "CLOSED",
+  "PostConditionState": "*",
   "SecurityClassification": "Public",
   "ShowSummary": "N",
   "ShowEventNotes": "N",
