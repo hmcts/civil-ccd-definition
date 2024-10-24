@@ -1084,7 +1084,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyNotified",
     "AccessControl": [
       {
@@ -1097,7 +1097,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "listingOrRelisting",
     "AccessControl": [
       {

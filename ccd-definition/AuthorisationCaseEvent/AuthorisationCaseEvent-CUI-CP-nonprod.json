@@ -300,7 +300,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NO_REMISSION_HWF",
     "AccessControl": [
       {
@@ -312,7 +312,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "AccessControl": [
       {
@@ -324,7 +324,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "AccessControl": [
       {
@@ -336,7 +336,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FULL_REMISSION_HWF",
     "AccessControl": [
       {
@@ -348,7 +348,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "AccessControl": [
       {
@@ -360,7 +360,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "AccessControl": [
       {
@@ -372,7 +372,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "AccessControl": [
       {
