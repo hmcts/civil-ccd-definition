@@ -10,11 +10,5 @@
     "ListElementCode": "FREE_FORM_ORDER",
     "ListElement": "Free form order",
     "DisplayOrder": 2
-  },
-  {
-    "ID": "FinalOrderSelection",
-    "ListElementCode": "DOWNLOAD_ORDER_TEMPLATE",
-    "ListElement": "Download order template",
-    "DisplayOrder": 3
   }
 ]
