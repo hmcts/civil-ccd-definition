@@ -67,6 +67,20 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "manageStayUpdateRequestDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "AccessControl": [
       {
