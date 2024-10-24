@@ -40,6 +40,7 @@ module.exports = {
     },
     paymentSetDate: {
     },
+    defaultJudgementOverallTotal: 1580,
     repaymentInformation: {
       repaymentDue: '1580.00',
       repaymentSuggestion: '3',
