@@ -4,6 +4,7 @@ declare global {
       CI: string;
       CCD_UI_TESTS: string;
       FUNCTIONAL: string;
+      PLAYWRIGHT_WORKERS: string;
       ENVIRONMENT: string;
       URL: string;
       SERVICE_AUTH_PROVIDER_API_BASE_URL: string;
@@ -22,13 +23,13 @@ declare global {
       JUDGE_DEFAULT_PASSWORD: string;
       IAC_DEFAULT_PASSWORD: string;
       SYSTEM_USER_PASSWORD: string;
-      SHOW_BROWSER_WINDOW: string;
-      UI_SOFT_EXPECT: string;
+      PLAYWRIGHT_SHOW_BROWSER_WINDOW: string;
+      PLAYWRIGHT_UI_SOFT_EXPECT: string;
       IDAM_STUB_ENABLED: string;
-      RUN_ACCESSIBILITY_TESTS: string;
+      PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS: string;
       S2S_SECRET: string;
       XUI_S2S_SECRET: string;
-      SKIP_AUTH_SETUP: string;
+      PLAYWRIGHT_RUN_SETUP: string;
     }
   }
 }
