@@ -97,6 +97,7 @@ const createFreeFormOrder = (dayPlus7) => {
 const createIntermediateDownloadOrder = () => {
   return {
     TrackAllocation: {
+      finalOrderTrackToggle: 'INTERMEDIATE_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM'
     },
@@ -106,10 +107,6 @@ const createIntermediateDownloadOrder = () => {
         band: 'BAND_1',
         reasons: 'Test reasons'
       }
-    },
-    FinalOrderSelect: {
-      finalOrderSelection: 'DOWNLOAD_ORDER_TEMPLATE',
-
     },
     SelectTemplate: {
       finalOrderDownloadTemplateOptions: {
@@ -134,12 +131,9 @@ const createIntermediateDownloadOrder = () => {
 const createMultiDownloadOrder = () => {
   return {
     TrackAllocation: {
+      finalOrderTrackToggle: 'MULTI_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'MULTI_CLAIM'
-    },
-    FinalOrderSelect: {
-      finalOrderSelection: 'DOWNLOAD_ORDER_TEMPLATE',
-
     },
     SelectTemplate: {
       finalOrderDownloadTemplateOptions: {
