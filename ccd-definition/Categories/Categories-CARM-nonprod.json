@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "MediationDocuments",
     "CategoryLabel": "Mediation Documents",
     "DisplayOrder": "15",
@@ -9,7 +9,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "ClaimantOneMediationDocs",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "ClaimantTwoMediationDocs",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -25,7 +25,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "DefendantOneMediationDocs",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -33,7 +33,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "DefendantTwoMediationDocs",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",

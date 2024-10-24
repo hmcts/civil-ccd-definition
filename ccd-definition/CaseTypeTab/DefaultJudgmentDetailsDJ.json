@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -8,7 +8,7 @@
     "TabFieldDisplayOrder": 1
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -16,7 +16,7 @@
     "TabFieldDisplayOrder": 2
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -24,7 +24,7 @@
     "TabFieldDisplayOrder": 3
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgment",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,

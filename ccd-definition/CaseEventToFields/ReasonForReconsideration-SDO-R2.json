@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "reasonForReconsiderationPartiesName",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "reasonForReconsiderationSeparator",
     "PageFieldDisplayOrder": 2,
@@ -24,7 +24,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "casePartyRequestForReconsideration",
     "PageFieldDisplayOrder": 3,
@@ -37,7 +37,7 @@
     "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "reasonForReconsiderationApplicant",
     "PageFieldDisplayOrder": 4,
@@ -50,7 +50,7 @@
     "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "reasonForReconsiderationRespondent1",
     "PageFieldDisplayOrder": 5,
@@ -63,7 +63,7 @@
     "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "reasonForReconsiderationRespondent2",
     "PageFieldDisplayOrder": 5,
@@ -76,7 +76,7 @@
     "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -88,7 +88,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "claimValue",
     "PageDisplayOrder": 1,
@@ -100,7 +100,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 6,
@@ -111,7 +111,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 7,

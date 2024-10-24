@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UPDATE_CASE_DETAILS_AFTER_NOC",
     "Name": "Update casedetails after NoC",
     "Description": "Update case details after Notice of Change",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
     "AccessControl": [
       {
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_DJ_RECEIVED",
     "AccessControl": [
       {
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CASEWORKER_DJ_RECEIVED",
     "AccessControl": [
       {
@@ -63,13 +63,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DJ_FORM_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RPA_DJ_SPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

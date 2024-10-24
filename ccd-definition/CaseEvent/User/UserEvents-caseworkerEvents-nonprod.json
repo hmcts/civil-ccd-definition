@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "STAY_CASE",
     "Name": "Stay case",
     "Description": "Stay the case",
@@ -15,7 +15,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DISMISS_CASE",
     "Name": "Dismiss case",
     "Description": "Dismiss the case",
@@ -29,7 +29,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MANAGE_STAY",
     "Name": "Manage stay",
     "Description": "Manage the stay",

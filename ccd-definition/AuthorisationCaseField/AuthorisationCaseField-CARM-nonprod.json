@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "mediationUnsuccessfulReasonsMultiSelect",
     "AccessControl": [
       {
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "uploadMediationDocumentsPartyChosen",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
@@ -32,7 +32,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "mediationDocumentsType",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
@@ -42,7 +42,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "nonAttendanceStatementForm",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
@@ -52,7 +52,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentsReferredForm",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
@@ -62,7 +62,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app1MediationNonAttendanceDocs",
     "AccessControl": [
       {
@@ -86,7 +86,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app1MediationDocumentsReferred",
     "AccessControl": [
       {
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app2MediationNonAttendanceDocs",
     "AccessControl": [
       {
@@ -132,7 +132,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app2MediationDocumentsReferred",
     "AccessControl": [
       {
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "res1MediationNonAttendanceDocs",
     "AccessControl": [
       {
@@ -178,7 +178,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "res1MediationDocumentsReferred",
     "AccessControl": [
       {
@@ -202,7 +202,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "res2MediationNonAttendanceDocs",
     "AccessControl": [
       {
@@ -224,7 +224,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "res2MediationDocumentsReferred",
     "AccessControl": [
       {
@@ -246,7 +246,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "contactDetailsLabel",
     "AccessControl": [
       {
@@ -269,7 +269,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app1MediationContactInfo",
     "AccessControl": [
       {
@@ -291,7 +291,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "app1MediationAvailability",
     "AccessControl": [
       {
@@ -313,7 +313,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp1MediationContactInfo",
     "AccessControl": [
       {
@@ -336,7 +336,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp2MediationContactInfo",
     "AccessControl": [
       {
@@ -359,7 +359,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp1MediationAvailability",
     "AccessControl": [
       {
@@ -382,7 +382,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp2MediationAvailability",
     "AccessControl": [
       {
@@ -405,7 +405,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LiPResponseCarm",
     "AccessControl": [
       {
@@ -427,7 +427,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LiPResponseCarm",
     "AccessControl": [
       {
@@ -451,8 +451,58 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "uploadMediationDocumentsExplanation",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "whoIsDocumentForLabel",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "documentTypeLabel1",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "documentTypeLabel2",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "mediationDocumentUploadLabel",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "mediationDocumentUploadWarning",
     "UserRoles": [
       "APP-SOL-SPEC-PROFILE",
       "RES-SOL-ONE-SPEC-PROFILE",

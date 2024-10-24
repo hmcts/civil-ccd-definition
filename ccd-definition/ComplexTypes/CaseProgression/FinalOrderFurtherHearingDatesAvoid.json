@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidDatesTopText",
     "ID": "FinalOrderFurtherHearingDatesAvoid",
     "ElementLabel": "The parties must, by 4pm on",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidDates",
     "ID": "FinalOrderFurtherHearingDatesAvoid",
     "ElementLabel": " ",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidDatesBottomText",
     "ID": "FinalOrderFurtherHearingDatesAvoid",
     "ElementLabel": "upload the dates on which they are unavailable for a hearing",

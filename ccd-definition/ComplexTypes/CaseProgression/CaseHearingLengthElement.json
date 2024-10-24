@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthListOtherLabel",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "### Length of hearing",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthListOtherDays",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Days",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthListOtherHours",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Hours",
@@ -30,7 +30,7 @@
     "RegularExpression": "^([0-9]|[1-9][0-9]|[1-9][0-9][0-9])$"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthListOtherMinutes",
     "ID": "CaseHearingLengthElement",
     "ElementLabel": "Minutes",

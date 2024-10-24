@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "applicant1",
     "DisplayContext": "READONLY",
@@ -11,7 +11,7 @@
     "FieldShowCondition": "caseTitle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "respondent1",
     "DisplayContext": "READONLY",
@@ -22,7 +22,7 @@
     "FieldShowCondition": "caseTitle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
@@ -33,7 +33,7 @@
     "FieldShowCondition": "caseTitle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "claimIssuedHwfDetails",
     "DisplayContext": "READONLY",
@@ -44,7 +44,7 @@
     "FieldShowCondition": "caseTitle=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "caseTitle",
     "DisplayContext": "READONLY",
@@ -54,7 +54,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfNumberAvailable",
     "DisplayContext": "MANDATORY",
@@ -65,7 +65,7 @@
     "CaseEventFieldLabel": "Is there a Help with Fees reference number?"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfNumberForFeePaymentOutcome",
     "DisplayContext": "MANDATORY",
@@ -76,7 +76,7 @@
     "FieldShowCondition": "hwfNumberAvailable = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "caseTitle2",
     "DisplayContext": "READONLY",
@@ -86,7 +86,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfFullRemissionGrantedForClaimIssue",
     "DisplayContext": "MANDATORY",
@@ -99,7 +99,7 @@
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "DisplayContext": "MANDATORY",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingHelpFeesReferenceNumber",
     "Label": " ",
     "FieldType": "Text",
@@ -9,7 +9,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingHwfDetails",
     "FieldType": "HelpWithFeesDetails",
     "Label": " ",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "helpWithFeesMoreInformationHearing",
     "Label": " ",
     "FieldType": "HelpWithFeesMoreInformation",
@@ -25,7 +25,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hwfFullRemissionGrantedForHearingFee",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -33,7 +33,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hwfOutstandingFeePaymentDoneForHearingFee",
     "Label": "Confirm payment of £${hearingHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
@@ -42,7 +42,7 @@
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "caseLabelHearingReference",
   "Label": "${hearingHelpFeesReferenceNumber}",
   "FieldType": "Label",
@@ -50,7 +50,7 @@
   "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingFeeLabel",
     "FieldType": "Label",
     "Label": "Help with Fees type: HwF Hearing fee",
@@ -58,7 +58,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseTitleWithHWFHearingNumber",
     "Label": "<h2 class=\"govuk-heading-1\"> ${hearingHelpFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName} </h2>",
     "FieldType": "Label",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -74,7 +74,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDocumentRes",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -82,7 +82,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReviewCommentsClaimant",
     "Label": "Request Recon claimant",
     "FieldType": "Text",
@@ -90,7 +90,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReviewCommentsDefendant",
     "Label": "Request Recon defendant",
     "FieldType": "Text",
@@ -98,7 +98,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "orderRequestedForReviewClaimant",
     "Label": "Request Recon claimant",
     "FieldType": "YesOrNo",
@@ -106,7 +106,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "orderRequestedForReviewDefendant",
     "Label": "Request Recon defendant",
     "FieldType": "YesOrNo",

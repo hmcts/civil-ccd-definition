@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppAskForCosts",
     "Label": "Ask For Costs",
     "FieldType": "YesOrNo",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppHelpWithFees",
     "Label": " ",
     "FieldType": "HelpWithFees",

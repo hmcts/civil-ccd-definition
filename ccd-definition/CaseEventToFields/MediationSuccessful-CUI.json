@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "caseTitle",
     "PageFieldDisplayOrder": 1,
@@ -10,7 +10,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "defendantNameLabel",
     "PageFieldDisplayOrder": 2,
@@ -20,7 +20,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "defendantName",
     "PageFieldDisplayOrder": 3,
@@ -30,7 +30,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "mediationSettlementAgreedAt",
     "PageFieldDisplayOrder": 4,
@@ -41,7 +41,7 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "mediationAgreementTitle",
     "PageFieldDisplayOrder": 1,
@@ -51,7 +51,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "staffUploadedDocumentsLabel",
     "PageFieldDisplayOrder": 2,
@@ -61,7 +61,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "CaseFieldID": "mediationAgreement",
     "PageFieldDisplayOrder": 3,

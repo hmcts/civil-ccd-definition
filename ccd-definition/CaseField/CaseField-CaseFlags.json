@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "flagLauncher",
     "Label": "Launch the Flags screen",
     "FieldType": "FlagLauncher",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseFlags",
     "Label": "Case Flags",
     "FieldType": "Flags",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantWitnesses",
     "Label": " ",
     "FieldType": "Collection",
@@ -25,7 +25,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantExperts",
     "Label": " ",
     "FieldType": "Collection",
@@ -34,7 +34,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1Witnesses",
     "Label": " ",
     "FieldType": "Collection",
@@ -43,7 +43,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1Experts",
     "Label": " ",
     "FieldType": "Collection",
@@ -52,7 +52,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2Witnesses",
     "Label": " ",
     "FieldType": "Collection",
@@ -61,7 +61,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2Experts",
     "Label": " ",
     "FieldType": "Collection",
@@ -70,7 +70,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "urgentFlag",
     "Label": " ",
     "FieldType": "YesOrNo",
