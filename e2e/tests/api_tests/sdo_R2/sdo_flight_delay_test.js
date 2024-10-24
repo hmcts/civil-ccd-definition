@@ -7,13 +7,13 @@ const mpScenario = 'ONE_V_ONE_FLIGHT_DELAY';
 const claimAmountSmallTrack = '1500';
 
 async function prepareClaim(api_spec, claimAmount) {
-  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario, claimAmount);
+  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
 }
 
 async function prepareClaimOtherOption(api_spec, claimAmount) {
-  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER', claimAmount);
+  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER');
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
 }
