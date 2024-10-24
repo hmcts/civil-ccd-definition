@@ -58,16 +58,16 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
-      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-#      CMC_DB_HOST: civil-preview.postgres.database.azure.com
-#      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
-#      CMC_DB_USERNAME: hmcts
-#      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
+#      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+      CMC_DB_HOST: civil-preview.postgres.database.azure.com
+      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      CMC_DB_USERNAME: hmcts
+      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
     secrets:
       CMC_DB_PASSWORD:
         secretRef: postgres
         key: PASSWORD
-        disabled: true
+        disabled: false
     postgresql:
       enabled: false
 
@@ -94,8 +94,8 @@ ccd:
     postgresUsername: hmcts
     postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
-#    postgresHostname: civil-preview.postgres.database.azure.com
-#    databaseNamePrefix: "pr-${CHANGE_ID}-"
+    postgresHostname: civil-preview.postgres.database.azure.com
+    databaseNamePrefix: "pr-${CHANGE_ID}-"
   ccd-api-gateway-web:
     nodejs:
       ingressHost: gateway-${SERVICE_FQDN}
@@ -115,7 +115,7 @@ ccd:
         DATA_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
-          disabled: true
+          disabled: false
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
@@ -126,7 +126,7 @@ ccd:
         DEFINITION_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
-          disabled: true
+          disabled: false
   ccd-user-profile-api:
     java:
       environment:
@@ -136,19 +136,19 @@ ccd:
         USER_PROFILE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
-          disabled: true
+          disabled: false
 
 camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
     environment:
-#      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
-#      CAMUNDA_DB_USER_NAME: hmcts
-#      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
-#      CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
-      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
-      CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
+      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
+      CAMUNDA_DB_USER_NAME: hmcts
+      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
+#      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
+#      CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
       TEMP_VAR: false
     secrets:
       CAMUNDA_DB_PASSWORD:
