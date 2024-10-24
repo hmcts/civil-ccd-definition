@@ -6,7 +6,7 @@ civil-translation:
 
 civil-general-applications:
   java:
-    image: 'hmctspublic.azurecr.io/civil/general-applications:pr-1505'
+    image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
     imagePullPolicy: Always
     ingressHost: ga-${SERVICE_FQDN}
     releaseNameOverride: ${SERVICE_NAME}-ga
@@ -65,6 +65,7 @@ civil-general-applications:
       DOCUMENT_MANAGEMENT_SECURED: true
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
 civil-service:
   java:
