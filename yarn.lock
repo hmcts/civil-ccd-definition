@@ -1178,22 +1178,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"allure-js-commons@npm:2.4.0":
-  version: 2.4.0
-  resolution: "allure-js-commons@npm:2.4.0"
+"allure-js-commons@npm:3.0.5":
+  version: 3.0.5
+  resolution: "allure-js-commons@npm:3.0.5"
   dependencies:
-    properties: ^1.2.1
-    uuid: ^8.3.0
-  checksum: 7c1f957ff1f01ade50001d740fe70d4df379a687fb81ef6642a64ca7f75ca06dd3695beb3e2b9e2b3f1293798141aae2c7ba8497c1623505c8869e1432f05c0a
+    md5: ^2.3.0
+  peerDependencies:
+    allure-playwright: 3.0.5
+  peerDependenciesMeta:
+    allure-playwright:
+      optional: true
+  checksum: 1bd04337b352de69ecd9f9a521618e295062e141c5ecdbb10b67c6bd6bfeca0844a29d25abecaeccdcd5a4ef4983e6c585839c8b38d4de9301c4a403a9e70bdf
   languageName: node
   linkType: hard
 
-"allure-playwright@npm:2.4.0":
-  version: 2.4.0
-  resolution: "allure-playwright@npm:2.4.0"
+"allure-playwright@npm:3.0.5":
+  version: 3.0.5
+  resolution: "allure-playwright@npm:3.0.5"
   dependencies:
-    allure-js-commons: 2.4.0
-  checksum: e7587ccf24b036bafc9154eafa596daeed87add1eaf3a2d3d97f86e66aa75183753f8a23e0535cec732c37a3cf00549ba3900a0fec57be98e58afcf2b5560fac
+    allure-js-commons: 3.0.5
+  peerDependencies:
+    "@playwright/test": ">=1.36.0"
+  checksum: f2c812126279533d6007d24a21ef4eaf516211e4887bdb6efe1c4ef786d48dc94fb746fdff9666bf58e57707e7de221c500b1708ca9dc52914db771894277bf8
   languageName: node
   linkType: hard
 
@@ -1889,7 +1895,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin-tslint": ^5.50.0
     "@typescript-eslint/parser": ^5.50.0
     allure-commandline: ^2.29.0
-    allure-playwright: 2.4.0
+    allure-playwright: 3.0.5
     chai: ^4.3.4
     codeceptjs: ^3.5.11
     custom-eslint-plugin: "file:plugins/custom-eslint-plugins"
@@ -5596,13 +5602,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"properties@npm:^1.2.1":
-  version: 1.2.1
-  resolution: "properties@npm:1.2.1"
-  checksum: f385f8b96910c10d761bb6358b6c4b33aff09427a0504f01463ac6c8410dc3f2a7a9d85e96dd1c1a3e88b228b0ad9d0c23a397d55c52b087b3da7bed691799a6
-  languageName: node
-  linkType: hard
-
 "proto-list@npm:~1.2.1":
   version: 1.2.4
   resolution: "proto-list@npm:1.2.4"
@@ -6775,7 +6774,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^8.0.0, uuid@npm:^8.3.0, uuid@npm:^8.3.2":
+"uuid@npm:^8.0.0, uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
   bin:
