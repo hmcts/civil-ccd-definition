@@ -1,4 +1,4 @@
-const {listElement} = require('../../api/dataHelper');
+const {listElement, date} = require('../../api/dataHelper');
 const selectedOptionApp = listElement('Claimants 1 and 2');
 
 module.exports = {
@@ -234,7 +234,7 @@ module.exports = {
       };
   },
 
-  createApplicantFastClaimsEvidenceUpload: (mpScenario) => {
+  createApplicantFastClaimsEvidenceUpload: (mpScenario, claimTrack) => {
     console.log('Applicant fast claims1');
     switch (mpScenario) {
       case 'TWO_V_ONE': {
@@ -307,7 +307,21 @@ module.exports = {
                   },
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
-              }]
+              }],
+              ...(claimTrack === 'INTERMEDIATE_CLAIM' || claimTrack === 'MULTI_CLAIM'? {
+                bundleEvidence: [{
+                  value: {
+                    bundleName: 'applicant bundle for trial',
+                    documentIssuedDate: date(30),
+                    documentUpload: {
+                      document_url: '${TEST_DOCUMENT_URL}',
+                      document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                      document_filename: '${TEST_DOCUMENT_FILENAME}'
+                    },
+                    createdDatetime: '2023-02-06T13:11:52.466Z'
+                  }
+                }]
+              } : {}),
             }
           }
         };
@@ -373,7 +387,21 @@ module.exports = {
                   },
                   createdDatetime: '2023-02-06T13:11:52.466Z'
                 }
-              }]
+              }],
+              ...(claimTrack === 'INTERMEDIATE_CLAIM' || claimTrack === 'MULTI_CLAIM'? {
+                bundleEvidence: [{
+                  value: {
+                    bundleName: 'applicant bundle for trial',
+                    documentIssuedDate: date(30),
+                    documentUpload: {
+                      document_url: '${TEST_DOCUMENT_URL}',
+                      document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                      document_filename: '${TEST_DOCUMENT_FILENAME}'
+                    },
+                    createdDatetime: '2023-02-06T13:11:52.466Z'
+                  }
+                }]
+              } : {}),
             }
           }
         };
