@@ -60,5 +60,17 @@
         "CRUD": "CRU"
       }
     ]
-  }
+  },
+  {
+   "CaseTypeID": "CIVIL",
+   "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
+   "AccessControl": [
+     {
+       "UserRoles": [
+         "caseworker-civil-systemupdate"
+       ],
+       "CRUD": "CRU"
+     }
+   ]
+ }
 ]
