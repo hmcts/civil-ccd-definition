@@ -30,7 +30,7 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
   await I.evidenceUpload(civilCaseReference, true, true, true, mpScenario);
 });
 
-Scenario.skip('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
+Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
