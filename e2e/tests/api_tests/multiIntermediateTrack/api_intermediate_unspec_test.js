@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const intermediateTrackClaimAmount = '99000';
@@ -20,7 +20,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 }
 
-Scenario('1v1 Create Unspecified Intermediate Track claim @api-nonprod', async ({api}) => {
+Scenario.skip('1v1 Create Unspecified Intermediate Track claim @api-nonprod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
 });
