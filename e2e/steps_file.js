@@ -74,7 +74,6 @@ const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
 const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
 const intermediateTrackComplexityBandPage = require('./pages/directionsOrder/intermediateTrackComplexityBand.page');
-const finalOrderSelectPage = require('./pages/directionsOrder/finalOrderSelect.page');
 const selectOrderTemplatePage = require('./pages/directionsOrder/selectOrderTemplate.page');
 const downloadOrderTemplatePage = require('./pages/directionsOrder/downloadOrderTemplate.page');
 const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');
@@ -740,7 +739,6 @@ module.exports = function () {
         ... conditionalSteps(trackType === 'Intermediate Track', [
           () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
         ]),
-        () => finalOrderSelectPage.selectOrder('Download order template'),
         () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
         () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
         () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),

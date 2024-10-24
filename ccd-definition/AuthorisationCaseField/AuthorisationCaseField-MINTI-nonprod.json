@@ -198,6 +198,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "finalOrderTrackToggle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "finalOrderTrackAllocation",
     "AccessControl": [
       {
