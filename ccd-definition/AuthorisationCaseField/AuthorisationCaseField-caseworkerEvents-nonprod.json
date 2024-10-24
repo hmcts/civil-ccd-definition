@@ -71,16 +71,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRUD"
-      },
-      {
-        "UserRoles": [
+          "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
           "cui-admin-profile"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       }
     ]
   },
