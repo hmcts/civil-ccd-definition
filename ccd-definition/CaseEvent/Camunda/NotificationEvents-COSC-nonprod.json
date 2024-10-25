@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_PAID_IN_FULL_COSC",
-    "Name": "Email: Notify applicant for cosc",
-    "Description": "Notify applicant for cosc",
+    "Name": "Email: Notify applicant cosc",
+    "Description": "Email: Notify applicant cosc",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
