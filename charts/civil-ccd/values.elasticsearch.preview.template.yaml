@@ -66,13 +66,13 @@ ccd:
     imageTag: "latest"
     extraEnvs:
       - name: DATA_STORE_URL
-        value: jdbc:postgresql://${SERVICE_NAME}-postgresql:5432/data-store?ssl=disable&stringtype=unspecified
+        value: jdbc:postgresql://civil-preview.postgres.database.azure.com:5432/pr-${CHANGE_ID}-data-store?sslmode=require&stringtype=unspecified
       - name: DATA_STORE_USER
         value: ${POSTGRES_USER}
       - name: DATA_STORE_PASS
         value: ${POSTGRES_PASSWORD}
       - name: DB_URL
-        value: jdbc:postgresql://${SERVICE_NAME}-postgresql:5432/data-store?ssl=disable&stringtype=unspecified
+        value: jdbc:postgresql://civil-preview.postgres.database.azure.com:5432/pr-${CHANGE_ID}-data-store?sslmode=require&stringtype=unspecified
       - name: DB_USER
         value: ${POSTGRES_USER}
       - name: DB_PWD
@@ -110,9 +110,23 @@ ts-translation-service:
     imagePullPolicy: Always
     keyVaults: [ ]
     environment:
-      TS_TRANSLATION_SERVICE_DB_HOST: ${SERVICE_NAME}-postgresql
-      TS_TRANSLATION_SERVICE_DB_NAME: ts_translation_service
+      TS_TRANSLATION_SERVICE_DB_HOST: civil-preview.postgres.database.azure.com
+      TS_TRANSLATION_SERVICE_DB_NAME: "pr-${CHANGE_ID}-ts_translation_service"
       TS_TRANSLATION_SERVICE_DB_USERNAME: hmcts
-      TS_TRANSLATION_SERVICE_DB_PASSWORD: hmcts
-      TS_TRANSLATION_SERVICE_DB_PORT: 5432
-      TS_TRANSLATION_SERVICE_DB_OPTIONS: ?stringtype=unspecified
+      TS_TRANSLATION_SERVICE_DB_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+
+postgresql:
+  enabled: true
+  flexibleserver: civil-preview
+  setup:
+    databases:
+      - name: "pr-${CHANGE_ID}-data-store"
+      - name: "pr-${CHANGE_ID}-definition-store"
+      - name: "pr-${CHANGE_ID}-user-profile"
+      - name: "pr-${CHANGE_ID}-camunda"
+      - name: "pr-${CHANGE_ID}-role-assignment"
+      - name: "pr-${CHANGE_ID}-cft_task_db"
+      - name: "pr-${CHANGE_ID}-wa-case-event-handler"
+      - name: "pr-${CHANGE_ID}-wa_workflow_api"
+      - name: "pr-${CHANGE_ID}-cmc"
+      - name: "pr-${CHANGE_ID}-ts_translation_service"
