@@ -5,7 +5,7 @@ import { Step } from '../decorators/test-steps';
 import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
 import CaseEvents from '../enums/events/case-events';
-import CCDCaseData from '../models/case-data/ccd-case-data';
+import CCDCaseData from '../models/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
@@ -34,7 +34,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     };
     const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log('CCD case data fetched successfully');
-    return responseJson.case_data;
+    return { id: responseJson.id, ...responseJson.case_data };
   }
 
   @Step(classKey)
