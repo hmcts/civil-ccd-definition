@@ -58,7 +58,6 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
-#      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       CMC_DB_HOST: civil-preview.postgres.database.azure.com
       CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       CMC_DB_USERNAME: hmcts
@@ -151,8 +150,6 @@ camunda-bpm:
       CAMUNDA_DB_USER_NAME: hmcts
       CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
-#      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
-#      CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
       TEMP_VAR: false
     secrets:
       CAMUNDA_DB_PASSWORD:
