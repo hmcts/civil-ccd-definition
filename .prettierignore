@@ -4,10 +4,10 @@ public/*
 app/assets/javascripts/*.js
 allure-report/*
 allure-results/*
-allure-bootstrap-report/*
-allure-bootstrap-results/*
-allure-functional-report/*
-allure-functional-results/*
+playwright-allure-bootstrap-report/*
+playwright-allure-bootstrap-results/*
+playwright-allure-functional-report/*
+playwright-allure-functional-results/*
 coverage
 *.min.js
 ccd-defintion/*
