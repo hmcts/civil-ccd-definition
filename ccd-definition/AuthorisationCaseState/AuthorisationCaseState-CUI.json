@@ -14,7 +14,10 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "CITIZEN-DEFENDANT-PROFILE",
+      "judge-profile",
+      "legal-adviser",
+      "cui-admin-profile"
     ],
     "CRUD": "R"
   },
