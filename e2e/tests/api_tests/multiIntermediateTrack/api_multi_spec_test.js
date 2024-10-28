@@ -4,8 +4,8 @@ const config = require('../../../config.js');
 
 const claimAmountPenniesMulti = '20000001';
 const claimAmountMulti = '200001';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId2;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 
 Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
 

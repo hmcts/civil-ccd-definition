@@ -1,4 +1,4 @@
- 
+
 const config = require('../../../config.js');
 const {getLanguageInterpreterFlag, getRAWheelchairFlag} = require('../../../api/caseFlagsHelper');
 const {checkCaseFlagsAndHmcEnabled} = require('../../../api/testingSupport');
@@ -9,7 +9,6 @@ let caseFlagsAndHmcEnabled = false;
 
 let continueWithScenario = () => {
   const continueWithScenario = [
-    config.testEarlyAdopterCourts,
     caseFlagsAndHmcEnabled
   ].filter(condition => !condition).length == 0;
 

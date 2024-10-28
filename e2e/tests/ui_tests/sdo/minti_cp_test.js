@@ -7,7 +7,7 @@ const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
 const track = 'INTERMEDIATE_CLAIM';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId2;
 let civilCaseReference;
 
 Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');

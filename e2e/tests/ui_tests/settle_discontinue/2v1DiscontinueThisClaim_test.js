@@ -1,8 +1,8 @@
 const config = require('../../../config.js');
 const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId2;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 let caseNumber;
 const mpScenario = 'TWO_V_ONE';
 async function prepareClaimSpec2v1(api_spec_small) {

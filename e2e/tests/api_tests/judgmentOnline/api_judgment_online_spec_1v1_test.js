@@ -1,9 +1,9 @@
- 
+
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId2;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
@@ -34,7 +34,6 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    console.log(` user : ${caseWorkerUser.email} : config.testEarlyAdopterCourts : ${config.testEarlyAdopterCourts}`);
     await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
   }
 });

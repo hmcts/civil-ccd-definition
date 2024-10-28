@@ -11,7 +11,6 @@ let caseFlagsAndHmcEnabled = false;
 
 let continueWithScenario = () => {
   const continueWithScenario = [
-    config.testEarlyAdopterCourts,
     caseFlagsAndHmcEnabled
   ].filter(condition => !condition).length == 0;
 
