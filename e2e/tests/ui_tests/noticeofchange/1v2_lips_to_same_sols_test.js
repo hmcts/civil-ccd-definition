@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const judgeUser = config.judgeUserWithRegionId1;
+const judgeUser = config.judgeUser2WithRegionId2;
 
 Feature('1v2 - both respondents litigant in person - NoC to same solicitor @e2e-noc @master-e2e-ft');
 
