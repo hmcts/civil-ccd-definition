@@ -1917,7 +1917,7 @@ __metadata:
     ts-node: ^10.9.2
     typescript: 5.1.3
     typescript-eslint: 8.0.0
-    uuid: ^3.4.0
+    uuid: ^11.0.0
     webdriverio: ^6.12.1
   languageName: unknown
   linkType: soft
@@ -6766,7 +6766,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:^3.0.1, uuid@npm:^3.4.0":
+"uuid@npm:^11.0.0":
+  version: 11.0.1
+  resolution: "uuid@npm:11.0.1"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 6125cb3c7a93497aca3e8548fb670d877165a4f66b6d32af92f5464423cddd9fb942bb8baf3581bc1e29aa569f9d25635f47c3cbe020db31cf5106629b99c5d7
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^3.0.1":
   version: 3.4.0
   resolution: "uuid@npm:3.4.0"
   bin:
