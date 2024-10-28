@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-   "CaseTypeID": "CIVIL",
+   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
    "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "Name": "Defendant mark paid full",
    "Description": "Defendant Dashboard Notification certificate generated",

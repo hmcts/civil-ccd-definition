@@ -81,7 +81,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "anyRepresented",
     "Label": " ",
     "FieldType": "YesOrNo",

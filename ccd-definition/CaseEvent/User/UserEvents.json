@@ -297,7 +297,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ADD_UNAVAILABLE_DATES",
     "Name": "Add Unavailable Dates",
     "Description": "Add unavailable dates after claimant response or default judgement",

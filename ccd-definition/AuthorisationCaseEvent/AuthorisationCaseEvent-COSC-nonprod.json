@@ -62,7 +62,7 @@
     ]
   },
   {
-   "CaseTypeID": "CIVIL",
+   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "AccessControl": [
      {
