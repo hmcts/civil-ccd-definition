@@ -46,7 +46,7 @@ Scenario('Listing officer adds case flags', async ({hearings}) => {
 
 Scenario('Judge choose hearing in person', async ({api}) => {
   if(!continueWithScenario()) return;
-  await api.createSDO(config.judgeUserWithRegionId2, 'CREATE_FAST_IN_PERSON');
+  await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
 });
 
 Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
