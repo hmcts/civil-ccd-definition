@@ -623,7 +623,8 @@
       {
         "UserRoles": [
           "judge-profile",
-          "caseworker-civil-admin"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "R"
       }
