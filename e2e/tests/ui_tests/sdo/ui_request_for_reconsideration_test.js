@@ -30,7 +30,7 @@ Scenario('Request for Reconsideration by claimant', async ({LRspec}) => {
 
 Scenario('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.judgeUserWithRegionId1);
+    await LRspec.login(config.judgeUserWithRegionId2);
     await LRspec.decisionForReconsideration();
   }
 }).retry(3);

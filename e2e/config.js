@@ -2,7 +2,7 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
-const courtToBeSelected = 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ';
+const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ' : 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL';
 
 module.exports = {
   idamStub: {
@@ -355,6 +355,7 @@ module.exports = {
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
+  testEarlyAdopterCourts: process.env.TEST_EA_COURTS == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
