@@ -9,7 +9,7 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
   @AllMethodsStep()
   abstract class ExuiEvent extends Base {
     protected async verifyCaseTitle(caseData: CCDCaseData) {
-      await super.expectHeading(caseData.caseName);
+      await super.expectHeading(caseData.caseNamePublic);
     }
 
     protected async retryUploadFile(
