@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const {checkCarmToggleEnabled} = require('../../../api/testingSupport');
@@ -12,8 +12,8 @@ Scenario('1v2 fast claim counter claim @api-spec-counterclaim', async ({I, api_s
 Scenario('1v2 fast claim full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
-  await api_spec_fast.createCaseFlags(config.hearingCenterAdminWithRegionId2);
-  await api_spec_fast.manageCaseFlags(config.hearingCenterAdminWithRegionId2);
+  await api_spec_fast.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+  await api_spec_fast.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
 
 Scenario('1v2 different response full defence', async ({I, api_spec_fast}) => {

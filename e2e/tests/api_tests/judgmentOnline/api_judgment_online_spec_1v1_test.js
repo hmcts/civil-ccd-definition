@@ -2,8 +2,8 @@
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
-const judgeUser = config.judgeUser2WithRegionId2;
-const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
+const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
 // to use on local because the idam images are different
 // const judgeUser = config.judgeUserWithRegionId1Local;
 // const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
@@ -34,7 +34,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId1, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
   }
 });
 
@@ -60,7 +60,7 @@ Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after h
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId1, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser);
     console.log('--claimantResponse--');

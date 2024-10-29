@@ -39,17 +39,17 @@ Scenario('1v2DS full defence defendant and claimant response', async ({api}) => 
 
 Scenario('Listing officer adds case flags', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent1', getDetainedIndividualFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent1', getDisruptiveIndividualFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getDetainedIndividualFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getDisruptiveIndividualFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
 });
 
 Scenario('Judge choose hearing in person', async ({api}) => {
   if(!continueWithScenario()) return;
-  await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
+  await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_IN_PERSON');
 });
 
 Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId2, caseId, serviceId);
+  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId1, caseId, serviceId);
 });

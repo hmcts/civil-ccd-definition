@@ -17,7 +17,7 @@ Scenario('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api}) =>
   await api.amendRespondent2ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseid, 'ONE_V_TWO');
-  await I.login(config.judgeUser2WithRegionId2);
+  await I.login(config.judgeUserWithRegionId1);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid);
   await I.waitForText('Summary');
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -29,7 +29,7 @@ Scenario('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api}) =>
   }
 
   if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUser2WithRegionId2, caseid, config.waTaskIds.judgeUnspecDJTask);
+    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseid, config.waTaskIds.judgeUnspecDJTask);
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
   }
 

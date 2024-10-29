@@ -2,7 +2,7 @@ const config = require('../../../config');
 
 Feature('Automated hearing notice schedulers @api-nonprod @AHN');
 
-const judgeUser = config.judgeUser2WithRegionId2;
+const judgeUser = config.judgeUserWithRegionId1;
 
 let caseId;
 

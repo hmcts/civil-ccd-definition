@@ -42,7 +42,7 @@ Scenario.skip('1v2 spec Reason for settlement - judges order', async ({api_spec_
 
 Scenario.skip('Reason for settlement - judges order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.hearingCenterAdminWithRegionId2);
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimJudgesOrderForUI();
   }
 }).retry(3);
@@ -65,7 +65,7 @@ Scenario.skip('1v2 spec Reason for settlement - Consent order', async ({api_spec
 
 Scenario.skip('Reason for settlement - Consent order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.hearingCenterAdminWithRegionId2);
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimConsentOrderForUI();
   }
 }).retry(3);

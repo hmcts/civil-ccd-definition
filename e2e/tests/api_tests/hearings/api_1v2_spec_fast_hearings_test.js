@@ -35,8 +35,8 @@ Scenario('1v2 fast claim full defence', async ({api_spec_fast}) => {
 
 Scenario('Listing officer adds case flags', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'applicant1', getLanguageInterpreterFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent1', getRAWheelchairFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'applicant1', getLanguageInterpreterFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getRAWheelchairFlag());
 });
 
 Scenario('Judge choose hearing in person', async ({api_spec_fast}) => {
@@ -46,5 +46,5 @@ Scenario('Judge choose hearing in person', async ({api_spec_fast}) => {
 
 Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId2, caseId, serviceId);
+  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId1, caseId, serviceId);
 });

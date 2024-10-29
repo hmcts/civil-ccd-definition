@@ -4,8 +4,8 @@ const config = require('../../../config.js');
 const multiTrackClaimAmount = '200001';
 const mintiEnabled = true;
 const track = 'MULTI_CLAIM';
-const judgeUser = config.judgeUser2WithRegionId2;
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 

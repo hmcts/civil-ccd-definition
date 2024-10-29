@@ -5,8 +5,8 @@ let caseId, taskId, hearingDateIsLessThan3Weeks, validSummaryJudgmentDirectionsT
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const { checkToggleEnabled } = require('../../../api/testingSupport');
 const {PBAv3} = require('../../../fixtures/featureKeys');
-const judgeUserToBeUsed = config.judgeUser2WithRegionId2;
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
+const judgeUserToBeUsed = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');

@@ -4,8 +4,8 @@ const config = require('../../../config.js');
 const intermediateTrackClaimAmount = '99000';
 const mintiEnabled = true;
 const track = 'INTERMEDIATE_CLAIM';
-const judgeUser = config.judgeUser2WithRegionId2;
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate');
 

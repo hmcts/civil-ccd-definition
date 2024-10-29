@@ -4,8 +4,8 @@ const config = require('../../../config.js');
 
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
-const judgeUser = config.judgeUser2WithRegionId2;
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate');
 
