@@ -33,6 +33,7 @@ xui-webapp:
       SERVICES_HEARINGS_COMPONENT_API_CIVIL: https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net
       SERVICES_HEARINGS_CASETYPES_CIVIL: CIVIL-${CHANGE_ID}
       HEARINGS_JURISDICTIONS: CIVIL
+      LAUNCH_DARKLY_CLIENT_ID: 5de6610b23ce5408280f2268
 
 #servicebus:
 #  enabled: true
