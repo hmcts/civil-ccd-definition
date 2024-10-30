@@ -1,0 +1,39 @@
+[
+  {
+    "ID": "SendMessageContext",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContext",
+    "ListElementCode": "recipient",
+    "EventElementLabel": "Who are you sending the message to?",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SendMessageContext",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContext",
+    "ListElementCode": "isUrgent",
+    "EventElementLabel": "Is this urgent?",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SendMessageContext",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContext",
+    "ListElementCode": "subject",
+    "EventElementLabel": "What is this message about?",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SendMessageContext",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContext",
+    "ListElementCode": "otherSubjectName",
+    "EventElementLabel": "Enter the subject",
+    "FieldShowCondition": "sendMessageContext.subject=\"OTHER\"",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  }
+]

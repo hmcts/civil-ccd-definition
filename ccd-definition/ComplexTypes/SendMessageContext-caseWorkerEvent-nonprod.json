@@ -1,0 +1,36 @@
+[
+  {
+    "ID": "SendMessageContext",
+    "ListElementCode": "recipient",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageRecipientOptionsList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SendMessageContext",
+    "ListElementCode": "isUrgent",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SendMessageContext",
+    "ListElementCode": "subject",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SendMessageContext",
+    "ListElementCode": "otherSubjectName",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

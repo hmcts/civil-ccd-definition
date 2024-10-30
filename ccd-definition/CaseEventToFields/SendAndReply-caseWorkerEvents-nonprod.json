@@ -1,0 +1,63 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendAndReplyOption",
+    "CaseEventFieldLabel": "Do you want to send or reply to a message?",
+    "PageLabel": " ",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "sendAndReplyOption",
+    "PageDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContextTitle",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "sendMessageContext",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "sendAndReplyOption=\"SEND\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContext",
+    "PageLabel": "Send message",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "sendMessageContext",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContentTitle",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "sendMessageContent",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "PageShowCondition": "sendAndReplyOption=\"SEND\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "sendMessageContent",
+    "CaseEventFieldLabel": "Enter your message",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "sendMessageContent",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  }
+]

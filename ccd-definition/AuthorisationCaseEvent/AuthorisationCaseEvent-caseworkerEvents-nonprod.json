@@ -58,5 +58,18 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "SEND_AND_REPLY",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
