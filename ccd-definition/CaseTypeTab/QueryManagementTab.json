@@ -1,0 +1,36 @@
+[
+    {
+      "LiveFrom": "01/01/2017",
+      "CaseTypeID": "CIVIL",
+      "Channel": "CaseWorker",
+      "TabID": "QueryManagementTab",
+      "TabLabel": "Query Management",
+      "TabDisplayOrder": 21,
+      "CaseFieldID": "QueryManagementComponentLauncher",
+      "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
+      "TabFieldDisplayOrder": 1
+    },
+    {
+      "LiveFrom": "01/01/2017",
+      "CaseTypeID": "CIVIL",
+      "Channel": "CaseWorker",
+      "TabID": "QueryManagementTab",
+      "TabLabel": "Query Management",
+      "TabDisplayOrder": 21,
+      "CaseFieldID": "qmCaseQueriesCollectionSolicitorApp",
+      "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
+      "TabFieldDisplayOrder": 1,
+      "FieldShowCondition": "QueryManagementComponentLauncher!=\"\""
+    },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "Channel": "CaseWorker",
+    "TabID": "QueryManagementTab",
+    "TabLabel": "Query Management",
+    "TabDisplayOrder": 21,
+    "CaseFieldID": "qmCaseQueriesCollectionSolicitorResp1",
+    "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
+    "TabFieldDisplayOrder": 1
+  }
+]

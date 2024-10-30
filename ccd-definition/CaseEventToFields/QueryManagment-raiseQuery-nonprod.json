@@ -1,0 +1,32 @@
+[
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "qmCaseQueriesCollectionSolicitorApp",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "qmCaseQueriesCollectionSolicitorResp1",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  }
+]

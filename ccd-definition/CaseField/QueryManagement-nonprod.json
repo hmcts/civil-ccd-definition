@@ -1,0 +1,29 @@
+[
+    {
+      "LiveFrom": "01/01/2017",
+      "CaseTypeID": "CIVIL",
+      "ID": "QueryManagementComponentLauncher",
+      "FieldType": "ComponentLauncher",
+      "Label": "Component Launcher",
+      "SecurityClassification": "Public",
+      "Searchable": "N"
+    },
+    {
+      "LiveFrom": "01/01/2017",
+      "CaseTypeID": "CIVIL",
+      "ID": "qmCaseQueriesCollectionSolicitorApp",
+      "FieldType": "CaseQueriesCollection",
+      "Label": "Queries",
+      "SecurityClassification": "Public",
+      "Searchable": "N"
+    },
+    {
+      "LiveFrom": "01/01/2017",
+      "CaseTypeID": "CIVIL",
+      "ID": "qmCaseQueriesCollectionSolicitorResp1",
+      "FieldType": "CaseQueriesCollection",
+      "Label": "Queries",
+      "SecurityClassification": "Public",
+      "Searchable": "N"
+    }
+ ]
