@@ -82,6 +82,14 @@
          "caseworker-civil-systemupdate"
        ],
        "CRUD": "CRU"
+     },
+     {
+       "UserRoles": [
+         "APP-SOL-SPEC-PROFILE",
+         "caseworker-civil-admin",
+         "caseworker-civil-staff"
+       ],
+       "CRUD": "R"
      }
    ]
  }
