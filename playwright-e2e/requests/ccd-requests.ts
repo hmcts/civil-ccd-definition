@@ -4,10 +4,10 @@ import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
 import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
-import CaseEvents from '../enums/events/case-events';
-import CCDCaseData from '../models/case-data/ccd-case-data';
+import CCDCaseData from '../models/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
+import CaseEventsAPI from '../enums/case-events/case-events-api';
 
 const classKey = 'CCDRequests';
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -34,11 +34,11 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     };
     const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log('CCD case data fetched successfully');
-    return responseJson.case_data;
+    return { id: responseJson.id, ...responseJson.case_data };
   }
 
   @Step(classKey)
-  async startEvent(event: CaseEvents, user: User, caseId?: number) {
+  async startEvent(event: CaseEventsAPI, user: User, caseId?: number) {
     console.log(
       `Starting event: ${event}` + (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
     );
@@ -57,7 +57,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   }
 
   @Step(classKey)
-  async submit(event: CaseEvents, caseData: CCDCaseData, user: User, ccdEventToken: string) {
+  async submit(event: CaseEventsAPI, caseData: CCDCaseData, user: User, ccdEventToken: string) {
     console.log(
       `Submitting event: ${event}` +
         (typeof caseData.id !== 'undefined' ? ` caseId: ${caseData.id}` : ''),
