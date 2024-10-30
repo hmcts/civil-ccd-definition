@@ -619,6 +619,14 @@
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
