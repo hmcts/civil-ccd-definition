@@ -416,6 +416,7 @@ module.exports = function () {
             () => this.clickContinue(),
             () => pbaNumberPage.selectPbaNumber(),
             () => paymentReferencePage.updatePaymentReference(),
+            () => fixedCostsPage.addFixedCosts(),
             () => statementOfTruth.enterNameAndRole('claim'),
             () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
             () => event.returnToCaseDetails(),
@@ -461,6 +462,7 @@ module.exports = function () {
         () => specInterestDateEndPage.selectInterestDateEnd(),
         () => this.clickContinue(),
         () => pbaNumberPage.clickContinue(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
         ...conditionalSteps(SdoR2, [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
@@ -493,6 +495,7 @@ module.exports = function () {
         () => this.clickContinue(),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
         ...conditionalSteps(SdoR2, [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
