@@ -2,7 +2,7 @@ import { APIRequestContext, APIResponse } from 'playwright-core';
 import RequestOptions from '../models/api/request-options';
 import { expect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
-import ResponseDataType from '../enums/api/response-data-type';
+import ResponseDataType from '../enums/response-data-type';
 import * as responseOptions from '../models/api/response-options';
 
 const classKey = 'BaseRequest';
