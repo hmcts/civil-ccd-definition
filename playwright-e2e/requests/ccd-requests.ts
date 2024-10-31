@@ -4,10 +4,10 @@ import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
 import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
-import CCDCaseData from '../models/ccd-case-data';
+import CCDCaseData from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
-import CaseEventsAPI from '../enums/case-events/case-events-api';
+import { CCDEvent } from '../models/ccd/ccd-events';
 
 const classKey = 'CCDRequests';
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -38,28 +38,29 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   }
 
   @Step(classKey)
-  async startEvent(event: CaseEventsAPI, user: User, caseId?: number) {
+  async startEvent(ccdEvent: CCDEvent, user: User, caseId?: number) {
     console.log(
-      `Starting event: ${event}` + (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+      `Starting event: ${ccdEvent.id}` +
+        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
     );
     let url = this.getCcdDataStoreBaseUrl(user);
     if (caseId) {
       url += `/cases/${caseId}`;
     }
-    url += `/event-triggers/${event}/token`;
+    url += `/event-triggers/${ccdEvent.id}/token`;
 
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
     const response = await super.retryRequestJson(url, requestOptions);
-    console.log(`Event: ${event} started successfully`);
+    console.log(`Event: ${ccdEvent.id} started successfully`);
     return response.token;
   }
 
   @Step(classKey)
-  async submit(event: CaseEventsAPI, caseData: CCDCaseData, user: User, ccdEventToken: string) {
+  async submit(ccdEvent: CCDEvent, caseData: CCDCaseData, user: User, ccdEventToken: string) {
     console.log(
-      `Submitting event: ${event}` +
+      `Submitting event: ${ccdEvent.id}` +
         (typeof caseData.id !== 'undefined' ? ` caseId: ${caseData.id}` : ''),
     );
     let url = `${this.getCcdDataStoreBaseUrl(user)}/cases`;
@@ -71,14 +72,14 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       headers: await this.getRequestHeaders(user),
       body: {
         data: caseData,
-        event: { id: event },
+        event: { id: ccdEvent.id },
         event_data: caseData,
         event_token: ccdEventToken,
       },
       method: 'POST',
     };
     const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus: 201 });
-    console.log(`Event: ${event} submitted successfully`);
+    console.log(`Event: ${ccdEvent.id} submitted successfully`);
     return responseJson;
   }
 }

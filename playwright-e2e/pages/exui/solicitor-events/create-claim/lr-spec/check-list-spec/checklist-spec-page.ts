@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import CaseEventsUI from '../../../../../../enums/case-events/case-events-ui';
+import ccdEvents from '../../../../../../fixtures/ccd/events';
 import ExuiEvent from '../../../../exui-event/exui-event';
 import { paragraphs, subheadings } from './checklist-spec-content';
 
@@ -8,7 +8,7 @@ import { paragraphs, subheadings } from './checklist-spec-content';
 export default class ChecklistSpecPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectHeading(CaseEventsUI.CREATE_CLAIM_SPEC),
+      super.expectHeading(ccdEvents.CREATE_CLAIM_SPEC.name),
       super.expectSubheading(subheadings.lrSpec),
       super.expectText(paragraphs.paragraph1),
       super.expectText(paragraphs.paragraph2),
