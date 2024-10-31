@@ -6,17 +6,12 @@ const {checkCaseFlagsAndHmcEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const fastClaimAmount = '11000';
 const serviceId = 'AAA7';
+const hmcTest = true
 let caseId;
 let caseFlagsAndHmcEnabled = false;
 
 let continueWithScenario = () => {
-  const continueWithScenario = [
-    caseFlagsAndHmcEnabled
-  ].filter(condition => !condition).length == 0;
-
-  console.log(`${continueWithScenario ? '' : 'not '}continuing with scenario as toggles are ${continueWithScenario ? '' : ' not '}enabled...`);
-
-  return continueWithScenario;
+  return caseFlagsAndHmcEnabled;
 };
 
 Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod');
@@ -27,7 +22,7 @@ BeforeSuite(async () => {
 
 Scenario('1v2DS full defence defendant and claimant response', async ({api}) => {
   if(!continueWithScenario()) return;
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, false, hmcTest);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
@@ -39,17 +34,17 @@ Scenario('1v2DS full defence defendant and claimant response', async ({api}) => 
 
 Scenario('Listing officer adds case flags', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getDetainedIndividualFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent1', getDisruptiveIndividualFlag());
-  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId1, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent1', getDetainedIndividualFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent1', getDisruptiveIndividualFlag());
+  await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
 });
 
 Scenario('Judge choose hearing in person', async ({api}) => {
   if(!continueWithScenario()) return;
-  await api.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST_IN_PERSON');
+  await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
 });
 
 Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
   if(!continueWithScenario()) return;
-  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId1, caseId, serviceId);
+  await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId2, caseId, serviceId);
 });

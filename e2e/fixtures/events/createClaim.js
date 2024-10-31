@@ -71,8 +71,13 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2) => {
+let claimantCourt = config.claimantSelectedCourt;
+const useHmcEaCourt = config.claimantSelectedCourtHmc;
+const useClaimantSelectedCourt = config.claimantSelectedCourt;
+
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2, hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
+  claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt
 
   const claimData = {
     References: {
@@ -86,9 +91,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement(config.claimantSelectedCourt)
+            listElement(claimantCourt)
           ],
-          value: listElement(config.claimantSelectedCourt)
+          value: listElement(claimantCourt)
         }
       },
       applicant1DQRemoteHearing: {
