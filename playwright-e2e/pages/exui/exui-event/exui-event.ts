@@ -1,6 +1,9 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import ccdEvents from '../../../fixtures/ccd/events';
+import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
+import { CCDEvent } from '../../../models/ccd/ccd-events';
 import { buttons, components } from './exui-event-content';
 
 export default function ExuiEvent<TBase extends abstract new (...args: any[]) => BasePage>(
@@ -8,8 +11,30 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
 ) {
   @AllMethodsStep()
   abstract class ExuiEvent extends Base {
-    protected async verifyCaseTitle(caseData: CCDCaseData) {
-      await super.expectHeading(caseData.caseNamePublic);
+    private static CCDEvent: CCDEvent;
+
+    protected async verifyHeadings(caseData?: CCDCaseData) {
+      let expects: Promise<void>[] | Promise<void>;
+
+      if (
+        ExuiEvent.CCDEvent === ccdEvents.CREATE_CLAIM ||
+        ExuiEvent.CCDEvent === ccdEvents.CREATE_CLAIM_SPEC
+      ) {
+        expects = super.expectHeading(ExuiEvent.CCDEvent.name);
+      } else if (ExuiEvent.CCDEvent === undefined) {
+        expects = [
+          super.expectHeading(ExuiEvent.CCDEvent.name),
+          super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
+          super.expectHeading(caseData.caseNamePublic),
+        ];
+      } else {
+        expects = [
+          super.expectHeading(ExuiEvent.CCDEvent.name),
+          super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
+          super.expectHeading(caseData.caseNamePublic),
+        ];
+      }
+      await super.runVerifications(expects, { runAxe: false });
     }
 
     protected async retryUploadFile(
@@ -48,6 +73,14 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
     }
 
     abstract submit(...args: any[]): Promise<void>;
+
+    protected set setCCDEvent(ccdEvent: CCDEvent) {
+      ExuiEvent.CCDEvent = ccdEvent;
+    }
+
+    protected set clearCCDEvent(ccdEvent: CCDEvent) {
+      ExuiEvent.CCDEvent = undefined;
+    }
   }
 
   return ExuiEvent;

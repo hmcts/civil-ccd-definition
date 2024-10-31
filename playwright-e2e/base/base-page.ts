@@ -186,30 +186,30 @@ export default abstract class BasePage {
 
   protected async runVerifications(
     expects?: Promise<void> | Promise<void>[],
-    { axe = true, axeExclusions = [] } = {},
+    { runAxe = true, axeExclusions = [], useAxeCache = true } = {},
   ) {
     if (expects) {
       Array.isArray(expects) ? await Promise.all(expects) : await expects;
     }
 
-    if (config.runAxeTests && axe) {
-      await this.expectAxeToPass(axeExclusions);
+    if (config.runAxeTests && runAxe) {
+      await this.expectAxeToPass(axeExclusions, useAxeCache);
     }
   }
 
   protected async retryReloadRunVerifications(
     assertions: () => Promise<void>[] | Promise<void>,
-    { axe = true, axeExclusions = [], timeout = 12_000 } = {},
+    { runAxe = true, axeExclusions = [], useAxeCache = true, timeout = 12_000 } = {},
   ) {
     await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
 
-    if (config.runAxeTests && axe) {
-      await this.expectAxeToPass(axeExclusions);
+    if (config.runAxeTests && runAxe) {
+      await this.expectAxeToPass(axeExclusions, useAxeCache);
     }
   }
 
   @BoxedDetailedStep(classKey)
-  private async expectAxeToPass(axeExclusions: string[]) {
+  private async expectAxeToPass(axeExclusions: string[], useAxeCache: boolean) {
     let axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
@@ -221,7 +221,9 @@ export default abstract class BasePage {
     const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
 
     const errorsNumBefore = test.info().errors.length;
-    await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    if (useAxeCache)
+      await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    else await pageExpect.soft(pageName).toHaveNoAxeViolations(axeBuilder, this.page);
     const errorsAfter = test.info().errors;
 
     if (errorsAfter.length > errorsNumBefore) {

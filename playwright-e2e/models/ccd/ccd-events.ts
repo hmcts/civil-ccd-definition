@@ -1,13 +1,15 @@
 export type CCDEvent = {
   id: string;
   name: string;
-  description: string;
-  order: number;
+  description?: string;
+  order?: number;
 };
 
 type CCDEvents = {
   CREATE_CLAIM: CCDEvent;
+  CREATE_CLAIM_AFTER_PAYMENT: CCDEvent;
   CREATE_CLAIM_SPEC: CCDEvent;
+  CREATE_CLAIM_SPEC_AFTER_PAYMENT: CCDEvent;
   NOTIFY_DEFENDANT_OF_CLAIM: CCDEvent;
   NOTIFY_DEFENDANT_OF_CLAIM_DETAILS: CCDEvent;
   ACKNOWLEDGE_CLAIM: CCDEvent;

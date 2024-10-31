@@ -7,11 +7,21 @@ const ccdEvents: CCDEvents = {
     description: 'Case created, post actions triggered',
     order: 1,
   },
+  CREATE_CLAIM_AFTER_PAYMENT: {
+    id: 'CREATE_CLAIM_AFTER_PAYMENT',
+    name: 'Case issued after payment',
+    description: 'Move to case issued when fee paid',
+  },
   CREATE_CLAIM_SPEC: {
     id: 'CREATE_CLAIM_SPEC',
     name: 'Create claim - Specified',
     description: 'Case created, post actions triggered',
     order: 1,
+  },
+  CREATE_CLAIM_SPEC_AFTER_PAYMENT: {
+    id: 'CREATE_CLAIM_SPEC_AFTER_PAYMENT',
+    name: 'Case issued after payment',
+    description: 'Move to case issued when fee paid',
   },
   NOTIFY_DEFENDANT_OF_CLAIM: {
     id: 'NOTIFY_DEFENDANT_OF_CLAIM',
