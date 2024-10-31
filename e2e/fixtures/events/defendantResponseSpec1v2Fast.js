@@ -7,7 +7,7 @@ const useDefendantSelectedCourt = config.claimantSelectedCourt;
 
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', hmcTest) => {
-    defendantCourt = hmcTest ? useHmcEaCourt : useDefendantSelectedCourt
+    defendantCourt = hmcTest ? useHmcEaCourt : useDefendantSelectedCourt;
 
     const responseData = {
       userInput: {

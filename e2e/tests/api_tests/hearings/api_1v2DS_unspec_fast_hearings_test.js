@@ -6,7 +6,7 @@ const {checkCaseFlagsAndHmcEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 const fastClaimAmount = '11000';
 const serviceId = 'AAA7';
-const hmcTest = true
+const hmcTest = true;
 let caseId;
 let caseFlagsAndHmcEnabled = false;
 

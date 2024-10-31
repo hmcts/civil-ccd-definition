@@ -77,7 +77,7 @@ const useClaimantSelectedCourt = config.claimantSelectedCourt;
 
 const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2, hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
-  claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt
+  claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt;
 
   const claimData = {
     References: {

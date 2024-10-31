@@ -4,7 +4,7 @@ const {getLanguageInterpreterFlag, getRAWheelchairFlag} = require('../../../api/
 const {checkCaseFlagsAndHmcEnabled} = require('../../../api/testingSupport');
 
 const serviceId = 'AAA6';
-const hmcTest = true
+const hmcTest = true;
 let caseId;
 let caseFlagsAndHmcEnabled = false;
 
