@@ -276,7 +276,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'text')
-  protected async expectSubHeading(
+  protected async expectSubheading(
     text: string,
     options: { message?: string; timeout?: number } = {},
   ) {
