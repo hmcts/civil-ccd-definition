@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 const solicitorUser = config.applicantSolicitorUser;
-const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
+const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different:
 // const caseWorkerUser = config.hearingCenterAdminLocal;
 

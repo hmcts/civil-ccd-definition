@@ -3,7 +3,8 @@
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO';
 const judgeUser = config.judgeUserWithRegionId1;
-const caseWorkerUser = config.hearingCenterAdminWithRegionId1;
+const caseWorkerUserReg1 = config.hearingCenterAdminWithRegionId1;
+const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // to use on local because the idam images are different
 //  const judgeUser = config.judgeUserWithRegionId1Local;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
@@ -31,7 +32,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId1, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
     console.log('--defendantResponse--');
     await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false,
       false,'00000',true);
@@ -43,8 +44,8 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     console.log('--createFinalOrderJO--');
     await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
     console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
+    await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
     await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
   }
@@ -56,7 +57,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(config.hearingCenterAdminWithRegionId1, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
   }
 });
 
@@ -65,10 +66,10 @@ Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, ap
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
     console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(caseWorkerUser);
+    await api_spec.markJudgmentPaid(caseWorkerUserReg1);
   }
 });
 

@@ -5,7 +5,7 @@ const claimType = 'SmallClaims';
 let carmEnabled = false;
 let claimRef;
 
-let mediationAdmin = config.nbcUserWithRegionId2;
+let mediationAdmin = config.nbcUserWithRegionId1;
 
 async function prepareClaim(api_spec_cui, carmEnabled) {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
