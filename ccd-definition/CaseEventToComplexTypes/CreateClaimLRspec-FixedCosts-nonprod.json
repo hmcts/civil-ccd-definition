@@ -1,0 +1,27 @@
+[
+  {
+    "ID": "FixedCosts",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "fixedCosts",
+    "ListElementCode": "claimFixedCosts",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "FixedCosts",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "fixedCosts",
+    "ListElementCode": "fixedCostsLabel",
+    "EventElementLabel": "<div class='form-label'>More information about fixed commencement costs see <a target=\"_blank\" href=\"https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part45-fixed-costs/practice-direction-45-fixed-costs#2\">CPR 45.17 Table 1</a> \n\nThe following claim types will require the claimant to serve the claim form personally:\n* claims involving a legal representative who is not registered with MyHMCTS\n* multi party claims where either the claimant or defendant is not represented</div><br />",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "FixedCosts",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "fixedCosts",
+    "ListElementCode": "fixedCostAmount",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  }
+]

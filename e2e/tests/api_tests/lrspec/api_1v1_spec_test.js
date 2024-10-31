@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 
@@ -56,6 +56,12 @@ Scenario('1v1 Settle claim - full defence claimant and defendant response', asyn
     await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
       'AWAITING_APPLICANT_INTENTION');
     await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
+  }
+});
+
+Scenario('1v1 Create claim with fixed costs', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   }
 });
 

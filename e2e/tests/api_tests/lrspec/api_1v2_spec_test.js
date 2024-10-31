@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 
@@ -85,6 +85,18 @@ Scenario('Settle claim spec 1v2', async ({I, api_spec}) => {
     await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
       'AWAITING_APPLICANT_INTENTION');
     await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
+  }
+});
+
+Scenario('1v2 diff sols Create claim with fixed costs', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+  }
+});
+
+Scenario('1v2 same sol Create claim with fixed costs', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   }
 });
 
