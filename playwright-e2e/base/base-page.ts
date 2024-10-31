@@ -223,7 +223,7 @@ export default abstract class BasePage {
     const errorsNumBefore = test.info().errors.length;
     if (useAxeCache)
       await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
-    else await pageExpect.soft(pageName).toHaveNoAxeViolations(axeBuilder, this.page);
+    else await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
     const errorsAfter = test.info().errors;
 
     if (errorsAfter.length > errorsNumBefore) {

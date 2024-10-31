@@ -18,13 +18,12 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
         super.expectText(tabs.summary.title),
         super.expectText(tabs.caseFile.title),
         super.expectText(tabs.claimDetails.title),
-        super.expectText(tabs.history.title),
+        super.expectText(tabs.history.title, { exact: true }),
         super.expectText(tabs.claimDocs.title),
         super.expectText(tabs.paymentHistory.title),
-        super.expectText(tabs.serviceRequest.title),
+        super.expectText(tabs.serviceRequest.title, { exact: true }),
         super.expectText(tabs.bundles.title),
         super.expectText(tabs.caseFlags.title),
-        super.expectLabel(dropdowns.nextStep.label),
         super.expectLabel(dropdowns.nextStep.label),
       ],
       { useAxeCache: false },
@@ -80,11 +79,12 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
     await super.retryClickBySelector(
       buttons.go.selector,
       () =>
-        super.expectNoText(tabs.history.title, {
+        super.expectNoText(tabs.summary.title, {
           timeout: 10_000,
         }),
       { retries: 3 },
     );
+    super.setCCDEvent = ccdEvent;
   }
 
   async chooseNextStep(ccdEvent: CCDEvent) {

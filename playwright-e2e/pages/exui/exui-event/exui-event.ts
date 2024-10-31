@@ -6,30 +6,30 @@ import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
 import { buttons, components } from './exui-event-content';
 
+let ccdEventState: CCDEvent;
+
 export default function ExuiEvent<TBase extends abstract new (...args: any[]) => BasePage>(
   Base: TBase,
 ) {
-  @AllMethodsStep()
+  @AllMethodsStep({ methodNamesToIgnore: ['setCCDEvent', 'clearCCDEvent'] })
   abstract class ExuiEvent extends Base {
-    private static CCDEvent: CCDEvent;
-
     protected async verifyHeadings(caseData?: CCDCaseData) {
       let expects: Promise<void>[] | Promise<void>;
 
       if (
-        ExuiEvent.CCDEvent === ccdEvents.CREATE_CLAIM ||
-        ExuiEvent.CCDEvent === ccdEvents.CREATE_CLAIM_SPEC
+        ccdEventState === ccdEvents.CREATE_CLAIM ||
+        ccdEventState === ccdEvents.CREATE_CLAIM_SPEC
       ) {
-        expects = super.expectHeading(ExuiEvent.CCDEvent.name);
-      } else if (ExuiEvent.CCDEvent === undefined) {
+        expects = super.expectHeading(ccdEventState.name);
+      } else if (ccdEventState === undefined) {
         expects = [
-          super.expectHeading(ExuiEvent.CCDEvent.name),
+          super.expectHeading(ccdEventState.name),
           super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
           super.expectHeading(caseData.caseNamePublic),
         ];
       } else {
         expects = [
-          super.expectHeading(ExuiEvent.CCDEvent.name),
+          super.expectHeading(ccdEventState.name),
           super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
           super.expectHeading(caseData.caseNamePublic),
         ];
@@ -75,11 +75,11 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
     abstract submit(...args: any[]): Promise<void>;
 
     protected set setCCDEvent(ccdEvent: CCDEvent) {
-      ExuiEvent.CCDEvent = ccdEvent;
+      ccdEventState = ccdEvent;
     }
 
-    protected set clearCCDEvent(ccdEvent: CCDEvent) {
-      ExuiEvent.CCDEvent = undefined;
+    protected clearCCDEvent() {
+      ccdEventState = undefined;
     }
   }
 
