@@ -27,7 +27,7 @@ module.exports = {
         ...caseData.partyChosen,
         value: {
           code: DEFENDANT_1_LR_INDIVIDUALS,
-          label: "DEFENDANT 1: Individuals attending for the legal representative",
+          label: 'DEFENDANT 1: Individuals attending for the legal representative',
         }
       },
       partyChosenId: DEFENDANT_1_LR_INDIVIDUALS,
