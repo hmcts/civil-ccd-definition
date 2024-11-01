@@ -1,5 +1,5 @@
 export default interface CCDCaseData {
-  id?: string;
+  id?: number;
   respondent1PaymentDateToStringSpec?: string;
   respondent1ClaimResponseTypeForSpec?: string;
   respondent1DQRemoteHearingLRspec?: DQRemoteHearing;
