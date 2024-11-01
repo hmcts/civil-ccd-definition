@@ -82,5 +82,17 @@
     "CaseEventID": "NOTIFY_DEFENDANT2_STAY_UPDATE_REQUESTED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
