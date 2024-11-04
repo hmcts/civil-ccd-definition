@@ -1,6 +1,6 @@
 export const heading = 'Create an account or sign in';
 
-export const subHeadings = {
+export const subheadings = {
   createAccount: 'Create an account',
   haveAccount: 'Already have an account?',
 };
