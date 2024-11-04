@@ -137,5 +137,14 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "messages",
+    "Label": "Messages",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "Message",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
