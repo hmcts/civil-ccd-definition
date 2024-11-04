@@ -84,13 +84,13 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_CLAIMANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

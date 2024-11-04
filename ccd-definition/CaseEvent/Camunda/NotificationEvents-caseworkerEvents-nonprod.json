@@ -182,7 +182,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_CLAIMANT",
     "Name": "Dashboard stay lifted",
     "Description": "Dashboard stay lifted claimant",
@@ -195,7 +195,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_DEFENDANT",
     "Name": "Dashboard stay lifted",
     "Description": "Dashboard stay lifted defendant",

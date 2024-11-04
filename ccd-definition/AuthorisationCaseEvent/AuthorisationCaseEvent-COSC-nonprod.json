@@ -74,7 +74,7 @@
    ]
  },
   {
-   "CaseTypeID": "CIVIL",
+   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_PAID_IN_FULL_COSC",
    "AccessControl": [
      {
