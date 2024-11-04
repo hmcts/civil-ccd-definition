@@ -23,7 +23,6 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
         expects = super.expectHeading(ccdEventState.name);
       } else if (ccdEventState === undefined) {
         expects = [
-          super.expectHeading(ccdEventState.name),
           super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
           super.expectHeading(caseData.caseNamePublic),
         ];

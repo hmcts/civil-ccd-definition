@@ -1,20 +1,34 @@
 export default class DateHelper {
-  static addToToday({ days = 0, months = 0, years = 0 }): Date {
-    const today = new Date();
-    today.setDate(today.getDate() + days);
-    today.setMonth(today.getMonth() + months);
-    today.setFullYear(today.getFullYear() + years);
+  private static addDate(date: Date, { days = 0, months = 0, years = 0 }) {
+    date.setDate(date.getDate() + days);
+    date.setMonth(date.getMonth() + months);
+    date.setFullYear(date.getFullYear() + years);
 
-    return today;
+    return date;
+  }
+
+  static addToToday({ days = 0, months = 0, years = 0 }): Date {
+    return this.addDate(new Date(), { days, months, years });
+  }
+
+  static addToDate(date: string, { days = 0, months = 0, years = 0 }): Date {
+    return this.addDate(new Date(date), { days, months, years });
+  }
+
+  private static subtractDate(date: Date, { days = 0, months = 0, years = 0 }): Date {
+    date.setDate(date.getDate() - days);
+    date.setMonth(date.getMonth() - months);
+    date.setFullYear(date.getFullYear() - years);
+
+    return date;
   }
 
   static subtractFromToday({ days = 0, months = 0, years = 0 }): Date {
-    const today = new Date();
-    today.setDate(today.getDate() - days);
-    today.setMonth(today.getMonth() - months);
-    today.setFullYear(today.getFullYear() - years);
+    return this.subtractDate(new Date(), { days, months, years });
+  }
 
-    return today;
+  static subtractFromDate(date: string, { days = 0, months = 0, years = 0 }): Date {
+    return this.subtractDate(new Date(date), { days, months, years });
   }
 
   static getTwoDigitDay(date: Date): string {
