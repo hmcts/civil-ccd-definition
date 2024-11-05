@@ -70,8 +70,6 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
    await LRspec.initiateSDO('yes', 'yes', null, null);
-   await apiRequest.setupTokens(config.applicantSolicitorUser);
-   await adjustCaseSubmittedDateForCarm(caseNumber, false);
 }).retry(3);
 
 Scenario('Update submitted date after assignment to small claims track in SDO', async ({LRspec}) => {
