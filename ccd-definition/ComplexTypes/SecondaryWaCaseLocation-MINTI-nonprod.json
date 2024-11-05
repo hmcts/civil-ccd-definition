@@ -1,0 +1,34 @@
+[
+  {
+    "ID": "SecondaryWaCaseLocationCivil",
+    "ListElementCode": "region",
+    "ElementLabel": "Region",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SecondaryWaCaseLocationCivil",
+    "ListElementCode": "regionName",
+    "ElementLabel": "Region location",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SecondaryWaCaseLocationCivil",
+    "ListElementCode": "location",
+    "ElementLabel": "Location",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "SecondaryWaCaseLocationCivil",
+    "ListElementCode": "locationName",
+    "ElementLabel": "Location name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

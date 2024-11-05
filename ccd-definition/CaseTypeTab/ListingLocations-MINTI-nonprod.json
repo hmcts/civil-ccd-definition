@@ -1,0 +1,38 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ListingLocations",
+    "TabLabel": "Listing Locations",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "cmcListingLocation",
+    "TabFieldDisplayOrder": 1,
+    "_DisplayContextParameter": "#TABLE(region, regionName, location, locationName)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ListingLocations",
+    "TabLabel": "Listing Locations",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "ccmcListingLocation",
+    "TabFieldDisplayOrder": 2,
+    "_DisplayContextParameter": "#TABLE(region, regionName, location, locationName)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ListingLocations",
+    "TabLabel": "Listing Locations",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "preTrialListingLocation",
+    "TabFieldDisplayOrder": 3,
+    "_DisplayContextParameter": "#TABLE(region, regionName, location, locationName)"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "ListingLocations",
+    "TabLabel": "Listing Locations",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "trialListingLocation",
+    "TabFieldDisplayOrder": 4,
+    "_DisplayContextParameter": "#TABLE(region, regionName, location, locationName)"
+  }
+]

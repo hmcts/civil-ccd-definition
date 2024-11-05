@@ -184,5 +184,37 @@
     "RegularExpression": ".doc,.docx",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "cmcListingLocation",
+    "Label": "cmc Listing Location",
+    "FieldType": "SecondaryWaCaseLocationCivil",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "ccmcListingLocation",
+    "Label": "ccmc Listing Location",
+    "FieldType": "SecondaryWaCaseLocationCivil",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "preTrialListingLocation",
+    "Label": "pre Trial Listing Location",
+    "FieldType": "SecondaryWaCaseLocationCivil",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "trialListingLocation",
+    "Label": "trial Listing Location",
+    "FieldType": "SecondaryWaCaseLocationCivil",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
