@@ -3,6 +3,7 @@ import BaseApiSteps from '../../base/base-api-steps';
 import RequestsFactory from '../../requests/requests-factory';
 import TestData from '../../models/test-data';
 import BankHolidaysHelper from '../../helpers/bank-holidays-helper';
+import { bankHolidays } from '../../config/data';
 
 @AllMethodsStep()
 export default class ApiDataSteps extends BaseApiSteps {
@@ -12,6 +13,7 @@ export default class ApiDataSteps extends BaseApiSteps {
 
   async SetupBankHolidaysData() {
     await this.setupBankHolidays();
-    BankHolidaysHelper.writeBankHolidays();
+    console.log(bankHolidays);
+    BankHolidaysHelper.writeBankHolidays(bankHolidays);
   }
 }

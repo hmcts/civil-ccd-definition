@@ -1,4 +1,3 @@
-import { bankHolidays } from '../config/data';
 import filePaths from '../config/file-paths';
 import FileType from '../enums/file-type';
 import FileSystemHelper from './file-system-helper';
@@ -13,7 +12,7 @@ export default class BankHolidaysHelper {
     }
   };
 
-  static writeBankHolidays() {
+  static writeBankHolidays(bankHolidays: string[]) {
     FileSystemHelper.writeFile(bankHolidays, filePaths.bankHolidaysJson, FileType.JSON);
   }
 
