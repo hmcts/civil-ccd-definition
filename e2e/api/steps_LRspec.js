@@ -857,7 +857,7 @@ module.exports = {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
 
     return caseId;
   },
