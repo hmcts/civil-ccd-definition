@@ -1,3 +1,6 @@
+import filePaths from '../config/file-paths';
+import FileSystemHelper from './file-system-helper';
+
 export default class DateHelper {
   private static addDate(date: Date, { days = 0, months = 0, years = 0 }) {
     date.setDate(date.getDate() + days);
@@ -68,4 +71,6 @@ export default class DateHelper {
     const formattedDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
     return formattedDate;
   }
+
+  static;
 }

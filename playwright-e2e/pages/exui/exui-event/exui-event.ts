@@ -1,6 +1,6 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import ccdEvents from '../../../fixtures/ccd/events';
+import ccdEvents from '../../../fixtures/ccd-events/events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
