@@ -1,34 +1,42 @@
 [
   {
-    "ID": "SecondaryWaCaseLocationCivil",
-    "ListElementCode": "region",
-    "ElementLabel": "Region",
+    "ID": "TaskManagementLocation",
+    "ListElementCode": "type",
+    "ElementLabel": "type",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
-    "ID": "SecondaryWaCaseLocationCivil",
+    "ID": "TaskManagementLocation",
+    "ListElementCode": "region",
+    "ElementLabel": "Region Id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "ID": "TaskManagementLocation",
     "ListElementCode": "regionName",
     "ElementLabel": "Region location",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
-    "ID": "SecondaryWaCaseLocationCivil",
+    "ID": "TaskManagementLocation",
     "ListElementCode": "location",
-    "ElementLabel": "Location",
+    "ElementLabel": "Location epimm",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
-    "ID": "SecondaryWaCaseLocationCivil",
+    "ID": "TaskManagementLocation",
     "ListElementCode": "locationName",
     "ElementLabel": "Location name",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   }
 ]

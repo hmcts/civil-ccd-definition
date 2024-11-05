@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "TabID": "TaskManagementLocation",
+    "TabLabel": "Task management location",
+    "TabDisplayOrder": 1,
+    "CaseFieldID": "taskManagementLocations",
+    "TabFieldDisplayOrder": 1,
+    "DisplayContextParameter": "#TABLE(type, region, regionName, locationName)"
+  }
+]
