@@ -2,12 +2,10 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {adjustCaseSubmittedDateForCarm} = require('../../../helpers/carmHelper');
-const apiRequest = require('../../../api/apiRequest');
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with fast claims');
+Feature('Claim creation 1v2 Diff Solicitor with fast claims @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
 
 Scenario('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec', async ({api_spec_fast, LRspec}) => {
   console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for fast claims @create-claim-spec');
@@ -70,8 +68,6 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
    await LRspec.initiateSDO('yes', 'yes', null, null);
-   await apiRequest.setupTokens(config.applicantSolicitorUser);
-   await adjustCaseSubmittedDateForCarm(caseNumber, false);
 }).retry(3);
 
 Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
