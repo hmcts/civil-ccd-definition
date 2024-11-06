@@ -73,12 +73,6 @@ Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
-// Scenario('Update submitted date after assignment to small claims track in SDO', async ({LRspec}) => {
-//   await waitForFinishedBusinessProcess(caseNumber);
-//   await apiRequest.setupTokens(config.applicantSolicitorUser);
-//   await adjustCaseSubmittedDateForCarm(caseNumber, false);
-// }).retry(3);
-
 Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseNumber, false);
