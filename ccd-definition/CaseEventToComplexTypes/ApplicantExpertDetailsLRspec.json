@@ -13,7 +13,7 @@
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "ListElementCode": "firstName",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimExperts",
@@ -21,7 +21,7 @@
     "CaseFieldID": "applicant1RespondToClaimExperts",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimExperts",
