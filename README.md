@@ -1,4 +1,4 @@
-# civil-ccd-definition
+test pipeline # civil-ccd-definition
 
 Civil CCD Definition and E2E tests
 
