@@ -2,9 +2,6 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const {adjustCaseSubmittedDateForCarm} = require('../../../helpers/carmHelper');
-const apiRequest = require('../../../api/apiRequest');
-const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 
 let caseNumber;
 
