@@ -99,9 +99,9 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "sendMessageContext",
+    "ID": "sendMessageMetadata",
     "Label": " ",
-    "FieldType": "SendMessageContext",
+    "FieldType": "SendMessageMetadata",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

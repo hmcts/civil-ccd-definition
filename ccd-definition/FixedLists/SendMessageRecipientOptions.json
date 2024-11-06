@@ -14,7 +14,7 @@
   {
     "ID": "SendMessageRecipientOptionsList",
     "ListElementCode": "CIRCUIT_JUDGE",
-    "ListElement": "District judge",
+    "ListElement": "Circuit judge",
     "DisplayOrder": 3
   },
   {

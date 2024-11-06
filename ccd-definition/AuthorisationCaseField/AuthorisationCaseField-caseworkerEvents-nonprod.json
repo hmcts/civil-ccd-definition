@@ -161,7 +161,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "CaseFieldID": "sendMessageContext",
+    "CaseFieldID": "sendMessageMetadata",
     "AccessControl": [
       {
         "UserRoles": [

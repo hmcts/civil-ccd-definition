@@ -18,7 +18,7 @@
     "CaseFieldID": "sendMessageContextTitle",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "sendMessageContext",
+    "PageID": "sendMessageMetadata",
     "PageDisplayOrder": 3,
     "PageColumnNumber": 1,
     "PageShowCondition": "sendAndReplyOption=\"SEND\"",
@@ -27,11 +27,11 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "sendMessageContext",
+    "CaseFieldID": "sendMessageMetadata",
     "PageLabel": "Send message",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
-    "PageID": "sendMessageContext",
+    "PageID": "sendMessageMetadata",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"

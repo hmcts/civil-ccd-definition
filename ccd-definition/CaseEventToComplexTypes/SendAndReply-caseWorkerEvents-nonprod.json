@@ -1,38 +1,38 @@
 [
   {
-    "ID": "SendMessageContext",
+    "ID": "sendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "sendMessageContext",
-    "ListElementCode": "recipient",
+    "CaseFieldID": "sendMessageMetadata",
+    "ListElementCode": "recipientRoleType",
     "EventElementLabel": "Who are you sending the message to?",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SendMessageContext",
+    "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "sendMessageContext",
+    "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "isUrgent",
     "EventElementLabel": "Is this urgent?",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SendMessageContext",
+    "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "sendMessageContext",
+    "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "subject",
     "EventElementLabel": "What is this message about?",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "SendMessageContext",
+    "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "sendMessageContext",
+    "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "otherSubjectName",
     "EventElementLabel": "Enter the subject",
-    "FieldShowCondition": "sendMessageContext.subject=\"OTHER\"",
+    "FieldShowCondition": "sendMessageMetadata.subject=\"OTHER\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   }
