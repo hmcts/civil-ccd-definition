@@ -763,10 +763,10 @@ module.exports = {
 
     // need to add partyID back into respondent object
     if (solicitor === 'solicitorOne'){
-      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
+      //caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
     }
     if (solicitor === 'solicitorTwo'){
-      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
+      //caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
     }
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
@@ -1488,7 +1488,7 @@ const assertValidData = async (data, pageId, solicitor) => {
 
   assert.equal(response.status, 200);
 
-   
+
   let claimValue;
   if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
     && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
@@ -1788,7 +1788,7 @@ function checkCalculated(calculated, responseBodyData) {
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
-   
+
   return dynamicElements.map(({code, ...item}) => item);
 }
 
