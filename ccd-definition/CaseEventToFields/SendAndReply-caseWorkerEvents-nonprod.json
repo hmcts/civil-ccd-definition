@@ -19,7 +19,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "sendMessageMetadata",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "PageShowCondition": "sendAndReplyOption=\"SEND\"",
     "ShowSummaryChangeOption": "N"
