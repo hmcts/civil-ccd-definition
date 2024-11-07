@@ -41,7 +41,7 @@
   },
   {
     "ID": "Message",
-    "ListElementCode": "subject",
+    "ListElementCode": "headerSubject",
     "FieldType": "Text",
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
