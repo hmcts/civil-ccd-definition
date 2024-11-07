@@ -8,6 +8,10 @@ export default class ExuiNavBar extends BasePage {
     throw new Error('Method not implemented.');
   }
 
+  async clickCreateCase() {
+    await super.clickLink(links.createCase.title);
+  }
+
   async clickSignOut() {
     await super.clickBySelector(links.signOut.selector);
     await super.expectDomain('idam-web-public');
