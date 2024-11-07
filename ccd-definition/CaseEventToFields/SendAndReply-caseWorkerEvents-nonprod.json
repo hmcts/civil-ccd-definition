@@ -19,7 +19,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "sendMessageContext",
-    "PageDisplayOrder": 3,
+    "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "PageShowCondition": "sendAndReplyOption=\"SEND\"",
     "ShowSummaryChangeOption": "N"
@@ -53,7 +53,7 @@
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageContent",
     "CaseEventFieldLabel": "Enter your message",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "sendMessageContent",
     "PageDisplayOrder": 3,
