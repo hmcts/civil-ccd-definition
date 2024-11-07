@@ -763,10 +763,10 @@ module.exports = {
 
     // need to add partyID back into respondent object
     if (solicitor === 'solicitorOne'){
-      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
+      //caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
     }
     if (solicitor === 'solicitorTwo'){
-      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
+      //caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
     }
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
