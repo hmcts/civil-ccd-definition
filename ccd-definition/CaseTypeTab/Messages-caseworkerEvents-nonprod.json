@@ -6,6 +6,6 @@
     "TabDisplayOrder": 99,
     "CaseFieldID": "messages",
     "TabFieldDisplayOrder": 1,
-    "DisplayContextParameter": "#TABLE(senderRoleType, recipientRoleType, isUrgent, sentTime, updatedTime, subject)"
+    "DisplayContextParameter": "#TABLE(senderRoleType, recipientRoleType, isUrgent, sentTime, updatedTime, headerSubject)"
   }
 ]
