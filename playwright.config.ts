@@ -20,7 +20,7 @@ export default defineConfig({
                 : 'playwright-allure-bootstrap-results',
             environmentInfo: {
               Environment: config.environment,
-              Workers: process.env.WORKERS,
+              Workers: process.env.PLAYWRIGHT_WORKERS,
               OS: os.platform(),
               Architecture: os.arch(),
               NodeVersion: process.version,

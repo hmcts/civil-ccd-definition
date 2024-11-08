@@ -13,7 +13,6 @@ export default class ApiDataSteps extends BaseApiSteps {
 
   async SetupBankHolidaysData() {
     await this.setupBankHolidays();
-    console.log(bankHolidays);
     BankHolidaysHelper.writeBankHolidays(bankHolidays);
   }
 }

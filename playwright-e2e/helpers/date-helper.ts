@@ -59,7 +59,10 @@ export default class DateHelper {
     return `${year % 100}`.padStart(2, '0');
   }
 
-  static formatDate(inputDate: string, inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Mon YYYY') {
+  static formatDateToString(
+    inputDate: string | Date,
+    { inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Mon YYYY' } = {},
+  ): string {
     const months = [
       'January',
       'February',
@@ -75,11 +78,23 @@ export default class DateHelper {
       'December',
     ];
 
-    const [year, month, day] = inputDate.split('-');
+    let date: Date;
+    let dateString: string;
 
-    const date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
-    const formattedDate = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
-    return formattedDate;
+    if (typeof inputDate === 'string') {
+      if (inputFormat === 'YYYY-MM-DD') {
+        const [year, month, day] = inputDate.split('-');
+        date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+      }
+    } else {
+      date = inputDate;
+    }
+
+    if (outputFormat === 'DD Mon YYYY') {
+      dateString = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    }
+
+    return dateString;
   }
 
   private static isWeekend(date: Date): boolean {
