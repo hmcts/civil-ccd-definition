@@ -32,7 +32,7 @@ export default class NotifyClaimFragment extends BasePage {
       super.expectLabel(defendant1RadioButtons.defendant.label),
       super.expectLabel(defendant1RadioButtons.litigationFriend.label),
       super.expectLabel(defendant1RadioButtons.solicitor.label),
-      super.expectText(defendant1Checkboxes.signedTrue.label),
+      super.expectText(defendant1Checkboxes.signedTrue.label, { first: true }),
     ]);
   }
 
@@ -68,7 +68,7 @@ export default class NotifyClaimFragment extends BasePage {
       defendant1Dropdowns.locationType.options[0],
       defendant1Dropdowns.locationType.selector,
     );
-    await super.inputText('Test Address', defendant1Inputs.documentsServedLocation.selector);
+    await super.inputText('Test Address 1', defendant1Inputs.documentsServedLocation.selector);
     await super.clickBySelector(defendant1RadioButtons.claimant.selector);
     await super.selectFromDropdown(
       defendant1Dropdowns.serveType.options[0],
