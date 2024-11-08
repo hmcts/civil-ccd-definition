@@ -56,7 +56,7 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
-  }
+  },
   {
     "CaseTypeID": "CIVIL",
     "ID": "CASE_PROCEEDS_IN_CASEMAN",
