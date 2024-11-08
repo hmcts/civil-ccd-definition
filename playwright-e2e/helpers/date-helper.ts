@@ -1,6 +1,36 @@
 import { bankHolidays } from '../config/data';
 
 export default class DateHelper {
+  private static shortMonths: string[] = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  private static longMonths = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
   private static addDate(date: Date, { days = 0, months = 0, years = 0, workingDay = false }) {
     date.setDate(date.getDate() + days);
     date.setMonth(date.getMonth() + months);
@@ -61,23 +91,8 @@ export default class DateHelper {
 
   static formatDateToString(
     inputDate: string | Date,
-    { inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Mon YYYY' } = {},
+    { inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Month YYYY' } = {},
   ): string {
-    const months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December',
-    ];
-
     let date: Date;
     let dateString: string;
 
@@ -90,8 +105,10 @@ export default class DateHelper {
       date = inputDate;
     }
 
-    if (outputFormat === 'DD Mon YYYY') {
-      dateString = `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
+    if (outputFormat === 'DD Month YYYY') {
+      dateString = `${date.getDate()} ${this.longMonths[date.getMonth()]} ${date.getFullYear()}`;
+    } else if (outputFormat === 'DD Mon YYYY') {
+      dateString = `${date.getDate()} ${this.shortMonths[date.getMonth()]} ${date.getFullYear()}`;
     }
 
     return dateString;
@@ -117,7 +134,6 @@ export default class DateHelper {
     const nextDate = new Date(date);
 
     // Increment day by 1 until we find a working day
-    console.log(`${nextDate.toDateString()}: ${this.isNonWorkingDay(nextDate)}`);
     while (this.isNonWorkingDay(nextDate)) {
       nextDate.setDate(nextDate.getDate() + 1);
     }

@@ -315,11 +315,11 @@ export default abstract class BasePage {
   private getTextLocator(
     text: string | number,
     exact?: boolean,
-    selector?: string,
+    containerSelector?: string,
     first?: boolean,
   ) {
-    const locator = selector
-      ? this.page.locator(selector).getByText(text.toString())
+    const locator = containerSelector
+      ? this.page.locator(containerSelector).getByText(text.toString())
       : this.page.getByText(text.toString(), { exact: exact });
     return first ? locator.first() : locator;
   }
@@ -331,12 +331,18 @@ export default abstract class BasePage {
     options: {
       message?: string;
       exact?: boolean;
-      selector?: string;
+      containerSelector?: string;
       first?: boolean;
       timeout?: number;
     } = {},
   ) {
-    const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
+    const locator = this.getTextLocator(
+      text,
+      options.exact,
+      options.containerSelector,
+      options.first,
+    );
+
     await pageExpect(locator, { message: options.message }).toBeVisible({
       timeout: options.timeout,
     });

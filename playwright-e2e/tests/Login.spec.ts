@@ -9,19 +9,18 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await ApiDataSteps.SetupBankHolidaysData();
 
   const { ccdRequests } = _requestsFactory;
-  const caseData = await ccdRequests.fetchCCDCaseData(1731059303866081, civilAdminUser);
+  const caseData = await ccdRequests.fetchCCDCaseData(1731078340969906, civilAdminUser);
 
   const { caseDetailsPage } = _exuiDashboardPageFactory;
-  await caseDetailsPage.goToCaseDetails(1731059303866081);
+  await caseDetailsPage.goToCaseDetails(1731078340969906);
   await caseDetailsPage.verifyContent(caseData);
-  await caseDetailsPage.retryChooseNextStep(ccdEvents.INFORM_AGREED_EXTENSION_DATE_SPEC);
+  await caseDetailsPage.retryChooseNextStep(ccdEvents.INFORM_AGREED_EXTENSION_DATE);
 
-  const { extensionDateSpecPage } = _informAgreedExtensionDateFactory;
-  await extensionDateSpecPage.verifyContent();
-  await extensionDateSpecPage.enterDate(caseData);
-  await extensionDateSpecPage.submit();
+  const { extensionDatePage } = _informAgreedExtensionDateFactory;
+  await extensionDatePage.verifyContent(caseData);
+  await extensionDatePage.submit();
 
-  const { informAgreedExtensionDateConfirmSpecPage } = _informAgreedExtensionDateFactory;
-  await informAgreedExtensionDateConfirmSpecPage.verifyContent(caseData);
-  await informAgreedExtensionDateConfirmSpecPage.submit();
+  const { informAgreedExtensionDateConfirmPage } = _informAgreedExtensionDateFactory;
+  await informAgreedExtensionDateConfirmPage.verifyContent(caseData);
+  await informAgreedExtensionDateConfirmPage.submit();
 });
