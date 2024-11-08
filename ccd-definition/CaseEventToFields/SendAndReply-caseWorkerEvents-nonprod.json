@@ -53,7 +53,7 @@
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageContent",
     "CaseEventFieldLabel": "Enter your message",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "sendMessageContent",
     "PageDisplayOrder": 3,
