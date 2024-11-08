@@ -242,7 +242,7 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "noticeOfDiscontinueCWDoc",
+    "ID": "applicant1NoticeOfDiscontinueCWViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
@@ -250,7 +250,39 @@
   },
   {
     "CaseTypeID": "CIVIL",
-    "ID": "noticeOfDiscontinueAllParitiesDoc",
+    "ID": "respondent1NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "applicant1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "respondent2NoticeOfDiscontinueAllPartyViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
