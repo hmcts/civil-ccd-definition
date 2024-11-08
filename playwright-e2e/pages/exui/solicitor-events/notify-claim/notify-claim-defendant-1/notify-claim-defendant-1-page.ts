@@ -1,10 +1,10 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import NotifyClaimFragment from '../../../fragments/notify-claim/notify-claim-fragments';
+import NotifyClaimFragment from '../../../fragments/notify-claim/notify-claim-fragment';
 
 @AllMethodsStep()
-export default class NotifyClaimPage extends BasePage {
+export default class NotifyClaimDefendant1Page extends BasePage {
   private notifyClaimFragment: NotifyClaimFragment;
 
   constructor(notifyClaimFragment: NotifyClaimFragment, page: Page) {
