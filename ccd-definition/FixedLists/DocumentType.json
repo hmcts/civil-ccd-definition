@@ -74,7 +74,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "JUDGE_FINAL_ORDER",
-    "ListElement": "Judge final order",
+    "ListElement": "Order",
     "DisplayOrder": 13
   },
   {
