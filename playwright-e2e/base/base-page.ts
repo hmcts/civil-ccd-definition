@@ -321,7 +321,7 @@ export default abstract class BasePage {
     const locator = containerSelector
       ? this.page.locator(containerSelector).getByText(text.toString())
       : this.page.getByText(text.toString(), { exact: exact });
-    return first ? locator.first() : locator;
+    return first ? locator.nth(0) : locator;
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -355,12 +355,17 @@ export default abstract class BasePage {
     options: {
       message?: string;
       exact?: boolean;
-      selector?: string;
+      containerSelector?: string;
       first?: boolean;
       timeout?: number;
     } = {},
   ) {
-    const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
+    const locator = this.getTextLocator(
+      text,
+      options.exact,
+      options.containerSelector,
+      options.first,
+    );
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty

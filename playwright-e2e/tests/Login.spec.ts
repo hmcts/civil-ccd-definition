@@ -9,10 +9,10 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await ApiDataSteps.SetupBankHolidaysData();
 
   const { ccdRequests } = _requestsFactory;
-  const caseData = await ccdRequests.fetchCCDCaseData(1731081834963088, civilAdminUser);
+  const caseData = await ccdRequests.fetchCCDCaseData(1731073813645323, civilAdminUser);
 
   const { caseDetailsPage } = _exuiDashboardPageFactory;
-  await caseDetailsPage.goToCaseDetails(1731081834963088);
+  await caseDetailsPage.goToCaseDetails(1731073813645323);
   await caseDetailsPage.verifyContent(caseData);
   await caseDetailsPage.retryChooseNextStep(ccdEvents.INFORM_AGREED_EXTENSION_DATE);
 
