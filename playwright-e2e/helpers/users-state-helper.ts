@@ -1,35 +1,30 @@
-import User from "../types/user";
-import UserRole from "../enums/user-role";
-import FileSystemHelper from "./file-system-helper";
-import FileType from "../enums/file-type";
-import UserKey from "../enums/user-key";
-import filePaths from "../config/file-paths";
-import config from "../config/config";
+import User from '../models/user';
+import FileSystemHelper from './file-system-helper';
+import FileType from '../enums/file-type';
+import UserKey from '../enums/user-key';
+import filePaths from '../config/file-paths';
 
 export default class UserStateHelper {
-  private static getUserStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-user.json`;
+  private static getUserStatePath = (userKey: UserKey) => `${filePaths.users}/${userKey}-user.json`;
 
-  private static getUsersStatePath = (userType: UserKey) => `${filePaths.users}/${userType}-users.json`;
-
-  static generateCitizenUsers = (userKey: UserKey): User[] => {
-    return Array.from({ length: config.playwright.workers }, (_, index) => ({
-      email: `${userKey}citizen-${Math.random().toString(36).slice(2, 9).toLowerCase()}@gmail.com`,
-      password: process.env.SMOKE_TEST_USER_PASSWORD,
-      role: UserRole.CITIZEN,
-      key: userKey,
-      cookiesPath: `${filePaths.userCookies}/${userKey}-${index + 1}.json`,
-    }));
-  };
+  private static getUsersStatePath = (userKey: UserKey) =>
+    `${filePaths.users}/${userKey}-users.json`;
 
   static addUsersToState = (users: User[]) => {
     FileSystemHelper.writeFile(users, this.getUserStatePath(users[0].key), FileType.JSON);
+    console.log(
+      `Users with key: ${users[0].key} ${this.userStateExists(users[0]) ? 'successfully updated' : 'successfully created'}`,
+    );
   };
 
   static addUserToState = (user: User) => {
-    FileSystemHelper.writeFile(user, this.getUserStatePath[user.key], FileType.JSON);
+    FileSystemHelper.writeFile(user, this.getUserStatePath(user.key), FileType.JSON);
+    console.log(
+      `User with key: ${user.key} ${this.userStateExists(user) ? 'successfully updated' : 'successfully created'}`,
+    );
   };
 
-  static getUserFromState = (userKey: UserKey): User => {
+  static getUserFromState = ({ key: userKey }: User): User => {
     let user: User;
     try {
       user = FileSystemHelper.readFile(this.getUserStatePath(userKey), FileType.JSON);
@@ -39,7 +34,7 @@ export default class UserStateHelper {
     }
   };
 
-  static getUsersFromState = (userKey: UserKey): User[] => {
+  static getUsersFromState = ([{ key: userKey }]: User[]): User[] => {
     let users: User[];
     try {
       users = FileSystemHelper.readFile(this.getUsersStatePath(userKey), FileType.JSON);
@@ -49,19 +44,19 @@ export default class UserStateHelper {
     }
   };
 
-  static userStateExists = (userKey: UserKey) => {
+  static userStateExists = ({ key: userKey }: User) => {
     return FileSystemHelper.exists(this.getUserStatePath(userKey));
   };
 
-  static usersStateExists = (userKey: UserKey) => {
+  static usersStateExists = ([{ key: userKey }]: User[]) => {
     return FileSystemHelper.exists(this.getUsersStatePath(userKey));
   };
 
-  static deleteUserState = (userKey: UserKey) => {
+  static deleteUserState = ({ key: userKey }: User) => {
     FileSystemHelper.delete(this.getUserStatePath(userKey));
   };
 
-  static deleteUsersState = (userKey: UserKey) => {
+  static deleteUsersState = ([{ key: userKey }]: User[]) => {
     FileSystemHelper.delete(this.getUsersStatePath(userKey));
   };
 

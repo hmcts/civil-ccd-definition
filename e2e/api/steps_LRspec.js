@@ -71,7 +71,7 @@ const data = {
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
-  FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
+  FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   RECORD_JUDGMENT_ONE_V_TWO_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   EDIT_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.editJudgment(whyRecorded, paymentPlanSelection),
@@ -82,6 +82,8 @@ const data = {
   TRANSFER_CASE_SPEC: () => transferOnlineCaseSpec.transferCaseSpec(),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUploadFlightDelay(mpScenario),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUploadFlightDelay(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario, claimTrack) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario, claimTrack),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario, claimTrack),
   REFER_JUDGE_DEFENCE_RECEIVED: () => judgmentOnline1v1Spec.referJudgeDefenceReceived(),
   SETTLE_CLAIM_MARK_PAID_FULL: (addApplicant2) => settleClaim1v1Spec.settleClaim(addApplicant2),
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
@@ -262,7 +264,7 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   }
   assert.equal(response.status, 200);
 
-  // eslint-disable-next-line no-prototype-builtins
+   
   let claimValue;
   if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
     && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
@@ -369,7 +371,7 @@ function whatsTheDifference(caseData, responseBodyData, path) {
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
-  // eslint-disable-next-line no-unused-vars
+   
   return dynamicElements.map(({code, ...item}) => item);
 }
 
@@ -752,6 +754,12 @@ const clearNIHLDataFromResponseBody = (responseBody) => {
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  if (responseBody.data.finalOrderDownloadTemplateOptions) {
+    caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
+  }
+  if (responseBody.data.finalOrderDownloadTemplateDocument) {
+    caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
+  }
   return responseBody;
 };
 
@@ -849,12 +857,12 @@ module.exports = {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
 
     return caseId;
   },
 
-  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY') => {
+  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY', carmEnabled = false) => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -895,6 +903,7 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -1311,6 +1320,11 @@ module.exports = {
       let ApplicantEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_APPLICANT_SMALL(mpScenario);
       await validateEventPagesFlightDelay(ApplicantEvidenceSmallClaimData);
     }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
+      console.log('evidence upload applicant fast track for case id ' + caseId);
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
+      await validateEventPagesMinti(ApplicantEvidenceFastClaimData);
+    }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1325,6 +1339,11 @@ module.exports = {
       console.log('evidence upload small claim respondent for case id ' + caseId);
       let RespondentEvidenceSmallClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_SMALL(mpScenario);
       await validateEventPagesFlightDelay(RespondentEvidenceSmallClaimData);
+    }
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
+      console.log('evidence upload fast claim respondent for case id ' + caseId);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
+      await validateEventPagesMinti(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     await waitForFinishedBusinessProcess(caseId);
@@ -1438,7 +1457,7 @@ module.exports = {
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 
-  createFinalOrderJO: async (user, finalOrderRequestType) => {
+  createFinalOrderJO: async (user, finalOrderRequestType, orderTrack) => {
     console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
 
@@ -1455,11 +1474,15 @@ module.exports = {
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       await validateEventPages(data.FINAL_ORDERS_SPEC('ASSISTED_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
-    } else {
+    }
+    if (finalOrderRequestType === 'FREE_FORM_ORDER') {
       await validateEventPages(data.FINAL_ORDERS_SPEC('FREE_FORM_ORDER',  dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
+    if (finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE') {
+      await validateEventPages(data.FINAL_ORDERS_SPEC('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
+    }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+    await assertSubmittedEvent(finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE' ? 'CASE_PROGRESSION' : 'All_FINAL_ORDERS_ISSUED', {
       header: '',
       body: ''
     }, true);
@@ -1562,7 +1585,7 @@ module.exports = {
 
     await validateEventPages(data.JUDGMENT_PAID_IN_FULL());
 
-    await assertSubmittedEvent('CLOSED', {
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
       header: '# Judgment marked as paid in full',
       body: 'The judgment has been marked as paid in full'
     }, true);
@@ -1728,7 +1751,7 @@ const assertValidData = async (data, pageId) => {
   let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
-  if (eventName === 'CREATE_SDO') {
+  if (eventName === 'CREATE_SDO' || eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];
@@ -2008,11 +2031,23 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   }
 };
 
+const validateEventPagesMinti = async (data, solicitor) => {
+  //transform the data
+  console.log('validateEventPages....');
+  for (let pageId of Object.keys(data.valid)) {
+    if (pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
+      const document = await testingSupport.uploadDocument();
+      data = await updateCaseDataWithPlaceholders(data, document);
+    }
+    await assertValidData(data, pageId, solicitor);
+  }
+};
+
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   console.log('validateEventPages....');
   for (let pageId of Object.keys(data.userInput)) {
-    if (pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
+    if (pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }

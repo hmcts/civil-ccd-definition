@@ -72,6 +72,11 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
+const intermediateTrackComplexityBandPage = require('./pages/directionsOrder/intermediateTrackComplexityBand.page');
+const selectOrderTemplatePage = require('./pages/directionsOrder/selectOrderTemplate.page');
+const downloadOrderTemplatePage = require('./pages/directionsOrder/downloadOrderTemplate.page');
+const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');
 
 const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
 const updateHearingPage = require('./pages/hearing/updateHearing.page');
@@ -724,6 +729,23 @@ module.exports = function () {
       ]);
     },
 
+    async initiateFinalOrder(caseId, trackType, optionText) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary', 20);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERTrackAllocation');
+      await this.waitForText('Make an order', 10);
+      await this.triggerStepsWithScreenshot([
+        () => orderTrackAllocationPage.allocationTrack('Yes', trackType),
+        ... conditionalSteps(trackType === 'Intermediate Track', [
+          () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        ]),
+        () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
+        () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
       if (['demo'].includes(config.runningEnv)) {
@@ -762,6 +784,10 @@ module.exports = function () {
     async clickContinue() {
       let urlBefore = await this.grabCurrentUrl();
       await this.retryUntilUrlChanges(() => this.forceClick('Continue'), urlBefore);
+    },
+    async clickHearingHyperLinkOrButton(element) {
+      let urlBefore = await this.grabCurrentUrl();
+      await this.retryUntilUrlChanges(() => this.forceClick(element), urlBefore);
     },
 
     async getCaseId(){
@@ -995,12 +1021,12 @@ module.exports = function () {
       ]);
     },
 
-    async evidenceUpload(caseId, defendant) {
+    async evidenceUpload(caseId, defendant, isBundle = false, mpScenario = false, scenario = '') {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
-        () => unspecifiedEvidenceUpload.selectType(defendant),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant, isBundle, mpScenario, scenario),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant, isBundle, mpScenario),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },
@@ -1247,7 +1273,8 @@ module.exports = function () {
     async updateHearing() {
       eventName = 'Update Hearing';
       await this.triggerStepsWithScreenshot([
-        () => updateHearingPage.clickOnUpdateHearing(),
+        () => updateHearingPage.clickOnViewEditHearing(),
+        () => updateHearingPage.clickOnEditHearing(),
         () => updateHearingPage.updateHearingValues(),
         () => updateHearingPage.submitUpdatedHearing(),
         () => updateHearingPage.verifyUpdatedHearingDetails()

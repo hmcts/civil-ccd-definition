@@ -1,0 +1,14 @@
+node_modules/*
+govuk/*
+public/*
+app/assets/javascripts/*.js
+allure-report/*
+allure-results/*
+playwright-allure-bootstrap-report/*
+playwright-allure-bootstrap-results/*
+playwright-allure-functional-report/*
+playwright-allure-functional-results/*
+coverage
+*.min.js
+ccd-defintion/*
+e2e/*

@@ -1,7 +1,7 @@
 import { Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
-import Cookie from '../types/cookie';
+import Cookie from '../models/cookie';
 import { TruthyParams } from '../decorators/truthy-params';
 import { pageExpect, test } from '../playwright-fixtures';
 import Timer from '../helpers/timer';
@@ -12,11 +12,9 @@ import ClassMethodHelper from '../helpers/class-method-helper';
 const classKey = 'BasePage';
 export default abstract class BasePage {
   private page: Page;
-  private axeBuilder?: AxeBuilder;
 
-  constructor(page: Page, axeBuilder?: AxeBuilder) {
+  constructor(page: Page) {
     this.page = page;
-    this.axeBuilder = axeBuilder;
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -188,38 +186,44 @@ export default abstract class BasePage {
 
   protected async runVerifications(
     expects?: Promise<void> | Promise<void>[],
-    { axe = true, axeExclusions = [] } = {},
+    { runAxe = true, axeExclusions = [], useAxeCache = true } = {},
   ) {
     if (expects) {
       Array.isArray(expects) ? await Promise.all(expects) : await expects;
     }
 
-    if (config.runAxeTests && this.axeBuilder && axe) {
-      await this.expectAxeToPass(axeExclusions);
+    if (config.runAxeTests && runAxe) {
+      await this.expectAxeToPass(axeExclusions, useAxeCache);
     }
   }
 
   protected async retryReloadRunVerifications(
     assertions: () => Promise<void>[] | Promise<void>,
-    { axe = true, axeExclusions = [], timeout = 12_000 } = {},
+    { runAxe = true, axeExclusions = [], useAxeCache = true, timeout = 12_000 } = {},
   ) {
     await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
 
-    if (config.runAxeTests && this.axeBuilder && axe) {
-      await this.expectAxeToPass(axeExclusions);
+    if (config.runAxeTests && runAxe) {
+      await this.expectAxeToPass(axeExclusions, useAxeCache);
     }
   }
 
   @BoxedDetailedStep(classKey)
-  private async expectAxeToPass(axeExclusions: string[]) {
-    let axeBuilder = this.axeBuilder;
+  private async expectAxeToPass(axeExclusions: string[], useAxeCache: boolean) {
+    let axeBuilder = new AxeBuilder({ page: this.page })
+      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
+      .setLegacyMode(true);
+
     for (const axeExclusion of axeExclusions) {
       axeBuilder = axeBuilder.exclude(axeExclusion);
     }
+
     const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
 
     const errorsNumBefore = test.info().errors.length;
-    await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    if (useAxeCache)
+      await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    else await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
     const errorsAfter = test.info().errors;
 
     if (errorsAfter.length > errorsNumBefore) {
@@ -228,50 +232,84 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'domain')
-  protected async expectDomain(domain: string, options: { timeout?: number } = {}) {
-    await pageExpect(this.page).toHaveURL(new RegExp(`https?://${domain}.*`), {
-      ...options,
-    });
+  protected async expectDomain(
+    domain: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page, { message: options.message }).toHaveURL(
+      new RegExp(`https?://${domain}.*`),
+      {
+        timeout: options.timeout,
+      },
+    );
   }
 
   @BoxedDetailedStep(classKey, 'path')
-  protected async expectUrlStart(path: string, options: { timeout?: number } = {}) {
-    await pageExpect(this.page).toHaveURL(new RegExp(`^${path}`), {
-      ...options,
+  protected async expectUrlStart(
+    path: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page, { message: options.message }).toHaveURL(new RegExp(`^${path}`), {
+      timeout: options.timeout,
     });
   }
 
   @BoxedDetailedStep(classKey, 'endpoints')
-  protected async expectUrlEnd(endpoints: string | string[], options: { timeout?: number } = {}) {
+  protected async expectUrlEnd(
+    endpoints: string | string[],
+    options: { timeout?: number; message?: string } = {},
+  ) {
     const regex = new RegExp(
       Array.isArray(endpoints) ? `(${endpoints.join('|')})$` : `${endpoints}$`,
     );
-    await pageExpect(this.page).toHaveURL(regex, { ...options });
+    await pageExpect(this.page, { message: options.message }).toHaveURL(regex, {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'text')
-  protected async expectHeading(text: string, options?: { timeout?: number }) {
-    await pageExpect(this.page.locator('h1', { hasText: text })).toBeVisible(options);
+  protected async expectHeading(
+    text: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page.locator('h1', { hasText: text }), {
+      message: options.message,
+    }).toBeVisible({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'text')
-  protected async expectSubHeading(text: string, options?: { timeout?: number }) {
-    await pageExpect(this.page.locator('h2', { hasText: text })).toBeVisible(options);
+  protected async expectSubheading(
+    text: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page.locator('h2', { hasText: text }), {
+      message: options.message,
+    }).toBeVisible({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectSelector(selector: string, options: { timeout?: number } = {}) {
-    await pageExpect(this.page.locator(selector)).toBeVisible(options);
+  protected async expectSelector(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page.locator(selector), { message: options.message }).toBeVisible({
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectNoSelector(selector: string, options: { timeout?: number } = {}) {
+  protected async expectNoSelector(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
     const locator = this.page.locator(selector);
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
-    await pageExpect(locator).toBeHidden(options);
+    await pageExpect(locator, { message: options.message }).toBeHidden({
+      timeout: options.timeout,
+    });
   }
 
   private getTextLocator(
@@ -291,6 +329,7 @@ export default abstract class BasePage {
   protected async expectText(
     text: string | number,
     options: {
+      message?: string;
       exact?: boolean;
       selector?: string;
       first?: boolean;
@@ -298,7 +337,7 @@ export default abstract class BasePage {
     } = {},
   ) {
     const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
-    await pageExpect(locator).toBeVisible({
+    await pageExpect(locator, { message: options.message }).toBeVisible({
       timeout: options.timeout,
     });
   }
@@ -308,6 +347,7 @@ export default abstract class BasePage {
   protected async expectNoText(
     text: string | number,
     options: {
+      message?: string;
       exact?: boolean;
       selector?: string;
       first?: boolean;
@@ -319,15 +359,19 @@ export default abstract class BasePage {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
-    await pageExpect(locator).toBeHidden(options);
+    await pageExpect(locator, { message: options.message }).toBeHidden({
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'label')
   protected async expectLabel(
     label: string,
-    options: { exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
   ) {
-    await pageExpect(this.page.getByLabel(label, { exact: options.exact })).toBeVisible({
+    await pageExpect(this.page.getByLabel(label, { exact: options.exact }), {
+      message: options.message,
+    }).toBeVisible({
       timeout: options.timeout,
     });
   }
@@ -335,23 +379,36 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectLink(
     name: string,
-    options: { exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
   ) {
-    await pageExpect(this.page.getByRole('link', { name, exact: options.exact })).toBeVisible({
+    await pageExpect(this.page.getByRole('link', { name, exact: options.exact }), {
+      message: options.message,
+    }).toBeVisible({
       timeout: options.timeout,
     });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'selector')
-  protected async expectOptionChecked(selector: string, options?: { timeout?: number }) {
-    await pageExpect(this.page.locator(selector)).toBeChecked(options);
+  protected async expectOptionChecked(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page.locator(selector), { message: options.message }).toBeChecked({
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector', 'text')
   @TruthyParams(classKey, 'selector', 'text')
-  protected async expectInputValue(selector: string, text: string, options?: { timeout?: number }) {
-    await pageExpect(this.page.locator(selector)).toHaveValue(text, options);
+  protected async expectInputValue(
+    selector: string,
+    text: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    await pageExpect(this.page.locator(selector), { message: options.message }).toHaveValue(text, {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector', 'option')
@@ -359,9 +416,11 @@ export default abstract class BasePage {
   protected async expectDropdownOption(
     selector: string,
     option: string,
-    options?: { timeout?: number },
+    options: { message?: string; timeout?: number } = {},
   ) {
-    await pageExpect(this.page.locator(selector)).toHaveText(option, options);
+    await pageExpect(this.page.locator(selector), { message: options.message }).toHaveText(option, {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'text', 'selector')
@@ -369,13 +428,13 @@ export default abstract class BasePage {
   protected async expectTableRowValue(
     text: string,
     selector: string,
-    options: { rowNum: number; timeout?: number; tableName?: string } = {
+    options: { message?: string; rowNum: number; timeout?: number; tableName?: string } = {
       rowNum: 0,
     },
   ) {
-    await pageExpect(
-      this.page.locator(`${selector} >> tr`).nth(options.rowNum).getByText(text),
-    ).toBeVisible({ timeout: options.timeout });
+    await pageExpect(this.page.locator(`${selector} >> tr`).nth(options.rowNum).getByText(text), {
+      message: options.message,
+    }).toBeVisible({ timeout: options.timeout });
   }
 
   protected async retryAction(
