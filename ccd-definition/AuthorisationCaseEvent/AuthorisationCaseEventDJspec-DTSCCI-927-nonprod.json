@@ -9,13 +9,6 @@
           "[CREATOR]"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile"
-        ],
-        "CRUD": "R"
       }
     ]
   }
