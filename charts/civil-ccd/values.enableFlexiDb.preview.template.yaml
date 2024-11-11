@@ -1,5 +1,7 @@
 civil-service:
+  enabled: true
   java:
+    applicationPort: 4000
     image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
@@ -67,57 +69,91 @@ civil-service:
     postgresql:
       enabled: false
 
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
-    CCD Admin:
-      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
-
-aac-manage-case-assignment:
-  java:
-    ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
-
-xui-webapp:
-  nodejs:
-    ingressHost: xui-${SERVICE_FQDN}
-    environment:
-      SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
-      SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
-      SERVICES_TRANSLATION_API_URL: http://${SERVICE_NAME}-translation-service
 ccd:
+  enabled: true
+  ccd:
+    adminWeb:
+      enabled: false
+    apiGatewayWeb:
+      enabled: true
+    definitionImporter:
+      enabled: false
+    managementWeb:
+      enabled: false
+    s2s:
+      enabled: false
+    postgresql:
+      enabled: false
+    ras:
+      enabled: false
+    userProfileImporter:
+      enabled: false
+    userProfile:
+      enabled: false
+    elastic:
+      enabled: false
+
   global:
     postgresUsername: hmcts
-    postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
     postgresHostname: civil-preview.postgres.database.azure.com
     databaseNamePrefix: "pr-${CHANGE_ID}-"
+    ccdApiGatewayIngress: http://${SERVICE_NAME}-ccd-api-gw
+    ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
+    ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store-api
+    ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
+    dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
+    idamApiUrl: https://idam-api.aat.platform.hmcts.net
+    idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
+    postgresPassword: ${POSTGRES_PASSWORD}
+    s2sUrl: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+
   ccd-api-gateway-web:
     nodejs:
-      ingressHost: gateway-${SERVICE_FQDN}
+      image: hmctspublic.azurecr.io/ccd/api-gateway-web:latest
+      imagePullPolicy: Always
+      environment:
+        ADDRESS_LOOKUP_TOKEN: ${ADDRESS_LOOKUP_TOKEN}
+        IDAM_SERVICE_KEY: ${CCD_API_GATEWAY_S2S_SECRET}
+        IDAM_OAUTH2_CLIENT_SECRET: ${CCD_API_GATEWAY_IDAM_CLIENT_SECRET}
+        PROXY_DOCUMENT_MANAGEMENT: http://dm-store-aat.service.core-compute-aat.internal
+      ingressHost: gateway-${SERVICE_NAME}.preview.platform.hmcts.net
+      ingressIP: ${INGRESS_IP}
+      keyVaults: []
   ccd-data-store-api:
     java:
       environment:
-        OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
-        CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
-        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
-        DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+        CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: false
         DATA_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}data-store"
         DATA_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
         DATA_STORE_DB_USERNAME: '{{ tpl .Values.global.postgresUsername $}}'
-        DATA_STORE_DEFAULT_LOG_LEVEL: DEBUG
-        CASE_DATA_ISSUE_LOG_LEVEL: DEBUG
-        UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
-      ingressHost: ccd-data-store-api-${SERVICE_FQDN}
+        DATA_STORE_IDAM_KEY: ${CCD_DATA_STORE_S2S_SECRET}
+        DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
+        IDAM_API_BASE_URL: https://idam-api.aat.platform.hmcts.net
+        IDAM_OIDC_URL: https://idam-web-public.aat.platform.hmcts.net
+        OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
+        CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment,civil_general_applications
+        CASE_DOCUMENT_AM_URL: http://ccd-case-document-am-api-aat.service.core-compute-aat.internal
+        IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET: ${IDAM_OAUTH2_DATA_STORE_CLIENT_SECRET}
+        IDAM_DATA_STORE_SYSTEM_USER_USERNAME: ${IDAM_DATA_STORE_SYSTEM_USER_USERNAME}
+        IDAM_DATA_STORE_SYSTEM_USER_PASSWORD: ${IDAM_DATA_STORE_SYSTEM_USER_PASSWORD}
+        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       secrets:
         DATA_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: false
+      keyVaults: []
+      ingressHost: ccd-data-store-api-${SERVICE_NAME}.preview.platform.hmcts.net
+
   ccd-definition-store-api:
     java:
-      ingressHost: ccd-definition-store-${SERVICE_FQDN}
+      releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
       environment:
+        DEFINITION_STORE_IDAM_KEY: ${CCD_DEFINITION_STORE_S2S_SECRET}
+        DEFINITION_STORE_TX_TIMEOUT_DEFAULT: 60
+        WELSH_TRANSLATION_ENABLED: false
+        IDAM_USER_URL: https://idam-web-public.aat.platform.hmcts.net
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DEFINITION_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}definition-store"
         DEFINITION_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
@@ -127,16 +163,8 @@ ccd:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: false
-  ccd-user-profile-api:
-    java:
-      environment:
-        USER_PROFILE_DB_OPTIONS: "?stringtype=unspecified"
-        USER_PROFILE_DB_PASSWORD: ${POSTGRES_PASSWORD}
-      secrets:
-        USER_PROFILE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: false
+      keyVaults: []
+      ingressHost: ccd-definition-store-${SERVICE_NAME}.preview.platform.hmcts.net
   postgresql:
     persistence:
       enabled: false
