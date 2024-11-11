@@ -895,6 +895,7 @@ module.exports = {
 
     console.log('General application created when main case state is', expectedState);
     assert.equal(responseBody.callback_response_status_code, 200);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
