@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const solicitorUser = config.applicantSolicitorUser;
