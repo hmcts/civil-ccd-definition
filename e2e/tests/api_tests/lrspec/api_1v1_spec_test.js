@@ -59,7 +59,6 @@ Scenario('1v1 Settle claim - full defence claimant and defendant response', asyn
   }
 });
 
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });
