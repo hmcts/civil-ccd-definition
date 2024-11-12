@@ -57,6 +57,14 @@
   },
   {
     "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "gaWaTrackLabel",
+    "ElementLabel": " ",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
     "ListElementCode": "generalAppReasonsOfOrder",
     "ElementLabel": " ",
     "FieldType": "TextArea",
@@ -352,14 +360,6 @@
   {
     "ID": "GeneralApplicationGAspec",
     "ListElementCode": "caseNameGaInternal",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "GeneralApplicationGAspec",
-    "ListElementCode": "gaWaTrackLabel",
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public",

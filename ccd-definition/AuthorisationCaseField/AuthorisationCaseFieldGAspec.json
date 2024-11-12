@@ -176,6 +176,18 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWaTrackLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppReasonsOfOrder",
     "AccessControl": [
       {

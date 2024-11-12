@@ -205,6 +205,13 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
+    "ListElementCode": "gaWaTrackLabel",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "generalApplications",
     "ListElementCode": "generalAppReasonsOfOrder",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"

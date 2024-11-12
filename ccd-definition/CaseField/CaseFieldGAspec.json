@@ -111,6 +111,14 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "gaWaTrackLabel",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppReasonsOfOrder",
     "Label": "Reasons for requesting this order",
     "FieldType": "TextArea",

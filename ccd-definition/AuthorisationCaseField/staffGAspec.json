@@ -85,6 +85,12 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "gaWaTrackLabel",
+    "UserRole": "caseworker-civil-staff",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppReasonsOfOrder",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
