@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
 import ExuiEvent from '../../../../exui-event/exui-event';
-import { confirmationHeading, subheadings } from './inform-agreed-extension-date-confirm-content';
+import { confirmationHeading } from './inform-agreed-extension-date-confirm-content';
 
 @AllMethodsStep()
 export default class InformAgreedExtensionDateConfirmPage extends ExuiEvent(BasePage) {

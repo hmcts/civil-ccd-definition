@@ -14,7 +14,7 @@ export default class ExtensionDatePage extends ExuiEvent(BasePage) {
     });
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(paragraphs.descriptionText, { first: true }),
+      super.expectText(paragraphs.descriptionText, { ignoreDuplicates: true }),
       super.expectText(DateHelper.formatDateToString(date, { outputFormat: 'DD Mon YYYY' })),
     ]);
   }

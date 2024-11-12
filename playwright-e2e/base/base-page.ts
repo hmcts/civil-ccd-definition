@@ -221,9 +221,11 @@ export default abstract class BasePage {
     const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
 
     const errorsNumBefore = test.info().errors.length;
-    if (useAxeCache)
+    if (useAxeCache) {
       await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
-    else await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    } else {
+      await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    }
     const errorsAfter = test.info().errors;
 
     if (errorsAfter.length > errorsNumBefore) {
@@ -333,6 +335,7 @@ export default abstract class BasePage {
       exact?: boolean;
       containerSelector?: string;
       first?: boolean;
+      ignoreDuplicates?: boolean;
       timeout?: number;
     } = {},
   ) {
@@ -343,9 +346,14 @@ export default abstract class BasePage {
       options.first,
     );
 
-    await pageExpect(locator, { message: options.message }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else
+      await pageExpect(locator, { message: options.message }).toBeVisible({
+        timeout: options.timeout,
+      });
   }
 
   @BoxedDetailedStep(classKey, 'text')
