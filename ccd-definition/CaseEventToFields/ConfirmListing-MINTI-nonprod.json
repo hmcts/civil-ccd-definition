@@ -1,0 +1,12 @@
+[
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CONFIRM_LISTING_COMPLETED",
+    "CaseFieldID": "confirmListingTickBox",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "ConfirmListing",
+    "ShowSummaryChangeOption": "N"
+  }
+]
