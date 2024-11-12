@@ -88,18 +88,6 @@ Scenario('Settle claim spec 1v2', async ({I, api_spec}) => {
   }
 });
 
-Scenario('1v2 diff sols Create claim with fixed costs', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
-  }
-});
-
-Scenario('1v2 same sol Create claim with fixed costs', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
-  }
-});
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });

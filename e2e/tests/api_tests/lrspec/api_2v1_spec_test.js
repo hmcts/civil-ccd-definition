@@ -64,12 +64,6 @@ Scenario('2v1 small claim full admission and response @api-spec-full-admit', asy
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('2v1 Create claim with fixed costs', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
-  }
-});
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });

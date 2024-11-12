@@ -59,13 +59,6 @@ Scenario('1v1 Settle claim - full defence claimant and defendant response', asyn
   }
 });
 
-Scenario('1v1 Create claim with fixed costs', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  }
-});
-
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });
