@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 
@@ -58,7 +58,6 @@ Scenario('1v1 Settle claim - full defence claimant and defendant response', asyn
     await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
   }
 });
-
 
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
