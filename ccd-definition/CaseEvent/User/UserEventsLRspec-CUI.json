@@ -101,7 +101,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MEDIATION_UNSUCCESSFUL",
     "Name": "Mediation Unsuccessful",
     "Description": "Mediation was unsuccessful",

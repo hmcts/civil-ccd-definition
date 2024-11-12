@@ -2133,7 +2133,7 @@
     "FieldShowCondition": "showCarmFields=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsMediationSectionToggle",
     "PageFieldDisplayOrder": 39,
@@ -2145,7 +2145,7 @@
     "FieldShowCondition": "showCarmFields=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsMediationSectionStatement",
     "PageFieldDisplayOrder": 40,
@@ -2157,7 +2157,7 @@
     "FieldShowCondition": "smallClaimsMediationSectionToggle=\"SHOW\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "smallClaimsMediationSectionEndLine",
     "PageFieldDisplayOrder": 41,
@@ -2169,7 +2169,7 @@
     "FieldShowCondition": "showCarmFields=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionTitle",
     "PageFieldDisplayOrder": 29,
@@ -2181,7 +2181,7 @@
     "FieldShowCondition": "showCarmFields=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionToggle",
     "PageFieldDisplayOrder": 30,
@@ -2193,7 +2193,7 @@
     "FieldShowCondition": "showCarmFields=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
     "PageFieldDisplayOrder": 31,
@@ -2205,7 +2205,7 @@
     "FieldShowCondition": "sdoR2SmallClaimsMediationSectionToggle=\"INCLUDE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "setFastTrackFlag",
     "PageFieldDisplayOrder": 1,

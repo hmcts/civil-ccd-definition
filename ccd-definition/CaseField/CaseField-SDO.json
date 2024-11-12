@@ -1381,7 +1381,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMediationSectionTitle",
     "Label": "## Mediation representation",
     "FieldType": "Label",
@@ -1389,7 +1389,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMediationSectionToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1398,7 +1398,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMediationSectionStatement",
     "Label": " ",
     "FieldType": "SmallClaimsMediation",
@@ -1406,7 +1406,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMediationSectionEndLine",
     "Label": "****",
     "FieldType": "Label",
