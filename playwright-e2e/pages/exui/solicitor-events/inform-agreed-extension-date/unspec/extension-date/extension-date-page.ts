@@ -7,15 +7,13 @@ import { paragraphs } from './extension-date-content';
 
 @AllMethodsStep()
 export default class ExtensionDatePage extends ExuiEvent(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData) {
-    const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
-      days: 28,
-      workingDay: true,
-    });
+  async verifyContent(ccdCaseData: CCDCaseData, extensionDate: Date) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(paragraphs.descriptionText, { ignoreDuplicates: true }),
-      super.expectText(DateHelper.formatDateToString(date, { outputFormat: 'DD Mon YYYY' })),
+      super.expectText(
+        DateHelper.formatDateToString(extensionDate, { outputFormat: 'DD Mon YYYY' }),
+      ),
     ]);
   }
 

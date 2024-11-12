@@ -15,14 +15,10 @@ export default class ExtensionDateSpecPage extends ExuiEvent(BasePage) {
     ]);
   }
 
-  async enterDate(ccdCaseData: CCDCaseData) {
-    const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
-      days: 28,
-      workingDay: true,
-    });
-    await super.inputText(DateHelper.getTwoDigitDay(date), inputs.day.selector);
-    await super.inputText(DateHelper.getTwoDigitMonth(date), inputs.month.selector);
-    await super.inputText(date.getFullYear(), inputs.year.selector);
+  async enterDate(ccdCaseData: CCDCaseData, extensionDate: Date) {
+    await super.inputText(DateHelper.getTwoDigitDay(extensionDate), inputs.day.selector);
+    await super.inputText(DateHelper.getTwoDigitMonth(extensionDate), inputs.month.selector);
+    await super.inputText(extensionDate.getFullYear(), inputs.year.selector);
   }
 
   async submit() {
