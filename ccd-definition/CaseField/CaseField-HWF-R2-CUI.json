@@ -103,8 +103,8 @@
     "ID": "hwfNumberForFeePaymentOutcome",
     "Label": "Enter the reference number",
     "FieldType": "Text",
-    "HintText": "For example, HWF-A1B-23C",
-    "RegularExpression": "HWF-[0-9A-Za-z]{3}-[0-9A-Za-z]{3}",
+    "HintText": "For example, HWF-A1B-23C, PA12-123456",
+    "RegularExpression": "HWF-[0-9A-Za-z]{3}-[0-9A-Za-z]{3}|PA[0-9]{2}-[0-9]{6}",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

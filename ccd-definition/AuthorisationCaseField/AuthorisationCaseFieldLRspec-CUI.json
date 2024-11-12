@@ -38,10 +38,11 @@
       },
       {
         "UserRoles": [
+          "caseworker-civil-admin",
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       }
     ]
   },
