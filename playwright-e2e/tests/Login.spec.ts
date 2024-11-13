@@ -1,6 +1,5 @@
 import { civilAdminUser } from '../config/users/exui-users';
 import ccdEvents from '../fixtures/ccd-events/events';
-import DateHelper from '../helpers/date-helper';
 import { test } from '../playwright-fixtures/index';
 
 test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiDataSteps, _requestsFactory, _exuiDashboardPageFactory, _informAgreedExtensionDateFactory }) => {
@@ -18,11 +17,7 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await caseDetailsPage.retryChooseNextStep(ccdEvents.INFORM_AGREED_EXTENSION_DATE);
 
   const { extensionDatePage } = _informAgreedExtensionDateFactory;
-  const extensionDate = DateHelper.addToDate(ccdCaseData.claimDetailsNotificationDate, {
-    days: ccdCaseData.respondent2AcknowledgeNotificationDate ? 56 : 42,
-    workingDay: true
-  });
-  await extensionDatePage.verifyContent(ccdCaseData, extensionDate);
+  await extensionDatePage.verifyContentDefendant1(ccdCaseData);
   await extensionDatePage.submit();
 
   const { informAgreedExtensionDateConfirmPage } = _informAgreedExtensionDateFactory;
