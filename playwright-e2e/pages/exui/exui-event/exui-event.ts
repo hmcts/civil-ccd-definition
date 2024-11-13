@@ -1,6 +1,6 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import ccdEvents from '../../../fixtures/ccd/events';
+import ccdEvents from '../../../fixtures/ccd-events/events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
@@ -13,7 +13,7 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
 ) {
   @AllMethodsStep({ methodNamesToIgnore: ['setCCDEvent', 'clearCCDEvent'] })
   abstract class ExuiEvent extends Base {
-    protected async verifyHeadings(caseData?: CCDCaseData) {
+    protected async verifyHeadings(ccdCaseData?: CCDCaseData) {
       let expects: Promise<void>[] | Promise<void>;
 
       if (
@@ -23,15 +23,14 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
         expects = super.expectHeading(ccdEventState.name);
       } else if (ccdEventState === undefined) {
         expects = [
-          super.expectHeading(ccdEventState.name),
-          super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
-          super.expectHeading(caseData.caseNamePublic),
+          super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
+          super.expectHeading(ccdCaseData.caseNamePublic),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventState.name),
-          super.expectHeading(CaseDataHelper.formatCaseId(caseData.id)),
-          super.expectHeading(caseData.caseNamePublic),
+          super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
+          super.expectHeading(ccdCaseData.caseNamePublic),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
