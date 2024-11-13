@@ -5,8 +5,9 @@
     "CaseFieldID": "confirmListingTickBox",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "OPTIONAL",
     "PageID": "ConfirmListing",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-confirmed"
   }
 ]
