@@ -7,7 +7,7 @@ if (config.runSetup) {
     setup.describe.configure({ mode: 'parallel' });
 
     exuiAuthSetupUsers.forEach((exuiAuthSetupUser, index) => {
-      if (index > 0) {
+      if (index === 0) {
         setup(exuiAuthSetupUser.name, { tag: '@verify-cookies-banner' }, async ({ IdamSteps, ExuiDashboardSteps }) => {
           await IdamSteps.ExuiLogin(exuiAuthSetupUser);
           await ExuiDashboardSteps.AcceptCookies();

@@ -221,9 +221,11 @@ export default abstract class BasePage {
     const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
 
     const errorsNumBefore = test.info().errors.length;
-    if (useAxeCache)
+    if (useAxeCache) {
       await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
-    else await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    } else {
+      await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+    }
     const errorsAfter = test.info().errors;
 
     if (errorsAfter.length > errorsNumBefore) {
@@ -315,13 +317,13 @@ export default abstract class BasePage {
   private getTextLocator(
     text: string | number,
     exact?: boolean,
-    selector?: string,
+    containerSelector?: string,
     first?: boolean,
   ) {
-    const locator = selector
-      ? this.page.locator(selector).getByText(text.toString())
+    const locator = containerSelector
+      ? this.page.locator(containerSelector).getByText(text.toString())
       : this.page.getByText(text.toString(), { exact: exact });
-    return first ? locator.first() : locator;
+    return first ? locator.nth(0) : locator;
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -331,15 +333,27 @@ export default abstract class BasePage {
     options: {
       message?: string;
       exact?: boolean;
-      selector?: string;
+      containerSelector?: string;
       first?: boolean;
+      ignoreDuplicates?: boolean;
       timeout?: number;
     } = {},
   ) {
-    const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
-    await pageExpect(locator, { message: options.message }).toBeVisible({
-      timeout: options.timeout,
-    });
+    const locator = this.getTextLocator(
+      text,
+      options.exact,
+      options.containerSelector,
+      options.first,
+    );
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else
+      await pageExpect(locator, { message: options.message }).toBeVisible({
+        timeout: options.timeout,
+      });
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -349,12 +363,17 @@ export default abstract class BasePage {
     options: {
       message?: string;
       exact?: boolean;
-      selector?: string;
+      containerSelector?: string;
       first?: boolean;
       timeout?: number;
     } = {},
   ) {
-    const locator = this.getTextLocator(text, options.exact, options.selector, options.first);
+    const locator = this.getTextLocator(
+      text,
+      options.exact,
+      options.containerSelector,
+      options.first,
+    );
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty

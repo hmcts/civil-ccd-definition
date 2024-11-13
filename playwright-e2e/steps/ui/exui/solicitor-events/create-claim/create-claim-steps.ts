@@ -4,7 +4,7 @@ import TestData from '../../../../../models/test-data';
 import CreateClaimPageFactory from '../../../../../pages/exui/solicitor-events/create-claim/create-claim-page-factory';
 
 @AllMethodsStep()
-export default class CreateClaimUnspecSteps extends BaseSteps {
+export default class CreateClaimSteps extends BaseSteps {
   private createClaimPageFactory: CreateClaimPageFactory;
 
   constructor(createClaimPageFactory: CreateClaimPageFactory, testData: TestData) {
