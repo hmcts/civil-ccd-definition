@@ -12,6 +12,7 @@ const urls = {
   orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
   paymentApi: process.env.PAYMENT_API_URL,
   wiremockService: process.env.WIRE_MOCK_SERVICE_URL,
+  govUK: 'https://www.gov.uk',
 };
 
 export const getDomain = (url: string) => {
