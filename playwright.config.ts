@@ -4,7 +4,7 @@ import os from 'node:os';
 
 export default defineConfig({
   testDir: './playwright-e2e/tests',
-  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown',
+  globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
@@ -20,7 +20,7 @@ export default defineConfig({
                 : 'playwright-allure-bootstrap-results',
             environmentInfo: {
               Environment: config.environment,
-              Workers: process.env.WORKERS,
+              Workers: process.env.PLAYWRIGHT_WORKERS,
               OS: os.platform(),
               Architecture: os.arch(),
               NodeVersion: process.version,
@@ -48,6 +48,11 @@ export default defineConfig({
   },
   projects: [
     {
+      name: 'data-setup',
+      testMatch: '**playwright-e2e/tests/bootstrap/data/**.setup.ts',
+      retries: 0,
+    },
+    {
       name: 'users-setup',
       testMatch: '**playwright-e2e/tests/bootstrap/users/**.setup.ts',
       retries: 0,
@@ -67,7 +72,7 @@ export default defineConfig({
     {
       name: 'e2e-full-functional',
       use: { ...devices['Desktop Chrome'] },
-      dependencies: ['users-auth-setup'],
+      dependencies: ['data-setup', 'users-auth-setup'],
     },
   ],
 });
