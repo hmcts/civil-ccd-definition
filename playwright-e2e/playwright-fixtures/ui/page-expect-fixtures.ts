@@ -1,4 +1,4 @@
-import test, { expect as baseExpect, Page } from '@playwright/test';
+import test, { expect as baseExpect, Locator, Page } from '@playwright/test';
 import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
@@ -137,6 +137,48 @@ export const expect = baseExpect
         pass,
         name: assertionName,
         expected: 0,
+        actual: matcherResult?.actual
+      };
+    },
+
+    async atLeastOneToBeVisible(locator: Locator, options?: { timeout?: number }) {
+      const assertionName = 'atLeastOneToBeVisible';
+      let pass: boolean;
+      let matcherResult: any;
+      let locatorCount: number;
+
+      try {
+        await baseExpect(locator).not.toHaveCount(0, { timeout: 5000 });
+        locatorCount = await locator.count();
+        const promises = [];
+        for (let i = 0; i < locatorCount; i++) {
+          promises.push(baseExpect(locator.nth(i)).toBeVisible({ timeout: options.timeout }));
+        }
+        await Promise.race(promises);
+        pass = true;
+      } catch (error) {
+        pass = false;
+        matcherResult = error.matcherResult;
+      }
+
+      const message = pass
+        ? () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not' : ''}at least one locator to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '')
+        : () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not' : ''}at least one locator to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '');
+
+      return {
+        message,
+        pass,
+        name: assertionName,
         actual: matcherResult?.actual
       };
     }

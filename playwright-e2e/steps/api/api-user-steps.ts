@@ -6,7 +6,7 @@ import TestData from '../../models/test-data';
 import UserStateHelper from '../../helpers/users-state-helper';
 
 @AllMethodsStep()
-export default class ApiUsersSteps extends BaseApiSteps {
+export default class ApiUserSteps extends BaseApiSteps {
   constructor(requestsFactory: RequestsFactory, testData: TestData) {
     super(requestsFactory, testData);
   }

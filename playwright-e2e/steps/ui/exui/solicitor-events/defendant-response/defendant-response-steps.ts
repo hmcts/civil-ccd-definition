@@ -4,7 +4,7 @@ import TestData from '../../../../../models/test-data';
 import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-events/defendant-response/defendant-response-page-factory';
 
 @AllMethodsStep()
-export default class DefendantResponseUnspecSteps extends BaseSteps {
+export default class DefendantResponseSteps extends BaseSteps {
   private defendantResponsePageFactory: DefendantResponsePageFactory;
 
   constructor(defendantResponsePageFactory: DefendantResponsePageFactory, testData: TestData) {
