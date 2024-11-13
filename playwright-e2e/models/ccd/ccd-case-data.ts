@@ -97,6 +97,10 @@ export default interface CCDCaseData {
   courtLocation?: CourtLocation;
   caseListDisplayDefendantSolicitorReferences?: string;
   claimValue?: ClaimValue;
+  respondent1ClaimResponseIntentionType?: string;
+  respondent2ClaimResponseIntentionType?: string;
+  respondent1AcknowledgeNotificationDate?: string;
+  respondent2AcknowledgeNotificationDate?: string;
 }
 
 interface ServedDocumentFiles {
