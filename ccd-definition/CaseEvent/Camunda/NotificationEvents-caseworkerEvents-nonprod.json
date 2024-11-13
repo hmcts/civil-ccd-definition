@@ -67,7 +67,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_TWO_DISMISS_CASE",
-    "Name": "Notify Defendant 2 Dismiss Case",
+    "Name": "Notify Defendant2 Dismiss Case",
     "Description": "Notify Defendant 2 Dismiss Case",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
