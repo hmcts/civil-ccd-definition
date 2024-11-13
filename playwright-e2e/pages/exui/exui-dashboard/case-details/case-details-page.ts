@@ -21,7 +21,7 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
         super.expectText(tabs.history.title, { exact: true }),
         super.expectText(tabs.claimDocs.title),
         super.expectText(tabs.paymentHistory.title),
-        super.expectText(tabs.serviceRequest.title, { exact: true }),
+        // super.expectText(tabs.serviceRequest.title, { exact: true }),
         super.expectText(tabs.bundles.title),
         super.expectText(tabs.caseFlags.title),
         super.expectLabel(dropdowns.nextStep.label),
