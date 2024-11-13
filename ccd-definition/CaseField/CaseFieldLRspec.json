@@ -2071,6 +2071,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "respondent1DQWitnessesDetailsSpec",
+    "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
     "Label": "Witnesses details",
     "FieldType": "Collection",
     "FieldTypeParameter": "Witness",
