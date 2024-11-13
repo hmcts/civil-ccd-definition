@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_TWO_AMEND_RESTITCH_BUNDLE",
-    "Name": "Notify Defendant 2 Amend Bundle",
+    "Name": "Notify Defendant2 Amend Bundle",
     "Description": "Notify 2 Defendant Amend Bundle",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
