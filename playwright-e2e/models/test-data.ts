@@ -1,7 +1,7 @@
 import CCDCaseData from './ccd/ccd-case-data';
 
 type TestData = {
-  ccdCaseData: CCDCaseData;
+  ccdCaseData?: CCDCaseData;
   workerIndex: number;
 };
 
