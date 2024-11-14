@@ -1114,7 +1114,7 @@
     "CaseTypeID": "CIVIL",
     "ID": "respondToClaimExperts",
     "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
-    "Label": " ",
+    "Label": "Test Label to see  if it shows",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
