@@ -174,6 +174,8 @@ const CONFIRMATION_MESSAGE = {
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
 
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
+
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
 
@@ -437,14 +439,19 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJSpec(caseId, scenario) {
+    async initiateDJSpec(caseId, scenario, caseCategory = 'UNSPEC') {
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
         () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        () => specifiedDefaultJudmentPage.claimForFixedCosts(),
+        ...conditionalSteps(caseCategory === 'SPEC' && isTestEnv, [
+          () => specifiedDefaultJudmentPage.claimForFixedCostsOnEntry()
+        ]),
+        ...conditionalSteps(caseCategory === 'UNSPEC' || !isTestEnv, [
+          () => specifiedDefaultJudmentPage.claimForFixedCosts()
+        ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
         () => specifiedDefaultJudmentPage.paymentTypeSelection(),
         () => event.submit('Submit', 'Default Judgment Granted'),

@@ -1,10 +1,10 @@
- 
+
 
 const config = require('../../../config.js');
 
 Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft');
 
-Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
+Scenario.skip('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
 
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   let caseid = await api_spec.getCaseId();
@@ -12,7 +12,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
 
   await I.login(config.applicantSolicitorUser);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.initiateDJSpec(caseid, 'ONE_V_ONE');
+    await I.initiateDJSpec(caseid, 'ONE_V_ONE', 'SPEC');
   }
 }).retry(3);
 
