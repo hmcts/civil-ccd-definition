@@ -1,4 +1,4 @@
- 
+
 const {date} = require('../../../api/dataHelper');
 const config = require('../../../config.js');
 
@@ -6,7 +6,7 @@ let mediationAdminRegion1 = config.localMediationTests ? config.nbcUserLocal : c
 let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
 let mediationAdminRegion2 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId2;
 
-Feature('Spec small claims mediation API test @api-spec-mediation');
+Feature('Spec small claims mediation API test @api-nightly-prod');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);

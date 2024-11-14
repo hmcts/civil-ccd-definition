@@ -8,7 +8,7 @@ let civilCaseReference;
 
 Feature('SDO Carm - Upload mediation documents');
 
-Scenario('2v1 claimant and defendant upload mediation documents @carm @non-prod-e2e-ft', async ({api_spec, LRspec}) => {
+Scenario('2v1 claimant and defendant upload mediation documents @carm @e2e-nightly-prod', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
