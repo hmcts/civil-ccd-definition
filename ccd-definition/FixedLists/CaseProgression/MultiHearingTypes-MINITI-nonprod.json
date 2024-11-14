@@ -1,0 +1,32 @@
+[
+  {
+    "ID": "MultiHearingTypes",
+    "ListElementCode": "CASE_MANAGEMENT_CONFERENCE",
+    "ListElement": "Case Management Conference (CMC)",
+    "DisplayOrder": 1
+  },
+  {
+    "ID": "MultiHearingTypes",
+    "ListElementCode": "COSTS_CASE_MANAGEMENT_CONFERENCE",
+    "ListElement": "Costs and Case Management Conference (CCMC)",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "MultiHearingTypes",
+    "ListElementCode": "PRE_TRIAL_REVIEW",
+    "ListElement": "Pre Trial Review (PTR)",
+    "DisplayOrder": 3
+  },
+  {
+    "ID": "MultiHearingTypes",
+    "ListElementCode": "TRIAL",
+    "ListElement": "Trial",
+    "DisplayOrder": 4
+  },
+  {
+    "ID": "MultiHearingTypes",
+    "ListElementCode": "OTHER",
+    "ListElement": "Other",
+    "DisplayOrder": 5
+  }
+]
