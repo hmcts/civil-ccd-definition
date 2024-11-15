@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import NotifyClaimCheckYourAnswersFragment from '../../../fragments/notify-claim-check-your-answers/notify-claim-check-your-answers-fragment';
 
 @AllMethodsStep()
-export default class NotifyClaimCheckYourAnswers2UnpresentedDefendantsPage extends BasePage {
+export default class NotifyClaimCheckYourAnswers2UnrepresentedDefendantsPage extends BasePage {
   private notifyClaimCheckYourAnswersFragment: NotifyClaimCheckYourAnswersFragment;
 
   constructor(
