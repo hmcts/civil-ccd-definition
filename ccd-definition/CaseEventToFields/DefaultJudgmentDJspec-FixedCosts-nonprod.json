@@ -15,6 +15,42 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "showDJFixedCostsScreen",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "CPRCertifySpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defendantDetailsSpec",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "showOldDJFixedCostsScreen",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "CPRCertifySpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defendantDetailsSpec",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "fixedCosts",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "PageLabel": "",
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "CPRCertifySpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defendantDetailsSpec",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "defendantDetailsSpec",
     "DisplayContext": "MANDATORY",
     "PageID": "defendantDetailsSpec",
@@ -160,6 +196,43 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "paymentConfirmationTitleSpec",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "paymentConfirmationSpec",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "paymentConfirmationDecisionSpec",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY",
+    "PageID": "paymentConfirmationSpec",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "showOldDJFixedCostsScreen=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/repaymentBreakdown"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "claimFixedCostsOnEntryDJ",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "fixedCostsOnEntry",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "showDJFixedCostsScreen=\"Yes\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/repaymentBreakdown"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentSummaryObject",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
@@ -213,7 +286,6 @@
     "PageID": "paymentType",
     "PageDisplayOrder": 6,
     "PageColumnNumber": 1,
-    "PageShowCondition": "paymentConfirmationDecisionSpec = \"Yes\" OR paymentConfirmationDecisionSpec = \"No\"",
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
@@ -334,5 +406,3 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repaymentValidate"
   }
 ]
-
-

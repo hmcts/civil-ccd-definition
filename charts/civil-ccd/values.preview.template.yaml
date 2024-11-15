@@ -85,6 +85,8 @@ civil-service:
         resources:
           requests:
             cpu: 25m
+        podAnnotations:
+          cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
         initdb:
           user: postgres
           password: ${POSTGRES_PASSWORD}
