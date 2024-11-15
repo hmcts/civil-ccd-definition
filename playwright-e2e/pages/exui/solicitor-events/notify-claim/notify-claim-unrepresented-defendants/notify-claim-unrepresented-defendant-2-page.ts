@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import NotifyClaimFragment from '../../../fragments/notify-claim/notify-claim-fragment';
 
 @AllMethodsStep()
-export default class NotifyClaimDefendant1Page extends BasePage {
+export default class NotifyClaimUnrepresentedDefendant2Page extends BasePage {
   private notifyClaimFragment: NotifyClaimFragment;
 
   constructor(notifyClaimFragment: NotifyClaimFragment, page: Page) {
@@ -15,13 +15,13 @@ export default class NotifyClaimDefendant1Page extends BasePage {
   async verifyContent(...args: any[]): Promise<void> {
     await super.runVerifications([
       this.notifyClaimFragment.verifyContent(),
-      this.notifyClaimFragment.verifyDefendant1Content(),
+      this.notifyClaimFragment.verifyDefendant2Content(),
     ]);
   }
 
   async fillNotifyClaimDetails() {
-    await this.notifyClaimFragment.fillDefendant1NotifyClaim();
-    await this.notifyClaimFragment.fillDefendant1StatementOfTruth();
+    await this.notifyClaimFragment.fillDefendant2NotifyClaim();
+    await this.notifyClaimFragment.fillDefendant2StatementOfTruth();
   }
 
   async continue() {

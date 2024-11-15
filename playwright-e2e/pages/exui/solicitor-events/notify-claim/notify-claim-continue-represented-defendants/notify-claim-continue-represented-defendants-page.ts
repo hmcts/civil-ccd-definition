@@ -1,5 +1,5 @@
 import BasePage from '../../../../../base/base-page';
-import { buttons, heading, text } from './notify-claim-represented-defendants-continue-content';
+import { buttons, heading, text } from './notify-claim-continue-represented-defendants-content';
 
 export default class NotifyClaimRepresentedDefendantContinuePage extends BasePage {
   async verifyContent(...args: any[]): Promise<void> {
