@@ -7,7 +7,7 @@ import {
 } from './notify-claim-details-check-your-answers-content-represented-defendants';
 
 @AllMethodsStep()
-export default class NotifyClaimDetailsCheckYourAnswersPage extends BasePage {
+export default class NotifyClaimDetailsCheckYourAnswersRepresentedDefendantsPage extends BasePage {
   async verifyContent(...args: any[]): Promise<void> {
     await super.runVerifications([
       super.expectHeading(heading),
