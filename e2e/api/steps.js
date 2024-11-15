@@ -762,12 +762,12 @@ module.exports = {
     await validateEventPages(defendantResponseData, solicitor);
 
     // need to add partyID back into respondent object
-    if (solicitor === 'solicitorOne'){
-      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
-    }
-    if (solicitor === 'solicitorTwo'){
-      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
-    }
+//    if (solicitor === 'solicitorOne'){
+//      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
+//    }
+//    if (solicitor === 'solicitorTwo'){
+//      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
+//    }
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
