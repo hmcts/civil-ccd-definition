@@ -1,6 +1,6 @@
 [
   {
-    "ID": "sendMessageMetadata",
+    "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "recipientRoleType",
@@ -34,6 +34,32 @@
     "EventElementLabel": "Enter the subject",
     "FieldShowCondition": "sendMessageMetadata.subject=\"OTHER\"",
     "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SendMessageMetadata",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "messageHistory",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "SendMessageMetadata",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "messageReplyMetadata",
+    "ListElementCode": "isUrgent",
+    "EventElementLabel": "Urgency",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SendMessageMetadata",
+    "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "messageReplyMetadata",
+    "ListElementCode": "messageContent",
+    "EventElementLabel": "Message details",
+    "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
 ]

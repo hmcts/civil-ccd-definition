@@ -41,6 +41,16 @@
   },
   {
     "ID": "Message",
+    "ListElementCode": "subjectType",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Message",
     "ListElementCode": "headerSubject",
     "FieldType": "Text",
     "ElementLabel": "Subject",
@@ -68,6 +78,16 @@
     "ListElementCode": "messageContent",
     "FieldType": "TextArea",
     "ElementLabel": "Message details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Message",
+    "ListElementCode": "history",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "MessageReply",
+    "FieldShowCondition": "isUrgent = \"DO NOT SHOW\"",
+    "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

@@ -1,0 +1,50 @@
+[
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "senderRoleType",
+    "FieldType": "Text",
+    "ElementLabel": "From",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "recipientRoleType",
+    "FieldType": "Text",
+    "ElementLabel": "From",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "senderName",
+    "FieldType": "Text",
+    "ElementLabel": "Sender's name",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "isUrgent",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Urgency",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "sentTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date and time sent",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "messageContent",
+    "FieldType": "TextArea",
+    "ElementLabel": "Message details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]

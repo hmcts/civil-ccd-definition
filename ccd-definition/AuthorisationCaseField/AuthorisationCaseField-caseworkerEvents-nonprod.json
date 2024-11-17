@@ -161,6 +161,19 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "CaseFieldID": "messagesToReplyTo",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sendMessageMetadata",
     "AccessControl": [
       {
@@ -214,6 +227,32 @@
   {
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "messages",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "messageReplyMetadata",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "messageHistory",
     "AccessControl": [
       {
         "UserRoles": [

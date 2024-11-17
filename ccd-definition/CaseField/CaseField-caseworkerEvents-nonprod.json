@@ -99,6 +99,15 @@
   },
   {
     "CaseTypeID": "CIVIL",
+    "ID": "messagesToReplyTo",
+    "Label": " ",
+    "FieldType": "DynamicList",
+    "FieldTypeParameter": "Message",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
     "ID": "sendMessageMetadata",
     "Label": " ",
     "FieldType": "SendMessageMetadata",
@@ -144,6 +153,38 @@
     "Label": "Messages",
     "FieldType": "Collection",
     "FieldTypeParameter": "Message",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "replyToMessageTitle",
+    "Label": "## Reply to a message",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "messageReplyMetadata",
+    "Label": " ",
+    "FieldType": "MessageReply",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "messageHistory",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "messageHistoryLabel",
+    "Label": "${messageHistory}",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
