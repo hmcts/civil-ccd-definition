@@ -338,9 +338,17 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil"
+        ],
+        "CRUD": "R"
       }
     ]
   },
