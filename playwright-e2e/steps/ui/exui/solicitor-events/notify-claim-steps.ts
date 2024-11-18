@@ -13,22 +13,41 @@ export default class NotifyClaimSteps extends BaseSteps {
   }
 
   async NotifyClaimUnrepresentatedDefendant1() {
-    const { notifyClaimsPage } = this.notifyClaimPageFactory;
-    await notifyClaimsPage.verifyContent();
-    await notifyClaimsPage.fillNotifyClaimDetails();
-    await notifyClaimsPage.continue();
+    const { notifyClaimsUnrepresentedDefendantPage1 } = this.notifyClaimPageFactory;
+    await notifyClaimsUnrepresentedDefendantPage1.verifyContent();
+    await notifyClaimsUnrepresentedDefendantPage1.fillNotifyClaimDetails();
+    await notifyClaimsUnrepresentedDefendantPage1.continue();
   }
 
   async NotifyClaimUnrepresentatedDefendant2() {
-    const { notifyClaimsDefendant2Page } = this.notifyClaimPageFactory;
-    await notifyClaimsDefendant2Page.verifyContent();
-    await notifyClaimsDefendant2Page.fillNotifyClaimDetails();
-    await notifyClaimsDefendant2Page.continue();
+    const { notifyClaimsUnrepresentedDefendantPage2 } = this.notifyClaimPageFactory;
+    await notifyClaimsUnrepresentedDefendantPage2.verifyContent();
+    await notifyClaimsUnrepresentedDefendantPage2.fillNotifyClaimDetails();
+    await notifyClaimsUnrepresentedDefendantPage2.continue();
   }
 
-  async NotifyClaimCheckYourAnswers1Defendant() {
-    const { notifyClaimsCheckYourAnswersPage } = this.notifyClaimPageFactory;
-    await notifyClaimsCheckYourAnswersPage.verifyContent();
-    // await notifyClaimsCheckYourAnswersPage.submit();
+  async NotifyClaimCheckYourAnswers1UnrepresentedDefendant() {
+    const { notifyClaimsCheckYourAnswers1UnrepresentedDefendantPage } = this.notifyClaimPageFactory;
+    await notifyClaimsCheckYourAnswers1UnrepresentedDefendantPage.verifyContent();
+    await notifyClaimsCheckYourAnswers1UnrepresentedDefendantPage.submit();
+  }
+
+  async NotifyClaimCheckYourAnswers2UnrepresentedDefendant() {
+    const { notifyClaimsCheckYourAnswers2UnrepresentedDefendantsPage } =
+      this.notifyClaimPageFactory;
+    await notifyClaimsCheckYourAnswers2UnrepresentedDefendantsPage.verifyContent();
+    await notifyClaimsCheckYourAnswers2UnrepresentedDefendantsPage.submit();
+  }
+
+  async NotifyClaimRepresentatedDefendant() {
+    const { notifyClaimsRepresentedDefendantContinuePage } = this.notifyClaimPageFactory;
+    await notifyClaimsRepresentedDefendantContinuePage.verifyContent();
+    await notifyClaimsRepresentedDefendantContinuePage.continue();
+  }
+
+  async NotifyClaimRepresentatedDefendantSubmit() {
+    const { notifyClaimsRepresentedDefendantSubmitPage } = this.notifyClaimPageFactory;
+    await notifyClaimsRepresentedDefendantSubmitPage.verifyContent();
+    await notifyClaimsRepresentedDefendantSubmitPage.submit();
   }
 }
