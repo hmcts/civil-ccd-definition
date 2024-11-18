@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -8,7 +8,7 @@
     "TabFieldDisplayOrder": 1
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -16,7 +16,7 @@
     "TabFieldDisplayOrder": 2
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -24,7 +24,7 @@
     "TabFieldDisplayOrder": 3
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -32,7 +32,7 @@
     "TabFieldDisplayOrder": 4
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -41,7 +41,7 @@
     "TabShowCondition":"respondent1ClaimResponseType= \"*\" OR respondent2ClaimResponseType= \"*\" OR respondent1ClaimResponseTypeForSpec= \"*\" OR respondent2ClaimResponseTypeForSpec= \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -49,7 +49,7 @@
     "TabFieldDisplayOrder": 6
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -57,7 +57,7 @@
     "TabFieldDisplayOrder": 7
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -65,7 +65,7 @@
     "TabFieldDisplayOrder": 8
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -73,7 +73,7 @@
     "TabFieldDisplayOrder": 9
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -81,7 +81,7 @@
     "TabFieldDisplayOrder": 10
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -89,7 +89,7 @@
     "TabFieldDisplayOrder": 11
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -97,7 +97,7 @@
     "TabFieldDisplayOrder": 12
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -105,7 +105,7 @@
     "TabFieldDisplayOrder": 13
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -113,7 +113,7 @@
     "TabFieldDisplayOrder": 14
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -121,7 +121,7 @@
     "TabFieldDisplayOrder": 15
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -129,7 +129,7 @@
     "TabFieldDisplayOrder": 16
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -137,7 +137,7 @@
     "TabFieldDisplayOrder": 17
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -145,7 +145,7 @@
     "TabFieldDisplayOrder": 18
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -153,7 +153,7 @@
     "TabFieldDisplayOrder": 19
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -161,7 +161,7 @@
     "TabFieldDisplayOrder": 16
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -169,7 +169,7 @@
     "TabFieldDisplayOrder": 17
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -177,7 +177,7 @@
     "TabFieldDisplayOrder": 18
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,
@@ -185,7 +185,7 @@
     "TabFieldDisplayOrder": 19
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Hearings",
     "TabLabel": "Listing notes",
     "TabDisplayOrder": 5,

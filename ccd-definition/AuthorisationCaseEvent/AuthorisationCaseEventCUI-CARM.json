@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_UNSUCCESSFUL_DEFENDANT_1_LR",
     "AccessControl": [
       {
@@ -22,7 +22,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_UNSUCCESSFUL_DEFENDANT_2_LR",
     "AccessControl": [
       {
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_SUCCESSFUL_DEFENDANT_LIP",
     "AccessControl": [
       {
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_SUCCESSFUL_DEFENDANT_2_LR",
     "AccessControl": [
       {

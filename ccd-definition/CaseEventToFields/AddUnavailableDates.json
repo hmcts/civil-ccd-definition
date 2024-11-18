@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "hidePartyChoice",
     "PageLabel": "Add unavailable dates",
@@ -12,7 +12,7 @@
     "FieldShowCondition": "partyChosen=\"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "additionalUnavailableDatesPartyChoiceQuestion",
     "PageDisplayOrder": 1,
@@ -22,7 +22,7 @@
     "PageID": "PartySelection"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "additionalUnavailableDatesPartyChoiceSubText",
     "PageDisplayOrder": 1,
@@ -32,7 +32,7 @@
     "PageID": "PartySelection"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "partyChosen",
     "CaseEventFieldLabel": "",
@@ -44,7 +44,7 @@
     "PageShowCondition": "hidePartyChoice=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "additionalUnavailableDatesTitle",
     "PageLabel": "Add unavailable dates",
@@ -54,7 +54,7 @@
     "PageID": "AddAdditionalDates"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "additionalUnavailableDatesSubText",
     "PageDisplayOrder": 2,
@@ -63,7 +63,7 @@
     "PageID": "AddAdditionalDates"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ADD_UNAVAILABLE_DATES",
     "CaseFieldID": "additionalUnavailableDates",
     "PageDisplayOrder": 2,
