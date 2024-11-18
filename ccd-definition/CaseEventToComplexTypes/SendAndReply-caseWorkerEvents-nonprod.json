@@ -39,14 +39,6 @@
   {
     "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
-    "CaseFieldID": "messageHistory",
-    "EventElementLabel": " ",
-    "FieldDisplayOrder": 1,
-    "DisplayContext": "READONLY"
-  },
-  {
-    "ID": "SendMessageMetadata",
-    "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageReplyMetadata",
     "ListElementCode": "isUrgent",
     "EventElementLabel": "Urgency",
