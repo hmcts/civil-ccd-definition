@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMediationSectionTitle",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMediationSectionToggle",
     "AccessControl": [
       {
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMediationSectionStatement",
     "AccessControl": [
       {
@@ -39,7 +39,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMediationSectionEndLine",
     "AccessControl": [
       {
@@ -52,7 +52,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionTitle",
     "AccessControl": [
       {
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionToggle",
     "AccessControl": [
       {
@@ -78,7 +78,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
     "AccessControl": [
       {

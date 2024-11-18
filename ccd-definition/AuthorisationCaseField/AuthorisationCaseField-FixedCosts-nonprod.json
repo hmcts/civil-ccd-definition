@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fixedCosts",
     "AccessControl": [
       {
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fixedCostsHint",
     "AccessControl": [
       {
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "showDJFixedCostsScreen",
     "AccessControl": [
       {
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "showOldDJFixedCostsScreen",
     "AccessControl": [
       {
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFixedCostsOnEntryDJ",
     "AccessControl": [
       {

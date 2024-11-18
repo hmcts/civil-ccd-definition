@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "settlementSummary",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNames",
     "AccessControl": [
       {
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNames1",
     "AccessControl": [
       {
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNamesTD",
     "AccessControl": [
       {
@@ -54,7 +54,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "markPaidForAllClaimants",
     "AccessControl": [
       {
@@ -73,7 +73,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantWhoIsSettling",
     "AccessControl": [
       {
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "markPaidConsent",
     "AccessControl": [
       {
@@ -105,7 +105,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "settleReason",
     "AccessControl": [
       {
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantWhoIsDiscontinuing",
     "AccessControl": [
       {
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantsConsentToDiscontinuance",
     "AccessControl": [
       {
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "selectedClaimantForDiscontinuance",
     "AccessControl": [
       {
@@ -174,7 +174,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNames3",
     "AccessControl": [
       {
@@ -187,7 +187,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtPermissionNeeded",
     "AccessControl": [
       {
@@ -208,7 +208,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID":"CIVIL",
     "CaseFieldID":"courtPermissionNeededText",
     "AccessControl":[
       {
@@ -221,7 +221,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "courtPermissionNeededChecked",
     "AccessControl": [
       {
@@ -234,7 +234,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNames4",
     "AccessControl": [
       {
@@ -247,7 +247,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isPermissionGranted",
     "AccessControl": [
       {
@@ -262,7 +262,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "permissionGrantedComplex",
     "AccessControl": [
       {
@@ -275,7 +275,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "permissionNotGrantedText",
     "AccessControl": [
       {
@@ -288,7 +288,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDate",
     "AccessControl": [
       {
@@ -301,7 +301,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "partiesNamesDD",
     "AccessControl": [
       {
@@ -314,7 +314,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
     "AccessControl": [
       {
@@ -329,7 +329,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID":"CIVIL",
     "CaseFieldID":"discontinuingAgainstOneDefendant",
     "AccessControl":[
       {
@@ -342,7 +342,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID":"CIVIL",
     "CaseFieldID":"typeOfDiscontinuance",
     "AccessControl":[
       {
@@ -362,7 +362,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID":"CIVIL",
     "CaseFieldID":"partDiscontinuanceDetails",
     "AccessControl":[
       {
@@ -375,7 +375,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "validateDiscontinuanceLbl",
     "AccessControl": [
       {
@@ -388,7 +388,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "permissionGrantedJudgeCopy",
     "AccessControl": [
       {
@@ -401,7 +401,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "permissionGrantedDateCopy",
     "AccessControl": [
       {
@@ -414,7 +414,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "confirmOrderGivesPermissionLbl",
     "AccessControl": [
       {
@@ -427,7 +427,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "confirmOrderGivesPermission",
     "AccessControl": [
       {
@@ -441,7 +441,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "noticeOfDiscontinueCWDoc",
     "AccessControl": [
       {
@@ -460,7 +460,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "noticeOfDiscontinueAllParitiesDoc",
     "AccessControl": [
      {

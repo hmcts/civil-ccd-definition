@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "helpWithFees",
     "DisplayContext": "READONLY",
@@ -11,7 +11,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
@@ -22,7 +22,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "applicant1",
     "DisplayContext": "READONLY",
@@ -33,7 +33,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "respondent1",
     "DisplayContext": "READONLY",
@@ -44,7 +44,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
@@ -54,7 +54,7 @@
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "claimFeeLabel",
     "DisplayContext": "READONLY",
@@ -64,7 +64,7 @@
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MORE_INFORMATION_HWF",
     "CaseFieldID": "helpWithFeesMoreInformationClaimIssue",
     "PageDisplayOrder": 1,

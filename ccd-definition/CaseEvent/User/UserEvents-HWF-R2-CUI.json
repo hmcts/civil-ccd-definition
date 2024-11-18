@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "INVALID_HWF_REFERENCE",
     "Name": "Invalid HwF Reference",
     "Description": "Invalid HwF Reference",
@@ -19,7 +19,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NO_REMISSION_HWF",
     "Name": "No remission HwF",
     "Description": "No remission HWF",
@@ -38,7 +38,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "PARTIAL_REMISSION_HWF_GRANTED",
     "Name": "Part remission HwF - granted",
     "Description": "Part remission HwF granted",
@@ -56,7 +56,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MORE_INFORMATION_HWF",
     "Name": "More Information Required HwF",
     "Description": "More Information Required HwF",
@@ -76,7 +76,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "FEE_PAYMENT_OUTCOME",
     "Name": "Fee Payment Outcome",
     "Description": "Fee Payment Outcome",
@@ -95,7 +95,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "FULL_REMISSION_HWF",
     "Name": "Full remission HwF - granted",
     "Description": "Full remission HWF - granted",
@@ -114,7 +114,7 @@
     "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_HELP_WITH_FEE_NUMBER",
     "Name": "Updated HwF Number",
     "Description": "Update Help with Fee Reference Number",

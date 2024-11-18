@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "TabID": "ApplicationsStaff",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,

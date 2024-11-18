@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "statementsOfCase",
     "CategoryLabel": "Statements of case",
     "DisplayOrder": "1",
@@ -9,7 +9,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "claimant",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -17,7 +17,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "claimantTwo",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -25,7 +25,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "detailsOfClaim",
     "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
@@ -33,7 +33,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "particularsOfClaim",
     "CategoryLabel": "Particulars of Claim",
     "DisplayOrder": "2",
@@ -41,7 +41,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
@@ -49,7 +49,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "reply",
     "CategoryLabel": "Reply",
     "DisplayOrder": "4",
@@ -57,7 +57,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantRequestsForFurtherInformation",
     "CategoryLabel": "Requests for further information made",
     "DisplayOrder": "5",
@@ -65,7 +65,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantRepliesToFurtherInformation",
     "CategoryLabel": "Replies to any requests for further information received",
     "DisplayOrder": "6",
@@ -73,7 +73,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "directionsQuestionnaire",
     "CategoryLabel": "Directions questionnaire",
     "DisplayOrder": "7",
@@ -81,7 +81,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDetailsOfClaim",
     "CategoryLabel": "Claim form",
     "DisplayOrder": "1",
@@ -89,7 +89,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoParticularsOfClaim",
     "CategoryLabel": "Particulars of Claim",
     "DisplayOrder": "2",
@@ -97,7 +97,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoSchedulesOfLoss",
     "CategoryLabel": "Schedules of loss",
     "DisplayOrder": "3",
@@ -105,7 +105,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoReply",
     "CategoryLabel": "Reply",
     "DisplayOrder": "4",
@@ -113,7 +113,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoRequestsForFurtherInformation",
     "CategoryLabel": "Requests for further information made",
     "DisplayOrder": "5",
@@ -121,7 +121,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoRepliesToFurtherInformation",
     "CategoryLabel": "Replies to any requests for further information received",
     "DisplayOrder": "6",
@@ -129,7 +129,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDirectionsQuestionnaire",
     "CategoryLabel": "Directions questionnaire",
     "DisplayOrder": "7",
@@ -137,7 +137,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "defendantOne",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -145,7 +145,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "defendant1DefenseDirectionsQuestionnaire",
     "CategoryLabel": "Defence",
     "DisplayOrder": "1",
@@ -153,7 +153,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
@@ -161,7 +161,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "defendantTwo",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -169,7 +169,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "defendant2DefenseDirectionsQuestionnaire",
     "CategoryLabel": "Defence",
     "DisplayOrder": "1",
@@ -177,7 +177,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoSchedulesOfLoss",
     "CategoryLabel": "Counter-schedules of loss",
     "DisplayOrder": "2",
@@ -185,7 +185,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "dq",
     "CategoryLabel": "Directions questionnaire",
     "DisplayOrder": "2",
@@ -193,7 +193,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantDQ",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -201,7 +201,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DQApplicant",
     "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
@@ -209,7 +209,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDQ",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -217,7 +217,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DQApplicantTwo",
     "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
@@ -225,7 +225,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentDQ",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -233,7 +233,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DQRespondent",
     "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
@@ -241,7 +241,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoDQ",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -249,7 +249,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DQRespondentTwo",
     "CategoryLabel": "Directions Questionnaire",
     "DisplayOrder": "1",
@@ -257,7 +257,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsDisclosure",
     "CategoryLabel": "Disclosure",
     "DisplayOrder": "3",
@@ -265,7 +265,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantDisclosureDocuments",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -273,7 +273,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDisclosureDocuments",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -281,7 +281,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentDisclosureDocuments",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -289,7 +289,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoDisclosureDocuments",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -297,7 +297,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantDisclosureList",
     "CategoryLabel": "Disclosure List",
     "DisplayOrder": "1",
@@ -305,7 +305,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDisclosureList",
     "CategoryLabel": "Disclosure List",
     "DisplayOrder": "1",
@@ -313,7 +313,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneDisclosureList",
     "CategoryLabel": "Disclosure List",
     "DisplayOrder": "1",
@@ -321,7 +321,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoDisclosureList",
     "CategoryLabel": "Disclosure List",
     "DisplayOrder": "1",
@@ -329,7 +329,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantDisclosure",
     "CategoryLabel": "Disclosure",
     "DisplayOrder": "2",
@@ -337,7 +337,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoDisclosure",
     "CategoryLabel": "Disclosure",
     "DisplayOrder": "2",
@@ -345,7 +345,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneDisclosure",
     "CategoryLabel": "Disclosure",
     "DisplayOrder": "2",
@@ -353,7 +353,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoDisclosure",
     "CategoryLabel": "Disclosure",
     "DisplayOrder": "2",
@@ -361,7 +361,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsWitness",
     "CategoryLabel": "Witness statements for trial",
     "DisplayOrder": "4",
@@ -369,7 +369,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessDocuments",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -377,7 +377,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoWitnessDocuments",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -385,7 +385,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentWitnessDocuments",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -393,7 +393,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessDocuments",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -401,7 +401,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessStatement",
     "CategoryLabel": "Claimant - Statement",
     "DisplayOrder": "1",
@@ -409,7 +409,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoWitnessStatement",
     "CategoryLabel": "Claimant - Statement",
     "DisplayOrder": "1",
@@ -417,7 +417,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessStatement",
     "CategoryLabel": "Defendant",
     "DisplayOrder": "1",
@@ -425,7 +425,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessStatement",
     "CategoryLabel": "Defendant",
     "DisplayOrder": "1",
@@ -433,7 +433,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantOneOtherWitnessStatement",
     "CategoryLabel": "Other witnesses",
     "DisplayOrder": "2",
@@ -441,7 +441,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoOtherWitnessStatement",
     "CategoryLabel": "Other witnesses",
     "DisplayOrder": "2",
@@ -449,7 +449,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneOtherWitnessStatement",
     "CategoryLabel": "Other witnesses",
     "DisplayOrder": "2",
@@ -457,7 +457,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoOtherWitnessStatement",
     "CategoryLabel": "Other witnesses",
     "DisplayOrder": "2",
@@ -465,7 +465,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessSummary",
     "CategoryLabel": "Witness Summaries",
     "DisplayOrder": "3",
@@ -473,7 +473,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoWitnessSummary",
     "CategoryLabel": "Witness Summaries",
     "DisplayOrder": "3",
@@ -481,7 +481,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessSummary",
     "CategoryLabel": "Witness Summaries",
     "DisplayOrder": "3",
@@ -489,7 +489,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessSummary",
     "CategoryLabel": "Witness Summaries",
     "DisplayOrder": "3",
@@ -497,7 +497,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessHearsay",
     "CategoryLabel": "Hearsay notices",
     "DisplayOrder": "4",
@@ -505,7 +505,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoWitnessHearsay",
     "CategoryLabel": "Hearsay notices",
     "DisplayOrder": "4",
@@ -513,7 +513,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessHearsay",
     "CategoryLabel": "Hearsay notices",
     "DisplayOrder": "4",
@@ -521,7 +521,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessHearsay",
     "CategoryLabel": "Hearsay notices",
     "DisplayOrder": "4",
@@ -529,7 +529,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantWitnessReferred",
     "CategoryLabel": "Documents referred to in statement",
     "DisplayOrder": "5",
@@ -537,7 +537,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoWitnessReferred",
     "CategoryLabel": "Documents referred to in statement",
     "DisplayOrder": "5",
@@ -545,7 +545,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneWitnessReferred",
     "CategoryLabel": "Documents referred to in statement",
     "DisplayOrder": "5",
@@ -553,7 +553,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoWitnessReferred",
     "CategoryLabel": "Documents referred to in statement",
     "DisplayOrder": "5",
@@ -561,7 +561,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsExpert",
     "CategoryLabel": "Expert Evidence",
     "DisplayOrder": "5",
@@ -569,7 +569,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertDocuments",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -577,7 +577,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertDocuments",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -585,7 +585,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentExpertDocuments",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -593,7 +593,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertDocuments",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -601,7 +601,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertReport",
     "CategoryLabel": "Reports",
     "DisplayOrder": "1",
@@ -609,7 +609,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertReport",
     "CategoryLabel": "Reports",
     "DisplayOrder": "1",
@@ -617,7 +617,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertReport",
     "CategoryLabel": "Reports",
     "DisplayOrder": "1",
@@ -625,7 +625,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertReport",
     "CategoryLabel": "Reports",
     "DisplayOrder": "1",
@@ -633,7 +633,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertQuestions",
     "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
@@ -641,7 +641,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertQuestions",
     "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
@@ -649,7 +649,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertQuestions",
     "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
@@ -657,7 +657,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertQuestions",
     "CategoryLabel": "Questions asked of other party expert",
     "DisplayOrder": "2",
@@ -665,7 +665,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertAnswers",
     "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
@@ -673,7 +673,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertAnswers",
     "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
@@ -681,7 +681,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertAnswers",
     "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
@@ -689,7 +689,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertAnswers",
     "CategoryLabel": "Answers to Part 35 Questions posed by another party",
     "DisplayOrder": "3",
@@ -697,7 +697,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantExpertJointStatement",
     "CategoryLabel": "Joint Statement of Experts",
     "DisplayOrder": "4",
@@ -705,7 +705,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoExpertJointStatement",
     "CategoryLabel": "Joint Statement of Experts",
     "DisplayOrder": "4",
@@ -713,7 +713,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneExpertJointStatement",
     "CategoryLabel": "Joint Statement of Experts",
     "DisplayOrder": "4",
@@ -721,7 +721,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoExpertJointStatement",
     "CategoryLabel": "Joint Statement of Experts",
     "DisplayOrder": "4",
@@ -729,7 +729,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsPreTrial",
     "CategoryLabel": "Documents for pre-trial review",
     "DisplayOrder": "6",
@@ -737,7 +737,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantPreTrialDocuments",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -745,7 +745,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoPreTrialDocuments",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -753,7 +753,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentPreTrialDocuments",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -761,7 +761,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoPreTrialDocuments",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -769,7 +769,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantPreTrialSummary",
     "CategoryLabel": "Case summary",
     "DisplayOrder": "1",
@@ -777,7 +777,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoPreTrialSummary",
     "CategoryLabel": "Case summary",
     "DisplayOrder": "1",
@@ -785,7 +785,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOnePreTrialSummary",
     "CategoryLabel": "Case summary",
     "DisplayOrder": "1",
@@ -793,7 +793,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoPreTrialSummary",
     "CategoryLabel": "Case summary",
     "DisplayOrder": "1",
@@ -801,7 +801,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantPreTrialOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "2",
@@ -809,7 +809,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoPreTrialOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "2",
@@ -817,7 +817,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOnePreTrialOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "2",
@@ -825,7 +825,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoPreTrialOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "2",
@@ -833,7 +833,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsTrial",
     "CategoryLabel": "Trial documents",
     "DisplayOrder": "7",
@@ -841,7 +841,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialDocuments",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -849,7 +849,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialDocuments",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -857,7 +857,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTrialDocuments",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -865,7 +865,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialDocuments",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -873,7 +873,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialSkeleton",
     "CategoryLabel": "Skeleton argument",
     "DisplayOrder": "1",
@@ -881,7 +881,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialDocCorrespondence",
     "CategoryLabel": "Documents",
     "DisplayOrder": "2",
@@ -889,7 +889,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialDocTimetable",
     "CategoryLabel": "Trial timetable",
     "DisplayOrder": "3",
@@ -897,7 +897,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialSkeleton",
     "CategoryLabel": "Skeleton argument",
     "DisplayOrder": "1",
@@ -905,7 +905,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialDocCorrespondence",
     "CategoryLabel": "Documents",
     "DisplayOrder": "2",
@@ -913,7 +913,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialDocTimetable",
     "CategoryLabel": "Trial timetable",
     "DisplayOrder": "3",
@@ -921,7 +921,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneTrialSkeleton",
     "CategoryLabel": "Skeleton argument",
     "DisplayOrder": "1",
@@ -929,7 +929,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneTrialDocCorrespondence",
     "CategoryLabel": "Documents",
     "DisplayOrder": "2",
@@ -937,7 +937,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneTrialDocTimetable",
     "CategoryLabel": "Trial timetable",
     "DisplayOrder": "3",
@@ -945,7 +945,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialSkeleton",
     "CategoryLabel": "Skeleton argument",
     "DisplayOrder": "1",
@@ -953,7 +953,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialDocCorrespondence",
     "CategoryLabel": "Documents",
     "DisplayOrder": "2",
@@ -961,7 +961,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialDocTimetable",
     "CategoryLabel": "Trial timetable",
     "DisplayOrder": "3",
@@ -969,7 +969,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "orders",
     "CategoryLabel": "Orders and notices",
     "DisplayOrder": "8",
@@ -977,7 +977,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "caseManagementOrders",
     "CategoryLabel": "Orders",
     "DisplayOrder": "1",
@@ -985,7 +985,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "hearingNotices",
     "CategoryLabel": "Hearing Notices",
     "DisplayOrder": "2",
@@ -993,7 +993,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "bundles",
     "CategoryLabel": "Bundles",
     "DisplayOrder": "3",
@@ -1001,7 +1001,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ordersMadeOnApplications",
     "CategoryLabel": "Orders made on applications",
     "DisplayOrder": "4",
@@ -1009,7 +1009,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "applicationOrders",
     "CategoryLabel": "Orders",
     "DisplayOrder": "1",
@@ -1017,7 +1017,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsSchedulesOfCost",
     "CategoryLabel": "Schedule of Costs",
     "DisplayOrder": "9",
@@ -1025,7 +1025,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantSchedulesOfCost",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -1033,7 +1033,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoSchedulesOfCost",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -1041,7 +1041,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentSchedulesOfCost",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -1049,7 +1049,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoSchedulesOfCost",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -1057,7 +1057,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsCostsBudgets",
     "CategoryLabel": "Costs budgets",
     "DisplayOrder": "10",
@@ -1065,7 +1065,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantCostsBudgets",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -1073,7 +1073,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantUploadedPrecedentH",
     "CategoryLabel": "Uploaded precedent H",
     "DisplayOrder": "1",
@@ -1081,7 +1081,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantPrecedentAgreed",
     "CategoryLabel": "Approved/agreed precedent H",
     "DisplayOrder": "2",
@@ -1089,7 +1089,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantAnyPrecedentH",
     "CategoryLabel": "Any precedent H",
     "DisplayOrder": "3",
@@ -1097,7 +1097,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoCostsBudgets",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -1105,7 +1105,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoUploadedPrecedentH",
     "CategoryLabel": "Uploaded precedent H",
     "DisplayOrder": "1",
@@ -1113,7 +1113,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoPrecedentAgreed",
     "CategoryLabel": "Approved/agreed precedent H",
     "DisplayOrder": "2",
@@ -1121,7 +1121,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoAnyPrecedentH",
     "CategoryLabel": "Any precedent H",
     "DisplayOrder": "3",
@@ -1129,7 +1129,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentCostsBudgets",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -1137,7 +1137,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOneUploadedPrecedentH",
     "CategoryLabel": "Uploaded precedent H",
     "DisplayOrder": "1",
@@ -1145,7 +1145,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentOnePrecedentAgreed",
     "CategoryLabel": "Approved/agreed precedent H",
     "DisplayOrder": "2",
@@ -1153,7 +1153,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "respondentOneAnyPrecedentH",
     "CategoryLabel": "Any precedent H",
     "DisplayOrder": "3",
@@ -1161,7 +1161,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoCostsBudgets",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -1169,7 +1169,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoUploadedPrecedentH",
     "CategoryLabel": "Uploaded precedent H",
     "DisplayOrder": "1",
@@ -1177,7 +1177,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoPrecedentAgreed",
     "CategoryLabel": "Approved/agreed precedent H",
     "DisplayOrder": "2",
@@ -1185,7 +1185,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "respondentTwoAnyPrecedentH",
     "CategoryLabel": "Any precedent H" ,
     "DisplayOrder": "3",
@@ -1193,7 +1193,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DocumentsTrialCorrespondence",
     "CategoryLabel": "Correspondence",
     "DisplayOrder": "11",
@@ -1201,7 +1201,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTrialCorrespondence",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -1209,7 +1209,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantCorrespondenceOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "1",
@@ -1217,7 +1217,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoTrialCorrespondence",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -1225,7 +1225,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ApplicantTwoCorrespondenceOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "1",
@@ -1233,7 +1233,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTrialCorrespondence",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -1241,7 +1241,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentCorrespondenceOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "1",
@@ -1249,7 +1249,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoTrialCorrespondence",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",
@@ -1257,7 +1257,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "RespondentTwoCorrespondenceOther",
     "CategoryLabel": "Other",
     "DisplayOrder": "1",
@@ -1265,7 +1265,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "MediationDocuments",
     "CategoryLabel": "Mediation Documents",
     "DisplayOrder": "15",
@@ -1273,7 +1273,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ClaimantOneMediationDocs",
     "CategoryLabel": "Claimant One",
     "DisplayOrder": "1",
@@ -1281,7 +1281,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "ClaimantTwoMediationDocs",
     "CategoryLabel": "Claimant Two",
     "DisplayOrder": "2",
@@ -1289,7 +1289,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DefendantOneMediationDocs",
     "CategoryLabel": "Defendant One",
     "DisplayOrder": "3",
@@ -1297,7 +1297,7 @@
   },
   {
     "LiveFrom": "05/12/2022",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "DefendantTwoMediationDocs",
     "CategoryLabel": "Defendant Two",
     "DisplayOrder": "4",

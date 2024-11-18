@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "stayCaseText",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissText",
     "AccessControl": [
       {
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "preStayState",
     "AccessControl": [
       {
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayOption",
     "AccessControl": [
       {
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "AccessControl": [
       {
@@ -79,7 +79,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
     "AccessControl": [
       {
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayRequestUpdateText",
     "AccessControl": [
       {
@@ -105,7 +105,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayOptionsLabel",
     "AccessControl": [
       {
@@ -118,7 +118,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "manageStayRequestUpdateHintText",
     "AccessControl": [
       {
@@ -131,7 +131,7 @@
     ]
   },
   {
-  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseTypeID": "CIVIL",
   "CaseFieldID": "anyRepresented",
   "AccessControl": [
     {

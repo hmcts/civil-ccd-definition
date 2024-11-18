@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_STAYED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

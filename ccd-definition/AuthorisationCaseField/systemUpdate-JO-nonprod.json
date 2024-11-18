@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "activeJudgment",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "historicJudgment",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

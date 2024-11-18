@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_PAID_IN_FULL_COSC",
     "Name": "Email: Notify applicant cosc",
     "Description": "Email: Notify applicant cosc",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "respondent1",
     "PageDisplayOrder": 1,
@@ -13,7 +13,7 @@
     "_comment": "this is a workaround to have field interpolation to work correctly for respondent1.partyname"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "showDJFixedCostsScreen",
     "PageDisplayOrder": 1,
@@ -25,7 +25,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "showOldDJFixedCostsScreen",
     "PageDisplayOrder": 1,
@@ -37,7 +37,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "fixedCosts",
     "PageDisplayOrder": 1,
@@ -49,7 +49,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "defendantDetailsSpec",
     "DisplayContext": "MANDATORY",
@@ -62,7 +62,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/showCertifyStatementSpec"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "bothDefendantsSpec",
     "PageFieldDisplayOrder": 5,
@@ -75,7 +75,7 @@
     "PageLabel": "Do all of these statements apply to the Defendant?"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRCertifySpec",
     "PageFieldDisplayOrder": 1,
@@ -87,7 +87,7 @@
     "PageShowCondition": "bothDefendantsSpec=\"One\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRCertifySpecTwoDefendant",
     "PageFieldDisplayOrder": 1,
@@ -100,7 +100,7 @@
     "PageShowCondition": "bothDefendantsSpec=\"Both Defendants\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRAcceptanceLabel",
     "PageFieldDisplayOrder": 2,
@@ -111,7 +111,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRAcceptance",
     "PageFieldDisplayOrder": 3,
@@ -123,7 +123,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPRSpec"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRAcceptance2DefLabel",
     "PageFieldDisplayOrder": 2,
@@ -134,7 +134,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "CPRAcceptance2Def",
     "PageFieldDisplayOrder": 3,
@@ -146,7 +146,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/acceptCPRSpec"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDefendant",
     "PageFieldDisplayOrder": 1,
@@ -159,7 +159,7 @@
     "FieldShowCondition": "defendantDetailsSpec=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPaymentLabel",
     "PageFieldDisplayOrder": 2,
@@ -170,7 +170,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPayment",
     "PageFieldDisplayOrder": 3,
@@ -181,7 +181,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "partialPaymentAmount",
     "PageFieldDisplayOrder": 4,
@@ -194,7 +194,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/claimPartialPayment"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentConfirmationTitleSpec",
     "PageFieldDisplayOrder": 1,
@@ -205,7 +205,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentConfirmationDecisionSpec",
     "PageFieldDisplayOrder": 2,
@@ -218,7 +218,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/repaymentBreakdown"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "claimFixedCostsOnEntryDJ",
     "PageFieldDisplayOrder": 1,
@@ -231,7 +231,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/version/V_1/mid/repaymentBreakdown"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentSummaryObject",
     "PageFieldDisplayOrder": 1,
@@ -243,7 +243,7 @@
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentSummaryLabel",
     "PageFieldDisplayOrder": 2,
@@ -254,7 +254,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "registrationTypeRespondentOne",
     "DisplayContext": "READONLY",
@@ -266,7 +266,7 @@
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "registrationTypeRespondentTwo",
     "DisplayContext": "READONLY",
@@ -278,7 +278,7 @@
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDefendantName",
     "PageFieldDisplayOrder": 1,
@@ -289,7 +289,7 @@
     "FieldShowCondition": "repaymentSummaryLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentTypeLabel",
     "PageFieldDisplayOrder": 2,
@@ -300,7 +300,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentTypeSelection",
     "PageFieldDisplayOrder": 3,
@@ -312,7 +312,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/repaymentTotal"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentSetDateLabel",
     "PageFieldDisplayOrder": 1,
@@ -325,7 +325,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/claimPaymentDate"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "paymentSetDate",
     "PageFieldDisplayOrder": 2,
@@ -336,7 +336,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentDue",
     "PageFieldDisplayOrder": 1,
@@ -349,7 +349,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentDetailsLabel",
     "PageFieldDisplayOrder": 2,
@@ -360,7 +360,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentSuggestion",
     "PageFieldDisplayOrder": 3,
@@ -371,7 +371,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentFrequency",
     "PageFieldDisplayOrder": 4,
@@ -382,7 +382,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "currentDatebox",
     "PageFieldDisplayOrder": 2,
@@ -394,7 +394,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "repaymentDate",
     "PageFieldDisplayOrder": 7,

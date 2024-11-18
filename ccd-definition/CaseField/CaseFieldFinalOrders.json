@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseParticipants",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderSelectionLabel",
     "Label": "**** \n ### What type of order do you wish to make?",
     "FieldType": "Label",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderSelection",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -25,7 +25,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseParticipantsAssistedOrder",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
@@ -33,7 +33,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseParticipantsFreeForm",
     "Label": "${caseNameHmctsInternal}",
     "FieldType": "Label",
@@ -41,7 +41,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderMadeLabel",
     "Label": "**** \n ## Order Made",
     "FieldType": "Label",
@@ -49,7 +49,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderMadeSelectionLabel",
     "Label": "#### Is this order made following a hearing?",
     "FieldType": "Label",
@@ -57,7 +57,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderMadeSelection",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -65,7 +65,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderDateHeardComplex",
     "Label": " ",
     "FieldType": "FinalOrderMadeDatesDropdown",
@@ -73,7 +73,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgePapersLabel",
     "Label": "**** \n ## Judge considered the papers",
     "FieldType": "Label",
@@ -81,7 +81,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgePapers",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -90,7 +90,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgeHeardLabel",
     "Label": "**** \n ## Judge heard from",
     "FieldType": "Label",
@@ -98,7 +98,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderJudgeHeardFrom",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -107,7 +107,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderRepresentation",
     "Label": " ",
     "FieldType": "FinalOrderRepresentation",
@@ -115,7 +115,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderRecitalsLabel",
     "Label": "**** \n ## Recitals",
     "FieldType": "Label",
@@ -123,7 +123,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderRecitals",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -132,7 +132,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderRecitalsRecorded",
     "Label": " ",
     "FieldType": "FinalOrderRecitalsRecorded",
@@ -140,7 +140,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrdered",
     "Label": "**** \n ## Order",
     "FieldType": "Label",
@@ -148,7 +148,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrderedThat",
     "Label": "### The court orders that:",
     "FieldType": "Label",
@@ -156,7 +156,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderOrderedThatText",
     "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
@@ -165,7 +165,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderCost",
     "Label": "**** \n ## Costs",
     "FieldType": "Label",
@@ -173,7 +173,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderCostSecondaryLabel",
     "Label": "### Select as appropriate",
     "FieldType": "Label",
@@ -181,7 +181,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "assistedOrderCostList",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -190,7 +190,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "assistedOrderCostsReserved",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
@@ -198,7 +198,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "assistedOrderMakeAnOrderForCosts",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
@@ -206,7 +206,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "assistedOrderCostsBespoke",
     "Label": " ",
     "FieldType": "AssistedOrderCostDetails",
@@ -214,7 +214,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "publicFundingCostsProtectionLabel",
     "Label": "### Does the paying party have public funding costs protection?",
     "FieldType": "Label",
@@ -222,7 +222,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "publicFundingCostsProtection",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -230,7 +230,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "publicFundingCostsProtectionDropdown",
     "Label": "The paying party has the benefit of cost protection under section 26 of the Legal Aid, Sentencing and Punishment of Offenders Act 2012. The amount of costs that the paying party shall pay shall be determined on an application by the receiving party under rule 16 of the Civil legal Aid (Costs) Regulations 2013. Any objection by the paying party to the amount of costs claimed shall be dealt with on that occasion",
     "FieldType": "Label",
@@ -238,7 +238,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderFurtherHearingLabel",
     "Label": "**** \n ## Further hearing (part heard or adjourned)",
     "FieldType": "Label",
@@ -246,7 +246,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderFurtherHearingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -255,7 +255,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderFurtherHearingComplex",
     "Label": " ",
     "FieldType": "FinalOrderFurtherHearing",
@@ -263,7 +263,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderAppealLabel",
     "Label": "**** \n ## Appeal",
     "FieldType": "Label",
@@ -271,7 +271,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderAppealToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -280,7 +280,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderAppealComplex",
     "Label": " ",
     "FieldType": "FinalOrderAppeal",
@@ -288,7 +288,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderMadeOnDetailsPrimaryLabel",
     "Label": "**** \n ## Order made on court's own initiative/without notice",
     "FieldType": "Label",
@@ -296,7 +296,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderMadeOnDetailsSecondaryLabel",
     "Label": "### Select as appropriate",
     "FieldType": "Label",
@@ -304,7 +304,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderMadeOnDetailsList",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -313,7 +313,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderMadeOnDetailsOrderCourt",
     "Label": " ",
     "FieldType": "OrderMadeOnDetails",
@@ -321,7 +321,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderMadeOnDetailsOrderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderMadeOnDetailsOrderWithoutNotice",
@@ -329,7 +329,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderReasonsLabel",
     "Label": "**** \n ## Reasons",
     "FieldType": "Label",
@@ -337,7 +337,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderGiveReasonsLabel",
     "Label": "### Do you want to give reasons for the order? (including any reasons for refusing/granting permission to appeal)",
     "FieldType": "Label",
@@ -345,7 +345,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderGiveReasonsYesNo",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -353,7 +353,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderGiveReasonsComplex",
     "Label": " ",
     "FieldType": "AssistedOrderReasons",
@@ -361,7 +361,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormRecitalAndOrderLabel",
     "Label": "**** \n ## Recitals",
     "FieldType": "Label",
@@ -369,7 +369,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormRecordedTextAreaLabel",
     "Label": "### The court records that:",
     "FieldType": "Label",
@@ -377,7 +377,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormRecordedTextArea",
     "Label": " ",
     "FieldType": "TextArea",
@@ -385,7 +385,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedLabel",
     "Label": "**** \n ## Order \n ### The court orders that:",
     "FieldType": "Label",
@@ -393,7 +393,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormOrderedTextArea",
     "HintText": "Please insert paragraph numbers before each term of the Order as you wish them to appear, as they will not be automatically generated",
     "Label": " ",
@@ -402,7 +402,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderOnCourtsListLabel",
     "Label": "**** \n ## Order made on court's own initiative/without notice \n ### Select as appropriate",
     "FieldType": "Label",
@@ -410,7 +410,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderOnCourtsList",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -419,7 +419,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderOnCourtInitiative",
     "Label": " ",
     "FieldType": "OrderOnCourtInitiative",
@@ -427,7 +427,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "orderWithoutNotice",
     "Label": " ",
     "FieldType": "OrderWithoutNotice",
@@ -435,7 +435,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormHearingNotesLabel",
     "Label": "### Hearing notes (Optional)",
     "FieldType": "Label",
@@ -443,7 +443,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "freeFormHearingNotes",
     "Label": " ",
     "HintText": "For example, potentially violent, reading time needed, CVP for hearing",
@@ -452,7 +452,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -460,7 +460,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "finalOrderDocumentCollection",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",

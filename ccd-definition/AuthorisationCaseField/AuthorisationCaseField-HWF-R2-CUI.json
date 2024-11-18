@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "helpWithFeesReferenceNumber",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseLabelClaimIssueReference",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitleWithHwFDetails",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfFeeType",
     "AccessControl": [
       {
@@ -63,7 +63,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimFeeLabel",
     "AccessControl": [
       {
@@ -75,7 +75,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "subTitleHwfDetails",
     "AccessControl": [
       {
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedHwfDetails",
     "AccessControl": [
       {
@@ -107,7 +107,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "helpWithFeesMoreInformationClaimIssue",
     "AccessControl": [
       {
@@ -121,7 +121,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfNumberForFeePaymentOutcome",
     "AccessControl": [
       {
@@ -133,7 +133,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfNumberAvailable",
     "AccessControl": [
       {
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfFullRemissionGrantedForClaimIssue",
     "AccessControl": [
       {
@@ -157,7 +157,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "AccessControl": [
       {
@@ -169,7 +169,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseTitle2",
     "AccessControl": [
       {
@@ -181,7 +181,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "headingHelpWithFeesDetails",
     "AccessControl": [
       {
@@ -193,7 +193,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimIssuedHwfForTab",
     "AccessControl": [
       {
@@ -205,7 +205,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingHwfForTab",
     "AccessControl": [
       {

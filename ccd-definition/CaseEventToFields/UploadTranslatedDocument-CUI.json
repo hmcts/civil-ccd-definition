@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
     "CaseFieldID": "translatedDocuments",
     "PageDisplayOrder": 1,

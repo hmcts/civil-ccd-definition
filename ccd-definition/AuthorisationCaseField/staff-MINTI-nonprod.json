@@ -1,24 +1,24 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"

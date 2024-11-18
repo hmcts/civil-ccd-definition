@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "partiesNames",
     "PageID": "SettleClaim",
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "settleReason",
     "PageFieldDisplayOrder": 2,
@@ -23,7 +23,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "hearingDate",
     "PageFieldDisplayOrder": 3,

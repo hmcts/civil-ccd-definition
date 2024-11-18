@@ -1,6 +1,6 @@
 [
   {
-   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+   "CaseTypeID": "CIVIL",
    "CaseEventID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
     "AccessControl": [
       {
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GENERATE_COSC_DOCUMENT",
     "AccessControl": [
       {
@@ -38,7 +38,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_CLAIMANT",
     "AccessControl": [
       {
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_DEFENDANT",
     "AccessControl": [
       {
@@ -62,7 +62,7 @@
     ]
   },
   {
-   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+   "CaseTypeID": "CIVIL",
    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "AccessControl": [
      {
@@ -74,7 +74,7 @@
    ]
  },
   {
-   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+   "CaseTypeID": "CIVIL",
    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_PAID_IN_FULL_COSC",
    "AccessControl": [
      {

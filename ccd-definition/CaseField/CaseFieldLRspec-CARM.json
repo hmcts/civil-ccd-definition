@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "mediationUnsuccessfulReasonsMultiSelect",
     "Label": "Mediation failed reason",
     "FieldType": "MultiSelectList",

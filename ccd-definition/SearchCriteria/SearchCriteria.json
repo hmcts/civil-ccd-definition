@@ -2,7 +2,7 @@
   {
     "LiveFrom":"",
     "LiveTo": "",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "OtherCaseReference": "legacyCaseReference"
   }
 ]

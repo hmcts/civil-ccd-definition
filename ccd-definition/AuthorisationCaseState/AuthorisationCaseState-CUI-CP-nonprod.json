@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "DECISION_OUTCOME",
     "AccessControl": [
       {
@@ -21,7 +21,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "PREPARE_FOR_HEARING_CONDUCT_HEARING",
     "AccessControl": [
       {
@@ -40,7 +40,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "HEARING_READINESS",
     "AccessControl": [
       {
@@ -59,7 +59,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "All_FINAL_ORDERS_ISSUED",
     "AccessControl": [
       {

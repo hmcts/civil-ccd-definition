@@ -2,7 +2,7 @@
   {
     "RoleName": "idam:caseworker-civil-citizen-ui-pcqextractor",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "AccessProfiles": "caseworker-civil-citizen-ui-pcqextractor",
     "ReadOnly": "N",
     "Disabled": "F",

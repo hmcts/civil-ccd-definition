@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_STAY_CASE",
     "Name": "Notify Claimant Stay Case",
     "Description": "Notify Claimant Stay Case",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_STAY_CASE",
     "Name": "Notify Defendant Stay Case",
     "Description": "Notify Defendant Stay Case",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_DISMISS_CASE",
     "Name": "Notify Claimant Dismiss Case",
     "Description": "Notify Claimant Dismiss Case",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_DISMISS_CASE",
     "Name": "Notify Defendant Dismiss Case",
     "Description": "Notify Defendant Dismiss Case",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DISMISS_CASE_CLAIMANT",
     "Name": "Claimant Notice Dismiss Case",
     "Description": "Dashboard Notice Claimant Dismiss Case",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DISMISS_CASE_DEFENDANT",
     "Name": "Claimant Notice Dismiss Case",
     "Description": "Dashboard Notice Defendant Dismiss Case",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_CASE_CLAIMANT",
     "Name": "Stay Case Claimant",
     "Description": "Stay Case claimant",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_CASE_DEFENDANT",
     "Name": "Stay Case Defendant",
     "Description": "Stay Case Defendant",
@@ -104,7 +104,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
@@ -117,7 +117,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
@@ -130,7 +130,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT2_STAY_LIFTED",
     "Name": "Notify stay lifted",
     "Description": "Notify stay lifted",
@@ -143,7 +143,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_STAY_UPDATE_REQUESTED",
     "Name": "Notify stay Update",
     "Description": "Notify stay Update",
@@ -156,7 +156,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_STAY_UPDATE_REQUESTED",
     "Name": "Notify stay Update",
     "Description": "Notify stay Update",
@@ -169,7 +169,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT2_STAY_UPDATE_REQUESTED",
     "Name": "Notify stay Update",
     "Description": "Notify stay Update",
@@ -182,7 +182,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_CLAIMANT",
     "Name": "Dashboard stay lifted",
     "Description": "Dashboard stay lifted claimant",
@@ -195,7 +195,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_DEFENDANT",
     "Name": "Dashboard stay lifted",
     "Description": "Dashboard stay lifted defendant",

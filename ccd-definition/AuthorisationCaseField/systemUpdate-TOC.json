@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "transferCourtLocationList",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "reasonForTransfer",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

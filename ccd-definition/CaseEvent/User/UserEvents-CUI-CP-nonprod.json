@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "APPLY_HELP_WITH_HEARING_FEE",
     "Name": "Apply Help with Hearing Fee",
     "Description": "Apply Help with Hearing Fee",
@@ -16,7 +16,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CITIZEN_HEARING_FEE_PAYMENT",
     "Name": "Citizen Hearing Fee Payment",
     "Description": "Citizen Hearing Fee Payment",
@@ -30,7 +30,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK",
     "Name": "Request for reconsideration",
     "Description": "Request for reconsideration check",

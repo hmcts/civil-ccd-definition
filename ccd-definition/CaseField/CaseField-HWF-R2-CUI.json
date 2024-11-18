@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "helpWithFeesReferenceNumber",
     "Label": " ",
     "FieldType": "HelpWithFees",
@@ -9,7 +9,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseLabelClaimIssueReference",
     "Label": "${helpWithFees.helpWithFeesReferenceNumber}",
     "FieldType": "Label",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHWFClaimFeeNumber",
     "Label": "<h2 class=\"govuk-heading-1\">  ${helpWithFees.helpWithFeesReferenceNumber} ${applicant1.partyName} Vs ${respondent1.partyName}</h2>",
     "FieldType": "Label",
@@ -25,7 +25,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "subTitleHwfDetails",
     "Label": "<h4 class=\"govuk-heading-1\"> HwF Details</h4>",
     "FieldType": "Label",
@@ -33,7 +33,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseTitleWithHwFDetails",
     "Label": "## Hwf Details",
     "FieldType": "Label",
@@ -41,7 +41,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hwfFeeType",
     "Label": " ",
     "FieldType": "Text",
@@ -50,7 +50,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "claimFeeLabel",
     "FieldType": "Label",
     "Label": "Help with Fees type: HwF Claim fee",
@@ -58,7 +58,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedHwfDetails",
     "FieldType": "HelpWithFeesDetails",
     "Label": " ",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "helpWithFeesMoreInformationClaimIssue",
     "Label": " ",
     "FieldType": "HelpWithFeesMoreInformation",
@@ -74,7 +74,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "remissionFeeAmountWarningMessage",
     "Label": "<h4 class=\"govuk-heading-1\"> Warning: Please check you are entering the correct amount, as you will not be able to amend after submission.</h4>",
     "FieldType": "Label",
@@ -82,7 +82,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hwfNumberAvailable",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -90,7 +90,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseTitle2",
     "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
@@ -99,7 +99,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hwfNumberForFeePaymentOutcome",
     "Label": "Enter the reference number",
     "FieldType": "Text",
@@ -109,7 +109,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hwfFullRemissionGrantedForClaimIssue",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -117,7 +117,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hwfOutstandingFeePaymentDoneForClaimIssue",
     "Label": "Confirm payment of £${claimIssuedHwfDetails.outstandingFeeInPounds} has been taken.",
     "FieldType": "MultiSelectList",
@@ -126,7 +126,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingHelpWithFeesDetails",
     "Label": "## HwF Details",
     "FieldType": "Label",
@@ -134,7 +134,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "claimIssuedHwfForTab",
     "Label": " ",
     "FieldType": "HelpWithFeesForTab",
@@ -142,7 +142,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hearingHwfForTab",
     "Label": " ",
     "FieldType": "HelpWithFeesForTab",

@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppTypeLR",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "certOfSC",
     "UserRole": "caseworker-caa",
     "CRUD": "CRU"

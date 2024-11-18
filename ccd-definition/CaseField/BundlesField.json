@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "caseBundles",
     "Label": "System generated Case Documents",
     "HintText": "Bundle to hold documents",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "bundleConfiguration",
     "Label": "Bundle configuration",
     "FieldType": "Text",
@@ -18,7 +18,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "TrialBundles",
     "Label": "Bundles",
     "FieldType": "Label",

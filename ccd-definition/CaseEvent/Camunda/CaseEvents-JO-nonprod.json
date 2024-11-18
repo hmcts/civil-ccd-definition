@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_JUDGMENT_DETAILS_CJES_SA",
     "Name": "Send judgement CJES Set aside",
     "Description": " ",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_JUDGMENT_DETAILS_CJES",
     "Name": "Send judgement details CJES",
     "Description": " ",

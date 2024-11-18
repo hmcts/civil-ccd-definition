@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "caseworker-civil-solicitor",
@@ -9,7 +9,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "caseworker-ras-validation",
@@ -19,7 +19,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_STAYED",
     "AccessControl": [
       {

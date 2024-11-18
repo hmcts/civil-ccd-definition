@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "appealChoiceListLabel",
     "ID": "AppealChoiceFirstDropdownRefuse",
     "ElementLabel": "### An appeal lies from this order to",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "circuitOrHighCourtListRefuse",
     "ID": "AppealChoiceFirstDropdownRefuse",
     "ElementLabel": " ",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "appealChoiceSecondDropdownA",
     "ID": "AppealChoiceFirstDropdownRefuse",
     "ElementLabel": " ",
@@ -30,7 +30,7 @@
   },
 
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "appealChoiceSecondDropdownB",
     "ID": "AppealChoiceFirstDropdownRefuse",
     "ElementLabel": " ",

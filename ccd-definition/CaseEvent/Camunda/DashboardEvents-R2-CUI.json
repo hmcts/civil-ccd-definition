@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DASHBOARD_NOTIFICATION_CLAIM_FEE_REQUIRED_CLAIMANT1",
     "Name": "ClaimFee Notification",
     "Description": "Generate Dashboard Notification in CUI",
@@ -16,7 +16,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_ISSUE_FOR_APPLICANT1",
     "Name": "Applicant1 Notification",
     "Description": "Generate dashboard for applicant 1",
@@ -32,7 +32,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_SETTLEMENT_DEFENDANT_RESPONSE",
     "Name": "Dashboard Notification",
     "Description": "Generate dashboard",
@@ -48,7 +48,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_ISSUE_FOR_RESPONDENT1",
     "Name": "Dashboard Notice Claim Issue",
     "Description": "Generate Dashboard Notification in CUI for Claim with Fee paid",
@@ -61,7 +61,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DASHBOARD_NOTIFICATION_CLAIM_ISSUE_HWF_CLAIMANT1",
     "Name": "Hwf Notification",
     "Description": "Generate Dashboard Notification Hwf in CUI",
@@ -77,7 +77,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CLAIMANT1_HWF_DASHBOARD_NOTIFICATION",
     "Name": "Dashboard: HWF Notification",
     "Description": "Dashboard Notification for HwF.",
@@ -90,7 +90,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
     "Name": "Create Defendant Notice",
     "Description": "Create Defendant Dashboard Notification for Claimant Response",
@@ -103,7 +103,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CCJ_REQUEST_FOR_APPLICANT1",
     "Name": "Dashboard Notice CCJ Requested",
     "Description": "Generate Dashboard Notification in CUI for CCJ requested by claimant",
@@ -116,7 +116,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
     "Name": "Notice For Claimant Response",
     "Description": "Generate Claimant Dashboard Notice For Claimant Response",
@@ -129,7 +129,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CCJ_REQUEST_FOR_RESPONDENT1",
     "Name": "Dashboard Notice CCJ Requested",
     "Description": "Generate Dashboard Notification in CUI for CCJ requested by defendant",
@@ -142,7 +142,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE",
     "Name": "Dashboard Defendant Response",
     "Description": "Generate Claimant Dashboard Notification for defendant response",
@@ -155,7 +155,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE_WELSH",
     "Name": "Dashboard Defendant Response",
     "Description": "Generate Claimant Dashboard Notification for defendant response",
@@ -168,7 +168,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE",
     "Name": "Dashboard Defendant Response",
     "Description": "Generate Defendant Dashboard Notification for defendant response",
@@ -181,7 +181,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_SETTLED_FOR_CLAIMANT1",
     "Name": "Dashboard Notice Claim Settled",
     "Description": "Generate Dashboard Notification for Claim Settled Event",
@@ -194,7 +194,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_MORE_TIME_REQUEST_FOR_RESPONDENT1",
     "Name": "Dashboard Notice more time",
     "Description": "Generate Dashboard Notification in CUI for more time requested by defendant",
@@ -207,7 +207,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_DEFENDANT_RESPONSE_DATE",
     "Name": "Dashboard Defendant Response",
     "Description": "Generate Claimant Dashboard Notification for defendant response date",
@@ -220,7 +220,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIM_SETTLED_FOR_DEFENDANT1",
     "Name": "Dashboard Notice Claim Settled",
     "Description": "Dashboard Defendant Notification for Claim Settled Event",
@@ -233,7 +233,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_CCJ_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
     "Name": "Notice Claimant CCJ Response",
     "Description": "Generate Claimant CCJ Dashboard Notice For Claimant Response",
@@ -246,7 +246,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DEFENDANT_CCJ_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_RESPONSE",
     "Name": "Notice Defendant CCJ Response",
     "Description": "Generate Defendant CCJ Dashboard Notice For Claimant Response",
@@ -259,7 +259,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_RESPONSE_DEADLINE_CLAIMANT",
     "Name": "Dashboard Response Deadline",
     "Description": "Create dashboard notice for dashboard respondent response deadline",
@@ -272,7 +272,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "DEFENDANT_RESPONSE_DEADLINE_CHECK",
     "Name": "Check defendant deadline",
     "Description": "Check whether defendant response deadline passed",
@@ -286,7 +286,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_RESPONSE_DEADLINE_DEFENDANT",
     "Name": "Response Deadline Defendant",
     "Description": "Create dashboard notice for dashboard response deadline passed",
@@ -299,7 +299,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL",
     "Name": "Notice Mediation Unsuccessful",
     "Description": "Generate Dashboard Notification in CUI for Mediation Unsuccessful",
@@ -312,7 +312,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_MEDIATION_UNSUCCESSFUL",
     "Name": "Dashboard Mediation Unsuccess",
     "Description": "Generate Dashboard Notification in CUI for CCJ requested by claimant",
@@ -325,7 +325,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_SUCCESSFUL_FOR_APPLICANT",
     "Name": "Mediation Successful",
     "Description": "Generate Dashboard Notification in CUI",
@@ -340,7 +340,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
   },  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_MEDIATION_SUCCESSFUL_FOR_RESPONDENT",
     "Name": "Mediation Successful",
     "Description": "Generate Dashboard Notification in CUI",
@@ -356,7 +356,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DJ_SDO_CLAIMANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -369,7 +369,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DJ_SDO_DEFENDANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -382,7 +382,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_SDO_CLAIMANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -395,7 +395,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_SDO_DEFENDANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -408,7 +408,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HELP_FEE_IN_REVIEW_CLAIMANT",
     "Name": "Dashboard help fee review",
     "Description": "Create dashboard notice for help with fees in review",
@@ -421,7 +421,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DEFENDANT_DASHBOARD_NOTIFICATION_FOR_CASE_PROCEED_OFFLINE",
     "Name": "Create Defendant Notice",
     "Description": "Create Defendant Dashboard Notification for case proceed offline",
@@ -434,7 +434,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_CASE_PROCEED_OFFLINE",
     "Name": "Create Claimant Notice",
     "Description": "Create Claimant Dashboard Notification for case proceed offline",
@@ -447,7 +447,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CLAIMANT_DASHBOARD_NOTIFICATION_FOR_DEFENDANT_NOC",
     "Name": "Create Claimant Notice",
     "Description": "Create Claimant Dashboard Notification for defendant notice of change",

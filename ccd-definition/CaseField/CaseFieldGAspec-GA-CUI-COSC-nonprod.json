@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "certOfSC",
     "Label": " ",
     "FieldType": "CertOfSC",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "generalAppTypeLR",
     "Label": " ",
     "FieldType": "GATypeGAspecLR",

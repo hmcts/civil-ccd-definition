@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "drawDirectionsOrder",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "drawDirectionsOrderRequired",
     "AccessControl": [
       {
@@ -26,7 +26,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimsTrack",
     "AccessControl": [
       {
@@ -46,7 +46,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaims",
     "AccessControl": [
       {
@@ -59,7 +59,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastClaims",
     "AccessControl": [
       {
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "trialAdditionalDirectionsForFastTrack",
     "AccessControl": [
       {
@@ -85,7 +85,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "drawDirectionsOrderSmallClaims",
     "AccessControl": [
       {
@@ -98,7 +98,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
     "AccessControl": [
       {
@@ -111,7 +111,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderType",
     "AccessControl": [
       {
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "orderTypeTrialAdditionalDirections",
     "AccessControl": [
       {
@@ -137,7 +137,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingOrderAndHearingDetails",
     "AccessControl": [
       {
@@ -150,7 +150,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingJudgesRecital",
     "AccessControl": [
       {
@@ -163,7 +163,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingJudgementDeductionStatement",
     "AccessControl": [
       {
@@ -176,7 +176,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingJudgementDeductionValue",
     "AccessControl": [
       {
@@ -189,7 +189,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsStartLine",
     "AccessControl": [
       {
@@ -202,7 +202,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsTitle",
     "AccessControl": [
       {
@@ -215,7 +215,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsToggle",
     "AccessControl": [
       {
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingDisclosureOfDocuments",
     "AccessControl": [
       {
@@ -241,7 +241,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsEndLine",
     "AccessControl": [
       {
@@ -254,7 +254,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingWitnessOfFactTitle",
     "AccessControl": [
       {
@@ -267,7 +267,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingWitnessOfFactToggle",
     "AccessControl": [
       {
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingWitnessOfFact",
     "AccessControl": [
       {
@@ -293,7 +293,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingWitnessOfFactEndLine",
     "AccessControl": [
       {
@@ -306,7 +306,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMedicalEvidenceTitle",
     "AccessControl": [
       {
@@ -319,7 +319,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMedicalEvidenceToggle",
     "AccessControl": [
       {
@@ -332,7 +332,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMedicalEvidence",
     "AccessControl": [
       {
@@ -345,7 +345,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMedicalEvidenceEndLine",
     "AccessControl": [
       {
@@ -358,7 +358,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingQuestionsToExpertsTitle",
     "AccessControl": [
       {
@@ -371,7 +371,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingQuestionsToExpertsToggle",
     "AccessControl": [
       {
@@ -384,7 +384,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingQuestionsToExperts",
     "AccessControl": [
       {
@@ -397,7 +397,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingQuestionsToExpertsEndLine",
     "AccessControl": [
       {
@@ -410,7 +410,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingSchedulesOfLossTitle",
     "AccessControl": [
       {
@@ -423,7 +423,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingSchedulesOfLossToggle",
     "AccessControl": [
       {
@@ -436,7 +436,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingSchedulesOfLoss",
     "AccessControl": [
       {
@@ -449,7 +449,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingSchedulesOfLossEndLine",
     "AccessControl": [
       {
@@ -462,7 +462,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingFinalDisposalHearingTitle",
     "AccessControl": [
       {
@@ -475,7 +475,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingFinalDisposalHearingToggle",
     "AccessControl": [
       {
@@ -488,7 +488,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingFinalDisposalHearing",
     "AccessControl": [
       {
@@ -501,7 +501,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingHearingTime",
     "AccessControl": [
       {
@@ -516,7 +516,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingHearingNotesTitle",
     "AccessControl": [
       {
@@ -531,7 +531,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingHearingNotes",
     "AccessControl": [
       {
@@ -546,7 +546,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalOrderWithoutHearing",
     "AccessControl": [
       {
@@ -561,7 +561,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingFinalDisposalHearingEndLine",
     "AccessControl": [
       {
@@ -574,7 +574,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodTitle",
     "AccessControl": [
       {
@@ -587,7 +587,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodToggle",
     "AccessControl": [
       {
@@ -600,7 +600,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethod",
     "AccessControl": [
       {
@@ -613,7 +613,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodInPerson",
     "AccessControl": [
       {
@@ -626,7 +626,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodVideoConferenceHearing",
     "AccessControl": [
       {
@@ -639,7 +639,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodVideoConferenceHearingCourtStatement",
     "AccessControl": [
       {
@@ -652,7 +652,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodTelephoneHearing",
     "AccessControl": [
       {
@@ -665,7 +665,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "AccessControl": [
       {
@@ -678,7 +678,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundleStartLine",
     "AccessControl": [
       {
@@ -691,7 +691,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundleTitle",
     "AccessControl": [
       {
@@ -704,7 +704,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundleToggle",
     "AccessControl": [
       {
@@ -717,7 +717,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundle",
     "AccessControl": [
       {
@@ -730,7 +730,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingBundleEndLine",
     "AccessControl": [
       {
@@ -743,7 +743,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingClaimSettlingTitle",
     "AccessControl": [
       {
@@ -756,7 +756,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingClaimSettlingToggle",
     "AccessControl": [
       {
@@ -769,7 +769,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingClaimSettling",
     "AccessControl": [
       {
@@ -782,7 +782,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingClaimSettlingEndLine",
     "AccessControl": [
       {
@@ -795,7 +795,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingCostsTitle",
     "AccessControl": [
       {
@@ -807,7 +807,7 @@
       }
     ]
   },  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingCostsToggle",
     "AccessControl": [
       {
@@ -819,7 +819,7 @@
       }
     ]
   },  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingCosts",
     "AccessControl": [
       {
@@ -832,7 +832,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingCostsEndLine",
     "AccessControl": [
       {
@@ -845,7 +845,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingNotes",
     "AccessControl": [
       {
@@ -858,7 +858,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "disposalHearingAddNewDirections",
     "AccessControl": [
       {
@@ -871,7 +871,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "setSmallClaimsFlag",
     "AccessControl": [
       {
@@ -884,7 +884,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsOrderAndHearingDetails",
     "AccessControl": [
       {
@@ -897,7 +897,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsJudgesRecital",
     "AccessControl": [
       {
@@ -910,7 +910,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsJudgementDeductionStatement",
     "AccessControl": [
       {
@@ -923,7 +923,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsJudgementDeductionValue",
     "AccessControl": [
       {
@@ -936,7 +936,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsAllocation",
     "AccessControl": [
       {
@@ -949,7 +949,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHearingStartLine",
     "AccessControl": [
       {
@@ -962,7 +962,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHearingTitle",
     "AccessControl": [
       {
@@ -975,7 +975,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHearingToggle",
     "AccessControl": [
       {
@@ -988,7 +988,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHearing",
     "AccessControl": [
       {
@@ -1001,7 +1001,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsHearingEndLine",
     "AccessControl": [
       {
@@ -1014,7 +1014,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodTitle",
     "AccessControl": [
       {
@@ -1027,7 +1027,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodToggle",
     "AccessControl": [
       {
@@ -1040,7 +1040,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethod",
     "AccessControl": [
       {
@@ -1053,7 +1053,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodInPerson",
     "AccessControl": [
       {
@@ -1066,7 +1066,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodVideoConferenceHearing",
     "AccessControl": [
       {
@@ -1079,7 +1079,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsMethodTelephoneHearing",
     "AccessControl": [
       {
@@ -1092,7 +1092,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsDocumentsStartLine",
     "AccessControl": [
       {
@@ -1105,7 +1105,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsDocumentsTitle",
     "AccessControl": [
       {
@@ -1118,7 +1118,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsDocumentsToggle",
     "AccessControl": [
       {
@@ -1131,7 +1131,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsDocuments",
     "AccessControl": [
       {
@@ -1144,7 +1144,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsDocumentsEndLine",
     "AccessControl": [
       {
@@ -1157,7 +1157,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsWitnessStatementTitle",
     "AccessControl": [
       {
@@ -1170,7 +1170,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsWitnessStatementToggle",
     "AccessControl": [
       {
@@ -1183,7 +1183,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsWitnessStatement",
     "AccessControl": [
       {
@@ -1196,7 +1196,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsWitnessStatementEndLine",
     "AccessControl": [
       {
@@ -1209,7 +1209,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsNotes",
     "AccessControl": [
       {
@@ -1222,7 +1222,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoHearingNotes",
     "AccessControl": [
       {
@@ -1235,7 +1235,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsCreditHire",
     "AccessControl": [
       {
@@ -1248,7 +1248,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsRoadTrafficAccident",
     "AccessControl": [
       {
@@ -1261,7 +1261,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsAddNewDirections",
     "AccessControl": [
       {
@@ -1274,7 +1274,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "smallClaimsAddNewDirectionsEndLine",
     "AccessControl": [
       {
@@ -1287,7 +1287,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "setFastTrackFlag",
     "AccessControl": [
       {
@@ -1300,7 +1300,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackOrderAndHearingDetails",
     "AccessControl": [
       {
@@ -1313,7 +1313,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackJudgesRecital",
     "AccessControl": [
       {
@@ -1326,7 +1326,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackJudgementDeductionStatement",
     "AccessControl": [
       {
@@ -1339,7 +1339,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackJudgementDeductionValue",
     "AccessControl": [
       {
@@ -1352,7 +1352,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAllocation",
     "AccessControl": [
       {
@@ -1365,7 +1365,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolutionToggle",
     "AccessControl": [
       {
@@ -1378,7 +1378,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolutionStartLine",
     "AccessControl": [
       {
@@ -1391,7 +1391,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolutionTitle",
     "AccessControl": [
       {
@@ -1404,7 +1404,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolution",
     "AccessControl": [
       {
@@ -1417,7 +1417,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAltDisputeResolutionEndLine",
     "AccessControl": [
       {
@@ -1430,7 +1430,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackVariationOfDirectionsTitle",
     "AccessControl": [
       {
@@ -1443,7 +1443,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackVariationOfDirectionsToggle",
     "AccessControl": [
       {
@@ -1456,7 +1456,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackVariationOfDirections",
     "AccessControl": [
       {
@@ -1469,7 +1469,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackVariationOfDirectionsEndLine",
     "AccessControl": [
       {
@@ -1482,7 +1482,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSettlementTitle",
     "AccessControl": [
       {
@@ -1495,7 +1495,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSettlementToggle",
     "AccessControl": [
       {
@@ -1508,7 +1508,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSettlement",
     "AccessControl": [
       {
@@ -1521,7 +1521,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSettlementEndLine",
     "AccessControl": [
       {
@@ -1534,7 +1534,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackDisclosureOfDocumentsTitle",
     "AccessControl": [
       {
@@ -1547,7 +1547,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackDisclosureOfDocumentsToggle",
     "AccessControl": [
       {
@@ -1560,7 +1560,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackDisclosureOfDocuments",
     "AccessControl": [
       {
@@ -1573,7 +1573,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackDisclosureOfDocumentsEndLine",
     "AccessControl": [
       {
@@ -1586,7 +1586,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackWitnessOfFactTitle",
     "AccessControl": [
       {
@@ -1599,7 +1599,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackWitnessOfFactToggle",
     "AccessControl": [
       {
@@ -1612,7 +1612,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackWitnessOfFact",
     "AccessControl": [
       {
@@ -1625,7 +1625,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackWitnessOfFactEndLine",
     "AccessControl": [
       {
@@ -1638,7 +1638,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSchedulesOfLossTitle",
     "AccessControl": [
       {
@@ -1651,7 +1651,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSchedulesOfLossToggle",
     "AccessControl": [
       {
@@ -1664,7 +1664,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSchedulesOfLoss",
     "AccessControl": [
       {
@@ -1677,7 +1677,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackSchedulesOfLossEndLine",
     "AccessControl": [
       {
@@ -1690,7 +1690,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackCostsTitle",
     "AccessControl": [
       {
@@ -1703,7 +1703,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackCostsToggle",
     "AccessControl": [
       {
@@ -1716,7 +1716,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackCosts",
     "AccessControl": [
       {
@@ -1729,7 +1729,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackCostsEndLine",
     "AccessControl": [
       {
@@ -1742,7 +1742,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialTitle",
     "AccessControl": [
       {
@@ -1755,7 +1755,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialToggle",
     "AccessControl": [
       {
@@ -1768,7 +1768,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrial",
     "AccessControl": [
       {
@@ -1781,7 +1781,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackHearingTime",
     "AccessControl": [
       {
@@ -1794,7 +1794,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackTrialEndLine",
     "AccessControl": [
       {
@@ -1807,7 +1807,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodTitle",
     "AccessControl": [
       {
@@ -1820,7 +1820,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodToggle",
     "AccessControl": [
       {
@@ -1833,7 +1833,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethod",
     "AccessControl": [
       {
@@ -1846,7 +1846,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodInPerson",
     "AccessControl": [
       {
@@ -1859,7 +1859,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodVideoConferenceHearing",
     "AccessControl": [
       {
@@ -1872,7 +1872,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodTelephoneHearing",
     "AccessControl": [
       {
@@ -1885,7 +1885,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackMethodEndLine",
     "AccessControl": [
       {
@@ -1898,7 +1898,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackNotes",
     "AccessControl": [
       {
@@ -1911,7 +1911,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackHearingNotes",
     "AccessControl": [
       {
@@ -1924,7 +1924,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackOrderWithoutJudgement",
     "AccessControl": [
       {
@@ -1937,7 +1937,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackBuildingDispute",
     "AccessControl": [
       {
@@ -1950,7 +1950,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackClinicalNegligence",
     "AccessControl": [
       {
@@ -1963,7 +1963,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackCreditHire",
     "AccessControl": [
       {
@@ -1976,7 +1976,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackEmployersLiability",
     "AccessControl": [
       {
@@ -1989,7 +1989,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackHousingDisrepair",
     "AccessControl": [
       {
@@ -2002,7 +2002,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackPersonalInjury",
     "AccessControl": [
       {
@@ -2015,7 +2015,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackRoadTrafficAccident",
     "AccessControl": [
       {
@@ -2028,7 +2028,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAddNewDirections",
     "AccessControl": [
       {
@@ -2041,7 +2041,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "fastTrackAddNewDirectionsEndLine",
     "AccessControl": [
       {
@@ -2054,7 +2054,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "reasonNotSuitableSDO",
     "AccessControl": [
       {
@@ -2067,7 +2067,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "otherDetails",
     "AccessControl": [
       {
@@ -2083,7 +2083,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "sdoOrderDocument",
     "AccessControl": [
       {
@@ -2099,7 +2099,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "AccessControl": [
       {
@@ -2115,7 +2115,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "AccessControl": [
       {
@@ -2131,7 +2131,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "unsuitableSDODate",
     "AccessControl": [
       {
@@ -2152,7 +2152,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesDisposalHearing",
     "AccessControl": [
       {
@@ -2165,7 +2165,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesSmallClaims",
     "AccessControl": [
       {
@@ -2178,7 +2178,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesFastTrack",
     "AccessControl": [
       {

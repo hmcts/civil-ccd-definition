@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CLOSED",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",
@@ -21,7 +21,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_DISCONTINUED",
     "AccessControl": [
       {
@@ -37,7 +37,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "DECISION_OUTCOME",
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",

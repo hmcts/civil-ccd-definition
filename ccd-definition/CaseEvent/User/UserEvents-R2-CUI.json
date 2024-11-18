@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_LIP_CLAIM",
     "Name": "Create lip claim",
     "Description": "Claimant lip submitting claim",
@@ -19,7 +19,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CLAIMANT_RESPONSE_CUI",
     "Name": "Claimant Response",
     "Description": "Claimant response to defendant from Citizen",
@@ -39,7 +39,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "LIP_CLAIM_SETTLED",
     "Name": "Claim is settle",
     "Description": "Claim settle response from Citizen Claimant",
@@ -55,7 +55,7 @@
     "RetriesTimeoutAboutToStartEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "DEFENDANT_SIGN_SETTLEMENT_AGREEMENT",
     "Name": "defendant sign agreement",
     "Description": "defendant sign agreement",
@@ -68,7 +68,7 @@
     "RetriesTimeoutAboutToStartEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_SERVICE_REQUEST_CUI_CLAIM_ISSUE",
     "Name": "Create service request CUI",
     "Description": "Create payment service request from CUI",

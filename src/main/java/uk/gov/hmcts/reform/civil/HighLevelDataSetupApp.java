@@ -19,7 +19,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
 
-    private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_CIVIL = {
+    private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_NFD = {
         new CcdRoleConfig("caseworker-civil", "PUBLIC"),
         new CcdRoleConfig("caseworker-approver", "PUBLIC"),
         new CcdRoleConfig("prd-admin", "PUBLIC"),
@@ -79,7 +79,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     public void addCcdRoles() {
-        for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_CIVIL) {
+        for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_NFD) {
             try {
                 logger.info("\n\nAdding CCD Role {}.", roleConfig);
                 addCcdRole(roleConfig);
@@ -106,8 +106,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure() {
-        if (BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")) {
+    protected boolean shouldTolerateDataSetupFailure(){
+        if(BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")){
             return true;
         }
         return false;
@@ -120,10 +120,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
             ImportException importException = (ImportException) e;
             return importException.getHttpStatusCode() == httpStatusCode504;
         }
-        if (e instanceof SSLException) {
+        if(e instanceof SSLException){
             return true;
         }
-        if (e instanceof AEADBadTagException) {
+        if(e instanceof AEADBadTagException){
             return true;
         }
         return shouldTolerateDataSetupFailure();

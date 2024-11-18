@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SETTLE_CLAIM",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -24,7 +24,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -36,7 +36,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,

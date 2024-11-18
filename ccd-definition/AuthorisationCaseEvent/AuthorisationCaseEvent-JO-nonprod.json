@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT",
     "AccessControl": [
       {
@@ -13,7 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "AccessControl": [
       {
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "AccessControl": [
       {
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SET_ASIDE_JUDGMENT",
     "AccessControl": [
       {
@@ -56,7 +56,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "EDIT_JUDGMENT",
     "AccessControl": [
       {
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT1_LIP_JUDGMENT_VARIED_DETERMINATION_OF_MEANS",
     "AccessControl": [
       {
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_JUDGMENT_VARIED_DETERMINATION_OF_MEANS",
     "AccessControl": [
       {
@@ -107,7 +107,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIMANT_JUDGMENT_VARIED_DETERMINATION_OF_MEANS",
     "AccessControl": [
       {
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_SOLICITOR1_DEFENDANT_JUDGMENT_VARIED_DETERMINATION_OF_MEANS",
     "AccessControl": [
       {
@@ -145,7 +145,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_SOLICITOR2_DEFENDANT_JUDGMENT_VARIED_DETERMINATION_OF_MEANS",
     "AccessControl": [
       {
@@ -164,7 +164,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "RECORD_JUDGMENT_NOTIFICATION",
     "AccessControl": [
       {
@@ -183,7 +183,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT1_FOR_RECORD_JUDGMENT",
     "AccessControl": [
       {
@@ -202,7 +202,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_RESPONDENT2_FOR_RECORD_JUDGMENT",
     "AccessControl": [
       {
@@ -221,7 +221,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_APPLICANT_FOR_RECORD_JUDGMENT",
     "AccessControl": [
       {
@@ -240,7 +240,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_CLAIMANT",
     "AccessControl": [
       {
@@ -259,7 +259,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT1",
     "AccessControl": [
       {
@@ -278,7 +278,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT1_LIP",
     "AccessControl": [
       {
@@ -297,7 +297,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIM_SET_ASIDE_JUDGMENT_DEFENDANT2",
     "AccessControl": [
       {
@@ -316,7 +316,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT1",
     "AccessControl": [
       {
@@ -335,7 +335,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC",
     "AccessControl": [
       {
@@ -354,7 +354,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_DJ_FORM_NON_DIVERGENT_SPEC_CLAIMANT",
     "AccessControl": [
       {
@@ -373,7 +373,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_DJ_FORM_NON_DIVERGENT_SPEC_DEFENDANT",
     "AccessControl": [
       {
@@ -392,7 +392,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DJ_NON_DIVERGENT_SPEC_CLAIMANT",
     "AccessControl": [
       {
@@ -411,7 +411,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DJ_NON_DIVERGENT_SPEC_DEFENDANT1_LR",
     "AccessControl": [
       {
@@ -430,7 +430,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DJ_NON_DIVERGENT_SPEC_DEFENDANT1_LIP",
     "AccessControl": [
       {
@@ -449,7 +449,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DJ_NON_DIVERGENT_SPEC_DEFENDANT2_LR",
     "AccessControl": [
       {
@@ -468,7 +468,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
     "AccessControl": [
       {
@@ -487,7 +487,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_JO_DEFENDANT1_PIN_IN_LETTER",
     "AccessControl": [
       {
@@ -506,7 +506,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT1",
     "AccessControl": [
       {
@@ -525,7 +525,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT2",
     "AccessControl": [
       {
@@ -544,7 +544,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "JUDGMENT_BY_ADMISSION_DEFENDANT1_PIN_IN_LETTER",
     "AccessControl": [
       {
@@ -563,7 +563,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_JUDGMENT_BY_ADMISSION_DOC_CLAIMANT",
     "AccessControl": [
       {
@@ -582,7 +582,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_JUDGMENT_BY_ADMISSION_DOC_DEFENDANT",
     "AccessControl": [
       {
@@ -601,7 +601,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_DEFENDANT",
     "AccessControl": [
       {
@@ -620,7 +620,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "GEN_JUDGMENT_BY_DETERMINATION_DOC_CLAIMANT",
     "AccessControl": [
       {
@@ -639,7 +639,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_DEFENDANT_JUDGMENT_BY_ADMISSION",
     "AccessControl": [
       {
@@ -658,7 +658,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "NOTIFY_CLAIMANT_JUDGMENT_BY_ADMISSION",
     "AccessControl": [
       {
@@ -677,7 +677,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_JUDGMENT_DETAILS_CJES",
     "AccessControl": [
       {
@@ -696,7 +696,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "SEND_JUDGMENT_DETAILS_CJES_SA",
     "AccessControl": [
       {

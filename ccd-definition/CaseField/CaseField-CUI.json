@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "applicant1Represented",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1LiPResponse",
     "Label": " ",
     "FieldType": "RespondentLiPResponse",
@@ -17,7 +17,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "respondent1LiPFinancialDetails",
     "Label": " ",
     "FieldType": "FinancialDetailsLiP",
@@ -26,7 +26,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "translatedDocuments",
     "Label": "Translated Document",
     "FieldType": "Collection",
@@ -35,7 +35,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingManualDetermination",
     "Label": "## Manual Determination",
     "FieldType": "Label",
@@ -43,7 +43,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingDefendantProposedPlan",
     "Label": "Defendant Proposed Plan",
     "FieldType": "Label",
@@ -51,7 +51,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingDefendantFinancialDetails",
     "Label": "Defendant Financial Details",
     "FieldType": "Label",
@@ -59,7 +59,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingClaimantProposedPlan",
     "Label": "Claimant Proposed Plan",
     "FieldType": "Label",
@@ -67,7 +67,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingBankAccount",
     "Label": "List ${respondent1.partyName}'s bank and savings accounts",
     "FieldType": "Label",
@@ -75,7 +75,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingDisabilityPremiumPayments",
     "Label": "Does ${respondent1.partyName} receive any disability premium payments?",
     "FieldType": "Label",
@@ -83,7 +83,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingHomeDetails",
     "Label": "Where does ${respondent1.partyName} live?",
     "FieldType": "Label",
@@ -91,7 +91,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingEmployment",
     "Label": "Is ${respondent1.partyName} in employment?",
     "FieldType": "Label",
@@ -99,7 +99,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "headingCourtOrder",
     "Label": "Is ${respondent1.partyName} paying money as a result of any court order?",
     "FieldType": "Label",
@@ -107,7 +107,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "defendantUserDetails",
     "Label": "Defendant User Details",
     "FieldType": "UserDetails",
@@ -115,7 +115,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "claimMovedToMediationOn",
     "Label": " ",
     "FieldType": "Date",

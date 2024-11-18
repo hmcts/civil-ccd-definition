@@ -244,7 +244,7 @@ module.exports = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || '')
+    caseType: 'CIVIL',
   },
   iacLeadershipJudge: {
     password: iacDefaultPassword,

@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "CASE_SETTLED",
     "UserRole": "caseworker-caa",
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseStateID": "IN_MEDIATION",
     "UserRole": "caseworker-caa",
     "CRUD": "CRUD"

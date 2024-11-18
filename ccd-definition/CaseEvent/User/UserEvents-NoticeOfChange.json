@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOC_REQUEST",
     "Name": "NoC Request",
     "Description": "Notice of Change Request",
@@ -14,7 +14,7 @@
     "ShowEventNotes": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "APPLY_NOC_DECISION",
     "Name": "Apply NoC Decision",
     "Description": "Apply Notice of Change Request",

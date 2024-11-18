@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "PROCESS_COSC_APPLICATION",
     "Name": "Process COSC Application",
     "Description": " ",
@@ -15,7 +15,7 @@
     "RetriesTimeoutURLSubmittedEvent": 3
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CHECK_AND_MARK_PAID_IN_FULL",
     "Name": "Check and mark claimant paid",
     "Description": " ",

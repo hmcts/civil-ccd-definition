@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_UPLOAD_HEARING_DOCUMENTS_CLAIMANT",
     "Name": "Upload hear. docs. - claimant",
     "Description": "Create dashboard notice for upload hearing documents",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_HEARING_FEE_UNPAID_FOR_CLAIMANT1",
     "Name": "Unpaid hearing - claimant",
     "Description": "Create claimant dashboard notice for hearing fee unpaid",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_HEARING_FEE_UNPAID_FOR_DEFENDANT1",
     "Name": "Unpaid hearing - defendant",
     "Description": "Create defendant dashboard notice for hearing fee unpaid",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_TRIAL_ARRANGEMENTS_NOTIFY_CLAIMANT",
     "Name": "Trial Arrangement Notify Party",
     "Description": "Create dashboard notice for trial arrangement",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_TRIAL_ARRANGEMENTS_NOTIFY_DEFENDANT",
     "Name": "Trial Arrangement Notify Party",
     "Description": "Create dashboard notice for trial arrangement",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_CLAIMANT",
     "Name": "Hearing Notification",
     "Description": "Create dashboard notice hearing",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_CLAIMANT_HMC",
     "Name": "Hearing Notification",
     "Description": "Create dashboard notice hearing",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_SCHEDULED_DEFENDANT",
     "Name": "Hearing Notification",
     "Description": "Create dashboard notice hearing",
@@ -104,7 +104,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_CLAIMANT",
     "Name": "Dashboard Claimant Trial",
     "Description": "Dashboard Claimant Notification For Trial Arrangements",
@@ -117,7 +117,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_CP_TRIAL_ARRANGEMENTS_DEFENDANT",
     "Name": "Dashboard Defendant Trial",
     "Description": "Dashboard Defendant Notification For Trial Arrangements",
@@ -130,7 +130,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_UPLOAD_HEARING_DOCUMENTS_DEFENDANT",
     "Name": "Upload hear. docs. - defendant",
     "Description": "Create dashboard notice for upload hearing documents",
@@ -143,7 +143,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_BUNDLE_CREATED_FOR_DEFENDANT1",
     "Name": "Dashboard bundle defendant",
     "Description": "Create dashboard notice for bundle creation",
@@ -156,7 +156,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FOR_BUNDLE_CREATED_FOR_CLAIMANT1",
     "Name": "Dashboard bundle claimant",
     "Description": "Create dashboard notice for bundle creation",
@@ -169,7 +169,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_HEARING_FEE_PAID_CLAIMANT",
     "Name": "Dashboard hearing fee",
     "Description": "Create dashboard notice for hearing fee paid",
@@ -182,7 +182,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FINAL_ORDER_CLAIMANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -195,7 +195,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_FINAL_ORDER_DEFENDANT",
     "Name": "Final Order Defendant",
     "Description": "Create dashboard notice for dashboard final order",
@@ -208,7 +208,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_EVIDENCE_UPLOADED_CLAIMANT",
     "Name": "Dashboard evidence uploaded",
     "Description": "Create dashboard notice for evidence uploaded",
@@ -221,7 +221,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_EVIDENCE_UPLOADED_DEFENDANT",
     "Name": "Dashboard evidence uploaded",
     "Description": "Create dashboard notice for evidence uploaded",
@@ -234,7 +234,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_DASHBOARD_TASK_LIST_DEFENDANT_DECISION_OUTCOME",
     "Name": "Dashboard defendant",
     "Description": "Update defendant task list",
@@ -247,7 +247,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_DASHBOARD_TASK_LIST_CLAIMANT_DECISION_OUTCOME",
     "Name": "Dashboard claimant",
     "Description": "Update dashboard claimant task list",
@@ -260,7 +260,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_CLAIMANT",
     "Name": "RfR CUI",
     "Description": "Create notification CUI",
@@ -273,7 +273,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_NOTIFICATION_REQUEST_FOR_RECONSIDERATION_DEFENDANT",
     "Name": "RfR CUI",
     "Description": "Create notification CUI",
@@ -286,7 +286,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DECISION_RECONSIDERATION_CLAIMANT1",
     "Name": "Decision reconsideration",
     "Description": "Create notice for decision reconsideration",
@@ -299,7 +299,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_DECISION_RECONSIDERATION_DEFENDANT1",
     "Name": "Decision reconsideration",
     "Description": "Create notice for decision reconsideration",

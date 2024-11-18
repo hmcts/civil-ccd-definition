@@ -1,6 +1,6 @@
 [
   {
-  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseTypeID": "CIVIL",
   "ID": "NotSuitable_SDO",
   "Name": "Not suitable for SDO",
   "Description": "Not suitable for SDO",

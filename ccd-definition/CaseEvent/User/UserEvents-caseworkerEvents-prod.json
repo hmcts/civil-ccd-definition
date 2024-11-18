@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CASE_PROCEEDS_IN_CASEMAN",
     "Name": "Case proceeds in Caseman",
     "Description": "Case will proceed offline in Caseman system",
@@ -20,7 +20,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MANAGE_CONTACT_INFORMATION",
     "Name": "Manage Contact Information",
     "Description": "Updated party contact details",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "AMEND_PARTY_DETAILS",
     "Name": "Amend party details",
     "Description": "Update defendant and claimant solicitor email addresses",
@@ -58,7 +58,7 @@
     "EventEnablingCondition": "respondent1Represented = \"Yes\" OR applicant1Represented != \"No\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "COURT_OFFICER_ORDER",
     "Name": "Make a Court officer order",
     "Description": "Make a Court officer order",
@@ -76,7 +76,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "ADD_CASE_NOTE",
     "Name": "Add a case note",
     "Description": "Add a case note",

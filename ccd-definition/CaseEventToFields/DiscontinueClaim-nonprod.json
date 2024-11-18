@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "DISCONTINUE_CLAIM",
     "CaseFieldID": "discontinueClaim",
     "PageFieldDisplayOrder": 1,

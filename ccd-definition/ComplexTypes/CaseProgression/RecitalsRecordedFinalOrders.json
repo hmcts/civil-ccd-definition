@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "label",
     "ID": "FinalOrderRecitalsRecorded",
     "ElementLabel": "### The court records that: (Optional)",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "text",
     "ID": "FinalOrderRecitalsRecorded",
     "ElementLabel": " ",

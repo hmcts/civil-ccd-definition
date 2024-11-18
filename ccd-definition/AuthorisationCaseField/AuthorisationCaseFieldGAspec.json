@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplications",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppType",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalApplicationType",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppPBADetails",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppApplnSolicitor",
     "AccessControl": [
       {
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppRespondentSolicitors",
     "AccessControl": [
       {
@@ -72,7 +72,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppEvidenceDocument",
     "AccessControl": [
       {
@@ -87,7 +87,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppRespondentAgreement",
     "AccessControl": [
       {
@@ -99,7 +99,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppStatementOfTruthConsent",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -107,7 +107,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppStatementOfTruth",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -115,7 +115,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppStatementOfTruthLabel",
     "AccessControl": [
       {
@@ -127,7 +127,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "AccessControl": [
       {
@@ -139,7 +139,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppInformOtherParty",
     "AccessControl": [
       {
@@ -151,7 +151,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isApplicationUrgent",
     "AccessControl": [
       {
@@ -163,7 +163,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppDetailsOfOrder",
     "AccessControl": [
       {
@@ -175,7 +175,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppReasonsOfOrder",
     "AccessControl": [
       {
@@ -187,7 +187,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppUploadEvidenceLabel",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -195,7 +195,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppHearingDetails",
     "UserRoles": [
       "caseworker-civil-solicitor"
@@ -203,7 +203,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "claimantGaAppDetails",
     "AccessControl": [
       {
@@ -216,7 +216,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDetailsMasterCollection",
     "AccessControl": [
       {
@@ -238,7 +238,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolGaAppDetails",
     "AccessControl": [
       {
@@ -251,7 +251,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "respondentSolTwoGaAppDetails",
     "AccessControl": [
       {
@@ -264,7 +264,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseState",
     "AccessControl": [
       {
@@ -276,7 +276,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "AccessControl": [
       {
@@ -288,7 +288,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocument",
     "AccessControl": [
       {
@@ -303,7 +303,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocument",
     "AccessControl": [
       {
@@ -318,7 +318,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocument",
     "AccessControl": [
       {
@@ -333,7 +333,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppVaryJudgementType",
     "AccessControl": [
       {
@@ -351,7 +351,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppParentClaimantIsApplicant",
     "AccessControl": [
       {
@@ -369,7 +369,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppHearingDate",
     "AccessControl": [
       {
@@ -387,7 +387,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaUploadN245FormUploadLabel",
     "AccessControl": [
       {
@@ -405,7 +405,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalAppN245FormUpload",
     "AccessControl": [
       {
@@ -423,7 +423,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeDocStaff",
     "AccessControl": [
       {
@@ -436,7 +436,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeDocClaimant",
     "AccessControl": [
       {
@@ -449,7 +449,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeDocRespondentSol",
     "AccessControl": [
       {
@@ -462,7 +462,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -475,7 +475,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocStaff",
     "AccessControl": [
       {
@@ -488,7 +488,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocClaimant",
     "AccessControl": [
       {
@@ -501,7 +501,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocRespondentSol",
     "AccessControl": [
       {
@@ -514,7 +514,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "generalOrderDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -527,7 +527,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocStaff",
     "AccessControl": [
       {
@@ -540,7 +540,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocClaimant",
     "AccessControl": [
       {
@@ -553,7 +553,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocRespondentSol",
     "AccessControl": [
       {
@@ -566,7 +566,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dismissalOrderDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -579,7 +579,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocStaff",
     "AccessControl": [
       {
@@ -592,7 +592,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocClaimant",
     "AccessControl": [
       {
@@ -605,7 +605,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocRespondentSol",
     "AccessControl": [
       {
@@ -618,7 +618,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "directionOrderDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -631,7 +631,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaEvidenceDocStaff",
     "AccessControl": [
       {
@@ -644,7 +644,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaEvidenceDocClaimant",
     "AccessControl": [
       {
@@ -657,7 +657,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaEvidenceDocRespondentSol",
     "AccessControl": [
       {
@@ -670,7 +670,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaEvidenceDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -683,7 +683,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocument",
     "AccessControl": [
       {
@@ -698,7 +698,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocStaff",
     "AccessControl": [
       {
@@ -711,7 +711,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocClaimant",
     "AccessControl": [
       {
@@ -724,7 +724,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocRespondentSol",
     "AccessControl": [
       {
@@ -737,7 +737,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingOrderDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -750,7 +750,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "requestForInformationDocument",
     "AccessControl": [
       {
@@ -763,7 +763,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "requestForInfoDocStaff",
     "AccessControl": [
       {
@@ -776,7 +776,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "requestForInfoDocClaimant",
     "AccessControl": [
       {
@@ -789,7 +789,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "requestForInfoDocRespondentSol",
     "AccessControl": [
       {
@@ -802,7 +802,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "requestForInfoDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -815,7 +815,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepSequentialDocument",
     "AccessControl": [
       {
@@ -828,7 +828,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepSeqDocStaff",
     "AccessControl": [
       {
@@ -841,7 +841,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepSeqDocClaimant",
     "AccessControl": [
       {
@@ -854,7 +854,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepSeqDocRespondentSol",
     "AccessControl": [
       {
@@ -867,7 +867,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepSeqDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -880,7 +880,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepConcurrentDocument",
     "AccessControl": [
       {
@@ -893,7 +893,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepConDocStaff",
     "AccessControl": [
       {
@@ -906,7 +906,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepConDocClaimant",
     "AccessControl": [
       {
@@ -919,7 +919,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepConDocRespondentSol",
     "AccessControl": [
       {
@@ -932,7 +932,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "writtenRepConDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -945,7 +945,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespDocStaff",
     "AccessControl": [
       {
@@ -958,7 +958,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespDocClaimant",
     "AccessControl": [
       {
@@ -971,7 +971,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespDocRespondentSol",
     "AccessControl": [
       {
@@ -984,7 +984,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -997,7 +997,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocStaff",
     "AccessControl": [
       {
@@ -1010,7 +1010,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocClaimant",
     "AccessControl": [
       {
@@ -1023,7 +1023,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocRespondentSol",
     "AccessControl": [
       {
@@ -1036,7 +1036,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -1049,7 +1049,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "consentOrderDocument",
     "AccessControl": [
       {
@@ -1064,7 +1064,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocStaff",
     "AccessControl": [
       {
@@ -1077,7 +1077,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocClaimant",
     "AccessControl": [
       {
@@ -1090,7 +1090,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocRespondentSol",
     "AccessControl": [
       {
@@ -1103,7 +1103,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -1116,7 +1116,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaDraftDocument",
     "AccessControl": [
       {
@@ -1131,7 +1131,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaRespondDoc",
     "AccessControl": [
       {
@@ -1150,7 +1150,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDoc",
     "AccessControl": [
       {
@@ -1165,7 +1165,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocStaff",
     "AccessControl": [
       {
@@ -1178,7 +1178,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocClaimant",
     "AccessControl": [
       {
@@ -1191,7 +1191,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocRespondentSol",
     "AccessControl": [
       {
@@ -1204,7 +1204,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocRespondentSolTwo",
     "AccessControl": [
       {
@@ -1217,7 +1217,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isGaApplicantLip",
     "AccessControl": [
       {
@@ -1233,7 +1233,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isGaRespondentOneLip",
     "AccessControl": [
       {
@@ -1249,7 +1249,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "isGaRespondentTwoLip",
     "AccessControl": [
       {

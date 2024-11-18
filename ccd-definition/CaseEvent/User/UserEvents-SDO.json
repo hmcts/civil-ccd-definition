@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "VIEW_AND_RESPOND_TO_DEFENCE",
     "Name": "View And Respond To Defence",
     "Description": "View And Respond To Defence",
@@ -17,7 +17,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "REFER_TO_JUDGE",
     "Name": "Refer to Judge",
     "Description": "Refer to Judge",
@@ -35,7 +35,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "REQUEST_FOR_RECONSIDERATION",
     "Name": "Request for Reconsideration",
     "Description": "Request for reconsideration",
@@ -53,7 +53,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "Name": "Decision on reconsideration",
     "Description": "Decision on reconsideration",
@@ -71,7 +71,7 @@
     "EventEnablingCondition": "detailsOfDirection = \"Only available through tasks\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_SDO",
     "Name": "Standard Direction Order",
     "Description": "Standard Direction Order",

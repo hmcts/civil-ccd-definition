@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "validateDiscontinuanceLbl",
     "PageID": "ValidateDiscontinuance",
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "permissionGrantedJudgeCopy",
     "PageID": "ValidateDiscontinuance",
@@ -24,7 +24,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "permissionGrantedDateCopy",
     "PageID": "ValidateDiscontinuance",
@@ -36,7 +36,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "confirmOrderGivesPermissionLbl",
     "PageID": "ValidateDiscontinuance",
@@ -48,7 +48,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "confirmOrderGivesPermission",
     "PageID": "ValidateDiscontinuance",
@@ -61,7 +61,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "selectedClaimantForDiscontinuance",
     "PageID": "ValidateDiscontinuance",
@@ -75,7 +75,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "courtPermissionNeeded",
     "PageID": "ValidateDiscontinuance",
@@ -89,7 +89,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "typeOfDiscontinuance",
     "PageID": "ValidateDiscontinuance",
@@ -103,7 +103,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
     "PageID": "ValidateDiscontinuance",
@@ -117,7 +117,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "hearingDate",
     "PageID": "ValidateDiscontinuance",

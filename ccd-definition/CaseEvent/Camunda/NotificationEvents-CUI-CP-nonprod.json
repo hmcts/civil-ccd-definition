@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_HEARING_TO_LIP_DEFENDANT",
     "Name": "Send hearing to Defendant",
     "Description": "Bulk Email Send to Defendant",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_HEARING_TO_LIP_CLAIMANT",
     "Name": "Send hearing to Claimant",
     "Description": "Bulk Email Send to Claimant",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_FINAL_ORDER_TO_LIP_DEFENDANT",
     "Name": "Send order to Defendant",
     "Description": "Bulk Email Send to Defendant",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_FINAL_ORDER_TO_LIP_CLAIMANT",
     "Name": "Send order to Claimant",
     "Description": "Bulk Email Send to Claimant",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_UPLOADED_DOCUMENT_ORDER_NOTICE",
     "Name": "Notify Claimant Welsh order",
     "Description": "Notify Claimant of order translation",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_DEFENDANT_UPLOADED_DOCUMENT_ORDER_NOTICE",
     "Name": "Notify Defendant Welsh order",
     "Description": "Notify Defendant of order translation",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_TRANSLATED_ORDER_TO_LIP_DEFENDANT",
     "Name": "Send translated order",
     "Description": "Bulk print translated order claimant",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SEND_TRANSLATED_ORDER_TO_LIP_CLAIMANT",
     "Name": "Send translated order",
     "Description": "Bulk print translated order defendant",

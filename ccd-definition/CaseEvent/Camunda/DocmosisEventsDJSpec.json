@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DJ_FORM_SPEC",
     "Name": "Generate aoc",
     "Description": "Generates acknowledgement of claim",

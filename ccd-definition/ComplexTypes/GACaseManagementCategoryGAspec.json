@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GACaseManagementCategory",
     "ListElementCode": "value",
     "ElementLabel": " ",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GACaseManagementCategory",
     "ListElementCode": "list_items",
     "ElementLabel": " ",

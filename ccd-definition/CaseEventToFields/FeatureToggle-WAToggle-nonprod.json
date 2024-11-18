@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "AccessControl": [
       {
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "CREATE_GENERAL_APPLICATION_CASE",
     "AccessControl": [
       {
@@ -28,7 +28,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPDATE_CASE_WITH_GA_STATE",
     "AccessControl": [
       {

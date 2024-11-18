@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayOptionsLabel",
     "PageFieldDisplayOrder": 1,
@@ -10,7 +10,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayOption",
     "PageFieldDisplayOrder": 2,
@@ -21,7 +21,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "preStayState",
     "PageFieldDisplayOrder": 1,
@@ -32,7 +32,7 @@
     "FieldShowCondition": "manageStayOption = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayRequestUpdateHintText",
     "PageFieldDisplayOrder": 3,
@@ -43,7 +43,7 @@
     "FieldShowCondition": "manageStayOption = \"REQUEST_UPDATE\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayDummyField",
     "PageFieldDisplayOrder": 1,
@@ -54,7 +54,7 @@
     "PageShowCondition": "manageStayOption = \"\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayJudicialReferralInMediationText",
     "PageFieldDisplayOrder": 1,
@@ -65,7 +65,7 @@
     "PageShowCondition": "preStayState != \"CASE_PROGRESSION\" AND preStayState != \"HEARING_READINESS\" AND preStayState != \"PREPARE_FOR_HEARING_CONDUCT_HEARING\" AND manageStayOption = \"LIFT_STAY\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
     "PageFieldDisplayOrder": 1,
@@ -76,7 +76,7 @@
     "PageShowCondition": "preStayState != \"JUDICIAL_REFERRAL\" AND preStayState != \"IN_MEDIATION\" AND manageStayOption = \"LIFT_STAY\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "manageStayRequestUpdateText",
     "PageFieldDisplayOrder": 1,

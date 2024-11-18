@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_CASE_DATA",
     "Name": "Update case data",
     "Description": "Testing support event to update case data ",

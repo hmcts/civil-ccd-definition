@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "AMEND_PARTY_DETAILS",
     "CaseFieldID": "specRespondentSolicitor1EmailAddress",
     "PageFieldDisplayOrder": 2,

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NoCChallenge",
     "DisplayOrder": "1",
     "QuestionText": "Your Client's name as it appears as written on the case.",

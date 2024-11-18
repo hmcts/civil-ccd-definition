@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC",
     "Name": "DJ non divergent spec",
     "Description": "Default judgement non divergent spec",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC",
     "Name": "DJ non divergent spec",
     "Description": "Default judgement non divergent spec",

@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "16/07/2024",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CategoryID": "UnbundledFolder",
     "CategoryLabel": "Unbundled folder",
     "DisplayOrder": "16",

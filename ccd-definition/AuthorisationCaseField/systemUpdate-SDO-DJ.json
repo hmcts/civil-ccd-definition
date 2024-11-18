@@ -1,30 +1,30 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesDisposalHearingDJ",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesTrialHearingDJ",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesDisposalHearing",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesSmallClaims",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingMethodValuesFastTrack",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"

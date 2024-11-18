@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SET_LIP_RESPONDENT_RESPONSE_DEADLINE",
     "Name": "Set LIP Response Deadline",
     "Description": "Set LIP Respondent Response deadline",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "NOTIFY_CLAIMANT_LIP_HELP_WITH_FEES",
     "Name": "Notify Help with Fees",
     "Description": "Notify Help with Fees",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_DEFAULT_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
     "Name": "Judgment by Admission",
     "Description": "Generate Judgment by Admission",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_LIP_CLAIMANT_CLAIM_FORM_SPEC",
     "Name": "Generate claimant claim Form",
     "Description": "Generates lip claimant claim Form",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
     "Name": "Judgment by Admission",
     "Description": "Generate Judgment by Admission",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
     "Name": "Judgment by Determination",
     "Description": "Generate Judgment by Determination",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "GENERATE_LIP_DEFENDANT_CLAIM_FORM_SPEC",
     "Name": "Generate defendant claim form",
     "Description": "Generate lip defendant claim form",
@@ -92,7 +92,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_CLAIM_STATE_AFTER_DOC_UPLOADED",
     "Name": "Update claim state",
     "Description": "Update claim state",
@@ -107,7 +107,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "UPDATE_CLAIMANT_INTENTION_CLAIM_STATE",
     "Name": "Update claim state",
     "Description": "Update claim state",
@@ -122,7 +122,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "SET_SETTLEMENT_AGREEMENT_DEADLINE",
     "Name": "Settlement agreement deadline",
     "Description": "Set settlement agreement deadline",

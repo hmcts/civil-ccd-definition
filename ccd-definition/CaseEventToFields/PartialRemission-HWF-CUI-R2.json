@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
@@ -11,7 +11,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "helpWithFees",
     "DisplayContext": "READONLY",
@@ -22,7 +22,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
@@ -33,7 +33,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "remissionFeeAmountWarningMessage",
     "DisplayContext": "READONLY",
@@ -42,7 +42,7 @@
     "PageFieldDisplayOrder": 3
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "claimFeeLabel",
     "DisplayContext": "READONLY",
@@ -53,7 +53,7 @@
     "FieldShowCondition": "hwfFeeType=\"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "PARTIAL_REMISSION_HWF_GRANTED",
     "CaseFieldID": "claimIssuedHwfDetails",
     "DisplayContext": "COMPLEX",

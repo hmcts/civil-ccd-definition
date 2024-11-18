@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "singleDateLabel",
     "ID": "SingleDateHeardFinalOrders",
     "ElementLabel": "## Single date",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "singleDate",
     "ID": "SingleDateHeardFinalOrders",
     "ElementLabel": "Single date",

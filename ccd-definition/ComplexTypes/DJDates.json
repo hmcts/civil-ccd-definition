@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hearingDatesParam",
     "ListElementCode": "hearingUnavailableFrom",
     "ElementLabel": "Date from",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "hearingDatesParam",
     "ListElementCode": "hearingUnavailableUntil",
     "ElementLabel": "Date to",

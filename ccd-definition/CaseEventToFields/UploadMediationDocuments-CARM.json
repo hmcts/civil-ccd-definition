@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "uploadMediationDocumentsExplanation",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-party-options"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "whoIsDocumentForLabel",
     "PageFieldDisplayOrder": 1,
@@ -23,7 +23,7 @@
     "PageLabel":  "Select what party the document is for"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "uploadMediationDocumentsPartyChosen",
     "PageFieldDisplayOrder": 2,
@@ -33,7 +33,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "documentTypeLabel1",
     "PageFieldDisplayOrder": 1,
@@ -44,7 +44,7 @@
     "PageLabel":  "Select the type of document you want to upload"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "documentTypeLabel2",
     "PageFieldDisplayOrder": 2,
@@ -54,7 +54,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "mediationDocumentsType",
     "PageFieldDisplayOrder": 3,
@@ -64,7 +64,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "mediationDocumentUploadWarning",
     "PageFieldDisplayOrder": 1,
@@ -76,7 +76,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-dates"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "mediationDocumentUploadLabel",
     "PageFieldDisplayOrder": 2,
@@ -87,7 +87,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "nonAttendanceStatementForm",
     "PageFieldDisplayOrder": 3,
@@ -98,7 +98,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseEventID": "UPLOAD_MEDIATION_DOCUMENTS",
     "CaseFieldID": "documentsReferredForm",
     "PageFieldDisplayOrder": 4,

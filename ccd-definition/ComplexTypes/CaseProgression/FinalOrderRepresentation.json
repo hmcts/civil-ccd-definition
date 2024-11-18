@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationList",
     "ID": "FinalOrderRepresentation",
     "ElementLabel": " ",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationComplex",
     "ID": "FinalOrderRepresentation",
     "ElementLabel": " ",
@@ -20,7 +20,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ListElementCode": "typeRepresentationOtherComplex",
     "ID": "FinalOrderRepresentation",
     "ElementLabel": " ",

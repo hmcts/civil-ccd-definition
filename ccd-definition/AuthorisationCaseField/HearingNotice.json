@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeList",
     "UserRoles": [
       "hearing-schedule-access"
@@ -8,7 +8,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingNoticeListOther",
     "UserRoles": [
       "hearing-schedule-access"
@@ -16,7 +16,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "applicationDetails",
     "UserRoles": [
       "hearing-schedule-access"
@@ -24,7 +24,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "typeOfApplication",
     "UserRoles": [
       "hearing-schedule-access"
@@ -32,7 +32,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "dateOfApplication",
     "UserRoles": [
       "hearing-schedule-access"
@@ -40,7 +40,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "listingOrRelisting",
     "AccessControl": [
       {
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingLocationLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -68,7 +68,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingLocation",
     "AccessControl" : [
       {
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "channelLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -96,7 +96,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "channel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -104,7 +104,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDateLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -112,7 +112,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDate",
     "AccessControl" : [
       {
@@ -126,7 +126,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingTimeLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -134,7 +134,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingTimeHourMinute",
     "UserRoles": [
       "hearing-schedule-access",
@@ -144,7 +144,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDuration",
     "UserRoles": [
       "hearing-schedule-access",
@@ -153,7 +153,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "information",
     "UserRoles": [
       "hearing-schedule-access"
@@ -161,7 +161,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDocuments",
     "AccessControl": [
       {
@@ -186,7 +186,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFee",
     "AccessControl" : [
       {
@@ -198,7 +198,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingDueDate",
     "AccessControl" : [
       {
@@ -211,7 +211,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "caseDismissedHearingFeeDueDate",
     "AccessControl": [
       {
@@ -231,7 +231,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFeePaymentDetails",
     "AccessControl": [
       {
@@ -244,13 +244,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingFeePBADetails",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "relistHearingNotice",
     "UserRoles": [
       "hearing-schedule-access"
@@ -258,7 +258,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "hearingReferenceNumber",
     "AccessControl": [
       {

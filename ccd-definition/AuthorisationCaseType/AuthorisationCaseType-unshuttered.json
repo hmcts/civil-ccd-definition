@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
@@ -14,7 +14,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-approver",
       "caseworker-caa",
@@ -25,7 +25,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "UserRoles": [
       "caseworker-civil-staff",
       "GS_profile",
@@ -35,7 +35,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE",
       "CITIZEN-DEFENDANT-PROFILE",

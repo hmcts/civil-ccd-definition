@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "CREATE_CASE_FLAGS",
     "Name": "Create case flags",
     "Description": "Create case flags",
@@ -15,7 +15,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "MANAGE_CASE_FLAGS",
     "Name": "Manage case flags",
     "Description": "Manage case flags",
