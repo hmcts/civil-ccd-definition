@@ -24,7 +24,7 @@ Scenario('CARM enabled', async ({api_spec_cui}) => {
   carmEnabled = true;
   await prepareClaim(api_spec_cui, carmEnabled);
   await api_spec_cui.mediationUnsuccessful(mediationAdmin, carmEnabled);
-});
+}).tag('@api-prod');
 
 Scenario('CARM not enabled', async ({api_spec_cui}) => {
   carmEnabled = false;
