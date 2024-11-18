@@ -8,6 +8,7 @@ import {
   defendant1Heading,
   defendant1Inputs,
   defendant1RadioButtons,
+  defendant2Checkboxes,
   defendant2Dropdowns,
   defendant2Heading,
   defendant2Inputs,
@@ -77,8 +78,8 @@ export default class NotifyClaimFragment extends BasePage {
   }
 
   async fillDefendant2NotifyClaim() {
-    const day1 = DateHelper.subtractFromToday({ days: 2 });
-    const day2 = DateHelper.subtractFromToday({ days: 3 });
+    const day1 = DateHelper.subtractFromToday({ days: 7 });
+    const day2 = DateHelper.subtractFromToday({ days: 8 });
     await super.inputText(String(day1.getDate()), defendant2Inputs.dateDeemedServed.day.selector);
     await super.inputText(
       String(day1.getMonth() + 1),
@@ -97,13 +98,13 @@ export default class NotifyClaimFragment extends BasePage {
     await super.inputText('Test Documents 2', defendant2Inputs.documentsServed.selector);
     await super.inputText('Defendant 2', defendant2Inputs.notifyClaimRecipient.selector);
     await super.selectFromDropdown(
-      defendant2Dropdowns.locationType.options[0],
+      defendant2Dropdowns.locationType.options[1],
       defendant2Dropdowns.locationType.selector,
     );
     await super.inputText('Test Address 2', defendant2Inputs.documentsServedLocation.selector);
     await super.clickBySelector(defendant2RadioButtons.claimant.selector);
     await super.selectFromDropdown(
-      defendant2Dropdowns.serveType.options[0],
+      defendant2Dropdowns.serveType.options[1],
       defendant2Dropdowns.serveType.selector,
     );
   }
@@ -117,7 +118,7 @@ export default class NotifyClaimFragment extends BasePage {
   async fillDefendant2StatementOfTruth() {
     await super.inputText('Name 2', defendant2Inputs.name.selector);
     await super.inputText('Law firm 2', defendant2Inputs.firm.selector);
-    await super.clickBySelector(defendant1Checkboxes.signedTrue.selector);
+    await super.clickBySelector(defendant2Checkboxes.signedTrue.selector);
   }
 
   async continue() {

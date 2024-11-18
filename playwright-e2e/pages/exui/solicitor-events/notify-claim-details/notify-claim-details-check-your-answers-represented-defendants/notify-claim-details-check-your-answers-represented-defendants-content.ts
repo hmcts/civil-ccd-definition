@@ -5,8 +5,8 @@ export const table = {
   uploadDocuments: 'Upload documents',
   partiularsOfClaim: 'Particulars of claim',
   medicalReports: 'Medical reports',
-  scheduleOfLoss: 'Schedule os loss',
-  certificateOfSuitability: 'Certificate of sutiability',
+  scheduleOfLoss: 'Schedule of loss',
+  certificateOfSuitability: 'Certificate of suitability',
 };
 
 export const uploadedFile = 'test.pdf';

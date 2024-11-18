@@ -34,12 +34,12 @@ export const table = {
   serveType: {
     label: 'How did you serve the documents?',
     defendant1Answer: 'Personally handed it to or left it with',
-    defendant2Answer: 'Personally handed it to or left it with',
+    defendant2Answer: 'Delivered to or left at permitted place',
   },
   locationType: {
     label: 'Select the type of location where you served the documents',
     defendant1Answer: 'Usual Residence',
-    defendant2Answer: 'Usual Residence',
+    defendant2Answer: 'Last known residence',
   },
   name: {
     label: 'Your name',

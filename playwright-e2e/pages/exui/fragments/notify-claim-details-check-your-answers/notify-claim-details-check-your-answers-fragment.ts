@@ -31,7 +31,7 @@ export default class NotifyClaimDetailsCheckYourAnswersFragment extends BasePage
   async checkDefendant1Answers() {
     const day1 = new Date();
     const day2 = DateHelper.subtractFromToday({ days: 1 });
-    await super.expectText(DateHelper.formatDateDayShortMonthYear(day1));
+    await super.expectText(DateHelper.formatDateDayShortMonthYear(day1), { first: true });
     await super.expectText(DateHelper.formatDateDayShortMonthYear(day2));
     await super.expectText(table.documentsServed.defendant1Answer);
     await super.expectText(table.documentsServedLocation.defendant1Answer);
@@ -44,10 +44,8 @@ export default class NotifyClaimDetailsCheckYourAnswersFragment extends BasePage
   }
 
   async checkDefendant2Answers() {
-    const day1 = new Date();
-    const day2 = DateHelper.subtractFromToday({ days: 1 });
-    await super.expectText(DateHelper.formatDateDayShortMonthYear(day1));
-    await super.expectText(DateHelper.formatDateDayShortMonthYear(day2));
+    const day = DateHelper.subtractFromToday({ days: 8 });
+    await super.expectText(DateHelper.formatDateDayShortMonthYear(day));
     await super.expectText(table.documentsServed.defendant2Answer);
     await super.expectText(table.documentsServedLocation.defendant2Answer);
     await super.expectText(table.name.defendant2Answer);

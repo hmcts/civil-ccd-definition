@@ -3,7 +3,7 @@ import NotifyClaimDetailsCheckYourAnswersFragment from '../../fragments/notify-c
 import NotifyClaimDetailsFragment from '../../fragments/notify-claim-details/notify-claim-details-fragment';
 import NotifyClaimDetailsCheckYourAnswers1UnrepresentedDefendantPage from './noitfy-claim-details-check-your-answers-unrepresented-defendants/notify-claim-details-check-your-answer-1-unrepresented-defendant';
 import NotifyClaimDetailsCheckYourAnswers2UnrepresentedDefendantsPage from './noitfy-claim-details-check-your-answers-unrepresented-defendants/notify-claim-details-check-your-answer-2-unrepresented-defendants';
-import NotifyClaimDetailsCheckYourAnswersRepresentedDefendantsPage from './notify-claim-details-check-your-answers-represented-defendants/notify-claim-details-check-your-answers-page-represented-defendants';
+import NotifyClaimDetailsCheckYourAnswersRepresentedDefendantsPage from './notify-claim-details-check-your-answers-represented-defendants/notify-claim-details-check-your-answers-represented-defendants-page';
 import NotifyClaimDetailsRepresentedDefendantsPage from './notify-claim-details-represented-defendants/notify-claim-details-represented-defendants-page';
 import NotifyClaimDetailsUnreprentedDefendant1Page from './notify-claim-details-unrepresented-defendants/notify-claim-details-unrepresented-defendant-1-page';
 import NotifyClaimDetailsUnreprentedDefendant2Page from './notify-claim-details-unrepresented-defendants/notify-claim-details-unrepresented-defendant-2-page';

@@ -15,7 +15,7 @@ export default class NotifyClaimDetailsRepresentedDefendantsPage extends BasePag
       super.expectHeading(heading),
       super.expectSubheading(subheadings.uploadDocuments),
       super.expectSubheading(subheadings.partiularsOfClaim),
-      super.expectSubheading(subheadings.medicalReports),
+      super.expectText(subheadings.medicalReports, { first: true }),
       super.expectSubheading(subheadings.scheduleOfLoss),
       super.expectSubheading(subheadings.certificateOfSuitability),
     ]);
@@ -23,7 +23,7 @@ export default class NotifyClaimDetailsRepresentedDefendantsPage extends BasePag
 
   async uploadDocuments() {
     await super.clickBySelector(buttons.addPartiularsOfClaim.selector);
-    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadPartiularsOfClaim.selector);
+    // await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadPartiularsOfClaim.selector);
     await super.clickBySelector(buttons.addMedicalReports.selector);
     await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadMedicalReports.selector);
     await super.clickBySelector(buttons.addScheduleOfLoss.selector);

@@ -58,7 +58,7 @@ const getInputs = (defendantNumber: number) => ({
   },
   evidenceDocument: {
     label: 'Supporting evidence',
-    selector: `cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument_value`,
+    selector: `#cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument_value`,
   },
 });
 
@@ -123,7 +123,7 @@ export const defendant2RadioButtons = getRadioButtons(2);
 const getCheckboxes = (defendantNumber: number) => ({
   signedTrue: {
     label: 'I believe that the facts stated in the certificate are true',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
+    selector: `#cosNotifyClaimDetails${defendantNumber}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
   },
 });
 
@@ -137,7 +137,7 @@ const getButtons = (defendantNumber: number) => ({
   },
   addNewSupportingEvidence: {
     title: 'Add new',
-    selector: `div[id='cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument"'] button[type='button']`,
+    selector: `div[id='cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
   },
 });
 
