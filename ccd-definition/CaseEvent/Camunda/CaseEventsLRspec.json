@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_CLAIM_ISSUE_SPEC",
     "Name": "Issue claim",
     "Description": "Issue claim for Spec",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_FULL_DEFENCE_SPEC",
     "Name": "Full defence",
     "Description": "Full defence",
@@ -25,7 +25,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "PROCESS_PART_ADMISSION_DEFENCE_SPEC",
     "Name": "Part Admission",
     "Description": "Part Admission",
