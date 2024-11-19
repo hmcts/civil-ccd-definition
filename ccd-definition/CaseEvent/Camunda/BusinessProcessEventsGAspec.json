@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DISPATCH_BUSINESS_PROCESS_GASPEC",
     "Name": "Dispatch ga business process",
     "Description": "Set READY ga business process status to DISPATCHED",
@@ -15,7 +15,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "START_BUSINESS_PROCESS_GASPEC",
     "Name": "Start ga business process",
     "Description": "Start ga business process",
@@ -28,7 +28,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "END_BUSINESS_PROCESS_GASPEC",
     "Name": "End business process",
     "Description": "End business process",
@@ -39,7 +39,7 @@
     "ShowEventNotes": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_GENERAL_APPLICATION_CASE",
     "Name": "Create general application",
     "Description": "Create general application",
@@ -51,7 +51,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UPDATE_CASE_WITH_GA_STATE",
     "Name": "Update general-app state",
     "Description": "Update Case with state of general application",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -9,7 +9,7 @@
     "FieldShowCondition": "cosLabelForClaimant1_1 = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -18,7 +18,7 @@
     "FieldShowCondition": "cosLabelForClaimant1_1 = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -28,7 +28,7 @@
     "TabShowCondition": "cosNotifyClaimDetails1 = \"*\" OR cosNotifyClaimDetails2 = \"*\" OR cosNotifyClaimDefendant1 = \"*\" OR cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -37,7 +37,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -46,7 +46,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -55,7 +55,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -64,7 +64,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -73,7 +73,7 @@
     "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -82,7 +82,7 @@
     "FieldShowCondition": "cosNotifyClaimDetails1 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -91,7 +91,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -100,7 +100,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -109,7 +109,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -118,7 +118,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -127,7 +127,7 @@
     "FieldShowCondition": "cosNotifyClaimDefendant2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,
@@ -136,7 +136,7 @@
     "FieldShowCondition": "cosNotifyClaimDetails2 = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "CertificateOfService",
     "TabLabel": "Certificate of Service",
     "TabDisplayOrder": 11,

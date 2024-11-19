@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_CASES",
     "Name": "Retrigger case",
     "DisplayOrder": 1,
@@ -11,7 +11,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_CLAIMANT_RESPONSE",
     "Name": "Retrigger claimant res",
     "DisplayOrder": 1,
@@ -22,7 +22,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "Name": "Retrigger claimant res spec",
     "DisplayOrder": 1,
@@ -33,7 +33,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "Name": "Retrigger notify interim DJ",
     "DisplayOrder": 1,

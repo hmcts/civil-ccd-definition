@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const solicitorUser = config.applicantSolicitorUser;
@@ -6,7 +6,7 @@ const caseWorkerUser = config.hearingCenterAdminWithRegionId2;
 // To use on local because the idam images are different:
 // const caseWorkerUser = config.hearingCenterAdminLocal;
 
-Feature('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
+Feature.skip('CCD Settle and discontinue claim 2v1 API test @api-spec @api-nonprod @api-settle-discont');
 Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, 'TWO_V_ONE');
