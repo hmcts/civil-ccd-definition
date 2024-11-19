@@ -3,7 +3,7 @@ module.exports = {
   type: 'SmallClaimsTrackDirections',
   task_title: 'Small Claims Track Directions',
   location_name: 'Central London County Court',
-  location: '192280',
+  location: '366774',
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
   region: '4',

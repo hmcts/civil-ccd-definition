@@ -106,7 +106,7 @@ module.exports = {
               reasonForHearingAtSpecificCourt: 'Reasons',
               caseLocation: {
                 region: '2',
-                baseLocation: '420219'
+                baseLocation: '283922'
               }
             },
             respondent1DQRemoteHearingLRspec: {
