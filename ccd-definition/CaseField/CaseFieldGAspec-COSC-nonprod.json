@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "coSCApplicationStatus",
     "FieldType": "FixedList",
     "FieldTypeParameter": "CoscApplicationStatus",
@@ -9,7 +9,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "coscSchedulerDeadline",
     "Label": " ",
     "FieldType": "Date",
