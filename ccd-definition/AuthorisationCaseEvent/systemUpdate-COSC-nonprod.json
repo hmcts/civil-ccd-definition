@@ -1,12 +1,12 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "PROCESS_COSC_APPLICATION",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CHECK_AND_MARK_PAID_IN_FULL",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
