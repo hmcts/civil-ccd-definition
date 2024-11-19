@@ -2329,7 +2329,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1RespondToClaimExperts",
     "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
-    "Label": " ",
+    "Label": "Expert Details",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
