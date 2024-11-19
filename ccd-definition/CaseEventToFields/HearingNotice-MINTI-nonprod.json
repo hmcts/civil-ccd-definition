@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "relistHearingNotice",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestHearingNoticeLabel",
     "PageFieldDisplayOrder": 1,
@@ -24,7 +24,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestHearingNoticeIntermediate",
     "PageFieldDisplayOrder": 2,
@@ -36,7 +36,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestHearingNoticeMulti",
     "PageFieldDisplayOrder": 2,
@@ -48,7 +48,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestHearingOtherText",
     "PageFieldDisplayOrder": 3,
@@ -60,7 +60,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestAnotherHearingLabel",
     "PageFieldDisplayOrder": 1,
@@ -72,7 +72,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "requestAnotherHearing",
     "PageFieldDisplayOrder": 2,

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestHearingNoticeLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -8,7 +8,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestHearingNoticeIntermediate",
     "UserRoles": [
       "hearing-schedule-access"
@@ -16,7 +16,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestHearingNoticeMulti",
     "UserRoles": [
       "hearing-schedule-access"
@@ -24,7 +24,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestHearingOtherText",
     "UserRoles": [
       "hearing-schedule-access"
@@ -32,7 +32,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestAnotherHearingLabel",
     "UserRoles": [
       "hearing-schedule-access"
@@ -40,7 +40,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestAnotherHearing",
     "UserRoles": [
       "hearing-schedule-access"

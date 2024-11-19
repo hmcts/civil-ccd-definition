@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestHearingNoticeLabel",
     "Label": "## What type of hearing do you want to have listed?",
     "FieldType": "Label",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestHearingNoticeIntermediate",
     "Label": "Hearing type",
     "FieldType": "FixedRadioList",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestHearingNoticeMulti",
     "Label": "Hearing type",
     "FieldType": "FixedRadioList",
@@ -26,7 +26,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestHearingOtherText",
     "Label": "What type of hearing do you want to have listed?",
     "FieldType": "Text",
@@ -34,7 +34,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestAnotherHearingLabel",
     "Label": "## Do you want to request another listing?",
     "FieldType": "Label",
@@ -42,7 +42,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestAnotherHearing",
     "Label": "Request another hearing?",
     "FieldType": "YesOrNo",

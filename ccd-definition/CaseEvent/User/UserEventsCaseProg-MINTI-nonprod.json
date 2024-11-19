@@ -98,7 +98,7 @@
     "ShowEventNotes": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "HEARING_SCHEDULED_RETRIGGER",
     "Name": "Request a listing",
     "Description": "Request a listing",
