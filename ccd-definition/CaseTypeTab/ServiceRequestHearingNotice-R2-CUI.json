@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ServiceRequest",
     "TabLabel": "Service Request",
     "TabDisplayOrder": 6,
@@ -8,7 +8,7 @@
     "FieldShowCondition": "casePaymentWaysToPay=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ServiceRequest",
     "TabLabel": "Service Request",
     "TabDisplayOrder": 6,

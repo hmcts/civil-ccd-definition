@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
@@ -8,7 +8,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
@@ -16,7 +16,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
@@ -24,7 +24,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
@@ -32,7 +32,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "AccessControl": [
       {
@@ -44,7 +44,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_ISSUED",
     "AccessControl": [
       {
@@ -56,7 +56,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "AccessControl": [
       {
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "JUDICIAL_REFERRAL",
     "AccessControl": [
       {
@@ -80,7 +80,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "IN_MEDIATION",
     "AccessControl": [
       {
@@ -92,7 +92,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"
@@ -100,7 +100,7 @@
     "CRUD": "CRUD"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_STAYED",
     "AccessControl": [
       {
@@ -113,7 +113,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -121,7 +121,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_STAYED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -129,7 +129,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "IN_MEDIATION",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -137,7 +137,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_ISSUED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -145,7 +145,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_CASE_DETAILS_NOTIFICATION",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -153,7 +153,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -161,7 +161,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_DISMISSED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -169,7 +169,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -177,7 +177,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "PROCEEDS_IN_HERITAGE_SYSTEM",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -185,7 +185,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "JUDICIAL_REFERRAL",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
@@ -193,7 +193,7 @@
     "CRUD": "R"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "UserRoles": [
       "caseworker-civil-citizen-ui-pcqextractor"
