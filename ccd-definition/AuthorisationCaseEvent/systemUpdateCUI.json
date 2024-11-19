@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RESET_PIN",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "caseNameHmctsInternal",
     "PageFieldDisplayOrder": 4,
@@ -12,7 +12,7 @@
     "FieldShowCondition": "applicantSolicitor1PbaAccountsIsEmpty = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "caseManagementCategory",
     "PageFieldDisplayOrder": 2,
@@ -24,7 +24,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "caseNameHmctsInternal",
     "PageFieldDisplayOrder": 7,
@@ -36,7 +36,7 @@
     "FieldShowCondition": "claimValue = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "caseManagementCategory",
     "PageFieldDisplayOrder": 2,

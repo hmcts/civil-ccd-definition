@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "CaseFieldID": "lblMarkPaidInFull",
     "PageID": "MarkJudgmentPaidInFull",
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "CaseFieldID": "joPartiesNames",
     "PageID": "MarkJudgmentPaidInFull",
@@ -24,7 +24,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "JUDGMENT_PAID_IN_FULL",
     "CaseFieldID": "joJudgmentPaidInFull",
     "PageID": "MarkJudgmentPaidInFull",
