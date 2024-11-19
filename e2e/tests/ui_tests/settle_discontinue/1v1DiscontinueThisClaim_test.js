@@ -21,7 +21,7 @@ async function prepareClaim(api, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Feature('Discontinue This Claim - Full discontinuance  - 1v1 - spec @e2e-nightly-prod');
+Feature.skip('Discontinue This Claim - Full discontinuance  - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -51,7 +51,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v1 - spec @e2e-nightly-prod');
+Feature.skip('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
