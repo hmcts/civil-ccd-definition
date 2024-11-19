@@ -1,6 +1,6 @@
 [
  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "settlementSummary",
     "Label": "### Settle via consent order\n\nIf the parties have settled and a consent order is ready, please click cancel to return to the claim summary screen and select 'Make an application' from the 'Next steps' menu and select 'Settle by consent'.\n\n### Settle by way of Part 36 Acceptance\n\n If you have settle by way of Part 36 acceptance, please contact the hearing centre or court that is dealing with this claim.\n\n### Mark claim as paid in full\n\nIf the claim has been paid in full, click 'Continue' below.",
     "FieldType": "Label",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNames",
     "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNames1",
     "Label": "**${caseNameHmctsInternal}**",
     "FieldType": "Label",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "markPaidForAllClaimants",
     "Label": "Does marking this claim as paid in full relate to all claimants?",
     "FieldType": "YesOrNo",
@@ -32,7 +32,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "markPaidConsent",
     "Label": "I confirm this claim should be marked paid in full including cost",
     "FieldType": "FixedRadioList",
@@ -41,7 +41,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantWhoIsSettling",
     "Label": "Select the claimant this relates to",
     "FieldType": "DynamicRadioList",
@@ -49,7 +49,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "settleReason",
     "Label": "How has the claim been settled?",
     "FieldType": "FixedRadioList",
@@ -58,7 +58,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantWhoIsDiscontinuing",
     "Label": "Which claimants are discontinuing?",
     "FieldType": "DynamicRadioList",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantsConsentToDiscontinuance",
     "Label": "Do all claimants consent to the discontinuance?",
     "FieldType": "YesOrNo",
@@ -74,7 +74,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "selectedClaimantForDiscontinuance",
     "Label": " ",
     "FieldType": "Text",
@@ -82,7 +82,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNames3",
     "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
@@ -90,7 +90,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtPermissionNeeded",
     "Label": "Is the court's permission needed to discontinue?",
     "HintText": "For more information, refer to the Civil Procedure Rules 38.2.",
@@ -100,7 +100,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtPermissionNeededText",
     "Label": "The court's permission to discontinue a claim is not required if:<br /> &bull; The court has not granted an interim injuction<br /> &bull; No party has given an undertaking to the court<br /> &bull; The claimant has not received an interim payment<br /> &bull; The claimant has received an interim payment and the defendant has consented in writing to the <br />&nbsp; discontinuance",
     "FieldType": "Label",
@@ -108,7 +108,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtPermissionNeededChecked",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "ConfirmCourtPermissionNotNeeded",
@@ -117,7 +117,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNamesDD",
     "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
@@ -125,7 +125,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isDiscontinuingAgainstBothDefendants",
     "Label": "Is the discontinuance against all defendants?",
     "FieldType": "FixedRadioList",
@@ -134,7 +134,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "discontinuingAgainstOneDefendant",
     "Label": "Which defendant is the discontinuance against?",
     "FieldType": "DynamicRadioList",
@@ -142,7 +142,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNames4",
     "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
@@ -150,7 +150,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isPermissionGranted",
     "Label": "Has permission been granted by a Judge to discontinue",
     "FieldType": "FixedRadioList",
@@ -159,7 +159,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "permissionGrantedComplex",
     "Label": "Permission granted by:",
     "FieldType": "PermissionGrantedFields",
@@ -167,7 +167,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "permissionNotGrantedText",
     "Label": "### Unable to discontinue this claim \n To discontinue this claim you need to get permission from the court.\n Click cancel to return to the case summary screen and select 'Make\n an application' from the next steps menu and select 'Other'",
     "FieldType": "Label",
@@ -175,7 +175,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNamesTD",
     "Label": "**${caseNameHmctsInternal}** \n****",
     "FieldType": "Label",
@@ -183,7 +183,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "typeOfDiscontinuance",
     "Label": "Is this a full or part discontinuance?",
     "FieldType": "FixedRadioList",
@@ -192,7 +192,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partDiscontinuanceDetails",
     "Label": "Which part of the claim do you want to discontinue?",
     "FieldType": "TextArea",
@@ -200,7 +200,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "validateDiscontinuanceLbl",
     "Label": "**${caseNameHmctsInternal}** \n****\n ### Permission granted by:",
     "FieldType": "Label",
@@ -208,7 +208,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "permissionGrantedJudgeCopy",
     "Label": "Judge name",
     "FieldType": "Text",
@@ -216,7 +216,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "permissionGrantedDateCopy",
     "Label": "On date",
     "FieldType": "Date",
@@ -224,7 +224,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "confirmOrderGivesPermissionLbl",
     "Label": "### Can you confirm the Order does give permission to discontinue all or part of the claim?",
     "FieldType": "Label",
@@ -232,7 +232,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "confirmOrderGivesPermission",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -241,16 +241,48 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "noticeOfDiscontinueCWDoc",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1NoticeOfDiscontinueCWViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "noticeOfDiscontinueAllParitiesDoc",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2NoticeOfDiscontinueAllPartyViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
