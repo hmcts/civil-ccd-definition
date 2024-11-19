@@ -44,16 +44,8 @@
   {
     "CaseTypeID": "CIVIL",
     "ID": "requestAnotherHearing",
-    "Label": " ",
+    "Label": "Request another hearing?",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "ID": "hearingWaTaskTypeToTrigger",
-    "Label": " ",
-    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

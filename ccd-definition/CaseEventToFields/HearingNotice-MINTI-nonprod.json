@@ -81,18 +81,5 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "hearingWaTaskTypeToTrigger",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestAnotherHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "FieldShowCondition" : "requestHearingNoticeIntermediate = \"DO_NOT_SHOW\"",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
   }
 ]
