@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "lblTransferCaseDetails",
     "PageFieldDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "lblReasonNotSuitableSDO",
     "PageFieldDisplayOrder": 2,
@@ -22,7 +22,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "notSuitableSdoOptions",
     "PageFieldDisplayOrder": 3,
@@ -35,7 +35,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "tocTransferCaseReason",
     "PageFieldDisplayOrder": 4,
@@ -47,7 +47,7 @@
     "FieldShowCondition": "notSuitableSdoOptions = \"CHANGE_LOCATION\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "reasonNotSuitableSDO",
     "PageFieldDisplayOrder": 5,

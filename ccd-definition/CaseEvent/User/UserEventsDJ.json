@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DEFAULT_JUDGEMENT",
     "Name": "Request Default Judgment",
     "Description": "Request Default Judgment",
