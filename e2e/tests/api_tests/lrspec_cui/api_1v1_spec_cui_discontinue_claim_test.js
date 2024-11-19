@@ -6,7 +6,7 @@ const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 const claimType = 'SmallClaims';
 let caseId;
 
-Feature.skip('CCD 1v1 API test @api-spec-cui @api-nonprod @api-settle-discont');
+Feature('CCD 1v1 API test @api-spec-cui @api-nonprod @api-settle-discont');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
