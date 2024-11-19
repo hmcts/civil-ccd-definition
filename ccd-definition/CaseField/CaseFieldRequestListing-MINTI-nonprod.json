@@ -9,19 +9,9 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "requestHearingNoticeIntermediate",
+    "ID": "requestHearingNoticeDynamic",
     "Label": "Hearing type",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "IntermediateHearingTypes",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "requestHearingNoticeMulti",
-    "Label": "Hearing type",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "MultiHearingTypes",
+    "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

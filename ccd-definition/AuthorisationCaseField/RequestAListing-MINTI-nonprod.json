@@ -9,15 +9,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "requestHearingNoticeIntermediate",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "requestHearingNoticeMulti",
+    "CaseFieldID": "requestHearingNoticeDynamic",
     "UserRoles": [
       "hearing-schedule-access"
     ],

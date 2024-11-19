@@ -26,25 +26,12 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "requestHearingNoticeIntermediate",
+    "CaseFieldID": "requestHearingNoticeDynamic",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "PageID": "ListHearingNotice",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "FieldShowCondition" : "allocatedTrack = \"INTERMEDIATE_CLAIM\" OR responseClaimTrack = \"INTERMEDIATE_CLAIM\"",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "requestHearingNoticeMulti",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "ListHearingNotice",
-    "PageDisplayOrder": 1,
-    "PageColumnNumber": 1,
-    "FieldShowCondition" : "allocatedTrack = \"MULTI_CLAIM\" OR responseClaimTrack = \"MULTI_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -56,7 +43,7 @@
     "PageID": "ListHearingNotice",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "FieldShowCondition" : "requestHearingNoticeIntermediate = \"OTHER\" OR requestHearingNoticeMulti = \"OTHER\"",
+    "FieldShowCondition" : "requestHearingNoticeDynamic = \"OTHER\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
