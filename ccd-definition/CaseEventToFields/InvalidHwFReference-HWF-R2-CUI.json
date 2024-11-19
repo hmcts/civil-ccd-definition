@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "helpWithFees",
     "DisplayContext": "READONLY",
@@ -11,7 +11,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "hwfFeeType",
     "DisplayContext": "READONLY",
@@ -22,7 +22,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "applicant1",
     "DisplayContext": "READONLY",
@@ -33,7 +33,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "respondent1",
     "DisplayContext": "READONLY",
@@ -44,7 +44,7 @@
     "FieldShowCondition": "caseTitleWithHWFClaimFeeNumber=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "caseTitleWithHWFClaimFeeNumber",
     "DisplayContext": "READONLY",
@@ -54,7 +54,7 @@
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "caseTitleWithHwFDetails",
     "DisplayContext": "READONLY",
@@ -64,7 +64,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "claimFeeLabel",
     "DisplayContext": "READONLY",
@@ -74,7 +74,7 @@
     "FieldShowCondition": "hwfFeeType = \"CLAIMISSUED\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INVALID_HWF_REFERENCE",
     "CaseFieldID": "caseLabelClaimIssueReference",
     "DisplayContext": "READONLY",

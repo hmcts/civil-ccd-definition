@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "INITIATE_GENERAL_APPLICATION",
     "AccessControl": [
       {
@@ -17,7 +17,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_GENERAL_APPLICATION_CASE",
     "AccessControl": [
       {
@@ -29,7 +29,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_CASE_WITH_GA_STATE",
     "AccessControl": [
       {
@@ -41,7 +41,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "APPLICATION_CLOSED_UPDATE_CLAIM",
     "AccessControl": [
       {
@@ -53,7 +53,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "APPLICATION_OFFLINE_UPDATE_CLAIM",
     "AccessControl": [
       {
@@ -65,7 +65,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIGGER_APPLICATION_CLOSURE",
     "AccessControl": [
       {
@@ -77,7 +77,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIGGER_APPLICATION_PROCEEDS_IN_HERITAGE",
     "AccessControl": [
       {
@@ -89,7 +89,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIGGER_UPDATE_GA_LOCATION",
     "AccessControl": [
       {
@@ -101,7 +101,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIGGER_TASK_RECONFIG_GA",
     "AccessControl": [
       {

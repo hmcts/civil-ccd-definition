@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "isApplicant1",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
     "PageShowCondition": "isApplicant1 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "isRespondent1",
     "PageFieldDisplayOrder": 1,
@@ -26,7 +26,7 @@
     "PageShowCondition": "isRespondent1 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "isRespondent2",
     "PageFieldDisplayOrder": 1,
@@ -39,7 +39,7 @@
     "PageShowCondition": "isRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationTextApplicant",
     "PageFieldDisplayOrder": 1,
@@ -50,7 +50,7 @@
     "FieldShowCondition": "trialReadyApplicant = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationTextRespondent1",
     "PageFieldDisplayOrder": 1,
@@ -61,7 +61,7 @@
     "FieldShowCondition": "trialReadyRespondent1 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationTextRespondent2",
     "PageFieldDisplayOrder": 1,
@@ -72,7 +72,7 @@
     "FieldShowCondition": "trialReadyRespondent2 = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "caseNameLabelApplicant",
     "PageFieldDisplayOrder": 2,
@@ -82,7 +82,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "caseNameLabelRespondent1",
     "PageFieldDisplayOrder": 2,
@@ -92,7 +92,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "caseNameLabelRespondent2",
     "PageFieldDisplayOrder": 2,
@@ -102,7 +102,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyLabelApplicant",
     "PageFieldDisplayOrder": 3,
@@ -112,7 +112,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyLabelRespondent1",
     "PageFieldDisplayOrder": 3,
@@ -122,7 +122,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyLabelRespondent2",
     "PageFieldDisplayOrder": 3,
@@ -132,7 +132,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyApplicant",
     "PageFieldDisplayOrder": 4,
@@ -142,7 +142,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyRespondent1",
     "PageFieldDisplayOrder": 4,
@@ -152,7 +152,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "trialReadyRespondent2",
     "PageFieldDisplayOrder": 4,
@@ -162,7 +162,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicationNotReadyApplicant",
     "PageFieldDisplayOrder": 5,
@@ -173,7 +173,7 @@
     "FieldShowCondition": "trialReadyApplicant = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicationNotReadyRespondent1",
     "PageFieldDisplayOrder": 5,
@@ -184,7 +184,7 @@
     "FieldShowCondition": "trialReadyRespondent1 = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicationNotReadyRespondent2",
     "PageFieldDisplayOrder": 5,
@@ -195,7 +195,7 @@
     "FieldShowCondition": "trialReadyRespondent2 = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicantRevisedHearingRequirements",
     "PageFieldDisplayOrder": 6,
@@ -206,7 +206,7 @@
     "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyApplicant=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent1RevisedHearingRequirements",
     "PageFieldDisplayOrder": 6,
@@ -217,7 +217,7 @@
     "FieldShowCondition": "trialReadyRespondent1=\"Yes\" OR trialReadyRespondent1=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent2RevisedHearingRequirements",
     "PageFieldDisplayOrder": 6,
@@ -228,7 +228,7 @@
     "FieldShowCondition": "trialReadyRespondent2=\"Yes\" OR trialReadyRespondent2=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationNotReadyApplicant",
     "PageFieldDisplayOrder": 7,
@@ -239,7 +239,7 @@
     "FieldShowCondition": "trialReadyApplicant=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationNotReadyRespondent1",
     "PageFieldDisplayOrder": 7,
@@ -250,7 +250,7 @@
     "FieldShowCondition": "trialReadyRespondent1 = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationNotReadyRespondent2",
     "PageFieldDisplayOrder": 7,
@@ -261,7 +261,7 @@
     "FieldShowCondition": "trialReadyRespondent2 = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationReadyApplicant",
     "PageFieldDisplayOrder": 7,
@@ -272,7 +272,7 @@
     "FieldShowCondition": "trialReadyApplicant=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationReadyRespondent1",
     "PageFieldDisplayOrder": 7,
@@ -283,7 +283,7 @@
     "FieldShowCondition": "trialReadyRespondent1 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "hearingDurationReadyRespondent2",
     "PageFieldDisplayOrder": 7,
@@ -294,7 +294,7 @@
     "FieldShowCondition": "trialReadyRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "applicantHearingOtherComments",
     "PageFieldDisplayOrder": 8,
@@ -305,7 +305,7 @@
     "FieldShowCondition": "trialReadyApplicant=\"Yes\" OR trialReadyApplicant=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent1HearingOtherComments",
     "PageFieldDisplayOrder": 8,
@@ -316,7 +316,7 @@
     "FieldShowCondition": "trialReadyRespondent1=\"Yes\" OR trialReadyRespondent1=\"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "CaseFieldID": "respondent2HearingOtherComments",
     "PageFieldDisplayOrder": 8,

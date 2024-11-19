@@ -135,7 +135,7 @@ Scenario('Make a general application', async ({api}) => {
 
 Scenario('Create a Hearing Request', async ({I}) => {
   if (['demo'].includes(config.runningEnv)) {
-    await I.login(config.hearingCenterAdminWithRegionId2);
+    await I.login(config.hearingCenterAdminWithRegionId1);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await I.requestNewHearing();
     await I.updateHearing();
