@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR_DJ_RECEIVED",
     "Name": "Email: Notify DJ",
     "Description": "Generates default judgment received email",

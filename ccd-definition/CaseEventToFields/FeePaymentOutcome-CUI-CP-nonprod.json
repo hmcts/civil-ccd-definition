@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfFullRemissionGrantedForHearingFee",
     "DisplayContext": "MANDATORY",
@@ -13,7 +13,7 @@
     "FieldShowCondition": "hwfFeeType = \"HEARING\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hwfOutstandingFeePaymentDoneForHearingFee",
     "DisplayContext": "MANDATORY",
@@ -23,7 +23,7 @@
     "FieldShowCondition": "hwfFeeType = \"HEARING\" AND hwfFullRemissionGrantedForHearingFee = \"No\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "FEE_PAYMENT_OUTCOME",
     "CaseFieldID": "hearingHwfDetails",
     "DisplayContext": "READONLY",

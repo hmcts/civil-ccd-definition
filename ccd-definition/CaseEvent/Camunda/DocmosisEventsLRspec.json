@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_CLAIM_FORM_SPEC",
     "Name": "Generate claim form",
     "Description": "Generates claim form after successful payment",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM_SPEC",
     "Name": "Generate AoS",
     "Description": "Generates acknowledgement of service",

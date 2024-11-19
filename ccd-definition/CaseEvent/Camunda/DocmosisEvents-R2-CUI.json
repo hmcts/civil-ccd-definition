@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_DRAFT_FORM",
     "Name": "Generate draft claim form",
     "Description": "Generates draft claim form",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
     "Name": "Generate settlement form",
     "Description": "Generate Defendant lip settlement agreement form",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
     "Name": "Generate LIP Claimant MD Form",
     "Description": "Generate LIP Claimant Manual Determination Form",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
     "Name": "GEN INTERLOCUTORY JUDGEMENT",
     "Description": "Generate an Interlocutory Judgement document",
