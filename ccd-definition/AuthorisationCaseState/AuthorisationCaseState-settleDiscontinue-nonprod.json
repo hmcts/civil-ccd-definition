@@ -26,8 +26,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "caseworker-civil-systemupdate"
