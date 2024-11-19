@@ -1,5 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import ccdEvents from '../../../../../../fixtures/ccd-events/events';
 import ExuiEvent from '../../../../exui-event/exui-event';
 import { dropdowns } from './case-filter-content';
 
@@ -20,6 +21,7 @@ export default class CaseFilterPage extends ExuiEvent(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.spec, dropdowns.event.selector);
+    super.setCCDEvent = ccdEvents.CREATE_CLAIM_SPEC;
   }
 
   async chooseUnSpec() {
@@ -29,6 +31,7 @@ export default class CaseFilterPage extends ExuiEvent(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.unspec, dropdowns.event.selector);
+    super.setCCDEvent = ccdEvents.CREATE_CLAIM;
   }
 
   async submit() {

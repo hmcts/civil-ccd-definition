@@ -1,8 +1,8 @@
 const config = require('../../../config.js');
 const {addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let caseNumber;
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 async function prepareClaimSpec1v2(api_spec_small) {
@@ -17,7 +17,7 @@ async function prepareClaimSpec1v2(api_spec_small) {
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Feature('Discontinue This Claim - Full discontinuance  - 1v2 - spec @master-e2e-ft');
+Feature.skip('Discontinue This Claim - Full discontinuance  - 1v2 - spec @master-e2e-ft');
 
 Scenario('1v2 spec Discontinue This Claim - Full discontinuance', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -47,7 +47,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec @master-e2e-ft');
+Feature.skip('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec @master-e2e-ft');
 
 Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

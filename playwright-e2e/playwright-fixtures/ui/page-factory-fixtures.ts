@@ -7,6 +7,7 @@ import NotifyClaimPageFactory from '../../pages/exui/solicitor-events/notify-cla
 import NotifyClaimDetailsPageFactory from '../../pages/exui/solicitor-events/notify-claim-details/notify-claim-details-page-factory';
 import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/defendant-response/defendant-response-page-factory';
 import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/claimant-response/claimant-response-page-factory';
+import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 
 type PageFactoryFixtures = {
   _pageUtilsFactory: PageUtilsFactory;
@@ -15,6 +16,7 @@ type PageFactoryFixtures = {
   _createClaimPageFactory: CreateClaimPageFactory;
   _notifyClaimPageFactory: NotifyClaimPageFactory;
   _notifyClaimDetailsPageFactory: NotifyClaimDetailsPageFactory;
+  _informAgreedExtensionDateFactory: InformAgreedExtensionDatePageFactory;
   _defendantResponsePageFactory: DefendantResponsePageFactory;
   _claimantResponsePageFactory: ClaimantResponsePageFactory;
 };
@@ -37,6 +39,9 @@ export const test = base.extend<PageFactoryFixtures>({
   },
   _notifyClaimDetailsPageFactory: async ({ page }, use) => {
     await use(new NotifyClaimDetailsPageFactory(page));
+  },
+  _informAgreedExtensionDateFactory: async ({ page }, use) => {
+    await use(new InformAgreedExtensionDatePageFactory(page));
   },
   _defendantResponsePageFactory: async ({ page }, use) => {
     await use(new DefendantResponsePageFactory(page));
