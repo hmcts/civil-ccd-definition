@@ -186,7 +186,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
-    "PageShowCondition": "courtOfficerGiveReasonsComplex=\"DONOTSHOW\"",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   }
