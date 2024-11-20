@@ -2353,6 +2353,8 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
           "citizen-profile",
           "CITIZEN-DEFENDANT-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
