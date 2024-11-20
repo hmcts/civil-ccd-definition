@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_CLAIM_FORM",
     "Name": "Generate claim form",
     "Description": "Generates claim form after successful payment",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_ACKNOWLEDGEMENT_OF_CLAIM",
     "Name": "Generate aoc",
     "Description": "Generates acknowledgement of claim",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_DIRECTIONS_QUESTIONNAIRE",
     "Name": "Generate dq",
     "Description": "Generates directions questionnaire",
