@@ -94,6 +94,6 @@ Scenario('2v1 claimant and defendant upload mediation documents - CARM enabled',
 });
 
 AfterSuite(async ({api_spec_small, api_spec}) => {
-  // await api_spec_small.cleanUp();
-  // await api_spec.cleanUp();
+  await api_spec_small.cleanUp();
+  await api_spec.cleanUp();
 });
