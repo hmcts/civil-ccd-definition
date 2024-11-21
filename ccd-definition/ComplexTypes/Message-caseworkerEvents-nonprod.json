@@ -2,7 +2,8 @@
   {
     "ID": "Message",
     "ListElementCode": "senderRoleType",
-    "FieldType": "Text",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RolePool",
     "ElementLabel": "From",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -10,7 +11,8 @@
   {
     "ID": "Message",
     "ListElementCode": "recipientRoleType",
-    "FieldType": "Text",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "RolePool",
     "ElementLabel": "To",
     "SecurityClassification": "Public",
     "Searchable": "N"
