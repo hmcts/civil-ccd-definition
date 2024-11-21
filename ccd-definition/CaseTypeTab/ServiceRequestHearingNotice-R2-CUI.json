@@ -23,6 +23,15 @@
     "TabDisplayOrder": 6,
     "CaseFieldID": "casePaymentWaysToPay",
     "TabFieldDisplayOrder": 2,
-    "TabShowCondition": "hwfFeeType!=\"CLAIMISSUED\" AND businessProcess.status=\"FINISHED\""
+    "FieldShowCondition": "hwfFeeType!=\"CLAIMISSUED\" AND businessProcess.status=\"FINISHED\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "unfinishedBackEndProcess",
+    "TabFieldDisplayOrder": 3,
+    "FieldShowCondition": "businessProcess.status!=\"FINISHED\""
   }
 ]
