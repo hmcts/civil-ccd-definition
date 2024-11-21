@@ -1,45 +1,48 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import NotifyClaimCheckYourAnswersFragment from '../../fragments/notify-claim-check-your-answers/notify-claim-check-your-answers-fragment';
-import NotifyClaimFragment from '../../fragments/notify-claim/notify-claim-fragment';
-import NotifyClaimUnrepresentedDefendant2Page from './notify-claim-unrepresented-defendants/notify-claim-unrepresented-defendant-2-page';
-import NotifyClaimCheckYourAnswers1UnrepresentedDefendantPage from './notify-claim-check-your-answers-unrepresented-defendants/notify-claim-check-your-answers-1-unrepresented-defendant-page';
-import NotifyClaimUnrepresentedDefendant1Page from './notify-claim-unrepresented-defendants/notify-claim-unrepresented-defendant-1-page';
-import NotifyClaimRepresentedDefendantContinuePage from './notify-claim-continue-represented-defendants/notify-claim-continue-represented-defendants-page';
-import NotifyClaimRepresentedDefendantSubmitPage from './notify-claim-submit-represented-defendants/notify-claim-submit-represented-defendants-page';
-import NotifyClaimCheckYourAnswers2UnrepresentedDefendantsPage from './notify-claim-check-your-answers-unrepresented-defendants/notify-claim-check-your-answers-2-unrepresented-defendants-page';
+import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
+import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
+import AccessGrantedWarningPage from './access-granted-warning/access-granted-warning-page';
+import DefendantSolicitorToNotifyPage from './defendant-solicitor-to-notify/defendant-solicitor-to-notify-page';
+import NotifyClaimConfirmPage from './notify-claim-confirm/notify-claim-confirm-page';
+import NotifyClaimCOSConfirmPage from './notify-claim-cos-confirm/notify-claim-cos-confirm-page';
+import NotifyClaimCOSDefendant1Page from './notify-claim-cos-defendant-1/notify-claim-cos-defendant-1-page';
+import NotifyClaimCOSDefendant2Page from './notify-claim-cos-defendant-2/notify-claim-cos-defendant-2-page';
+import NotifyClaimCOSSubmitPage from './notify-claim-cos-submit/notify-claim-cos-submit-page';
+import NotifyClaimSubmitPage from './notify-claim-submit/notify-claim-submit-page';
 
 export default class NotifyClaimPageFactory extends BasePageFactory {
-  get notifyClaimsUnrepresentedDefendantPage1() {
-    const notifyClaimFragment = new NotifyClaimFragment(this.page);
-    return new NotifyClaimUnrepresentedDefendant1Page(notifyClaimFragment, this.page);
+  get defendantSolicitorToNotify() {
+    return new DefendantSolicitorToNotifyPage(this.page);
   }
 
-  get notifyClaimsUnrepresentedDefendantPage2() {
-    const notifyClaimFragment = new NotifyClaimFragment(this.page);
-    return new NotifyClaimUnrepresentedDefendant2Page(notifyClaimFragment, this.page);
+  get accessGrantedWarningPage() {
+    return new AccessGrantedWarningPage(this.page);
   }
 
-  get notifyClaimsCheckYourAnswers1UnrepresentedDefendantPage() {
-    const notifyClaimCheckYourAnswersFragment = new NotifyClaimCheckYourAnswersFragment(this.page);
-    return new NotifyClaimCheckYourAnswers1UnrepresentedDefendantPage(
-      notifyClaimCheckYourAnswersFragment,
-      this.page,
-    );
+  get notifyClaimSubmitPage() {
+    return new NotifyClaimSubmitPage(this.page);
   }
 
-  get notifyClaimsCheckYourAnswers2UnrepresentedDefendantsPage() {
-    const notifyClaimCheckYourAnswersFragment = new NotifyClaimCheckYourAnswersFragment(this.page);
-    return new NotifyClaimCheckYourAnswers2UnrepresentedDefendantsPage(
-      notifyClaimCheckYourAnswersFragment,
-      this.page,
-    );
+  get notifyClaimConfirmPage() {
+    return new NotifyClaimConfirmPage(this.page);
   }
 
-  get notifyClaimsRepresentedDefendantContinuePage() {
-    return new NotifyClaimRepresentedDefendantContinuePage(this.page);
+  get notifyClaimCOSDefendant1Page() {
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
+    return new NotifyClaimCOSDefendant1Page(certificateOfServiceFragment, this.page);
   }
 
-  get notifyClaimsRepresentedDefendantSubmitPage() {
-    return new NotifyClaimRepresentedDefendantSubmitPage(this.page);
+  get notifyClaimCOSDefendant2Page() {
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
+    return new NotifyClaimCOSDefendant2Page(certificateOfServiceFragment, this.page);
+  }
+
+  get notifyClaimCOSSubmitPage() {
+    const certificateOfServiceSubmitFragment = new CertificateOfServiceSubmitFragment(this.page);
+    return new NotifyClaimCOSSubmitPage(certificateOfServiceSubmitFragment, this.page);
+  }
+
+  get notifyClaimCOSConfirmPage() {
+    return new NotifyClaimCOSConfirmPage(this.page);
   }
 }

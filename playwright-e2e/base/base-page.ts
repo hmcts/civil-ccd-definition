@@ -8,6 +8,7 @@ import Timer from '../helpers/timer';
 import { getDomain } from '../config/urls';
 import { BoxedDetailedStep, Step } from '../decorators/test-steps';
 import ClassMethodHelper from '../helpers/class-method-helper';
+import ExpectError from '../errors/expect-error';
 
 const classKey = 'BasePage';
 export default abstract class BasePage {
@@ -282,7 +283,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'text')
   protected async expectSubheading(
     text: string,
-    options: { message?: string; timeout?: number } = {},
+    options: { exact?: string; message?: string; timeout?: number } = {},
   ) {
     await pageExpect(this.page.locator('h2', { hasText: text }), {
       message: options.message,
@@ -318,12 +319,13 @@ export default abstract class BasePage {
     text: string | number,
     exact?: boolean,
     containerSelector?: string,
+    index?: number,
     first?: boolean,
   ) {
     const locator = containerSelector
-      ? this.page.locator(containerSelector).getByText(text.toString())
-      : this.page.getByText(text.toString(), { exact: exact });
-    return first ? locator.nth(0) : locator;
+      ? this.page.locator(containerSelector).getByText(text.toString(), { exact })
+      : this.page.getByText(text.toString(), { exact });
+    return first ? locator.nth(0) : index ? locator.nth(index) : locator;
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -334,15 +336,30 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       containerSelector?: string;
+      index?: number;
       first?: boolean;
       ignoreDuplicates?: boolean;
+      count?: number | null;
       timeout?: number;
     } = {},
   ) {
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
+
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
     const locator = this.getTextLocator(
       text,
       options.exact,
       options.containerSelector,
+      options.index,
       options.first,
     );
 
@@ -350,10 +367,15 @@ export default abstract class BasePage {
       await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
         timeout: options.timeout,
       });
-    } else
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else {
       await pageExpect(locator, { message: options.message }).toBeVisible({
         timeout: options.timeout,
       });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -364,6 +386,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       containerSelector?: string;
+      index?: number;
       first?: boolean;
       timeout?: number;
     } = {},
@@ -372,6 +395,7 @@ export default abstract class BasePage {
       text,
       options.exact,
       options.containerSelector,
+      options.index,
       options.first,
     );
     try {

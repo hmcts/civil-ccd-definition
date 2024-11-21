@@ -41,6 +41,10 @@ export default class DateHelper {
     return date;
   }
 
+  static getToday(): Date {
+    return new Date();
+  }
+
   static addToToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
     return this.addDate(new Date(), { days, months, years, workingDay });
   }
@@ -139,24 +143,5 @@ export default class DateHelper {
     }
 
     return nextDate;
-  }
-
-  static formatDateDayShortMonthYear(date: Date) {
-    const months = [
-      'Jan',
-      'Feb',
-      'Mar',
-      'Apr',
-      'May',
-      'Jun',
-      'Jul',
-      'Aug',
-      'Sep',
-      'Oct',
-      'Nov',
-      'Dec',
-    ];
-
-    return `${date.getDate()} ${months[date.getMonth()]} ${date.getFullYear()}`;
   }
 }
