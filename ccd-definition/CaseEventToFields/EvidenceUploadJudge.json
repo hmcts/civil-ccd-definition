@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "CaseFieldID": "caseNoteType",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "PageLabel": "How do you want to add a case note?"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "CaseFieldID": "documentAndNameToAdd",
     "PageFieldDisplayOrder": 1,
@@ -27,7 +27,7 @@
     "PageShowCondition": "caseNoteType = \"DOCUMENT_ONLY\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "CaseFieldID": "caseNoteTypeNoteLabel",
     "PageFieldDisplayOrder": 1,
@@ -41,7 +41,7 @@
     "PageShowCondition": "caseNoteType=\"NOTE_ONLY\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "CaseFieldID": "caseNoteTA",
     "PageFieldDisplayOrder": 2,
@@ -52,7 +52,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "CaseFieldID": "documentAndNoteToAdd",
     "PageFieldDisplayOrder": 1,
