@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "componentLauncher",
     "AccessControl": [
       {
@@ -14,7 +14,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "systemGeneratedCaseDocuments",
     "AccessControl": [
       {
@@ -29,7 +29,7 @@
 
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDocuments",
     "AccessControl": [
       {
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyDocuments",
     "AccessControl": [
       {
@@ -55,7 +55,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseBundles",
     "AccessControl": [
       {
@@ -68,7 +68,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentDisclosureList",
     "AccessControl": [
       {
@@ -81,7 +81,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentForDisclosure",
     "AccessControl": [
       {
@@ -94,7 +94,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessStatement",
     "AccessControl": [
       {
@@ -107,7 +107,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessSummary",
     "AccessControl": [
       {
@@ -120,7 +120,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentHearsayNotice",
     "AccessControl": [
       {
@@ -133,7 +133,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentReferredInStatement",
     "AccessControl": [
       {
@@ -146,7 +146,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentExpertReport",
     "AccessControl": [
       {
@@ -159,7 +159,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentJointStatement",
     "AccessControl": [
       {
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentQuestions",
     "AccessControl": [
       {
@@ -185,7 +185,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAnswers",
     "AccessControl": [
       {
@@ -198,7 +198,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentCaseSummary",
     "AccessControl": [
       {
@@ -211,7 +211,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentSkeletonArgument",
     "AccessControl": [
       {
@@ -224,7 +224,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAuthorities",
     "AccessControl": [
       {
@@ -237,7 +237,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentCosts",
     "AccessControl": [
       {
@@ -250,7 +250,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentEvidenceForTrial",
     "AccessControl": [
       {
@@ -263,7 +263,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentForDisclosureRes",
     "AccessControl": [
       {
@@ -276,7 +276,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentDisclosureListRes",
     "AccessControl": [
       {
@@ -289,7 +289,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessStatementRes",
     "AccessControl": [
       {
@@ -302,7 +302,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessSummaryRes",
     "AccessControl": [
       {
@@ -315,7 +315,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentHearsayNoticeRes",
     "AccessControl": [
       {
@@ -328,7 +328,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentReferredInStatementRes",
     "AccessControl": [
       {
@@ -341,7 +341,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentExpertReportRes",
     "AccessControl": [
       {
@@ -354,7 +354,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentJointStatementRes",
     "AccessControl": [
       {
@@ -367,7 +367,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentQuestionsRes",
     "AccessControl": [
       {
@@ -380,7 +380,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAnswersRes",
     "AccessControl": [
       {
@@ -393,7 +393,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentCaseSummaryRes",
     "AccessControl": [
       {
@@ -406,7 +406,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentSkeletonArgumentRes",
     "AccessControl": [
       {
@@ -419,7 +419,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAuthoritiesRes",
     "AccessControl": [
       {
@@ -432,7 +432,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentCostsRes",
     "AccessControl": [
       {
@@ -445,7 +445,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentEvidenceForTrialRes",
     "AccessControl": [
       {

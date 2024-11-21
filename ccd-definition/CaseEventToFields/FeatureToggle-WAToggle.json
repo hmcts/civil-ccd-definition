@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "featureToggleWA",
     "PageFieldDisplayOrder": 7,
@@ -13,7 +13,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "CaseEventID": "CREATE_CLAIM_SPEC",
   "CaseFieldID": "featureToggleWA",
   "PageFieldDisplayOrder": 7,
@@ -26,7 +26,7 @@
   "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -37,7 +37,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -50,7 +50,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -63,7 +63,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -74,7 +74,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -87,7 +87,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -100,7 +100,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NotSuitable_SDO",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -112,7 +112,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -124,7 +124,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -136,7 +136,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -148,7 +148,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_CVP_JOIN_LINK",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -159,7 +159,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REVIEW_HEARING_EXCEPTION",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -170,7 +170,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UpdateNextHearingInfo",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -180,7 +180,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPDATE_NEXT_HEARING_DETAILS",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -190,7 +190,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CONTACT_INFORMATION_UPDATED_WA",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,

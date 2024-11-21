@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "changeOrganisationRequestField",
     "Label": "Change Organisation Request",
     "FieldType": "ChangeOrganisationRequest",
