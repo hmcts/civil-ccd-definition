@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1LiPResponse",
     "Label": " ",
     "FieldType": "ClaimantLiPResponse",
@@ -9,7 +9,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentLipInterest",
     "Label": " ",
     "FieldType": "Text",
@@ -17,7 +17,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "pcqId",
     "Label": "PCQ id",
     "FieldType": "Text",
@@ -25,7 +25,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "helpWithFees",
     "Label": " ",
     "FieldType": "HelpWithFees",
@@ -34,7 +34,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseSubmittedDate",
     "Label": "Date claimant response Submitted",
     "FieldType": "DateTime",
@@ -42,7 +42,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSignSettlementAgreement",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -50,7 +50,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "serviceRequestReference",
     "Label": " ",
     "FieldType": "Text",
@@ -58,7 +58,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1FullDefenceConfirmAmountPaidSpec",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1RespondToSettlementAgreementDeadline",
     "Label": " ",
     "FieldType": "DateTime",
@@ -74,7 +74,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1JudgmentByDeterminationForm",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -82,7 +82,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseWorkerDocuments",
     "Label": "Administrator Case Documents",
     "FieldType": "Collection",
@@ -91,7 +91,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ClaimSettledDate",
     "Label": " ",
     "FieldType": "Date",
@@ -99,7 +99,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ResponseDeadlineChecked",
     "Label": "Was respondent response deadline checked?",
     "FieldType": "YesOrNo",
@@ -107,7 +107,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestPayImmediatelyPaymentDateForDefendantSpec",
     "FieldType": "Date",
     "Label": "Date for claimant suggest pay immediately",
@@ -115,7 +115,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "previousCCDState",
     "Label": " ",
     "FieldType": "Text",
@@ -123,7 +123,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1AdditionalLipPartyDetails",
     "Label": "Defendant Additional Details",
     "FieldType": "AdditionalLipPartyDetails",
@@ -131,7 +131,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AdditionalLipPartyDetails",
     "Label": "Respondent Additional Details",
     "FieldType": "AdditionalLipPartyDetails",
@@ -139,7 +139,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantBilingualLanguagePreference",
     "Label": "Claimant Language Preference",
     "FieldType": "Text",
@@ -148,7 +148,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDeadline",
     "Label": "Deadline Request Reconsideration",
     "FieldType": "DateTime",
@@ -156,7 +156,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForReconsiderationDeadlineChecked",
     "Label": "Deadline Request Reconsideration",
     "FieldType": "YesOrNo",
@@ -164,7 +164,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SettleClaim",
     "Label": "Does the claimant want to settle",
     "FieldType": "YesOrNo",

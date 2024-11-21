@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CLAIMANT_RESPONSE_SPEC",
     "Name": "View and respond to defence",
     "Description": "View and respond to defendant (Specified)",
@@ -20,7 +20,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MEDIATION_SUCCESSFUL",
     "Name": "Mediation Successful",
     "Description": "Record mediation successful",
@@ -40,7 +40,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "Name": "Request Judgement by Admission",
     "Description": "Request Judgement by Admission (Specified)",
@@ -61,7 +61,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ENTER_BREATHING_SPACE_SPEC",
     "Name": "Enter Breathing Space",
     "Description": "Enter Breathing Space",
@@ -81,7 +81,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "LIFT_BREATHING_SPACE_SPEC",
     "Name": "Lift Breathing Space",
     "Description": "Lift Breathing Space",
@@ -101,7 +101,7 @@
     "EventEnablingCondition": "CaseAccessCategory=\"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MEDIATION_UNSUCCESSFUL",
     "Name": "Mediation Unsuccessful",
     "Description": "Mediation was unsuccessful",

@@ -16,7 +16,7 @@ const config = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL',
+    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
   },
   playwright: {
     softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',
