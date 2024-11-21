@@ -211,12 +211,12 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey)
   private async expectAxeToPass(axeExclusions: string[], useAxeCache: boolean) {
-    let axeBuilder = new AxeBuilder({ page: this.page })
+    const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
 
     for (const axeExclusion of axeExclusions) {
-      axeBuilder = axeBuilder.exclude(axeExclusion);
+      axeBuilder.exclude(axeExclusion);
     }
 
     const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
@@ -225,7 +225,7 @@ export default abstract class BasePage {
     if (useAxeCache) {
       await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
     } else {
-      await pageExpect.soft(pageName).toHaveNoAxeViolationsCache(axeBuilder, this.page);
+      await pageExpect.soft(pageName).toHaveNoAxeViolations(axeBuilder, this.page);
     }
     const errorsAfter = test.info().errors;
 
