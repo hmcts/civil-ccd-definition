@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "TRIAL_READINESS",
     "Name": "Confirm trial arrangements",
     "Description": "Confirm trial arrangements",
@@ -17,7 +17,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_DIRECTIONS_ORDER",
     "Name": "Make an order",
     "Description": "Make an order",
@@ -35,7 +35,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "EVIDENCE_UPLOAD_APPLICANT",
     "Name": "Upload Your Documents",
     "Description": "Upload Your Documents",
@@ -54,7 +54,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "EVIDENCE_UPLOAD_RESPONDENT",
     "Name": "Upload Your Documents",
     "Description": "Upload Your Documents",
@@ -73,7 +73,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "EVIDENCE_UPLOAD_CHECK",
     "Name": "EVIDENCE_UPLOAD_CHECK",
     "Description": "EVIDENCE_UPLOAD_CHECK",
