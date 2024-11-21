@@ -58,5 +58,26 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "CONFIRM_ORDER_REVIEW",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile",
+          "ctsc-team-leader","ctsc"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
