@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 
 const config = require('../../../config.js');
 
@@ -12,7 +12,7 @@ Scenario('DefaultJudgement @create-claim ', async ({I, api_spec}) => {
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.initiateDJSpec(caseid, 'ONE_V_TWO');
+    await I.initiateDJSpec(caseid, 'ONE_V_TWO', 'SPEC');
   }
 }).retry(3);
 

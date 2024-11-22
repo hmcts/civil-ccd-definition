@@ -1,7 +1,7 @@
 [
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleText",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "stayCaseText",
     "AccessControl": [
       {
         "UserRoles": [
@@ -13,20 +13,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleWarning",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "cui-admin-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "dismissText",
     "AccessControl": [
       {
@@ -39,30 +26,124 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleError",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "preStayState",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "cui-admin-profile",
-          "caseworker-civil-systemupdate"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "bundleEvent",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayOption",
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-admin",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayJudicialReferralInMediationText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayCaseProgressedHearingReadyPrepareForHearingText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayRequestUpdateText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayOptionsLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "manageStayRequestUpdateHintText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseFieldID": "anyRepresented",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-civil-systemupdate",
+        "caseworker-civil-solicitor",
+        "CITIZEN-DEFENDANT-PROFILE",
+        "CITIZEN-CLAIMANT-PROFILE",
+        "caseworker-civil-admin"
+      ],
+      "CRUD": "CRU"
       }
     ]
   }
 ]
-

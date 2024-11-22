@@ -1,0 +1,19 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "hwfFeeType",
+    "FieldShowCondition": "casePaymentWaysToPay=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ServiceRequest",
+    "TabLabel": "Service Request",
+    "TabDisplayOrder": 6,
+    "CaseFieldID": "casePaymentWaysToPay",
+    "TabFieldDisplayOrder": 1,
+    "TabShowCondition": "hwfFeeType!=\"CLAIMISSUED\""
+  }
+]
