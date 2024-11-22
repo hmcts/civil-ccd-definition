@@ -572,24 +572,5 @@
         "CRUD": "R"
       }
     ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CONFIRM_LISTING_COMPLETED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "hearing-schedule-access"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil",
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
   }
 ]
