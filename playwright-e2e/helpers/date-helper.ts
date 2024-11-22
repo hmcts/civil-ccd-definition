@@ -41,6 +41,10 @@ export default class DateHelper {
     return date;
   }
 
+  static getToday(): Date {
+    return new Date();
+  }
+
   static addToToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
     return this.addDate(new Date(), { days, months, years, workingDay });
   }
