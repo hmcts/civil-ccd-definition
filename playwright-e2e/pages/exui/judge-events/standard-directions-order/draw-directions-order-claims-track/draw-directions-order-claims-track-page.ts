@@ -25,11 +25,21 @@ export default class DrawDirectionsOrderClaimsTrackPage extends ExuiEvent(BasePa
     ]);
   }
 
+  async setDisputeResolutionHearing() {
+    await super.clickBySelector(checkboxes.smallClaims.disputeResolutionHearing.selector);
+  }
+
+  async setAdditionalDirections() {
+    await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
+    await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selector);
+    await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
+  }
+
   async allocateToFastTrack() {
     await super.clickBySelector(radioButtons.no.selector);
   }
 
   async submit(...args: any[]): Promise<void> {
-    throw new Error('Method not implemented.');
+    await super.retryClickSubmit();
   }
 }

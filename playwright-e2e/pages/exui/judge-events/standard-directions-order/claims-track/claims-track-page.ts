@@ -22,7 +22,16 @@ export default class ClaimsTrackPage extends ExuiEvent(BasePage) {
       super.expectText(checkboxes.smallClaims.disputeResolutionHearing.label),
       super.expectText(checkboxes.smallClaims.flightDelay.label),
     ]);
+  }
+
+  async setAdditionalDirectionsSmallClaimsTrack() {
     await super.clickBySelector(checkboxes.smallClaims.creditHire.selector);
+    await super.clickBySelector(checkboxes.smallClaims.roadTrafficAccident.selector);
+    await super.clickBySelector(checkboxes.smallClaims.flightDelay.selector);
+  }
+
+  async setDisputeResolutionHearing() {
+    await super.clickBySelector(checkboxes.smallClaims.disputeResolutionHearing.selector);
   }
 
   async enterFastTrack() {
@@ -38,7 +47,20 @@ export default class ClaimsTrackPage extends ExuiEvent(BasePage) {
       super.expectText(checkboxes.fastTrack.personalInjury.label),
       super.expectText(checkboxes.fastTrack.roadTrafficAccident.label),
     ]);
+  }
+
+  async setAdditionalDirectionsFastTrack() {
     await super.clickBySelector(checkboxes.fastTrack.buildingDispute.selector);
+    await super.clickBySelector(checkboxes.fastTrack.clinicialNegligence.selector);
+    await super.clickBySelector(checkboxes.fastTrack.creditHire.selector);
+    await super.clickBySelector(checkboxes.fastTrack.employersLiability.selector);
+    await super.clickBySelector(checkboxes.fastTrack.housingDisrepair.selector);
+    await super.clickBySelector(checkboxes.fastTrack.personalInjury.selector);
+    await super.clickBySelector(checkboxes.fastTrack.roadTrafficAccident.selector);
+  }
+
+  async setNoiseInducedHearingLoss() {
+    await super.clickBySelector(checkboxes.fastTrack.noiseInducedHearingLoss.selector);
   }
 
   async submit(...args: any[]): Promise<void> {
