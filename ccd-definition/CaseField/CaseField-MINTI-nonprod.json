@@ -184,5 +184,14 @@
     "RegularExpression": ".doc,.docx",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "confirmListingTickBox",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "ConfirmListingTickBox",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
