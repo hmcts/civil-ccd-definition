@@ -97,6 +97,7 @@
     "ShowSummary": "N",
     "ShowEventNotes": "N"
   },
+  {
     "CaseTypeID": "CIVIL",
     "ID": "CONFIRM_LISTING_COMPLETED",
     "Name": "Confirm Listing",
@@ -114,7 +115,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0
-  }
+   },
    {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "HEARING_SCHEDULED_RETRIGGER",
