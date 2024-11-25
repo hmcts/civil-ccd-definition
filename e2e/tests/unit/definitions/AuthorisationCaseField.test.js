@@ -18,14 +18,17 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let authorisationCaseFieldConfig = [];
       let caseFieldConfig = [];
       let errors = [];
+      let uniqResult = [];
 
       before(() => {
         authorisationCaseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseField', key);
         caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseField', key);
+        uniqResult = uniqWith(authorisationCaseFieldConfig, isFieldDuplicated('CaseFieldID'));
       });
 
+
+
       it('contain a unique case field ID, case type ID and role (no duplicates)', () => {
-        const uniqResult = uniqWith(authorisationCaseFieldConfig, isFieldDuplicated('CaseFieldID'));
         try {
           expect(uniqResult).to.eql(authorisationCaseFieldConfig);
         } catch (error) {
