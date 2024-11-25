@@ -365,7 +365,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "confirmListingTickBox",
     "AccessControl": [
       {

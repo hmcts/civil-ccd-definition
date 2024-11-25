@@ -557,7 +557,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocClaimant",
     "AccessControl": [
       {
@@ -569,7 +569,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "CaseFieldID": "gaAddlDocRespondentSol",
     "AccessControl": [
       {

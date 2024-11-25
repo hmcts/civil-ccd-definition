@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseTypeID": "CIVIL",
     "ID": "solicitorReferences",
     "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
