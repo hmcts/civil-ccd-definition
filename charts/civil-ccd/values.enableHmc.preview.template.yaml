@@ -3,6 +3,7 @@ civil-ccd-stack:
 
 civil-service:
   java:
+    image: 'hmctspublic.azurecr.io/civil/service:pr-5813'
     environment:
       CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
       HMC_API_URL: http://hmc-cft-hearing-service-aat.service.core-compute-aat.internal
