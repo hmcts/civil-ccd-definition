@@ -89,7 +89,6 @@ xui-webapp:
 ccd:
   global:
     postgresUsername: hmcts
-    postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
     postgresHostname: civil-preview.postgres.database.azure.com
     databaseNamePrefix: "pr-${CHANGE_ID}-"
