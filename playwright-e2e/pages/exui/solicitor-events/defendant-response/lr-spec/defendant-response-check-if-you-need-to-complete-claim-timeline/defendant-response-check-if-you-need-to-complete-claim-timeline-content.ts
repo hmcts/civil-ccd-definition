@@ -11,14 +11,3 @@ export const paragraphs = {
   descriptionText5:
     'You can also manually enter your timeline in this service without using the template.',
 };
-
-export const buttons = {
-  previous: {
-    label: 'Previous',
-    selector: "button[type='button']",
-  },
-  continue: {
-    label: 'Continue',
-    selector: "button[type='submit']",
-  },
-};
