@@ -18,12 +18,12 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let authorisationCaseState = [];
       let stateConfig = [];
       let errors = [];
-      let uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseStateID'));
+      let uniqResult = [];
 
       before(() => {
         authorisationCaseState = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseState', key);
         stateConfig = dataProvider.ccdData.State;
-        uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseFieldID'));
+        uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseStateID'));
       });
 
       it('should contain a unique case state, case type ID and role (no duplicates) for nonprod files', () => {
