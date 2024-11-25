@@ -6,6 +6,12 @@ const dataProvider = require('../utils/dataProvider');
 
 const assertFieldExists = createAssertExists('Field');
 
+function assertFieldDefinitionIsValid(row) {
+  expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
+    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+  });
+}
+
 dataProvider.exclusions.forEach((value, key) =>  {
   describe('AuthorisationCaseField'.concat(': ', key, ' config'), () => {
     context('should :', () => {
@@ -36,6 +42,10 @@ dataProvider.exclusions.forEach((value, key) =>  {
 
       it('use existing fields', () => {
         assertFieldExists(authorisationCaseFieldConfig, caseFieldConfig);
+      });
+
+      it('should have only valid definitions', () => {
+         uniqResult.forEach(assertFieldDefinitionIsValid);
       });
     });
   });

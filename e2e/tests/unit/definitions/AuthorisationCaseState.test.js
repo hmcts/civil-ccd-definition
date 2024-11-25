@@ -6,6 +6,12 @@ const dataProvider = require('../utils/dataProvider');
 
 const assertStateExists = createAssertExists('State');
 
+function assertFieldDefinitionIsValid(row) {
+  expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
+    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+  });
+}
+
 dataProvider.exclusions.forEach((value, key) =>  {
   describe('AuthorisationCaseState'.concat(': ', key, ' config'), () => {
     context('definitions:', () => {
@@ -37,6 +43,10 @@ dataProvider.exclusions.forEach((value, key) =>  {
       it('should use existing states', () => {
         assertStateExists(authorisationCaseState, stateConfig);
       });
+
+        it('should have only valid definitions', () => {
+          uniqResult.forEach(assertFieldDefinitionIsValid);
+        });
 
       context('Solicitor has valid permissions', () => {
         it('CRU permissions for all states', () => {
