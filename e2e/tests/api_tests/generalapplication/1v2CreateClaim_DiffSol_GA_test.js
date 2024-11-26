@@ -11,7 +11,7 @@ Scenario.only('Make a general application', async ({api}) => {
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
+  await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 }).retry(3);
 
 AfterSuite(async  () => {
