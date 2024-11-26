@@ -18,6 +18,7 @@ exports.config = {
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
     './e2e/tests/api_tests/mediation/*_test.js',
     './e2e/tests/api_tests/sdo_R2/*_test.js',
+    './e2e/tests/api_tests/generalapplication/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/sdo/*_test.js',
