@@ -21,7 +21,7 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "PageLabel": "Confirm order review",
-    "PageShowCondition": "obligationDatePresent = \"YES\""
+    "PageShowCondition": "obligationDatePresent = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
