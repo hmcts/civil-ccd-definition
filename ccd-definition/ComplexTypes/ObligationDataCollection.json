@@ -22,6 +22,7 @@
     "FieldType": "Text",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
+    "FieldShowCondition": "obligationReason = \"OTHER\"",
     "Searchable": "N"
   },
   {

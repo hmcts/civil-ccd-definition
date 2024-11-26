@@ -13,15 +13,25 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
-    "CaseFieldID": "obligationData",
+    "CaseFieldID": "obligationDataMandatory",
     "PageFieldDisplayOrder": 1,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "COMPLEX",
     "PageID": "EnterObligationData",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
-    "PageLabel": "Confirm order review",
     "PageShowCondition": "obligationDatePresent = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CONFIRM_ORDER_REVIEW",
+    "CaseFieldID": "obligationData",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "EnterObligationData",
+    "PageDisplayOrder": 2,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

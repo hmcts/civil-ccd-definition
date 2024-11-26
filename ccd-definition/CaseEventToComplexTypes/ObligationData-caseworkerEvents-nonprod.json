@@ -24,7 +24,6 @@
     "ListElementCode": "otherObligationReason",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "obligationReason = \"OTHER\"",
     "Publish": "Y"
   },
   {
