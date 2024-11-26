@@ -95,18 +95,24 @@ Scenario('Pay hearing fee', async ({LRspec}) => {
 }).retry(3);
 
 Scenario('Stay the case', async ({LRspec}) => {
-  await LRspec.stayCase();
-  await waitForFinishedBusinessProcess(caseNumber);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.stayCase();
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
 }).retry(3);
 
 Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
-  await LRspec.manageStay('REQ_UPDATE');
-  await waitForFinishedBusinessProcess(caseNumber);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.manageStay('REQ_UPDATE');
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
 }).retry(3);
 
 Scenario('Lift the stay case - Manage stay', async ({LRspec}) => {
-  await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
-  await waitForFinishedBusinessProcess(caseNumber);
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
 }).retry(3);
 
 

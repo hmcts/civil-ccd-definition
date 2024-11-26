@@ -8,7 +8,7 @@ module.exports = {
   },
 
   async verifyReqUpdateSteps(state = 'JUDICIAL_REFERRAL') {
-    await I.waitForText('Request an update on I case');
+    await I.waitForText('Request an update on this case');
     await I.click(I.fields.reqUpdate);
     await I.waitForText('A notification will be sent to all parties, asking them for an update on the case.');
     await I.waitForText('After 7 days, a new task will be created to progress the case.');
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   async verifyLiftCaseStaySteps(state = 'JUDICIAL_REFERRAL') {
-    await I.waitForText('Lift the stay from I case');
+    await I.waitForText('Lift the stay from this case');
     if (['IN_MEDIATION', 'JUDICIAL_REFERRAL'].includes(state)) {
       await I.waitForText('By lifting the stay, I case will automatically be sent to a judge.');
       await I.waitForText('I will also raise a work allocation task for a judge to make a standard directions order for I case.');
