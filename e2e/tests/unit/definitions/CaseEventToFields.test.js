@@ -3,6 +3,12 @@ const { find, uniqWith } = require('lodash');
 const { isPositiveNumber, whenPopulated, isCaseEventToFieldDuplicated } = require('../utils/utils');
 const dataProvider = require('../utils/dataProvider');
 
+function assertFieldDefinitionIsValid(row) {
+  expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
+    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+  });
+}
+
 function assertHasOnlyValidEventIds(caseEventToFieldsFile, caseEventFile) {
   const errors = [];
   caseEventToFieldsFile.forEach(caseEventToFieldsEntry => {
@@ -60,11 +66,13 @@ dataProvider.exclusions.forEach((value, key) =>  {
       let caseEventConfig = [];
       let caseFieldConfig = [];
       let errors = [];
+      let uniqResult = [];
 
       before(() => {
         caseEventToFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEventToFields', key);
         caseEventConfig = dataProvider.getConfig('../../../../ccd-definition/CaseEvent', key);
         caseFieldConfig = dataProvider.getConfig('../../../../ccd-definition/CaseField', key);
+        uniqResult = uniqWith(caseEventToFieldConfig, isCaseEventToFieldDuplicated('CaseFieldID'));
       });
       it('contain valid event IDs', () => {
         assertHasOnlyValidEventIds(caseEventToFieldConfig, caseEventConfig);
@@ -75,7 +83,7 @@ dataProvider.exclusions.forEach((value, key) =>  {
       });
 
       it('not contain duplicate field IDs', () => {
-        const uniqResult = uniqWith(caseEventToFieldConfig, isCaseEventToFieldDuplicated('CaseFieldID'));
+
         try {
           expect(uniqResult).to.eql(caseEventToFieldConfig);
         } catch (error) {
@@ -88,6 +96,10 @@ dataProvider.exclusions.forEach((value, key) =>  {
         if (errors.length) {
           assert.fail(`Found duplicated CaseEventToFields - ${errors}`);
         }
+      });
+
+      it('should have only valid definitions', () => {
+        uniqResult.forEach(assertFieldDefinitionIsValid);
       });
 
       it('contain valid order fields', () => {
