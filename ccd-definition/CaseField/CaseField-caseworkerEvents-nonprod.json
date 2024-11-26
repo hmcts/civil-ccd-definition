@@ -98,14 +98,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "obligationDataMandatory",
-    "Label": "Obligation date",
-    "FieldType": "ObligationDataCollection",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "obligationData",
     "Label": " ",
     "FieldType": "Collection",
