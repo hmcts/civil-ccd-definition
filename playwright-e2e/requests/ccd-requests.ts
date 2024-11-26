@@ -34,6 +34,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
     };
     const responseJson = await super.retryRequestJson(url, requestOptions);
     console.log(`CCD case data fetched successfully with id: ${caseId}`);
+    console.log(responseJson.id);
     return { id: responseJson.id, ...responseJson.case_data };
   }
 

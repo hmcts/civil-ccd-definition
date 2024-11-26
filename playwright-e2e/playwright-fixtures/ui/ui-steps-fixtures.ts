@@ -1,3 +1,7 @@
+import { test as pageFactories } from './page-factory-fixtures';
+import { test as requestFactories } from '../api/requests-factory-fixtures';
+import { test as testUtils } from '../utils/test-utils-fixtures';
+import { mergeTests } from '@playwright/test';
 import ExuiDashboardSteps from '../../steps/ui/exui/exui-dashboard-steps';
 import ClaimantResponseSpecSteps from '../../steps/ui/exui/solicitor-events/claimant-response/claimant-response-spec-steps';
 import ClaimantResponseSteps from '../../steps/ui/exui/solicitor-events/claimant-response/claimant-response-steps';
@@ -8,7 +12,6 @@ import DefendantResponseSteps from '../../steps/ui/exui/solicitor-events/defenda
 import NotifyClaimDetailsSteps from '../../steps/ui/exui/solicitor-events/notify-claim-details-steps';
 import NotifyClaimSteps from '../../steps/ui/exui/solicitor-events/notify-claim-steps';
 import IdamSteps from '../../steps/ui/idam/idam-steps';
-import { test as base } from './page-factory-fixtures';
 
 type UiStepsFixtures = {
   IdamSteps: IdamSteps;
@@ -23,7 +26,7 @@ type UiStepsFixtures = {
   ClaimantResponseSteps: ClaimantResponseSteps;
 };
 
-export const test = base.extend<UiStepsFixtures>({
+export const test = mergeTests(testUtils, pageFactories, requestFactories).extend<UiStepsFixtures>({
   IdamSteps: async ({ _pageUtilsFactory, _idamPageFactory, _requestsFactory, _testData, _isSetupTest, _isTeardownTest, _verifyCookiesBanner }, use) => {
     await use(new IdamSteps(_pageUtilsFactory, _idamPageFactory, _requestsFactory, _isSetupTest, _isTeardownTest, _verifyCookiesBanner, _testData));
   },
