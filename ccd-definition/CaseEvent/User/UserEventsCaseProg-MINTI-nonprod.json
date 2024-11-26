@@ -98,7 +98,7 @@
     "ShowEventNotes": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CONFIRM_LISTING_COMPLETED",
     "Name": "Confirm Listing",
     "Description": "Confirm Listing",
