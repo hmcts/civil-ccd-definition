@@ -1,0 +1,35 @@
+[
+  {
+    "ID": "ObligationDataCollection",
+    "ListElementCode": "obligationDate",
+    "FieldType": "Date",
+    "ElementLabel": "Enter the date that this case should be reviewed",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ObligationDataCollection",
+    "ListElementCode": "obligationReason",
+    "ElementLabel": "Why does this case need to be reviewed?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "ObligationReason",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ObligationDataCollection",
+    "ListElementCode": "otherObligationReason",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "ObligationDataCollection",
+    "ListElementCode": "obligationAction",
+    "FieldType": "TextArea",
+    "ElementLabel": "What action is required when the case is reviewed?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
