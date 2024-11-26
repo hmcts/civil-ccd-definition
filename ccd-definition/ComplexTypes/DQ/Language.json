@@ -9,6 +9,14 @@
   },
   {
     "ID": "Language",
+    "ListElementCode": "helpTextCarm",
+    "FieldType": "Label",
+    "ElementLabel": "You can also use Welsh at mediation. Asking to speak in Welsh will not delay the hearing or mediation appointment or have any effect on proceedings or the outcome of a case.",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Language",
     "ListElementCode": "evidence",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "Language",
