@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyNotified",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyChecked",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextApplicant",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextRespondent1",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextRespondent2",
     "AccessControl": [
       {
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyApplicant",
     "AccessControl": [
       {
@@ -83,7 +83,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyRespondent1",
     "AccessControl": [
       {
@@ -106,7 +106,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyRespondent2",
     "AccessControl": [
       {
@@ -125,7 +125,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyApplicant",
     "AccessControl": [
       {
@@ -137,7 +137,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyRespondent1",
     "AccessControl": [
       {
@@ -149,7 +149,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyRespondent2",
     "AccessControl": [
       {
@@ -161,7 +161,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantRevisedHearingRequirements",
     "AccessControl": [
       {
@@ -180,7 +180,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1RevisedHearingRequirements",
     "AccessControl": [
       {
@@ -199,7 +199,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2RevisedHearingRequirements",
     "AccessControl": [
       {
@@ -218,7 +218,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantHearingOtherComments",
     "AccessControl": [
       {
@@ -237,7 +237,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1HearingOtherComments",
     "AccessControl": [
       {
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2HearingOtherComments",
     "AccessControl": [
       {
@@ -275,7 +275,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyDocuments",
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",
@@ -291,7 +291,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "evidenceUploadOptions",
     "AccessControl": [
       {

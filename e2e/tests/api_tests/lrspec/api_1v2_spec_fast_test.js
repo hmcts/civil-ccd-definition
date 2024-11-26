@@ -1,9 +1,10 @@
- 
+
 
 const config = require('../../../config.js');
 const {checkCarmToggleEnabled} = require('../../../api/testingSupport');
 
 Feature('CCD 1v2 API test @api-spec-fast @api-nightly-prod');
+
 Scenario('1v2 fast claim counter claim @api-spec-counterclaim', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'ONE_V_TWO');

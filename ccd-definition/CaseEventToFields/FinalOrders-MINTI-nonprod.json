@@ -1,7 +1,18 @@
 [
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderTrackToggle",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "TrackAllocation",
+    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
+    "ShowSummaryChangeOption": "N"
+  },
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "PageLabel": "Select track",
     "CaseEventFieldLabel": "Are you allocating the claim to a track?",
@@ -10,10 +21,11 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "PageID": "TrackAllocation",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/assign-track-toggle"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderTrackAllocation",
     "CaseEventFieldLabel": "What track are you allocating the claim to?",
@@ -25,7 +37,7 @@
     "FieldShowCondition": "finalOrderAllocateToTrack=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFastTrackComplexityBandLabel",
     "PageLabel": "Fast Track",
@@ -34,10 +46,10 @@
     "DisplayContext": "READONLY",
     "PageID": "FastTrackComplexityBand",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderTrackAllocation=\"FAST_CLAIM\" AND finalOrderAllocateToTrack=\"Yes\""
+    "PageShowCondition": "finalOrderTrackToggle=\"FAST_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFastTrackComplexityBand",
     "PageDisplayOrder": 2,
@@ -47,7 +59,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderIntermediateTrackComplexityBandLabel",
     "PageLabel": "Intermediate Track",
@@ -56,10 +68,10 @@
     "DisplayContext": "READONLY",
     "PageID": "IntermediateTrackComplexityBand",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderTrackAllocation=\"INTERMEDIATE_CLAIM\" AND finalOrderAllocateToTrack=\"Yes\""
+    "PageShowCondition": "finalOrderTrackToggle=\"INTERMEDIATE_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderIntermediateTrackComplexityBand",
     "PageDisplayOrder": 2,
@@ -69,7 +81,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "caseParticipants",
     "PageLabel": "Make an order",
@@ -77,10 +89,11 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderSelect",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderSelectionLabel",
     "PageDisplayOrder": 3,
@@ -90,7 +103,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderSelection",
     "PageDisplayOrder": 3,
@@ -101,7 +114,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-form-values"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "selectTemplateLabel",
     "EventHintText": "Select a template to download a Word document and edit offline",
@@ -110,12 +123,12 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SelectTemplate",
-    "PageShowCondition": "finalOrderSelection=\"DOWNLOAD_ORDER_TEMPLATE\"",
     "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "finalOrderTrackToggle= \"INTERMEDIATE_CLAIM\" OR finalOrderTrackToggle= \"MULTI_CLAIM\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/create-download-template-document"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDownloadTemplateOptions",
     "PageDisplayOrder": 4,
@@ -125,7 +138,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "PageLabel": "Make an order",
@@ -137,18 +150,18 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-and-generate-document"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderMadeLabel",
     "PageDisplayOrder": 4,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "FinalOrderAssistedOrder",
-    "PageShowCondition": "finalOrderSelection=\"ASSISTED_ORDER\"",
+    "PageShowCondition": "finalOrderSelection = \"ASSISTED_ORDER\" AND (finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\")",
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
     "PageDisplayOrder": 4,
@@ -158,7 +171,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderMadeSelection",
     "PageDisplayOrder": 4,
@@ -168,7 +181,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDateHeardComplex",
     "PageDisplayOrder": 4,
@@ -179,7 +192,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderJudgePapersLabel",
     "PageDisplayOrder": 4,
@@ -189,7 +202,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderJudgePapers",
     "PageDisplayOrder": 4,
@@ -199,7 +212,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderJudgeHeardLabel",
     "PageDisplayOrder": 4,
@@ -209,7 +222,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderJudgeHeardFrom",
     "PageDisplayOrder": 4,
@@ -219,7 +232,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRepresentation",
     "PageDisplayOrder": 4,
@@ -230,7 +243,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRecitalsLabel",
     "PageDisplayOrder": 4,
@@ -240,7 +253,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRecitals",
     "PageDisplayOrder": 4,
@@ -250,7 +263,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderRecitalsRecorded",
     "PageDisplayOrder": 4,
@@ -261,7 +274,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderOrdered",
     "PageDisplayOrder": 4,
@@ -271,7 +284,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderOrderedThat",
     "PageDisplayOrder": 4,
@@ -281,7 +294,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderOrderedThatText",
     "PageDisplayOrder": 4,
@@ -291,7 +304,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingLabel",
     "PageDisplayOrder": 4,
@@ -301,7 +314,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingToggle",
     "PageDisplayOrder": 4,
@@ -311,7 +324,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "PageDisplayOrder": 4,
@@ -322,7 +335,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderCost",
     "PageDisplayOrder": 4,
@@ -332,7 +345,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderCostSecondaryLabel",
     "PageDisplayOrder": 4,
@@ -342,7 +355,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostList",
     "PageDisplayOrder": 4,
@@ -352,7 +365,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsReserved",
     "PageDisplayOrder": 4,
@@ -363,7 +376,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "PageDisplayOrder": 4,
@@ -375,7 +388,7 @@
   },
   {
 
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "PageDisplayOrder": 4,
@@ -386,7 +399,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "publicFundingCostsProtectionLabel",
     "PageDisplayOrder": 4,
@@ -396,7 +409,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "publicFundingCostsProtection",
     "PageDisplayOrder": 4,
@@ -406,7 +419,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "publicFundingCostsProtectionDropdown",
     "PageDisplayOrder": 4,
@@ -417,7 +430,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealLabel",
     "PageDisplayOrder": 4,
@@ -427,7 +440,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealToggle",
     "PageDisplayOrder": 4,
@@ -437,7 +450,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderAppealComplex",
     "PageDisplayOrder": 4,
@@ -448,7 +461,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
     "PageDisplayOrder": 4,
@@ -458,7 +471,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
     "PageDisplayOrder": 4,
@@ -468,7 +481,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderMadeOnDetailsList",
     "PageDisplayOrder": 4,
@@ -478,7 +491,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderMadeOnDetailsOrderCourt",
     "PageDisplayOrder": 4,
@@ -489,7 +502,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
     "PageDisplayOrder": 4,
@@ -500,7 +513,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderReasonsLabel",
     "PageDisplayOrder": 4,
@@ -510,7 +523,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderGiveReasonsLabel",
     "PageDisplayOrder": 4,
@@ -520,7 +533,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderGiveReasonsYesNo",
     "PageDisplayOrder": 4,
@@ -530,7 +543,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderGiveReasonsComplex",
     "PageDisplayOrder": 4,
@@ -541,7 +554,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "caseParticipantsFreeForm",
     "PageLabel": "Make an order",
@@ -550,10 +563,10 @@
     "DisplayContext": "READONLY",
     "PageID": "FreeFormOrder",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\""
+    "PageShowCondition": "finalOrderSelection = \"FREE_FORM_ORDER\" AND (finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\")"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormRecitalAndOrderLabel",
     "PageDisplayOrder": 4,
@@ -563,7 +576,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormRecordedTextAreaLabel",
     "PageDisplayOrder": 4,
@@ -573,7 +586,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormRecordedTextArea",
     "PageDisplayOrder": 4,
@@ -583,7 +596,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormOrderedLabel",
     "PageDisplayOrder": 4,
@@ -593,7 +606,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormOrderedTextArea",
     "PageDisplayOrder": 4,
@@ -603,7 +616,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtsListLabel",
     "PageDisplayOrder": 4,
@@ -613,7 +626,7 @@
     "ShowSummaryChangeOption": "N"
   },
  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtsList",
     "PageDisplayOrder": 4,
@@ -624,7 +637,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-and-generate-document"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderOnCourtInitiative",
     "PageDisplayOrder": 4,
@@ -636,7 +649,7 @@
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_ON_COURT_INITIATIVE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderWithoutNotice",
     "PageDisplayOrder": 4,
@@ -648,7 +661,7 @@
     "FieldShowCondition": "orderOnCourtsList = \"ORDER_WITHOUT_NOTICE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormHearingNotesLabel",
     "PageDisplayOrder": 4,
@@ -658,7 +671,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "freeFormHearingNotes",
     "PageDisplayOrder": 4,
@@ -668,7 +681,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDocument",
     "PageDisplayOrder": 5,
@@ -676,10 +689,10 @@
     "DisplayContext": "COMPLEX",
     "PageID": "FinalOrderPreview",
     "ShowSummaryChangeOption": "Y",
-    "PageShowCondition": "finalOrderSelection!=\"DOWNLOAD_ORDER_TEMPLATE\""
+    "PageShowCondition": "finalOrderTrackToggle= \"SMALL_CLAIM\" OR finalOrderTrackToggle= \"FAST_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "downloadTemplateLabel1",
     "PageLabel": "Download template",
@@ -688,10 +701,10 @@
     "DisplayContext": "READONLY",
     "PageID": "DownloadTemplate",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection=\"DOWNLOAD_ORDER_TEMPLATE\""
+    "PageShowCondition": "finalOrderTrackToggle= \"INTERMEDIATE_CLAIM\" OR finalOrderTrackToggle= \"MULTI_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderDownloadTemplateDocument",
     "PageDisplayOrder": 5,
@@ -701,7 +714,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "downloadTemplateLabel2",
     "PageLabel": "Download template",
@@ -712,7 +725,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "uploadOrderDocumentFromTemplateLabel",
     "PageLabel": "Upload order",
@@ -721,10 +734,10 @@
     "DisplayContext": "READONLY",
     "PageID": "UploadOrder",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderSelection=\"DOWNLOAD_ORDER_TEMPLATE\""
+    "PageShowCondition": "finalOrderTrackToggle= \"INTERMEDIATE_CLAIM\" OR finalOrderTrackToggle= \"MULTI_CLAIM\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "uploadOrderDocumentFromTemplate",
     "PageDisplayOrder": 6,

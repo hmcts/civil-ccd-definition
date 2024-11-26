@@ -2,7 +2,7 @@ import { APIRequestContext, APIResponse } from 'playwright-core';
 import RequestOptions from '../models/api/request-options';
 import { expect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
-import ResponseDataType from '../enums/api/response-data-type';
+import ResponseDataType from '../enums/response-data-type';
 import * as responseOptions from '../models/api/response-options';
 
 const classKey = 'BaseRequest';
@@ -39,7 +39,7 @@ export default abstract class BaseRequest {
       body,
       method = 'GET',
       params,
-    }: RequestOptions,
+    }: RequestOptions = {},
     responseType = ResponseDataType.NONE,
     { expectedStatus = 200, verifyResponse }: responseOptions._ResponseOptions = {},
   ): Promise<APIResponse | any | string> {
@@ -61,7 +61,7 @@ export default abstract class BaseRequest {
 
   private async _retryRequest(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions: RequestOptions = {},
     responseDataType = ResponseDataType.NONE,
     {
       expectedStatus = 200,
@@ -94,7 +94,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async request(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     responseOptions?: responseOptions.ResponseOptions,
   ) {
     return (await this._request(
@@ -108,7 +108,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async retryRequest(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     retryResponseOptions?: responseOptions.RetryResponseOptions,
   ) {
     return (await this._retryRequest(
@@ -122,7 +122,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async requestJson(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     responseJsonOptions?: responseOptions.ResponseJsonOptions,
   ): Promise<any> {
     return (await this._request(
@@ -136,7 +136,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async retryRequestJson(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     retryResponseJsonOptions?: responseOptions.RetryResponseJsonOptions,
   ): Promise<any> {
     return (await this._retryRequest(
@@ -150,7 +150,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async requestText(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     responseTextOptions?: responseOptions.ResponseTextOptions,
   ): Promise<string> {
     return (await this._request(
@@ -164,7 +164,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'url')
   async retryRequestText(
     url: string,
-    requestOptions: RequestOptions,
+    requestOptions?: RequestOptions,
     retryResponseTextOptions?: responseOptions.RetryResponseTextOptions,
   ): Promise<string> {
     return (await this._retryRequest(

@@ -51,13 +51,14 @@ charts/civil-ccd/Chart.lock
 playwright/.cache/
 
 # Playwright
-test-results/
+playwright-test-results/
 allure-results/
-allure-functional-results/
-allure-bootstrap-results/
+playwright-allure-functional-results/
+playwright-allure-bootstrap-results/
+playwright-allure-bootstrap-report/
+playwright-allure-functional-report/
 allure-report/
-allure-functional-report/
-allure-bootstrap-report/
 playwright-report/
 /playwright-e2e/fixtures/.users/
 /playwright-e2e/fixtures/.user-cookies/
+/playwright-e2e/fixtures/data/bankHolidays.json
