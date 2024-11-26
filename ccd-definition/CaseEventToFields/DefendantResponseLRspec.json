@@ -1599,6 +1599,17 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "defendantDQLanguageMediationHint",
+    "PageDisplayOrder": 48,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Language",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "SmallClaimHearingInterpreterRequired",
     "PageDisplayOrder": 49,
     "PageFieldDisplayOrder": 2,
@@ -1777,6 +1788,17 @@
     "CaseEventFieldLabel": "Support with access needs",
     "FieldShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_2\" AND respondent2SameLegalRepresentative !=\"Yes\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "defendantDQSupportMediationHint",
+    "PageDisplayOrder": 52,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingSupport",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
