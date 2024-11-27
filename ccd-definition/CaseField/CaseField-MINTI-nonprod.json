@@ -193,5 +193,13 @@
     "FieldTypeParameter": "ConfirmListingTickBox",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL",
+    "ID": "taskManagementLocations",
+    "Label": "Task management location",
+    "FieldType": "TaskManagementLocationTypes",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
