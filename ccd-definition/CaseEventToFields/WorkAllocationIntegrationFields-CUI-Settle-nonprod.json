@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "LIP_CLAIM_SETTLED",
+    "CaseFieldID": "hearingDate",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  }
+]

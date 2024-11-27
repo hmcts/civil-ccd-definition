@@ -34,16 +34,5 @@
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "settleReason=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "LIP_CLAIM_SETTLED",
-    "CaseFieldID": "hearingDate",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "FeatureToggleWA",
-    "ShowSummaryChangeOption": "N",
-    "Publish": "Y"
   }
 ]
