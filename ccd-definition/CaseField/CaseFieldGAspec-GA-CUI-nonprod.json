@@ -14,5 +14,25 @@
     "FieldType": "HelpWithFees",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "generalAppDetailsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "Max": 4000,
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "generalAppReasonsOfOrderColl",
+    "Label": " ",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "Max": 4000,
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
