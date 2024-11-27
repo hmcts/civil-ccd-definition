@@ -80,7 +80,7 @@
       }
     ]
   },
-    {
+  {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_STAY_WA",
     "AccessControl": [
@@ -90,6 +90,8 @@
         ],
         "CRUD": "CRU"
       }
+    ]
+  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
