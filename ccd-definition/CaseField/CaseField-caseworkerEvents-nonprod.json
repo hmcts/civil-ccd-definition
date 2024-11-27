@@ -97,7 +97,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendAndReplyOption",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -106,7 +106,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "messagesToReplyTo",
     "Label": " ",
     "FieldType": "DynamicList",
@@ -115,7 +115,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendMessageMetadata",
     "Label": " ",
     "FieldType": "SendMessageMetadata",
@@ -123,7 +123,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendMessageTitle",
     "Label": "## Send a message",
     "FieldType": "Label",
@@ -131,7 +131,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendMessageContent",
     "Label": " ",
     "HintText": "Explain what you're requesting and why. Include any answers and decision you need.",
@@ -140,7 +140,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendMessageContextTitle",
     "Label": "## Send a message",
     "FieldType": "Label",
@@ -148,7 +148,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sendMessageContentTitle",
     "Label": "## Send a message",
     "FieldType": "Label",
@@ -156,7 +156,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "messages",
     "Label": "Messages",
     "FieldType": "Collection",
@@ -165,7 +165,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "replyToMessageTitle",
     "Label": "## Reply to a message",
     "FieldType": "Label",
@@ -173,7 +173,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "messageReplyMetadata",
     "Label": " ",
     "FieldType": "MessageReply",
@@ -181,7 +181,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "messageHistory",
     "Label": " ",
     "FieldType": "Text",
@@ -189,7 +189,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "messageHistoryLabel",
     "Label": "${messageHistory}",
     "FieldType": "Label",
