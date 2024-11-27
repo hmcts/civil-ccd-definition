@@ -110,13 +110,6 @@ Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Judge triggers SDO', async ({I}) => {
-   await I.login(config.judgeUserWithRegionId1);
-   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-   await I.waitForText('Summary');
-   await I.initiateSDO(null, null, 'fastTrack', null);
-}).retry(3);
-
 Scenario('Stay the case', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.stayCase();
@@ -136,6 +129,13 @@ Scenario('Lift the stay case - Manage stay', async ({I}) => {
     await I.manageStay('LIFT_STAY', 'JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseNumber);
   }
+}).retry(3);
+
+Scenario('Judge triggers SDO', async ({I}) => {
+  await I.login(config.judgeUserWithRegionId1);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
+  await I.waitForText('Summary');
+  await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
