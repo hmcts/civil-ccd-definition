@@ -1490,7 +1490,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1SmallClaimWitnessesLabel",
-    "PageDisplayOrder": 46,
+    "PageDisplayOrder": 47,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "SmallClaimWitnesses",

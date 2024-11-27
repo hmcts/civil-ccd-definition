@@ -363,5 +363,24 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "confirmListingTickBox",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
