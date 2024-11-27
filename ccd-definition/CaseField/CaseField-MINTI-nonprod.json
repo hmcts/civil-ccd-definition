@@ -186,7 +186,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "confirmListingTickBox",
     "Label": " ",
     "FieldType": "MultiSelectList",
