@@ -42,6 +42,11 @@ export default class SmallClaimsPage extends ExuiEvent(BasePage) {
     ]);
   }
 
+  async verifyJudgementSum() {
+    await super.expectSubheading(subheadings.judgementClaimSum);
+    await super.expectText(paragraphs.paragraph7);
+  }
+
   async addJudgesRecital() {
     await super.inputText('judges recital', inputs.judgesRecital.selector);
   }
