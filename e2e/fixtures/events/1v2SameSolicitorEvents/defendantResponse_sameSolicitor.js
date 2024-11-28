@@ -1,4 +1,5 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 const config = require('../../../config.js');
 
@@ -9,6 +10,7 @@ module.exports = {
         ConfirmDetails: {
           respondent1: {
             type: 'INDIVIDUAL',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             individualFirstName: 'John',
             individualLastName: 'Doe',
             individualTitle: 'Sir',
