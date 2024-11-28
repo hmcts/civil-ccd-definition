@@ -937,7 +937,7 @@ module.exports = function () {
           () => event.returnToCaseDetails(),
         ]);
       }
-      await this.waitForText('Case Progression');
+      await this.waitForText('Summary');
     },
 
     async requestForReconsiderationForUI() {
