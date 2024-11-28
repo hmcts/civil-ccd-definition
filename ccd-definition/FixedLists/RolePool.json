@@ -14,13 +14,13 @@
   {
     "ID": "RolePool",
     "ListElementCode": "JUDICIAL_DISTRICT",
-    "ListElement": "Judge",
+    "ListElement": "District Judge",
     "DisplayOrder": 2
   },
   {
     "ID": "RolePool",
     "ListElementCode": "JUDICIAL_CIRCUIT",
-    "ListElement": "Judge",
+    "ListElement": "Circuit Judge",
     "DisplayOrder": 2
   },
   {
