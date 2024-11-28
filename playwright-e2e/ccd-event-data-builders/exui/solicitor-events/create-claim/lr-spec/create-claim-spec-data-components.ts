@@ -2,10 +2,10 @@ import {
   claimantSolicitorUser,
   defendantSolicitor1User,
   defendantSolicitor2User,
-} from '../../../../../../config/users/exui-users';
-import ClaimTrack from '../../../../../../enums/claim-track';
-import PartyType from '../../../../../../enums/party-type';
-import CaseDataHelper from '../../../../../../helpers/case-data-helper';
+} from '../../../../../config/users/exui-users';
+import ClaimTrack from '../../../../../enums/claim-track';
+import PartyType from '../../../../../enums/party-type';
+import CaseDataHelper from '../../../../../helpers/case-data-helper';
 
 const references = {
   References: {
