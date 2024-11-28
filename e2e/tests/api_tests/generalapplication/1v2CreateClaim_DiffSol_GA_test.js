@@ -3,7 +3,7 @@ const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAss
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let caseNumber;
 
-Feature('1v2 Different Solicitors General application creation @api-unspec @api-multiparty @api-nightly-prod');
+Feature('1v2 Different Solicitors General application creation @api-unspec @api-nonprod');
 
 Scenario('Make a general application', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
