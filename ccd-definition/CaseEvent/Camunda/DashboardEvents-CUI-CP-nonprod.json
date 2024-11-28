@@ -209,6 +209,32 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_CLAIMANT",
+    "Name": "Court Officer Order Defendant",
+    "Description": "Create dashboard notice for dashboard COO",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_DEFENDANT",
+    "Name": "Court Officer Order Defendant",
+    "Description": "Create dashboard notice for dashboard COO",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_EVIDENCE_UPLOADED_CLAIMANT",
     "Name": "Dashboard evidence uploaded",
     "Description": "Create dashboard notice for evidence uploaded",

@@ -85,6 +85,18 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_UPLOAD_HEARING_DOCUMENTS_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
