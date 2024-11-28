@@ -15,20 +15,17 @@ export const subheadings = {
   creditHire: 'Credit hire',
   roadTrafficAccident: 'Road traffic accident',
   addNewDirection: 'Add a new direction (Optional)',
+  welshLanguage: 'Use of the Welsh Language',
 };
 
 export const paragraphs = {
   paragraph1: 'The claim is allocated to the Small Claims Track.',
-  paragraph2: 'Use of the Welsh Language',
-  paragraph3:
-    'Warning: You must comply with the terms imposed upon you by this order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make formal application to the court before any deadline imposed upon you expires.',
-  paragraph4:
-    'You are encouraged to try to settle the case with the other side. You may also contact the Small Claims Mediation Service to arrange a mediation appointment. The service is free and can be contacted on (01604) 795511.',
-};
-
-export const witnessStatementContent = {
-  paragraph1: 'A witness statement must',
   paragraph2:
+    'Warning: You must comply with the terms imposed upon you by this order otherwise your claim or the defence of it is liable to be struck out or some other sanction imposed. If you cannot comply, you are expected to make formal application to the court before any deadline imposed upon you expires.',
+  paragraph3:
+    'You are encouraged to try to settle the case with the other side. You may also contact the Small Claims Mediation Service to arrange a mediation appointment. The service is free and can be contacted on (01604) 795511.',
+  paragraph4: 'A witness statement must',
+  paragraph5:
     'a) Start with the name of the case and the claim number;\n' +
     'b) State the full name and address of the witness;\n' +
     'c) Set out the witness’s evidence clearly in numbered paragraphs on numbered pages;\n' +
@@ -37,6 +34,11 @@ export const witnessStatementContent = {
     'f) If a witness is unable to read the statement there must be a certificate that it has been read or interpreted to the witness by a suitably qualified person and at the final hearing there must be an independent interpreter who will not be provided by the Court.\n\n' +
     'The Judge may refuse to allow a witness to give evidence or consider any statement of any witness whose statement has not been uploaded to the Digital Portal in accordance with the paragraphs above.\n\n' +
     'A witness whose statement has been uploaded in accordance with the above must attend the hearing. If they do not attend,it will be for the Court to decide how much reliance, if any, to place on their evidence.',
+  paragraph6:
+    'If any party is legally represented then when filing any witness evidence, the legal representatives must notify the Court in writing that:\n' +
+    'a) they have advised their client of the entitlement of any party or witness to give evidence in the Welsh Language in accordance with the Welsh Language Act 1993 (which is not dependant on whether they are fluent in English)\n' +
+    'b) instructions have been taken as to whether any party or witness will exercise that entitlement, in which case the legal representatives must so inform the Court so that arrangements can be made by the Court for instantaneous translation facilities to be made available without charge\n\n' +
+    'Any unrepresented party or witness for such a party being entitled to give evidence in the Welsh Language in accordance with the principle of the Welsh Language Act 1993 must notify the Court when sending to the Court their witness evidence whether any party or witness will exercise that entitlement whereupon the Court will make arrangements for instantaneous translation facilities to be made available without charge.',
 };
 
 export const creditHireContent = {
@@ -88,6 +90,17 @@ export const inputs = {
         selector: '#dateTo-year',
       },
     },
+    otherHours: {
+      label: 'Hour(s)',
+      selector: '#smallClaimsHearing_otherHours',
+    },
+    otherMinutes: {
+      label: 'Minute(s)',
+      selector: '#smallClaimsHearing_otherMinutes',
+    },
+    input: {
+      selector: '#smallClaimsHearing_input2',
+    },
   },
   hearingNotes: {
     hintText: 'This is only seen by the listing officer.',
@@ -105,14 +118,44 @@ export const inputs = {
     },
   },
   witnessStatement: {
-    label: 'Statements of witnesses',
-    selector: '#sdoR2SmallClaimsWitnessStatementOther_sdoStatementOfWitness',
+    statementOfWitnesses: {
+      label: 'Statements of witnesses',
+      selector: '#sdoR2SmallClaimsWitnessStatementOther_sdoStatementOfWitness',
+    },
+    numClaimantWitnesses: {
+      label: 'Limit number of witnesses (claimant)',
+      hintText: 'For example,4',
+      selector:
+        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictWitness_noOfWitnessClaimant',
+    },
+    numDefendantWitnesses: {
+      label: 'Limit number of witnesses (defendant)',
+      hintText: 'For example,4',
+      selector:
+        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictWitness_noOfWitnessDefendant',
+    },
+    partyIsCountedAsWitnessText: {
+      selector:
+        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictWitness_noOfWitnessDefendant',
+    },
+    witnessShouldNotMoreThanText: {
+      selector:
+        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictPages_witnessShouldNotMoreThanTxt',
+    },
+    numPages: {
+      label: 'Number of pages',
+      hintText: 'For example,4',
+      selector: '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictPages_noOfPages',
+    },
+    fontDetails: {
+      selector: '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictPages_fontDetails',
+    },
   },
   creditHire: {
     input1: {
       selector: '#smallClaimsCreditHire_input1',
     },
-    inpu2: {
+    input2: {
       selector: '#smallClaimsCreditHire_input2',
     },
     input3: {
@@ -130,7 +173,7 @@ export const inputs = {
     input7: {
       selector: '#smallClaimsCreditHire_input7',
     },
-    input11: {
+    input8: {
       selector: '#smallClaimsCreditHire_input11',
     },
     date1: {
