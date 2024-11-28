@@ -24,7 +24,7 @@ module.exports = {
     await I.click('Continue');
     if (['IN_MEDIATION', 'JUDICIAL_REFERRAL'].includes(state)) {
       await I.waitForText('By lifting the stay, this case will automatically be sent to a judge.');
-      await I.waitForText('I will also raise a work allocation task for a judge to make a standard directions order for this case.');
+      await I.waitForText('This will also raise a work allocation task for a judge to make a standard directions order for this case.');
     } else if (['CASE_PROGRESSION', 'HEARING_READINESS', 'PREPARE_FOR_CONDUCT_HEARING'].includes(state)) {
       await I.waitForText('By lifting the stay, this case will return to \'Case progression\' state.');
       await I.waitForText('A caseworker may need to schedule the next hearing for this case.');
