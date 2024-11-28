@@ -1826,6 +1826,8 @@ const solicitorSetup = (solicitor) => {
   } else if (solicitor === 'solicitorTwo') {
     deleteCaseFields('respondent1');
   }
+
+  deleteCaseFields('businessProcess');
 };
 
 const clearDataForExtensionDate = (responseBody, solicitor) => {
