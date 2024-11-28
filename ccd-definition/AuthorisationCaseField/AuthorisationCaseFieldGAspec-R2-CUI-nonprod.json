@@ -555,5 +555,29 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "gaAddlDocClaimant",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "gaAddlDocRespondentSol",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]
