@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendAndReplyOption",
     "CaseEventFieldLabel": "Do you want to send or reply to a message?",
@@ -13,7 +13,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messagesToReplyTo",
     "CaseEventFieldLabel": "Select a message to reply to",
@@ -28,7 +28,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/populate-message-history"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageContextTitle",
     "PageFieldDisplayOrder": 1,
@@ -40,7 +40,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageMetadata",
     "PageLabel": "Send message",
@@ -52,7 +52,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageContentTitle",
     "PageFieldDisplayOrder": 1,
@@ -64,7 +64,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageContent",
     "CaseEventFieldLabel": "Enter your message",
@@ -76,7 +76,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "replyToMessageTitle",
     "PageFieldDisplayOrder": 1,
@@ -88,7 +88,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageHistory",
     "PageFieldDisplayOrder": 2,
@@ -100,7 +100,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageHistoryLabel",
     "PageFieldDisplayOrder": 3,
@@ -111,7 +111,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageReplyMetadata",
     "PageFieldDisplayOrder": 4,

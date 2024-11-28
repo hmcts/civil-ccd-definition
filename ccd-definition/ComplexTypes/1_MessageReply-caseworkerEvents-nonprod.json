@@ -11,15 +11,7 @@
     "ID": "MessageReply",
     "ListElementCode": "recipientRoleType",
     "FieldType": "Text",
-    "ElementLabel": "From",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "MessageReply",
-    "ListElementCode": "senderName",
-    "FieldType": "Text",
-    "ElementLabel": "Sender's name",
+    "ElementLabel": "To",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -36,6 +28,32 @@
     "ListElementCode": "sentTime",
     "FieldType": "DateTime",
     "ElementLabel": "Date and time sent",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "subjectType",
+    "ElementLabel": " ",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "senderName",
+    "FieldType": "Text",
+    "ElementLabel": "Sender's name",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "contentSubject",
+    "FieldType": "Text",
+    "ElementLabel": "Subject",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

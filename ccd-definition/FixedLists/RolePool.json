@@ -13,6 +13,18 @@
   },
   {
     "ID": "RolePool",
+    "ListElementCode": "JUDICIAL_DISTRICT",
+    "ListElement": "Judge",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "RolePool",
+    "ListElementCode": "JUDICIAL_CIRCUIT",
+    "ListElement": "Judge",
+    "DisplayOrder": 2
+  },
+  {
+    "ID": "RolePool",
     "ListElementCode": "LEGAL_OPERATIONS",
     "ListElement": "Legal Advisor",
     "DisplayOrder": 3
