@@ -1,5 +1,5 @@
 const config = require('../../../config.js');
-const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let caseNumber;
@@ -13,7 +13,9 @@ Scenario.only('Make a general application', async ({api}) => {
   await waitForFinishedBusinessProcess(caseNumber);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await waitForFinishedBusinessProcess(caseNumber);
+  await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
+  await api.acknowledgeClaim(config.defendantSolicitorUser, caseNumber, true);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
 
   await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 });
