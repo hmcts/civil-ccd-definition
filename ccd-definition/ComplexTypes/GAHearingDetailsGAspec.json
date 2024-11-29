@@ -123,7 +123,6 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
-    "Max": 40,
     "RegularExpression": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public",
     "Searchable": "N"
