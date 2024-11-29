@@ -4,7 +4,6 @@ const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const {TOTP} = require('totp-generator');
-const totp = require('totp-generator');
 
 const TASK_MAX_RETRIES = 20;
 const TASK_RETRY_TIMEOUT_MS = 20000;
@@ -39,7 +38,6 @@ module.exports = {
       {
         microservice: config.s2s.microservice,
         oneTimePassword: TOTP.generate(config.s2s.secret).otp
-       // oneTimePassword: totp(config.s2s.secret)
       })
       .then(response => response.text());
   },
@@ -171,7 +169,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: totp(config.s2sForXUI.secret)
+        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -193,7 +191,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: totp(config.s2sForXUI.secret)
+        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -342,7 +340,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
     const accountNumber = 'PBA0088192';
@@ -389,7 +387,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
     const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;

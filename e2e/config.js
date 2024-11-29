@@ -1,14 +1,9 @@
-/*const defaultPassword = process.env.DEFAULT_PASSWORD;
+const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
-const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;*/
+const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
 const courtToBeSelected = 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL';
 const courtToBeSelectedHmc = 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ';
-
-const defaultPassword = 'Password12!';
-const judgeDefaultPassword = 'Hmcts1234';
-const iacDefaultPassword = 'AldgateT0wer';
-const defaultPasswordSystemUser = 'Password12!';
 
 module.exports = {
   idamStub: {
@@ -58,7 +53,6 @@ module.exports = {
     },
   s2s: {
     microservice: 'civil_service',
-    //secret: process.env.S2S_SECRET || 'BTZQFPGY4TUMAFGL'
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   s2sForXUI: {
