@@ -13,7 +13,7 @@ Scenario.only('Make a general application', async ({api_spec}) => {
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
 
-  await api_spec.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+  await api_spec.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'JUDICIAL_REFERRAL');
 });
 
 AfterSuite(async  () => {
