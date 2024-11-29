@@ -53,9 +53,9 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "NOTIFY_CLAIMANT_COURT_OFFICER_ORDER",
-    "Name": "Notify Claimant Court Officer",
-    "Description": "Notify Claimant Court Officer",
+    "ID": "NOTIFY_DEFENDANT_DISMISS_CASE",
+    "Name": "Notify Defendant Dismiss Case",
+    "Description": "Notify Defendant Dismiss Case",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -67,8 +67,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
-    "Name": "Notify Defendant Court officer",
-    "Description": "Notify Defendant Court officer",
+    "Name": "Notify Claimant Court Officer",
+    "Description": "Notify Claimant Court Officer",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
