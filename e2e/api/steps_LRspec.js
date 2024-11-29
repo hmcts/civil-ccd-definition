@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, SDOR2, isJOLive} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, isJOLive, COSC} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -1045,6 +1045,25 @@ module.exports = {
     if (caseFlagsEnabled) {
       await assertCaseFlags(caseId, user, response);
     }
+  },
+
+  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
+    eventName = 'INITIATE_GENERAL_APPLICATION';
+    caseId = caseId || caseNumber;
+    console.log('caseid is..', caseId);
+
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEvent(eventName, caseId);
+
+    var isCOSCEnabled = await checkToggleEnabled(COSC);
+    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
+    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
+    const responseBody = await response.json();
+    assert.equal(response.status, 201);
+    assert.equal(responseBody.state, expectedState);
+
+    console.log('General application created when main case state is', expectedState);
+    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   mediationUnsuccessful: async (user, carmEnabled = false) => {

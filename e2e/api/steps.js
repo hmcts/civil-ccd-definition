@@ -878,25 +878,6 @@ module.exports = {
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 
-  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
-    eventName = 'INITIATE_GENERAL_APPLICATION';
-    caseId = caseId || caseNumber;
-    console.log('caseid is..', caseId);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
-
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
-    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
-    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectedState);
-
-    console.log('General application created when main case state is', expectedState);
-    assert.equal(responseBody.callback_response_status_code, 200);
-  },
-
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     await apiRequest.setupTokens(user);
