@@ -1093,6 +1093,12 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
       }
     ]
   },
