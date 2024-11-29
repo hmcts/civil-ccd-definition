@@ -44,7 +44,7 @@
   {
     "ID": "MessageReply",
     "ListElementCode": "subjectType",
-    "ElementLabel": "What is it about?",
+    "ElementLabel": "What is this message about?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
     "SecurityClassification": "Public",
@@ -52,7 +52,7 @@
   },
   {
     "ID": "MessageReply",
-    "ListElementCode": "contentSubject",
+    "ListElementCode": "subject",
     "FieldType": "Text",
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
