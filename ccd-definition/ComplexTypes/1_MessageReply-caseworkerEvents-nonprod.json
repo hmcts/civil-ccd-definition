@@ -18,6 +18,15 @@
   },
   {
     "ID": "MessageReply",
+    "ListElementCode": "subjectType",
+    "ElementLabel": "What is this message about?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
     "ListElementCode": "senderName",
     "FieldType": "Text",
     "ElementLabel": "Sender's name",
@@ -38,15 +47,6 @@
     "ListElementCode": "isUrgent",
     "FieldType": "YesOrNo",
     "ElementLabel": "Urgency",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "MessageReply",
-    "ListElementCode": "subjectType",
-    "ElementLabel": "What is this message about?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "SendMessageSubjectOptionsList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
