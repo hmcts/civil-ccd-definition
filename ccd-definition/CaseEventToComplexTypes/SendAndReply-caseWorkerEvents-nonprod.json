@@ -32,7 +32,7 @@
     "CaseFieldID": "sendMessageMetadata",
     "ListElementCode": "subject",
     "EventElementLabel": "Enter the subject",
-    "FieldShowCondition": "sendMessageMetadata.subject = \"*\"",
+    "FieldShowCondition": "sendMessageMetadata.subjectType = \"*\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },
