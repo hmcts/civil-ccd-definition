@@ -43,18 +43,18 @@
   },
   {
     "ID": "Message",
-    "ListElementCode": "subjectType",
-    "ElementLabel": "What is this message about?",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "ListElementCode": "senderName",
+    "FieldType": "Text",
+    "ElementLabel": "Sender's name",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
     "ID": "Message",
-    "ListElementCode": "senderName",
-    "FieldType": "Text",
-    "ElementLabel": "Sender's name",
+    "ListElementCode": "subjectType",
+    "ElementLabel": "What is this message about?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
