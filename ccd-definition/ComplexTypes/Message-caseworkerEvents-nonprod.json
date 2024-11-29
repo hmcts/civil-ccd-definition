@@ -44,18 +44,9 @@
   {
     "ID": "Message",
     "ListElementCode": "subjectType",
-    "ElementLabel": " ",
+    "ElementLabel": "What is this message about?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
-    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "Message",
-    "ListElementCode": "headerSubject",
-    "FieldType": "Text",
-    "ElementLabel": "Subject",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -69,7 +60,7 @@
   },
   {
     "ID": "Message",
-    "ListElementCode": "contentSubject",
+    "ListElementCode": "subject",
     "FieldType": "Text",
     "ElementLabel": "Subject",
     "SecurityClassification": "Public",
