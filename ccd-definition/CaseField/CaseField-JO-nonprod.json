@@ -270,15 +270,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "joSetAsideApplicationDate",
-    "Label": "Enter the date of the application to set aside judgment",
-    "HintText": "For example, 16 04 2021",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "joSetAsideDefenceReceivedDate",
     "Label": "Enter the date of the defence was received",
     "HintText": "For example, 16 04 2021",

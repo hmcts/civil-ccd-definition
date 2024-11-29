@@ -282,15 +282,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideApplicationDate",
-    "UserRoles": [
-      "caseworker-civil-admin",
-      "caseworker-civil-staff"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "joShowRegisteredWithRTLOption",
     "UserRoles": [
       "caseworker-civil-admin",

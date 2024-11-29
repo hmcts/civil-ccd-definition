@@ -224,13 +224,5 @@
     "FieldType": "InstalmentPaymentDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "ID": "JoJudgment",
-    "ListElementCode": "setAsideApplicationDate",
-    "ElementLabel": " ",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
