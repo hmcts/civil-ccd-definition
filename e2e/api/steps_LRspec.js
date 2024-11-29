@@ -40,8 +40,8 @@ const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
-const genAppClaimData = require("../fixtures/events/createGeneralApplication");
-const genAppClaimDataLR = require("../fixtures/events/createGeneralApplicationLR");
+const genAppClaimData = require('../fixtures/events/createGeneralApplication');
+const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
