@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess} = require("../../../api/testingSupport");
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 let caseNumber;
 
