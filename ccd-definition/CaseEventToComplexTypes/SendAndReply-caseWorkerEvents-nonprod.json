@@ -21,7 +21,7 @@
     "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageMetadata",
-    "ListElementCode": "subject",
+    "ListElementCode": "subjectType",
     "EventElementLabel": "What is this message about?",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
@@ -30,9 +30,9 @@
     "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "sendMessageMetadata",
-    "ListElementCode": "otherSubjectName",
+    "ListElementCode": "subject",
     "EventElementLabel": "Enter the subject",
-    "FieldShowCondition": "sendMessageMetadata.subject=\"OTHER\"",
+    "FieldShowCondition": "sendMessageMetadata.subject = \"*\"",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
   },

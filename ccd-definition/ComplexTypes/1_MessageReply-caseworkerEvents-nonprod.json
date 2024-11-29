@@ -44,10 +44,9 @@
   {
     "ID": "MessageReply",
     "ListElementCode": "subjectType",
-    "ElementLabel": " ",
+    "ElementLabel": "What is it about?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
-    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
