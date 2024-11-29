@@ -12,7 +12,7 @@ Scenario('Make a general application', async ({api}) => {
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-}).retry(3);
+});
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
