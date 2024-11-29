@@ -7,15 +7,11 @@ let caseNumber;
 Feature('1v2 Different Solicitors General application creation @api-unspec @api-nonprod');
 
 Scenario.only('Make a general application', async ({api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  caseNumber = await api.getCaseId();
-  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-  await waitForFinishedBusinessProcess(caseNumber);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
-  await api.acknowledgeClaim(config.defendantSolicitorUser, caseNumber, true);
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+    'AWAITING_APPLICANT_INTENTION');
 
   await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
 });
