@@ -18,7 +18,7 @@
   },
   {
     "ID": "SendMessageMetadata",
-    "ListElementCode": "subject",
+    "ListElementCode": "subjectType",
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
@@ -27,7 +27,7 @@
   },
   {
     "ID": "SendMessageMetadata",
-    "ListElementCode": "otherSubjectName",
+    "ListElementCode": "subject",
     "ElementLabel": " ",
     "FieldType": "Text",
     "SecurityClassification": "Public",

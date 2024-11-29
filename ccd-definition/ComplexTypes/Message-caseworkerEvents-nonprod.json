@@ -47,6 +47,7 @@
     "ElementLabel": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
