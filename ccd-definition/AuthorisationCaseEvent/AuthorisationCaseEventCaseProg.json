@@ -478,19 +478,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil",
-          "judge-profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_GENERATE_ORDER",
     "AccessControl": [
       {

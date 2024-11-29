@@ -37,13 +37,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_CLAIMANT_COURT_OFFICER_ORDER",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_DEFENDANT_COURT_OFFICER_ORDER",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },

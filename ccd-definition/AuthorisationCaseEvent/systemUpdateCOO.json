@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  }
-]
