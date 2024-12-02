@@ -182,7 +182,7 @@ Please delete the same after use by running:
 ./bin/delete-dev-preview-definition-from-aat.sh
 ```
 
-## Hearings Development - Preview
+##  Hearings Development - Preview
 For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some manual setup.
 
 1 - Execute the commands below replacing ${PR_NUMBER} accordingly to create the topic subscription required
