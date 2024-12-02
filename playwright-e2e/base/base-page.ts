@@ -24,7 +24,6 @@ export default abstract class BasePage {
     selector: string,
     options: { count?: number; timeout?: number; ignoreDuplicates?: boolean } = {},
   ) {
-    // Validation: Ensure `ignoreDuplicates` is not used with `count`
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
@@ -45,7 +44,7 @@ export default abstract class BasePage {
           `Multiple elements (${elementCount}) found for selector: ${selector}. Consider using 'ignoreDuplicates' or refining the selector.`,
         );
       }
-      // Default click logic
+
       await locator.click({ clickCount: options.count, timeout: options.timeout });
     }
   }
