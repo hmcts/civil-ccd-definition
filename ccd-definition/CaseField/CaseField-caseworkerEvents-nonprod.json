@@ -107,7 +107,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "obligationData",
-    "Label": " ",
+    "Label": "Obligation date",
     "FieldType": "Collection",
     "FieldTypeParameter": "ObligationDataCollection",
     "SecurityClassification": "Public",
