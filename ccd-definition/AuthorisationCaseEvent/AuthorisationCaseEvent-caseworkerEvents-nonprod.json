@@ -66,14 +66,14 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "cui-admin-profile",
-          "judge-profile"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "judge-profile"
         ],
         "CRUD": "R"
       }
