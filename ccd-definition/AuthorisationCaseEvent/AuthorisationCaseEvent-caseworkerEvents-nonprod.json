@@ -66,8 +66,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "cui-admin-profile",
-          "ctsc-team-leader","ctsc"
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
