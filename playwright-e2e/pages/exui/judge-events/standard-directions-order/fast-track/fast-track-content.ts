@@ -48,6 +48,7 @@ export const paragraphs = {
     'b) instructions have been taken as to whether any party or witness will exercise that entitlement, in which case the legal representatives must so inform the Court so that arrangements can be made by the Court for instantaneous translation facilities to be made available without charge\n\n' +
     'Any unrepresented party or witness for such a party being entitled to give evidence in the Welsh Language in accordance with the principle of the Welsh Language Act 1993 must notify the Court when sending to the Court their witness evidence whether any party or witness will exercise that entitlement whereupon the Court will make arrangements for instantaneous translation facilities to be made available without charge.',
   paragraph9: 'Subject to a deduction of:',
+  paragraph10: 'This statement must be uploaded to the Digital Portal by 4pm on',
 };
 
 export const inputs = {
@@ -498,7 +499,7 @@ export const inputs = {
     input: {
       selector: '#fastTrackRoadTrafficAccident_input',
     },
-    date4: {
+    date: {
       day: {
         label: 'Day',
         selector: '#date-day',
@@ -519,6 +520,10 @@ export const inputs = {
   },
   importantNotes: {
     selector: 'fastTrackOrderWithoutJudgement_input',
+  },
+  newDirection: {
+    label: 'Enter the direction (Optional',
+    selector: '#fastTrackAddNewDirections_0_directionComment',
   },
 };
 
@@ -583,6 +588,7 @@ export const radioButtons = {
     },
   },
   hearingTime: {
+    label: 'The time estimate is',
     oneHour: {
       label: '1 hour',
       selector: '#fastTrackHearingTime_hearingDuration-ONE_HOUR',
@@ -661,6 +667,10 @@ export const checkboxes = {
   includeCreditHireDetails: {
     label: 'Add/Remove',
     selector: '#sdoR2FastTrackCreditHire_detailsShowToggle-ADD',
+  },
+  includeWelshLanguage: {
+    label: 'Add/Remove',
+    selector: '#sdoR2FastTrackUseOfWelshToggle-SHOW',
   },
 };
 
