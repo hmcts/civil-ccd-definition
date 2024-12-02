@@ -195,7 +195,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "taskManagementLocations",
     "Label": "Task management location",
     "FieldType": "TaskManagementLocationTypes",
