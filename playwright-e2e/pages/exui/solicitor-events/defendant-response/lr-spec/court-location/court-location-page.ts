@@ -10,7 +10,7 @@ import {
 } from './court-location-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseCourtLocationPage extends ExuiEvent(BasePage) {
+export default class CourtLocationPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

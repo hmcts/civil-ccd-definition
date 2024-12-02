@@ -4,7 +4,7 @@ import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, yesNoRadioButtons } from './mediation-availability-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseMediationAvailabilityPage extends ExuiEvent(BasePage) {
+export default class MediationAvailabilityPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

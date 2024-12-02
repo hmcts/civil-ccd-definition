@@ -5,9 +5,7 @@ import ExuiEvent from '../../../../exui-event/exui-event';
 import { heading, paragraphs } from './check-if-you-need-to-complete-claim-timeline-content';
 
 @AllMethodsStep()
-export default class DefendantResponseCheckIfYouNeedToCompleteClaimTimelinePage extends ExuiEvent(
-  BasePage,
-) {
+export default class CheckIfYouNeedToCompleteClaimTimelinePage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),

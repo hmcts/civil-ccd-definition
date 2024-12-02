@@ -1,9 +1,9 @@
-export const heading = 'Respond to the claim';
+export const heading = 'Respond to claim';
 
 export const radioButtons = {
-  text: {
-    label: 'Is this address correct?',
-  },
+  text: (defendantName: string) => ({
+    label: 'Defendant: ${defendantName}',
+  }),
   defends: {
     label: 'Defends all of the claim',
     selector: '#respondent1ClaimResponseTypeForSpec-FULL_DEFENCE',
@@ -13,7 +13,7 @@ export const radioButtons = {
     selector: '#respondent1ClaimResponseTypeForSpec-FULL_ADMISSION',
   },
   admitsPart: {
-    label: 'Admits only part of the claim',
+    label: 'Admits part of the claim',
     selector: '#respondent1ClaimResponseTypeForSpec-PART_ADMISSION',
   },
   defendsAndWantsCounterclaim: {

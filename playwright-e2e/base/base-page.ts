@@ -22,11 +22,32 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { count?: number; timeout?: number } = {},
+    options: { count?: number; timeout?: number; ignoreDuplicates?: boolean } = {},
   ) {
-    await this.page
-      .locator(selector)
-      .click({ clickCount: options.count, timeout: options.timeout });
+    // Validation: Ensure `ignoreDuplicates` is not used with `count`
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
+
+    // Locate the elements matching the selector
+    const locator = this.page.locator(selector);
+    const elementCount = await locator.count();
+
+    if (options.ignoreDuplicates) {
+      if (elementCount === 0) {
+        throw new ExpectError(`No elements found for selector: ${selector}`);
+      }
+      // Click the first visible element matching the selector
+      await locator.first().click({ timeout: options.timeout });
+    } else {
+      if (elementCount > 1) {
+        throw new ExpectError(
+          `Multiple elements (${elementCount}) found for selector: ${selector}. Consider using 'ignoreDuplicates' or refining the selector.`,
+        );
+      }
+      // Default click logic
+      await locator.click({ clickCount: options.count, timeout: options.timeout });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'name')

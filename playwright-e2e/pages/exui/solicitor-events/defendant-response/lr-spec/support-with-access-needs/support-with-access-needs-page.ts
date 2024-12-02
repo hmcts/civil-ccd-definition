@@ -4,7 +4,7 @@ import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, question, input } from './support-with-access-needs-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseSupportWithAccessNeedsPage extends ExuiEvent(BasePage) {
+export default class SupportWithAccessNeedsPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

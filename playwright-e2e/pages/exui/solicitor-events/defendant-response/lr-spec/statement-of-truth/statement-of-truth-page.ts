@@ -4,7 +4,7 @@ import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, text, form } from './statement-of-truth-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseStatementOfTruthPage extends ExuiEvent(BasePage) {
+export default class StatementOfTruthPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

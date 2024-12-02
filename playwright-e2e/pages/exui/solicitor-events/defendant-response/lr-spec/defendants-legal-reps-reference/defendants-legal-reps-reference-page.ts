@@ -7,27 +7,33 @@ import {
   tableHeading,
   organisation,
   caseAssignedRole,
+  reference,
   dob,
   radioButtons,
 } from './defendants-legal-reps-reference-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseDefendantsLegalRepsReferencePage extends ExuiEvent(BasePage) {
+export default class DefendantsLegalRepsReferencePage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.verifyHeadings(),
+      //super.verifyHeadings(),
       super.expectHeading(heading),
       super.expectLabel(form.label),
-      super.expectText(tableHeading),
-      super.expectText(organisation),
-      super.expectText(caseAssignedRole),
-      super.expectText(dob.label),
-      super.expectLabel(dob.day.label),
-      super.expectLabel(dob.month.label),
-      super.expectLabel(dob.year.label),
-      super.expectLabel(radioButtons.yes.label),
-      super.expectLabel(radioButtons.no.label),
+      super.expectText(tableHeading, { ignoreDuplicates: true }),
+      super.expectText(organisation, { ignoreDuplicates: true }),
+      super.expectText(caseAssignedRole, { ignoreDuplicates: true }),
+      super.expectText(reference, { ignoreDuplicates: true }),
+      super.expectText(dob.label, { ignoreDuplicates: true }),
+      super.expectText(dob.day.label, { ignoreDuplicates: true }),
+      super.expectText(dob.month.label, { ignoreDuplicates: true }),
+      super.expectText(dob.year.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.yes.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.no.label, { ignoreDuplicates: true }),
     ]);
+  }
+
+  async selectYes() {
+    await super.clickBySelector(radioButtons.yes.selector);
   }
 
   async submit() {

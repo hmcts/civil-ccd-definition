@@ -5,11 +5,13 @@ export const form = {
   input: '#solicitorReferences_respondentSolicitor1Reference',
 };
 
-export const tableHeading = "Defendant's legal representative's reference";
+export const tableHeading = "Defendant's legal representative";
 
 export const organisation = 'Organisation';
 
-export const caseAssignedRole = 'Case Assigned Role:';
+export const caseAssignedRole = 'Case Assigned Role';
+
+export const reference = 'Reference';
 
 export const dob = {
   label: "Defendant's date of birth (Optional)",

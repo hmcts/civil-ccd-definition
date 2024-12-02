@@ -4,7 +4,7 @@ import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, useExpertRadioButtons, expertDetails } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseUseOfExpertsPage extends ExuiEvent(BasePage) {
+export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

@@ -1,6 +1,11 @@
+export const heading = 'Add timeline of events (Optional)';
+
 export const listEventsText = 'List the events in order. Provide dates if you know them.';
 
-export const buttons = 'Add new';
+export const buttons = {
+  text: 'Add new',
+  selector: "button[class='button write-collection-add-item__top']",
+};
 
 export const dateTitle = 'Date(Optional)';
 

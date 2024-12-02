@@ -20,16 +20,16 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new DefendantResponseCheckIfYouNeedToCompleteClaimTimelinePage(this.page);
   }
 
-  get defendantResponseRespondToClaimPage() {
-    return new DefendantResponseRespondToClaimPage(this.page);
-  }
-
   get defendantResponseConfirmNameAndAddressPage() {
     return new DefendantResponseConfirmNameAndAddressPage(this.page);
   }
 
   get defendantResponseDefendantsLegalRepsReferencePage() {
     return new DefendantResponseDefendantsLegalRepsReferencePage(this.page);
+  }
+
+  get defendantResponseRespondToClaimPage() {
+    return new DefendantResponseRespondToClaimPage(this.page);
   }
 
   get defendantResponseWhyDoesDefendantNotOweMoneyPage() {

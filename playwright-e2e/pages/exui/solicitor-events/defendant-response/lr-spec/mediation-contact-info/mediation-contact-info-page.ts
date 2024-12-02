@@ -4,7 +4,7 @@ import ExuiEvent from '../../../../exui-event/exui-event';
 import { heading, paragraph, formFields } from './mediation-contact-info-content';
 
 @AllMethodsStep()
-export default class DefendantResponseMediationContactInformationPage extends ExuiEvent(BasePage) {
+export default class MediationContactInformationPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

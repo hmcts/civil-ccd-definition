@@ -8,7 +8,7 @@ import {
 } from './hearing-availability-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseHearingAvailabilityPage extends ExuiEvent(BasePage) {
+export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

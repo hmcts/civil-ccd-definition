@@ -9,7 +9,7 @@ import {
 } from './welsh-language-content.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseWelshLanguagePage extends ExuiEvent(BasePage) {
+export default class WelshLanguagePage extends ExuiEvent(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
