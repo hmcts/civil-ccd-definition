@@ -21,7 +21,6 @@
     "ListElementCode": "reasonsForWithoutNotice",
     "ElementLabel": "Why do you not want the court to inform the other party?\n",
     "FieldType": "TextArea",
-    "Max": "400",
     "FieldShowCondition": "isWithNotice = \"No\"",
     "SecurityClassification": "Public",
     "Searchable": "N"
