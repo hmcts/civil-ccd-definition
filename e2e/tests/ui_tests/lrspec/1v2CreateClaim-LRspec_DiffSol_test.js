@@ -1,6 +1,6 @@
 const config = require('../../../config.js');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {checkCaseFlagsEnabled} = require('../../../api/testingSupport');
+const {checkCaseFlagsEnabled, waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
 
 let caseNumber;
@@ -86,11 +86,35 @@ Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.waitForText('Summary');
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
+    await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
 Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
+
+Scenario('Stay the case', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.stayCase();
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
+}).retry(3);
+
+Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.manageStay('REQ_UPDATE');
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
+}).retry(3);
+
+Scenario('Lift the stay case - Manage stay', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
+    await waitForFinishedBusinessProcess(caseNumber);
+  }
+}).retry(3);
+
 
 // ToDo: Refactor to trigger create case flags event
 Scenario.skip('Add case flags - validateCaseFlags', async ({LRspec}) => {

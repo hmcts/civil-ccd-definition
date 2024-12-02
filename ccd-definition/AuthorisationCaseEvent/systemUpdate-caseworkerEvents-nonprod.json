@@ -37,6 +37,18 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_DISMISS_CASE_CLAIMANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
