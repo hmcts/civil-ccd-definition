@@ -2590,6 +2590,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "userIdAfterNoc",
+    "Label": "User Id after Noc",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
