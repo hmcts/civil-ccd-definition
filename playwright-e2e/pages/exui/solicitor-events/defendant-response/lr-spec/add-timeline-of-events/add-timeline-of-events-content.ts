@@ -4,7 +4,7 @@ export const listEventsText = 'List the events in order. Provide dates if you kn
 
 export const buttons = {
   text: 'Add new',
-  selector: "button[class='button write-collection-add-item__top']",
+  selector: '.write-collection-add-item__top',
 };
 
 export const dateTitle = 'Date(Optional)';

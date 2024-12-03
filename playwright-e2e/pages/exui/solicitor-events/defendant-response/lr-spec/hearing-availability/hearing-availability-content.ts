@@ -4,15 +4,13 @@ export const availabilityQuestion = {
   question:
     'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
   hint: 'Hearings take place Monday to Friday',
-  answer: {
-    yes: {
-      label: 'Yes',
-      id: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_Yes',
-    },
-    no: {
-      label: 'No',
-      id: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_No',
-    },
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_No',
   },
 };
 export const unavailableDates = 'Unavailable dates';

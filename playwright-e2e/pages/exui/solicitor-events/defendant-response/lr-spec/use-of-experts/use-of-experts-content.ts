@@ -18,27 +18,27 @@ export const expertDetails = {
   label: 'Expert details',
   fields: {
     firstName: {
-      label: 'First name (Optional)',
+      label: 'First name',
       selector: '#respondToClaimExperts_firstName',
     },
     lastName: {
-      label: 'Last name (Optional)',
+      label: 'Last name',
       selector: '#respondToClaimExperts_lastName',
     },
     number: {
-      label: 'Phone number (Optional)',
+      label: 'Phone number',
       selector: '#respondToClaimExperts_phoneNumber',
     },
     email: {
-      label: 'Email address (Optional)',
+      label: 'Email address',
       selector: '#respondToClaimExperts_emailAddress',
     },
     fieldOfExpertise: {
-      label: 'Field of expertise (Optional)',
+      label: 'Field of expertise',
       selector: '#respondToClaimExperts_fieldofExpertise',
     },
     whyDoYouNeedExpert: {
-      label: 'Why do you need an expert?',
+      label: 'Why do you need this expert',
       selector: '#respondToClaimExperts_whyRequired',
     },
     estimateCost: {

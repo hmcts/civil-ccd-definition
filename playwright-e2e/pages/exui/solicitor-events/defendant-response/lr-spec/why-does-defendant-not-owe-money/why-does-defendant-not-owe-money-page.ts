@@ -24,6 +24,10 @@ export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage)
     await super.clickBySelector(radioButtons.radioHasPaid.selector);
   }
 
+  async selectDisputesClaim() {
+    await super.clickBySelector(radioButtons.radioDisputesClaim.selector);
+  }
+
   async fillInHasPaid() {
     await super.inputText('1500', form.selector);
     await super.inputText('01', dayMonthYear.day.selector);

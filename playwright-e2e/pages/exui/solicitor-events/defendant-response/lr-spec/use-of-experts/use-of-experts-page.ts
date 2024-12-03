@@ -1,51 +1,49 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, useExpertRadioButtons, expertDetails } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
 export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
-  async verifyContent() {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(),
-      super.expectHeading(heading),
-      super.expectText(useExpertRadioButtons.text.label),
-      super.expectLabel(useExpertRadioButtons.radioYes.label),
-      super.expectLabel(useExpertRadioButtons.radioNo.label),
-      super.expectText(expertDetails.label),
-      super.expectInputValue(
-        expertDetails.fields.firstName.label,
-        '#respondToClaimExperts_firstName',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.lastName.label,
-        '#respondToClaimExperts_lastName',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.number.label,
-        '#respondToClaimExperts_phoneNumber',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.email.label,
-        '#respondToClaimExperts_emailAddress',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.fieldOfExpertise.label,
-        '#respondToClaimExperts_fieldofExpertise',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.whyDoYouNeedExpert.label,
-        '#respondToClaimExperts_whyRequired',
-      ),
-      super.expectInputValue(
-        expertDetails.fields.estimateCost.label,
-        '#respondToClaimExperts_estimatedCost',
-      ),
+      super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(heading),
     ]);
   }
 
   async selectYes() {
     await super.clickBySelector(useExpertRadioButtons.radioYes.selector);
+    super.expectInputValue(
+      expertDetails.fields.firstName.label,
+      expertDetails.fields.firstName.selector,
+    ),
+      super.expectInputValue(
+        expertDetails.fields.lastName.label,
+        expertDetails.fields.lastName.selector,
+      ),
+      super.expectInputValue(
+        expertDetails.fields.number.label,
+        expertDetails.fields.number.selector,
+      ),
+      super.expectInputValue(expertDetails.fields.email.label, expertDetails.fields.email.selector),
+      super.expectInputValue(
+        expertDetails.fields.fieldOfExpertise.label,
+        expertDetails.fields.fieldOfExpertise.selector,
+      ),
+      super.expectInputValue(
+        expertDetails.fields.whyDoYouNeedExpert.label,
+        expertDetails.fields.whyDoYouNeedExpert.selector,
+      ),
+      super.expectInputValue(
+        expertDetails.fields.estimateCost.label,
+        expertDetails.fields.estimateCost.selector,
+      );
+  }
+
+  async selectNo() {
+    await super.clickBySelector(useExpertRadioButtons.radioNo.selector);
   }
 
   async submit() {

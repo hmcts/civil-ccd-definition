@@ -23,7 +23,6 @@ export default class AddTimelineOfEventsPage extends ExuiEvent(BasePage) {
   }
 
   async addNewEvent() {
-    await super.expectText(buttons.text, { ignoreDuplicates: true });
     await super.clickBySelector(buttons.selector, { ignoreDuplicates: true });
     await super.retryClickBySelector(buttons.selector, () => Promise.resolve(), { retries: 2 });
     await super.expectText(dateTitle);

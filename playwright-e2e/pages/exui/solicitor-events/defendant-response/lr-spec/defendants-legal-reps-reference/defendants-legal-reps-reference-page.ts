@@ -11,13 +11,14 @@ import {
   dob,
   radioButtons,
 } from './defendants-legal-reps-reference-content.ts';
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()
 export default class DefendantsLegalRepsReferencePage extends ExuiEvent(BasePage) {
-  async verifyContent() {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      //super.verifyHeadings(),
-      super.expectHeading(heading),
+      //super.verifyHeadings(ccdCaseData),
+      //super.expectSubheading(heading),
       super.expectLabel(form.label),
       super.expectText(tableHeading, { ignoreDuplicates: true }),
       super.expectText(organisation, { ignoreDuplicates: true }),

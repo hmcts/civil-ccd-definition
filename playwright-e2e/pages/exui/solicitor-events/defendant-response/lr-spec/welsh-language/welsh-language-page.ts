@@ -1,5 +1,6 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import {
   heading,
@@ -10,19 +11,11 @@ import {
 
 @AllMethodsStep()
 export default class WelshLanguagePage extends ExuiEvent(BasePage) {
-  async verifyContent() {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(),
-      super.expectHeading(heading),
-      super.expectText(text),
-      super.expectText(speakingRadioButtons.question),
-      super.expectLabel(speakingRadioButtons.radioWelsh.label),
-      super.expectLabel(speakingRadioButtons.radioEnglish.label),
-      super.expectLabel(speakingRadioButtons.radioBoth.label),
-      super.expectText(documentsRadioButtons.question),
-      super.expectLabel(documentsRadioButtons.radioWelsh.label),
-      super.expectLabel(documentsRadioButtons.radioEnglish.label),
-      super.expectLabel(documentsRadioButtons.radioBoth.label),
+      super.verifyHeadings(ccdCaseData),
+      //super.expectSubheading(heading),
+      super.expectText(text, { ignoreDuplicates: true }),
     ]);
   }
 

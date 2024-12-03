@@ -2,13 +2,14 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import { heading, paragraphs, radioButtons } from './confirm-name-and-address-content.ts';
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()
 export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
-  async verifyContent() {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      //super.verifyHeadings(),
-      //super.expectHeading(heading),
+      super.verifyHeadings(ccdCaseData),
+      super.expectHeading(heading),
       super.expectText(paragraphs.partyTypeText, {
         containerSelector: '#specAoSRespondentInformation',
       }),

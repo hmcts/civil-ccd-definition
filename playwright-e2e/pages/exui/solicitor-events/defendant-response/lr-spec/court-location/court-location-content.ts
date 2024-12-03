@@ -1,10 +1,12 @@
-export const heading = 'Court location';
-
 export const courtLocationDropdown = {
   label: 'Please select your preferred court hearing location',
   dropdown: {
     text: '--Select a value--',
     selector: '#respondToCourtLocation_responseCourtLocations',
+    options: [
+      'Aberystwyth Justice Centre - Y Lanfa, Trefechan, Aberystwyth - SY23 1AS',
+      'Aldershot Magistrates Court - 2 Wellington Avenue, Aldershot - GU11 1NY',
+    ],
   },
 };
 
