@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "reasonForReconsiderationSeparator",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "decisionOnRequestReconsiderationOptions",
     "PageFieldDisplayOrder": 2,
@@ -26,7 +26,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/generate-judge-decision-order"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "upholdingPreviousOrderReason",
     "PageFieldDisplayOrder": 3,
@@ -39,7 +39,7 @@
     "FieldShowCondition": "decisionOnRequestReconsiderationOptions=\"YES\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "judgeResponseToReconsiderationDetailsNo",
     "PageFieldDisplayOrder": 3,
@@ -52,7 +52,7 @@
     "FieldShowCondition": "decisionOnRequestReconsiderationOptions=\"CREATE_SDO\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "judgeResponseToReconsiderationDetailsAmending",
     "PageFieldDisplayOrder": 3,
@@ -65,7 +65,7 @@
     "FieldShowCondition": "decisionOnRequestReconsiderationOptions=\"CREATE_GENERAL_ORDER\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 6,
@@ -76,7 +76,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 7,
@@ -87,7 +87,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
     "CaseFieldID": "decisionOnReconsiderationDocument",
     "PageFieldDisplayOrder": 1,

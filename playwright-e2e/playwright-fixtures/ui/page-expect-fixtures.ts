@@ -181,6 +181,52 @@ export const expect = baseExpect
         name: assertionName,
         actual: matcherResult?.actual
       };
+    },
+
+    async someToBeVisible(locator: Locator, count: number | null, options?: { timeout?: number }) {
+      const assertionName = 'someToBeVisible';
+      let pass: boolean;
+      let matcherResult: any;
+      let locatorCount: number;
+
+      try {
+        if (count !== null) {
+          await baseExpect(locator).toHaveCount(count, { timeout: 5000 });
+        } else {
+          await baseExpect(locator).not.toHaveCount(0, { timeout: 5000 });
+        }
+        locatorCount = await locator.count();
+        const promises = [];
+        for (let i = 0; i < locatorCount; i++) {
+          promises.push(baseExpect(locator.nth(i)).toBeVisible({ timeout: options.timeout }));
+        }
+        await Promise.all(promises);
+        pass = true;
+      } catch (error) {
+        pass = false;
+        matcherResult = error.matcherResult;
+      }
+
+      const message = pass
+        ? () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count : 'multiple' + ' '}matching locator(s) to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '')
+        : () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count : 'multiple' + ' '}matching locator(s) to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '');
+
+      return {
+        message,
+        pass,
+        name: assertionName,
+        actual: matcherResult?.actual
+      };
     }
   })
   .configure({ soft: config.playwright.softExpect });

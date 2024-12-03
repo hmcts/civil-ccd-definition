@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "GAApplicationsRespTwo",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
@@ -11,7 +11,7 @@
     "TabFieldDisplayOrder": 1
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "GAApplicationsRespTwoSpec",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,

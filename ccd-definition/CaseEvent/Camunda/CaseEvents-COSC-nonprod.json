@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CHECK_PAID_IN_FULL_SCHED_DEADLINE",
     "Name": "check if is paid in full",
     "Description": "Trigger event to check if paid in full",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_COSC_DOCUMENT",
     "Name": "Generate COSC document",
     "Description": "Trigger event to check if paid in full is true",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_CLAIMANT",
     "Name": "Claimant not mark paid full",
     "Description": "Claimant Dashboard Notice not mark paid in full",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_NOT_PAID_FULL_DEFENDANT",
     "Name": "Defendant not mark paid full",
     "Description": "Defendant Dashboard Notice not mark paid in full",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-   "CaseTypeID": "CIVIL",
+   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
    "ID": "CREATE_DASHBOARD_NOTIFICATION_COSC_GEN_FOR_DEFENDANT",
    "Name": "Defendant mark paid full",
    "Description": "Defendant Dashboard Notification certificate generated",

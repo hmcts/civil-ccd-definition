@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantOneDynamic",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -20,7 +20,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantTwoDynamic",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -30,7 +30,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantOneDynamic",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantTwoDynamic",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -50,7 +50,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantListLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Claimant: ${typeRepresentationClaimantOneDynamic}",
@@ -59,7 +59,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationCounselForClaimantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Counsel for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -69,7 +69,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationSolicitorForClaimantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -79,7 +79,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationCostDraftsmanList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Costs draftsman for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -89,7 +89,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationTheClaimantInPersonList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "${typeRepresentationClaimantOneDynamic}, the claimant, in person",
@@ -99,7 +99,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLayRepresentativeList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Lay representative for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -109,7 +109,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLegalExecutiveList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Legal executive for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -119,7 +119,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationSolicitorsAgentList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor's Agent for ${typeRepresentationClaimantOneDynamic}, the claimant",
@@ -129,7 +129,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "trialProcedureClaimantComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -139,7 +139,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantListTwoLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Claimant: ${typeRepresentationClaimantTwoDynamic}",
@@ -149,7 +149,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationClaimantListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -160,7 +160,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "CounselForClaimantListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Counsel for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -170,7 +170,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "SolicitorForClaimantListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -180,7 +180,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationCostDraftsmanListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Costs draftsman for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -190,7 +190,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationTheClaimantInPersonListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "${typeRepresentationClaimantTwoDynamic}, he claimant, in person",
@@ -200,7 +200,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLayRepresentativeListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Lay representative for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -210,7 +210,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLegalExecutiveListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Legal executive for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -220,7 +220,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationSolicitorsAgentListTwo",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor's Agent for ${typeRepresentationClaimantTwoDynamic}, the claimant",
@@ -230,7 +230,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "trialProcedClaimTwoComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -240,7 +240,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantListLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Defendant: ${typeRepresentationDefendantOneDynamic}",
@@ -249,7 +249,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -259,7 +259,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationCounselForDefendantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Counsel for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -269,7 +269,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationSolicitorForDefendantList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -279,7 +279,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationCostDraftsmanDefList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Costs draftsman for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -289,7 +289,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationTheDefendantInPersonList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "${typeRepresentationDefendantOneDynamic}, the defendant, in person",
@@ -299,7 +299,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLayRepresentativeDefList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Lay representative for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -309,7 +309,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationLegalExecutiveDefList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Legal executive for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -319,7 +319,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationSolicitorsAgentDefList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor's Agent for ${typeRepresentationDefendantOneDynamic}, the defendant",
@@ -329,7 +329,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "trialProcedureComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -339,7 +339,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantTwoListLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Defendant: ${typeRepresentationDefendantTwoDynamic}",
@@ -349,7 +349,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "typeRepresentationDefendantTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -360,7 +360,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "CounselForDefendantTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Counsel for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -370,7 +370,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "SolicitorForDefendantTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -380,7 +380,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "CostDraftsmanDefTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Costs draftsman for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -390,7 +390,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "TheDefendantInPersonTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "${typeRepresentationDefendantTwoDynamic}, the defendant, in person",
@@ -400,7 +400,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "LayRepresentativeDefTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Lay representative for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -410,7 +410,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "LegalExecutiveDefTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Legal executive for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -420,7 +420,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "SolicitorsAgentDefTwoList",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "Solicitor's Agent for ${typeRepresentationDefendantTwoDynamic}, the defendant",
@@ -430,7 +430,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "trialProcedureDefTwoComplex",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",
@@ -440,7 +440,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "detailsRepresentationLabel",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": "### Enter details of representation",
@@ -449,7 +449,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "detailsRepresentationText",
     "ID": "ClaimantAndDefendantHeard",
     "ElementLabel": " ",

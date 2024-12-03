@@ -7,6 +7,7 @@ const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
+const stayAndLiftCasePage = require('./pages/stayAndLiftCase/stayAndLiftCase.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
@@ -734,6 +735,41 @@ module.exports = function () {
         () => event.returnToCaseDetails(),
         () => addUnavailableDatesPage.confirmSubmission(url + '#Listing%20notes'),
       ]);
+    },
+
+    async stayCase(user = config.ctscAdminUser) {
+      eventName = 'Stay case';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.waitForText('All parties will be notified.'),
+        () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
+        () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
+      eventName = 'Manage stay';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+      ]);
+      if (manageStayType == 'REQ_UPDATE')  {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
+          () => event.submit('Submit', 'You have requested an update on'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      } else {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyLiftCaseStaySteps(caseState),
+          () => event.submit('Submit', 'You have lifted the stay from this'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      }
+      await this.waitForText('Summary');
     },
 
     async initiateFinalOrder(caseId, trackType, optionText) {
