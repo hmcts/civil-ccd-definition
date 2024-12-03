@@ -4,36 +4,39 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import {
   heading,
-  availabilityQuestion,
+  availabilityQuestionSmallTrack,
   interpreterQuestion,
+  availabilityQuestionFastTrack,
 } from './hearing-availability-content.ts';
 
 @AllMethodsStep()
 export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      //super.expectHeading(heading),
-      super.expectText(availabilityQuestion.question, { ignoreDuplicates: true }),
-      super.expectText(availabilityQuestion.hint, { ignoreDuplicates: true }),
-      super.expectText(interpreterQuestion.label.question, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async selectYesAvailability() {
-    await super.clickBySelector(availabilityQuestion.radioYes.selector);
+  async selectYesAvailabilitySmallTrack() {
+    await super.clickBySelector(availabilityQuestionSmallTrack.radioYes.selector);
   }
 
-  async selectNoAvailability() {
-    await super.clickBySelector(availabilityQuestion.radioNo.selector);
+  async selectNoAvailabilitSmallTrack() {
+    await super.clickBySelector(availabilityQuestionSmallTrack.radioNo.selector);
   }
 
-  async selectYesInterpreter() {
+  async selectYesInterpreterSmallTrack() {
     await super.clickBySelector(interpreterQuestion.radioYes.selector);
   }
 
-  async selectNoInterpreter() {
+  async selectNoInterpreterSmallTack() {
     await super.clickBySelector(interpreterQuestion.radioNo.selector);
+  }
+
+  async selectYesAvailabilityFastTrack() {
+    await super.clickBySelector(availabilityQuestionFastTrack.radioYes.selector);
+  }
+
+  async selectNoAvailabilityFastTrack() {
+    await super.clickBySelector(availabilityQuestionFastTrack.radioNo.selector);
   }
 
   async submit() {

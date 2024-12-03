@@ -2,7 +2,7 @@ export const heading = 'Witnesses';
 
 export const subheading = 'Defendant 1 witnesses';
 
-export const witnessesRadioButtons = {
+export const witnessesRadioButtonsSmallTrack = {
   text: {
     label: 'Are there any witnesses who should attend the hearing?',
   },
@@ -13,5 +13,19 @@ export const witnessesRadioButtons = {
   radioNo: {
     label: 'No',
     selector: '#respondent1DQWitnessesSmallClaim_witnessesToAppear_No',
+  },
+};
+
+export const witnessesRadioButtonsFastTrack = {
+  text: {
+    label: 'Are there any witnesses who should attend the hearing?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent1DQWitnessesRequiredSpec_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent1DQWitnessesRequiredSpec_No',
   },
 };

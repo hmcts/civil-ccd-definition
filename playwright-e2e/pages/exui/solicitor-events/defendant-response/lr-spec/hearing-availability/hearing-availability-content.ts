@@ -1,6 +1,8 @@
+import exp from 'constants';
+
 export const heading = 'Hearing availability';
 
-export const availabilityQuestion = {
+export const availabilityQuestionSmallTrack = {
   question:
     'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
   hint: 'Hearings take place Monday to Friday',
@@ -13,6 +15,18 @@ export const availabilityQuestion = {
     selector: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_No',
   },
 };
+
+export const availabilityQuestionFastTrack = {
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent1DQHearingFastClaim_unavailableDatesRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent1DQHearingFastClaim_unavailableDatesRequired_No',
+  },
+};
+
 export const unavailableDates = 'Unavailable dates';
 
 export const addNew = 'Add new';

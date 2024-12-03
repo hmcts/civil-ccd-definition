@@ -1,6 +1,6 @@
 export const heading = 'Use of experts in court';
 
-export const useExpertRadioButtons = {
+export const useExpertRadioButtonsSmallTrack = {
   text: {
     label: 'Do you want to use an expert?',
   },
@@ -11,6 +11,20 @@ export const useExpertRadioButtons = {
   radioNo: {
     label: 'No',
     selector: '#responseClaimExpertSpecRequired_No',
+  },
+};
+
+export const useExpertRadioButtonsFastTrack = {
+  text: {
+    label: 'Do you want to use an expert?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent1DQExperts_expertRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent1DQExperts_expertRequired_No',
   },
 };
 

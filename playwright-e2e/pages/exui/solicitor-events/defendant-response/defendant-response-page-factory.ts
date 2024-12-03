@@ -18,6 +18,12 @@ import WhyDoesDefendantDisputeClaimPage from './lr-spec/why-does-defendant-dispu
 import MediationPage from './lr-spec/mediation/mediation-page';
 import HearingAvailabilityPage from './lr-spec/hearing-availability/hearing-availability-page';
 import StatementOfTruthPage from './lr-spec/statement-of-truth/statement-of-truth-page';
+import FileDirectionsQuestionnairePage from './lr-spec/file-directions-questionnaire/file-directions-questionnaire-page';
+import FixedRecoverableCostsPage from './lr-spec/fixed-recoverable-costs/fixed-recoverable-costs-page';
+import DisclosureOfElectronicDocumentsPage from './lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
+import DisclosureOfNonElectronicDocumentsPage from './lr-spec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
+import DisclosureReportPage from './lr-spec/disclosure-report/disclosure-report-page';
+import ApplicationPage from './lr-spec/application/application-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get checkIfYouNeedToCompleteClaimTimelinePage() {
@@ -94,5 +100,29 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get statementOfTruthPage() {
     return new StatementOfTruthPage(this.page);
+  }
+
+  get fileDirectionsQuestionnairePage() {
+    return new FileDirectionsQuestionnairePage(this.page);
+  }
+
+  get fixedRecoverableCostsPage() {
+    return new FixedRecoverableCostsPage(this.page);
+  }
+
+  get disclosureOfElectronicDocumentsPage() {
+    return new DisclosureOfElectronicDocumentsPage(this.page);
+  }
+
+  get disclosureOfNonElectronicDocumentsPage() {
+    return new DisclosureOfNonElectronicDocumentsPage(this.page);
+  }
+
+  get disclosureReportPage() {
+    return new DisclosureReportPage(this.page);
+  }
+
+  get applicationPage() {
+    return new ApplicationPage(this.page);
   }
 }

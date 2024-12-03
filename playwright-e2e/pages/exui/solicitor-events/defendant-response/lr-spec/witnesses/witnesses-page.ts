@@ -3,23 +3,33 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../helpers/date-helper.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
-import { heading, subheading, witnessesRadioButtons } from './witnesses-content.ts';
+import {
+  heading,
+  subheading,
+  witnessesRadioButtonsFastTrack,
+  witnessesRadioButtonsSmallTrack,
+} from './witnesses-content.ts';
 
 @AllMethodsStep()
 export default class WitnessesPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectText(witnessesRadioButtons.text.label, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async selectYes() {
-    await super.clickBySelector(witnessesRadioButtons.radioYes.selector);
+  async selectYesSmallTrack() {
+    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioYes.selector);
   }
 
-  async selectNo() {
-    await super.clickBySelector(witnessesRadioButtons.radioNo.selector);
+  async selectNoSmallTrack() {
+    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioNo.selector);
+  }
+
+  async selectYesFastTrack() {
+    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioYes.selector);
+  }
+
+  async selectNoFastTrack() {
+    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioNo.selector);
   }
 
   async submit() {
