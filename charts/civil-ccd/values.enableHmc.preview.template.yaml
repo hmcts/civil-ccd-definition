@@ -34,8 +34,6 @@ xui-webapp:
       SERVICES_HEARINGS_CASETYPES_CIVIL: CIVIL-${CHANGE_ID}
       HEARINGS_JURISDICTIONS: CIVIL
       LAUNCH_DARKLY_CLIENT_ID: 5de6610b23ce5408280f2268
-      SERVICES_WORK_ALLOCATION_TASK_API: http://wa-task-management-api-aat.service.core-compute-aat.internal
-      SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-aat.service.core-compute-aat.internal
 
 #servicebus:
 #  enabled: true
