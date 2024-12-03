@@ -227,7 +227,7 @@
   },
   {
     "ID": "JoJudgment",
-    "ListElementCode": "setAsideOrderDate",
+    "ListElementCode": "setAsideApplicationDate",
     "ElementLabel": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public",
