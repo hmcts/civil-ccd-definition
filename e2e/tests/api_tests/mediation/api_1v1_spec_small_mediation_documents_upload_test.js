@@ -12,7 +12,7 @@ Feature('Spec small claims mediation API test');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
-  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, carmEnabled);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', carmEnabled);
 }
 
