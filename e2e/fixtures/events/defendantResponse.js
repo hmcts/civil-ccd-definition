@@ -1,5 +1,6 @@
 const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
+const uuid = require('uuid');
 module.exports = {
   defendantResponse: (allocatedTrack = 'MULTI_CLAIM') => {
     return {
@@ -13,6 +14,7 @@ module.exports = {
             individualDateOfBirth: date(-1),
             primaryAddress: buildAddress('respondent'),
             partyName: 'Sir John Doe',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             partyTypeDisplayValue: 'Individual',
             flags: {
               partyName: 'Sir John Doe',
