@@ -624,7 +624,7 @@ module.exports = {
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    console.log('------------ THE PRESTAY STATE IS ' + caseData.preStayState);
+
     if (requestUpdate) {
       await assertSubmittedEvent('CASE_STAYED', {
         header: header,
