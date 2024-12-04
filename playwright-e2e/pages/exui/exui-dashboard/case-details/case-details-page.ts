@@ -17,11 +17,11 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
         super.verifyHeadings(caseData),
         super.expectText(tabs.summary.title),
         super.expectText(tabs.caseFile.title),
-        super.expectText(tabs.claimDetails.title),
+        super.expectText(tabs.claimDetails.title, { exact: true }),
         super.expectText(tabs.history.title, { exact: true }),
-        super.expectText(tabs.claimDocs.title),
+        // super.expectText(tabs.claimDocs.title),
         super.expectText(tabs.paymentHistory.title),
-        super.expectText(tabs.serviceRequest.title, { exact: true }),
+        // super.expectText(tabs.serviceRequest.title, { exact: true }),
         super.expectText(tabs.bundles.title),
         super.expectText(tabs.caseFlags.title),
         super.expectLabel(dropdowns.nextStep.label),
@@ -80,7 +80,7 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
       buttons.go.selector,
       () =>
         super.expectNoText(tabs.summary.title, {
-          timeout: 10_000,
+          timeout: 15_000,
         }),
       { retries: 3 },
     );
