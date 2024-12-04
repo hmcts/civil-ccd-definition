@@ -203,7 +203,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
     await waitForFinishedBusinessProcess(caseId);
 
-    const pbaV3 = true;
+    const pbaV3 = await checkToggleEnabled(PBAv3);
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
@@ -700,7 +700,7 @@ const assertValidData = async (data, pageId) => {
 
   let userData;
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' || eventName === 'HEARING_SCHEDULED'
-    || eventName === 'GENERATE_DIRECTIONS_ORDER') {
+  || eventName === 'GENERATE_DIRECTIONS_ORDER') {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];

@@ -838,7 +838,7 @@ module.exports = {
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
-      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1072,8 +1072,8 @@ module.exports = {
     if (user === config.applicantSolicitorUser) {
       eventData = mediationDocuments.uploadMediationDocuments('claimant');
     }  else {
-      eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
-    }
+          eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
+        }
 
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -1085,7 +1085,7 @@ module.exports = {
   },
 
   claimantResponseForFlightDelay: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                                         expectedEndState) => {
+                           expectedEndState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -1154,10 +1154,10 @@ module.exports = {
       let claimIssuedPBADetails = {
         claimIssuedPBADetails:{
           applicantsPbaAccounts: {
-            value: {
-              code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-              label:'PBAFUNC12345'
-            },
+              value: {
+                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
+                label:'PBAFUNC12345'
+              },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
@@ -1185,13 +1185,13 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: [
-          {
-            value: {
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: [
+            {
+              value: {
               registrationType: 'R',
               judgmentDateTime: dateTime(0)
             },
@@ -1209,11 +1209,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
         state = 'All_FINAL_ORDERS_ISSUED';
@@ -1226,11 +1226,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-              registrationType: 'R',
-              judgmentDateTime: dateTime(0)
-            },
-            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-        registrationTypeRespondentTwo: []
+            registrationType: 'R',
+            judgmentDateTime: dateTime(0)
+          },
+          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+          registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
         state = 'All_FINAL_ORDERS_ISSUED';
@@ -1701,7 +1701,7 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-    if (mpScenario === 'TWO_V_ONE') {
+   if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
         body: ''
