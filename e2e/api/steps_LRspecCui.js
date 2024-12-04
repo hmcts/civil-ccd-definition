@@ -309,25 +309,23 @@ module.exports = {
 
 
   evidenceUploadApplicant: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE');
-
-    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
-
-    await waitForFinishedBusinessProcess(caseId);
-
+    // await apiRequest.setupTokens(user);
+    //
+    //  let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE');
+    //
+    // caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    //
+    // await waitForFinishedBusinessProcess(caseId);
   },
 
   evidenceUploadDefendant: async (user) => {
-    await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE');
-
-    caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
-
-    await waitForFinishedBusinessProcess(caseId);
-
+    // await apiRequest.setupTokens(user);
+    //
+    // let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE');
+    //
+    // caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    //
+    // await waitForFinishedBusinessProcess(caseId);
   },
 
   requestForReconsiderationCitizen: async (user) => {
