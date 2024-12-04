@@ -1,7 +1,7 @@
 const config = require("../../../config.js");
 const {createAccount} = require("../../../api/idamHelper");
 
-Feature('CCD 1v1 API test @api-caseworker-cui @api-nonprod');
+Feature('CCD API test @api-caseworker @api-nonprod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -14,27 +14,62 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'Small
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 JUDICIAL_REFERRAL claimant and defendant response small claim', async ({I, api_spec_cui}) => {
+Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
   await api_spec_cui.stayCase(config.hearingCenterAdminWithRegionId1);
-  await api_spec_cui.manageStay(config.ctscAdminUser, true);
-  await api_spec_cui.manageStay(config.ctscAdminUser, false);
+  await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, true);
+  await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL');
-  await api_spec_cui.dismissCase(config.ctscAdminUser);
+  await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
 
 });
 
-Feature('CCD 1v1 API test @api-caseworker-lrspec @api-nonprod');
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+  await api_spec.defendantResponse(config.defendantSolicitorUser);
+  await api_spec.claimantResponse(config.applicantSolicitorUser);
+  await api_spec.createSDO(config.judgeUserWithRegionId1);
+  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL')
+  await api_spec.amendHearingDueDate(config.systemupdate);
+  await api_spec.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
+  await api_spec.stayCase(config.hearingCenterAdminWithRegionId1);
+  await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, true);
+  await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, false);
+  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL')
+  await api_spec.dismissCase(config.hearingCenterAdminWithRegionId1);
+});
 
-Scenario('1v1 PART_ADMISSION claimant and defendant response small claim', async ({I, api_spec_small, api_spec_cui}) => {
-  await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
-  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION');
-  await api_spec_small.claimantResponse(config.applicantSolicitorUser);
+let caseId;
+
+Scenario('1v2 LR UNSPEC claim hearing readiness', async ({api}) => {
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
+  await api.notifyClaim(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  caseId = await api.getCaseId();
+  await api.amendRespondent1ResponseDeadline(config.systemupdate);
+  await api.defaultJudgment(config.applicantSolicitorUser, 'TRIAL_HEARING');
+  await api.sdoDefaultJudgment(config.judgeUserWithRegionId1, 'TRIAL_HEARING');
+  await api.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'OTHER');
+  await api.stayCase(config.hearingCenterAdminWithRegionId1);
+  await api.manageStay(config.hearingCenterAdminWithRegionId1, true);
+  await api.manageStay(config.hearingCenterAdminWithRegionId1, false);
+  await api.dismissCase(config.hearingCenterAdminWithRegionId1);
+});
+
+let claimRef;
+const claimType = 'SmallClaims';
+let carmEnabled = false;
+Before(async () => {
+  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
+});
+
+Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
+  claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
   await api_spec_cui.stayCase(config.hearingCenterAdminWithRegionId1);
-  await api_spec_cui.manageStay(config.ctscAdminUser, true);
-  await api_spec_cui.manageStay(config.ctscAdminUser, false);
+  await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, true);
+  await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL');
-  await api_spec_cui.dismissCase(config.ctscAdminUser);
+  await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
 });
-
-

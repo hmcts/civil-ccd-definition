@@ -7,7 +7,6 @@ module.exports = {
           manageStayOption: 'REQUEST_UPDATE'
         },
         manageStayRequestUpdate: {
-          manageStayRequestUpdateText: 'Need update on stay case'
         }
       }
     };
@@ -15,6 +14,26 @@ module.exports = {
   manageStayLiftStay: () => {
     return {
       userInput: {
+        manageStayOptions: {
+          manageStayOption: 'LIFT_STAY'
+        }
+      }
+    };
+  },
+  manageStayRequestUpdateDamages: () => {
+    return {
+      valid: {
+        manageStayOptions: {
+          manageStayOption: 'REQUEST_UPDATE'
+        },
+        manageStayRequestUpdate: {
+        }
+      }
+    };
+  },
+  manageStayLiftStayDamages: () => {
+    return {
+      valid: {
         manageStayOptions: {
           manageStayOption: 'LIFT_STAY'
         }

@@ -40,6 +40,9 @@ const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
+const stayCase = require("../fixtures/events/stayCase");
+const manageStay = require("../fixtures/events/manageStay");
+const dismissCase = require("../fixtures/events/dismissCase");
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -89,6 +92,10 @@ const data = {
   SETTLE_CLAIM_MARK_PAID_FULL_SELECT_CLAIMANT: (addApplicant2) => settleClaim1v1Spec.claimantDetails(addApplicant2),
   DISCONTINUE_CLAIM: (mpScenario) => discontinueClaimSpec.discontinueClaim(mpScenario),
   VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: (permission) => validateDiscontinueClaimClaimantSpec.validateDiscontinueClaimClaimant(permission),
+  STAY_CASE: () => stayCase.stayCaseSpec(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
+  DISMISS_CASE: () => dismissCase.dismissCase()
 };
 
 const eventData = {
@@ -831,7 +838,7 @@ module.exports = {
     if (scenario === 'ONE_V_TWO'
       && createClaimData.userInput.SameLegalRepresentative
       && createClaimData.userInput.SameLegalRepresentative.respondent2SameLegalRepresentative === 'No') {
-        await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
+      await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
     }
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1065,8 +1072,8 @@ module.exports = {
     if (user === config.applicantSolicitorUser) {
       eventData = mediationDocuments.uploadMediationDocuments('claimant');
     }  else {
-          eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
-        }
+      eventData = mediationDocuments.uploadMediationDocuments(sameDefendantSolicitor || user === config.defendantSolicitorUser ? 'defendant' : 'defendantTwo', sameDefendantSolicitor);
+    }
 
     eventName = 'UPLOAD_MEDIATION_DOCUMENTS';
     caseData = await apiRequest.startEvent(eventName, caseId);
@@ -1078,7 +1085,7 @@ module.exports = {
   },
 
   claimantResponseForFlightDelay: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
-                           expectedEndState) => {
+                                         expectedEndState) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -1147,10 +1154,10 @@ module.exports = {
       let claimIssuedPBADetails = {
         claimIssuedPBADetails:{
           applicantsPbaAccounts: {
-              value: {
-                code:'66b21c60-aed1-11ed-8aa3-494efce63912',
-                label:'PBAFUNC12345'
-              },
+            value: {
+              code:'66b21c60-aed1-11ed-8aa3-494efce63912',
+              label:'PBAFUNC12345'
+            },
             list_items:[
               {
                 code:'66b21c60-aed1-11ed-8aa3-494efce63912',
@@ -1178,13 +1185,13 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-            registrationType: 'R',
-            judgmentDateTime: dateTime(0)
-          },
-          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-          registrationTypeRespondentTwo: [
-            {
-              value: {
+              registrationType: 'R',
+              judgmentDateTime: dateTime(0)
+            },
+            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+        registrationTypeRespondentTwo: [
+          {
+            value: {
               registrationType: 'R',
               judgmentDateTime: dateTime(0)
             },
@@ -1202,11 +1209,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-            registrationType: 'R',
-            judgmentDateTime: dateTime(0)
-          },
-          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-          registrationTypeRespondentTwo: []
+              registrationType: 'R',
+              judgmentDateTime: dateTime(0)
+            },
+            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+        registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
         state = 'All_FINAL_ORDERS_ISSUED';
@@ -1219,11 +1226,11 @@ module.exports = {
         registrationTypeRespondentOne: [
           {
             value: {
-            registrationType: 'R',
-            judgmentDateTime: dateTime(0)
-          },
-          id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
-          registrationTypeRespondentTwo: []
+              registrationType: 'R',
+              judgmentDateTime: dateTime(0)
+            },
+            id: '9f30e576-f5b7-444f-8ba9-27dabb21d966' } ],
+        registrationTypeRespondentTwo: []
       };
       if (isJudgmentOnlineLive) {
         state = 'All_FINAL_ORDERS_ISSUED';
@@ -1694,7 +1701,7 @@ module.exports = {
       await assertValidData(disposalData, pageId);
     }
 
-   if (mpScenario === 'TWO_V_ONE') {
+    if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
         header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
         body: ''
@@ -1742,7 +1749,91 @@ module.exports = {
       }, true);
       await waitForFinishedBusinessProcess(caseId);
     }
-  }
+  },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (caseData.preStayState === 'PREPARE_FOR_HEARING_CONDUCT_HEARING') {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent(caseData.preStayState, {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
 };
 
 // Functions

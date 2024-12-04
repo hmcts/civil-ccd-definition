@@ -203,7 +203,7 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
     await waitForFinishedBusinessProcess(caseId);
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
+    const pbaV3 = true;
     if (pbaV3) {
       await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
         claimData.serviceUpdateDto(caseId, 'paid'));
@@ -624,15 +624,31 @@ module.exports = {
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent(caseData.preStayState, {
-      header: header,
-      body: '&nbsp;'
-    }, true);
+    console.log('------------ THE PRESTAY STATE IS ' + caseData.preStayState);
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (caseData.preStayState === 'IN_MEDIATION') {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent(caseData.preStayState, {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
 
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  dismissCase: async (user, requestUpdate) => {
+  dismissCase: async (user) => {
     console.log('Dismiss case for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'DISMISS_CASE';
@@ -640,12 +656,12 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
-    let disposalData = data.DISMISS_CASE;
+    let disposalData = data.DISMISS_CASE();
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent(caseData.preStayState, {
-      header: header,
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
       body: '&nbsp;'
     }, true);
 
@@ -684,7 +700,7 @@ const assertValidData = async (data, pageId) => {
 
   let userData;
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' || eventName === 'HEARING_SCHEDULED'
-  || eventName === 'GENERATE_DIRECTIONS_ORDER') {
+    || eventName === 'GENERATE_DIRECTIONS_ORDER') {
     userData = data.valid[pageId];
   } else {
     userData = data.userInput[pageId];

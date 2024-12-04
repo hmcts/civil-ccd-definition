@@ -1,13 +1,17 @@
 
 module.exports = {
   stayCaseSpec: () => {
-    const responseData = {
+    return {
       userInput: {
-          StayCase: {
-            stayCaseText: 'Case Stayed by caseworker'
-          }
-        }
-    }
-    return responseData;
+        StayCase: {}
+      }
+    };
+  },
+  stayCase: () => {
+    return {
+      valid: {
+        StayCase: {}
+      }
+    };
   }
 };

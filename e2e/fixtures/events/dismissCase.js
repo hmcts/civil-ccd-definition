@@ -4,7 +4,14 @@ module.exports = {
     return {
       userInput: {
         DismissCase: {
-          dismissText: 'This case is dismissed'
+        }
+      }
+    };
+  },
+  dismissCaseDamages: () => {
+    return {
+      valid: {
+        DismissCase: {
         }
       }
     };
