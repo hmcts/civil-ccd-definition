@@ -1,5 +1,5 @@
-const config = require("../../../config.js");
-const {createAccount} = require("../../../api/idamHelper");
+const config = require('../../../config.js');
+const {createAccount} = require('../../../api/idamHelper');
 
 Feature('CCD API test @api-caseworker @api-nonprod');
 
@@ -29,13 +29,13 @@ Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
   await api_spec.createSDO(config.judgeUserWithRegionId1);
-  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL')
+  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api_spec.amendHearingDueDate(config.systemupdate);
   await api_spec.hearingFeePaid(config.hearingCenterAdminWithRegionId1);
   await api_spec.stayCase(config.hearingCenterAdminWithRegionId1);
   await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, true);
   await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, false);
-  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL')
+  await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api_spec.dismissCase(config.hearingCenterAdminWithRegionId1);
 });
 

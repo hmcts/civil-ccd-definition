@@ -35,9 +35,9 @@ const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
-const stayCase = require("../fixtures/events/stayCase");
-const manageStay = require("../fixtures/events/manageStay");
-const dismissCase = require("../fixtures/events/dismissCase")
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
 
 let caseId, eventName;
 let caseData = {};

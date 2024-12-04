@@ -40,9 +40,9 @@ const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
 const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
-const stayCase = require("../fixtures/events/stayCase");
-const manageStay = require("../fixtures/events/manageStay");
-const dismissCase = require("../fixtures/events/dismissCase");
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};

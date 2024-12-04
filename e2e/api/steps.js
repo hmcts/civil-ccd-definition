@@ -39,9 +39,9 @@ const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
-const stayCase = require("../fixtures/events/stayCase");
-const manageStay = require("../fixtures/events/manageStay");
-const dismissCase = require("../fixtures/events/dismissCase");
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
 
 
 const data = {
