@@ -1,20 +1,14 @@
 [
   {
     "ID": "CoscApplicationStatus",
-    "ListElementCode": "ACTIVE",
-    "ListElement": "Active",
+    "ListElementCode": "CANCELLED",
+    "ListElement": "Cancelled",
     "DisplayOrder": 1
   },
   {
     "ID": "CoscApplicationStatus",
-    "ListElementCode": "PROCESSED",
-    "ListElement": "Processed",
+    "ListElementCode": "SATISFIED",
+    "ListElement": "Satisfied",
     "DisplayOrder": 2
-  },
-  {
-    "ID": "CoscApplicationStatus",
-    "ListElementCode": "INACTIVE",
-    "ListElement": "Inactive",
-    "DisplayOrder": 3
   }
 ]
