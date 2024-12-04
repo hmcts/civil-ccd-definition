@@ -19,7 +19,7 @@ export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(availabilityQuestionSmallTrack.radioYes.selector);
   }
 
-  async selectNoAvailabilitSmallTrack() {
+  async selectNoAvailabilitySmallTrack() {
     await super.clickBySelector(availabilityQuestionSmallTrack.radioNo.selector);
   }
 

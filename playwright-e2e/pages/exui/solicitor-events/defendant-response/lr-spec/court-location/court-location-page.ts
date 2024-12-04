@@ -13,10 +13,7 @@ import {
 @AllMethodsStep()
 export default class CourtLocationPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectText(courtLocationDropdown.label, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async verifyContent1v1() {

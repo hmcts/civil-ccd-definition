@@ -9,10 +9,10 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await ExuiDashboardSteps.GoToCaseList();
 
   const { ccdRequests } = _requestsFactory;
-  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733304630256491, civilAdminUser);
+  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733323639008687, civilAdminUser);
 
   const { caseDetailsPage } = _exuiDashboardPageFactory;
-  await caseDetailsPage.goToCaseDetails(1733304630256491);
+  await caseDetailsPage.goToCaseDetails(1733323639008687);
   await caseDetailsPage.verifyContent(ccdCaseData);
   await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFENDANT_RESPONSE_SPEC);
 
@@ -59,42 +59,19 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await addTimelineOfEventsPage.verifyContent(ccdCaseData);
   await addTimelineOfEventsPage.submit();
 
-  const { fileDirectionsQuestionnairePage } = _defendantResponsePageFactory;
-  await fileDirectionsQuestionnairePage.verifyContent(ccdCaseData);
-  await fileDirectionsQuestionnairePage.selectCheckBox();
-  await fileDirectionsQuestionnairePage.selectYesOneMonthStay();
-  await fileDirectionsQuestionnairePage.selectYesComplied();
-  await fileDirectionsQuestionnairePage.submit();
-
-  const { fixedRecoverableCostsPage } = _defendantResponsePageFactory;
-  await fixedRecoverableCostsPage.verifyContent(ccdCaseData);
-  await fixedRecoverableCostsPage.selectNo();
-  await fixedRecoverableCostsPage.submit();
-
-  const { disclosureOfElectronicDocumentsPage } = _defendantResponsePageFactory;
-  await disclosureOfElectronicDocumentsPage.verifyContent(ccdCaseData);
-  await disclosureOfElectronicDocumentsPage.selectYes();
-  await disclosureOfElectronicDocumentsPage.submit();
-
-  const { disclosureOfNonElectronicDocumentsPage } = _defendantResponsePageFactory;
-  await disclosureOfNonElectronicDocumentsPage.verifyContent(ccdCaseData);
-  await disclosureOfNonElectronicDocumentsPage.inputText();
-  await disclosureOfNonElectronicDocumentsPage.submit();
-
-  const { disclosureReportPage } = _defendantResponsePageFactory;
-  await disclosureReportPage.verifyContent(ccdCaseData);
-  await disclosureReportPage.selectYesFiledAndServedRadioButtons();
-  await disclosureReportPage.selectYesAgreedProposalRadioButtons();
-  await disclosureReportPage.submit();
+  const { mediationPage } = _defendantResponsePageFactory;
+  await mediationPage.verifyContent(ccdCaseData);
+  await mediationPage.selectNo();
+  await mediationPage.submit();
 
   const { useOfExpertPage } = _defendantResponsePageFactory;
   await useOfExpertPage.verifyContent(ccdCaseData);
-  await useOfExpertPage.selectNoFastTrack();
+  await useOfExpertPage.selectNoSmallTrack();
   await useOfExpertPage.submit();
 
   const { witnessesPage } = _defendantResponsePageFactory;
   await witnessesPage.verifyContent(ccdCaseData);
-  await witnessesPage.selectNoFastTrack();
+  await witnessesPage.selectNoSmallTrack();
   await witnessesPage.submit();
 
   const { welshLanguagePage } = _defendantResponsePageFactory;
@@ -105,7 +82,8 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
 
   const { hearingAvailabilityPage } = _defendantResponsePageFactory;
   await hearingAvailabilityPage.verifyContent(ccdCaseData);
-  await hearingAvailabilityPage.selectNoAvailabilityFastTrack();
+  await hearingAvailabilityPage.selectNoAvailabilitySmallTrack();
+  await hearingAvailabilityPage.selectNoInterpreterSmallTack();
   await hearingAvailabilityPage.submit();
 
   const { courtLocationPage } = _defendantResponsePageFactory;
@@ -123,12 +101,6 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await vulnerabilityQuestionsPage.verifyContent(ccdCaseData);
   await vulnerabilityQuestionsPage.selectNo();
   await vulnerabilityQuestionsPage.submit();
-
-  const { applicationPage } = _defendantResponsePageFactory;
-  await applicationPage.verifyContent(ccdCaseData);
-  await applicationPage.selectNo();
-  await applicationPage.enterAdditionalInformation();
-  await applicationPage.submit();
 
   const { statementOfTruthPage } = _defendantResponsePageFactory;
   await statementOfTruthPage.verifyContent(ccdCaseData);
