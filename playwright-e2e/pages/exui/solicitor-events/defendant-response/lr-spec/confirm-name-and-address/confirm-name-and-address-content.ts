@@ -35,3 +35,17 @@ export const radioButtons2 = {
     selector: '#specAoSRespondent2CorrespondenceAddressRequired_No',
   },
 };
+
+export const radioButtons2FastTrack = {
+  text: {
+    label: 'Is this address correct?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#specAoSRespondent2HomeAddressRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#specAoSRespondent2HomeAddressRequired_No',
+  },
+};

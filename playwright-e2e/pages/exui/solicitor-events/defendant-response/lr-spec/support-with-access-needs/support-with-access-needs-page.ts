@@ -9,8 +9,7 @@ export default class SupportWithAccessNeedsPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      //super.expectHeading(heading),
-      super.expectText(question.text.label),
+      super.expectText(question.text.label, { ignoreDuplicates: true }),
       super.expectText(question.radioYes.label, { ignoreDuplicates: true }),
       super.expectText(question.radioNo.label, { ignoreDuplicates: true }),
     ]);

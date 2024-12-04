@@ -15,7 +15,8 @@ export const reasonForm = {
   selector: '#respondToCourtLocation_reasonForHearingAtSpecificCourt',
 };
 
-export const subHeading = 'Remote hearing';
+export const subHeading1v1 = 'Remote hearing';
+export const subHeadingMultiDefendant = 'Remote Hearing';
 
 export const remoteHearingRadioButtons = {
   text: {

@@ -3,7 +3,8 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import {
-  subHeading,
+  subHeading1v1,
+  subHeadingMultiDefendant,
   courtLocationDropdown,
   reasonForm,
   remoteHearingRadioButtons,
@@ -15,10 +16,19 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(courtLocationDropdown.label, { ignoreDuplicates: true }),
-      super.expectSubheading(subHeading),
-      super.expectText(remoteHearingRadioButtons.radioYes.label, { ignoreDuplicates: true }),
-      super.expectText(remoteHearingRadioButtons.radioNo.label, { ignoreDuplicates: true }),
     ]);
+  }
+
+  async verifyContent1v1() {
+    super.expectSubheading(subHeading1v1),
+      super.expectText(remoteHearingRadioButtons.radioYes.label, { ignoreDuplicates: true }),
+      super.expectText(remoteHearingRadioButtons.radioNo.label, { ignoreDuplicates: true });
+  }
+
+  async verifyContentMultiDefendant() {
+    super.expectSubheading(subHeadingMultiDefendant),
+      super.expectText(remoteHearingRadioButtons.radioYes.label, { ignoreDuplicates: true }),
+      super.expectText(remoteHearingRadioButtons.radioNo.label, { ignoreDuplicates: true });
   }
 
   async selectCourtLocation() {

@@ -1,7 +1,13 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
-import { heading, paragraphs, radioButtons } from './confirm-name-and-address-content.ts';
+import {
+  heading,
+  paragraphs,
+  radioButtons,
+  radioButtons2,
+  radioButtons2FastTrack,
+} from './confirm-name-and-address-content.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()
@@ -31,8 +37,28 @@ export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
     ]);
   }
 
-  async selectYes() {
+  async selectYesDefendant1() {
     await super.clickBySelector(radioButtons.radioYes.selector);
+  }
+
+  async selectNoDefendant1() {
+    await super.clickBySelector(radioButtons.radioNo.selector);
+  }
+
+  async selectYesDefendant2() {
+    await super.clickBySelector(radioButtons2.radioYes.selector);
+  }
+
+  async selectNoDefendant2() {
+    await super.clickBySelector(radioButtons2.radioNo.selector);
+  }
+
+  async selectYesDefendant2FastTrack() {
+    await super.clickBySelector(radioButtons2FastTrack.radioYes.selector);
+  }
+
+  async selectNoDefendant2FastTrack() {
+    await super.clickBySelector(radioButtons2FastTrack.radioNo.selector);
   }
 
   async submit() {

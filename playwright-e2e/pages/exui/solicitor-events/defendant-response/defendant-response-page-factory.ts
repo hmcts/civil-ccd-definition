@@ -24,6 +24,7 @@ import DisclosureOfElectronicDocumentsPage from './lr-spec/disclosure-of-electro
 import DisclosureOfNonElectronicDocumentsPage from './lr-spec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
 import DisclosureReportPage from './lr-spec/disclosure-report/disclosure-report-page';
 import ApplicationPage from './lr-spec/application/application-page';
+import IntendToFileSingleResponsePage from './lr-spec/intend-to-file-single-response/intend-to-file-single-response-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get checkIfYouNeedToCompleteClaimTimelinePage() {
@@ -124,5 +125,9 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get applicationPage() {
     return new ApplicationPage(this.page);
+  }
+
+  get intendToFileSingleResponsePage() {
+    return new IntendToFileSingleResponsePage(this.page);
   }
 }

@@ -9,10 +9,10 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await ExuiDashboardSteps.GoToCaseList();
 
   const { ccdRequests } = _requestsFactory;
-  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733232067933383, civilAdminUser);
+  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733304630256491, civilAdminUser);
 
   const { caseDetailsPage } = _exuiDashboardPageFactory;
-  await caseDetailsPage.goToCaseDetails(1733232067933383);
+  await caseDetailsPage.goToCaseDetails(1733304630256491);
   await caseDetailsPage.verifyContent(ccdCaseData);
   await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFENDANT_RESPONSE_SPEC);
 
@@ -22,7 +22,8 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
 
   const { confirmNameAndAddressPage } = _defendantResponsePageFactory;
   await confirmNameAndAddressPage.verifyContent(ccdCaseData);
-  await confirmNameAndAddressPage.selectYes();
+  await confirmNameAndAddressPage.selectYesDefendant1();
+  await confirmNameAndAddressPage.selectYesDefendant2FastTrack();
   await confirmNameAndAddressPage.submit();
 
   const { defendantsLegalRepsReferencePage } = _defendantResponsePageFactory;
@@ -30,9 +31,14 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await defendantsLegalRepsReferencePage.selectYes();
   await defendantsLegalRepsReferencePage.submit();
 
+  const { intendToFileSingleResponsePage } = _defendantResponsePageFactory;
+  await intendToFileSingleResponsePage.verifyContent(ccdCaseData);
+  await intendToFileSingleResponsePage.selectYes();
+  await intendToFileSingleResponsePage.submit();
+
   const { respondToClaimPage } = _defendantResponsePageFactory;
   await respondToClaimPage.verifyContent(ccdCaseData);
-  await respondToClaimPage.selectDefends();
+  await respondToClaimPage.selectDefendsDefendant1();
   await respondToClaimPage.submit();
 
   const { whyDoesDefendantNotOweMoneyPage } = _defendantResponsePageFactory;
