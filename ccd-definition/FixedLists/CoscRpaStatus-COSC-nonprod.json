@@ -1,12 +1,12 @@
 [
   {
-    "ID": "CoscApplicationStatus",
+    "ID": "CoscRpaStatus",
     "ListElementCode": "CANCELLED",
     "ListElement": "Cancelled",
     "DisplayOrder": 1
   },
   {
-    "ID": "CoscApplicationStatus",
+    "ID": "CoscRpaStatus",
     "ListElementCode": "SATISFIED",
     "ListElement": "Satisfied",
     "DisplayOrder": 2
