@@ -28,7 +28,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "joMarkedPaidInFullIssueDate",
     "Label": " ",
-    "FieldType": "Date",
+    "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
