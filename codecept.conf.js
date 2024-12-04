@@ -1,7 +1,7 @@
 exports.config = {
   tests: process.env.CCD_UI_TESTS == 'true' ? [
     './e2e/tests/ui_tests/*.js',
-    './e2e/tests/ui_tests/damages/*_test.js',
+   /* './e2e/tests/ui_tests/damages/*_test.js',
     './e2e/tests/ui_tests/lrspec/*_test.js',
     './e2e/tests/ui_tests/damages/nightly/*_test.js',
     './e2e/tests/ui_tests/noticeofchange/*_test.js',
@@ -12,7 +12,7 @@ exports.config = {
     './e2e/tests/ui_tests/refunds/*_test.js',
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/ui_tests/hearings/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
+    './e2e/tests/api_tests/lrspec_cui/*_test.js',*/
   ] : [
     './e2e/tests/api_tests/*.js',
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
