@@ -17,6 +17,7 @@ import {
 export default class FastTrackPage extends ExuiEvent(BasePage) {
   async verifyContent(...args: any[]): Promise<void> {
     await super.runVerifications([
+      super.verifyHeadings(),
       super.expectHeading(heading),
       super.expectText(paragraphs.paragraph1),
       super.expectSubheading(subheadings.judgesRecital),
