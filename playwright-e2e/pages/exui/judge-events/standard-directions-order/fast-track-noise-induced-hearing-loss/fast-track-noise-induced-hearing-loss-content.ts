@@ -414,7 +414,7 @@ export const inputs = {
       label: 'Written questions of any expert(s)',
       selector: '#sdoR2QuestionsToEntExpert_sdoWrittenQuestionsTxt',
     },
-    writtenQuetionsDate: {
+    writtenQuestionsDate: {
       day: {
         label: 'Day',
         selector: '#sdoWrittenQuestionsDate-day',
@@ -543,10 +543,21 @@ export const inputs = {
       label2: 'This is only seen by the listing officer (Optional)',
       selector: '#sdoR2Trial_hearingNotesTxt',
     },
+    trialLengthDays: {
+      label: 'Days',
+      selector: '#sdoR2Trial_lengthListOther_trialLengthDays',
+    },
+    trialLengthHours: {
+      label: 'Hours',
+      selector: '#sdoR2Trial_lengthListOther_trialLengthHours',
+    },
+    trialLengthMinutes: {
+      label: 'Minutes',
+      selector: '#sdoR2Trial_lengthListOther_trialLengthMinutes',
+    },
   },
   importantNotes: {
     importantNotesText: {
-      label: 'Important notes',
       selector: '#sdoR2ImportantNotesTxt',
     },
     importantNotesDate: {
@@ -567,6 +578,30 @@ export const inputs = {
 };
 
 export const radioButtons = {
+  witnessesOfFact: {
+    restrictNumWitnesses: {
+      label: 'Restrict number of witnesses',
+      yes: {
+        label: 'Yes',
+        selector: '#sdoR2WitnessesOfFact_sdoR2RestrictWitness_isRestrictWitness_Yes',
+      },
+      no: {
+        label: 'No',
+        selector: '#sdoR2WitnessesOfFact_sdoR2RestrictWitness_isRestrictWitness_No',
+      },
+    },
+    restrictNumPages: {
+      label: 'Restrict number of pages',
+      yes: {
+        label: 'Yes',
+        selector: '#sdoR2WitnessesOfFact_sdoRestrictPages_isRestrictPages_Yes',
+      },
+      no: {
+        label: 'No',
+        selector: '#sdoR2WitnessesOfFact_sdoRestrictPages_isRestrictPages_No',
+      },
+    },
+  },
   questionsClaimantExpert: {
     label: 'Require application to rely on further medical evidence',
     yes: {
