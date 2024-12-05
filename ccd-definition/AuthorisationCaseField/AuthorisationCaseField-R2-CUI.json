@@ -2445,13 +2445,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "citizen-profile",
-          "caseworker-civil"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-citizen-ui-pcqextractor"
         ],
         "CRUD": "R"
