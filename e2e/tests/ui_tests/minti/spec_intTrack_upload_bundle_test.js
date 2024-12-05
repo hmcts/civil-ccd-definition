@@ -1,22 +1,25 @@
 const config = require('../../../config.js');
 const judgeUser = config.judgeUserWithRegionId1;
-//let civilCaseReference;
+let civilCaseReference;
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 
-Feature('Intermediate track - Upload documents - Bundle');
+Feature('Intermediate track - Upload documents - Bundle @non-prod-e2e-ft');
 
 async function prepareSpecClaim(api_spec, mpScenario) {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
+  civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
 }
 
-Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({api_spec, LRspec}) => {
+Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_TWO';
   await prepareSpecClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false, true, claimAmountIntermediate);
   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
+
+  await I.login(config.secondDefendantSolicitorUser);
+  await I.evidenceUpload(civilCaseReference, true, true);
 });
 
 AfterSuite(async ({api_spec}) => {
