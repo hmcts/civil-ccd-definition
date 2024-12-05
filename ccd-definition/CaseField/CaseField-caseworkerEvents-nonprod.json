@@ -50,6 +50,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "manageStayUpdateRequestDate",
+    "Label": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "manageStayRequestUpdateHintText",
     "Label": "A notification will be sent to all parties, asking them for an update on the case. \n\n After 7 days, a new task will be created to progress the case.",
     "FieldType": "Label",
@@ -85,6 +93,31 @@
     "ID": "anyRepresented",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationDatePresent",
+    "Label": "Is there an obligation date?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "courtStaffNextSteps",
+    "Label": "Have all the next steps for court staff been completed?",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "courtStaffNextSteps",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "stillTasksText",
+    "Label": "You must complete all of your tasks before you can submit your order review.",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
