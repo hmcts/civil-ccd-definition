@@ -22,5 +22,23 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "generalAppDetailsOfOrderColl",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "generalAppReasonsOfOrderColl",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE"
+    ],
+    "CRUD": "CRUD"
   }
 ]
