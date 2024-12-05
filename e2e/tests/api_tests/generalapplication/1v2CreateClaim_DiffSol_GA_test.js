@@ -6,7 +6,7 @@ let caseNumber;
 
 Feature('1v2 Different Solicitors General application creation @api-unspec @api-nonprod');
 
-Scenario.only('Make a general application', async ({api_spec}) => {
+Scenario('Make a general application', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
