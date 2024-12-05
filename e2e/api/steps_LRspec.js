@@ -264,7 +264,7 @@ const assertValidDataForEvidenceUpload = async (data, pageId, solicitor) => {
   }
   assert.equal(response.status, 200);
 
-   
+
   let claimValue;
   if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
     && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
@@ -371,7 +371,7 @@ function whatsTheDifference(caseData, responseBodyData, path) {
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
-   
+
   return dynamicElements.map(({code, ...item}) => item);
 }
 
@@ -857,12 +857,12 @@ module.exports = {
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
     const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase));
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
 
     return caseId;
   },
 
-  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY') => {
+  createClaimSpecFlightDelay: async (user, scenario = 'ONE_V_ONE_FLIGHT_DELAY', carmEnabled = false) => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -903,6 +903,7 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
   },
 
   informAgreedExtensionDate: async (user) => {
@@ -912,7 +913,7 @@ module.exports = {
     const pbaV3 = await checkToggleEnabled(PBAv3);
 
     let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT': 'CREATE_CLAIM_SPEC');
-    informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
+    informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(42);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
       await assertValidData(informAgreedExtensionData, pageId);
@@ -1962,11 +1963,33 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue= '1580.00';
+    if (['preview', 'demo'].includes(config.runningEnv)) {
+      responseBody.data.repaymentDue= '1502.00';
+    } else {
+      responseBody.data.repaymentDue= '1580.00';
+    }
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
+  if (pageId === 'claimPartialPayment' && ['preview', 'demo'].includes(config.runningEnv)) {
+    delete responseBody.data['showDJFixedCostsScreen'];
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
+      responseBody.data.currentDefendantName = 'Sir John Doe';
+    } else {
+      responseBody.data.currentDefendantName = 'both defendants';
+    }
+  }
+
+  if (pageId === 'fixedCostsOnEntry') {
+    delete responseBody.data['showDJFixedCostsScreen'];
+    if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
+      responseBody.data.currentDefendantName = 'Sir John Doe';
+    } else {
+      responseBody.data.currentDefendantName = 'both defendants';
+    }
+  }
+
 
   try {
     assert.deepEqual(responseBody.data, caseData);

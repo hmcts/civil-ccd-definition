@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_DJ_RECEIVED",
     "Name": "Email: Notify DJ",
     "Description": "Generates default judgment received email",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RPA_DJ_SPEC",
     "Name": "Notify RPA",
     "Description": "Notify RPA",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CASEWORKER_DJ_RECEIVED",
     "Name": "Email: Notify DJ",
     "Description": "Generates default judgment received email",

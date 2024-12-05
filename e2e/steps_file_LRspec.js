@@ -6,6 +6,7 @@ const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const caseViewPage = require('./pages/caseView.page');
+const stayAndLiftCasePage = require('./pages/stayAndLiftCase/stayAndLiftCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claimantSolicitorOrganisationLRspec.page');
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
@@ -44,6 +45,7 @@ const specListEvidencePage = require('./pages/createClaim/claimListEvidenceLRspe
 const specClaimAmountPage = require('./pages/createClaim/claimAmountLRspec.page');
 const specInterestPage = require('./pages/createClaim/interestLRspec.page');
 const specInterestValuePage = require('./pages/createClaim/interestValueLRspec.page');
+const fixedCostsPage = require('./pages/createClaim/fixedCostsLRspec.page');
 const specInterestRatePage = require('./pages/createClaim/interestRateLRspec.page');
 const specInterestDateStartPage = require('./pages/createClaim/interestDateStartLRspec.page');
 const specInterestDateEndPage = require('./pages/createClaim/interestDateEndLRspec.page');
@@ -384,6 +386,7 @@ module.exports = function () {
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
+                 () => fixedCostsPage.addFixedCosts(),
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
@@ -414,6 +417,7 @@ module.exports = function () {
             () => this.clickContinue(),
             () => pbaNumberPage.selectPbaNumber(),
             () => paymentReferencePage.updatePaymentReference(),
+            () => fixedCostsPage.addFixedCosts(),
             () => statementOfTruth.enterNameAndRole('claim'),
             () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
             () => event.returnToCaseDetails(),
@@ -459,6 +463,7 @@ module.exports = function () {
         () => specInterestDateEndPage.selectInterestDateEnd(),
         () => this.clickContinue(),
         () => pbaNumberPage.clickContinue(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
         ...conditionalSteps(SdoR2, [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
@@ -491,6 +496,7 @@ module.exports = function () {
         () => this.clickContinue(),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
         ...conditionalSteps(SdoR2, [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
@@ -897,6 +903,41 @@ module.exports = function () {
         await serviceRequest.openServiceRequestTab();
         await serviceRequest.payFee(caseId, true);
       }
+    },
+
+    async stayCase(user = config.ctscAdminUser) {
+      eventName = 'Stay case';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.waitForText('All parties will be notified.'),
+        () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
+        () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
+      eventName = 'Manage stay';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+      ]);
+      if (manageStayType == 'REQ_UPDATE')  {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
+          () => event.submit('Submit', 'You have requested an update on'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      } else {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyLiftCaseStaySteps(caseState),
+          () => event.submit('Submit', 'You have lifted the stay from this'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      }
+      await this.waitForText('Summary');
     },
 
     async requestForReconsiderationForUI() {
