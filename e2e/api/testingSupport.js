@@ -49,10 +49,6 @@ const checkFastTrackUpliftsEnabled = async () => {
   return checkFlagEnabled('fast-track-uplifts');
 };
 
-const checkCarmToggleEnabled = async () => {
-  return checkFlagEnabled('carm');
-};
-
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
 };
@@ -298,6 +294,5 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkCarmToggleEnabled,
   checkMintiToggleEnabled
 };
