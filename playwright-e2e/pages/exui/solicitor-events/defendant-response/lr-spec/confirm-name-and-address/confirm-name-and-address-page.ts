@@ -16,9 +16,16 @@ export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
-      super.expectText(paragraphs.partyTypeText, {
-        containerSelector: '#specAoSRespondentInformation',
-      }),
+      super.expectText(radioButtons.text.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.radioYes.text, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.radioNo.text, { ignoreDuplicates: true }),
+    ]);
+  }
+
+  async verifyContent1v1(ccdCaseData: CCDCaseData) {
+    super.expectText(paragraphs.partyTypeText, {
+      containerSelector: '#specAoSRespondentInformation',
+    }),
       super.expectText(paragraphs.nameText, {
         containerSelector: '#specAoSRespondentInformation',
       }),
@@ -30,11 +37,7 @@ export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
       }),
       super.expectText(paragraphs.addressText, {
         containerSelector: '#specAoSRespondentInformation',
-      }),
-      super.expectText(radioButtons.text.label, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.radioYes.text, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.radioNo.text, { ignoreDuplicates: true }),
-    ]);
+      });
   }
 
   async selectYesDefendant1() {

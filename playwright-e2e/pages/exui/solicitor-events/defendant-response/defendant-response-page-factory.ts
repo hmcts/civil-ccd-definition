@@ -130,4 +130,108 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   get intendToFileSingleResponsePage() {
     return new IntendToFileSingleResponsePage(this.page);
   }
+
+  get checkIfYouNeedToCompleteClaimTimelineDef2Page() {
+    return new CheckIfYouNeedToCompleteClaimTimelinePage(this.page);
+  }
+
+  get confirmNameAndAddressDef2Page() {
+    return new ConfirmNameAndAddressPage(this.page);
+  }
+
+  get defendantsLegalRepsReferenceDef2Page() {
+    return new DefendantsLegalRepsReferencePage(this.page);
+  }
+
+  get respondToClaimDef2Page() {
+    return new RespondToClaimPage(this.page);
+  }
+
+  get whyDoesDefendantNotOweMoneyDef2Page() {
+    return new whyDoesDefendantNotOweMoneyPage(this.page);
+  }
+
+  get whyDoesDefendantDisputeClaimDef2Page() {
+    return new WhyDoesDefendantDisputeClaimPage(this.page);
+  }
+
+  get howToAddClaimTimelineDef2Page() {
+    return new HowToAddClaimTimelinePage(this.page);
+  }
+
+  get addTimelineOfEventsDef2Page() {
+    return new AddTimelineOfEventsPage(this.page);
+  }
+
+  get mediationDef2Page() {
+    return new MediationPage(this.page);
+  }
+
+  get mediationContactInformationDef2Page() {
+    return new MediationContactInformationPage(this.page);
+  }
+
+  get mediationAvailabilityDef2Page() {
+    return new MediationAvailabilityPage(this.page);
+  }
+
+  get useOfExpertDef2Page() {
+    return new useOfExpertsPage(this.page);
+  }
+
+  get witnessesDef2Page() {
+    return new WitnessesPage(this.page);
+  }
+
+  get welshLanguageDef2Page() {
+    return new WelshLanguagePage(this.page);
+  }
+
+  get hearingAvailabilityDef2Page() {
+    return new HearingAvailabilityPage(this.page);
+  }
+
+  get courtLocationDef2Page() {
+    return new CourtLocationPage(this.page);
+  }
+
+  get supportWithAccessNeedsDef2Page() {
+    return new SupportWithAccessNeedsPage(this.page);
+  }
+
+  get vulnerabilityQuestionsDef2Page() {
+    return new VulnerabilityQuestionsPage(this.page);
+  }
+
+  get statementOfTruthDef2Page() {
+    return new StatementOfTruthPage(this.page);
+  }
+
+  get fileDirectionsQuestionnaireDef2Page() {
+    return new FileDirectionsQuestionnairePage(this.page);
+  }
+
+  get fixedRecoverableCostsDef2Page() {
+    return new FixedRecoverableCostsPage(this.page);
+  }
+
+  get disclosureOfElectronicDocumentsDef2Page() {
+    return new DisclosureOfElectronicDocumentsPage(this.page);
+  }
+
+  get disclosureOfNonElectronicDocumentsDef2Page() {
+    return new DisclosureOfNonElectronicDocumentsPage(this.page);
+  }
+
+  get disclosureReportDef2Page() {
+    return new DisclosureReportPage(this.page);
+  }
+
+  get applicationDef2Page() {
+    return new ApplicationPage(this.page);
+  }
+
+  get intendToFileSingleResponseDef2Page() {
+    return new IntendToFileSingleResponsePage(this.page);
+  }
 }

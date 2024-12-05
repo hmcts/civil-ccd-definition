@@ -6,7 +6,9 @@ import {
   heading,
   useExpertRadioButtonsSmallTrack,
   useExpertRadioButtonsFastTrack,
+  useExpertsRadioButtonsSmallTrack1v2,
   expertDetails,
+  expertDetails1v2,
 } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
@@ -79,6 +81,42 @@ export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
 
   async selectNoFastTrack() {
     await super.clickBySelector(useExpertRadioButtonsFastTrack.radioNo.selector);
+  }
+
+  async selectYesSmallTrack1v2() {
+    await super.clickBySelector(useExpertsRadioButtonsSmallTrack1v2.radioYes.selector);
+    super.expectInputValue(
+      expertDetails1v2.fields.firstName.label,
+      expertDetails1v2.fields.firstName.selector,
+    ),
+      super.expectInputValue(
+        expertDetails1v2.fields.lastName.label,
+        expertDetails1v2.fields.lastName.selector,
+      ),
+      super.expectInputValue(
+        expertDetails1v2.fields.number.label,
+        expertDetails1v2.fields.number.selector,
+      ),
+      super.expectInputValue(
+        expertDetails1v2.fields.email.label,
+        expertDetails1v2.fields.email.selector,
+      ),
+      super.expectInputValue(
+        expertDetails1v2.fields.fieldOfExpertise.label,
+        expertDetails1v2.fields.fieldOfExpertise.selector,
+      ),
+      super.expectInputValue(
+        expertDetails1v2.fields.whyDoYouNeedExpert.label,
+        expertDetails1v2.fields.whyDoYouNeedExpert.selector,
+      ),
+      super.expectInputValue(
+        expertDetails1v2.fields.estimateCost.label,
+        expertDetails1v2.fields.estimateCost.selector,
+      );
+  }
+
+  async selectNoSmallTrack1v2() {
+    await super.clickBySelector(useExpertsRadioButtonsSmallTrack1v2.radioNo.selector);
   }
 
   async submit() {

@@ -8,6 +8,7 @@ import {
   subheading,
   witnessesRadioButtonsFastTrack,
   witnessesRadioButtonsSmallTrack,
+  witnessesRadioButtonsSmallTrack1v2,
 } from './witnesses-content.ts';
 
 @AllMethodsStep()
@@ -30,6 +31,14 @@ export default class WitnessesPage extends ExuiEvent(BasePage) {
 
   async selectNoFastTrack() {
     await super.clickBySelector(witnessesRadioButtonsFastTrack.radioNo.selector);
+  }
+
+  async selectYesSmallTrack1v2() {
+    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioYes.selector);
+  }
+
+  async selectNoSmallTrack1v2() {
+    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioNo.selector);
   }
 
   async submit() {

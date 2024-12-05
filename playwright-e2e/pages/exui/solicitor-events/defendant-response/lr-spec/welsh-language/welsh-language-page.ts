@@ -7,6 +7,8 @@ import {
   text,
   speakingRadioButtons,
   documentsRadioButtons,
+  speakingRadioButtons1v2,
+  documentsRadioButtons1v2,
 } from './welsh-language-content.ts';
 
 @AllMethodsStep()
@@ -25,6 +27,14 @@ export default class WelshLanguagePage extends ExuiEvent(BasePage) {
 
   async selectDocumentsEnglish() {
     await super.clickBySelector(documentsRadioButtons.radioEnglish.selector);
+  }
+
+  async selectSpeakingEnglish1v2() {
+    await super.clickBySelector(speakingRadioButtons1v2.radioEnglish.selector);
+  }
+
+  async selectDocumentsEnglish1v2() {
+    await super.clickBySelector(documentsRadioButtons1v2.radioEnglish.selector);
   }
 
   async submit() {

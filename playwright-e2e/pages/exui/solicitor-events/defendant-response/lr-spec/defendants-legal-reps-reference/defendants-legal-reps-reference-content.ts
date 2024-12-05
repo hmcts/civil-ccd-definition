@@ -58,3 +58,15 @@ export const radioButtons = {
     selector: '#specAoSRespondentCorrespondenceAddressRequired_No',
   },
 };
+
+export const radioButtons1v2 = {
+  label: 'Is this address correct?',
+  yes: {
+    label: 'Yes',
+    selector: '#specAoSRespondent2CorrespondenceAddressRequired_Yes',
+  },
+  no: {
+    label: 'No',
+    selector: '#specAoSRespondent2CorrespondenceAddressRequired_No',
+  },
+};

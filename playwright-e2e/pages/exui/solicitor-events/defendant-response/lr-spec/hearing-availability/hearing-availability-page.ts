@@ -7,6 +7,8 @@ import {
   availabilityQuestionSmallTrack,
   interpreterQuestion,
   availabilityQuestionFastTrack,
+  availabilityQuestionSmallTrack1v2,
+  interpreterQuestion1v2,
 } from './hearing-availability-content.ts';
 
 @AllMethodsStep()
@@ -37,6 +39,22 @@ export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
 
   async selectNoAvailabilityFastTrack() {
     await super.clickBySelector(availabilityQuestionFastTrack.radioNo.selector);
+  }
+
+  async selectYesAvailabilitySmallTrack1v2() {
+    await super.clickBySelector(availabilityQuestionSmallTrack1v2.radioYes.selector);
+  }
+
+  async selectNoAvailabilitySmallTrack1v2() {
+    await super.clickBySelector(availabilityQuestionSmallTrack1v2.radioNo.selector);
+  }
+
+  async selectYesInterpreterSmallTrack1v2() {
+    await super.clickBySelector(interpreterQuestion1v2.radioYes.selector);
+  }
+
+  async selectNoInterpreterSmallTack1v2() {
+    await super.clickBySelector(interpreterQuestion1v2.radioNo.selector);
   }
 
   async submit() {

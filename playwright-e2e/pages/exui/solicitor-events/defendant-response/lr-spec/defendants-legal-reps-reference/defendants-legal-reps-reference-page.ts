@@ -10,6 +10,7 @@ import {
   reference,
   dob,
   radioButtons,
+  radioButtons1v2,
 } from './defendants-legal-reps-reference-content.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
@@ -20,21 +21,36 @@ export default class DefendantsLegalRepsReferencePage extends ExuiEvent(BasePage
       //super.verifyHeadings(ccdCaseData),
       //super.expectSubheading(heading),
       super.expectLabel(form.label),
-      super.expectText(tableHeading, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.yes.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.no.label, { ignoreDuplicates: true }),
+    ]);
+  }
+
+  async verifyContent1v1(ccdCaseData: CCDCaseData) {
+    super.expectText(tableHeading, { ignoreDuplicates: true }),
       super.expectText(organisation, { ignoreDuplicates: true }),
       super.expectText(caseAssignedRole, { ignoreDuplicates: true }),
       super.expectText(reference, { ignoreDuplicates: true }),
       super.expectText(dob.label, { ignoreDuplicates: true }),
       super.expectText(dob.day.label, { ignoreDuplicates: true }),
       super.expectText(dob.month.label, { ignoreDuplicates: true }),
-      super.expectText(dob.year.label, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.yes.label, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.no.label, { ignoreDuplicates: true }),
-    ]);
+      super.expectText(dob.year.label, { ignoreDuplicates: true });
   }
 
   async selectYes() {
     await super.clickBySelector(radioButtons.yes.selector);
+  }
+
+  async selectYes1v2() {
+    await super.clickBySelector(radioButtons1v2.yes.selector);
+  }
+
+  async selectNo() {
+    await super.clickBySelector(radioButtons.no.selector);
+  }
+
+  async selectNo1v2() {
+    await super.clickBySelector(radioButtons1v2.no.selector);
   }
 
   async submit() {

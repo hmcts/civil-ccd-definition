@@ -5,3 +5,7 @@ export const input = {
 };
 
 export const subheading = 'Upload supporting evidence (optional)';
+
+export const input1v2 = {
+  selector: '#detailsOfWhyDoesYouDisputeTheClaim2',
+};

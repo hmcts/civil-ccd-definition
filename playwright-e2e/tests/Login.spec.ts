@@ -9,10 +9,10 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await ExuiDashboardSteps.GoToCaseList();
 
   const { ccdRequests } = _requestsFactory;
-  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733323639008687, civilAdminUser);
+  const ccdCaseData = await ccdRequests.fetchCCDCaseData(1733326376582970, civilAdminUser);
 
   const { caseDetailsPage } = _exuiDashboardPageFactory;
-  await caseDetailsPage.goToCaseDetails(1733323639008687);
+  await caseDetailsPage.goToCaseDetails(1733326376582970);
   await caseDetailsPage.verifyContent(ccdCaseData);
   await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFENDANT_RESPONSE_SPEC);
 
@@ -23,18 +23,12 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   const { confirmNameAndAddressPage } = _defendantResponsePageFactory;
   await confirmNameAndAddressPage.verifyContent(ccdCaseData);
   await confirmNameAndAddressPage.selectYesDefendant1();
-  await confirmNameAndAddressPage.selectYesDefendant2FastTrack();
   await confirmNameAndAddressPage.submit();
 
   const { defendantsLegalRepsReferencePage } = _defendantResponsePageFactory;
   await defendantsLegalRepsReferencePage.verifyContent(ccdCaseData);
   await defendantsLegalRepsReferencePage.selectYes();
   await defendantsLegalRepsReferencePage.submit();
-
-  const { intendToFileSingleResponsePage } = _defendantResponsePageFactory;
-  await intendToFileSingleResponsePage.verifyContent(ccdCaseData);
-  await intendToFileSingleResponsePage.selectYes();
-  await intendToFileSingleResponsePage.submit();
 
   const { respondToClaimPage } = _defendantResponsePageFactory;
   await respondToClaimPage.verifyContent(ccdCaseData);
@@ -48,6 +42,7 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
 
   const { whyDoesDefendantDisputeClaimPage } = _defendantResponsePageFactory;
   await whyDoesDefendantDisputeClaimPage.verifyContent(ccdCaseData);
+  await whyDoesDefendantDisputeClaimPage.input1v1();
   await whyDoesDefendantDisputeClaimPage.submit();
 
   const { howToAddClaimTimelinePage } = _defendantResponsePageFactory;
@@ -107,4 +102,97 @@ test('Testing Login', async ({ IdamSteps, ExuiDashboardSteps, ApiUserSteps, ApiD
   await statementOfTruthPage.enterName();
   await statementOfTruthPage.enterRole();
   await statementOfTruthPage.submit();
+
+  await IdamSteps.DefendantSolicitor2Login();
+  await ExuiDashboardSteps.GoToCaseList();
+
+  await caseDetailsPage.goToCaseDetails(1733326376582970);
+  await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFENDANT_RESPONSE_SPEC);
+
+  const { checkIfYouNeedToCompleteClaimTimelineDef2Page } = _defendantResponsePageFactory;
+  await checkIfYouNeedToCompleteClaimTimelineDef2Page.verifyContent(ccdCaseData);
+  await checkIfYouNeedToCompleteClaimTimelineDef2Page.submit();
+
+  const { confirmNameAndAddressDef2Page } = _defendantResponsePageFactory;
+  await confirmNameAndAddressDef2Page.verifyContent(ccdCaseData);
+  await confirmNameAndAddressDef2Page.selectYesDefendant2FastTrack();
+  await confirmNameAndAddressDef2Page.submit();
+
+  const { defendantsLegalRepsReferenceDef2Page } = _defendantResponsePageFactory;
+  await defendantsLegalRepsReferenceDef2Page.verifyContent(ccdCaseData);
+  await defendantsLegalRepsReferenceDef2Page.selectYes1v2();
+  await defendantsLegalRepsReferenceDef2Page.submit();
+
+  const { respondToClaimDef2Page } = _defendantResponsePageFactory;
+  await respondToClaimDef2Page.verifyContent(ccdCaseData);
+  await respondToClaimDef2Page.selectDefendsDefendant2();
+  await respondToClaimDef2Page.submit();
+
+  const { whyDoesDefendantNotOweMoneyDef2Page } = _defendantResponsePageFactory;
+  await whyDoesDefendantNotOweMoneyDef2Page.verifyContent(ccdCaseData);
+  await whyDoesDefendantNotOweMoneyDef2Page.selectDisputesClaim1v2();
+  await whyDoesDefendantNotOweMoneyDef2Page.submit();
+
+  const { whyDoesDefendantDisputeClaimDef2Page } = _defendantResponsePageFactory;
+  await whyDoesDefendantDisputeClaimDef2Page.verifyContent(ccdCaseData);
+  await whyDoesDefendantDisputeClaimDef2Page.input1v2();
+  await whyDoesDefendantDisputeClaimDef2Page.submit();
+
+  const { howToAddClaimTimelineDef2Page } = _defendantResponsePageFactory;
+  await howToAddClaimTimelineDef2Page.verifyContent(ccdCaseData);
+  await howToAddClaimTimelineDef2Page.selectManually1v2();
+  await howToAddClaimTimelineDef2Page.submit();
+
+  const { addTimelineOfEventsDef2Page } = _defendantResponsePageFactory;
+  await addTimelineOfEventsDef2Page.verifyContent(ccdCaseData);
+  await addTimelineOfEventsDef2Page.submit();
+
+  const { mediationDef2Page } = _defendantResponsePageFactory;
+  await mediationDef2Page.verifyContent(ccdCaseData);
+  await mediationDef2Page.selectNo1v2();
+  await mediationDef2Page.submit();
+
+  const { useOfExpertDef2Page } = _defendantResponsePageFactory;
+  await useOfExpertDef2Page.verifyContent(ccdCaseData);
+  await useOfExpertDef2Page.selectNoSmallTrack1v2();
+  await useOfExpertDef2Page.submit();
+
+  const { witnessesDef2Page } = _defendantResponsePageFactory;
+  await witnessesDef2Page.verifyContent(ccdCaseData);
+  await witnessesDef2Page.selectNoSmallTrack1v2();
+  await witnessesDef2Page.submit();
+
+  const { welshLanguageDef2Page } = _defendantResponsePageFactory;
+  await welshLanguageDef2Page.verifyContent(ccdCaseData);
+  await welshLanguageDef2Page.selectSpeakingEnglish1v2();
+  await welshLanguageDef2Page.selectDocumentsEnglish1v2();
+  await welshLanguageDef2Page.submit();
+
+  const { hearingAvailabilityDef2Page } = _defendantResponsePageFactory;
+  await hearingAvailabilityDef2Page.verifyContent(ccdCaseData);
+  await hearingAvailabilityDef2Page.selectNoAvailabilitySmallTrack1v2();
+  await hearingAvailabilityDef2Page.selectNoInterpreterSmallTack1v2();
+  await hearingAvailabilityDef2Page.submit();
+
+  const { courtLocationDef2Page } = _defendantResponsePageFactory;
+  await courtLocationDef2Page.verifyContent(ccdCaseData);
+  await courtLocationDef2Page.selectCourtLocation1v2();
+  await courtLocationDef2Page.selectNo1v2();
+  await courtLocationDef2Page.submit();
+
+  const { supportWithAccessNeedsDef2Page } = _defendantResponsePageFactory;
+  await supportWithAccessNeedsDef2Page.verifyContent(ccdCaseData);
+  await supportWithAccessNeedsDef2Page.selectNo1v2();
+  await supportWithAccessNeedsDef2Page.submit();
+
+  const { vulnerabilityQuestionsDef2Page } = _defendantResponsePageFactory;
+  await vulnerabilityQuestionsDef2Page.verifyContent(ccdCaseData);
+  await vulnerabilityQuestionsDef2Page.selectNo1v2();
+  await vulnerabilityQuestionsDef2Page.submit();
+
+  const { statementOfTruthDef2Page } = _defendantResponsePageFactory;
+  await statementOfTruthDef2Page.verifyContent(ccdCaseData);
+  await statementOfTruthDef2Page.enterName();
+  await statementOfTruthDef2Page.enterRole();
+  await statementOfTruthDef2Page.submit();
 });

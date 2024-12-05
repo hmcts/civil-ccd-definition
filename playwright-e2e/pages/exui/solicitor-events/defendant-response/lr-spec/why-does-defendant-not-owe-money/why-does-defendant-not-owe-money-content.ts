@@ -12,6 +12,20 @@ export const radioButtons = {
   },
 };
 
+export const radioButtons1v2 = {
+  text: (defendantName: string) => ({
+    label: `Why does [#specDefenceRouteAmountClaimedLabel${defendantName}] not owe money to the claimant?`,
+  }),
+  radioHasPaid: {
+    label: 'Has paid the amount claimed',
+    selector: '#defenceRouteRequired2-HAS_PAID_THE_AMOUNT_CLAIMED',
+  },
+  radioDisputesClaim: {
+    label: 'Disputes the claim',
+    selector: '#defenceRouteRequired2-DISPUTES_THE_CLAIM',
+  },
+};
+
 export const descriptionText1 = (claimAmount: number) =>
   'The total amount claimed is £[howMuchWasPaidLabel${claimAmount}]. This includes the claim fee and any interest.';
 

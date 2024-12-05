@@ -4,6 +4,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
 import {
   radioButtons,
+  radioButtons1v2,
   form,
   dayMonthYear,
   howWasThisPaidRadioButtons,
@@ -14,7 +15,6 @@ export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage)
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      //super.expectSubHeading(radioButtons.text.label),
       super.expectText(radioButtons.radioHasPaid.label, { ignoreDuplicates: true }),
       super.expectText(radioButtons.radioDisputesClaim.label, { ignoreDuplicates: true }),
     ]);
@@ -26,6 +26,14 @@ export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage)
 
   async selectDisputesClaim() {
     await super.clickBySelector(radioButtons.radioDisputesClaim.selector);
+  }
+
+  async selectHasPaid1v2() {
+    await super.clickBySelector(radioButtons1v2.radioHasPaid.selector);
+  }
+
+  async selectDisputesClaim1v2() {
+    await super.clickBySelector(radioButtons1v2.radioDisputesClaim.selector);
   }
 
   async fillInHasPaid() {

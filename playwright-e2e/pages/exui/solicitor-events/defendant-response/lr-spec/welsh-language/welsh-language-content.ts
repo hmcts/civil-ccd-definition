@@ -34,3 +34,35 @@ export const documentsRadioButtons = {
     selector: '#respondent1DQLanguage_documents-BOTH',
   },
 };
+
+export const speakingRadioButtons1v2 = {
+  question: 'What language will you, your experts or witnesses speak at the hearing?',
+  radioWelsh: {
+    label: 'Welsh',
+    selector: '#respondent2DQLanguage_court-WELSH',
+  },
+  radioEnglish: {
+    label: 'English',
+    selector: '#respondent2DQLanguage_court-ENGLISH',
+  },
+  radioBoth: {
+    label: 'Welsh and English',
+    selector: '#respondent2DQLanguage_court-BOTH',
+  },
+};
+
+export const documentsRadioButtons1v2 = {
+  question: 'What language will documents be provided in?',
+  radioWelsh: {
+    label: 'Welsh',
+    selector: '#respondent2DQLanguage_documents-WELSH',
+  },
+  radioEnglish: {
+    label: 'English',
+    selector: '#respondent2DQLanguage_documents-ENGLISH',
+  },
+  radioBoth: {
+    label: 'Welsh and English',
+    selector: '#respondent2DQLanguage_documents-BOTH',
+  },
+};

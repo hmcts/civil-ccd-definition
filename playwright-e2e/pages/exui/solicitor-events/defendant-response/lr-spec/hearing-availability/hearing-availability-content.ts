@@ -27,6 +27,20 @@ export const availabilityQuestionFastTrack = {
   },
 };
 
+export const availabilityQuestionSmallTrack1v2 = {
+  question:
+    'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
+  hint: 'Hearings take place Monday to Friday',
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent2DQHearingSmallClaim_unavailableDatesRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent2DQHearingSmallClaim_unavailableDatesRequired_No',
+  },
+};
+
 export const unavailableDates = 'Unavailable dates';
 
 export const addNew = 'Add new';
@@ -110,6 +124,21 @@ export const interpreterQuestion = {
   radioNo: {
     label: 'No',
     selector: '#SmallClaimHearingInterpreterRequired_No',
+  },
+};
+
+export const interpreterQuestion1v2 = {
+  label: {
+    question:
+      'Will you be using an interpreter at the hearing, either for your client, or for a witness?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#SmallClaimHearingInterpreter2Required_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#SmallClaimHearingInterpreter2Required_No',
   },
 };
 
