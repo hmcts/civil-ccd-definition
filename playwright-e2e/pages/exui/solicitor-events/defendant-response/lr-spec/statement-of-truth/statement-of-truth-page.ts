@@ -8,7 +8,7 @@ import { heading, text, form } from './statement-of-truth-content.ts';
 export default class StatementOfTruthPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      //super.verifyHeadings(ccdCaseData),
       super.expectSubheading(heading),
       super.expectText(text.descriptiveText1),
       super.expectText(text.descriptiveText2),

@@ -14,7 +14,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      // super.verifyHeadings(ccdCaseData), // This h1 is not captured on this page
       super.expectHeading(heading),
       super.expectText(radioButtons.text.label, { ignoreDuplicates: true }),
       super.expectText(radioButtons.radioYes.text, { ignoreDuplicates: true }),

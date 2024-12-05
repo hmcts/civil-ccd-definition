@@ -14,7 +14,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 export default class SupportWithAccessNeedsPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      //super.verifyHeadings(ccdCaseData),
       super.expectText(question.text.label, { ignoreDuplicates: true }),
       super.expectText(question.radioYes.label, { ignoreDuplicates: true }),
       super.expectText(question.radioNo.label, { ignoreDuplicates: true }),

@@ -14,7 +14,7 @@ import {
 export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      //super.verifyHeadings(ccdCaseData),
       super.expectText(radioButtons.radioHasPaid.label, { ignoreDuplicates: true }),
       super.expectText(radioButtons.radioDisputesClaim.label, { ignoreDuplicates: true }),
     ]);

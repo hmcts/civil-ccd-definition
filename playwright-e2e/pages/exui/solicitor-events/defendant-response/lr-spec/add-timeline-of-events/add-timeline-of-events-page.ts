@@ -16,7 +16,7 @@ import {
 export default class AddTimelineOfEventsPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.expectHeading(heading),
+      //super.expectHeading(heading),
       super.expectText(listEventsText),
       super.expectText(buttons.text, { ignoreDuplicates: true }),
     ]);

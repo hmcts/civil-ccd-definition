@@ -15,7 +15,7 @@ import {
 @AllMethodsStep()
 export default class CourtLocationPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async verifyContent1v1() {

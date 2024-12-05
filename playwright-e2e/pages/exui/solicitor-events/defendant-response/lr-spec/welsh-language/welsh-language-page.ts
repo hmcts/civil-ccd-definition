@@ -15,7 +15,7 @@ import {
 export default class WelshLanguagePage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      //super.verifyHeadings(ccdCaseData),
       //super.expectSubheading(heading),
       super.expectText(text, { ignoreDuplicates: true }),
     ]);

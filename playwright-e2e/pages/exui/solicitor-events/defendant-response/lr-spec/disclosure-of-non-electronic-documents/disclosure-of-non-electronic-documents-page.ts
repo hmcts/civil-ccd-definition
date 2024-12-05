@@ -7,6 +7,10 @@ import { heading, input } from './disclosure-of-non-electronic-documents-content
 @AllMethodsStep()
 export default class DisclosureOfNonElectronicDocumentsPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+  }
+
+  async verifyContent1v1(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(heading, { ignoreDuplicates: true }),

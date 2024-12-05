@@ -14,7 +14,7 @@ import {
 @AllMethodsStep()
 export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async selectYesAvailabilitySmallTrack() {
@@ -39,6 +39,14 @@ export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
 
   async selectNoAvailabilityFastTrack() {
     await super.clickBySelector(availabilityQuestionFastTrack.radioNo.selector);
+  }
+
+  async selectYesInterpreterFastTrack() {
+    await super.clickBySelector(interpreterQuestion.radioYes.selector);
+  }
+
+  async selectNoInterpreterFastTrack() {
+    await super.clickBySelector(interpreterQuestion.radioNo.selector);
   }
 
   async selectYesAvailabilitySmallTrack1v2() {

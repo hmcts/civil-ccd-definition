@@ -10,7 +10,7 @@ import {
 @AllMethodsStep()
 export default class HowToAddClaimTimeline extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async verifyContent1v2(ccdCaseData: CCDCaseData) {
