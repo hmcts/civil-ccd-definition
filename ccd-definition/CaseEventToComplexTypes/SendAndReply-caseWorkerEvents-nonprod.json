@@ -41,7 +41,7 @@
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageReplyMetadata",
     "ListElementCode": "isUrgent",
-    "EventElementLabel": "Urgency",
+    "EventElementLabel": "Is this urgent?",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
@@ -50,7 +50,8 @@
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "messageReplyMetadata",
     "ListElementCode": "messageContent",
-    "EventElementLabel": "Message details",
+    "EventElementLabel": "Enter your message",
+    "EventHintText": "Explain what you're requesting and why. Include any answers and decision you need.",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY"
   }
