@@ -52,7 +52,7 @@
   {
     "ID": "Message",
     "ListElementCode": "subjectType",
-    "ElementLabel": "What is this message about?",
+    "ElementLabel": "What is it about",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "SendMessageSubjectOptionsList",
     "SecurityClassification": "Public",
