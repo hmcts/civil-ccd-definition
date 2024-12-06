@@ -2441,6 +2441,25 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondentResponsePcqId",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-citizen-ui-pcqextractor"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "helpWithFees",
     "AccessControl": [
       {
