@@ -21,6 +21,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -41,6 +51,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -53,6 +73,16 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
@@ -121,6 +151,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -133,6 +173,16 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
+    "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
@@ -171,6 +221,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -183,6 +243,16 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
+    "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
@@ -211,6 +281,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SETTLE_CLAIM",
+    "CaseFieldID": "respondent2Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_FEE_UNPAID",
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
@@ -223,6 +303,16 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_FEE_UNPAID",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_FEE_UNPAID",
+    "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
@@ -243,6 +333,16 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_STAY",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "MANAGE_STAY",
+    "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
