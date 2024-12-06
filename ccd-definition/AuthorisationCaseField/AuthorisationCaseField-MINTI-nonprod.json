@@ -234,19 +234,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "finalOrderFastTrackComplexityBandLabel",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "finalOrderFastTrackComplexityBand",
+    "CaseFieldID": "allowOrderTrackAllocation",
     "AccessControl": [
       {
         "UserRoles": [
