@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2DQFixedRecoverableCostsIntermediate",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantDQFixedRecoverableCostsIntermediateLabel",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
     "AccessControl": [
       {
@@ -74,7 +74,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1DQFixedRecoverableCostsIntermediate",
     "AccessControl": [
       {
@@ -100,7 +100,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentDQFixedRecoverableCostsIntermediateLabel",
     "AccessControl": [
       {
@@ -125,7 +125,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "AccessControl": [
       {
@@ -149,7 +149,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1DQClaimantDocumentsToBeConsidered",
     "AccessControl": [
       {
@@ -173,7 +173,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1DQDefendantDocumentsToBeConsidered",
     "AccessControl": [
       {
@@ -197,7 +197,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderTrackToggle",
     "AccessControl": [
       {
@@ -209,7 +209,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderTrackAllocation",
     "AccessControl": [
       {
@@ -221,7 +221,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderAllocateToTrack",
     "AccessControl": [
       {
@@ -233,7 +233,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderFastTrackComplexityBandLabel",
     "AccessControl": [
       {
@@ -245,7 +245,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderFastTrackComplexityBand",
     "AccessControl": [
       {
@@ -257,7 +257,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderIntermediateTrackComplexityBandLabel",
     "AccessControl": [
       {
@@ -269,7 +269,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderIntermediateTrackComplexityBand",
     "AccessControl": [
       {
@@ -281,7 +281,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "selectTemplateLabel",
     "AccessControl": [
       {
@@ -293,7 +293,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderDownloadTemplateOptions",
     "AccessControl": [
       {
@@ -305,7 +305,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "downloadTemplateLabel1",
     "AccessControl": [
       {
@@ -317,7 +317,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderDownloadTemplateDocument",
     "AccessControl": [
       {
@@ -329,7 +329,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "downloadTemplateLabel2",
     "AccessControl": [
       {
@@ -341,7 +341,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "uploadOrderDocumentFromTemplateLabel",
     "AccessControl": [
       {
@@ -353,7 +353,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "uploadOrderDocumentFromTemplate",
     "AccessControl": [
       {
@@ -361,6 +361,25 @@
           "judge-profile"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "confirmListingTickBox",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "hearing-schedule-access"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "CaseFieldID": "disclosureLabel",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/createShowCondition"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "CaseFieldID": "disclosureLabelRes",
     "PageFieldDisplayOrder": 1,
