@@ -148,12 +148,6 @@ Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
     await I.evidenceUpload(caseNumber, true);
 }).retry(3);
 
-Scenario('Make a general application', async ({api}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api.initiateGeneralApplication(caseNumber, config.applicantSolicitorUser, 'CASE_PROGRESSION');
-  }
-}).retry(3);
-
 Scenario('Create a Hearing Request', async ({I}) => {
   if (['demo'].includes(config.runningEnv)) {
     await I.login(config.hearingCenterAdminWithRegionId1);
