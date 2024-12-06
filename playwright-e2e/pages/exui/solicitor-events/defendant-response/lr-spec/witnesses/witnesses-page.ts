@@ -42,12 +42,16 @@ export default class WitnessesPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioNo.selector);
   }
 
-  async selectYesFastTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack1v2.radioYes.selector);
+  async selectYesFastTrack1v2(defendantNumber: number) {
+    await super.clickBySelector(
+      witnessesRadioButtonsFastTrack1v2(defendantNumber).radioYes.selector,
+    );
   }
 
-  async selectNoFastTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack1v2.radioNo.selector);
+  async selectNoFastTrack1v2(defendantNumber: number) {
+    await super.clickBySelector(
+      witnessesRadioButtonsFastTrack1v2(defendantNumber).radioNo.selector,
+    );
   }
 
   async submit() {

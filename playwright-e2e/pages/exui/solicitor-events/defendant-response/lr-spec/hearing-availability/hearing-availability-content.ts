@@ -41,6 +41,17 @@ export const availabilityQuestionSmallTrack1v2 = {
   },
 };
 
+export const availabilityQuestion2v1 = {
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent1DQHearing_unavailableDatesRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent1DQHearing_unavailableDatesRequired_No',
+  },
+};
+
 export const unavailableDates = 'Unavailable dates';
 
 export const addNew = 'Add new';

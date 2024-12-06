@@ -19,5 +19,40 @@ export const radioButtons = (defendantNumber: number) => ({
   },
 });
 
-export const defendant1RadioButtons = radioButtons(1);
-export const defendant2RadioButtons = radioButtons(2);
+export const radioButtons2v1app1 = {
+  reject: {
+    label: 'Reject all of the claim',
+    selector: '#respondent1ClaimResponseType-FULL_DEFENCE',
+  },
+  admitsAll: {
+    label: 'Admit all of the claim',
+    selector: '#respondent1ClaimResponseType-FULL_ADMISSION',
+  },
+  admitsPart: {
+    label: 'Admit part of the claim',
+    selector: '#respondent1ClaimResponseType-PART_ADMISSION',
+  },
+  rejectAndWantsCounterclaim: {
+    label: 'Reject all of the claim and wants to counterclaim',
+    selector: '#respondent1ClaimResponseType-COUNTER_CLAIM',
+  },
+};
+
+export const radioButtons2v1app2 = {
+  reject: {
+    label: 'Reject all of the claim',
+    selector: '#respondent1ClaimResponseTypeToApplicant2-FULL_DEFENCE',
+  },
+  admitsAll: {
+    label: 'Admit all of the claim',
+    selector: '#respondent1ClaimResponseTypeToApplicant2-FULL_ADMISSION',
+  },
+  admitsPart: {
+    label: 'Admit part of the claim',
+    selector: '#respondent1ClaimResponseTypeToApplicant2-PART_ADMISSION',
+  },
+  rejectAndWantsCounterclaim: {
+    label: 'Reject all of the claim and wants to counterclaim',
+    selector: '#respondent1ClaimResponseTypeToApplicant2-COUNTER_CLAIM',
+  },
+};

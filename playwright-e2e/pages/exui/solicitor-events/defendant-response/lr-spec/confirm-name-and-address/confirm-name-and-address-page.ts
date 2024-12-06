@@ -13,19 +13,16 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 @AllMethodsStep()
 export default class ConfirmNameAndAddressPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectHeading(heading),
-      super.expectText(radioButtons.text.label, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.radioYes.text, { ignoreDuplicates: true }),
-      super.expectText(radioButtons.radioNo.text, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData), super.expectHeading(heading)]);
   }
 
   async verifyContent1v1(ccdCaseData: CCDCaseData) {
-    super.expectText(paragraphs.partyTypeText, {
-      containerSelector: '#specAoSRespondentInformation',
-    }),
+    super.expectText(radioButtons.text.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.radioYes.text, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.radioNo.text, { ignoreDuplicates: true }),
+      super.expectText(paragraphs.partyTypeText, {
+        containerSelector: '#specAoSRespondentInformation',
+      }),
       super.expectText(paragraphs.nameText, {
         containerSelector: '#specAoSRespondentInformation',
       }),

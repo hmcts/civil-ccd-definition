@@ -9,7 +9,8 @@ import {
   reasonForm,
   remoteHearingRadioButtons,
   courtLocationDropdown1v2,
-  remoteHearingRadioButtons1v2,
+  courtLocationDropdown2v1,
+  remoteHearingRadioButtons2v1,
 } from './court-location-content.ts';
 
 @AllMethodsStep()
@@ -20,14 +21,18 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
 
   async verifyContent1v1() {
     super.expectSubheading(subHeading1v1),
-      super.expectText(remoteHearingRadioButtons.radioYes.label, { ignoreDuplicates: true }),
-      super.expectText(remoteHearingRadioButtons.radioNo.label, { ignoreDuplicates: true });
+      super.expectText(remoteHearingRadioButtons(1).radioYes.label, { ignoreDuplicates: true }),
+      super.expectText(remoteHearingRadioButtons(1).radioNo.label, { ignoreDuplicates: true });
   }
 
-  async verifyContentMultiDefendant() {
+  async verifyContentMultiDefendant(defendantNumber: number) {
     super.expectSubheading(subHeadingMultiDefendant),
-      super.expectText(remoteHearingRadioButtons.radioYes.label, { ignoreDuplicates: true }),
-      super.expectText(remoteHearingRadioButtons.radioNo.label, { ignoreDuplicates: true });
+      super.expectText(remoteHearingRadioButtons(defendantNumber).radioYes.label, {
+        ignoreDuplicates: true,
+      }),
+      super.expectText(remoteHearingRadioButtons(defendantNumber).radioNo.label, {
+        ignoreDuplicates: true,
+      });
   }
 
   async selectCourtLocation() {
@@ -44,20 +49,27 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
     );
   }
 
-  async selectYes() {
-    await super.clickBySelector(remoteHearingRadioButtons.radioYes.selector);
+  async selectCourtLocation2v1() {
+    await super.selectFromDropdown(
+      courtLocationDropdown2v1.dropdown.options[0],
+      courtLocationDropdown2v1.dropdown.selector,
+    );
   }
 
-  async selectNo() {
-    await super.clickBySelector(remoteHearingRadioButtons.radioNo.selector);
+  async selectYes(defendantNumber: number) {
+    await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioYes.selector);
   }
 
-  async selectYes1v2() {
-    await super.clickBySelector(remoteHearingRadioButtons1v2.radioYes.selector);
+  async selectNo(defendantNumber) {
+    await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioNo.selector);
   }
 
-  async selectNo1v2() {
-    await super.clickBySelector(remoteHearingRadioButtons1v2.radioNo.selector);
+  async selectYes2v1() {
+    await super.clickBySelector(remoteHearingRadioButtons2v1.radioYes.selector);
+  }
+
+  async selectNo2v1() {
+    await super.clickBySelector(remoteHearingRadioButtons2v1.radioNo.selector);
   }
 
   async submit() {

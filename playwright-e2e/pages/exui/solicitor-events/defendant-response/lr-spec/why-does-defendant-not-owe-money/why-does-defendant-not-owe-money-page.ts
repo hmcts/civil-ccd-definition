@@ -13,10 +13,21 @@ import {
 @AllMethodsStep()
 export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+  }
+
+  async verifyContent1v1(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(radioButtons.radioHasPaid.label, { ignoreDuplicates: true }),
       super.expectText(radioButtons.radioDisputesClaim.label, { ignoreDuplicates: true }),
+    ]);
+  }
+  async verifyContent1v2(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectText(radioButtons1v2.radioHasPaid.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons1v2.radioDisputesClaim.label, { ignoreDuplicates: true }),
     ]);
   }
 

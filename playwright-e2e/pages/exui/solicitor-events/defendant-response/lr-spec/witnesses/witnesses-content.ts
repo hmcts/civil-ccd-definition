@@ -1,5 +1,3 @@
-import { text } from 'stream/consumers';
-
 export const heading = 'Witnesses';
 
 export const subheading = 'Defendant 1 witnesses';
@@ -46,16 +44,16 @@ export const witnessesRadioButtonsSmallTrack1v2 = {
   },
 };
 
-export const witnessesRadioButtonsFastTrack1v2 = {
+export const witnessesRadioButtonsFastTrack1v2 = (defendantNumber: number) => ({
   text: {
     label: 'Are there any witnesses who should attend the hearing?',
   },
   radioYes: {
     label: 'Yes',
-    selector: '#respondent2DQWitnesses_witnessesToAppear_Yes',
+    selector: `#respondent${defendantNumber}DQWitnesses_witnessesToAppear_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent2DQWitnesses_witnessesToAppear_No',
+    selector: `#respondent${defendantNumber}DQWitnesses_witnessesToAppear_No`,
   },
-};
+});

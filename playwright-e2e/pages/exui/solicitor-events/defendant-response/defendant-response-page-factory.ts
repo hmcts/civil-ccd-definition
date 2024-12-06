@@ -25,6 +25,10 @@ import DisclosureOfNonElectronicDocumentsPage from './lr-spec/disclosure-of-non-
 import DisclosureReportPage from './lr-spec/disclosure-report/disclosure-report-page';
 import ApplicationPage from './lr-spec/application/application-page';
 import IntendToFileSingleResponsePage from './lr-spec/intend-to-file-single-response/intend-to-file-single-response-page';
+import SolicitorReferencesPage from './lr-spec/solicitor-references/solicitor-references-page';
+import UploadDefencePage from './lr-spec/upload-defence/upload-defence-page';
+import UploadDraftDirectionsPage from './lr-spec/upload-draft-directions/upload-draft-directions-page';
+import FurtherInformationPage from './lr-spec/further-information/further-information-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get checkIfYouNeedToCompleteClaimTimelinePage() {
@@ -233,5 +237,21 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get intendToFileSingleResponseDef2Page() {
     return new IntendToFileSingleResponsePage(this.page);
+  }
+
+  get solicitorReferencePage() {
+    return new SolicitorReferencesPage(this.page);
+  }
+
+  get uploadDefencePage() {
+    return new UploadDefencePage(this.page);
+  }
+
+  get uploadDraftDirectionsPage() {
+    return new UploadDraftDirectionsPage(this.page);
+  }
+
+  get furtherInformationPage() {
+    return new FurtherInformationPage(this.page);
   }
 }
