@@ -12,6 +12,17 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
+    "CaseFieldID": "obligationData",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EnterObligationData",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "obligationDatePresent = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CONFIRM_ORDER_REVIEW",
     "CaseFieldID": "courtStaffNextSteps",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,

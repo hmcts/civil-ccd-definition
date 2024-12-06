@@ -106,6 +106,24 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationData",
+    "Label": "Obligation date",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ObligationDataCollection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "storedObligationData",
+    "Label": "Obligation date",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ObligationDataCollection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtStaffNextSteps",
     "Label": "Have all the next steps for court staff been completed?",
     "FieldType": "FixedRadioList",
