@@ -45,3 +45,17 @@ export const witnessesRadioButtonsSmallTrack1v2 = {
     selector: '#respondent2DQWitnessesSmallClaim_witnessesToAppear_No',
   },
 };
+
+export const witnessesRadioButtonsFastTrack1v2 = {
+  text: {
+    label: 'Are there any witnesses who should attend the hearing?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent2DQWitnesses_witnessesToAppear_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent2DQWitnesses_witnessesToAppear_No',
+  },
+};

@@ -7,7 +7,7 @@ import { radioButtons, radioButtons1v2 } from './mediation-content.ts';
 @AllMethodsStep()
 export default class MediationPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async selectYes() {

@@ -7,6 +7,9 @@ import {
   fileDirectionsCheckbox,
   oneMonthStayRadioButtons,
   compliedRadioButtons,
+  fileDirectionsCheckbox1v2,
+  oneMonthStayRadioButtons1v2,
+  compliedRadioButtons1v2,
 } from './file-directions-questionnaire-content.ts';
 
 @AllMethodsStep()
@@ -39,6 +42,30 @@ export default class FileDirectionsQuestionnairePage extends ExuiEvent(BasePage)
     await super.inputText(
       'textarea',
       '#respondent1DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason',
+    );
+  }
+
+  async selectCheckBox1v2() {
+    await super.clickBySelector(fileDirectionsCheckbox1v2.selector);
+  }
+
+  async selectYesOneMonthStay1v2() {
+    await super.clickBySelector(oneMonthStayRadioButtons1v2.yes.selector);
+  }
+
+  async selectNoOneMonthStay1v2() {
+    await super.clickBySelector(oneMonthStayRadioButtons1v2.no.selector);
+  }
+
+  async selectYesComplied1v2() {
+    await super.clickBySelector(compliedRadioButtons1v2.yes.selector);
+  }
+
+  async selectNoComplied1v2() {
+    await super.clickBySelector(compliedRadioButtons1v2.no.selector);
+    await super.inputText(
+      'textarea',
+      '#respondent2DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason',
     );
   }
 

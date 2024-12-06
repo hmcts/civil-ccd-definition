@@ -44,6 +44,20 @@ export const useExpertsRadioButtonsSmallTrack1v2 = {
   },
 };
 
+export const useExpertsRadioButtonsFastTrack1v2 = {
+  text: {
+    label: 'Do you want to use an expert?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: '#respondent2DQExperts_expertRequired_Yes',
+  },
+  radioNo: {
+    label: 'No',
+    selector: '#respondent2DQExperts_expertRequired_No',
+  },
+};
+
 export const expertDetails = {
   label: 'Expert details',
   fields: {
@@ -110,3 +124,35 @@ export const expertDetails1v2 = {
     },
   },
 };
+
+export const alreadySentExpertReportsRadioFastTrack1v2 = (defendantNumber: number) => ({
+  text: {
+    label: 'Have you already sent expert reports to the other side?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-YES`,
+  },
+  radioNo: {
+    label: 'No',
+    selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-NO`,
+  },
+  radioNotYet: {
+    label: 'Not yet obtained',
+    selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-NOT_OBTAINED`,
+  },
+});
+
+export const suitableForJointExpertRadioFastTrack1v2 = (defendantNumber: number) => ({
+  text: {
+    label: 'Do you think the case suitable for a joint expert?',
+  },
+  radioYes: {
+    label: 'Yes',
+    selector: `#respondent${defendantNumber}DQExperts_jointExpertSuitable_Yes`,
+  },
+  radioNo: {
+    label: 'No',
+    selector: `#respondent${defendantNumber}DQExperts_jointExpertSuitable_No`,
+  },
+});

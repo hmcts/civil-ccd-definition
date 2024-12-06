@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
-import { heading, radioButtons } from './fixed-recoverable-costs-content.ts';
+import { heading, radioButtons, radioButtons1v2 } from './fixed-recoverable-costs-content.ts';
 
 @AllMethodsStep()
 export default class FixedRecoverableCostsPage extends ExuiEvent(BasePage) {
@@ -22,6 +22,14 @@ export default class FixedRecoverableCostsPage extends ExuiEvent(BasePage) {
 
   async selectNo() {
     await super.clickBySelector(radioButtons.no.selector);
+  }
+
+  async selectYes1v2() {
+    await super.clickBySelector(radioButtons1v2.yes.selector);
+  }
+
+  async selectNo1v2() {
+    await super.clickBySelector(radioButtons1v2.no.selector);
   }
 
   async submit() {

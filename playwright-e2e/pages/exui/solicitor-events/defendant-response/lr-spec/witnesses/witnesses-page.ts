@@ -9,12 +9,13 @@ import {
   witnessesRadioButtonsFastTrack,
   witnessesRadioButtonsSmallTrack,
   witnessesRadioButtonsSmallTrack1v2,
+  witnessesRadioButtonsFastTrack1v2,
 } from './witnesses-content.ts';
 
 @AllMethodsStep()
 export default class WitnessesPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async selectYesSmallTrack() {
@@ -39,6 +40,14 @@ export default class WitnessesPage extends ExuiEvent(BasePage) {
 
   async selectNoSmallTrack1v2() {
     await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioNo.selector);
+  }
+
+  async selectYesFastTrack1v2() {
+    await super.clickBySelector(witnessesRadioButtonsFastTrack1v2.radioYes.selector);
+  }
+
+  async selectNoFastTrack1v2() {
+    await super.clickBySelector(witnessesRadioButtonsFastTrack1v2.radioNo.selector);
   }
 
   async submit() {

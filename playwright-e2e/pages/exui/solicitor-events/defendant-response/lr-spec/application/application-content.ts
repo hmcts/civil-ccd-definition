@@ -1,20 +1,24 @@
 export const heading = 'Application';
 
-export const radioButtons = {
+export const radioButtons = (defendantNumber: number) => ({
   yes: {
     label: 'Yes',
-    selector: '#respondent1DQFutureApplications_intentionToMakeFutureApplications_Yes',
+    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
   },
   no: {
     label: 'No',
-    selector: '#respondent1DQFutureApplications_intentionToMakeFutureApplications_No',
+    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_No`,
   },
-};
+});
 
 export const otherInformationForm = {
   selector: '#additionalInformationForJudge',
 };
 
-export const whatForForm = {
-  selector: '#respondent1DQFutureApplications_whatWillFutureApplicationsBeMadeFor',
+export const otherInformationForm2 = {
+  selector: '#additionalInformationForJudge2',
 };
+
+export const whatForForm = (defendantNumber: number) => ({
+  selector: `#respondent${defendantNumber}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
+});

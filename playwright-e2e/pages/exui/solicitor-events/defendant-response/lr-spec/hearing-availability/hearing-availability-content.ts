@@ -16,16 +16,16 @@ export const availabilityQuestionSmallTrack = {
   },
 };
 
-export const availabilityQuestionFastTrack = {
+export const availabilityQuestionFastTrack = (defendantNumber: number) => ({
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQHearingFastClaim_unavailableDatesRequired_Yes',
+    selector: `#respondent${defendantNumber}DQHearingFastClaim_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQHearingFastClaim_unavailableDatesRequired_No',
+    selector: `#respondent${defendantNumber}DQHearingFastClaim_unavailableDatesRequired_No`,
   },
-};
+});
 
 export const availabilityQuestionSmallTrack1v2 = {
   question:

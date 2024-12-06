@@ -17,20 +17,20 @@ export default class DisclosureReportPage extends ExuiEvent(BasePage) {
     ]);
   }
 
-  async selectYesFiledAndServedRadioButtons() {
-    await super.clickBySelector(filedAndServedRadioButtons.yes.selector);
+  async selectYesFiledAndServedRadioButtons(defendantNumber: number) {
+    await super.clickBySelector(filedAndServedRadioButtons(defendantNumber).yes.selector);
   }
 
-  async selectNoFiledAndServedRadioButtons() {
-    await super.clickBySelector(filedAndServedRadioButtons.no.selector);
+  async selectNoFiledAndServedRadioButtons(defendantNumber: number) {
+    await super.clickBySelector(filedAndServedRadioButtons(defendantNumber).no.selector);
   }
 
-  async selectYesAgreedProposalRadioButtons() {
-    await super.clickBySelector(agreedProposalRadioButtons.yes.selector);
+  async selectYesAgreedProposalRadioButtons(defendantNumber: number) {
+    await super.clickBySelector(agreedProposalRadioButtons(defendantNumber).yes.selector);
   }
 
-  async selectNoAgreedProposalRadioButtons() {
-    await super.clickBySelector(agreedProposalRadioButtons.no.selector);
+  async selectNoAgreedProposalRadioButtons(defendantNumber: number) {
+    await super.clickBySelector(agreedProposalRadioButtons(defendantNumber).no.selector);
   }
 
   async submit() {

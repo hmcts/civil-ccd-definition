@@ -9,12 +9,14 @@ import {
   useExpertsRadioButtonsSmallTrack1v2,
   expertDetails,
   expertDetails1v2,
+  alreadySentExpertReportsRadioFastTrack1v2,
+  useExpertsRadioButtonsFastTrack1v2,
 } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
 export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    //await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
   async selectYesSmallTrack() {
@@ -83,6 +85,10 @@ export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(useExpertRadioButtonsFastTrack.radioNo.selector);
   }
 
+  async selectNoFastTrack1v2() {
+    await super.clickBySelector(useExpertsRadioButtonsFastTrack1v2.radioNo.selector);
+  }
+
   async selectYesSmallTrack1v2() {
     await super.clickBySelector(useExpertsRadioButtonsSmallTrack1v2.radioYes.selector);
     super.expectInputValue(
@@ -117,6 +123,18 @@ export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
 
   async selectNoSmallTrack1v2() {
     await super.clickBySelector(useExpertsRadioButtonsSmallTrack1v2.radioNo.selector);
+  }
+
+  async selectYesSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+    await super.clickBySelector(
+      alreadySentExpertReportsRadioFastTrack1v2(defendantResponse).radioYes.selector,
+    );
+  }
+
+  async selectNoSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+    await super.clickBySelector(
+      alreadySentExpertReportsRadioFastTrack1v2(defendantResponse).radioNo.selector,
+    );
   }
 
   async submit() {

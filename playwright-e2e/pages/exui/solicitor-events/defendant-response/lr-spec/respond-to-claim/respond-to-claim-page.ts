@@ -13,7 +13,7 @@ import {
 @AllMethodsStep()
 export default class RespondToClaimPage extends ExuiEvent(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    //await super.runVerifications([super.verifyHeadings(ccdCaseData), super.expectHeading(heading)]);// This h1 is not captured on this page
+    await super.runVerifications([super.verifyHeadings(ccdCaseData), super.expectHeading(heading)]); // This h1 is not captured on this page
   }
 
   async verifyDefendant1Content() {
