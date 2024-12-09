@@ -32,17 +32,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-    console.log('--defendantResponse--');
-    await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false,
-      false,'00000',true);
-    console.log('--claimantResponse--');
-    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario,
-      'JUDICIAL_REFERRAL');
-    console.log('--sdo--');
-    await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
-    console.log('--createFinalOrderJO--');
-    await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
     console.log('--recordJudgment--');
     await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
     await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');

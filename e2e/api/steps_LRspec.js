@@ -1538,7 +1538,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  setAsideJudgment: async (user, setAsideReason, setAsideOrderType,expectedState = 'PROCEEDS_IN_HERITAGE_SYSTEM') => {
+  setAsideJudgment: async (user, setAsideReason, setAsideOrderType,expectedState = 'All_FINAL_ORDERS_ISSUED') => {
     console.log(`case in All set aside judgment ${caseId}`);
     console.log(`calling setup token *** setAside case ${caseId}  user : ${user.email}`);
     await apiRequest.setupTokens(user);
