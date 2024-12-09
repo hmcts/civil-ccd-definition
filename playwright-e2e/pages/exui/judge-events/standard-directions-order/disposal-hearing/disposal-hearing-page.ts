@@ -257,6 +257,6 @@ export default class DisposalHearingPage extends ExuiEvent(BasePage) {
   }
 
   async submit(...args: any[]): Promise<void> {
-    throw new Error('Method not implemented.');
+    await super.retryClickSubmit();
   }
 }
