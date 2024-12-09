@@ -2,9 +2,11 @@
 
 set -eu
 workspace=${1}
+echo workspace
 tenant_id=${2}
+echo tenant_id
 product=${3}
-environment=${1:-prod}
+echo product
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 
