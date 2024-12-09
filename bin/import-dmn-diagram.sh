@@ -3,12 +3,12 @@
 set -eu
 
 workspace=${1}
-environment=${2}
-tenant_id=${3}
-product=${4}
 echo "Workspace: ${workspace}"
+environment=${2}
 echo "Environment: ${environment}"
+tenant_id=${3}
 echo "Tenant ID: ${tenant_id}"
+product=${4}
 echo "Product: ${product}"
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}

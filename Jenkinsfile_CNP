@@ -74,13 +74,12 @@ def createGithubRelease() {
   """
 }
 
-def uploadDmnDiagrams(String env, String changeID) {
+def uploadDmnDiagrams(String env) {
   dir("${WORKSPACE}/bin") {
     tenantId = "civil"
     product = "civil"
     sh """
-      eval \$(./variables/load-${env}-environment-variables.sh ${changeID})
-      ./import-dmn-diagram.sh ${WORKSPACE} ${env} ${tenantId} ${product}
+      ./import-dmn-diagram.sh ${WORKSPACE} ${env.ENVIRONMENT} ${tenantId} ${product}
     """
   }
 }
