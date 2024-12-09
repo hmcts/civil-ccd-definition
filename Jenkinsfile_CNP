@@ -79,7 +79,7 @@ def uploadDmnDiagrams(String env) {
     tenantId = "civil"
     product = "civil"
     sh """
-      ./import-dmn-diagram.sh ${WORKSPACE} ${tenantId} ${product} ${env}
+      ./bin/import-dmn-diagram.sh ${WORKSPACE} ${env} ${tenantId} ${product}
     """
   }
 }
