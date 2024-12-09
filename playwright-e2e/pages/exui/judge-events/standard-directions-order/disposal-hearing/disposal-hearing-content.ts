@@ -214,35 +214,33 @@ export const inputs = {
       selector: '#disposalHearingHearingTime_input',
     },
     dateFrom: {
-      date4: {
-        day: {
-          label: 'Day',
-          selector: '#dateFrom-day',
-        },
-        month: {
-          label: 'Month',
-          selector: '#dateFrom-month',
-        },
-        year: {
-          label: 'Year',
-          selector: '#dateFrom-year',
-        },
+      label: 'Date from',
+      day: {
+        label: 'Day',
+        selector: '#dateFrom-day',
+      },
+      month: {
+        label: 'Month',
+        selector: '#dateFrom-month',
+      },
+      year: {
+        label: 'Year',
+        selector: '#dateFrom-year',
       },
     },
     dateTo: {
-      date4: {
-        day: {
-          label: 'Day',
-          selector: '#dateTo-day',
-        },
-        month: {
-          label: 'Month',
-          selector: '#dateTo-month',
-        },
-        year: {
-          label: 'Year',
-          selector: '#dateTo-year',
-        },
+      label: 'Date to',
+      day: {
+        label: 'Day',
+        selector: '#dateTo-day',
+      },
+      month: {
+        label: 'Month',
+        selector: '#dateTo-month',
+      },
+      year: {
+        label: 'Year',
+        selector: '#dateTo-year',
       },
     },
     otherHours: {
