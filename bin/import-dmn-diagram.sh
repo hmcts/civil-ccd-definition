@@ -1,15 +1,10 @@
 #!/usr/bin/env bash
 
 set -eu
-
 workspace=${1}
-echo "Workspace: ${workspace}"
-environment=${2}
-echo "Environment: ${environment}"
-tenant_id=${3}
-echo "Tenant ID: ${tenant_id}"
-product=${4}
-echo "Product: ${product}"
+tenant_id=${2}
+product=${3}
+environment=${4:-prod}
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 
