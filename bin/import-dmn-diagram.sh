@@ -7,6 +7,8 @@ tenant_id=${2}
 echo tenant_id
 product=${3}
 echo product
+environment=${4}
+echo product
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 
