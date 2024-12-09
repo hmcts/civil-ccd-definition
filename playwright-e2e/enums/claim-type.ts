@@ -1,0 +1,13 @@
+enum ClaimType {
+  ONE_VS_ONE_LIP,
+  TWO_VS_ONE_LIP,
+  ONE_VS_TWO_LIPS,
+  ONE_VS_TWO_ONE_LR_ONE_LIP,
+  ONE_VS_TWO_ONE_LIP_ONE_LR,
+  ONE_VS_ONE,
+  TWO_VS_ONE,
+  ONE_VS_TWO_SAME_SOL,
+  ONE_VS_TWO_DIFF_SOL,
+}
+
+export default ClaimType;
