@@ -2,9 +2,9 @@
 
 set -eu
 workspace=${1}
-env=${2}
-tenant_id=${3}
-product=${4}
+tenant_id=${2}
+product=${3}
+environment=${4:-prod}
 
 s2sSecret=${S2S_SECRET:-AABBCCDDEEFFGGHH}
 
@@ -44,9 +44,9 @@ echo "$(basename ${file}) upload failed with http code ${upload_http_code} and r
 continue;
 
 done
-echo "checking if there are any non prod dmns to upload for env: ${env} and then uploading it"
+echo "checking if there are any non prod dmns to upload for env: ${environment} and then uploading it"
 
-if [ "${env}" == "preview" ] || [ "${env}" == "demo" ] || [ "${env}" == "perftest" ] || [ "${env}" == "ithc" ]; then
+if [ "${environment}" == "preview" ] || [ "${environment}" == "demo" ] || [ "${environment}" == "perftest" ] || [ "${environment}" == "ithc" ]; then
 echo "Uploading non-prod DMNs..."
 for file in $(find ${dmnFilepath} -name '*-nonprod.dmn')
 do
