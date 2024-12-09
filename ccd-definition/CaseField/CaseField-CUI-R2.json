@@ -26,6 +26,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentResponsePcqId",
+    "Label": "PCQ id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "helpWithFees",
     "Label": " ",
     "FieldType": "HelpWithFees",
