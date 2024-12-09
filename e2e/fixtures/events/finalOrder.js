@@ -97,6 +97,7 @@ const createFreeFormOrder = (dayPlus7) => {
 const createIntermediateDownloadOrder = () => {
   return {
     TrackAllocation: {
+      allowOrderTrackAllocation: 'Yes',
       finalOrderTrackToggle: 'INTERMEDIATE_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM'
@@ -131,6 +132,7 @@ const createIntermediateDownloadOrder = () => {
 const createMultiDownloadOrder = () => {
   return {
     TrackAllocation: {
+      allowOrderTrackAllocation: 'Yes',
       finalOrderTrackToggle: 'MULTI_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
       finalOrderTrackAllocation: 'MULTI_CLAIM'
