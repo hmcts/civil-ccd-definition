@@ -2,12 +2,12 @@ import { test as requestFactories } from './requests-factory-fixtures';
 import { test as dataBuilders } from './data-builder-fixtures';
 import { test as testUtils } from '../utils/test-utils-fixtures';
 import { mergeTests } from '@playwright/test';
-import ApiCreateClaimSteps from '../../steps/api/exui/solicitor-events/create-claim/api-create-claim-steps';
 import ApiDataSteps from '../../steps/api/api-data-steps';
 import ApiUserSteps from '../../steps/api/api-user-steps';
-import ApiCreateClaimSpecSteps from '../../steps/api/exui/solicitor-events/create-claim/api-create-claim-spec-steps';
-import ApiServiceRequestSteps from '../../steps/api/exui/exui-dashboard/api-service-request-steps';
 import ApiCaseRoleAssignmentSteps from '../../steps/api/api-case-role-assignment-steps';
+import ApiCreateClaimSteps from '../../steps/api/ccd-events/solicitor-events/create-claim/api-create-claim-steps';
+import ApiCreateClaimSpecSteps from '../../steps/api/ccd-events/solicitor-events/create-claim/api-create-claim-spec-steps';
+import ApiServiceRequestSteps from '../../steps/api/api-service-request-steps';
 
 type ApiStepsFixtures = {
   ApiUserSteps: ApiUserSteps;

@@ -1,9 +1,9 @@
-import BaseApiSteps from '../../../../base/base-api-steps';
-import { claimantSolicitorUser } from '../../../../config/users/exui-users';
-import ServiceRequestDataBuilder from '../../../../data-builders/service-request/service-request-data-builder';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
-import TestData from '../../../../models/test-data';
-import RequestsFactory from '../../../../requests/requests-factory';
+import BaseApiSteps from '../../base/base-api-steps';
+import { claimantSolicitorUser } from '../../config/users/exui-users';
+import ServiceRequestDataBuilder from '../../data-builders/service-request/service-request-data-builder';
+import { AllMethodsStep } from '../../decorators/test-steps';
+import TestData from '../../models/test-data';
+import RequestsFactory from '../../requests/requests-factory';
 
 @AllMethodsStep()
 export default class ApiServiceRequestSteps extends BaseApiSteps {
