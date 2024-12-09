@@ -59,6 +59,7 @@ civil-service:
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+      COURT_LOCATION_WA_DMN_ENABLED: true
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
