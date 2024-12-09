@@ -641,6 +641,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
+  delete responseBody.data['finalOrderTrackToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
