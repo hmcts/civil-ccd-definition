@@ -60,7 +60,7 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioYes.selector);
   }
 
-  async selectNo(defendantNumber) {
+  async selectNo(defendantNumber: number) {
     await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioNo.selector);
   }
 

@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiEvent from '../../../../exui-event/exui-event.ts';
-import { radioButtons } from './intend-to-file-single-response-content.ts';
+import { radioButtons, radioButtons2v1 } from './intend-to-file-single-response-content.ts';
 
 @AllMethodsStep()
 export default class IntendToFileSingleResponsePage extends ExuiEvent(BasePage) {
@@ -16,6 +16,14 @@ export default class IntendToFileSingleResponsePage extends ExuiEvent(BasePage) 
 
   async selectNo() {
     await super.clickBySelector(radioButtons.no.selector);
+  }
+
+  async selectYes2v1() {
+    await super.clickBySelector(radioButtons2v1.yes.selector);
+  }
+
+  async selectNo2v1() {
+    await super.clickBySelector(radioButtons2v1.no.selector);
   }
 
   async submit() {

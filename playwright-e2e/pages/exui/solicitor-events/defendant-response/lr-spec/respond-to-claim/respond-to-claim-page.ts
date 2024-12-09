@@ -8,6 +8,7 @@ import {
   radioButtons,
   radioButtons2v1app1,
   radioButtons2v1app2,
+  radioButtons2v1,
 } from './respond-to-claim-content.ts';
 
 @AllMethodsStep()
@@ -71,6 +72,24 @@ export default class RespondToClaimPage extends ExuiEvent(BasePage) {
 
   async selectsDefendsAndWantsCounterclaimApplicant2() {
     await super.clickBySelector(radioButtons2v1app2.rejectAndWantsCounterclaim.selector);
+  }
+
+  async selectDefends2v1(claimantNumber: number) {
+    await super.clickBySelector(radioButtons2v1(claimantNumber).defends.selector);
+  }
+
+  async selectAdmitsAll2v1(claimantNumber: number) {
+    await super.clickBySelector(radioButtons2v1(claimantNumber).admitsAll.selector);
+  }
+
+  async selectAdmitsPart2v1(claimantNumber: number) {
+    await super.clickBySelector(radioButtons2v1(claimantNumber).admitsPart.selector);
+  }
+
+  async selectDefendsAndWantsCounterclaim2v1(claimantNumber: number) {
+    await super.clickBySelector(
+      radioButtons2v1(claimantNumber).defendsAndWantsCounterclaim.selector,
+    );
   }
 
   async submit() {

@@ -56,3 +56,22 @@ export const radioButtons2v1app2 = {
     selector: '#respondent1ClaimResponseTypeToApplicant2-COUNTER_CLAIM',
   },
 };
+
+export const radioButtons2v1 = (claimantNumber: number) => ({
+  defends: {
+    label: 'Defends all of the claim',
+    selector: `#claimant${claimantNumber}ClaimResponseTypeForSpec-FULL_DEFENCE`,
+  },
+  admitsAll: {
+    label: 'Admits all of the claim',
+    selector: `#claimant${claimantNumber}ClaimResponseTypeForSpec-FULL_ADMISSION`,
+  },
+  admitsPart: {
+    label: 'Admits part of the claim',
+    selector: `#claimant${claimantNumber}ClaimResponseTypeForSpec-PART_ADMISSION`,
+  },
+  defendsAndWantsCounterclaim: {
+    label: 'Defends all of the claim and wants to counterclaim',
+    selector: `#claimant${claimantNumber}ClaimResponseTypeForSpec-COUNTER_CLAIM`,
+  },
+});

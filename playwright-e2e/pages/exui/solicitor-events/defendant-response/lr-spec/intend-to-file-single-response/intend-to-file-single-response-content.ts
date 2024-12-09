@@ -8,3 +8,14 @@ export const radioButtons = {
     selector: '#respondentResponseIsSame_No',
   },
 };
+
+export const radioButtons2v1 = {
+  yes: {
+    label: 'Yes',
+    selector: '#defendantSingleResponseToBothClaimants_Yes',
+  },
+  no: {
+    label: 'No',
+    selector: '#defendantSingleResponseToBothClaimants_No',
+  },
+};
