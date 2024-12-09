@@ -4,7 +4,7 @@ import DecoratorHelper from '../helpers/decorator-helper';
 import { test } from '../playwright-fixtures/index';
 import ClassMethodHelper from '../helpers/class-method-helper';
 
-//DO NOT APPLY AllMethodStep Decorator with Step decorator!!!!!
+//DO NOT APPLY AllMethodStep Decorator with Step decorator
 
 const stepFlag = '__allMethodsStepApplied';
 
@@ -50,19 +50,17 @@ export const Step = function (classKey: string) {
         `${Step.name} decorator cannot be applied when @${AllMethodsStep.name} decorator is already applied.`,
       );
     }
+    if (!isAsyncFunction(target)) {
+      throw new DecoratorError(
+        `${className}.${methodName} must be asynchronous to use @${Step.name} decorator`,
+      );
+    }
 
     return async function replacementMethod(this: any, ...args: any) {
       const stepName = `${className}.${methodName}`;
-      return await test.step(
-        stepName,
-        isAsyncFunction(target)
-          ? async () => {
-              return await target.call(this, ...args);
-            }
-          : () => {
-              return target.call(this, ...args);
-            },
-      );
+      return await test.step(stepName, async () => {
+        return await target.call(this, ...args);
+      });
     };
   };
 };
@@ -75,6 +73,11 @@ export const BoxedDetailedStep = function (classKey: string, ...paramNamesToDeta
     if (target.prototype && target.prototype[stepFlag]) {
       throw new DecoratorError(
         `${Step.name} decorator cannot be applied when @${AllMethodsStep.name} decorator is already applied.`,
+      );
+    }
+    if (!isAsyncFunction(target)) {
+      throw new DecoratorError(
+        `${className}.${methodName} must be asynchronous to use @${Step.name} decorator`,
       );
     }
 
@@ -104,13 +107,9 @@ export const BoxedDetailedStep = function (classKey: string, ...paramNamesToDeta
       );
       return await test.step(
         stepName,
-        isAsyncFunction(target)
-          ? async () => {
-              return await target.call(this, ...args);
-            }
-          : () => {
-              return target.call(this, ...args);
-            },
+        async () => {
+          return await target.call(this, ...args);
+        },
         { box: true },
       );
     };
@@ -132,17 +131,15 @@ export const AllMethodsStep = ({ methodNamesToIgnore = [] as string[] } = {}) =>
         !methodNamesToIgnore.includes(methodName)
       ) {
         const stepName = ClassMethodHelper.formatClassName(targetClass.name) + '.' + methodName;
-        targetClass.prototype[methodName] = async function (...args: any[]) {
-          return await test.step(
-            stepName,
-            isAsyncFunction(method)
-              ? async () => {
-                  return await method.apply(this, args);
-                }
-              : () => {
-                  return method.apply(this, args);
-                },
+        if (!isAsyncFunction(method)) {
+          throw new DecoratorError(
+            `All methods defined in ${targetClass.name} must be asynchronous to use @${AllMethodsStep.name} decorator`,
           );
+        }
+        targetClass.prototype[methodName] = async function (...args: any[]) {
+          return await test.step(stepName, async () => {
+            return await method.apply(this, args);
+          });
         };
       }
     }

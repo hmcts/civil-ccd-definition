@@ -33,28 +33,28 @@ export const test = mergeTests(testUtils, pageFactories, requestFactories).exten
   ExuiDashboardSteps: async ({ _pageUtilsFactory, _exuiDashboardPageFactory, _testData }, use) => {
     await use(new ExuiDashboardSteps(_pageUtilsFactory, _exuiDashboardPageFactory, _testData));
   },
-  CreateClaimSpecSteps: async ({ _createClaimPageFactory, _testData }, use) => {
-    await use(new CreateClaimSpecSteps(_createClaimPageFactory, _testData));
+  CreateClaimSpecSteps: async ({ _createClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new CreateClaimSpecSteps(_createClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  CreateClaimSteps: async ({ _createClaimPageFactory, _testData }, use) => {
-    await use(new CreateClaimSteps(_createClaimPageFactory, _testData));
+  CreateClaimSteps: async ({ _createClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new CreateClaimSteps(_createClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  NotifyClaimSteps: async ({ _notifyClaimPageFactory, _testData }, use) => {
-    await use(new NotifyClaimSteps(_notifyClaimPageFactory, _testData));
+  NotifyClaimSteps: async ({ _notifyClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new NotifyClaimSteps(_notifyClaimPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  NotifyClaimDetailsSteps: async ({ _notifyClaimDetailsPageFactory, _testData }, use) => {
-    await use(new NotifyClaimDetailsSteps(_notifyClaimDetailsPageFactory, _testData));
+  NotifyClaimDetailsSteps: async ({ _notifyClaimDetailsPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new NotifyClaimDetailsSteps(_notifyClaimDetailsPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  DefendantResponseSpecSteps: async ({ _defendantResponsePageFactory, _testData }, use) => {
-    await use(new DefendantResponseSpecSteps(_defendantResponsePageFactory, _testData));
+  DefendantResponseSpecSteps: async ({ _defendantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantResponseSpecSteps(_defendantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  DefendantResponseSteps: async ({ _defendantResponsePageFactory, _testData }, use) => {
-    await use(new DefendantResponseSteps(_defendantResponsePageFactory, _testData));
+  DefendantResponseSteps: async ({ _defendantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantResponseSteps(_defendantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  ClaimantResponseSpecSteps: async ({ _claimantResponsePageFactory, _testData }, use) => {
-    await use(new ClaimantResponseSpecSteps(_claimantResponsePageFactory, _testData));
+  ClaimantResponseSpecSteps: async ({ _claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantResponseSpecSteps(_claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   },
-  ClaimantResponseSteps: async ({ _claimantResponsePageFactory, _testData }, use) => {
-    await use(new ClaimantResponseSteps(_claimantResponsePageFactory, _testData));
+  ClaimantResponseSteps: async ({ _claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantResponseSteps(_claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   }
 });

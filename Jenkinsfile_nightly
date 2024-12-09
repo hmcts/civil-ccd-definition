@@ -5,6 +5,7 @@ properties([
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '2', description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', defaultValue: 'false', description: 'Runs accessibility tests for playwright during test execution'),
     string(name: 'PLAYWRIGHT_RUN_SETUP', defaultValue: 'true', description: 'Runs setup projects before functional test suite'),
     string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
@@ -79,8 +80,10 @@ def secrets = [
 withNightlyPipeline(type, product, component) {
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
+  env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_RETRIES
   env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
   env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
+  env.PLAYWRIGHT_UNASSIGN_CASES = true
   env.URL=params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_WEB_URL=params.IDAM_WEB_URL
