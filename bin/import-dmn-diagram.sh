@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 set -eu
+echo "Workspace: ${workspace}"
+echo "Environment: ${environment}"
+echo "Tenant ID: ${tenant_id}"
+echo "Product: ${product}"
 workspace=${1}
 environment=${2}
 tenant_id=${3}
