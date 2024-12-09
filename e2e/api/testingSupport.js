@@ -3,6 +3,7 @@ const idamHelper = require('./idamHelper');
 const serviceAuthHelper = require('./serviceAuthorisationHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
+const {TOTP} = require('totp-generator');
 
 
 let incidentMessage;
@@ -46,10 +47,6 @@ const checkManageContactInformationEnabled = async () => {
 
 const checkFastTrackUpliftsEnabled = async () => {
   return checkFlagEnabled('fast-track-uplifts');
-};
-
-const checkCarmToggleEnabled = async () => {
-  return checkFlagEnabled('carm');
 };
 
 const checkMintiToggleEnabled = async () => {
@@ -297,6 +294,5 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkCarmToggleEnabled,
   checkMintiToggleEnabled
 };

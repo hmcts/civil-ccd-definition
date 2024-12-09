@@ -1,30 +1,30 @@
 import 'dotenv/config';
-import '../enums/environment'
 import Environment from '../enums/environment';
 
 const config = {
-  environment: Environment[process.env.ENVIRONMENT] as Environment,
+  environment: process.env.ENVIRONMENT as Environment,
   idamStudEnabled: process.env.IDAM_STUB_ENABLED === 'true',
-  runAxeTests: process.env.RUN_ACCESSIBILITY_TESTS === 'true',
+  runSetup: process.env.PLAYWRIGHT_RUN_SETUP === 'true',
+  runAxeTests: process.env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS === 'true',
   s2s: {
     microservice: 'civil_service',
-    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
   },
   s2sForXUI: {
     microservice: 'xui_webapp',
-    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
+    secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH',
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL',
+    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
   },
   playwright: {
-    softExpect: process.env.UI_SOFT_EXPECT === 'true',
+    softExpect: process.env.PLAYWRIGHT_UI_SOFT_EXPECT === 'true',
     toPassTimeout: 25_000,
-    workers: 5,
+    workers: parseInt(process.env.PLAYWRIGHT_WORKERS),
     actionTimeout: 25_000,
-    showBrowserWindow: process.env.SHOW_BROWSER_WINDOW === 'true',
+    showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
   },
-}
+};
 
 export default config;

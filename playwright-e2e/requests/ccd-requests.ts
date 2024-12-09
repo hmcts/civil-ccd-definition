@@ -1,90 +1,66 @@
-import { TOTP } from 'totp-generator';
-import BaseRequest from '../base/base-requests';
+import BaseRequest from '../base/base-request';
 import config from '../config/config';
 import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
-import RequestOptions from '../types/request-options';
+import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
-import CaseEvents from '../enums/events/case-events.ts';
-import CCDCaseData from '../types/case-data/ccd-case-data';
-import User from '../types/user';
+import CCDCaseData from '../models/ccd/ccd-case-data';
+import User from '../models/user';
+import ServiceAuthProviderRequests from './service-auth-provider-requests';
+import { CCDEvent } from '../models/ccd/ccd-events';
 
-const classKey = 'CcdRequests';
-export default class CcdRequests extends BaseRequest {
-  private static s2sToken: string;
-
+const classKey = 'CCDRequests';
+export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private getCcdDataStoreBaseUrl({ userId, role }: User) {
     return `${urls.ccdDataStore}/${role}s/${userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
   }
 
   private async getRequestHeaders({ accessToken }: User) {
-    const s2sToken = await this.fetchS2sToken();
+    const civilS2sToken = await this.fetchCivilS2sToken();
     return {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${accessToken}`,
-      ServiceAuthorization: s2sToken,
+      ServiceAuthorization: civilS2sToken,
     };
-  }
-
-  private async fetchS2sToken() {
-    if (!CcdRequests.s2sToken) {
-      console.log('Fetching s2s token...');
-      const url = `${urls.authProviderApi}/lease`;
-      const requestOptions: RequestOptions = {
-        method: 'POST',
-        body: {
-          microservice: config.s2s.microservice,
-          oneTimePassword: TOTP.generate(config.s2s.secret).otp,
-        },
-      };
-      const response = await super.retriedRequest(url, requestOptions);
-      console.log('s2s token fetched successfully');
-      CcdRequests.s2sToken = await response.text();
-    }
-    return CcdRequests.s2sToken;
   }
 
   @Step(classKey)
   @TruthyParams(classKey, 'caseId')
-  async fetchCcdCaseData(caseId: number, user: User) {
-    console.log('Fetching CCD case data...');
+  async fetchCCDCaseData(caseId: number, user: User) {
+    console.log(`Fetching CCD case data with id: ${caseId}...`);
     const url = `${this.getCcdDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
-    const caseData = (await (await super.retriedRequest(url, requestOptions)).json()).case_data;
-    console.log('CCD case data fetched successfully');
-    return caseData;
+    const responseJson = await super.retryRequestJson(url, requestOptions);
+    console.log(`CCD case data fetched successfully with id: ${caseId}`);
+    return { id: responseJson.id, ...responseJson.case_data };
   }
 
   @Step(classKey)
-  private async startEvent(event: CaseEvents, user: User, caseId?: number) {
+  async startEvent(ccdEvent: CCDEvent, user: User, caseId?: number) {
     console.log(
-      `Starting event: ${event}` + (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+      `Starting event: ${ccdEvent.id}` +
+        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
     );
     let url = this.getCcdDataStoreBaseUrl(user);
     if (caseId) {
       url += `/cases/${caseId}`;
     }
-    url += `/event-triggers/${event}/token`;
+    url += `/event-triggers/${ccdEvent.id}/token`;
 
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
-    const response = await (await super.retriedRequest(url, requestOptions)).json();
-    console.log(`Event: ${event} started successfully`);
+    const response = await super.retryRequestJson(url, requestOptions);
+    console.log(`Event: ${ccdEvent.id} started successfully`);
     return response.token;
   }
 
   @Step(classKey)
-  private async submit(
-    event: CaseEvents,
-    caseData: CCDCaseData,
-    user: User,
-    ccdEventToken: string,
-  ) {
+  async submit(ccdEvent: CCDEvent, caseData: CCDCaseData, user: User, ccdEventToken: string) {
     console.log(
-      `Submitting event: ${event}` +
+      `Submitting event: ${ccdEvent.id}` +
         (typeof caseData.id !== 'undefined' ? ` caseId: ${caseData.id}` : ''),
     );
     let url = `${this.getCcdDataStoreBaseUrl(user)}/cases`;
@@ -96,14 +72,14 @@ export default class CcdRequests extends BaseRequest {
       headers: await this.getRequestHeaders(user),
       body: {
         data: caseData,
-        event: { id: event },
+        event: { id: ccdEvent.id },
         event_data: caseData,
         event_token: ccdEventToken,
       },
       method: 'POST',
     };
-    const responseJson = await (await super.retriedRequest(url, requestOptions, 201)).json();
-    console.log(`Event: ${event} submitted successfully`);
+    const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus: 201 });
+    console.log(`Event: ${ccdEvent.id} submitted successfully`);
     return responseJson;
   }
 }

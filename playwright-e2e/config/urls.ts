@@ -11,7 +11,8 @@ const urls = {
   caseAssignmentService: process.env.AAC_API_URL,
   orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL,
   paymentApi: process.env.PAYMENT_API_URL,
-  wiremockService: process.env.WIRE_MOCK_SERVICE_URL
+  wiremockService: process.env.WIRE_MOCK_SERVICE_URL,
+  govUK: 'https://www.gov.uk',
 };
 
 export const getDomain = (url: string) => {

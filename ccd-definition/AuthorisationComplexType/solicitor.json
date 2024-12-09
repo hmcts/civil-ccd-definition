@@ -1,447 +1,447 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "organisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "phoneNumber",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "dx",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "fax",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1OrganisationDetails",
     "ListElementCode": "address",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyCaseAssignedRole",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "OrgPolicyReference",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "Organisation",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrganisationPolicy",
     "ListElementCode": "Organisation.OrganisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "organisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "phoneNumber",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "dx",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "fax",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2OrganisationDetails",
     "ListElementCode": "address",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "type",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualTitle",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualFirstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualLastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualDateOfBirth",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "companyName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "organisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderTitle",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderFirstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderLastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderTradingAs",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "soleTraderDateOfBirth",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "primaryAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "partyName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "partyTypeDisplayValue",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "unavailableDates",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "partyEmail",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "partyPhone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "type",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualTitle",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualFirstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualLastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "individualDateOfBirth",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "companyName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "organisationName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderTitle",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderFirstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderLastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderTradingAs",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "soleTraderDateOfBirth",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "primaryAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyTypeDisplayValue",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "unavailableDates",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyEmail",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyPhone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "type",
     "AccessControl": [
@@ -459,7 +459,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualTitle",
     "AccessControl": [
@@ -477,7 +477,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualFirstName",
     "AccessControl": [
@@ -495,7 +495,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualLastName",
     "AccessControl": [
@@ -513,7 +513,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualDateOfBirth",
     "AccessControl": [
@@ -531,7 +531,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "companyName",
     "AccessControl": [
@@ -549,7 +549,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "organisationName",
     "AccessControl": [
@@ -567,7 +567,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTitle",
     "AccessControl": [
@@ -585,7 +585,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderFirstName",
     "AccessControl": [
@@ -603,7 +603,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderLastName",
     "AccessControl": [
@@ -621,7 +621,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderTradingAs",
     "AccessControl": [
@@ -639,7 +639,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "soleTraderDateOfBirth",
     "AccessControl": [
@@ -657,7 +657,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "primaryAddress",
     "AccessControl": [
@@ -675,7 +675,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "partyName",
     "AccessControl": [
@@ -693,7 +693,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "partyTypeDisplayValue",
     "AccessControl": [
@@ -711,7 +711,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "unavailableDates",
     "AccessControl": [
@@ -729,7 +729,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "partyEmail",
     "AccessControl": [
@@ -747,7 +747,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "partyPhone",
     "AccessControl": [
@@ -765,7 +765,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "type",
     "AccessControl": [
@@ -785,7 +785,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualTitle",
     "AccessControl": [
@@ -805,7 +805,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualFirstName",
     "AccessControl": [
@@ -825,7 +825,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualLastName",
     "AccessControl": [
@@ -845,7 +845,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "individualDateOfBirth",
     "AccessControl": [
@@ -865,7 +865,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "companyName",
     "AccessControl": [
@@ -885,7 +885,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "organisationName",
     "AccessControl": [
@@ -905,7 +905,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderTitle",
     "AccessControl": [
@@ -925,7 +925,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderFirstName",
     "AccessControl": [
@@ -945,7 +945,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderLastName",
     "AccessControl": [
@@ -965,7 +965,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderTradingAs",
     "AccessControl": [
@@ -985,7 +985,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "soleTraderDateOfBirth",
     "AccessControl": [
@@ -1005,7 +1005,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "primaryAddress",
     "AccessControl": [
@@ -1025,7 +1025,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyName",
     "AccessControl": [
@@ -1045,7 +1045,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyTypeDisplayValue",
     "AccessControl": [
@@ -1065,7 +1065,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "unavailableDates",
     "AccessControl": [
@@ -1085,7 +1085,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyEmail",
     "AccessControl": [
@@ -1105,7 +1105,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyPhone",
     "AccessControl": [
@@ -1125,133 +1125,133 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "fullName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "hasSameAddressAsLitigant",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "primaryAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "certificateOfSuitability",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "emailAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "phoneNumber",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "fullName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "hasSameAddressAsLitigant",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "primaryAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "certificateOfSuitability",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "emailAddress",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "phoneNumber",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "fullName",
     "AccessControl": [
@@ -1264,7 +1264,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "hasSameAddressAsLitigant",
     "AccessControl": [
@@ -1277,7 +1277,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "primaryAddress",
     "AccessControl": [
@@ -1290,7 +1290,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "certificateOfSuitability",
     "AccessControl": [
@@ -1303,7 +1303,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "firstName",
     "AccessControl": [
@@ -1316,7 +1316,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "lastName",
     "AccessControl": [
@@ -1329,7 +1329,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "emailAddress",
     "AccessControl": [
@@ -1342,7 +1342,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "phoneNumber",
     "AccessControl": [
@@ -1355,7 +1355,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "flags",
     "AccessControl": [
@@ -1378,7 +1378,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "fullName",
     "AccessControl": [
@@ -1391,7 +1391,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "hasSameAddressAsLitigant",
     "AccessControl": [
@@ -1404,7 +1404,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "primaryAddress",
     "AccessControl": [
@@ -1417,7 +1417,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "certificateOfSuitability",
     "AccessControl": [
@@ -1430,7 +1430,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "firstName",
     "AccessControl": [
@@ -1443,7 +1443,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "lastName",
     "AccessControl": [
@@ -1456,7 +1456,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "emailAddress",
     "AccessControl": [
@@ -1469,7 +1469,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "phoneNumber",
     "AccessControl": [
@@ -1482,7 +1482,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "flags",
     "AccessControl": [
@@ -1503,21 +1503,21 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1",
     "ListElementCode": "partyID",
     "AccessControl": [
@@ -1536,7 +1536,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "partyID",
     "AccessControl": [
@@ -1556,21 +1556,21 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriend",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "partyID",
     "AccessControl": [
@@ -1583,7 +1583,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "partyID",
     "AccessControl": [
@@ -1596,294 +1596,294 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1OrgIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2OrgIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LRIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LRIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "firstName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "lastName",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "email",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "phone",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "flags",
     "UserRole": "caseworker-civil-solicitor",
     "CRUD": "CU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LRIndividuals",
     "ListElementCode": "partyID",
     "UserRole": "caseworker-civil-solicitor",

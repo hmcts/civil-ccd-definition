@@ -3,14 +3,14 @@ const config = require('../../../config.js');
 const mpScenario1v1 = 'ONE_V_ONE';
 const mpScenario1v1Nihl = 'ONE_V_ONE_NIHL';
 const claimAmount = '11000';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
 
-Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo');
+Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-r2-sdo');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);

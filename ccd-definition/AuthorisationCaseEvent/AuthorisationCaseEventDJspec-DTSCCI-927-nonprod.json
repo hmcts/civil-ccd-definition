@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "AccessControl": [
       {
@@ -9,13 +9,6 @@
           "[CREATOR]"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile"
-        ],
-        "CRUD": "R"
       }
     ]
   }

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "code",
     "ID": "CaseManagementCategoryElement",
     "Label": "Civil",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label",
     "ID": "CaseManagementCategoryElement",
     "Label": "Civil",

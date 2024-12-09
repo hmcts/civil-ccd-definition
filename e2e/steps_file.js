@@ -7,6 +7,7 @@ const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const continuePage = require('./pages/continuePage.page');
 const caseViewPage = require('./pages/caseView.page');
+const stayAndLiftCasePage = require('./pages/stayAndLiftCase/stayAndLiftCase.page');
 const createCasePage = require('./pages/createClaim/createCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisation = require('./pages/createClaim/claimantSolicitorOrganisation.page');
@@ -72,6 +73,11 @@ const allocateSmallClaimsTrackPage = require('./pages/selectSDO/allocateSmallCla
 const allocateClaimPage = require('./pages/selectSDO/allocateClaimType.page');
 const sdoOrderTypePage = require('./pages/selectSDO/sdoOrderType.page');
 const smallClaimsSDOOrderDetailsPage = require('./pages/selectSDO/unspecClaimsSDOOrderDetails.page');
+const orderTrackAllocationPage = require('./pages/directionsOrder/orderTrackAllocation.page');
+const intermediateTrackComplexityBandPage = require('./pages/directionsOrder/intermediateTrackComplexityBand.page');
+const selectOrderTemplatePage = require('./pages/directionsOrder/selectOrderTemplate.page');
+const downloadOrderTemplatePage = require('./pages/directionsOrder/downloadOrderTemplate.page');
+const uploadOrderPage = require('./pages/directionsOrder/uploadOrder.page');
 
 const requestNewHearingPage = require('./pages/hearing/requestHearing.page');
 const updateHearingPage = require('./pages/hearing/updateHearing.page');
@@ -168,6 +174,8 @@ const CONFIRMATION_MESSAGE = {
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
 let eventNumber = 0;
+
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 const getScreenshotName = () => eventNumber + '.' + screenshotNumber + '.' + eventName.split(' ').join('_') + '.jpg';
 const conditionalSteps = (condition, steps) => condition ? steps : [];
@@ -432,14 +440,19 @@ module.exports = function () {
       ]);
     },
 
-    async initiateDJSpec(caseId, scenario) {
+    async initiateDJSpec(caseId, scenario, caseCategory = 'UNSPEC') {
       eventName = 'Request Default Judgment';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
         () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        () => specifiedDefaultJudmentPage.claimForFixedCosts(),
+        ...conditionalSteps(caseCategory === 'SPEC' && isTestEnv, [
+          () => specifiedDefaultJudmentPage.claimForFixedCostsOnEntry()
+        ]),
+        ...conditionalSteps(caseCategory === 'UNSPEC' || !isTestEnv, [
+          () => specifiedDefaultJudmentPage.claimForFixedCosts()
+        ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
         () => specifiedDefaultJudmentPage.paymentTypeSelection(),
         () => event.submit('Submit', 'Default Judgment Granted'),
@@ -724,6 +737,58 @@ module.exports = function () {
       ]);
     },
 
+    async stayCase(user = config.ctscAdminUser) {
+      eventName = 'Stay case';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.waitForText('All parties will be notified.'),
+        () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
+        () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
+      eventName = 'Manage stay';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+      ]);
+      if (manageStayType == 'REQ_UPDATE')  {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
+          () => event.submit('Submit', 'You have requested an update on'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      } else {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyLiftCaseStaySteps(caseState),
+          () => event.submit('Submit', 'You have lifted the stay from this'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      }
+      await this.waitForText('Summary');
+    },
+
+    async initiateFinalOrder(caseId, trackType, optionText) {
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary', 20);
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/GENERATE_DIRECTIONS_ORDER/GENERATE_DIRECTIONS_ORDERTrackAllocation');
+      await this.waitForText('Make an order', 10);
+      await this.triggerStepsWithScreenshot([
+        () => orderTrackAllocationPage.allocationTrack('Yes', trackType),
+        ... conditionalSteps(trackType === 'Intermediate Track', [
+          () => intermediateTrackComplexityBandPage.selectComplexityBand('Yes', 'Band 2', 'Test reason'),
+        ]),
+        () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
+        () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => event.submit('Submit', 'Your order has been issued')
+      ]);
+    },
+
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
       if (['demo'].includes(config.runningEnv)) {
@@ -999,12 +1064,12 @@ module.exports = function () {
       ]);
     },
 
-    async evidenceUpload(caseId, defendant) {
+    async evidenceUpload(caseId, defendant, isBundle = false, mpScenario = false, scenario = '') {
       defendant ? eventName = 'EVIDENCE_UPLOAD_RESPONDENT' : eventName = 'EVIDENCE_UPLOAD_APPLICANT';
       await this.triggerStepsWithScreenshot([
         () => unspecifiedEvidenceUpload.uploadADocument(caseId, defendant),
-        () => unspecifiedEvidenceUpload.selectType(defendant),
-        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant),
+        () => unspecifiedEvidenceUpload.selectType(defendant, isBundle, mpScenario, scenario),
+        () => unspecifiedEvidenceUpload.uploadYourDocument(TEST_FILE_PATH, defendant, isBundle, mpScenario),
         () => event.submit('Submit', 'Documents uploaded')
       ]);
     },

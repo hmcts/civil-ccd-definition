@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "MAKE_PBA_PAYMENT_SPEC",
     "Name": "Make PBA payment",
     "Description": "Make PBA payment for issued claim for Spec",
