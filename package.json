@@ -71,7 +71,8 @@
     "test:playwright-e2e-setup:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-setup:data:ci\" \"yarn test:playwright-setup:users:ci && yarn test:playwright-setup:users-auth:ci\"",
     "test:playwright-e2e-nightly:ci": "FUNCTIONAL=true npx playwright test --project e2e-full-functional --no-deps",
     "test:playwright-teardown:users-auth:ci": "npx playwright test --project users-auth-teardown --pass-with-no-tests --no-deps",
-    "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-teardown:users-auth:ci\" \"yarn ts-node ./playwright-e2e/global/teardown-ci\"",
+    "test:playwright-teardown:case-role-assignment:ci": "npx playwright test --project case-role-assignment-teardown --pass-with-no-tests --no-deps",
+    "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-teardown:case-role-assignment:ci\" \"yarn test:playwright-teardown:users-auth:ci\" \"yarn ts-node ./playwright-e2e/global/teardown-ci\"",
     "test:playwright-e2e-debug:local": "npx playwright test --project e2e-full-functional --grep @debug",
     "test:playwright-e2e:local": "npx playwright test --project e2e-full-functional",
     "test:fullfunctional": "yarn playwright install && MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
@@ -143,7 +144,7 @@
     "ts-node": "^10.9.2",
     "typescript": "5.1.3",
     "typescript-eslint": "8.0.0",
-    "uuid": "^3.4.0",
+    "uuid": "^11.0.3",
     "webdriverio": "^6.12.1"
   },
   "lint-staged": {
