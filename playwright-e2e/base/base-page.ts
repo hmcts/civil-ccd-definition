@@ -81,8 +81,8 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async clickByText(text: string, options: { timeout?: number } = {}) {
-    await this.page.getByText(text).click({ timeout: options.timeout });
+  protected async clickByText(text: string, options: { timeout?: number; exact?: boolean } = {}) {
+    await this.page.getByText(text, { exact: options.exact }).click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'input', 'selector')
@@ -290,29 +290,75 @@ export default abstract class BasePage {
     }).toBeVisible({ timeout: options.timeout });
   }
 
+  private getSelectorLocator(
+    selector: string,
+    containerSelector?: string,
+    index?: number,
+    first?: boolean,
+  ) {
+    const locator = containerSelector
+      ? this.page.locator(containerSelector).locator(selector)
+      : this.page.locator(selector);
+    return first ? locator.nth(0) : index ? locator.nth(index) : locator;
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   protected async expectSelector(
     selector: string,
-    options: { message?: string; timeout?: number } = {},
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      message?: string;
+      timeout?: number;
+    } = {},
   ) {
-    await pageExpect(this.page.locator(selector), { message: options.message }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    const locator = this.getSelectorLocator(
+      selector,
+      options.containerSelector,
+      options.index,
+      options.first,
+    );
+    await pageExpect(locator, { message: options.message }).toBeVisible(options);
   }
 
   @BoxedDetailedStep(classKey, 'selector')
   protected async expectNoSelector(
     selector: string,
-    options: { message?: string; timeout?: number } = {},
+    options: {
+      containerSelector?: string;
+      all?: boolean;
+      index?: number;
+      first?: boolean;
+      message?: string;
+      timeout?: number;
+    } = {},
   ) {
-    const locator = this.page.locator(selector);
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    const locator = this.getSelectorLocator(
+      selector,
+      options.containerSelector,
+      options.index,
+      options.first,
+    );
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
-    await pageExpect(locator, { message: options.message }).toBeHidden({
-      timeout: options.timeout,
-    });
+    if (options.all) {
+      await pageExpect(locator, { message: options.message }).allToBeHidden({
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeHidden({
+        timeout: options.timeout,
+      });
+    }
   }
 
   private getTextLocator(
@@ -386,6 +432,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       containerSelector?: string;
+      all?: boolean;
       index?: number;
       first?: boolean;
       timeout?: number;
@@ -402,9 +449,15 @@ export default abstract class BasePage {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
-    await pageExpect(locator, { message: options.message }).toBeHidden({
-      timeout: options.timeout,
-    });
+    if (options.all) {
+      await pageExpect(locator, { message: options.message }).allToBeHidden({
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeHidden({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'label')
@@ -427,6 +480,54 @@ export default abstract class BasePage {
     await pageExpect(this.page.getByRole('link', { name, exact: options.exact }), {
       message: options.message,
     }).toBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectTab(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+  ) {
+    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
+      message: options.message,
+    }).toBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectNoTab(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+  ) {
+    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
+      message: options.message,
+    }).toBeHidden({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectButton(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+  ) {
+    await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
+      message: options.message,
+    }).toBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'name')
+  protected async expectNoButton(
+    name: string,
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+  ) {
+    await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
+      message: options.message,
+    }).toBeHidden({
       timeout: options.timeout,
     });
   }

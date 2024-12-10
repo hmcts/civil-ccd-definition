@@ -1,4 +1,4 @@
-import { test as base } from '../api/api-steps-fixtures';
+import { test as base } from '@playwright/test';
 import PageUtilsFactory from '../../pages/utils/page-utils-factory';
 import IdamPageFactory from '../../pages/idam/idam-page-factory';
 import ExuiDashboardPageFactory from '../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
@@ -9,6 +9,7 @@ import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/defe
 import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/claimant-response/claimant-response-page-factory';
 import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 import StandardDirectionOrderPageFactory from '../../pages/exui/judge-events/standard-directions-order/standard-directions-order-factory';
+import CreateCaseFlagsPageFactory from '../../pages/exui/caseworker-events/create-case-flags/create-case-flags-page-factory';
 
 type PageFactoryFixtures = {
   _pageUtilsFactory: PageUtilsFactory;
@@ -21,6 +22,7 @@ type PageFactoryFixtures = {
   _defendantResponsePageFactory: DefendantResponsePageFactory;
   _claimantResponsePageFactory: ClaimantResponsePageFactory;
   _standardDirectionOrderPageFactory: StandardDirectionOrderPageFactory;
+  _createCaseFlagsPageFactory: CreateCaseFlagsPageFactory;
 };
 
 export const test = base.extend<PageFactoryFixtures>({
@@ -53,5 +55,8 @@ export const test = base.extend<PageFactoryFixtures>({
   },
   _standardDirectionOrderPageFactory: async ({ page }, use) => {
     await use(new StandardDirectionOrderPageFactory(page));
+  },
+  _createCaseFlagsPageFactory: async ({ page }, use) => {
+    await use(new CreateCaseFlagsPageFactory(page));
   }
 });
