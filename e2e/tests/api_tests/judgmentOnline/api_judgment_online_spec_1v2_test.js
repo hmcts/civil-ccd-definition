@@ -33,11 +33,6 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
-    console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
-    await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
-    console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
   }
 });
 
