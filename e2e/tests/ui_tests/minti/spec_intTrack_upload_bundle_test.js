@@ -21,9 +21,6 @@ Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await api_spec.amendHearingDueDate(config.systemupdate);
   await api_spec.hearingFeePaid(hearingCenterAdminToBeUsed);
-  if (['demo'].includes(config.runningEnv)) {
-    await api_spec.triggerBundle(config.systemupdate);
-  }
   await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   await I.login(config.secondDefendantSolicitorUser);
   await I.evidenceUpload(civilCaseReference, true, true);
