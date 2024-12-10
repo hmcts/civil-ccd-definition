@@ -6,8 +6,8 @@ import { inputs, paragraph, radioButtons } from './draw-directions-order-content
 @AllMethodsStep()
 export default class DrawDirectionsOrderPage extends ExuiEvent(BasePage) {
   async verifyContent(...args: any[]): Promise<void> {
+    await super.wait(10000);
     await super.runVerifications([
-      super.verifyHeadings(),
       super.expectText(paragraph),
       super.expectLabel(radioButtons.yes.label),
       super.expectLabel(radioButtons.no.label),

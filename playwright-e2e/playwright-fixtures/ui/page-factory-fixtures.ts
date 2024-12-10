@@ -8,6 +8,7 @@ import NotifyClaimDetailsPageFactory from '../../pages/exui/solicitor-events/not
 import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/defendant-response/defendant-response-page-factory';
 import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/claimant-response/claimant-response-page-factory';
 import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
+import StandardDirectionOrderPageFactory from '../../pages/exui/judge-events/standard-directions-order/standard-directions-order-factory';
 
 type PageFactoryFixtures = {
   _pageUtilsFactory: PageUtilsFactory;
@@ -19,6 +20,7 @@ type PageFactoryFixtures = {
   _informAgreedExtensionDateFactory: InformAgreedExtensionDatePageFactory;
   _defendantResponsePageFactory: DefendantResponsePageFactory;
   _claimantResponsePageFactory: ClaimantResponsePageFactory;
+  _standardDirectionOrderPageFactory: StandardDirectionOrderPageFactory;
 };
 
 export const test = base.extend<PageFactoryFixtures>({
@@ -48,5 +50,8 @@ export const test = base.extend<PageFactoryFixtures>({
   },
   _claimantResponsePageFactory: async ({ page }, use) => {
     await use(new ClaimantResponsePageFactory(page));
+  },
+  _standardDirectionOrderPageFactory: async ({ page }, use) => {
+    await use(new StandardDirectionOrderPageFactory(page));
   }
 });

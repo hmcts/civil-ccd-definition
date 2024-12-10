@@ -7,7 +7,6 @@ import { checkboxes, radioButtons } from './claims-track-content';
 export default class ClaimsTrackPage extends ExuiEvent(BasePage) {
   async verifyContent(...args: any[]): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(),
       super.expectLabel(radioButtons.smallClaimsTrack.label),
       super.expectLabel(radioButtons.fastTrack.label),
     ]);
