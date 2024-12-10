@@ -1,9 +1,9 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 
 @AllMethodsStep()
-export default class StandardDirectionsOrderSubmitPage extends ExuiEvent(BasePage) {
+export default class StandardDirectionsOrderSubmitPage extends ExuiPage(BasePage) {
   async submit(...args: any[]): Promise<void> {
     await super.retryClickSubmit();
   }

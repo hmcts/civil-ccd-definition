@@ -1,10 +1,10 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 import { inputs, paragraph, radioButtons } from './draw-directions-order-content';
 
 @AllMethodsStep()
-export default class DrawDirectionsOrderPage extends ExuiEvent(BasePage) {
+export default class DrawDirectionsOrderPage extends ExuiPage(BasePage) {
   async verifyContent(...args: any[]): Promise<void> {
     await super.wait(10000);
     await super.runVerifications([
