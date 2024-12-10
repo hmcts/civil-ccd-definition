@@ -8,6 +8,7 @@ const claimAmountMulti = '200001';
 
 const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
 Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');
@@ -42,8 +43,9 @@ Scenario('1v2 Different Solicitor Multi Track claim - Download order template - 
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'MULTI_CLAIM');
-
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', 'MULTI_CLAIM');
+  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await I.login(judgeUser);
   await I.initiateFinalOrder(civilCaseReference, 'Multi Track', 'Fix a date for CCMC');
 
