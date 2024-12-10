@@ -4,7 +4,7 @@
   "trailingComma": "all",
   "overrides": [
     {
-      "files": ["playwright-e2e/tests/**/*.ts", "playwright-e2e/playwright-fixtures/**/*.ts"],
+      "files": ["playwright-e2e/playwright-fixtures/**/*.ts"],
       "options": {
         "arrowParens": "always",
         "trailingComma": "none",
