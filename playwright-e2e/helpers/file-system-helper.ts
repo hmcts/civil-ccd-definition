@@ -8,6 +8,7 @@ import filePaths from '../config/file-paths';
 export default class FileSystemHelper {
   private static writePaths = [
     `${filePaths.users}/`,
+    `${filePaths.userAssignedCases}/`,
     `${filePaths.userCookies}/`,
     `${filePaths.axe}/`,
     filePaths.bankHolidaysJson,
@@ -81,15 +82,25 @@ export default class FileSystemHelper {
     return this.decode(data, fileType);
   };
 
-  static writeFile = (data: any, filePath = '', fileType: FileType): void => {
-    this.validateFilePath(filePath, fileType);
+  static writeFile = (
+    data: any,
+    filePath = '',
+    fileType: FileType,
+    { force }: { force?: boolean } = { force: false },
+  ): void => {
+    if (!force) this.validateFilePath(filePath, fileType);
     data = this.encode(data, fileType);
     this.mkDir(filePath);
     fs.writeFileSync(filePath, data);
   };
 
-  static writeFileAsync = async (data: any, filePath = '', fileType: FileType): Promise<void> => {
-    this.validateFilePath(filePath, fileType);
+  static writeFileAsync = async (
+    data: any,
+    filePath = '',
+    fileType: FileType,
+    { force }: { force?: boolean } = { force: false },
+  ): Promise<void> => {
+    if (!force) this.validateFilePath(filePath, fileType);
     data = this.encode(data, fileType);
     this.mkDir(filePath);
     await fsAsync.writeFile(filePath, data);
