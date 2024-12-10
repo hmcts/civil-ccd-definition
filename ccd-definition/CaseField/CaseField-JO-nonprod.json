@@ -327,5 +327,13 @@
     "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joSetAsideCreatedDate",
+    "Label": "Enter the date set aside is done",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
