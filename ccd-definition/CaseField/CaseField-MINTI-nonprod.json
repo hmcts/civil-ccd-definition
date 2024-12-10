@@ -193,5 +193,13 @@
     "FieldTypeParameter": "ConfirmListingTickBox",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "taskManagementLocations",
+    "Label": "Task management location",
+    "FieldType": "TaskManagementLocationTypes",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]
