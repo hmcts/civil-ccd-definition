@@ -409,7 +409,7 @@ module.exports = {
     }
   },
 
-  createClaimantSmallClaimsEvidenceUpload: () => {
+  createClaimantSmallClaimsEvidenceUpload: (document) => {
     return {
       event: 'EVIDENCE_UPLOAD_APPLICANT',
       caseDataUpdate: {
@@ -419,12 +419,12 @@ module.exports = {
             value: {
               witnessOptionName: 'John Doe',
               witnessOptionUploadDate: '2000-02-02T00:00:00.000Z',
-              witnessOptionDocument: {
-                document_url: 'http://dm-store:8080/documents/3500cbfa-890b-4741-87bd-62febce88fba',
-                document_binary_url: 'http://dm-store:8080/documents/3500cbfa-890b-4741-87bd-62febce88fba/binary',
-                document_filename: 'TestingDoc A.pdf',
-                document_hash: '4a37221b446b3370b7b7bf16c75a362be0d753c57cb3fc79a01b08561401655b'
-              },
+                witnessOptionDocument: {
+                  document_url: document.document_url,
+                  document_binary_url: document.document_binary_url,
+                  document_filename: document.document_filename,
+                  document_hash: document.document_hash
+                },
             },
             createdDatetime: '2024-08-07T08:26:23.000Z'
           }
