@@ -2,11 +2,11 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import ExuiEvent from '../../../../exui-event/exui-event';
+import ExuiPage from '../../../../exui-page/exui-page';
 import { inputs } from './extension-date-spec-content';
 
 @AllMethodsStep()
-export default class ExtensionDateSpecPage extends ExuiEvent(BasePage) {
+export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectLabel(inputs.day.label),
