@@ -2,11 +2,11 @@ import BasePage from '../../../../../base/base-page';
 import filePaths from '../../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 import { buttons, inputs, subheadings } from './upload-documents-content';
 
 @AllMethodsStep()
-export default class UploadDocumentsPage extends ExuiEvent(BasePage) {
+export default class UploadDocumentsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

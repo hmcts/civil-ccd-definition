@@ -16,7 +16,7 @@ export default abstract class BaseSteps {
     return this._testData.ccdCaseData;
   }
 
-  protected set setCcdCaseData(ccdCaseData: CCDCaseData) {
+  protected set setCCDCaseData(ccdCaseData: CCDCaseData) {
     this._testData.ccdCaseData = ccdCaseData;
   }
 }

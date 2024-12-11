@@ -4,15 +4,15 @@ import ccdEvents from '../../../fixtures/ccd-events/events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
-import { buttons, components } from './exui-event-content';
+import { buttons, components } from './exui-content';
 
 let ccdEventState: CCDEvent;
 
-export default function ExuiEvent<TBase extends abstract new (...args: any[]) => BasePage>(
+export default function ExuiPage<TBase extends abstract new (...args: any[]) => BasePage>(
   Base: TBase,
 ) {
   @AllMethodsStep({ methodNamesToIgnore: ['setCCDEvent', 'clearCCDEvent'] })
-  abstract class ExuiEvent extends Base {
+  abstract class ExuiPage extends Base {
     protected async verifyHeadings(ccdCaseData?: CCDCaseData) {
       let expects: Promise<void>[] | Promise<void>;
 
@@ -64,6 +64,7 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
           });
           await super.expectNoSelector(components.error.selector, {
             timeout: 500,
+            all: true,
           });
           if (expect) await expect();
         },
@@ -73,14 +74,14 @@ export default function ExuiEvent<TBase extends abstract new (...args: any[]) =>
 
     abstract submit(...args: any[]): Promise<void>;
 
-    protected set setCCDEvent(ccdEvent: CCDEvent) {
+    set setCCDEvent(ccdEvent: CCDEvent) {
       ccdEventState = ccdEvent;
     }
 
-    protected clearCCDEvent() {
+    clearCCDEvent() {
       ccdEventState = undefined;
     }
   }
 
-  return ExuiEvent;
+  return ExuiPage;
 }
