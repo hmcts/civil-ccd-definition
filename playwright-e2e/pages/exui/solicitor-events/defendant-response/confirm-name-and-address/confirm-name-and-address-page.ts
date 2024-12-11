@@ -2,6 +2,7 @@ import BasePage from '../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../exui-page/exui-page.ts';
 import {
+  dob,
   heading,
   paragraphs,
   radioButtons,
@@ -59,6 +60,12 @@ export default class ConfirmNameAndAddressPage extends ExuiPage(BasePage) {
 
   async selectNoDefendant2FastTrack() {
     await super.clickBySelector(radioButtons2FastTrack.radioNo.selector);
+  }
+
+  async enterDob(day: number, month: number, year: number) {
+    await super.inputText(day, dob.day.selector);
+    await super.inputText(month, dob.month.selector);
+    await super.inputText(year, dob.year.selector);
   }
 
   async submit() {

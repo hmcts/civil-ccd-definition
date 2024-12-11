@@ -10,7 +10,7 @@ export default class UploadDefencePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(heading),
+      super.expectText(heading, { ignoreDuplicates: true }),
     ]);
   }
 
