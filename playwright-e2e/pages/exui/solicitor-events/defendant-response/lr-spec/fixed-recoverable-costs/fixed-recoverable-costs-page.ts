@@ -2,7 +2,14 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
-import { heading, radioButtons, radioButtons1v2 } from './fixed-recoverable-costs-content.ts';
+import {
+  heading,
+  radioButtons,
+  radioButtonsMultiparty,
+  complexityBandAgreedButtons,
+  complexityBandButtons,
+  reasonInput,
+} from './fixed-recoverable-costs-content.ts';
 
 @AllMethodsStep()
 export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
@@ -24,12 +31,28 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.no.selector);
   }
 
-  async selectYes1v2() {
-    await super.clickBySelector(radioButtons1v2.yes.selector);
+  async selectYesMultiparty(defendantNumber: number) {
+    await super.clickBySelector(radioButtonsMultiparty(defendantNumber).yes.selector);
   }
 
-  async selectNo1v2() {
-    await super.clickBySelector(radioButtons1v2.no.selector);
+  async selectNoMultiparty(defendantNumber: number) {
+    await super.clickBySelector(radioButtonsMultiparty(defendantNumber).no.selector);
+  }
+
+  async selectBand(defendantNumber: number, bandNumber: number) {
+    await super.clickBySelector(complexityBandButtons(defendantNumber, bandNumber).band.selector);
+  }
+
+  async selectcomplexityBandAgreedButtonYes(defendantNumber: number) {
+    await super.clickBySelector(complexityBandAgreedButtons(defendantNumber).yes.selector);
+  }
+
+  async selectcomplexityBandAgreedButtonNo(defendantNumber: number) {
+    await super.clickBySelector(complexityBandAgreedButtons(defendantNumber).no.selector);
+  }
+
+  async enterReason(defendantNumber: number) {
+    await super.inputText('reason', reasonInput(defendantNumber).selector);
   }
 
   async submit() {

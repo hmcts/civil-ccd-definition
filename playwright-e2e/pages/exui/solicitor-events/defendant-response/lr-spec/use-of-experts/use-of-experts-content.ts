@@ -156,3 +156,34 @@ export const suitableForJointExpertRadioFastTrack1v2 = (defendantNumber: number)
     selector: `#respondent${defendantNumber}DQExperts_jointExpertSuitable_No`,
   },
 });
+
+export const addExpertButton = {
+  text: 'Add new',
+  selector: '#button.write-collection-add-item__top',
+};
+
+export const expertDetails2v1 = (defendantNumber: number) => ({
+  label: 'Expert details',
+  fields: {
+    firstName: {
+      label: 'First name',
+      selector: `#respondent${defendantNumber}DQExperts_details_0_firstName`,
+    },
+    lastName: {
+      label: 'Last name',
+      selector: `#respondent${defendantNumber}DQExperts_details_0_lastName`,
+    },
+    email: {
+      label: 'Email address',
+      selector: `#respondent${defendantNumber}DQExperts_details_0_emailAddress`,
+    },
+    number: {
+      label: 'Phone number',
+      selector: `#respondent${defendantNumber}DQExperts_details_0_phoneNumber`,
+    },
+    fieldOfExpertise: {
+      label: 'Field of expertise',
+      selector: `#respondent${defendantNumber}DQExperts_details_0_fieldOfExpertise`,
+    },
+  },
+});

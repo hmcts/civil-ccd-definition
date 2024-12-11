@@ -10,7 +10,10 @@ import {
   expertDetails,
   expertDetails1v2,
   alreadySentExpertReportsRadioFastTrack1v2,
+  suitableForJointExpertRadioFastTrack1v2,
   useExpertsRadioButtonsFastTrack1v2,
+  addExpertButton,
+  expertDetails2v1,
 } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
@@ -125,15 +128,51 @@ export default class UseOfExpertsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(useExpertsRadioButtonsSmallTrack1v2.radioNo.selector);
   }
 
-  async selectYesSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+  async selectYesSentExpertReportsFastTrack1v2(defendantResponse: number) {
     await super.clickBySelector(
       alreadySentExpertReportsRadioFastTrack1v2(defendantResponse).radioYes.selector,
     );
   }
 
-  async selectNoSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+  async selectNoSentExpertReportsFastTrack1v2(defendantResponse: number) {
     await super.clickBySelector(
       alreadySentExpertReportsRadioFastTrack1v2(defendantResponse).radioNo.selector,
+    );
+  }
+
+  async selectNotYetObtainedExpertReportsFastTrack1v2(defendantResponse: number) {
+    await super.clickBySelector(
+      alreadySentExpertReportsRadioFastTrack1v2(defendantResponse).radioNotYet.selector,
+    );
+  }
+
+  async selectYesSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+    await super.clickBySelector(
+      suitableForJointExpertRadioFastTrack1v2(defendantResponse).radioYes.selector,
+    );
+  }
+
+  async selectNoSuitableForJointExpertFastTrack1v2(defendantResponse: number) {
+    await super.clickBySelector(
+      suitableForJointExpertRadioFastTrack1v2(defendantResponse).radioNo.selector,
+    );
+  }
+
+  async addExpert() {
+    await super.clickBySelector(addExpertButton.selector);
+  }
+
+  async enterExpertDetails2v1(defendantNumber: number) {
+    await super.inputText('John', expertDetails2v1(defendantNumber).fields.firstName.selector);
+    await super.inputText('Smith', expertDetails2v1(defendantNumber).fields.lastName.selector);
+    await super.inputText(
+      'johnsmith@gmail.com',
+      expertDetails2v1(defendantNumber).fields.email.selector,
+    );
+    await super.inputText('0123456789', expertDetails2v1(defendantNumber).fields.number.selector);
+    await super.inputText(
+      'expertise',
+      expertDetails2v1(defendantNumber).fields.fieldOfExpertise.selector,
     );
   }
 
