@@ -5,14 +5,13 @@ export const input = {
   selector: '#specRespondent1DQDisclosureOfNonElectronicDocuments_bespokeDirections',
 };
 
-export const radioButtons = {
+export const radioButtons = (defendantNumber: number) => ({
   yes: {
-    selector:
-      '#respondent1DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_Yes',
+    selector: `#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_Yes`,
     value: 'Yes',
   },
   no: {
-    selector: '#respondent1DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_No',
+    selector: `#respondent${defendantNumber}DQDisclosureOfNonElectronicDocuments_directionsForDisclosureProposed_No`,
     value: 'No',
   },
-};
+});

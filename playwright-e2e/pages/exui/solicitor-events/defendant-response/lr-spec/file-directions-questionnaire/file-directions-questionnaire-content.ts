@@ -1,53 +1,31 @@
 export const heading = 'File directions questionnaire';
 
-export const fileDirectionsCheckbox = {
-  selector: '#respondent1DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM',
-};
+export const fileDirectionsCheckbox = (defendantNumber: number) => ({
+  selector: `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_explainedToClient-CONFIRM`,
+});
 
-export const oneMonthStayRadioButtons = {
+export const oneMonthStayRadioButtons = (defendantNumber: number) => ({
   yes: {
     label: 'Yes',
-    selector: '#respondent1DQFileDirectionsQuestionnaire_oneMonthStayRequested_Yes',
+    selector: `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_oneMonthStayRequested_Yes`,
   },
   no: {
     label: 'No',
-    selector: '#respondent1DQFileDirectionsQuestionnaire_oneMonthStayRequested_No',
+    selector: `#respondent${defendantNumber}QFileDirectionsQuestionnaire_oneMonthStayRequested_No`,
   },
-};
+});
 
-export const compliedRadioButtons = {
+export const compliedRadioButtons = (defendantNumber: number) => ({
   yes: {
     label: 'Yes',
-    selector: '#respondent1DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_Yes',
+    selector: `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_Yes`,
   },
   no: {
     label: 'No',
-    selector: '#respondent1DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_No',
+    selector: `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_No`,
   },
-};
+});
 
 export const fileDirectionsCheckbox1v2 = {
   selector: '#respondent2DQFileDirectionsQuestionnaire_explainedToClient',
-};
-
-export const oneMonthStayRadioButtons1v2 = {
-  yes: {
-    label: 'Yes',
-    selector: '#respondent2DQFileDirectionsQuestionnaire_oneMonthStayRequested_Yes',
-  },
-  no: {
-    label: 'No',
-    selector: '#respondent2DQFileDirectionsQuestionnaire_oneMonthStayRequested_No',
-  },
-};
-
-export const compliedRadioButtons1v2 = {
-  yes: {
-    label: 'Yes',
-    selector: '#respondent2DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_Yes',
-  },
-  no: {
-    label: 'No',
-    selector: '#respondent2DQFileDirectionsQuestionnaire_reactionProtocolCompliedWith_No',
-  },
 };

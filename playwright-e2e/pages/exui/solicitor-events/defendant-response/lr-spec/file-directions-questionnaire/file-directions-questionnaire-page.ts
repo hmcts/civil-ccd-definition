@@ -8,8 +8,6 @@ import {
   oneMonthStayRadioButtons,
   compliedRadioButtons,
   fileDirectionsCheckbox1v2,
-  oneMonthStayRadioButtons1v2,
-  compliedRadioButtons1v2,
 } from './file-directions-questionnaire-content.ts';
 
 @AllMethodsStep()
@@ -21,52 +19,32 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
     ]);
   }
 
-  async selectCheckBox() {
-    await super.clickBySelector(fileDirectionsCheckbox.selector);
+  async selectCheckBox(defendantNumber: number) {
+    await super.clickBySelector(fileDirectionsCheckbox(defendantNumber).selector);
   }
 
-  async selectYesOneMonthStay() {
-    await super.clickBySelector(oneMonthStayRadioButtons.yes.selector);
+  async selectYesOneMonthStay(defendantNumber: number) {
+    await super.clickBySelector(oneMonthStayRadioButtons(defendantNumber).yes.selector);
   }
 
-  async selectNoOneMonthStay() {
-    await super.clickBySelector(oneMonthStayRadioButtons.no.selector);
+  async selectNoOneMonthStay(defendantNumber: number) {
+    await super.clickBySelector(oneMonthStayRadioButtons(defendantNumber).no.selector);
   }
 
-  async selectYesComplied() {
-    await super.clickBySelector(compliedRadioButtons.yes.selector);
+  async selectYesComplied(defendantNumber: number) {
+    await super.clickBySelector(compliedRadioButtons(defendantNumber).yes.selector);
   }
 
-  async selectNoComplied() {
-    await super.clickBySelector(compliedRadioButtons.no.selector);
+  async selectNoComplied(defendantNumber: number) {
+    await super.clickBySelector(compliedRadioButtons(defendantNumber).no.selector);
     await super.inputText(
       'textarea',
-      '#respondent1DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason',
+      `#respondent${defendantNumber}DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason`,
     );
   }
 
   async selectCheckBox1v2() {
     await super.clickBySelector(fileDirectionsCheckbox1v2.selector);
-  }
-
-  async selectYesOneMonthStay1v2() {
-    await super.clickBySelector(oneMonthStayRadioButtons1v2.yes.selector);
-  }
-
-  async selectNoOneMonthStay1v2() {
-    await super.clickBySelector(oneMonthStayRadioButtons1v2.no.selector);
-  }
-
-  async selectYesComplied1v2() {
-    await super.clickBySelector(compliedRadioButtons1v2.yes.selector);
-  }
-
-  async selectNoComplied1v2() {
-    await super.clickBySelector(compliedRadioButtons1v2.no.selector);
-    await super.inputText(
-      'textarea',
-      '#respondent2DQFileDirectionsQuestionnaire_reactionProtocolNotCompliedWithReason',
-    );
   }
 
   async submit() {

@@ -21,12 +21,12 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
     await super.inputText('someInputValue', input.selector);
   }
 
-  async selectYes() {
-    await super.clickBySelector(radioButtons.yes.selector);
+  async selectYes(defendantNumber: number) {
+    await super.clickBySelector(radioButtons(defendantNumber).yes.selector);
   }
 
-  async selectNo() {
-    await super.clickBySelector(radioButtons.no.selector);
+  async selectNo(defendantNumber: number) {
+    await super.clickBySelector(radioButtons(defendantNumber).no.selector);
   }
 
   async submit() {
