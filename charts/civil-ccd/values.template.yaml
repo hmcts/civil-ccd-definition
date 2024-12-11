@@ -314,11 +314,6 @@ ccd:
   am-role-assignment-service:
     java:
       releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
-      secrets:
-        LD_SDK_KEY:
-          secretRef: role-assignment-service-LD-SDK-KEY
-          key: key
-          disabled: true
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
         ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
@@ -326,7 +321,8 @@ ccd:
       keyVaults:
         am:
           secrets:
-            - role-assignment-service-LD-SDK-KEY
+            - name: role-assignment-service-LD-SDK-KEY
+              alias: LD_SDK_KEY
   ccd-definition-store-api:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
