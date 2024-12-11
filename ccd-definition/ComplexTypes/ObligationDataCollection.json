@@ -5,7 +5,7 @@
     "FieldType": "Date",
     "ElementLabel": "Enter the date that this case should be reviewed",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "ObligationDataCollection",
@@ -14,7 +14,7 @@
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ObligationReason",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "ObligationDataCollection",
@@ -23,7 +23,7 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "FieldShowCondition": "obligationReason = \"OTHER\"",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "ObligationDataCollection",
@@ -31,6 +31,15 @@
     "FieldType": "TextArea",
     "ElementLabel": "What action is required when the case is reviewed?",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
+  },
+  {
+    "ID": "ObligationDataCollection",
+    "ListElementCode": "obligationWATaskRaised",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y",
+    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\""
   }
 ]
