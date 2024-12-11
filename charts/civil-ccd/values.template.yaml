@@ -319,13 +319,9 @@ ccd:
           secretRef: role-assignment-service-LD-SDK-KEY
           key: key
           disabled: true
-        ROLE_ASSIGNMENT_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        ROLE_ASSIGNMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+        ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
         ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
       keyVaults:
         am:
