@@ -1,6 +1,7 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   buttons,
@@ -16,9 +17,9 @@ import {
 
 @AllMethodsStep()
 export default class SmallClaimsPage extends ExuiPage(BasePage) {
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(),
+      super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectText(paragraphs.paragraph2),
       super.expectText(paragraphs.paragraph3),
@@ -27,7 +28,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
       super.expectText(paragraphs.paragraph1),
       super.expectSubheading(subheadings.hearingTime),
       super.expectSubheading(subheadings.hearingMethod),
-      super.expectLabel(radioButtons.hearingMethod.label),
+      super.expectText(radioButtons.hearingMethod.label),
       super.expectLabel(radioButtons.hearingMethod.inPerson.label),
       super.expectLabel(radioButtons.hearingMethod.telephone.label),
       super.expectLabel(radioButtons.hearingMethod.video.label),
@@ -83,7 +84,10 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     );
     await super.inputText(dateTo.getFullYear(), inputs.hearingTime.dateTo.year.selector);
 
-    await super.clickBySelector(radioButtons.hearingTime.other.selector);
+    // await super.retryClickBySelector(radioButtons.hearingTime.other.selector, () => Promise.resolve(), { retries: 2 });
+    await super.clickBySelector(radioButtons.hearingTime.other.selector, { count: 2 });
+
+    // await super.clickByText(radioButtons.hearingTime.other.label, {exact: true});
     await super.expectText(inputs.hearingTime.otherHours.label);
     await super.expectText(inputs.hearingTime.otherMinutes.label);
     await super.inputText('3', inputs.hearingTime.otherHours.selector);
@@ -92,7 +96,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
   }
 
   async addHearingMethod() {
-    await super.clickBySelector(radioButtons.hearingMethod.telephone.selector);
+    await super.clickByText(radioButtons.hearingMethod.telephone.label);
   }
 
   async addHearingNotes() {
@@ -100,7 +104,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
   }
 
   async addWelshLanguage() {
-    await super.clickBySelector(checkboxes.witnessStatement.selector);
+    await super.clickBySelector(checkboxes.welshLanguage.selector);
     await super.expectText(paragraphs.paragraph6);
   }
 
@@ -167,7 +171,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     );
   }
 
-  async verifyCreditHire() {
+  async addCreditHire() {
     await super.expectText(creditHireContent.paragraph1);
     await super.expectText(creditHireContent.paragraph2);
 
@@ -214,7 +218,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.inputText(date4.getFullYear(), inputs.creditHire.date4.year.selector);
   }
 
-  async verifyRoadTrafficAccident() {
+  async addRoadTrafficAccident() {
     await super.expectSubheading(subheadings.roadTrafficAccident);
     await super.inputText('Road Traffic accident', inputs.roadTrafficAccident.selector);
   }

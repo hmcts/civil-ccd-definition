@@ -1,7 +1,7 @@
 export const heading = 'Order details';
 
 export const subheadings = {
-  judgesRecital: 'Judge’s recital',
+  judgesRecital: "Judge's recital",
   allocation: 'Allocation',
   flightDelay: 'Flight Delay',
   relatedClaims: 'Related claims',
@@ -138,7 +138,7 @@ export const inputs = {
     },
     partyIsCountedAsWitnessText: {
       selector:
-        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictWitness_noOfWitnessDefendant',
+        '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictWitness_partyIsCountedAsWitnessTxt',
     },
     witnessShouldNotMoreThanText: {
       selector:
@@ -247,19 +247,23 @@ export const inputs = {
 export const checkboxes = {
   flightDelay: {
     label: 'Show/Remove',
-    selector: '#smallClaimsFlightDelayToggle-SHOW',
+    selector: 'label[for="smallClaimsFlightDelayToggle-SHOW"]',
   },
   hearingTime: {
     label: 'Show/Remove',
-    selector: '#smallClaimsHearingToggle-SHOW',
+    selector: 'label[for="smallClaimsHearingToggle-SHOW"]',
   },
   documents: {
     label: 'Show/Remove',
-    selector: '#smallClaimsDocumentsToggle-SHOW',
+    selector: 'label[for="smallClaimsDocumentsToggle-SHOW"]',
   },
   witnessStatement: {
     label: 'Show/Remove',
-    selector: '#smallClaimsWitnessStatementToggle-SHOW',
+    selector: 'label[for="smallClaimsWitnessStatementToggle-SHOW"]',
+  },
+  welshLanguage: {
+    label: 'Show/Remove',
+    selector: 'label[for="sdoR2SmallClaimsUseOfWelshToggle-SHOW"]',
   },
 };
 
@@ -268,42 +272,39 @@ export const radioButtons = {
     label: 'Select an option below',
     inPerson: {
       label: 'In Person',
-      selector: '#hearingMethodValuesSmallClaims_eabf61f8-715a-4f46-a2ba-363ee07ab419',
     },
     telephone: {
       label: 'Telephone',
-      selector: '#hearingMethodValuesSmallClaims_3e0dad80-3c94-4c62-8a02-724e0ef5ee9f',
     },
     video: {
       label: 'Video',
-      selector: '#hearingMethodValuesSmallClaims_b361bf2e-a230-483e-a07e-6af5c2cc4a80',
     },
   },
   hearingTime: {
     label: 'The time estimate is',
     thirtyMins: {
       label: '30 minutes',
-      selector: '#',
+      selector: '#smallClaimsHearing_time-THIRTY_MINUTES',
     },
     oneHour: {
       label: '1 hour',
-      selector: '#smallClaimsHearing_time-THIRTY_MINUTES',
+      selector: '#smallClaimsHearing_time-ONE_HOUR',
     },
     oneHourThirtyMins: {
       label: '1.5 hours',
-      selector: '#smallClaimsHearing_time-ONE_HOUR',
+      selector: '#smallClaimsHearing_time-ONE_AND_HALF_HOUR',
     },
     twoHours: {
       label: '2 hours',
-      selector: '#smallClaimsHearing_time-ONE_AND_HALF_HOUR',
+      selector: '#smallClaimsHearing_time-TWO_HOURS',
     },
     twohoursThirtyMins: {
       label: '2.5 hours',
-      selector: '#smallClaimsHearing_time-TWO_HOURS',
+      selector: '#smallClaimsHearing_time-TWO_AND_HALF_HOURS',
     },
     other: {
       label: 'Other',
-      selector: '#smallClaimsHearing_time-TWO_AND_HALF_HOURS',
+      selector: '#smallClaimsHearing_time-OTHER',
     },
   },
   witnessStatement: {
