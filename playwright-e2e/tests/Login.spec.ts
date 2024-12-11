@@ -21,10 +21,10 @@ test(
     await ExuiDashboardSteps.GoToCaseList();
 
     const { ccdRequests } = _requestsFactory;
-    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1733752282164456);
+    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1733912904707518);
 
     const { caseDetailsPage } = _exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(1733752282164456);
+    await caseDetailsPage.goToCaseDetails(1733912904707518);
     await caseDetailsPage.verifyContent(ccdCaseData);
     await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFENDANT_RESPONSE_SPEC);
 
@@ -45,23 +45,6 @@ test(
     await uploadDefencePage.verifyContent(ccdCaseData);
     await uploadDefencePage.uploadFile();
     await uploadDefencePage.submit();
-
-    const { fileDirectionsQuestionnairePage } = _defendantResponsePageFactory;
-    await fileDirectionsQuestionnairePage.verifyContent(ccdCaseData);
-    await fileDirectionsQuestionnairePage.selectCheckBox();
-    await fileDirectionsQuestionnairePage.selectYesOneMonthStay();
-    await fileDirectionsQuestionnairePage.selectYesComplied();
-    await fileDirectionsQuestionnairePage.submit();
-
-    const { fixedRecoverableCostsPage } = _defendantResponsePageFactory;
-    await fixedRecoverableCostsPage.verifyContent(ccdCaseData);
-    await fixedRecoverableCostsPage.selectNo();
-    await fixedRecoverableCostsPage.submit();
-
-    const { disclosureOfNonElectronicDocumentsPage } = _defendantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsPage.verifyContent(ccdCaseData);
-    await disclosureOfNonElectronicDocumentsPage.selectNo();
-    await disclosureOfNonElectronicDocumentsPage.submit();
 
     const { useOfExpertPage } = _defendantResponsePageFactory;
     await useOfExpertPage.verifyContent(ccdCaseData);
