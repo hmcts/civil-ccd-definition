@@ -19,6 +19,7 @@
     "test:smoke": "yarn playwright install && MOCHAWESOME_REPORTFILENAME=smoke REPORT_DIR=test-results/smokeTest REPORT_FILE=test-results/smokeTest/results.xml  npx codeceptjs run --grep @smoke-tests-unspec --reporter mocha-multi --verbose",
     "test:smoke-spec": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests-spec --reporter mocha-multi --verbose",
     "test:api-unspec": "MOCHAWESOME_REPORTFILENAME=api-unspec npx codeceptjs run-workers --suites 4  --grep @api-unspec --reporter mocha-multi --verbose",
+    "test:api-unspec-tia": "MOCHAWESOME_REPORTFILENAME=api-unspec npx codeceptjs run-workers --suites 4  --grep @api-unspec-tia --reporter mocha-multi --verbose",
     "test:api-unspec-full-defence": "MOCHAWESOME_REPORTFILENAME=api-unspec-full-defence npx codeceptjs run-workers --suites 4  --grep @api-unspec-full-defence --reporter mocha-multi --verbose",
     "test:e2e-unspec": "MOCHAWESOME_REPORTFILENAME=e2e-unspec npx codeceptjs run-workers --suites 4 --grep @e2e-unspec --reporter mocha-multi --verbose",
     "test:api-sdo": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run-workers --suites 4 --grep @api-sdo --reporter mocha-multi --verbose",
@@ -35,6 +36,7 @@
     "test:api-1v2SS": "MOCHAWESOME_REPORTFILENAME=api-1v2SS npx codeceptjs run --grep @api-tests-1v2SS --reporter mocha-multi --verbose",
     "test:api-1v2DS": "MOCHAWESOME_REPORTFILENAME=api-1v2DS npx codeceptjs run --grep @api-tests-1v2DS --reporter mocha-multi --verbose",
     "test:api-2v1": "MOCHAWESOME_REPORTFILENAME=api-2v1 npx codeceptjs run --grep @api-tests-2v1 --reporter mocha-multi --verbose",
+    "test:api-2v1-spec": "MOCHAWESOME_REPORTFILENAME=api-2v1 npx codeceptjs run --grep @api-2v1-spec --reporter mocha-multi --verbose",
     "test:e2e": "MOCHAWESOME_REPORTFILENAME=e2e-multiparty npx codeceptjs run --grep @e2e-multiparty --reporter mocha-multi --verbose",
     "test:e2e-1v1": "MOCHAWESOME_REPORTFILENAME=e2e-1v1 npx codeceptjs run --grep @e2e-1v1 --reporter mocha-multi --verbose",
     "test:e2e-1v2SS": "MOCHAWESOME_REPORTFILENAME=e2e-1v2SS npx codeceptjs run --grep @e2e-1v2SS --reporter mocha-multi --verbose",
@@ -71,7 +73,8 @@
     "test:playwright-e2e-setup:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-setup:data:ci\" \"yarn test:playwright-setup:users:ci && yarn test:playwright-setup:users-auth:ci\"",
     "test:playwright-e2e-nightly:ci": "FUNCTIONAL=true npx playwright test --project e2e-full-functional --no-deps",
     "test:playwright-teardown:users-auth:ci": "npx playwright test --project users-auth-teardown --pass-with-no-tests --no-deps",
-    "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-teardown:users-auth:ci\" \"yarn ts-node ./playwright-e2e/global/teardown-ci\"",
+    "test:playwright-teardown:case-role-assignment:ci": "npx playwright test --project case-role-assignment-teardown --pass-with-no-tests --no-deps",
+    "test:playwright-e2e-teardown:ci": "./bin/run-commands-series.sh -c \"yarn test:playwright-teardown:case-role-assignment:ci\" \"yarn test:playwright-teardown:users-auth:ci\" \"yarn ts-node ./playwright-e2e/global/teardown-ci\"",
     "test:playwright-e2e-debug:local": "npx playwright test --project e2e-full-functional --grep @debug",
     "test:playwright-e2e:local": "npx playwright test --project e2e-full-functional",
     "test:fullfunctional": "yarn playwright install && MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
@@ -103,6 +106,7 @@
     "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
     "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
+    "test:debug": "MOCHAWESOME_REPORTFILENAME=debug npx codeceptjs run-workers --suites 4 --grep @debug --reporter mocha-multi --verbose",
     "prepare": "husky"
   },
   "license": "MIT",
@@ -143,7 +147,7 @@
     "ts-node": "^10.9.2",
     "typescript": "5.1.3",
     "typescript-eslint": "8.0.0",
-    "uuid": "^3.4.0",
+    "uuid": "^11.0.3",
     "webdriverio": "^6.12.1"
   },
   "lint-staged": {
