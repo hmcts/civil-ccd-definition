@@ -1,19 +1,19 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
   heading,
   availabilityQuestionSmallTrack,
   interpreterQuestion,
   availabilityQuestionFastTrack,
   availabilityQuestionSmallTrack1v2,
-  availabilityQuestion2v1,
+  availabilityQuestionUnspecandSpec2v1,
   interpreterQuestion1v2,
 } from './hearing-availability-content.ts';
 
 @AllMethodsStep()
-export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
+export default class HearingAvailabilityPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
@@ -26,12 +26,12 @@ export default class HearingAvailabilityPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(availabilityQuestionSmallTrack.radioNo.selector);
   }
 
-  async selectYesAvailability2v1() {
-    await super.clickBySelector(availabilityQuestion2v1.radioYes.selector);
+  async selectYesAvailabilityUnspecandSpec2v1() {
+    await super.clickBySelector(availabilityQuestionUnspecandSpec2v1.radioYes.selector);
   }
 
-  async selectNoAvailability2v1() {
-    await super.clickBySelector(availabilityQuestion2v1.radioNo.selector);
+  async selectNoAvailabilityUnspecandSpec2v1() {
+    await super.clickBySelector(availabilityQuestionUnspecandSpec2v1.radioNo.selector);
   }
 
   async selectYesInterpreterSmallTrack() {

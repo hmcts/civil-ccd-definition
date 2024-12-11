@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
   radioButtons,
   radioButtons1v2,
@@ -11,7 +11,7 @@ import {
 } from './why-does-defendant-not-owe-money-content.ts';
 
 @AllMethodsStep()
-export default class WhyDoesDefendantNotOweMoneyPage extends ExuiEvent(BasePage) {
+export default class WhyDoesDefendantNotOweMoneyPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }

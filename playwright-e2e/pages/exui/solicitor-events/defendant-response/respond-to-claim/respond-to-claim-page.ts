@@ -1,8 +1,8 @@
-import { ccdData } from '../../../../../../../e2e/tests/unit/utils/dataProvider.js';
-import BasePage from '../../../../../../base/base-page.ts';
-import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import { ccdData } from '../../../../../../e2e/tests/unit/utils/dataProvider.js';
+import BasePage from '../../../../../base/base-page.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
+import ExuiPage from '../../../exui-page/exui-page.ts';
 import {
   heading,
   radioButtons,
@@ -12,7 +12,7 @@ import {
 } from './respond-to-claim-content.ts';
 
 @AllMethodsStep()
-export default class RespondToClaimPage extends ExuiEvent(BasePage) {
+export default class RespondToClaimPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData), super.expectHeading(heading)]); // This h1 is not captured on this page
   }

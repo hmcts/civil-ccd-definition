@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
   heading,
   useExpertRadioButtonsSmallTrack,
@@ -14,7 +14,7 @@ import {
 } from './use-of-experts-content.ts';
 
 @AllMethodsStep()
-export default class UseOfExpertsPage extends ExuiEvent(BasePage) {
+export default class UseOfExpertsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }

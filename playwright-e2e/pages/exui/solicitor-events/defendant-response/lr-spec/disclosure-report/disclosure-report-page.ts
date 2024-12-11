@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
   heading,
   agreedProposalRadioButtons,
@@ -9,7 +9,7 @@ import {
 } from './disclosure-report-content.ts';
 
 @AllMethodsStep()
-export default class DisclosureReportPage extends ExuiEvent(BasePage) {
+export default class DisclosureReportPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

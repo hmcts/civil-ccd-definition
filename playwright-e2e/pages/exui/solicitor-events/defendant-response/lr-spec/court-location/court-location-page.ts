@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
   subHeading1v1,
   subHeadingMultiDefendant,
@@ -9,12 +9,12 @@ import {
   reasonForm,
   remoteHearingRadioButtons,
   courtLocationDropdown1v2,
-  courtLocationDropdown2v1,
-  remoteHearingRadioButtons2v1,
+  courtLocationDropdownUnspecAndSpec2v1,
+  remoteHearingRadioButtonsUnspecAndSpec2v1,
 } from './court-location-content.ts';
 
 @AllMethodsStep()
-export default class CourtLocationPage extends ExuiEvent(BasePage) {
+export default class CourtLocationPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
@@ -49,10 +49,10 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
     );
   }
 
-  async selectCourtLocation2v1() {
+  async selectCourtLocationUnpecAndSpec2v1() {
     await super.selectFromDropdown(
-      courtLocationDropdown2v1.dropdown.options[0],
-      courtLocationDropdown2v1.dropdown.selector,
+      courtLocationDropdownUnspecAndSpec2v1.dropdown.options[0],
+      courtLocationDropdownUnspecAndSpec2v1.dropdown.selector,
     );
   }
 
@@ -64,12 +64,12 @@ export default class CourtLocationPage extends ExuiEvent(BasePage) {
     await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioNo.selector);
   }
 
-  async selectYes2v1() {
-    await super.clickBySelector(remoteHearingRadioButtons2v1.radioYes.selector);
+  async selectYesUnspecAndSpec2v1() {
+    await super.clickBySelector(remoteHearingRadioButtonsUnspecAndSpec2v1.radioYes.selector);
   }
 
-  async selectNo2v1() {
-    await super.clickBySelector(remoteHearingRadioButtons2v1.radioNo.selector);
+  async selectNoUnspecAndSpec2v1() {
+    await super.clickBySelector(remoteHearingRadioButtonsUnspecAndSpec2v1.radioNo.selector);
   }
 
   async submit() {

@@ -44,7 +44,7 @@ export const witnessesRadioButtonsSmallTrack1v2 = {
   },
 };
 
-export const witnessesRadioButtonsFastTrack1v2 = (defendantNumber: number) => ({
+export const witnessesRadioButtonsUnspecAndFastTrack1v2 = (defendantNumber: number) => ({
   text: {
     label: 'Are there any witnesses who should attend the hearing?',
   },

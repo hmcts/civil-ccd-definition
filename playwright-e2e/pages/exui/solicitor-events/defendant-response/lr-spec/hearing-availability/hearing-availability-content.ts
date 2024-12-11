@@ -41,7 +41,7 @@ export const availabilityQuestionSmallTrack1v2 = {
   },
 };
 
-export const availabilityQuestion2v1 = {
+export const availabilityQuestionUnspecandSpec2v1 = {
   radioYes: {
     label: 'Yes',
     selector: '#respondent1DQHearing_unavailableDatesRequired_Yes',

@@ -22,7 +22,7 @@ export const courtLocationDropdown1v2 = {
   },
 };
 
-export const courtLocationDropdown2v1 = {
+export const courtLocationDropdownUnspecAndSpec2v1 = {
   label: 'Please select your preferred court hearing location',
   dropdown: {
     text: '--Select a value--',
@@ -57,7 +57,7 @@ export const remoteHearingRadioButtons = (defendantNumber: number) => ({
   },
 });
 
-export const remoteHearingRadioButtons2v1 = {
+export const remoteHearingRadioButtonsUnspecAndSpec2v1 = {
   text: {
     label: 'Do you want the hearing to be held remotely?',
     hint: 'This will be over telephone or video',

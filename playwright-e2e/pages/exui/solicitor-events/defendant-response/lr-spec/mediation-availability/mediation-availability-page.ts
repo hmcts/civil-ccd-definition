@@ -1,11 +1,11 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiEvent from '../../../../exui-event/exui-event.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { heading, yesNoRadioButtons } from './mediation-availability-content.ts';
 
 @AllMethodsStep()
-export default class MediationAvailabilityPage extends ExuiEvent(BasePage) {
+export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
