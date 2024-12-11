@@ -19,17 +19,17 @@ export default class FurtherInformationPasge extends ExuiPage(BasePage) {
     ]);
   }
 
-  async selectYes() {
-    await super.clickBySelector(radioButtons.yes.selector);
-    await super.inputText('test', whatForForm.selector);
+  async selectYes(defendantNumber: number) {
+    await super.clickBySelector(radioButtons(defendantNumber).yes.selector);
+    await super.inputText('test', whatForForm(defendantNumber).selector);
   }
 
-  async selectNo() {
-    await super.clickBySelector(radioButtons.no.selector);
+  async selectNo(defendantNumber: number) {
+    await super.clickBySelector(radioButtons(defendantNumber).no.selector);
   }
 
-  async inputFurtherInformation() {
-    await super.inputText('test', furtherInformationForm.selector);
+  async inputFurtherInformation(defendantNumber: number) {
+    await super.inputText('test', furtherInformationForm(defendantNumber).selector);
   }
 
   async submit() {

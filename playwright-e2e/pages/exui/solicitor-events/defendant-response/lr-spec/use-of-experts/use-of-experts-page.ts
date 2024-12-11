@@ -52,8 +52,8 @@ export default class UseOfExpertsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(useExpertRadioButtonsSmallTrack.radioNo.selector);
   }
 
-  async selectYesFastTrack() {
-    await super.clickBySelector(useExpertRadioButtonsFastTrack.radioYes.selector);
+  async selectYesFastTrack(defendantNumber: number) {
+    await super.clickBySelector(useExpertRadioButtonsFastTrack(defendantNumber).radioYes.selector);
     super.expectInputValue(
       expertDetails.fields.firstName.label,
       expertDetails.fields.firstName.selector,
@@ -81,8 +81,8 @@ export default class UseOfExpertsPage extends ExuiPage(BasePage) {
       );
   }
 
-  async selectNoFastTrack() {
-    await super.clickBySelector(useExpertRadioButtonsFastTrack.radioNo.selector);
+  async selectNoFastTrack(defendantNumber: number) {
+    await super.clickBySelector(useExpertRadioButtonsFastTrack(defendantNumber).radioNo.selector);
   }
 
   async selectNoFastTrack1v2() {

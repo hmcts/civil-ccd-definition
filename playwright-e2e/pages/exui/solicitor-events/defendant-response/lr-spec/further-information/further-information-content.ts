@@ -1,18 +1,18 @@
 export const heading = 'Further information';
 
-export const radioButtons = {
+export const radioButtons = (defendantNumber: number) => ({
   yes: {
-    selector: '#respondent1DQFurtherInformation_futureApplications_Yes',
+    selector: `#respondent${defendantNumber}DQFurtherInformation_futureApplications_Yes`,
   },
   no: {
-    selector: '#respondent1DQFurtherInformation_futureApplications_No',
+    selector: `#respondent${defendantNumber}DQFurtherInformation_futureApplications_No`,
   },
-};
+});
 
-export const whatForForm = {
-  selector: '#respondent1DQFurtherInformation_reasonForFutureApplications',
-};
+export const whatForForm = (defendantNumber: number) => ({
+  selector: `#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`,
+});
 
-export const furtherInformationForm = {
-  selector: '#respondent1DQFurtherInformation_otherInformationForJudge',
-};
+export const furtherInformationForm = (defendantNumber: number) => ({
+  selector: `#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`,
+});

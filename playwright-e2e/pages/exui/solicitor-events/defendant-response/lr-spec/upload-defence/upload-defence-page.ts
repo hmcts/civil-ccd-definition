@@ -14,8 +14,8 @@ export default class UploadDefencePage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async uploadFile() {
-    await super.retryUploadFile(filePaths.testPdfFile, fileUpload.selector);
+  async uploadFile(defendantNumber: number) {
+    await super.retryUploadFile(filePaths.testPdfFile, fileUpload(defendantNumber).selector);
   }
 
   async submit() {

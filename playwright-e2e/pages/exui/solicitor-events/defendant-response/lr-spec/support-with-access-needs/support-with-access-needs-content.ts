@@ -1,41 +1,21 @@
 export const heading = 'Support with access needs';
 
-export const question = {
+export const question = (defendantNumber: number) => ({
   text: {
     label: 'Does anyone require support for a court hearing?',
   },
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQHearingSupport_supportRequirements_Yes',
+    selector: `#respondent${defendantNumber}DQHearingSupport_supportRequirements_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQHearingSupport_supportRequirements_No',
+    selector: `#respondent${defendantNumber}DQHearingSupport_supportRequirements_No`,
   },
-};
+});
 
-export const question1v2 = {
-  text: {
-    label: 'Does anyone require support for a court hearing?',
-  },
-  radioYes: {
-    label: 'Yes',
-    selector: '#respondent2DQHearingSupport_supportRequirements_Yes',
-  },
-  radioNo: {
-    label: 'No',
-    selector: '#respondent2DQHearingSupport_supportRequirements_No',
-  },
-};
-
-export const input = {
+export const input = (defendantNumber: number) => ({
   label:
     'Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.',
-  selector: '#respondent1DQHearingSupport_supportRequirementsAdditional',
-};
-
-export const input1v2 = {
-  label:
-    'Please name all people who need support and the kind of support they will need. For example, Jane Smith: requires wheelchair access.',
-  selector: '#respondent2DQHearingSupport_supportRequirementsAdditional',
-};
+  selector: `#respondent${defendantNumber}DQHearingSupport_supportRequirementsAdditional`,
+});

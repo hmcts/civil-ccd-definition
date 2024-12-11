@@ -11,8 +11,8 @@ export default class UploadDraftDirectionsPage extends ExuiPage(BasePage) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async uploadFile() {
-    await super.retryUploadFile(filePaths.testPdfFile, fileUpload.selector);
+  async uploadFile(defendantNumber: number) {
+    await super.retryUploadFile(filePaths.testPdfFile, fileUpload(defendantNumber).selector);
   }
 
   async submit() {

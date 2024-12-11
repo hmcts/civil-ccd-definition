@@ -49,10 +49,10 @@ export default class CourtLocationPage extends ExuiPage(BasePage) {
     );
   }
 
-  async selectCourtLocationUnpecAndSpec2v1() {
+  async selectCourtLocationUnpecAndSpec2v1(defendantNumber: number) {
     await super.selectFromDropdown(
-      courtLocationDropdownUnspecAndSpec2v1.dropdown.options[0],
-      courtLocationDropdownUnspecAndSpec2v1.dropdown.selector,
+      courtLocationDropdownUnspecAndSpec2v1(defendantNumber).dropdown.options[0],
+      courtLocationDropdownUnspecAndSpec2v1(defendantNumber).dropdown.selector,
     );
   }
 
@@ -64,12 +64,16 @@ export default class CourtLocationPage extends ExuiPage(BasePage) {
     await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioNo.selector);
   }
 
-  async selectYesUnspecAndSpec2v1() {
-    await super.clickBySelector(remoteHearingRadioButtonsUnspecAndSpec2v1.radioYes.selector);
+  async selectYesUnspecAndSpec2v1(defendantNumber: number) {
+    await super.clickBySelector(
+      remoteHearingRadioButtonsUnspecAndSpec2v1(defendantNumber).radioYes.selector,
+    );
   }
 
-  async selectNoUnspecAndSpec2v1() {
-    await super.clickBySelector(remoteHearingRadioButtonsUnspecAndSpec2v1.radioNo.selector);
+  async selectNoUnspecAndSpec2v1(defendantNumber: number) {
+    await super.clickBySelector(
+      remoteHearingRadioButtonsUnspecAndSpec2v1(defendantNumber).radioNo.selector,
+    );
   }
 
   async submit() {

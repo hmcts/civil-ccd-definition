@@ -6,7 +6,7 @@ import ExuiPage from '../../../exui-page/exui-page.ts';
 import {
   heading,
   radioButtons,
-  radioButtons2v1app1,
+  radioButtons2v1SpecAnd1v2Unspec,
   radioButtons2v1app2,
   radioButtons2v1,
 } from './respond-to-claim-content.ts';
@@ -42,20 +42,26 @@ export default class RespondToClaimPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons(defendantNumber).defendsAndWantsCounterclaim.selector);
   }
 
-  async selectsDefendsApplicant1() {
-    await super.clickBySelector(radioButtons2v1app1.reject.selector);
+  async selectsDefends2v1SpecAnd1v2Unspec(defendantNumber: number) {
+    await super.clickBySelector(radioButtons2v1SpecAnd1v2Unspec(defendantNumber).reject.selector);
   }
 
-  async selectsAdmitsAllApplicant1() {
-    await super.clickBySelector(radioButtons2v1app1.admitsAll.selector);
+  async selectsAdmitsAll2v1SpecAnd1v2Unspec(defendantNumber: number) {
+    await super.clickBySelector(
+      radioButtons2v1SpecAnd1v2Unspec(defendantNumber).admitsAll.selector,
+    );
   }
 
-  async selectsAdmitsPartApplicant1() {
-    await super.clickBySelector(radioButtons2v1app1.admitsPart.selector);
+  async selectsAdmitsPart2v1SpecAnd1v2Unspec(defendantNumber: number) {
+    await super.clickBySelector(
+      radioButtons2v1SpecAnd1v2Unspec(defendantNumber).admitsPart.selector,
+    );
   }
 
-  async selectsDefendsAndWantsCounterclaimApplicant1() {
-    await super.clickBySelector(radioButtons2v1app1.rejectAndWantsCounterclaim.selector);
+  async selectsDefendsAndWantsCounterclaim2v1SpecAnd1v2Unspec(defendantNumber: number) {
+    await super.clickBySelector(
+      radioButtons2v1SpecAnd1v2Unspec(defendantNumber).rejectAndWantsCounterclaim.selector,
+    );
   }
 
   async selectsDefendsApplicant2() {

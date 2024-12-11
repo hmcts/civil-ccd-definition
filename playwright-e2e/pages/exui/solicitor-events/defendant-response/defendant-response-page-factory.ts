@@ -254,4 +254,20 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   get furtherInformationPage() {
     return new FurtherInformationPage(this.page);
   }
+
+  get solicitorReferenceDef2Page() {
+    return new SolicitorReferencesPage(this.page);
+  }
+
+  get uploadDefenceDef2Page() {
+    return new UploadDefencePage(this.page);
+  }
+
+  get uploadDraftDirectionsDef2Page() {
+    return new UploadDraftDirectionsPage(this.page);
+  }
+
+  get furtherInformationDef2Page() {
+    return new FurtherInformationPage(this.page);
+  }
 }

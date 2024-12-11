@@ -26,12 +26,16 @@ export default class HearingAvailabilityPage extends ExuiPage(BasePage) {
     await super.clickBySelector(availabilityQuestionSmallTrack.radioNo.selector);
   }
 
-  async selectYesAvailabilityUnspecandSpec2v1() {
-    await super.clickBySelector(availabilityQuestionUnspecandSpec2v1.radioYes.selector);
+  async selectYesAvailabilityUnspecandSpec2v1(defendantNumber: number) {
+    await super.clickBySelector(
+      availabilityQuestionUnspecandSpec2v1(defendantNumber).radioYes.selector,
+    );
   }
 
-  async selectNoAvailabilityUnspecandSpec2v1() {
-    await super.clickBySelector(availabilityQuestionUnspecandSpec2v1.radioNo.selector);
+  async selectNoAvailabilityUnspecandSpec2v1(defendantNumber: number) {
+    await super.clickBySelector(
+      availabilityQuestionUnspecandSpec2v1(defendantNumber).radioNo.selector,
+    );
   }
 
   async selectYesInterpreterSmallTrack() {

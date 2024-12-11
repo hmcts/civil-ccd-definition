@@ -41,16 +41,16 @@ export const availabilityQuestionSmallTrack1v2 = {
   },
 };
 
-export const availabilityQuestionUnspecandSpec2v1 = {
+export const availabilityQuestionUnspecandSpec2v1 = (defendantNumber: number) => ({
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQHearing_unavailableDatesRequired_Yes',
+    selector: `#respondent${defendantNumber}DQHearing_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQHearing_unavailableDatesRequired_No',
+    selector: `#respondent${defendantNumber}DQHearing_unavailableDatesRequired_No`,
   },
-};
+});
 
 export const unavailableDates = 'Unavailable dates';
 

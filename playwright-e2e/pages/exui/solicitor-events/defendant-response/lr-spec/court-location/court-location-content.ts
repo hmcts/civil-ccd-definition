@@ -22,17 +22,17 @@ export const courtLocationDropdown1v2 = {
   },
 };
 
-export const courtLocationDropdownUnspecAndSpec2v1 = {
+export const courtLocationDropdownUnspecAndSpec2v1 = (defendantNumber: number) => ({
   label: 'Please select your preferred court hearing location',
   dropdown: {
     text: '--Select a value--',
-    selector: '#respondent1DQRequestedCourt_responseCourtLocations',
+    selector: `#respondent${defendantNumber}DQRequestedCourt_responseCourtLocations`,
     options: [
       'Aberystwyth Justice Centre - Y Lanfa, Trefechan, Aberystwyth - SY23 1AS',
       'Aldershot Magistrates Court - 2 Wellington Avenue, Aldershot - GU11 1NY',
     ],
   },
-};
+});
 
 export const reasonForm = {
   heading: 'Briefly explain your reasons (Optional)',
@@ -57,17 +57,17 @@ export const remoteHearingRadioButtons = (defendantNumber: number) => ({
   },
 });
 
-export const remoteHearingRadioButtonsUnspecAndSpec2v1 = {
+export const remoteHearingRadioButtonsUnspecAndSpec2v1 = (defendantNumber: number) => ({
   text: {
     label: 'Do you want the hearing to be held remotely?',
     hint: 'This will be over telephone or video',
   },
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQRemoteHearing_remoteHearingRequested_Yes',
+    selector: `#respondent${defendantNumber}DQRemoteHearing_remoteHearingRequested_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQRemoteHearing_remoteHearingRequested_No',
+    selector: `#respondent${defendantNumber}DQRemoteHearing_remoteHearingRequested_No`,
   },
-};
+});

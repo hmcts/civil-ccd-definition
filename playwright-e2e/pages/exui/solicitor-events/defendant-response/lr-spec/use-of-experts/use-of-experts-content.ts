@@ -16,19 +16,19 @@ export const useExpertRadioButtonsSmallTrack = {
   },
 };
 
-export const useExpertRadioButtonsFastTrack = {
+export const useExpertRadioButtonsFastTrack = (defendantNumber: number) => ({
   text: {
     label: 'Do you want to use an expert?',
   },
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQExperts_expertRequired_Yes',
+    selector: `#respondent${defendantNumber}DQExperts_expertRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQExperts_expertRequired_No',
+    selector: `#respondent${defendantNumber}DQExperts_expertRequired_No`,
   },
-};
+});
 
 export const useExpertsRadioButtonsSmallTrack1v2 = {
   text: {
