@@ -1,7 +1,7 @@
 [
   {
     "LiveFrom": "01/01/2018",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRaiseQuery",
     "CaseFieldID": "QueryManagementComponentLauncher",
     "PageFieldDisplayOrder": 1,
@@ -14,7 +14,7 @@
   },
   {
     "LiveFrom": "01/01/2018",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRaiseQuery",
     "CaseFieldID": "qmApplicantSolicitorQueries",
     "PageFieldDisplayOrder": 2,
@@ -29,7 +29,7 @@
   },
   {
     "LiveFrom": "01/01/2018",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRaiseQuery",
     "CaseFieldID": "qmRespondentSolicitor1Queries",
     "PageFieldDisplayOrder": 3,
@@ -44,7 +44,7 @@
   },
   {
     "LiveFrom": "01/01/2018",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRaiseQuery",
     "CaseFieldID": "qmRespondentSolicitor2Queries",
     "PageFieldDisplayOrder": 4,
