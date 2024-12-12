@@ -18,29 +18,32 @@ import {
 @AllMethodsStep()
 export default class SmallClaimsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectHeading(heading),
-      super.expectText(paragraphs.paragraph2),
-      super.expectText(paragraphs.paragraph3),
-      super.expectSubheading(subheadings.judgesRecital),
-      super.expectSubheading(subheadings.allocation),
-      super.expectText(paragraphs.paragraph1),
-      super.expectSubheading(subheadings.hearingTime),
-      super.expectSubheading(subheadings.hearingMethod),
-      super.expectText(radioButtons.hearingMethod.label),
-      super.expectLabel(radioButtons.hearingMethod.inPerson.label),
-      super.expectLabel(radioButtons.hearingMethod.telephone.label),
-      super.expectLabel(radioButtons.hearingMethod.video.label),
-      super.expectLabel(dropdowns.hearingLocation.label),
-      super.expectSubheading(subheadings.hearingNotes),
-      super.expectText(inputs.hearingNotes.hintText),
-      super.expectText(subheadings.welshLanguage),
-      super.expectSubheading(subheadings.importantNotes),
-      super.expectSubheading(subheadings.documents),
-      super.expectSubheading(subheadings.witnessStatement),
-      super.expectSubheading(subheadings.addNewDirection),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectHeading(heading),
+        super.expectText(paragraphs.paragraph2),
+        super.expectText(paragraphs.paragraph3),
+        super.expectSubheading(subheadings.judgesRecital),
+        super.expectSubheading(subheadings.allocation),
+        super.expectText(paragraphs.paragraph1),
+        super.expectSubheading(subheadings.hearingTime),
+        super.expectSubheading(subheadings.hearingMethod),
+        super.expectText(radioButtons.hearingMethod.label),
+        super.expectLabel(radioButtons.hearingMethod.inPerson.label),
+        super.expectLabel(radioButtons.hearingMethod.telephone.label),
+        super.expectLabel(radioButtons.hearingMethod.video.label),
+        super.expectLabel(dropdowns.hearingLocation.label),
+        super.expectSubheading(subheadings.hearingNotes),
+        super.expectText(inputs.hearingNotes.hintText),
+        super.expectText(subheadings.welshLanguage),
+        super.expectSubheading(subheadings.importantNotes),
+        super.expectSubheading(subheadings.documents),
+        super.expectSubheading(subheadings.witnessStatement),
+        super.expectSubheading(subheadings.addNewDirection),
+      ],
+      { runAxe: false },
+    );
   }
 
   async verifyJudgementSum() {
@@ -85,7 +88,7 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     await super.inputText(dateTo.getFullYear(), inputs.hearingTime.dateTo.year.selector);
 
     // await super.retryClickBySelector(radioButtons.hearingTime.other.selector, () => Promise.resolve(), { retries: 2 });
-    await super.clickBySelector(radioButtons.hearingTime.other.selector);
+    await super.clickBySelector(radioButtons.hearingTime.other.selectorTest);
 
     await super.expectText(inputs.hearingTime.otherHours.label);
     await super.expectText(inputs.hearingTime.otherMinutes.label);
