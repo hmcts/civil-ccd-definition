@@ -83,9 +83,29 @@
     "ID": "ObligationWAFlag",
     "CaseEventID": "ORDER_REVIEW_OBLIGATION_CHECK",
     "CaseFieldID": "obligationWAFlag",
+    "ListElementCode": "obligationReason",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "obligationReason=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "ObligationWAFlag",
+    "CaseEventID": "ORDER_REVIEW_OBLIGATION_CHECK",
+    "CaseFieldID": "obligationWAFlag",
+    "ListElementCode": "obligationReasonDisplayValue",
+    "EventElementLabel": " ",
+    "FieldDisplayOrder": 10,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "obligationReasonDisplayValue=\"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "ObligationWAFlag",
+    "CaseEventID": "ORDER_REVIEW_OBLIGATION_CHECK",
+    "CaseFieldID": "obligationWAFlag",
     "ListElementCode": "currentDate",
     "EventElementLabel": " ",
-    "FieldDisplayOrder": 8,
+    "FieldDisplayOrder": 11,
     "DisplayContext": "OPTIONAL",
     "FieldShowCondition": "currentDate=\"DO_NOT_SHOW_IN_UI\""
   }
