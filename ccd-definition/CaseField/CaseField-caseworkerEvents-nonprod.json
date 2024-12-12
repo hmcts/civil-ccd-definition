@@ -106,6 +106,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isFinalOrder",
+    "Label": "Is this a final order?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtStaffNextSteps",
     "Label": "Have all the next steps for court staff been completed?",
     "FieldType": "FixedRadioList",
