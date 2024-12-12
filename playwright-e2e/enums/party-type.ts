@@ -1,0 +1,8 @@
+enum PartyType {
+  INDIVIDUAL = 'INDIVIDUAL',
+  COMPANY = 'COMPANY',
+  SOLE_TRADER = 'SOLE_TRADER',
+  ORGANISATION = 'ORGANISATION',
+}
+
+export default PartyType;
