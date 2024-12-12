@@ -6,7 +6,8 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "joIsLiveJudgmentExists",
     "TabFieldDisplayOrder": 1,
-    "FieldShowCondition": "joIsLiveJudgmentExists = \"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "joIsLiveJudgmentExists = \"DO_NOT_SHOW_IN_UI\"",
+    "TabShowCondition": "joIsLiveJudgmentExists = \"Yes\" OR (joIsLiveJudgmentExists = \"No\" AND paymentTypeSelection = \"*\")"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -15,8 +16,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "joIsDisplayInJudgmentTab",
     "TabFieldDisplayOrder": 2,
-    "FieldShowCondition": "joIsLiveJudgmentExists = \"DO_NOT_SHOW_IN_UI\"",
-    "TabShowCondition": "joIsLiveJudgmentExists = \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists = \"DO_NOT_SHOW_IN_UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -116,5 +116,68 @@
     "CaseFieldID": "joFullyPaymentMadeDate",
     "TabFieldDisplayOrder": 13,
     "FieldShowCondition": "joIsDisplayInJudgmentTab= \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "defendantDetailsSpec",
+    "TabFieldDisplayOrder": 13,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentSummaryLabel",
+    "TabFieldDisplayOrder": 14,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "paymentTypeSelection",
+    "TabFieldDisplayOrder": 15,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "paymentSetDate",
+    "TabFieldDisplayOrder": 16,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentSuggestion",
+    "TabFieldDisplayOrder": 17,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentFrequency",
+    "TabFieldDisplayOrder": 18,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "repaymentDate",
+    "TabFieldDisplayOrder": 19,
+    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\""
   }
 ]
