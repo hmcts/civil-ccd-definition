@@ -1,12 +1,14 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import { checkboxes, paragraph, radioButtons } from './draw-directions-order-claims-track-content';
 
 @AllMethodsStep()
 export default class DrawDirectionsOrderClaimsTrackPage extends ExuiPage(BasePage) {
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
       super.verifyHeadings(),
       super.expectText(paragraph),
       super.expectLabel(radioButtons.yes.label),

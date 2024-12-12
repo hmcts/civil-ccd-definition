@@ -7,7 +7,7 @@ export default class StandardDirectionsOrderSubmitPage extends ExuiPage(BasePage
   async submit(...args: any[]): Promise<void> {
     await super.retryClickSubmit();
   }
-  verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(...args: any[]): Promise<void> {
     throw new Error('Method not implemented.');
   }
 }

@@ -1,6 +1,7 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   buttons,
@@ -14,8 +15,9 @@ import {
 
 @AllMethodsStep()
 export default class DisposalHearingPage extends ExuiPage(BasePage) {
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.orderHearingDetails),
       super.expectText(paragraphs.paragraph1),
       super.expectSubheading(subheadings.judgesRecital),

@@ -1,6 +1,7 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   buttons,
@@ -13,8 +14,9 @@ import {
 
 @AllMethodsStep()
 export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage) {
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
       super.expectText(paragraphs.paragraph1),
       super.expectText(subheadings.warning),
       super.expectText(paragraphs.paragraph2),
@@ -22,7 +24,7 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
       super.expectText(subheadings.judgesRecital),
       super.expectText(subheadings.allocation),
       super.expectText(paragraphs.paragraph4),
-      super.expectText(subheadings.disputeResolutionHearing),
+      super.expectText(subheadings.disputeResolutionHearing, {}),
       super.expectText(paragraphs.paragraph5),
       super.expectText(subheadings.legalReprentationForDRH),
       super.expectText(paragraphs.paragraph6),

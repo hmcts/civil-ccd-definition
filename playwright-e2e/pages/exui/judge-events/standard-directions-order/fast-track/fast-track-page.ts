@@ -1,6 +1,7 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import {
   buttons,
@@ -15,15 +16,15 @@ import {
 
 @AllMethodsStep()
 export default class FastTrackPage extends ExuiPage(BasePage) {
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(),
+      super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectText(paragraphs.paragraph1),
       super.expectSubheading(subheadings.judgesRecital),
       super.expectSubheading(subheadings.allocation),
       super.expectText(paragraphs.paragraph2),
-      super.expectLabel(radioButtons.allocation.assignComplexityBand.label),
+      super.expectText(radioButtons.allocation.assignComplexityBand.label),
       super.expectSubheading(subheadings.altDisputeResolution),
       super.expectSubheading(subheadings.variationOfDirections),
       super.expectSubheading(subheadings.settlement),
@@ -288,7 +289,7 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     );
   }
 
-  async addCreditHite() {
+  async addCreditHire() {
     await super.expectText(paragraphs.paragraph6);
     await super.expectText(paragraphs.paragraph10);
 
