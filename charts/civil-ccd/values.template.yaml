@@ -139,7 +139,7 @@ civil-service:
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+      ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
     postgresql:
       enabled: true
@@ -161,7 +161,7 @@ civil-service:
               CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "role-assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
@@ -255,7 +255,7 @@ ccd:
     postgresql:
       enabled: false
     ras:
-      enabled: false
+      enabled: true
     userProfile:
       enabled: false
     userProfileImporter:
@@ -308,29 +308,21 @@ ccd:
         CCD_MULTIPARTY_LOG_LEVEL: DEBUG
         CCD_MULTIPARTY_CASE_TYPES: CIVIL
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
         RELEASE_REVISION: "{{ .Release.Revision }}"
 
   am-role-assignment-service:
     java:
       releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
-      secrets:
-        LD_SDK_KEY:
-          secretRef: role-assignment-service-LD-SDK-KEY
-          key: key
-          disabled: true
-        ROLE_ASSIGNMENT_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        ROLE_ASSIGNMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+        ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
         ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
       keyVaults:
         am:
           secrets:
-            - role-assignment-service-LD-SDK-KEY
+            - name: role-assignment-service-LD-SDK-KEY
+              alias: LD_SDK_KEY
   ccd-definition-store-api:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api
