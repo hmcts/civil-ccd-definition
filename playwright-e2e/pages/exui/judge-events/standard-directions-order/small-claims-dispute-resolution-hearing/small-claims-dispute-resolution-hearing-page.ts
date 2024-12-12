@@ -24,7 +24,7 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
       super.expectText(subheadings.judgesRecital),
       super.expectText(subheadings.allocation),
       super.expectText(paragraphs.paragraph4),
-      super.expectText(subheadings.disputeResolutionHearing, {}),
+      super.expectText(subheadings.disputeResolutionHearing, { ignoreDuplicates: true }),
       super.expectText(paragraphs.paragraph5),
       super.expectText(subheadings.legalReprentationForDRH),
       super.expectText(paragraphs.paragraph6),
@@ -32,9 +32,9 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
       super.expectText(paragraphs.paragraph7),
       super.expectText(subheadings.paymentProtectionInsurance),
       super.expectText(subheadings.witnessStatements),
-      super.expectText(subheadings.uploadOfDocuments),
+      super.expectText(subheadings.uploadOfDocuments, { exact: true }),
       super.expectText(subheadings.addNewDirection),
-      super.expectText(subheadings.hearing),
+      super.expectText(subheadings.hearing, { exact: true }),
       super.expectText(subheadings.welshLanguage),
       super.expectText(subheadings.importantNotes),
     ]);
@@ -43,17 +43,17 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
   async addPaymentProtectionInsurance() {
     await super.clickBySelector(checkboxes.includePaymentProtectionInsurance.selector);
     await super.expectText(paragraphs.paragraph14);
-    await super.expectLabel(inputs.ppiDate.label);
+    await super.expectText(inputs.ppiDate.label);
     await super.expectText(paragraphs.paragraph15);
 
-    const ppiDate = DateHelper.getToday();
+    const ppiDate = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText(DateHelper.getTwoDigitDay(ppiDate), inputs.ppiDate.day.selector);
     await super.inputText(DateHelper.getTwoDigitMonth(ppiDate), inputs.ppiDate.month.selector);
     await super.inputText(ppiDate.getFullYear(), inputs.ppiDate.year.selector);
   }
 
   async addWitnessStatements() {
-    await super.expectText(paragraphs.paragraph8);
+    await super.expectText(paragraphs.paragraph8, { ignoreDuplicates: true });
     await super.expectLabel(inputs.witnessStatements.statementOfWtinesses.label);
     await super.expectText(radioButtons.witnessStatements.restrictNumWitnesses.label);
     await super.expectText(radioButtons.witnessStatements.restrictNumPages.label);
@@ -107,27 +107,29 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
   }
 
   async addHearing() {
-    await super.expectLabel(radioButtons.hearing.trialOnOptions.label);
+    await super.expectText(radioButtons.hearing.trialOnOptions.label);
     await super.expectLabel(radioButtons.hearing.trialOnOptions.firstOpenDate.label);
-    await super.expectText(radioButtons.hearing.trialOnOptions.hearingWindow.label);
-    await super.expectText(inputs.hearing.listFrom.label);
-    await super.expectLabel(radioButtons.hearing.lengthOfHearing.label);
+    await super.expectText(radioButtons.hearing.trialOnOptions.hearingWindow.label, {
+      ignoreDuplicates: true,
+    });
+    await super.expectText(inputs.hearing.listFrom.label, { ignoreDuplicates: true });
+    await super.expectText(radioButtons.hearing.lengthOfHearing.label, { ignoreDuplicates: true });
     await super.expectLabel(radioButtons.hearing.lengthOfHearing.fifteenMins.label);
     await super.expectLabel(radioButtons.hearing.lengthOfHearing.thirtyMins.label);
     await super.expectLabel(radioButtons.hearing.lengthOfHearing.oneHour.label);
-    await super.expectLabel(radioButtons.hearing.lengthOfHearing.other.label);
+    await super.expectLabel(radioButtons.hearing.lengthOfHearing.other.label, { exact: true });
     await super.expectText(paragraphs.paragraph13);
-    await super.expectText(radioButtons.hearing.hearingLocation.label);
+    await super.expectText(radioButtons.hearing.hearingLocation.label, { exact: true });
     await super.expectLabel(radioButtons.hearing.hearingLocation.otherLocation.label);
     await super.expectText(radioButtons.hearing.methodOfHearing.label);
     await super.expectText(radioButtons.hearing.methodOfHearing.hintText);
     await super.expectLabel(radioButtons.hearing.methodOfHearing.inPerson.label);
     await super.expectLabel(radioButtons.hearing.methodOfHearing.telephone.label);
     await super.expectLabel(radioButtons.hearing.methodOfHearing.video.label);
-    await super.expectLabel(radioButtons.hearing.physicalHearingBundle.label);
+    await super.expectText(radioButtons.hearing.physicalHearingBundle.label);
     await super.expectLabel(radioButtons.hearing.physicalHearingBundle.party.label);
     await super.expectText(inputs.hearing.bundleOfDocuments.label);
-    await super.expectText(inputs.hearing.hearingNotes.label1);
+    await super.expectText(inputs.hearing.hearingNotes.label1, { exact: true });
     await super.expectText(inputs.hearing.hearingNotes.label2);
 
     const listFrom = DateHelper.addToToday({ days: 1, workingDay: true });
@@ -153,12 +155,12 @@ export default class SmallClaimsDisputeResolutionPage extends ExuiPage(BasePage)
     await super.clickBySelector(radioButtons.hearing.lengthOfHearing.other.selector);
     await super.expectLabel(inputs.hearing.lengthOfHearing.days.label);
     await super.expectLabel(inputs.hearing.lengthOfHearing.hours.label);
-    await super.expectLabel(inputs.hearing.lengthOfHearing.minutes.label);
+    await super.expectLabel(inputs.hearing.lengthOfHearing.minutes.label, { exact: true });
     await super.inputText('3', inputs.hearing.lengthOfHearing.days.selector);
     await super.inputText('5', inputs.hearing.lengthOfHearing.hours.selector);
     await super.inputText('0', inputs.hearing.lengthOfHearing.minutes.selector);
 
-    await super.clickBySelector(radioButtons.hearing.methodOfHearing.telephone.selector);
+    await super.clickByText(radioButtons.hearing.methodOfHearing.telephone.label);
 
     await super.inputText('bundle documents', inputs.hearing.bundleOfDocuments.selector);
 

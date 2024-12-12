@@ -87,8 +87,8 @@ export default class SmallClaimsPage extends ExuiPage(BasePage) {
     );
     await super.inputText(dateTo.getFullYear(), inputs.hearingTime.dateTo.year.selector);
 
-    // await super.retryClickBySelector(radioButtons.hearingTime.other.selector, () => Promise.resolve(), { retries: 2 });
-    await super.clickBySelector(radioButtons.hearingTime.other.selectorTest);
+    // TODO - work out why this does not work
+    await super.clickBySelector(radioButtons.hearingTime.other.selector);
 
     await super.expectText(inputs.hearingTime.otherHours.label);
     await super.expectText(inputs.hearingTime.otherMinutes.label);

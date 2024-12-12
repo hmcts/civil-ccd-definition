@@ -29,15 +29,6 @@ export default abstract class BasePage {
       .click({ clickCount: options.count, timeout: options.timeout });
   }
 
-  @BoxedDetailedStep(classKey, 'selector')
-  @TruthyParams(classKey, 'selector')
-  protected async checkBySelector(
-    selector: string,
-    options: { count?: number; timeout?: number } = {},
-  ) {
-    await this.page.locator(selector).setChecked(true, { force: true });
-  }
-
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(name: string, options: { timeout?: number } = {}) {

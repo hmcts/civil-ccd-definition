@@ -105,7 +105,7 @@ export const inputs = {
     numPages: {
       label: 'Number of pages',
       hintText: 'For example,4',
-      selector: '#sdoR2SmallClaimsWitnessStatementOther_sdoR2SmallClaimsRestrictPages_noOfPages',
+      selector: '#sdoR2SmallClaimsWitnessStatements_sdoR2SmallClaimsRestrictPages_noOfPages',
     },
     fontDetails: {
       selector: '#sdoR2SmallClaimsWitnessStatements_sdoR2SmallClaimsRestrictPages_fontDetails',
@@ -120,15 +120,15 @@ export const inputs = {
       label: 'List from',
       day: {
         label: 'Day',
-        selector: '#listFrom-day',
+        selector: "input[id='listFrom-day'] >> visible=true",
       },
       month: {
         label: 'Month',
-        selector: '#listFrom-month',
+        selector: "input[id='listFrom-month'] >> visible=true",
       },
       year: {
         label: 'Year',
-        selector: '#listFrom-year',
+        selector: "input[id='listFrom-year'] >> visible=true",
       },
     },
     dateTo: {
@@ -148,7 +148,7 @@ export const inputs = {
     },
     bundleOfDocuments: {
       label: 'Bundle of documents',
-      selector: '#sdoR2DrhUseOfWelshIncludeInOrderToggle-INCLUDE',
+      selector: '#sdoR2SmallClaimsHearing_sdoR2SmallClaimsBundleOfDocs_physicalBundlePartyTxt',
     },
     hearingNotes: {
       label1: 'Hearing notes',
@@ -230,11 +230,11 @@ export const radioButtons = {
       label: 'Restrict number of pages',
       yes: {
         label: 'Yes',
-        selector: '#sdoR2SmallClaimsWitnessStatements_isRestrictPages_No',
+        selector: '#sdoR2SmallClaimsWitnessStatements_isRestrictPages_Yes',
       },
       no: {
         label: 'No',
-        selector: '#sdoR2SmallClaimsWitnessStatements_isRestrictPages_Yes',
+        selector: '#sdoR2SmallClaimsWitnessStatements_isRestrictPages_No',
       },
     },
   },
@@ -285,15 +285,12 @@ export const radioButtons = {
         "If you want to include any extra information or want to request a certain hearing platform, please include this in the 'Hearing notes' section below",
       inPerson: {
         label: 'In Person',
-        selector: '#sdoR2SmallClaimsHearing_methodOfHearing_8a6f4daa-aa33-4143-b026-006e597da6fa',
       },
       telephone: {
         label: 'Telephone',
-        selector: '#sdoR2SmallClaimsHearing_methodOfHearing_671daf0c-de0c-48eb-bfb0-ac152adcce0d',
       },
       video: {
         label: 'Video',
-        selector: '#sdoR2SmallClaimsHearing_methodOfHearing_eeea8793-db81-4c67-8252-2117650f2540',
       },
     },
     physicalHearingBundle: {
