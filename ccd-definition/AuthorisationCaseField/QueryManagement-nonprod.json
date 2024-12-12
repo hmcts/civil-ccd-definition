@@ -34,14 +34,14 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "qmRespondentSolicitor1Queries",
-    "UserRole": "APPLICANTSOLICITORONE",
+    "UserRole": "RESPONDENTSOLICITORONE",
     "CRUD": "CRUD"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL",
     "CaseFieldID": "qmRespondentSolicitor2Queries",
-    "UserRole": "APPLICANTSOLICITORTWO",
+    "UserRole": "RESPONDENTSOLICITORTWO",
     "CRUD": "CRUD"
   }
 ]
