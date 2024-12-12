@@ -1,0 +1,60 @@
+[
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "QueryManagementComponentLauncher",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter" : "#ARGUMENT(CREATE,QueryManagement)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
+  }
+]

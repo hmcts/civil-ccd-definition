@@ -1,0 +1,38 @@
+[
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "ID": "QueryManagementComponentLauncher",
+    "FieldType": "ComponentLauncher",
+    "Label": "Component Launcher",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "FieldType": "CaseQueriesCollection",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "UserRole": "[APPLICANTSOLICITORONE],[APPLICANTSOLICITORTWO]",
+    "CRUD": "CRUD",
+    "Searchable": "N"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "FieldType": "CaseQueriesCollection",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "UserRole": "[RESPONDENTSOLICITORONE]",
+    "CRUD": "CRUD",
+    "Searchable": "N"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "FieldType": "CaseQueriesCollection",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "UserRole": "[RESPONDENTSOLICITORTWO]",
+    "CRUD": "CRUD",
+    "Searchable": "N"
+  }
+]

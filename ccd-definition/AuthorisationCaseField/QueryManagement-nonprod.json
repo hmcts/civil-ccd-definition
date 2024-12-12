@@ -1,0 +1,47 @@
+[
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "QueryManagementComponentLauncher",
+    "UserRole": [
+      "circuit-judge",
+      "hmcts-judiciary",
+      "fee-paid-judge",
+      "leadership-judge",
+      "judge",
+      "caseworker-civil",
+      "hmcts-admin",
+      "hmcts-legal-operations",
+      "hmcts-ctsc",
+      "hmcts-staff",
+      "ctsc-team-leader",
+      "ctsc",
+      "nbc-team-leader",
+      "APPLICANTSOLICITORONE",
+      "RESPONDENTSOLICITORONE",
+      "RESPONDENTSOLICITORTWO"
+    ],
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "UserRole": "APPLICANTSOLICITORONE",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "UserRole": "APPLICANTSOLICITORONE",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "UserRole": "APPLICANTSOLICITORTWO",
+    "CRUD": "CRUD"
+  }
+]
