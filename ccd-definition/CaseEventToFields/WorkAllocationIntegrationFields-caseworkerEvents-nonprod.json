@@ -103,5 +103,18 @@
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "ORDER_REVIEW_OBLIGATION_CHECK",
+    "CaseFieldID": "obligationWAFlag",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   }
 ]
