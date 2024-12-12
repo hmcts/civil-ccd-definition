@@ -64,54 +64,63 @@ export const inputs = {
       selector: '#fastTrackDisclosureOfDocuments_input1',
     },
     input2: {
-      selector: '#fastTrackDisclosureOfDocuments_input1',
+      selector: '#fastTrackDisclosureOfDocuments_input2',
     },
     input3: {
-      selector: '#fastTrackDisclosureOfDocuments_input1',
+      selector: '#fastTrackDisclosureOfDocuments_input3',
     },
     input4: {
-      selector: '#fastTrackDisclosureOfDocuments_input1',
+      selector: '#fastTrackDisclosureOfDocuments_input4',
     },
     date1: {
       day: {
         label: 'Day',
-        selector: '#date1-day',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date1-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date1-month',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date1-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date1-year',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date1-year']",
       },
     },
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date2-year']",
       },
     },
     date3: {
       day: {
         label: 'Day',
-        selector: '#date3-day',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date3-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date3-month',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date3-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date3-year',
+        selector:
+          "div[id='fastTrackDisclosureOfDocuments_fastTrackDisclosureOfDocuments'] input[id='date3-year']",
       },
     },
   },
@@ -184,29 +193,35 @@ export const inputs = {
     date1: {
       day: {
         label: 'Day',
-        selector: '#date1-day',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date1-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date1-month',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date1-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date1-year',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date1-year']",
       },
     },
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='fastTrackSchedulesOfLoss_fastTrackSchedulesOfLoss'] input[id='date2-year']",
       },
     },
   },
@@ -265,7 +280,7 @@ export const inputs = {
       selector: '#fastTrackBuildingDispute_input2',
     },
     input3: {
-      selector: '#fastTrackBuildingDispute_input1',
+      selector: '#fastTrackBuildingDispute_input3',
     },
     input4: {
       selector: '#fastTrackBuildingDispute_input4',
@@ -273,29 +288,35 @@ export const inputs = {
     date1: {
       day: {
         label: 'Day',
-        selector: '#date1-day',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date1-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date1-month',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date1-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date1-year',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date1-year']",
       },
     },
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='fastTrackBuildingDispute_fastTrackBuildingDispute'] input[id='date2-year']",
       },
     },
   },
@@ -342,57 +363,69 @@ export const inputs = {
     date1: {
       day: {
         label: 'Day',
-        selector: '#date1-day',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date1-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date1-month',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date1-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date1-year',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date1-year']",
       },
     },
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date2-year']",
       },
     },
     date3: {
       day: {
         label: 'Day',
-        selector: '#date3-day',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date3-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date3-month',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date3-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date3-year',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date3-year']",
       },
     },
     date4: {
       day: {
         label: 'Day',
-        selector: '#date4-day',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date4-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date4-month',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date4-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date4-year',
+        selector:
+          "div[id='sdoR2FastTrackCreditHire_sdoR2FastTrackCreditHire'] input[id='date4-year']",
       },
     },
   },
@@ -413,29 +446,35 @@ export const inputs = {
     date1: {
       day: {
         label: 'Day',
-        selector: '#date1-day',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date1-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date1-month',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date1-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date1-year',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date1-year']",
       },
     },
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='fastTrackHousingDisrepair_fastTrackHousingDisrepair'] input[id='date2-year']",
       },
     },
   },
@@ -455,43 +494,49 @@ export const inputs = {
     date2: {
       day: {
         label: 'Day',
-        selector: '#date2-day',
+        selector: "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date2-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date2-month',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date2-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date2-year',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date2-year']",
       },
     },
     date3: {
       day: {
         label: 'Day',
-        selector: '#date3-day',
+        selector: "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date3-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date3-month',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date3-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date3-year',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date3-year']",
       },
     },
     date4: {
       day: {
         label: 'Day',
-        selector: '#date4-day',
+        selector: "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date4-day']",
       },
       month: {
         label: 'Month',
-        selector: '#date4-month',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date4-month']",
       },
       year: {
         label: 'Year',
-        selector: '#date4-year',
+        selector:
+          "div[id='fastTrackPersonalInjury_fastTrackPersonalInjury'] input[id='date4-year']",
       },
     },
   },
@@ -519,7 +564,7 @@ export const inputs = {
     selector: '#fastTrackHearingNotes_input',
   },
   importantNotes: {
-    selector: 'fastTrackOrderWithoutJudgement_input',
+    selector: '#fastTrackOrderWithoutJudgement_input',
   },
   newDirection: {
     label: 'Enter the direction (Optional',
@@ -622,15 +667,12 @@ export const radioButtons = {
     label: 'Select an option below',
     inPerson: {
       label: 'In Person',
-      selector: '#hearingMethodValuesFastTrack_c9bd150e-9549-448b-97ed-5bcaf956c0b4',
     },
     telephone: {
       label: 'Telephone',
-      selector: '#hearingMethodValuesFastTrack_3ba2bc77-e4f5-4447-a0ab-6b228c0135eb',
     },
     video: {
       label: 'Video',
-      selector: '#hearingMethodValuesFastTrack_3f4dfc92-1296-48c7-93e5-7d1d7f4dbe54',
     },
   },
 };

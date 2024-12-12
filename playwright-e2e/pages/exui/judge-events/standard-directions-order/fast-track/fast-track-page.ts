@@ -86,6 +86,10 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
       inputs.disclosureOfDocuments.input3.selector,
     );
     await super.inputText(
+      'disclosure of documents input 4',
+      inputs.disclosureOfDocuments.input4.selector,
+    );
+    await super.inputText(
       DateHelper.getTwoDigitDay(date1),
       inputs.disclosureOfDocuments.date1.day.selector,
     );
@@ -118,7 +122,7 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     await super.expectText(inputs.witnessesOfFact.statementsOfWitnesses.label);
     await super.expectText(radioButtons.witnessesOfFact.restrictNumWitnesses.label);
     await super.expectText(radioButtons.witnessesOfFact.restrictNumPages.label);
-    await super.expectText(inputs.witnessesOfFact.deadline.label);
+    await super.expectText(inputs.witnessesOfFact.deadline.label, { exact: true });
 
     const date = DateHelper.getToday();
     await super.inputText(
@@ -190,16 +194,16 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
   }
 
   async addHearingTime() {
-    await super.expectText(inputs.hearingTime.dateFrom.label);
-    await super.expectLabel(inputs.hearingTime.dateTo.label);
-    await super.expectLabel(radioButtons.hearingTime.label);
+    await super.expectText(inputs.hearingTime.dateFrom.label, { exact: true });
+    await super.expectText(inputs.hearingTime.dateTo.label);
+    await super.expectText(radioButtons.hearingTime.label);
     await super.expectLabel(radioButtons.hearingTime.oneHour.label);
     await super.expectLabel(radioButtons.hearingTime.oneHourThirtyMins.label);
     await super.expectLabel(radioButtons.hearingTime.twoHours.label);
     await super.expectLabel(radioButtons.hearingTime.threeHours.label);
     await super.expectLabel(radioButtons.hearingTime.fourHours.label);
-    await super.expectLabel(radioButtons.hearingTime.fiveHours.label);
-    await super.expectLabel(radioButtons.hearingTime.other.label);
+    await super.expectLabel(radioButtons.hearingTime.fiveHours.label, { exact: true });
+    await super.expectLabel(radioButtons.hearingTime.other.label, { exact: true });
 
     const date1 = DateHelper.getToday();
     const date2 = DateHelper.addToToday({ days: 1, workingDay: true });
@@ -220,7 +224,7 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     await super.inputText(date2.getFullYear(), inputs.hearingTime.dateTo.year.selector);
 
     await super.clickBySelector(radioButtons.hearingTime.other.selector);
-    await super.expectLabel(inputs.hearingTime.otherHours.label);
+    await super.expectLabel(inputs.hearingTime.otherHours.label, { exact: true });
     await super.expectLabel(inputs.hearingTime.otherMinutes.label);
 
     await super.inputText('4', inputs.hearingTime.otherHours.selector);
@@ -230,12 +234,12 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
   }
 
   async addHearingMethod() {
-    await super.expectLabel(radioButtons.hearingMethod.label);
+    await super.expectText(radioButtons.hearingMethod.label);
     await super.expectLabel(dropdowns.hearingMethod.label);
     await super.expectLabel(radioButtons.hearingMethod.inPerson.label);
     await super.expectLabel(radioButtons.hearingMethod.telephone.label);
     await super.expectLabel(radioButtons.hearingMethod.video.label);
-    await super.clickBySelector(radioButtons.hearingMethod.telephone.selector);
+    await super.clickByText(radioButtons.hearingMethod.telephone.label);
   }
 
   async addBuildingDispute() {
@@ -345,6 +349,24 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     await super.inputText('housing disrepair input 2', inputs.housingDisrepair.input2.selector);
     await super.inputText('housing disrepair input 3', inputs.housingDisrepair.input3.selector);
     await super.inputText('housing disrepair input 4', inputs.housingDisrepair.input4.selector);
+    await super.inputText(
+      DateHelper.getTwoDigitDay(date1),
+      inputs.housingDisrepair.date1.day.selector,
+    );
+    await super.inputText(
+      DateHelper.getTwoDigitMonth(date1),
+      inputs.housingDisrepair.date1.month.selector,
+    );
+    await super.inputText(date1.getFullYear(), inputs.housingDisrepair.date1.year.selector);
+    await super.inputText(
+      DateHelper.getTwoDigitDay(date2),
+      inputs.housingDisrepair.date2.day.selector,
+    );
+    await super.inputText(
+      DateHelper.getTwoDigitMonth(date2),
+      inputs.housingDisrepair.date2.month.selector,
+    );
+    await super.inputText(date2.getFullYear(), inputs.housingDisrepair.date2.year.selector);
   }
 
   async addExpertEvidence() {
