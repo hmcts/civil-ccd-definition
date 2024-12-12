@@ -552,7 +552,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000, mintiEnabled = false}) {
       eventName = 'Respond to claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -585,6 +585,40 @@ module.exports = function () {
         () => event.returnToCaseDetails()
       ]);
     },
+
+    async respondToClaimMinti({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000, mintiEnabled = false}) {
+      eventName = 'Respond to claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
+        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+          // ...conditionalSteps(claimValue >= 10000, [
+          //
+          //   () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
+          // ]),
+          ...conditionalSteps(claimValue >= 99000, [
+              () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
+              () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party),
+              () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
+              () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+            ]
+          ),
+          () => expertsPage.enterExpertInformation(party),
+          () => witnessPage.enterWitnessInformation(party),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
+          () => hearingPage.enterHearingInformation(party),
+          () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
+          () => requestedCourtPage.selectSpecificCourtForHearing(party),
+          () => hearingSupportRequirementsPage.selectRequirements(party),
+          () => vulnerabilityQuestionsPage.vulnerabilityQuestions(party),
+          () => furtherInformationPage.enterFurtherInformation(party),
+          () => statementOfTruth.enterNameAndRole(party + 'DQ'),
+        ]),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
+
 
     async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
