@@ -13,8 +13,6 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
-const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
-const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
@@ -45,8 +43,6 @@ const dismissCase = require('../fixtures/events/dismissCase');
 
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  INITIATE_GENERAL_APPLICATION_LR: genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
@@ -883,25 +879,6 @@ module.exports = {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 404;
     return await fetchCaseDetails(user, caseId, expectedStatus);
-  },
-
-  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
-    eventName = 'INITIATE_GENERAL_APPLICATION';
-    caseId = caseId || caseNumber;
-    console.log('caseid is..', caseId);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
-
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
-    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
-    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectedState);
-
-    console.log('General application created when main case state is', expectedState);
-    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
