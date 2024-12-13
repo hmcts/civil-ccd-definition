@@ -6,7 +6,7 @@
 ##    - password: Password for user. Default to `London01`.
 ##    - role_classification: Role assignment classification. Default to `PUBLIC`.
 ##    - role_name: Name of the role for role-assignment. Default to `tribunal-caseworker`.
-##    - microservice_name: Name of the microservice to obtain S2S token. Default to `ccd_gw`.
+##    - microservice_name: Name of the microservice to obtain S2S token. Default to `ccd_gw`
 ##
 
 USERNAME=${1:-ccd-import@fake.hmcts.net}
