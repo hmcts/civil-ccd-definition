@@ -3,7 +3,7 @@
 ##
 ## Options:
 ##    - username: Role assigned to user in generated token. Default to `ccd-import@fake.hmcts.net`.
-##    - password: ID assigned to user in generated token. Default to `London01`.
+##    - password: ID assigned to user in generated token. Default to `London01`
 ##
 
 USERNAME=${1:-ccd-import@fake.hmcts.net}
