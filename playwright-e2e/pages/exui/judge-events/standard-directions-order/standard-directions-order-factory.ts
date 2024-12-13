@@ -3,9 +3,10 @@ import ClaimsTrackPage from './claims-track/claims-track-page';
 import DisposalHearingPage from './disposal-hearing/disposal-hearing-page';
 import DrawDirectionsOrderClaimsTrackPage from './draw-directions-order-claims-track/draw-directions-order-claims-track-page';
 import DrawDirectionsOrderPage from './draw-directions-order/draw-directions-order-page';
-import FastTrackInducedHearingLossPage from './fast-track-noise-induced-hearing-loss/fast-track-noise-induced-hearing-loss-page';
+import FastTrackNoiseInducedHearingLossPage from './fast-track-noise-induced-hearing-loss/fast-track-noise-induced-hearing-loss-page';
 import FastTrackPage from './fast-track/fast-track-page';
 import OrderPreviewPage from './order-preview/order-preview-page';
+import OrderTypePage from './order-type/order-type-page';
 import SmallClaimsDisputeResolutionPage from './small-claims-dispute-resolution-hearing/small-claims-dispute-resolution-hearing-page';
 import SmallClaimsPage from './small-claims/small-claims-page';
 import StandardDirectionsOrderSubmitPage from './standard-directions-order-submit/standard-directions-order-submit-page';
@@ -32,7 +33,7 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
   }
 
   get fastTrackNoiseInducedHearingLossPage() {
-    return new FastTrackInducedHearingLossPage(this.page);
+    return new FastTrackNoiseInducedHearingLossPage(this.page);
   }
 
   get orderPreviewPage() {
@@ -49,5 +50,9 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
 
   get standardDirectionsOrderSubmitPage() {
     return new StandardDirectionsOrderSubmitPage(this.page);
+  }
+
+  get orderTypePage() {
+    return new OrderTypePage(this.page);
   }
 }
