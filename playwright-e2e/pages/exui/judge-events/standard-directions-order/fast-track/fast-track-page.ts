@@ -41,6 +41,11 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     ]);
   }
 
+  async verifyJudgementSum() {
+    await super.expectSubheading(subheadings.judgementClaimSum);
+    await super.expectText(paragraphs.paragraph9);
+  }
+
   async addJudgesRecital() {
     await super.inputText('judges recital', inputs.judgesRecital.selector);
   }

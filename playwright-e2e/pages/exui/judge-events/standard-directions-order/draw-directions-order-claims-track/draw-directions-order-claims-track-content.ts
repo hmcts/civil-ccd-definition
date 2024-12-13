@@ -2,11 +2,11 @@ export const paragraph = 'Do you want to allocate this claim to the small claims
 export const radioButtons = {
   yes: {
     label: 'Yes',
-    selector: '#drawDirectionsOrderRequired_Yes',
+    selector: '#drawDirectionsOrderSmallClaims_Yes',
   },
   no: {
     label: 'No',
-    selector: '#drawDirectionsOrderRequired_No',
+    selector: '#drawDirectionsOrderSmallClaims_No',
   },
 };
 

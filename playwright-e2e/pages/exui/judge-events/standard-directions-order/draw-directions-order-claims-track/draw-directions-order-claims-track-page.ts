@@ -9,21 +9,24 @@ export default class DrawDirectionsOrderClaimsTrackPage extends ExuiPage(BasePag
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.verifyHeadings(),
       super.expectText(paragraph),
       super.expectLabel(radioButtons.yes.label),
-      super.expectLabel(radioButtons.no.label),
+      super.expectLabel(radioButtons.no.label, { exact: true }),
     ]);
   }
 
   async allocateToSmallClaimsTrack() {
     await super.clickBySelector(radioButtons.yes.selector);
     await super.runVerifications([
-      super.expectText(checkboxes.smallClaims.label),
-      super.expectText(checkboxes.smallClaims.creditHire.label),
-      super.expectText(checkboxes.smallClaims.roadTrafficAccident.label),
-      super.expectText(checkboxes.smallClaims.disputeResolutionHearing.label),
-      super.expectText(checkboxes.smallClaims.flightDelay.label),
+      super.expectText(checkboxes.smallClaims.label, { ignoreDuplicates: true }),
+      super.expectText(checkboxes.smallClaims.creditHire.label, { ignoreDuplicates: true }),
+      super.expectText(checkboxes.smallClaims.roadTrafficAccident.label, {
+        ignoreDuplicates: true,
+      }),
+      super.expectText(checkboxes.smallClaims.disputeResolutionHearing.label, {
+        ignoreDuplicates: true,
+      }),
+      super.expectText(checkboxes.smallClaims.flightDelay.label, { ignoreDuplicates: true }),
     ]);
   }
 

@@ -13,7 +13,7 @@ import {
 } from './fast-track-noise-induced-hearing-loss-content';
 
 @AllMethodsStep()
-export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) {
+export default class FastTrackNoiseInducedHearingLossPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
@@ -23,21 +23,21 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
       super.expectText(subheadings.judgesRecital),
       super.expectText(subheadings.allocation),
       super.expectText(paragraphs.paragraph3),
-      super.expectText(subheadings.altDisputeResolution),
+      super.expectText(subheadings.altDisputeResolution, { exact: true }),
       super.expectText(subheadings.variationOfDirections),
       super.expectText(subheadings.settlement),
       super.expectText(subheadings.disclosureOfDocuments),
       super.expectText(subheadings.witnessOfFact),
-      super.expectText(subheadings.addendumReport),
-      super.expectText(subheadings.furtherAudiogram),
+      super.expectText(subheadings.addendumReport, { exact: true }),
+      super.expectText(subheadings.furtherAudiogram, { exact: true }),
       super.expectText(subheadings.questionsClaimantExpert),
       super.expectText(subheadings.permissionDefendantRelyExpertEvidence),
       super.expectText(subheadings.evidenceExpertAcousticEngineer),
       super.expectText(subheadings.questionsToEntExpert),
       super.expectText(subheadings.scheduleOfLoss),
-      super.expectText(subheadings.uploadOfDocuments),
-      super.expectText(subheadings.newDirection),
-      super.expectText(subheadings.trial),
+      super.expectText(subheadings.uploadOfDocuments, { exact: true }),
+      super.expectText(subheadings.newDirection, { exact: true }),
+      super.expectText(subheadings.trial, { exact: true }),
       super.expectText(subheadings.welshLanguage),
       super.expectText(subheadings.importantNotes),
     ]);
@@ -60,8 +60,8 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectText(inputs.disclosureOfDocuments.inspection.label);
     await super.expectLabel(inputs.disclosureOfDocuments.requestWillBeCompiled.label);
 
-    const standardDisclosureDate = DateHelper.getToday();
-    const inspectionDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const standardDisclosureDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const inspectionDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(
       'standard disclosure',
       inputs.disclosureOfDocuments.standardDisclosure.selector,
@@ -98,9 +98,9 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectText(inputs.witnessesOfFact.statementOfWitnesses.label);
     await super.expectText(radioButtons.witnessesOfFact.restrictNumWitnesses.label);
     await super.expectText(radioButtons.witnessesOfFact.restrictNumPages.label);
-    await super.expectText(inputs.witnessesOfFact.deadline.label);
+    await super.expectText(inputs.witnessesOfFact.deadline.label, { exact: true });
 
-    const date = DateHelper.getToday();
+    const date = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText(
       'statement of witneses',
       inputs.witnessesOfFact.statementOfWitnesses.selector,
@@ -121,7 +121,7 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
   async restrictNumWitnesses() {
     await super.clickBySelector(radioButtons.witnessesOfFact.restrictNumWitnesses.yes.selector);
     await super.expectLabel(inputs.witnessesOfFact.numClaimantWitnesses.label);
-    await super.expectLabel(inputs.witnessesOfFact.numDefendantWitnesses.selector);
+    await super.expectLabel(inputs.witnessesOfFact.numDefendantWitnesses.label);
 
     await super.inputText('1', inputs.witnessesOfFact.numClaimantWitnesses.selector);
     await super.inputText('2', inputs.witnessesOfFact.numDefendantWitnesses.selector);
@@ -151,7 +151,7 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
   async addAddendumReport() {
     await super.expectText(inputs.addendumReport.addendumReportUpload.label);
 
-    const date = DateHelper.getToday();
+    const date = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText('addendum report', inputs.addendumReport.addendumReportUpload.selector);
     await super.inputText(
       DateHelper.getTwoDigitDay(date),
@@ -171,8 +171,8 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectText(inputs.furtherAudiogram.shallUndergoText.label);
     await super.expectText(inputs.furtherAudiogram.serviceReportText.label);
 
-    const shallUndergoDate = DateHelper.getToday();
-    const serviceReportDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const shallUndergoDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const serviceReportDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(
       'claimant shall undergo',
       inputs.furtherAudiogram.shallUndergoText.selector,
@@ -206,12 +206,15 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
 
   async addQuestionsClaimantExpert() {
     await super.expectText(inputs.questionsClaimantExpert.defendantMayAskText.label);
-    await super.expectText(inputs.questionsClaimantExpert.questionsShallBeAnsweredText.label);
+    await super.expectText(inputs.questionsClaimantExpert.questionsShallBeAnsweredText.label, {
+      exact: true,
+      ignoreDuplicates: true,
+    });
     await super.expectText(radioButtons.questionsClaimantExpert.label);
 
-    const defendantMayAskDate = DateHelper.getToday();
-    const questionsShallBeAnsweredDate = DateHelper.addToToday({ days: 1, workingDay: true });
-    const applicationToRelyDetailsDate = DateHelper.addToToday({ days: 2, workingDay: true });
+    const defendantMayAskDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const questionsShallBeAnsweredDate = DateHelper.addToToday({ days: 2, workingDay: true });
+    const applicationToRelyDetailsDate = DateHelper.addToToday({ days: 3, workingDay: true });
     await super.inputText(
       'defendant may ask questions',
       inputs.questionsClaimantExpert.defendantMayAskText.selector,
@@ -275,8 +278,8 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
       inputs.permissionDefendantRelyExpertEvidence.jointMeetingOfExpertsText.label,
     );
 
-    const permissionToRelyOnExpertDate = DateHelper.getToday();
-    const jointMeetingOfExpertsDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const permissionToRelyOnExpertDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const jointMeetingOfExpertsDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(
       'permission to rely expert evidence',
       inputs.permissionDefendantRelyExpertEvidence.permissionToRelyOnExpertText.selector,
@@ -320,17 +323,21 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectText(inputs.evidenceExpertAcousticEngineer.expertReport.label);
     await super.expectText(inputs.evidenceExpertAcousticEngineer.writtenQuestions.label);
     await super.expectText(inputs.evidenceExpertAcousticEngineer.replies.label1);
-    await super.expectText(inputs.evidenceExpertAcousticEngineer.replies.label2);
+    await super.expectText(inputs.evidenceExpertAcousticEngineer.replies.label2, { exact: true });
     await super.expectText(inputs.evidenceExpertAcousticEngineer.serviceOfOrder.label);
     await super.expectText(paragraphs.paragraph7);
     await super.expectText(paragraphs.paragraph8);
     await super.expectText(paragraphs.paragraph9);
     await super.expectText(paragraphs.paragraph10);
 
-    const instructionOfTheEvidenceDate = DateHelper.getToday();
-    const expertReportDate = DateHelper.addToToday({ days: 1, workingDay: true });
-    const writtenQuestionsDate = DateHelper.addToToday({ days: 2, workingDay: true });
-    const repliesDate = DateHelper.addToToday({ days: 3, workingDay: true });
+    const instructionOfTheEvidenceDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const expertReportDate = DateHelper.addToToday({ days: 2, workingDay: true });
+    const writtenQuestionsDate = DateHelper.addToToday({ days: 3, workingDay: true });
+    const repliesDate = DateHelper.addToToday({ days: 4, workingDay: true });
+    await super.inputText(
+      'party have permission text',
+      inputs.evidenceExpertAcousticEngineer.evidenceAcousticEngineerText.selector,
+    );
     await super.inputText(
       'instructions of the expert',
       inputs.evidenceExpertAcousticEngineer.instructionOfTheEvidence.selector,
@@ -408,11 +415,14 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
 
   async addQuestionsToEntExpert() {
     await super.expectText(inputs.questionsToEntExpert.writtenQuestions.label);
-    await super.expectText(inputs.questionsToEntExpert.questionsShallBeAnswered.label);
+    await super.expectText(inputs.questionsToEntExpert.questionsShallBeAnswered.label, {
+      exact: true,
+      ignoreDuplicates: true,
+    });
     await super.expectText(inputs.questionsToEntExpert.questionsShallBeAnsweredDigitalPortal.label);
 
-    const writtenQuestionsDate = DateHelper.getToday();
-    const questionsShallBeAnsweredDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const writtenQuestionsDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const questionsShallBeAnsweredDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(
       'written questions',
       inputs.questionsToEntExpert.writtenQuestions.selector,
@@ -456,12 +466,12 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
   }
 
   async addScheduleOfLoss() {
-    await super.expectText(inputs.scheduleOfLoss.claimant.label);
-    await super.expectText(inputs.scheduleOfLoss.defendant.label);
-    await super.expectLabel(radioButtons.scheduleOfLoss.label);
+    await super.expectText(inputs.scheduleOfLoss.claimant.label, { exact: true });
+    await super.expectText(inputs.scheduleOfLoss.defendant.label, { exact: true });
+    await super.expectText(radioButtons.scheduleOfLoss.label, { exact: true });
 
-    const claimantDate = DateHelper.getToday();
-    const defendantDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const claimantDate = DateHelper.addToToday({ days: 1, workingDay: true });
+    const defendantDate = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText('claimant', inputs.scheduleOfLoss.claimant.selector);
     await super.inputText('defendant', inputs.scheduleOfLoss.defendant.selector);
     await super.clickBySelector(radioButtons.scheduleOfLoss.yes.selector);
@@ -507,16 +517,16 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectText(radioButtons.trial.trialOnOptions.label);
     await super.expectLabel(radioButtons.trial.trialOnOptions.openDate.label);
     await super.expectLabel(radioButtons.trial.trialOnOptions.trialWindow.label);
-    await super.expectText(inputs.trial.listFrom.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.oneHour.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.oneHourThirtyMins.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.twoHours.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.threeHours.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.fourHours.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.fiveHours.label);
-    await super.expectText(radioButtons.trial.lengthOfTrial.other.label);
+    await super.expectText(inputs.trial.listFrom.label, { ignoreDuplicates: true });
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.oneHour.label);
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.oneHourThirtyMins.label);
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.twoHours.label);
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.threeHours.label);
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.fourHours.label);
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.fiveHours.label, { exact: true });
+    await super.expectLabel(radioButtons.trial.lengthOfTrial.other.label, { exact: true });
     await super.expectText(paragraphs.paragraph11);
-    await super.expectText(radioButtons.trial.hearingLocation.label1);
+    await super.expectText(radioButtons.trial.hearingLocation.label1, { exact: true });
     await super.expectText(radioButtons.trial.hearingLocation.label2);
     await super.expectLabel(radioButtons.trial.hearingLocation.otherLocation.label);
     await super.expectText(radioButtons.trial.methodOfHearing.label);
@@ -528,7 +538,7 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
     await super.expectLabel(radioButtons.trial.physicalTrialBundle.none.label);
     await super.expectLabel(radioButtons.trial.physicalTrialBundle.party.label);
     await super.expectText(inputs.trial.bundleOfDocuments.label);
-    await super.expectText(inputs.trial.hearingNotes.label1);
+    await super.expectText(inputs.trial.hearingNotes.label1, { exact: true });
     await super.expectLabel(inputs.trial.hearingNotes.label2);
 
     await super.clickBySelector(radioButtons.trial.trialOnOptions.trialWindow.selector);
@@ -536,11 +546,11 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
 
     await super.clickBySelector(radioButtons.trial.lengthOfTrial.other.selector);
     await super.expectLabel(inputs.trial.trialLengthDays.label);
-    await super.expectLabel(inputs.trial.trialLengthHours.label);
+    await super.expectLabel(inputs.trial.trialLengthHours.label, { exact: true });
     await super.expectLabel(inputs.trial.trialLengthMinutes.label);
 
-    const listFrom = DateHelper.getToday();
-    const dateTo = DateHelper.addToToday({ days: 1, workingDay: true });
+    const listFrom = DateHelper.addToToday({ days: 1, workingDay: true });
+    const dateTo = DateHelper.addToToday({ days: 2, workingDay: true });
     await super.inputText(DateHelper.getTwoDigitDay(listFrom), inputs.trial.listFrom.day.selector);
     await super.inputText(
       DateHelper.getTwoDigitMonth(listFrom),
@@ -563,7 +573,7 @@ export default class FastTrackInducedHearingLossPage extends ExuiPage(BasePage) 
   }
 
   async addImportantNotes() {
-    const date = DateHelper.getToday();
+    const date = DateHelper.addToToday({ days: 1, workingDay: true });
     await super.inputText('important notes', inputs.importantNotes.importantNotesText.selector);
     await super.inputText(
       DateHelper.getTwoDigitDay(date),

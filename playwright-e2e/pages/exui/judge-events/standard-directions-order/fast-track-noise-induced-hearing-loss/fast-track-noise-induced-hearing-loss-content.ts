@@ -508,15 +508,15 @@ export const inputs = {
       label: 'List from',
       day: {
         label: 'Day',
-        selector: '#listFrom-day',
+        selector: "input[id='listFrom-day'] >> visible=true",
       },
       month: {
         label: 'Month',
-        selector: '#listFrom-month',
+        selector: "input[id='listFrom-month'] >> visible=true",
       },
       year: {
         label: 'Year',
-        selector: '#listFrom-year',
+        selector: "input[id='listFrom-year'] >> visible=true",
       },
     },
     dateTo: {
