@@ -61,7 +61,7 @@ export const inputs = {
       },
       year: {
         label: 'Year',
-        selector: '#dat1-year',
+        selector: '#date1-year',
       },
     },
     date2: {
@@ -288,15 +288,12 @@ export const radioButtons = {
     label: 'Select an option below',
     inPerson: {
       label: 'In Person',
-      selector: '#hearingMethodValuesDisposalHearing_8aa44d97-d2ef-47dd-96b5-28640862932a',
     },
     telephone: {
       label: 'Telephone',
-      selector: '#hearingMethodValuesDisposalHearing_7a9cbf73-6bde-44bf-b5b2-01e4e8b8e438',
     },
     video: {
       label: 'Video',
-      selector: '#hearingMethodValuesDisposalHearing_a37c912c-bd77-4e57-88ca-e93ff0858c28',
     },
   },
 };

@@ -54,7 +54,7 @@ export default class DisposalHearingPage extends ExuiPage(BasePage) {
     );
     await super.inputText(
       'disclosure of documents input 2',
-      inputs.disclosureOfDocuments.input1.selector,
+      inputs.disclosureOfDocuments.input2.selector,
     );
     await super.inputText(
       DateHelper.getTwoDigitDay(date1),
@@ -174,14 +174,14 @@ export default class DisposalHearingPage extends ExuiPage(BasePage) {
   async addHearingTime() {
     await super.expectText(inputs.hearingTime.dateFrom.label);
     await super.expectText(inputs.hearingTime.dateTo.label);
-    await super.expectLabel(radioButtons.hearingTime.label);
-    await super.expectLabel(radioButtons.hearingTime.thirtyMins.label);
-    await super.expectLabel(radioButtons.hearingTime.fifteenMins.label);
-    await super.expectLabel(radioButtons.hearingTime.other.label);
+    await super.expectText(radioButtons.hearingTime.label, { ignoreDuplicates: true });
+    await super.expectText(radioButtons.hearingTime.thirtyMins.label, { ignoreDuplicates: true });
+    await super.expectText(radioButtons.hearingTime.fifteenMins.label, { ignoreDuplicates: true });
+    await super.expectText(radioButtons.hearingTime.other.label, { ignoreDuplicates: true });
 
     await super.clickBySelector(radioButtons.hearingTime.other.selector);
-    await super.expectLabel(inputs.hearingTime.otherHours.label);
-    await super.expectLabel(inputs.hearingTime.otherMinutes.label);
+    await super.expectLabel(inputs.hearingTime.otherHours.label, { exact: true });
+    await super.expectLabel(inputs.hearingTime.otherMinutes.label, { exact: true });
 
     const dateFrom = DateHelper.getToday();
     const dateTo = DateHelper.addToToday({ days: 1, workingDay: true });
@@ -209,13 +209,13 @@ export default class DisposalHearingPage extends ExuiPage(BasePage) {
   }
 
   async addHearingMethod() {
-    await super.expectLabel(radioButtons.hearingMethod.label);
+    await super.expectText(radioButtons.hearingMethod.label);
     await super.expectLabel(radioButtons.hearingMethod.inPerson.label);
     await super.expectLabel(radioButtons.hearingMethod.telephone.label);
     await super.expectLabel(radioButtons.hearingMethod.video.label);
     await super.expectLabel(dropdowns.hearingMethod.label);
 
-    await super.clickBySelector(radioButtons.hearingMethod.telephone.selector);
+    await super.clickByText(radioButtons.hearingMethod.telephone.label);
   }
 
   async addDisposalHearingBundle() {
