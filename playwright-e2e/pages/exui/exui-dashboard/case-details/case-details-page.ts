@@ -109,9 +109,4 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async submit() {
     throw new Error('Method not implemented.');
   }
-
-  async goToUrl() {
-    await super.clickByText('Tasks');
-    await super.clickByText('Directions - Fast Track');
-  }
 }
