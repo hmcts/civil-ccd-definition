@@ -5,7 +5,7 @@
     "CaseFieldID": "taskManagementLocations",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocationIntegrationMintiField",
     "PageDisplayOrder": 99,
     "PageShowCondition": "relistHearingNotice=\"DONOTSHOW\"",
     "Publish": "Y"
