@@ -41,6 +41,7 @@ const cosNotifyClaimDetailsPage = require('./pages/notifyClaimDetails/certificat
 
 const cosNotifyClaimCYAPage = require('./pages/cosNotifyClaimCYA.page');
 const cosTab = require('./pages/cosTab.page');
+const bundlesTab = require('./pages/bundlesTab.page');
 
 
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
@@ -696,6 +697,13 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab('Certificate of Service'),
         () => cosTab.verifyCOSDetails(CLAIMANT_NAME, DEFENDANT1_NAME, DEFENDANT2_NAME)
+      ]);
+    },
+
+    async verifyBundleDetails(caseNumber) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Bundles'),
+        () => bundlesTab.verifyBundleDetails()
       ]);
     },
 
