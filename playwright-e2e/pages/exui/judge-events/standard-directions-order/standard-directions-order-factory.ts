@@ -9,6 +9,7 @@ import OrderPreviewPage from './order-preview/order-preview-page';
 import OrderTypePage from './order-type/order-type-page';
 import SmallClaimsDisputeResolutionPage from './small-claims-dispute-resolution-hearing/small-claims-dispute-resolution-hearing-page';
 import SmallClaimsPage from './small-claims/small-claims-page';
+import StandardDirectionsOrderConfirmPage from './standard-directions-order-confirm/standard-directions-order-confirm-page';
 import StandardDirectionsOrderSubmitPage from './standard-directions-order-submit/standard-directions-order-submit-page';
 
 export default class StandardDirectionOrderPageFactory extends BasePageFactory {
@@ -54,5 +55,9 @@ export default class StandardDirectionOrderPageFactory extends BasePageFactory {
 
   get orderTypePage() {
     return new OrderTypePage(this.page);
+  }
+
+  get standarDirectionsOrderConfirmPage() {
+    return new StandardDirectionsOrderConfirmPage(this.page);
   }
 }
