@@ -11,7 +11,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestHearingNoticeDynamic",
     "UserRoles": [
-      "hearing-schedule-access"
+      "hearing-schedule-access",
+      "caseworker-civil-systemupdate"
     ],
     "CRUD": "CRU"
   },
