@@ -8,27 +8,27 @@ import HowToAddClaimTimelinePage from './lr-spec/how-to-add-claim-timeline/how-t
 import AddTimelineOfEventsPage from './lr-spec/add-timeline-of-events/add-timeline-of-events-page';
 import MediationContactInformationPage from './lr-spec/mediation-contact-info/mediation-contact-info-page';
 import MediationAvailabilityPage from './lr-spec/mediation-availability/mediation-availability-page';
-import useOfExpertsPage from './lr-spec/use-of-experts/use-of-experts-page';
-import WitnessesPage from './lr-spec/witnesses/witnesses-page';
-import WelshLanguagePage from './lr-spec/welsh-language/welsh-language-page';
-import CourtLocationPage from './lr-spec/court-location/court-location-page';
-import SupportWithAccessNeedsPage from './lr-spec/support-with-access-needs/support-with-access-needs-page';
-import VulnerabilityQuestionsPage from './lr-spec/vulnerability-questions/vulnerability-questions-page';
+import useOfExpertsPage from './use-of-experts/use-of-experts-page';
+import WitnessesPage from './witnesses/witnesses-page';
+import WelshLanguagePage from './welsh-language/welsh-language-page';
+import CourtLocationPage from './court-location/court-location-page';
+import SupportWithAccessNeedsPage from './support-with-access-needs/support-with-access-needs-page';
+import VulnerabilityQuestionsPage from './vulnerability-questions/vulnerability-questions-page';
 import WhyDoesDefendantDisputeClaimPage from './lr-spec/why-does-defendant-dispute-claim/why-does-defendant-dispute-claim-page';
 import MediationPage from './lr-spec/mediation/mediation-page';
-import HearingAvailabilityPage from './lr-spec/hearing-availability/hearing-availability-page';
-import StatementOfTruthPage from './lr-spec/statement-of-truth/statement-of-truth-page';
-import FileDirectionsQuestionnairePage from './lr-spec/file-directions-questionnaire/file-directions-questionnaire-page';
-import FixedRecoverableCostsPage from './lr-spec/fixed-recoverable-costs/fixed-recoverable-costs-page';
+import HearingAvailabilityPage from './hearing-availability/hearing-availability-page';
+import StatementOfTruthPage from './statement-of-truth/statement-of-truth-page';
+import FileDirectionsQuestionnairePage from './file-directions-questionnaire/file-directions-questionnaire-page';
+import FixedRecoverableCostsPage from './fixed-recoverable-costs/fixed-recoverable-costs-page';
 import DisclosureOfElectronicDocumentsPage from './lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
-import DisclosureOfNonElectronicDocumentsPage from './lr-spec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
+import DisclosureOfNonElectronicDocumentsPage from './disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
 import DisclosureReportPage from './lr-spec/disclosure-report/disclosure-report-page';
 import ApplicationPage from './lr-spec/application/application-page';
-import IntendToFileSingleResponsePage from './lr-spec/intend-to-file-single-response/intend-to-file-single-response-page';
-import SolicitorReferencesPage from './lr-spec/solicitor-references/solicitor-references-page';
-import UploadDefencePage from './lr-spec/upload-defence/upload-defence-page';
-import UploadDraftDirectionsPage from './lr-spec/upload-draft-directions/upload-draft-directions-page';
-import FurtherInformationPage from './lr-spec/further-information/further-information-page';
+import IntendToFileSingleResponsePage from './intend-to-file-single-response/intend-to-file-single-response-page';
+import SolicitorReferencesPage from './solicitor-references/solicitor-references-page';
+import UploadDefencePage from './upload-defence/upload-defence-page';
+import UploadDraftDirectionsPage from './upload-draft-directions/upload-draft-directions-page';
+import FurtherInformationPage from './further-information/further-information-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get checkIfYouNeedToCompleteClaimTimelinePage() {

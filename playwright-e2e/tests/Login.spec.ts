@@ -71,12 +71,18 @@ test(
 
     const { useOfExpertPage } = _defendantResponsePageFactory;
     await useOfExpertPage.verifyContent(ccdCaseData);
-    await useOfExpertPage.selectNoFastTrack(1);
+    await useOfExpertPage.selectYesFastTrack(1);
+    await useOfExpertPage.selectYesSentExpertReportsFastTrack1v2(1);
+    await useOfExpertPage.selectYesSuitableForJointExpertFastTrack1v2(1);
+    await useOfExpertPage.addExpert(1);
+    await useOfExpertPage.enterExpertDetails1v2(1, 0);
     await useOfExpertPage.submit();
 
     const { witnessesPage } = _defendantResponsePageFactory;
     await witnessesPage.verifyContent(ccdCaseData);
-    await witnessesPage.selectNoUnpecAndFastTrack1v2(1);
+    await witnessesPage.selectYesUnspecAndFastTrack1v2(1);
+    await witnessesPage.addWitnesses(1);
+    await witnessesPage.enterWitnessDetails(1, 0);
     await witnessesPage.submit();
 
     const { welshLanguagePage } = _defendantResponsePageFactory;
@@ -87,7 +93,10 @@ test(
 
     const { hearingAvailabilityPage } = _defendantResponsePageFactory;
     await hearingAvailabilityPage.verifyContent(ccdCaseData);
-    await hearingAvailabilityPage.selectNoAvailabilityUnspecandSpec2v1(1);
+    await hearingAvailabilityPage.selectYesAvailabilityUnspecandSpec2v1(1);
+    await hearingAvailabilityPage.addNew(1);
+    await hearingAvailabilityPage.selectSingleDate(1, 0);
+    await hearingAvailabilityPage.inputSingleDate();
     await hearingAvailabilityPage.submit();
 
     const { uploadDraftDirectionsPage } = _defendantResponsePageFactory;
