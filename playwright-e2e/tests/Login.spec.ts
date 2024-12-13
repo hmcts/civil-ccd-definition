@@ -20,10 +20,10 @@ test(
     await ExuiDashboardSteps.GoToCaseList();
 
     const { ccdRequests } = _requestsFactory;
-    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734017218958853);
+    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734098288558534);
 
     const { caseDetailsPage } = _exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(1734017218958853);
+    await caseDetailsPage.goToCaseDetails(1734098288558534);
     await caseDetailsPage.verifyContent(ccdCaseData);
     await caseDetailsPage.retryChooseNextStep(ccdEvents.DEFAULT_JUDGEMENT);
 
