@@ -32,8 +32,7 @@
     "PageID": "ListHearingNotice",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y",
-    "Publish": "Y"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
