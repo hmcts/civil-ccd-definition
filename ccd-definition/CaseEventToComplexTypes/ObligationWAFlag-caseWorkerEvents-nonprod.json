@@ -7,7 +7,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "unlessOrder=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "unlessOrder=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -17,7 +18,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "stayACase=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "stayACase=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -27,7 +29,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "liftAStay=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "liftAStay=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -37,7 +40,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "dismissCase=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "dismissCase=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -47,7 +51,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 5,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "preTrialChecklist=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "preTrialChecklist=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -57,7 +62,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "generalOrder=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "generalOrder=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -67,7 +73,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "reserveJudgment=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "reserveJudgment=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -77,7 +84,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 8,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "other=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "other=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -87,7 +95,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 9,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "obligationReason=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "obligationReason=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -97,7 +106,8 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 10,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "obligationReasonDisplayValue=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "obligationReasonDisplayValue=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   },
   {
     "ID": "ObligationWAFlag",
@@ -107,6 +117,7 @@
     "EventElementLabel": " ",
     "FieldDisplayOrder": 11,
     "DisplayContext": "OPTIONAL",
-    "FieldShowCondition": "currentDate=\"DO_NOT_SHOW_IN_UI\""
+    "FieldShowCondition": "currentDate=\"DO_NOT_SHOW_IN_UI\"",
+    "Publish": "Y"
   }
 ]
