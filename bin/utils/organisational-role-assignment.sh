@@ -17,7 +17,6 @@ ROLE_ATTRIBUTES="${5:-'{"jurisdiction":"IA"}'}"
 ROLE_CATEGORY="${6:-"LEGAL_OPERATIONS"}"
 
 BASEDIR=$(dirname "$0")
-echo "/n/n username ${USERNAME} ${PASSWORD} "
 
 USER_TOKEN=$($BASEDIR/idam-user-token.sh $USERNAME $PASSWORD)
 USER_ID=$($BASEDIR/idam-user-id.sh $USER_TOKEN)
