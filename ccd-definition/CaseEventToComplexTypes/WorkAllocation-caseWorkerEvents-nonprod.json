@@ -1,6 +1,6 @@
 [
   {
-    "ID": "RespondentLiPResponse",
+    "ID": "SendMessageMetadata",
     "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "lastMessage",
     "ListElementCode": "recipientRoleType",
