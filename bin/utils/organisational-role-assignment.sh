@@ -13,7 +13,7 @@ USERNAME=${1:-ccd-import@fake.hmcts.net}
 PASSWORD=${2:-London01}
 ROLE_CLASSIFICATION="${3:-PUBLIC}"
 ROLE_NAME="${4:-"tribunal-caseworker"}"
-ROLE_ATTRIBUTES="${5:-'{"jurisdiction":"IA"}'}"
+ROLE_ATTRIBUTES="${5:-'{"jurisdiction":"CIVIL"}'}"
 ROLE_CATEGORY="${6:-"LEGAL_OPERATIONS"}"
 
 BASEDIR=$(dirname "$0")
