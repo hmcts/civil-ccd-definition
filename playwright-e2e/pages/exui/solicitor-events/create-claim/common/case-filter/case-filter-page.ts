@@ -1,11 +1,11 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ccdEvents from '../../../../../../fixtures/ccd-events/events';
-import ExuiEvent from '../../../../exui-event/exui-event';
+import ExuiPage from '../../../../exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
 
 @AllMethodsStep()
-export default class CaseFilterPage extends ExuiEvent(BasePage) {
+export default class CaseFilterPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectLabel(dropdowns.jurisdiction.label),
