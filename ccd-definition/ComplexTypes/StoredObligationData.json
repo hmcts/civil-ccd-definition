@@ -29,7 +29,7 @@
     "ElementLabel": "Reason",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ObligationReason",
-    "FieldShowCondition": "reasonText = \"*\"",
+    "FieldShowCondition": "reasonText != \" \"",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -39,7 +39,7 @@
     "FieldType": "Text",
     "ElementLabel": "Info for other",
     "SecurityClassification": "Public",
-    "FieldShowCondition": "reasonText = \"*\"",
+    "FieldShowCondition": "reasonText != \" \"",
     "Searchable": "N"
   },
   {
