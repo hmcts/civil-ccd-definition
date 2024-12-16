@@ -10,7 +10,7 @@
   {
     "ID": "StoredObligationData",
     "ListElementCode": "createdOn",
-    "FieldType": "Date",
+    "FieldType": "DateTime",
     "ElementLabel": "Created on",
     "SecurityClassification": "Public",
     "Searchable": "N"
