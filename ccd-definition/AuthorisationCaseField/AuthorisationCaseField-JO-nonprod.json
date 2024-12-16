@@ -421,7 +421,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIsTakenOffline",
+    "CaseFieldID": "isTakenOfflineAfterJBA",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],
