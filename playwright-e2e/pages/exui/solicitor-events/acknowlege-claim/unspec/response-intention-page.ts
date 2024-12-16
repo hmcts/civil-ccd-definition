@@ -10,16 +10,16 @@ export default class ResponseIntensionPage extends ExuiPage(BasePage) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async selectDefendAllClaim() {
-    await super.clickBySelector(intensionRadioButtons.defendsAll.selector);
+  async selectDefendAllClaim(defendantNumber: number) {
+    await super.clickBySelector(intensionRadioButtons(defendantNumber).defendsAll.selector);
   }
 
-  async selectDefendPartClaim() {
-    await super.clickBySelector(intensionRadioButtons.defendsPart.selector);
+  async selectDefendPartClaim(defendantNumber: number) {
+    await super.clickBySelector(intensionRadioButtons(defendantNumber).defendsPart.selector);
   }
 
-  async selectContestJurisdiction() {
-    await super.clickBySelector(intensionRadioButtons.contests.selector);
+  async selectContestJurisdiction(defendantNumber: number) {
+    await super.clickBySelector(intensionRadioButtons(defendantNumber).contests.selector);
   }
 
   async submit() {

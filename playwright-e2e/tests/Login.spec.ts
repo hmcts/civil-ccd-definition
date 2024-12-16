@@ -21,21 +21,23 @@ test(
     await ExuiDashboardSteps.GoToCaseList();
 
     const { ccdRequests } = _requestsFactory;
-    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734100864400154);
+    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734364145752763);
 
     const { caseDetailsPage } = _exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(1734100864400154);
+    await caseDetailsPage.goToCaseDetails(1734364145752763);
     await caseDetailsPage.verifyContent(ccdCaseData);
     await caseDetailsPage.retryChooseNextStep(ccdEvents.ACKNOWLEDGE_CLAIM);
 
     const { confirmNameAndAddressPage } = _acknowledgeClaimPageFactory;
     await confirmNameAndAddressPage.verifyContent(ccdCaseData);
     await confirmNameAndAddressPage.enterDob(1, 1, 1990);
+    await confirmNameAndAddressPage.enterDob(1, 1, 1990);
     await confirmNameAndAddressPage.submit();
 
     const { responseIntensionPage } = _acknowledgeClaimPageFactory;
     await responseIntensionPage.verifyContent(ccdCaseData);
-    await responseIntensionPage.selectDefendAllClaim();
+    await responseIntensionPage.selectDefendAllClaim(1);
+    await responseIntensionPage.selectDefendAllClaim(2);
     await responseIntensionPage.submit();
 
     const { solicitorReferencesPage } = _acknowledgeClaimPageFactory;
