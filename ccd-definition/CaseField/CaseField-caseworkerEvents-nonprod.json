@@ -119,6 +119,15 @@
     "Label": "Obligation date",
     "FieldType": "Collection",
     "FieldTypeParameter": "StoredObligationData",
+    "FieldTypeParameter": "ObligationDataCollection",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isFinalOrder",
+    "Label": "Is this a final order?",
+    "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
