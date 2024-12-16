@@ -60,6 +60,7 @@ civil-service:
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
+      ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
@@ -124,7 +125,11 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
       SERVICES_TRANSLATION_API_URL: http://${SERVICE_NAME}-translation-service
+      SERVICES_ROLE_ASSIGNMENT_API: https://am-role-assignment-${SERVICE_FQDN}
 ccd:
+  ccd:
+    ras:
+      enabled: true
   global:
     postgresUsername: hmcts
     postgresPassword: ${POSTGRES_PASSWORD}
@@ -145,12 +150,28 @@ ccd:
         DATA_STORE_DEFAULT_LOG_LEVEL: WARN
         CASE_DATA_ISSUE_LOG_LEVEL: WARN
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
         DATA_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
           key: PASSWORD
           disabled: true
+  am-role-assignment-service:
+    java:
+      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
+      imagePullPolicy: Always
+      image: hmctspublic.azurecr.io/am/role-assignment-service:latest
+      ingressHost: am-role-assignment-${SERVICE_FQDN}
+      environment:
+        RELEASE_REVISION: "{{ .Release.Revision }}"
+        ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
+      keyVaults:
+        am:
+          secrets:
+            - name: role-assignment-service-LD-SDK-KEY
+              alias: LD_SDK_KEY
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
