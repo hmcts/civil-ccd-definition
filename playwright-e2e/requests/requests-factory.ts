@@ -1,5 +1,6 @@
 import BaseRequestsFactory from '../base/base-requests-factory';
 import CCDRequests from './ccd-requests';
+import CivilServiceRequests from './civil-service-requests';
 import GovUKRequests from './gov-uk-requests';
 import IdamRequests from './idam-requests';
 
@@ -14,5 +15,9 @@ export default class RequestsFactory extends BaseRequestsFactory {
 
   get govUKRequests() {
     return new GovUKRequests(this.requestContext);
+  }
+
+  get civilServiceRequests() {
+    return new CivilServiceRequests(this.requestContext);
   }
 }
