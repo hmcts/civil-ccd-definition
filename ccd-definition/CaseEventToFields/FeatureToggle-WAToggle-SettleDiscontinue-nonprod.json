@@ -54,7 +54,7 @@
     "PageDisplayOrder":99,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "RespondentResponse",
+    "PageID": "WorkAllocationIntegrationFields",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -66,6 +66,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]
