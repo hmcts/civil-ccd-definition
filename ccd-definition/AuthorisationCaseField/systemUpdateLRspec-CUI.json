@@ -97,6 +97,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "ccjPaymentPaidSomeLabelInsetHelpText",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeAmount",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
