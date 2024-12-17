@@ -63,7 +63,7 @@
     "CaseEventID": "LIP_CLAIM_SETTLED",
     "CaseFieldID": "hearingDate",
     "PageDisplayOrder": 99,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"
