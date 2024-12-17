@@ -6,7 +6,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "defendantDetailsSpec",
     "TabFieldDisplayOrder": 13,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -24,7 +24,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentSummaryLabel",
     "TabFieldDisplayOrder": 15,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -33,7 +33,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "paymentTypeSelection",
     "TabFieldDisplayOrder": 16,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -42,7 +42,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "paymentSetDate",
     "TabFieldDisplayOrder": 17,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -51,7 +51,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentSuggestion",
     "TabFieldDisplayOrder": 18,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -60,7 +60,7 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentFrequency",
     "TabFieldDisplayOrder": 19,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -69,6 +69,6 @@
     "TabDisplayOrder": 9,
     "CaseFieldID": "repaymentDate",
     "TabFieldDisplayOrder": 20,
-    "FieldShowCondition": "joIsLiveJudgmentExists= \"No\" AND joIsDisplayInJudgmentTab= \"Yes\""
+    "FieldShowCondition": "joIsLiveJudgmentExists != \"Yes\""
   }
 ]

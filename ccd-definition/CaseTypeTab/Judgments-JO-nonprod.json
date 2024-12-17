@@ -7,7 +7,7 @@
     "CaseFieldID": "joIsLiveJudgmentExists",
     "TabFieldDisplayOrder": 1,
     "FieldShowCondition": "joIsLiveJudgmentExists = \"DO_NOT_SHOW_IN_UI\"",
-    "TabShowCondition": "joIsLiveJudgmentExists = \"Yes\" OR (joIsLiveJudgmentExists = \"No\" AND paymentTypeSelection = \"*\" AND joIsDisplayInJudgmentTab= \"Yes\")"
+    "TabShowCondition": "joIsLiveJudgmentExists = \"Yes\" OR (joIsLiveJudgmentExists != \"Yes\" AND joIsLiveJudgmentExists != \"No\" AND paymentTypeSelection = \"*\")"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
