@@ -40,6 +40,7 @@ type CCDEvents = {
   MANAGE_CONTACT_INFORMATION: CCDEvent;
   MANAGE_DOCUMENTS: CCDEvent;
   RESET_PIN: CCDEvent;
+  MANAGE_CASE_FLAGS: CCDEvent;
 };
 
 export default CCDEvents;

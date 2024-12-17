@@ -204,6 +204,12 @@ const ccdEvents: CCDEvents = {
     description: 'Reset Pin for case',
     order: 7,
   },
+  MANAGE_CASE_FLAGS: {
+    id: 'MANAGE_CASE_FLAGS',
+    name: 'Manage case flags',
+    description: 'Manage case flags',
+    order: 7,
+  },
 };
 
 export default ccdEvents;
