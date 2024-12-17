@@ -15,4 +15,16 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
   get solicitorReferencesPage() {
     return new SolicitorReferencesPage(this.page);
   }
+
+  get confirmNameAndAddressPage2() {
+    return new ConfirmNameAndAddressPage(this.page);
+  }
+
+  get responseIntensionPage2() {
+    return new ResponseIntensionPage(this.page);
+  }
+
+  get solicitorReferencesPage2() {
+    return new SolicitorReferencesPage(this.page);
+  }
 }

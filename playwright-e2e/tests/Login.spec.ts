@@ -21,10 +21,10 @@ test(
     await ExuiDashboardSteps.GoToCaseList();
 
     const { ccdRequests } = _requestsFactory;
-    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734366019878012);
+    const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734434564449116);
 
     const { caseDetailsPage } = _exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(1734366019878012);
+    await caseDetailsPage.goToCaseDetails(1734434564449116);
     await caseDetailsPage.verifyContent(ccdCaseData);
     await caseDetailsPage.retryChooseNextStep(ccdEvents.ACKNOWLEDGE_CLAIM);
 
@@ -36,12 +36,32 @@ test(
     const { responseIntensionPage } = _acknowledgeClaimPageFactory;
     await responseIntensionPage.verifyContent(ccdCaseData);
     await responseIntensionPage.selectDefendAllClaim(1);
-    await responseIntensionPage.selectDefendAllClaim2v1();
     await responseIntensionPage.submit();
 
     const { solicitorReferencesPage } = _acknowledgeClaimPageFactory;
     await solicitorReferencesPage.verifyContent(ccdCaseData);
     await solicitorReferencesPage.fillInput();
     await solicitorReferencesPage.submit();
+
+    await IdamSteps.DefendantSolicitor2Login();
+    await ExuiDashboardSteps.GoToCaseList();
+    await caseDetailsPage.goToCaseDetails(1734434564449116);
+    await caseDetailsPage.verifyContent(ccdCaseData);
+    await caseDetailsPage.retryChooseNextStep(ccdEvents.ACKNOWLEDGE_CLAIM);
+
+    const { confirmNameAndAddressPage2 } = _acknowledgeClaimPageFactory;
+    await confirmNameAndAddressPage2.verifyContent(ccdCaseData);
+    await confirmNameAndAddressPage2.enterDob(1, 1, 1990);
+    await confirmNameAndAddressPage2.submit();
+
+    const { responseIntensionPage2 } = _acknowledgeClaimPageFactory;
+    await responseIntensionPage2.verifyContent(ccdCaseData);
+    await responseIntensionPage2.selectDefendAllClaim(2);
+    await responseIntensionPage2.submit();
+
+    const { solicitorReferencesPage2 } = _acknowledgeClaimPageFactory;
+    await solicitorReferencesPage2.verifyContent(ccdCaseData);
+    await solicitorReferencesPage2.fillInputResp2();
+    await solicitorReferencesPage2.submit();
   },
 );
