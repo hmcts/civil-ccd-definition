@@ -87,7 +87,7 @@ Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', 'MULTI_CLAIM');
   await api.stayCase(config.hearingCenterAdminWithRegionId1);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, true);
-  await api.manageStay(config.hearingCenterAdminWithRegionId1, false);
+  await api.manageStay(config.hearingCenterAdminWithRegionId1, false, true);
   await api.createSDO(config.judgeUserWithRegionId1);
   await api.dismissCase(config.hearingCenterAdminWithRegionId1);
 });

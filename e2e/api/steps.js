@@ -1426,7 +1426,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  manageStay: async (user, requestUpdate) => {
+  manageStay: async (user, requestUpdate, isJudicialReferral) => {
     console.log('Manage Stay for case id ' + caseId);
     await apiRequest.setupTokens(user);
     eventName = 'MANAGE_STAY';
@@ -1451,10 +1451,17 @@ module.exports = {
         body: '&nbsp;'
       }, true);
     } else {
-      await assertSubmittedEvent('CASE_PROGRESSION', {
-        header: header,
-        body: '&nbsp;'
-      }, true);
+      if (isJudicialReferral) {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
     }
 
 
