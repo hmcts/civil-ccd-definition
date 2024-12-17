@@ -180,10 +180,10 @@ am-org-role-mapping-service:
       LAUNCH_DARKLY_ENV: pr
       AMQP_SHARED_ACCESS_KEY_NAME: RootManageSharedAccessKey
       AMQP_HOST: "civil-sb-preview.servicebus.windows.net"
-      CRD_SUBSCRIPTION_NAME: "{{ .Release.Name}}-crd-topic"
-      JRD_SUBSCRIPTION_NAME: "{{ .Release.Name}}-jrd-topic"
-      CRD_TOPIC_NAME: "{{ .Release.Name}}-crd-topic"
-      JRD_TOPIC_NAME: "{{ .Release.Name}}-jrd-topic"
+      CRD_SUBSCRIPTION_NAME: "{{ .Release.Name}}-asb-crd-topic"
+      JRD_SUBSCRIPTION_NAME: "{{ .Release.Name}}-asb-jrd-topic"
+      CRD_TOPIC_NAME: "{{ .Release.Name}}-asb-crd-topic"
+      JRD_TOPIC_NAME: "{{ .Release.Name}}-asb-jrd-topic"
       AMQP_CRD_SHARED_ACCESS_KEY_VALUE: "$(SB_ACCESS_KEY)"
       AMQP_JRD_SHARED_ACCESS_KEY_VALUE: "$(SB_ACCESS_KEY)"
       ORG_ROLE_MAPPING_DB_HOST: "{{ .Release.Name }}-postgresql"
@@ -201,3 +201,4 @@ xui-webapp:
   nodejs:
     environment:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
+      SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
