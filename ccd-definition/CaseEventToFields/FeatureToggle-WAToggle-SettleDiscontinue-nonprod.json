@@ -51,7 +51,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "LIP_CLAIM_SETTLED",
     "CaseFieldID": "featureToggleWA",
-    "PageDisplayOrder":99,
+    "PageDisplayOrder": 99,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
