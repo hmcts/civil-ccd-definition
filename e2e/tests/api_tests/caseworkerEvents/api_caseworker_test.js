@@ -79,6 +79,8 @@ const claimAmountMulti = '200001';
 
 Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
+  const judgeUser = config.judgeUserWithRegionId1;
+  const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -88,6 +90,7 @@ Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   await api.stayCase(config.hearingCenterAdminWithRegionId1);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, true);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, false, true);
-  await api.createSDO(config.judgeUserWithRegionId1);
+  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await api.dismissCase(config.hearingCenterAdminWithRegionId1);
 });
