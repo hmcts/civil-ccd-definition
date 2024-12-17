@@ -2,11 +2,11 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CertificateOfServiceSubmitFragment from '../../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 
 @AllMethodsStep()
-export default class NotifyClaimCOSSubmitPage extends ExuiEvent(BasePage) {
+export default class NotifyClaimCOSSubmitPage extends ExuiPage(BasePage) {
   private certificateOfServiceSubmitFragment: CertificateOfServiceSubmitFragment;
 
   constructor(certificateOfServiceSubmitFragment: CertificateOfServiceSubmitFragment, page: Page) {
