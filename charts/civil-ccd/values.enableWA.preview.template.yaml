@@ -60,8 +60,6 @@ wa:
 
   wa-task-management-api:
     java:
-      image: 'hmctspublic.azurecr.io/wa/task-management-api:pr-1364'
-      imagePullPolicy: Always
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
