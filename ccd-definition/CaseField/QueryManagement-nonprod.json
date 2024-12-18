@@ -11,32 +11,32 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "qmApplicantSolicitorQueries",
     "FieldType": "CaseQueriesCollection",
-    "CaseFieldID": "qmApplicantSolicitorQueries",
     "CRUD": "CRUD",
     "Searchable": "N"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "qmApplicantSolicitorQueries",
     "FieldType": "CaseQueriesCollection",
-    "CaseFieldID": "qmApplicantSolicitorQueries",
     "CRUD": "CRUD",
     "Searchable": "N"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "qmRespondentSolicitor1Queries",
     "FieldType": "CaseQueriesCollection",
-    "CaseFieldID": "qmRespondentSolicitor1Queries",
     "CRUD": "CRUD",
     "Searchable": "N"
   },
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "qmRespondentSolicitor2Queries",
     "FieldType": "CaseQueriesCollection",
-    "CaseFieldID": "qmRespondentSolicitor2Queries",
     "CRUD": "CRUD",
     "Searchable": "N"
   }
