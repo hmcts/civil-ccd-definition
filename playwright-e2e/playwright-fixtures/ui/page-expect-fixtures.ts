@@ -227,6 +227,45 @@ export const expect = baseExpect
         name: assertionName,
         actual: matcherResult?.actual
       };
+    },
+    async allToBeHidden(locator: Locator, options?: { timeout?: number }) {
+      const assertionName = 'allToBeHidden';
+      let pass: boolean;
+      let matcherResult: any;
+      let locatorCount: number;
+      let failureCount = 0;
+
+      try {
+        locatorCount = await locator.count();
+        const promises = [];
+        for (let i = 0; i < locatorCount; i++) {
+          promises.push(baseExpect(locator.nth(i)).toBeHidden({ timeout: options.timeout }));
+        }
+        const results = await Promise.allSettled(promises);
+        results.forEach((result) => {
+          if (result.status === 'rejected') failureCount++;
+        });
+        if (failureCount) {
+          const firstResult = results.find((result) => (result.status = 'rejected')) as any;
+          throw firstResult.reason;
+        }
+        pass = true;
+      } catch (error) {
+        pass = false;
+        matcherResult = error.matcherResult;
+      }
+      const message = pass
+        ? () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) + '\n\n' + `Locator: ${locator}\n` + `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` + (matcherResult ? `Received: ${locatorCount} locator(s) and ${failureCount} were visible` : '')
+        : () =>
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) + '\n\n' + `Locator: ${locator}\n` + `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` + (matcherResult ? `Received: ${locatorCount} locator(s) and ${failureCount} were visible` : '');
+
+      return {
+        message,
+        pass,
+        name: assertionName,
+        actual: matcherResult?.actual
+      };
     }
   })
   .configure({ soft: config.playwright.softExpect });

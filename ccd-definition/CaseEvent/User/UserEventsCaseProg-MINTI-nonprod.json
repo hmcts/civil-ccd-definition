@@ -114,7 +114,8 @@
     "ShowEventNotes": "N",
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
    },
    {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
