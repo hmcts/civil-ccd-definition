@@ -51,10 +51,10 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "LIP_CLAIM_SETTLED",
     "CaseFieldID": "featureToggleWA",
-    "PageDisplayOrder": 99,
+    "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
@@ -62,10 +62,10 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "LIP_CLAIM_SETTLED",
     "CaseFieldID": "hearingDate",
-    "PageDisplayOrder": 99,
-    "PageFieldDisplayOrder": 2,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
