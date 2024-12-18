@@ -13,6 +13,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "qmApplicantSolicitorQueries",
     "FieldType": "CaseQueriesCollection",
+    "Label": " ",
     "CRUD": "CRUD",
     "Searchable": "N"
   },
@@ -21,6 +22,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "qmRespondentSolicitor1Queries",
     "FieldType": "CaseQueriesCollection",
+    "Label": " ",
     "CRUD": "CRUD",
     "Searchable": "N"
   },
@@ -29,6 +31,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "qmRespondentSolicitor2Queries",
     "FieldType": "CaseQueriesCollection",
+    "Label": " ",
     "CRUD": "CRUD",
     "Searchable": "N"
   }
