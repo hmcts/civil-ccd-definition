@@ -2,8 +2,8 @@
   {
     "ID": "InterestClaimUntil",
     "ListElementCode": "UNTIL_CLAIM_SUBMIT_DATE",
-    "ListElement": "When you submit the claim. \nIf you submit after 4pm it will be next working day.",
-    "HintText": "If you submit after 4pm it will be next working day.",
+    "ListElement": "When you submit the claim.",
+    "HintText": "When you submit the claim.",
     "DisplayOrder": 1
   },
   {
