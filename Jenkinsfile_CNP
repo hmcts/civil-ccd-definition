@@ -1,5 +1,34 @@
 #!groovy
 
+properties([
+  parameters([
+    string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '2', description: 'Number of times playwright will retry tests'),
+    string(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', defaultValue: 'false', description: 'Runs accessibility tests for playwright during test execution'),
+    string(name: 'PLAYWRIGHT_RUN_SETUP', defaultValue: 'true', description: 'Runs setup projects before functional test suite'),
+    string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
+      description: 'The URL you want to run the full functional tests against'),
+      string(name: 'IDAM_WEB_URL', defaultValue: 'https://idam-web.aat.platform.hmcts.net', description: 'The URL of idam web'),
+    string(name: 'IDAM_API_URL', defaultValue: 'https://idam-api.aat.platform.hmcts.net',
+      description: 'The URL of idam api'),
+    string(name: 'DM_STORE_URL', defaultValue: 'http://dm-store-aat.service.core-compute-aat.internal',
+      description: 'The URL of dm store'),
+    string(name: 'SERVICE_AUTH_PROVIDER_API_BASE_URL', defaultValue: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+      description: 'The URL of service auth provider'),
+    string(name: 'CCD_DATA_STORE_URL', defaultValue: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+      description: 'The URL of ccd data store'),
+    string(name: 'CIVIL_SERVICE_URL', defaultValue: 'http://civil-service-aat.service.core-compute-aat.internal',
+      description: 'The URL of civil service'),
+    string(name: 'WAIT_FOR_TIMEOUT_MS',
+      defaultValue: '120000',
+      description: 'Functional tests waitForTimeout value'),
+    string(name: 'SECURITY_RULES',
+      defaultValue: 'https://raw.githubusercontent.com/hmcts/security-test-rules/master/conf/security-rules.conf',
+      description: 'The security rules to use')
+  ])
+])
+
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.GithubAPI
 
@@ -57,6 +86,18 @@ def secrets = [
     secret('system-update-user-password', 'SYSTEM_USER_PASSWORD')
   ]
 ]
+
+void publishBootstrapReport() {
+    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-report"
+    publishHTML([
+            allowMissing: true,
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'playwright-allure-bootstrap-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright Allure Bootstrap Report'
+        ])
+  }
 
 def checkForEnableEmailNotifications(branch_name) {
   return checkForPrValuesLabel(branch_name, "enableNotifyEmails")
@@ -283,5 +324,57 @@ withPipeline(type, product, component) {
   afterAlways('functionalTest:aat') {
     createGithubRelease()
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+  }
+
+  afterAlways('functionalTest:preview') {
+    env.ENVIRONMENT=params.ENVIRONMENT
+    env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
+    env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
+    env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
+    env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
+    env.PLAYWRIGHT_UNASSIGN_CASES = true
+    env.URL=params.FRONTEND_URL
+    env.DM_STORE_URL=params.DM_STORE_URL
+    env.IDAM_WEB_URL=params.IDAM_WEB_URL
+    env.IDAM_API_URL=params.IDAM_API_URL
+    env.SERVICE_AUTH_PROVIDER_API_BASE_URL = params.SERVICE_AUTH_PROVIDER_API_BASE_URL
+    env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
+    env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
+    env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
+    env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
+    env.CCD_UI_TESTS = true
+    stage('Playwright test setup') {
+      try {
+        yarnBuilder.yarn('test:playwright-setup:install')
+        if(env.PLAYWRIGHT_RUN_SETUP) {
+          yarnBuilder.yarn('test:playwright-e2e-setup:ci')
+        }
+      } catch (Exception error) {
+        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+          flowInterrupted = true
+        }
+        if(env.PLAYWRIGHT_RUN_SETUP) {
+          playwrightSetupPassed=false
+        }
+        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+      } finally {
+        if(env.PLAYWRIGHT_RUN_SETUP) {
+          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+        }
+      }
+    }
+
+    if(env.PLAYWRIGHT_RUN_SETUP) {
+      stage('Playwright test teardown') {
+        try {
+          yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
+        } catch (Exception error) {
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+          publishBootstrapReport()
+        }
+      }
+    }
   }
 }
