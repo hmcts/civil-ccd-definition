@@ -3,113 +3,25 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "circuit-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "hmcts-judiciary",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "fee-paid-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "leadership-judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "judge",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "hmcts-admin",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "hmcts-legal-operations",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "hmcts-ctsc",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "hmcts-staff",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "ctsc-team-leader",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "ctsc",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "nbc-team-leader",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "APPLICANTSOLICITORONE",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "RESPONDENTSOLICITORONE",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "RESPONDENTSOLICITORTWO",
-    "CRUD": "CRUD"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "caseworker-civil",
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "judge-profile",
+          "GS_profile",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
@@ -122,8 +34,19 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmApplicantSolicitorQueries",
-    "UserRole": "APPLICANTSOLICITORONE",
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
@@ -136,8 +59,19 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor1Queries",
-    "UserRole": "RESPONDENTSOLICITORONE",
-    "CRUD": "CRUD"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
@@ -150,8 +84,19 @@
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor2Queries",
-    "UserRole": "RESPONDENTSOLICITORTWO",
-    "CRUD": "CRUD"
+   "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   },
   {
     "LiveFrom": "01/01/2017",
