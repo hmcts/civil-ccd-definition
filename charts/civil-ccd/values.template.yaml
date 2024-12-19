@@ -4,6 +4,9 @@ civil-ccd-stack:
 civil-translation:
   enabled: false
 
+am-org-role-mapping-service:
+  enabled: false
+  
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
