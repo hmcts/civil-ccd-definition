@@ -1130,7 +1130,7 @@
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       }
     ]
   }
