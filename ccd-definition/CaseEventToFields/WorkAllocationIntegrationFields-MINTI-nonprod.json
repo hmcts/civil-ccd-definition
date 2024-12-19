@@ -19,5 +19,16 @@
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
+  },
+    {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
+    "CaseFieldID": "taskManagementLocations",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationMintiField",
+    "PageDisplayOrder": 99,
+    "PageShowCondition": "relistHearingNotice=\"DONOTSHOW\"",
+    "Publish": "Y"
   }
 ]
