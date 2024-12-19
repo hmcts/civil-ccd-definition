@@ -88,7 +88,7 @@ def secrets = [
 ]
 
 void publishBootstrapReport() {
-    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-report"
+    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-results/history"
     publishHTML([
             allowMissing: true,
             alwaysLinkToLastBuild: true,
