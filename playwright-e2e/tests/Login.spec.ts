@@ -1,41 +1,39 @@
-import { civilAdminUser } from '../config/users/exui-users';
+import { hearingCenterAdminRegion1User } from '../config/users/exui-users';
 import ccdEvents from '../fixtures/ccd-events/events';
 import { test } from '../playwright-fixtures/index';
 
-test('Testing Login', async ({
-  IdamSteps,
-  ExuiDashboardSteps,
-  ApiUserSteps,
-  ApiDataSteps,
-  _requestsFactory,
-  _exuiDashboardPageFactory,
-  _notifyClaimPageFactory,
-}) => {
-  // await ApiUserSteps.SetupUserData(civilAdminUser);
-  // await ApiDataSteps.SetupBankHolidaysData();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await ExuiDashboardSteps.GoToCaseList();
+test(
+  'Testing Login',
+  { tag: '@debug' },
+  async ({
+    IdamSteps,
+    ExuiDashboardSteps,
+    ApiUserSteps,
+    ApiDataSteps,
+    _requestsFactory,
+    _exuiDashboardPageFactory,
+    _caseProceedsInCasemanPageFactory,
+  }) => {
+    // await ApiUserSteps.SetupUserData(civilAdminUser);
+    // await ApiDataSteps.SetupBankHolidaysData();
+    await IdamSteps.HearingCentreAdmin1Login();
+    await ExuiDashboardSteps.GoToCaseList();
 
-  // const { ccdRequests } = _requestsFactory;
-  // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);
+    const { ccdRequests } = _requestsFactory;
+    const ccdCaseData = await ccdRequests.fetchCCDCaseData(
+      hearingCenterAdminRegion1User,
+      1734605460487546,
+    );
 
-  // const { caseDetailsPage } = _exuiDashboardPageFactory;
-  // await caseDetailsPage.goToCaseDetails(1732120625619001);
-  // await caseDetailsPage.verifyContent(ccdCaseData);
-  // await caseDetailsPage.retryChooseNextStep(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM);
+    const { caseDetailsPage } = _exuiDashboardPageFactory;
+    await caseDetailsPage.goToCaseDetails(1734605460487546);
+    await caseDetailsPage.verifyContent(ccdCaseData);
+    await caseDetailsPage.retryChooseNextStep(ccdEvents.CASE_PROCEEDS_IN_CASEMAN);
 
-  // const { notifyClaimCOSDefendant1Page } = _notifyClaimPageFactory;
-  // await notifyClaimCOSDefendant1Page.verifyContent(ccdCaseData);
-  // await notifyClaimCOSDefendant1Page.fillDetails();
-  // await notifyClaimCOSDefendant1Page.submit();
-
-  // const { notifyClaimCOSDefendant2Page } = _notifyClaimPageFactory;
-  // await notifyClaimCOSDefendant2Page.verifyContent(ccdCaseData);
-  // await notifyClaimCOSDefendant2Page.fillDetails();
-  // await notifyClaimCOSDefendant2Page.submit();
-
-  // const { notifyClaimCOSSubmitPage } = _notifyClaimPageFactory;
-  // await notifyClaimCOSSubmitPage.verifyContent(ccdCaseData);
-
-  // await notifyClaimDetailsCOSSubmitPage.submit();
-});
+    const { caseProceedsInCasemanPage } = _caseProceedsInCasemanPageFactory;
+    await caseProceedsInCasemanPage.verifyContent(ccdCaseData);
+    await caseProceedsInCasemanPage.enterDate();
+    await caseProceedsInCasemanPage.selectProceedOnPaperReasonApplication();
+    await caseProceedsInCasemanPage.submit();
+  },
+);
