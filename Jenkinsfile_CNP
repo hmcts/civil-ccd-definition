@@ -88,6 +88,8 @@ def secrets = [
 ]
 
 void publishBootstrapReport() {
+    sh "mkdir allure-results/history"
+    copyArtifacts projectName: 'civil-ccd-definition', selector: specific('lastCompleted'), filter: 'allure-bootstrap-history', target: 'allure-results/history'
     publishHTML([
             allowMissing: true,
             alwaysLinkToLastBuild: true,
