@@ -373,7 +373,7 @@ withPipeline(type, product, component) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
           sh "mkdir playwright-bootstrap-history"
-        copyArtifacts projectName: 'civil-ccd-definition', selector: specific('lastCompleted'), filter: 'allure-bootstrap-history', target: 'playwright-bootstrap-history'
+        copyArtifacts projectName: env.JOB_NAME, selector: specific('lastCompleted'), filter: 'allure-bootstrap-history', target: 'playwright-bootstrap-history'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
