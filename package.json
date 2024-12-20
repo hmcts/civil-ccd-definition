@@ -101,7 +101,7 @@
     "test:e2e-hearing-request": "MOCHAWESOME_REPORTFILENAME=e2e-hearing-request npx codeceptjs run-workers --suites 4 --grep @e2e-hearing-request --reporter mocha-multi --verbose",
     "test:AHN": "MOCHAWESOME_REPORTFILENAME=automated-hearing-notice-scheduler npx codeceptjs run --grep '@AHN' --reporter mocha-multi --verbose",
     "test:playwright-functional:generate-report": "allure generate playwright-allure-functional-results --clean -o playwright-allure-functional-report",
-    "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
+    "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report --history-dir=playwright-bootstrap-history",
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
     "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
     "prepare": "husky"
