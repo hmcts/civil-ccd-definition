@@ -19,6 +19,7 @@ exports.config = {
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
     './e2e/tests/api_tests/mediation/*_test.js',
     './e2e/tests/api_tests/sdo_R2/*_test.js',
+    './e2e/tests/api_tests/generalapplication/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/sdo/*_test.js',
@@ -28,7 +29,8 @@ exports.config = {
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
     './e2e/tests/api_tests/settle-discontinue/*_test.js',
-    './e2e/tests/api_tests/automated_hearing_notice/*_test.js'
+    './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
+    './e2e/tests/api_tests/caseworkerEvents/*_test.js'
   ],
   output:  process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
