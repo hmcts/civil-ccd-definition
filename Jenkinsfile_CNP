@@ -97,7 +97,7 @@ void publishBootstrapReport() {
             reportName: 'Playwright Allure Bootstrap Report'
         ])
     sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-bootstrap-history"
-    archiveArtifacts artifacts: './allure-bootstrap-history', fingerprint: true
+    archiveArtifacts artifacts: 'allure-bootstrap-history', fingerprint: true
   }
 
 def checkForEnableEmailNotifications(branch_name) {
