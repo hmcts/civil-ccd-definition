@@ -26,7 +26,6 @@ properties([
     string(name: 'SECURITY_RULES',
       defaultValue: 'https://raw.githubusercontent.com/hmcts/security-test-rules/master/conf/security-rules.conf',
       description: 'The security rules to use'),
-      copyArtifactPermission(env.JOB_NAME)
   ])
 ])
 
