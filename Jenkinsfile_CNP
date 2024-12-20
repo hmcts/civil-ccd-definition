@@ -88,7 +88,6 @@ def secrets = [
 ]
 
 void publishBootstrapReport() {
-    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-results/history"
     publishHTML([
             allowMissing: true,
             alwaysLinkToLastBuild: true,
@@ -97,6 +96,8 @@ void publishBootstrapReport() {
             reportFiles: 'index.html',
             reportName: 'Playwright Allure Bootstrap Report'
         ])
+    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-bootstrap-history"
+    archiveArtifacts artifacts: './allure-bootstrap-history', fingerprint: true
   }
 
 def checkForEnableEmailNotifications(branch_name) {
