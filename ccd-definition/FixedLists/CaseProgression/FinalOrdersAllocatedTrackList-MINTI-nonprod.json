@@ -1,25 +1,13 @@
 [
   {
     "ID": "FinalOrdersAllocatedTrackList",
-    "ListElementCode": "SMALL_CLAIM",
-    "ListElement": "Small Claims",
-    "DisplayOrder": 1
-  },
-  {
-    "ID": "FinalOrdersAllocatedTrackList",
-    "ListElementCode": "FAST_CLAIM",
-    "ListElement": "Fast Track",
-    "DisplayOrder": 2
-  },
-  {
-    "ID": "FinalOrdersAllocatedTrackList",
     "ListElementCode": "INTERMEDIATE_CLAIM",
     "ListElement": "Intermediate Track",
-    "DisplayOrder": 3
+    "DisplayOrder": 1
   },  {
   "ID": "FinalOrdersAllocatedTrackList",
   "ListElementCode": "MULTI_CLAIM",
   "ListElement": "Multi Track",
-  "DisplayOrder": 4
+  "DisplayOrder": 2
   }
 ]
