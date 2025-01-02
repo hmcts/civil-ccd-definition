@@ -13,7 +13,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "qmApplicantSolicitorQueries",
     "FieldType": "CaseQueriesCollection",
-    "Label": " ",
+    "Label": "Queries",
     "CRUD": "CRUD",
     "SecurityClassification": "Public",
     "Searchable": "N"

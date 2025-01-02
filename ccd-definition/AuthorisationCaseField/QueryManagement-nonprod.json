@@ -38,11 +38,7 @@
       {
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "court-officer-order",
-          "ctsc",
-          "nbc-team-leader",
-          "caseworker-civil"
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -66,8 +62,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader",
-          "caseworker-civil"
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
       }
@@ -91,8 +86,7 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader",
-          "caseworker-civil"
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
       }
