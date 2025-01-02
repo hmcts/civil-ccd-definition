@@ -207,6 +207,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
+    "PageShowCondition": "validateDiscontinuanceLbl=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
