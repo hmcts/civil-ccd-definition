@@ -122,16 +122,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "respondent1Represented",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
