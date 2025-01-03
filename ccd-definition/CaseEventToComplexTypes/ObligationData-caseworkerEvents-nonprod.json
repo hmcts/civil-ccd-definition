@@ -4,6 +4,7 @@
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
     "CaseFieldID": "obligationData",
     "ListElementCode": "obligationDate",
+    "EventElementLabel": "Enter the date that this case should be reviewed",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
@@ -13,6 +14,7 @@
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
     "CaseFieldID": "obligationData",
     "ListElementCode": "obligationReason",
+    "EventElementLabel": "Why does this case need to be reviewed?",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
@@ -31,6 +33,7 @@
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
     "CaseFieldID": "obligationData",
     "ListElementCode": "obligationAction",
+    "EventElementLabel": "What action is required when the case is reviewed?",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "Publish": "Y"
