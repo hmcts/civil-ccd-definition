@@ -1,3 +1,56 @@
 [
-
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRespondQuery",
+    "CaseFieldID": "QueryManagementComponentLauncher",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "queryManagementRaiseQuery",
+    "PageLabel": "Raise a new query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRespondQuery",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "queryManagementRespondQuery",
+    "PageLabel": "Respond to a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRespondQuery",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "queryManagementRespondQuery",
+    "PageLabel": "Respond to a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":  "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRespondQuery",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "queryManagementRespondQuery",
+    "PageLabel": "Respond to a query",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition":  "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
+    "RetainHiddenValue": "Y"
+  }
 ]
