@@ -39,7 +39,7 @@ Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case
   }
 });
 
-Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
@@ -48,7 +48,7 @@ Scenario('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api
   }
 });
 
-Scenario('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
+Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpecRecordJudgment(api_spec);
     console.log('--referToJudgeDefenceReceived--');

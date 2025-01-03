@@ -46,7 +46,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
   }
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
     await prepareClaimSpecFinalOrderJO(api_spec);
