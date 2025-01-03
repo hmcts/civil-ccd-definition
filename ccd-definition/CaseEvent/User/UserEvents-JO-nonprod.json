@@ -25,7 +25,7 @@
     "Description": "Set aside judgment",
     "DisplayOrder": 1,
     "PreConditionState(s)": "All_FINAL_ORDERS_ISSUED",
-    "PostConditionState": "*",
+    "PostConditionState": "All_FINAL_ORDERS_ISSUED",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
