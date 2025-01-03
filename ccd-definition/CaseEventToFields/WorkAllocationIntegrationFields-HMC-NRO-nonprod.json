@@ -196,7 +196,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
-    "PageDisplayOrder": 99,
+    "PageDisplayOrder": 1,
     "Publish": "Y"
   },
   {
@@ -206,7 +206,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
-    "PageDisplayOrder": 99,
+    "PageDisplayOrder": 1,
     "Publish": "Y"
   },
   {
@@ -216,7 +216,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
+    "PageDisplayOrder": 1,
     "Publish": "Y"
   },
   {
@@ -226,7 +226,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
+    "PageDisplayOrder": 1,
     "Publish": "Y"
   },
   {
