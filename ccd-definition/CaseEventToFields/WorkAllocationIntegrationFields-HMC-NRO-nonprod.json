@@ -215,7 +215,7 @@
     "CaseFieldID": "respondent1Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 1,
     "Publish": "Y"
   },
@@ -225,7 +225,7 @@
     "CaseFieldID": "respondent2Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 1,
     "Publish": "Y"
   },
