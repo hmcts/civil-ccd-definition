@@ -5,7 +5,8 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
