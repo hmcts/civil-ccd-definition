@@ -81,8 +81,7 @@
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "Publish": "Y"
+    "Searchable": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
