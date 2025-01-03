@@ -195,7 +195,7 @@
     "CaseFieldID": "respondent1Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -205,9 +205,8 @@
     "CaseFieldID": "applicant1Represented",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
-    "PageShowCondition": "validateDiscontinuanceLbl=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   },
   {
