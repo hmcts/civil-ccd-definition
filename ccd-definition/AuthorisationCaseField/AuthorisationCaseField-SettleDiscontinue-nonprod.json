@@ -535,7 +535,8 @@
           "caseworker-civil-staff",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "judge-profile"
+          "judge-profile",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
