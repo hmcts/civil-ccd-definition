@@ -14,6 +14,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 export default class AddCaseNotesJudgeSubmitPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
+      // super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectSubheading(subheading),
       super.expectText(buttons.previous.label),

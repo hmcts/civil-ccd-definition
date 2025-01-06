@@ -83,7 +83,7 @@ export const buttons = {
     selector: '.button-secondary [type="button"]',
   },
   submit: {
-    label: 'Continue',
+    label: 'Submit',
     selector: 'button[type="submit"]"',
   },
 };
