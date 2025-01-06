@@ -104,7 +104,7 @@ ccd:
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DATA_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}data-store"
         DATA_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
-        DATA_STORE_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+        DATA_STORE_DB_USERNAME: '{{ tpl .Values.global.postgresUsername $}}'
         DATA_STORE_DEFAULT_LOG_LEVEL: DEBUG
         CASE_DATA_ISSUE_LOG_LEVEL: DEBUG
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
@@ -121,7 +121,7 @@ ccd:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DEFINITION_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}definition-store"
         DEFINITION_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
-        DEFINITION_STORE_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+        DEFINITION_STORE_DB_USERNAME: '{{ tpl .Values.global.postgresUsername $}}'
       secrets:
         DEFINITION_STORE_DB_PASSWORD:
           secretRef: "{{ .Values.global.postgresSecret }}"
