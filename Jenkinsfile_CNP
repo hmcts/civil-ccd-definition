@@ -373,10 +373,11 @@ withPipeline(type, product, component) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
           sh """
+            rm -rf allure-results
+            mkdir ./allure-results
+            mkdir ./allure-results/history
+            cp -r ./playwright-allure-bootstrap-report/history/ ./allure-results/history
             rm -rf playwright-allure-bootstrap-report
-            mkdir allure-results
-            mkdir allure-results/history
-            cp -r playwright-bootstrap-history allure-results/history
           """
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
