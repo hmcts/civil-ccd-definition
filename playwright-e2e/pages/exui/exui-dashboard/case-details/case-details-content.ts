@@ -40,11 +40,6 @@ export const dropdowns = {
     selector: '#next-step',
     options: ['Claim notes'],
   },
-  selectAction: {
-    label: 'Select action',
-    selector: '#next-step',
-    options: ['Manage Documents', 'Add a case note'],
-  },
 };
 
 export const buttons = {
