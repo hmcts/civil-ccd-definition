@@ -1538,6 +1538,10 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    if (pageId === 'TrackAllocation') {
+      responseBody.data.allocatedTrack = caseData.allocatedTrack;
+      responseBody.data.respondent1Represented = caseData.respondent1Represented;
+    }
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
