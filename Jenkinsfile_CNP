@@ -378,7 +378,6 @@ withPipeline(type, product, component) {
             mkdir ./allure-results/history
             cp -a ./playwright-allure-bootstrap-report/history/. ./allure-results/history
             ls -l ./allure-results/history
-            rm -rf playwright-allure-bootstrap-report
           """
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
