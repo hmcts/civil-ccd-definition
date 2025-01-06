@@ -376,7 +376,7 @@ withPipeline(type, product, component) {
             rm -rf allure-results
             mkdir ./allure-results
             mkdir ./allure-results/history
-            cp -r ./playwright-allure-bootstrap-report/history/ ./allure-results/history
+            cp -a ./playwright-allure-bootstrap-report/history/. ./allure-results/history
             ls -l ./allure-results/history
             rm -rf playwright-allure-bootstrap-report
           """
