@@ -372,6 +372,11 @@ withPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          sh """
+            mkdir allure-results
+            mkdir allure-results/history
+            cp -r playwright-bootstrap-history allure-results/history
+          """
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
