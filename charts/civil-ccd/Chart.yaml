@@ -19,7 +19,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 9.0.21
+    version: 9.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
