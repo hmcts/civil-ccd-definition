@@ -6,6 +6,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import {
   heading,
   subHeading,
+  testData,
   labels,
   inputFields,
   buttons,
@@ -32,8 +33,8 @@ export default class ManageDocumentAddDocumentsPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async enterDocumentName(documentName: string) {
-    await super.inputText(documentName, inputFields.documentName.selector);
+  async enterDocumentName() {
+    await super.inputText(testData.documentName, inputFields.documentName.selector);
   }
 
   async selectDocumentType(optionNum: number) {

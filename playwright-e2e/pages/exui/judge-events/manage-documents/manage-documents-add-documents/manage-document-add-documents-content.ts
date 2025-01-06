@@ -2,6 +2,10 @@ export const heading = 'Manage Documents';
 
 export const subHeading = 'Bulk scanned or emailed documents';
 
+export const testData = {
+  documentName: 'Test Manage Documents',
+};
+
 export const labels = {
   documentName: {
     label: 'Document Name',
