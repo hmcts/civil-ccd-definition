@@ -51,6 +51,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "ShowSummary": "Y",
     "ShowEventNotes": "N",
+    "Publish": "Y",
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0
   },
