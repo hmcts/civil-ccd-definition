@@ -32,6 +32,12 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "R"
       }
     ]
   },

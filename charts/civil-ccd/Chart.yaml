@@ -62,3 +62,7 @@ dependencies:
     version: ~9.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: ccd-def-cleanup.enabled
+  - name: am-org-role-mapping-service
+    version: ~0.0.58
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: am-org-role-mapping-service.enabled
