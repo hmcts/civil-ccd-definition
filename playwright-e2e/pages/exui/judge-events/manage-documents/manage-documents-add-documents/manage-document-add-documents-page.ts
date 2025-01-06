@@ -9,7 +9,6 @@ import {
   labels,
   inputFields,
   buttons,
-  testData,
 } from './manage-document-add-documents-content';
 
 @AllMethodsStep()
@@ -21,7 +20,7 @@ export default class ManageDocumentAddDocumentsPage extends ExuiPage(BasePage) {
       super.expectSubheading(subHeading),
       super.expectText(buttons.previous.label),
       super.expectText(buttons.submit.label),
-      super.expectText(buttons.addNewTop.label),
+      super.expectText(buttons.addNewTop.label, { ignoreDuplicates: true }),
     ]);
   }
 
@@ -33,13 +32,13 @@ export default class ManageDocumentAddDocumentsPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async enterDocumentName() {
-    await super.inputText(testData.documentName, inputFields.documentName.selector);
+  async enterDocumentName(documentName: string) {
+    await super.inputText(documentName, inputFields.documentName.selector);
   }
 
-  async selectDocumentType() {
+  async selectDocumentType(optionNum: number) {
     await super.selectFromDropdown(
-      inputFields.documentType.options[0],
+      inputFields.documentType.options[optionNum],
       inputFields.documentType.selector,
     );
   }

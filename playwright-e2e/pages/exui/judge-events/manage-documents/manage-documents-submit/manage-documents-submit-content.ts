@@ -26,6 +26,15 @@ export const labels = {
   },
 };
 
+export const inputFields = {
+  eventSummary: {
+    selector: '#field-trigger-summary',
+  },
+  eventDescription: {
+    selector: '#field-trigger-description',
+  },
+};
+
 export const changeLinks = {
   changeBulkScannedOrEmailedDocuments: {
     label: 'Change',

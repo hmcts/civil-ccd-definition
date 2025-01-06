@@ -7,6 +7,7 @@ import {
   heading,
   subHeading,
   labels,
+  inputFields,
   changeLinks,
   buttons,
 } from './manage-documents-submit-content';
@@ -15,7 +16,7 @@ import {
 export default class ManageDocumentSubmitPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      //   super.verifyHeadings(ccdCaseData),
+      // super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectSubheading(subHeading),
       super.expectText(labels.checkInformationCarefully.label),
@@ -32,6 +33,14 @@ export default class ManageDocumentSubmitPage extends ExuiPage(BasePage) {
 
   async changeBulkScannedOrEmailedDocuments() {
     await super.clickBySelector(changeLinks.changeBulkScannedOrEmailedDocuments.selector);
+  }
+
+  async enterEventSummary(eventSummary: string) {
+    await super.inputText(eventSummary, inputFields.eventSummary.selector);
+  }
+
+  async enterEventDescription(eventDescription: string) {
+    await super.inputText(eventDescription, inputFields.eventDescription.selector);
   }
 
   async previous() {
