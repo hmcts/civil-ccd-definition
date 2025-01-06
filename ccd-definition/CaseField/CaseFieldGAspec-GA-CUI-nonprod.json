@@ -34,5 +34,13 @@
     "Max": 4000,
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentSolicitorDetails",
+    "Label": " ",
+    "FieldType": "RespondentSolicitorDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
