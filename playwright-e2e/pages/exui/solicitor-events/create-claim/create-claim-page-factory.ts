@@ -147,12 +147,9 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new SubmitSpecPage(this.page);
   }
 
-  //2v1
   get addSecondClaimantPage() {
     return new AddSecondClaimantPage(this.page);
   }
-
-  //1v2SS
 
   get defendantSolicitorOrganisationSpecPage() {
     return new DefendantSolicitorOrganisationSpecPage(this.page);
@@ -178,8 +175,6 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new DefendantSameLegalRepresentativePage(this.page);
   }
 
-  // 1v2DS
-
   get secondDefendantSolicitorOrganisationSpecPage() {
     return new SecondDefendantSolicitorOrganisationSpecPage(this.page);
   }
@@ -191,8 +186,6 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   get respondent2CorrespondenceAddressPage() {
     return new Respondent2CorrespondenceAddressPage(this.page);
   }
-
-  //Unspec
 
   get eligibilityPage() {
     return new EligibilityPage(this.page);
