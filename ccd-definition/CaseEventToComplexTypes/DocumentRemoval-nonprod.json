@@ -1,0 +1,16 @@
+[
+  {
+    "ID": "documentToRemove",
+    "CaseEventID": "REMOVE_DOCUMENT",
+    "CaseFieldID": "documentToKeepCollection",
+    "ListElementCode": "documentId",
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "documentToRemove",
+    "CaseEventID": "REMOVE_DOCUMENT",
+    "CaseFieldID": "documentToKeepCollection",
+    "ListElementCode": "caseDocument",
+    "DisplayContext": "READONLY"
+  }
+]

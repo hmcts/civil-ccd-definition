@@ -1,0 +1,6 @@
+{
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseFieldID": "documentToKeepCollection",
+  "UserRole": "hearing-centre-team-leader",
+  "CRUD": "CRUD"
+}
