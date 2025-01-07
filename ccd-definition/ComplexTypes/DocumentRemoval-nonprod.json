@@ -1,0 +1,18 @@
+[
+  {
+    "ID": "documentToRemove",
+    "ListElementCode": "documentId",
+    "FieldType": "Text",
+    "ElementLabel": "Document ID",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "documentToRemove",
+    "ListElementCode": "caseDocument",
+    "FieldType": "Document",
+    "ElementLabel": "Document",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
