@@ -2,7 +2,7 @@ import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiEvent from '../../exui-event/exui-event';
+import ExuiPage from '../../exui-page/exui-page';
 import {
   defendant1Buttons,
   defendant1Checkboxes,
@@ -19,7 +19,7 @@ import {
 } from './certificate-of-service-content';
 
 @AllMethodsStep()
-export default class CertificateOfServiceFragment extends ExuiEvent(BasePage) {
+export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     throw new Error('Method not implemented.');
   }

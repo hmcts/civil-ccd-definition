@@ -1,10 +1,10 @@
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 import { confirmationHeading, paragraphs } from './notify-claim-cos-confirm-content';
 
 @AllMethodsStep()
-export default class NotifyClaimCOSConfirmPage extends ExuiEvent(BasePage) {
+export default class NotifyClaimCOSConfirmPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
