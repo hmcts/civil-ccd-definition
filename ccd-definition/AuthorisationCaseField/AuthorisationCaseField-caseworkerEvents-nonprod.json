@@ -198,6 +198,12 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+      "UserRoles": [
+        "judge-profile"
+      ],
+      "CRUD": "R"
       }
     ]
   },
@@ -247,7 +253,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -260,7 +267,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -273,7 +281,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -286,7 +295,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -299,7 +309,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -312,7 +323,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "R"
       }
@@ -325,7 +337,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -338,7 +351,8 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       }
@@ -351,9 +365,92 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "replyToMessageTitle",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "messageHistoryLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "lastMessage",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "lastMessageAllocatedTrack",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "lastMessageJudgeLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "caseNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   }
