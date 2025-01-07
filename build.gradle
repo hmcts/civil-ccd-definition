@@ -27,8 +27,8 @@ task highLevelDataSetup(type: JavaExec) {
 
 
 def versions = [
-  junit              : '5.11.4',
-  junitPlatform      : '1.11.4'
+  junit              : '5.10.1',
+  junitPlatform      : '1.10.1'
 ]
 
 ext.libraries = [
@@ -42,8 +42,8 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.0'
-  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.16'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.0.2'
+  implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 
   testImplementation libraries.junit5
 }
