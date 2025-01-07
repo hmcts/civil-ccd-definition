@@ -4,7 +4,7 @@
     "TabID": "Notes",
     "TabLabel": "Notes",
     "TabDisplayOrder": 7,
-    "CaseFieldID": "caseNotes",
-    "TabFieldDisplayOrder": 1
+    "CaseFieldID": "storedObligationData",
+    "TabFieldDisplayOrder": 2
   }
 ]
