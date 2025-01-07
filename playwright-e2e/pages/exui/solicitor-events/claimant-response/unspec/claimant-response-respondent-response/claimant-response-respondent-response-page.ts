@@ -45,12 +45,7 @@ export default class ClaimantResponseRespondentResponseUnspecPage extends ExuiPa
 
   async verifyContentUnspec2v1(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
-      [
-        super.verifyHeadings(ccdCaseData),
-        super.expectText(paragraph.descriptionText),
-        // super.expectText(legend.proceedClaim, {containerSelector:legendUnspec2v1.textClaimant1}),
-        // super.expectText(legend.proceedClaim, {containerSelector:legendUnspec2v1.textClaimant2}),
-      ],
+      [super.verifyHeadings(ccdCaseData), super.expectText(paragraph.descriptionText)],
       { useAxeCache: true },
     );
   }

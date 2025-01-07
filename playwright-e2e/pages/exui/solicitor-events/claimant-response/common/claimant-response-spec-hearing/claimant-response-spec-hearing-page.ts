@@ -1,7 +1,7 @@
-import BasePage from '../../../../../../base/base-page';
-import ExuiPage from '../../../../exui-page/exui-page';
+import BasePage from '../../../../../../base/base-page.ts';
+import ExuiPage from '../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import {
   headings,
   unavailableDateRadioForm,
@@ -13,7 +13,7 @@ import {
   containers,
   legend,
   paragraph,
-} from '../claimant-respondent-spec-respondent-response/claimant-response-spec-respondent-response-content.ts';
+} from '../../lr-spec/claimant-respondent-spec-respondent-response/claimant-response-spec-respondent-response-content.ts';
 
 @AllMethodsStep()
 export default class ClaimantResponseSpecHearingPage extends ExuiPage(BasePage) {
