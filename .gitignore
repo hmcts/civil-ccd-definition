@@ -55,7 +55,7 @@ playwright-test-results/
 allure-results/
 playwright-allure-functional-results/
 playwright-allure-bootstrap-results/
-playwright-allure-bootstrap-report/
+# playwright-allure-bootstrap-report/
 playwright-allure-functional-report/
 allure-report/
 playwright-report/
