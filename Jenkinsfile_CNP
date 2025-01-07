@@ -368,6 +368,7 @@ withPipeline(type, product, component) {
     if(env.PLAYWRIGHT_RUN_SETUP) {
       stage('Playwright test teardown') {
         try {
+          sh "ls ./playwright-allure-bootstrap-results"
           yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
