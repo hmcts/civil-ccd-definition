@@ -16,7 +16,7 @@ import {
 export default class ManageDocumentSubmitPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      // super.verifyHeadings(ccdCaseData),
+      this.checkCaseDetails(ccdCaseData),
       super.expectHeading(heading),
       super.expectSubheading(subHeading),
       super.expectText(labels.checkInformationCarefully.label),
@@ -29,6 +29,11 @@ export default class ManageDocumentSubmitPage extends ExuiPage(BasePage) {
       super.expectText(buttons.previous.label),
       super.expectText(buttons.submit.label),
     ]);
+  }
+
+  async checkCaseDetails(ccdCaseData: CCDCaseData) {
+    const formattedId = `#${ccdCaseData.id.toString().replace(/(\d{4})(?=\d)/g, '$1-')}`;
+    super.expectHeading(formattedId);
   }
 
   async changeBulkScannedOrEmailedDocuments() {
