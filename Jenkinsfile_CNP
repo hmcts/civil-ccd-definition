@@ -1,6 +1,7 @@
 #!groovy
 
 properties([
+  copyArtifactPermission('HMCTS_a_to_c/civil-ccd-definition/PR-5185'),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
@@ -372,6 +373,7 @@ withPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: 'allure-bootstrap-history/**'
           sh """
             cp -a ./playwright-allure-bootstrap-report/history/. ./playwright-allure-bootstrap-results/history
             ls -l ./playwright-allure-bootstrap-results/history
