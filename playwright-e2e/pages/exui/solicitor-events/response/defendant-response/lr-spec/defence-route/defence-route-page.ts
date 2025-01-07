@@ -16,11 +16,14 @@ export default class DefenceRoutePage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.hasPaid.label),
-      super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.disputesClaim.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.hasPaid.label),
+        super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.disputesClaim.label),
+      ],
+      { pageInsertName: this.defendantNumber ? 'Defendant2' : '' },
+    );
   }
 
   async selectHasPaid() {
