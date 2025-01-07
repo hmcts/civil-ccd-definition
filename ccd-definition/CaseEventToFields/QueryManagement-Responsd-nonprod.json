@@ -7,7 +7,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRaiseQuery",
-    "PageLabel": "Raise a new query",
+    "PageLabel": "Respond to a query",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"
   },
