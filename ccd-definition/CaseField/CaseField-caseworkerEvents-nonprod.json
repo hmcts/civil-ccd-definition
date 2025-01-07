@@ -118,7 +118,7 @@
     "ID": "storedObligationData",
     "Label": "Obligation date",
     "FieldType": "Collection",
-    "FieldTypeParameter": "ObligationDataCollection",
+    "FieldTypeParameter": "StoredObligationData",
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
