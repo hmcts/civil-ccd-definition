@@ -22,31 +22,13 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { count?: number; timeout?: number; ignoreDuplicates?: boolean } = {},
+    options: { timeout?: number; first?: boolean } = {},
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    // Locate the elements matching the selector
     const locator = this.page.locator(selector);
-    const elementCount = await locator.count();
-
-    if (options.ignoreDuplicates) {
-      if (elementCount === 0) {
-        throw new ExpectError(`No elements found for selector: ${selector}`);
-      }
-      // Click the first visible element matching the selector
+    if (options.first) {
       await locator.first().click({ timeout: options.timeout });
-    } else {
-      if (elementCount > 1) {
-        throw new ExpectError(
-          `Multiple elements (${elementCount}) found for selector: ${selector}. Consider using 'ignoreDuplicates' or refining the selector.`,
-        );
-      }
-
-      await locator.click({ clickCount: options.count, timeout: options.timeout });
     }
+    await locator.click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'name')
@@ -110,11 +92,15 @@ export default abstract class BasePage {
   protected async inputText(
     input: string | number,
     selector: string,
-    options: { timeout?: number } = {},
+    options: { index?: number; timeout?: number } = {},
   ) {
-    await this.page.fill(selector, input.toString(), {
-      timeout: options.timeout,
-    });
+    if (options.index) {
+      await this.page.locator(selector).nth(options.index).fill(input.toString());
+    } else {
+      await this.page.fill(selector, input.toString(), {
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -207,30 +193,56 @@ export default abstract class BasePage {
 
   protected async runVerifications(
     expects?: Promise<void> | Promise<void>[],
-    { runAxe = true, axeExclusions = [], useAxeCache = true } = {},
+    {
+      runAxe = true,
+      axeExclusions = [],
+      useAxeCache = true,
+      pageInsertName,
+    }: {
+      runAxe?: boolean;
+      axeExclusions?: string[];
+      useAxeCache?: boolean;
+      pageInsertName?: string;
+    } = {},
   ) {
     if (expects) {
       Array.isArray(expects) ? await Promise.all(expects) : await expects;
     }
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
     }
   }
 
   protected async retryReloadRunVerifications(
     assertions: () => Promise<void>[] | Promise<void>,
-    { runAxe = true, axeExclusions = [], useAxeCache = true, timeout = 12_000 } = {},
+    {
+      runAxe = true,
+      axeExclusions = [],
+      useAxeCache = true,
+      timeout = 12_000,
+      pageInsertName,
+    }: {
+      runAxe?: boolean;
+      axeExclusions?: string[];
+      useAxeCache?: boolean;
+      timeout?: number;
+      pageInsertName?: string;
+    } = {},
   ) {
     await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
     }
   }
 
   @BoxedDetailedStep(classKey)
-  private async expectAxeToPass(axeExclusions: string[], useAxeCache: boolean) {
+  private async expectAxeToPass(
+    axeExclusions: string[],
+    useAxeCache: boolean,
+    pageInsertName?: string,
+  ) {
     const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
@@ -239,7 +251,11 @@ export default abstract class BasePage {
       axeBuilder.exclude(axeExclusion);
     }
 
-    const pageName = ClassMethodHelper.formatClassName(this.constructor.name);
+    const pageName = ClassMethodHelper.formatClassName(
+      pageInsertName !== undefined
+        ? `${this.constructor.name.slice(0, -4)}${pageInsertName}Page`
+        : this.constructor.name,
+    );
 
     const errorsNumBefore = test.info().errors.length;
     if (useAxeCache) {
@@ -292,10 +308,10 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   protected async expectHeading(
-    text: string,
+    text: string | number,
     options: { message?: string; timeout?: number } = {},
   ) {
-    await pageExpect(this.page.locator('h1', { hasText: text }), {
+    await pageExpect(this.page.locator('h1', { hasText: text.toString() }), {
       message: options.message,
     }).toBeVisible({ timeout: options.timeout });
   }
@@ -483,13 +499,38 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'label')
   protected async expectLabel(
     label: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: {
+      count?: number;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: false },
   ) {
-    await pageExpect(this.page.getByLabel(label, { exact: options.exact }), {
-      message: options.message,
-    }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
+
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    const locator = this.page.getByLabel(label, { exact: options.exact });
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'name')

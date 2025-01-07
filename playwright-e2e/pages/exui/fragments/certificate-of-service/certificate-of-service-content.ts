@@ -1,10 +1,7 @@
-const getDefendantHeading = (defendantNumber: number) =>
+export const getDefendantHeading = (defendantNumber: number) =>
   `Certificate of Service [defendant${defendantNumber}]`;
 
-export const defendant1Heading = getDefendantHeading(1);
-export const defendant2Heading = getDefendantHeading(2);
-
-const getInputs = (defendantNumber: number) => ({
+export const getInputs = (defendantNumber: number) => ({
   dateOfService: {
     label: 'On what day did you serve?',
     day: {
@@ -47,13 +44,15 @@ const getInputs = (defendantNumber: number) => ({
     label: 'Who did you serve the claim to?',
     selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipient`,
   },
-  name: {
-    label: 'Your name',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSender`,
-  },
-  firm: {
-    label: 'Your firm',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSenderFirm`,
+  statementOfTruth: {
+    name: {
+      label: 'Your name',
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSender`,
+    },
+    firm: {
+      label: 'Your firm',
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSenderFirm`,
+    },
   },
   evidenceDocument: {
     label: 'Supporting evidence',
@@ -61,10 +60,7 @@ const getInputs = (defendantNumber: number) => ({
   },
 });
 
-export const defendant1Inputs = getInputs(1);
-export const defendant2Inputs = getInputs(2);
-
-const getDropdowns = (defendantNumber: number) => ({
+export const getDropdowns = (defendantNumber: number) => ({
   serveType: {
     label: 'How did you serve the documents?',
     selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeType`,
@@ -94,47 +90,38 @@ const getDropdowns = (defendantNumber: number) => ({
   },
 });
 
-export const defendant1Dropdowns = getDropdowns(1);
-export const defendant2Dropdowns = getDropdowns(2);
-
-const getRadioButtons = (defendantNumber: number) => ({
-  litigationFriend: {
-    label: "litigation friend's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-FRIEND`,
-  },
-  solicitor: {
-    label: "solicitor's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-SOLICITOR`,
-  },
-  defendant: {
-    label: "defendant's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-DEFENDANT`,
-  },
-  claimant: {
-    label: "claimant's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-CLAIMANT`,
+export const getRadioButtons = (defendantNumber: number) => ({
+  docsServed: {
+    label: 'The location where you served the documents was the:',
+    litigationFriend: {
+      label: "litigation friend's",
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-FRIEND`,
+    },
+    solicitor: {
+      label: "solicitor's",
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-SOLICITOR`,
+    },
+    defendant: {
+      label: "defendant's",
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-DEFENDANT`,
+    },
+    claimant: {
+      label: "claimant's",
+      selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-CLAIMANT`,
+    },
   },
 });
 
-export const defendant1RadioButtons = getRadioButtons(1);
-export const defendant2RadioButtons = getRadioButtons(2);
-
-const getCheckboxes = (defendantNumber: number) => ({
+export const getCheckboxes = (defendantNumber: number) => ({
   signedTrue: {
     label: 'I believe that the facts stated in the certificate are true',
     selector: `#cosNotifyClaimDefendant${defendantNumber}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
   },
 });
 
-export const defendant1Checkboxes = getCheckboxes(1);
-export const defendant2Checkboxes = getCheckboxes(2);
-
-const getButtons = (defendantNumber: number) => ({
+export const getButtons = (defendantNumber: number) => ({
   addNewSupportingEvidence: {
     title: 'Add new',
     selector: `div[id='cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
   },
 });
-
-export const defendant1Buttons = getButtons(1);
-export const defendant2Buttons = getButtons(2);
