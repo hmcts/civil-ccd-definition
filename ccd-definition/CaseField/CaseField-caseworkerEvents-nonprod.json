@@ -270,5 +270,13 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationWAFlag",
+    "Label": " ",
+    "FieldType": "ObligationWAFlag",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
