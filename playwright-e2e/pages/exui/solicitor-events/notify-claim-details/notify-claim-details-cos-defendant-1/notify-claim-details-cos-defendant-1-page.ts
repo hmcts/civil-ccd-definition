@@ -14,13 +14,13 @@ export default class NotifyClaimDetailsCOSDefendant1Page extends ExuiPage(BasePa
   }
 
   async verifyContent(...args: any[]): Promise<void> {
-    await super.runVerifications([this.certificateOfServiceFragment.verifyDefendant1Content()]);
+    await super.runVerifications([this.certificateOfServiceFragment.verifyContent()]);
   }
 
   async fillDetails() {
-    await this.certificateOfServiceFragment.fillDefendant1CertificateOfService();
-    await this.certificateOfServiceFragment.uploadDefendant1SupportingEvidence();
-    await this.certificateOfServiceFragment.fillDefendant1StatementOfTruth();
+    await this.certificateOfServiceFragment.fillCertificateOfService();
+    await this.certificateOfServiceFragment.uploadSupportingEvidence();
+    await this.certificateOfServiceFragment.fillCertificateOfService();
   }
 
   async submit() {
