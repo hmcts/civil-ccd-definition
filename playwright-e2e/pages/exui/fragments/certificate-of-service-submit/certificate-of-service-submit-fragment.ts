@@ -1,21 +1,16 @@
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
-import ExuiEvent from '../../exui-event/exui-event';
-import {
-  defendant1Heading,
-  defendant2Heading,
-  subheading,
-  table,
-} from './certificate-of-service-submit-content';
+import ExuiPage from '../../exui-page/exui-page';
+import { getDefendantHeading, subheading, table } from './certificate-of-service-submit-content';
 
 @AllMethodsStep()
-export default class CertificateOfServiceSubmitFragment extends ExuiEvent(BasePage) {
+export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectHeading(defendant1Heading),
-        super.expectHeading(defendant2Heading),
+        super.expectHeading(getDefendantHeading(1)),
+        super.expectHeading(getDefendantHeading(2)),
         super.expectSubheading(subheading),
         super.expectText(table.dateDeemedServed.label, { count: 2 }),
         super.expectText(table.dateOfService.label, { count: 2 }),

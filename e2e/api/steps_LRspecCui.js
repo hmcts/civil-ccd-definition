@@ -19,7 +19,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
-const {checkToggleEnabled, checkMintiToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
 const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
@@ -35,6 +35,10 @@ const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
+const { toJSON } = require('lodash/seq');
 
 let caseId, eventName;
 let caseData = {};
@@ -53,12 +57,16 @@ const data = {
   CREATE_SDO_FAST_TRACK: (userInput) => sdoTracks.createSDOFastTrackSpec(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearingForTrialReadiness(allocatedTrack),
   HEARING_SCHEDULED_CUI: (allocatedTrack) => hearingScheduled.scheduleHearingForCui(allocatedTrack),
-  EVIDENCE_UPLOAD_CLAIMANT: (mpScenario) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_DEFENDANT: (mpScenario) => evidenceUploadRespondent.createDefendantSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_CLAIMANT: (mpScenario, document) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(document),
+  EVIDENCE_UPLOAD_DEFENDANT: (mpScenario, document) => evidenceUploadRespondent.createDefendantSmallClaimsEvidenceUpload(document),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpecCitizen(userType),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
+  STAY_CASE: () => stayCase.stayCaseSpec(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
+  DISMISS_CASE: () => dismissCase.dismissCase()
 };
 
 const eventData = {
@@ -310,24 +318,21 @@ module.exports = {
 
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE');
+    const document = await uploadDocument();
+    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE', document);
 
     caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
-
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   evidenceUploadDefendant: async (user) => {
     await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE');
+    const document = await uploadDocument();
+    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE', document);
 
     caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
 
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   requestForReconsiderationCitizen: async (user) => {
@@ -576,6 +581,89 @@ module.exports = {
     let respondent1ResponseDate ={};
     respondent1ResponseDate = {'respondent1ResponseDate':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1ResponseDate);
+  },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (caseData.preStayState === 'IN_MEDIATION') {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent(caseData.preStayState, {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
   },
 };
 

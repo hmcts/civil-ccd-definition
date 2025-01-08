@@ -2,10 +2,10 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CertificateOfServiceFragment from '../../../fragments/certificate-of-service/certificate-of-service-fragment';
-import ExuiEvent from '../../../exui-event/exui-event';
+import ExuiPage from '../../../exui-page/exui-page';
 
 @AllMethodsStep()
-export default class NotifyClaimDetailsCOSDefendant1Page extends ExuiEvent(BasePage) {
+export default class NotifyClaimDetailsCOSDefendant1Page extends ExuiPage(BasePage) {
   private certificateOfServiceFragment: CertificateOfServiceFragment;
 
   constructor(certificateOfServiceFragment: CertificateOfServiceFragment, page: Page) {
@@ -14,13 +14,13 @@ export default class NotifyClaimDetailsCOSDefendant1Page extends ExuiEvent(BaseP
   }
 
   async verifyContent(...args: any[]): Promise<void> {
-    await super.runVerifications([this.certificateOfServiceFragment.verifyDefendant1Content()]);
+    await super.runVerifications([this.certificateOfServiceFragment.verifyContent()]);
   }
 
   async fillDetails() {
-    await this.certificateOfServiceFragment.fillDefendant1CertificateOfService();
-    await this.certificateOfServiceFragment.uploadDefendant1SupportingEvidence();
-    await this.certificateOfServiceFragment.fillDefendant1StatementOfTruth();
+    await this.certificateOfServiceFragment.fillCertificateOfService();
+    await this.certificateOfServiceFragment.uploadSupportingEvidence();
+    await this.certificateOfServiceFragment.fillCertificateOfService();
   }
 
   async submit() {

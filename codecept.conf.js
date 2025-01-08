@@ -1,5 +1,5 @@
 exports.config = {
-  tests: process.env.CCD_UI_TESTS == 'true' ? [
+  tests: process.env.CCD_UI_TESTS === 'true' ? [
     './e2e/tests/ui_tests/*.js',
     './e2e/tests/ui_tests/damages/*_test.js',
     './e2e/tests/ui_tests/lrspec/*_test.js',
@@ -9,6 +9,7 @@ exports.config = {
     './e2e/tests/ui_tests/settle_discontinue/*_test.js',
     './e2e/tests/ui_tests/sdo/*_test.js',
     './e2e/tests/ui_tests/carm/*_test.js',
+    './e2e/tests/ui_tests/minti/*_test.js',
     './e2e/tests/ui_tests/refunds/*_test.js',
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/ui_tests/hearings/*_test.js',
@@ -18,6 +19,7 @@ exports.config = {
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
     './e2e/tests/api_tests/mediation/*_test.js',
     './e2e/tests/api_tests/sdo_R2/*_test.js',
+    './e2e/tests/api_tests/generalapplication/*_test.js',
     './e2e/tests/api_tests/defaultJudgments/*_test.js',
     './e2e/tests/api_tests/damages/*_test.js',
     './e2e/tests/api_tests/sdo/*_test.js',
@@ -27,7 +29,8 @@ exports.config = {
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
     './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
     './e2e/tests/api_tests/settle-discontinue/*_test.js',
-    './e2e/tests/api_tests/automated_hearing_notice/*_test.js'
+    './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
+    './e2e/tests/api_tests/caseworkerEvents/*_test.js'
   ],
   output:  process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
