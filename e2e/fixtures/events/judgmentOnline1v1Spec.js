@@ -280,7 +280,7 @@ module.exports = {
       IsFinalOrder: {
         isFinalOrder: 'Yes'
       }
-    }
+    };
     return confirmReview;
   }
 };
