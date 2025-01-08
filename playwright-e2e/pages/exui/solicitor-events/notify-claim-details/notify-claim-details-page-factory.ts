@@ -28,12 +28,12 @@ export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
   }
 
   get notifyClaimDetailsCOSDefendant1Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page, 1);
     return new NotifyClaimDetailsCOSDefendant1Page(certificateOfServiceFragment, this.page);
   }
 
   get notifyClaimDetailsCOSDefendant2Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page, 2);
     return new NotifyClaimDetailsCOSDefendant2Page(certificateOfServiceFragment, this.page);
   }
 
