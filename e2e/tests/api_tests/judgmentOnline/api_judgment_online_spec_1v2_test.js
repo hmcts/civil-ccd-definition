@@ -24,6 +24,8 @@ async function prepareClaimSpecFinalOrderJO(api_spec){
   await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
   console.log('--createFinalOrderJO--');
   await api_spec.createFinalOrderJO(judgeUser, 'ASSISTED_ORDER');
+  console.log('---confirm order review');
+  await api_spec.confirmOrderReview(caseWorkerUserReg1);
 
 }
 Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {

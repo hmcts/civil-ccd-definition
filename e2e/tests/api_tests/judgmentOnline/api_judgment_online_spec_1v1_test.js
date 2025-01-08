@@ -25,6 +25,8 @@ async function prepareClaimSpecRecordJudgment(api_spec){
   await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
   console.log('--createFinalOrderJO--');
   await api_spec.createFinalOrderJO(judgeUser, 'ASSISTED_ORDER');
+  console.log('---confirm order review');
+  await api_spec.confirmOrderReview(caseWorkerUserReg1);
   console.log('--recordJudgment--');
   await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
 }
