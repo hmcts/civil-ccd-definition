@@ -3,11 +3,11 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { paragraphs } from './defendant-response-statement-of-truth-content.ts';
+import { paragraphs } from './claimant-response-statement-of-truth-content.ts';
 import StatementOfTruthFragment from '../../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseStatmentOfTruthPage extends ExuiPage(BasePage) {
+export default class ClaimantResponseStatementOfTruthPage extends ExuiPage(BasePage) {
   private statementOfTruthFragment: StatementOfTruthFragment;
 
   constructor(page: Page, statementOfTruthFragment: StatementOfTruthFragment) {
@@ -24,7 +24,7 @@ export default class DefendantResponseStatmentOfTruthPage extends ExuiPage(BaseP
   }
 
   async enterDetails() {
-    await this.statementOfTruthFragment.enterDetails('Defendant Solicitor', 'Solicitor');
+    await this.statementOfTruthFragment.enterDetails('Claimant Solicitor', 'Solicitor');
   }
 
   async submit() {

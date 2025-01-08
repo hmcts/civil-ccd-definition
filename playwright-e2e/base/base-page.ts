@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { Locator, Page } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
 import Cookie from '../models/cookie';
@@ -18,16 +18,29 @@ export default abstract class BasePage {
     this.page = page;
   }
 
+  private getNewLocator(
+    oldLocator: Locator,
+    containerSelector?: string,
+    index?: number,
+    first?: boolean,
+  ) {
+    const newLocator = containerSelector
+      ? this.page.locator(containerSelector).locator(oldLocator)
+      : oldLocator;
+    return first ? newLocator.nth(0) : index ? newLocator.nth(index) : newLocator;
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { timeout?: number; first?: boolean } = {},
+    options: { timeout?: number; first?: boolean; index?: number } = {},
   ) {
-    const locator = this.page.locator(selector);
-    if (options.first) {
-      await locator.first().click({ timeout: options.timeout });
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, undefined, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
 
@@ -319,23 +332,44 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'text')
   protected async expectSubheading(
     text: string,
-    options: { exact?: string; message?: string; timeout?: number } = {},
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      timeout?: number;
+    } = {},
   ) {
-    await pageExpect(this.page.locator('h2', { hasText: text }), {
-      message: options.message,
-    }).toBeVisible({ timeout: options.timeout });
-  }
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
 
-  private getSelectorLocator(
-    selector: string,
-    containerSelector?: string,
-    index?: number,
-    first?: boolean,
-  ) {
-    const locator = containerSelector
-      ? this.page.locator(containerSelector).locator(selector)
-      : this.page.locator(selector);
-    return first ? locator.nth(0) : index ? locator.nth(index) : locator;
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.locator('h2', { hasText: text });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({ timeout: options.timeout });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -345,20 +379,38 @@ export default abstract class BasePage {
       containerSelector?: string;
       index?: number;
       first?: boolean;
+      count?: number;
+      ignoreDuplicates?: boolean;
       message?: string;
       timeout?: number;
     } = {},
   ) {
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
+
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
-    const locator = this.getSelectorLocator(
-      selector,
-      options.containerSelector,
-      options.index,
-      options.first,
-    );
-    await pageExpect(locator, { message: options.message }).toBeVisible(options);
+
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeVisible(options);
+    }
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -376,12 +428,10 @@ export default abstract class BasePage {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
-    const locator = this.getSelectorLocator(
-      selector,
-      options.containerSelector,
-      options.index,
-      options.first,
-    );
+
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
@@ -395,19 +445,6 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     }
-  }
-
-  private getTextLocator(
-    text: string | number,
-    exact?: boolean,
-    containerSelector?: string,
-    index?: number,
-    first?: boolean,
-  ) {
-    const locator = containerSelector
-      ? this.page.locator(containerSelector).getByText(text.toString(), { exact })
-      : this.page.getByText(text.toString(), { exact });
-    return first ? locator.nth(0) : index ? locator.nth(index) : locator;
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -437,13 +474,8 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    const locator = this.getTextLocator(
-      text,
-      options.exact,
-      options.containerSelector,
-      options.index,
-      options.first,
-    );
+    let locator = this.page.getByText(text.toString(), { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
       await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
@@ -474,13 +506,13 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    const locator = this.getTextLocator(
-      text,
-      options.exact,
-      options.containerSelector,
-      options.index,
-      options.first,
-    );
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.getByText(text.toString(), { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
     try {
       await locator.waitFor({ state: 'visible', timeout: 500 });
       // eslint-disable-next-line no-empty
@@ -500,6 +532,9 @@ export default abstract class BasePage {
   protected async expectLabel(
     label: string,
     options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
       count?: number;
       ignoreDuplicates?: boolean;
       message?: string;
@@ -511,11 +546,16 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
     if (options.count && options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    const locator = this.page.getByLabel(label, { exact: options.exact });
+    let locator = this.page.getByLabel(label, { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
       await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
@@ -525,6 +565,7 @@ export default abstract class BasePage {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
         timeout: options.timeout,
       });
+    } else {
       await pageExpect(locator, {
         message: options.message,
       }).toBeVisible({
@@ -536,13 +577,47 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectLink(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: false },
   ) {
-    await pageExpect(this.page.getByRole('link', { name, exact: options.exact }), {
-      message: options.message,
-    }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    }
+
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.getByRole('link', { name, exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'name')
