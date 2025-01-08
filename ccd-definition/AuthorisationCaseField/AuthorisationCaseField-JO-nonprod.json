@@ -445,7 +445,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "CRU"
       }
