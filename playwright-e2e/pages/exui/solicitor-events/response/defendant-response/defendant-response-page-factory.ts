@@ -1,5 +1,9 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
 import Party from '../../../../../enums/party';
+import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import DefendantResponseStatmentOfTruthPage from './common/defendant-response-statement-of-truth/defendant-response-statement-of-truth-page';
+import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
+import SingleResponsePage from './common/single-response/single-response-page';
 import DefenceRouteDefendant1Page from './lr-spec/defence-route/defence-route-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
 import HowToAddTimelineUploadPage from './lr-spec/how-to-add-timeline-upload/how-to-add-timeline-upload-page';
@@ -54,6 +58,14 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get responseConfirmDetails1v2Page() {
     return new ResponseConfirmDetails1v2Page(this.page);
+  }
+
+  get singleResponsePage() {
+    return new SingleResponsePage(this.page);
+  }
+
+  get singleResponse2v1Page() {
+    return new SingleResponse2v1Page(this.page);
   }
 
   get respondentResponseTypePage() {
@@ -138,5 +150,10 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get mediationDefendant2Page() {
     return new MediationPage(this.page, 2);
+  }
+
+  get defendantResponseStatementOfTruthPage() {
+    const statementofTruthFragment = new StatementOfTruthFragment(this.page);
+    return new DefendantResponseStatmentOfTruthPage(this.page, statementofTruthFragment);
   }
 }
