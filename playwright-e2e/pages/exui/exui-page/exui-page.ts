@@ -50,8 +50,8 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       );
     }
 
-    protected async clickSubmit(options: { count?: number } = {}) {
-      await super.clickBySelector(buttons.submit.selector, options);
+    protected async clickSubmit() {
+      await super.clickBySelector(buttons.submit.selector);
       await super.waitForSelectorToDetach(components.loading.selector);
     }
 
