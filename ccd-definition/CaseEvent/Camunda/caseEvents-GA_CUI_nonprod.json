@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "NOTIFY_CASEWORKER_TO_TAKE_CASE_OFFLINE",
+    "Name": "Notify caseworker to offline",
+    "Description": "Notify caseworker to offline",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  }
+]
