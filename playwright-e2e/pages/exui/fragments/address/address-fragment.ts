@@ -3,12 +3,13 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
 import { buttons, getDropdowns, getInputs, heading } from './address-content';
+import Party from '../../../../enums/party';
 
 @AllMethodsStep()
 export default class AddressFragment extends ExuiPage(BasePage) {
-  private party: string;
+  private party: Party;
 
-  constructor(page: Page, party: string) {
+  constructor(page: Page, party: Party) {
     super(page);
     this.party = party;
   }

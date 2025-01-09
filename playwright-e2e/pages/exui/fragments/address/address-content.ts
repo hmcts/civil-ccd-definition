@@ -1,6 +1,8 @@
+import Party from '../../../../enums/party';
+
 export const heading = 'Address';
 
-export const getInputs = (party: string) => ({
+export const getInputs = (party: Party) => ({
   postCodeInput: {
     label: 'Enter a UK postcode',
     selector: `#${party}_primaryAddress_primaryAddress_postcodeInput`,
@@ -35,7 +37,7 @@ export const getInputs = (party: string) => ({
   },
 });
 
-export const getDropdowns = (party: string) => ({
+export const getDropdowns = (party: Party) => ({
   addressList: {
     label: 'Select an address',
     selector: `#${party}_primaryAddress_primaryAddress_addressList`,
