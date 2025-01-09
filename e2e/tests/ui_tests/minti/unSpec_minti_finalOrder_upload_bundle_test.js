@@ -11,7 +11,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft @testGL');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');
 
 Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
@@ -36,14 +36,14 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
   await I.verifyBundleDetails(civilCaseReference);
 });
 
-Scenario.only('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
+Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-  // civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
-  // await api.notifyClaim(config.applicantSolicitorUser);
-  // await api.notifyClaimDetails(config.applicantSolicitorUser);
-  // await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-  // await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-  // await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', 'MULTI_CLAIM');
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
+  await api.notifyClaim(config.applicantSolicitorUser);
+  await api.notifyClaimDetails(config.applicantSolicitorUser);
+  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', 'MULTI_CLAIM');
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await I.login(judgeUser);
