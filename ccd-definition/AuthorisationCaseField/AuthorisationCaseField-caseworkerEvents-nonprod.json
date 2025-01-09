@@ -198,6 +198,12 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+      "UserRoles": [
+        "judge-profile"
+      ],
+      "CRUD": "R"
       }
     ]
   },
@@ -431,6 +437,32 @@
           "caseworker-civil-admin",
           "judge-profile",
           "legal-adviser"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+    {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "caseNotes",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "obligationWAFlag",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "cui-admin-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }

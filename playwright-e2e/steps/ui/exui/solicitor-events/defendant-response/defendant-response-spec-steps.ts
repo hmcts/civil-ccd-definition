@@ -2,7 +2,7 @@ import BaseExuiSteps from '../../../../../base/base-exui-steps';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
-import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-events/defendant-response/defendant-response-page-factory';
+import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/defendant-response/defendant-response-page-factory';
 import RequestsFactory from '../../../../../requests/requests-factory';
 
 @AllMethodsStep()
