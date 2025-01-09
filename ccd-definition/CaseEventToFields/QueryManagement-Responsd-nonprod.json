@@ -6,7 +6,7 @@
     "CaseFieldID": "QueryManagementComponentLauncher",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
-    "PageID": "queryManagementRaiseQuery",
+    "PageID": "queryManagementRespondQuery",
     "PageLabel": "Respond to a query",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "N"
@@ -19,12 +19,10 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRespondQuery",
-    "DisplayContextParameter": "#ARGUMENT(UPDATE)",
     "PageLabel": "Respond to a query",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "LiveFrom": "01/01/2018",
@@ -34,12 +32,10 @@
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRespondQuery",
-    "DisplayContextParameter": "#ARGUMENT(UPDATE)",
     "PageLabel": "Respond to a query",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition":  "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   },
   {
     "LiveFrom": "01/01/2018",
@@ -49,11 +45,9 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRespondQuery",
-    "DisplayContextParameter": "#ARGUMENT(UPDATE)",
     "PageLabel": "Respond to a query",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition":  "QueryManagementComponentLauncher = \"DO_NOT_SHOW_IN_UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_FIELD\""
   }
 ]

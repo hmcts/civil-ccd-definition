@@ -22,8 +22,7 @@
           "GS_profile",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader",
-          "caseworker-civil"
+          "nbc-team-leader"
         ],
         "CRUD": "R"
       }
@@ -36,7 +35,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
       },
@@ -49,11 +51,7 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
-          "GS_profile",
-          "court-officer-order",
-          "ctsc",
-          "nbc-team-leader",
-          "caseworker-civil"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
