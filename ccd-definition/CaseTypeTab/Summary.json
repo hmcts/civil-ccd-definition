@@ -127,19 +127,5 @@
     "TabDisplayOrder": 1,
     "CaseFieldID": "reasonForTransfer",
     "TabFieldDisplayOrder": 15
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "CaseFieldID": "caseManagementLocationTab",
-    "TabFieldDisplayOrder": 89
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "TabID": "Summary",
-    "TabLabel": "Summary",
-    "CaseFieldID": "taskManagementLocationsTab",
-    "TabFieldDisplayOrder": 90
   }
 ]
