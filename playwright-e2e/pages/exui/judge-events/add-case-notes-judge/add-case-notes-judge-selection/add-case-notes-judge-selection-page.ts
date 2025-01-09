@@ -8,7 +8,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 export default class AddCaseNotesJudgeSelectionPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData): Promise<void> {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      this.checkCaseDetails(ccdCaseData),
       super.expectHeading(heading),
       super.expectText(inputs.caseNoteType.label),
       super.expectText(inputs.caseNoteType.radioNoteOnly.label),
@@ -17,6 +17,11 @@ export default class AddCaseNotesJudgeSelectionPage extends ExuiPage(BasePage) {
       super.expectText(buttons.previous.label),
       super.expectText(buttons.submit.label),
     ]);
+  }
+
+  async checkCaseDetails(ccdCaseData: CCDCaseData) {
+    const formattedId = `#${ccdCaseData.id.toString().replace(/(\d{4})(?=\d)/g, '$1-')}`;
+    super.expectHeading(formattedId);
   }
 
   async selectNoteOnly(): Promise<void> {
