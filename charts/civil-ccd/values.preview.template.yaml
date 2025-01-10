@@ -152,6 +152,7 @@ ccd:
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
         CCD_MULTIPARTY_CASE_TYPES: "*"
         CCD_MULTIPARTY_EVENTS: "*"
+        CCD_MULTIPARTY_FIX_ENABLED: true
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
