@@ -9,6 +9,7 @@
     "SecurityClassification": "Public",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
-    "RetriesTimeoutURLAboutToSubmitEvent": 0
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
   }
 ]
