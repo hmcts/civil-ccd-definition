@@ -1,24 +1,21 @@
-export const heading = 'Application';
+import Party from '../../../../../../../enums/party';
 
-export const radioButtons = (defendantNumber: number) => ({
+export const getRadioButtons = (party: Party) => ({
   yes: {
     label: 'Yes',
-    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
+    selector: `#${party}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
   },
   no: {
     label: 'No',
-    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_No`,
+    selector: `#${party}DQFutureApplications_intentionToMakeFutureApplications_No`,
   },
 });
 
-export const otherInformationForm = {
-  selector: '#additionalInformationForJudge',
-};
-
-export const otherInformationForm2 = {
-  selector: '#additionalInformationForJudge2',
-};
-
-export const whatForForm = (defendantNumber: number) => ({
-  selector: `#respondent${defendantNumber}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
+export const getForms = (party?: Party) => ({
+  whatForForm: {
+    selector: `#${party}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
+  },
+  otherInformationForm: {
+    selector: '#additionalInformationForJudge',
+  },
 });
