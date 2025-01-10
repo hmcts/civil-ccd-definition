@@ -23,9 +23,13 @@ export const textFields = {
 };
 
 export const buttons = {
-  addNew: {
+  addNewTop: {
     label: 'Add new',
     selector: '.button write-collection-add-item__top [type="button"]',
+  },
+  addNewBottom: {
+    label: 'Add new',
+    selector: '.button write-collection-add-item__bottom.ng-star-inserted [type="button"]',
   },
   remove: {
     label: 'Remove',

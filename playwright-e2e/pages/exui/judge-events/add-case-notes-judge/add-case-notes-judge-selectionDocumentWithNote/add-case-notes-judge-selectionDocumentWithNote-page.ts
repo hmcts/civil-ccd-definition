@@ -20,6 +20,7 @@ export default class AddCaseNotesJudgeSelectionDocumentWithNotePage extends Exui
       super.expectText(subHeading, { exact: true }),
       super.expectText(buttons.previous.label),
       super.expectText(buttons.submit.label),
+      super.expectText(buttons.addNewTop.label),
     ]);
   }
 
@@ -47,7 +48,7 @@ export default class AddCaseNotesJudgeSelectionDocumentWithNotePage extends Exui
   }
 
   async addNew(): Promise<void> {
-    await super.clickButtonByName(buttons.addNew.label);
+    await super.clickButtonByName(buttons.addNewTop.label);
   }
 
   async remove(): Promise<void> {
