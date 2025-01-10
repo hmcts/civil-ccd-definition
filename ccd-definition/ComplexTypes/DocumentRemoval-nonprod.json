@@ -1,6 +1,6 @@
 [
   {
-    "ID": "documentToRemove",
+    "ID": "documentToKeep",
     "ListElementCode": "documentId",
     "FieldType": "Text",
     "ElementLabel": "Document ID",
@@ -8,8 +8,8 @@
     "Searchable": "N"
   },
   {
-    "ID": "documentToRemove",
-    "ListElementCode": "caseDocument",
+    "ID": "documentToKeep",
+    "ListElementCode": "caseDocumentToKeep",
     "FieldType": "Document",
     "ElementLabel": "Document",
     "SecurityClassification": "Public",

@@ -4,7 +4,8 @@
   "AccessControl": [
     {
       "UserRoles": [
-        "hearing-centre-team-leader"
+        "hearing-centre-team-leader",
+        "caseworker-civil-admin"
       ],
       "CRUD": "CRUD"
     }

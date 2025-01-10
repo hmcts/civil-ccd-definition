@@ -3,7 +3,7 @@
   "ID": "documentToKeepCollection",
   "Label": "Documents to keep",
   "FieldType": "Collection",
-  "FieldTypeParameter": "documentToRemove",
+  "FieldTypeParameter": "documentToKeep",
   "SecurityClassification": "Public",
   "Searchable": "N"
 }
