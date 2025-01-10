@@ -20,14 +20,14 @@ module.exports = {
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
     // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
-
     // for preview
     // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
     // ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-3186.preview.platform.hmcts.net',
     // dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     // idamApi: 'https://idam-api.aat.platform.hmcts.net',
-    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net'
+    // civilService: 'https://civil-ccd-pr-3186.preview.platform.hmcts.net',
+
 
     /*
     manageCase:  'https://manage-case.aat.platform.hmcts.net/',
