@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { radioButtons } from './response-confirm-name-and-address-content.ts';
+import { radioButtons } from './response-confirm-name-address-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()

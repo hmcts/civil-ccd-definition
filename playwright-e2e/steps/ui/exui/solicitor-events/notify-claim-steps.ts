@@ -2,7 +2,7 @@ import BaseExuiSteps from '../../../../base/base-exui-steps';
 import BaseSteps from '../../../../base/base-steps';
 import { claimantSolicitorUser } from '../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
-import ccdEvents from '../../../../fixtures/ccd-events/events';
+import CCDEvents from '../../../../constants/ccd-events';
 import TestData from '../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import NotifyClaimPageFactory from '../../../../pages/exui/solicitor-events/notify-claim/notify-claim-page-factory';
@@ -37,7 +37,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await notifyClaimConfirmPage.verifyContent();
         await notifyClaimConfirmPage.submit();
       },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
+      CCDEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
     );
   }
