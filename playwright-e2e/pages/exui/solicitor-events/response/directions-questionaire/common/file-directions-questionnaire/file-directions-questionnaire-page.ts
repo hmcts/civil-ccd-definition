@@ -9,7 +9,7 @@ import {
   getCheckboxes,
   getRadioButtons,
 } from './file-directions-questionnaire-content.ts';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
@@ -18,7 +18,7 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.party.key = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -26,21 +26,21 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fileDQ),
-        super.expectLabel(getCheckboxes(this.party).fileDQConfirm.label),
-        super.expectText(getRadioButtons(this.party).oneMonthStay.label),
-        super.expectText(getRadioButtons(this.party).protocolComplied.label),
+        super.expectLabel(getCheckboxes(this.party.key).fileDQConfirm.label),
+        super.expectText(getRadioButtons(this.party.key).oneMonthStay.label),
+        super.expectText(getRadioButtons(this.party.key).protocolComplied.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(getCheckboxes(this.party).fileDQConfirm.selector);
-    await super.clickBySelector(getRadioButtons(this.party).oneMonthStay.no.selector);
-    await super.clickBySelector(getRadioButtons(this.party).protocolComplied.no.selector);
+    await super.clickBySelector(getCheckboxes(this.party.key).fileDQConfirm.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).oneMonthStay.no.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).protocolComplied.no.selector);
     await super.inputText(
-      `No explanation - ${this.party}`,
-      getInputs(this.party).noProtocolCompliedReason.selector,
+      `No explanation - ${this.party.key}`,
+      getInputs(this.party.key).noProtocolCompliedReason.selector,
     );
   }
 
