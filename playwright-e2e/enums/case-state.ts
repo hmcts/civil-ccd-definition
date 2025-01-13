@@ -1,4 +1,4 @@
-enum CaseStates {
+enum CaseState {
   PENDING_CASE_ISSUED = 'PENDING_CASE_ISSUED',
   CASE_ISSUED = 'CASE_ISSUED',
   AWAITING_CASE_DETAILS_NOTIFICATION = 'AWAITING_CASE_DETAILS_NOTIFICATION',
@@ -13,4 +13,4 @@ enum CaseStates {
   CLOSED = 'CLOSED',
 }
 
-export default CaseStates;
+export default CaseState;

@@ -1,5 +1,6 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
-import Party from '../../../../../enums/party';
+import partys from '../../../../../constants/partys';
+import DateFragment from '../../../fragments/date/date-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
 import DefendantResponseStatmentOfTruthPage from './common/defendant-response-statement-of-truth/defendant-response-statement-of-truth-page';
 import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
@@ -16,7 +17,7 @@ import ResponseConfirmDetails1v2Page from './lr-spec/response-confirm-details/re
 import ResponseConfirmDetailsPage from './lr-spec/response-confirm-details/response-confirm-details-page';
 import ResponseConfirmNameAddress1v2FastPage from './lr-spec/response-confirm-name-address/response-confirm-name-address-1v2-fast-page';
 import ResponseConfirmNameAddress1v2Page from './lr-spec/response-confirm-name-address/response-confirm-name-address-1v2-page ';
-import ResponseConfirmNameAddressPage from './lr-spec/response-confirm-name-address/response-confirm-name-and-address-page';
+import ResponseConfirmNameAddressPage from './lr-spec/response-confirm-name-address/response-confirm-name-address-page';
 import ResponseType2v1SpecPage from './lr-spec/response-type-2v1-spec/response-type-2v1-spec-page';
 import UploadDefendantResponseSpecPage from './lr-spec/upload-defendant-response-spec/upload-defendant-response-spec-page';
 import ConfirmDetails1v2Page from './unspec/confirm-details/confirm-details-1v2-page';
@@ -33,11 +34,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get confirmDetailsPage() {
-    return new ConfirmDetailsPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new ConfirmDetailsPage(this.page, dateFragment);
   }
 
   get confirmDetails1v2Page() {
-    return new ConfirmDetails1v2Page(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new ConfirmDetails1v2Page(this.page, dateFragment);
   }
 
   get responseConfirmNameAdressPage() {
@@ -53,11 +56,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get responseConfirmDetailsPage() {
-    return new ResponseConfirmDetailsPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new ResponseConfirmDetailsPage(this.page, dateFragment);
   }
 
   get responseConfirmDetails1v2Page() {
-    return new ResponseConfirmDetails1v2Page(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new ResponseConfirmDetails1v2Page(this.page, dateFragment);
   }
 
   get singleResponsePage() {
@@ -68,8 +73,12 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new SingleResponse2v1Page(this.page);
   }
 
-  get respondentResponseTypePage() {
-    return new RespondentResponseTypePage(this.page);
+  get respondentResponseTypeDefendant1Page() {
+    return new RespondentResponseTypePage(this.page, partys.DEFENDANT_1);
+  }
+
+  get respondentResponseTypeDefendantwPage() {
+    return new RespondentResponseTypePage(this.page, partys.DEFENDANT_2);
   }
 
   get respondentResponseType1v2Page() {
@@ -97,59 +106,63 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get defenceRouteDefendant1Page() {
-    return new DefenceRouteDefendant1Page(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new DefenceRouteDefendant1Page(this.page, dateFragment, partys.DEFENDANT_1);
   }
 
   get defenceRouteDefendant2Page() {
-    return new DefenceRouteDefendant1Page(this.page, 2);
+    const dateFragment = new DateFragment(this.page);
+    return new DefenceRouteDefendant1Page(this.page, dateFragment, partys.DEFENDANT_2);
   }
 
   get uploadDefendantResponseDefendant1Page() {
-    return new UploadDefendantResponsePage(this.page, Party.RESPONDENT_1);
+    return new UploadDefendantResponsePage(this.page, partys.DEFENDANT_1);
   }
 
   get uploadDefendantResponseDefendant2Page() {
-    return new UploadDefendantResponsePage(this.page, Party.RESPONDENT_2);
+    return new UploadDefendantResponsePage(this.page, partys.DEFENDANT_2);
   }
 
   get uploadDefendantResponseSpecDefendant1Page() {
-    return new UploadDefendantResponseSpecPage(this.page, Party.RESPONDENT_1);
+    return new UploadDefendantResponseSpecPage(this.page, partys.DEFENDANT_1);
   }
 
   get uploadDefendantResponseSpecDefendant2Page() {
-    return new UploadDefendantResponseSpecPage(this.page, Party.RESPONDENT_2, 2);
+    return new UploadDefendantResponseSpecPage(this.page, partys.DEFENDANT_2);
   }
 
   get howToAddTimelineDefendant1Page() {
-    return new HowToAddTimelinePage(this.page);
+    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_1);
   }
 
   get howToAddTimelineDefendant2Page() {
-    return new HowToAddTimelinePage(this.page, 2);
+    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_2);
   }
 
   get howToAddTimelineManualDefendant1Page() {
-    return new HowToAddTimelineManualPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new HowToAddTimelineManualPage(this.page, dateFragment, partys.DEFENDANT_1);
   }
 
   get howToAddTimelineManualDefendant2Page() {
-    return new HowToAddTimelineManualPage(this.page, 2);
+    const dateFragment = new DateFragment(this.page);
+    return new HowToAddTimelineManualPage(this.page, dateFragment, partys.DEFENDANT_2);
   }
 
   get howToAddTimelineUploadDefendant1Page() {
-    return new HowToAddTimelineUploadPage(this.page);
+    return new HowToAddTimelineUploadPage(this.page, partys.DEFENDANT_1);
   }
 
   get howToAddTimelineUploadDefendant2Page() {
-    return new HowToAddTimelineUploadPage(this.page, 2);
+    return new HowToAddTimelineUploadPage(this.page, partys.DEFENDANT_2);
   }
 
   get mediationDefendant1Page() {
-    return new MediationPage(this.page);
+    return new MediationPage(this.page, partys.DEFENDANT_1);
   }
 
   get mediationDefendant2Page() {
-    return new MediationPage(this.page, 2);
+    return new MediationPage(this.page, partys.DEFENDANT_2);
   }
 
   get defendantResponseStatementOfTruthPage() {

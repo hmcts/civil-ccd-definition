@@ -3,34 +3,36 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, getRadioButtons } from './how-to-add-timeline-content.ts';
+import { subheadings, radioButtons } from './how-to-add-timeline-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class HowToAddTimelinePage extends ExuiPage(BasePage) {
-  private defendantNumber?: number;
+  private party: Party;
 
-  constructor(page: Page, defendantNumber?: number) {
+  constructor(page: Page, party: Party) {
     super(page);
-    this.defendantNumber = defendantNumber;
+    this.party = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(getRadioButtons(this.defendantNumber).upload.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).manual.label),
+        super.expectLabel(radioButtons.upload.label),
+        super.expectLabel(radioButtons.manual.label),
       ],
-      { pageInsertName: this.defendantNumber ? 'Defendant2' : '' },
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async selectUpload() {
-    await super.clickBySelector(getRadioButtons(this.defendantNumber).upload.selector);
+    await super.clickBySelector(radioButtons.upload.selector(this.party));
   }
 
   async selectManual() {
-    await super.clickBySelector(getRadioButtons(this.defendantNumber).manual.selector);
+    await super.clickBySelector(radioButtons.manual.selector(this.party));
   }
 
   async submit() {

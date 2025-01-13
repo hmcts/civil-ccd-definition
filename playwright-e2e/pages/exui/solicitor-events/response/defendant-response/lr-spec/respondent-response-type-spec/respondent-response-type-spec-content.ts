@@ -1,18 +1,20 @@
-export const getRadioButtons = (defendantNumber: number) => ({
+import { Party } from '../../../../../../../models/partys';
+
+export const radioButtons = {
   fullDefence: {
     label: 'Defends all of the claim',
-    selector: `#respondent${defendantNumber}ClaimResponseTypeForSpec-FULL_DEFENCE`,
+    selector: (party: Party) => `#respondent${party.number}ClaimResponseTypeForSpec-FULL_DEFENCE`,
   },
   fullAdmit: {
     label: 'Admits all of the claim',
-    selector: `#respondent${defendantNumber}ClaimResponseTypeForSpec-FULL_ADMISSION`,
+    selector: (party: Party) => `#respondent${party.number}ClaimResponseTypeForSpec-FULL_ADMISSION`,
   },
   partAdmit: {
     label: 'Admits part of the claim',
-    selector: `#respondent${defendantNumber}ClaimResponseTypeForSpec-PART_ADMISSION`,
+    selector: (party: Party) => `#respondent${party.number}ClaimResponseTypeForSpec-PART_ADMISSION`,
   },
   counterClaim: {
     label: 'Defends all of the claim and wants to counterclaim',
-    selector: `#respondent${defendantNumber}ClaimResponseTypeForSpec-COUNTER_CLAIM`,
+    selector: (party: Party) => `#respondent${party.number}ClaimResponseTypeForSpec-COUNTER_CLAIM`,
   },
-});
+};
