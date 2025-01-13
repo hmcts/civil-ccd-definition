@@ -1,10 +1,14 @@
-export const getRadioButtons = (defendantNumber?: number) => ({
+import { Party } from '../../../../../../../models/partys';
+
+export const radioButtons = {
   yesMediation: {
     label: 'Yes',
-    selector: `#responseClaimMediationSpec${defendantNumber ?? ''}Required_Yes`,
+    selector: (party: Party) =>
+      `#responseClaimMediationSpec${party.number === 1 ? '' : party.number}Required_Yes`,
   },
   noMediation: {
     label: 'No',
-    selector: `#responseClaimMediationSpec${defendantNumber ?? ''}Required_No`,
+    selector: (party: Party) =>
+      `#responseClaimMediationSpec${party.number === 1 ? '' : party.number}Required_No`,
   },
-});
+};

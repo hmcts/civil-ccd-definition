@@ -1,7 +1,7 @@
-enum CaseRoles {
+enum CaseRole {
   RESPONDENT_SOLICITOR_ONE = 'RESPONDENTSOLICITORONE',
   RESPONDENT_SOLICITOR_TWO = 'RESPONDENTSOLICITORTWO',
   DEFENDANT = 'DEFENDANT',
 }
 
-export default CaseRoles;
+export default CaseRole;
