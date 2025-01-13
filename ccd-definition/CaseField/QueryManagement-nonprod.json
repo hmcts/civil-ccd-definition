@@ -37,5 +37,15 @@
     "CRUD": "CRUD",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "qmLatestQuery",
+    "FieldType": "LatestQuery",
+    "Label": " ",
+    "CRUD": "CRUD",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
