@@ -10,20 +10,20 @@ export const getDropdowns = {
   },
 };
 
-export const getInputs = (party?: Party) => ({
+export const getInputs = {
   preferredCourtReasonForm: {
     selector: '#respondToCourtLocation_reasonForHearingAtSpecificCourt',
   },
   heldRemotelyReasonForm: {
-    selector: `#${party}DQRemoteHearingLRspec_reasonForRemoteHearing`,
+    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_reasonForRemoteHearing`,
   },
-});
+};
 
-export const getRadioButtons = (party: Party) => ({
+export const getRadioButtons = {
   radioYes: {
-    selector: `#${party}DQRemoteHearingLRspec_remoteHearingRequested_Yes`,
+    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_remoteHearingRequested_Yes`,
   },
   radioNo: {
-    selector: `#${party}DQRemoteHearingLRspec_remoteHearingRequested_No`,
+    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_remoteHearingRequested_No`,
   },
-});
+};

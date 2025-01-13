@@ -23,16 +23,16 @@ export default class FurtherInformationPage extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons(this.party).yes.selector);
-    await super.inputText('test', form(this.party).whatForForm.selector);
+    await super.clickBySelector(radioButtons.yes.selector(this.party));
+    await super.inputText('test', form.whatForForm.selector(this.party));
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons(this.party).no.selector);
+    await super.clickBySelector(radioButtons.no.selector(this.party));
   }
 
   async inputFurtherInformation() {
-    await super.inputText('test', form(this.party).furtherInformationForm.selector);
+    await super.inputText('test', form.furtherInformationForm.selector(this.party));
   }
 
   async submit() {

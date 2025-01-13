@@ -2,20 +2,20 @@ import Party from '../../../../../../../enums/party';
 
 export const heading = 'Further information';
 
-export const radioButtons = (party: Party) => ({
+export const radioButtons = {
   yes: {
-    selector: `#${party}DQFurtherInformation_futureApplications_Yes`,
+    selector: (party: Party) => `#${party}DQFurtherInformation_futureApplications_Yes`,
   },
   no: {
-    selector: `#${party}DQFurtherInformation_futureApplications_No`,
+    selector: (party: Party) => `#${party}DQFurtherInformation_futureApplications_No`,
   },
-});
+};
 
-export const form = (party: Party) => ({
+export const form = {
   whatForForm: {
-    selector: `#${party}DQFurtherInformation_reasonForFutureApplications`,
+    selector: (party: Party) => `#${party}DQFurtherInformation_reasonForFutureApplications`,
   },
   furtherInformationForm: {
-    selector: `#${party}DQFurtherInformation_otherInformationForJudge`,
+    selector: (party: Party) => `#${party}DQFurtherInformation_otherInformationForJudge`,
   },
-});
+};

@@ -20,31 +20,31 @@ export default class SmallClaimWitnessesPage extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.party).radioYes.selector);
+    await super.clickBySelector(getRadioButtons.radioYes.selector(this.party));
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.party).radioNo.selector);
+    await super.clickBySelector(getRadioButtons.radioNo.selector(this.party));
   }
 
   async addWitnesses() {
-    await super.clickBySelector(getButtons(this.party).addNewExpert.selector);
+    await super.clickBySelector(getButtons.addNewExpert.selector(this.party));
   }
 
   async enterWitnessDetails(witnessNumber: number) {
     await super.inputText(
       'First name',
-      getInputs(this.party, witnessNumber).fields.firstName.selector,
+      getInputs.fields.firstName.selector(this.party, witnessNumber),
     );
     await super.inputText(
       'Last name',
-      getInputs(this.party, witnessNumber).fields.lastName.selector,
+      getInputs.fields.lastName.selector(this.party, witnessNumber),
     );
     await super.inputText(
       'firstlast@gmail.com',
-      getInputs(this.party, witnessNumber).fields.email.selector,
+      getInputs.fields.email.selector(this.party, witnessNumber),
     );
-    await super.inputText('Event', getInputs(this.party, witnessNumber).fields.whatEvent.selector);
+    await super.inputText('Event', getInputs.fields.whatEvent.selector(this.party, witnessNumber));
   }
 
   async submit() {

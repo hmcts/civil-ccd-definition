@@ -1,22 +1,24 @@
 import Party from '../../../../../../../enums/party';
 
-export const getRadioButtons = (party: Party, hearingNumber?: number) => ({
+export const getRadioButtons = {
   availability: {
     radioYes: {
       label: 'Yes',
-      selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+      selector: (party: Party) => `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
     },
     radioNo: {
       label: 'No',
-      selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_No`,
+      selector: (party: Party) => `#${party}DQHearingSmallClaim_unavailableDatesRequired_No`,
     },
   },
   availabilityOptions: {
     single: {
-      selector: `#${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
+      selector: (party: Party, hearingNumber: number) =>
+        `#${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: `#${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-DATE_RANGE`,
+      selector: (party: Party, hearingNumber: number) =>
+        `#${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-DATE_RANGE`,
     },
   },
   interpreter: {
@@ -29,14 +31,15 @@ export const getRadioButtons = (party: Party, hearingNumber?: number) => ({
       selector: '#SmallClaimHearingInterpreterRequired_No',
     },
   },
-});
+};
 
-export const getButtons = (party: Party) => ({
+export const getButtons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: `div[id='${party}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (party: Party) =>
+      `div[id='${party}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
   },
-});
+};
 
 export const getInputs = {
   unavailableSingleDate: {

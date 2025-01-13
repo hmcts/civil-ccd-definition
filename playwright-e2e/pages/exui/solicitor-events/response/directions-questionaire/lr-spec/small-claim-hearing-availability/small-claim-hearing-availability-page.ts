@@ -24,28 +24,28 @@ export default class SmallClaimHearingAvailabilityPage extends ExuiPage(BasePage
   }
 
   async selectYesAvailability() {
-    await super.clickBySelector(getRadioButtons(this.party).availability.radioYes.selector);
+    await super.clickBySelector(getRadioButtons.availability.radioYes.selector(this.party));
   }
 
   async selectNoAvailability() {
-    await super.clickBySelector(getRadioButtons(this.party).availability.radioNo.selector);
+    await super.clickBySelector(getRadioButtons.availability.radioNo.selector(this.party));
   }
 
   async selectYesInterpreter() {
-    await super.clickBySelector(getRadioButtons(this.party).interpreter.radioYes.selector);
+    await super.clickBySelector(getRadioButtons.interpreter.radioYes.selector);
   }
 
   async selectNoInterpreter() {
-    await super.clickBySelector(getRadioButtons(this.party).interpreter.radioNo.selector);
+    await super.clickBySelector(getRadioButtons.interpreter.radioNo.selector);
   }
 
   async addNew() {
-    await super.clickBySelector(getButtons(this.party).addNewAvailability.selector);
+    await super.clickBySelector(getButtons.addNewAvailability.selector(this.party));
   }
 
   async selectSingleDate(hearingNumber: number) {
     await super.clickBySelector(
-      getRadioButtons(this.party, hearingNumber).availabilityOptions.single.selector,
+      getRadioButtons.availabilityOptions.single.selector(this.party, hearingNumber),
     );
   }
 
@@ -57,7 +57,7 @@ export default class SmallClaimHearingAvailabilityPage extends ExuiPage(BasePage
 
   async selectDateRange(hearingNumber: number) {
     await super.clickBySelector(
-      getRadioButtons(this.party, hearingNumber).availabilityOptions.range.selector,
+      getRadioButtons.availabilityOptions.range.selector(this.party, hearingNumber),
     );
   }
 

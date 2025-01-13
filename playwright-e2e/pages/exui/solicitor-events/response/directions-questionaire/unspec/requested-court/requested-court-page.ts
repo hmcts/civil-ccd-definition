@@ -21,25 +21,25 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      getDropdowns(this.party).dropdown.options[0],
-      getDropdowns(this.party).dropdown.selector,
+      getDropdowns.dropdown.options[0],
+      getDropdowns.dropdown.selector(this.party),
     );
   }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.party).radioYes.selector);
+    await super.clickBySelector(getRadioButtons.radioYes.selector(this.party));
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.party).radioNo.selector);
+    await super.clickBySelector(getRadioButtons.radioNo.selector(this.party));
   }
 
   async fillInPreferredCourtReason() {
-    await super.inputText('Test reason', getInputs().preferredCourtReasonForm.selector);
+    await super.inputText('Test reason', getInputs.preferredCourtReasonForm.selector(this.party));
   }
 
   async fillInHeldRemotelyReason() {
-    await super.inputText('Test reason', getInputs(this.party).heldRemotelyReasonForm.selector);
+    await super.inputText('Test reason', getInputs.heldRemotelyReasonForm.selector(this.party));
   }
 
   async submit() {

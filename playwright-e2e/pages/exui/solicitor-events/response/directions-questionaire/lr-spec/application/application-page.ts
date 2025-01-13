@@ -20,16 +20,16 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.party).yes.selector);
-    await super.inputText('test', getForms(this.party).whatForForm.selector);
+    await super.clickBySelector(getRadioButtons.yes.selector(this.party));
+    await super.inputText('test', getForms.whatForForm.selector(this.party));
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.party).no.selector);
+    await super.clickBySelector(getRadioButtons.no.selector(this.party));
   }
 
   async enterAdditionalInformation() {
-    await super.inputText('test', getForms().otherInformationForm.selector);
+    await super.inputText('test', getForms.otherInformationForm.selector);
   }
 
   async submit() {
