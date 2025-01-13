@@ -1,3 +1,5 @@
+import { Party } from '../../../../../../../models/partys';
+
 export const subheadings = {
   docUrl: 'Response document',
 };
@@ -6,16 +8,16 @@ export const paragraphs = {
   rejectAll: 'Reject all of the claim',
 };
 
-export const getRadioButtons = (claimantNumber: number) => ({
+export const radioButtons = {
   proceedWithClaim: {
-    label: `Does Claimant ${claimantNumber} want to proceed with the claim against`,
+    label: (party: Party) => `Does Claimant ${party.number} want to proceed with the claim against`,
     yes: {
       label: 'Yes',
-      selector: `#applicant${claimantNumber}ProceedWithClaimMultiParty2v1_Yes`,
+      selector: (party: Party) => `#applicant${party.number}ProceedWithClaimMultiParty2v1_Yes`,
     },
     no: {
       label: 'No',
-      selector: `#applicant${claimantNumber}ProceedWithClaimMultiParty2v1_No`,
+      selector: (party: Party) => `#applicant${party.number}ProceedWithClaimMultiParty2v1_No`,
     },
   },
-});
+};
