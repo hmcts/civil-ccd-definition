@@ -57,7 +57,7 @@ const claimantSolicitor1 = {
   ClaimantSolicitorOrganisation: {
     applicant1OrganisationPolicy: {
       OrgPolicyReference: 'Claimant policy reference',
-      OrgPolicyCaseAssignedRole: '[CLAIMANTSOLICITORONE]',
+      OrgPolicyCaseAssignedRole: '[APPLICANTSOLICITORONE]',
       Organisation: {
         OrganisationID: claimantSolicitorUser.orgId,
       },
@@ -87,7 +87,7 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
         respondent1OrgRegistered: 'Yes',
         respondent1OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference',
-          OrgPolicyCaseAssignedRole: '[DEFENDANTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORONE]',
           Organisation: {
             OrganisationID: defendantSolicitor1User.orgId,
           },
@@ -167,7 +167,7 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
         respondent2OrgRegistered: 'Yes',
         respondent2OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference 2',
-          OrgPolicyCaseAssignedRole: '[DEFENDANTSOLICITORTWO]',
+          OrgPolicyCaseAssignedRole: '[RESPONDENTSOLICITORTWO]',
           Organisation: { OrganisationID: defendantSolicitor2User.orgId },
         },
       },
