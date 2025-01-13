@@ -18,14 +18,13 @@ export default class NotifyClaimDetailsCOSDefendant2Page extends ExuiPage(BasePa
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       this.certificateOfServiceFragment.verifyContent(),
-      this.certificateOfServiceFragment.verifyDefendant2Content(),
     ]);
   }
 
   async fillDetails() {
-    await this.certificateOfServiceFragment.fillDefendant2CertificateOfService();
-    await this.certificateOfServiceFragment.uploadDefendant2SupportingEvidence();
-    await this.certificateOfServiceFragment.fillDefendant2StatementOfTruth();
+    await this.certificateOfServiceFragment.fillCertificateOfService();
+    await this.certificateOfServiceFragment.uploadSupportingEvidence();
+    await this.certificateOfServiceFragment.fillStatementOfTruth();
   }
 
   async submit() {
