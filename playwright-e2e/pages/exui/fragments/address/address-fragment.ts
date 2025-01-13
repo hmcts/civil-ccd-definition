@@ -2,8 +2,9 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
-import { buttons, getInputs, links } from './address-content';
-import Party from '../../../../enums/party';
+import { buttons, inputs, dropdowns, links } from './address-content';
+import { Party } from '../../../../models/partys';
+import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class AddressFragment extends ExuiPage(BasePage) {
@@ -15,24 +16,26 @@ export default class AddressFragment extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    await super.runVerifications([super.expectLabel(getInputs(this.party).postCodeInput.label)]);
+    await super.runVerifications([super.expectLabel(inputs.postCodeInput.label)]);
   }
 
-  async enterAddressManual(postCode?: string) {
+  async enterAddressManual() {
+    const addressData = CaseDataHelper.buildAddressData(this.party);
     await super.clickLink(links.cannotFindAddress.title);
-    await super.inputText(`${this.party} Building`, getInputs(this.party).addressLine1.selector);
-    await super.inputText(`${this.party} Flat`, getInputs(this.party).addressLine2.selector);
-    await super.inputText(`${this.party} Street`, getInputs(this.party).addressLine3.selector);
-    await super.inputText(`${this.party} City`, getInputs(this.party).postTown.selector);
-    await super.inputText(`${this.party} County`, getInputs(this.party).county.selector);
-    await super.inputText(`${this.party} Country`, getInputs(this.party).country.selector);
-    await super.inputText(postCode ?? `E10 5DN`, getInputs(this.party).postCode.selector);
+    await super.inputText(addressData.AddressLine1, inputs.addressLine1.selector(this.party));
+    await super.inputText(addressData.AddressLine2, inputs.addressLine2.selector(this.party));
+    await super.inputText(addressData.AddressLine3, inputs.addressLine3.selector(this.party));
+    await super.inputText(addressData.PostTown, inputs.postTown.selector(this.party));
+    await super.inputText(addressData.County, inputs.county.selector(this.party));
+    await super.inputText(addressData.Country, inputs.country.selector(this.party));
+    await super.inputText(addressData.PostCode, inputs.postCode.selector(this.party));
   }
 
   async findAddress(postcode: string, index: number) {
-    await super.inputText(postcode, getInputs(this.party).postCodeInput.selector);
+    await super.inputText(postcode, inputs.postCodeInput.selector(this.party));
     await super.clickButtonByName(buttons.findaddress.title);
-    //method incomplete, need to add method in basePage for waiting for dropdown to appear.
+    await super.expectSelector(dropdowns.addressList.selector(this.party));
+    await super.selectFromDropdown(index, dropdowns.addressList.selector(this.party));
   }
 
   async submit() {

@@ -8,18 +8,27 @@ import {
   inputs,
   tableHeadings,
 } from './response-confirm-details-content.ts';
+import DateFragment from '../../../../../fragments/date/date-fragment.ts';
+import { Page } from 'playwright-core';
 
 @AllMethodsStep()
 export default class ResponseConfirmDetails1v2Page extends ExuiPage(BasePage) {
+  private dateFragment: DateFragment;
+
+  constructor(page: Page, dateFragment: DateFragment) {
+    super(page);
+    this.dateFragment = dateFragment;
+  }
+
   async verifyContent() {
     super.runVerifications([
       super.expectHeading(heading),
       super.expectLabel(inputs.defendantSolicitorReference.label),
       super.expectText(tableHeadings.organisation),
       super.expectText(tableHeadings.reference),
-      super.expectLabel(inputs.defendant1DateOfBirth.day.label, { count: 2 }),
-      super.expectLabel(inputs.defendant1DateOfBirth.month.label, { count: 2 }),
-      super.expectLabel(inputs.defendant1DateOfBirth.year.label, { count: 2 }),
+      super.expectText(inputs.defendant1DateOfBirth.label),
+      super.expectText(inputs.defendant2DateOfBirth.label),
+      this.dateFragment.verifyContent(),
       super.expectText(radioButtons.defendant1Address.label, { count: 2 }),
     ]);
   }

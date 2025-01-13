@@ -2,8 +2,8 @@ import BaseApiSteps from '../../../../../base/base-api-steps';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import CreateClaimDataBuilder from '../../../../../data-builders/ccd-events/exui/solicitor-events/create-claim/unspec/create-claim-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CaseStates from '../../../../../enums/case-states';
-import ccdEvents from '../../../../../fixtures/ccd-events/events';
+import CaseState from '../../../../../enums/case-state';
+import CCDEvents from '../../../../../constants/ccd-events';
 import UserAssignedCasesHelper from '../../../../../helpers/user-assigned-cases-helper';
 import TestData from '../../../../../models/test-data';
 import RequestsFactory from '../../../../../requests/requests-factory';
@@ -31,17 +31,17 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     );
 
     const { ccdRequests } = this.requestsFactory;
-    const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
+    const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, CCDEvents.CREATE_CLAIM);
     const eventData = await super.validatePages(
-      ccdEvents.CREATE_CLAIM,
+      CCDEvents.CREATE_CLAIM,
       createClaimData,
       claimantSolicitorUser,
       eventToken,
     );
     const eventCaseData = await ccdRequests.submitEvent(
       claimantSolicitorUser,
-      ccdEvents.CREATE_CLAIM,
-      CaseStates.PENDING_CASE_ISSUED,
+      CCDEvents.CREATE_CLAIM,
+      CaseState.PENDING_CASE_ISSUED,
       eventData,
       eventToken,
     );

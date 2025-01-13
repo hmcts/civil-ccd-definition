@@ -1,12 +1,12 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import ccdEvents from '../../../fixtures/ccd-events/events';
+import CCDEvents from '../../../constants/ccd-events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
 import { buttons, components } from './exui-content';
 
-let ccdEventState: CCDEvent;
+let ccdEventstate: CCDEvent;
 
 export default function ExuiPage<TBase extends abstract new (...args: any[]) => BasePage>(
   Base: TBase,
@@ -17,18 +17,18 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       let expects: Promise<void>[] | Promise<void>;
 
       if (
-        ccdEventState === ccdEvents.CREATE_CLAIM ||
-        ccdEventState === ccdEvents.CREATE_CLAIM_SPEC
+        ccdEventstate === CCDEvents.CREATE_CLAIM ||
+        ccdEventstate === CCDEvents.CREATE_CLAIM_SPEC
       ) {
-        expects = super.expectHeading(ccdEventState.name);
-      } else if (ccdEventState === undefined) {
+        expects = super.expectHeading(ccdEventstate.name);
+      } else if (ccdEventstate === undefined) {
         expects = [
           super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
           super.expectHeading(ccdCaseData.caseNamePublic),
         ];
       } else {
         expects = [
-          super.expectHeading(ccdEventState.name),
+          super.expectHeading(ccdEventstate.name),
           super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
           super.expectHeading(ccdCaseData.caseNamePublic),
         ];
@@ -75,11 +75,11 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     abstract submit(...args: any[]): Promise<void>;
 
     set setCCDEvent(ccdEvent: CCDEvent) {
-      ccdEventState = ccdEvent;
+      ccdEventstate = ccdEvent;
     }
 
     clearCCDEvent() {
-      ccdEventState = undefined;
+      ccdEventstate = undefined;
     }
   }
 
