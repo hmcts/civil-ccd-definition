@@ -54,7 +54,7 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui}) => {
   }
 });
 
-Scenario.skip('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiPRequestForReconsideration(api_spec_cui, false);
     await api_spec_cui.createSDO(config.tribunalCaseworkerWithRegionId4);

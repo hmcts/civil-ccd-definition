@@ -11,7 +11,7 @@ await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 
 Feature('Request for reconsideration - 1v1 - spec @api-specified @api-nonprod @api-r2-sdo'); // reinstate @api-nightly-prod tag when issue described on CIV-14871 is resolved
 
-Scenario.skip('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
+Scenario('1v1 spec request for reconsideration for uphold previous order', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.applicantSolicitorUser, 'Applicant');
