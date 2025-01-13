@@ -3,7 +3,6 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import { Party } from '../../../../../../models/partys';
 import ExuiPage from '../../../../exui-page/exui-page';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import { inputs } from './extension-date-spec-content';
@@ -12,7 +11,7 @@ import { inputs } from './extension-date-spec-content';
 export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
-  constructor(page: Page, dateFragment: DateFragment, party: Party) {
+  constructor(page: Page, dateFragment: DateFragment) {
     super(page);
     this.dateFragment = dateFragment;
   }
