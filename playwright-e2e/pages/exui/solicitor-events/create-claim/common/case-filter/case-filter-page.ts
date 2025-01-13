@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
+import ccdEvents from '../../../../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ccdEvents from '../../../../../../fixtures/ccd-events/events';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
 

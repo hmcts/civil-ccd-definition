@@ -7,7 +7,7 @@ import CCDCaseData from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 import { CCDEvent } from '../models/ccd/ccd-events';
-import CaseStates from '../enums/case-states';
+import CaseState from '../enums/case-state';
 
 @AllMethodsStep({ methodNamesToIgnore: ['getCCDDataStoreBaseUrl'] })
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -77,7 +77,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   async submitEvent(
     user: User,
     ccdEvent: CCDEvent,
-    expectedState: CaseStates,
+    expectedState: CaseState,
     eventData: any,
     ccdEventToken: string,
     caseId?: number,

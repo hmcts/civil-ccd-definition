@@ -1,5 +1,5 @@
 import { AllMethodsStep } from '../decorators/test-steps';
-import ccdEvents from '../fixtures/ccd-events/events';
+import ccdEvents from '../constants/ccd-events';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import TestData from '../models/test-data';
 import User from '../models/user';

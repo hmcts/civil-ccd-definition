@@ -7,33 +7,9 @@ export const inputs = {
   },
   defendant1DateOfBirth: {
     label: "Defendant's date of birth (Optional)",
-    day: {
-      label: 'day',
-      selector: '#individualDateOfBirth-day',
-    },
-    month: {
-      label: 'month',
-      selector: '#individualDateOfBirth-month',
-    },
-    year: {
-      label: 'year',
-      selector: '#individualDateOfBirth-year',
-    },
   },
   defendant2DateOfBirth: {
     label: "Second defendant's date of birth (Optional)",
-    day: {
-      label: 'Day',
-      selector: '#individualDateOfBirth-day',
-    },
-    month: {
-      label: 'Month',
-      selector: '#individualDateOfBirth-month',
-    },
-    year: {
-      label: 'Year',
-      selector: '#individualDateOfBirth-year',
-    },
   },
 };
 

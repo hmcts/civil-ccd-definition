@@ -1,7 +1,7 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
@@ -17,7 +17,7 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.party.key = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -25,21 +25,21 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectLabel(getRadioButtons(this.party).disclosureOfElectronicDocs.label),
+        super.expectLabel(getRadioButtons(this.party.key).disclosureOfElectronicDocs.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async enterDetails() {
     await super.clickBySelector(
-      getRadioButtons(this.party).disclosureOfElectronicDocs.yes.selector,
+      getRadioButtons(this.party.key).disclosureOfElectronicDocs.yes.selector,
     );
-    await super.clickBySelector(getRadioButtons(this.party).standardDisclosure.no.selector);
-    await super.expectLabel(getInputs(this.party).bespokeDirections.label);
+    await super.clickBySelector(getRadioButtons(this.party.key).standardDisclosure.no.selector);
+    await super.expectLabel(getInputs(this.party.key).bespokeDirections.label);
     await super.inputText(
       'No directions required',
-      getInputs(this.party).bespokeDirections.selector,
+      getInputs(this.party.key).bespokeDirections.selector,
     );
   }
 

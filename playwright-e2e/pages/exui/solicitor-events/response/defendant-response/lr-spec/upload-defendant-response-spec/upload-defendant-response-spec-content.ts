@@ -1,16 +1,17 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
   uploadEvidence: 'Upload supporting evidence (optional)',
 };
 
-export const getInputs = (party: Party, defendantNumber?: number) => ({
+export const inputs = {
   disputeReason: {
     label: '',
-    selector: `#detailsOfWhyDoesYouDisputeTheClaim${defendantNumber ?? ''}`,
+    selector: (party: Party) =>
+      `#detailsOfWhyDoesYouDisputeTheClaim${party.number === 1 ? '' : party.number}`,
   },
   uploadEvidence: {
     label: '',
-    selector: `#${party}SpecDefenceResponseDocument_file`,
+    selector: (party: Party) => `#respondent${party.number}SpecDefenceResponseDocument_file`,
   },
-});
+};

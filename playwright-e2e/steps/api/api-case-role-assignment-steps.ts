@@ -5,7 +5,7 @@ import TestData from '../../models/test-data';
 import User from '../../models/user';
 import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 import { defendantSolicitor1User, defendantSolicitor2User } from '../../config/users/exui-users';
-import CaseRoles from '../../enums/case-roles';
+import CaseRole from '../../enums/case-role';
 
 @AllMethodsStep()
 export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
@@ -19,7 +19,7 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
       this.ccdCaseData.id,
-      CaseRoles.RESPONDENT_SOLICITOR_ONE,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
   }
@@ -30,13 +30,13 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
       this.ccdCaseData.id,
-      CaseRoles.RESPONDENT_SOLICITOR_ONE,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
       this.ccdCaseData.id,
-      CaseRoles.RESPONDENT_SOLICITOR_ONE,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id);
   }
@@ -48,13 +48,13 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor1User,
       this.ccdCaseData.id,
-      CaseRoles.RESPONDENT_SOLICITOR_ONE,
+      CaseRole.RESPONDENT_SOLICITOR_ONE,
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
       this.ccdCaseData.id,
-      CaseRoles.RESPONDENT_SOLICITOR_TWO,
+      CaseRole.RESPONDENT_SOLICITOR_TWO,
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id);
   }

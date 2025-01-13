@@ -1,5 +1,5 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
@@ -13,7 +13,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.party.key = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -21,18 +21,18 @@ export default class ExpertPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts),
-        super.expectText(getRadioButtons(this.party).expertsRequired.label),
-        super.expectLabel(getRadioButtons(this.party).expertsRequired.yes.label),
-        super.expectLabel(getRadioButtons(this.party).expertsRequired.no.label),
+        super.expectText(getRadioButtons(this.party.key).expertsRequired.label),
+        super.expectLabel(getRadioButtons(this.party.key).expertsRequired.yes.label),
+        super.expectLabel(getRadioButtons(this.party.key).expertsRequired.no.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async useExperts() {
-    await super.clickBySelector(getRadioButtons(this.party).expertsRequired.yes.selector);
-    await super.clickBySelector(getRadioButtons(this.party).expertReports.notObtained.selector);
-    await super.clickBySelector(getRadioButtons(this.party).jointExpert.no.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).expertsRequired.yes.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).expertReports.notObtained.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).jointExpert.no.selector);
   }
 
   async addNewExpert() {

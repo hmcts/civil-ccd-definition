@@ -195,7 +195,7 @@ export interface Party {
   partyName?: string;
   partyEmail?: string;
   companyName?: string;
-  primaryAddress?: PrimaryAddress;
+  primaryAddress?: Address;
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
@@ -317,7 +317,7 @@ export interface CaseFlagsDetailsValuePath {
   value?: string;
 }
 
-export interface PrimaryAddress {
+export interface Address {
   County?: string;
   Country?: string;
   PostCode?: string;

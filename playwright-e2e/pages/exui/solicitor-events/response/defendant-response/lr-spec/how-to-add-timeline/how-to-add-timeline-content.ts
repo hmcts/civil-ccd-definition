@@ -1,14 +1,18 @@
+import { Party } from '../../../../../../../models/partys';
+
 export const subheadings = {
   howToAddTimeline: 'How do you want to add the claim timeline?',
 };
 
-export const getRadioButtons = (defendantNumber?: number) => ({
+export const radioButtons = {
   upload: {
     label: 'Upload claim timeline template',
-    selector: `#specClaimResponseTimelineList${defendantNumber ?? ''}-UPLOAD`,
+    selector: (party: Party) =>
+      `#specClaimResponseTimelineList${party.number === 1 ? '' : party.number}-UPLOAD`,
   },
   manual: {
     label: 'Add manually',
-    selector: `#specClaimResponseTimelineList${defendantNumber ?? ''}-MANUAL`,
+    selector: (party: Party) =>
+      `#specClaimResponseTimelineList${party.number === 1 ? '' : party.number}-MANUAL`,
   },
-});
+};

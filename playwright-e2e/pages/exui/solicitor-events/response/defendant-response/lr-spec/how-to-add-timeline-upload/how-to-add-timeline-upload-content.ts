@@ -1,8 +1,11 @@
+import { Party } from '../../../../../../../models/partys';
+
 export const heading = 'Upload claim timeline template';
 
-export const getInputs = (defendantNumber?: number) => ({
+export const inputs = {
   upload: {
     label: 'Upload files',
-    selector: `#specResponseTimelineDocumentFiles${defendantNumber ?? ''}`,
+    selector: (party: Party) =>
+      `#specResponseTimelineDocumentFiles${party.number === 1 ? '' : party.number}`,
   },
-});
+};
