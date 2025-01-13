@@ -1,4 +1,4 @@
-import CCDEvents from '../../models/ccd/ccd-events';
+import CCDEvents from '../models/ccd/ccd-events';
 
 const ccdEvents: CCDEvents = {
   CREATE_CLAIM: {
