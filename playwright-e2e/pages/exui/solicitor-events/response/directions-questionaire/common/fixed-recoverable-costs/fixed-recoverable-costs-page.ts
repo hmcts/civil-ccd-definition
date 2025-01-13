@@ -1,5 +1,5 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
@@ -13,7 +13,7 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.party.key = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -21,30 +21,30 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fixedRecoverableCosts),
-        super.expectText(getRadioButtons(this.party).fixedRecoverableCosts.label),
-        super.expectText(getRadioButtons(this.party).fixedRecoverableCosts.yes.label),
-        super.expectText(getRadioButtons(this.party).fixedRecoverableCosts.no.label),
+        super.expectText(getRadioButtons(this.party.key).fixedRecoverableCosts.label),
+        super.expectText(getRadioButtons(this.party.key).fixedRecoverableCosts.yes.label),
+        super.expectText(getRadioButtons(this.party.key).fixedRecoverableCosts.no.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.party).fixedRecoverableCosts.no.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).fixedRecoverableCosts.no.selector);
     await super.inputText(
       'No explanation',
-      getInputs(this.party).fixedRecoverableCostsReason.selector,
+      getInputs(this.party.key).fixedRecoverableCostsReason.selector,
     );
   }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.party).fixedRecoverableCosts.yes.selector);
-    await super.clickBySelector(getRadioButtons(this.party).complexityBands.band1.selector);
-    await super.expectText(getRadioButtons(this.party).complexityBandAgreed.label);
-    await super.clickBySelector(getRadioButtons(this.party).complexityBandAgreed.yes.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).fixedRecoverableCosts.yes.selector);
+    await super.clickBySelector(getRadioButtons(this.party.key).complexityBands.band1.selector);
+    await super.expectText(getRadioButtons(this.party.key).complexityBandAgreed.label);
+    await super.clickBySelector(getRadioButtons(this.party.key).complexityBandAgreed.yes.selector);
     await super.inputText(
       'No explanation',
-      getInputs(this.party).fixedRecoverableCostsReason.selector,
+      getInputs(this.party.key).fixedRecoverableCostsReason.selector,
     );
   }
 

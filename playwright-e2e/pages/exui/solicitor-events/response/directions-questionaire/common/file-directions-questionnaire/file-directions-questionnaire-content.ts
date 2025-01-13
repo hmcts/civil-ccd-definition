@@ -1,4 +1,4 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
   fileDQ: 'File directions questionnaire',

@@ -1,12 +1,12 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
   uploadDefence: 'Upload defence',
 };
 
-export const getInputs = (party: Party) => ({
+export const inputs = {
   uploadDoc: {
     label: "Defendant's defence",
-    selector: `#${party}ClaimResponseDocument_file`,
+    selector: (party: Party) => `#respondent${party.number}ClaimResponseDocument_file`,
   },
-});
+};
