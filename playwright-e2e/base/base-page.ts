@@ -346,8 +346,8 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
     }
 
     if (options.count && options.count === 0) {
@@ -389,8 +389,8 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
     }
 
     if (options.count && options.count === 0) {
@@ -466,8 +466,8 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
     }
 
     if (options.count && options.count === 0) {
@@ -546,8 +546,8 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
     }
 
     if (options.count && options.count === 0) {
@@ -592,8 +592,8 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
     }
 
     if (options.count && options.count === 0) {

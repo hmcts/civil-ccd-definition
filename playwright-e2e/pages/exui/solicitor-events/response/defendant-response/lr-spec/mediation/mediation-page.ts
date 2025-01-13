@@ -3,31 +3,36 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { getRadioButtons } from './mediation-content.ts';
+import { radioButtons } from './mediation-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class MediationPage extends ExuiPage(BasePage) {
-  private defendantNumber?: number;
+  private party: Party;
 
-  constructor(page: Page, defendantNumber?: number) {
+  constructor(page: Page, party: Party) {
     super(page);
-    this.defendantNumber = defendantNumber;
+    this.party = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectLabel(getRadioButtons(this.defendantNumber).yesMediation.label),
-      super.expectLabel(getRadioButtons(this.defendantNumber).yesMediation.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectLabel(radioButtons.yesMediation.label),
+        super.expectLabel(radioButtons.yesMediation.label),
+      ],
+      { pageInsertName: StringHelper.capitalise(this.party.key) },
+    );
   }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.defendantNumber).yesMediation.selector);
+    await super.clickBySelector(radioButtons.yesMediation.selector(this.party));
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.defendantNumber).noMediation.selector);
+    await super.clickBySelector(radioButtons.noMediation.selector(this.party));
   }
 
   async submit() {
