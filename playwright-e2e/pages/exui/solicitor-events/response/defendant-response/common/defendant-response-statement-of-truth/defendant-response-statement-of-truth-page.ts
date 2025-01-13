@@ -24,7 +24,7 @@ export default class DefendantResponseStatmentOfTruthPage extends ExuiPage(BaseP
   }
 
   async enterDetails() {
-    await this.statementOfTruthFragment.enterDetails('John Wick', 'Solicitor');
+    await this.statementOfTruthFragment.enterDetails('Defendant Solicitor', 'Solicitor');
   }
 
   async submit() {
