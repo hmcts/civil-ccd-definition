@@ -1,6 +1,6 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import CCDEvents from '../../../constants/ccd-events';
+import ccdEvents from '../../../constants/ccd-events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
@@ -17,8 +17,8 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       let expects: Promise<void>[] | Promise<void>;
 
       if (
-        ccdEventstate === CCDEvents.CREATE_CLAIM ||
-        ccdEventstate === CCDEvents.CREATE_CLAIM_SPEC
+        ccdEventstate === ccdEvents.CREATE_CLAIM ||
+        ccdEventstate === ccdEvents.CREATE_CLAIM_SPEC
       ) {
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {

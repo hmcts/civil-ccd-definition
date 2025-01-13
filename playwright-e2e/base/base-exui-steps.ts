@@ -1,5 +1,5 @@
 import { AllMethodsStep } from '../decorators/test-steps';
-import CCDEvents from '../constants/ccd-events';
+import ccdEvents from '../constants/ccd-events';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import TestData from '../models/test-data';
 import User from '../models/user';
@@ -29,7 +29,7 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     while (retries > 0) {
       try {
-        if (ccdEvent === CCDEvents.CREATE_CLAIM || ccdEvent === CCDEvents.CREATE_CLAIM_SPEC) {
+        if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
           const { navBar } = this.exuiDashboardPageFactory;
           await navBar.clickCreateCase();
         } else {
