@@ -1,18 +1,22 @@
-export const heading = 'Further information';
+import Party from '../../../../../../../enums/party';
 
-export const radioButtons = (defendantNumber: number) => ({
+export const subheadings = {
+ information : 'Further information'
+};
+
+export const getRadioButtons = (party : Party) => ({
   yes: {
-    selector: `#respondent${defendantNumber}DQFurtherInformation_futureApplications_Yes`,
+    selector: `#${party}DQFurtherInformation_futureApplications_Yes`,
   },
   no: {
-    selector: `#respondent${defendantNumber}DQFurtherInformation_futureApplications_No`,
+    selector: `#${party}DQFurtherInformation_futureApplications_No`,
   },
 });
 
-export const whatForForm = (defendantNumber: number) => ({
-  selector: `#respondent${defendantNumber}DQFurtherInformation_reasonForFutureApplications`,
+export const getReasonForFutureApplications = (party : Party) => ({
+  selector: `#${party}DQFurtherInformation_reasonForFutureApplications`,
 });
 
-export const furtherInformationForm = (defendantNumber: number) => ({
-  selector: `#respondent${defendantNumber}DQFurtherInformation_otherInformationForJudge`,
+export const getfurtherInformationForm = (party: Party) => ({
+  selector: `#${party}DQFurtherInformation_otherInformationForJudge`,
 });

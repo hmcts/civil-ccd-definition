@@ -1,38 +1,47 @@
-import BasePage from '../../../../../base/base-page.ts';
-import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../exui-page/exui-page.ts';
+import {Page} from 'playwright-core';
+import BasePage from '../../../../../../../base/base-page.ts';
+import {AllMethodsStep} from '../../../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import Party from "../../../../../../../enums/party.ts";
 import {
-  subHeading1v1,
-  subHeadingMultiDefendant,
+  subHeadings,
   courtLocationDropdown,
   reasonForm,
-  remoteHearingRadioButtons,
+  getRemoteHearingRadioButtons,
   courtLocationDropdown1v2,
-  courtLocationDropdownUnspecAndSpec2v1,
-  remoteHearingRadioButtonsUnspecAndSpec2v1,
+  getCourtLocationDropdownUnspecAndSpec2v1,
+  getRemoteHearingRadioButtonsUnspecAndSpec2v1,
 } from './court-location-content.ts';
 
 @AllMethodsStep()
 export default class CourtLocationPage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+  private party: Party;
+
+  constructor(page: Page, party: Party) {
+    super(page);
+    this.party = party;
   }
 
-  async verifyContent1v1() {
-    super.expectSubheading(subHeading1v1),
-      super.expectText(remoteHearingRadioButtons(1).radioYes.label, { ignoreDuplicates: true }),
-      super.expectText(remoteHearingRadioButtons(1).radioNo.label, { ignoreDuplicates: true });
+  async verifyContent1v1(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(subHeadings.hearing1v1),
+      super.expectText(getRemoteHearingRadioButtons(this.party).radioYes.label, {ignoreDuplicates: true}),
+      super.expectText(getRemoteHearingRadioButtons(this.party).radioNo.label, {ignoreDuplicates: true})
+    ]);
   }
 
-  async verifyContentMultiDefendant(defendantNumber: number) {
-    super.expectSubheading(subHeadingMultiDefendant),
-      super.expectText(remoteHearingRadioButtons(defendantNumber).radioYes.label, {
+  async verifyContentMultiDefendant(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectText(getRemoteHearingRadioButtons(this.party).radioYes.label, {
         ignoreDuplicates: true,
       }),
-      super.expectText(remoteHearingRadioButtons(defendantNumber).radioNo.label, {
+      super.expectText(getRemoteHearingRadioButtons(this.party).radioNo.label, {
         ignoreDuplicates: true,
-      });
+      })
+    ]);
   }
 
   async selectCourtLocation() {
@@ -49,30 +58,27 @@ export default class CourtLocationPage extends ExuiPage(BasePage) {
     );
   }
 
-  async selectCourtLocationUnpecAndSpec2v1(defendantNumber: number) {
+  async selectCourtLocationUnpecAndSpec2v1() {
     await super.selectFromDropdown(
-      courtLocationDropdownUnspecAndSpec2v1(defendantNumber).dropdown.options[0],
-      courtLocationDropdownUnspecAndSpec2v1(defendantNumber).dropdown.selector,
+      getCourtLocationDropdownUnspecAndSpec2v1(this.party).dropdown.options[0],
+      getCourtLocationDropdownUnspecAndSpec2v1(this.party).dropdown.selector,
     );
   }
 
-  async selectYes(defendantNumber: number) {
-    await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioYes.selector);
+  async selectYes() {
+    await super.clickBySelector(getRemoteHearingRadioButtons(this.party).radioYes.selector);
   }
 
-  async selectNo(defendantNumber: number) {
-    await super.clickBySelector(remoteHearingRadioButtons(defendantNumber).radioNo.selector);
+  async selectNo() {
+    await super.clickBySelector(getRemoteHearingRadioButtons(this.party).radioNo.selector);
   }
 
-  async selectYesUnspecAndSpec2v1(defendantNumber: number) {
-    await super.clickBySelector(
-      remoteHearingRadioButtonsUnspecAndSpec2v1(defendantNumber).radioYes.selector,
-    );
+  async selectYesUnspecAndSpec2v1() {
+    await super.clickBySelector(getRemoteHearingRadioButtonsUnspecAndSpec2v1(this.party).radioYes.selector,);
   }
 
-  async selectNoUnspecAndSpec2v1(defendantNumber: number) {
-    await super.clickBySelector(
-      remoteHearingRadioButtonsUnspecAndSpec2v1(defendantNumber).radioNo.selector,
+  async selectNoUnspecAndSpec2v1() {
+    await super.clickBySelector(getRemoteHearingRadioButtonsUnspecAndSpec2v1(this.party).radioNo.selector,
     );
   }
 
