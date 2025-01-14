@@ -8,7 +8,7 @@ export const text = {
  officialLanguage :
    'Welsh is an official language of Wales. You can use Welsh in court hearings. ' +
    'Asking to speak in Welsh in your hearing will not delay the hearing or ' +
-   'have any effect on proceedings or the outcome of a case.';
+   'have any effect on proceedings or the outcome of a case.'
 }
 
 export const getSpeakingRadioButtons = (party: Party) => ({

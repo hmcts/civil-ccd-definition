@@ -1,8 +1,8 @@
 import Party from '../../../../../../../enums/party';
 
 export const subHeadings = {
- witnesses : 'Witnesses';
- defendant : 'Defendant 1 witnesses';
+ witnesses : 'Witnesses',
+ defendant : 'Defendant 1 witnesses',
 }
 
 export const getWitnessesRadioButtonsSmallTrack = (party : Party) => ({

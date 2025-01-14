@@ -13,7 +13,7 @@ export const getAvailabilityQuestionSmallTrack = ( party: Party) => ({
     label: 'No',
     selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`
   },
-};
+});
 
 export const getAvailabilityQuestionFastTrack = (party : Party) => ({
   radioYes: {
