@@ -13,13 +13,13 @@ export const radioButtons = {
     label: `Do you want to proceed with the claim against`,
     yes: {
       label: 'Yes',
-      selector: (party: Party) =>
-        `#applicant1ProceedWithClaimAgainstRespondent${party.number}MultiParty1v2_Yes`,
+      selector: (defendantParty: Party) =>
+        `#applicant1ProceedWithClaimAgainstRespondent${defendantParty.number}MultiParty1v2_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) =>
-        `#applicant1ProceedWithClaimAgainstRespondent${party.number}MultiParty1v2_No`,
+      selector: (defendantParty: Party) =>
+        `#applicant1ProceedWithClaimAgainstRespondent${defendantParty.number}MultiParty1v2_No`,
     },
   },
 };

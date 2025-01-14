@@ -4,7 +4,7 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 
 @AllMethodsStep()
-export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
+export default class DefendantResponseSubmitPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }

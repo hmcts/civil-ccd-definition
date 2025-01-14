@@ -7,11 +7,12 @@ export const subheadings = {
 export const inputs = {
   disputeReason: {
     label: '',
-    selector: (party: Party) =>
-      `#detailsOfWhyDoesYouDisputeTheClaim${party.number === 1 ? '' : party.number}`,
+    selector: (defendantParty: Party) =>
+      `#detailsOfWhyDoesYouDisputeTheClaim${defendantParty.number === 1 ? '' : defendantParty.number}`,
   },
   uploadEvidence: {
     label: '',
-    selector: (party: Party) => `#respondent${party.number}SpecDefenceResponseDocument_file`,
+    selector: (defendantParty: Party) =>
+      `#respondent${defendantParty.number}SpecDefenceResponseDocument_file`,
   },
 };

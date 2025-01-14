@@ -7,11 +7,11 @@ import { Party } from '../../../../models/partys';
 
 @AllMethodsStep()
 export default class ChoosePartyTypeFragment extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantParty: Party;
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.claimantParty = party;
   }
 
   async verifyContent() {
@@ -29,19 +29,19 @@ export default class ChoosePartyTypeFragment extends ExuiPage(BasePage) {
   }
 
   async selectIndivdual() {
-    await super.clickBySelector(buttons.individual.selector(this.party));
+    await super.clickBySelector(buttons.individual.selector(this.claimantParty));
   }
 
   async selectCompany() {
-    await super.clickBySelector(buttons.individual.selector(this.party));
+    await super.clickBySelector(buttons.individual.selector(this.claimantParty));
   }
 
   async selectOrganisation() {
-    await super.clickBySelector(buttons.individual.selector(this.party));
+    await super.clickBySelector(buttons.individual.selector(this.claimantParty));
   }
 
   async selectSoleTrader() {
-    await super.clickBySelector(buttons.individual.selector(this.party));
+    await super.clickBySelector(buttons.individual.selector(this.claimantParty));
   }
 
   async submit() {
