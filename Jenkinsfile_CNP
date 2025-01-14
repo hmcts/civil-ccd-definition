@@ -42,6 +42,18 @@ def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
+def getProjectName() {
+  String projectPrefix = 'HMCTS_a_to_c/civil-ccd-definition/'
+  def githubApi = new GithubAPI(this)
+  echo "Branch name: ${env.BRANCH_NAME}"
+  echo "Labels: ${githubApi.getLabels(env.BRANCH_NAME)}"
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, 'civil-ccd-pr-')) {
+    String prNumber = label.substring(17, label.length())
+    return projectPrefix + 'PR-' + prNumber
+  }
+  return projectPrefix + 'master'
+}
+
 static Map<String, Object> secret(String secretName, String envVariable) {
   [$class     : 'AzureKeyVaultSecret',
    secretType : 'Secret',
@@ -373,7 +385,7 @@ withPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**'
+          copyArtifacts projectName: getProjectName(), selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**'
           sh """
             cp -a ./playwright-allure-bootstrap-report/history/. ./playwright-allure-bootstrap-results/history
             ls -l ./playwright-allure-bootstrap-results/history
