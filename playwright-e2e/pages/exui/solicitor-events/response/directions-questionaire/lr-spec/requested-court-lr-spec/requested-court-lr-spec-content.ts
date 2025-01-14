@@ -1,7 +1,10 @@
-import Party from '../../../../../../../enums/party';
+export const subheadings = {
+  courtLocation: 'Court Location',
+};
 
-export const getDropdowns = {
+export const dropdowns = {
   courtLocationDropdown: {
+    label: 'Please select your preferred court hearing location',
     selector: '#respondToCourtLocation_responseCourtLocations',
     options: [
       'Aberystwyth Justice Centre - Y Lanfa, Trefechan, Aberystwyth - SY23 1AS',
@@ -10,20 +13,9 @@ export const getDropdowns = {
   },
 };
 
-export const getInputs = {
-  preferredCourtReasonForm: {
+export const inputs = {
+  preferredCourtReason: {
+    label: 'Briefly explain your reasons (Optional)',
     selector: '#respondToCourtLocation_reasonForHearingAtSpecificCourt',
-  },
-  heldRemotelyReasonForm: {
-    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_reasonForRemoteHearing`,
-  },
-};
-
-export const getRadioButtons = {
-  radioYes: {
-    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_remoteHearingRequested_Yes`,
-  },
-  radioNo: {
-    selector: (party: Party) => `#${party}DQRemoteHearingLRspec_remoteHearingRequested_No`,
   },
 };

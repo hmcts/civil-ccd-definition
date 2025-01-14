@@ -1,7 +1,16 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
 import partys from '../../../../../constants/partys';
 import DateFragment from '../../../fragments/date/date-fragment';
+import RemoteHearingSpecFragment from '../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment';
+import RemoteHearingFragment from '../../../fragments/remote-hearing/remote-hearing-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
+import DefendantResponseSmallClaimExpertsPage from '../directions-questionaire/lr-spec/defendant-response-small-claim-experts/defendant-response-small-claim-experts-experts-page';
+import DefendantResponseSmallClaimWitnessesPage from '../directions-questionaire/lr-spec/defendant-response-small-claim-witnesses/defendant-response-small-claim-witnesses-page';
+import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
+import RequestedCourtLRSpecPage from '../directions-questionaire/lr-spec/requested-court-lr-spec/requested-court-lr-spec-page';
+import SmallClaimHearingPage from '../directions-questionaire/lr-spec/small-claim-hearing/small-claim-hearing-page';
+import RequestedCourtPage from '../directions-questionaire/unspec/requested-court/requested-court-page';
 import DefendantResponseStatmentOfTruthPage from './common/defendant-response-statement-of-truth/defendant-response-statement-of-truth-page';
 import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
 import SingleResponsePage from './common/single-response/single-response-page';
@@ -163,6 +172,70 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get mediationDefendant2Page() {
     return new MediationPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get defendantResponseSmallClaimExpertsDefendant1() {
+    return new DefendantResponseSmallClaimExpertsPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get defendantResponseSmallClaimExpertsDefendant2() {
+    return new DefendantResponseSmallClaimExpertsPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get defendantResponseSmallClaimWitnessesDefendant1() {
+    return new DefendantResponseSmallClaimWitnessesPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get defendantResponseSmallClaimWitnessesDefendant2() {
+    return new DefendantResponseSmallClaimWitnessesPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get smallClaimHearingDefendant1() {
+    const dateFragment = new DateFragment(this.page);
+    return new SmallClaimHearingPage(this.page, dateFragment, partys.DEFENDANT_1);
+  }
+
+  get smallClaimHearingDefendant2() {
+    const dateFragment = new DateFragment(this.page);
+    return new SmallClaimHearingPage(this.page, dateFragment, partys.DEFENDANT_2);
+  }
+
+  get hearingLRSpecDefendant1() {
+    const dateFragment = new DateFragment(this.page);
+    return new HearingLRSpecPage(this.page, dateFragment, partys.DEFENDANT_1);
+  }
+
+  get hearingLRSpecDefendant2() {
+    const dateFragment = new DateFragment(this.page);
+    return new HearingLRSpecPage(this.page, dateFragment, partys.DEFENDANT_2);
+  }
+
+  get requestedCourtLRSpecDefendant1() {
+    const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_1);
+    return new RequestedCourtLRSpecPage(this.page, remoteHearingSpecFragment, partys.DEFENDANT_1);
+  }
+
+  get requestedCourtLRSpecDefendant2() {
+    const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_2);
+    return new RequestedCourtLRSpecPage(this.page, remoteHearingSpecFragment, partys.DEFENDANT_2);
+  }
+
+  get applicationPageDefendant1() {
+    return new ApplicationPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get applicationPageDefendant2() {
+    return new ApplicationPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get requestedCourtDefendant1() {
+    const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_1);
+    return new RequestedCourtPage(this.page, remoteHearingFragment, partys.DEFENDANT_1);
+  }
+
+  get requestedCourtDefendant2() {
+    const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_2);
+    return new RequestedCourtPage(this.page, remoteHearingFragment, partys.DEFENDANT_2);
   }
 
   get defendantResponseStatementOfTruthPage() {

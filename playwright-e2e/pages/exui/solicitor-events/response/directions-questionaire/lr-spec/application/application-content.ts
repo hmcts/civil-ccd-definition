@@ -1,23 +1,33 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
-export const getRadioButtons = {
-  yes: {
-    label: 'Yes',
-    selector: (party: Party) =>
-      `#${party}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
-  },
-  no: {
-    label: 'No',
-    selector: (party: Party) =>
-      `#${party}DQFutureApplications_intentionToMakeFutureApplications_No`,
+export const subheadings = {
+  application: 'Application',
+};
+
+export const radioButtons = {
+  application: {
+    label: 'Do you intend to make any applications in the future?',
+    yes: {
+      label: 'Yes',
+      selector: (party: Party) =>
+        `#${party.oldKey}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
+    },
+    no: {
+      label: 'No',
+      selector: (party: Party) =>
+        `#${party.oldKey}DQFutureApplications_intentionToMakeFutureApplications_No`,
+    },
   },
 };
 
-export const getForms = {
-  whatForForm: {
-    selector: (party: Party) => `#${party}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
+export const inputs = {
+  whatFor: {
+    label: 'What for?',
+    selector: (party: Party) =>
+      `#${party.oldKey}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
   },
-  otherInformationForm: {
+  otherInformation: {
+    label: 'Provide any other information the judge may need (Optional)',
     selector: '#additionalInformationForJudge',
   },
 };

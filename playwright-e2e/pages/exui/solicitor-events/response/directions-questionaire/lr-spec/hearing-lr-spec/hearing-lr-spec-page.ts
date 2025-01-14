@@ -1,69 +1,69 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { getButtons, getInputs, getRadioButtons } from './hearing-lr-spec-content.ts';
+import { buttons, inputs, radioButtons } from './hearing-lr-spec-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import DateFragment from '../../../../../fragments/date/date-fragment.ts';
+import DateHelper from '../../../../../../../helpers/date-helper.ts';
 
 @AllMethodsStep()
 export default class HearingLRSpecPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private dateFragment: DateFragment;
+  private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, dateFrament: DateFragment, party: Party) {
     super(page);
-    this.party = party;
+    this.dateFragment = dateFrament;
+    this.defendantParty = party;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async selectYesAvailability() {
-    await super.clickBySelector(getRadioButtons.availability.radioYes.selector(this.party));
+  async selectYesAvailabilityRequired() {
+    await super.clickBySelector(
+      radioButtons.unavailableDateRequired.yes.selector(this.defendantParty),
+    );
   }
 
-  async selectNoAvailability() {
-    await super.clickBySelector(getRadioButtons.availability.radioNo.selector(this.party));
+  async selectNoAvailabilityRequired() {
+    await super.clickBySelector(
+      radioButtons.unavailableDateRequired.no.selector(this.defendantParty),
+    );
   }
 
-  async addNew() {
-    await super.clickBySelector(getButtons.addNewAvailability.selector(this.party));
+  async addNewUnavailableDate() {
+    await super.clickBySelector(buttons.addNewAvailability.selector(this.defendantParty));
   }
 
   async selectSingleDate(hearingNumber: number) {
     await super.clickBySelector(
-      getRadioButtons.unavailableDateType.single.selector(this.party, hearingNumber),
+      radioButtons.unavailableDateType.single.selector(this.defendantParty, hearingNumber),
     );
-  }
-
-  async inputSingleDate() {
-    await super.inputText('01', getInputs.unavailableSingleDate.day.selector);
-    await super.inputText('01', getInputs.unavailableSingleDate.month.selector);
-    await super.inputText('2025', getInputs.unavailableSingleDate.year.selector);
+    const unavailableDate = DateHelper.addToToday({ months: 6 });
+    await this.dateFragment.enterDate(unavailableDate, 'date');
   }
 
   async selectDateRange(hearingNumber: number) {
     await super.clickBySelector(
-      getRadioButtons.unavailableDateType.range.selector(this.party, hearingNumber),
+      radioButtons.unavailableDateType.range.selector(this.defendantParty, hearingNumber),
     );
-  }
-
-  async inputDateRange() {
-    await super.inputText('01', getInputs.unavailableDateRange.dateFrom.day.selector);
-    await super.inputText('01', getInputs.unavailableDateRange.dateFrom.month.selector);
-    await super.inputText('2025', getInputs.unavailableDateRange.dateFrom.year.selector);
-    await super.inputText('01', getInputs.unavailableDateRange.dateTo.day.selector);
-    await super.inputText('01', getInputs.unavailableDateRange.dateTo.month.selector);
-    await super.inputText('2025', getInputs.unavailableDateRange.dateTo.year.selector);
+    const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
+    const unavailableDateTo = DateHelper.addToToday({ months: 7 });
+    await this.dateFragment.enterDate(unavailableDateFrom, 'fromDate');
+    await this.dateFragment.enterDate(unavailableDateTo, 'toDate');
   }
 
   async removeAvailability(hearingNumber: number) {
-    await super.clickBySelector(getButtons.removeAvailability.selector(this.party, hearingNumber));
+    await super.clickBySelector(
+      buttons.removeAvailability.selector(this.defendantParty, hearingNumber),
+    );
   }
 
   async submit() {
-    await super.retryClickSubmit();
     await super.retryClickSubmit();
   }
 }

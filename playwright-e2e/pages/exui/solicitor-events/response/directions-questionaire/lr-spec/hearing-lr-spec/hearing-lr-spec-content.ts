@@ -1,40 +1,48 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
-export const getRadioButtons = {
-  availability: {
-    radioYes: {
-      selector: (party: Party) => `#${party}DQHearingFastClaim_unavailableDatesRequired_Yes`,
+export const subheadings = {
+  availability: 'Hearing availability',
+  unavailableDate: 'Unavailable date',
+};
+
+export const radioButtons = {
+  unavailableDateRequired: {
+    label:
+      'Are there any dates when you, your client(s), experts or any witnesses are unavailable?',
+    yes: {
+      selector: (party: Party) => `#${party.oldKey}DQHearingFastClaim_unavailableDatesRequired_Yes`,
     },
-    radioNo: {
-      selector: (party: Party) => `#${party}DQHearingFastClaim_unavailableDatesRequired_No`,
+    no: {
+      selector: (party: Party) => `#${party.oldKey}DQHearingFastClaim_unavailableDatesRequired_No`,
     },
   },
   unavailableDateType: {
+    label: 'Add a single date or a date range',
     single: {
       selector: (party: Party, hearingNumber: number) =>
-        `#${party}DQHearingFastClaim_unavailableDate_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
+        `#${party.oldKey}DQHearingFastClaim_unavailableDate_${hearingNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       selector: (party: Party, hearingNumber: number) =>
-        `#${party}DQHearingFastClaim_unavailableDate_${hearingNumber}_unavailableDateType-DATE_RANGE`,
+        `#${party.oldKey}DQHearingFastClaim_unavailableDate_${hearingNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },
 };
 
-export const getButtons = {
+export const buttons = {
   addNewAvailability: {
     title: 'Add new',
     selector: (party: Party) =>
-      `div[id='${party}DQHearingFastClaim_unavailableDates'] button[class='button write-collection-add-item__top']`,
+      `div[id='${party.oldKey}DQHearingFastClaim_unavailableDates'] button[class='button write-collection-add-item__top']`,
   },
   removeAvailability: {
     title: 'Remove',
     selector: (party: Party, hearingNumber: number) =>
-      `div[id='${party}DQHearingFastClaim_unavailableDates_${hearingNumber}_${hearingNumber}'] button[class='button write-collection-remove-item__top']`,
+      `div[id='${party.oldKey}DQHearingFastClaim_unavailableDates_${hearingNumber - 1}_${hearingNumber - 1}'] button[class='button write-collection-remove-item__top']`,
   },
 };
 
-export const getInputs = {
+export const inputs = {
   unavailableSingleDate: {
     day: {
       selector: '#date-day',
