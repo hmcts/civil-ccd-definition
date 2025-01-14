@@ -373,13 +373,19 @@ withPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
-          echo "rename dir"
-          sh """
-            mv ./playwright-allure-bootstrap-results/allure-bootstrap-history ./playwright-allure-bootstrap-results/history
-            ls -l ./playwright-allure-bootstrap-results/history
-            cat ./playwright-allure-bootstrap-results/history/history.json 
-          """
+          def buildFound = false 
+          def buildNumber = currentBuild.previousBuild.number
+          while (!buildFound && buildNumber > 0) {
+            def build = Jenkins.instance.getItem('HMCTS_a_to_c/civil-ccd-definition/PR-5185').getBuildByNumber(buildNumber) 
+            if (build && build.artifacts.find { it.relativePath == '**/allure-bootstrap-history/**' }) { 
+              copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
+              sh "mv ./playwright-allure-bootstrap-results/allure-bootstrap-history ./playwright-allure-bootstrap-results/history"
+              buildFound = true 
+            } else { 
+              buildNumber-- 
+            } 
+          }
+          
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
