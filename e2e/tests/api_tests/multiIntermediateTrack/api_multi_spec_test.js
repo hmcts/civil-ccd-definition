@@ -6,6 +6,7 @@ const claimAmountPenniesMulti = '20000001';
 const claimAmountMulti = '200001';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
+const claimType = 'MULTI';
 
 Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
 
@@ -62,6 +63,13 @@ Scenario('1v2  full defence Multi claim Specified same solicitor', async ({I, ap
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api_spec.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+});
+
+Scenario('1v1 LR v LiP multi track @api-nonprod-specified', async ({api_spec_cui}) => {
+  const mpScenario = 'ONE_V_ONE';
+  let caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimType);
+  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'No', 'AWAITING_APPLICANT_INTENTION', false, claimType);
 });
 
 AfterSuite(async  ({api_spec}) => {
