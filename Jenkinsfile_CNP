@@ -1,7 +1,7 @@
 #!groovy
 
 properties([
-  copyArtifactPermission('HMCTS_a_to_c/civil-ccd-definition/*'),
+  copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
