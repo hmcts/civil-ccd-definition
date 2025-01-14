@@ -1,8 +1,5 @@
-const getDefendantHeading = (defendantNumber: number) =>
+export const getDefendantHeading = (defendantNumber: number) =>
   `Certificate of Service [defendant${defendantNumber}]`;
-
-export const defendant1Heading = getDefendantHeading(1);
-export const defendant2Heading = getDefendantHeading(2);
 
 export const subheading = 'Check your answers';
 

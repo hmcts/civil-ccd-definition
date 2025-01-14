@@ -270,4 +270,17 @@ module.exports = {
     };
     return referJudgeDefenceReceived;
   },
+  confirmOrderReview: () => {
+    const confirmReview = {};
+    confirmReview.userInput = {
+      ...confirmReview.userInput,
+      ObligationDate: {
+        obligationDatePresent: 'No'
+      },
+      IsFinalOrder: {
+        isFinalOrder: 'Yes'
+      }
+    };
+    return confirmReview;
+  }
 };
