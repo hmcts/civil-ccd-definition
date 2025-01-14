@@ -1,66 +1,67 @@
-export const heading = 'Hearing availability';
+import Party from '../../../../../../../enums/party';
 
-export const availabilityQuestionSmallTrack = {
+export const heading = 'Hearing availability';
+export const getAvailabilityQuestionSmallTrack = ( party: Party) => ({
   question:
     'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
   hint: 'Hearings take place Monday to Friday',
   radioYes: {
     label: 'Yes',
-    selector: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_Yes',
+    selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent1DQHearingSmallClaim_unavailableDatesRequired_No',
+    selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`
   },
 };
 
-export const availabilityQuestionFastTrack = (defendantNumber: number) => ({
+export const getAvailabilityQuestionFastTrack = (party : Party) => ({
   radioYes: {
     label: 'Yes',
-    selector: `#respondent${defendantNumber}DQHearingFastClaim_unavailableDatesRequired_Yes`,
+    selector: `#${party}DQHearingFastClaim_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: `#respondent${defendantNumber}DQHearingFastClaim_unavailableDatesRequired_No`,
+    selector: `#${party}DQHearingFastClaim_unavailableDatesRequired_No`,
   },
 });
 
-export const availabilityQuestionSmallTrack1v2 = {
+export const getAvailabilityQuestionSmallTrack1v2 = (party : Party) => ({
   question:
     'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
   hint: 'Hearings take place Monday to Friday',
   radioYes: {
     label: 'Yes',
-    selector: '#respondent2DQHearingSmallClaim_unavailableDatesRequired_Yes',
+    selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: '#respondent2DQHearingSmallClaim_unavailableDatesRequired_No',
+    selector: `#${party}DQHearingSmallClaim_unavailableDatesRequired_Yes`
   },
-};
+});
 
-export const availabilityQuestionUnspecandSpec2v1 = (defendantNumber: number) => ({
+export const getAvailabilityQuestionUnspecandSpec2v1 = (party : Party) => ({
   radioYes: {
     label: 'Yes',
-    selector: `#respondent${defendantNumber}DQHearing_unavailableDatesRequired_Yes`,
+    selector: `#${party}DQHearing_unavailableDatesRequired_Yes`,
   },
   radioNo: {
     label: 'No',
-    selector: `#respondent${defendantNumber}DQHearing_unavailableDatesRequired_No`,
+    selector: `#${party}DQHearing_unavailableDatesRequired_No`,
   },
 });
 
 export const unavailableDates = 'Unavailable dates';
 
-export const buttons = (defendantNumber: number) => ({
+export const getButtons = (party : Party) => ({
   addNewAvailability: {
     title: 'Add new',
-    selector: `div[id='respondent${defendantNumber}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: `div[id='${party}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
   },
 });
 
-export const singleDateOrDateRangeRadioButtonSmallClaims = (
-  defendantNumber: number,
+export const getSingleDateOrDateRangeRadioButtonSmallClaims = (
+  party : Party,
   hearingNumber: number,
 ) => ({
   label: 'Add a single date or date range',
@@ -68,17 +69,17 @@ export const singleDateOrDateRangeRadioButtonSmallClaims = (
   options: {
     single: {
       text: 'Single date',
-      selector: `#respondent${defendantNumber}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
+      selector: `#respondent${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       text: 'Date range',
-      selector: `#respondent${defendantNumber}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-DATE_RANGE`,
+      selector: `#respondent${party}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber}_unavailableDateType-DATE_RANGE`,
     },
   },
 });
 
-export const singleDateOrDateRangeRadioButton = (
-  defendantNumber: number,
+export const getSingleDateOrDateRangeRadioButton = (
+  party : Party,
   hearingNumber: number,
 ) => ({
   label: 'Add a single date or date range',
@@ -86,11 +87,11 @@ export const singleDateOrDateRangeRadioButton = (
   options: {
     single: {
       text: 'Single date',
-      selector: `#respondent${defendantNumber}DQHearing_unavailableDates_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
+      selector: `#${party}DQHearing_unavailableDates_${hearingNumber}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       text: 'Date range',
-      selector: `#respondent${defendantNumber}DQHearing_unavailableDates_${hearingNumber}_unavailableDateType-DATE_RANGE`,
+      selector: `#${party}DQHearing_unavailableDates_${hearingNumber}_unavailableDateType-DATE_RANGE`,
     },
   },
 });

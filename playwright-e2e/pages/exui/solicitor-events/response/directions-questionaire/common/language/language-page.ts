@@ -11,10 +11,10 @@ import {
   getDocumentsRadioButtons,
   getSpeakingRadioButtons1v2,
   getDocumentsRadioButtons1v2,
-} from './welsh-language-content.ts';
+} from './language-content.ts';
 
 @AllMethodsStep()
-export default class WelshLanguagePage extends ExuiPage(BasePage) {
+export default class LanguagePage extends ExuiPage(BasePage) {
   private party: Party;
 
   constructor(page: Page, party: Party) {

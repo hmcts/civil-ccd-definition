@@ -44,7 +44,7 @@ export const getRadioButtons = (party: Party) => ({
   },
 });
 
-export const getInputs = (party: Party, expertNumber = 0) => ({
+export const expertDetails = (party: Party, expertNumber = 0) => ({
   firstName: {
     label: 'First name',
     selector: `#${party}DQExperts_details_${expertNumber}_firstName`,

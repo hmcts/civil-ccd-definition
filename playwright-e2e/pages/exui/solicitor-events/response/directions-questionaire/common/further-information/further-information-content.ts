@@ -5,6 +5,7 @@ export const subheadings = {
 };
 
 export const getRadioButtons = (party : Party) => ({
+  label : 'Do you intend to make any applications in the future?',
   yes: {
     selector: `#${party}DQFurtherInformation_futureApplications_Yes`,
   },
@@ -18,5 +19,7 @@ export const getReasonForFutureApplications = (party : Party) => ({
 });
 
 export const getfurtherInformationForm = (party: Party) => ({
+  label : 'Please provide any further information the Judge may need, ' +
+    'including if you do not agree with the provisional track allocation of this claim (Optional)',
   selector: `#${party}DQFurtherInformation_otherInformationForJudge`,
 });
