@@ -1,81 +1,83 @@
-import BasePage from '../../../../../base/base-page.ts';
-import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import DateHelper from '../../../../../helpers/date-helper.ts';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../exui-page/exui-page.ts';
+import { Page } from 'playwright-core';
+import BasePage from '../../../../../../../base/base-page.ts';
+import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import Party from "../../../../../../../enums/party.ts";
 import {
-  heading,
-  subheading,
-  witnessesRadioButtonsFastTrack,
-  witnessesRadioButtonsSmallTrack,
-  witnessesRadioButtonsSmallTrack1v2,
-  witnessesRadioButtonsUnspecAndFastTrack1v2,
+  subHeadings,
+  getWitnessesRadioButtonsFastTrack,
+  getWitnessesRadioButtonsSmallTrack,
+  getWitnessesRadioButtonsSmallTrack1v2,
+  getWitnessesRadioButtonsUnspecAndFastTrack1v2,
   addWitnessButton,
   witnessDetails,
 } from './witnesses-content.ts';
 
 @AllMethodsStep()
 export default class WitnessesPage extends ExuiPage(BasePage) {
+  private party: Party;
+
+  constructor(page: Page, party: Party) {
+    super(page);
+    this.party = party;
+  }
+
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
-
   async selectYesSmallTrack() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioYes.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsSmallTrack(this.party).radioYes.selector);
   }
 
   async selectNoSmallTrack() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioNo.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsSmallTrack(this.party).radioNo.selector);
   }
 
   async selectYesFastTrack() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioYes.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsFastTrack(this.party).radioYes.selector);
   }
 
   async selectNoFastTrack() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioNo.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsFastTrack(this.party).radioNo.selector);
   }
 
   async selectYesSmallTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioYes.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsSmallTrack1v2(this.party).radioYes.selector);
   }
 
   async selectNoSmallTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioNo.selector);
+    await super.clickBySelector(getWitnessesRadioButtonsSmallTrack1v2(this.party).radioNo.selector);
   }
 
-  async selectYesUnspecAndFastTrack1v2(defendantNumber: number) {
+
+
+  async selectNoUnspecAndFastTrack1v2() {
     await super.clickBySelector(
-      witnessesRadioButtonsUnspecAndFastTrack1v2(defendantNumber).radioYes.selector,
+      getWitnessesRadioButtonsUnspecAndFastTrack1v2(this.party).radioNo.selector,
     );
   }
 
-  async selectNoUnspecAndFastTrack1v2(defendantNumber: number) {
-    await super.clickBySelector(
-      witnessesRadioButtonsUnspecAndFastTrack1v2(defendantNumber).radioNo.selector,
-    );
+  async addWitnesses() {
+    await super.clickBySelector(addWitnessButton(this.party).addNewExpert.selector);
   }
 
-  async addWitnesses(defendantNumber: number) {
-    await super.clickBySelector(addWitnessButton(defendantNumber).addNewExpert.selector);
-  }
-
-  async enterWitnessDetails(defendantNumber: number, witnessNumber: number) {
+  async enterWitnessDetails(witnessNumber: number) {
     await super.inputText(
       'First name',
-      witnessDetails(defendantNumber, witnessNumber).fields.firstName.selector,
+      witnessDetails(this.party, witnessNumber).fields.firstName.selector,
     );
     await super.inputText(
       'Last name',
-      witnessDetails(defendantNumber, witnessNumber).fields.lastName.selector,
+      witnessDetails(this.party, witnessNumber).fields.lastName.selector,
     );
     await super.inputText(
       'firstlast@gmail.com',
-      witnessDetails(defendantNumber, witnessNumber).fields.email.selector,
+      witnessDetails(this.party, witnessNumber).fields.email.selector,
     );
     await super.inputText(
       'Event',
-      witnessDetails(defendantNumber, witnessNumber).fields.whatEvent.selector,
+      witnessDetails(this.party, witnessNumber).fields.whatEvent.selector,
     );
   }
 

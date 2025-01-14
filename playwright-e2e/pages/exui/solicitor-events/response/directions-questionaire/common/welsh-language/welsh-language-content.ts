@@ -1,68 +1,77 @@
-export const heading = 'Welsh language';
+import Party from '../../../../../../../enums/party';
 
-export const text =
-  'Welsh is an official language of Wales. You can use Welsh in court hearings. Asking to speak in Welsh in your hearing will not delay the hearing or have any effect on proceedings or the outcome of a case.';
+export const subHeading = {
+  language: 'Welsh language'
+};
 
-export const speakingRadioButtons = {
+export const text = {
+ officialLanguage :
+   'Welsh is an official language of Wales. You can use Welsh in court hearings. ' +
+   'Asking to speak in Welsh in your hearing will not delay the hearing or ' +
+   'have any effect on proceedings or the outcome of a case.';
+}
+
+export const getSpeakingRadioButtons = (party: Party) => ({
   question: 'What language will you, your experts or witnesses speak at the hearing?',
   radioWelsh: {
     label: 'Welsh',
-    selector: '#respondent1DQLanguage_court-WELSH',
+    selector: `#${party}DQLanguage_court-WELSH`,
   },
   radioEnglish: {
     label: 'English',
-    selector: '#respondent1DQLanguage_court-ENGLISH',
+    selector: `#${party}DQLanguage_court-ENGLISH`,
   },
   radioBoth: {
     label: 'Welsh and English',
-    selector: '#respondent1DQLanguage_court-BOTH',
+    selector: `#${party}DQLanguage_court-BOTH`,
   },
-};
+});
 
-export const documentsRadioButtons = {
+export const getDocumentsRadioButtons = (party :Party) => ({
   question: 'What language will documents be provided in?',
   radioWelsh: {
     label: 'Welsh',
-    selector: '#respondent1DQLanguage_documents-WELSH',
+    selector: `#${party}DQLanguage_documents-WELSH`,
   },
   radioEnglish: {
     label: 'English',
-    selector: '#respondent1DQLanguage_documents-ENGLISH',
+    selector: `#${party}DQLanguage_documents-ENGLISH`,
   },
   radioBoth: {
     label: 'Welsh and English',
-    selector: '#respondent1DQLanguage_documents-BOTH',
+    selector: `#${party}DQLanguage_documents-BOTH`,
   },
-};
+});
 
-export const speakingRadioButtons1v2 = {
+export const getSpeakingRadioButtons1v2 = (party : Party)=>({
   question: 'What language will you, your experts or witnesses speak at the hearing?',
   radioWelsh: {
     label: 'Welsh',
-    selector: '#respondent2DQLanguage_court-WELSH',
+    selector: `#${party}DQLanguage_court-WELSH`,
   },
   radioEnglish: {
     label: 'English',
-    selector: '#respondent2DQLanguage_court-ENGLISH',
+    selector: `#${party}DQLanguage_court-ENGLISH`,
   },
   radioBoth: {
     label: 'Welsh and English',
-    selector: '#respondent2DQLanguage_court-BOTH',
+    selector: `#${party}DQLanguage_court-BOTH`,
   },
-};
+});
 
-export const documentsRadioButtons1v2 = {
+export const getDocumentsRadioButtons1v2 = (party : Party) => ({
   question: 'What language will documents be provided in?',
   radioWelsh: {
     label: 'Welsh',
-    selector: '#respondent2DQLanguage_documents-WELSH',
+    selector: `#${party}DQLanguage_documents-WELSH`,
   },
   radioEnglish: {
     label: 'English',
-    selector: '#respondent2DQLanguage_documents-ENGLISH',
+    selector: `#${party}DQLanguage_documents-ENGLISH`,
   },
   radioBoth: {
     label: 'Welsh and English',
-    selector: '#respondent2DQLanguage_documents-BOTH',
+    selector: `#${party}DQLanguage_documents-BOTH`,
   },
-};
+});
+
