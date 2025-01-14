@@ -74,6 +74,20 @@ wa:
         secretRef: "{{ .Values.global.postgresSecret }}"
         key: PASSWORD
         disabled: true
+  camunda-bpm:
+    java:
+      environment:
+        CAMUNDA_DB_USER_NAME: "hmcts"
+        CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
+        CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
+        CAMUNDA_DB_NAME: 'camunda'
+        TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
+        CAMUNDA_API_AUTH_ENABLED: false
+      secrets:
+        CAMUNDA_DB_PASSWORD:
+          secretRef: "{{ .Values.global.postgresSecret }}"
+          key: PASSWORD
+          disabled: true
 
 civil-service:
   java:
@@ -196,6 +210,8 @@ xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
     environment:
+      WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
+      SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
       SERVICES_TRANSLATION_API_URL: http://${SERVICE_NAME}-translation-service
