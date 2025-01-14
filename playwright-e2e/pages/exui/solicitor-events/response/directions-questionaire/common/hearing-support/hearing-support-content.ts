@@ -19,7 +19,7 @@ export const getRadioButtons = (party: Party)  => ({
       label:
         'Please name all people who need support and the kind of ' +
         'support they will need. For example, Jane Smith: requires wheelchair access.',
-      selector: '#applicant1DQHearingSupport_supportRequirementsAdditional',
+      selector: `#${party}DQHearingSupport_supportRequirementsAdditional`,
     },
 });
 

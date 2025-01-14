@@ -17,8 +17,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [
+    await super.runVerifications([
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts),
         super.expectText(getRadioButtons(this.party).expertsRequired.label),
