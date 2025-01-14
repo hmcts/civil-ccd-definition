@@ -373,8 +373,9 @@ withPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results/history'
+          copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**',
           sh """
+            cp -a ./allure-bootstrap-history/. ./playwright-allure-bootstrap-results/history
             ls -l ./playwright-allure-bootstrap-results/history
             cat ./playwright-allure-bootstrap-results/history/history.json 
           """
