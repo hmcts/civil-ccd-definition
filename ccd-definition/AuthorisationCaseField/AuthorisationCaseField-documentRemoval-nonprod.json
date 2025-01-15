@@ -4,7 +4,7 @@
   "AccessControl": [
     {
       "UserRoles": [
-        "ctsc-team-leader"
+        "caseworker-doc-removal"
       ],
       "CRUD": "CRUD"
     }
