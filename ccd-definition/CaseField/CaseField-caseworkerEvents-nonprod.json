@@ -111,16 +111,16 @@
     "FieldType": "Collection",
     "FieldTypeParameter": "ObligationDataCollection",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "storedObligationData",
     "Label": "Obligation date",
     "FieldType": "Collection",
-    "FieldTypeParameter": "ObligationDataCollection",
+    "FieldTypeParameter": "StoredObligationData",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -268,6 +268,14 @@
     "ID": "lastMessageJudgeLabel",
     "Label": " ",
     "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationWAFlag",
+    "Label": " ",
+    "FieldType": "ObligationWAFlag",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }
