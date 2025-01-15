@@ -3,56 +3,48 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { getRadioButtons, getInputs } from './defence-route-content.ts';
+import { radioButtons, inputs } from './defence-route-content.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 
 @AllMethodsStep()
 export default class DefenceRoutePage extends ExuiPage(BasePage) {
-  private defendantNumber?: number;
+  private dateFragment: DateFragment;
+  private defendantParty: Party;
 
-  constructor(page: Page, defendantNumber?: number) {
+  constructor(page: Page, dateFragment: DateFragment, defendantParty: Party) {
     super(page);
-    this.defendantNumber = defendantNumber;
+    this.dateFragment = dateFragment;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.hasPaid.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).defenceRoute.disputesClaim.label),
+        super.expectLabel(radioButtons.defenceRoute.hasPaid.label),
+        super.expectLabel(radioButtons.defenceRoute.disputesClaim.label),
       ],
-      { pageInsertName: this.defendantNumber ? 'Defendant2' : '' },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async selectHasPaid() {
-    await super.clickBySelector(
-      getRadioButtons(this.defendantNumber).defenceRoute.hasPaid.selector,
-    );
+    await super.clickBySelector(radioButtons.defenceRoute.hasPaid.selector(this.defendantParty));
   }
 
   async selectDisputesClaim() {
     await super.clickBySelector(
-      getRadioButtons(this.defendantNumber).defenceRoute.disputesClaim.selector,
+      radioButtons.defenceRoute.disputesClaim.selector(this.defendantParty),
     );
   }
 
   async fillInHasPaid() {
     const datePaid = DateHelper.subtractFromToday({ months: 1 });
-    await super.inputText('500', getInputs(this.defendantNumber).amountPaid.selector);
-    await super.inputText(
-      DateHelper.getTwoDigitDay(datePaid),
-      getInputs(this.defendantNumber).amountPaidDate.day.selector,
-    );
-    await super.inputText(
-      DateHelper.getTwoDigitMonth(datePaid),
-      getInputs(this.defendantNumber).amountPaidDate.month.selector,
-    );
-    await super.inputText(
-      datePaid.getFullYear(),
-      getInputs(this.defendantNumber).amountPaidDate.year.selector,
-    );
+    await super.inputText('500', inputs.amountPaid.selector(this.defendantParty));
+    await this.dateFragment.enterDate(datePaid, 'whenWasThisAmountPaid');
   }
 
   async submit() {
