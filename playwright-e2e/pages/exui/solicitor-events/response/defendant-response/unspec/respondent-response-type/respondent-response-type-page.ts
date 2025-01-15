@@ -3,17 +3,16 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons } from './respondent-response-type-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import partys from '../../../../../../../constants/partys.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import { Page } from 'playwright-core';
 
 @AllMethodsStep()
 export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -27,7 +26,7 @@ export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(this.party));
+    await super.clickBySelector(radioButtons.rejectAll.selector(this.defendantParty));
   }
 
   async submit() {

@@ -16,10 +16,6 @@ export const yesNoRadioButtons = {
   },
 };
 
-export const unavailableDates = 'Unavailable dates';
-
-export const unavailableDatesWarning = 'Unavailable dates required';
-
 export const addNew = 'Add new';
 
 export const remove = 'Remove';
