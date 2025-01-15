@@ -12,12 +12,12 @@ import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 @AllMethodsStep()
 export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, party: Party) {
+  constructor(page: Page, dateFragment: DateFragment, defendantParty: Party) {
     super(page);
     this.dateFragment = dateFragment;
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -27,7 +27,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
         super.expectHeading(ccdCaseData.id),
         super.expectHeading(ccdCaseData.caseNamePublic),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
@@ -51,7 +51,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(date, 'timelineDate', 0);
     await super.inputText(
       'Timeline event description for event 1',
-      inputs.timelineEvent.eventDescription.selector(this.party, 0),
+      inputs.timelineEvent.eventDescription.selector(this.defendantParty, 0),
     );
   }
 
@@ -60,7 +60,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(date, 'timelineDate', 1);
     await super.inputText(
       'Timeline event description for event 2',
-      inputs.timelineEvent.eventDescription.selector(this.party, 1),
+      inputs.timelineEvent.eventDescription.selector(this.defendantParty, 1),
     );
   }
 
