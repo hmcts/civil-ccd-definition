@@ -6,7 +6,6 @@ const claimAmountPenniesMulti = '20000001';
 const claimAmountMulti = '200001';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-const claimType = 'MULTI';
 
 Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
 
