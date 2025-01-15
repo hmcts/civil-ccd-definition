@@ -379,7 +379,7 @@ withPipeline(type, product, component) {
           echo "Min build number ${minBuildNumber}"
           while (!buildFound && buildNumber > minBuildNumber) {
             try {
-              copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: specific("${buildNumber}"), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
+              copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
               sh "mv ./playwright-allure-bootstrap-results/allure-bootstrap-history ./playwright-allure-bootstrap-results/history"
               buildFound = true 
             } catch (Exception error) {
