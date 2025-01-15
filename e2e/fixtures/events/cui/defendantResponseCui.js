@@ -559,8 +559,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'nearby',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt,
           },
         },
         respondent1DQWitnesses: {
@@ -695,8 +695,8 @@ module.exports = {
           reasonForHearingAtSpecificCourt: 'nearby',
           responseCourtLocations: [],
           caseLocation: {
-            region: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
-            baseLocation: 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ',
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt,
           }
         },
         respondent1DQWitnesses: {
