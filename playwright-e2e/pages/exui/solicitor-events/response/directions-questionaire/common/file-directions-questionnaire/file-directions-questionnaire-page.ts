@@ -5,11 +5,11 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
   subheadings,
-  getInputs,
+  inputs,
   getCheckboxes,
-  getRadioButtons,
+  radioButtons,
 } from './file-directions-questionnaire-content.ts';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
@@ -27,20 +27,20 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fileDQ),
         super.expectLabel(getCheckboxes(this.party).fileDQConfirm.label),
-        super.expectText(getRadioButtons(this.party).oneMonthStay.label),
-        super.expectText(getRadioButtons(this.party).protocolComplied.label),
+        super.expectText(radioButtons(this.party).oneMonthStay.label),
+        super.expectText(radioButtons(this.party).protocolComplied.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { axePageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async enterDetails() {
     await super.clickBySelector(getCheckboxes(this.party).fileDQConfirm.selector);
-    await super.clickBySelector(getRadioButtons(this.party).oneMonthStay.no.selector);
-    await super.clickBySelector(getRadioButtons(this.party).protocolComplied.no.selector);
+    await super.clickBySelector(radioButtons(this.party).oneMonthStay.no.selector);
+    await super.clickBySelector(radioButtons(this.party).protocolComplied.no.selector);
     await super.inputText(
       `No explanation - ${this.party}`,
-      getInputs(this.party).noProtocolCompliedReason.selector,
+      inputs(this.party).noProtocolCompliedReason.selector,
     );
   }
 

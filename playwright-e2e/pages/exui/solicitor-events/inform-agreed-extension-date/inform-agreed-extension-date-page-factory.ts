@@ -1,4 +1,5 @@
 import BasePageFactory from '../../../../base/base-page-factory';
+import DateFragment from '../../fragments/date/date-fragment';
 import ExtensionDateSpecPage from './lr-spec/extension-date-spec/extension-date-spec-page';
 import InformAgreedExtensionDateConfirmSpecPage from './lr-spec/inform-agreed-extension-date-confirm-spec/inform-agreed-extension-date-confirm-spec-page';
 import ExtensionDatePage from './unspec/extension-date/extension-date-page';
@@ -6,7 +7,8 @@ import InformAgreedExtensionDateConfirmPage from './unspec/inform-agreed-extensi
 
 export default class InformAgreedExtensionDatePageFactory extends BasePageFactory {
   get extensionDateSpecPage() {
-    return new ExtensionDateSpecPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new ExtensionDateSpecPage(this.page, dateFragment);
   }
 
   get informAgreedExtensionDateConfirmSpecPage() {

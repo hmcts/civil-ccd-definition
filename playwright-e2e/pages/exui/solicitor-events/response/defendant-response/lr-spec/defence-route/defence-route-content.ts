@@ -1,57 +1,55 @@
-export const getRadioButtons = (defendantNumber?: number) => ({
+import { Party } from '../../../../../../../models/partys';
+
+export const radioButtons = {
   defenceRoute: {
     hasPaid: {
       label: 'Has paid the amount claimed',
-      selector: `#defenceRouteRequired${defendantNumber ?? ''}-HAS_PAID_THE_AMOUNT_CLAIMED`,
+      selector: (defendantParty: Party) =>
+        `#defenceRouteRequired${defendantParty.number === 1 ? '' : defendantParty.number}-HAS_PAID_THE_AMOUNT_CLAIMED`,
     },
     disputesClaim: {
       label: 'Disputes the claim',
-      selector: `#defenceRouteRequired${defendantNumber ?? ''}-DISPUTES_THE_CLAIM`,
+      selector: (defendantParty: Party) =>
+        `#defenceRouteRequired${defendantParty.number === 1 ? '' : defendantParty.number}-DISPUTES_THE_CLAIM`,
     },
   },
   amountPaid: {
     label: 'How was this amount paid?',
     creditCard: {
       label: 'Credit card',
-      selector: `#respondToClaim${defendantNumber ?? ''}_howWasThisAmountPaid-CREDIT_CARD`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howWasThisAmountPaid-CREDIT_CARD`,
     },
     cheque: {
       label: 'Cheque',
-      selector: `#respondToClaim${defendantNumber ?? ''}_howWasThisAmountPaid-CHEQUE`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howWasThisAmountPaid-CHEQUE`,
     },
     bacs: {
       label: 'BACS',
-      selector: `#respondToClaim${defendantNumber ?? ''}_howWasThisAmountPaid-BACS`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howWasThisAmountPaid-BACS`,
     },
     other: {
       label: 'Other',
-      selector: `#respondToClaim${defendantNumber ?? ''}_howWasThisAmountPaid-OTHER`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howWasThisAmountPaid-OTHER`,
     },
   },
-});
+};
 
-export const getInputs = (defendantNumber?: number) => ({
+export const inputs = {
   amountPaid: {
     label: 'How much was paid?',
-    selector: `#respondToClaim${defendantNumber ?? ''}_howMuchWasPaid`,
+    selector: (defendantParty: Party) =>
+      `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howMuchWasPaid`,
   },
   amountPaidDate: {
     label: 'When was this amount paid?',
-    day: {
-      label: 'Day',
-      selector: `#whenWasThisAmountPaid-day`,
-    },
-    month: {
-      label: 'Month',
-      selector: '#whenWasThisAmountPaid-month',
-    },
-    year: {
-      label: 'Year',
-      selector: 'whenWasThisAmountPaid-year',
-    },
   },
   amountPaidOther: {
     label: 'Tell us how',
-    selector: `#respondToClaim${defendantNumber ?? ''}_howWasThisAmountPaidOther`,
+    selector: (defendantParty: Party) =>
+      `#respondToClaim${defendantParty.number === 1 ? '' : defendantParty.number}_howWasThisAmountPaidOther`,
   },
-});
+};

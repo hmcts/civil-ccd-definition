@@ -1,13 +1,13 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
   subheadings,
-  getRadioButtons,
-  getInputs,
+  radioButtons,
+  inputs,
 } from './disclosure-of-non-electronic-documents-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
@@ -25,22 +25,17 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectLabel(getRadioButtons(this.party).disclosureOfElectronicDocs.label),
+        super.expectLabel(radioButtons.disclosureOfElectronicDocs.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { axePageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(
-      getRadioButtons(this.party).disclosureOfElectronicDocs.yes.selector,
-    );
-    await super.clickBySelector(getRadioButtons(this.party).standardDisclosure.no.selector);
-    await super.expectLabel(getInputs(this.party).bespokeDirections.label);
-    await super.inputText(
-      'No directions required',
-      getInputs(this.party).bespokeDirections.selector,
-    );
+    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.yes.selector(this.party));
+    await super.clickBySelector(radioButtons.standardDisclosure.no.selector(this.party));
+    await super.expectLabel(inputs.bespokeDirections.label);
+    await super.inputText('No directions required', inputs.bespokeDirections.selector(this.party));
   }
 
   async submit() {
