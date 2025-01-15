@@ -375,15 +375,16 @@ withPipeline(type, product, component) {
         } finally {
           def buildFound = false 
           def buildNumber = currentBuild.previousBuild.number
-          while (!buildFound && buildNumber > 0) {
-            def build = Jenkins.instance.getItem('HMCTS_a_to_c/civil-ccd-definition/PR-5185').getBuildByNumber(buildNumber) 
-            if (build && build.artifacts.find { it.relativePath == '**/allure-bootstrap-history/**' }) { 
-              copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: lastSuccessful(), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
+          def minBuildNumber = ((buildNumber - 20) > 0) ? buildNumber - 20 : 0
+          echo "Min build number ${minBuildNumber}"
+          while (!buildFound && buildNumber > minBuildNumber) {
+            try {
+              copyArtifacts projectName: 'HMCTS_a_to_c/civil-ccd-definition/PR-5185', selector: specific("${buildNumber}"), filter: '**/allure-bootstrap-history/**', target: './playwright-allure-bootstrap-results'
               sh "mv ./playwright-allure-bootstrap-results/allure-bootstrap-history ./playwright-allure-bootstrap-results/history"
               buildFound = true 
-            } else { 
-              buildNumber-- 
-            } 
+            } catch (Exception error) {
+              echo "artifact not found: " + error.toString()
+            }
           }
           
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
