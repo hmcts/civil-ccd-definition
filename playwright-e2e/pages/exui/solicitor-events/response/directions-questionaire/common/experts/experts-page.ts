@@ -1,10 +1,10 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, getInputs, getRadioButtons, buttons } from './experts-content.ts';
+import { subheadings, inputs, radioButtons, buttons } from './experts-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
@@ -21,18 +21,18 @@ export default class ExpertPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts),
-        super.expectText(getRadioButtons(this.party).expertsRequired.label),
-        super.expectLabel(getRadioButtons(this.party).expertsRequired.yes.label),
-        super.expectLabel(getRadioButtons(this.party).expertsRequired.no.label),
+        super.expectText(radioButtons(this.party).expertsRequired.label),
+        super.expectLabel(radioButtons(this.party).expertsRequired.yes.label),
+        super.expectLabel(radioButtons(this.party).expertsRequired.no.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { axePageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async useExperts() {
-    await super.clickBySelector(getRadioButtons(this.party).expertsRequired.yes.selector);
-    await super.clickBySelector(getRadioButtons(this.party).expertReports.notObtained.selector);
-    await super.clickBySelector(getRadioButtons(this.party).jointExpert.no.selector);
+    await super.clickBySelector(radioButtons(this.party).expertsRequired.yes.selector);
+    await super.clickBySelector(radioButtons(this.party).expertReports.notObtained.selector);
+    await super.clickBySelector(radioButtons(this.party).jointExpert.no.selector);
   }
 
   async addNewExpert() {
