@@ -1,0 +1,12 @@
+{
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseEventID": "REMOVE_DOCUMENT",
+  "AccessControl": [
+    {
+      "UserRoles": [
+        "caseworker-doc-removal"
+      ],
+      "CRUD": "CRUD"
+    }
+  ]
+}

@@ -550,9 +550,10 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
+          "caseworker-doc-removal",
           "legal-adviser"
         ],
-        "CRUD": "R"
+        "CRUD": "RUD"
       }
     ]
   },
