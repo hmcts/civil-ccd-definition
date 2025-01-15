@@ -3,8 +3,8 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, getInputs, getRadioButtons } from './disclosure-report-content.ts';
-import Party from '../../../../../../../enums/party.ts';
+import { subheadings, inputs, radioButtons } from './disclosure-report-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 
 @AllMethodsStep()
 export default class DisclosureReportPage extends ExuiPage(BasePage) {
@@ -19,18 +19,18 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.report),
-      super.expectText(getRadioButtons(this.party).disclosureReportFilledAndServed.label),
-      super.expectText(getRadioButtons(this.party).disclosureProposalAgreed.label),
+      super.expectText(radioButtons.disclosureReportFilledAndServed.label),
+      super.expectText(radioButtons.disclosureProposalAgreed.label),
     ]);
   }
 
   async enterDetails() {
     await super.clickBySelector(
-      getRadioButtons(this.party).disclosureReportFilledAndServed.no.selector,
+      radioButtons.disclosureReportFilledAndServed.no.selector(this.party),
     );
-    await super.clickBySelector(getRadioButtons(this.party).disclosureProposalAgreed.yes.selector);
-    await super.expectLabel(getInputs(this.party).draftOrderNumber.label);
-    await super.inputText('12345', getInputs(this.party).draftOrderNumber.selector);
+    await super.clickBySelector(radioButtons.disclosureProposalAgreed.yes.selector(this.party));
+    await super.expectLabel(inputs.draftOrderNumber.label);
+    await super.inputText('12345', inputs.draftOrderNumber.selector(this.party));
   }
 
   async submit() {

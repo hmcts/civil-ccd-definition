@@ -1,13 +1,13 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
   subheadings,
-  getInputs,
-  getRadioButtons,
+  inputs,
+  radioButtons,
 } from './disclosure-of-electronic-documents-spec-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
@@ -25,26 +25,26 @@ export default class DisclosureOfElectronicDocumentsSpecPage extends ExuiPage(Ba
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectText(getRadioButtons(this.party).disclosureOfElectronicDocs.label),
+        super.expectText(radioButtons.disclosureOfElectronicDocs.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party) },
+      { axePageInsertName: StringHelper.capitalise(this.party.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(getRadioButtons(this.party).disclosureOfElectronicDocs.no.selector);
-    await super.expectText(getRadioButtons(this.party).agreement.label);
-    await super.clickBySelector(getRadioButtons(this.party).agreement.no.selector);
-    await super.expectText(getInputs(this.party).disagreementReason.label);
-    await super.inputText('No major reason', getInputs(this.party).disagreementReason.selector);
+    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.no.selector(this.party));
+    await super.expectText(radioButtons.agreement.label);
+    await super.clickBySelector(radioButtons.agreement.no.selector(this.party));
+    await super.expectText(inputs.disagreementReason.label);
+    await super.inputText('No major reason', inputs.disagreementReason.selector(this.party));
   }
 
   async enterDetailsDefendant2() {
-    await super.clickBySelector(getRadioButtons(this.party).disclosureOfElectronicDocs.no.selector);
-    await super.expectText(getRadioButtons(this.party).agreement.label);
-    await super.clickBySelector(getRadioButtons(this.party).agreement.no.selector);
-    await super.expectText(getInputs(this.party).disagreementReason.label);
-    await super.inputText('No major reason', getInputs(this.party).disagreementReason.selector);
+    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.no.selector(this.party));
+    await super.expectText(radioButtons.agreement.label);
+    await super.clickBySelector(radioButtons.agreement.no.selector(this.party));
+    await super.expectText(inputs.disagreementReason.label);
+    await super.inputText('No major reason', inputs.disagreementReason.selector(this.party));
   }
 
   async submit() {
