@@ -235,7 +235,7 @@
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -245,7 +245,7 @@
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -275,7 +275,7 @@
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -285,7 +285,7 @@
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
