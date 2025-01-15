@@ -10,11 +10,11 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 @AllMethodsStep()
 export default class PartyTypeOrganisationFragment extends ExuiPage(BasePage) {
   private partyType = partyTypes.ORGANISATION;
-  private party: Party;
+  private claimantDefendantParty: Party;
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = party;
   }
 
   async verifyContent() {
@@ -28,14 +28,17 @@ export default class PartyTypeOrganisationFragment extends ExuiPage(BasePage) {
 
   async enterOrganisationDetails() {
     const organisationData = CaseDataHelper.buildClaimantAndDefendantData(
-      this.party,
+      this.claimantDefendantParty,
       this.partyType,
     );
     await super.inputText(
       organisationData.organisationName,
-      inputs.name.selector(this.party, this.partyType),
+      inputs.name.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputText(organisationData.partyEmail, inputs.email.selector(this.party));
+    await super.inputText(
+      organisationData.partyEmail,
+      inputs.email.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {
