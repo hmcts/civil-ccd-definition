@@ -1,4 +1,4 @@
-import Party from '../../../../../../../enums/party';
+import Party from '../../../../../../../../enums/party';
 
 export const heading = 'Further information';
 
