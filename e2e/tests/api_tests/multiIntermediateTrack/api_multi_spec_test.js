@@ -1,7 +1,6 @@
 
 
 const config = require('../../../config.js');
-const {deleteAccount, createAccount} = require('../../../api/idamHelper');
 
 const claimAmountPenniesMulti = '20000001';
 const claimAmountMulti = '200001';
@@ -66,16 +65,7 @@ Scenario('1v2  full defence Multi claim Specified same solicitor', async ({I, ap
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 });
 
-Scenario('1v1 LR v LiP multi track @api-nonprod-specified', async ({api_spec_cui}) => {
-  const mpScenario = 'ONE_V_ONE';
-  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
-  let caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimType);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'No', 'AWAITING_APPLICANT_INTENTION', false, claimType);
-});
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
 });
 

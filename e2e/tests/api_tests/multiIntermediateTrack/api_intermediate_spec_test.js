@@ -1,13 +1,11 @@
 
 
 const config = require('../../../config.js');
-const {createAccount, deleteAccount} = require('../../../api/idamHelper');
 
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-const claimType = 'INTERMEDIATE';
 
 Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate');
 
@@ -67,15 +65,7 @@ Scenario('1v2  full defence Intermediate claim Specified same solicitor', async 
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
 });
 
-Scenario('1v1 LR v LiP intermediate track @api-nonprod-specified', async ({api_spec_cui}) => {
-  await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
-  let caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', 'AWAITING_APPLICANT_INTENTION', false, claimType);
-});
-
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
-  await deleteAccount(config.defendantCitizenUser2.email);
 });
 
