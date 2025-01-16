@@ -169,7 +169,7 @@ ccd:
         RELEASE_REVISION: "{{ .Release.Revision }}"
         ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
         ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
-        CCD_DATA_STORE_URL: http://{{ .Release.Name }}-ccd-data-store-api
+        CCD_DATA_STORE_URL: 'https://ccd-data-store-api-civil-ccd-pr-5245.preview.platform.hmcts.net'
         ROLE_ASSIGNMENT_S2S_AUTHORISED_SERVICES: ccd_gw,am_role_assignment_service,am_org_role_mapping_service,wa_task_management_api,wa_task_configuration_api,xui_webapp,aac_manage_case_assignment,ccd_data,wa_workflow_api,wa_task_monitor,wa_case_event_handler,iac,hmc_cft_hearing_service,ccd_case_disposer,sscs,fis_hmc_api,et_cos,civil_service
         RUN_LD_ON_STARTUP: false
       keyVaults:
