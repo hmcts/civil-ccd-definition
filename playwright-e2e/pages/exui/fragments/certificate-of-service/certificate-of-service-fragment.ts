@@ -20,10 +20,10 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantParty: Party) {
     super(page);
     this.dateFragment = new DateFragment(page);
-    this.claimantParty = party;
+    this.claimantParty = claimantParty;
   }
 
   async verifyContent() {
