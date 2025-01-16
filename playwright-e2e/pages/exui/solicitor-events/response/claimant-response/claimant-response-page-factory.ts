@@ -1,5 +1,9 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
+import partys from '../../../../../constants/partys';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
+import ClaimantResponseSmallClaimExpertsPage from '../directions-questionaire/lr-spec/claimant-response-small-claim-experts/claimant-response-small-claim-experts-experts-page';
+import ClaimantResponseSmallClaimWitnessesPage from '../directions-questionaire/lr-spec/claimant-response-small-claim-witnesses/claimant-response-small-claim-witnesses-page';
 import ClaimantResponseStatementOfTruthPage from './common/claimant-response-statement-of-truth/claimant-response-statement-of-truth-page';
 import ClaimantResponseSubmitPage from './common/claimant-response-submit/claimant-response-submit-page';
 import DefenceResponseDocumentSpecPage from './lr-spec/defence-response-document-spec/defence-response-document-spec-page';
@@ -52,6 +56,18 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get defenceResponseDocumentSpecPage() {
     return new DefenceResponseDocumentSpecPage(this.page);
+  }
+
+  get claimantResponseSmallClaimExperts() {
+    return new ClaimantResponseSmallClaimExpertsPage(this.page);
+  }
+
+  get claimantResponseSmallClaimWitnesses() {
+    return new ClaimantResponseSmallClaimWitnessesPage(this.page);
+  }
+
+  get applicationPage() {
+    return new ApplicationPage(this.page, partys.CLAIMANT_1);
   }
 
   get claimantResponseStatementOfTruthPage() {
