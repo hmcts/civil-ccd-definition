@@ -72,7 +72,7 @@ void publishBootstrapReport() {
     archiveArtifacts artifacts: 'allure-functional-history/**', fingerprint: true
   }
 
-  def copyPreviousHistory(historyDir, resultsDir) {
+def copyPreviousHistory(historyDir, resultsDir) {
   def buildFound = false 
   def buildNumber = currentBuild.previousBuild.number
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
