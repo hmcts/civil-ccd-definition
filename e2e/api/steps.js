@@ -1102,7 +1102,6 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
-
   createFinalOrder: async (user, finalOrderRequestType, orderTrack) => {
     console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
@@ -1534,6 +1533,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    responseBody = clearFieldsNotApplicableToJudge(responseBody);
+
     if (pageId === 'TrackAllocation') {
       responseBody.data.allocatedTrack = caseData.allocatedTrack;
       responseBody.data.respondent1Represented = caseData.respondent1Represented;
@@ -2101,7 +2102,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
 };
 
 const addCaseId = (pageId) => {
-  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation();
+  return isDifferentSolicitorForDefendantResponseOrExtensionDate() || isEvidenceUpload(pageId) || isManageContactInformation() || isGenerateDirectionsOrder();
 };
 
 const isEvidenceUpload = (pageId) => {
@@ -2113,6 +2114,10 @@ const isEvidenceUpload = (pageId) => {
 
 const isManageContactInformation = () => {
   return eventName === 'MANAGE_CONTACT_INFORMATION';
+};
+
+const isGenerateDirectionsOrder = () => {
+  return eventName === 'GENERATE_DIRECTIONS_ORDER';
 };
 
 const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
@@ -2141,6 +2146,50 @@ const clearFinalOrderLocationData = (responseBody) => {
   if (responseBody.data.finalOrderDownloadTemplateDocument) {
     caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
   }
+  return responseBody;
+};
+
+const clearFieldsNotApplicableToJudge = (responseBody) => {
+  delete responseBody.data['allPartyNames'];
+  delete responseBody.data['applicant1DQDisclosureOfNonElectronicDocuments'];
+  delete responseBody.data['addRespondent2'];
+  delete responseBody.data['claimantResponseScenarioFlag'];
+  delete responseBody.data['claimDismissedDeadline'];
+  delete responseBody.data['claimant2ResponseFlag'];
+  delete responseBody.data['applicant1DQDisclosureReport'];
+  delete responseBody.data['applicant1DQRequestedCourt'];
+  delete responseBody.data['applicant1LitigationFriendRequired'];
+  delete responseBody.data['respondentSolicitor1EmailAddress'];
+  delete responseBody.data['applicant1ProceedWithClaim'];
+  delete responseBody.data['respondent1DQLanguage'];
+  delete responseBody.data['claimDetailsNotificationDate'];
+  delete responseBody.data['applicantSolicitor1PbaAccountsIsEmpty'];
+  delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
+  delete responseBody.data['businessProcess'];
+  delete responseBody.data['applicant1DQFileDirectionsQuestionnaire'];
+  delete responseBody.data['caseListDisplayDefendantSolicitorReferences'];
+  delete responseBody.data['respondent1DQDisclosureReport'];
+  delete responseBody.data['addApplicant2'];
+  delete responseBody.data['unassignedCaseListDisplayOrganisationReferences'];
+  delete responseBody.data['anyRepresented'];
+  delete responseBody.data['defendant1LIPAtClaimIssued'];
+  delete responseBody.data['defendantSolicitorNotifyClaimDetailsOptions'];
+  delete responseBody.data['claimNotificationDeadline'];
+  delete responseBody.data['caseNamePublic'];
+  delete responseBody.data['applicant1DQLanguage'];
+  delete responseBody.data['applicantSolicitor1ServiceAddressRequired'];
+  delete responseBody.data['respondent1ResponseDate'];
+  delete responseBody.data['multiPartyResponseTypeFlags'];
+  delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
+  delete responseBody.data['claimDetailsNotificationDeadline'];
+  delete responseBody.data['applicant1DQDisclosureOfElectronicDocuments'];
+  delete responseBody.data['applicant1ResponseDate'];
+  delete responseBody.data['applicant1ResponseDeadline'];
+  delete responseBody.data['claimIssuedPBADetails'];
+  delete responseBody.data['respondent1OrganisationIDCopy'];
+  delete responseBody.data['applicantsProceedIntention'];
+  delete responseBody.data['respondent1DQRequestedCourt'];
+  delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
   return responseBody;
 };
 
