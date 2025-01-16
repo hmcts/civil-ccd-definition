@@ -2190,6 +2190,33 @@ const clearFieldsNotApplicableToJudge = (responseBody) => {
   delete responseBody.data['applicantsProceedIntention'];
   delete responseBody.data['respondent1DQRequestedCourt'];
   delete responseBody.data['claimantResponseDocumentToDefendant2Flag'];
+  delete responseBody.data['respondent2ResponseDeadline'];
+  delete responseBody.data['defendant2LIPAtClaimIssued'];
+  delete responseBody.data['applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2'];
+  delete responseBody.data['respondent2OrganisationIDCopy'];
+  delete responseBody.data['respondent2SameLegalRepresentative'];
+  delete responseBody.data['respondentResponseIsSame'];
+  delete responseBody.data['respondent2ResponseDate'];
+  delete responseBody.data['applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2'];
+  delete responseBody.data['respondentSolicitor2EmailAddress'];
+  delete responseBody.data['applicant2ProceedWithClaimMultiParty2v1'];
+  delete responseBody.data['applicant2DQDisclosureOfElectronicDocuments'];
+  delete responseBody.data['applicant2DQDisclosureReport'];
+  delete responseBody.data['applicant2DQDisclosureOfNonElectronicDocuments'];
+  delete responseBody.data['applicant2LitigationFriendRequired'];
+  delete responseBody.data['respondent1ClaimResponseTypeToApplicant2'];
+  delete responseBody.data['applicant2ResponseDate'];
+  delete responseBody.data['applicant1ProceedWithClaimMultiParty2v1'];
+  delete responseBody.data['respondentSolicitor2Reference'];
+  delete responseBody.data['addLegalRepDeadlineRes1'];
+  delete responseBody.data['addLegalRepDeadlineRes2'];
+  delete responseBody.data['respondent2DQDisclosureOfNonElectronicDocuments'];
+  delete responseBody.data['respondent2DQDisclosureOfElectronicDocuments'];
+  delete responseBody.data['respondent2DQRequestedCourt'];
+  delete responseBody.data['respondent2DQDisclosureReport'];
+  delete responseBody.data['respondent2DQLanguage'];
+  delete responseBody.data['solicitorReferencesCopy'];
+
   return responseBody;
 };
 
