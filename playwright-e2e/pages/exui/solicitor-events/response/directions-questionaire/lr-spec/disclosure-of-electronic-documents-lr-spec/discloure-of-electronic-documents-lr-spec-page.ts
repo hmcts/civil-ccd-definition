@@ -8,16 +8,16 @@ import {
   subheadings,
   inputs,
   radioButtons,
-} from './disclosure-of-electronic-documents-spec-content.ts';
+} from './disclosure-of-electronic-documents-lr-spec-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
-export default class DisclosureOfElectronicDocumentsSpecPage extends ExuiPage(BasePage) {
-  private party: Party;
+export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(BasePage) {
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -27,24 +27,21 @@ export default class DisclosureOfElectronicDocumentsSpecPage extends ExuiPage(Ba
         super.expectSubheading(subheadings.disclosureOfDocs),
         super.expectText(radioButtons.disclosureOfElectronicDocs.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.no.selector(this.party));
+    await super.clickBySelector(
+      radioButtons.disclosureOfElectronicDocs.no.selector(this.claimantDefendantParty),
+    );
     await super.expectText(radioButtons.agreement.label);
-    await super.clickBySelector(radioButtons.agreement.no.selector(this.party));
+    await super.clickBySelector(radioButtons.agreement.no.selector(this.claimantDefendantParty));
     await super.expectText(inputs.disagreementReason.label);
-    await super.inputText('No major reason', inputs.disagreementReason.selector(this.party));
-  }
-
-  async enterDetailsDefendant2() {
-    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.no.selector(this.party));
-    await super.expectText(radioButtons.agreement.label);
-    await super.clickBySelector(radioButtons.agreement.no.selector(this.party));
-    await super.expectText(inputs.disagreementReason.label);
-    await super.inputText('No major reason', inputs.disagreementReason.selector(this.party));
+    await super.inputText(
+      `Disagreement reason - ${this.claimantDefendantParty.key}`,
+      inputs.disagreementReason.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

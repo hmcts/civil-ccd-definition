@@ -5,22 +5,26 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons, inputs, subheadings } from './application-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class ApplicationPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.application),
-      super.expectText(inputs.otherInformation.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.application),
+        super.expectText(inputs.otherInformation.label),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
   async selectYes() {
