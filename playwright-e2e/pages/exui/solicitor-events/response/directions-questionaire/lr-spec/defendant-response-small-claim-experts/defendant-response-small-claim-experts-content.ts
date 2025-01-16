@@ -6,12 +6,12 @@ export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
-      selector: (party: Party) =>
-        `#responseClaimExpertSpecRequired${party.number === 1 ? '' : '2'}_Yes`,
+      selector: (defendantParty: Party) =>
+        `#responseClaimExpertSpecRequired${defendantParty.number === 1 ? '' : '2'}_Yes`,
     },
     no: {
-      selector: (party: Party) =>
-        `#responseClaimExpertSpecRequired${party.number === 1 ? '' : '2'}_No`,
+      selector: (defendantParty: Party) =>
+        `#responseClaimExpertSpecRequired${defendantParty.number === 1 ? '' : '2'}_No`,
     },
   },
 };
@@ -19,31 +19,32 @@ export const radioButtons = {
 export const inputs = {
   expert: {
     firstName: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_firstName`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_firstName`,
     },
     lastName: {
-      selector: (party: Party) => `#respondToClaimExperts${party.number === 1 ? '' : '2'}_lastName`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_lastName`,
     },
     phoneNumber: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_phoneNumber`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_phoneNumber`,
     },
     email: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_emailAddress`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_emailAddress`,
     },
     expertise: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_fieldofExpertise`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_fieldofExpertise`,
     },
     whyRequired: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_whyRequired`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_whyRequired`,
     },
     estimatedCost: {
-      selector: (party: Party) =>
-        `#respondToClaimExperts${party.number === 1 ? '' : '2'}_estimatedCost`,
+      selector: (defendantParty: Party) =>
+        `#respondToClaimExperts${defendantParty.number === 1 ? '' : '2'}_estimatedCost`,
     },
   },
 };

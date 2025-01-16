@@ -4,20 +4,16 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import {
-  subheadings,
-  radioButtons,
-  inputs,
-} from './disclosure-of-non-electronic-documents-content.ts';
+import { subheadings, inputs } from './disclosure-of-non-electronic-documents-lr-spec-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
-export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(BasePage) {
-  private party: Party;
+export default class DisclosureOfNonElectronicDocumentsLRSpecPage extends ExuiPage(BasePage) {
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -25,17 +21,17 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectLabel(radioButtons.disclosureOfElectronicDocs.label),
+        super.expectLabel(inputs.bespokeDirections.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(radioButtons.disclosureOfElectronicDocs.yes.selector(this.party));
-    await super.clickBySelector(radioButtons.standardDisclosure.no.selector(this.party));
-    await super.expectLabel(inputs.bespokeDirections.label);
-    await super.inputText('No directions required', inputs.bespokeDirections.selector(this.party));
+    await super.inputText(
+      `No directions required - ${this.claimantDefendantParty.key}`,
+      inputs.bespokeDirections.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

@@ -6,11 +6,13 @@ export const radioButtons = {
     hintText: 'This will be over telephone or video',
     yes: {
       label: 'Yes',
-      selector: (party: Party) => `#${party.oldKey}DQRemoteHearing_remoteHearingRequested_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQRemoteHearing_remoteHearingRequested_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) => `#${party.oldKey}DQRemoteHearing_remoteHearingRequested_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQRemoteHearing_remoteHearingRequested_Yes`,
     },
   },
 };
@@ -18,6 +20,7 @@ export const radioButtons = {
 export const inputs = {
   remoteHearingReason: {
     label: 'Do you want the hearing to be held remotely?',
-    selector: (party: Party) => `#${party.oldKey}DQRemoteHearing_reasonForRemoteHearing`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQRemoteHearing_reasonForRemoteHearing`,
   },
 };
