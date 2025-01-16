@@ -4,13 +4,11 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './applicant-court-lr-spec-content.ts';
-import { Party } from '../../../../../../../models/partys.ts';
-import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
 import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
-export default class ApplicantCourtLRSpecPage extends ExuiPage(BasePage) {
+export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage) {
   private remoteHearingSpecFragment: RemoteHearingSpecFragment;
 
   constructor(page: Page, remoteHearingSpecFragment: RemoteHearingSpecFragment) {

@@ -11,23 +11,27 @@ import {
   subheadings,
 } from './defendant-response-small-claim-witnesses-content.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class DefendantResponseSmallClaimWitnessesPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
-    this.defendantParty = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.witnesses),
-      super.expectSubheading(subheadings.partyWitnesses(this.defendantParty)),
-      super.expectText(radioButtons.witnessesRequired.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.witnesses),
+        super.expectSubheading(subheadings.partyWitnesses(this.defendantParty)),
+        super.expectText(radioButtons.witnessesRequired.label),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+    );
   }
 
   async selectYes() {
@@ -42,7 +46,7 @@ export default class DefendantResponseSmallClaimWitnessesPage extends ExuiPage(B
     await super.clickBySelector(buttons.addNewWitness.selector(this.defendantParty));
   }
 
-  async enterWitness1Details(defendantWitnessParty: Party) {
+  async enterWitnessDetails(defendantWitnessParty: Party) {
     const defendantWitnessData = CaseDataHelper.buildWitnessData(defendantWitnessParty);
     await super.inputText(
       defendantWitnessData.firstName,
