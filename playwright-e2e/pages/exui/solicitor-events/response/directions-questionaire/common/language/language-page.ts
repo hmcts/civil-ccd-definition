@@ -3,47 +3,42 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import Party from "../../../../../../../enums/party.ts";
-import {
-  subHeading,
-  text,
-  getSpeakingRadioButtons,
-  getDocumentsRadioButtons,
-  getSpeakingRadioButtons1v2,
-  getDocumentsRadioButtons1v2,
-} from './language-content.ts';
+import { subheadings, paragraphs, radioButtons } from './language-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class LanguagePage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subHeading.language),
-      super.expectText(text.officialLanguage, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.welsh),
+        super.expectText(paragraphs.descriptionText),
+        super.expectText(radioButtons.courtLanguage.label),
+        super.expectText(radioButtons.documentLnaguage.label),
+        super.expectLabel(radioButtons.courtLanguage.welsh.label, { count: 2 }),
+        super.expectLabel(radioButtons.courtLanguage.english.label, { count: 2 }),
+        super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { count: 2 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
-  async selectSpeakingEnglish() {
-    await super.clickBySelector(getSpeakingRadioButtons(this.party).radioEnglish.selector);
-  }
-
-  async selectDocumentsEnglish() {
-    await super.clickBySelector(getDocumentsRadioButtons(this.party).radioEnglish.selector);
-  }
-
-  async selectSpeakingEnglish1v2() {
-    await super.clickBySelector(getSpeakingRadioButtons1v2(this.party).radioEnglish.selector);
-  }
-
-  async selectDocumentsEnglish1v2() {
-    await super.clickBySelector(getDocumentsRadioButtons1v2(this.party).radioEnglish.selector);
+  async selectEnglishAndWelsh() {
+    await super.clickBySelector(
+      radioButtons.courtLanguage.welshAndEnglish.selector(this.claimantDefendantParty),
+    );
+    await super.clickBySelector(
+      radioButtons.documentLnaguage.welshAndEnglish.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

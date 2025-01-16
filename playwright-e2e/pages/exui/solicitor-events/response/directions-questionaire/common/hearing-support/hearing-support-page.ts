@@ -3,33 +3,47 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, getRadioButtons } from './hearing-support-content.ts';
-import Party from "../../../../../../../enums/party.ts";
+import { subheadings, radioButtons, inputs } from './hearing-support-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class HearingSupportPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-constructor(page: Page, party: Party) {
-  super(page);
-  this.party = party;
-}
+  constructor(page: Page, claimantDefendantParty: Party) {
+    super(page);
+    this.claimantDefendantParty = claimantDefendantParty;
+  }
 
-async verifyContent(ccdCaseData: CCDCaseData)  {
-  await super.runVerifications([
-    super.verifyHeadings(ccdCaseData),
-    super.expectHeading(subheadings.supportNeeds),
-    super.expectText(getRadioButtons(this.party).text.label),
-    super.expectText(getRadioButtons(this.party).supportRequirement.label),
-  ]);
-}
+  async verifyContent(ccdCaseData: CCDCaseData) {
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectHeading(subheadings.supportNeeds),
+        super.expectText(radioButtons.supportRequirements.label),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
+  }
 
   async selectYes() {
-    await super.clickBySelector(getRadioButtons(this.party).radioYes.selector);
+    await super.clickBySelector(
+      radioButtons.supportRequirements.yes.selector(this.claimantDefendantParty),
+    );
+  }
+
+  async enterSupportRequirementsAdditional() {
+    await super.inputText(
+      `Support requirements for ${this.claimantDefendantParty.key}`,
+      inputs.supportRequirementsAdditional.selector(this.claimantDefendantParty),
+    );
   }
 
   async selectNo() {
-    await super.clickBySelector(getRadioButtons(this.party).radioNo.selector);
+    await super.clickBySelector(
+      radioButtons.supportRequirements.no.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

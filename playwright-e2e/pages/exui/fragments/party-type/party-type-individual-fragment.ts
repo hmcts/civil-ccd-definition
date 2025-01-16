@@ -14,9 +14,9 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   private partyType = partyTypes.INDIVIDUAL;
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
     this.dateFragment = new DateFragment(page);
   }
 
