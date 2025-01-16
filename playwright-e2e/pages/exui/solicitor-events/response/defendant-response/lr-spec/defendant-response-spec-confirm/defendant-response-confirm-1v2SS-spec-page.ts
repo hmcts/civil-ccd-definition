@@ -3,14 +3,14 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
-  confirmationHeading,
+  confirmationHeading1v2SS,
   paragraphs,
   subheadings,
 } from './defendant-response-confirm-spec-content.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 
 @AllMethodsStep()
-export default class DefendantResponseConfirmSpecPage extends ExuiPage(BasePage) {
+export default class DefendantResponseConfirm1v2SSSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     const claimantResponseDate = DateHelper.addToToday({
       days: 28,
@@ -19,7 +19,7 @@ export default class DefendantResponseConfirmSpecPage extends ExuiPage(BasePage)
     });
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectHeading(confirmationHeading),
+      super.expectHeading(confirmationHeading1v2SS),
       super.expectSubheading(subheadings.happensNext),
       super.expectText(ccdCaseData.legacyCaseReference),
       super.expectText(

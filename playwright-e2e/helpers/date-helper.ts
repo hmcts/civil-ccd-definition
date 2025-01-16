@@ -45,8 +45,18 @@ export default class DateHelper {
     return new Date();
   }
 
-  static addToToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
-    return this.addDate(new Date(), { days, months, years, workingDay });
+  static addToToday({
+    days = 0,
+    months = 0,
+    years = 0,
+    workingDay = false,
+    addDayAfter4pm = false,
+  }): Date {
+    const now = new Date();
+    if (addDayAfter4pm && this.isAfter4pm(now)) {
+      days += 1;
+    }
+    return this.addDate(now, { days, months, years, workingDay });
   }
 
   static addToDate(date: string, { days = 0, months = 0, years = 0, workingDay = false }): Date {
@@ -67,8 +77,18 @@ export default class DateHelper {
     return date;
   }
 
-  static subtractFromToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
-    return this.subtractDate(new Date(), { days, months, years, workingDay });
+  static subtractFromToday({
+    days = 0,
+    months = 0,
+    years = 0,
+    workingDay = false,
+    addDayAfter4pm = false,
+  }): Date {
+    const now = new Date();
+    if (addDayAfter4pm && this.isAfter4pm(now)) {
+      days += 1;
+    }
+    return this.subtractDate(now, { days, months, years, workingDay });
   }
 
   static subtractFromDate(
@@ -116,6 +136,10 @@ export default class DateHelper {
     }
 
     return dateString;
+  }
+
+  private static isAfter4pm(date: Date) {
+    return date.getHours() >= 16;
   }
 
   private static isWeekend(date: Date): boolean {
