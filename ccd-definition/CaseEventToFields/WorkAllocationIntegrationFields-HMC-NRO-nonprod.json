@@ -43,18 +43,39 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "applicant1Represented",
-    "PageFieldDisplayOrder": 99,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "TrackAllocation",
-    "PageDisplayOrder": 1,
-    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1Represented",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "allocatedTrack",
+    "PageFieldDisplayOrder": 98,
+    "DisplayContext": "READONLY",
+    "PageID": "TrackAllocation",
+    "PageDisplayOrder": 1,
+    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "DisplayContext": "READONLY",
+    "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 99,
     "DisplayContext": "READONLY",
     "PageID": "TrackAllocation",
@@ -66,38 +87,12 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "allocatedTrack",
-    "PageFieldDisplayOrder": 99,
-    "DisplayContext": "READONLY",
-    "PageID": "TrackAllocation",
-    "PageDisplayOrder": 1,
-    "Publish": "Y",
-    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "DisplayContext": "READONLY",
-    "CaseFieldID": "responseClaimTrack",
-    "PageID": "TrackAllocation",
-    "PageFieldDisplayOrder": 99,
-    "PageDisplayOrder": 1,
-    "Publish": "Y",
-    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "orderType",
-    "PageFieldDisplayOrder": 3,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "TrackAllocation",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
-    "Publish": "Y",
-    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -105,11 +100,9 @@
     "CaseFieldID": "caseManagementOrderSelection",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "TrackAllocation",
+    "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
-    "Publish": "Y",
-    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
-    "RetainHiddenValue": "Y"
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
