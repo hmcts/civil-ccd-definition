@@ -96,7 +96,8 @@
     "PageID": "TrackAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y",
-    "Comment": "On release if MINTI v2 released page is 3"
+    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -106,7 +107,9 @@
     "DisplayContext": "READONLY",
     "PageID": "TrackAllocation",
     "PageDisplayOrder": 99,
-    "Publish": "Y"
+    "Publish": "Y",
+    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
+    "RetainHiddenValue": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
