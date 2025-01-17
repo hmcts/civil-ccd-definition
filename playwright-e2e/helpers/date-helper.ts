@@ -59,7 +59,13 @@ export default class DateHelper {
     return this.addDate(now, { days, months, years, workingDay });
   }
 
-  static addToDate(date: string, { days = 0, months = 0, years = 0, workingDay = false }): Date {
+  static addToDate(
+    date: string,
+    { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
+  ): Date {
+    if (addDayAfter4pm && this.isAfter4pm(new Date())) {
+      days += 1;
+    }
     return this.addDate(new Date(date), { days, months, years, workingDay });
   }
 
@@ -93,8 +99,11 @@ export default class DateHelper {
 
   static subtractFromDate(
     date: string,
-    { days = 0, months = 0, years = 0, workingDay = false },
+    { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
   ): Date {
+    if (addDayAfter4pm && this.isAfter4pm(new Date())) {
+      days += 1;
+    }
     return this.subtractDate(new Date(date), { days, months, years, workingDay });
   }
 
