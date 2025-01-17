@@ -1,23 +1,32 @@
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { getRadioButtons } from './respondent-response-type-content.ts';
+import { radioButtons } from './respondent-response-type-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import { Page } from 'playwright-core';
 
 @AllMethodsStep()
 export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
+  private defendantParty: Party;
+
+  constructor(page: Page, defendantParty: Party) {
+    super(page);
+    this.defendantParty = defendantParty;
+  }
+
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(getRadioButtons(1).rejectAll.label),
-      super.expectLabel(getRadioButtons(1).admitAll.label),
-      super.expectLabel(getRadioButtons(1).partAdmit.label),
-      super.expectLabel(getRadioButtons(1).counterClaim.label),
+      super.expectLabel(radioButtons.rejectAll.label),
+      super.expectLabel(radioButtons.admitAll.label),
+      super.expectLabel(radioButtons.partAdmit.label),
+      super.expectLabel(radioButtons.counterClaim.label),
     ]);
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(getRadioButtons(1).rejectAll.selector);
+    await super.clickBySelector(radioButtons.rejectAll.selector(this.defendantParty));
   }
 
   async submit() {

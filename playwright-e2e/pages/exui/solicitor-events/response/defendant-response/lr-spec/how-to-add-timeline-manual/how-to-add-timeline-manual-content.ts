@@ -1,3 +1,5 @@
+import { Party } from '../../../../../../../models/partys';
+
 export const heading = 'Add timeline of events (Optional)';
 
 export const buttons = {
@@ -7,26 +9,15 @@ export const buttons = {
   },
 };
 
-export const getInputs = (defendantNumber: number | undefined, eventIndex: number) => ({
+export const inputs = {
   timelineEvent: {
     date: {
       label: 'Date (Optional)',
-      day: {
-        label: 'Day',
-        selector: '#timelineDate-day',
-      },
-      month: {
-        label: 'Month',
-        selector: '#timelineDate-month',
-      },
-      year: {
-        label: 'Year',
-        selector: '#timelineDate-year',
-      },
     },
     eventDescription: {
       label: 'What happened (Optional)',
-      selector: `#specResponseTimelineOfEvents${defendantNumber ?? ''}_${eventIndex}_timelineDescription`,
+      selector: (defendantParty: Party, eventIndex: number) =>
+        `#specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}_${eventIndex}_timelineDescription`,
     },
   },
-});
+};

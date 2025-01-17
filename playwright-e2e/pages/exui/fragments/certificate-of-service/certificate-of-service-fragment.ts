@@ -5,40 +5,44 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
 import ExuiPage from '../../exui-page/exui-page';
 import {
-  getDefendantHeading,
-  getInputs,
-  getButtons,
-  getCheckboxes,
-  getDropdowns,
-  getRadioButtons,
+  heading,
+  inputs,
+  buttons,
+  checkboxes,
+  dropdowns,
+  radioButtons,
 } from './certificate-of-service-content';
+import { Party } from '../../../../models/partys';
+import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
 export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
-  private defendantNumber: number;
+  private dateFragment: DateFragment;
+  private claimantParty: Party;
 
-  constructor(page: Page, defendantNumber: number) {
+  constructor(page: Page, claimantParty: Party) {
     super(page);
-    this.defendantNumber = defendantNumber;
+    this.dateFragment = new DateFragment(page);
+    this.claimantParty = claimantParty;
   }
 
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectHeading(getDefendantHeading(this.defendantNumber)),
-        super.expectText(getInputs(this.defendantNumber).dateDeemedServed.label),
-        super.expectText(getInputs(this.defendantNumber).dateDeemedServed.label),
-        super.expectLabel(getInputs(this.defendantNumber).statementOfTruth.firm.label),
-        super.expectLabel(getInputs(this.defendantNumber).documentsServed.label),
-        super.expectLabel(getInputs(this.defendantNumber).statementOfTruth.name.label),
-        super.expectLabel(getInputs(this.defendantNumber).notifyClaimRecipient.label),
-        super.expectLabel(getDropdowns(this.defendantNumber).locationType.label),
-        super.expectLabel(getDropdowns(this.defendantNumber).serveType.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).docsServed.litigationFriend.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).docsServed.defendant.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).docsServed.litigationFriend.label),
-        super.expectLabel(getRadioButtons(this.defendantNumber).docsServed.solicitor.label),
-        super.expectText(getCheckboxes(this.defendantNumber).signedTrue.label, { first: true }),
+        super.expectHeading(heading(this.claimantParty)),
+        super.expectText(inputs.dateDeemedServed.label),
+        super.expectText(inputs.dateDeemedServed.label),
+        super.expectLabel(inputs.statementOfTruth.firm.label),
+        super.expectLabel(inputs.documentsServed.label),
+        super.expectLabel(inputs.statementOfTruth.name.label),
+        super.expectLabel(inputs.notifyClaimRecipient.label),
+        super.expectLabel(dropdowns.locationType.label),
+        super.expectLabel(dropdowns.serveType.label),
+        super.expectLabel(radioButtons.docsServed.litigationFriend.label),
+        super.expectLabel(radioButtons.docsServed.defendant.label),
+        super.expectLabel(radioButtons.docsServed.litigationFriend.label),
+        super.expectLabel(radioButtons.docsServed.solicitor.label),
+        super.expectText(checkboxes.signedTrue.label, { first: true }),
       ],
       { runAxe: false },
     );
@@ -48,7 +52,7 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
     let dateDeemedServed: Date;
     let dateOfService: Date;
 
-    if (this.defendantNumber === 1) {
+    if (this.claimantParty.number === 1) {
       dateDeemedServed = DateHelper.getToday();
       dateOfService = DateHelper.addToToday({ days: 2, workingDay: true });
     } else {
@@ -56,68 +60,38 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
       dateOfService = DateHelper.subtractFromToday({ days: 14, workingDay: true });
     }
 
-    await super.inputText(
-      DateHelper.getTwoDigitDay(dateDeemedServed),
-      getInputs(this.defendantNumber).dateOfService.day.selector,
-    );
-    await super.inputText(
-      DateHelper.getTwoDigitMonth(dateDeemedServed),
-      getInputs(this.defendantNumber).dateOfService.month.selector,
-    );
-    await super.inputText(
-      dateDeemedServed.getFullYear(),
-      getInputs(this.defendantNumber).dateOfService.year.selector,
-    );
-    await super.inputText(
-      DateHelper.getTwoDigitDay(dateOfService),
-      getInputs(this.defendantNumber).dateDeemedServed.day.selector,
-    );
-    await super.inputText(
-      DateHelper.getTwoDigitMonth(dateOfService),
-      getInputs(this.defendantNumber).dateDeemedServed.month.selector,
-    );
-    await super.inputText(
-      dateOfService.getFullYear(),
-      getInputs(this.defendantNumber).dateDeemedServed.year.selector,
-    );
-    await super.inputText(
-      'Test Documents 1',
-      getInputs(this.defendantNumber).documentsServed.selector,
-    );
-    await super.inputText(
-      'Defendant 1',
-      getInputs(this.defendantNumber).notifyClaimRecipient.selector,
-    );
+    await this.dateFragment.enterDate(dateOfService, 'cosDateOfServiceForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateDeemedServedForDefendant');
+
+    await super.inputText('Test Documents 1', inputs.documentsServed.selector(this.claimantParty));
+    await super.inputText('Defendant 1', inputs.notifyClaimRecipient.selector(this.claimantParty));
     await super.selectFromDropdown(
-      getDropdowns(this.defendantNumber).locationType.options[0],
-      getDropdowns(this.defendantNumber).locationType.selector,
+      dropdowns.locationType.options[0],
+      dropdowns.locationType.selector(this.claimantParty),
     );
     await super.inputText(
       'Test Address 1',
-      getInputs(this.defendantNumber).documentsServedLocation.selector,
+      inputs.documentsServedLocation.selector(this.claimantParty),
     );
-    await super.clickBySelector(getRadioButtons(this.defendantNumber).docsServed.claimant.selector);
+    await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.claimantParty));
     await super.selectFromDropdown(
-      getDropdowns(this.defendantNumber).serveType.options[0],
-      getDropdowns(this.defendantNumber).serveType.selector,
+      dropdowns.serveType.options[0],
+      dropdowns.serveType.selector(this.claimantParty),
     );
   }
 
   async uploadSupportingEvidence() {
-    await super.clickBySelector(getButtons(this.defendantNumber).addNewSupportingEvidence.selector);
+    await super.clickBySelector(buttons.addNewSupportingEvidence.selector(this.claimantParty));
     await super.retryUploadFile(
       filePaths.testPdfFile,
-      getInputs(this.defendantNumber).evidenceDocument.selector,
+      inputs.evidenceDocument.selector(this.claimantParty),
     );
   }
 
   async fillStatementOfTruth() {
-    await super.inputText('Name 1', getInputs(this.defendantNumber).statementOfTruth.name.selector);
-    await super.inputText(
-      'Law firm 1',
-      getInputs(this.defendantNumber).statementOfTruth.firm.selector,
-    );
-    await super.clickBySelector(getCheckboxes(this.defendantNumber).signedTrue.selector);
+    await super.inputText('Name 1', inputs.statementOfTruth.name.selector(this.claimantParty));
+    await super.inputText('Law firm 1', inputs.statementOfTruth.firm.selector(this.claimantParty));
+    await super.clickBySelector(checkboxes.signedTrue.selector(this.claimantParty));
   }
 
   async submit() {

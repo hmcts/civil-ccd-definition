@@ -431,14 +431,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "isTakenOfflineAfterJBA",
-    "UserRoles": [
-      "caseworker-civil-systemupdate"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondForImmediateOption",
     "AccessControl": [
       {
