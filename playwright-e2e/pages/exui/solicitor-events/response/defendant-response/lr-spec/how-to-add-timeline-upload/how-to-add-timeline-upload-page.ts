@@ -10,11 +10,11 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -25,12 +25,12 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
         super.expectHeading(ccdCaseData.caseNamePublic),
         super.expectLabel(inputs.upload.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async uploadDoc() {
-    await super.retryUploadFile(inputs.upload.selector(this.party), filePaths.testPdfFile);
+    await super.retryUploadFile(inputs.upload.selector(this.defendantParty), filePaths.testPdfFile);
   }
 
   async submit() {

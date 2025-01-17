@@ -210,12 +210,12 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      pageInsertName,
+      axePageInsertName: axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      pageInsertName?: string;
+      axePageInsertName?: string;
     } = {},
   ) {
     if (expects) {
@@ -223,7 +223,7 @@ export default abstract class BasePage {
     }
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
     }
   }
 
@@ -234,19 +234,19 @@ export default abstract class BasePage {
       axeExclusions = [],
       useAxeCache = true,
       timeout = 12_000,
-      pageInsertName,
+      axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
       timeout?: number;
-      pageInsertName?: string;
+      axePageInsertName?: string;
     } = {},
   ) {
     await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
     }
   }
 
@@ -254,7 +254,7 @@ export default abstract class BasePage {
   private async expectAxeToPass(
     axeExclusions: string[],
     useAxeCache: boolean,
-    pageInsertName?: string,
+    axePageInsertName?: string,
   ) {
     const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
@@ -265,8 +265,8 @@ export default abstract class BasePage {
     }
 
     const pageName = ClassMethodHelper.formatClassName(
-      pageInsertName !== undefined
-        ? `${this.constructor.name.slice(0, -4)}${pageInsertName}Page`
+      axePageInsertName !== undefined
+        ? `${this.constructor.name.slice(0, -4)}${axePageInsertName}Page`
         : this.constructor.name,
     );
 

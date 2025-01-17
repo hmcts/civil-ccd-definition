@@ -11,12 +11,12 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   private addressFragment: AddressFragment;
-  private party: Party;
+  private litigationFriendParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, litigationFriendParty: Party) {
     super(page);
-    this.addressFragment = new AddressFragment(page, party);
-    this.party = party;
+    this.addressFragment = new AddressFragment(page, litigationFriendParty);
+    this.litigationFriendParty = litigationFriendParty;
   }
 
   async verifyContent() {
@@ -35,40 +35,42 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   }
 
   async enterLitigationFriendDetails() {
-    const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(this.party);
+    const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(
+      this.litigationFriendParty,
+    );
     await super.inputText(
       claimantLitigationFriendData.firstName,
-      inputs.litigationFriendDetails.firstName.selector(this.party),
+      inputs.litigationFriendDetails.firstName.selector(this.litigationFriendParty),
     );
     await super.inputText(
       claimantLitigationFriendData.lastName,
-      inputs.litigationFriendDetails.lastName.selector(this.party),
+      inputs.litigationFriendDetails.lastName.selector(this.litigationFriendParty),
     );
     await super.inputText(
       claimantLitigationFriendData.emailAddress,
-      inputs.litigationFriendDetails.email.selector(this.party),
+      inputs.litigationFriendDetails.email.selector(this.litigationFriendParty),
     );
     await super.inputText(
       claimantLitigationFriendData.phoneNumber,
-      inputs.litigationFriendDetails.phoneNumber.selector(this.party),
+      inputs.litigationFriendDetails.phoneNumber.selector(this.litigationFriendParty),
     );
   }
 
   async chooseYesSameAddress() {
-    await super.clickBySelector(radioButtons.address.yes.selector(this.party));
+    await super.clickBySelector(radioButtons.address.yes.selector(this.litigationFriendParty));
   }
 
   async chooseNoSameAddress() {
-    await super.clickBySelector(radioButtons.address.no.selector(this.party));
+    await super.clickBySelector(radioButtons.address.no.selector(this.litigationFriendParty));
     await this.addressFragment.enterAddressManual();
   }
 
   async uploadCertificateOfSuitability() {
-    await super.clickBySelector(buttons.addNewCertificate.selector(this.party));
+    await super.clickBySelector(buttons.addNewCertificate.selector(this.litigationFriendParty));
     await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label);
     await super.retryUploadFile(
       filePaths.testPdfFile,
-      inputs.certificateOfSuitability.uploadDoc.selector(this.party),
+      inputs.certificateOfSuitability.uploadDoc.selector(this.litigationFriendParty),
     );
   }
 
