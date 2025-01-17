@@ -39,7 +39,7 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
-      { retries: 1 },
+      { retries: 0 },
     );
   }
 }
