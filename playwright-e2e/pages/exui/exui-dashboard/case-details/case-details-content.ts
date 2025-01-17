@@ -9,13 +9,13 @@ export const tabs = {
     title: 'Case File',
   },
   claimDetails: {
-    title: 'Claim Details',
+    title: 'Claim details',
   },
   history: {
     title: 'History',
   },
   claimDocs: {
-    title: 'Claim Documents',
+    title: 'Claim documents',
   },
   listingNotes: {
     title: 'List notes',

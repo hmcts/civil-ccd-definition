@@ -242,7 +242,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "noticeOfDiscontinueCWDoc",
+    "ID": "applicant1NoticeOfDiscontinueCWViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
@@ -250,7 +250,39 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "noticeOfDiscontinueAllParitiesDoc",
+    "ID": "respondent1NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2NoticeOfDiscontinueCWViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1NoticeOfDiscontinueAllPartyViewDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2NoticeOfDiscontinueAllPartyViewDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",

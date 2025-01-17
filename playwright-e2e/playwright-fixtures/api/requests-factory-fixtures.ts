@@ -1,5 +1,5 @@
 import RequestsFactory from '../../requests/requests-factory';
-import { test as base } from '../utils/test-utils-fixtures';
+import { test as base } from '@playwright/test';
 
 type RequestsFactoryFixtures = {
   _requestsFactory: RequestsFactory;
@@ -8,5 +8,5 @@ type RequestsFactoryFixtures = {
 export const test = base.extend<RequestsFactoryFixtures>({
   _requestsFactory: async ({ request }, use) => {
     await use(new RequestsFactory(request));
-  },
+  }
 });

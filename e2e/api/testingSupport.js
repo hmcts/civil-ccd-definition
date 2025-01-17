@@ -49,10 +49,6 @@ const checkFastTrackUpliftsEnabled = async () => {
   return checkFlagEnabled('fast-track-uplifts');
 };
 
-const checkCarmToggleEnabled = async () => {
-  return checkFlagEnabled('carm');
-};
-
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
 };
@@ -219,7 +215,7 @@ module.exports =  {
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
-    
+
     return await restHelper.request(
       `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
       {
@@ -298,6 +294,5 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkCarmToggleEnabled,
   checkMintiToggleEnabled
 };

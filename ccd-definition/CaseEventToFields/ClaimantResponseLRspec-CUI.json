@@ -956,6 +956,17 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimantDQLanguageMediationHint",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "Language",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingLRspec",
     "PageDisplayOrder": 11,
     "PageFieldDisplayOrder": 1,
@@ -1003,6 +1014,17 @@
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimantDQSupportMediationHint",
+    "PageDisplayOrder": 14,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingSupport",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

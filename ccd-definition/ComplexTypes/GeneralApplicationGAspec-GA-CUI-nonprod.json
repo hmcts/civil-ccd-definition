@@ -14,5 +14,23 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppDetailsOfOrderColl",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "generalAppReasonsOfOrderColl",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

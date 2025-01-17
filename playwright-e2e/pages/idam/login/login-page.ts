@@ -14,8 +14,8 @@ export default class LoginPage extends BasePage {
     ]);
   }
 
-  private async login({ email, password }) {
-    console.log(`Authenticating user with email ${email} by Idam`);
+  private async login({ name, email, password }: User) {
+    console.log(`Authenticating user: ${name} by Idam`);
     await super.inputText(email, inputs.email.selector);
     await super.inputSensitiveText(password, inputs.password.selector);
     await super.clickBySelector(buttons.submit.selector);

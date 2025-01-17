@@ -933,7 +933,7 @@
     "CaseFieldID": "respondent1DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -941,7 +941,7 @@
     "CaseFieldID": "respondent1DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -1013,7 +1013,7 @@
     "CaseFieldID": "respondent2DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -1021,7 +1021,7 @@
     "CaseFieldID": "respondent2DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",

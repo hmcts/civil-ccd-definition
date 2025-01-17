@@ -1,4 +1,5 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 module.exports = {
   defendantResponse: (allocatedTrack = 'MULTI_CLAIM') => {
@@ -7,6 +8,7 @@ module.exports = {
         ConfirmDetails: {
           respondent2: {
             type: 'INDIVIDUAL',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             individualFirstName: 'Foo',
             individualLastName: 'Bar',
             individualTitle: 'Dr',

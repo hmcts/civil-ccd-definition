@@ -1,13 +1,13 @@
 import BasePage from '../../../../../../base/base-page';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import ExuiEvent from '../../../../exui-event/exui-event';
+import ExuiPage from '../../../../exui-page/exui-page';
 import {
   confirmationHeading,
   subheadings,
 } from './inform-agreed-extension-date-confirm-spec-content';
 
-export default class InformAgreedExtensionDateConfirmSpecPage extends ExuiEvent(BasePage) {
+export default class InformAgreedExtensionDateConfirmSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
       days: 28,

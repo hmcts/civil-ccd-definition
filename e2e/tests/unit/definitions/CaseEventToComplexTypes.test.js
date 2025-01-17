@@ -9,10 +9,6 @@ const {
 const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
-  // todo type not populated
-  // expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
-  //   return v.startsWith('CIVIL');
-  // });
   const errors = [];
   if (row.length > 0) {
         row.forEach(elem => {

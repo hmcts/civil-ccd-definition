@@ -1113,7 +1113,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondToClaimExperts",
-    "Label": " ",
+    "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
+    "Label": "Expert Details",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1121,7 +1122,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondToClaimExperts2",
-    "Label": " ",
+    "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
+    "Label": "Expert Details",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2071,6 +2073,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQWitnessesDetailsSpec",
+    "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
     "Label": "Witnesses details",
     "FieldType": "Collection",
     "FieldTypeParameter": "Witness",
@@ -2325,7 +2328,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1RespondToClaimExperts",
-    "Label": " ",
+    "HintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
+    "Label": "Expert Details",
     "FieldType": "ExpertDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"

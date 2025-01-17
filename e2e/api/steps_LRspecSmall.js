@@ -287,6 +287,7 @@ module.exports = function (){
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
     await apiRequest.setupTokens(user);
+    deleteCaseFields('showConditionFlags');
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseId);
     console.log('End of unsuccessful mediation');

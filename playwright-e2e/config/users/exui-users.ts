@@ -172,6 +172,13 @@ export const ctscAdminUser: User = getUser({
   wa: true,
 });
 
+export const solicitorUsers = [
+  claimantSolicitorUser,
+  claimantSolicitorBulkScanUser,
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+];
+
 export const exuiAuthSetupUsers = [
   claimantSolicitorUser,
   defendantSolicitor1User,

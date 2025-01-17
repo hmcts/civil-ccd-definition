@@ -13,6 +13,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_DEFENDANT_TWO_STAY_CASE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CLAIMANT_DISMISS_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
@@ -20,6 +26,12 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_DISMISS_CASE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_DEFENDANT_TWO_DISMISS_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
@@ -92,6 +104,36 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_STAY_LIFTED_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_COURT_OFFICER_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_COURT_OFFICER_ORDER",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_COURT_OFFICER_ORDER_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   }

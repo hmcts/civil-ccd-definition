@@ -1,10 +1,10 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ExuiEvent from '../../../../exui-event/exui-event';
+import ExuiPage from '../../../../exui-page/exui-page';
 import { paragraphs, subheadings } from './checklist-spec-content';
 
 @AllMethodsStep()
-export default class ChecklistSpecPage extends ExuiEvent(BasePage) {
+export default class ChecklistSpecPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),

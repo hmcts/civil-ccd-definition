@@ -509,5 +509,39 @@
       "RES-SOL-TWO-SPEC-PROFILE"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "defendantDQLanguageMediationHint",
+    "UserRoles": [
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "claimantDQLanguageMediationHint",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "defendantDQSupportMediationHint",
+    "UserRoles": [
+      "RES-SOL-ONE-SPEC-PROFILE",
+      "RES-SOL-TWO-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "claimantDQSupportMediationHint",
+    "UserRoles": [
+      "APP-SOL-SPEC-PROFILE"
+    ],
+    "CRUD": "CRU"
   }
 ]

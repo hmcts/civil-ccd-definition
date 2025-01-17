@@ -16,3 +16,5 @@ civil-translation:
   enabled: false
 ccd-def-cleanup:
   enabled: false
+am-org-role-mapping-service:
+  enabled: false

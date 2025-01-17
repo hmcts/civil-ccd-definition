@@ -4,7 +4,7 @@
     "ListElementCode": "name",
     "FieldType": "Text",
     "ElementLabel": "Name",
-    "Max": 40,
+    "Max": 70,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

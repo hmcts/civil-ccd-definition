@@ -4,7 +4,7 @@ import DecoratorHelper from '../helpers/decorator-helper';
 import { test } from '../playwright-fixtures/index';
 import ClassMethodHelper from '../helpers/class-method-helper';
 
-//DO NOT APPLY AllMethodStep Decorator with Step decorator!!!!!
+//DO NOT APPLY AllMethodStep Decorator with Step decorator
 
 const stepFlag = '__allMethodsStepApplied';
 

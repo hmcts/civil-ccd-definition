@@ -51,7 +51,7 @@ export interface ResponseTextOptions extends _ResponseOptions {
 
 export interface _RetryResponseOptions {
   expectedStatus?: number;
-  remainingRetries?: number;
+  retries?: number;
   retryTimeInterval?: number;
   verifyResponse?: (
     response: APIResponse | any | string,

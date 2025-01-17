@@ -189,14 +189,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "relistHearingNotice",
-    "Label": "When you click Continue, the next screen will enable you to select to schedule the hearing.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
     "FieldType": "Text",

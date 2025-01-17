@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.48
+version: 0.0.50
 maintainers:
   - name: HMCTS Civil team
 
@@ -19,7 +19,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 9.0.21
+    version: 9.2.1
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
@@ -62,3 +62,7 @@ dependencies:
     version: ~9.0.4
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: ccd-def-cleanup.enabled
+  - name: am-org-role-mapping-service
+    version: ~0.0.58
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: am-org-role-mapping-service.enabled
