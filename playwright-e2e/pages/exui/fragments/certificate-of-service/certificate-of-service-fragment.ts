@@ -63,8 +63,14 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
     await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
 
-    await super.inputText('Test Documents 1', inputs.documentsServed.selector(this.defendantParty));
-    await super.inputText('Defendant 1', inputs.notifyClaimRecipient.selector(this.defendantParty));
+    await super.inputText(
+      `Test Documents 1 - ${this.defendantParty.key}`,
+      inputs.documentsServed.selector(this.defendantParty),
+    );
+    await super.inputText(
+      `Defendant ${this.defendantParty.number}`,
+      inputs.notifyClaimRecipient.selector(this.defendantParty),
+    );
     await super.selectFromDropdown(
       dropdowns.locationType.options[0],
       dropdowns.locationType.selector(this.defendantParty),
