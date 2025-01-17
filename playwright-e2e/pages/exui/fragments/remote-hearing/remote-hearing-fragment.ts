@@ -7,11 +7,11 @@ import { radioButtons, inputs } from './remote-hearing-content';
 
 @AllMethodsStep()
 export default class RemoteHearingFragment extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
@@ -28,13 +28,20 @@ export default class RemoteHearingFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async selectYes(reason?: string) {
-    await super.clickBySelector(radioButtons.remoteHearing.yes.selector(this.party));
-    await super.inputText(reason ?? 'No reason', inputs.remoteHearingReason.selector(this.party));
+  async selectYes() {
+    await super.clickBySelector(
+      radioButtons.remoteHearing.yes.selector(this.claimantDefendantParty),
+    );
+    await super.inputText(
+      `Court location reason - ${this.claimantDefendantParty.key}`,
+      inputs.remoteHearingReason.selector(this.claimantDefendantParty),
+    );
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons.remoteHearing.no.selector(this.party));
+    await super.clickBySelector(
+      radioButtons.remoteHearing.no.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

@@ -8,15 +8,12 @@ import partys from '../../../../../../../constants/partys.ts';
 @AllMethodsStep()
 export default class RespondentResponse2v1Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [
-        super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.docUrl, { index: 0 }),
-        super.expectLabel(radioButtons.proceedWithClaim.label(partys.CLAIMANT_1)),
-        super.expectLabel(radioButtons.proceedWithClaim.label(partys.CLAIMANT_2)),
-      ],
-      { useAxeCache: true },
-    );
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(subheadings.docUrl, { index: 0 }),
+      super.expectLabel(radioButtons.proceedWithClaim.label(partys.CLAIMANT_1)),
+      super.expectLabel(radioButtons.proceedWithClaim.label(partys.CLAIMANT_2)),
+    ]);
   }
 
   async selectYesBothClaimants() {

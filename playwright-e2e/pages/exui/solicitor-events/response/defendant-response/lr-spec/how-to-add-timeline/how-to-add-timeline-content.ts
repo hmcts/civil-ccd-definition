@@ -7,12 +7,12 @@ export const subheadings = {
 export const radioButtons = {
   upload: {
     label: 'Upload claim timeline template',
-    selector: (party: Party) =>
-      `#specClaimResponseTimelineList${party.number === 1 ? '' : party.number}-UPLOAD`,
+    selector: (defendantParty: Party) =>
+      `#specClaimResponseTimelineList${defendantParty.number === 1 ? '' : defendantParty.number}-UPLOAD`,
   },
   manual: {
     label: 'Add manually',
-    selector: (party: Party) =>
-      `#specClaimResponseTimelineList${party.number === 1 ? '' : party.number}-MANUAL`,
+    selector: (defendantParty: Party) =>
+      `#specClaimResponseTimelineList${defendantParty.number === 1 ? '' : defendantParty.number}-MANUAL`,
   },
 };
