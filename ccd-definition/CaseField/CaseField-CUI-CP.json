@@ -123,14 +123,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "hearingRequestedAHN",
-    "Label": "AHN requested",
-    "FieldType": "Date",
-    "SecurityClassification": "Public",
-    "Searchable": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantTrialReadyDocumentCreated",
     "Label": "trial doc date",
     "FieldType": "Date",
