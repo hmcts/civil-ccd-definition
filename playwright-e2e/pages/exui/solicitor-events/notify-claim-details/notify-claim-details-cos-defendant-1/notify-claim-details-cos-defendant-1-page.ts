@@ -13,7 +13,7 @@ export default class NotifyClaimDetailsCOSDefendant1Page extends ExuiPage(BasePa
     this.certificateOfServiceFragment = certificateOfServiceFragment;
   }
 
-  async verifyContent(...args: any[]): Promise<void> {
+  async verifyContent() {
     await super.runVerifications([this.certificateOfServiceFragment.verifyContent()]);
   }
 

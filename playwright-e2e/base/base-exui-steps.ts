@@ -23,7 +23,7 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 2 } = {},
+    { retries = 2, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     while (retries >= 0) {
@@ -43,10 +43,11 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
         if (retries <= 0) throw error;
         console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
         retries--;
+        caseDetailsPage.clearCCDEvent();
       }
     }
-    await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
+    if (verifySuccessEvent) await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.clearCCDEvent();
-    await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
   }
 }

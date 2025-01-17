@@ -129,7 +129,6 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
   }
 
   async NotifyClaim1v2LIPS() {
-    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, 1737044684896331);
     await this.retryExuiEvent(
       async () => {
         const { notifyClaimCOSDefendant1Page } = this.notifyClaimPageFactory;
@@ -152,7 +151,6 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
-      { retries: 1 },
     );
   }
 
