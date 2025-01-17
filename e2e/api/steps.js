@@ -1534,6 +1534,8 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    delete responseBody.data['applicant1Represented'];
+    delete responseBody.data['respondent1Represented'];
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
