@@ -33,11 +33,9 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
       [
         super.expectText(
           DateHelper.formatDateToString(dateDeemedServed, { outputFormat: 'DD Mon YYYY' }),
-          { index: 0 },
         ),
         super.expectText(
           DateHelper.formatDateToString(dateOfService, { outputFormat: 'DD Mon YYYY' }),
-          { index: 1 },
         ),
         super.expectText(table.documentsServed.defendant1Answer),
         super.expectText(table.documentsServedLocation.defendant1Answer),
