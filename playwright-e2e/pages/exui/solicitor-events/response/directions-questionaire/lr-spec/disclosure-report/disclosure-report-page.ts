@@ -5,32 +5,38 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { subheadings, inputs, radioButtons } from './disclosure-report-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class DisclosureReportPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.report),
-      super.expectText(radioButtons.disclosureReportFilledAndServed.label),
-      super.expectText(radioButtons.disclosureProposalAgreed.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.report),
+        super.expectText(radioButtons.disclosureReportFilledAndServed.label),
+        super.expectText(radioButtons.disclosureProposalAgreed.label),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
   async enterDetails() {
     await super.clickBySelector(
-      radioButtons.disclosureReportFilledAndServed.no.selector(this.party),
+      radioButtons.disclosureReportFilledAndServed.no.selector(this.claimantDefendantParty),
     );
-    await super.clickBySelector(radioButtons.disclosureProposalAgreed.yes.selector(this.party));
+    await super.clickBySelector(
+      radioButtons.disclosureProposalAgreed.yes.selector(this.claimantDefendantParty),
+    );
     await super.expectLabel(inputs.draftOrderNumber.label);
-    await super.inputText('12345', inputs.draftOrderNumber.selector(this.party));
+    await super.inputText('12345', inputs.draftOrderNumber.selector(this.claimantDefendantParty));
   }
 
   async submit() {
