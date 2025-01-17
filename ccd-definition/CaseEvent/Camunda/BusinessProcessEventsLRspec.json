@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "VALIDATE_FEE_SPEC",
     "Name": "Validate fee",
     "Description": "Validate fee for Spec",

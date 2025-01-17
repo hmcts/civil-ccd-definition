@@ -2,7 +2,7 @@
   {
     "RoleName" : "[CLAIMANT]",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "AccessProfiles": "CITIZEN-CLAIMANT-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
@@ -11,7 +11,7 @@
   {
     "RoleName" : "[DEFENDANT]",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "AccessProfiles": "CITIZEN-DEFENDANT-PROFILE",
     "ReadOnly": "N",
     "Disabled": "F",
@@ -20,7 +20,7 @@
   {
     "RoleName" : "idam:citizen",
     "Authorisation": "",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "AccessProfiles": "citizen-profile",
     "ReadOnly": "N",
     "Disabled": "F",

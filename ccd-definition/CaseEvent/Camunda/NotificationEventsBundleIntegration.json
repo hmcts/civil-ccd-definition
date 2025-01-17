@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "Name": "Email DF 1: Bundle created",
     "Description": "Notify DF 1 of bundle creation",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_BUNDLE_CREATED",
     "Name": "Email DF 2: Bundle created",
     "Description": "Notify DF 2 of bundle creation",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "Name": "Email CL: Bundle created",
     "Description": "Notify CL of bundle creation",

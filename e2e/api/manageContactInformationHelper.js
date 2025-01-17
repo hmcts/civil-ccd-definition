@@ -38,14 +38,16 @@ const updateLROrganisation = async (caseId, updatedData) => {
   console.log('Updating Defendant 1 LR Organisation details');
 
   const response = await updateDetails(caseId, updatedData);
-  console.log(updatedData.respondent1LRIndividuals[0]);
-  console.log(response.respondent1LRIndividuals[0].value);
 
-  const expectedLRIndividual = updatedData.respondent1LRIndividuals[0].value;
+  const expectedLRIndividual = updatedData.updateLRIndividualsForm[0].value;
   const actualLRIndividual = response.respondent1LRIndividuals[0].value;
+
   expect(actualLRIndividual.firstName).equal(expectedLRIndividual.firstName);
-  expect(actualLRIndividual.email).equal(expectedLRIndividual.email);
+  expect(actualLRIndividual.lastName).equal(expectedLRIndividual.lastName);
+  expect(actualLRIndividual.email).equal(expectedLRIndividual.emailAddress);
+  expect(actualLRIndividual.phone).equal(expectedLRIndividual.phoneNumber);
   expect(actualLRIndividual).to.have.a.property('partyID');
+  
   console.log('Defendant 1 LR Organisation details updated');
 };
 

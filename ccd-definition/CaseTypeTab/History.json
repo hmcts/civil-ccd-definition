@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "Channel": "CaseWorker",
     "TabID": "History",
     "TabLabel": "History",

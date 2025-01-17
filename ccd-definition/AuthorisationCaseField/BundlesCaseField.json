@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseBundles",
     "AccessControl": [
       {
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "bundleConfiguration",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "TrialBundles",
     "AccessControl": [
       {

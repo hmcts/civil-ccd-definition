@@ -1,14 +1,14 @@
 import BasePage from '../../../base/base-page';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import { heading, links, subHeadings } from './create-account-content';
+import { heading, links, subheadings } from './create-account-content';
 
 @AllMethodsStep()
 export default class CreateAccountPage extends BasePage {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectSubHeading(subHeadings.createAccount),
-      super.expectSubHeading(subHeadings.haveAccount),
+      super.expectSubheading(subheadings.createAccount),
+      super.expectSubheading(subheadings.haveAccount),
     ]);
   }
 

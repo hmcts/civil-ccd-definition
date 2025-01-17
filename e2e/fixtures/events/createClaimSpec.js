@@ -31,6 +31,8 @@ const isPBAv3 = (pbaV3) => {
   return pbaV3;
 };
 
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
+
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
 
@@ -116,6 +118,14 @@ module.exports = {
             }
           }
         },
+        ...isTestEnv ? {
+          FixedCommencementCosts: {
+            fixedCosts: {
+            claimFixedCosts: 'Yes',
+            fixedCostAmount: '10000'
+            }
+          }
+        }: {},
         specCorrespondenceAddress: {
           specApplicantCorrespondenceAddressRequired: 'No'
         },

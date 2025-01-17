@@ -34,7 +34,8 @@ fi
 
 # Iterate over all arguments (commands)
 for cmd in "$@"; do
-    run_command yarn $cmd
+    # Use a shell to execute the command, so it can handle chains like '&&'
+    run_command bash -c "$cmd"
     
     # Check if the command failed
     if [ $? -ne 0 ]; then

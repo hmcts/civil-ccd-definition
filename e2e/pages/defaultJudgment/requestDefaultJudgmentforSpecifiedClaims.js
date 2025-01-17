@@ -25,7 +25,13 @@ module.exports = {
         no: '#partialPayment_No'
       }
     },
-
+    claimForFixedCostsOnEntry:{
+      id: '#claimFixedCostsOnEntryDJ_radio',
+      options: {
+        yes: '#claimFixedCostsOnEntryDJ_Yes',
+        no: '#claimFixedCostsOnEntryDJ_No'
+      }
+    },
     claimForFixedCosts:{
       id: '#partialPayment',
       options: {
@@ -64,6 +70,11 @@ module.exports = {
 
   async claimForFixedCosts(){
     await I.click(this.fields.claimForFixedCosts.options.no);
+    await I.clickContinue();
+  },
+
+  async claimForFixedCostsOnEntry(){
+    await I.click(this.fields.claimForFixedCostsOnEntry.options.no);
     await I.clickContinue();
   },
 

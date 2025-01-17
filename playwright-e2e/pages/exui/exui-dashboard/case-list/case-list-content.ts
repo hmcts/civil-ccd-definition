@@ -1,6 +1,6 @@
 export const heading = 'Case list';
 
-export const subHeadings = {
+export const subheadings = {
   filters: 'Filters',
 };
 

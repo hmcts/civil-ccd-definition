@@ -1,3 +1,4 @@
+import CCDCaseData from '../models/ccd/ccd-case-data';
 import TestData from '../models/test-data';
 
 export default abstract class BaseSteps {
@@ -9,5 +10,13 @@ export default abstract class BaseSteps {
 
   protected get workerIndex() {
     return this._testData.workerIndex;
+  }
+
+  protected get ccdCaseData() {
+    return this._testData.ccdCaseData;
+  }
+
+  protected set setCcdCaseData(ccdCaseData: CCDCaseData) {
+    this._testData.ccdCaseData = ccdCaseData;
   }
 }

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2DQFixedRecoverableCosts",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1DQFixedRecoverableCosts",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2DQFixedRecoverableCosts",
     "AccessControl": [
       {

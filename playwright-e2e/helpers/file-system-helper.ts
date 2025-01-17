@@ -6,10 +6,11 @@ import FileType from '../enums/file-type';
 import filePaths from '../config/file-paths';
 
 export default class FileSystemHelper {
-  private static writeFileDirs = [
+  private static writePaths = [
     `${filePaths.users}/`,
     `${filePaths.userCookies}/`,
     `${filePaths.axe}/`,
+    filePaths.bankHolidaysJson,
   ];
 
   static exists = (filePath: string) => fs.existsSync(filePath);
@@ -39,7 +40,7 @@ export default class FileSystemHelper {
 
   private static canWrite = (filePath: string) => {
     let canWrite = false;
-    for (const writeFileDir of this.writeFileDirs) {
+    for (const writeFileDir of this.writePaths) {
       if (filePath.startsWith(writeFileDir)) {
         canWrite = true;
         break;

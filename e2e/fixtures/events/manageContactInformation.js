@@ -26,16 +26,17 @@ module.exports = {
       partyChosen: {
         ...caseData.partyChosen,
         value: {
-          code: DEFENDANT_1_LR_INDIVIDUALS
+          code: DEFENDANT_1_LR_INDIVIDUALS,
+          label: 'DEFENDANT 1: Individuals attending for the legal representative',
         }
       },
       partyChosenId: DEFENDANT_1_LR_INDIVIDUALS,
-      respondent1LRIndividuals: [
+      updateLRIndividualsForm: [
         element({
           firstName: 'Halla',
           lastName: 'Mcintyre',
-          phone: '07821015555',
-          email: 'h.mcintyre@email.com',
+          emailAddress: 'h.mcintyre@email.com',
+          phoneNumber: '07821015555',
         })
       ]
     };

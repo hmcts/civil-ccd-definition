@@ -4,10 +4,10 @@ import urls from '../config/urls';
 import { Step } from '../decorators/test-steps';
 import RequestOptions from '../models/request-options';
 import { TruthyParams } from '../decorators/truthy-params';
-import CaseEvents from '../enums/events/case-events';
-import CCDCaseData from '../models/case-data/ccd-case-data';
+import CCDCaseData from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
+import { CCDEvent } from '../models/ccd/ccd-events';
 
 const classKey = 'CCDRequests';
 export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest) {
@@ -26,40 +26,41 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
 
   @Step(classKey)
   @TruthyParams(classKey, 'caseId')
-  async fetchCcdCaseData(caseId: number, user: User) {
-    console.log('Fetching CCD case data...');
+  async fetchCCDCaseData(caseId: number, user: User) {
+    console.log(`Fetching CCD case data with id: ${caseId}...`);
     const url = `${this.getCcdDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
     const responseJson = await super.retryRequestJson(url, requestOptions);
-    console.log('CCD case data fetched successfully');
-    return responseJson.case_data;
+    console.log(`CCD case data fetched successfully with id: ${caseId}`);
+    return { id: responseJson.id, ...responseJson.case_data };
   }
 
   @Step(classKey)
-  async startEvent(event: CaseEvents, user: User, caseId?: number) {
+  async startEvent(ccdEvent: CCDEvent, user: User, caseId?: number) {
     console.log(
-      `Starting event: ${event}` + (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
+      `Starting event: ${ccdEvent.id}` +
+        (typeof caseId !== 'undefined' ? ` caseId: ${caseId}` : ''),
     );
     let url = this.getCcdDataStoreBaseUrl(user);
     if (caseId) {
       url += `/cases/${caseId}`;
     }
-    url += `/event-triggers/${event}/token`;
+    url += `/event-triggers/${ccdEvent.id}/token`;
 
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
     const response = await super.retryRequestJson(url, requestOptions);
-    console.log(`Event: ${event} started successfully`);
+    console.log(`Event: ${ccdEvent.id} started successfully`);
     return response.token;
   }
 
   @Step(classKey)
-  async submit(event: CaseEvents, caseData: CCDCaseData, user: User, ccdEventToken: string) {
+  async submit(ccdEvent: CCDEvent, caseData: CCDCaseData, user: User, ccdEventToken: string) {
     console.log(
-      `Submitting event: ${event}` +
+      `Submitting event: ${ccdEvent.id}` +
         (typeof caseData.id !== 'undefined' ? ` caseId: ${caseData.id}` : ''),
     );
     let url = `${this.getCcdDataStoreBaseUrl(user)}/cases`;
@@ -71,14 +72,14 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
       headers: await this.getRequestHeaders(user),
       body: {
         data: caseData,
-        event: { id: event },
+        event: { id: ccdEvent.id },
         event_data: caseData,
         event_token: ccdEventToken,
       },
       method: 'POST',
     };
     const responseJson = await super.retryRequestJson(url, requestOptions, { expectedStatus: 201 });
-    console.log(`Event: ${event} submitted successfully`);
+    console.log(`Event: ${ccdEvent.id} submitted successfully`);
     return responseJson;
   }
 }

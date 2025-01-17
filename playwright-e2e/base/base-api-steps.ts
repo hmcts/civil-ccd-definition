@@ -2,6 +2,7 @@ import BaseSteps from './base-steps';
 import TestData from '../models/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import User from '../models/user';
+import { bankHolidays } from '../config/data';
 
 export default abstract class BaseApiSteps extends BaseSteps {
   private _requestsFactory: RequestsFactory;
@@ -13,6 +14,23 @@ export default abstract class BaseApiSteps extends BaseSteps {
 
   protected get requestsFactory() {
     return this._requestsFactory;
+  }
+
+  protected async setupBankHolidays() {
+    if (!bankHolidays.length) {
+      const today = new Date();
+      const { govUKRequests } = this.requestsFactory;
+      const bankHolidaysJson = await govUKRequests.fetchBankHolidays();
+
+      const events = bankHolidaysJson['england-and-wales'].events;
+
+      for (const event of events) {
+        const eventDate = new Date(event.date);
+        if (eventDate > today) {
+          bankHolidays.push(event.date);
+        }
+      }
+    }
   }
 
   protected async setupUserData(user: User) {

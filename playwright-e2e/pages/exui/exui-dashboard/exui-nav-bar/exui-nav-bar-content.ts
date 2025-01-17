@@ -14,4 +14,7 @@ export const links = {
   findCase: {
     title: 'Find case',
   },
+  noticeOfChange: {
+    title: 'Notice of change',
+  },
 };

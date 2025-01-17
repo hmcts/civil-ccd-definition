@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR
+The below labels are options to get the different services running on the PR
 
 ```
 
@@ -45,6 +45,15 @@ Below labels are needed on the PR
 
   "pr-values:enableWA" label to verify work allocation task
 
+  "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
+
+
+```
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+curl -v -k -X DELETE \
+  'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/{PR_NUMBER}/?caseTypeIds=CIVIL'
 ```
 
 Running Crossbrowser tests:
@@ -166,6 +175,33 @@ To run the specialised charts, where you can get Work Allocation for instance, r
 ```shell
 npx @hmcts/dev-env@latest --template values.enableWA.preview.template.yaml && ./bin/setup-devuser-preview-env.sh
 ```
+
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+./bin/delete-dev-preview-definition-from-aat.sh
+```
+
+## Hearings Development - Preview
+For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some manual setup.
+
+1 - Execute the commands below replacing ${PR_NUMBER} accordingly to create the topic subscription required
+
+```shell
+    az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
+      --topic-name hmc-to-cft-aat --subscription DCD-CNP-DEV --name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --subscription DCD-CNP-DEV && \
+    az servicebus topic subscription rule create --resource-group hmc-shared-aat --subscription DCD-CNP-DEV\
+      --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \
+      --subscription-name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --name hmc-servicebus-aat-subscription-rule-civil --subscription DCD-CNP-DEV\
+      --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
+```
+(Remember to delete this once finished with the PR using "az servicebus topic subscription delete")
+
+2 - Add the label pr-values:enableHmc on your GitHub PR
+
+3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
 
 ## License
 

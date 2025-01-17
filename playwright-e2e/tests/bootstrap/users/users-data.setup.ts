@@ -7,8 +7,8 @@ if (config.runSetup) {
     setup.describe.configure({ mode: 'parallel' });
 
     exuiUserDataSetupUsers.forEach((exuiAuthSetupUser) => {
-      setup(exuiAuthSetupUser.name, async ({ ApiUsersSteps }) => {
-        await ApiUsersSteps.SetupUserData(exuiAuthSetupUser);
+      setup(exuiAuthSetupUser.name, async ({ ApiUserSteps }) => {
+        await ApiUserSteps.SetupUserData(exuiAuthSetupUser);
       });
     });
   });

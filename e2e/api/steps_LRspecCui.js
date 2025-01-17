@@ -19,7 +19,7 @@ const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
-const {checkToggleEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkMintiToggleEnabled} = require('./testingSupport');
 const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
@@ -34,6 +34,7 @@ const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
+const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
 
 let caseId, eventName;
 let caseData = {};
@@ -131,21 +132,29 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '') => {
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '', isMintiCase = false) => {
     console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
     let userId = await apiRequest.fetchUserId();
+
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('15000', userId);
-    } else if ( claimType === 'Request for reconsideration track') {
+    }
+    if ( claimType === 'Request for reconsideration track') {
       console.log('Request for reconsideration claim');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('500', userId);
-    } else {
+    }
+    if (claimType === 'SmallClaims') {
       console.log('SmallClaim...');
       payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('1500', userId, typeOfData);
     }
+    if (claimType === 'INTERMEDIATE') {
+      console.log('Intermediate claim...');
+      payload = createClaimLipClaimant.createClaimUnrepresentedClaimant('99999', userId);
+    }
+
     caseId = await apiRequest.startCreateCaseForCitizen(payload);
     await waitForFinishedBusinessProcess(caseId);
     console.log('Claim submitted');
@@ -157,6 +166,10 @@ module.exports = {
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    if (isMintiCase) {
+      const isMintiToggleEnabled = await checkMintiToggleEnabled();
+      await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
+    }
     return caseId;
   },
 
@@ -208,13 +221,20 @@ module.exports = {
     if (claimType === 'FastTrack') {
       console.log('FastTrack claim...');
       payload = defendantResponse.createDefendantResponse('15000', carmEnabled);
-    } else if (claimType === 'Request for reconsideration track') {
+    }
+    if (claimType === 'Request for reconsideration track') {
       console.log('Request for reconsideration claim');
       payload = defendantResponse.createDefendantResponse('500', carmEnabled);
-    } else {
+    }
+    if (claimType === 'SmallClaims') {
       console.log('SmallClaim...');
       payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
     }
+    if (claimType === 'INTERMEDIATE') {
+      console.log('Intermediate def claim...');
+      payload = defendantResponse.createDefendantResponse('99999', carmEnabled);
+    }
+
     //console.log('The payload : ' + payload);
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload);

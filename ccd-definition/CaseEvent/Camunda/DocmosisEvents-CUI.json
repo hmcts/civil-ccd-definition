@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_RESPONSE_SEALED",
     "Name": "Generate response sealed form",
     "Description": "Generates sealed form for claim response",

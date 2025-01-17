@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicantsProceedIntention",
     "PageDisplayOrder": 1,
@@ -24,7 +24,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
@@ -37,7 +37,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 1,
@@ -48,7 +48,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseType",
     "PageDisplayOrder": 1,

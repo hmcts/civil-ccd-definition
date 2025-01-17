@@ -1,12 +1,17 @@
-import ApiUsersSteps from '../../steps/api/api-users-steps';
+import ApiDataSteps from '../../steps/api/api-data-setup';
+import ApiUserSteps from '../../steps/api/api-user-steps';
 import { test as base } from './requests-factory-fixtures';
 
 type ApiStepsFixtures = {
-  ApiUsersSteps: ApiUsersSteps;
+  ApiUserSteps: ApiUserSteps;
+  ApiDataSteps: ApiDataSteps;
 };
 
 export const test = base.extend<ApiStepsFixtures>({
-  ApiUsersSteps: async ({ _testData, _requestsFactory }, use) => {
-    await use(new ApiUsersSteps(_requestsFactory, _testData));
+  ApiUserSteps: async ({ _testData, _requestsFactory }, use) => {
+    await use(new ApiUserSteps(_requestsFactory, _testData));
   },
+  ApiDataSteps: async ({ _testData, _requestsFactory }, use) => {
+    await use(new ApiDataSteps(_requestsFactory, _testData));
+  }
 });

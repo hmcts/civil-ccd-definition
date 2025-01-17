@@ -43,6 +43,7 @@ const data = {
   CREATE_CLAIM_HEARINGS: (scenario, pbaV3) => claimDataHearings.createClaim(scenario, pbaV3),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
+  DEFENDANT_RESPONSE_FULL_DEFENCE_CARM: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForCarm(),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2_1V2_2ND_DEF: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim2(response),
   CLAIMANT_RESPONSE: (hasAgreedFreeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation, carmEnabled),
@@ -70,7 +71,8 @@ const eventData = {
       PART_ADMISSION_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
       COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
-      FULL_DEFENCE_JUDICIAL_REFERRAL: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL()
+      FULL_DEFENCE_JUDICIAL_REFERRAL: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
+      FULL_DEFENCE_CARM: data.DEFENDANT_RESPONSE_FULL_DEFENCE_CARM()
     },
     ONE_V_TWO: {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
@@ -186,7 +188,7 @@ module.exports = function (){
     return apiRequest.taskActionByUser(user, taskId, 'complete');
   },
 
-  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false) => {
+  defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false, carmEnabled = false) => {
     await apiRequest.setupTokens(user);
 
     const pbaV3 = await checkToggleEnabled(PBAv3);
@@ -208,6 +210,10 @@ module.exports = function (){
       } else {
         defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_JUDICIAL_REFERRAL'];
       }
+    }
+
+    if (carmEnabled) {
+      defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_CARM'];
     }
 
     caseData = returnedCaseData;

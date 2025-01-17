@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -8,7 +8,7 @@
     "TabFieldDisplayOrder": 1
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -16,7 +16,7 @@
     "TabFieldDisplayOrder": 2
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -24,7 +24,7 @@
     "TabFieldDisplayOrder": 3
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -32,7 +32,7 @@
     "TabFieldDisplayOrder": 4
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -40,7 +40,7 @@
     "TabFieldDisplayOrder": 5
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -48,7 +48,7 @@
     "TabFieldDisplayOrder": 6
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -56,7 +56,7 @@
     "TabFieldDisplayOrder": 7
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -64,7 +64,7 @@
     "TabFieldDisplayOrder": 8
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -72,7 +72,7 @@
     "TabFieldDisplayOrder": 8
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -80,7 +80,7 @@
     "TabFieldDisplayOrder": 9
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -89,7 +89,7 @@
     "TabFieldDisplayOrder": 10
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -97,7 +97,7 @@
     "TabFieldDisplayOrder": 11
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -105,7 +105,7 @@
     "TabFieldDisplayOrder": 12
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -113,7 +113,7 @@
     "TabFieldDisplayOrder": 13
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
@@ -121,7 +121,7 @@
     "TabFieldDisplayOrder": 14
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,

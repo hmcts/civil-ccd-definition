@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "CaseFieldID": "lblRecordJudgment",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "CaseFieldID": "joPartiesNames",
     "PageFieldDisplayOrder": 2,
@@ -23,7 +23,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_JUDGE_DEFENCE_RECEIVED",
     "CaseFieldID": "confirmReferToJudgeDefenceReceived",
     "PageFieldDisplayOrder": 3,

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "lblRecordJudgment",
     "PageFieldDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joPartiesNames",
     "PageFieldDisplayOrder": 2,
@@ -23,7 +23,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joJudgmentRecordReason",
     "PageFieldDisplayOrder": 3,
@@ -34,7 +34,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joOrderMadeDate",
     "PageFieldDisplayOrder": 4,
@@ -46,7 +46,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joAmountOrdered",
     "PageFieldDisplayOrder": 5,
@@ -57,7 +57,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joAmountCostOrdered",
     "PageFieldDisplayOrder": 6,
@@ -68,7 +68,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joPaymentPlan",
     "PageFieldDisplayOrder": 7,
@@ -79,7 +79,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joInstalmentDetails",
     "PageFieldDisplayOrder": 8,
@@ -91,7 +91,7 @@
     "FieldShowCondition": "joPaymentPlan.type = \"PAY_IN_INSTALMENTS\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joIsRegisteredWithRTL",
     "PageFieldDisplayOrder": 9,
@@ -102,7 +102,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "addRespondent2",
     "PageDisplayOrder": 1,
@@ -114,7 +114,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joConfirmSentToBothDef",
     "PageFieldDisplayOrder": 11,
@@ -126,7 +126,7 @@
     "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joIssuedDate",
     "PageFieldDisplayOrder": 12,
@@ -137,7 +137,7 @@
     "FieldShowCondition": "joPaymentPlan.type = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "activeJudgment",
     "PageFieldDisplayOrder": 13,
@@ -148,7 +148,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "historicJudgment",
     "PageFieldDisplayOrder": 14,
@@ -159,7 +159,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joDefendantName1",
     "PageFieldDisplayOrder": 15,
@@ -170,7 +170,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joDefendantName2",
     "PageFieldDisplayOrder": 16,
@@ -181,7 +181,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joPaymentPlanSelected",
     "PageFieldDisplayOrder": 17,
@@ -192,7 +192,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joRepaymentAmount",
     "PageFieldDisplayOrder": 18,
@@ -203,7 +203,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joRepaymentFrequency",
     "PageFieldDisplayOrder": 19,
@@ -214,7 +214,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joRepaymentStartDate",
     "PageFieldDisplayOrder": 20,
@@ -225,7 +225,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joIssueDate",
     "PageFieldDisplayOrder": 21,
@@ -236,7 +236,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joState",
     "PageFieldDisplayOrder": 22,
@@ -247,7 +247,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joFullyPaymentMadeDate",
     "PageFieldDisplayOrder": 23,
@@ -258,7 +258,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joOrderedAmount",
     "PageFieldDisplayOrder": 24,
@@ -269,7 +269,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joCosts",
     "PageFieldDisplayOrder": 25,
@@ -280,7 +280,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joTotalAmount",
     "PageFieldDisplayOrder": 26,
@@ -291,7 +291,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joRepaymentSummaryObject",
     "PageFieldDisplayOrder": 27,
@@ -302,7 +302,7 @@
     "FieldShowCondition": "lblRecordJudgment = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RECORD_JUDGMENT",
     "CaseFieldID": "joIsDisplayInJudgmentTab",
     "PageFieldDisplayOrder": 28,

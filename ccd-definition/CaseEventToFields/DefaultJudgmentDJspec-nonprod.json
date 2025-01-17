@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joDefendantName1",
     "PageFieldDisplayOrder": 8,
@@ -11,7 +11,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joDefendantName2",
     "PageFieldDisplayOrder": 9,
@@ -22,7 +22,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joPaymentPlanSelected",
     "PageFieldDisplayOrder": 10,
@@ -33,7 +33,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joRepaymentAmount",
     "PageFieldDisplayOrder": 11,
@@ -44,7 +44,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joRepaymentFrequency",
     "PageFieldDisplayOrder": 12,
@@ -55,7 +55,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joRepaymentStartDate",
     "PageFieldDisplayOrder": 13,
@@ -66,7 +66,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joIssueDate",
     "PageFieldDisplayOrder": 14,
@@ -77,7 +77,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joState",
     "PageFieldDisplayOrder": 15,
@@ -88,7 +88,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joFullyPaymentMadeDate",
     "PageFieldDisplayOrder": 16,
@@ -99,7 +99,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO NOT SHOW IN UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joRepaymentSummaryObject",
     "PageFieldDisplayOrder": 20,
@@ -110,7 +110,7 @@
     "FieldShowCondition": "repaymentDetailsLabel = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "CaseFieldID": "joIsDisplayInJudgmentTab",
     "PageFieldDisplayOrder": 21,
