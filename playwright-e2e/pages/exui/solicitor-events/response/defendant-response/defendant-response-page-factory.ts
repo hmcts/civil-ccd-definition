@@ -26,9 +26,12 @@ import HearingPage from '../directions-questionaire/unspec/hearing/hearing-page'
 import RequestedCourtPage from '../directions-questionaire/unspec/requested-court/requested-court-page';
 import VulnerabilityQuestionsPage from '../directions-questionaire/unspec/vulnerability-questions/vulnerability-questions-page';
 import DefendantResponseStatmentOfTruthPage from './common/defendant-response-statement-of-truth/defendant-response-statement-of-truth-page';
+import DefendantResponseSubmitPage from './common/defendant-response-submit/defendant-response-submit-page';
 import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
 import SingleResponsePage from './common/single-response/single-response-page';
 import DefenceRouteDefendant1Page from './lr-spec/defence-route/defence-route-page';
+import DefendantResponseConfirm1v2SSSpecPage from './lr-spec/defendant-response-spec-confirm/defendant-response-confirm-1v2SS-spec-page';
+import DefendantResponseConfirmSpecPage from './lr-spec/defendant-response-spec-confirm/defendant-response-confirm-spec-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
 import HowToAddTimelineUploadPage from './lr-spec/how-to-add-timeline-upload/how-to-add-timeline-upload-page';
 import HowToAddTimelinePage from './lr-spec/how-to-add-timeline/how-to-add-timeline-page';
@@ -45,6 +48,8 @@ import ResponseType2v1SpecPage from './lr-spec/response-type-2v1-spec/response-t
 import UploadDefendantResponseSpecPage from './lr-spec/upload-defendant-response-spec/upload-defendant-response-spec-page';
 import ConfirmDetails1v2Page from './unspec/confirm-details/confirm-details-1v2-page';
 import ConfirmDetailsPage from './unspec/confirm-details/confirm-details-page';
+import DefendantResponseConfirm1v2DSPage from './unspec/defendant-response-confirm/defendant-response-confirm-1v2DS-page';
+import DefendantResponseConfirmPage from './unspec/defendant-response-confirm/defendant-response-confirm-page';
 import RespondentResponseType1v2Page from './unspec/respondent-response-type/respondent-response-type-1v2-page';
 import RespondentResponseType2v1Page from './unspec/respondent-response-type/respondent-response-type-2v1-page';
 import RespondentResponseTypePage from './unspec/respondent-response-type/respondent-response-type-page';
@@ -367,5 +372,25 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   get defendantResponseStatementOfTruthPage() {
     const statementofTruthFragment = new StatementOfTruthFragment(this.page);
     return new DefendantResponseStatmentOfTruthPage(this.page, statementofTruthFragment);
+  }
+
+  get defendantResponseSubmitPage() {
+    return new DefendantResponseSubmitPage(this.page);
+  }
+
+  get defendantResponseConfirmPage() {
+    return new DefendantResponseConfirmPage(this.page);
+  }
+
+  get defendantResponseConfirm1v2DSPage() {
+    return new DefendantResponseConfirm1v2DSPage(this.page);
+  }
+
+  get defendantResponseConfirmSpecPage() {
+    return new DefendantResponseConfirmSpecPage(this.page);
+  }
+
+  get defendantResponseConfirm1v2SSSpecPage() {
+    return new DefendantResponseConfirm1v2SSSpecPage(this.page);
   }
 }
