@@ -723,17 +723,17 @@ export default abstract class BasePage {
     message: string,
     { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
   ) {
-    while (retries > 0) {
+    while (retries >= 0) {
       if (!assertFirst) await action();
       const promises = assertions();
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
       } catch (error) {
-        retries--;
         if (retries <= 0) throw error;
         console.log(message);
         console.log(`Retries: ${retries} remaining`);
+        retries--;
         assertFirst = false;
       }
     }

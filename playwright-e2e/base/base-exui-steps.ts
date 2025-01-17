@@ -24,10 +24,10 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 3 } = {},
+    { retries = 2 } = {},
   ) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    while (retries > 0) {
+    while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
           const { navBar } = this.exuiDashboardPageFactory;
@@ -41,9 +41,9 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
         await steps();
         break;
       } catch (error) {
-        retries--;
-        if (!retries) throw error;
+        if (retries <= 0) throw error;
         console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
       }
     }
     await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
