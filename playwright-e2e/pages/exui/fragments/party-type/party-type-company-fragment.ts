@@ -9,11 +9,11 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
@@ -27,14 +27,17 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
 
   async enterCompanyDetails() {
     const companyData = CaseDataHelper.buildClaimantAndDefendantData(
-      this.party,
+      this.claimantDefendantParty,
       partyTypes.COMPANY,
     );
     await super.inputText(
       companyData.companyName,
-      inputs.name.selector(this.party, partyTypes.COMPANY),
+      inputs.name.selector(this.claimantDefendantParty, partyTypes.COMPANY),
     );
-    await super.inputText(companyData.partyEmail, inputs.email.selector(this.party));
+    await super.inputText(
+      companyData.partyEmail,
+      inputs.email.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

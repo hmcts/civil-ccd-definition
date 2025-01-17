@@ -1,5 +1,27 @@
 import BasePageFactory from '../../../../../base/base-page-factory';
+import partys from '../../../../../constants/partys';
+import RemoteHearingSpecFragment from '../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import ExpertPage from '../directions-questionaire/common/experts/experts-page';
+import FileDirectionsQuestionnairePage from '../directions-questionaire/common/file-directions-questionnaire/file-directions-questionnaire-page';
+import FixedRecoverableCostsPage from '../directions-questionaire/common/fixed-recoverable-costs/fixed-recoverable-costs-page';
+import HearingSupportPage from '../directions-questionaire/common/hearing-support/hearing-support-page';
+import LanguagePage from '../directions-questionaire/common/language/language-page';
+import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
+import ApplicantCourtLocationLRSpecPage from '../directions-questionaire/lr-spec/applicant-court-location-lr-spec/applicant-court-lr-spec-page';
+import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
+import ClaimantResponseSmallClaimExpertsPage from '../directions-questionaire/lr-spec/claimant-response-small-claim-experts/claimant-response-small-claim-experts-experts-page';
+import ClaimantResponseSmallClaimWitnessesPage from '../directions-questionaire/lr-spec/claimant-response-small-claim-witnesses/claimant-response-small-claim-witnesses-page';
+import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
+import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
+import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
+import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
+import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
+import DisclosureOfNonElectronicDocumentsPage from '../directions-questionaire/unspec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
+import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
+import FurtherInformationPage from '../directions-questionaire/unspec/further-information/further-information-page';
+import HearingPage from '../directions-questionaire/unspec/hearing/hearing-page';
+import VulnerabilityQuestionsPage from '../directions-questionaire/unspec/vulnerability-questions/vulnerability-questions-page';
 import ClaimantResponseStatementOfTruthPage from './common/claimant-response-statement-of-truth/claimant-response-statement-of-truth-page';
 import ClaimantResponseSubmitPage from './common/claimant-response-submit/claimant-response-submit-page';
 import DefenceResponseDocumentSpecPage from './lr-spec/defence-response-document-spec/defence-response-document-spec-page';
@@ -52,6 +74,87 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get defenceResponseDocumentSpecPage() {
     return new DefenceResponseDocumentSpecPage(this.page);
+  }
+
+  get fileDirectionsQuestionairePage() {
+    return new FileDirectionsQuestionnairePage(this.page, partys.CLAIMANT_1);
+  }
+
+  get fixedRecoverableCostsPage() {
+    return new FixedRecoverableCostsPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get disclosureOfElectronicDocumentsPage() {
+    return new DisclosureOfElectronicDocumentsPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get disclosureOfNonElectronicDocumentsPage() {
+    return new DisclosureOfNonElectronicDocumentsPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get disclosureOfNonElectronicDocumentsSpecPage() {
+    return new DisclosureOfNonElectronicDocumentsSpecPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get disclosureReportPage() {
+    return new DisclosureReportPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get claimantResponseSmallClaimExperts() {
+    return new ClaimantResponseSmallClaimExpertsPage(this.page);
+  }
+
+  get claimantResponseSmallClaimWitnesses() {
+    return new ClaimantResponseSmallClaimWitnessesPage(this.page);
+  }
+
+  get expertsPage() {
+    return new ExpertPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get witnessesPage() {
+    return new WitnessesPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get languagePage() {
+    return new LanguagePage(this.page, partys.CLAIMANT_1);
+  }
+
+  get hearingPage() {
+    return new HearingPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get hearingSpecPage() {
+    return new HearingSpecPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get draftDirectionsPage() {
+    return new DraftDirectionsPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get applicantCourtLocationLRSpecPage() {
+    const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.CLAIMANT_1);
+    return new ApplicantCourtLocationLRSpecPage(this.page, remoteHearingSpecFragment);
+  }
+
+  get vulnerabilityQuestionsPage() {
+    return new VulnerabilityQuestionsPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get vulnerabilityQuestionsSpecPage() {
+    return new VulnerabilityQuestionsSpecPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get hearingSupportPage() {
+    return new HearingSupportPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get furtherInformationPage() {
+    return new FurtherInformationPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get applicationPage() {
+    return new ApplicationPage(this.page, partys.CLAIMANT_1);
   }
 
   get claimantResponseStatementOfTruthPage() {

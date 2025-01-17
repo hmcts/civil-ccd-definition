@@ -7,6 +7,7 @@ export const subheadings = {
 export const inputs = {
   uploadDoc: {
     label: "Defendant's defence",
-    selector: (party: Party) => `#respondent${party.number}ClaimResponseDocument_file`,
+    selector: (defendantParty: Party) =>
+      `#respondent${defendantParty.number}ClaimResponseDocument_file`,
   },
 };
