@@ -586,40 +586,6 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaimMinti({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000, mintiEnabled = false}) {
-      eventName = 'Respond to claim';
-      await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
-        ...defenceSteps({party, twoDefendants, sameResponse, defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
-        ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
-          // ...conditionalSteps(claimValue >= 10000, [
-          //
-          //   () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
-          // ]),
-          ...conditionalSteps(claimValue >= 99000, [
-              () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
-              () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party),
-              () => disclosureOfNonElectronicDocumentsPage.enterDirectionsProposedForDisclosure(party),
-              () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-            ]
-          ),
-          () => expertsPage.enterExpertInformation(party),
-          () => witnessPage.enterWitnessInformation(party),
-          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(party),
-          () => hearingPage.enterHearingInformation(party),
-          () => draftDirectionsPage.upload(party, TEST_FILE_PATH),
-          () => requestedCourtPage.selectSpecificCourtForHearing(party),
-          () => hearingSupportRequirementsPage.selectRequirements(party),
-          () => vulnerabilityQuestionsPage.vulnerabilityQuestions(party),
-          () => furtherInformationPage.enterFurtherInformation(party),
-          () => statementOfTruth.enterNameAndRole(party + 'DQ'),
-        ]),
-        () => event.submit('Submit', ''),
-        () => event.returnToCaseDetails()
-      ]);
-    },
-
-
     async respondToDefence(mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = 'View and respond to defence';
       await this.triggerStepsWithScreenshot([
@@ -649,6 +615,41 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
         () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async respondToDefenceMinti(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
+      eventName = 'View and respond to defence';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocumentsSpec(TEST_FILE_PATH, mpScenario),
+        ...conditionalSteps(claimValue > 100000, [
+          // Multi: Greater than 100k
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+          () => disclosureOfElectronicDocumentsPage.
+          enterDisclosureOfElectronicDocuments(parties.SPEC_APPLICANT_SOLICITOR_1),
+          // Disclosure of non-electronic documents (Optional)
+          () => this.clickContinue(),
+          () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
+        ]),
+        ...conditionalSteps(claimValue > 25000 && claimValue <= 100000, [
+          // Intermediate: Greater than 25k and less than or equal to 100k
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+          () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+        ]),
+        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+        () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => hearingPage.enterHearingAvailability(parties.APPLICANT_SOLICITOR_1),
+        () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
+        () => requestedCourtPage.selectSpecCourtLocation(parties.APPLICANT_SOLICITOR_1),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
+        () => event.returnToCaseDetails()
       ]);
       await this.takeScreenshot();
     },
