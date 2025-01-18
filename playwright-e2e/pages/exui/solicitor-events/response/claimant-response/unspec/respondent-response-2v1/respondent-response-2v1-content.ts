@@ -10,14 +10,17 @@ export const paragraphs = {
 
 export const radioButtons = {
   proceedWithClaim: {
-    label: (party: Party) => `Does Claimant ${party.number} want to proceed with the claim against`,
+    label: (claimantParty: Party) =>
+      `Does Claimant ${claimantParty.number} want to proceed with the claim against`,
     yes: {
       label: 'Yes',
-      selector: (party: Party) => `#applicant${party.number}ProceedWithClaimMultiParty2v1_Yes`,
+      selector: (claimantParty: Party) =>
+        `#applicant${claimantParty.number}ProceedWithClaimMultiParty2v1_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) => `#applicant${party.number}ProceedWithClaimMultiParty2v1_No`,
+      selector: (claimantParty: Party) =>
+        `#applicant${claimantParty.number}ProceedWithClaimMultiParty2v1_No`,
     },
   },
 };

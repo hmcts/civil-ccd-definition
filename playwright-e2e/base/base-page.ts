@@ -210,12 +210,12 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      pageInsertName,
+      axePageInsertName: axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      pageInsertName?: string;
+      axePageInsertName?: string;
     } = {},
   ) {
     if (expects) {
@@ -223,7 +223,7 @@ export default abstract class BasePage {
     }
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
     }
   }
 
@@ -234,19 +234,19 @@ export default abstract class BasePage {
       axeExclusions = [],
       useAxeCache = true,
       timeout = 12_000,
-      pageInsertName,
+      axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
       timeout?: number;
-      pageInsertName?: string;
+      axePageInsertName?: string;
     } = {},
   ) {
     await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
 
     if (config.runAxeTests && runAxe) {
-      await this.expectAxeToPass(axeExclusions, useAxeCache, pageInsertName);
+      await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
     }
   }
 
@@ -254,7 +254,7 @@ export default abstract class BasePage {
   private async expectAxeToPass(
     axeExclusions: string[],
     useAxeCache: boolean,
-    pageInsertName?: string,
+    axePageInsertName?: string,
   ) {
     const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
@@ -265,8 +265,8 @@ export default abstract class BasePage {
     }
 
     const pageName = ClassMethodHelper.formatClassName(
-      pageInsertName !== undefined
-        ? `${this.constructor.name.slice(0, -4)}${pageInsertName}Page`
+      axePageInsertName !== undefined
+        ? `${this.constructor.name.slice(0, -4)}${axePageInsertName}Page`
         : this.constructor.name,
     );
 
@@ -324,9 +324,11 @@ export default abstract class BasePage {
     text: string | number,
     options: { message?: string; timeout?: number } = {},
   ) {
-    await pageExpect(this.page.locator('h1', { hasText: text.toString() }), {
-      message: options.message,
-    }).toBeVisible({ timeout: options.timeout });
+    await pageExpect(
+      this.page.locator('h1', { has: this.page.locator(`text="${text}"`) }),
+    ).toBeVisible({
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -354,7 +356,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('h2', { hasText: text });
+    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -694,8 +696,8 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'selector', 'option')
   @TruthyParams(classKey, 'selector', 'option')
   protected async expectDropdownOption(
-    selector: string,
     option: string,
+    selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
     await pageExpect(this.page.locator(selector), { message: options.message }).toHaveText(option, {
@@ -723,17 +725,17 @@ export default abstract class BasePage {
     message: string,
     { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
   ) {
-    while (retries > 0) {
+    while (retries >= 0) {
       if (!assertFirst) await action();
       const promises = assertions();
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
       } catch (error) {
-        retries--;
         if (retries <= 0) throw error;
         console.log(message);
         console.log(`Retries: ${retries} remaining`);
+        retries--;
         assertFirst = false;
       }
     }

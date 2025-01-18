@@ -12,7 +12,7 @@ import { inputs } from './extension-date-spec-content';
 export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
-  constructor(page: Page, dateFragment: DateFragment, party: Party) {
+  constructor(page: Page, dateFragment: DateFragment) {
     super(page);
     this.dateFragment = dateFragment;
   }

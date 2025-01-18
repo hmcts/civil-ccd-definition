@@ -1,5 +1,5 @@
 import { civilAdminUser } from '../config/users/exui-users';
-import CCDEvents from '../constants/ccd-events';
+import ccdEvents from '../constants/ccd-events';
 import { test } from '../playwright-fixtures/index';
 
 test('Testing Login', async ({

@@ -41,9 +41,9 @@ export default class DateFragment extends ExuiPage(BasePage) {
     await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), { index });
   }
 
-  async enterDateOfBirth(party: Party, partyType: PartyType, index?: number) {
+  async enterDateOfBirth(claimantDefendantParty: Party, partyType: PartyType, index?: number) {
     const selectorPrefix = `${partyType.key}DateOfBirth`;
-    const dateOfBirth = new Date(CaseDataHelper.getDateOfBirth(party));
+    const dateOfBirth = new Date(CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty));
     await super.inputText(
       DateHelper.getTwoDigitDay(dateOfBirth),
       inputs.day.selector(selectorPrefix),

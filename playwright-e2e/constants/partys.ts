@@ -31,6 +31,26 @@ const partys: Partys = {
     oldKey: 'applicantSolicitor1',
     number: 1,
   },
+  CLAIMANT_EXPERT_1: {
+    key: 'claimantExpert1',
+    oldKey: 'applicant1Expert1',
+    number: 1,
+  },
+  CLAIMANT_EXPERT_2: {
+    key: 'claimantExpert2',
+    oldKey: 'applicant1Expert2',
+    number: 2,
+  },
+  CLAIMANT_WITNESS_1: {
+    key: 'claimantWitness1',
+    oldKey: 'applicantWitness1',
+    number: 1,
+  },
+  CLAIMANT_WITNESS_2: {
+    key: 'claimantWitness2',
+    oldKey: 'applicantWitness2',
+    number: 1,
+  },
   DEFENDANT: {
     key: 'defendant',
     oldKey: 'respondent',
@@ -64,6 +84,46 @@ const partys: Partys = {
   DEFENDANT_SOLICITOR_2: {
     key: 'defendantSolicitor2',
     oldKey: 'respondentSolicitor2',
+    number: 2,
+  },
+  DEFENDANT_1_EXPERT_1: {
+    key: 'defendant1Expert1',
+    oldKey: 'respondent1Expert1',
+    number: 1,
+  },
+  DEFENDANT_2_EXPERT_1: {
+    key: 'defendant2Expert1',
+    oldKey: 'respondent2Expert1',
+    number: 1,
+  },
+  DEFENDANT_1_EXPERT_2: {
+    key: 'defendant1Expert2',
+    oldKey: 'respondent1Expert2',
+    number: 2,
+  },
+  DEFENDANT_2_EXPERT_2: {
+    key: 'defendant2Expert2',
+    oldKey: 'respondent2Expert2',
+    number: 2,
+  },
+  DEFENDANT_1_WITNESS_1: {
+    key: 'defendant1Witness1',
+    oldKey: 'respondent1Witness1',
+    number: 1,
+  },
+  DEFENDANT_2_WITNESS_1: {
+    key: 'defendant2Witness1',
+    oldKey: 'respondent2Witness1',
+    number: 1,
+  },
+  DEFENDANT_1_WITNESS_2: {
+    key: 'defendant1Witness2',
+    oldKey: 'respondent1Witness2',
+    number: 2,
+  },
+  DEFENDANT_2_WITNESS_2: {
+    key: 'defendant2Witness2',
+    oldKey: 'respondent2Witness2',
     number: 2,
   },
 };

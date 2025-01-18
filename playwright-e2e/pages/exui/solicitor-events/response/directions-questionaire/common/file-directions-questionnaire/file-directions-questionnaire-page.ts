@@ -5,20 +5,20 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
   subheadings,
-  getInputs,
+  inputs,
   getCheckboxes,
-  getRadioButtons,
+  radioButtons,
 } from './file-directions-questionnaire-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party.key = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -26,21 +26,23 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fileDQ),
-        super.expectLabel(getCheckboxes(this.party.key).fileDQConfirm.label),
-        super.expectText(getRadioButtons(this.party.key).oneMonthStay.label),
-        super.expectText(getRadioButtons(this.party.key).protocolComplied.label),
+        super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label),
+        super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label),
+        super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(getCheckboxes(this.party.key).fileDQConfirm.selector);
-    await super.clickBySelector(getRadioButtons(this.party.key).oneMonthStay.no.selector);
-    await super.clickBySelector(getRadioButtons(this.party.key).protocolComplied.no.selector);
+    await super.clickBySelector(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.selector);
+    await super.clickBySelector(radioButtons(this.claimantDefendantParty).oneMonthStay.no.selector);
+    await super.clickBySelector(
+      radioButtons(this.claimantDefendantParty).protocolComplied.no.selector,
+    );
     await super.inputText(
-      `No explanation - ${this.party.key}`,
-      getInputs(this.party.key).noProtocolCompliedReason.selector,
+      `No explanation - ${this.claimantDefendantParty}`,
+      inputs(this.claimantDefendantParty).noProtocolCompliedReason.selector,
     );
   }
 
