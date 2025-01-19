@@ -47,7 +47,7 @@ wa:
       environment:
         CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
         CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
         AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
         AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
         #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
@@ -60,12 +60,12 @@ wa:
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
 
   wa-task-management-api:
     java:
       environment:
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
         POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
         POSTGRES_REPLICA_HOST: "{{ .Release.Name }}-postgresql"
@@ -196,6 +196,7 @@ am-org-role-mapping-service:
       TESTING_SUPPORT_ENABLED: true
       JUDICIAL_REF_APP_V2_ACTIVE: true
       JUDICIAL_REF_APP_V2_FILTER_AUTHS_BY_APP_ID: true
+      ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
 
 xui-webapp:
   nodejs:
