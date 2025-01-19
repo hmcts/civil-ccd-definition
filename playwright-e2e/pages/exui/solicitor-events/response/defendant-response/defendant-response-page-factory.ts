@@ -11,27 +11,27 @@ import HearingSupportPage from '../directions-questionaire/common/hearing-suppor
 import LanguagePage from '../directions-questionaire/common/language/language-page';
 import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
 import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
-import DefendantResponseSmallClaimExpertsPage from '../directions-questionaire/lr-spec/defendant-response-small-claim-experts/defendant-response-small-claim-experts-experts-page';
-import DefendantResponseSmallClaimWitnessesPage from '../directions-questionaire/lr-spec/defendant-response-small-claim-witnesses/defendant-response-small-claim-witnesses-page';
 import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/discloure-of-electronic-documents-lr-spec-page';
 import DisclosureOfNonElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-lr-spec/disclosure-of-non-electronic-documents-lr-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
 import RequestedCourtLRSpecPage from '../directions-questionaire/lr-spec/requested-court-lr-spec/requested-court-lr-spec-page';
+import SmallClaimExpertsDefendantResponsePage from '../directions-questionaire/lr-spec/small-claim-experts-defendant-response/small-claim-experts-defendant-response-page';
 import SmallClaimHearingPage from '../directions-questionaire/lr-spec/small-claim-hearing/small-claim-hearing-page';
+import SmallClaimWitnessesDefendantResponsePage from '../directions-questionaire/lr-spec/small-claim-witnesses-defendant-response/small-claim-witnesses-defendant-response-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
 import FurtherInformationPage from '../directions-questionaire/unspec/further-information/further-information-page';
 import HearingPage from '../directions-questionaire/unspec/hearing/hearing-page';
 import RequestedCourtPage from '../directions-questionaire/unspec/requested-court/requested-court-page';
 import VulnerabilityQuestionsPage from '../directions-questionaire/unspec/vulnerability-questions/vulnerability-questions-page';
-import DefendantResponseStatmentOfTruthPage from './common/defendant-response-statement-of-truth/defendant-response-statement-of-truth-page';
-import DefendantResponseSubmitPage from './common/defendant-response-submit/defendant-response-submit-page';
 import SingleResponse2v1Page from './common/single-response-2v1/single-response-2v1-page';
 import SingleResponsePage from './common/single-response/single-response-page';
+import StatmentOfTruthDefendantResponsePage from './common/statement-of-truth-defendant-response/statement-of-truth-defendant-response-page';
+import SubmitDefendantResponsePage from './common/submit-defendant-response/submit-page-defendant-response';
+import Confirm1v2SSDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-1v2SS-defendant-response-spec-page';
+import ConfirmDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-page';
 import DefenceRouteDefendant1Page from './lr-spec/defence-route/defence-route-page';
-import DefendantResponseConfirm1v2SSSpecPage from './lr-spec/defendant-response-spec-confirm/defendant-response-confirm-1v2SS-spec-page';
-import DefendantResponseConfirmSpecPage from './lr-spec/defendant-response-spec-confirm/defendant-response-confirm-spec-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
 import HowToAddTimelineUploadPage from './lr-spec/how-to-add-timeline-upload/how-to-add-timeline-upload-page';
 import HowToAddTimelinePage from './lr-spec/how-to-add-timeline/how-to-add-timeline-page';
@@ -233,12 +233,12 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new DisclosureReportPage(this.page, partys.DEFENDANT_2);
   }
 
-  get defendantResponseSmallClaimExpertsDefendant1Page() {
-    return new DefendantResponseSmallClaimExpertsPage(this.page, partys.DEFENDANT_1);
+  get smallClaimExpertsDefendantResponseDefendant1Page() {
+    return new SmallClaimExpertsDefendantResponsePage(this.page, partys.DEFENDANT_1);
   }
 
-  get defendantResponseSmallClaimExpertsDefendant2Page() {
-    return new DefendantResponseSmallClaimExpertsPage(this.page, partys.DEFENDANT_2);
+  get smallClaimExpertsDefendantResponseDefendant2Page() {
+    return new SmallClaimExpertsDefendantResponsePage(this.page, partys.DEFENDANT_2);
   }
 
   get expertsDefendant1Page() {
@@ -249,12 +249,12 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ExpertPage(this.page, partys.DEFENDANT_2);
   }
 
-  get defendantResponseSmallClaimWitnessesDefendant1Page() {
-    return new DefendantResponseSmallClaimWitnessesPage(this.page, partys.DEFENDANT_1);
+  get smallClaimWitnessesDefendantResponseDefendant1Page() {
+    return new SmallClaimWitnessesDefendantResponsePage(this.page, partys.DEFENDANT_1);
   }
 
-  get defendantResponseSmallClaimWitnessesDefendant2Page() {
-    return new DefendantResponseSmallClaimWitnessesPage(this.page, partys.DEFENDANT_2);
+  get smallClaimWitnessesDefendantResponseDefendant2Page() {
+    return new SmallClaimWitnessesDefendantResponsePage(this.page, partys.DEFENDANT_2);
   }
 
   get witnessesDefendant1Page() {
@@ -369,13 +369,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ApplicationPage(this.page, partys.DEFENDANT_2);
   }
 
-  get defendantResponseStatementOfTruthPage() {
+  get statementOfTruthDefendantResponsePage() {
     const statementofTruthFragment = new StatementOfTruthFragment(this.page);
-    return new DefendantResponseStatmentOfTruthPage(this.page, statementofTruthFragment);
+    return new StatmentOfTruthDefendantResponsePage(this.page, statementofTruthFragment);
   }
 
-  get defendantResponseSubmitPage() {
-    return new DefendantResponseSubmitPage(this.page);
+  get submitDefendantResponsePage() {
+    return new SubmitDefendantResponsePage(this.page);
   }
 
   get defendantResponseConfirmPage() {
@@ -386,11 +386,11 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new DefendantResponseConfirm1v2DSPage(this.page);
   }
 
-  get defendantResponseConfirmSpecPage() {
-    return new DefendantResponseConfirmSpecPage(this.page);
+  get confirmDefendantResponseSpecPage() {
+    return new ConfirmDefendantResponseSpecPage(this.page);
   }
 
-  get defendantResponseConfirm1v2SSSpecPage() {
-    return new DefendantResponseConfirm1v2SSSpecPage(this.page);
+  get confirm1v2SSDefendantResponseSpecPage() {
+    return new Confirm1v2SSDefendantResponseSpecPage(this.page);
   }
 }

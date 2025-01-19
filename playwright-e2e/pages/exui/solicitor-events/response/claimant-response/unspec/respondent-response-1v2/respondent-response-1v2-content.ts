@@ -1,3 +1,4 @@
+import StringHelper from '../../../../../../../helpers/string-helper';
 import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
@@ -14,12 +15,12 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (defendantParty: Party) =>
-        `#applicant1ProceedWithClaimAgainstRespondent${defendantParty.number}MultiParty1v2_Yes`,
+        `#applicant1ProceedWithClaimAgainst${StringHelper.capitalise(defendantParty.oldKey)}MultiParty1v2_Yes`,
     },
     no: {
       label: 'No',
       selector: (defendantParty: Party) =>
-        `#applicant1ProceedWithClaimAgainstRespondent${defendantParty.number}MultiParty1v2_No`,
+        `#applicant1ProceedWithClaimAgainst${StringHelper.capitalise(defendantParty.oldKey)}MultiParty1v2_No`,
     },
   },
 };
