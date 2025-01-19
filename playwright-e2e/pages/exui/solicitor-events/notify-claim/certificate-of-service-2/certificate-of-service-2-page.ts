@@ -6,7 +6,7 @@ import ExuiPage from '../../../exui-page/exui-page';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 
 @AllMethodsStep()
-export default class NotifyClaimCOSDefendant1Page extends ExuiPage(BasePage) {
+export default class CertificateOfService2Page extends ExuiPage(BasePage) {
   private certificateOfServiceFragment: CertificateOfServiceFragment;
 
   constructor(certificateOfServiceFragment: CertificateOfServiceFragment, page: Page) {
