@@ -1,5 +1,4 @@
 import BaseExuiSteps from '../../../../base/base-exui-steps';
-import BaseSteps from '../../../../base/base-steps';
 import { claimantSolicitorUser } from '../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ccdEvents from '../../../../constants/ccd-events';
