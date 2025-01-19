@@ -4,17 +4,12 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import {
-  buttons,
-  inputs,
-  radioButtons,
-  subheadings,
-} from './small-claim-witnesses-defendant-response-content.ts';
+import { buttons, inputs, radioButtons, subheadings } from './small-claim-witnesses-content.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
-export default class SmallClaimWitnessesDefendantResponsePage extends ExuiPage(BasePage) {
+export default class SmallClaimWitnessesDefendantPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
 
   constructor(page: Page, defendantParty: Party) {
@@ -27,7 +22,7 @@ export default class SmallClaimWitnessesDefendantResponsePage extends ExuiPage(B
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.witnesses),
-        super.expectSubheading(subheadings.partyWitnesses(this.defendantParty)),
+        super.expectSubheading(subheadings.defendantWitnesses(this.defendantParty)),
         super.expectText(radioButtons.witnessesRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },

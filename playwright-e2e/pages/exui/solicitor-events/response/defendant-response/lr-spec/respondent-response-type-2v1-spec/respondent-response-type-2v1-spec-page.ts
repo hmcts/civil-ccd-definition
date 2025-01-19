@@ -3,10 +3,10 @@ import partys from '../../../../../../../constants/partys.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { radioButtons } from './response-type-2v1-spec-content.ts';
+import { radioButtons } from './respondent-response-type-2v1-spec-content.ts';
 
 @AllMethodsStep()
-export default class ResponseType2v1SpecPage extends ExuiPage(BasePage) {
+export default class RespondentResponseType2v1SpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),

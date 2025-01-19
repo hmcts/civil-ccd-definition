@@ -4,10 +4,10 @@ import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-s
 import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
 import CertificateOfService1NotifyClaimDetailsPage from './certificate-of-service-1-notify-claim-details/certificate-of-service-1-notify-claim-details-page';
 import CertificateOfService2NotifyClaimDetailsPage from './certificate-of-service-2-notify-claim-details/certificate-of-service-2-notify-claim-details-page';
-import ConfirmNotifyClaimDetailsCOSPage from './confirm-notify-claim-details-cos/confirm-notify-claim-details-cos-page';
+import ConfirmNotifyClaimDetailsCOSPage from './confirm-notify-claim-details/confirm-notify-claim-details-cos-page';
 import ConfirmNotifyClaimDetailsPage from './confirm-notify-claim-details/confirm-notify-claim-details-page';
 import SelectDefendantSolicitorPage from './select-defendant-solicitor/select-defendant-solicitor-page';
-import SubmitNotifyClaimDetailsCOSPage from './submit-notify-claim-details-cos/submit-notify-claim-details-cos-page';
+import SubmitNotifyClaimDetailsCOSPage from './submit-notify-claim-details/submit-notify-claim-details-cos-page';
 import SubmitNotifyClaimDetailsPage from './submit-notify-claim-details/submit-notify-claim-details-page';
 import UploadDocumentsPage from './upload-documents/upload-documents-page';
 

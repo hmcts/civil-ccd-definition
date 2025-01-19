@@ -5,10 +5,10 @@ import CertificateOfServiceFragment from '../../fragments/certificate-of-service
 import AccessGrantedWarningPage from './access-granted-warning/access-granted-warning-page';
 import CertificateOfService1NotifyClaimPage from './certificate-of-service-1-notify-claim/certificate-of-service-1-notify-claim-page';
 import CertificateOfService2NotifyClaimPage from './certificate-of-service-2-notify-claim/certificate-of-service-2-notify-claim-page';
-import ConfirmNotifyClaimCOSPage from './confirm-notify-claim-cos/confirm-notify-claim-cos-page';
+import ConfirmNotifyClaimCOSPage from './confirm-notify-claim/confirm-notify-claim-cos-page';
 import ConfirmNotifyClaimPage from './confirm-notify-claim/confirm-notify-claim-page';
 import DefendantSolicitorToNotifyPage from './defendant-solicitor-to-notify/defendant-solicitor-to-notify-page';
-import SubmitNotifyClaimCOSPage from './submit-notify-claim-cos/submit-notify-claim-cos-page';
+import SubmitNotifyClaimCOSPage from './submit-notify-claim/submit-notify-claim-cos-page';
 import SubmitNotifyClaimPage from './submit-notify-claim/submit-notify-claim-page';
 
 export default class NotifyClaimPageFactory extends BasePageFactory {
