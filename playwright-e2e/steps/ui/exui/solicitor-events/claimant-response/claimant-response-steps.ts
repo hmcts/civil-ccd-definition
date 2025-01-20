@@ -249,22 +249,22 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   }
 
   private async processClaimantResponseStatementOfTruthPage() {
-    const { claimantResponseStatementOfTruthPage } = this.claimantResponsePageFactory
-    await claimantResponseStatementOfTruthPage.verifyContent(this.ccdCaseData);
-    await claimantResponseStatementOfTruthPage.enterDetails();
-    await claimantResponseStatementOfTruthPage.submit();
+    const { statementOfTruthClaimantResponsePage } = this.claimantResponsePageFactory
+    await statementOfTruthClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await statementOfTruthClaimantResponsePage.enterDetails();
+    await statementOfTruthClaimantResponsePage.submit();
   }
 
   private async processClaimantResponseSubmitPage() {
-    const { claimantResponseSubmitPage } = this.claimantResponsePageFactory
-    await claimantResponseSubmitPage.verifyContent(this.ccdCaseData);
-    await claimantResponseSubmitPage.submit();
+    const { submitClaimantResponsePage } = this.claimantResponsePageFactory
+    await submitClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await submitClaimantResponsePage.submit();
   }
 
   private async processClaimantResponseConfirmPage() {
-    const { claimantResponseConfirmPage } = this.claimantResponsePageFactory
-    await claimantResponseConfirmPage.verifyContent(this.ccdCaseData);
-    await claimantResponseConfirmPage.submit();
+    const { confirmClaimantResponsePage } = this.claimantResponsePageFactory
+    await confirmClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await confirmClaimantResponsePage.submit();
 
   }
   private async processClaimantResponseFutherInformationPage() {
