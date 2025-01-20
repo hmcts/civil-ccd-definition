@@ -3,8 +3,8 @@ import StringHelper from './string-helper';
 import ClaimTrack from '../enums/claim-track';
 import { Party } from '../models/partys';
 import partys from '../constants/partys';
-import { PartyType } from '../models/party-types';
-import partyTypes from '../constants/party-types';
+import { ClaimantDefendantType } from '../models/claimant-defendant-types';
+import claimantDefendantTypes from '../constants/party-types';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -153,7 +153,7 @@ export default class CaseDataHelper {
     };
   }
 
-  static buildClaimantAndDefendantData(party: Party, partyType: PartyType): any {
+  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantType): any {
     const commonPartyData = {
       type: partyType.type,
       partyEmail: `${party.key}@${partyType.key}.com`,
@@ -165,7 +165,7 @@ export default class CaseDataHelper {
     const partyTypeKey = StringHelper.capitalise(partyType.key);
 
     switch (partyType) {
-      case partyTypes.INDIVIDUAL:
+      case claimantDefendantTypes.INDIVIDUAL:
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
@@ -174,13 +174,13 @@ export default class CaseDataHelper {
           individualDateOfBirth: this.getPartyDateOfBirth(party),
         };
 
-      case partyTypes.COMPANY:
+      case claimantDefendantTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
         };
 
-      case partyTypes.SOLE_TRADER:
+      case claimantDefendantTypes.SOLE_TRADER:
         return {
           ...commonPartyData,
           soleTraderTitle: 'Mx',
@@ -189,7 +189,7 @@ export default class CaseDataHelper {
           soleTraderTradingAs: `${partyKey} Trade`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(party),
         };
-      case partyTypes.ORGANISATION:
+      case claimantDefendantTypes.ORGANISATION:
         return {
           ...commonPartyData,
           organisationName: `${partyKey} ${partyTypeKey}`,
