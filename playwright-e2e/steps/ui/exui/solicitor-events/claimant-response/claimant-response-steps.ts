@@ -6,15 +6,13 @@ import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/e
 import ClaimantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
 import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from "../../../../../constants/ccd-events.ts";
-import {civilAdminUser} from "../../../../../config/users/exui-users.ts";
-import {Party} from "../../../../../models/partys.ts";
+import {civilAdminUser, claimantSolicitorUser} from "../../../../../config/users/exui-users.ts";
+import partys from '../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class ClaimantResponseSteps extends BaseExuiSteps {
   private claimantResponsePageFactory: ClaimantResponsePageFactory;
-  private exuiDashboardPageFactory: ExuiDashboardPageFactory
-  private expertParty: Party
-  private witnessParty: Party
+
 
   constructor(
     claimantResponsePageFactory: ClaimantResponsePageFactory,
@@ -68,6 +66,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
   async ClaimantResponse1v1SmallClaimUnspec() {
+   await super.fetchAndSetCCDCaseData(claimantSolicitorUser,1737388830584345);
     await this.retryExuiEvent(
       async () => {
 
@@ -86,9 +85,9 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
         await this.processClaimantResponseConfirmPage();
 
       },
-      ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      civilAdminUser,
-      { retries: 1 },
+      ccdEvents.CLAIMANT_RESPONSE,
+      claimantSolicitorUser,
+      { retries: 0 },
     );
   }
 
@@ -169,6 +168,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
       { retries: 1 },
     );
   }
+
   private async  processClaimantResponseRespondentResponsePage() {
     const { respondentResponsePage} = this.claimantResponsePageFactory
     await respondentResponsePage.selectYes();
@@ -198,7 +198,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
     await expertsPage.addNewExpert();
-    await expertsPage.enterExpertDetails(this.expertParty);
+    await expertsPage.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
     await expertsPage.submit();
   }
 
@@ -207,7 +207,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await witnessesPage.verifyContent(this.ccdCaseData);
     //missing step to select yes witness is needed
     await witnessesPage.addWitnesses();
-    await witnessesPage.enterWitnessDetails(this.witnessParty);
+    await witnessesPage.enterWitnessDetails(partys.CLAIMANT_WITNESS_1);
     await witnessesPage.submit();
   }
 
