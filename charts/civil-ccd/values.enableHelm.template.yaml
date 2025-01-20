@@ -1,6 +1,7 @@
 xui-webapp:
   enabled: true
   nodejs:
+    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-8bc4932-20250117173234'
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
