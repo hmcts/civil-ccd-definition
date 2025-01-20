@@ -1,16 +1,30 @@
 // content specific to case id: 1733994380755104
 
+enum PartyLabels {
+  CLAIMANT_1 = 'CLAIMANT_1',
+  ORGANISATION_INDIVIDUALS = 'CLAIMANT_1_ORGANISATION_INDIVIDUALS',
+  CLAIMANT_1_LR_INDIVIDUAL = 'CLAIMANT_1_LR_INDIVIDUALS',
+  CLAIMANT_1_WITNESSES = 'CLAIMANT_1_WITNESSES',
+  CLAIMANT_1_EXPERTS = 'CLAIMANT_1_EXPERTS',
+  DEFENDANT_1 = 'DEFENDANT_1',
+  DEFENDANT_2 = 'DEFENDANT_2',
+  DEFENDANT_2_ORGANISATION_INDIVIDUALS = 'DEFENDANT_2_ORGANISATION_INDIVIDUALS',
+  DEFENDANT_1_LR_INDIVIDUALS = 'DEFENDANT_1_LR_INDIVIDUALS',
+  DEFENDANT_1_WITNESSES = 'DEFENDANT_1_WITNESSES',
+  DEFENDANT_1_EXPERTS = 'DEFENDANT_1_EXPERTS',
+}
+
+enum otherAttendeesList {
+  LITIGATION_FRIEND = 'litigation friends',
+  EXPERTS = 'experts',
+  WITNESSES = 'witnesses',
+}
+
 export const heading = 'Manage Contact Information';
 
 export const h3 = "Which party's contact information do you want to change?";
 
 export const otherAttendeesText = 'This includes any other attendees linked to the party, such as:';
-
-export const otherAttendeesList = {
-  litigationFriend: 'litigation friends',
-  experts: 'experts',
-  witnesses: 'witnesses',
-};
 
 export const partySelectionH3 = 'Which details do you want to update?';
 
@@ -75,3 +89,5 @@ export const buttons = {
     text: 'Continue',
   },
 };
+
+export { PartyLabels, otherAttendeesList };
