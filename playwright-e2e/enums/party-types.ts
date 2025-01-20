@@ -1,0 +1,11 @@
+enum PartyType {
+  CLAIMANT,
+  DEFENDANT,
+  LITIGATION_FRIEND,
+  SOLICITOR,
+  EXPERT,
+  WITNESS,
+  MEDIATION_FRIEND,
+}
+
+export default PartyType;

@@ -20,7 +20,9 @@ export default class RespondentResponseSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.proceedWithClaim.yes.selector);
   }
 
-
+  async selectNo() {
+    await super.clickBySelector(radioButtons.proceedWithClaim.no.selector);
+  }
 
   async submit() {
     await super.retryClickSubmit();

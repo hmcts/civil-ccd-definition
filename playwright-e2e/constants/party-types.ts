@@ -1,6 +1,6 @@
-import PartyTypes from '../models/party-types';
+import ClaimantDefendantTypes from '../models/claimant-defendant-types';
 
-const partyTypes: PartyTypes = {
+const claimantDefendantTypes: ClaimantDefendantTypes = {
   INDIVIDUAL: {
     type: 'INDIVIDUAL',
     key: 'individual',
@@ -19,4 +19,4 @@ const partyTypes: PartyTypes = {
   },
 };
 
-export default partyTypes;
+export default claimantDefendantTypes;
