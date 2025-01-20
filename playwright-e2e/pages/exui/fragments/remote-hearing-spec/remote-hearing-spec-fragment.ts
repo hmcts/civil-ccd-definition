@@ -9,9 +9,9 @@ import { radioButtons, inputs } from './remote-hearing-spec-content';
 export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
