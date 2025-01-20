@@ -3,11 +3,12 @@ import {
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../../../config/users/exui-users';
+import partys from '../../../../../../constants/partys';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
-import PartyType from '../../../../../../enums/party-type';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../../helpers/claim-type-helper';
+import { ClaimantDefendantType } from '../../../../../../models/claimant-defendant-types';
 
 const references = {
   References: {
@@ -18,22 +19,22 @@ const references = {
   },
 };
 
-const claimant1 = (partyType: PartyType) => {
+const claimant1 = (partyType: ClaimantDefendantType) => {
   return {
     Claimant: {
-      applicant1: CaseDataHelper.buildClaimantOrDefData('Claimant1', partyType),
+      applicant1: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, partyType),
     },
   };
 };
 
-const claimant2 = (claimType: ClaimType, partyType: PartyType) => {
+const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantType) => {
   if (ClaimTypeHelper.isClaimant2(claimType))
     return {
       AddAnotherClaimant: {
         addApplicant2: 'Yes',
       },
       SecondClaimant: {
-        applicant2: CaseDataHelper.buildClaimantOrDefData('Claimant2', partyType),
+        applicant2: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_2, partyType),
       },
     };
   return {
@@ -64,13 +65,15 @@ const claimantSolicitor1 = {
   },
   SpecCorrespondenceAddress: {
     specApplicantCorrespondenceAddressRequired: 'Yes',
-    specApplicantCorrespondenceAddressdetails: CaseDataHelper.buildAddressData('ClaimantService'),
+    specApplicantCorrespondenceAddressdetails: CaseDataHelper.buildAddressData(
+      partys.CLAIMANT_SOLICITOR_1,
+    ),
   },
 };
 
-const defendant1 = (partyType: PartyType) => ({
+const defendant1 = (partyType: ClaimantDefendantType) => ({
   Defendant: {
-    respondent1: CaseDataHelper.buildClaimantOrDefData('Defendant1', partyType),
+    respondent1: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, partyType),
   },
 });
 
@@ -95,8 +98,9 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
       },
       SpecRespondentCorrespondenceAddress: {
         specRespondentCorrespondenceAddressRequired: 'Yes',
-        specRespondentCorrespondenceAddressdetails:
-          CaseDataHelper.buildAddressData('Defendant2Service'),
+        specRespondentCorrespondenceAddressdetails: CaseDataHelper.buildAddressData(
+          partys.DEFENDANT_SOLICITOR_2,
+        ),
       },
     };
   return {
@@ -106,14 +110,14 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
   };
 };
 
-const defendant2 = (claimType: ClaimType, partyType: PartyType) => {
+const defendant2 = (claimType: ClaimType, partyType: ClaimantDefendantType) => {
   if (ClaimTypeHelper.isDefendant2(claimType))
     return {
       AddAnotherDefendant: {
         addRespondent2: 'Yes',
       },
       SecondDefendant: {
-        respondent2: CaseDataHelper.buildClaimantOrDefData('Defendant2', partyType),
+        respondent2: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_2, partyType),
       },
     };
   return {
@@ -172,8 +176,9 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
       },
       SpecRespondent2CorrespondenceAddress: {
         specRespondent2CorrespondenceAddressRequired: 'Yes',
-        specRespondent2CorrespondenceAddressdetails:
-          CaseDataHelper.buildAddressData('Defendant2Service'),
+        specRespondent2CorrespondenceAddressdetails: CaseDataHelper.buildAddressData(
+          partys.DEFENDANT_SOLICITOR_2,
+        ),
       },
     };
   return {};

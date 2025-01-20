@@ -1,5 +1,5 @@
 import { AllMethodsStep } from '../decorators/test-steps';
-import ccdEvents from '../fixtures/ccd-events/events';
+import ccdEvents from '../constants/ccd-events';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import TestData from '../models/test-data';
 import User from '../models/user';
@@ -7,7 +7,6 @@ import ExuiDashboardPageFactory from '../pages/exui/exui-dashboard/exui-dashboar
 import RequestsFactory from '../requests/requests-factory';
 import BaseApiSteps from './base-api-steps';
 
-@AllMethodsStep()
 export default abstract class BaseExuiSteps extends BaseApiSteps {
   private exuiDashboardPageFactory: ExuiDashboardPageFactory;
 
@@ -24,10 +23,10 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 3 } = {},
+    { retries = 2, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    while (retries > 0) {
+    while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
           const { navBar } = this.exuiDashboardPageFactory;
@@ -41,13 +40,14 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
         await steps();
         break;
       } catch (error) {
-        retries--;
-        if (!retries) throw error;
+        if (retries <= 0) throw error;
         console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
+        caseDetailsPage.clearCCDEvent();
       }
     }
-    await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
+    if (verifySuccessEvent) await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.clearCCDEvent();
-    await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
   }
 }
