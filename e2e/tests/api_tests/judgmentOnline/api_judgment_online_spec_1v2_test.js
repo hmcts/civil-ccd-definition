@@ -44,7 +44,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
     await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(caseWorkerUserReg1);
+    await api_spec.markJudgmentPaid(caseWorkerUserReg2);
     console.log('--setAsideJudgment--');
     await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
   }
