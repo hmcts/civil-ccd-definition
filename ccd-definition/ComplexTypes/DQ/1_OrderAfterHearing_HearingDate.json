@@ -14,6 +14,7 @@
     "FieldType": "Date",
     "ElementLabel": "Date",
     "SecurityClassification": "Public",
+    "HintText": "For example 16 4 2021",
     "FieldShowCondition": "dateType = \"SINGLE_DATE\"",
     "Searchable": "N"
   },
@@ -23,6 +24,7 @@
     "FieldType": "Date",
     "ElementLabel": "Date from",
     "SecurityClassification": "Public",
+    "HintText": "For example 16 4 2021",
     "FieldShowCondition": "dateType = \"DATE_RANGE\"",
     "Searchable": "N"
   },
@@ -33,6 +35,7 @@
     "ElementLabel": "Date to",
     "SecurityClassification": "Public",
     "FieldShowCondition": "dateType = \"DATE_RANGE\"",
+    "HintText": "For example 16 4 2021",
     "Searchable": "N"
   },
   {
