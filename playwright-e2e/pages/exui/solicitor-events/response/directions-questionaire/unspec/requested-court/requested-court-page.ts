@@ -6,6 +6,7 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './requested-court-content.ts';
 import RemoteHearingFragment from '../../../../../fragments/remote-hearing/remote-hearing-fragment.ts';
 import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class RequestedCourtPage extends ExuiPage(BasePage) {
@@ -19,13 +20,16 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.courtLocation),
-      super.expectLabel(dropdowns.courtLocations.label),
-      super.expectLabel(inputs.preferredCourtReason.label),
-      this.remoteHearingFragment.verifyContent(),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.courtLocation),
+        super.expectLabel(dropdowns.courtLocations.label),
+        super.expectLabel(inputs.preferredCourtReason.label),
+        this.remoteHearingFragment.verifyContent(),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+    );
   }
 
   async selectCourtLocation() {
