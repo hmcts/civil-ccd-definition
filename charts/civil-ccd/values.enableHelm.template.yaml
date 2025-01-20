@@ -1,4 +1,5 @@
 xui-webapp:
+  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-8bc4932-20250117173234'
   enabled: true
   nodejs:
     image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-8bc4932-20250117173234'
