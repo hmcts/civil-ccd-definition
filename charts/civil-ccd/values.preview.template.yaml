@@ -120,7 +120,6 @@ aac-manage-case-assignment:
 
 xui-webapp:
   nodejs:
-    image: 'image: hmctspublic.azurecr.io/xui/webapp:pr-4193-8bc4932-20250117173234'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
