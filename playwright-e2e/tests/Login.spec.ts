@@ -24,15 +24,15 @@ test('Testing Login', async ({
   // await caseDetailsPage.verifyContent(ccdCaseData);
   // await caseDetailsPage.retryChooseNextStep(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM);
 
-  // const { certificateOfService1Page } = _notifyClaimPageFactory;
-  // await certificateOfService1Page.verifyContent(ccdCaseData);
-  // await certificateOfService1Page.fillDetails();
-  // await certificateOfService1Page.submit();
+  // const { certificateOfService1NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService1NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService1NotifyClaimPage.fillDetails();
+  // await certificateOfService1NotifyClaimPage.submit();
 
-  // const { certificateOfService2Page } = _notifyClaimPageFactory;
-  // await certificateOfService2Page.verifyContent(ccdCaseData);
-  // await certificateOfService2Page.fillDetails();
-  // await certificateOfService2Page.submit();
+  // const { certificateOfService2NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService2NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService2NotifyClaimPage.fillDetails();
+  // await certificateOfService2NotifyClaimPage.submit();
 
   // const { notifyClaimCOSSubmitPage } = _notifyClaimPageFactory;
   // await notifyClaimCOSSubmitPage.verifyContent(ccdCaseData);
