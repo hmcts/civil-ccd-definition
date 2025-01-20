@@ -8,7 +8,7 @@ import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../../helpers/claim-type-helper';
-import { PartyType } from '../../../../../../models/party-types';
+import { ClaimantDefendantType } from '../../../../../../models/claimant-defendant-types';
 
 const references = {
   References: {
@@ -19,7 +19,7 @@ const references = {
   },
 };
 
-const claimant1 = (partyType: PartyType) => {
+const claimant1 = (partyType: ClaimantDefendantType) => {
   return {
     Claimant: {
       applicant1: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, partyType),
@@ -27,7 +27,7 @@ const claimant1 = (partyType: PartyType) => {
   };
 };
 
-const claimant2 = (claimType: ClaimType, partyType: PartyType) => {
+const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantType) => {
   if (ClaimTypeHelper.isClaimant2(claimType))
     return {
       AddAnotherClaimant: {
@@ -71,7 +71,7 @@ const claimantSolicitor1 = {
   },
 };
 
-const defendant1 = (partyType: PartyType) => ({
+const defendant1 = (partyType: ClaimantDefendantType) => ({
   Defendant: {
     respondent1: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, partyType),
   },
@@ -110,7 +110,7 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
   };
 };
 
-const defendant2 = (claimType: ClaimType, partyType: PartyType) => {
+const defendant2 = (claimType: ClaimType, partyType: ClaimantDefendantType) => {
   if (ClaimTypeHelper.isDefendant2(claimType))
     return {
       AddAnotherDefendant: {
