@@ -84,6 +84,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
         await this.processClaimantResponseRepondentResponseSpecPage();
         await this.processClaimantResponseDefenceDocumentSpecPage();
 
+        //Mediation only avalaible on Defendant Response ? (needed for this journey)
         await this.processClaimantResponseSmallClaimExperts();
         await this.processClaimantResponseSmallClaimWitnesses();
 
