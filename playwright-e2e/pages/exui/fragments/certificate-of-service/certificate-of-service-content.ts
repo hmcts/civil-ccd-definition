@@ -1,7 +1,7 @@
 import { Party } from '../../../../models/partys';
+import StringHelper from '../../../../helpers/string-helper';
 
-export const heading = (claimantParty: Party) =>
-  `Certificate of Service [defendant${claimantParty.number}]`;
+export const heading = (defendantParty: Party) => `Certificate of Service [${defendantParty.key}]`;
 
 export const inputs = {
   dateOfService: {
@@ -12,43 +12,43 @@ export const inputs = {
   },
   documentsServed: {
     label: 'What documents did you serve?',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosServedDocumentFiles`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosServedDocumentFiles`,
   },
   documentsServedLocation: {
     label: 'Where did you serve the documunts',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocation`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocation`,
   },
   notifyClaimRecipient: {
     label: 'Who did you serve the claim to?',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipient`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipient`,
   },
   statementOfTruth: {
     name: {
       label: 'Your name',
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosSender`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosSender`,
     },
     firm: {
       label: 'Your firm',
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosSenderFirm`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosSenderFirm`,
     },
   },
   evidenceDocument: {
     label: 'Supporting evidence',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDetails${claimantParty.number}_cosEvidenceDocument_value`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaimDetails${StringHelper.capitalise(defendantParty.key)}_cosEvidenceDocument_value`,
   },
 };
 
 export const dropdowns = {
   serveType: {
     label: 'How did you serve the documents?',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeType`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeType`,
     options: [
       'Personally handed it to or left it with',
       'Delivered to or left at permitted place',
@@ -58,8 +58,8 @@ export const dropdowns = {
   },
   locationType: {
     label: 'Select the type of location where you served the documents',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocationType`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationType`,
     options: [
       'Usual Residence',
       'Last known residence',
@@ -81,23 +81,23 @@ export const radioButtons = {
     label: 'The location where you served the documents was the:',
     litigationFriend: {
       label: "litigation friend's",
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocationOwnerType-FRIEND`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-FRIEND`,
     },
     solicitor: {
       label: "solicitor's",
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocationOwnerType-SOLICITOR`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-SOLICITOR`,
     },
     defendant: {
       label: "defendant's",
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocationOwnerType-DEFENDANT`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-DEFENDANT`,
     },
     claimant: {
       label: "claimant's",
-      selector: (claimantParty: Party) =>
-        `#cosNotifyClaimDefendant${claimantParty.number}_cosRecipientServeLocationOwnerType-CLAIMANT`,
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-CLAIMANT`,
     },
   },
 };
@@ -105,15 +105,15 @@ export const radioButtons = {
 export const checkboxes = {
   signedTrue: {
     label: 'I believe that the facts stated in the certificate are true',
-    selector: (claimantParty: Party) =>
-      `#cosNotifyClaimDefendant${claimantParty.number}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
   },
 };
 
 export const buttons = {
   addNewSupportingEvidence: {
     title: 'Add new',
-    selector: (claimantParty: Party) =>
-      `div[id='cosNotifyClaimDetails${claimantParty.number}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
+    selector: (defendantParty: Party) =>
+      `div[id='cosNotifyClaimDetails${defendantParty.number}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
   },
 };
