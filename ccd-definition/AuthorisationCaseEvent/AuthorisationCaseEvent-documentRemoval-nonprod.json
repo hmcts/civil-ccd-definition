@@ -4,7 +4,7 @@
   "AccessControl": [
     {
       "UserRoles": [
-        "caseworker-civil-admin"
+        "caseworker-doc-removal"
       ],
       "CRUD": "CRUD"
     }
