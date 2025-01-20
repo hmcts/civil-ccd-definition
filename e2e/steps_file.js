@@ -628,17 +628,17 @@ module.exports = function () {
         ...conditionalSteps(claimValue > 100000, [
           // Multi: Greater than 100k
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-          () => disclosureOfElectronicDocumentsPage.
-          enterDisclosureOfElectronicDocuments(parties.SPEC_APPLICANT_SOLICITOR_1),
-          // Disclosure of non-electronic documents (Optional)
-          () => this.clickContinue(),
-          () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
         ]),
         ...conditionalSteps(claimValue > 25000 && claimValue <= 100000, [
           // Intermediate: Greater than 25k and less than or equal to 100k
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-          () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+          () => fixedRecoverableCostsPage.fixedRecoverableCostsInt(parties.APPLICANT_SOLICITOR_1),
         ]),
+        () => disclosureOfElectronicDocumentsPage.
+        enterDisclosureOfElectronicDocuments(parties.SPEC_APPLICANT_SOLICITOR_1),
+        // Disclosure of non-electronic documents (Optional)
+        () => this.clickContinue(),
+        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
         () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
         () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
         () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
