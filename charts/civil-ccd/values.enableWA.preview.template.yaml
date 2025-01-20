@@ -175,8 +175,7 @@ am-org-role-mapping-service:
         key: connectionString
     environment:
       TEMP_FLAG: 1
-      CASE_WORKER_REF_APP_URL: https://rd-caseworker-ref-api-${SERVICE_FQDN}
-      JUDICIAL_REF_APP_URL: http://rd-judicial-api-${SERVICE_FQDN}
+      CASE_WORKER_REF_APP_URL: http://rd-caseworker-ref-api-aat.service.core-compute-aat.internal
       ROLE_ASSIGNMENT_APP_URL: https://am-role-assignment-${SERVICE_FQDN}
       LAUNCH_DARKLY_ENV: pr
       AMQP_SHARED_ACCESS_KEY_NAME: RootManageSharedAccessKey
@@ -202,8 +201,5 @@ am-org-role-mapping-service:
 xui-webapp:
   nodejs:
     environment:
-      SERVICES_CASE_CASEWORKER_API: https://rd-caseworker-ref-api-${SERVICE_FQDN}
-      SERVICES_CASE_JUDICIAL_API: http://rd-judicial-api-${SERVICE_FQDN}
-      SERVICES_CASE_JUDICALWORKER_API: http://rd-judicial-ref-api-${SERVICE_FQDN}
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
       SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
