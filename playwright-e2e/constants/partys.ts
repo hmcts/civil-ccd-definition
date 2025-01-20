@@ -41,6 +41,11 @@ const partys: Partys = {
     oldKey: 'applicant1Expert2',
     number: 2,
   },
+  CLAIMANT_1_MEDIATION: {
+    key: 'claimantMediation1',
+    oldKey: 'app1',
+    number: 1,
+  },
   CLAIMANT_WITNESS_1: {
     key: 'claimantWitness1',
     oldKey: 'applicantWitness1',
@@ -124,6 +129,16 @@ const partys: Partys = {
   DEFENDANT_2_WITNESS_2: {
     key: 'defendant2Witness2',
     oldKey: 'respondent2Witness2',
+    number: 2,
+  },
+  DEFENDANT_1_MEDIATION: {
+    key: 'defendant1Mediation',
+    oldKey: 'resp1',
+    number: 1,
+  },
+  DEFENDANT_2_MEDIATION: {
+    key: 'defendant2Mediation',
+    oldKey: 'resp2',
     number: 2,
   },
 };
