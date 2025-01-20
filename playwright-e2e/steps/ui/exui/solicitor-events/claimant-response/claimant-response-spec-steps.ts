@@ -7,7 +7,6 @@ import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from '../../../../../constants/ccd-events.ts';
 import { civilAdminUser, claimantSolicitorUser } from '../../../../../config/users/exui-users.ts';
 import { Party } from '../../../../../models/partys.ts';
-import partys from '../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
@@ -197,12 +196,12 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   private async processClaimantResponseSmallClaimExperts() {
-    const { claimantResponseSmallClaimExperts } = this.claimantResponsePageFactory;
-    await claimantResponseSmallClaimExperts.verifyContent(this.ccdCaseData);
-    await claimantResponseSmallClaimExperts.useExperts();
-    await claimantResponseSmallClaimExperts.enterExpertDetails();
+    const { smallClaimExpertsClaimantPage } = this.claimantResponsePageFactory;
+    await smallClaimExpertsClaimantPage.verifyContent(this.ccdCaseData);
+    await smallClaimExpertsClaimantPage.useExperts();
+    await smallClaimExpertsClaimantPage.enterExpertDetails();
     // no witness Party needed ?
-    await claimantResponseSmallClaimExperts.submit();
+    await smallClaimExpertsClaimantPage.submit();
   }
 
   private async processClaimantResponseWitnessesPage() {
@@ -215,12 +214,12 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   private async processClaimantResponseSmallClaimWitnesses() {
-    const { claimantResponseSmallClaimWitnesses } = this.claimantResponsePageFactory;
-    await claimantResponseSmallClaimWitnesses.verifyContent(this.ccdCaseData);
-    await claimantResponseSmallClaimWitnesses.selectYes();
-    await claimantResponseSmallClaimWitnesses.addWitness();
-    await claimantResponseSmallClaimWitnesses.enterWitness1Details(this.witnessParty);
-    await claimantResponseSmallClaimWitnesses.submit();
+    const { smallClaimWitnessesClaimantPage } = this.claimantResponsePageFactory;
+    await smallClaimWitnessesClaimantPage.verifyContent(this.ccdCaseData);
+    await smallClaimWitnessesClaimantPage.selectYes();
+    await smallClaimWitnessesClaimantPage.addWitness();
+    await smallClaimWitnessesClaimantPage.enterWitness1Details(this.witnessParty);
+    await smallClaimWitnessesClaimantPage.submit();
   }
 
   private async processClaimantResponseLanguagePage() {
@@ -261,21 +260,21 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   private async processClaimantResponseStatementOfTruthPage() {
-    const { claimantResponseStatementOfTruthPage } = this.claimantResponsePageFactory;
-    await claimantResponseStatementOfTruthPage.verifyContent(this.ccdCaseData);
-    await claimantResponseStatementOfTruthPage.enterDetails();
-    await claimantResponseStatementOfTruthPage.submit();
+    const { statementOfTruthClaimantResponsePage } = this.claimantResponsePageFactory;
+    await statementOfTruthClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await statementOfTruthClaimantResponsePage.enterDetails();
+    await statementOfTruthClaimantResponsePage.submit();
   }
 
   private async processClaimantResponseSubmitPage() {
-    const { claimantResponseSubmitPage } = this.claimantResponsePageFactory;
-    await claimantResponseSubmitPage.verifyContent(this.ccdCaseData);
-    await claimantResponseSubmitPage.submit();
+    const { submitClaimantResponsePage } = this.claimantResponsePageFactory;
+    await submitClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await submitClaimantResponsePage.submit();
   }
 
   private async processClaimantResponseConfirmPage() {
-    const { claimantResponseConfirmSpecPage } = this.claimantResponsePageFactory;
-    await claimantResponseConfirmSpecPage.verifyContent(this.ccdCaseData);
-    await claimantResponseConfirmSpecPage.submit();
+    const { confirmClaimantResponseSpecPage } = this.claimantResponsePageFactory;
+    await confirmClaimantResponseSpecPage.verifyContent(this.ccdCaseData);
+    await confirmClaimantResponseSpecPage.submit();
   }
 }
