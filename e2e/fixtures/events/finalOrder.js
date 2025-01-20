@@ -99,7 +99,8 @@ const createIntermediateDownloadOrder = () => {
     TrackAllocation: {
       finalOrderTrackToggle: 'INTERMEDIATE_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
-      finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM'
+      finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM',
+      showOrderAfterHearingDatePage: 'No'
     },
     IntermediateTrackComplexityBand: {
       finalOrderIntermediateTrackComplexityBand: {
@@ -133,7 +134,8 @@ const createMultiDownloadOrder = () => {
     TrackAllocation: {
       finalOrderTrackToggle: 'MULTI_CLAIM',
       finalOrderAllocateToTrack: 'Yes',
-      finalOrderTrackAllocation: 'MULTI_CLAIM'
+      finalOrderTrackAllocation: 'MULTI_CLAIM',
+      showOrderAfterHearingDatePage: 'No'
     },
     SelectTemplate: {
       finalOrderDownloadTemplateOptions: {
