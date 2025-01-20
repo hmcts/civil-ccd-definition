@@ -168,10 +168,21 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async waitForSelectorToDetach(
-    selector: string,
-    options: { timeout?: number } = { timeout: 25_000 },
-  ) {
+  @TruthyParams(classKey, 'selector')
+  protected async waitForSelectorToBeVisible(selector: string, options: { timeout?: number } = {}) {
+    const locator = this.page.locator(selector);
+    await locator.waitFor({ state: 'visible', timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async waitForTextToBeVisible(text: string, options: { timeout?: number } = {}) {
+    const locator = this.page.getByText(text);
+    await locator.waitFor({ state: 'visible', timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
@@ -182,10 +193,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async waitForTextToDetach(
-    text: string,
-    options: { timeout?: number } = { timeout: 25_000 },
-  ) {
+  protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
@@ -210,7 +218,7 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      axePageInsertName: axePageInsertName,
+      axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
