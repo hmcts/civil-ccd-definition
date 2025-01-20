@@ -64,6 +64,7 @@ wa:
 
   wa-task-management-api:
     java:
+      ingressHost: wa-task-management-api-${SERVICE_FQDN}
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
@@ -102,7 +103,7 @@ wa:
         CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
         CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
         CAMUNDA_DB_NAME: 'camunda'
-        TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
+        TASK_MANAGEMENT_API_URL: http://${SERVICE_NAME}-wa-task-management-api
         CAMUNDA_API_AUTH_ENABLED: false
       secrets:
         CAMUNDA_DB_PASSWORD:
