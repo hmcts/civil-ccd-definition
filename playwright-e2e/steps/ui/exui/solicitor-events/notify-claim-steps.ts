@@ -1,5 +1,4 @@
 import BaseExuiSteps from '../../../../base/base-exui-steps';
-import BaseSteps from '../../../../base/base-steps';
 import { claimantSolicitorUser } from '../../../../config/users/exui-users';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ccdEvents from '../../../../constants/ccd-events';
@@ -29,13 +28,13 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimConfirmPage.verifyContent();
-        await notifyClaimConfirmPage.submit();
+        const { confirmNotifyClaimPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimPage.verifyContent();
+        await confirmNotifyClaimPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -49,13 +48,13 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimConfirmPage.verifyContent();
-        await notifyClaimConfirmPage.submit();
+        const { confirmNotifyClaimPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimPage.verifyContent();
+        await confirmNotifyClaimPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -69,13 +68,13 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimConfirmPage.verifyContent();
-        await notifyClaimConfirmPage.submit();
+        const { confirmNotifyClaimPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimPage.verifyContent();
+        await confirmNotifyClaimPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -94,13 +93,13 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimConfirmPage.verifyContent();
-        await notifyClaimConfirmPage.submit();
+        const { confirmNotifyClaimPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimPage.verifyContent();
+        await confirmNotifyClaimPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -110,18 +109,18 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
   async NotifyClaim1v1LIP() {
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimCOSDefendant1Page } = this.notifyClaimPageFactory;
-        await notifyClaimCOSDefendant1Page.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSDefendant1Page.fillDetails();
-        await notifyClaimCOSDefendant1Page.submit();
+        const { certificateOfService1NotifyClaimPage } = this.notifyClaimPageFactory;
+        await certificateOfService1NotifyClaimPage.verifyContent(this.ccdCaseData);
+        await certificateOfService1NotifyClaimPage.fillDetails();
+        await certificateOfService1NotifyClaimPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimCOSPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimCOSPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimCOSPage.submit();
 
-        const { notifyClaimCOSConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimCOSConfirmPage.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSConfirmPage.submit();
+        const { confirmNotifyClaimCOSPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimCOSPage.verifyContent(this.ccdCaseData);
+        await confirmNotifyClaimCOSPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -131,23 +130,23 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
   async NotifyClaim1v2LIPS() {
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimCOSDefendant1Page } = this.notifyClaimPageFactory;
-        await notifyClaimCOSDefendant1Page.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSDefendant1Page.fillDetails();
-        await notifyClaimCOSDefendant1Page.submit();
+        const { certificateOfService1NotifyClaimPage } = this.notifyClaimPageFactory;
+        await certificateOfService1NotifyClaimPage.verifyContent(this.ccdCaseData);
+        await certificateOfService1NotifyClaimPage.fillDetails();
+        await certificateOfService1NotifyClaimPage.submit();
 
-        const { notifyClaimCOSDefendant2Page } = this.notifyClaimPageFactory;
-        await notifyClaimCOSDefendant2Page.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSDefendant2Page.fillDetails();
-        await notifyClaimCOSDefendant2Page.submit();
+        const { certificateOfService2NotifyClaimPage } = this.notifyClaimPageFactory;
+        await certificateOfService2NotifyClaimPage.verifyContent(this.ccdCaseData);
+        await certificateOfService2NotifyClaimPage.fillDetails();
+        await certificateOfService2NotifyClaimPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimCOSConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimCOSConfirmPage.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSConfirmPage.submit();
+        const { confirmNotifyClaimCOSPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimCOSPage.verifyContent(this.ccdCaseData);
+        await confirmNotifyClaimCOSPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -161,18 +160,18 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();
 
-        const { notifyClaimCOSDefendant2Page } = this.notifyClaimPageFactory;
-        await notifyClaimCOSDefendant2Page.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSDefendant2Page.fillDetails();
-        await notifyClaimCOSDefendant2Page.submit();
+        const { certificateOfService2NotifyClaimPage } = this.notifyClaimPageFactory;
+        await certificateOfService2NotifyClaimPage.verifyContent(this.ccdCaseData);
+        await certificateOfService2NotifyClaimPage.fillDetails();
+        await certificateOfService2NotifyClaimPage.submit();
 
-        const { notifyClaimSubmitPage } = this.notifyClaimPageFactory;
-        await notifyClaimSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimSubmitPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
-        const { notifyClaimCOSConfirmPage } = this.notifyClaimPageFactory;
-        await notifyClaimCOSConfirmPage.verifyContent(this.ccdCaseData);
-        await notifyClaimCOSConfirmPage.submit();
+        const { confirmNotifyClaimCOSPage } = this.notifyClaimPageFactory;
+        await confirmNotifyClaimCOSPage.verifyContent(this.ccdCaseData);
+        await confirmNotifyClaimCOSPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
