@@ -14,11 +14,11 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -26,21 +26,23 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fileDQ),
-        super.expectLabel(getCheckboxes(this.party).fileDQConfirm.label),
-        super.expectText(radioButtons(this.party).oneMonthStay.label),
-        super.expectText(radioButtons(this.party).protocolComplied.label),
+        super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label),
+        super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label),
+        super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(getCheckboxes(this.party).fileDQConfirm.selector);
-    await super.clickBySelector(radioButtons(this.party).oneMonthStay.no.selector);
-    await super.clickBySelector(radioButtons(this.party).protocolComplied.no.selector);
+    await super.clickBySelector(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.selector);
+    await super.clickBySelector(radioButtons(this.claimantDefendantParty).oneMonthStay.no.selector);
+    await super.clickBySelector(
+      radioButtons(this.claimantDefendantParty).protocolComplied.no.selector,
+    );
     await super.inputText(
-      `No explanation - ${this.party}`,
-      inputs(this.party).noProtocolCompliedReason.selector,
+      `No explanation - ${this.claimantDefendantParty}`,
+      inputs(this.claimantDefendantParty).noProtocolCompliedReason.selector,
     );
   }
 

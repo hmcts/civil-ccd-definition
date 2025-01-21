@@ -13,10 +13,10 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   private addressFragment: AddressFragment;
   private litigationFriendParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, litigationFriendParty: Party) {
     super(page);
-    this.addressFragment = new AddressFragment(page, party);
-    this.litigationFriendParty = party;
+    this.addressFragment = new AddressFragment(page, litigationFriendParty);
+    this.litigationFriendParty = litigationFriendParty;
   }
 
   async verifyContent() {

@@ -11,22 +11,23 @@ export const radioButtons = {
       'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
     yes: {
       label: 'Yes',
-      selector: (party: Party) =>
-        `#${party.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) => `#${party.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
     },
   },
   availabilityOptions: {
     single: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber - 1}_unavailableDateType-SINGLE_DATE`,
+      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },
   interpreter: {
@@ -46,8 +47,8 @@ export const radioButtons = {
 export const buttons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: (party: Party) =>
-      `div[id='${party.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (claimantDefendantParty: Party) =>
+      `div[id='${claimantDefendantParty.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
   },
 };
 
