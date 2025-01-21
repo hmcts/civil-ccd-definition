@@ -13,6 +13,7 @@ import {
   inputFields,
 } from './mediation-availability-content.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
+import partys from '../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePage) {
@@ -66,8 +67,8 @@ export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePag
     );
   }
 
-  async enterSingleDate() {
-    await this.addNewTop();
+  async enterSingleDate(claimantParty: Party) {
+    await this.addNewTop(claimantParty);
     await super.clickBySelector(
       radioButtons.addSingleDateOrDateRange.singleDate.selector(this.claimantParty),
     );
@@ -79,8 +80,8 @@ export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePag
     await super.inputText(yearString, inputFields.singleDate.year.selector);
   }
 
-  async enterDateRange() {
-    await this.addNewTop();
+  async enterDateRange(claimantParty: Party) {
+    await this.addNewTop(claimantParty);
     await super.clickBySelector(
       radioButtons.addSingleDateOrDateRange.dateRange.selector(this.claimantParty),
     );
@@ -109,12 +110,16 @@ export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePag
     await super.inputText(yearStringDateTo, inputFields.dateRange.dataTo.year.selector);
   }
 
-  async addNewTop() {
-    await super.clickBySelector(buttons.addNewTop.selector, { first: true });
+  async addNewTop(claimantParty: Party) {
+    if (claimantParty === partys.DEFENDANT_1_MEDIATION)
+      await super.clickBySelector(buttons.addNewTop.selector, { first: true });
+    else await super.clickBySelector(buttons.addNewTop.selector, { index: 1 });
   }
 
-  async addNewBottom() {
-    await super.clickBySelector(buttons.addNewBottom.selector);
+  async addNewBottom(claimantParty: Party) {
+    if (claimantParty === partys.DEFENDANT_1_MEDIATION)
+      await super.clickBySelector(buttons.addNewTop.selector, { first: true });
+    else await super.clickBySelector(buttons.addNewTop.selector, { index: 1 });
   }
 
   async remove() {

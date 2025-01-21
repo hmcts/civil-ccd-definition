@@ -17,7 +17,7 @@ export const content = {
 
 export const inputFields = {
   singleDate: {
-    parentLabel: 'Unavailable date',
+    parentLabel: 'Unavailable dates',
     label: 'This date cannot be in the past and must not be more than three months in the future',
     day: {
       label: 'Day',
