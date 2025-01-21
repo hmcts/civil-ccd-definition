@@ -13,10 +13,14 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
   private remoteHearingSpecFragment: RemoteHearingSpecFragment;
   private defendantParty: Party;
 
-  constructor(page: Page, remoteHearingSpecFragment: RemoteHearingSpecFragment, party: Party) {
+  constructor(
+    page: Page,
+    remoteHearingSpecFragment: RemoteHearingSpecFragment,
+    defendantParty: Party,
+  ) {
     super(page);
     this.remoteHearingSpecFragment = remoteHearingSpecFragment;
-    this.defendantParty = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
