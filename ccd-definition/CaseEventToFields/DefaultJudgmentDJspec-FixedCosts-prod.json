@@ -147,8 +147,19 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
-    "CaseFieldID": "partialPaymentAmount",
+    "CaseFieldID": "partialPaymentInsetHelpText",
     "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "claimPartialPayment",
+    "PageDisplayOrder": 3,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "CaseFieldID": "partialPaymentAmount",
+    "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "claimPartialPayment",
     "PageDisplayOrder": 3,
