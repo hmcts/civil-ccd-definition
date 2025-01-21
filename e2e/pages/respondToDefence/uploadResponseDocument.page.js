@@ -7,6 +7,9 @@ module.exports = {
       applicantResponseDocument: {
         id: '#applicant1DefenceResponseDocument_file'
       },
+      applicantResponseDocumentSpec: {
+        id: '#applicant1DefenceResponseDocumentSpec_file'
+      },
       ...(mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') ?
         {
           applicantResponseDocumentAgainstDefendant2:{
@@ -26,6 +29,14 @@ module.exports = {
       await I.attachFile(this.fields(mpScenario).applicantResponseDocumentAgainstDefendant2.id, file);
       await I.waitForInvisible(locate('.error-message').withText('Uploading...'));
     }
+    await I.clickContinue();
+  },
+
+  async uploadResponseDocumentsSpec (file, mpScenario) {
+    I.waitForElement(this.fields(mpScenario).applicantResponseDocumentSpec.id);
+    await I.runAccessibilityTest();
+    await I.attachFile(this.fields(mpScenario).applicantResponseDocumentSpec.id, file);
+    await I.waitForInvisible(locate('.error-message').withText('Uploading...'));
     await I.clickContinue();
   },
 };
