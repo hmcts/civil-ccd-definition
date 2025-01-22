@@ -310,7 +310,8 @@
     "PageFieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
