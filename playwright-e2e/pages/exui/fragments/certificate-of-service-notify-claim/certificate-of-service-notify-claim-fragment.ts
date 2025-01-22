@@ -11,12 +11,12 @@ import {
   checkboxes,
   dropdowns,
   radioButtons,
-} from './certificate-of-service-content';
+} from './certificate-of-service-notify-claim-content';
 import { Party } from '../../../../models/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
-export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
+export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private defendantParty: Party;
 
