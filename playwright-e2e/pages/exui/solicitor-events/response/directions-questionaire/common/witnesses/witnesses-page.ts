@@ -42,6 +42,10 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
       inputs.witnessDetails.lastName.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
+      '07825454749',
+      inputs.witnessDetails.number.selector(this.claimantDefendantParty, witnessParty),
+    );
+    await super.inputText(
       'firstlast@gmail.com',
       inputs.witnessDetails.email.selector(this.claimantDefendantParty, witnessParty),
     );
