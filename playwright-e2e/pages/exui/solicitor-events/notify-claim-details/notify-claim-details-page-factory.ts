@@ -1,7 +1,7 @@
 import BasePageFactory from '../../../../base/base-page-factory';
 import partys from '../../../../constants/partys';
 import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
-import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
+import CertificateOfServiceNotifyClaimDetailsFragment from '../../fragments/certificate-of-service-notify-claim-details/certificate-of-service-notify-claim-details-fragment';
 import CertificateOfService1NotifyClaimDetailsPage from './certificate-of-service-1-notify-claim-details/certificate-of-service-1-notify-claim-details-page';
 import CertificateOfService2NotifyClaimDetailsPage from './certificate-of-service-2-notify-claim-details/certificate-of-service-2-notify-claim-details-page';
 import ConfirmNotifyClaimDetailsCOSPage from './confirm-notify-claim-details/confirm-notify-claim-details-cos-page';
@@ -29,19 +29,21 @@ export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
   }
 
   get certificateOfService1NotifyClaimDetailsPage() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(
+    const certificateOfServiceNotifyClaimDetailsFragment =
+      new CertificateOfServiceNotifyClaimDetailsFragment(this.page, partys.DEFENDANT_1);
+    return new CertificateOfService1NotifyClaimDetailsPage(
+      certificateOfServiceNotifyClaimDetailsFragment,
       this.page,
-      partys.DEFENDANT_1,
     );
-    return new CertificateOfService1NotifyClaimDetailsPage(certificateOfServiceFragment, this.page);
   }
 
   get certificateOfService2NotifyClaimDetailsPage() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(
+    const certificateOfServiceNotifyClaimDetailsFragment =
+      new CertificateOfServiceNotifyClaimDetailsFragment(this.page, partys.DEFENDANT_2);
+    return new CertificateOfService2NotifyClaimDetailsPage(
+      certificateOfServiceNotifyClaimDetailsFragment,
       this.page,
-      partys.DEFENDANT_2,
     );
-    return new CertificateOfService2NotifyClaimDetailsPage(certificateOfServiceFragment, this.page);
   }
 
   get submitNotifyClaimDetailsCOSPage() {
