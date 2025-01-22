@@ -1,37 +1,30 @@
+import ClaimTrack from '../../../../../../../enums/claim-track';
+import { Party } from '../../../../../../../models/partys';
+
 export const heading = 'Respond to claim';
 
 export const radioButtons = {
-  defendant1Address: {
+  address: {
     label: 'Is this address correct?',
     yes: {
       label: 'Yes',
-      selector: '#specAoSApplicantCorrespondenceAddressRequired_Yes',
+      selector: (defendantParty: Party, claimTrack?: ClaimTrack) => {
+        if (defendantParty.number === 2 && claimTrack === ClaimTrack.FAST_CLAIM)
+          return '#specAoSRespondent2HomeAddressRequired_Yes';
+        else if (defendantParty.number === 2)
+          return '#specAoSRespondent2CorrespondenceAddressRequired_Yes';
+        else return '#specAoSApplicantCorrespondenceAddressRequired_Yes';
+      },
     },
     no: {
       label: 'no',
-      selector: '#specAoSApplicantCorrespondenceAddressRequired_No',
-    },
-  },
-  defendant2Address: {
-    label: 'Is this address correct?',
-    yes: {
-      label: 'Yes',
-      selector: '#specAoSRespondent2CorrespondenceAddressRequired_Yes',
-    },
-    no: {
-      label: 'no',
-      selector: '#specAoSRespondent2CorrespondenceAddressRequired_No',
-    },
-  },
-  defendant2AddressFastTrack: {
-    label: 'Is this address correct?',
-    yes: {
-      label: 'Yes',
-      selector: '#specAoSRespondent2HomeAddressRequired_Yes',
-    },
-    no: {
-      label: 'no',
-      selector: '#specAoSRespondent2HomeAddressRequired_No',
+      selector: (defendantParty: Party, claimTrack?: ClaimTrack) => {
+        if (defendantParty.number === 2 && claimTrack === ClaimTrack.FAST_CLAIM)
+          return '#specAoSRespondent2HomeAddressRequired_No';
+        else if (defendantParty.number === 2)
+          return '#specAoSRespondent2CorrespondenceAddressRequired_No';
+        else return '#specAoSApplicantCorrespondenceAddressRequired_No';
+      },
     },
   },
 };
