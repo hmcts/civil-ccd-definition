@@ -40,7 +40,7 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
     await super.clickBySelector(
       radioButtons(this.claimantDefendantParty).protocolComplied.no.selector,
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       `No explanation - ${this.claimantDefendantParty}`,
       inputs(this.claimantDefendantParty).noProtocolCompliedReason.selector,
     );

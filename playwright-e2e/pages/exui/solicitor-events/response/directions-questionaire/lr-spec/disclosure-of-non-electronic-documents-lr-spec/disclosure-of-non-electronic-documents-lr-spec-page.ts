@@ -28,7 +28,7 @@ export default class DisclosureOfNonElectronicDocumentsLRSpecPage extends ExuiPa
   }
 
   async enterDetails() {
-    await super.inputText(
+    await super.inputTextBySelector(
       `No directions required - ${this.claimantDefendantParty.key}`,
       inputs.bespokeDirections.selector(this.claimantDefendantParty),
     );

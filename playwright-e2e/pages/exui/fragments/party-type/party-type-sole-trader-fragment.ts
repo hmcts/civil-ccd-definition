@@ -42,28 +42,28 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
       this.claimantDefendantParty,
       this.partyType,
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.soleTraderTitle,
       inputs.title.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.soleTraderFirstName,
       inputs.firstName.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.soleTraderLastName,
       inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.soleTraderTradingAs,
       inputs.tradingAs.selector(this.claimantDefendantParty, this.partyType),
     );
     await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       soleTraderData.partyPhone,
       inputs.phone.selector(this.claimantDefendantParty),
     );

@@ -33,14 +33,14 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
   }
 
   async selectCourtLocation() {
-    await super.selectFromDropdown(
+    await super.selectFromDropdownBySelector(
       dropdowns.courtLocations.options[0],
       dropdowns.courtLocations.selector(this.defendantParty),
     );
   }
 
   async enterPreferredCourtReason() {
-    await super.inputText(
+    await super.inputTextBySelector(
       `Test reason - ${this.defendantParty.key}`,
       inputs.preferredCourtReason.selector(this.defendantParty),
     );

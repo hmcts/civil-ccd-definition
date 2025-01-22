@@ -73,7 +73,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+    await super.selectFromDropdownBySelector(ccdEvent.name, dropdowns.nextStep.selector);
     await super.retryClickBySelector(
       buttons.go.selector,
       () =>
@@ -87,7 +87,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async chooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+    await super.selectFromDropdownBySelector(ccdEvent.name, dropdowns.nextStep.selector);
     await super.clickBySelector(buttons.go.selector);
     super.setCCDEvent = ccdEvent;
   }

@@ -22,20 +22,29 @@ export default class AddressFragment extends ExuiPage(BasePage) {
   async enterAddressManual() {
     const addressData = CaseDataHelper.buildAddressData(this.party);
     await super.clickLink(links.cannotFindAddress.title);
-    await super.inputText(addressData.AddressLine1, inputs.addressLine1.selector(this.party));
-    await super.inputText(addressData.AddressLine2, inputs.addressLine2.selector(this.party));
-    await super.inputText(addressData.AddressLine3, inputs.addressLine3.selector(this.party));
-    await super.inputText(addressData.PostTown, inputs.postTown.selector(this.party));
-    await super.inputText(addressData.County, inputs.county.selector(this.party));
-    await super.inputText(addressData.Country, inputs.country.selector(this.party));
-    await super.inputText(addressData.PostCode, inputs.postCode.selector(this.party));
+    await super.inputTextBySelector(
+      addressData.AddressLine1,
+      inputs.addressLine1.selector(this.party),
+    );
+    await super.inputTextBySelector(
+      addressData.AddressLine2,
+      inputs.addressLine2.selector(this.party),
+    );
+    await super.inputTextBySelector(
+      addressData.AddressLine3,
+      inputs.addressLine3.selector(this.party),
+    );
+    await super.inputTextBySelector(addressData.PostTown, inputs.postTown.selector(this.party));
+    await super.inputTextBySelector(addressData.County, inputs.county.selector(this.party));
+    await super.inputTextBySelector(addressData.Country, inputs.country.selector(this.party));
+    await super.inputTextBySelector(addressData.PostCode, inputs.postCode.selector(this.party));
   }
 
   async findAddress(postcode: string, index: number) {
-    await super.inputText(postcode, inputs.postCodeInput.selector(this.party));
+    await super.inputTextBySelector(postcode, inputs.postCodeInput.selector(this.party));
     await super.clickButtonByName(buttons.findaddress.title);
     await super.expectSelector(dropdowns.addressList.selector(this.party));
-    await super.selectFromDropdown(index, dropdowns.addressList.selector(this.party));
+    await super.selectFromDropdownBySelector(index, dropdowns.addressList.selector(this.party));
   }
 
   async submit() {

@@ -32,7 +32,7 @@ export default class RemoteHearingFragment extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.remoteHearing.yes.selector(this.claimantDefendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       `Court location reason - ${this.claimantDefendantParty.key}`,
       inputs.remoteHearingReason.selector(this.claimantDefendantParty),
     );

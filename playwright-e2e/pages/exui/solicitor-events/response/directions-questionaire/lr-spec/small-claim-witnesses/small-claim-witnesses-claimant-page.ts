@@ -32,19 +32,19 @@ export default class SmallClaimWitnessesClaimantPage extends ExuiPage(BasePage) 
 
   async enterWitness1Details(claimantWitnessParty: Party) {
     const defendantWitnessData = CaseDataHelper.buildWitnessData(claimantWitnessParty);
-    await super.inputText(
+    await super.inputTextBySelector(
       defendantWitnessData.firstName,
       inputs.witnessDetails.firstName.selector(partys.CLAIMANT_1, claimantWitnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       defendantWitnessData.lastName,
       inputs.witnessDetails.lastName.selector(partys.CLAIMANT_1, claimantWitnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       defendantWitnessData.emailAddress,
       inputs.witnessDetails.email.selector(partys.CLAIMANT_1, claimantWitnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       defendantWitnessData.reasonForWitness,
       inputs.witnessDetails.whatEvent.selector(partys.CLAIMANT_1, claimantWitnessParty),
     );

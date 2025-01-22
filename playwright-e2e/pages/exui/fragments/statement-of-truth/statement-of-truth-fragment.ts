@@ -15,8 +15,8 @@ export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   }
 
   async enterDetails(name: string, role: string) {
-    await super.inputText(name, inputs.name.selector);
-    await super.inputText(role, inputs.role.selector);
+    await super.inputTextBySelector(name, inputs.name.selector);
+    await super.inputTextBySelector(role, inputs.role.selector);
   }
 
   async submit() {

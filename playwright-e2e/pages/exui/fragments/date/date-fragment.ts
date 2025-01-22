@@ -30,15 +30,21 @@ export default class DateFragment extends ExuiPage(BasePage) {
   }
 
   async enterDate(date: Date, selectorPrefix: string, index?: number) {
-    await super.inputText(DateHelper.getTwoDigitDay(date), inputs.day.selector(selectorPrefix), {
-      index,
-    });
-    await super.inputText(
+    await super.inputTextBySelector(
+      DateHelper.getTwoDigitDay(date),
+      inputs.day.selector(selectorPrefix),
+      {
+        index,
+      },
+    );
+    await super.inputTextBySelector(
       DateHelper.getTwoDigitMonth(date),
       inputs.month.selector(selectorPrefix),
       { index },
     );
-    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), { index });
+    await super.inputTextBySelector(date.getFullYear(), inputs.year.selector(selectorPrefix), {
+      index,
+    });
   }
 
   async enterDateOfBirth(
@@ -48,19 +54,23 @@ export default class DateFragment extends ExuiPage(BasePage) {
   ) {
     const selectorPrefix = `${partyType.key}DateOfBirth`;
     const dateOfBirth = new Date(CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty));
-    await super.inputText(
+    await super.inputTextBySelector(
       DateHelper.getTwoDigitDay(dateOfBirth),
       inputs.day.selector(selectorPrefix),
       { index },
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       DateHelper.getTwoDigitMonth(dateOfBirth),
       inputs.month.selector(selectorPrefix),
       { index },
     );
-    await super.inputText(dateOfBirth.getFullYear(), inputs.year.selector(selectorPrefix), {
-      index,
-    });
+    await super.inputTextBySelector(
+      dateOfBirth.getFullYear(),
+      inputs.year.selector(selectorPrefix),
+      {
+        index,
+      },
+    );
   }
 
   async submit() {

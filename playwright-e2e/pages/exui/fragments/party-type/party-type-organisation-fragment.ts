@@ -31,11 +31,11 @@ export default class PartyTypeOrganisationFragment extends ExuiPage(BasePage) {
       this.claimantDefendantParty,
       this.partyType,
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       organisationData.organisationName,
       inputs.name.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       organisationData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),
     );

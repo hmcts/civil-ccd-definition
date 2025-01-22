@@ -41,31 +41,31 @@ export default class SmallClaimExpertsDefendantPage extends ExuiPage(BasePage) {
     const expertParty =
       this.defendantParty.number === 1 ? partys.DEFENDANT_1_EXPERT_1 : partys.DEFENDANT_2_EXPERT_1;
     const expertData = CaseDataHelper.buildExpertData(expertParty);
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.firstName,
       inputs.expert.firstName.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.lastName,
       inputs.expert.lastName.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.phoneNumber,
       inputs.expert.phoneNumber.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.emailAddress,
       inputs.expert.email.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.fieldOfExpertise,
       inputs.expert.expertise.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.whyRequired,
       inputs.expert.whyRequired.selector(this.defendantParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       expertData.estimatedCost,
       inputs.expert.estimatedCost.selector(this.defendantParty),
     );

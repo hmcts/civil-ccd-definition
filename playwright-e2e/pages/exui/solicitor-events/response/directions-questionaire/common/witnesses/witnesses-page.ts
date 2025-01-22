@@ -32,19 +32,19 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
   }
 
   async enterWitnessDetails(witnessParty: Party) {
-    await super.inputText(
+    await super.inputTextBySelector(
       'First name',
       inputs.witnessDetails.firstName.selector(this.claimantDefendantParty, witnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       'Last name',
       inputs.witnessDetails.lastName.selector(this.claimantDefendantParty, witnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       'firstlast@gmail.com',
       inputs.witnessDetails.email.selector(this.claimantDefendantParty, witnessParty),
     );
-    await super.inputText(
+    await super.inputTextBySelector(
       'Event',
       inputs.witnessDetails.whatEvent.selector(this.claimantDefendantParty, witnessParty),
     );
