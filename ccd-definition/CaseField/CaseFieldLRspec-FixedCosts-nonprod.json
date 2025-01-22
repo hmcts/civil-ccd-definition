@@ -25,14 +25,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "showOldDJFixedCostsScreen",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimFixedCostsOnEntryDJ",
     "Label": "Would you like to claim for fixed costs on entry of judgment?",
     "FieldType": "YesOrNo",
