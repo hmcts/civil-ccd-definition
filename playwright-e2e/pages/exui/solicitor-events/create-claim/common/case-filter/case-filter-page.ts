@@ -15,34 +15,22 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
   }
 
   async chooseSpec() {
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.jurisdiction.options.civil,
       dropdowns.jurisdiction.selector,
     );
-    await super.selectFromDropdownBySelector(
-      dropdowns.caseType.options.civil,
-      dropdowns.caseType.selector,
-    );
-    await super.selectFromDropdownBySelector(
-      dropdowns.event.options.spec,
-      dropdowns.event.selector,
-    );
+    await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
+    await super.selectFromDropdown(dropdowns.event.options.spec, dropdowns.event.selector);
     super.setCCDEvent = ccdEvents.CREATE_CLAIM_SPEC;
   }
 
   async chooseUnSpec() {
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.jurisdiction.options.civil,
       dropdowns.jurisdiction.selector,
     );
-    await super.selectFromDropdownBySelector(
-      dropdowns.caseType.options.civil,
-      dropdowns.caseType.selector,
-    );
-    await super.selectFromDropdownBySelector(
-      dropdowns.event.options.unspec,
-      dropdowns.event.selector,
-    );
+    await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
+    await super.selectFromDropdown(dropdowns.event.options.unspec, dropdowns.event.selector);
     super.setCCDEvent = ccdEvents.CREATE_CLAIM;
   }
 

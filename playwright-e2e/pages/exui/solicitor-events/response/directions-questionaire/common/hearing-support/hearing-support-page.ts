@@ -34,7 +34,7 @@ export default class HearingSupportPage extends ExuiPage(BasePage) {
   }
 
   async enterSupportRequirementsAdditional() {
-    await super.inputTextBySelector(
+    await super.inputText(
       `Support requirements for ${this.claimantDefendantParty.key}`,
       inputs.supportRequirementsAdditional.selector(this.claimantDefendantParty),
     );

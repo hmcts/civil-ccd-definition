@@ -67,24 +67,24 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
     await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
 
-    await super.inputTextBySelector(
+    await super.inputText(
       `Test Documents ${this.defendantParty.number}`,
       inputs.documentsServed.selector(this.defendantParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       `Defendant ${this.defendantParty.number}`,
       inputs.notifyClaimRecipient.selector(this.defendantParty),
     );
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.locationType.options[this.defendantParty.number - 1],
       dropdowns.locationType.selector(this.defendantParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       `Test Address ${this.defendantParty.number}`,
       inputs.documentsServedLocation.selector(this.defendantParty),
     );
     await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.defendantParty));
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.serveType.options[this.defendantParty.number - 1],
       dropdowns.serveType.selector(this.defendantParty),
     );
@@ -99,11 +99,11 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
   }
 
   async fillStatementOfTruth() {
-    await super.inputTextBySelector(
+    await super.inputText(
       `Name ${this.defendantParty.number}`,
       inputs.statementOfTruth.name.selector(this.defendantParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       `Law firm ${this.defendantParty.number}`,
       inputs.statementOfTruth.firm.selector(this.defendantParty),
     );

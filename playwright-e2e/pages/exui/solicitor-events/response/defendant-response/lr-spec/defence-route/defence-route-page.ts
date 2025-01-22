@@ -43,7 +43,7 @@ export default class DefenceRoutePage extends ExuiPage(BasePage) {
 
   async fillInHasPaid() {
     const datePaid = DateHelper.subtractFromToday({ months: 1 });
-    await super.inputTextBySelector('500', inputs.amountPaid.selector(this.defendantParty));
+    await super.inputText('500', inputs.amountPaid.selector(this.defendantParty));
     await this.dateFragment.enterDate(datePaid, 'whenWasThisAmountPaid');
   }
 

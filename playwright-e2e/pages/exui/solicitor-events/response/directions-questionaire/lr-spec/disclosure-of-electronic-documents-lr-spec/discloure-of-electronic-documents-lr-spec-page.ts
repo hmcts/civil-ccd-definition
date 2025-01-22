@@ -38,7 +38,7 @@ export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(
     await super.expectText(radioButtons.agreement.label);
     await super.clickBySelector(radioButtons.agreement.no.selector(this.claimantDefendantParty));
     await super.expectText(inputs.disagreementReason.label);
-    await super.inputTextBySelector(
+    await super.inputText(
       `Disagreement reason - ${this.claimantDefendantParty.key}`,
       inputs.disagreementReason.selector(this.claimantDefendantParty),
     );

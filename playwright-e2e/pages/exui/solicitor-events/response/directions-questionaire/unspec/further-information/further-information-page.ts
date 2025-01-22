@@ -25,7 +25,7 @@ export default class FurtherInformationPage extends ExuiPage(BasePage) {
 
   async selectYes() {
     await super.clickBySelector(radioButtons.yes.selector(this.claimantDefendantParty));
-    await super.inputTextBySelector('test', form.whatForForm.selector(this.claimantDefendantParty));
+    await super.inputText('test', form.whatForForm.selector(this.claimantDefendantParty));
   }
 
   async selectNo() {
@@ -33,7 +33,7 @@ export default class FurtherInformationPage extends ExuiPage(BasePage) {
   }
 
   async inputFurtherInformation() {
-    await super.inputTextBySelector(
+    await super.inputText(
       'test',
       form.furtherInformationForm.selector(this.claimantDefendantParty),
     );

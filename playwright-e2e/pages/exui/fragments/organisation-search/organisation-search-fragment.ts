@@ -19,7 +19,7 @@ export default class OrganisationSearchFragment extends ExuiPage(BasePage) {
   }
 
   async searchForOrganisation(organisationName: string) {
-    await super.inputTextBySelector(organisationName, inputs.search.selector);
+    await super.inputText(organisationName, inputs.search.selector);
     //method incomplete, need to add method in basePage for waiting for Organisation list to appear.
     await super.clickBySelector(links.selectOrganisation.selector(organisationName));
   }

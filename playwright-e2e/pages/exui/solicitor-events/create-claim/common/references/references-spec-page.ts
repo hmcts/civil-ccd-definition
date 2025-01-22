@@ -15,8 +15,8 @@ export default class CreateClaimSpecReferencesPage extends ExuiPage(BasePage) {
   }
 
   async enterReferences() {
-    await super.inputTextBySelector(inputs.claimantReference.selector, 'Claimant 1 Reference');
-    await super.inputTextBySelector(inputs.defendantReference.selector, 'Defendant 1 Reference');
+    await super.inputText(inputs.claimantReference.selector, 'Claimant 1 Reference');
+    await super.inputText(inputs.defendantReference.selector, 'Defendant 1 Reference');
   }
 
   async submit() {

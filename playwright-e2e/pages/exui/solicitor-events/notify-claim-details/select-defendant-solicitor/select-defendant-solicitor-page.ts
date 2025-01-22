@@ -14,7 +14,7 @@ export default class SelectDefendantSolicitorPage extends ExuiPage(BasePage) {
   }
 
   async selectBoth() {
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.defendantSolicitors.options[0],
       dropdowns.defendantSolicitors.selector,
     );

@@ -26,11 +26,11 @@ export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage)
   }
 
   async selectCourtLocation() {
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.courtLocations.options[0],
       dropdowns.courtLocations.selector,
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       `Court location reason - ${partys.CLAIMANT_1.key}`,
       inputs.preferredCourtReason.selector,
     );

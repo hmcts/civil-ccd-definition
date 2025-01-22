@@ -38,19 +38,19 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
     const claimantLitigationFriendData = CaseDataHelper.buildLitigationFriendData(
       this.litigationFriendParty,
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       claimantLitigationFriendData.firstName,
       inputs.litigationFriendDetails.firstName.selector(this.litigationFriendParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       claimantLitigationFriendData.lastName,
       inputs.litigationFriendDetails.lastName.selector(this.litigationFriendParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       claimantLitigationFriendData.emailAddress,
       inputs.litigationFriendDetails.email.selector(this.litigationFriendParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       claimantLitigationFriendData.phoneNumber,
       inputs.litigationFriendDetails.phoneNumber.selector(this.litigationFriendParty),
     );

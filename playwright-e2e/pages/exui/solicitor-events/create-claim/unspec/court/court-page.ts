@@ -18,14 +18,11 @@ export default class CourtPage extends ExuiPage(BasePage) {
   }
 
   async chooseCourtLocation() {
-    await super.selectFromDropdownBySelector(
+    await super.selectFromDropdown(
       dropdowns.courtLocation.options.london,
       dropdowns.courtLocation.selector,
     );
-    await super.inputTextBySelector(
-      'No reason for claimant court location',
-      inputs.courtReason.selector,
-    );
+    await super.inputText('No reason for claimant court location', inputs.courtReason.selector);
   }
 
   async selectNoForRemoteHearing() {

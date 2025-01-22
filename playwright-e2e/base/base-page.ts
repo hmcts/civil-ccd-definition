@@ -116,7 +116,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'input', 'selector')
   @TruthyParams(classKey, 'input', 'selector')
-  protected async inputTextBySelector(
+  protected async inputText(
     input: string | number,
     selector: string,
     options: { index?: number; timeout?: number } = {},
@@ -151,7 +151,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'input', 'selector')
-  protected async inputSensitiveTextBySelector(
+  protected async inputSensitiveText(
     input: string | number,
     selector: string,
     options: { timeout?: number } = {},
@@ -168,7 +168,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'option', 'selector')
   @TruthyParams(classKey, 'selector')
-  protected async selectFromDropdownBySelector(
+  protected async selectFromDropdown(
     option: string | number,
     selector: string,
     options: { timeout?: number; exact?: boolean } = {},
@@ -836,7 +836,7 @@ export default abstract class BasePage {
 
   @Step(classKey)
   @TruthyParams(classKey, 'option', 'selector')
-  protected async retrySelectFromDropdownBySelector(
+  protected async retrySelectFromDropdown(
     option: string,
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
@@ -844,8 +844,8 @@ export default abstract class BasePage {
   ) {
     await this.retryAction(
       async () => {
-        await this.selectFromDropdownBySelector(0, selector);
-        await this.selectFromDropdownBySelector(option, selector);
+        await this.selectFromDropdown(0, selector);
+        await this.selectFromDropdown(option, selector);
       },
       assertions,
       `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
@@ -958,8 +958,8 @@ export default abstract class BasePage {
   ) {
     await this.retryActionTimeout(
       async () => {
-        await this.selectFromDropdownBySelector(0, selector);
-        await this.selectFromDropdownBySelector(option, selector);
+        await this.selectFromDropdown(0, selector);
+        await this.selectFromDropdown(option, selector);
       },
       assertions,
       `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,

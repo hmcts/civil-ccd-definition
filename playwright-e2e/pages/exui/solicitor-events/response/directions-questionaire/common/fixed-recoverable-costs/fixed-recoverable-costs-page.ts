@@ -33,7 +33,7 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.no.selector,
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       'No explanation',
       inputs(this.claimantDefendantParty).fixedRecoverableCostsReason.selector,
     );
@@ -50,7 +50,7 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons(this.claimantDefendantParty).complexityBandAgreed.yes.selector,
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       'No explanation',
       inputs(this.claimantDefendantParty).fixedRecoverableCostsReason.selector,
     );

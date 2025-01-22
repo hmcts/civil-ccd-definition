@@ -14,11 +14,11 @@ export default class SolicitorReferencesPage extends ExuiPage(BasePage) {
   }
 
   async fillDefendant1Ref() {
-    await super.inputTextBySelector('New Defendant 1 Ref', inputs.defendant1Ref.selector);
+    await super.inputText('New Defendant 1 Ref', inputs.defendant1Ref.selector);
   }
 
   async fillDefendant2Ref() {
-    await super.inputTextBySelector('New Defendant 2 Ref', inputs.defendant2Ref.selector);
+    await super.inputText('New Defendant 2 Ref', inputs.defendant2Ref.selector);
   }
 
   async submit() {

@@ -25,7 +25,7 @@ export default class UploadDefendantResponseSpecPage extends ExuiPage(BasePage) 
   }
 
   async enterDisputeReason() {
-    await super.inputTextBySelector(
+    await super.inputText(
       `This is Defendant ${this.defendantParty.key}'s reason`,
       inputs.disputeReason.selector(this.defendantParty),
     );

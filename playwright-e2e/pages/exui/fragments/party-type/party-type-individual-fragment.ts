@@ -41,24 +41,24 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
       this.claimantDefendantParty,
       this.partyType,
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       individualData.individualTitle,
       inputs.title.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       individualData.individualFirstName,
       inputs.firstName.selector(this.claimantDefendantParty, this.partyType),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       individualData.individualLastName,
       inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
     );
     await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
-    await super.inputTextBySelector(
+    await super.inputText(
       individualData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),
     );
-    await super.inputTextBySelector(
+    await super.inputText(
       individualData.partyPhone,
       inputs.phone.selector(this.claimantDefendantParty),
     );

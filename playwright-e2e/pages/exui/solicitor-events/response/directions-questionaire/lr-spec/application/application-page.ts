@@ -29,7 +29,7 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
 
   async selectYes() {
     await super.clickBySelector(radioButtons.application.yes.selector(this.claimantDefendantParty));
-    await super.inputTextBySelector('test', inputs.whatFor.selector(this.claimantDefendantParty));
+    await super.inputText('test', inputs.whatFor.selector(this.claimantDefendantParty));
   }
 
   async selectNo() {
@@ -37,7 +37,7 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
   }
 
   async enterAdditionalInformation() {
-    await super.inputTextBySelector('test', inputs.otherInformation.selector);
+    await super.inputText('test', inputs.otherInformation.selector);
   }
 
   async submit() {

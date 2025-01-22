@@ -46,37 +46,37 @@ export default class ExpertPage extends ExuiPage(BasePage) {
 
   async enterExpertDetails(expertParty: Party) {
     const expertData = CaseDataHelper.buildExpertData(expertParty);
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.firstName,
       inputs.expertDetails.firstName.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.lastName,
       inputs.expertDetails.lastName.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.emailAddress,
       inputs.expertDetails.emailAddress.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.phoneNumber,
       inputs.expertDetails.phoneNumber.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.fieldOfExpertise,
       inputs.expertDetails.expertise.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.whyRequired,
       inputs.expertDetails.whyRequired.selector(this.claimantDefendantParty, expertParty),
     );
 
-    await super.inputTextBySelector(
+    await super.inputText(
       expertData.estimatedCost,
       inputs.expertDetails.estimatedCost.selector(this.claimantDefendantParty, expertParty),
     );

@@ -39,7 +39,7 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
       radioButtons.standardDisclosure.no.selector(this.claimantDefendantParty),
     );
     await super.expectLabel(inputs.bespokeDirections.label);
-    await super.inputTextBySelector(
+    await super.inputText(
       `No directions required - ${this.claimantDefendantParty.key}`,
       inputs.bespokeDirections.selector(this.claimantDefendantParty),
     );
