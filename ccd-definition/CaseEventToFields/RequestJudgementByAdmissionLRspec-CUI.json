@@ -22,9 +22,19 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjPaymentPaidSomeAmount",
+    "CaseFieldID": "ccjPaymentPaidSomeLabelInsetHelpText",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjPaymentPaidSome",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "ccjPaymentPaidSomeAmount",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "CcjPaymentPaidSome",
     "ShowSummaryChangeOption": "Y",
@@ -71,7 +81,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -82,7 +92,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -102,7 +112,7 @@
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\"",
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -124,7 +134,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -135,7 +145,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" "
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -157,7 +167,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -179,7 +189,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -200,7 +210,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -221,7 +231,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -243,7 +253,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\""
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
