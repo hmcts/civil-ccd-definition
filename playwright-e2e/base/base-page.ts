@@ -171,7 +171,7 @@ export default abstract class BasePage {
   protected async selectFromDropdown(
     option: string | number,
     selector: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    options: { timeout?: number } = {},
   ) {
     if (typeof option === 'number')
       await this.page.selectOption(selector, { index: option }, { timeout: options.timeout });
