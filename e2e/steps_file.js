@@ -449,10 +449,10 @@ module.exports = function () {
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
         () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        ...conditionalSteps(caseCategory === 'SPEC' && isTestEnv, [
+        ...conditionalSteps(caseCategory === 'SPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCostsOnEntry()
         ]),
-        ...conditionalSteps(caseCategory === 'UNSPEC' || !isTestEnv, [
+        ...conditionalSteps(caseCategory === 'UNSPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCosts()
         ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
