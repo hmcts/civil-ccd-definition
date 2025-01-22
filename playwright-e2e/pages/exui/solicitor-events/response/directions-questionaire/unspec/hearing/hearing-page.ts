@@ -13,16 +13,17 @@ export default class HearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, dateFragment: DateFragment) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.dateFragment = dateFragment;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.availability),
-      super.expectText(radioButtons.unavailableDateRequired.label),
+      super.expectSubheading(subheadings.availability, {index:0}),
+      super.expectText(radioButtons.unavailableDateRequired.label, {index:0}),
     ]);
   }
 
@@ -40,12 +41,12 @@ export default class HearingPage extends ExuiPage(BasePage) {
 
   async addNewUnavailableDate() {
     await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDate);
+    await super.expectSubheading(subheadings.unavailableDate, {index:0});
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDateFastClaim(unavailableDateNumber: number) {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selector(
+      radioButtons.unavailableDateType.singleFastClaim.selector(
         this.claimantDefendantParty,
         unavailableDateNumber,
       ),
@@ -54,9 +55,34 @@ export default class HearingPage extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(unavailableDate, 'date');
   }
 
-  async selectDateRange(unavailableDateNumber: number) {
+  async selectSingleDateSmallClaim(unavailableDateNumber: number) {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.range.selector(
+      radioButtons.unavailableDateType.singleSmallClaim.selector(
+        this.claimantDefendantParty,
+        unavailableDateNumber,
+      ),
+    );
+    const unavailableDate = DateHelper.addToToday({ months: 6 });
+    await this.dateFragment.enterDate(unavailableDate, 'date');
+  }
+
+
+  async selectDateRangeFastClaim(unavailableDateNumber: number) {
+    await super.clickBySelector(
+      radioButtons.unavailableDateType.rangeFastClaim.selector(
+        this.claimantDefendantParty,
+        unavailableDateNumber,
+      ),
+    );
+    const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
+    const unavailableDateTo = DateHelper.addToToday({ months: 7 });
+    await this.dateFragment.enterDate(unavailableDateFrom, 'fromDate');
+    await this.dateFragment.enterDate(unavailableDateTo, 'toDate');
+  }
+
+  async selectDateRangeSmallClaim(unavailableDateNumber: number) {
+    await super.clickBySelector(
+      radioButtons.unavailableDateType.rangeSmallClaim.selector(
         this.claimantDefendantParty,
         unavailableDateNumber,
       ),

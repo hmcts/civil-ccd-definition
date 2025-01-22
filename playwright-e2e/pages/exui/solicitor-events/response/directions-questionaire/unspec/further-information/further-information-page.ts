@@ -17,8 +17,9 @@ export default class FurtherInformationPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [super.verifyHeadings(ccdCaseData), super.expectSubheading(subheadings.furtherInformation)],
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.furtherInformation, {index:0})],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }

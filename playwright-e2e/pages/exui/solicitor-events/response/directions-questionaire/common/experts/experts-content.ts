@@ -94,6 +94,7 @@ export const inputs = {
 export const buttons = {
   addNew: {
     title: 'Add new',
-    selector: '.write-collection-add-item__top',
+    selector: (claimantDefendantParty: Party) =>
+      `div[id='${claimantDefendantParty.oldKey}DQExperts_details'] button[type='button']`,
   },
 };

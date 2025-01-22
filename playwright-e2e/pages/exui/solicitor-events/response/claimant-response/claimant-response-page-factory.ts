@@ -36,6 +36,7 @@ import DefenceResponseDocumentPage from './unspec/defence-response-document/defe
 import RespondentResponse1v2Page from './unspec/respondent-response/respondent-response-1v2-page';
 import RespondentResponse2v1Page from './unspec/respondent-response/respondent-response-2v1-page';
 import RespondentResponsePage from './unspec/respondent-response/respondent-response-page';
+import DateFragment from "../../../fragments/date/date-fragment.ts";
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
     return new RespondentResponsePage(this.page);
@@ -122,7 +123,8 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingPage() {
-    return new HearingPage(this.page, partys.CLAIMANT_1);
+    const dateFragment =  new DateFragment(this.page);
+    return new HearingPage(this.page, partys.CLAIMANT_1, dateFragment);
   }
 
   get hearingSpecPage() {

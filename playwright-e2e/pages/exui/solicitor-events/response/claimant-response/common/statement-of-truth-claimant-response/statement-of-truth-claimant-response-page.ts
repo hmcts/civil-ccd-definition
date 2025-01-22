@@ -20,6 +20,8 @@ export default class StatementOfTruthClaimantResponsePage extends ExuiPage(BaseP
       this.statementOfTruthFragment.verifyContent(),
       super.expectText(paragraphs.descriptiveText1),
       super.expectText(paragraphs.descriptiveText2),
+      super.expectText(paragraphs.descriptiveText3),
+      super.expectText(paragraphs.descriptiveText4),
     ]);
   }
 

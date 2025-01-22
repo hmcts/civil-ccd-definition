@@ -10,12 +10,12 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQExperts_witnessesToAppear_Yes`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_Yes`,
     },
     no: {
       label: 'No',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQExperts_witnessesToAppear_No`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_No`,
     },
   },
 };

@@ -66,7 +66,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
   async ClaimantResponse1v1SmallClaimUnspec() {
-   await super.fetchAndSetCCDCaseData(claimantSolicitorUser,1737388830584345);
+   await super.fetchAndSetCCDCaseData(claimantSolicitorUser,1737540054155596);
     await this.retryExuiEvent(
       async () => {
 
@@ -75,7 +75,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
         await this.processClaimantResponseExpertsPage();
         await this.processClaimantResponseWitnessesPage();
         await this.processClaimantResponseLanguagePage();
-        await this.processClaimantResponseHearingPage();
+        await this.processClaimantResponseHearingSmallClaimPage();
         await this.processClaimantResponseDraftDirectionsPage();
         await this.processClaimantResponseHearingSupportPage();
         await this.processClaimantResponseVulnerabilityQuestionsPage();
@@ -92,6 +92,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   }
 
   async ClaimantResponse1v2SSSmallClaimUnspec() {
+    await super.fetchAndSetCCDCaseData(claimantSolicitorUser,1737539482267122);
     await this.retryExuiEvent(
       async () => {
 
@@ -100,7 +101,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
         await this.processClaimantResponseExpertsPage();
         await this.processClaimantResponseWitnessesPage();
         await this.processClaimantResponseLanguagePage();
-        await this.processClaimantResponseHearingPage();
+        await this.processClaimantResponseHearingSmallClaimPage();
         await this.processClaimantResponseDraftDirectionsPage();
         await this.processClaimantResponseHearingSupportPage();
         await this.processClaimantResponseVulnerabilityQuestionsPage();
@@ -111,8 +112,8 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
 
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      civilAdminUser,
-      { retries: 1 },
+      claimantSolicitorUser,
+      { retries: 0 },
     );
   }
 
@@ -218,11 +219,13 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await languagePage.submit();
   }
 
-  private async processClaimantResponseHearingPage() {
+  private async processClaimantResponseHearingSmallClaimPage() {
     const { hearingPage } = this.claimantResponsePageFactory
     await hearingPage.verifyContent(this.ccdCaseData);
     await hearingPage.selectYesAvailabilityRequired();
-    await hearingPage.selectSingleDate(4);
+    await hearingPage.addNewUnavailableDate();
+    await hearingPage.selectSingleDateSmallClaim(1);
+    await hearingPage.submit();
     await hearingPage.submit();
   }
 
