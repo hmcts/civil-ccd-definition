@@ -17,9 +17,9 @@ export default class SubmitNotifyClaimDetailsCOSPage extends ExuiPage(BasePage) 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      // this.certificateOfServiceSubmitFragment.verifyContent(),
-      // this.certificateOfServiceSubmitFragment.verifyDefendant1Answers(),
-      // this.certificateOfServiceSubmitFragment.verifyDefendant2Answers(),
+      this.certificateOfServiceSubmitFragment.verifyContent(),
+      this.certificateOfServiceSubmitFragment.verifyDefendant1Answers(),
+      this.certificateOfServiceSubmitFragment.verifyDefendant2Answers(),
     ]);
   }
 

@@ -9,6 +9,8 @@ import ConfirmNotifyClaimDetailsPage from './confirm-notify-claim-details/confir
 import SelectDefendantSolicitorPage from './select-defendant-solicitor/select-defendant-solicitor-page';
 import SubmitNotifyClaimDetailsCOSPage from './submit-notify-claim-details/submit-notify-claim-details-cos-page';
 import SubmitNotifyClaimDetailsPage from './submit-notify-claim-details/submit-notify-claim-details-page';
+import SubmitNotifyClaimDetails_LIP_Page from './submit-notify-claim-details/submit-notify-claim-details-lip-page';
+import SubmitNotifyClaimDetails_LIP_LR_Page from './submit-notify-claim-details/submit-notify-claim-details-lip-lr-page';
 import UploadDocumentsPage from './upload-documents/upload-documents-page';
 
 export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
@@ -22,6 +24,14 @@ export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
 
   get submitNotifyClaimDetailsPage() {
     return new SubmitNotifyClaimDetailsPage(this.page);
+  }
+
+  get submitNotifyClaimDetails_LIP_Page() {
+    return new SubmitNotifyClaimDetails_LIP_Page(this.page);
+  }
+
+  get submitNotifyClaimDetails_LIP_LR_Page() {
+    return new SubmitNotifyClaimDetails_LIP_LR_Page(this.page);
   }
 
   get confirmNotifyClaimDetailsPage() {

@@ -122,9 +122,9 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
         await certificateOfService1NotifyClaimDetailsPage.fillDetails();
         await certificateOfService1NotifyClaimDetailsPage.submit();
 
-        const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
-        await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
-        await submitNotifyClaimDetailsPage.submit();
+        const { submitNotifyClaimDetails_LIP_Page } = this.notifyClaimDetailsPageFactory;
+        await submitNotifyClaimDetails_LIP_Page.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimDetails_LIP_Page.submit();
 
         const { confirmNotifyClaimDetailsCOSPage } = this.notifyClaimDetailsPageFactory;
         await confirmNotifyClaimDetailsCOSPage.verifyContent();
@@ -176,9 +176,9 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
         await certificateOfService2NotifyClaimDetailsPage.fillDetails();
         await certificateOfService2NotifyClaimDetailsPage.submit();
 
-        const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
-        await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
-        await submitNotifyClaimDetailsPage.submit();
+        const { submitNotifyClaimDetails_LIP_LR_Page } = this.notifyClaimDetailsPageFactory;
+        await submitNotifyClaimDetails_LIP_LR_Page.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimDetails_LIP_LR_Page.submit();
 
         const { confirmNotifyClaimDetailsCOSPage } = this.notifyClaimDetailsPageFactory;
         await confirmNotifyClaimDetailsCOSPage.verifyContent();
