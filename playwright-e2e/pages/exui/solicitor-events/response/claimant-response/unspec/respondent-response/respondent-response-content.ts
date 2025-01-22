@@ -14,22 +14,17 @@ export const radioButtons = {
     label: 'Do you want to proceed with the claim',
     label2v1: (claimantParty: Party) =>
       `Does Claimant ${claimantParty.number} want to proceed with the claim against`,
-    label1v2: `Do you want to proceed with the claim against`,
     yes: {
       label: 'Yes',
       selector: '#applicant1ProceedWithClaim_Yes',
       selector2v1: (claimantParty: Party) =>
-        `#${StringHelper.capitalise(claimantParty.oldKey)}ProceedWithClaimMultiParty2v1_Yes`,
-      selector1v2: (defendantParty: Party) =>
-        `#applicant1ProceedWithClaimAgainst${StringHelper.capitalise(defendantParty.oldKey)}MultiParty1v2_Yes`,
+        `#${claimantParty.oldKey}ProceedWithClaimMultiParty2v1_Yes`,
     },
     no: {
       label: 'No',
       selector: '#applicant1ProceedWithClaim_No',
       selector2v1: (claimantParty: Party) =>
-        `#${StringHelper.capitalise(claimantParty.oldKey)}ProceedWithClaimMultiParty2v1_No`,
-      selector1v2: (defendantParty: Party) =>
-        `#applicant1ProceedWithClaimAgainst${StringHelper.capitalise(defendantParty.oldKey)}MultiParty1v2_No`,
+        `#${claimantParty.oldKey}ProceedWithClaimMultiParty2v1_No`,
     },
   },
 };
