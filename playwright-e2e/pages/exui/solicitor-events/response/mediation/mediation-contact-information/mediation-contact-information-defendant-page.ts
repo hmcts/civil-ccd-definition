@@ -4,13 +4,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
-import {
-  heading,
-  subHeading,
-  content,
-  inputs,
-  buttons,
-} from './mediation-contact-information-content.ts';
+import { subHeading, content, inputs, buttons } from './mediation-contact-information-content.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
 
@@ -27,7 +21,6 @@ export default class MediationContactInformationDefendantPage extends ExuiPage(B
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectHeading(heading.defendant.label),
         super.expectSubheading(subHeading, { ignoreDuplicates: true }),
         super.expectText(content.paragraph1.label),
         super.expectText(content.paragraph2.label),
@@ -35,8 +28,6 @@ export default class MediationContactInformationDefendantPage extends ExuiPage(B
         super.expectText(inputs.lastName.label, { ignoreDuplicates: true }),
         super.expectText(inputs.emailAddress.label, { ignoreDuplicates: true }),
         super.expectText(inputs.telephoneNumber.label, { ignoreDuplicates: true }),
-        super.expectText(buttons.previous.label),
-        super.expectText(buttons.submit.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
     );

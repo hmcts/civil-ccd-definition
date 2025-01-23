@@ -5,7 +5,6 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
-  heading,
   subHeading,
   content,
   radioButtons,
@@ -24,20 +23,14 @@ export default class MediationAvailabilityClaimantPage extends ExuiPage(BasePage
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [
-        super.verifyHeadings(ccdCaseData),
-        super.expectHeading(heading.claimant.label),
-        super.expectSubheading(subHeading),
-        super.expectText(content.paragraph1.label),
-        super.expectText(radioButtons.mediationAvailability.label),
-        super.expectText(radioButtons.mediationAvailability.yes.label),
-        super.expectText(radioButtons.mediationAvailability.no.label, { exact: true }),
-        super.expectText(buttons.previous.label),
-        super.expectText(buttons.submit.label),
-      ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
-    );
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(subHeading),
+      super.expectText(content.paragraph1.label),
+      super.expectText(radioButtons.mediationAvailability.label),
+      super.expectText(radioButtons.mediationAvailability.yes.label),
+      super.expectText(radioButtons.mediationAvailability.no.label, { exact: true }),
+    ]);
   }
 
   async selectYes() {

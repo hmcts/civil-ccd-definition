@@ -13,6 +13,8 @@ import ApplicationPage from '../directions-questionaire/lr-spec/application/appl
 import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
+import MediationContactInformationClaimantPage from './../mediation/mediation-contact-information/mediation-contact-information-claimant-page';
+import MediationAvailabilityClaimantPage from './../mediation/mediation-availability/mediation-availability-claimant-page';
 import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
 import SmallClaimExpertsClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-claimant-page';
 import SmallClaimWitnessesClaimantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-claimant-page';
@@ -99,6 +101,14 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get disclosureReportPage() {
     return new DisclosureReportPage(this.page, partys.CLAIMANT_1);
+  }
+
+  get mediationContactInformationClaimantPage() {
+    return new MediationContactInformationClaimantPage(this.page, partys.CLAIMANT_1_MEDIATION);
+  }
+
+  get mediationAvailabilityClaimantPage() {
+    return new MediationAvailabilityClaimantPage(this.page, partys.CLAIMANT_1_MEDIATION);
   }
 
   get smallClaimExpertsClaimantPage() {

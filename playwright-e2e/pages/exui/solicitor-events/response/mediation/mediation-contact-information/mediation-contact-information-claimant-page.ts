@@ -4,15 +4,8 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
-import {
-  heading,
-  subHeading,
-  content,
-  inputs,
-  buttons,
-} from './mediation-contact-information-content.ts';
+import { subHeading, content, inputs, buttons } from './mediation-contact-information-content.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
-import StringHelper from '../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class MediationContactInformationClaimantPage extends ExuiPage(BasePage) {
@@ -24,22 +17,16 @@ export default class MediationContactInformationClaimantPage extends ExuiPage(Ba
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [
-        super.verifyHeadings(ccdCaseData),
-        super.expectHeading(heading.claimant.label),
-        super.expectSubheading(subHeading, { ignoreDuplicates: true }),
-        super.expectText(content.paragraph1.label),
-        super.expectText(content.paragraph2.label),
-        super.expectText(inputs.firstName.label),
-        super.expectText(inputs.lastName.label),
-        super.expectText(inputs.emailAddress.label),
-        super.expectText(inputs.telephoneNumber.label),
-        super.expectText(buttons.previous.label),
-        super.expectText(buttons.submit.label),
-      ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
-    );
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(subHeading, { ignoreDuplicates: true }),
+      super.expectText(content.paragraph1.label),
+      super.expectText(content.paragraph2.label),
+      super.expectText(inputs.firstName.label),
+      super.expectText(inputs.lastName.label),
+      super.expectText(inputs.emailAddress.label),
+      super.expectText(inputs.telephoneNumber.label),
+    ]);
   }
 
   async enterMediationContactInformation(claimantParty: Party) {

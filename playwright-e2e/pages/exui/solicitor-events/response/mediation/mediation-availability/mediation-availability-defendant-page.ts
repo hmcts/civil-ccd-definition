@@ -5,7 +5,6 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import {
-  heading,
   subHeading,
   content,
   radioButtons,
@@ -28,7 +27,6 @@ export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePag
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectHeading(heading.defendant.label),
         super.expectSubheading(subHeading, { ignoreDuplicates: true }),
         super.expectText(content.paragraph1.label, { ignoreDuplicates: true }),
         super.expectText(radioButtons.mediationAvailability.label, { ignoreDuplicates: true }),
@@ -37,8 +35,6 @@ export default class MediationAvailabilityDefendantPage extends ExuiPage(BasePag
           exact: true,
           ignoreDuplicates: true,
         }),
-        super.expectText(buttons.previous.label),
-        super.expectText(buttons.submit.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
     );

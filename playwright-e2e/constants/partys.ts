@@ -54,7 +54,7 @@ const partys: Partys = {
     key: 'claimantMediation1',
     oldKey: 'app1',
     number: 1,
-    partyType: PartyType.CLAIMANT,
+    partyType: PartyType.MEDIATION_FRIEND,
   },
   CLAIMANT_WITNESS_1: {
     key: 'claimantWitness1',
@@ -162,13 +162,13 @@ const partys: Partys = {
     key: 'defendant1Mediation',
     oldKey: 'resp1',
     number: 1,
-    partyType: PartyType.DEFENDANT,
+    partyType: PartyType.MEDIATION_FRIEND,
   },
   DEFENDANT_2_MEDIATION: {
     key: 'defendant2Mediation',
     oldKey: 'resp2',
     number: 2,
-    partyType: PartyType.DEFENDANT,
+    partyType: PartyType.MEDIATION_FRIEND,
   },
 };
 

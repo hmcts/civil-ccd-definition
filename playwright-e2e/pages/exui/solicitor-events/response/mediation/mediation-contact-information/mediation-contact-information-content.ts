@@ -1,10 +1,5 @@
 import { Party } from '../../../../../../models/partys';
 
-export const heading = {
-  claimant: { label: 'View and respond to defence' },
-  defendant: { label: 'Respond to claim' },
-};
-
 export const subHeading = 'Mediation contact information';
 
 export const content = {

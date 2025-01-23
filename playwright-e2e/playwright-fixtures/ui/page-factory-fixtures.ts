@@ -9,7 +9,6 @@ import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/resp
 import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
 import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 import CreateCaseFlagsPageFactory from '../../pages/exui/caseworker-events/create-case-flags/create-case-flags-page-factory';
-import MediationPageFactory from '../../pages/exui/solicitor-events/response/mediation/mediation-page-factory';
 
 type PageFactoryFixtures = {
   _pageUtilsFactory: PageUtilsFactory;
@@ -22,7 +21,6 @@ type PageFactoryFixtures = {
   _defendantResponsePageFactory: DefendantResponsePageFactory;
   _claimantResponsePageFactory: ClaimantResponsePageFactory;
   _createCaseFlagsPageFactory: CreateCaseFlagsPageFactory;
-  _mediationPageFactory: MediationPageFactory;
 };
 
 export const test = base.extend<PageFactoryFixtures>({
@@ -55,8 +53,5 @@ export const test = base.extend<PageFactoryFixtures>({
   },
   _createCaseFlagsPageFactory: async ({ page }, use) => {
     await use(new CreateCaseFlagsPageFactory(page));
-  },
-  _mediationPageFactory: async ({ page }, use) => {
-    await use(new MediationPageFactory(page));
   }
 });
