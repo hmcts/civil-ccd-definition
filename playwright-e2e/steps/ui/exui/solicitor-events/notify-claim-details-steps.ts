@@ -163,7 +163,7 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
     );
   }
 
-  async NotifyClaimDetails1v21LIP1LR() {
+  async NotifyClaimDetails1v1LIP1LR() {
     await this.retryExuiEvent(
       async () => {
         const { uploadDocumentsPage } = this.notifyClaimDetailsPageFactory;
