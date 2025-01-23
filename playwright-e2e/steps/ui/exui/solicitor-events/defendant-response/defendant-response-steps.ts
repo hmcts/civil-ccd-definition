@@ -28,6 +28,28 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         const { confirmDetailsPage } = this.defendantResponsePageFactory
         await confirmDetailsPage.verifyContent(this.ccdCaseData);
         await confirmDetailsPage.submit();
+
+        const { respondentResponseTypeDefendant1Page } = this.defendantResponsePageFactory
+        await respondentResponseTypeDefendant1Page.verifyContent(this.ccdCaseData);
+        await respondentResponseTypeDefendant1Page.selectRejectAll();
+        await respondentResponseTypeDefendant1Page.submit();
+
+        const { solicitorReferencesPage } = this.defendantResponsePageFactory
+        await solicitorReferencesPage.verifyContent(this.ccdCaseData);
+        await solicitorReferencesPage.fillDefendant1Ref();
+        await solicitorReferencesPage.submit();
+
+        const { uploadDefendantResponseDefendant1Page } = this.defendantResponsePageFactory
+        await uploadDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
+        await uploadDefendantResponseDefendant1Page.uploadDefence();
+        await uploadDefendantResponseDefendant1Page.submit();
+
+        const { expertsDefendant1Page } = this.defendantResponsePageFactory
+        await expertsDefendant1Page.verifyContent(this.ccdCaseData);
+        await expertsDefendant1Page.useExperts();
+        await expertsDefendant1Page.addNewExpert();
+        await expertsDefendant1Page.submit();
+
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
