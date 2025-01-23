@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
-import claimantDefendantTypes from '../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
@@ -28,11 +28,11 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
   async enterCompanyDetails() {
     const companyData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
-      claimantDefendantTypes.COMPANY,
+      claimantDefendantPartyTypes.COMPANY,
     );
     await super.inputText(
       companyData.companyName,
-      inputs.name.selector(this.claimantDefendantParty, claimantDefendantTypes.COMPANY),
+      inputs.name.selector(this.claimantDefendantParty, claimantDefendantPartyTypes.COMPANY),
     );
     await super.inputText(
       companyData.partyEmail,

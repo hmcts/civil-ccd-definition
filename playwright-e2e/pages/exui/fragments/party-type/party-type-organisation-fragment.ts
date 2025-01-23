@@ -4,12 +4,12 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from '../party-type/party-type-content';
-import claimantDefendantTypes from '../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class PartyTypeOrganisationFragment extends ExuiPage(BasePage) {
-  private partyType = claimantDefendantTypes.ORGANISATION;
+  private partyType = claimantDefendantPartyTypes.ORGANISATION;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {

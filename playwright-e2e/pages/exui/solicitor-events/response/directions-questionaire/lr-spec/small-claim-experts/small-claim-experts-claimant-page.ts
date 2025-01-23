@@ -6,14 +6,14 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { inputs, radioButtons } from './small-claim-experts-content.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
-import { subHeadings } from '../../common/witnesses/witnesses-content.ts';
+import { subheadings } from '../../common/witnesses/witnesses-content.ts';
 
 @AllMethodsStep()
 export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subHeadings.witnesses),
+      super.expectSubheading(subheadings.witnesses),
       super.expectText(radioButtons.expertsRequired.label),
     ]);
   }
