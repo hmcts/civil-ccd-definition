@@ -24,10 +24,10 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
   async NotifyClaimDetails1v1() {
     await this.retryExuiEvent(
       async () => {
-        const { uploadDocumentsPage } = this.notifyClaimDetailsPageFactory;
-        await uploadDocumentsPage.verifyContent(this.ccdCaseData);
-        await uploadDocumentsPage.uploadDocuments();
-        await uploadDocumentsPage.submit();
+        const { uploadNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await uploadNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
+        await uploadNotifyClaimDetailsPage.uploadDocuments();
+        await uploadNotifyClaimDetailsPage.submit();
 
         const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
         await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
