@@ -459,7 +459,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async expectText(
+  protected async   expectText(
     text: string | number,
     options: {
       message?: string;

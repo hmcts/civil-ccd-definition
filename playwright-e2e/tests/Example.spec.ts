@@ -32,3 +32,22 @@ test('Api Unspec Test Example', async ({
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
 });
+
+test('Unspec with Defendant Response', {tag: ['@debug']}, async ({
+                                         ApiCreateClaimSteps,
+                                         ApiServiceRequestsSteps,
+                                         IdamSteps,
+                                         NotifyClaimSteps,
+                                         ApiCaseRoleAssignmentSteps,
+                                         NotifyClaimDetailsSteps,
+                                         DefendantResponseSteps
+                                       }) => {
+  await ApiCreateClaimSteps.Create1v1Claim();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await NotifyClaimSteps.NotifyClaim1v1();
+  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
+  await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
+  await IdamSteps.DefendantSolicitor1Login();
+  await DefendantResponseSteps.RespondToDefence1v1();
+});
