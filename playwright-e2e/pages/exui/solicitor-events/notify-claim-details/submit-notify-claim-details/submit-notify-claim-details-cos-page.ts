@@ -1,25 +1,28 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CertificateOfServiceSubmitFragment from '../../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
+import CertificateOfServiceNotifyClaimDetailsSubmitFragment from '../../../fragments/certificate-of-service-notify-claim-details-submit/certificate-of-service-notify-claim-details-submit-fragment';
 import ExuiPage from '../../../exui-page/exui-page';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 
 @AllMethodsStep()
 export default class SubmitNotifyClaimDetailsCOSPage extends ExuiPage(BasePage) {
-  private certificateOfServiceSubmitFragment: CertificateOfServiceSubmitFragment;
+  private certificateOfServiceNotifyClaimDetailsSubmitFragment: CertificateOfServiceNotifyClaimDetailsSubmitFragment;
 
-  constructor(certificateOfServiceSubmitFragment: CertificateOfServiceSubmitFragment, page: Page) {
+  constructor(
+    certificateOfServiceSubmitFragment: CertificateOfServiceNotifyClaimDetailsSubmitFragment,
+    page: Page,
+  ) {
     super(page);
-    this.certificateOfServiceSubmitFragment = certificateOfServiceSubmitFragment;
+    this.certificateOfServiceNotifyClaimDetailsSubmitFragment = certificateOfServiceSubmitFragment;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      this.certificateOfServiceSubmitFragment.verifyContent(),
-      this.certificateOfServiceSubmitFragment.verifyDefendant1Answers(),
-      this.certificateOfServiceSubmitFragment.verifyDefendant2Answers(),
+      this.certificateOfServiceNotifyClaimDetailsSubmitFragment.verifyContent(),
+      this.certificateOfServiceNotifyClaimDetailsSubmitFragment.verifyDefendant1Answers(),
+      this.certificateOfServiceNotifyClaimDetailsSubmitFragment.verifyDefendant2Answers(),
     ]);
   }
 

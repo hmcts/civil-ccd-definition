@@ -2,10 +2,16 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
 import ExuiPage from '../../exui-page/exui-page';
-import { getDefendantHeading, subheading, table } from './certificate-of-service-submit-content';
+import {
+  getDefendantHeading,
+  subheading,
+  table,
+} from './certificate-of-service-notify-claim-details-submit-content';
 
 @AllMethodsStep()
-export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePage) {
+export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extends ExuiPage(
+  BasePage,
+) {
   async verifyContent() {
     await super.runVerifications(
       [
