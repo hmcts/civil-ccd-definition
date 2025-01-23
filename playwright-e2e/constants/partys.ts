@@ -2,23 +2,19 @@ import PartyType from '../enums/party-types';
 import Partys from '../models/partys';
 
 const partys: Partys = {
-  CLAIMANT: {
-    key: 'claimant',
-    oldKey: 'applicant',
-    number: 1,
-    partyType: PartyType.CLAIMANT,
-  },
   CLAIMANT_1: {
     key: 'claimant1',
     oldKey: 'applicant1',
     number: 1,
     partyType: PartyType.CLAIMANT,
+    oldPartyType: PartyType.APPLICANT,
   },
   CLAIMANT_2: {
     key: 'claimant2',
     oldKey: 'applicant2',
     number: 2,
     partyType: PartyType.CLAIMANT,
+    oldPartyType: PartyType.APPLICANT,
   },
   CLAIMANT_1_LITIGATION_FRIEND: {
     key: 'claimant1LitigationFriend',
@@ -62,23 +58,19 @@ const partys: Partys = {
     number: 1,
     partyType: PartyType.WITNESS,
   },
-  DEFENDANT: {
-    key: 'defendant',
-    oldKey: 'respondent',
-    number: 1,
-    partyType: PartyType.DEFENDANT,
-  },
   DEFENDANT_1: {
     key: 'defendant1',
     oldKey: 'respondent1',
     number: 1,
     partyType: PartyType.DEFENDANT,
+    oldPartyType: PartyType.RESPONDENT,
   },
   DEFENDANT_2: {
     key: 'defendant2',
     oldKey: 'respondent2',
     number: 2,
     partyType: PartyType.DEFENDANT,
+    oldPartyType: PartyType.RESPONDENT,
   },
   DEFENDANT_1_LITIGATION_FRIEND: {
     key: 'defendant1LitigationFriend',
