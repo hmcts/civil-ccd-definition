@@ -10,12 +10,10 @@ module.exports = {
   },
 
   async addFixedCosts() {
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      I.waitForElement(this.fields.fixedCosts.claimFixedCosts);
-      await I.runAccessibilityTest();
-      await I.click('Yes');
-      I.fillField(this.fields.fixedCostAmount, '20000');
-      await I.clickContinue();
-    }
+    I.waitForElement(this.fields.fixedCosts.claimFixedCosts);
+    await I.runAccessibilityTest();
+    await I.click('Yes');
+    I.fillField(this.fields.fixedCostAmount, '20000');
+    await I.clickContinue();
   },
 };
