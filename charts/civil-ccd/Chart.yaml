@@ -66,9 +66,3 @@ dependencies:
     version: ~0.0.58
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: am-org-role-mapping-service.enabled
-
-# Stiching
-  - name: em-ccdorc
-    version: 2.0.25
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
-    condition: em-ccdorc.enabled
