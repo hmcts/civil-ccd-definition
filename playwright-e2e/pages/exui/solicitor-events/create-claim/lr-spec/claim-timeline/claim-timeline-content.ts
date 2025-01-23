@@ -11,6 +11,9 @@ export const buttons = {
 };
 
 export const inputs = {
+  timelineDate: {
+    selectorKey: 'timelineDate',
+  },
   timelineDescription: {
     label: 'What happened',
     selector: (eventNumber: number) => `#timelineOfEvents_${eventNumber - 1}_timelineDescription`,

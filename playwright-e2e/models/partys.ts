@@ -6,6 +6,7 @@ export type Party = {
   number: number;
   partyType: PartyType;
   oldPartyType?: PartyType;
+  shortOldKey?: string;
 };
 
 type Partys = {
@@ -18,6 +19,7 @@ type Partys = {
   CLAIMANT_WITNESS_2: Party;
   CLAIMANT_EXPERT_1: Party;
   CLAIMANT_EXPERT_2: Party;
+  CLAIMANT_1_MEDIATION_FRIEND: Party;
   DEFENDANT_1: Party;
   DEFENDANT_2: Party;
   DEFENDANT_1_LITIGATION_FRIEND: Party;
@@ -32,6 +34,8 @@ type Partys = {
   DEFENDANT_1_EXPERT_2: Party;
   DEFENDANT_2_EXPERT_1: Party;
   DEFENDANT_2_EXPERT_2: Party;
+  DEFENDANT_1_MEDIATION_FRIEND: Party;
+  DEFENDANT_2_MEDIATION_FRIEND: Party;
 };
 
 export default Partys;
