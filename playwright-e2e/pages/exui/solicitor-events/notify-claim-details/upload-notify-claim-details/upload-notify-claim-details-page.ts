@@ -23,7 +23,7 @@ export default class UploadNotifyClaimDetailsPage extends ExuiPage(BasePage) {
   }
 
   async uploadDocuments() {
-    this.particularsOfClaimFragment.uploadDocuments();
+    await this.particularsOfClaimFragment.uploadDocuments();
   }
 
   async submit() {

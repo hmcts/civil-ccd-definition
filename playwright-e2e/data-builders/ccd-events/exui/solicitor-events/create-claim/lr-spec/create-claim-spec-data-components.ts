@@ -4,6 +4,7 @@ import {
   defendantSolicitor2User,
 } from '../../../../../../config/users/exui-users';
 import partys from '../../../../../../constants/partys';
+import CaseRole from '../../../../../../enums/case-role';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
@@ -57,7 +58,7 @@ const claimantSolicitor1 = {
   ClaimantSolicitorOrganisation: {
     applicant1OrganisationPolicy: {
       OrgPolicyReference: 'Claimant policy reference',
-      OrgPolicyCaseAssignedRole: '[CLAIMANTSOLICITORONE]',
+      OrgPolicyCaseAssignedRole: `[${CaseRole.APPLICANT_SOLICITOR_ONE}]`,
       Organisation: {
         OrganisationID: claimantSolicitorUser.orgId,
       },
@@ -87,7 +88,7 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
         respondent1OrgRegistered: 'Yes',
         respondent1OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference',
-          OrgPolicyCaseAssignedRole: '[DEFENDANTSOLICITORONE]',
+          OrgPolicyCaseAssignedRole: `[${CaseRole.RESPONDENT_SOLICITOR_ONE}]`,
           Organisation: {
             OrganisationID: defendantSolicitor1User.orgId,
           },
@@ -167,7 +168,7 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
         respondent2OrgRegistered: 'Yes',
         respondent2OrganisationPolicy: {
           OrgPolicyReference: 'Defendant policy reference 2',
-          OrgPolicyCaseAssignedRole: '[DEFENDANTSOLICITORTWO]',
+          OrgPolicyCaseAssignedRole: `[${CaseRole.RESPONDENT_SOLICITOR_TWO}]`,
           Organisation: { OrganisationID: defendantSolicitor2User.orgId },
         },
       },
