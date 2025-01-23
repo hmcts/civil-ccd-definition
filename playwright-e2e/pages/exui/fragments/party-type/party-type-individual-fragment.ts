@@ -5,13 +5,13 @@ import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from '../party-type/party-type-content';
 import DateFragment from '../date/date-fragment';
-import claimantDefendantTypes from '../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private partyType = claimantDefendantTypes.INDIVIDUAL;
+  private partyType = claimantDefendantPartyTypes.INDIVIDUAL;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {

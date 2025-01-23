@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { buttons, heading, inputs } from './how-to-add-timeline-manual-content.ts';
+import { heading, inputs } from './how-to-add-timeline-manual-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
@@ -32,7 +32,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
   }
 
   async addNewEvent() {
-    await super.clickBySelector(buttons.addNew.selector, { first: true });
+    await super.clickAddNew();
   }
 
   async verifyEventInputs(count = 1) {
