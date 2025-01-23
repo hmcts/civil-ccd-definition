@@ -12,8 +12,31 @@ module.exports = {
           no: `#${party}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_No`
         }
       },
+      intFixedRecoverableCostRegime: {
+        id: `#${party}DQFixedRecoverableCostsIntermediate_isSubjectToFixedRecoverableCostRegime`,
+        options: {
+          yes: `#${party}DQFixedRecoverableCostsIntermediate_isSubjectToFixedRecoverableCostRegime_Yes`,
+          no: `#${party}DQFixedRecoverableCostsIntermediate_isSubjectToFixedRecoverableCostRegime_No`
+        }
+      },
+      isComplexityBandingAgreed: {
+        id: `#${party}DQFixedRecoverableCostsIntermediate_complexityBandingAgreed`,
+        options: {
+          yes: `#${party}DQFixedRecoverableCostsIntermediate_complexityBandingAgreed_Yes`,
+          no: `#${party}DQFixedRecoverableCostsIntermediate_complexityBandingAgreed_No`
+        }
+      },
       band: {
         id: `#${party}DQFixedRecoverableCosts_band`,
+        options: {
+          band1: 'BAND_1',
+          band2: 'BAND_2',
+          band3: 'BAND_3',
+          band4: 'BAND_4'
+        }
+      },
+      intBand: {
+        id: `#${party}DQFixedRecoverableCostsIntermediate_band`,
         options: {
           band1: 'BAND_1',
           band2: 'BAND_2',
@@ -29,6 +52,7 @@ module.exports = {
         }
       },
       reasons: `#${party}DQFixedRecoverableCosts_reasons`,
+      intFRCReasons: `#${party}DQFixedRecoverableCostsIntermediate_reasons`,
     };
   },
 
@@ -52,5 +76,22 @@ module.exports = {
 
       await I.clickContinue();
     }
+  },
+
+  async fixedRecoverableCostsInt(party) {
+      await within(this.fields(party).intFixedRecoverableCostRegime.id, () => {
+        I.runAccessibilityTest();
+        I.click(`${this.fields(party).intFixedRecoverableCostRegime.options.yes}`);
+      });
+
+    await within(this.fields(party).isComplexityBandingAgreed.id, () => {
+      I.click(`${this.fields(party).isComplexityBandingAgreed.options.yes}`);
+    });
+
+      await within(this.fields(party).intBand.id, () => {
+        I.click(`${this.fields(party).intBand.id}-${this.fields(party).band.options.band2}`);
+      });
+      I.fillField(this.fields(party).intFRCReasons, 'Some good reasons');
+      await I.clickContinue();
   }
 };

@@ -1,6 +1,14 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "showOldDJFixedCostsScreen",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fixedCosts",
     "Label": "Fixed Costs",
     "FieldType": "FixedCosts",
@@ -18,14 +26,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "showDJFixedCostsScreen",
-    "Label": " ",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "showOldDJFixedCostsScreen",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
