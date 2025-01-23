@@ -70,7 +70,7 @@ export default class CaseDataHelper {
         return '07501234567';
       case partys.CLAIMANT_WITNESS_2:
         return '07984112233';
-      case partys.CLAIMANT_1_MEDIATION:
+      case partys.CLAIMANT_1_MEDIATION_FRIEND:
         return '07984224466';
       case partys.DEFENDANT_1:
         return '07853654321';
@@ -96,9 +96,9 @@ export default class CaseDataHelper {
         return '07592345612';
       case partys.DEFENDANT_2_WITNESS_2:
         return '07985674230';
-      case partys.DEFENDANT_1_MEDIATION:
+      case partys.DEFENDANT_1_MEDIATION_FRIEND:
         return '07985366442';
-      case partys.DEFENDANT_2_MEDIATION:
+      case partys.DEFENDANT_2_MEDIATION_FRIEND:
         return '07985685321';
     }
   }

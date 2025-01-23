@@ -35,8 +35,6 @@ import DefenceRouteDefendant1Page from './lr-spec/defence-route/defence-route-pa
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
 import HowToAddTimelineUploadPage from './lr-spec/how-to-add-timeline-upload/how-to-add-timeline-upload-page';
 import HowToAddTimelinePage from './lr-spec/how-to-add-timeline/how-to-add-timeline-page';
-import MediationContactInformationDefendantPage from './../mediation/mediation-contact-information/mediation-contact-information-defendant-page';
-import MediationAvailabilityDefendantPage from './../mediation/mediation-availability/mediation-availability-defendant-page';
 import MediationPage from './lr-spec/mediation/mediation-page';
 import RespondentChecklistPage from './lr-spec/respondent-checklist/respondent-checklist-page';
 import RespondentResponseType1v2SpecPage from './lr-spec/respondent-response-type-spec/respondent-response-type-1v2-spec-page';
@@ -57,6 +55,8 @@ import RespondentResponseType2v1Page from './unspec/respondent-response-type/res
 import RespondentResponseTypePage from './unspec/respondent-response-type/respondent-response-type-page';
 import SolicitorReferencesPage from './unspec/solicitor-references/solicitor-references-page';
 import UploadDefendantResponsePage from './unspec/upload-defendant-response/upload-defendant-response-page';
+import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
+import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -196,19 +196,37 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get mediationContactInformationDefendant1Page() {
-    return new MediationContactInformationDefendantPage(this.page, partys.DEFENDANT_1_MEDIATION);
+    return new MediationContactInformationPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_1_MEDIATION_FRIEND,
+    );
   }
 
   get mediationContactInformationDefendant2Page() {
-    return new MediationContactInformationDefendantPage(this.page, partys.DEFENDANT_2_MEDIATION);
+    return new MediationContactInformationPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_2_MEDIATION_FRIEND,
+    );
   }
 
   get mediationAvailabilityDefendant1Page() {
-    return new MediationAvailabilityDefendantPage(this.page, partys.DEFENDANT_1_MEDIATION);
+    const dateFragment = new DateFragment(this.page);
+    return new MediationAvailabilityPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1_MEDIATION_FRIEND,
+    );
   }
 
   get mediationAvailabilityDefendant2Page() {
-    return new MediationAvailabilityDefendantPage(this.page, partys.DEFENDANT_2_MEDIATION);
+    const dateFragment = new DateFragment(this.page);
+    return new MediationAvailabilityPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2_MEDIATION_FRIEND,
+    );
   }
 
   get fileDirectionsQuestionaireDefendant1Page() {
@@ -292,11 +310,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingDefendant1Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_1);
+    const dateFragment = new DateFragment(this.page);
+    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_1);
   }
 
   get hearingDefendant2Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_2);
+    const dateFragment = new DateFragment(this.page);
+    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_2);
   }
 
   get smallClaimHearingDefendant1Page() {

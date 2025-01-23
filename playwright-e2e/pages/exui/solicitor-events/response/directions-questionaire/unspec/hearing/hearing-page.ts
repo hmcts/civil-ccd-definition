@@ -13,8 +13,9 @@ export default class HearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, dateFragment: DateFragment, claimantDefendantParty: Party) {
     super(page);
+    this.dateFragment = dateFragment;
     this.claimantDefendantParty = claimantDefendantParty;
   }
 

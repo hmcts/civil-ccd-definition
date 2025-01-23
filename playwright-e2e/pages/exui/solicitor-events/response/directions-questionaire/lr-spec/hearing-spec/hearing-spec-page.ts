@@ -13,7 +13,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, dateFragment: DateFragment, claimantDefendantParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
   }

@@ -13,8 +13,8 @@ import ApplicationPage from '../directions-questionaire/lr-spec/application/appl
 import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
-import MediationContactInformationClaimantPage from './../mediation/mediation-contact-information/mediation-contact-information-claimant-page';
-import MediationAvailabilityClaimantPage from './../mediation/mediation-availability/mediation-availability-claimant-page';
+import MediationContactInformationClaimantPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
+import MediationAvailabilityClaimantPage from '../mediation/mediation-availability/mediation-availability-page';
 import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
 import SmallClaimExpertsClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-claimant-page';
 import SmallClaimWitnessesClaimantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-claimant-page';
@@ -38,6 +38,9 @@ import DefenceResponseDocumentPage from './unspec/defence-response-document/defe
 import RespondentResponse1v2Page from './unspec/respondent-response/respondent-response-1v2-page';
 import RespondentResponse2v1Page from './unspec/respondent-response/respondent-response-2v1-page';
 import RespondentResponsePage from './unspec/respondent-response/respondent-response-page';
+import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
+import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
+import DateFragment from '../../../fragments/date/date-fragment';
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
     return new RespondentResponsePage(this.page);
@@ -103,12 +106,21 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new DisclosureReportPage(this.page, partys.CLAIMANT_1);
   }
 
-  get mediationContactInformationClaimantPage() {
-    return new MediationContactInformationClaimantPage(this.page, partys.CLAIMANT_1_MEDIATION);
+  get mediationContactInformationPage() {
+    return new MediationContactInformationPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_1_MEDIATION_FRIEND,
+    );
   }
 
-  get mediationAvailabilityClaimantPage() {
-    return new MediationAvailabilityClaimantPage(this.page, partys.CLAIMANT_1_MEDIATION);
+  get mediationAvailabilityPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new MediationAvailabilityPage(
+      this.page,
+      dateFragment,
+      partys.CLAIMANT_1_MEDIATION_FRIEND,
+    );
   }
 
   get smallClaimExpertsClaimantPage() {
@@ -132,11 +144,13 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingPage() {
-    return new HearingPage(this.page, partys.CLAIMANT_1);
+    const dateFragment = new DateFragment(this.page);
+    return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
   get hearingSpecPage() {
-    return new HearingSpecPage(this.page, partys.CLAIMANT_1);
+    const dateFragment = new DateFragment(this.page);
+    return new HearingSpecPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
   get draftDirectionsPage() {

@@ -5,6 +5,7 @@ const partys: Partys = {
   CLAIMANT_1: {
     key: 'claimant1',
     oldKey: 'applicant1',
+    shortOldKey: 'app1',
     number: 1,
     partyType: PartyType.CLAIMANT,
     oldPartyType: PartyType.APPLICANT,
@@ -12,6 +13,7 @@ const partys: Partys = {
   CLAIMANT_2: {
     key: 'claimant2',
     oldKey: 'applicant2',
+    shortOldKey: 'app2',
     number: 2,
     partyType: PartyType.CLAIMANT,
     oldPartyType: PartyType.APPLICANT,
@@ -46,7 +48,7 @@ const partys: Partys = {
     number: 2,
     partyType: PartyType.EXPERT,
   },
-  CLAIMANT_1_MEDIATION: {
+  CLAIMANT_1_MEDIATION_FRIEND: {
     key: 'claimantMediation1',
     oldKey: 'app1',
     number: 1,
@@ -67,6 +69,7 @@ const partys: Partys = {
   DEFENDANT_1: {
     key: 'defendant1',
     oldKey: 'respondent1',
+    shortOldKey: 'resp1',
     number: 1,
     partyType: PartyType.DEFENDANT,
     oldPartyType: PartyType.RESPONDENT,
@@ -74,6 +77,7 @@ const partys: Partys = {
   DEFENDANT_2: {
     key: 'defendant2',
     oldKey: 'respondent2',
+    shortOldKey: 'resp2',
     number: 2,
     partyType: PartyType.DEFENDANT,
     oldPartyType: PartyType.RESPONDENT,
@@ -150,13 +154,13 @@ const partys: Partys = {
     number: 2,
     partyType: PartyType.WITNESS,
   },
-  DEFENDANT_1_MEDIATION: {
+  DEFENDANT_1_MEDIATION_FRIEND: {
     key: 'defendant1Mediation',
     oldKey: 'resp1',
     number: 1,
     partyType: PartyType.MEDIATION_FRIEND,
   },
-  DEFENDANT_2_MEDIATION: {
+  DEFENDANT_2_MEDIATION_FRIEND: {
     key: 'defendant2Mediation',
     oldKey: 'resp2',
     number: 2,
