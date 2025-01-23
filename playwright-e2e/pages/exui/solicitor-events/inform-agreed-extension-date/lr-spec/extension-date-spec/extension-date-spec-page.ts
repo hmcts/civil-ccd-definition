@@ -29,7 +29,7 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
       days: 28,
       workingDay: true,
     });
-    await this.dateFragment.enterDate(extensionDate, 'respondentSolicitor1AgreedDeadlineExtension');
+    await this.dateFragment.enterDate(extensionDate, inputs.extensionDate.selectorKey);
   }
 
   async submit() {

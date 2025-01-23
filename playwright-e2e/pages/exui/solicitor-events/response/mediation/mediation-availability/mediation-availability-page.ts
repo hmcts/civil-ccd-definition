@@ -60,7 +60,7 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
       ),
     );
     const unavailableDate = DateHelper.addToToday({ months: 1 });
-    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorPrefix);
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
   async selectDateRange(unavailableDateNumber: number) {
@@ -72,8 +72,8 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 1 });
     const unavailableDateTo = DateHelper.addToToday({ months: 2 });
-    await this.dateFragment.enterDate(unavailableDateFrom, inputs.dateFrom.selectorPrefix);
-    await this.dateFragment.enterDate(unavailableDateTo, inputs.dateTo.selectorPrefix);
+    await this.dateFragment.enterDate(unavailableDateFrom, inputs.dateFrom.selectorKey);
+    await this.dateFragment.enterDate(unavailableDateTo, inputs.dateTo.selectorKey);
   }
 
   async submit() {

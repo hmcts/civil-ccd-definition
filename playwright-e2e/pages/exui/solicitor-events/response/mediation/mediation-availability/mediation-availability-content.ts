@@ -47,17 +47,17 @@ export const inputs = {
   singleDate: {
     label: 'Unavailable date',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
-    selectorPrefix: 'date',
+    selectorKey: 'date',
   },
   dateFrom: {
     label: 'Date from',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
-    selectorPrefix: 'fromDate',
+    selectorKey: 'fromDate',
   },
   dateTo: {
     label: 'Date to',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
-    selectorPrefix: 'toDate',
+    selectorKey: 'toDate',
   },
 };
 

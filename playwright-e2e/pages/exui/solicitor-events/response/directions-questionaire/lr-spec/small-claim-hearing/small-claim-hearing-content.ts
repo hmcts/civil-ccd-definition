@@ -53,6 +53,18 @@ export const buttons = {
 };
 
 export const inputs = {
+  singleDate: {
+    label: 'Unavailable date',
+    selectorKey: 'date',
+  },
+  dateFrom: {
+    label: 'Date from',
+    selectorKey: 'fromDate',
+  },
+  dateTo: {
+    label: 'Date to',
+    selectorKey: 'toDate',
+  },
   interpreterType: {
     label: 'Type of interpreter',
     selector: '#SmallClaimHearingInterpreterDescription',
