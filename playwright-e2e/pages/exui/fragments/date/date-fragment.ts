@@ -38,7 +38,9 @@ export default class DateFragment extends ExuiPage(BasePage) {
       inputs.month.selector(selectorPrefix),
       { index },
     );
-    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), { index });
+    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), {
+      index,
+    });
   }
 
   async enterDateOfBirth(
