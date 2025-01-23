@@ -1,7 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { selectors, subheadings } from './legal-representation-spec-content';
+import { radioButtons, subheadings } from './legal-representation-spec-content';
 
 @AllMethodsStep()
 export default class LegalRepresentationSpecPage extends ExuiPage(BasePage) {
@@ -9,17 +9,15 @@ export default class LegalRepresentationSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectSubheading(subheadings.defendantLegalRepresentative),
-      super.expectSelector(selectors.respondentRepresentedYes),
-      super.expectSelector(selectors.respondentRepresentedNo),
     ]);
   }
 
-  async clickYesForLegalRepresentative() {
-    await super.clickBySelector(selectors.respondentRepresentedYes);
+  async selectYes() {
+    await super.clickBySelector(radioButtons.defendantRepresented.yes.selector);
   }
 
   async clickNoForLegalRepresentative() {
-    await super.clickBySelector(selectors.respondentRepresentedNo);
+    await super.clickBySelector(radioButtons.defendantRepresented.yes.selector);
   }
 
   async submit() {
