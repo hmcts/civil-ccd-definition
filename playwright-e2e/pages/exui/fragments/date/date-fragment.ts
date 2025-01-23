@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './date-content';
-import { ClaimantDefendantType } from '../../../../models/claimant-defendant-types';
+import { ClaimantDefendantPartyType } from '../../../../models/claimant-defendant-party-types';
 import DateHelper from '../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { Party } from '../../../../models/partys';
@@ -38,12 +38,14 @@ export default class DateFragment extends ExuiPage(BasePage) {
       inputs.month.selector(selectorPrefix),
       { index },
     );
-    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), { index });
+    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), {
+      index,
+    });
   }
 
   async enterDateOfBirth(
     claimantDefendantParty: Party,
-    partyType: ClaimantDefendantType,
+    partyType: ClaimantDefendantPartyType,
     index?: number,
   ) {
     const selectorPrefix = `${partyType.key}DateOfBirth`;

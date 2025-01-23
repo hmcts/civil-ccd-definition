@@ -3,8 +3,8 @@ import StringHelper from './string-helper';
 import ClaimTrack from '../enums/claim-track';
 import { Party } from '../models/partys';
 import partys from '../constants/partys';
-import { ClaimantDefendantType } from '../models/claimant-defendant-types';
-import claimantDefendantTypes from '../constants/party-types';
+import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -153,7 +153,7 @@ export default class CaseDataHelper {
     };
   }
 
-  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantType): any {
+  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantPartyType): any {
     const commonPartyData = {
       type: partyType.type,
       partyEmail: `${party.key}@${partyType.key}.com`,
@@ -165,7 +165,7 @@ export default class CaseDataHelper {
     const partyTypeKey = StringHelper.capitalise(partyType.key);
 
     switch (partyType) {
-      case claimantDefendantTypes.INDIVIDUAL:
+      case claimantDefendantPartyTypes.INDIVIDUAL:
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
@@ -174,13 +174,13 @@ export default class CaseDataHelper {
           individualDateOfBirth: this.getPartyDateOfBirth(party),
         };
 
-      case claimantDefendantTypes.COMPANY:
+      case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
         };
 
-      case claimantDefendantTypes.SOLE_TRADER:
+      case claimantDefendantPartyTypes.SOLE_TRADER:
         return {
           ...commonPartyData,
           soleTraderTitle: 'Mx',
@@ -189,7 +189,7 @@ export default class CaseDataHelper {
           soleTraderTradingAs: `${partyKey} Trade`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(party),
         };
-      case claimantDefendantTypes.ORGANISATION:
+      case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
           organisationName: `${partyKey} ${partyTypeKey}`,

@@ -169,7 +169,10 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get statementOfTruthClaimantResponsePage() {
-    const statementofTruthFragment = new StatementOfTruthFragment(this.page);
+    const statementofTruthFragment = new StatementOfTruthFragment(
+      this.page,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
     return new StatementOfTruthClaimantResponsePage(this.page, statementofTruthFragment);
   }
 

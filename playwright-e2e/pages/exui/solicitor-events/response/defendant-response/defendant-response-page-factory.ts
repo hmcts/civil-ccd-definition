@@ -387,8 +387,19 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ApplicationPage(this.page, partys.DEFENDANT_2);
   }
 
-  get statementOfTruthDefendantResponsePage() {
-    const statementofTruthFragment = new StatementOfTruthFragment(this.page);
+  get statementOfTruthDefendantResponseDefendant1Page() {
+    const statementofTruthFragment = new StatementOfTruthFragment(
+      this.page,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+    return new StatmentOfTruthDefendantResponsePage(this.page, statementofTruthFragment);
+  }
+
+  get statementOfTruthDefendantResponseDefendant2Page() {
+    const statementofTruthFragment = new StatementOfTruthFragment(
+      this.page,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
     return new StatmentOfTruthDefendantResponsePage(this.page, statementofTruthFragment);
   }
 
