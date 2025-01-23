@@ -2096,16 +2096,12 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      responseBody.data.repaymentDue= '1502.00';
-    } else {
-      responseBody.data.repaymentDue= '1580.00';
-    }
+    responseBody.data.repaymentDue= '1502.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  if (pageId === 'claimPartialPayment' && ['preview', 'demo'].includes(config.runningEnv)) {
+  if (pageId === 'claimPartialPayment') {
     delete responseBody.data['showDJFixedCostsScreen'];
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
