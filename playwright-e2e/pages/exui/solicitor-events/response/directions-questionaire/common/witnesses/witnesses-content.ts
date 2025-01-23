@@ -1,6 +1,6 @@
 import { Party } from '../../../../../../../models/partys';
 
-export const subHeadings = {
+export const subheadings = {
   witnesses: 'Witnesses',
 };
 
