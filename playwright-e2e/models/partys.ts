@@ -1,7 +1,10 @@
+import PartyType from '../enums/party-types';
+
 export type Party = {
   key: string;
   oldKey: string;
   number: number;
+  partyType: PartyType;
 };
 
 type Partys = {

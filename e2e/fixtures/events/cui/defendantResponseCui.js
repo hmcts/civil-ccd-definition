@@ -474,4 +474,270 @@ module.exports = {
     }
     return carmEnabled ? defendantResponseDataCarm : defendantResponseData;
   },
+  createDefendantResponseIntermediateTrack: () => {
+    return {
+      event: 'DEFENDANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        respondToClaimAdmitPartLRspec: {},
+        responseClaimMediationSpecRequired: 'No',
+        specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        totalClaimAmount: 26000,
+        respondent1: {
+          companyName: 'Def Test Org',
+          individualDateOfBirth: null,
+          partyPhone: '07789456123',
+          primaryAddress: {
+            AddressLine1: 'Flat 2 - respondent',
+            AddressLine2: 'Caversham House 15-17',
+            AddressLine3: 'Church Road',
+            PostCode: 'RG4 7AA',
+            PostTown: 'Reading',
+          },
+          soleTraderDateOfBirth: null,
+          type: 'COMPANY',
+        },
+        respondent1LiPResponse: {
+          timelineComment: '',
+          evidenceComment: 'everything',
+          respondent1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            whyPhoneOrVideoHearing: '',
+            giveEvidenceYourSelf: 'No',
+            triedToSettle: 'Yes',
+            determinationWithoutHearingReason: '',
+            requestExtra4weeks: 'No',
+            considerClaimantDocumentsDetails: '',
+            respondent1DQLiPExpert: {
+              expertCanStillExamineDetails: '',
+            }
+          },
+          respondent1DQHearingSupportLip: {
+            supportRequirementLip: 'No',
+          },
+          respondent1LiPContactPerson: 'contact person for defendant',
+          respondent1ResponseLanguage: 'ENGLISH',
+        },
+        respondent1LiPFinancialDetails: {},
+        detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
+        specClaimResponseTimelineList: 'MANUAL',
+        specResponseTimelineOfEvents: [
+          {
+            value: {
+              timelineDate: '2000-01-01T00:00:00.000Z',
+              timelineDescription: 'things happened',
+            }
+          }
+        ],
+        specResponselistYourEvidenceList: [
+          {
+            id: '0',
+            value: {
+              evidenceType: 'CONTRACTS_AND_AGREEMENTS',
+              contractAndAgreementsEvidence: 'contracts',
+            }
+          }
+        ],
+        defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+        respondToClaim: {},
+        respondent1DQHomeDetails: {},
+        respondent1PartnerAndDependent: {
+          howManyChildrenByAgeGroup: {},
+        },
+        specDefendant1SelfEmploymentDetails: {},
+        respondToClaimAdmitPartUnemployedLRspec: {},
+        respondent1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH',
+        },
+        respondent1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No',
+        },
+        respondent1DQRequestedCourt: {
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'nearby',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt,
+          },
+        },
+        respondent1DQWitnesses: {
+          witnessesToAppear: 'No',
+          details: [
+            {
+              value: {
+                name: '',
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                phoneNumber: '',
+                reasonForWitness: '',
+              }
+            }
+          ]
+        },
+        respondent1DQHearingFastClaim: {
+          hearingLengthHours: '3',
+          hearingLengthDays: '1',
+          unavailableDatesRequired: 'No',
+        },
+        respondent1DQExperts: {
+          expertRequired: 'No',
+        },
+        respondent1DQHearingSupport: {
+          supportRequirements: 'No',
+        },
+        respondent1DQFixedRecoverableCostsIntermediate: {
+          isSubjectToFixedRecoverableCostRegime: 'Yes',
+          band: 'BAND_2',
+          complexityBandingAgreed: 'Yes',
+          reasons: 'band reasons',
+        },
+        specRespondent1DQDisclosureOfElectronicDocuments: {
+          reachedAgreement: 'No',
+          agreementLikely: 'No',
+          reasonForNoAgreement: 'some reasons',
+        },
+        specRespondent1DQDisclosureOfNonElectronicDocuments: {
+          bespokeDirections: 'non-elec docs',
+        },
+        respondent1DQClaimantDocumentsToBeConsidered: {
+          hasDocumentsToBeConsidered: 'Yes',
+          details: 'consider claimant docs',
+        }
+      }
+    };
+  },
+  createDefendantResponseMultiTrack: () => {
+    return {
+      event: 'DEFENDANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE',
+        respondToClaimAdmitPartLRspec: {},
+        responseClaimMediationSpecRequired: 'No',
+        specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        totalClaimAmount: 200000.01,
+        respondent1: {
+          companyName: 'Def Test Org',
+          individualDateOfBirth: null,
+          partyPhone: '07894561235',
+          primaryAddress: {
+            AddressLine1: 'Flat 2 - respondent',
+            AddressLine2: 'Caversham House 15-17',
+            AddressLine3: 'Church Road',
+            PostCode: 'RG4 7AA',
+            PostTown: 'Reading'
+          },
+          soleTraderDateOfBirth: null,
+          type: 'COMPANY'
+        },
+        respondent1LiPResponse: {
+          timelineComment: '',
+          evidenceComment: 'asd',
+          respondent1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            whyPhoneOrVideoHearing: '',
+            giveEvidenceYourSelf: 'No',
+            triedToSettle: 'Yes',
+            determinationWithoutHearingReason: '',
+            requestExtra4weeks: 'No',
+            considerClaimantDocumentsDetails: '',
+            respondent1DQLiPExpert: {
+              expertCanStillExamineDetails: '',
+            }
+          },
+          respondent1DQHearingSupportLip: {
+            supportRequirementLip: 'No',
+          },
+          respondent1LiPContactPerson: 'defendant\'s contact person',
+          respondent1ResponseLanguage: 'ENGLISH',
+        },
+        respondent1LiPFinancialDetails: {},
+        detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
+        specClaimResponseTimelineList: 'MANUAL',
+        specResponseTimelineOfEvents: [
+          {
+            value: {
+              timelineDate: '2000-01-01T00:00:00.000Z',
+              timelineDescription: 'things',
+            }
+          }
+        ],
+        specResponselistYourEvidenceList: [
+          {
+            id: '0',
+            value: {
+              evidenceType: 'CONTRACTS_AND_AGREEMENTS',
+              contractAndAgreementsEvidence: 'contract',
+            }
+          }
+        ],
+        defenceRouteRequired: 'DISPUTES_THE_CLAIM',
+        respondToClaim: {},
+        respondent1DQHomeDetails: {},
+        respondent1PartnerAndDependent: {
+          howManyChildrenByAgeGroup: {},
+        },
+        specDefendant1SelfEmploymentDetails: {},
+        respondToClaimAdmitPartUnemployedLRspec: {},
+        respondent1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH',
+        },
+        respondent1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No',
+        },
+        respondent1DQRequestedCourt: {
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'nearby',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt,
+          }
+        },
+        respondent1DQWitnesses: {
+          witnessesToAppear: 'Yes',
+          details: [
+            {
+              value: {
+                name: 'Whit',
+                firstName: 'Whit',
+                lastName: 'Ness',
+                emailAddress: 'whit@ness.com',
+                phoneNumber: '07744118855',
+                reasonForWitness: 'bad things',
+              }
+            }
+          ]
+        },
+        respondent1DQHearingFastClaim: {
+          hearingLengthHours: '3',
+          hearingLengthDays: '1',
+          unavailableDatesRequired: 'No',
+        },
+        respondent1DQExperts: {
+          expertRequired: 'No',
+        },
+        respondent1DQHearingSupport: {
+          supportRequirements: 'No',
+        },
+        specRespondent1DQDisclosureOfElectronicDocuments: {
+          reachedAgreement: 'No',
+          agreementLikely: 'Yes',
+          reasonForNoAgreement: 'elec docs',
+        },
+        specRespondent1DQDisclosureOfNonElectronicDocuments: {
+          bespokeDirections: 'non-elec docs',
+        },
+        respondent1DQClaimantDocumentsToBeConsidered: {
+          hasDocumentsToBeConsidered: 'Yes',
+          details: 'claimant docs to consider',
+        }
+      }
+    };
+  },
 };
