@@ -1,5 +1,7 @@
 import { Party } from '../../../../models/partys';
 
+export const subheadings = { remoteHearing: 'Remote Hearing' };
+
 export const radioButtons = {
   remoteHearing: {
     label: 'Do you want the hearing to be held remotely?',
