@@ -53,7 +53,9 @@ civil-service:
           - name: hmc-servicebus-shared-access-key-tf
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
     environment:
-      LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
+      LAUNCH_DARKLY_ENV: aat
+      EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
+      CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
@@ -102,6 +104,7 @@ civil-service:
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "ts_translation_service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "emstitch" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
             02_init_wa.sql: |
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
@@ -122,6 +125,8 @@ xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
     environment:
+      FEATURE_ACCESS_MANAGEMENT_ENABLED: true
+      SERVICES_DOCUMENTS_API_V2: http://${SERVICE_NAME}-cdam
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
       SERVICES_TRANSLATION_API_URL: http://${SERVICE_NAME}-translation-service
@@ -131,6 +136,7 @@ ccd:
     ras:
       enabled: true
   global:
+    ccdStitchUrl: http://${SERVICE_NAME}-emstitch
     postgresUsername: hmcts
     postgresPassword: ${POSTGRES_PASSWORD}
     postgresSecret: postgres
@@ -142,6 +148,8 @@ ccd:
   ccd-data-store-api:
     java:
       environment:
+        CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: true
+        CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
