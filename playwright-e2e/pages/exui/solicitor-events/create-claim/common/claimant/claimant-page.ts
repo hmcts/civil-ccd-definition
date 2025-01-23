@@ -9,6 +9,7 @@ import PartyTypeOrganisationFragment from '../../../../fragments/party-type/part
 import PartyTypeSoleTraderFragment from '../../../../fragments/party-type/party-type-sole-trader-fragment.ts';
 import { Page } from 'playwright-core';
 import partys from '../../../../../../constants/partys.ts';
+import AddressFragment from '../../../../fragments/address/address-fragment.ts';
 
 @AllMethodsStep()
 export default class ClaimantPage extends ExuiPage(BasePage) {
@@ -17,7 +18,7 @@ export default class ClaimantPage extends ExuiPage(BasePage) {
   private partyTypeCompanyFragment: PartyTypeCompanyFragment;
   private partyTypeOrganisationFragment: PartyTypeOrganisationFragment;
   private partyTypeSoleTraderFragment: PartyTypeSoleTraderFragment;
-  //TODO: add address fragment.
+  private addressFragment: AddressFragment;
 
   constructor(page: Page) {
     super(page);
@@ -26,11 +27,13 @@ export default class ClaimantPage extends ExuiPage(BasePage) {
     this.partyTypeCompanyFragment = new PartyTypeCompanyFragment(page, partys.CLAIMANT_1);
     this.partyTypeOrganisationFragment = new PartyTypeOrganisationFragment(page, partys.CLAIMANT_1);
     this.partyTypeSoleTraderFragment = new PartyTypeSoleTraderFragment(page, partys.CLAIMANT_1);
+    this.addressFragment = new AddressFragment(page, partys.CLAIMANT_1);
   }
 
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
+      this.choosePartyTypeFragment.verifyContent(),
       super.expectSubheading(subheadings.claimantDetails),
       super.expectSubheading(subheadings.address),
     ]);
@@ -40,24 +43,28 @@ export default class ClaimantPage extends ExuiPage(BasePage) {
     await this.choosePartyTypeFragment.selectIndivdual();
     await this.partyTypeIndividualFragment.verifyContent();
     await this.partyTypeIndividualFragment.enterIndividualDetails();
+    await this.addressFragment.enterAddressManual();
   }
 
   async chooseCompanyAndEnterDetails() {
     await this.choosePartyTypeFragment.selectCompany();
     await this.partyTypeCompanyFragment.verifyContent();
     await this.partyTypeCompanyFragment.enterCompanyDetails();
+    await this.addressFragment.enterAddressManual();
   }
 
   async chooseOrganisationAndEnterDetails() {
     await this.choosePartyTypeFragment.selectOrganisation();
     await this.partyTypeOrganisationFragment.verifyContent();
     await this.partyTypeOrganisationFragment.enterOrganisationDetails();
+    await this.addressFragment.enterAddressManual();
   }
 
   async chooseSoleTraderAndEnterDetails() {
     await this.choosePartyTypeFragment.selectSoleTrader();
     await this.partyTypeSoleTraderFragment.verifyContent();
     await this.partyTypeSoleTraderFragment.enterSoleTraderDetails();
+    await this.addressFragment.enterAddressManual();
   }
 
   async submit() {

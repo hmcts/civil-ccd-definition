@@ -1,4 +1,4 @@
-export const subHeadings = {
+export const subheadings = {
   notifications: 'Notifications',
   notificationDetails: 'Notification details',
 };

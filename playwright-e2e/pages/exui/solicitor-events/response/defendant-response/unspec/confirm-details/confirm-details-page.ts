@@ -5,7 +5,7 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Page } from 'playwright-core';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import partys from '../../../../../../../constants/partys.ts';
-import { ClaimantDefendantType } from '../../../../../../../models/claimant-defendant-types.ts';
+import { ClaimantDefendantPartyType } from '../../../../../../../models/claimant-defendant-party-types.ts';
 import { inputs } from './confirm-details-content.ts';
 
 @AllMethodsStep()
@@ -25,7 +25,7 @@ export default class ConfirmDetailsPage extends ExuiPage(BasePage) {
   }
 
   //Need to decide how I am going to pass partyType Data, could be pass by ccdCaseData or store a reference in test data.
-  async enterDefendantDateOfBirth(partyType: ClaimantDefendantType) {
+  async enterDefendantDateOfBirth(partyType: ClaimantDefendantPartyType) {
     await this.dateFragment.enterDateOfBirth(partys.DEFENDANT_1, partyType);
   }
 

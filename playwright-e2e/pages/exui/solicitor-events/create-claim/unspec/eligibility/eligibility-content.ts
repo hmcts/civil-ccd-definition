@@ -1,4 +1,4 @@
-export const subHeadings = {
+export const subheadings = {
   issueCivilCourtProceedings: 'Issue civil court proceedings',
   whoCanUseThisService: 'Who can use this service',
   pleaseNote: 'Please note: You can only use this service if you are a solicitor organisation',

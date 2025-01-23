@@ -1,4 +1,4 @@
-export const subHeadings = {
+export const subheadings = {
   courtLocationCode: 'Court location code',
 };
 

@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import RemoteHearingFragment from '../../../../fragments/remote-hearing/remote-hearing-fragment';
-import { dropdowns, subHeadings, inputs } from './court-content';
+import { dropdowns, subheadings, inputs } from './court-content';
 
 @AllMethodsStep()
 export default class CourtPage extends ExuiPage(BasePage) {
@@ -11,7 +11,7 @@ export default class CourtPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectSubheading(subHeadings.courtLocationCode),
+      super.expectSubheading(subheadings.courtLocationCode),
       super.expectLabel(dropdowns.courtLocation.label),
       super.expectLabel(inputs.courtReason.label),
     ]);
