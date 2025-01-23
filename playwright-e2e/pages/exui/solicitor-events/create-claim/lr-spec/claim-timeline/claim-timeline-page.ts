@@ -2,7 +2,7 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { buttons, inputs, paragraphs, subheadings } from './claim-timeline-content';
+import { inputs, paragraphs, subheadings } from './claim-timeline-content';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import DateHelper from '../../../../../../helpers/date-helper';
 import partys from '../../../../../../constants/partys';
@@ -25,7 +25,7 @@ export default class ClaimTimelinePage extends ExuiPage(BasePage) {
   }
 
   async addNewEvent() {
-    super.clickBySelector(buttons.addNew.selector);
+    await super.clickAddNew();
   }
 
   async enterTimelineEvent1Details() {

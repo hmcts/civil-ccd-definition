@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { buttons, paragraphs, subheadings, inputs } from './claim-amount-content';
+import { paragraphs, subheadings, inputs } from './claim-amount-content';
 
 @AllMethodsStep()
 export default class ClaimAmountPage extends ExuiPage(BasePage) {
@@ -16,7 +16,7 @@ export default class ClaimAmountPage extends ExuiPage(BasePage) {
   }
 
   async addNew() {
-    await super.clickBySelector(buttons.addNew.selector);
+    await super.clickAddNew();
   }
 
   async enterClaimDetailsSmallTrack() {

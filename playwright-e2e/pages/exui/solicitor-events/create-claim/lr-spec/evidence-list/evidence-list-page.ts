@@ -2,7 +2,7 @@ import BasePage from '../../../../../../base/base-page';
 import partys from '../../../../../../constants/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { buttons, dropdowns, inputs, paragraphs, subheadings } from './evidence-list-content';
+import { dropdowns, inputs, paragraphs, subheadings } from './evidence-list-content';
 
 @AllMethodsStep()
 export default class EvidenceListPage extends ExuiPage(BasePage) {
@@ -14,7 +14,7 @@ export default class EvidenceListPage extends ExuiPage(BasePage) {
   }
 
   async addNew() {
-    await super.clickBySelector(buttons.addNew.selector);
+    await super.clickAddNew();
   }
 
   async enterEvidence1Details() {
