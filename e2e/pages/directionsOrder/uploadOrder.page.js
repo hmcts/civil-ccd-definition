@@ -24,7 +24,7 @@ module.exports = {
     });
 
     // Assert that the file was uploaded and its name matches
-    if (!uploadedFile || !uploadedFile.includes('examplePDF.pdf')) {
+    if (!uploadedFile || !uploadedFile.includes('exampleDOC.docx')) {
       throw new Error('File was not uploaded or the file name does not match.');
     }
 

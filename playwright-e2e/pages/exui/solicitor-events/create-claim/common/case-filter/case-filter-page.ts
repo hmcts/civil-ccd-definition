@@ -21,7 +21,6 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.spec, dropdowns.event.selector);
-    super.setCCDEvent = ccdEvents.CREATE_CLAIM_SPEC;
   }
 
   async chooseUnSpec() {
@@ -31,7 +30,6 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.unspec, dropdowns.event.selector);
-    super.setCCDEvent = ccdEvents.CREATE_CLAIM;
   }
 
   async submit() {

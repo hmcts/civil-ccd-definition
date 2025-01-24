@@ -162,6 +162,7 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
 const CLAIMANT_NAME = 'Test Inc';
 const DEFENDANT1_NAME = 'Sir John Doe';
 const DEFENDANT2_NAME = 'Dr Foo Bar';
@@ -448,10 +449,10 @@ module.exports = function () {
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
         () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        ...conditionalSteps(caseCategory === 'SPEC' && isTestEnv, [
+        ...conditionalSteps(caseCategory === 'SPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCostsOnEntry()
         ]),
-        ...conditionalSteps(caseCategory === 'UNSPEC' || !isTestEnv, [
+        ...conditionalSteps(caseCategory === 'UNSPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCosts()
         ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
@@ -827,7 +828,7 @@ module.exports = function () {
         ]),
         () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
         () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
-        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH_DOC),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
