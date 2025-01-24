@@ -59,6 +59,7 @@ import StatementOfTruthFragment from '../../fragments/statement-of-truth/stateme
 import SubmitCreateClaimPage from './common/submit-create-claim/submit-create-claim-page.ts';
 import ConfirmCreateClaimSpecPage from './lr-spec/confirm-create-claim-spec/confirm-create-claim-spec-page.ts';
 import ConfirmCreateClaimPage from './unspec/confirm-create-claim/confirm-create-claim-page.ts';
+import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -116,7 +117,11 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get claimantLitigationFriendPage() {
-    return new ClaimantLitigationFriendPage(this.page);
+    const litigationFriendFragment = new LitigationFriendFragment(
+      this.page,
+      partys.CLAIMANT_1_LITIGATION_FRIEND,
+    );
+    return new ClaimantLitigationFriendPage(this.page, litigationFriendFragment);
   }
 
   get claimantSolicitorOrganisationPage() {
