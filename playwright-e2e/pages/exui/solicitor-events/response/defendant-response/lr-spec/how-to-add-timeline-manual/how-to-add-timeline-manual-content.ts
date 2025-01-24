@@ -13,11 +13,12 @@ export const inputs = {
   timelineEvent: {
     date: {
       label: 'Date (Optional)',
+      selectorKey: 'timelineDate',
     },
     eventDescription: {
       label: 'What happened (Optional)',
-      selector: (party: Party, eventIndex: number) =>
-        `#specResponseTimelineOfEvents${party.number === 1 ? '' : party.number}_${eventIndex}_timelineDescription`,
+      selector: (defendantParty: Party, eventIndex: number) =>
+        `#specResponseTimelineOfEvents${defendantParty.number === 1 ? '' : defendantParty.number}_${eventIndex}_timelineDescription`,
     },
   },
 };

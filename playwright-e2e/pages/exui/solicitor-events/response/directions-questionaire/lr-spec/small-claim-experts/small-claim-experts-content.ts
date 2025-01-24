@@ -1,81 +1,88 @@
-export const subheadings = {
-  experts: 'Experts',
-};
+import PartyType from '../../../../../../../enums/party-types';
+import { Party } from '../../../../../../../models/partys';
 
-const getRadioButtons = (defendantNumber: number) => ({
+export const subheadings = { experts: 'Use of experts in court' };
+
+export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
-      label: 'Yes',
-      selector: `#respondent${defendantNumber}DQExperts_expertRequired_Yes`,
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
+        return `#responseClaimExpertSpecRequired${claimantDefendantParty.number === 1 ? '' : '2'}_Yes`;
+      },
     },
     no: {
-      label: 'No',
-      selector: `#respondent${defendantNumber}DQExperts_expertRequired_No`,
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
+        return `#responseClaimExpertSpecRequired${claimantDefendantParty.number === 1 ? '' : '2'}_No`;
+      },
     },
   },
-  expertReports: {
-    label: 'Have you already sent expert reports or similar to other parties?',
-    yes: {
-      label: 'Yes',
-      selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-YES`,
-    },
-    no: {
-      label: 'No',
-      selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-NO`,
-    },
-    notObtained: {
-      label: 'Not yet obtained',
-      selector: `#respondent${defendantNumber}DQExperts_expertReportsSent-NOT_OBTAINED`,
-    },
-  },
-  jointExpert: {
-    label: 'Do you think the case is suitable for a joint expert?',
-    yes: {
-      label: 'Yes',
-      selector: `#respondent${defendantNumber}DQExperts_jointExpertSuitable_Yes`,
-    },
-    no: {
-      label: 'No',
-      selector: `#respondent${defendantNumber}DQExperts_jointExpertSuitable_No`,
-    },
-  },
-});
+};
 
-const getInputs = (defendantNumber: number) => ({
-  firstName: {
-    label: 'First name',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_firstName`,
-  },
-  lastName: {
-    label: 'Last name',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_lastName`,
-  },
-  emailAddress: {
-    label: 'Email Address',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_emailAddress`,
-  },
-  phoneNumber: {
-    label: 'Phone Number',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_phoneNumber`,
-  },
-  expertise: {
-    label: 'Field of expertise',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_fieldOfExpertise`,
-  },
-  whyRequired: {
-    label: 'Why do you need this expert?',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_whyRequired`,
-  },
-  estimatedCost: {
-    label: 'Estimated cost',
-    selector: `#respondent${defendantNumber}DQExperts_details_0_estimatedCost`,
-  },
-});
-
-export const buttons = {
-  addNew: {
-    title: 'Add new',
-    selector: '.write-collection-add-item__top',
+export const inputs = {
+  expert: {
+    firstName: {
+      label: 'First name',
+      hintText:
+        'If the name is unknown at this time please add TBC to both the first name and last name lines.' +
+        'Then use the Manage Contact Information event to provide the name when known',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_firstName`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_firstName`;
+      },
+    },
+    lastName: {
+      label: 'Last name',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_lastName`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_lastName`;
+      },
+    },
+    phoneNumber: {
+      label: 'Phone number (Optional)',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_phoneNumber`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_phoneNumber`;
+      },
+    },
+    email: {
+      label: 'Email address (Optional)',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_emailAddress`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_emailAddress`;
+      },
+    },
+    expertise: {
+      label: 'Field of expertise',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_fieldofExpertise`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_fieldofExpertise`;
+      },
+    },
+    whyRequired: {
+      label: 'Why do you need this expert?',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_whyRequired`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_whyRequired`;
+      },
+    },
+    estimatedCost: {
+      label: 'Estimated cost',
+      selector: (claimantDefendantParty: Party) => {
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_whyRequired`;
+        return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_estimatedCost`;
+      },
+    },
   },
 };

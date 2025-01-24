@@ -3,8 +3,8 @@ import StringHelper from './string-helper';
 import ClaimTrack from '../enums/claim-track';
 import { Party } from '../models/partys';
 import partys from '../constants/partys';
-import { PartyType } from '../models/party-types';
-import partyTypes from '../constants/party-types';
+import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -31,7 +31,7 @@ export default class CaseDataHelper {
     };
   }
 
-  static getDateOfBirth(party: Party) {
+  static getPartyDateOfBirth(party: Party) {
     switch (party) {
       case partys.CLAIMANT_1:
         return '1980-05-24';
@@ -49,12 +49,10 @@ export default class CaseDataHelper {
         return '1982-09-25';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '1989-04-06';
-      default:
-        return '1980-10-12';
     }
   }
 
-  static getPhoneNumber(party: Party) {
+  static getPartyPhoneNumber(party: Party) {
     switch (party) {
       case partys.CLAIMANT_1:
         return '07123456789';
@@ -64,6 +62,16 @@ export default class CaseDataHelper {
         return '07984234567';
       case partys.CLAIMANT_2_LITIGATION_FRIEND:
         return '07456987654';
+      case partys.CLAIMANT_EXPERT_1:
+        return '07688543210';
+      case partys.CLAIMANT_EXPERT_2:
+        return '07872345678';
+      case partys.CLAIMANT_WITNESS_1:
+        return '07501234567';
+      case partys.CLAIMANT_WITNESS_2:
+        return '07984112233';
+      case partys.CLAIMANT_1_MEDIATION_FRIEND:
+        return '07984224466';
       case partys.DEFENDANT_1:
         return '07853654321';
       case partys.DEFENDANT_2:
@@ -72,12 +80,30 @@ export default class CaseDataHelper {
         return '07906789012';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '07321654987';
-      default:
-        return '07688543210';
+      case partys.DEFENDANT_1_EXPERT_1:
+        return '07311987654';
+      case partys.DEFENDANT_1_EXPERT_2:
+        return '07615876543';
+      case partys.DEFENDANT_2_EXPERT_1:
+        return '07893654321';
+      case partys.DEFENDANT_2_EXPERT_2:
+        return '07456123890';
+      case partys.DEFENDANT_1_WITNESS_1:
+        return '07865432109';
+      case partys.DEFENDANT_1_WITNESS_2:
+        return '07713659876';
+      case partys.DEFENDANT_2_WITNESS_1:
+        return '07592345612';
+      case partys.DEFENDANT_2_WITNESS_2:
+        return '07985674230';
+      case partys.DEFENDANT_1_MEDIATION_FRIEND:
+        return '07985366442';
+      case partys.DEFENDANT_2_MEDIATION_FRIEND:
+        return '07985685321';
     }
   }
 
-  static getPostCode(party: Party) {
+  static getPartyPostCode(party: Party) {
     switch (party) {
       case partys.CLAIMANT_1:
         return 'W1A 1AA';
@@ -95,8 +121,23 @@ export default class CaseDataHelper {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'EX1 1JG';
-      default:
-        return 'L1 8JQ';
+    }
+  }
+
+  static getExpertEstimatedCost(party: Party) {
+    switch (party) {
+      case partys.CLAIMANT_EXPERT_1:
+        return '587';
+      case partys.CLAIMANT_EXPERT_2:
+        return '344';
+      case partys.DEFENDANT_1_EXPERT_1:
+        return '762';
+      case partys.DEFENDANT_1_EXPERT_2:
+        return '231';
+      case partys.DEFENDANT_2_EXPERT_1:
+        return '915';
+      case partys.DEFENDANT_2_EXPERT_2:
+        return '478';
     }
   }
 
@@ -108,15 +149,15 @@ export default class CaseDataHelper {
       PostTown: `${party.key} Town`,
       County: `${party.key} County`,
       Country: `${party.key} Country`,
-      PostCode: this.getPostCode(party),
+      PostCode: this.getPartyPostCode(party),
     };
   }
 
-  static buildClaimantAndDefendantData(party: Party, partyType: PartyType): any {
+  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantPartyType): any {
     const commonPartyData = {
       type: partyType.type,
       partyEmail: `${party.key}@${partyType.key}.com`,
-      partyPhone: this.getPhoneNumber(party),
+      partyPhone: this.getPartyPhoneNumber(party),
       primaryAddress: this.buildAddressData(party),
     };
 
@@ -124,46 +165,77 @@ export default class CaseDataHelper {
     const partyTypeKey = StringHelper.capitalise(partyType.key);
 
     switch (partyType) {
-      case partyTypes.INDIVIDUAL:
+      case claimantDefendantPartyTypes.INDIVIDUAL:
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
-          individualFirstName: `${partyKey}First`,
-          individualLastName: `${partyKey}Last`,
-          individualDateOfBirth: this.getDateOfBirth(party),
+          individualFirstName: partyKey,
+          individualLastName: partyTypeKey,
+          individualDateOfBirth: this.getPartyDateOfBirth(party),
         };
 
-      case partyTypes.COMPANY:
+      case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
         };
 
-      case partyTypes.SOLE_TRADER:
+      case claimantDefendantPartyTypes.SOLE_TRADER:
         return {
           ...commonPartyData,
           soleTraderTitle: 'Mx',
-          soleTraderFirstName: `${partyKey}First`,
-          soleTraderLastName: `${partyKey}Last`,
-          soleTraderTradingAs: `${partyKey}TradingAs`,
-          soleTraderDateOfBirth: this.getDateOfBirth(party),
+          soleTraderFirstName: partyKey,
+          soleTraderLastName: partyTypeKey,
+          soleTraderTradingAs: `${partyKey} Trade`,
+          soleTraderDateOfBirth: this.getPartyDateOfBirth(party),
         };
-      case partyTypes.ORGANISATION:
+      case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
-          organisationName: `${party.key} ${partyTypeKey}`,
+          organisationName: `${partyKey} ${partyTypeKey}`,
         };
     }
   }
 
   static buildLitigationFriendData(party: Party) {
     return {
-      firstName: `${party.key}First`,
-      lastName: `${party.key}Last`,
+      firstName: StringHelper.capitalise(party.key),
+      lastName: 'Litigation',
       emailAddress: `${party.key}@litigants.com`,
-      phoneNumber: this.getPhoneNumber(party),
+      phoneNumber: this.getPartyPhoneNumber(party),
       hasSameAddressAsLitigant: 'No',
-      primaryAddress: CaseDataHelper.buildAddressData(party),
+      primaryAddress: this.buildAddressData(party),
+    };
+  }
+
+  static buildExpertData(party: Party) {
+    return {
+      firstName: StringHelper.capitalise(party.key),
+      lastName: 'Expert',
+      emailAddress: `${party.key}@experts.com`,
+      phoneNumber: this.getPartyPhoneNumber(party),
+      fieldOfExpertise: `Field of expertise ${party.key}`,
+      whyRequired: `Required for ${party.key}`,
+      estimatedCost: this.getExpertEstimatedCost(party),
+    };
+  }
+
+  static buildMediationData(party: Party) {
+    return {
+      firstName: StringHelper.capitalise(party.key),
+      lastName: 'Mediation',
+      emailAddress: `${party.key}@mediation.com`,
+      phoneNumber: this.getPartyPhoneNumber(party),
+    };
+  }
+
+  static buildWitnessData(party: Party) {
+    return {
+      firstName: StringHelper.capitalise(party.key),
+      lastName: 'Witness',
+      phoneNumber: this.getPartyPhoneNumber(party),
+      emailAddress: `${party.key}@witnesses.com`,
+      reasonForWitness: `Reason for witness ${party.key}`,
     };
   }
 

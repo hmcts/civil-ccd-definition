@@ -1,24 +1,33 @@
-export const heading = 'Application';
+import { Party } from '../../../../../../../models/partys';
 
-export const radioButtons = (defendantNumber: number) => ({
-  yes: {
-    label: 'Yes',
-    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
-  },
-  no: {
-    label: 'No',
-    selector: `#respondent${defendantNumber}DQFutureApplications_intentionToMakeFutureApplications_No`,
-  },
-});
-
-export const otherInformationForm = {
-  selector: '#additionalInformationForJudge',
+export const subheadings = {
+  application: 'Application',
 };
 
-export const otherInformationForm2 = {
-  selector: '#additionalInformationForJudge2',
+export const radioButtons = {
+  application: {
+    label: 'Do you intend to make any applications in the future?',
+    yes: {
+      label: 'Yes',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQFutureApplications_intentionToMakeFutureApplications_Yes`,
+    },
+    no: {
+      label: 'No',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQFutureApplications_intentionToMakeFutureApplications_No`,
+    },
+  },
 };
 
-export const whatForForm = (defendantNumber: number) => ({
-  selector: `#respondent${defendantNumber}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
-});
+export const inputs = {
+  whatFor: {
+    label: 'What for?',
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
+  },
+  otherInformation: {
+    label: 'Provide any other information the judge may need (Optional)',
+    selector: '#additionalInformationForJudge',
+  },
+};

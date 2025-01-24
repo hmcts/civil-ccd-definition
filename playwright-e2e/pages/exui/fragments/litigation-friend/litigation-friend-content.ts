@@ -9,25 +9,68 @@ export const inputs = {
   litigationFriendDetails: {
     firstName: {
       label: 'First name',
-      selector: (party: Party) => `#${party.oldKey}_firstName`,
+      selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_firstName`,
     },
     lastName: {
       label: 'Last Name',
-      selector: (party: Party) => `#${party.oldKey}_lastName`,
+      selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_lastName`,
     },
     email: {
       label: 'Email address (Optional)',
-      selector: (party: Party) => `#${party.oldKey}_emailAddress`,
+      selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_emailAddress`,
     },
     phoneNumber: {
       label: 'Phone number (Optional)',
-      selector: (party: Party) => `#${party.oldKey}_phoneNumber`,
+      selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_phoneNumber`,
+    },
+  },
+  address: {
+    postCodeInput: {
+      label: 'Enter a UK postcode',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress_primaryaddress_postcodeInput`,
+    },
+    addressLine1: {
+      label: 'Building and Street',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine1`,
+    },
+    addressLine2: {
+      label: 'Address Line 2',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine2`,
+    },
+    addressLine3: {
+      label: 'Address Line 3',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine3`,
+    },
+    postTown: {
+      label: 'Town or City',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailPostTown`,
+    },
+    county: {
+      label: 'County',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailCounty`,
+    },
+    country: {
+      label: 'Country',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailCountry`,
+    },
+    postCode: {
+      label: 'Postcode/Zipcode',
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_primaryaddress__detailPostCode`,
     },
   },
   certificateOfSuitability: {
     uploadDoc: {
       label: 'Document',
-      selector: (party: Party) => `#${party.oldKey}_certificateOfSuitability_0_document`,
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_certificateOfSuitability_0_document`,
     },
   },
 };
@@ -36,11 +79,13 @@ export const radioButtons = {
   address: {
     yes: {
       label: 'Yes',
-      selector: (party: Party) => `#${party.oldKey}_hasSameAddressAsLitigant_Yes`,
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_hasSameAddressAsLitigant_Yes`,
     },
     no: {
       label: 'Yes',
-      selector: (party: Party) => `#${party.oldKey}_hasSameAddressAsLitigant_No`,
+      selector: (litigationFriendParty: Party) =>
+        `#${litigationFriendParty.oldKey}_hasSameAddressAsLitigant_No`,
     },
   },
 };
@@ -48,7 +93,16 @@ export const radioButtons = {
 export const buttons = {
   addNewCertificate: {
     title: 'Add new',
-    selector: (party: Party) =>
-      `div[id='${party.oldKey}_certificateOfSuitability'] button[type='button']`,
+    selector: (litigationFriendParty: Party) =>
+      `div[id='${litigationFriendParty.oldKey}_certificateOfSuitability'] button[type='button']`,
+  },
+  findaddress: {
+    title: 'Find address',
+  },
+};
+
+export const links = {
+  cannotFindAddress: {
+    title: " I can't enter a UK postcode ",
   },
 };

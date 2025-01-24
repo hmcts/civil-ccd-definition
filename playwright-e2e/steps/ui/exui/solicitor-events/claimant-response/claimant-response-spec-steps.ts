@@ -1,5 +1,4 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import BaseSteps from '../../../../../base/base-steps';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';

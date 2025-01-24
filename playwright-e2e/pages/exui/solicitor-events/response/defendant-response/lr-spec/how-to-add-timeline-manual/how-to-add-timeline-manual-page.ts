@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { buttons, heading, inputs } from './how-to-add-timeline-manual-content.ts';
+import { heading, inputs } from './how-to-add-timeline-manual-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
@@ -12,12 +12,12 @@ import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 @AllMethodsStep()
 export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, party: Party) {
+  constructor(page: Page, dateFragment: DateFragment, defendantParty: Party) {
     super(page);
     this.dateFragment = dateFragment;
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -27,12 +27,12 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
         super.expectHeading(ccdCaseData.id),
         super.expectHeading(ccdCaseData.caseNamePublic),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async addNewEvent() {
-    await super.clickBySelector(buttons.addNew.selector, { first: true });
+    await super.clickAddNew();
   }
 
   async verifyEventInputs(count = 1) {
@@ -48,19 +48,19 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
 
   async fillEvent1Details() {
     const date = DateHelper.subtractFromToday({ years: 1 });
-    await this.dateFragment.enterDate(date, 'timelineDate', 0);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 0);
     await super.inputText(
-      'Timeline event description for event 1',
-      inputs.timelineEvent.eventDescription.selector(this.party, 0),
+      `Timeline event description for event 1 - ${this.defendantParty.key}`,
+      inputs.timelineEvent.eventDescription.selector(this.defendantParty, 0),
     );
   }
 
   async fillEvent2Details() {
     const date = DateHelper.subtractFromToday({ months: 11 });
-    await this.dateFragment.enterDate(date, 'timelineDate', 1);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 1);
     await super.inputText(
-      'Timeline event description for event 2',
-      inputs.timelineEvent.eventDescription.selector(this.party, 1),
+      `Timeline event description for event 2 - ${this.defendantParty.key}`,
+      inputs.timelineEvent.eventDescription.selector(this.defendantParty, 1),
     );
   }
 
