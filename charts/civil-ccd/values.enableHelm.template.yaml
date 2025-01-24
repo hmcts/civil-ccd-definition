@@ -3,7 +3,6 @@ xui-webapp:
   nodejs:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
-    image: hmctspublic.azurecr.io/xui/webapp:latest
     devcpuRequests: 100m
     devmemoryRequests: 1Gi
     devcpuLimits: 1
@@ -43,9 +42,9 @@ ccd:
           CCD_MULTIPARTY_FIX_ENABLED: true
           CCD_MULTIPARTY_LOG_LEVEL: DEBUG
           CCD_MULTIPARTY_CASE_TYPES: CIVIL
-          CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
+          CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
           ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
-      
+
   ccd-definition-store-api:
     java:
       imagePullPolicy: Always
