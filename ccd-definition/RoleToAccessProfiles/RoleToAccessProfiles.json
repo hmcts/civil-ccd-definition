@@ -385,5 +385,14 @@
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
+  },
+  {
+    "RoleName" : "idam:hearing-centre-team-leader",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "AccessProfiles": "hearing-centre-team-leader",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
   }
 ]
