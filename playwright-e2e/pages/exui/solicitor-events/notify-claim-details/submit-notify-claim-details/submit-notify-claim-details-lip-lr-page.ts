@@ -5,7 +5,7 @@ import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import { heading, subheading, table, COS_table } from './submit-notify-claim-details-content';
 
 @AllMethodsStep()
-export default class SubmitNotifyClaimDetails_LIP_LR_Page extends ExuiPage(BasePage) {
+export default class SubmitNotifyClaimDetailsLIPLRPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

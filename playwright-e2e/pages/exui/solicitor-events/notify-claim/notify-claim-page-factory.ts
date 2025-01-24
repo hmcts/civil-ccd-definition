@@ -1,6 +1,5 @@
 import BasePageFactory from '../../../../base/base-page-factory';
 import partys from '../../../../constants/partys';
-import CertificateOfServiceNotifyClaimSubmitFragment from '../../fragments/certificate-of-service-notify-claim-submit/certificate-of-service-notify-claim-submit-fragment';
 import CertificateOfServiceNotifyClaimFragment from '../../fragments/certificate-of-service-notify-claim/certificate-of-service-notify-claim-fragment';
 import AccessGrantedWarningPage from './access-granted-warning/access-granted-warning-page';
 import CertificateOfService1NotifyClaimPage from './certificate-of-service-1-notify-claim/certificate-of-service-1-notify-claim-page';
@@ -8,7 +7,6 @@ import CertificateOfService2NotifyClaimPage from './certificate-of-service-2-not
 import ConfirmNotifyClaimCOSPage from './confirm-notify-claim/confirm-notify-claim-cos-page';
 import ConfirmNotifyClaimPage from './confirm-notify-claim/confirm-notify-claim-page';
 import DefendantSolicitorToNotifyPage from './defendant-solicitor-to-notify/defendant-solicitor-to-notify-page';
-import SubmitNotifyClaimCOSPage from './submit-notify-claim/submit-notify-claim-cos-page';
 import SubmitNotifyClaimPage from './submit-notify-claim/submit-notify-claim-page';
 
 export default class NotifyClaimPageFactory extends BasePageFactory {
@@ -48,12 +46,6 @@ export default class NotifyClaimPageFactory extends BasePageFactory {
       certificateOfServiceNotifyClaimFragment,
       this.page,
     );
-  }
-
-  get submitNotifyClaimCOSPage() {
-    const certificateOfServiceNotifyClaimSubmitFragment =
-      new CertificateOfServiceNotifyClaimSubmitFragment(this.page);
-    return new SubmitNotifyClaimCOSPage(certificateOfServiceNotifyClaimSubmitFragment, this.page);
   }
 
   get confirmNotifyClaimCOSPage() {

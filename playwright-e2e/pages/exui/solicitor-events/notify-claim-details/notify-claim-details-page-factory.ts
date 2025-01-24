@@ -2,8 +2,6 @@ import BasePageFactory from '../../../../base/base-page-factory';
 import partys from '../../../../constants/partys';
 import CertificateOfServiceNotifyClaimDetailsSubmitFragment from '../../fragments/certificate-of-service-notify-claim-details-submit/certificate-of-service-notify-claim-details-submit-fragment';
 import CertificateOfServiceNotifyClaimDetailsFragment from '../../fragments/certificate-of-service-notify-claim-details/certificate-of-service-notify-claim-details-fragment';
-import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
-import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
 import ParticularsOfClaimFragment from '../../fragments/particulars-of-claim/particulars-of-claim-fragment';
 import CertificateOfService1NotifyClaimDetailsPage from './certificate-of-service-1-notify-claim-details/certificate-of-service-1-notify-claim-details-page';
 import CertificateOfService2NotifyClaimDetailsPage from './certificate-of-service-2-notify-claim-details/certificate-of-service-2-notify-claim-details-page';
@@ -12,8 +10,8 @@ import ConfirmNotifyClaimDetailsPage from './confirm-notify-claim-details/confir
 import SelectDefendantSolicitorPage from './select-defendant-solicitor/select-defendant-solicitor-page';
 import SubmitNotifyClaimDetailsCOSPage from './submit-notify-claim-details/submit-notify-claim-details-cos-page';
 import SubmitNotifyClaimDetailsPage from './submit-notify-claim-details/submit-notify-claim-details-page';
-import SubmitNotifyClaimDetails_LIP_Page from './submit-notify-claim-details/submit-notify-claim-details-lip-page';
-import SubmitNotifyClaimDetails_LIP_LR_Page from './submit-notify-claim-details/submit-notify-claim-details-lip-lr-page';
+import SubmitNotifyClaimDetailsLIPPage from './submit-notify-claim-details/submit-notify-claim-details-lip-page';
+import SubmitNotifyClaimDetailsLIPLRPage from './submit-notify-claim-details/submit-notify-claim-details-lip-lr-page';
 import UploadNotifyClaimDetailsPage from './upload-notify-claim-details/upload-notify-claim-details-page';
 
 export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
@@ -30,12 +28,12 @@ export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
     return new SubmitNotifyClaimDetailsPage(this.page);
   }
 
-  get submitNotifyClaimDetails_LIP_Page() {
-    return new SubmitNotifyClaimDetails_LIP_Page(this.page);
+  get submitNotifyClaimDetailsLIPPage() {
+    return new SubmitNotifyClaimDetailsLIPPage(this.page);
   }
 
-  get submitNotifyClaimDetails_LIP_LR_Page() {
-    return new SubmitNotifyClaimDetails_LIP_LR_Page(this.page);
+  get submitNotifyClaimDetailsLIPLRPage() {
+    return new SubmitNotifyClaimDetailsLIPLRPage(this.page);
   }
 
   get confirmNotifyClaimDetailsPage() {
