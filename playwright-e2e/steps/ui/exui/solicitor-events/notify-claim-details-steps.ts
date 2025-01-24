@@ -24,22 +24,21 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
   async NotifyClaimDetails1v1() {
     await this.retryExuiEvent(
       async () => {
-        const { uploadDocumentsPage } = this.notifyClaimDetailsPageFactory;
-        await uploadDocumentsPage.verifyContent(this.ccdCaseData);
-        await uploadDocumentsPage.uploadDocuments();
-        await uploadDocumentsPage.submit();
+        const { uploadNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await uploadNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
+        await uploadNotifyClaimDetailsPage.uploadDocuments();
+        await uploadNotifyClaimDetailsPage.submit();
 
-        const { notifyClaimDetailsSubmitPage } = this.notifyClaimDetailsPageFactory;
-        await notifyClaimDetailsSubmitPage.verifyContent(this.ccdCaseData);
-        await notifyClaimDetailsSubmitPage.submit();
+        const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimDetailsPage.submit();
 
-        const { notifyClaimDetailsConfirmPage } = this.notifyClaimDetailsPageFactory;
-        await notifyClaimDetailsConfirmPage.verifyContent();
-        await notifyClaimDetailsConfirmPage.submit();
+        const { confirmNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await confirmNotifyClaimDetailsPage.verifyContent();
+        await confirmNotifyClaimDetailsPage.submit();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
-      { retries: 1 },
     );
   }
 }

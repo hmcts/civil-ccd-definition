@@ -10,7 +10,7 @@ import ClaimType from '../../../../../../enums/claim-type';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 import ClaimTypeHelper from '../../../../../../helpers/claim-type-helper';
 import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
-import { PartyType } from '../../../../../../models/party-types';
+import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 
 const references = {
   References: {
@@ -25,8 +25,8 @@ const claimantCourt = {
   Court: {
     courtLocation: {
       applicantPreferredCourtLocationList: {
-        list_items: [CaseDataHelper.setCodeToData(preferredCourts.claimant)],
-        value: CaseDataHelper.setCodeToData(preferredCourts.claimant),
+        list_items: [CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default)],
+        value: CaseDataHelper.setCodeToData(preferredCourts[partys.CLAIMANT_1.key].default),
       },
     },
     applicant1DQRemoteHearing: {
@@ -36,7 +36,7 @@ const claimantCourt = {
   },
 };
 
-const claimant1 = (partyType: PartyType) => {
+const claimant1 = (partyType: ClaimantDefendantPartyType) => {
   return {
     Claimant: {
       applicant1: CaseDataHelper.buildClaimantAndDefendantData(partys.CLAIMANT_1, partyType),
@@ -77,7 +77,7 @@ const claimantSolicitor1 = {
   },
 };
 
-const claimant2 = (claimType: ClaimType, partyType: PartyType) => {
+const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType) => {
   if (ClaimTypeHelper.isClaimant2(claimType))
     return {
       AddAnotherClaimant: {
@@ -102,7 +102,7 @@ const claimant2 = (claimType: ClaimType, partyType: PartyType) => {
   };
 };
 
-const defendant1 = (partyType: PartyType) => ({
+const defendant1 = (partyType: ClaimantDefendantPartyType) => ({
   Defendant: {
     respondent1: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, partyType),
   },
@@ -141,7 +141,7 @@ const defendantSolicitor1 = (claimType: ClaimType) => {
   };
 };
 
-const defendant2 = (claimType: ClaimType, partyType: PartyType) => {
+const defendant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType) => {
   if (ClaimTypeHelper.isDefendant2(claimType))
     return {
       AddAnotherDefendant: {

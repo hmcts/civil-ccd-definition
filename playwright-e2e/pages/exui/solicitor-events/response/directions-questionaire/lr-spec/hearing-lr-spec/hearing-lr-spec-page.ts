@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { buttons, radioButtons, subheadings } from './hearing-lr-spec-content.ts';
+import { buttons, radioButtons, subheadings, inputs } from './hearing-lr-spec-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
@@ -56,7 +56,7 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
       ),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, 'date');
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
   async selectDateRange(unavailableDateNumber: number) {
@@ -68,8 +68,8 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });
-    await this.dateFragment.enterDate(unavailableDateFrom, 'fromDate');
-    await this.dateFragment.enterDate(unavailableDateTo, 'toDate');
+    await this.dateFragment.enterDate(unavailableDateFrom, inputs.dateFrom.selectorKey);
+    await this.dateFragment.enterDate(unavailableDateTo, inputs.dateTo.selectorKey);
   }
 
   async removeAvailability(unavailableDateNumber: number) {

@@ -27,7 +27,7 @@ export default abstract class BasePage {
     const newLocator = containerSelector
       ? this.page.locator(containerSelector).locator(oldLocator)
       : oldLocator;
-    return first ? newLocator.nth(0) : index ? newLocator.nth(index) : newLocator;
+    return first ? newLocator.nth(0) : index !== undefined ? newLocator.nth(index) : newLocator;
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -40,6 +40,20 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
     let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'label')
+  @TruthyParams(classKey, 'label')
+  protected async clickByLabel(
+    label: string,
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {},
+  ) {
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.getByLabel(label, { exact: options.exact });
     locator = this.getNewLocator(locator, undefined, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
@@ -116,6 +130,25 @@ export default abstract class BasePage {
     }
   }
 
+  @BoxedDetailedStep(classKey, 'input', 'label')
+  @TruthyParams(classKey, 'input', 'label')
+  protected async inputTextByLabel(
+    input: string | number,
+    label: string,
+    options: { index?: number; timeout?: number; exact?: boolean } = {},
+  ) {
+    if (options.index) {
+      await this.page
+        .getByLabel(label, { exact: options.exact })
+        .nth(options.index)
+        .fill(input.toString());
+    } else {
+      await this.page.getByLabel(label, { exact: options.exact }).fill(input.toString(), {
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'input', 'selector')
   protected async inputSensitiveText(
@@ -135,9 +168,31 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'option', 'selector')
   @TruthyParams(classKey, 'selector')
-  protected async selectFromDropdown(option: string | number, selector: string) {
-    if (typeof option === 'number') await this.page.selectOption(selector, { index: option });
-    else await this.page.selectOption(selector, option);
+  protected async selectFromDropdown(
+    option: string | number,
+    selector: string,
+    options: { timeout?: number } = {},
+  ) {
+    if (typeof option === 'number')
+      await this.page.selectOption(selector, { index: option }, { timeout: options.timeout });
+    else await this.page.selectOption(selector, option, { timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'option', 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async selectFromDropdownByLabel(
+    option: string | number,
+    selector: string,
+    options: { timeout?: number; exact?: boolean } = {},
+  ) {
+    if (typeof option === 'number')
+      await this.page
+        .getByLabel(selector, { exact: options.exact })
+        .selectOption({ index: option }, { timeout: options.timeout });
+    else
+      await this.page
+        .getByLabel(selector, { exact: options.exact })
+        .selectOption(option, { timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey)
@@ -168,10 +223,21 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async waitForSelectorToDetach(
-    selector: string,
-    options: { timeout?: number } = { timeout: 25_000 },
-  ) {
+  @TruthyParams(classKey, 'selector')
+  protected async waitForSelectorToBeVisible(selector: string, options: { timeout?: number } = {}) {
+    const locator = this.page.locator(selector);
+    await locator.waitFor({ state: 'visible', timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async waitForTextToBeVisible(text: string, options: { timeout?: number } = {}) {
+    const locator = this.page.getByText(text);
+    await locator.waitFor({ state: 'visible', timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
@@ -182,10 +248,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async waitForTextToDetach(
-    text: string,
-    options: { timeout?: number } = { timeout: 25_000 },
-  ) {
+  protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
       await locator.waitFor({ state: 'attached', timeout: 500 });
@@ -210,7 +273,7 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      axePageInsertName: axePageInsertName,
+      axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
@@ -324,9 +387,11 @@ export default abstract class BasePage {
     text: string | number,
     options: { message?: string; timeout?: number } = {},
   ) {
-    await pageExpect(this.page.locator('h1', { hasText: text.toString() }), {
-      message: options.message,
-    }).toBeVisible({ timeout: options.timeout });
+    await pageExpect(
+      this.page.locator('h1', { has: this.page.locator(`text="${text}"`) }),
+    ).toBeVisible({
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'text')
@@ -354,7 +419,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('h2', { hasText: text });
+    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -694,8 +759,8 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'selector', 'option')
   @TruthyParams(classKey, 'selector', 'option')
   protected async expectDropdownOption(
-    selector: string,
     option: string,
+    selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
     await pageExpect(this.page.locator(selector), { message: options.message }).toHaveText(option, {
@@ -723,17 +788,17 @@ export default abstract class BasePage {
     message: string,
     { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
   ) {
-    while (retries > 0) {
+    while (retries >= 0) {
       if (!assertFirst) await action();
       const promises = assertions();
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
       } catch (error) {
-        retries--;
         if (retries <= 0) throw error;
         console.log(message);
         console.log(`Retries: ${retries} remaining`);
+        retries--;
         assertFirst = false;
       }
     }
@@ -784,6 +849,25 @@ export default abstract class BasePage {
       },
       assertions,
       `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      { retries },
+    );
+  }
+
+  @Step(classKey)
+  @TruthyParams(classKey, 'option', 'label')
+  protected async retrySelectFromDropdownByLabel(
+    option: string,
+    label: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    { retries = 2 }: { retries?: number } = {},
+  ) {
+    await this.retryAction(
+      async () => {
+        await this.selectFromDropdownByLabel(0, label);
+        await this.selectFromDropdownByLabel(option, label);
+      },
+      assertions,
+      `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
       { retries },
     );
   }

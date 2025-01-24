@@ -28,7 +28,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
 
   async verifyDefendant1Answers() {
     const dateDeemedServed = DateHelper.getToday();
-    const dateOfService = DateHelper.addToToday({ days: 2, workingDay: true });
+    const dateOfService = DateHelper.addToToday({
+      days: 2,
+      workingDay: true,
+      addDayAfter4pm: true,
+    });
     await super.runVerifications(
       [
         super.expectText(
@@ -51,7 +55,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
 
   async verifyDefendant2Answers() {
     const dateDeemedServed = DateHelper.subtractFromToday({ days: 14 });
-    const dateOfService = DateHelper.subtractFromToday({ days: 14, workingDay: true });
+    const dateOfService = DateHelper.subtractFromToday({
+      days: 14,
+      workingDay: true,
+      addDayAfter4pm: true,
+    });
     await super.runVerifications(
       [
         super.expectText(
