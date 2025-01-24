@@ -1020,6 +1020,27 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "fixedCosts",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "COMPLEX",
+    "PageID": "FixedCommencementCosts",
+    "PageDisplayOrder": 42,
+    "PageColumnNumber": 1,
+    "ShowSummaryChangeOption": "Y"
+  } ,
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
+    "CaseFieldID": "fixedCostsHint",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "FixedCommencementCosts",
+    "PageDisplayOrder": 42,
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CLAIM_SPEC",
     "CaseFieldID": "respondStatementOfTruthHeaderLabel",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",

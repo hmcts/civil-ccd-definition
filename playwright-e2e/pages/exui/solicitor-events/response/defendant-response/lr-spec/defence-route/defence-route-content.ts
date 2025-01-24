@@ -46,6 +46,7 @@ export const inputs = {
   },
   amountPaidDate: {
     label: 'When was this amount paid?',
+    selectorKey: 'whenWasThisAmountPaid',
   },
   amountPaidOther: {
     label: 'Tell us how',
