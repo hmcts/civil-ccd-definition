@@ -327,7 +327,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin,court-officer-order",
+    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin,court-officer-order,caseworker-civil-doc-removal",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -382,15 +382,6 @@
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "AccessProfiles": "next-hearing-date-admin",
-    "ReadOnly": "N",
-    "Disabled": "F",
-    "CaseAccessCategories": ""
-  },
-  {
-    "RoleName" : "idam:hearing-centre-team-leader",
-    "Authorisation": "",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "hearing-centre-team-leader",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
