@@ -1,10 +1,10 @@
 import BaseDataBuilder from '../../../../../../base/base-data-builder';
-import claimantDefendantTypes from '../../../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../../../constants/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
 import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
-import { ClaimantDefendantType } from '../../../../../../models/claimant-defendant-types';
+import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
 
 @AllMethodsStep()
@@ -18,17 +18,17 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     {
       claimType = ClaimType.ONE_VS_ONE,
       claimTrack = ClaimTrack.SMALL_CLAIM,
-      claimant1PartyType = claimantDefendantTypes.INDIVIDUAL,
-      claimant2PartyType = claimantDefendantTypes.INDIVIDUAL,
-      defendant1PartyType = claimantDefendantTypes.INDIVIDUAL,
-      defendant2PartyType = claimantDefendantTypes.INDIVIDUAL,
+      claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     }: {
       claimType?: ClaimType;
       claimTrack?: ClaimTrack;
-      claimant1PartyType?: ClaimantDefendantType;
-      claimant2PartyType?: ClaimantDefendantType;
-      defendant1PartyType?: ClaimantDefendantType;
-      defendant2PartyType?: ClaimantDefendantType;
+      claimant1PartyType?: ClaimantDefendantPartyType;
+      claimant2PartyType?: ClaimantDefendantPartyType;
+      defendant1PartyType?: ClaimantDefendantPartyType;
+      defendant2PartyType?: ClaimantDefendantPartyType;
     } = {},
   ) {
     return {
