@@ -1,7 +1,7 @@
 import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
-  fixedRecoverableCosts: 'Fixed recoverable costs',
+  fixedRecoverableCosts: 'Fixed Recoverable Costs',
 };
 
 export const radioButtons = (claimantDefendantParty: Party) => ({
@@ -10,7 +10,7 @@ export const radioButtons = (claimantDefendantParty: Party) => ({
       'Is this claim subject to the Fixed Recoverable Cost Regime requiring the court to determine a complexity band?',
     yes: {
       label: 'Yes',
-      selector: `#${claimantDefendantParty.oldKey}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime`,
+      selector: `#${claimantDefendantParty.oldKey}DQFixedRecoverableCosts_isSubjectToFixedRecoverableCostRegime_Yes`,
     },
     no: {
       label: 'No',
@@ -25,7 +25,7 @@ export const radioButtons = (claimantDefendantParty: Party) => ({
     },
   },
   complexityBandAgreed: {
-    label: 'Has this complexity band been agreed with the other claimantDefendantParty?',
+    label: 'Has this complexity band been agreed with the other party?',
     yes: {
       label: 'Yes',
       selector: `#${claimantDefendantParty.oldKey}DQFixedRecoverableCosts_complexityBandingAgreed_Yes`,

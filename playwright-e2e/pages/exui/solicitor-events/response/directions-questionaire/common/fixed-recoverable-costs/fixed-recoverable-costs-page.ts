@@ -20,10 +20,10 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.fixedRecoverableCosts),
-        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.label),
-        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.yes.label),
-        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.no.label),
+        super.expectSubheading(subheadings.fixedRecoverableCosts, {index:0}),
+        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.label, {index:0}),
+        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.yes.label, {index:0}),
+        super.expectText(radioButtons(this.claimantDefendantParty).fixedRecoverableCosts.no.label, {index:0}),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -46,7 +46,7 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons(this.claimantDefendantParty).complexityBands.band1.selector,
     );
-    await super.expectText(radioButtons(this.claimantDefendantParty).complexityBandAgreed.label);
+    await super.expectText(radioButtons(this.claimantDefendantParty).complexityBandAgreed.label, {index:0});
     await super.clickBySelector(
       radioButtons(this.claimantDefendantParty).complexityBandAgreed.yes.selector,
     );
