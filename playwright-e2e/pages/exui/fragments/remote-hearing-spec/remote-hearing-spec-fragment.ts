@@ -19,8 +19,8 @@ export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
       [
         super.expectText(radioButtons.remoteHearing.label),
         super.expectText(radioButtons.remoteHearing.hintText),
-        super.expectLabel(radioButtons.remoteHearing.yes.label),
-        super.expectLabel(radioButtons.remoteHearing.no.label),
+        super.expectLabel(radioButtons.remoteHearing.yes.label, {index:0}),
+        super.expectLabel(radioButtons.remoteHearing.no.label, {index:0}),
       ],
       {
         runAxe: false,

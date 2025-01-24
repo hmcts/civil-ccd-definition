@@ -78,6 +78,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
   async ClaimantResponse1v1SmallTrack() {
+    await super.fetchAndSetCCDCaseData(claimantSolicitorUser,);
     await this.retryExuiEvent(
       async () => {
 
@@ -87,7 +88,6 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
         //Mediation only avalaible on Defendant Response ? (needed for this journey)
         await this.processClaimantResponseSmallClaimExperts();
         await this.processClaimantResponseSmallClaimWitnesses();
-
         await this.processClaimantResponseLanguagePage();
         await this.processClaimantResponseHearingSpecPage();
         await this.processClaimantResponseApplicantCourtLocationLRSpecPage();
@@ -99,8 +99,8 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
 
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      civilAdminUser,
-      { retries: 1 },
+      claimantSolicitorUser,
+      { retries: 0 },
     );
   }
 
@@ -211,16 +211,15 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   private async processClaimantResponseSmallClaimExperts(){
     const { smallClaimExpertsClaimantPage } = this.claimantResponsePageFactory
     await smallClaimExpertsClaimantPage.verifyContent(this.ccdCaseData);
+    // await smallClaimExpertsClaimantPage.useNoExperts();
     await smallClaimExpertsClaimantPage.useExperts();
     await smallClaimExpertsClaimantPage.enterExpertDetails();
-    // no witness Party needed ?
     await smallClaimExpertsClaimantPage.submit();
   }
 
   private async processClaimantResponseWitnessesPage() {
     const {witnessesPage} = this.claimantResponsePageFactory
     await witnessesPage.verifyContent(this.ccdCaseData);
-    //missing step to select yes witness is needed
     await witnessesPage.addWitnesses();
     await witnessesPage.enterWitnessDetails(this.witnessParty);
     await witnessesPage.submit();
@@ -230,8 +229,9 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     const { smallClaimWitnessesClaimantPage } = this.claimantResponsePageFactory
     await smallClaimWitnessesClaimantPage.verifyContent(this.ccdCaseData);
     await smallClaimWitnessesClaimantPage.selectYes();
-    await smallClaimWitnessesClaimantPage.addWitness();
-    await smallClaimWitnessesClaimantPage.enterWitness1Details(this.witnessParty);
+    await smallClaimWitnessesClaimantPage.enterWitnessNumber();
+    await smallClaimWitnessesClaimantPage.addWitness1v1();
+    await smallClaimWitnessesClaimantPage.enterWitness1Details();
     await smallClaimWitnessesClaimantPage.submit();
   }
 
@@ -244,8 +244,10 @@ private async processClaimantResponseLanguagePage() {
   private async processClaimantResponseHearingSpecPage() {
     const { hearingSpecPage } = this.claimantResponsePageFactory
     await hearingSpecPage.verifyContent(this.ccdCaseData);
-    await hearingSpecPage.selectYesAvailabilityRequired();
-    await hearingSpecPage.selectSingleDate(8);
+    await hearingSpecPage.selectYesAvailabilityRequiredSmallClaim();
+    await hearingSpecPage.addNewUnavailableDateSmallClaim();
+    await hearingSpecPage.selectSingleDateSmallClaim(1);
+    await hearingSpecPage.submit();
     await hearingSpecPage.submit();
   }
 

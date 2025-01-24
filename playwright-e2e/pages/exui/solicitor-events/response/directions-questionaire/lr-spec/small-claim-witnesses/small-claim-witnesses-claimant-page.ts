@@ -30,24 +30,37 @@ export default class SmallClaimWitnessesClaimantPage extends ExuiPage(BasePage) 
     await super.clickBySelector(buttons.addNewWitness.selector(partys.CLAIMANT_1));
   }
 
-  async enterWitness1Details(claimantWitnessParty: Party) {
-    const defendantWitnessData = CaseDataHelper.buildWitnessData(claimantWitnessParty);
+  async addWitness1v1() {
+    await super.clickBySelector(buttons.addNewWitness.selector1v1);
+  }
+
+  async enterWitness1Details() {
+    const defendantWitnessData = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
     await super.inputText(
       defendantWitnessData.firstName,
-      inputs.witnessDetails.firstName.selector(partys.CLAIMANT_1, claimantWitnessParty),
+      inputs.witnessDetails.firstName.selector(partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1),
     );
     await super.inputText(
       defendantWitnessData.lastName,
-      inputs.witnessDetails.lastName.selector(partys.CLAIMANT_1, claimantWitnessParty),
+      inputs.witnessDetails.lastName.selector(partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1),
+    );
+
+    await super.inputText(
+      defendantWitnessData.phoneNumber,
+      inputs.witnessDetails.number.selector(partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1),
     );
     await super.inputText(
       defendantWitnessData.emailAddress,
-      inputs.witnessDetails.email.selector(partys.CLAIMANT_1, claimantWitnessParty),
+      inputs.witnessDetails.email.selector(partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1),
     );
     await super.inputText(
       defendantWitnessData.reasonForWitness,
-      inputs.witnessDetails.whatEvent.selector(partys.CLAIMANT_1, claimantWitnessParty),
+      inputs.witnessDetails.whatEvent.selector(partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1),
     );
+  }
+
+  async enterWitnessNumber() {
+    await super.inputText("0", inputs.witnessNumber.selector)
   }
 
   async submit() {

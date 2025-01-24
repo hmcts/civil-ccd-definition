@@ -14,7 +14,7 @@ export default class ConfirmClaimantResponseSpecPage extends ExuiPage(BasePage) 
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeadings.proceed),
-      super.expectSubheading(subheadings.happensNext),
+      super.expectSubheading(subheadings.happensNextSpec1v1),
       super.expectText(paragraphs.descriptionText1),
     ]);
   }

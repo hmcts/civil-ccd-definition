@@ -1,5 +1,6 @@
 export const subheadings = {
   courtLocation: 'Court Location',
+  claimant : `Claimant\'s requested court`
 };
 
 export const dropdowns = {

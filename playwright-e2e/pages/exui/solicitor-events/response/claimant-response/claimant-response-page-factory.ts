@@ -128,7 +128,8 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingSpecPage() {
-    return new HearingSpecPage(this.page, partys.CLAIMANT_1);
+    const dateFragment =  new DateFragment(this.page);
+    return new HearingSpecPage(this.page, partys.CLAIMANT_1,dateFragment);
   }
 
   get draftDirectionsPage() {

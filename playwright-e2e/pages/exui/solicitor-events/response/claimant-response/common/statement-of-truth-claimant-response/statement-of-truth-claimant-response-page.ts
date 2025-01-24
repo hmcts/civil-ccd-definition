@@ -18,10 +18,10 @@ export default class StatementOfTruthClaimantResponsePage extends ExuiPage(BaseP
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       this.statementOfTruthFragment.verifyContent(),
-      super.expectText(paragraphs.descriptiveText1),
-      super.expectText(paragraphs.descriptiveText2),
-      super.expectText(paragraphs.descriptiveText3),
-      super.expectText(paragraphs.descriptiveText4),
+      super.expectText(paragraphs.descriptiveText1Spec1v1SC),
+      super.expectText(paragraphs.descriptiveText2Spec1v1SC),
+      super.expectText(paragraphs.descriptiveText3Spec1v1SC),
+      super.expectText(paragraphs.descriptiveText4Spec1v1SC),
     ]);
   }
 

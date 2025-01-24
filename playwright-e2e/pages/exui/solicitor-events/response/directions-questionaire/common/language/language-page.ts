@@ -21,9 +21,9 @@ export default class LanguagePage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.welsh, {index:0}),
-        super.expectText(paragraphs.descriptionText, {index:0}),
-        super.expectText(radioButtons.courtLanguage.label, {index:0}),
-        super.expectText(radioButtons.documentLanguage.label, {index:0}),
+        super.expectText(paragraphs.descriptionText, {ignoreDuplicates:true}),
+        super.expectText(radioButtons.courtLanguage.label, {ignoreDuplicates:true}),
+        super.expectText(radioButtons.documentLanguage.label, {ignoreDuplicates:true}),
         super.expectLabel(radioButtons.courtLanguage.welsh.label, { index: 0 }),
         super.expectLabel(radioButtons.courtLanguage.english.label, { index: 0 }),
         super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { index : 0 }),
