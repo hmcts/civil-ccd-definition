@@ -2,7 +2,7 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.50
+version: 0.0.51
 maintainers:
   - name: HMCTS Civil team
 
@@ -66,3 +66,17 @@ dependencies:
     version: ~0.0.58
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: am-org-role-mapping-service.enabled
+
+# Stiching
+  - name: ccd-case-document-am-api
+    version: 1.7.14
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: ccd-case-document-am-api.enabled
+  - name: em-ccdorc
+    version: 2.0.25
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: em-ccdorc.enabled
+  - name: em-stitching
+    version: 1.0.55
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: em-stitching.enabled
