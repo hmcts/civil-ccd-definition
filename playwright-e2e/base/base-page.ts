@@ -27,7 +27,7 @@ export default abstract class BasePage {
     const newLocator = containerSelector
       ? this.page.locator(containerSelector).locator(oldLocator)
       : oldLocator;
-    return first ? newLocator.nth(0) : index ? newLocator.nth(index) : newLocator;
+    return first ? newLocator.nth(0) : index !== undefined ? newLocator.nth(index) : newLocator;
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -40,6 +40,20 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
     let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    await locator.click({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'label')
+  @TruthyParams(classKey, 'label')
+  protected async clickByLabel(
+    label: string,
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {},
+  ) {
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.getByLabel(label, { exact: options.exact });
     locator = this.getNewLocator(locator, undefined, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
@@ -116,6 +130,25 @@ export default abstract class BasePage {
     }
   }
 
+  @BoxedDetailedStep(classKey, 'input', 'label')
+  @TruthyParams(classKey, 'input', 'label')
+  protected async inputTextByLabel(
+    input: string | number,
+    label: string,
+    options: { index?: number; timeout?: number; exact?: boolean } = {},
+  ) {
+    if (options.index) {
+      await this.page
+        .getByLabel(label, { exact: options.exact })
+        .nth(options.index)
+        .fill(input.toString());
+    } else {
+      await this.page.getByLabel(label, { exact: options.exact }).fill(input.toString(), {
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
   @TruthyParams(classKey, 'input', 'selector')
   protected async inputSensitiveText(
@@ -135,9 +168,31 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'option', 'selector')
   @TruthyParams(classKey, 'selector')
-  protected async selectFromDropdown(option: string | number, selector: string) {
-    if (typeof option === 'number') await this.page.selectOption(selector, { index: option });
-    else await this.page.selectOption(selector, option);
+  protected async selectFromDropdown(
+    option: string | number,
+    selector: string,
+    options: { timeout?: number } = {},
+  ) {
+    if (typeof option === 'number')
+      await this.page.selectOption(selector, { index: option }, { timeout: options.timeout });
+    else await this.page.selectOption(selector, option, { timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'option', 'selector')
+  @TruthyParams(classKey, 'selector')
+  protected async selectFromDropdownByLabel(
+    option: string | number,
+    selector: string,
+    options: { timeout?: number; exact?: boolean } = {},
+  ) {
+    if (typeof option === 'number')
+      await this.page
+        .getByLabel(selector, { exact: options.exact })
+        .selectOption({ index: option }, { timeout: options.timeout });
+    else
+      await this.page
+        .getByLabel(selector, { exact: options.exact })
+        .selectOption(option, { timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey)
@@ -794,6 +849,25 @@ export default abstract class BasePage {
       },
       assertions,
       `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      { retries },
+    );
+  }
+
+  @Step(classKey)
+  @TruthyParams(classKey, 'option', 'label')
+  protected async retrySelectFromDropdownByLabel(
+    option: string,
+    label: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    { retries = 2 }: { retries?: number } = {},
+  ) {
+    await this.retryAction(
+      async () => {
+        await this.selectFromDropdownByLabel(0, label);
+        await this.selectFromDropdownByLabel(option, label);
+      },
+      assertions,
+      `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
       { retries },
     );
   }
