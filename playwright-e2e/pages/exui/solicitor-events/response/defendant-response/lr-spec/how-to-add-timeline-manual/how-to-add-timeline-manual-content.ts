@@ -13,6 +13,7 @@ export const inputs = {
   timelineEvent: {
     date: {
       label: 'Date (Optional)',
+      selectorKey: 'timelineDate',
     },
     eventDescription: {
       label: 'What happened (Optional)',

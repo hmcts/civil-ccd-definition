@@ -34,17 +34,20 @@ export const radioButtons = {
 };
 
 export const inputs = {
-  unavailableDate: {
+  singleDate: {
     label: 'Unavailable date',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'date',
   },
   dateFrom: {
     label: 'Date from',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'fromDate',
   },
   dateTo: {
     label: 'Date to',
     hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'toDate',
   },
 };
 
