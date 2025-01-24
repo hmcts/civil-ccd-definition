@@ -7,6 +7,7 @@ export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
+      selector2v1: `#applicantMPClaimExpertSpecRequired_Yes`,
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
           return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
@@ -14,6 +15,7 @@ export const radioButtons = {
       },
     },
     no: {
+      selector2v1: `#applicantMPClaimExpertSpecRequired_No`,
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
           return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_No`;

@@ -25,6 +25,14 @@ export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.expertsRequired.no.selector(partys.CLAIMANT_1));
   }
 
+  async useExperts2v1() {
+    await super.clickBySelector(radioButtons.expertsRequired.yes.selector2v1);
+  }
+
+  async useNoExperts2v1() {
+    await super.clickBySelector(radioButtons.expertsRequired.no.selector2v1);
+  }
+
   async enterExpertDetails() {
     const expertData = CaseDataHelper.buildExpertData(partys.CLAIMANT_EXPERT_1);
     await super.inputText(
