@@ -1,73 +1,54 @@
-const getDefendantHeading = (defendantNumber: number) =>
-  `Certificate of Service [defendant${defendantNumber}]`;
+import { Party } from '../../../../models/partys';
+import StringHelper from '../../../../helpers/string-helper';
 
-export const defendant1Heading = getDefendantHeading(1);
-export const defendant2Heading = getDefendantHeading(2);
+export const heading = (defendantParty: Party) => `Certificate of Service [${defendantParty.key}]`;
 
-const getInputs = (defendantNumber: number) => ({
+export const inputs = {
   dateOfService: {
     label: 'On what day did you serve?',
-    day: {
-      label: 'Day',
-      selector: '#cosDateOfServiceForDefendant-day',
-    },
-    month: {
-      label: 'Month',
-      selector: '#cosDateOfServiceForDefendant-month',
-    },
-    year: {
-      label: 'Year',
-      selector: '#cosDateOfServiceForDefendant-year',
-    },
   },
   dateDeemedServed: {
     label: 'The date of service is',
-    day: {
-      label: 'Day',
-      selector: '#cosDateDeemedServedForDefendant-day',
-    },
-    month: {
-      label: 'Month',
-      selector: '#cosDateDeemedServedForDefendant-month',
-    },
-    year: {
-      label: 'Year',
-      selector: '#cosDateDeemedServedForDefendant-year',
-    },
   },
   documentsServed: {
     label: 'What documents did you serve?',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosServedDocumentFiles`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosServedDocumentFiles`,
   },
   documentsServedLocation: {
     label: 'Where did you serve the documunts',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocation`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocation`,
   },
   notifyClaimRecipient: {
     label: 'Who did you serve the claim to?',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipient`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipient`,
   },
-  name: {
-    label: 'Your name',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSender`,
-  },
-  firm: {
-    label: 'Your firm',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosSenderFirm`,
+  statementOfTruth: {
+    name: {
+      label: 'Your name',
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosSender`,
+    },
+    firm: {
+      label: 'Your firm',
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosSenderFirm`,
+    },
   },
   evidenceDocument: {
     label: 'Supporting evidence',
-    selector: `#cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument_value`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaimDetails${StringHelper.capitalise(defendantParty.key)}_cosEvidenceDocument_value`,
   },
-});
+};
 
-export const defendant1Inputs = getInputs(1);
-export const defendant2Inputs = getInputs(2);
-
-const getDropdowns = (defendantNumber: number) => ({
+export const dropdowns = {
   serveType: {
     label: 'How did you serve the documents?',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeType`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeType`,
     options: [
       'Personally handed it to or left it with',
       'Delivered to or left at permitted place',
@@ -77,7 +58,8 @@ const getDropdowns = (defendantNumber: number) => ({
   },
   locationType: {
     label: 'Select the type of location where you served the documents',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationType`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationType`,
     options: [
       'Usual Residence',
       'Last known residence',
@@ -92,49 +74,46 @@ const getDropdowns = (defendantNumber: number) => ({
       'Other',
     ],
   },
-});
+};
 
-export const defendant1Dropdowns = getDropdowns(1);
-export const defendant2Dropdowns = getDropdowns(2);
+export const radioButtons = {
+  docsServed: {
+    label: 'The location where you served the documents was the:',
+    litigationFriend: {
+      label: "litigation friend's",
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-FRIEND`,
+    },
+    solicitor: {
+      label: "solicitor's",
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-SOLICITOR`,
+    },
+    defendant: {
+      label: "defendant's",
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-DEFENDANT`,
+    },
+    claimant: {
+      label: "claimant's",
+      selector: (defendantParty: Party) =>
+        `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosRecipientServeLocationOwnerType-CLAIMANT`,
+    },
+  },
+};
 
-const getRadioButtons = (defendantNumber: number) => ({
-  litigationFriend: {
-    label: "litigation friend's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-FRIEND`,
-  },
-  solicitor: {
-    label: "solicitor's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-SOLICITOR`,
-  },
-  defendant: {
-    label: "defendant's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-DEFENDANT`,
-  },
-  claimant: {
-    label: "claimant's",
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosRecipientServeLocationOwnerType-CLAIMANT`,
-  },
-});
-
-export const defendant1RadioButtons = getRadioButtons(1);
-export const defendant2RadioButtons = getRadioButtons(2);
-
-const getCheckboxes = (defendantNumber: number) => ({
+export const checkboxes = {
   signedTrue: {
     label: 'I believe that the facts stated in the certificate are true',
-    selector: `#cosNotifyClaimDefendant${defendantNumber}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
+    selector: (defendantParty: Party) =>
+      `#cosNotifyClaim${StringHelper.capitalise(defendantParty.key)}_cosUISenderStatementOfTruthLabel-CERTIFIED`,
   },
-});
+};
 
-export const defendant1Checkboxes = getCheckboxes(1);
-export const defendant2Checkboxes = getCheckboxes(2);
-
-const getButtons = (defendantNumber: number) => ({
+export const buttons = {
   addNewSupportingEvidence: {
     title: 'Add new',
-    selector: `div[id='cosNotifyClaimDetails${defendantNumber}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
+    selector: (defendantParty: Party) =>
+      `div[id='cosNotifyClaimDetails${defendantParty.number}_cosEvidenceDocument'] button[class='button write-collection-add-item__top']`,
   },
-});
-
-export const defendant1Buttons = getButtons(1);
-export const defendant2Buttons = getButtons(2);
+};

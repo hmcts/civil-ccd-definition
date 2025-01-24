@@ -1,6 +1,6 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
-import CaseRoles from '../enums/case-roles';
+import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
 import { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
@@ -74,7 +74,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     console.log(`Payment for claim issue successfully updated, caseId: ${serviceRequestDTO.id}`);
   }
 
-  async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRoles) {
+  async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
     console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}...`);
     const url = `${this.testingSupportUrl}/assign-case/${caseId}/${caseRole}`;
     const requestOptions: RequestOptions = {

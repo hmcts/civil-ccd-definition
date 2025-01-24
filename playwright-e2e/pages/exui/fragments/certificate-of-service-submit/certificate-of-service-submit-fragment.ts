@@ -2,20 +2,15 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
 import ExuiPage from '../../exui-page/exui-page';
-import {
-  defendant1Heading,
-  defendant2Heading,
-  subheading,
-  table,
-} from './certificate-of-service-submit-content';
+import { getDefendantHeading, subheading, table } from './certificate-of-service-submit-content';
 
 @AllMethodsStep()
 export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectHeading(defendant1Heading),
-        super.expectHeading(defendant2Heading),
+        super.expectHeading(getDefendantHeading(1)),
+        super.expectHeading(getDefendantHeading(2)),
         super.expectSubheading(subheading),
         super.expectText(table.dateDeemedServed.label, { count: 2 }),
         super.expectText(table.dateOfService.label, { count: 2 }),
@@ -33,7 +28,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
 
   async verifyDefendant1Answers() {
     const dateDeemedServed = DateHelper.getToday();
-    const dateOfService = DateHelper.addToToday({ days: 2, workingDay: true });
+    const dateOfService = DateHelper.addToToday({
+      days: 2,
+      workingDay: true,
+      addDayAfter4pm: true,
+    });
     await super.runVerifications(
       [
         super.expectText(
@@ -56,7 +55,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
 
   async verifyDefendant2Answers() {
     const dateDeemedServed = DateHelper.subtractFromToday({ days: 14 });
-    const dateOfService = DateHelper.subtractFromToday({ days: 14, workingDay: true });
+    const dateOfService = DateHelper.subtractFromToday({
+      days: 14,
+      workingDay: true,
+      addDayAfter4pm: true,
+    });
     await super.runVerifications(
       [
         super.expectText(

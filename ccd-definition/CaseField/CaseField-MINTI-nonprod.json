@@ -193,5 +193,21 @@
     "FieldType": "TaskManagementLocationTypes",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "taskManagementLocationsTab",
+    "Label": "Task management locations",
+    "FieldType": "TaskManagementLocationTab",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "caseManagementLocationTab",
+    "Label": "Case management location",
+    "FieldType": "TaskManagementLocationTab",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]

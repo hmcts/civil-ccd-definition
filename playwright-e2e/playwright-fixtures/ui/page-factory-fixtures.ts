@@ -5,8 +5,8 @@ import ExuiDashboardPageFactory from '../../pages/exui/exui-dashboard/exui-dashb
 import CreateClaimPageFactory from '../../pages/exui/solicitor-events/create-claim/create-claim-page-factory';
 import NotifyClaimPageFactory from '../../pages/exui/solicitor-events/notify-claim/notify-claim-page-factory';
 import NotifyClaimDetailsPageFactory from '../../pages/exui/solicitor-events/notify-claim-details/notify-claim-details-page-factory';
-import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/defendant-response/defendant-response-page-factory';
-import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/claimant-response/claimant-response-page-factory';
+import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/response/defendant-response/defendant-response-page-factory';
+import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
 import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 import CreateCaseFlagsPageFactory from '../../pages/exui/caseworker-events/create-case-flags/create-case-flags-page-factory';
 import AddLitigantFriendFactory from '../../pages/exui/solicitor-events/add-litigant-friend/add-litigant-friend-factory.ts';

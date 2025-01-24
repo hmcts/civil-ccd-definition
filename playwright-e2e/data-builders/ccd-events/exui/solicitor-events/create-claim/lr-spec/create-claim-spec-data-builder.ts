@@ -1,9 +1,10 @@
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import createClaimSpecData from './create-claim-spec-data-components';
-import ClaimTrack from '../../../../../../enums/claim-track';
-import ClaimType from '../../../../../../enums/claim-type';
-import PartyType from '../../../../../../enums/party-type';
 import BaseDataBuilder from '../../../../../../base/base-data-builder';
+import ClaimType from '../../../../../../enums/claim-type';
+import ClaimTrack from '../../../../../../enums/claim-track';
+import claimantDefendantPartyTypes from '../../../../../../constants/claimant-defendant-party-types';
+import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 
 @AllMethodsStep()
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
@@ -13,17 +14,17 @@ export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
   protected async buildData({
     claimType = ClaimType.ONE_VS_ONE,
     claimTrack = ClaimTrack.SMALL_CLAIM,
-    claimant1PartyType = PartyType.INDIVIDUAL,
-    claimant2PartyType = PartyType.INDIVIDUAL,
-    defendant1PartyType = PartyType.INDIVIDUAL,
-    defendant2PartyType = PartyType.INDIVIDUAL,
+    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
-    claimant1PartyType?: PartyType;
-    claimant2PartyType?: PartyType;
-    defendant1PartyType?: PartyType;
-    defendant2PartyType?: PartyType;
+    claimant1PartyType?: ClaimantDefendantPartyType;
+    claimant2PartyType?: ClaimantDefendantPartyType;
+    defendant1PartyType?: ClaimantDefendantPartyType;
+    defendant2PartyType?: ClaimantDefendantPartyType;
   } = {}) {
     return {
       ...createClaimSpecData.references,

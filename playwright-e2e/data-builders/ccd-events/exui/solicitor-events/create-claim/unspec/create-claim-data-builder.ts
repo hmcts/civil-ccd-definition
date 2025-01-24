@@ -1,9 +1,10 @@
 import BaseDataBuilder from '../../../../../../base/base-data-builder';
+import claimantDefendantPartyTypes from '../../../../../../constants/claimant-defendant-party-types';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
-import PartyType from '../../../../../../enums/party-type';
 import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
+import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
 
 @AllMethodsStep()
@@ -17,17 +18,17 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     {
       claimType = ClaimType.ONE_VS_ONE,
       claimTrack = ClaimTrack.SMALL_CLAIM,
-      claimant1PartyType = PartyType.INDIVIDUAL,
-      claimant2PartyType = PartyType.INDIVIDUAL,
-      defendant1PartyType = PartyType.INDIVIDUAL,
-      defendant2PartyType = PartyType.INDIVIDUAL,
+      claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+      defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     }: {
       claimType?: ClaimType;
       claimTrack?: ClaimTrack;
-      claimant1PartyType?: PartyType;
-      claimant2PartyType?: PartyType;
-      defendant1PartyType?: PartyType;
-      defendant2PartyType?: PartyType;
+      claimant1PartyType?: ClaimantDefendantPartyType;
+      claimant2PartyType?: ClaimantDefendantPartyType;
+      defendant1PartyType?: ClaimantDefendantPartyType;
+      defendant2PartyType?: ClaimantDefendantPartyType;
     } = {},
   ) {
     return {

@@ -21,7 +21,7 @@
     "FieldType": "Date",
     "ElementLabel": "Review date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "StoredObligationData",
@@ -57,5 +57,14 @@
     "ElementLabel": "Description of review",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "StoredObligationData",
+    "ListElementCode": "obligationWATaskRaised",
+    "ElementLabel": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y",
+    "FieldShowCondition": "obligationWATaskRaised = \"DO_NOT_SHOW_IN_UI\""
   }
 ]

@@ -1,5 +1,5 @@
 import { civilAdminUser } from '../config/users/exui-users';
-import ccdEvents from '../fixtures/ccd-events/events';
+import ccdEvents from '../constants/ccd-events';
 import { test } from '../playwright-fixtures/index';
 
 test('Testing Login', async ({
@@ -24,15 +24,15 @@ test('Testing Login', async ({
   // await caseDetailsPage.verifyContent(ccdCaseData);
   // await caseDetailsPage.retryChooseNextStep(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM);
 
-  // const { notifyClaimCOSDefendant1Page } = _notifyClaimPageFactory;
-  // await notifyClaimCOSDefendant1Page.verifyContent(ccdCaseData);
-  // await notifyClaimCOSDefendant1Page.fillDetails();
-  // await notifyClaimCOSDefendant1Page.submit();
+  // const { certificateOfService1NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService1NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService1NotifyClaimPage.fillDetails();
+  // await certificateOfService1NotifyClaimPage.submit();
 
-  // const { notifyClaimCOSDefendant2Page } = _notifyClaimPageFactory;
-  // await notifyClaimCOSDefendant2Page.verifyContent(ccdCaseData);
-  // await notifyClaimCOSDefendant2Page.fillDetails();
-  // await notifyClaimCOSDefendant2Page.submit();
+  // const { certificateOfService2NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService2NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService2NotifyClaimPage.fillDetails();
+  // await certificateOfService2NotifyClaimPage.submit();
 
   // const { notifyClaimCOSSubmitPage } = _notifyClaimPageFactory;
   // await notifyClaimCOSSubmitPage.verifyContent(ccdCaseData);

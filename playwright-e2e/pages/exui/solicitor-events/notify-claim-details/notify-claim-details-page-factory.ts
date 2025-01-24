@@ -1,48 +1,57 @@
 import BasePageFactory from '../../../../base/base-page-factory';
+import partys from '../../../../constants/partys';
 import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
 import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
-import NotifyClaimDetailsConfirmPage from './notify-claim-details-confirm/notify-claim-details-confirm-page';
-import NotifyClaimDetailsCOSConfirmPage from './notify-claim-details-cos-confirm/notify-claim-details-cos-confirm-page';
-import NotifyClaimDetailsCOSDefendant1Page from './notify-claim-details-cos-defendant-1/notify-claim-details-cos-defendant-1-page';
-import NotifyClaimDetailsCOSDefendant2Page from './notify-claim-details-cos-defendant-2/notify-claim-details-cos-defendant-2-page';
-import NotifyClaimDetailsCOSSubmitPage from './notify-claim-details-cos-submit/notify-claim-details-cos-submit-page';
-import NotifyClaimDetailsSubmitPage from './notify-claim-details-submit/notify-claim-details-submit-page';
+import ParticularsOfClaimFragment from '../../fragments/particulars-of-claim/particulars-of-claim-fragment';
+import CertificateOfService1NotifyClaimDetailsPage from './certificate-of-service-1-notify-claim-details/certificate-of-service-1-notify-claim-details-page';
+import CertificateOfService2NotifyClaimDetailsPage from './certificate-of-service-2-notify-claim-details/certificate-of-service-2-notify-claim-details-page';
+import ConfirmNotifyClaimDetailsCOSPage from './confirm-notify-claim-details/confirm-notify-claim-details-cos-page';
+import ConfirmNotifyClaimDetailsPage from './confirm-notify-claim-details/confirm-notify-claim-details-page';
 import SelectDefendantSolicitorPage from './select-defendant-solicitor/select-defendant-solicitor-page';
-import UploadDocumentsPage from './upload-documents/upload-documents-page';
+import SubmitNotifyClaimDetailsCOSPage from './submit-notify-claim-details/submit-notify-claim-details-cos-page';
+import SubmitNotifyClaimDetailsPage from './submit-notify-claim-details/submit-notify-claim-details-page';
+import UploadNotifyClaimDetailsPage from './upload-notify-claim-details/upload-notify-claim-details-page';
 
 export default class NotifyClaimDetailsPageFactory extends BasePageFactory {
   get selectDefendantSolicitorPage() {
     return new SelectDefendantSolicitorPage(this.page);
   }
 
-  get uploadDocumentsPage() {
-    return new UploadDocumentsPage(this.page);
+  get uploadNotifyClaimDetailsPage() {
+    const particularsOfClaimFragment = new ParticularsOfClaimFragment(this.page);
+    return new UploadNotifyClaimDetailsPage(this.page, particularsOfClaimFragment);
   }
 
-  get notifyClaimDetailsSubmitPage() {
-    return new NotifyClaimDetailsSubmitPage(this.page);
+  get submitNotifyClaimDetailsPage() {
+    return new SubmitNotifyClaimDetailsPage(this.page);
   }
 
-  get notifyClaimDetailsConfirmPage() {
-    return new NotifyClaimDetailsConfirmPage(this.page);
+  get confirmNotifyClaimDetailsPage() {
+    return new ConfirmNotifyClaimDetailsPage(this.page);
   }
 
-  get notifyClaimDetailsCOSDefendant1Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
-    return new NotifyClaimDetailsCOSDefendant1Page(certificateOfServiceFragment, this.page);
+  get certificateOfService1NotifyClaimDetailsPage() {
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+    );
+    return new CertificateOfService1NotifyClaimDetailsPage(certificateOfServiceFragment, this.page);
   }
 
-  get notifyClaimDetailsCOSDefendant2Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
-    return new NotifyClaimDetailsCOSDefendant2Page(certificateOfServiceFragment, this.page);
+  get certificateOfService2NotifyClaimDetailsPage() {
+    const certificateOfServiceFragment = new CertificateOfServiceFragment(
+      this.page,
+      partys.DEFENDANT_2,
+    );
+    return new CertificateOfService2NotifyClaimDetailsPage(certificateOfServiceFragment, this.page);
   }
 
-  get notifyClaimDetailsCOSSubmitPage() {
+  get submitNotifyClaimDetailsCOSPage() {
     const certificateOfServiceSubmitFragment = new CertificateOfServiceSubmitFragment(this.page);
-    return new NotifyClaimDetailsCOSSubmitPage(certificateOfServiceSubmitFragment, this.page);
+    return new SubmitNotifyClaimDetailsCOSPage(certificateOfServiceSubmitFragment, this.page);
   }
 
-  get notifyClaimDetailsCOSConfirmPage() {
-    return new NotifyClaimDetailsCOSConfirmPage(this.page);
+  get confirmNotifyClaimDetailsCOSPage() {
+    return new ConfirmNotifyClaimDetailsCOSPage(this.page);
   }
 }
