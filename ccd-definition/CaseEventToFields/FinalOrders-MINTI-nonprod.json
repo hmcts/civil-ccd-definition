@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderTrackToggle",
+    "CaseFieldID": "allowOrderTrackAllocation",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
@@ -10,7 +10,18 @@
     "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
     "ShowSummaryChangeOption": "N"
   },
-
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "CaseFieldID": "finalOrderTrackToggle",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "TrackAllocation",
+    "FieldShowCondition": "finalOrderAllocateToTrack=\"DO_NOT_SHOW\"",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "allowOrderTrackAllocation=\"Yes\""
+  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
@@ -35,28 +46,6 @@
     "PageID": "TrackAllocation",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "finalOrderAllocateToTrack=\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderFastTrackComplexityBandLabel",
-    "PageLabel": "Fast Track",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "FastTrackComplexityBand",
-    "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderTrackToggle=\"FAST_CLAIM\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
-    "CaseFieldID": "finalOrderFastTrackComplexityBand",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "COMPLEX",
-    "PageID": "FastTrackComplexityBand",
-    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -321,7 +310,8 @@
     "PageFieldDisplayOrder": 18,
     "DisplayContext": "OPTIONAL",
     "PageID": "FinalOrderAssistedOrder",
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

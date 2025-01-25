@@ -2,6 +2,7 @@
 
 properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
+  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
@@ -54,6 +55,8 @@ void publishBootstrapReport() {
             reportFiles: 'index.html',
             reportName: 'Playwright Allure Bootstrap Report'
         ])
+    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-bootstrap-history"
+    archiveArtifacts artifacts: 'allure-bootstrap-history/**', fingerprint: true
   }
 
   void publishFunctionalReport() {
@@ -65,7 +68,25 @@ void publishBootstrapReport() {
             reportFiles: 'index.html',
             reportName: 'Playwright Allure Functional Report'
         ])
+    sh "cp -r ./playwright-allure-functional-report/history/  ./allure-functional-history"
+    archiveArtifacts artifacts: 'allure-functional-history/**', fingerprint: true
   }
+
+def copyPreviousHistory(historyDir, resultsDir) {
+  def buildFound = false 
+  def buildNumber = currentBuild.previousBuild.number
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/${historyDir}/**", target: "${resultsDir}"
+      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
+      buildFound = true 
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
 
 def secrets = [
   'civil-${env}': [
@@ -136,6 +157,7 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(playwrightSetupPassed) {
+          copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
           yarnBuilder.yarn('test:playwright-functional:generate-report')
           publishFunctionalReport()
         }
@@ -149,6 +171,7 @@ withNightlyPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
