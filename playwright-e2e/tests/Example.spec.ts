@@ -33,7 +33,7 @@ test('Api Unspec Test Example', async ({
   await IdamSteps.DefendantSolicitor1Login();
 });
 
-test('Unspec with Defendant Response', {tag: ['@debug']}, async ({
+test('Unspec with Defendant Response', async ({
                                          ApiCreateClaimSteps,
                                          ApiServiceRequestsSteps,
                                          IdamSteps,

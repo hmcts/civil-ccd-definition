@@ -23,10 +23,13 @@ export default class LanguagePage extends ExuiPage(BasePage) {
         super.expectSubheading(subheadings.welsh),
         super.expectText(paragraphs.descriptionText),
         super.expectText(radioButtons.courtLanguage.label),
-        super.expectText(radioButtons.documentLnaguage.label),
-        super.expectLabel(radioButtons.courtLanguage.welsh.label, { count: 2 }),
-        super.expectLabel(radioButtons.courtLanguage.english.label, { count: 2 }),
-        super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { count: 2 }),
+        super.expectText(radioButtons.documentLanguage.label),
+        super.expectLabel(radioButtons.courtLanguage.welsh.label, {index: 0}),
+        super.expectLabel(radioButtons.courtLanguage.english.label, {index: 0}),
+        super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, {index: 0}),
+        super.expectLabel(radioButtons.documentLanguage.welsh.label, {index: 0}),
+        super.expectLabel(radioButtons.documentLanguage.english.label, {index: 0}),
+        super.expectLabel(radioButtons.documentLanguage.welshAndEnglish.label, {index: 0}),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -37,7 +40,7 @@ export default class LanguagePage extends ExuiPage(BasePage) {
       radioButtons.courtLanguage.welshAndEnglish.selector(this.claimantDefendantParty),
     );
     await super.clickBySelector(
-      radioButtons.documentLnaguage.welshAndEnglish.selector(this.claimantDefendantParty),
+      radioButtons.documentLanguage.welshAndEnglish.selector(this.claimantDefendantParty),
     );
   }
 

@@ -12,7 +12,7 @@ export const radioButtons = {
       `#respondent${defendantParty.number}ClaimResponseType${isClaimant2 ? 'ToApplicant2' : ''}-FULL_ADMISSION`,
   },
   partAdmit: {
-    label: 'Admit part of claim',
+    label: 'Admit part of the claim',
     selector: (defendantParty: Party, isClaimant2 = false) =>
       `#respondent${defendantParty.number}ClaimResponseType${isClaimant2 ? 'ToApplicant2' : ''}-PART_ADMISSION`,
   },
