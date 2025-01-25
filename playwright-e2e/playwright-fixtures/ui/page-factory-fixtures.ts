@@ -9,7 +9,7 @@ import DefendantResponsePageFactory from '../../pages/exui/solicitor-events/resp
 import ClaimantResponsePageFactory from '../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
 import InformAgreedExtensionDatePageFactory from '../../pages/exui/solicitor-events/inform-agreed-extension-date/inform-agreed-extension-date-page-factory';
 import CreateCaseFlagsPageFactory from '../../pages/exui/caseworker-events/create-case-flags/create-case-flags-page-factory';
-import AcknowledgeClaimPageFactory from '../../pages/exui/solicitor-events/acknowlege-claim/acknowledge-claim-page-factory';
+import AcknowledgeClaimPageFactory from '../../pages/exui/solicitor-events/acknowledge-claim/acknowledge-claim-page-factory';
 
 type PageFactoryFixtures = {
   _pageUtilsFactory: PageUtilsFactory;
