@@ -2,23 +2,21 @@ import PartyType from '../enums/party-types';
 import Partys from '../models/partys';
 
 const partys: Partys = {
-  CLAIMANT: {
-    key: 'claimant',
-    oldKey: 'applicant',
-    number: 1,
-    partyType: PartyType.CLAIMANT,
-  },
   CLAIMANT_1: {
     key: 'claimant1',
     oldKey: 'applicant1',
+    shortOldKey: 'app1',
     number: 1,
     partyType: PartyType.CLAIMANT,
+    oldPartyType: PartyType.APPLICANT,
   },
   CLAIMANT_2: {
     key: 'claimant2',
     oldKey: 'applicant2',
+    shortOldKey: 'app2',
     number: 2,
     partyType: PartyType.CLAIMANT,
+    oldPartyType: PartyType.APPLICANT,
   },
   CLAIMANT_1_LITIGATION_FRIEND: {
     key: 'claimant1LitigationFriend',
@@ -50,6 +48,12 @@ const partys: Partys = {
     number: 2,
     partyType: PartyType.EXPERT,
   },
+  CLAIMANT_1_MEDIATION_FRIEND: {
+    key: 'claimantMediation1',
+    oldKey: 'app1',
+    number: 1,
+    partyType: PartyType.MEDIATION_FRIEND,
+  },
   CLAIMANT_WITNESS_1: {
     key: 'claimantWitness1',
     oldKey: 'applicantWitness1',
@@ -62,23 +66,21 @@ const partys: Partys = {
     number: 1,
     partyType: PartyType.WITNESS,
   },
-  DEFENDANT: {
-    key: 'defendant',
-    oldKey: 'respondent',
-    number: 1,
-    partyType: PartyType.DEFENDANT,
-  },
   DEFENDANT_1: {
     key: 'defendant1',
     oldKey: 'respondent1',
+    shortOldKey: 'resp1',
     number: 1,
     partyType: PartyType.DEFENDANT,
+    oldPartyType: PartyType.RESPONDENT,
   },
   DEFENDANT_2: {
     key: 'defendant2',
     oldKey: 'respondent2',
+    shortOldKey: 'resp2',
     number: 2,
     partyType: PartyType.DEFENDANT,
+    oldPartyType: PartyType.RESPONDENT,
   },
   DEFENDANT_1_LITIGATION_FRIEND: {
     key: 'defendant1LitigationFriend',
@@ -151,6 +153,18 @@ const partys: Partys = {
     oldKey: 'respondent2Witness2',
     number: 2,
     partyType: PartyType.WITNESS,
+  },
+  DEFENDANT_1_MEDIATION_FRIEND: {
+    key: 'defendant1Mediation',
+    oldKey: 'resp1',
+    number: 1,
+    partyType: PartyType.MEDIATION_FRIEND,
+  },
+  DEFENDANT_2_MEDIATION_FRIEND: {
+    key: 'defendant2Mediation',
+    oldKey: 'resp2',
+    number: 2,
+    partyType: PartyType.MEDIATION_FRIEND,
   },
 };
 

@@ -4,7 +4,7 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import { Page } from 'playwright-core';
-import { ClaimantDefendantType } from '../../../../../../../models/claimant-defendant-types.ts';
+import { ClaimantDefendantPartyType } from '../../../../../../../models/claimant-defendant-party-types.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import { inputs } from './confirm-details-content.ts';
 
@@ -25,11 +25,11 @@ export default class ConfirmDetails1v2Page extends ExuiPage(BasePage) {
     ]);
   }
 
-  async enterDefendant1DateOfBirth(partyType: ClaimantDefendantType) {
+  async enterDefendant1DateOfBirth(partyType: ClaimantDefendantPartyType) {
     await this.dateFragment.enterDateOfBirth(partys.DEFENDANT_1, partyType, 0);
   }
 
-  async enterDefendant2DateOfBirth(partyType: ClaimantDefendantType) {
+  async enterDefendant2DateOfBirth(partyType: ClaimantDefendantPartyType) {
     await this.dateFragment.enterDateOfBirth(partys.DEFENDANT_2, partyType, 1);
   }
 
