@@ -12,13 +12,11 @@ export const radioButtons = {
     label2v1: 'Does the claimant want to proceed with the claim?',
     yes: {
       label: 'Yes',
-      selector: '#applicant1ProceedWithClaim_Yes',
-      selector2v1: '#applicant1ProceedWithClaimSpec2v1_Yes',
+      selector: '#applicant1ProceedWithClaimSpec2v1_Yes',
     },
     no: {
       label: 'No',
-      selector: '#applicant1ProceedWithClaim_No',
-      selector2v1: '#applicant1ProceedWithClaimSpec2v1_No',
+      selector: '#applicant1ProceedWithClaimSpec2v1_No',
     },
   },
 };
