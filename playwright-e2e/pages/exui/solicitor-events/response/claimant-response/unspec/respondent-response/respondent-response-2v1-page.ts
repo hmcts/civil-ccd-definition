@@ -15,8 +15,8 @@ export default class RespondentResponse2v1Page extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.docUrl, { index: 0 }),
-      super.expectText(radioButtons.proceedWithClaim.label2v1(partys.CLAIMANT_1 ) + ` ${ccdCaseData.respondent1.partyName}`),
-      super.expectText(radioButtons.proceedWithClaim.label2v1(partys.CLAIMANT_2) + ` ${ccdCaseData.respondent1.partyName}`),
+      super.expectText(radioButtons.proceedWithClaim.label2v1(partys.CLAIMANT_1 )),
+      super.expectText(radioButtons.proceedWithClaim.label2v1(partys.CLAIMANT_2)),
     ]);
   }
 
