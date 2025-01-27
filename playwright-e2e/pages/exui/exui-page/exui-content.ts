@@ -5,6 +5,7 @@ export const buttons = {
     title: 'Submit',
     selector: 'button[type=submit]',
   },
+  addNew: { title: 'Add new', selector: "button[class='button write-collection-add-item__top']" },
 };
 
 export const components = {

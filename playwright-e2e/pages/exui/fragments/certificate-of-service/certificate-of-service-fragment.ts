@@ -18,18 +18,18 @@ import DateFragment from '../date/date-fragment';
 @AllMethodsStep()
 export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private claimantParty: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, claimantParty: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
     this.dateFragment = new DateFragment(page);
-    this.claimantParty = claimantParty;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectHeading(heading(this.claimantParty)),
+        super.expectHeading(heading(this.defendantParty)),
         super.expectText(inputs.dateDeemedServed.label),
         super.expectText(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
@@ -52,46 +52,62 @@ export default class CertificateOfServiceFragment extends ExuiPage(BasePage) {
     let dateDeemedServed: Date;
     let dateOfService: Date;
 
-    if (this.claimantParty.number === 1) {
+    if (this.defendantParty.number === 1) {
       dateDeemedServed = DateHelper.getToday();
-      dateOfService = DateHelper.addToToday({ days: 2, workingDay: true });
+      dateOfService = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
     } else {
-      dateDeemedServed = DateHelper.subtractFromToday({ days: 14 });
-      dateOfService = DateHelper.subtractFromToday({ days: 14, workingDay: true });
+      dateDeemedServed = DateHelper.subtractFromToday({ days: 14, addDayAfter4pm: true });
+      dateOfService = DateHelper.subtractFromToday({
+        days: 14,
+        workingDay: true,
+        addDayAfter4pm: true,
+      });
     }
 
-    await this.dateFragment.enterDate(dateOfService, 'cosDateOfServiceForDefendant');
-    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateDeemedServedForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
+    await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
 
-    await super.inputText('Test Documents 1', inputs.documentsServed.selector(this.claimantParty));
-    await super.inputText('Defendant 1', inputs.notifyClaimRecipient.selector(this.claimantParty));
-    await super.selectFromDropdown(
-      dropdowns.locationType.options[0],
-      dropdowns.locationType.selector(this.claimantParty),
+    await super.inputText(
+      `Test Documents ${this.defendantParty.number}`,
+      inputs.documentsServed.selector(this.defendantParty),
     );
     await super.inputText(
-      'Test Address 1',
-      inputs.documentsServedLocation.selector(this.claimantParty),
+      `Defendant ${this.defendantParty.number}`,
+      inputs.notifyClaimRecipient.selector(this.defendantParty),
     );
-    await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.claimantParty));
     await super.selectFromDropdown(
-      dropdowns.serveType.options[0],
-      dropdowns.serveType.selector(this.claimantParty),
+      dropdowns.locationType.options[this.defendantParty.number - 1],
+      dropdowns.locationType.selector(this.defendantParty),
+    );
+    await super.inputText(
+      `Test Address ${this.defendantParty.number}`,
+      inputs.documentsServedLocation.selector(this.defendantParty),
+    );
+    await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.defendantParty));
+    await super.selectFromDropdown(
+      dropdowns.serveType.options[this.defendantParty.number - 1],
+      dropdowns.serveType.selector(this.defendantParty),
     );
   }
 
   async uploadSupportingEvidence() {
-    await super.clickBySelector(buttons.addNewSupportingEvidence.selector(this.claimantParty));
+    await super.clickBySelector(buttons.addNewSupportingEvidence.selector(this.defendantParty));
     await super.retryUploadFile(
       filePaths.testPdfFile,
-      inputs.evidenceDocument.selector(this.claimantParty),
+      inputs.evidenceDocument.selector(this.defendantParty),
     );
   }
 
   async fillStatementOfTruth() {
-    await super.inputText('Name 1', inputs.statementOfTruth.name.selector(this.claimantParty));
-    await super.inputText('Law firm 1', inputs.statementOfTruth.firm.selector(this.claimantParty));
-    await super.clickBySelector(checkboxes.signedTrue.selector(this.claimantParty));
+    await super.inputText(
+      `Name ${this.defendantParty.number}`,
+      inputs.statementOfTruth.name.selector(this.defendantParty),
+    );
+    await super.inputText(
+      `Law firm ${this.defendantParty.number}`,
+      inputs.statementOfTruth.firm.selector(this.defendantParty),
+    );
+    await super.clickBySelector(checkboxes.signedTrue.selector(this.defendantParty));
   }
 
   async submit() {
