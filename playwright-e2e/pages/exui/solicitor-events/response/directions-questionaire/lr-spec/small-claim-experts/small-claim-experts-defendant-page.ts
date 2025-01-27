@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { inputs, radioButtons, subheadings } from './small-claim-experts-content.ts';
+import { inputs, radioButtons, subHeadings } from './small-claim-experts-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
@@ -22,7 +22,7 @@ export default class SmallClaimExpertsDefendantPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.experts),
+        super.expectSubheading(subHeadings.experts),
         super.expectText(radioButtons.expertsRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
