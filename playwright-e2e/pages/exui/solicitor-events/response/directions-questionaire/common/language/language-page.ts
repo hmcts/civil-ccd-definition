@@ -29,7 +29,7 @@ export default class LanguagePage extends ExuiPage(BasePage) {
         super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, {index:0}),
         super.expectLabel(radioButtons.documentLanguage.welsh.label, {index:1}),
         super.expectLabel(radioButtons.documentLanguage.english.label, {index:1}),
-        super.expectLabel(radioButtons.documentLanguage.welshAndEnglish.label, {index:1}),
+        super.expectLabel(radioButtons.documentLanguage.welshAndEnglish.label, {index:0}),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
