@@ -206,8 +206,7 @@ camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
-    image: hmctsprivate.azurecr.io/camunda/bpm:latest
-    imageId: hmctsprivate.azurecr.io/camunda/bpm@sha256:4062fe753cf7888317aa5eadc6aa029eb36763d3782de40597e4283724cab372
+    image: hmctsprivate.azurecr.io/camunda/bpm:prod-700cced-20250123072402
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
 #      CAMUNDA_DB_USER_NAME: hmcts
