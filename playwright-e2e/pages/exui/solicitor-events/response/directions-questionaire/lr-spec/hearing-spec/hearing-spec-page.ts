@@ -33,11 +33,6 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async selectYesAvailabilityRequiredSmallClaim() {
-    await super.clickBySelector(
-      radioButtons.unavailableDateRequired.yes.selectorSmallClaim(this.claimantDefendantParty),
-    );
-  }
 
   async selectYesAvailabilityRequiredFastTrack1v1() {
     await super.clickBySelector(
@@ -49,11 +44,6 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.unavailableDateRequired.no.selector(this.claimantDefendantParty),
     );
-  }
-
-  async addNewUnavailableDateSmallClaim() {
-    await super.clickBySelector(buttons.addNewAvailability.selectorSmallClaim(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDate, {ignoreDuplicates:true});
   }
 
   async addNewUnavailableDateFastTrack() {
@@ -72,16 +62,6 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
-  async selectSingleDateSmallClaim(unavailableDateNumber: number) {
-    await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selectorSmallClaim(
-        this.claimantDefendantParty,
-        unavailableDateNumber,
-      ),
-    );
-    const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, 'date');
-  }
 
   async selectSingleDateFastTrack(unavailableDateNumber: number) {
     await super.clickBySelector(

@@ -15,8 +15,7 @@ export const radioButtons = {
       label: 'Yes',
         selectorFastTrack1v1: (claimantDefendantParty: Party) =>
           `#${claimantDefendantParty.oldKey}DQHearingLRspec_unavailableDatesRequired_Yes`,
-        selectorSmallClaim: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQSmallClaimHearing_unavailableDatesRequired_Yes`,
+
     },
     no: {
       label: 'No',
@@ -34,8 +33,7 @@ export const radioButtons = {
         `#${claimantDefendantParty.oldKey}DQHearingLRspec_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
         `#${claimantDefendantParty.oldKey}DQHearing_unavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
-      selectorSmallClaim: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+
     },
     range: {
       selector1v1FastTrack: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
@@ -68,7 +66,5 @@ export const buttons = {
       `div[id='${claimantDefendantParty.oldKey}DQHearingLRspec_unavailableDates'] button[type='button']`,
     selector: (claimantDefendantParty: Party) =>
       `div[id='${claimantDefendantParty.oldKey}DQHearing_unavailableDates']  button[type='button']`,
-    selectorSmallClaim: (claimantDefendantParty: Party) =>
-    `div[id='${claimantDefendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`
   },
 };
