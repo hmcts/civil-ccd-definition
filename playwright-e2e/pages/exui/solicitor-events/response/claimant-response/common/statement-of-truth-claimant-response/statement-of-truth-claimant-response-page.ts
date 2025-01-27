@@ -5,6 +5,7 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { paragraphs } from './statement-of-truth-claimant-response-content.ts';
 import StatementOfTruthFragment from '../../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
+import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class StatementOfTruthClaimantResponsePage extends ExuiPage(BasePage) {
@@ -26,7 +27,7 @@ export default class StatementOfTruthClaimantResponsePage extends ExuiPage(BaseP
   }
 
   async enterDetails() {
-    await this.statementOfTruthFragment.enterDetails('Claimant Solicitor', 'Solicitor');
+    await this.statementOfTruthFragment.enterDetails();
   }
 
   async submit() {

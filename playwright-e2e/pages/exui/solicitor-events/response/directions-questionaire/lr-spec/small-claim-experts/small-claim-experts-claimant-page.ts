@@ -14,6 +14,7 @@ export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subHeadings.experts),
       super.expectText(radioButtons.expertsRequired.label, {ignoreDuplicates:true}),
+
     ]);
   }
 

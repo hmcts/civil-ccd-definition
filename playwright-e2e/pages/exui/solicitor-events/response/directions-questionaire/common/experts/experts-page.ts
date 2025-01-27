@@ -4,7 +4,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, inputs, radioButtons, buttons } from './experts-content.ts';
+import { subheadings, inputs, radioButtons } from './experts-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
