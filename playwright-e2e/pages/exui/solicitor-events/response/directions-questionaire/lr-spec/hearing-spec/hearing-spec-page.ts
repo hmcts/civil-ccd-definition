@@ -22,15 +22,26 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      // super.expectHeading(ccdCaseData.id),
-      // super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectText(radioButtons.unavailableDateRequired.label),
+    ]);
+  }
+
+  async verifyContentFasTrack1v1(ccdCaseData: CCDCaseData) {
+    await super.runVerifications([
+      super.expectHeading(heading),
+      super.expectText(radioButtons.unavailableDateRequired.label1v1FastTrack),
     ]);
   }
 
   async selectYesAvailabilityRequiredSmallClaim() {
     await super.clickBySelector(
       radioButtons.unavailableDateRequired.yes.selectorSmallClaim(this.claimantDefendantParty),
+    );
+  }
+
+  async selectYesAvailabilityRequiredFastTrack1v1() {
+    await super.clickBySelector(
+      radioButtons.unavailableDateRequired.yes.selectorFastTrack1v1(this.claimantDefendantParty),
     );
   }
 
@@ -42,6 +53,11 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
 
   async addNewUnavailableDateSmallClaim() {
     await super.clickBySelector(buttons.addNewAvailability.selectorSmallClaim(this.claimantDefendantParty));
+    await super.expectSubheading(subheadings.unavailableDate, {ignoreDuplicates:true});
+  }
+
+  async addNewUnavailableDateFastTrack() {
+    await super.clickBySelector(buttons.addNewAvailability.selector1v1FastTrack(this.claimantDefendantParty));
     await super.expectSubheading(subheadings.unavailableDate, {ignoreDuplicates:true});
   }
 
@@ -66,6 +82,18 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, 'date');
   }
+
+  async selectSingleDateFastTrack(unavailableDateNumber: number) {
+    await super.clickBySelector(
+      radioButtons.unavailableDateType.single.selector1v1FastTrack(
+        this.claimantDefendantParty,
+        unavailableDateNumber,
+      ),
+    );
+    const unavailableDate = DateHelper.addToToday({ months: 6 });
+    await this.dateFragment.enterDate(unavailableDate, 'date');
+  }
+
   async selectDateRange(unavailableDateNumber: number) {
     await super.clickBySelector(
       radioButtons.unavailableDateType.range.selector(
@@ -73,6 +101,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
         unavailableDateNumber,
       ),
     );
+
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });
     await this.dateFragment.enterDate(unavailableDateFrom, inputs.dateFrom.selectorKey);

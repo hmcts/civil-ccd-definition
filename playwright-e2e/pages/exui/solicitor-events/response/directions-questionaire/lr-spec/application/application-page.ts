@@ -37,7 +37,7 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
   }
 
   async enterAdditionalInformation() {
-    await super.inputText('test', inputs.otherInformation.selector);
+    await super.inputText('test', inputs.otherInformation.selector(this.claimantDefendantParty));
   }
 
   async submit() {

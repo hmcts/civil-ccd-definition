@@ -28,6 +28,7 @@ export const inputs = {
   },
   otherInformation: {
     label: 'Provide any other information the judge may need (Optional)',
-    selector: '#additionalInformationForJudge',
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}AdditionalInformationForJudge`,
   },
 };
