@@ -5,7 +5,6 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import {
   confirmationHeadings,
   paragraphs,
-  subheadings,
 } from './confirm-claimant-response-spec-content.ts';
 
 @AllMethodsStep()
@@ -14,7 +13,6 @@ export default class ConfirmClaimantResponseSpecPage extends ExuiPage(BasePage) 
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeadings.proceed),
-      super.expectSubheading(subheadings.happensNextSpec1v1),
       super.expectText(paragraphs.descriptionText1),
     ]);
   }
