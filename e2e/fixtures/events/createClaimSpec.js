@@ -88,9 +88,9 @@ module.exports = {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
           },
-          // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+          // Workaround, toggle is active after 27/02/2025, based on either submittedDate, or current localdatetime
           ...(isMintiCaseEnabled) ? {
-            submittedDate:'2025-02-20T15:59:50'
+            submittedDate:'2025-06-20T15:59:50'
           }: {},
         },
         Claimant: {
