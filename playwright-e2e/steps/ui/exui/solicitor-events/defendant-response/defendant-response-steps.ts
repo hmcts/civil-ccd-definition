@@ -24,7 +24,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   async RespondToDefence1v1() {
-    await this.fetchAndSetCCDCaseData(defendantSolicitor1User,  1737726972666406);
+    //await this.fetchAndSetCCDCaseData(defendantSolicitor1User,  1737726972666406);
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -65,7 +65,55 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await languageDefendant1Page.selectEnglishAndWelsh();
         await languageDefendant1Page.submit();
 
+        const { hearingDefendant1Page } = this.defendantResponsePageFactory;
+        await hearingDefendant1Page.verifyContent(this.ccdCaseData);
+        await hearingDefendant1Page.selectYesAvailabilityRequired();
+        await hearingDefendant1Page.addNewUnavailableDate();
+        await hearingDefendant1Page.selectSingleDate(1);
+        await hearingDefendant1Page.submit();
 
+        const { draftDirectionsDefendant1Page } = this.defendantResponsePageFactory;
+        await draftDirectionsDefendant1Page.verifyContent(this.ccdCaseData);
+        await draftDirectionsDefendant1Page.uploadEvidence();
+        await draftDirectionsDefendant1Page.submit();
+
+        const { requestedCourtDefendant1Page } = this.defendantResponsePageFactory;
+        await requestedCourtDefendant1Page.verifyContent(this.ccdCaseData);
+        await requestedCourtDefendant1Page.selectCourtLocation();
+        await requestedCourtDefendant1Page.enterPreferredCourtReason();
+        await requestedCourtDefendant1Page.selectNoRemoteHearing();
+        await requestedCourtDefendant1Page.submit();
+
+        const { hearingSupportDefendant1Page } = this.defendantResponsePageFactory;
+        await hearingSupportDefendant1Page.verifyContent(this.ccdCaseData);
+        await hearingSupportDefendant1Page.selectYes();
+        await hearingSupportDefendant1Page.enterSupportRequirementsAdditional()
+        await hearingSupportDefendant1Page.submit();
+
+        const { vulnerabilityQuestionsDefendant1Page } = this.defendantResponsePageFactory;
+        await vulnerabilityQuestionsDefendant1Page.verifyContent(this.ccdCaseData);
+        await vulnerabilityQuestionsDefendant1Page.selectYes();
+        await vulnerabilityQuestionsDefendant1Page.enterVulnerabilityAdjustments();
+        await vulnerabilityQuestionsDefendant1Page.submit();
+
+        const { furtherInformationDefendant1Page } = this.defendantResponsePageFactory;
+        await furtherInformationDefendant1Page.verifyContent(this.ccdCaseData);
+        await furtherInformationDefendant1Page.selectYes();
+        await furtherInformationDefendant1Page.inputFurtherInformation()
+        await furtherInformationDefendant1Page.submit();
+
+        const { statementOfTruthDefendantResponseDefendant1Page } = this.defendantResponsePageFactory;
+        await statementOfTruthDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
+        await statementOfTruthDefendantResponseDefendant1Page.enterDetails();
+        await statementOfTruthDefendantResponseDefendant1Page.submit();
+
+        const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
+        await submitDefendantResponsePage.verifyContent(this.ccdCaseData)
+        await submitDefendantResponsePage.submit();
+
+        const {confirmDefendantResponsePage } = this.defendantResponsePageFactory;
+        await confirmDefendantResponsePage.verifyContent(this.ccdCaseData);
+        await confirmDefendantResponsePage.submit();
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,

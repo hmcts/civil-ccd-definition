@@ -24,11 +24,11 @@ export const radioButtons = {
     label: 'Add a single date or a date range',
     single: {
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+        `#${claimantDefendantParty.oldKey}DQHearing_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
+        `#${claimantDefendantParty.oldKey}DQHearing_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },
 };

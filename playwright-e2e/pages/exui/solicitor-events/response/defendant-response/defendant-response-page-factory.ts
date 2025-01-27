@@ -274,11 +274,11 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingDefendant1Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_1);
+    return new HearingPage(this.page, partys.DEFENDANT_1, new DateFragment(this.page));
   }
 
   get hearingDefendant2Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_2);
+    return new HearingPage(this.page, partys.DEFENDANT_2, new DateFragment(this.page));
   }
 
   get smallClaimHearingDefendant1Page() {

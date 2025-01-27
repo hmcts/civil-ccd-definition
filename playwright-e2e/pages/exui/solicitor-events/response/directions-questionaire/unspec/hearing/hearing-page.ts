@@ -13,8 +13,9 @@ export default class HearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, dateFragment: DateFragment) {
     super(page);
+    this.dateFragment = dateFragment;
     this.claimantDefendantParty = claimantDefendantParty;
   }
 
@@ -68,6 +69,9 @@ export default class HearingPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
+
+    //TODO - The Continue button is not being clicked the first time this should be checked again.
+    await super.retryClickSubmit();
     await super.retryClickSubmit();
   }
 }

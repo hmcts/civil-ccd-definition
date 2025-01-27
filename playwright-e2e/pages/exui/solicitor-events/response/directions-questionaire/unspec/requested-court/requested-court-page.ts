@@ -25,7 +25,7 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.courtLocation),
         super.expectLabel(dropdowns.courtLocations.label),
-        super.expectLabel(inputs.preferredCourtReason.label),
+        super.expectLabel(inputs.preferredCourtReason.label, {index: 0}),
         this.remoteHearingFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
