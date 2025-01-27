@@ -41,6 +41,7 @@ import RespondentResponsePage from './unspec/respondent-response/respondent-resp
 import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 import DateFragment from '../../../fragments/date/date-fragment';
+import SmallClaimHearingPage from "../directions-questionaire/lr-spec/small-claim-hearing/small-claim-hearing-page.ts";
 
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
@@ -183,6 +184,11 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new ApplicationPage(this.page, partys.CLAIMANT_1);
   }
 
+  get smallClaimHearingPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new SmallClaimHearingPage(this.page, dateFragment, partys.CLAIMANT_1);
+  }
+
   get statementOfTruthClaimantResponsePage() {
     const statementofTruthFragment = new StatementOfTruthFragment(
       this.page,
@@ -194,6 +200,7 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   get submitClaimantResponsePage() {
     return new SubmitClaimantResponsePage(this.page);
   }
+
 
   get confirmClaimantResponsePage() {
     return new ConfirmClaimantResponsePage(this.page);
