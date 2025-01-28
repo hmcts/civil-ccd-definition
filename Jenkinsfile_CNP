@@ -219,9 +219,6 @@ withPipeline(type, product, component) {
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
-      ./bin/pull-latest-camunda-files.sh ${camundaBranch}
-      ./bin/pull-latest-dmn-files.sh ${dmnBranch}
-      ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
       ./bin/add-org-roles-to-users.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
