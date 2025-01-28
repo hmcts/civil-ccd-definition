@@ -9,6 +9,13 @@
           "judge-profile"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "[CREATOR]"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

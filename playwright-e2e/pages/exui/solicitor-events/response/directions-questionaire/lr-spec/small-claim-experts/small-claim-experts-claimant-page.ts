@@ -1,20 +1,18 @@
-import { Page } from 'playwright-core';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { inputs, radioButtons } from './small-claim-experts-content.ts';
+import { inputs, radioButtons, subHeadings } from './small-claim-experts-content.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
-import { subHeadings } from '../../common/witnesses/witnesses-content.ts';
 
 @AllMethodsStep()
 export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subHeadings.witnesses),
-      super.expectText(radioButtons.expertsRequired.label),
+      super.expectSubheading(subHeadings.experts),
+      super.expectText(radioButtons.expertsRequired.label, { ignoreDuplicates: true }),
     ]);
   }
 
@@ -24,6 +22,14 @@ export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
 
   async useNoExperts() {
     await super.clickBySelector(radioButtons.expertsRequired.no.selector(partys.CLAIMANT_1));
+  }
+
+  async useExperts2v1() {
+    await super.clickBySelector(radioButtons.expertsRequired.yes.selector2v1);
+  }
+
+  async useNoExperts2v1() {
+    await super.clickBySelector(radioButtons.expertsRequired.no.selector2v1);
   }
 
   async enterExpertDetails() {

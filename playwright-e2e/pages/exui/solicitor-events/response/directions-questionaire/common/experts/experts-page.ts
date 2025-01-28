@@ -21,10 +21,10 @@ export default class ExpertPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.experts),
-        super.expectText(radioButtons.expertsRequired.label),
-        super.expectLabel(radioButtons.expertsRequired.yes.label),
-        super.expectLabel(radioButtons.expertsRequired.no.label),
+        super.expectSubheading(subheadings.experts, { index: 0 }),
+        super.expectText(radioButtons.expertsRequired.label, { first: true }),
+        super.expectLabel(radioButtons.expertsRequired.yes.label, { index: 0 }),
+        super.expectLabel(radioButtons.expertsRequired.no.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -41,7 +41,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
   }
 
   async addNewExpert() {
-    await super.clickBySelector(buttons.addNew.selector);
+    await super.clickBySelector(buttons.addNew.selector(this.claimantDefendantParty));
   }
 
   async enterExpertDetails(expertParty: Party) {

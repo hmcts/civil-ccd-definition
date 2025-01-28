@@ -20,14 +20,17 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subHeadings.witnesses),
-        super.expectText(radioButtons.witnessesRequired.label),
+        super.expectSubheading(subHeadings.witnesses, { index: 0 }),
+        super.expectText(radioButtons.witnessesRequired.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async addWitnesses() {
+    await super.clickBySelector(
+      radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
+    );
     await super.clickBySelector(buttons.addNewWitness.selector(this.claimantDefendantParty));
   }
 
@@ -39,6 +42,10 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     await super.inputText(
       'Last name',
       inputs.witnessDetails.lastName.selector(this.claimantDefendantParty, witnessParty),
+    );
+    await super.inputText(
+      '07825454749',
+      inputs.witnessDetails.number.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
       'firstlast@gmail.com',

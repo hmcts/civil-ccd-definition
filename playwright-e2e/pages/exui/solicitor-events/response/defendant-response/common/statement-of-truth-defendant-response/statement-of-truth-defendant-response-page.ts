@@ -3,7 +3,6 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { paragraphs } from './statement-of-truth-defendant-response-content.ts';
 import StatementOfTruthFragment from '../../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
 
 @AllMethodsStep()
@@ -18,13 +17,11 @@ export default class StatmentOfTruthDefendantResponsePage extends ExuiPage(BaseP
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       this.statementOfTruthFragment.verifyContent(),
-      super.expectText(paragraphs.descriptiveText1),
-      super.expectText(paragraphs.descriptiveText2),
     ]);
   }
 
   async enterDetails() {
-    await this.statementOfTruthFragment.enterDetails('Defendant Solicitor', 'Solicitor');
+    await this.statementOfTruthFragment.enterDetails();
   }
 
   async submit() {

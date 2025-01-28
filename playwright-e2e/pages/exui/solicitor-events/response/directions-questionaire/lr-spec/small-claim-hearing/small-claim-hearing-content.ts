@@ -12,7 +12,7 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+        `#${claimantDefendantParty.oldKey}DQSmallClaimHearing_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
@@ -23,11 +23,11 @@ export const radioButtons = {
   availabilityOptions: {
     single: {
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+        `#${claimantDefendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
+        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
   },
   interpreter: {
@@ -48,11 +48,23 @@ export const buttons = {
   addNewAvailability: {
     title: 'Add new',
     selector: (claimantDefendantParty: Party) =>
-      `div[id='${claimantDefendantParty.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+      `div[id='${claimantDefendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
   },
 };
 
 export const inputs = {
+  singleDate: {
+    label: 'Unavailable date',
+    selectorKey: 'date',
+  },
+  dateFrom: {
+    label: 'Date from',
+    selectorKey: 'fromDate',
+  },
+  dateTo: {
+    label: 'Date to',
+    selectorKey: 'toDate',
+  },
   interpreterType: {
     label: 'Type of interpreter',
     selector: '#SmallClaimHearingInterpreterDescription',

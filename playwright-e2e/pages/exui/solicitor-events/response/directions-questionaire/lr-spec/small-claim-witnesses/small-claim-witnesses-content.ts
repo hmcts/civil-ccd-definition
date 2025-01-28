@@ -25,6 +25,7 @@ export const radioButtons = {
 export const buttons = {
   addNewWitness: {
     title: 'Add new',
+    selector1v1: `button[class='button write-collection-add-item__top']`,
     selector: (claimantDefendantParty: Party) =>
       `div[id='${claimantDefendantParty.oldKey}DQWitnesses_details'] button[class='button write-collection-add-item__top']`,
   },
@@ -36,27 +37,27 @@ export const inputs = {
     firstName: {
       label: 'First name',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_firstName`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_firstName`,
     },
     lastName: {
       label: 'Last name',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_lastName`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_lastName`,
     },
     number: {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnessses_details_${claimantDefendantWitnessParty.number - 1}_phoneNumber`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_phoneNumber`,
     },
     email: {
       label: 'Email address (Optional)',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_emailAddress`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_emailAddress`,
     },
     whatEvent: {
       label: 'What event did they witness?',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_reasonForWitness`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_reasonForWitness`,
     },
   },
   witnessNumber: {
