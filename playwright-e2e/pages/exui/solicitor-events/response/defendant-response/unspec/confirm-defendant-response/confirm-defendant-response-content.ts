@@ -7,5 +7,5 @@ export const paragraphs = {
     `The Claimant has until ${claimantsResponseDate} to discontinue or proceed with this claim`,
   firstResponse1v2DS:
     "Once the other defendant's legal representative has submitted their defence, we will send the claimant's legal representative a notification." +
-    'You will receive a copy of this notification, as it will include details of when the claimant must respond',
+    ' You will receive a copy of this notification, as it will include details of when the claimant must respond.',
 };

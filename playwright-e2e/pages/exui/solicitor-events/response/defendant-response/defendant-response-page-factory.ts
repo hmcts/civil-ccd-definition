@@ -105,7 +105,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseTypePage(this.page, partys.DEFENDANT_1);
   }
 
-  get respondentResponseTypeDefendantwPage() {
+  get respondentResponseTypeDefendant2Page() {
     return new RespondentResponseTypePage(this.page, partys.DEFENDANT_2);
   }
 

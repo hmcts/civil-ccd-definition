@@ -47,4 +47,8 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.statementOfTruth,
     };
   }
+  async buildSmallTrack1v2DifferentSolicitor(particularsOfClaimDocument: UploadDocumentValue) {
+    return this.buildData(particularsOfClaimDocument,
+      { claimType : ClaimType.ONE_VS_TWO_DIFF_SOL});
+  }
 }
