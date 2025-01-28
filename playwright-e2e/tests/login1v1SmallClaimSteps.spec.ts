@@ -31,6 +31,6 @@ test(
     await ApiUserSteps.SetupUserData(civilAdminUser);
     // await ApiDataSteps.SetupBankHolidaysData();
     await IdamSteps.ClaimantSolicitorLogin();
-    await ClaimantResponseSteps.ClaimantResponse1v1SmallClaimUnspec();
+    await ClaimantResponseSteps.SmallTrack1v1();
   },
 );

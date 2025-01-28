@@ -1,5 +1,4 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import BaseSteps from '../../../../../base/base-steps';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
@@ -23,7 +22,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     this.claimantResponsePageFactory = claimantResponsePageFactory;
   }
 
-  async ClaimantResponse1v1FastTrackUnspec() {
+  async FastTrack1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRespondentResponsePage();
@@ -62,7 +61,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
       { retries: 1 },
     );
   }
-  async ClaimantResponse1v1SmallClaimUnspec() {
+  async SmallTrack1v1() {
     await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1737388830584345);
     await this.retryExuiEvent(
       async () => {
@@ -86,7 +85,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse1v2SSSmallClaimUnspec() {
+  async SmallClaim1v2SS() {
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRespondentResponse1v2Page();
@@ -109,7 +108,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse1v2DSSmallClaimUnspec() {
+  async SmallClaim1v2DS() {
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRespondentResponse1v2Page();
@@ -131,7 +130,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
       { retries: 1 },
     );
   }
-  async ClaimantResponse2v1SmallClaimUnspec() {
+  async SmallClaim2v1() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
