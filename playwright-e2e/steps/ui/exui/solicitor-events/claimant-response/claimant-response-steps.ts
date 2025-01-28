@@ -52,7 +52,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse1v1SmallClaimUnspec() {
+  async SmallClaim1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRespondentResponsePage();

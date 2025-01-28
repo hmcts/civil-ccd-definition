@@ -13,8 +13,6 @@ import ApplicationPage from '../directions-questionaire/lr-spec/application/appl
 import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
-import MediationContactInformationClaimantPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
-import MediationAvailabilityClaimantPage from '../mediation/mediation-availability/mediation-availability-page';
 import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
 import SmallClaimExpertsClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-claimant-page';
 import SmallClaimWitnessesClaimantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-claimant-page';
@@ -145,6 +143,11 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new LanguagePage(this.page, partys.CLAIMANT_1);
   }
 
+  get smallClaimHearingPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new SmallClaimHearingPage(this.page, dateFragment, partys.CLAIMANT_1);
+  }
+
   get hearingPage() {
     const dateFragment = new DateFragment(this.page);
     return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1);
@@ -182,11 +185,6 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get applicationPage() {
     return new ApplicationPage(this.page, partys.CLAIMANT_1);
-  }
-
-  get smallClaimHearingPage() {
-    const dateFragment = new DateFragment(this.page);
-    return new SmallClaimHearingPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
   get statementOfTruthClaimantResponsePage() {
