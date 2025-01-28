@@ -40,6 +40,7 @@ const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmit
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 
 const data = {
@@ -100,7 +101,10 @@ const data = {
   STAY_CASE: () => stayCase.stayCase(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdateDamages(),
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
-  DISMISS_CASE: () => dismissCase.dismissCaseDamages()
+  DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
+  REPLY_MESSAGE: () => sendAndReplyMessage.replyMessage()
+
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -1484,7 +1488,45 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
 
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('SEND_AND_REPLY', {
+      header: '# Your message has been sent',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.REPLY_MESSAGE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('SEND_AND_REPLY', {
+      header: '# Reply sent',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 };
 
 // Functions
