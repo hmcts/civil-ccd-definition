@@ -1,7 +1,7 @@
 import PartyType from '../../../../../../../enums/party-types';
 import { Party } from '../../../../../../../models/partys';
 
-export const subHeadings = { experts: 'Use of experts in court' };
+export const subheadings = { experts: 'Use of experts in court' };
 
 export const radioButtons = {
   expertsRequired: {

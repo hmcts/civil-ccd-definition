@@ -2,7 +2,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { inputs, radioButtons, subHeadings } from './small-claim-experts-content.ts';
+import { inputs, radioButtons, subheadings } from './small-claim-experts-content.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
@@ -11,7 +11,7 @@ export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subHeadings.experts),
+      super.expectSubheading(subheadings.experts),
       super.expectText(radioButtons.expertsRequired.label, { ignoreDuplicates: true }),
     ]);
   }

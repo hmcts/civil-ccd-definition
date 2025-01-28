@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subHeadings, buttons, inputs, radioButtons } from './witnesses-content.ts';
+import { subheadings, buttons, inputs, radioButtons } from './witnesses-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
@@ -21,7 +21,7 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subHeadings.witnesses, { index: 0 }),
+        super.expectSubheading(subheadings.witnesses, { index: 0 }),
         super.expectText(radioButtons.witnessesRequired.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },

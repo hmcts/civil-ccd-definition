@@ -221,23 +221,21 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   private async processClaimantResponseHearingSpecSmallClaimPage() {
-    const { smallClaimHearingPage } = this.claimantResponsePageFactory;
-    await smallClaimHearingPage.verifyContent(this.ccdCaseData);
-    await smallClaimHearingPage.selectYesAvailabilityRequired();
-    await smallClaimHearingPage.addNewUnavailableDate();
-    await smallClaimHearingPage.selectSingleDate(1);
-    await smallClaimHearingPage.submit();
-    await smallClaimHearingPage.submit();
+    const { hearingSpecPage } = this.claimantResponsePageFactory;
+    await hearingSpecPage.verifyContent(this.ccdCaseData);
+    await hearingSpecPage.selectYesUnavailabilityRequired();
+    await hearingSpecPage.addNewUnavailableDate();
+    await hearingSpecPage.selectSingleDate(1);
+    await hearingSpecPage.submit();
   }
 
   private async processClaimantResponseHearingSpecFastTrackPage() {
-    const { hearingSpecPage } = this.claimantResponsePageFactory;
-    await hearingSpecPage.verifyContentFasTrack1v1(this.ccdCaseData);
-    await hearingSpecPage.selectYesAvailabilityRequiredFastTrack1v1();
-    await hearingSpecPage.addNewUnavailableDateFastTrack();
-    await hearingSpecPage.selectSingleDateFastTrack(1);
-    await hearingSpecPage.submit();
-    await hearingSpecPage.submit();
+    const { hearingFastSpecPage } = this.claimantResponsePageFactory;
+    await hearingFastSpecPage.verifyContent(this.ccdCaseData);
+    await hearingFastSpecPage.selectYesUnavailabilityRequired();
+    await hearingFastSpecPage.addNewUnavailableDate();
+    await hearingFastSpecPage.selectSingleDateFastTrack(1);
+    await hearingFastSpecPage.submit();
   }
   private async processClaimantResponseApplicantCourtLocationLRSpecPage() {
     const { applicantCourtLocationLRSpecPage } = this.claimantResponsePageFactory;
