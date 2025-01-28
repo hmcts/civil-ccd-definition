@@ -25,9 +25,8 @@ export const radioButtons = {
 export const buttons = {
   addNewWitness: {
     title: 'Add new',
-    selector1v1: `button[class='button write-collection-add-item__top']`,
     selector: (claimantDefendantParty: Party) =>
-      `div[id='${claimantDefendantParty.oldKey}DQWitnesses_details'] button[class='button write-collection-add-item__top']`,
+      `div[id='${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details'] button[class='button write-collection-add-item__top']`,
   },
 };
 

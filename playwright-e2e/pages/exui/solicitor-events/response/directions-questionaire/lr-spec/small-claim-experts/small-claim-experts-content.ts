@@ -1,3 +1,4 @@
+import ClaimType from '../../../../../../../enums/claim-type';
 import PartyType from '../../../../../../../enums/party-types';
 import { Party } from '../../../../../../../models/partys';
 
@@ -7,15 +8,16 @@ export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
-      selector2v1: `#applicantMPClaimExpertSpecRequired_Yes`,
+      selector2v1: '#applicantMPClaimExpertSpecRequired_Yes',
       selector: (claimantDefendantParty: Party) => {
-        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT) {
           return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
+        }
         return `#responseClaimExpertSpecRequired${claimantDefendantParty.number === 1 ? '' : '2'}_Yes`;
       },
     },
     no: {
-      selector2v1: `#applicantMPClaimExpertSpecRequired_No`,
+      selector2v1: '#applicantMPClaimExpertSpecRequired_No',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
           return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_No`;

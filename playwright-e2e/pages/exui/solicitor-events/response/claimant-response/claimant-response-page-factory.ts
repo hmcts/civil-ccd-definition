@@ -40,6 +40,9 @@ import MediationContactInformationPage from '../mediation/mediation-contact-info
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import HearingFastSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-fast-spec-page.ts';
+import ClaimType from '../../../../../enums/claim-type.ts';
+import SmallClaimExperts2v1ClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-2v1-claimant-page.ts';
+import HearingFastPage from '../directions-questionaire/unspec/hearing/hearing-fast-page.ts';
 
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
@@ -127,6 +130,10 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new SmallClaimExpertsClaimantPage(this.page);
   }
 
+  get smallClaimExperts2v1ClaimantPage() {
+    return new SmallClaimExperts2v1ClaimantPage(this.page);
+  }
+
   get smallClaimWitnessesClaimantPage() {
     return new SmallClaimWitnessesClaimantPage(this.page);
   }
@@ -146,6 +153,11 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   get hearingPage() {
     const dateFragment = new DateFragment(this.page);
     return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1);
+  }
+
+  get hearingFastPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new HearingFastPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
   get hearingSpecPage() {

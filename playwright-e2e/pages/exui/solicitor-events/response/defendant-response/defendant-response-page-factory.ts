@@ -9,7 +9,6 @@ import FileDirectionsQuestionnairePage from '../directions-questionaire/common/f
 import FixedRecoverableCostsPage from '../directions-questionaire/common/fixed-recoverable-costs/fixed-recoverable-costs-page';
 import HearingSupportPage from '../directions-questionaire/common/hearing-support/hearing-support-page';
 import LanguagePage from '../directions-questionaire/common/language/language-page';
-import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
 import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
 import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/discloure-of-electronic-documents-lr-spec-page';
 import DisclosureOfNonElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-lr-spec/disclosure-of-non-electronic-documents-lr-spec-page';
@@ -57,6 +56,7 @@ import SolicitorReferencesPage from './unspec/solicitor-references/solicitor-ref
 import UploadDefendantResponsePage from './unspec/upload-defendant-response/upload-defendant-response-page';
 import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
+import WitnessesSpecPage from '../directions-questionaire/lr-spec/witnesses-spec/witnesses-spec-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -293,15 +293,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new SmallClaimWitnessesDefendantPage(this.page, partys.DEFENDANT_2);
   }
 
-  get witnessesDefendant1Page() {
-    return new WitnessesPage(this.page, partys.DEFENDANT_1);
+  get witnessesSpecDefendant1Page() {
+    return new WitnessesSpecPage(this.page, partys.DEFENDANT_1);
   }
 
-  get witnessesDefendant2Page() {
-    return new WitnessesPage(this.page, partys.DEFENDANT_2);
+  get witnessesSpecDefendant2Page() {
+    return new WitnessesSpecPage(this.page, partys.DEFENDANT_2);
   }
 
-  get languageDefendant1Page() {
+  get languageSDefendant1Page() {
     return new LanguagePage(this.page, partys.DEFENDANT_1);
   }
 

@@ -29,10 +29,6 @@ export default class SmallClaimWitnessesClaimantPage extends ExuiPage(BasePage) 
     await super.clickBySelector(buttons.addNewWitness.selector(partys.CLAIMANT_1));
   }
 
-  async addWitness1v1() {
-    await super.clickBySelector(buttons.addNewWitness.selector1v1);
-  }
-
   async enterWitness1Details() {
     const claimantWitnessData = CaseDataHelper.buildWitnessData(partys.CLAIMANT_WITNESS_1);
     await super.inputText(

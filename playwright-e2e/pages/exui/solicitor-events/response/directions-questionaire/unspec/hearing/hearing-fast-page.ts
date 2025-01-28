@@ -9,7 +9,7 @@ import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 
 @AllMethodsStep()
-export default class HearingPage extends ExuiPage(BasePage) {
+export default class HearingFastPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantParty: Party;
 
@@ -64,7 +64,6 @@ export default class HearingPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
     await super.retryClickSubmit();
   }
 }

@@ -22,7 +22,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     this.claimantResponsePageFactory = claimantResponsePageFactory;
   }
 
-  async ClaimantResponse1v1FastTrack() {
+  async FastTrack1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRepondentResponseSpecPage();
@@ -77,7 +77,8 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponseSpec1v1SmallTrack() {
+  async SmallTrack1v1() {
+    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738083889385442);
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRepondentResponseSpecPage();
@@ -93,7 +94,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse1v2SSSmallClaim() {
+  async SmallTrack1v2SS() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse1v2SSSpecPage } = this.claimantResponsePageFactory;
@@ -111,7 +112,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponseSpec1v2DSSmallClaim() {
+  async SmallTrack1v2DS() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse1v2DSSpecPage } = this.claimantResponsePageFactory;
@@ -129,7 +130,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse2v1SmallClaim() {
+  async SmallTrack2v1() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1SpecPage } = this.claimantResponsePageFactory;
@@ -182,7 +183,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   private async processClaimantResponseSmallClaimExperts() {
     const { smallClaimExpertsClaimantPage } = this.claimantResponsePageFactory;
     await smallClaimExpertsClaimantPage.verifyContent(this.ccdCaseData);
-    await smallClaimExpertsClaimantPage.useExperts();
+    await smallClaimExpertsClaimantPage.selectYesExperts();
     await smallClaimExpertsClaimantPage.enterExpertDetails();
     await smallClaimExpertsClaimantPage.submit();
   }
@@ -190,7 +191,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   private async processClaimantResponseSmallClaimExperts2v1() {
     const { smallClaimExpertsClaimantPage } = this.claimantResponsePageFactory;
     await smallClaimExpertsClaimantPage.verifyContent(this.ccdCaseData);
-    await smallClaimExpertsClaimantPage.useExperts2v1();
+    await smallClaimExpertsClaimantPage.selectYesExperts();
     await smallClaimExpertsClaimantPage.enterExpertDetails();
     await smallClaimExpertsClaimantPage.submit();
   }
@@ -208,7 +209,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     await smallClaimWitnessesClaimantPage.verifyContent(this.ccdCaseData);
     await smallClaimWitnessesClaimantPage.selectYes();
     await smallClaimWitnessesClaimantPage.enterWitnessNumber();
-    await smallClaimWitnessesClaimantPage.addWitness1v1();
+    await smallClaimWitnessesClaimantPage.addWitness();
     await smallClaimWitnessesClaimantPage.enterWitness1Details();
     await smallClaimWitnessesClaimantPage.submit();
   }

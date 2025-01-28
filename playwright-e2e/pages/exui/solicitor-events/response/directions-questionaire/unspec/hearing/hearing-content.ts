@@ -22,20 +22,18 @@ export const radioButtons = {
   },
   unavailableDateType: {
     label: 'Add a single date or a date range',
-    singleSmallClaim: {
+    single: {
+      label: 'Single Date',
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
         `#${claimantDefendantParty.oldKey}DQHearing_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
-    },
-    rangeSmallClaim: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearing_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
-    },
-    singleFastClaim: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+      selectorFast: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
         `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
-    rangeFastClaim: {
+    range: {
+      label: 'Date Range',
       selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+        `#${claimantDefendantParty.oldKey}DQHearing_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selectorFast: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
         `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDates_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },

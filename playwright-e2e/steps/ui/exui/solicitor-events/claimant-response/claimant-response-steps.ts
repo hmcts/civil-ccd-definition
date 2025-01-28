@@ -91,7 +91,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async ClaimantResponse2v1SmallClaimUnspec() {
+  async SmallClaim2v1() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
@@ -176,8 +176,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await hearingPage.verifyContent(this.ccdCaseData);
     await hearingPage.selectYesAvailabilityRequired();
     await hearingPage.addNewUnavailableDate();
-    await hearingPage.selectSingleDateSmallClaim(1);
-    await hearingPage.submit();
+    await hearingPage.selectSingleDate(1);
     await hearingPage.submit();
   }
 
