@@ -1,0 +1,11 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingDocumentsWelsh",
+    "Label": "System generated Case Documents",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
