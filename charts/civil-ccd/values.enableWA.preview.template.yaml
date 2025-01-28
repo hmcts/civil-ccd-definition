@@ -96,7 +96,9 @@ wa:
         key: PASSWORD
         disabled: true
   camunda-bpm:
+
     java:
+      image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
       environment:
         CAMUNDA_DB_USER_NAME: "hmcts"
         CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
