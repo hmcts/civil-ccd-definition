@@ -12,7 +12,7 @@ export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.experts),
-      super.expectText(radioButtons.expertsRequired.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.expertsRequired.label, { index: 1 }),
     ]);
   }
 
