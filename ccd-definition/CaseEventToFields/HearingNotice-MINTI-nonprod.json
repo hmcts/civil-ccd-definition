@@ -46,28 +46,5 @@
     "PageColumnNumber": 1,
     "FieldShowCondition" : "requestHearingNoticeDynamic = \"OTHER\"",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "requestAnotherHearingLabel",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "RequestAnotherHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "PageShowCondition" : "allocatedTrack = \"MULTI_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\" OR responseClaimTrack = \"MULTI_CLAIM\" OR responseClaimTrack = \"INTERMEDIATE_CLAIM\"",
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
-    "CaseFieldID": "requestAnotherHearing",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RequestAnotherHearing",
-    "PageDisplayOrder": 2,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "Y"
   }
 ]
