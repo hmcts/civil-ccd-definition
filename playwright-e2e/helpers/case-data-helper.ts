@@ -80,6 +80,10 @@ export default class CaseDataHelper {
         return '07906789012';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return '07321654987';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return '07987654321';
+      case partys.DEFENDANT_SOLICITOR_2:
+        return '07987654325';
       case partys.DEFENDANT_1_EXPERT_1:
         return '07311987654';
       case partys.DEFENDANT_1_EXPERT_2:
@@ -121,6 +125,10 @@ export default class CaseDataHelper {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'EX1 1JG';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return 'SW1A 1AA';
+      case partys.DEFENDANT_SOLICITOR_2:
+        return 'SW1A 1AD';
     }
   }
 
@@ -195,6 +203,16 @@ export default class CaseDataHelper {
           organisationName: `${partyKey} ${partyTypeKey}`,
         };
     }
+  }
+
+  static buildLegalRepresentativeData(party: Party) {
+    return {
+      organisationName: `${party.key} Solicitors`,
+      phoneNumber: this.getPartyPhoneNumber(party),
+      email: `${party.key}@solicitor.com`,
+      DX: '123',
+      fax: '5550234',
+    };
   }
 
   static buildLitigationFriendData(party: Party) {
