@@ -207,6 +207,7 @@ camunda-bpm:
   java:
     disableKeyVaults: true
     image: camunda/camunda-bpm-platform:run-latest
+    applicationPort: 9404
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
 #      CAMUNDA_DB_USER_NAME: hmcts
