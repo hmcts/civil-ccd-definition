@@ -27,6 +27,6 @@ export default class SecondDefendantSolicitorReferencePage extends ExuiPage(Base
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

@@ -113,6 +113,8 @@ export default class CaseDataHelper {
         return 'CF10 1EP';
       case partys.CLAIMANT_2_LITIGATION_FRIEND:
         return 'LS1 4AP';
+      case partys.CLAIMANT_SOLICITOR_1:
+        return 'SW1A 1AA';
       case partys.DEFENDANT_1:
         return 'M1 1AE';
       case partys.DEFENDANT_2:
@@ -121,6 +123,10 @@ export default class CaseDataHelper {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'EX1 1JG';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return 'B1 1AA';
+      case partys.DEFENDANT_SOLICITOR_2:
+        return 'M4 5DL';
     }
   }
 

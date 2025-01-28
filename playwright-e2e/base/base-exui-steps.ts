@@ -19,7 +19,7 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     this.exuiDashboardPageFactory = exuiDashboardPageFactory;
   }
 
-  async retryExuiEvent(
+  protected async retryExuiEvent(
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,

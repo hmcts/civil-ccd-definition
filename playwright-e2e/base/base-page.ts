@@ -605,7 +605,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = { exact: false },
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -651,7 +651,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = { exact: false },
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -688,7 +688,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectTab(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
       message: options.message,
@@ -700,7 +700,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectNoTab(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
       message: options.message,
@@ -712,7 +712,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectButton(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
       message: options.message,
@@ -724,7 +724,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectNoButton(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
       message: options.message,

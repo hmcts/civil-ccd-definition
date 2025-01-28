@@ -16,9 +16,9 @@ export default class UploadCreateClaimPage extends ExuiPage(BasePage) {
     this.particularsOfClaimFragment = particularsOfClaimFragment;
   }
 
-  async verifyContent(ccdCaseData: CCDCaseData) {
+  async verifyContent() {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      super.verifyHeadings(),
       super.expectText(paragraphs.descriptionText1),
       super.expectText(paragraphs.descriptionText2),
       this.particularsOfClaimFragment.verifyContent(),

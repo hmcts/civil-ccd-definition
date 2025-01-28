@@ -40,6 +40,6 @@ export default class SecondClaimantLitigationFriendPage extends ExuiPage(BasePag
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

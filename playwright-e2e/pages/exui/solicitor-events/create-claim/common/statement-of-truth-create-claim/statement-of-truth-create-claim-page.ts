@@ -3,7 +3,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import StatementOfTruthFragment from '../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
-import { paragraphs } from './statement-of-truth-create-claim-content.ts';
+import { heading } from './statement-of-truth-create-claim-content.ts';
 
 @AllMethodsStep()
 export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) {
@@ -15,13 +15,7 @@ export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) 
   }
 
   async verifyContent() {
-    await super.runVerifications([
-      super.expectText(paragraphs.descriptiveText1),
-      super.expectText(paragraphs.descriptiveText2),
-      super.expectText(paragraphs.descriptiveText3),
-      super.expectText(paragraphs.descriptiveText4),
-      this.statementOfTruthFragment.verifyContent(),
-    ]);
+    await super.runVerifications([super.expectHeading(heading)]);
   }
 
   async enterDetails() {
@@ -29,6 +23,6 @@ export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) 
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

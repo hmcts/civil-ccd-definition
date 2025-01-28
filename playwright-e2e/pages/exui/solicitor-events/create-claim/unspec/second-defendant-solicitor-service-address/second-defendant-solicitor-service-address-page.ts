@@ -31,6 +31,6 @@ export default class SecondDefendantSolicitorServiceAddressPage extends ExuiPage
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

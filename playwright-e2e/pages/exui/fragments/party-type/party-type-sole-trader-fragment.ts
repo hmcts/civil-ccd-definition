@@ -12,7 +12,7 @@ import CaseDataHelper from '../../../../helpers/case-data-helper';
 @AllMethodsStep()
 export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private partyType = claimantDefendantPartyTypes.INDIVIDUAL;
+  private partyType = claimantDefendantPartyTypes.SOLE_TRADER;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {
@@ -24,10 +24,11 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectLabel(inputs.firstName.label),
-        super.expectLabel(inputs.lastName.label),
-        super.expectLabel(inputs.dateOfBirth.label, { index: 1 }),
+        super.expectLabel(inputs.firstName.label, { index: 1 }),
+        super.expectLabel(inputs.lastName.label, { index: 1 }),
+        super.expectText(inputs.dateOfBirth.label, { index: 1 }),
         this.dateFragment.verifyContent(),
+        super.expectLabel(inputs.tradingAs.label),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
       ],

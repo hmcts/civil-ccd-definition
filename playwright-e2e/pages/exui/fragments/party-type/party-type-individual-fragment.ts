@@ -23,9 +23,10 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectLabel(inputs.firstName.label),
-        super.expectLabel(inputs.lastName.label),
-        super.expectLabel(inputs.dateOfBirth.label, { index: 0 }),
+        super.expectLabel(inputs.title.label, { index: 0 }),
+        super.expectLabel(inputs.firstName.label, { index: 0 }),
+        super.expectLabel(inputs.lastName.label, { index: 0 }),
+        super.expectText(inputs.dateOfBirth.label, { index: 0 }),
         this.dateFragment.verifyContent(),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
@@ -36,7 +37,7 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterIndividualDetails(dateOfBirth?: Date, phoneNumber?: string) {
+  async enterIndividualDetails() {
     const individualData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
       this.partyType,

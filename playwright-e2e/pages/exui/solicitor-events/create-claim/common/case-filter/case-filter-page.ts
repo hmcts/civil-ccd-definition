@@ -33,6 +33,6 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

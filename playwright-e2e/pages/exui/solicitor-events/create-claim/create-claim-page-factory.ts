@@ -59,6 +59,9 @@ import StatementOfTruthFragment from '../../fragments/statement-of-truth/stateme
 import SubmitCreateClaimPage from './common/submit-create-claim/submit-create-claim-page.ts';
 import ConfirmCreateClaimSpecPage from './lr-spec/confirm-create-claim-spec/confirm-create-claim-spec-page.ts';
 import ConfirmCreateClaimPage from './unspec/confirm-create-claim/confirm-create-claim-page.ts';
+import RemoteHearingFragment from '../../fragments/remote-hearing/remote-hearing-fragment.ts';
+import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page.ts';
+import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/upload-particulars-of-claim-page.ts';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -96,7 +99,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get courtPage() {
-    return new CourtPage(this.page);
+    const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.CLAIMANT_1);
+    return new CourtPage(this.page, remoteHearingFragment);
   }
 
   get notificationsPage() {
@@ -153,12 +157,12 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new LegalRepresentationSpecPage(this.page);
   }
 
-  get defendantSolicitorOrganisation() {
+  get defendantSolicitorOrganisationPage() {
     const organisationFragment = new OrganisationFragment(this.page, partys.DEFENDANT_1);
     return new DefendantSolicitorOrganisationPage(this.page, organisationFragment);
   }
 
-  get defendantSolicitorOrganisationSpec() {
+  get defendantSolicitorOrganisationSpecPage() {
     const organisationRegisteredFragment = new OrganisationRegisteredFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -180,7 +184,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new DefendantSolicitorServiceAddressPage(this.page, serviceAddressFragment);
   }
 
-  get specRespondentCorrespondenceAddress() {
+  get specRespondentCorrespondenceAddressPage() {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
@@ -188,12 +192,16 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new SpecRespondentCorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
 
-  get defendantSolicitorEmail() {
+  get defendantSolicitorEmailPage() {
     return new DefendantSolicitorEmailPage(this.page);
   }
 
-  get defendantSolicitorEmailSpec() {
+  get defendantSolicitorEmailSpecPage() {
     return new DefendantSolicitorEmailSpecPage(this.page);
+  }
+
+  get addAnotherDefendantPage() {
+    return new AddAnotherDefendantPage(this.page);
   }
 
   get secondDefendantPage() {
@@ -212,12 +220,12 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new SameLegalRepresentativePage(this.page);
   }
 
-  get secondDefendantSolicitorOrganisation() {
+  get secondDefendantSolicitorOrganisationPage() {
     const organisationFragment = new OrganisationFragment(this.page, partys.DEFENDANT_2);
     return new DefendantSolicitorOrganisationPage(this.page, organisationFragment);
   }
 
-  get secondDefendantSolicitorOrganisationSpec() {
+  get secondDefendantSolicitorOrganisationSpecPage() {
     const organisationRegisteredFragment = new OrganisationRegisteredFragment(
       this.page,
       partys.DEFENDANT_2,
@@ -230,7 +238,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     );
   }
 
-  get secondDefendantSolicitorServiceAddress() {
+  get secondDefendantSolicitorServiceAddressPage() {
     const serviceAddressFragment = new ServiceAddressFragment(
       this.page,
       partys.DEFENDANT_2,
@@ -239,7 +247,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new SecondDefendantSolicitorServiceAddressPage(this.page, serviceAddressFragment);
   }
 
-  get specRespondent2CorrespondenceAddress() {
+  get specRespondent2CorrespondenceAddressPage() {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
@@ -259,11 +267,11 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     );
   }
 
-  get secondDefendantSolicitorEmail() {
+  get secondDefendantSolicitorEmailPage() {
     return new SecondDefendantSolicitorEmailPage(this.page);
   }
 
-  get secondDefendantSolicitorEmailSpec() {
+  get secondDefendantSolicitorEmailSpecPage() {
     return new SecondDefendantSolicitorEmailSpecPage(this.page);
   }
 
@@ -285,6 +293,10 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get detailsSpecPage() {
     return new DetailsSpecPage(this.page);
+  }
+
+  get uploadParticularsOfClaimPage() {
+    return new UploadParticularsOfClaimPage(this.page);
   }
 
   get uploadCreateClaimPage() {
