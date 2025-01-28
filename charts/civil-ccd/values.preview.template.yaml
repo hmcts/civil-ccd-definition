@@ -59,6 +59,9 @@ civil-service:
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
+      FEIGN_CLIENT_CONFIG_REMOTERUNTIMESERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEEXTERNALTASKSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
+      FEIGN_CLIENT_CONFIG_REMOTEREPOSITORYSERVICE_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
@@ -206,7 +209,7 @@ camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
-    image: hmctsprivate.azurecr.io/camunda/bpm:prod-700cced-20250123072402
+    image: camunda/camunda-bpm-platform:run-latest
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
 #      CAMUNDA_DB_USER_NAME: hmcts
