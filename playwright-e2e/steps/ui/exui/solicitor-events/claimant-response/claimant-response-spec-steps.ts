@@ -5,7 +5,7 @@ import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/e
 import ClaimantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
 import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from "../../../../../constants/ccd-events.ts";
-import {civilAdminUser, claimantSolicitorUser} from "../../../../../config/users/exui-users.ts";
+import { claimantSolicitorUser} from "../../../../../config/users/exui-users.ts";
 import partys from '../../../../../constants/partys.ts';
 
 @AllMethodsStep()

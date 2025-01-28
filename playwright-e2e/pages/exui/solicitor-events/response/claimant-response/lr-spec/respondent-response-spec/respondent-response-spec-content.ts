@@ -1,4 +1,3 @@
-import ClaimType from '../../../../../../../enums/claim-type';
 
 export const paragraphs = {
   fullDefence: 'Defends all of the claim',

@@ -21,6 +21,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectText(radioButtons.unavailableDateRequired.label),
     ]);
@@ -28,6 +29,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
 
   async verifyContentFasTrack1v1(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
       super.expectText(radioButtons.unavailableDateRequired.label1v1FastTrack),
     ]);

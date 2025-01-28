@@ -4,7 +4,6 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import StatementOfTruthFragment from '../../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
-import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class StatementOfTruthClaimantResponsePage extends ExuiPage(BasePage) {
