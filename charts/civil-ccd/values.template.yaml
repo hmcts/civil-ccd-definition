@@ -6,7 +6,7 @@ civil-translation:
 
 am-org-role-mapping-service:
   enabled: false
-  
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -69,6 +69,7 @@ civil-general-applications:
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      CAMUNDA_URL: http://camunda-api-aat.service.core-compute-aat.internal/engine-rest/
 
 civil-service:
   java:
@@ -134,7 +135,8 @@ civil-service:
       CMC_DB_CONNECTION_OPTIONS: '?sslmode=allow'
       CMC_DB_USERNAME: "{{ .Values.postgresql.auth.username}}"
       REFERENCE_DATABASE_MIGRATION: true
-      CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
+#      CAMUNDA_URL: https://camunda-${SERVICE_FQDN}/engine-rest/
+      CAMUNDA_URL: http://camunda-api-aat.service.core-compute-aat.internal/engine-rest/
       STITCHING_API_ENABLED: false
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.platform.hmcts.net/service-request-update-claim-issued
@@ -342,27 +344,27 @@ ccd:
       enabled: false
 
 camunda-bpm:
-  enabled: true
-  java:
-    imagePullPolicy: Always
-    ingressHost: camunda-${SERVICE_FQDN}
-    disableKeyVaults: true
-    releaseNameOverride: ${SERVICE_NAME}-camunda
-    devcpuRequests: 500m
-    devmemoryRequests: 512Mi
-    devcpuLimits: 1
-    devmemoryLimits: 1Gi
-    environment:
-      CAMUNDA_API_AUTH_ENABLED: false
-      CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
-      CAMUNDA_DB_NAME: camunda
-      CAMUNDA_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
-      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
-      CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
-      S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
-      RELEASE_REVISION: "{{ .Release.Revision }}"
-    secrets:
-      CAMUNDA_DB_PASSWORD:
-        secretRef: "{{ .Values.global.postgresSecret }}"
-        key: PASSWORD
-        disabled: true
+  enabled: false
+#  java:
+#    imagePullPolicy: Always
+#    ingressHost: camunda-${SERVICE_FQDN}
+#    disableKeyVaults: true
+#    releaseNameOverride: ${SERVICE_NAME}-camunda
+#    devcpuRequests: 500m
+#    devmemoryRequests: 512Mi
+#    devcpuLimits: 1
+#    devmemoryLimits: 1Gi
+#    environment:
+#      CAMUNDA_API_AUTH_ENABLED: false
+#      CAMUNDA_DB_HOST: ${SERVICE_NAME}-postgresql
+#      CAMUNDA_DB_NAME: camunda
+#      CAMUNDA_DB_USER_NAME: "{{ .Values.postgresql.auth.username}}"
+#      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified"
+#      CAMUNDA_BPM_DATABASE_SCHEMA_UPDATE: true
+#      S2S_URL: http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+#      RELEASE_REVISION: "{{ .Release.Revision }}"
+#    secrets:
+#      CAMUNDA_DB_PASSWORD:
+#        secretRef: "{{ .Values.global.postgresSecret }}"
+#        key: PASSWORD
+#        disabled: true
