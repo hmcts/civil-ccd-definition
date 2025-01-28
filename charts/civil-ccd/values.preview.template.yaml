@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-6060'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -63,6 +63,7 @@ civil-service:
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
       ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
+      CAMUNDA_WORKER_ID: ${SERVICE_NAME}
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
