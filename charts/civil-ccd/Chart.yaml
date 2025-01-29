@@ -9,52 +9,52 @@ maintainers:
 dependencies:
   - name: postgresql
     version: 1.0.2
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: postgresql.enabled
   - name: civil-service
     version: 0.0.67
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
     version: 0.0.64
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
     version: 9.2.1
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
     version: ~1.0.8
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
     version: ~0.2.9
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: aac-manage-case-assignment.enabled
   - name: idam-pr
     version: 2.3.0
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
   - name: camunda-bpm
     version: 0.0.44
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
     version: 1.0.7
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: servicebus.enabled
 # WA
   - name: wa
     version: ~1.0.6
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
 # CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-wa.enabled
   - name: ts-translation-service
     version: 0.1.7
-    repository: 'https://hmctsprivatetemp.azurecr.io/helm/v1/repo/'
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-translation.enabled
 
   # To remove unused definitions
