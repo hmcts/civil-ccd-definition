@@ -28,10 +28,19 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     );
   }
 
-  async addWitnesses() {
+  async selectYes() {
     await super.clickBySelector(
       radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
     );
+  }
+
+  async selectNo() {
+    await super.clickBySelector(
+      radioButtons.witnessesRequired.no.selector(this.claimantDefendantParty),
+    );
+  }
+
+  async addWitness() {
     await super.clickBySelector(buttons.addNewWitness.selector(this.claimantDefendantParty));
   }
 

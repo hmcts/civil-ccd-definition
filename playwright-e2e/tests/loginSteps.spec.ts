@@ -71,23 +71,19 @@ test('Testing 1v1 Unspec Fast Claim', async ({
   await ClaimantResponseSteps.FastTrack1v1();
 });
 
-test(
-  'Testing 1v1 Spec Small Claim',
-  { tag: '@debug' },
-  async ({
-    IdamSteps,
-    ApiUserSteps,
-    ApiDataSteps,
-    _requestsFactory,
-    _exuiDashboardPageFactory,
-    ClaimantResponseSpecSteps,
-  }) => {
-    await ApiUserSteps.SetupUserData(civilAdminUser);
-    // await ApiDataSteps.SetupBankHolidaysData();
-    await IdamSteps.ClaimantSolicitorLogin();
-    await ClaimantResponseSpecSteps.SmallTrack1v1();
-  },
-);
+test('Testing 1v1 Spec Small Claim', async ({
+  IdamSteps,
+  ApiUserSteps,
+  ApiDataSteps,
+  _requestsFactory,
+  _exuiDashboardPageFactory,
+  ClaimantResponseSpecSteps,
+}) => {
+  await ApiUserSteps.SetupUserData(civilAdminUser);
+  // await ApiDataSteps.SetupBankHolidaysData();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await ClaimantResponseSpecSteps.SmallTrack1v1();
+});
 
 test('Testing 1v1 Spec Fast Track', async ({
   IdamSteps,
@@ -117,19 +113,23 @@ test('Testing 1v2 Same Solicitor Small Claim', async ({
   await ClaimantResponseSpecSteps.SmallTrack1v2SS();
 });
 
-test('Testing 1v2 Different Solicitor Small Claim', async ({
-  IdamSteps,
-  ApiUserSteps,
-  ApiDataSteps,
-  _requestsFactory,
-  _exuiDashboardPageFactory,
-  ClaimantResponseSpecSteps,
-}) => {
-  await ApiUserSteps.SetupUserData(civilAdminUser);
-  // await ApiDataSteps.SetupBankHolidaysData();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await ClaimantResponseSpecSteps.SmallTrack1v2DS();
-});
+test(
+  'Testing 1v2 Different Solicitor Small Claim',
+  { tag: '@debug' },
+  async ({
+    IdamSteps,
+    ApiUserSteps,
+    ApiDataSteps,
+    _requestsFactory,
+    _exuiDashboardPageFactory,
+    ClaimantResponseSpecSteps,
+  }) => {
+    await ApiUserSteps.SetupUserData(civilAdminUser);
+    // await ApiDataSteps.SetupBankHolidaysData();
+    await IdamSteps.ClaimantSolicitorLogin();
+    await ClaimantResponseSpecSteps.SmallTrack1v2DS();
+  },
+);
 
 test('Testing 2v1 Small Claim', async ({
   IdamSteps,

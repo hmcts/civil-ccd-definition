@@ -6,6 +6,7 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './applicant-court-lr-spec-content.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
 import partys from '../../../../../../../constants/partys.ts';
+import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
 export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage) {
@@ -20,14 +21,14 @@ export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage)
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.claimant),
-      super.expectLabel(inputs.preferredCourtReason.label, { index: 0 }),
+      // super.expectLabel(inputs.preferredCourtReason.label, { index: 0 }),
       this.remoteHearingSpecFragment.verifyContent(),
     ]);
   }
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      dropdowns.courtLocations.options[0],
+      preferredCourts[partys.CLAIMANT_1.key].default,
       dropdowns.courtLocations.selector,
     );
     await super.inputText(

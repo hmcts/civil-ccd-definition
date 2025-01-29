@@ -47,7 +47,7 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
       radioButtons(this.claimantDefendantParty).protocolComplied.no.selector,
     );
     await super.inputText(
-      `No explanation - ${this.claimantDefendantParty}`,
+      `No explanation - ${this.claimantDefendantParty.key}`,
       inputs(this.claimantDefendantParty).noProtocolCompliedReason.selector,
     );
   }

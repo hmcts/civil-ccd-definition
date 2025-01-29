@@ -50,7 +50,7 @@ export default class HearingFastPage extends ExuiPage(BasePage) {
       radioButtons.unavailableDateType.single.selector(this.claimantParty, unavailableDateNumber),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, 'date');
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
   async selectDateRange(unavailableDateNumber: number) {
