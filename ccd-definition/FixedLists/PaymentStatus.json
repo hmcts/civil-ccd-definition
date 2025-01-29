@@ -10,5 +10,11 @@
     "ListElementCode": "FAILED",
     "ListElement": "Failed",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PaymentStatus",
+    "ListElementCode": "INITIATED",
+    "ListElement": "Initiated",
+    "DisplayOrder": 3
   }
 ]
