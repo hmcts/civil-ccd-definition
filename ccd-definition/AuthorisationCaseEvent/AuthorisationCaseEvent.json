@@ -575,12 +575,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "judge-profile",
