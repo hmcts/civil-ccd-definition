@@ -62,6 +62,7 @@ import ConfirmCreateClaimPage from './unspec/confirm-create-claim/confirm-create
 import RemoteHearingFragment from '../../fragments/remote-hearing/remote-hearing-fragment.ts';
 import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page.ts';
 import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/upload-particulars-of-claim-page.ts';
+import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page.ts';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -117,6 +118,10 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get secondClaimantPage() {
     return new SecondClaimantPage(this.page);
+  }
+
+  get secondClaimantLitigationFriendPage() {
+    return new SecondClaimantLitigationFriendPage(this.page);
   }
 
   get claimantLitigationFriendPage() {

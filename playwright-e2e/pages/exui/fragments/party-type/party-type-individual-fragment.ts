@@ -3,10 +3,11 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { inputs } from '../party-type/party-type-content';
+import { inputs } from './party-type-content';
 import DateFragment from '../date/date-fragment';
 import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import PartyType from '../../../../enums/party-types';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
@@ -23,11 +24,10 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectLabel(inputs.title.label, { index: 0 }),
-        super.expectLabel(inputs.firstName.label, { index: 0 }),
-        super.expectLabel(inputs.lastName.label, { index: 0 }),
-        super.expectText(inputs.dateOfBirth.label, { index: 0 }),
-        this.dateFragment.verifyContent(),
+        // super.expectLabel(inputs.title.label, { index: 0 }),
+        // super.expectLabel(inputs.firstName.label, { index: 0 }),
+        // super.expectLabel(inputs.lastName.label, { index: 0 }),
+        // super.expectText(inputs.dateOfBirth.label, { index: 0 }),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
       ],

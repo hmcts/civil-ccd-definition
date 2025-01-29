@@ -15,7 +15,7 @@ test('Testing Login', async ({
   // await ApiUserSteps.SetupUserData(civilAdminUser);
   // await ApiDataSteps.SetupBankHolidaysData();
   await IdamSteps.ClaimantSolicitorLogin();
-  await CreateClaimSteps.CreateClaim1v1();
+  await CreateClaimSteps.SmallTrack1v2DS();
 
   // const { ccdRequests } = _requestsFactory;
   // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);

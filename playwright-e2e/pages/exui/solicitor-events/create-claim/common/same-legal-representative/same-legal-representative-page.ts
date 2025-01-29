@@ -16,7 +16,7 @@ export default class SameLegalRepresentativePage extends ExuiPage(BasePage) {
     await super.clickBySelector(radioButtons.sameSolicitor.yes.selector);
   }
 
-  async clickNo() {
+  async selectNo() {
     await super.clickBySelector(radioButtons.sameSolicitor.no.selector);
   }
 
