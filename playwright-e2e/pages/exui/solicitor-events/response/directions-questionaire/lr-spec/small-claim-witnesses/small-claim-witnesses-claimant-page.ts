@@ -55,7 +55,7 @@ export default class SmallClaimWitnessesClaimantPage extends ExuiPage(BasePage) 
   }
 
   async enterWitnessNumber() {
-    await super.inputText('0', inputs.witnessNumber.selector);
+    await super.inputText(1, inputs.witnessNumber.selector);
   }
 
   async submit() {
