@@ -22,6 +22,9 @@ import LegalRepresentationSpecPage from './lr-spec/legal-representation-spec/leg
 import LegalRepresentationPage from './unspec/legal-representation/legal-representation-page.ts';
 import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-organisation/defendant-solicitor-organisation-spec-page.ts';
 import DefendantSolicitorOrganisationSpecPage from './lr-spec/defendant-solicitor-organisation-spec/defendant-solicitor-organisation-spec-page.ts';
+import UnRegisteredDefendantSolicitorOrganisation from './lr-spec/unregistered-defendant-solicitor-organisation/unregistered-defendant-solicitor-organisation-page.ts';
+import UnRegisteredSecondDefendantSolicitorOrganisation from './lr-spec/unregistered-second-defendant-solicitor-organisation/unregistered-second-defendant-solicitor-organisation-page.ts';
+import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page.ts';
 import OrganisationRegisteredFragment from '../../fragments/organisation-registered/organisation-registered-fragment.ts';
 import DefendantSolicitorServiceAddressPage from './unspec/defendant-solicitor-service-address/defendant-solicitor-service-address-page.ts';
 import SpecRespondentCorrespondenceAddressPage from './lr-spec/spec-respondent-correspondence-address/spec-respondent-correspondence-address-page.ts';
@@ -169,6 +172,18 @@ export default class CreateClaimPageFactory extends BasePageFactory {
       organisationRegisteredFragment,
       organisationFragment,
     );
+  }
+
+  get unregisteredDefendantSolicitorOrganisation() {
+    return new UnRegisteredDefendantSolicitorOrganisation(this.page);
+  }
+
+  get unregisteredSecondDefendantSolicitorOrganisation() {
+    return new UnRegisteredSecondDefendantSolicitorOrganisation(this.page);
+  }
+
+  get addAnotherDefendantPage() {
+    return new AddAnotherDefendantPage(this.page);
   }
 
   get defendantSolicitorServiceAddressPage() {
