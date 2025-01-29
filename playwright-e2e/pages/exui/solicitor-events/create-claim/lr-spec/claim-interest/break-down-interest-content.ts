@@ -4,7 +4,7 @@ export const subheadings = {
   };
 
   export const paragraphs = {
-    descriptionText:
+    breakDownInterestDescriptionText:
     'Calculate interest for different periods of time, or items, and let us know the total. We’ll add it to your claim amount.',
     
   };

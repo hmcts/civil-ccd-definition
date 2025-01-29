@@ -4,7 +4,7 @@ export const subheadings = {
   };
   
   export const paragraphs = {
-    descriptionText:
+    interestFromSpecificDateDescriptionText:
     'For example, 22 04 2021',
     
   };
