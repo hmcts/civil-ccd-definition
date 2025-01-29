@@ -67,17 +67,6 @@ civil-service:
     postgresql:
       enabled: false
 
-idam-pr:
-  redirect_uris:
-    XUI:
-      - https://xui-${SERVICE_FQDN}/oauth2/callback
-    CCD Admin:
-      - http://${SERVICE_NAME}-ccd-admin-web/oauth2redirect
-
-aac-manage-case-assignment:
-  java:
-    ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
-
 xui-webapp:
   nodejs:
     ingressHost: xui-${SERVICE_FQDN}
@@ -97,6 +86,7 @@ ccd:
       ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
     java:
+      disableKeyVaults: true
       environment:
         OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-{{ .Values.global.environment }}.internal:8443/openam/oauth2/hmcts
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
@@ -104,27 +94,28 @@ ccd:
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DATA_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}data-store"
         DATA_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
-        DATA_STORE_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+        DATA_STORE_DB_USERNAME: '{{ tpl .Values.global.postgresUsername $}}'
         DATA_STORE_DEFAULT_LOG_LEVEL: DEBUG
         CASE_DATA_ISSUE_LOG_LEVEL: DEBUG
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
         DATA_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
+          secretRef: postgres
           key: PASSWORD
           disabled: false
   ccd-definition-store-api:
     java:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
+      disableKeyVaults: true
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
         DEFINITION_STORE_DB_NAME: "{{ .Values.global.databaseNamePrefix }}definition-store"
         DEFINITION_STORE_DB_HOST: "{{ .Values.global.postgresHostname }}"
-        DEFINITION_STORE_DB_USERNAME: "{{ .Values.global.postgresUsername }}"
+        DEFINITION_STORE_DB_USERNAME: '{{ tpl .Values.global.postgresUsername $}}'
       secrets:
         DEFINITION_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
+          secretRef: postgres
           key: PASSWORD
           disabled: false
   ccd-user-profile-api:
@@ -142,17 +133,17 @@ camunda-bpm:
   enabled: true
   java:
     disableKeyVaults: true
+    secrets:
+      CAMUNDA_DB_PASSWORD:
+        secretRef: postgres
+        key: PASSWORD
+        disabled: false
     environment:
       CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
       CAMUNDA_DB_USER_NAME: hmcts
       CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
       CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
       TEMP_VAR: false
-    secrets:
-      CAMUNDA_DB_PASSWORD:
-        secretRef: postgres
-        key: PASSWORD
-        disabled: false
 
 postgresql:
   enabled: true
