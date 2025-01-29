@@ -52,7 +52,7 @@ test('Unspec with Defendant Response 1v1',  async ({
   await DefendantResponseSteps.RespondToDefence1v1();
 });
 
-test('Unspec with Defendant Response 1V2 Different Solicitor',   async ({
+test('Unspec with Defendant Response 1V2 Different Solicitor',  {tag: ['@debug']}, async ({
                                                                    ApiCreateClaimSteps,
                                                                    ApiServiceRequestsSteps,
                                                                    IdamSteps,

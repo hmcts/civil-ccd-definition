@@ -221,7 +221,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   async RespondToDefence1v2DSDefendant2() {
-    await this.fetchAndSetCCDCaseData(defendantSolicitor2User,  1738088502048004);
+    //await this.fetchAndSetCCDCaseData(defendantSolicitor2User,  1738088502048004);
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -308,9 +308,9 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
         await submitDefendantResponsePage.submit();
 
-        const { confirm1v2DSDefendantResponsePage } = this.defendantResponsePageFactory;
-        await confirm1v2DSDefendantResponsePage.verifyContent(this.ccdCaseData);
-        await confirm1v2DSDefendantResponsePage.submit();
+        const { confirmDefendantResponsePage } = this.defendantResponsePageFactory;
+        await confirmDefendantResponsePage.verifyContent(this.ccdCaseData);
+        await confirmDefendantResponsePage.submit();
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,

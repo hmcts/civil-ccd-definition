@@ -2,7 +2,7 @@ import { civilAdminUser } from '../config/users/exui-users';
 import ccdEvents from '../constants/ccd-events';
 import { test } from '../playwright-fixtures/index';
 
-test('Testing Login', {tag: ['@debug']},async ({
+test('Testing Login', async ({
   IdamSteps,
   NotifyClaimDetailsSteps,
   ExuiDashboardSteps,
