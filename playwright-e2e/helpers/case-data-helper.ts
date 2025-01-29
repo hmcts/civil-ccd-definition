@@ -207,6 +207,7 @@ export default class CaseDataHelper {
 
   static buildLegalRepresentativeData(party: Party) {
     return {
+      address: this.buildAddressData(party),
       organisationName: `${party.key} Solicitors`,
       phoneNumber: this.getPartyPhoneNumber(party),
       email: `${party.key}@solicitor.com`,
