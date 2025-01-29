@@ -64,9 +64,9 @@ export const inputs = {
 export const buttons = {
   addNewUnavailability: {
     title: 'Add new',
-    selectorFast: (claimantParty: Party) =>
-      `div[id='${claimantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
     selector: (claimantParty: Party) =>
+      `div[id='${claimantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
+    selectorFast: (claimantParty: Party) =>
       `div[id='${claimantParty.oldKey}DQHearingLRspec_unavailableDates']  button[type='button']`,
   },
 };

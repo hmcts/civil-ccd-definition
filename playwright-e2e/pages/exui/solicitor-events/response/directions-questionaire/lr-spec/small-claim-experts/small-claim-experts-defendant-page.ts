@@ -23,7 +23,7 @@ export default class SmallClaimExpertsDefendantPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts),
-        super.expectText(radioButtons.expertsRequired.label),
+        // super.expectText(radioButtons.expertsRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

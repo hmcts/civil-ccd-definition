@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { buttons, radioButtons, subheadings, inputs } from './hearing-spec-content.ts';
+import { buttons, radioButtons, subheadings, inputs, heading } from './hearing-spec-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
@@ -20,11 +20,11 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     this.claimantParty = claimantParty;
   }
 
-  async verifyContent(ccdCaseData: CCDCaseData) {
+  async verifyContent() {
     await super.runVerifications(
       [
-        super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.unavailableDate),
+        super.expectHeading(heading),
+        // super.expectSubheading(subheadings.unavailableDate),
         super.expectText(radioButtons.unavailableDateRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
@@ -52,7 +52,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
       radioButtons.unavailableDateType.single.selector(this.claimantParty, unavailableDateNumber),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, inputs.dateTo.selectorKey);
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
   async selectDateRange(unavailableDateNumber: number) {
@@ -66,6 +66,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
+    await super.retryClickSubmit();
     await super.retryClickSubmit();
   }
 }

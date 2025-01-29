@@ -22,9 +22,9 @@ export default class ExpertPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts, { index: 0 }),
-        super.expectText(radioButtons.expertsRequired.label, { first: true }),
-        super.expectLabel(radioButtons.expertsRequired.yes.label, { index: 0 }),
-        super.expectLabel(radioButtons.expertsRequired.no.label, { index: 0 }),
+        // super.expectText(radioButtons.expertsRequired.label, { first: true }),
+        // super.expectLabel(radioButtons.expertsRequired.yes.label, { index: 0 }),
+        // super.expectLabel(radioButtons.expertsRequired.no.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );

@@ -19,9 +19,9 @@ export default class HearingFastSpecPage extends ExuiPage(BasePage) {
     this.dateFragment = dateFragment;
   }
 
-  async verifyContent(ccdCaseData: CCDCaseData) {
+  async verifyContent() {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      super.expectHeading(heading),
       super.expectHeading(heading),
       super.expectText(radioButtons.unavailableDateRequired.labelFast),
     ]);

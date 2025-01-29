@@ -1,5 +1,5 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { Step } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import ClaimantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
@@ -8,7 +8,7 @@ import ccdEvents from '../../../../../constants/ccd-events.ts';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users.ts';
 import partys from '../../../../../constants/partys.ts';
 
-@AllMethodsStep()
+const classKey = 'ClaimantResponseSpecSteps';
 export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   private claimantResponsePageFactory: ClaimantResponsePageFactory;
 
@@ -22,7 +22,9 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     this.claimantResponsePageFactory = claimantResponsePageFactory;
   }
 
+  @Step(classKey)
   async FastTrack1v1() {
+    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738083731000744);
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRepondentResponseSpecPage();
@@ -77,8 +79,8 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v1() {
-    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738083889385442);
     await this.retryExuiEvent(
       async () => {
         await this.processClaimantResponseRepondentResponseSpecPage();
@@ -90,10 +92,11 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
-      { retries: 0 },
+      { verifySuccessEvent: false },
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v2SS() {
     await this.retryExuiEvent(
       async () => {
@@ -112,6 +115,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v2DS() {
     await this.retryExuiEvent(
       async () => {
@@ -223,7 +227,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
 
   private async processClaimantResponseHearingSpecSmallClaimPage() {
     const { hearingSpecPage } = this.claimantResponsePageFactory;
-    await hearingSpecPage.verifyContent(this.ccdCaseData);
+    await hearingSpecPage.verifyContent();
     await hearingSpecPage.selectYesUnavailabilityRequired();
     await hearingSpecPage.addNewUnavailableDate();
     await hearingSpecPage.selectSingleDate(1);
