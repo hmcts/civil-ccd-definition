@@ -236,7 +236,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
 
   private async processClaimantResponseHearingSpecFastTrackPage() {
     const { hearingFastSpecPage } = this.claimantResponsePageFactory;
-    await hearingFastSpecPage.verifyContent(this.ccdCaseData);
+    await hearingFastSpecPage.verifyContent();
     await hearingFastSpecPage.selectYesUnavailabilityRequired();
     await hearingFastSpecPage.addNewUnavailableDate();
     await hearingFastSpecPage.selectSingleDateFastTrack(1);

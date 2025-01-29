@@ -22,7 +22,6 @@ export default class HearingFastSpecPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(heading),
       super.expectText(radioButtons.unavailableDateRequired.labelFast),
     ]);
   }
