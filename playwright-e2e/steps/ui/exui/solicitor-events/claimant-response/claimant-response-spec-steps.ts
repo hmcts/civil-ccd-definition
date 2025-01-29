@@ -91,7 +91,6 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
-      { verifySuccessEvent: false },
     );
   }
 
@@ -109,7 +108,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
-      { retries: 0 },
+      { verifySuccessEvent: false },
     );
   }
 
@@ -128,7 +127,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
-      { retries: 0 },
+      { verifySuccessEvent: false },
     );
   }
 
@@ -147,7 +146,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
-      { retries: 0 },
+      { verifySuccessEvent: false },
     );
   }
 

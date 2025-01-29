@@ -66,7 +66,6 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   }
 
   async SmallClaim2v1() {
-    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738152031321801);
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
@@ -192,6 +191,14 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await hearingSupportPage.submit();
   }
 
+  private async processFutherInformationPage() {
+    const { furtherInformationPage } = this.claimantResponsePageFactory;
+    await furtherInformationPage.verifyContent(this.ccdCaseData);
+    await furtherInformationPage.selectYes();
+    await furtherInformationPage.enterFurtherInformation();
+    await furtherInformationPage.submit();
+  }
+
   private async processVulnerabilityQuestionsPage() {
     const { vulnerabilityQuestionsPage } = this.claimantResponsePageFactory;
     await vulnerabilityQuestionsPage.verifyContent(this.ccdCaseData);
@@ -217,13 +224,5 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     const { confirmClaimantResponsePage } = this.claimantResponsePageFactory;
     await confirmClaimantResponsePage.verifyContent(this.ccdCaseData);
     await confirmClaimantResponsePage.submit();
-  }
-
-  private async processFutherInformationPage() {
-    const { furtherInformationPage } = this.claimantResponsePageFactory;
-    await furtherInformationPage.verifyContent(this.ccdCaseData);
-    await furtherInformationPage.selectYes();
-    await furtherInformationPage.inputFurtherInformation();
-    await furtherInformationPage.submit();
   }
 }
