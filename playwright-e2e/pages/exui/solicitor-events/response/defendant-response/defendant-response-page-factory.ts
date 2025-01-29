@@ -310,11 +310,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get hearingDefendant1Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_1, new DateFragment(this.page));
+    const dateFragment = new DateFragment(this.page);
+    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_1);
   }
 
   get hearingDefendant2Page() {
-    return new HearingPage(this.page, partys.DEFENDANT_2, new DateFragment(this.page));
+    const dateFragment = new DateFragment(this.page);
+    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_2);
   }
 
   get smallClaimHearingDefendant1Page() {
