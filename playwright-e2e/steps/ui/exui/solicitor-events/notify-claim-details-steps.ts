@@ -41,4 +41,31 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
       claimantSolicitorUser,
     );
   }
+
+  async NotifyClaimDetails1v2() {
+    //await this.fetchAndSetCCDCaseData(claimantSolicitorUser,  1738063916487635);
+    await this.retryExuiEvent(
+      async () => {
+        const { selectDefendantSolicitorPage } = this.notifyClaimDetailsPageFactory;
+        await selectDefendantSolicitorPage.verifyContent(this.ccdCaseData);
+        await selectDefendantSolicitorPage.selectBoth();
+        await selectDefendantSolicitorPage.submit();
+
+        const { uploadNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await uploadNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
+        await uploadNotifyClaimDetailsPage.uploadDocuments();
+        await uploadNotifyClaimDetailsPage.submit();
+
+        const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimDetailsPage.submit();
+
+        const { confirmNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
+        await confirmNotifyClaimDetailsPage.verifyContent();
+        await confirmNotifyClaimDetailsPage.submit();
+      },
+      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
+      claimantSolicitorUser,
+    );
+  }
 }
