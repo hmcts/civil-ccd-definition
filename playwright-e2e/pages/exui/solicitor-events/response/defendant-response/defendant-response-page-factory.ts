@@ -55,6 +55,8 @@ import RespondentResponseType2v1Page from './unspec/respondent-response-type/res
 import RespondentResponseTypePage from './unspec/respondent-response-type/respondent-response-type-page';
 import SolicitorReferencesPage from './unspec/solicitor-references/solicitor-references-page';
 import UploadDefendantResponsePage from './unspec/upload-defendant-response/upload-defendant-response-page';
+import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
+import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -71,7 +73,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ConfirmDetails1v2Page(this.page, dateFragment);
   }
 
-  get responseConfirmNameAdressPage() {
+  get responseConfirmNameAddressPage() {
     return new ResponseConfirmNameAddressPage(this.page);
   }
 
@@ -105,7 +107,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseTypePage(this.page, partys.DEFENDANT_1);
   }
 
-  get respondentResponseTypeDefendantwPage() {
+  get respondentResponseTypeDefendant2Page() {
     return new RespondentResponseTypePage(this.page, partys.DEFENDANT_2);
   }
 
@@ -191,6 +193,40 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get mediationDefendant2Page() {
     return new MediationPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get mediationContactInformationDefendant1Page() {
+    return new MediationContactInformationPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_1_MEDIATION_FRIEND,
+    );
+  }
+
+  get mediationContactInformationDefendant2Page() {
+    return new MediationContactInformationPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_2_MEDIATION_FRIEND,
+    );
+  }
+
+  get mediationAvailabilityDefendant1Page() {
+    const dateFragment = new DateFragment(this.page);
+    return new MediationAvailabilityPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1_MEDIATION_FRIEND,
+    );
+  }
+
+  get mediationAvailabilityDefendant2Page() {
+    const dateFragment = new DateFragment(this.page);
+    return new MediationAvailabilityPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2_MEDIATION_FRIEND,
+    );
   }
 
   get fileDirectionsQuestionaireDefendant1Page() {
