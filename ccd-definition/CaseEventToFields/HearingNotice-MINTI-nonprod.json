@@ -69,5 +69,53 @@
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseFieldID": "allocatedTrack",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingDetails",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition" : "hearingNoticeList = \"DO_NOT_SHOW\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 8,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingDetails",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition" : "hearingNoticeList = \"DO_NOT_SHOW\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseFieldID": "hearingDuration",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingDetails",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition" : "(allocatedTrack = \"SMALL_CLAIM\" OR allocatedTrack = \"FAST_CLAIM\" OR responseClaimTrack = \"SMALL_CLAIM\" OR responseClaimTrack = \"FAST_CLAIM\") OR (hearingNoticeList = \"OTHER\" OR hearingNoticeList = \"SMALL_CLAIMS\")",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "HEARING_SCHEDULED",
+    "CaseFieldID": "hearingDurationMinti",
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "PageID": "HearingDetails",
+    "PageDisplayOrder": 4,
+    "PageColumnNumber": 1,
+    "FieldShowCondition" : "(allocatedTrack = \"MULTI_CLAIM\" OR allocatedTrack = \"INTERMEDIATE_CLAIM\" OR responseClaimTrack = \"MULTI_CLAIM\" OR responseClaimTrack = \"INTERMEDIATE_CLAIM\") AND hearingNoticeList = \"FAST_TRACK_TRIAL\"",
+    "ShowSummaryChangeOption": "Y"
   }
 ]
