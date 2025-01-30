@@ -24,7 +24,7 @@ export default class SecondDefendantSolicitorOrganisationPage extends ExuiPage(B
 
   async selectOrganisation() {
     await this.organisationFragment.enterReference();
-    await this.organisationFragment.searchForOrganisation('Civil - Organisation 2');
+    await this.organisationFragment.searchForOrganisation('Civil - Organisation 3');
   }
 
   async submit() {

@@ -32,8 +32,3 @@ test('Api Unspec Test Example', async ({
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
 });
-
-test('Create Claim 1v1', { tag: '@debug' }, async ({ IdamSteps, CreateClaimSteps }) => {
-  await IdamSteps.ClaimantSolicitorLogin();
-  await CreateClaimSteps.SmallTrack1v1();
-});

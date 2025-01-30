@@ -22,12 +22,15 @@ export default class SecondDefendantPage extends ExuiPage(BasePage) {
 
   constructor(page: Page) {
     super(page);
-    this.choosePartyTypeFragment = new ChoosePartyTypeFragment(page, partys.CLAIMANT_1);
-    this.partyTypeIndividualFragment = new PartyTypeIndividualFragment(page, partys.CLAIMANT_1);
-    this.partyTypeCompanyFragment = new PartyTypeCompanyFragment(page, partys.CLAIMANT_1);
-    this.partyTypeOrganisationFragment = new PartyTypeOrganisationFragment(page, partys.CLAIMANT_1);
-    this.partyTypeSoleTraderFragment = new PartyTypeSoleTraderFragment(page, partys.CLAIMANT_1);
-    this.addressFragment = new AddressFragment(page, partys.CLAIMANT_1);
+    this.choosePartyTypeFragment = new ChoosePartyTypeFragment(page, partys.DEFENDANT_2);
+    this.partyTypeIndividualFragment = new PartyTypeIndividualFragment(page, partys.DEFENDANT_2);
+    this.partyTypeCompanyFragment = new PartyTypeCompanyFragment(page, partys.DEFENDANT_2);
+    this.partyTypeOrganisationFragment = new PartyTypeOrganisationFragment(
+      page,
+      partys.DEFENDANT_2,
+    );
+    this.partyTypeSoleTraderFragment = new PartyTypeSoleTraderFragment(page, partys.DEFENDANT_2);
+    this.addressFragment = new AddressFragment(page, partys.DEFENDANT_2);
   }
 
   async verifyContent() {

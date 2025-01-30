@@ -20,7 +20,7 @@ import DefendantPage from './common/defendant/defendant-page.ts';
 import OrganisationFragment from '../../fragments/organisation/organisation-fragment.ts';
 import LegalRepresentationSpecPage from './lr-spec/legal-representation-spec/legal-representation-spec-page.ts';
 import LegalRepresentationPage from './unspec/legal-representation/legal-representation-page.ts';
-import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-organisation/defendant-solicitor-organisation-spec-page.ts';
+import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-organisation/defendant-solicitor-organisation-page.ts';
 import DefendantSolicitorOrganisationSpecPage from './lr-spec/defendant-solicitor-organisation-spec/defendant-solicitor-organisation-spec-page.ts';
 import OrganisationRegisteredFragment from '../../fragments/organisation-registered/organisation-registered-fragment.ts';
 import DefendantSolicitorServiceAddressPage from './unspec/defendant-solicitor-service-address/defendant-solicitor-service-address-page.ts';
@@ -63,6 +63,8 @@ import RemoteHearingFragment from '../../fragments/remote-hearing/remote-hearing
 import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page.ts';
 import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/upload-particulars-of-claim-page.ts';
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page.ts';
+import SecondDefendantSolicitorOrganisationPage from './unspec/second-defendant-solicitor-organisation/second-defendant-solicitor-organisation-page.ts';
+import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -227,7 +229,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get secondDefendantSolicitorOrganisationPage() {
     const organisationFragment = new OrganisationFragment(this.page, partys.DEFENDANT_2);
-    return new DefendantSolicitorOrganisationPage(this.page, organisationFragment);
+    return new SecondDefendantSolicitorOrganisationPage(this.page, organisationFragment);
   }
 
   get secondDefendantSolicitorOrganisationSpecPage() {

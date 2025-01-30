@@ -5,7 +5,6 @@ import { test } from '../playwright-fixtures/index';
 test('Testing Login', async ({
   IdamSteps,
   ExuiDashboardSteps,
-  CreateClaimSteps,
   ApiUserSteps,
   ApiDataSteps,
   _requestsFactory,
@@ -15,7 +14,7 @@ test('Testing Login', async ({
   // await ApiUserSteps.SetupUserData(civilAdminUser);
   // await ApiDataSteps.SetupBankHolidaysData();
   await IdamSteps.ClaimantSolicitorLogin();
-  await CreateClaimSteps.SmallTrack1v2DS();
+  await ExuiDashboardSteps.GoToCaseList();
 
   // const { ccdRequests } = _requestsFactory;
   // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);

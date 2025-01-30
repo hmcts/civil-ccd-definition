@@ -1,6 +1,5 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import { subheadings } from './second-defendant-solicitor-reference-content.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 import { Page } from 'playwright-core';
@@ -17,7 +16,6 @@ export default class SecondDefendantSolicitorReferencePage extends ExuiPage(Base
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectSubheading(subheadings.yourFileReference),
       this.defendantSolicitorReferenceFragment.verifyContent(),
     ]);
   }

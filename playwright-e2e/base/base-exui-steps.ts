@@ -6,6 +6,8 @@ import User from '../models/user';
 import ExuiDashboardPageFactory from '../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApiSteps from './base-api-steps';
+import { civilAdminUser } from '../config/users/exui-users';
+import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
 
 export default abstract class BaseExuiSteps extends BaseApiSteps {
   private exuiDashboardPageFactory: ExuiDashboardPageFactory;
@@ -46,8 +48,14 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
         caseDetailsPage.clearCCDEvent();
       }
     }
+    if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
+      const caseId = await caseDetailsPage.grabCaseNumber();
+      super.setCCDCaseData = { id: caseId };
+      UserAssignedCasesHelper.addAssignedCaseToUser(user, this.ccdCaseData.id);
+    }
     if (verifySuccessEvent) await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    await this.fetchAndSetCCDCaseData(civilAdminUser, this.ccdCaseData.id);
   }
 }
