@@ -5,7 +5,7 @@ import ExuiPage from '../../../../exui-page/exui-page';
 import AddressFragment from '../../../../fragments/address/address-fragment.ts';
 import ChoosePartyTypeFragment from '../../../../fragments/choose-party-type/choose-party-type-fragment.ts';
 import PartyTypeCompanyFragment from '../../../../fragments/party-type/party-type-company-fragment.ts';
-import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-type-defendant-individual-fragment.ts';
+import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-type-individual-fragment.ts';
 import PartyTypeOrganisationFragment from '../../../../fragments/party-type/party-type-organisation-fragment.ts';
 import PartyTypeSoleTraderFragment from '../../../../fragments/party-type/party-type-sole-trader-fragment.ts';
 import { subheadings } from './second-defendant-content.ts';
