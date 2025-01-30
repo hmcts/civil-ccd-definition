@@ -10,12 +10,9 @@ import partys from '../../../../../../constants/partys';
 export default class ClaimantLitigationFriendPage extends ExuiPage(BasePage) {
   private litigationFriendFragment: LitigationFriendFragment;
 
-  constructor(page: Page) {
+  constructor(page: Page, litigationFriendFragment: LitigationFriendFragment) {
     super(page);
-    this.litigationFriendFragment = new LitigationFriendFragment(
-      page,
-      partys.CLAIMANT_1_LITIGATION_FRIEND,
-    );
+    this.litigationFriendFragment = litigationFriendFragment;
   }
 
   async verifyContent() {

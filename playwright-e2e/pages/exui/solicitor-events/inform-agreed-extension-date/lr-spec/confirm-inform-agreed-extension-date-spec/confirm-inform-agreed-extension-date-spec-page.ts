@@ -12,6 +12,7 @@ export default class ConfirmInformAgreedExtensionDateSpecPage extends ExuiPage(B
     const date = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
       days: 28,
       workingDay: true,
+      addDayAfter4pm: true,
     });
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
