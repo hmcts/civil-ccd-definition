@@ -14,8 +14,8 @@ import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-s
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page.ts';
-import SmallClaimExpertsClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-claimant-page';
-import SmallClaimWitnessesClaimantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-claimant-page';
+import SmallClaimExpertsPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-page';
+import SmallClaimWitnessesPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DisclosureOfNonElectronicDocumentsPage from '../directions-questionaire/unspec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
@@ -126,16 +126,16 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimExpertsClaimantPage() {
-    return new SmallClaimExpertsClaimantPage(this.page);
+  get smallClaimExpertsPage() {
+    return new SmallClaimExpertsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_EXPERT_1);
   }
 
-  get smallClaimExperts2v1ClaimantPage() {
+  get smallClaimExperts2v1Page() {
     return new SmallClaimExperts2v1ClaimantPage(this.page);
   }
 
-  get smallClaimWitnessesClaimantPage() {
-    return new SmallClaimWitnessesClaimantPage(this.page);
+  get smallClaimWitnessesPage() {
+    return new SmallClaimWitnessesPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1);
   }
 
   get expertsPage() {

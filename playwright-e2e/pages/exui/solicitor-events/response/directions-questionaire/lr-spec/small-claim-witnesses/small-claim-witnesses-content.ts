@@ -1,9 +1,10 @@
+import StringHelper from '../../../../../../../helpers/string-helper';
 import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
   witnesses: `Witnesses`,
-  claimantWitnesses: `Claimant 1 witnesses`,
-  defendantWitnesses: (defendantParty: Party) => `Defendant ${defendantParty.number} witnesses`,
+  partyWitnesses: (defendantParty: Party) =>
+    `${StringHelper.capitalise(defendantParty.partyType)} ${defendantParty.number} witnesses`,
 };
 
 export const radioButtons = {
@@ -43,7 +44,7 @@ export const inputs = {
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
         `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_lastName`,
     },
-    number: {
+    phoneNumber: {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
         `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_phoneNumber`,
@@ -61,6 +62,6 @@ export const inputs = {
   },
   witnessNumber: {
     label: 'How many witnesses, including the claimant, will give evidence at the hearing?',
-    selector: '#applicant1ClaimWitnesses',
+    selector: (claimantDefendantParty: Party) => `#${claimantDefendantParty.oldKey}ClaimWitnesses`,
   },
 };

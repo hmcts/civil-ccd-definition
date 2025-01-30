@@ -5,17 +5,17 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { inputs, radioButtons, subheadings } from './small-claim-experts-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
-import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
-import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
-export default class SmallClaimExpertsDefendantPage extends ExuiPage(BasePage) {
-  private defendantParty: Party;
+export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
+  private claimantDefendantParty: Party;
+  private expertParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, expertParty: Party) {
     super(page);
-    this.defendantParty = defendantParty;
+    this.claimantDefendantParty = claimantDefendantParty;
+    this.expertParty = expertParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -25,49 +25,51 @@ export default class SmallClaimExpertsDefendantPage extends ExuiPage(BasePage) {
         super.expectSubheading(subheadings.experts),
         // super.expectText(radioButtons.expertsRequired.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: this.claimantDefendantParty.key },
     );
   }
 
-  async useExperts() {
-    await super.clickBySelector(radioButtons.expertsRequired.yes.selector(this.defendantParty));
+  async selectYesExperts() {
+    await super.clickBySelector(
+      radioButtons.expertsRequired.yes.selector(this.claimantDefendantParty),
+    );
   }
 
   async useNoExperts() {
-    await super.clickBySelector(radioButtons.expertsRequired.no.selector(this.defendantParty));
+    await super.clickBySelector(
+      radioButtons.expertsRequired.no.selector(this.claimantDefendantParty),
+    );
   }
 
   async enterExpertDetails() {
-    const expertParty =
-      this.defendantParty.number === 1 ? partys.DEFENDANT_1_EXPERT_1 : partys.DEFENDANT_2_EXPERT_1;
-    const expertData = CaseDataHelper.buildExpertData(expertParty);
+    const expertData = CaseDataHelper.buildExpertData(this.expertParty);
     await super.inputText(
       expertData.firstName,
-      inputs.expert.firstName.selector(this.defendantParty),
+      inputs.expert.firstName.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.lastName,
-      inputs.expert.lastName.selector(this.defendantParty),
+      inputs.expert.lastName.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.phoneNumber,
-      inputs.expert.phoneNumber.selector(this.defendantParty),
+      inputs.expert.phoneNumber.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.emailAddress,
-      inputs.expert.email.selector(this.defendantParty),
+      inputs.expert.email.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.fieldOfExpertise,
-      inputs.expert.expertise.selector(this.defendantParty),
+      inputs.expert.expertise.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.whyRequired,
-      inputs.expert.whyRequired.selector(this.defendantParty),
+      inputs.expert.whyRequired.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       expertData.estimatedCost,
-      inputs.expert.estimatedCost.selector(this.defendantParty),
+      inputs.expert.estimatedCost.selector(this.claimantDefendantParty),
     );
   }
 

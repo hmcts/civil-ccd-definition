@@ -1,41 +1,44 @@
-import { civilAdminUser } from '../config/users/exui-users';
-import ccdEvents from '../constants/ccd-events';
 import { test } from '../playwright-fixtures/index';
 
-test('Testing Login', async ({
-  IdamSteps,
-  ExuiDashboardSteps,
-  ApiUserSteps,
-  ApiDataSteps,
-  _requestsFactory,
-  _exuiDashboardPageFactory,
-  _notifyClaimPageFactory,
-}) => {
-  // await ApiUserSteps.SetupUserData(civilAdminUser);
-  // await ApiDataSteps.SetupBankHolidaysData();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await ExuiDashboardSteps.GoToCaseList();
+test(
+  'Testing Login',
+  { tag: '@debug' },
+  async ({
+    IdamSteps,
+    ExuiDashboardSteps,
+    ClaimantResponseSpecSteps,
+    ApiUserSteps,
+    ApiDataSteps,
+    _requestsFactory,
+    _exuiDashboardPageFactory,
+    _notifyClaimPageFactory,
+  }) => {
+    // await ApiUserSteps.SetupUserData(civilAdminUser);
+    // await ApiDataSteps.SetupBankHolidaysData();
+    await IdamSteps.ClaimantSolicitorLogin();
+    await ClaimantResponseSpecSteps.SmallTrack2v1();
 
-  // const { ccdRequests } = _requestsFactory;
-  // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);
+    // const { ccdRequests } = _requestsFactory;
+    // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);
 
-  // const { caseDetailsPage } = _exuiDashboardPageFactory;
-  // await caseDetailsPage.goToCaseDetails(1732120625619001);
-  // await caseDetailsPage.verifyContent(ccdCaseData);
-  // await caseDetailsPage.retryChooseNextStep(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM);
+    // const { caseDetailsPage } = _exuiDashboardPageFactory;
+    // await caseDetailsPage.goToCaseDetails(1732120625619001);
+    // await caseDetailsPage.verifyContent(ccdCaseData);
+    // await caseDetailsPage.retryChooseNextStep(ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM);
 
-  // const { certificateOfService1NotifyClaimPage } = _notifyClaimPageFactory;
-  // await certificateOfService1NotifyClaimPage.verifyContent(ccdCaseData);
-  // await certificateOfService1NotifyClaimPage.fillDetails();
-  // await certificateOfService1NotifyClaimPage.submit();
+    // const { certificateOfService1NotifyClaimPage } = _notifyClaimPageFactory;
+    // await certificateOfService1NotifyClaimPage.verifyContent(ccdCaseData);
+    // await certificateOfService1NotifyClaimPage.fillDetails();
+    // await certificateOfService1NotifyClaimPage.submit();
 
-  // const { certificateOfService2NotifyClaimPage } = _notifyClaimPageFactory;
-  // await certificateOfService2NotifyClaimPage.verifyContent(ccdCaseData);
-  // await certificateOfService2NotifyClaimPage.fillDetails();
-  // await certificateOfService2NotifyClaimPage.submit();
+    // const { certificateOfService2NotifyClaimPage } = _notifyClaimPageFactory;
+    // await certificateOfService2NotifyClaimPage.verifyContent(ccdCaseData);
+    // await certificateOfService2NotifyClaimPage.fillDetails();
+    // await certificateOfService2NotifyClaimPage.submit();
 
-  // const { notifyClaimCOSSubmitPage } = _notifyClaimPageFactory;
-  // await notifyClaimCOSSubmitPage.verifyContent(ccdCaseData);
+    // const { notifyClaimCOSSubmitPage } = _notifyClaimPageFactory;
+    // await notifyClaimCOSSubmitPage.verifyContent(ccdCaseData);
 
-  // await notifyClaimDetailsCOSSubmitPage.submit();
-});
+    // await notifyClaimDetailsCOSSubmitPage.submit();
+  },
+);

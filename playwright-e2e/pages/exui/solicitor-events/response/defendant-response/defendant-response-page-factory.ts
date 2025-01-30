@@ -15,9 +15,9 @@ import DisclosureOfNonElectronicDocumentsLRSpecPage from '../directions-question
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
 import RequestedCourtLRSpecPage from '../directions-questionaire/lr-spec/requested-court-lr-spec/requested-court-lr-spec-page';
-import SmallClaimExpertsDefendantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-defendant-page';
+import SmallClaimExpertsPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-page';
 import SmallClaimHearingPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
-import SmallClaimWitnessesDefendantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-defendant-page';
+import SmallClaimWitnessesDefendantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
 import FurtherInformationPage from '../directions-questionaire/unspec/further-information/further-information-page';
@@ -270,11 +270,11 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get smallClaimExpertsDefendant1Page() {
-    return new SmallClaimExpertsDefendantPage(this.page, partys.DEFENDANT_1);
+    return new SmallClaimExpertsPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_1_EXPERT_1);
   }
 
   get smallClaimExpertsDefendant2Page() {
-    return new SmallClaimExpertsDefendantPage(this.page, partys.DEFENDANT_2);
+    return new SmallClaimExpertsPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_2_EXPERT_1);
   }
 
   get expertsDefendant1Page() {
@@ -286,11 +286,19 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get smallClaimWitnessesDefendant1Page() {
-    return new SmallClaimWitnessesDefendantPage(this.page, partys.DEFENDANT_1);
+    return new SmallClaimWitnessesDefendantPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_1_WITNESS_1,
+    );
   }
 
   get smallClaimWitnessesDefendant2Page() {
-    return new SmallClaimWitnessesDefendantPage(this.page, partys.DEFENDANT_2);
+    return new SmallClaimWitnessesDefendantPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_2_WITNESS_1,
+    );
   }
 
   get witnessesSpecDefendant1Page() {
