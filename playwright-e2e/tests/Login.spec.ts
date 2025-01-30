@@ -6,7 +6,6 @@ test(
   async ({
     IdamSteps,
     ExuiDashboardSteps,
-    ClaimantResponseSpecSteps,
     ApiUserSteps,
     ApiDataSteps,
     _requestsFactory,
@@ -16,7 +15,7 @@ test(
     // await ApiUserSteps.SetupUserData(civilAdminUser);
     // await ApiDataSteps.SetupBankHolidaysData();
     await IdamSteps.ClaimantSolicitorLogin();
-    await ClaimantResponseSpecSteps.SmallTrack2v1();
+    await ExuiDashboardSteps.GoToCaseDetails();
 
     // const { ccdRequests } = _requestsFactory;
     // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);

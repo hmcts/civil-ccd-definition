@@ -80,7 +80,6 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
 
   @Step(classKey)
   async SmallTrack1v1() {
-    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738225824664262);
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponseSpecPage();
@@ -92,11 +91,11 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
   async SmallTrack2v1() {
-    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738225905209607);
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1SpecPage } = this.claimantResponsePageFactory;
