@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { buttons, heading, inputs } from './how-to-add-timeline-manual-content.ts';
+import { heading, inputs } from './how-to-add-timeline-manual-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
@@ -32,7 +32,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
   }
 
   async addNewEvent() {
-    await super.clickBySelector(buttons.addNew.selector, { first: true });
+    await super.clickAddNew();
   }
 
   async verifyEventInputs(count = 1) {
@@ -48,18 +48,18 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
 
   async fillEvent1Details() {
     const date = DateHelper.subtractFromToday({ years: 1 });
-    await this.dateFragment.enterDate(date, 'timelineDate', 0);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 0);
     await super.inputText(
-      'Timeline event description for event 1',
+      `Timeline event description for event 1 - ${this.defendantParty.key}`,
       inputs.timelineEvent.eventDescription.selector(this.defendantParty, 0),
     );
   }
 
   async fillEvent2Details() {
     const date = DateHelper.subtractFromToday({ months: 11 });
-    await this.dateFragment.enterDate(date, 'timelineDate', 1);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 1);
     await super.inputText(
-      'Timeline event description for event 2',
+      `Timeline event description for event 2 - ${this.defendantParty.key}`,
       inputs.timelineEvent.eventDescription.selector(this.defendantParty, 1),
     );
   }
