@@ -44,7 +44,9 @@
           "caseworker-civil-staff",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader"
+          "nbc-team-leader",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -70,7 +72,9 @@
           "caseworker-civil-staff",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader"
+          "nbc-team-leader",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -96,7 +100,9 @@
           "caseworker-civil-staff",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader"
+          "nbc-team-leader",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -126,7 +132,9 @@
           "caseworker-civil-staff",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader"
+          "nbc-team-leader",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
