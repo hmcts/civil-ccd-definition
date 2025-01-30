@@ -6,18 +6,18 @@ import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from '../party-type/party-type-content';
 import DateHelper from '../../../../helpers/date-helper';
 import DateFragment from '../date/date-fragment';
-import partyTypes from '../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private partyType = partyTypes.INDIVIDUAL;
-  private party: Party;
+  private partyType = claimantDefendantPartyTypes.INDIVIDUAL;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
     this.dateFragment = new DateFragment(page);
   }
 
@@ -38,26 +38,35 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   }
 
   async enterSoleTraderDetails() {
-    const soleTraderData = CaseDataHelper.buildClaimantAndDefendantData(this.party, this.partyType);
+    const soleTraderData = CaseDataHelper.buildClaimantAndDefendantData(
+      this.claimantDefendantParty,
+      this.partyType,
+    );
     await super.inputText(
       soleTraderData.soleTraderTitle,
-      inputs.title.selector(this.party, this.partyType),
+      inputs.title.selector(this.claimantDefendantParty, this.partyType),
     );
     await super.inputText(
       soleTraderData.soleTraderFirstName,
-      inputs.firstName.selector(this.party, this.partyType),
+      inputs.firstName.selector(this.claimantDefendantParty, this.partyType),
     );
     await super.inputText(
       soleTraderData.soleTraderLastName,
-      inputs.lastName.selector(this.party, this.partyType),
+      inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
     );
     await super.inputText(
       soleTraderData.soleTraderTradingAs,
-      inputs.tradingAs.selector(this.party, this.partyType),
+      inputs.tradingAs.selector(this.claimantDefendantParty, this.partyType),
     );
-    await this.dateFragment.enterDateOfBirth(this.party, this.partyType);
-    await super.inputText(soleTraderData.partyEmail, inputs.email.selector(this.party));
-    await super.inputText(soleTraderData.partyPhone, inputs.phone.selector(this.party));
+    await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    await super.inputText(
+      soleTraderData.partyEmail,
+      inputs.email.selector(this.claimantDefendantParty),
+    );
+    await super.inputText(
+      soleTraderData.partyPhone,
+      inputs.phone.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

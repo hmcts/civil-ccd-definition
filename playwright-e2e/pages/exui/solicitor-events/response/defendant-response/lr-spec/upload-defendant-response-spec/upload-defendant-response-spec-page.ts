@@ -10,26 +10,33 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class UploadDefendantResponseSpecPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [super.verifyHeadings(ccdCaseData), super.expectSubheading(subheadings.uploadEvidence)],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async enterDisputeReason() {
     await super.inputText(
-      `This is Defendant ${this.party.key}'s reason`,
-      inputs.disputeReason.selector(this.party),
+      `This is Defendant ${this.defendantParty.key}'s reason`,
+      inputs.disputeReason.selector(this.defendantParty),
     );
-    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadEvidence.selector(this.party));
+    await super.retryUploadFile(
+      filePaths.testPdfFile,
+      inputs.uploadEvidence.selector(this.defendantParty),
+    );
+    await super.retryUploadFile(
+      filePaths.testPdfFile,
+      inputs.uploadEvidence.selector(this.defendantParty),
+    );
   }
 
   async submit() {

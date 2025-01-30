@@ -363,7 +363,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "isTakenOfflineAfterJBA",
+    "ID": "respondForImmediateOption",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",

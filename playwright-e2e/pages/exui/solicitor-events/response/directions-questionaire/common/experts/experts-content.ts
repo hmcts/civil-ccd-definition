@@ -4,76 +4,92 @@ export const subheadings = {
   experts: 'Experts',
 };
 
-export const getRadioButtons = (party: Party) => ({
+export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
       label: 'Yes',
-      selector: `#${party}DQExperts_expertRequired_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_expertRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: `#${party}DQExperts_expertRequired_No`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_expertRequired_No`,
     },
   },
   expertReports: {
     label: 'Have you already sent expert reports or similar to other parties?',
     yes: {
       label: 'Yes',
-      selector: `#${party}DQExperts_expertReportsSent-YES`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_expertReportsSent-YES`,
     },
     no: {
       label: 'No',
-      selector: `#${party}DQExperts_expertReportsSent-NO`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_expertReportsSent-NO`,
     },
     notObtained: {
       label: 'Not yet obtained',
-      selector: `#${party}DQExperts_expertReportsSent-NOT_OBTAINED`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_expertReportsSent-NOT_OBTAINED`,
     },
   },
   jointExpert: {
     label: 'Do you think the case is suitable for a joint expert?',
     yes: {
       label: 'Yes',
-      selector: `#${party}DQExperts_jointExpertSuitable_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_jointExpertSuitable_Yes`,
     },
     no: {
       label: 'No',
-      selector: `#${party}DQExperts_jointExpertSuitable_No`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_jointExpertSuitable_No`,
     },
   },
-});
+};
 
-export const getInputs = (party: Party, expertNumber = 0) => ({
-  firstName: {
-    label: 'First name',
-    selector: `#${party}DQExperts_details_${expertNumber}_firstName`,
+export const inputs = {
+  expertDetails: {
+    firstName: {
+      label: 'First name',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_firstName`,
+    },
+    lastName: {
+      label: 'Last name',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_lastName`,
+    },
+    emailAddress: {
+      label: 'Email Address',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_emailAddress`,
+    },
+    phoneNumber: {
+      label: 'Phone Number',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_phoneNumber`,
+    },
+    expertise: {
+      label: 'Field of expertise',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_fieldOfExpertise`,
+    },
+    whyRequired: {
+      label: 'Why do you need this expert?',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_whyRequired`,
+    },
+    estimatedCost: {
+      label: 'Estimated cost',
+      selector: (claimantDefendantParty: Party, expertParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQExperts_details_${expertParty.number - 1}_estimatedCost`,
+    },
   },
-  lastName: {
-    label: 'Last name',
-    selector: `#${party}DQExperts_details_${expertNumber}_lastName`,
-  },
-  emailAddress: {
-    label: 'Email Address',
-    selector: `#${party}DQExperts_details_${expertNumber}_emailAddress`,
-  },
-  phoneNumber: {
-    label: 'Phone Number',
-    selector: `#${party}DQExperts_details_${expertNumber}_phoneNumber`,
-  },
-  expertise: {
-    label: 'Field of expertise',
-    selector: `#${party}DQExperts_details_${expertNumber}_fieldOfExpertise`,
-  },
-  whyRequired: {
-    label: 'Why do you need this expert?',
-    selector: `#${party}DQExperts_details_${expertNumber}_whyRequired`,
-  },
-  estimatedCost: {
-    label: 'Estimated cost',
-    selector: `#${party}DQExperts_details_${expertNumber}_estimatedCost`,
-  },
-});
+};
 
 export const buttons = {
   addNew: {

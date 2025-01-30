@@ -9,11 +9,11 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class MediationPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private defendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, defendantParty: Party) {
     super(page);
-    this.party = party;
+    this.defendantParty = defendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -23,16 +23,16 @@ export default class MediationPage extends ExuiPage(BasePage) {
         super.expectLabel(radioButtons.yesMediation.label),
         super.expectLabel(radioButtons.yesMediation.label),
       ],
-      { pageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons.yesMediation.selector(this.party));
+    await super.clickBySelector(radioButtons.yesMediation.selector(this.defendantParty));
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons.noMediation.selector(this.party));
+    await super.clickBySelector(radioButtons.noMediation.selector(this.defendantParty));
   }
 
   async submit() {
