@@ -144,11 +144,11 @@ export default class CaseDataHelper {
   static buildAddressData(party: Party) {
     return {
       AddressLine1: `Flat 12 - ${party.key}`,
-      AddressLine2: `${party.key} House 15 - 17`,
-      AddressLine3: `${party.key} Street`,
-      PostTown: `${party.key} Town`,
-      County: `${party.key} County`,
-      Country: `${party.key} Country`,
+      AddressLine2: `House 15 - 17 - ${party.key}`,
+      AddressLine3: `Street - ${party.key} `,
+      PostTown: `Town - ${party.key}`,
+      County: `County - ${party.key}`,
+      Country: `Country - ${party.key}`,
       PostCode: this.getPartyPostCode(party),
     };
   }
@@ -214,8 +214,8 @@ export default class CaseDataHelper {
       lastName: 'Expert',
       emailAddress: `${party.key}@experts.com`,
       phoneNumber: this.getPartyPhoneNumber(party),
-      fieldOfExpertise: `Field of expertise ${party.key}`,
-      whyRequired: `Required for ${party.key}`,
+      fieldOfExpertise: `Field of expertise - ${party.key}`,
+      whyRequired: `Reason required - ${party.key}`,
       estimatedCost: this.getExpertEstimatedCost(party),
     };
   }
@@ -235,7 +235,7 @@ export default class CaseDataHelper {
       lastName: 'Witness',
       phoneNumber: this.getPartyPhoneNumber(party),
       emailAddress: `${party.key}@witnesses.com`,
-      reasonForWitness: `Reason for witness ${party.key}`,
+      reasonForWitness: `Reason for witness - ${party.key}`,
     };
   }
 
