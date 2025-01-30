@@ -4,9 +4,9 @@ export const subheadings = { welsh: 'Welsh language' };
 
 export const paragraphs = {
   descriptionText:
-    'Welsh is an official language of Wales.' +
-    ' You can use Welsh in court hearings.' +
-    ' Asking to speak in Welsh in your hearing will not delay the hearing or have any effect on proceedings or the outcome of a case.',
+    'Welsh is an official language of Wales. ' +
+    'You can use Welsh in court hearings. ' +
+    'Asking to speak in Welsh in your hearing will not delay the hearing or have any effect on proceedings or the outcome of a case.',
 };
 
 export const radioButtons = {

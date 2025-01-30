@@ -11,45 +11,43 @@ import DateHelper from '../../../../../../../helpers/date-helper.ts';
 @AllMethodsStep()
 export default class HearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private claimantDefendantParty: Party;
+  private claimantParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, claimantDefendantParty: Party) {
+  constructor(page: Page, dateFragment: DateFragment, claimantParty: Party) {
     super(page);
     this.dateFragment = dateFragment;
-    this.claimantDefendantParty = claimantDefendantParty;
+    this.claimantParty = claimantParty;
+    this.dateFragment = dateFragment;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.availability),
-      super.expectText(radioButtons.unavailableDateRequired.label),
+      super.expectSubheading(subheadings.availability, { index: 0 }),
+      super.expectText(radioButtons.unavailableDateRequired.label, { index: 0 }),
     ]);
   }
 
   async selectYesAvailabilityRequired() {
     await super.clickBySelector(
-      radioButtons.unavailableDateRequired.yes.selector(this.claimantDefendantParty),
+      radioButtons.unavailableDateRequired.yes.selector(this.claimantParty),
     );
   }
 
   async selectNoAvailabilityRequired() {
     await super.clickBySelector(
-      radioButtons.unavailableDateRequired.no.selector(this.claimantDefendantParty),
+      radioButtons.unavailableDateRequired.no.selector(this.claimantParty),
     );
   }
 
   async addNewUnavailableDate() {
-    await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDate);
+    await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantParty));
+    await super.expectSubheading(subheadings.unavailableDate, { index: 0 });
   }
 
   async selectSingleDate(unavailableDateNumber: number) {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selector(
-        this.claimantDefendantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.single.selector(this.claimantParty, unavailableDateNumber),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
@@ -57,10 +55,7 @@ export default class HearingPage extends ExuiPage(BasePage) {
 
   async selectDateRange(unavailableDateNumber: number) {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.range.selector(
-        this.claimantDefendantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.range.selector(this.claimantParty, unavailableDateNumber),
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });
@@ -70,6 +65,7 @@ export default class HearingPage extends ExuiPage(BasePage) {
 
   async submit() {
     //TODO - The Continue button is not being clicked the first time this should be checked again.
+    await super.retryClickSubmit();
     await super.retryClickSubmit();
     await super.retryClickSubmit();
   }

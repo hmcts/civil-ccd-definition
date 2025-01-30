@@ -7,6 +7,7 @@ import { dropdowns, inputs, subheadings } from './requested-court-content.ts';
 import RemoteHearingFragment from '../../../../../fragments/remote-hearing/remote-hearing-fragment.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
 export default class RequestedCourtPage extends ExuiPage(BasePage) {
@@ -34,14 +35,14 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      dropdowns.courtLocations.options[0],
+      preferredCourts[this.defendantParty.key].default,
       dropdowns.courtLocations.selector(this.defendantParty),
     );
   }
 
   async enterPreferredCourtReason() {
     await super.inputText(
-      `Test reason - ${this.defendantParty.key}`,
+      `Reason for preferred court - ${this.defendantParty.key}`,
       inputs.preferredCourtReason.selector(this.defendantParty),
     );
   }

@@ -278,7 +278,7 @@ export default abstract class BasePage {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      axePageInsertName?: string;
+      axePageInsertName?: string | number;
     } = {},
   ) {
     if (expects) {
@@ -317,7 +317,7 @@ export default abstract class BasePage {
   private async expectAxeToPass(
     axeExclusions: string[],
     useAxeCache: boolean,
-    axePageInsertName?: string,
+    axePageInsertName?: string | number,
   ) {
     const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
@@ -514,7 +514,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async   expectText(
+  protected async expectText(
     text: string | number,
     options: {
       message?: string;

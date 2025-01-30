@@ -13,11 +13,9 @@ import ApplicationPage from '../directions-questionaire/lr-spec/application/appl
 import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
-import MediationContactInformationClaimantPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
-import MediationAvailabilityClaimantPage from '../mediation/mediation-availability/mediation-availability-page';
-import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
-import SmallClaimExpertsClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-claimant-page';
-import SmallClaimWitnessesClaimantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-claimant-page';
+import HearingSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page.ts';
+import SmallClaimExpertsPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-page';
+import SmallClaimWitnessesPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DisclosureOfNonElectronicDocumentsPage from '../directions-questionaire/unspec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
@@ -41,6 +39,11 @@ import RespondentResponsePage from './unspec/respondent-response/respondent-resp
 import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 import DateFragment from '../../../fragments/date/date-fragment';
+import HearingFastSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-fast-spec-page.ts';
+import ClaimType from '../../../../../enums/claim-type.ts';
+import SmallClaimExperts2v1ClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-2v1-claimant-page.ts';
+import HearingFastPage from '../directions-questionaire/unspec/hearing/hearing-fast-page.ts';
+
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
     return new RespondentResponsePage(this.page);
@@ -123,12 +126,16 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimExpertsClaimantPage() {
-    return new SmallClaimExpertsClaimantPage(this.page);
+  get smallClaimExpertsPage() {
+    return new SmallClaimExpertsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_EXPERT_1);
   }
 
-  get smallClaimWitnessesClaimantPage() {
-    return new SmallClaimWitnessesClaimantPage(this.page);
+  get smallClaimExperts2v1Page() {
+    return new SmallClaimExperts2v1ClaimantPage(this.page);
+  }
+
+  get smallClaimWitnessesPage() {
+    return new SmallClaimWitnessesPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1);
   }
 
   get expertsPage() {
@@ -148,9 +155,19 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
+  get hearingFastPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new HearingFastPage(this.page, dateFragment, partys.CLAIMANT_1);
+  }
+
   get hearingSpecPage() {
     const dateFragment = new DateFragment(this.page);
     return new HearingSpecPage(this.page, dateFragment, partys.CLAIMANT_1);
+  }
+
+  get hearingFastSpecPage() {
+    const dateFragment = new DateFragment(this.page);
+    return new HearingFastSpecPage(this.page, dateFragment, partys.CLAIMANT_1);
   }
 
   get draftDirectionsPage() {

@@ -43,7 +43,7 @@ export const inputs = {
     number: {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party, witnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnessses_details_${witnessParty.number - 1}_phoneNumber`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_phoneNumber`,
     },
     email: {
       label: 'Email address (Optional)',
