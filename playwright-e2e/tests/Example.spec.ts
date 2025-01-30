@@ -52,27 +52,60 @@ test('Unspec with Defendant Response 1v1', async ({
   await DefendantResponseSteps.RespondToDefence1v1();
 });
 
-test(
-  'Unspec with Defendant Response 1V2 Different Solicitor',
-  { tag: ['@debug'] },
-  async ({
-    ApiCreateClaimSteps,
-    ApiServiceRequestsSteps,
-    IdamSteps,
-    NotifyClaimSteps,
-    ApiCaseRoleAssignmentSteps,
-    NotifyClaimDetailsSteps,
-    DefendantResponseSteps,
-  }) => {
-    await ApiCreateClaimSteps.Create1v2Claim();
-    await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
-    await IdamSteps.ClaimantSolicitorLogin();
-    await NotifyClaimSteps.NotifyClaim1v2DS();
-    await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2DS();
-    await NotifyClaimDetailsSteps.NotifyClaimDetails1v2();
-    await IdamSteps.DefendantSolicitor1Login();
-    await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
-    await IdamSteps.DefendantSolicitor2Login();
-    await DefendantResponseSteps.RespondToDefence1v2DSDefendant2();
-  },
-);
+test('Unspec with Defendant Response 1V2 Different Solicitor',  async ({
+                                                                   ApiCreateClaimSteps,
+                                                                   ApiServiceRequestsSteps,
+                                                                   IdamSteps,
+                                                                   NotifyClaimSteps,
+                                                                   ApiCaseRoleAssignmentSteps,
+                                                                   NotifyClaimDetailsSteps,
+                                                                   DefendantResponseSteps
+                                                                 }) => {
+  await ApiCreateClaimSteps.Create1v2Claim();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await NotifyClaimSteps.NotifyClaim1v2DS();
+  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2DS();
+  await NotifyClaimDetailsSteps.NotifyClaimDetails1v2();
+  await IdamSteps.DefendantSolicitor1Login();
+  await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
+  await IdamSteps.DefendantSolicitor2Login();
+  await DefendantResponseSteps.RespondToDefence1v2DSDefendant2();
+});
+
+test('Unspec with Defendant Response 1V2 Same Solicitor', {tag: ['@debug']},async ({
+                                                                         ApiCreateClaimSteps,
+                                                                         ApiServiceRequestsSteps,
+                                                                         IdamSteps,
+                                                                         NotifyClaimSteps,
+                                                                         ApiCaseRoleAssignmentSteps,
+                                                                         NotifyClaimDetailsSteps,
+                                                                         DefendantResponseSteps
+                                                                       }) => {
+  await ApiCreateClaimSteps.Create1v2Claim();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await NotifyClaimSteps.NotifyClaim1v2SS();
+  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2SS();
+  await NotifyClaimDetailsSteps.NotifyClaimDetails1v2();
+  await IdamSteps.DefendantSolicitor1Login();
+  await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
+});
+
+test('Unspec with Defendant Response 2V1', async ({
+                                                                                     ApiCreateClaimSteps,
+                                                                                     ApiServiceRequestsSteps,
+                                                                                     IdamSteps,
+                                                                                     NotifyClaimSteps,
+                                                                                     ApiCaseRoleAssignmentSteps,
+                                                                                     NotifyClaimDetailsSteps,
+                                                                                     DefendantResponseSteps
+                                                                                   }) => {
+  await ApiCreateClaimSteps.Create2v1Claim();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await NotifyClaimSteps.NotifyClaim1v1();
+  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
+  await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
+  await IdamSteps.DefendantSolicitor1Login();
+});

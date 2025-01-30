@@ -34,11 +34,11 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     );
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
     await civilServiceRequests.assignCaseToDefendant(
-      defendantSolicitor2User,
+      defendantSolicitor1User,
       this.ccdCaseData.id,
       CaseRole.RESPONDENT_SOLICITOR_ONE,
     );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor2User, this.ccdCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
   }
 
   async AssignDefendantCaseRoles1v2DS() {

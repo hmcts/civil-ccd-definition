@@ -4,6 +4,7 @@ import { test } from '../playwright-fixtures/index';
 
 test('Testing Login', async ({
   IdamSteps,
+  NotifyClaimSteps,
   NotifyClaimDetailsSteps,
   ExuiDashboardSteps,
   DefendantResponseSteps,
@@ -12,6 +13,7 @@ test('Testing Login', async ({
   // await ApiDataSteps.SetupBankHolidaysData();
   /*await IdamSteps.DefendantSolicitor1Login();
   await DefendantResponseSteps.RespondToDefence1v1();*/
-  await IdamSteps.DefendantSolicitor2Login();
-  await DefendantResponseSteps.RespondToDefence1v2DSDefendant2();
+  await IdamSteps.ClaimantSolicitorLogin();
+  //await NotifyClaimSteps.NotifyClaim1v1();
+  await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
 });

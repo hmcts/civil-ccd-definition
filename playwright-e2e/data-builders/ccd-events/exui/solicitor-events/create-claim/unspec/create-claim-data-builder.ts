@@ -13,6 +13,16 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData(particularsOfClaimDocument);
   }
 
+  async buildSmallTrack1v2DifferentSolicitor(particularsOfClaimDocument: UploadDocumentValue) {
+    return this.buildData(particularsOfClaimDocument,
+      { claimType : ClaimType.ONE_VS_TWO_DIFF_SOL});
+  }
+
+  async buildSmallTrack2v1(particularsOfClaimDocument: UploadDocumentValue) {
+    return this.buildData(particularsOfClaimDocument,
+      { claimType : ClaimType.TWO_VS_ONE});
+  }
+
   protected async buildData(
     particularsOfClaimDocument: UploadDocumentValue,
     {
@@ -46,8 +56,5 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.claimDetails(claimTrack, particularsOfClaimDocument),
       ...createClaimData.statementOfTruth,
     };
-  }
-  async buildSmallTrack1v2DifferentSolicitor(particularsOfClaimDocument: UploadDocumentValue) {
-    return this.buildData(particularsOfClaimDocument, { claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 }
