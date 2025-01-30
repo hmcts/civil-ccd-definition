@@ -6,7 +6,7 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
-export default class RespondentResponseType1v2Page extends ExuiPage(BasePage) {
+export default class RespondentResponseType1v2SSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
@@ -18,8 +18,12 @@ export default class RespondentResponseType1v2Page extends ExuiPage(BasePage) {
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(partys.DEFENDANT_1));
-    await super.clickBySelector(radioButtons.rejectAll.selector(partys.DEFENDANT_2));
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(partys.DEFENDANT_1, partys.CLAIMANT_1),
+    );
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(partys.DEFENDANT_2, partys.CLAIMANT_1),
+    );
   }
 
   async submit() {
