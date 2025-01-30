@@ -88,9 +88,13 @@ civil-service:
             value: "logical"
           - name: POSTGRESQL_MAX_CONNECTIONS
             value: "400"
+        extendedConfiguration: |
+          max_connections = 400
+          shared_buffers = 512MB
         resources:
           requests:
-            cpu: 25m
+            cpu: 500m
+            memory: 2048Mi
         podAnnotations:
           cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
         initdb:
