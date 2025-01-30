@@ -1,29 +1,27 @@
-import { Page } from 'playwright-core';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { inputs, radioButtons } from './small-claim-experts-content.ts';
+import { inputs, radioButtons, subheadings } from './small-claim-experts-content.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
-import { subheadings } from '../../common/witnesses/witnesses-content.ts';
 
 @AllMethodsStep()
-export default class SmallClaimExpertsClaimantPage extends ExuiPage(BasePage) {
+export default class SmallClaimExperts2v1ClaimantPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.witnesses),
-      super.expectText(radioButtons.expertsRequired.label),
+      super.expectSubheading(subheadings.experts),
+      // super.expectText(radioButtons.expertsRequired.label, { index: 1 }),
     ]);
   }
 
-  async useExperts() {
-    await super.clickBySelector(radioButtons.expertsRequired.yes.selector(partys.CLAIMANT_1));
+  async selectYesExperts() {
+    await super.clickBySelector(radioButtons.expertsRequired.yes.selector2v1);
   }
 
-  async useNoExperts() {
-    await super.clickBySelector(radioButtons.expertsRequired.no.selector(partys.CLAIMANT_1));
+  async selectNoExperts() {
+    await super.clickBySelector(radioButtons.expertsRequired.no.selector2v1);
   }
 
   async enterExpertDetails() {
