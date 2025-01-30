@@ -54,7 +54,8 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
       individualData.individualLastName,
       inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
     );
-    await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT)
+      await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
     await super.inputText(
       individualData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),

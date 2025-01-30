@@ -8,6 +8,7 @@ import DateHelper from '../../../../helpers/date-helper';
 import DateFragment from '../date/date-fragment';
 import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import PartyType from '../../../../enums/party-types';
 
 @AllMethodsStep()
 export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
@@ -27,7 +28,7 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
         // super.expectLabel(inputs.firstName.label, { index: 1 }),
         // super.expectLabel(inputs.lastName.label, { index: 1 }),
         // super.expectText(inputs.dateOfBirth.label, { index: 1 }),
-        this.dateFragment.verifyContent(),
+        // this.dateFragment.verifyContent(),
         super.expectLabel(inputs.tradingAs.label),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
@@ -59,7 +60,8 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
       soleTraderData.soleTraderTradingAs,
       inputs.tradingAs.selector(this.claimantDefendantParty, this.partyType),
     );
-    await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT)
+      await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
     await super.inputText(
       soleTraderData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),
