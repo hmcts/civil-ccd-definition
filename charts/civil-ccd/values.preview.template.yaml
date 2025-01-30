@@ -86,6 +86,8 @@ civil-service:
         extraEnvVars:
           - name: POSTGRESQL_WAL_LEVEL
             value: "logical"
+          - name: POSTGRESQL_MAX_CONNECTIONS
+            value: "400"
         resources:
           requests:
             cpu: 25m
