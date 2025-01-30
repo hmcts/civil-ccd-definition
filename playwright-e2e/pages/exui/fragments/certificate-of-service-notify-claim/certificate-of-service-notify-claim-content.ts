@@ -40,7 +40,7 @@ export const inputs = {
   evidenceDocument: {
     label: 'Supporting evidence',
     selector: (defendantParty: Party) =>
-      `#cosNotifyClaimDetails${StringHelper.capitalise(defendantParty.key)}_cosEvidenceDocument_value`,
+      `#cosNotifyClaimDetails${StringHelper.capitalise(defendantParty.number.toString())}_cosEvidenceDocument_value`,
   },
 };
 
