@@ -10,7 +10,9 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -38,7 +40,8 @@
           "caseworker-civil-staff",
           "court-officer-order",
           "ctsc",
-          "nbc-team-leader"
+          "nbc-team-leader",
+          "cui-admin-profile"
         ],
         "CRUD": "CRU"
       },
@@ -51,7 +54,9 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
