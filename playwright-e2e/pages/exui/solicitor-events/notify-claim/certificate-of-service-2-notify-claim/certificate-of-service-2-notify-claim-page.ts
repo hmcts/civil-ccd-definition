@@ -1,29 +1,33 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CertificateOfServiceFragment from '../../../fragments/certificate-of-service/certificate-of-service-fragment';
+import CertificateOfServiceNotifyClaimFragment from '../../../fragments/certificate-of-service-notify-claim/certificate-of-service-notify-claim-fragment';
 import ExuiPage from '../../../exui-page/exui-page';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 
 @AllMethodsStep()
 export default class CertificateOfService2NotifyClaimPage extends ExuiPage(BasePage) {
-  private defendant2CertificateOfServiceFragment: CertificateOfServiceFragment;
+  private defendant2CertificateOfServiceNotifyClaimFragment: CertificateOfServiceNotifyClaimFragment;
 
-  constructor(defendant2CertificateOfServiceFragment: CertificateOfServiceFragment, page: Page) {
+  constructor(
+    defendant2CertificateOfServiceNotifyClaimFragment: CertificateOfServiceNotifyClaimFragment,
+    page: Page,
+  ) {
     super(page);
-    this.defendant2CertificateOfServiceFragment = defendant2CertificateOfServiceFragment;
+    this.defendant2CertificateOfServiceNotifyClaimFragment =
+      defendant2CertificateOfServiceNotifyClaimFragment;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      this.defendant2CertificateOfServiceFragment.verifyContent(),
+      this.defendant2CertificateOfServiceNotifyClaimFragment.verifyContent(),
     ]);
   }
 
   async fillDetails() {
-    await this.defendant2CertificateOfServiceFragment.fillCertificateOfService();
-    await this.defendant2CertificateOfServiceFragment.fillStatementOfTruth();
+    await this.defendant2CertificateOfServiceNotifyClaimFragment.fillCertificateOfService();
+    await this.defendant2CertificateOfServiceNotifyClaimFragment.fillStatementOfTruth();
   }
 
   async submit() {

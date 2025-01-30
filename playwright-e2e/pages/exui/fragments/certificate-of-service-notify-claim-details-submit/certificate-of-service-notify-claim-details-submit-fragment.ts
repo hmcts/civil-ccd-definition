@@ -2,10 +2,16 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import DateHelper from '../../../../helpers/date-helper';
 import ExuiPage from '../../exui-page/exui-page';
-import { getDefendantHeading, subheading, table } from './certificate-of-service-submit-content';
+import {
+  getDefendantHeading,
+  subheading,
+  table,
+} from './certificate-of-service-notify-claim-details-submit-content';
 
 @AllMethodsStep()
-export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePage) {
+export default class CertificateOfServiceNotifyClaimDetailsSubmitFragment extends ExuiPage(
+  BasePage,
+) {
   async verifyContent() {
     await super.runVerifications(
       [
@@ -37,9 +43,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
       [
         super.expectText(
           DateHelper.formatDateToString(dateDeemedServed, { outputFormat: 'DD Mon YYYY' }),
+          { first: true },
         ),
         super.expectText(
           DateHelper.formatDateToString(dateOfService, { outputFormat: 'DD Mon YYYY' }),
+          { first: true },
         ),
         super.expectText(table.documentsServed.defendant1Answer),
         super.expectText(table.documentsServedLocation.defendant1Answer),
@@ -54,9 +62,9 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
   }
 
   async verifyDefendant2Answers() {
-    const dateDeemedServed = DateHelper.subtractFromToday({ days: 14 });
-    const dateOfService = DateHelper.subtractFromToday({
-      days: 14,
+    const dateDeemedServed = DateHelper.getToday();
+    const dateOfService = DateHelper.addToToday({
+      days: 2,
       workingDay: true,
       addDayAfter4pm: true,
     });
@@ -64,11 +72,11 @@ export default class CertificateOfServiceSubmitFragment extends ExuiPage(BasePag
       [
         super.expectText(
           DateHelper.formatDateToString(dateDeemedServed, { outputFormat: 'DD Mon YYYY' }),
-          { count: null },
+          { index: 1 },
         ),
         super.expectText(
           DateHelper.formatDateToString(dateOfService, { outputFormat: 'DD Mon YYYY' }),
-          { count: null },
+          { index: 1 },
         ),
         super.expectText(table.documentsServed.defendant2Answer),
         super.expectText(table.documentsServedLocation.defendant2Answer),
