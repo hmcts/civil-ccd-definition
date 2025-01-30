@@ -6,7 +6,7 @@ civil-translation:
 
 am-org-role-mapping-service:
   enabled: false
-  
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -345,6 +345,7 @@ camunda-bpm:
   enabled: true
   java:
     imagePullPolicy: Always
+    image: hmctsprivatetemp.azurecr.io/camunda/bpm:latest
     ingressHost: camunda-${SERVICE_FQDN}
     disableKeyVaults: true
     releaseNameOverride: ${SERVICE_NAME}-camunda
