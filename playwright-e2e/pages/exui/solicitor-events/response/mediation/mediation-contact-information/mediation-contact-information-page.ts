@@ -6,6 +6,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { subheadings, paragraphs, inputs } from './mediation-contact-information-content.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
+import StringHelper from '../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class MediationContactInformationPage extends ExuiPage(BasePage) {
@@ -19,16 +20,19 @@ export default class MediationContactInformationPage extends ExuiPage(BasePage) 
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings, { index: 0 }),
-      super.expectText(paragraphs.description1),
-      super.expectText(paragraphs.description2),
-      super.expectText(inputs.mediationFriendDetails.firstName.label),
-      super.expectText(inputs.mediationFriendDetails.lastName.label),
-      super.expectText(inputs.mediationFriendDetails.emailAddress.label),
-      super.expectText(inputs.mediationFriendDetails.telephoneNumber.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings, { index: 0 }),
+        super.expectText(paragraphs.description1),
+        super.expectText(paragraphs.description2),
+        super.expectText(inputs.mediationFriendDetails.firstName.label),
+        super.expectText(inputs.mediationFriendDetails.lastName.label),
+        super.expectText(inputs.mediationFriendDetails.emailAddress.label),
+        super.expectText(inputs.mediationFriendDetails.telephoneNumber.label),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
   async enterMediationContactDetails() {

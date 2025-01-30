@@ -49,14 +49,15 @@ import Confirm1v2DSDefendantResponsePage from './unspec/confirm-defendant-respon
 import ConfirmDefendantResponsePage from './unspec/confirm-defendant-response/confirm-defendant-response-page';
 import ConfirmDetails1v2Page from './unspec/confirm-details/confirm-details-1v2-page';
 import ConfirmDetailsPage from './unspec/confirm-details/confirm-details-page';
-import RespondentResponseType1v2Page from './unspec/respondent-response-type/respondent-response-type-1v2-page';
+import RespondentResponseType1v2SSPage from './unspec/respondent-response-type/respondent-response-type-1v2SS-page';
 import RespondentResponseType2v1Page from './unspec/respondent-response-type/respondent-response-type-2v1-page';
 import RespondentResponseTypePage from './unspec/respondent-response-type/respondent-response-type-page';
-import SolicitorReferencesPage from './unspec/solicitor-references/solicitor-references-page';
 import UploadDefendantResponsePage from './unspec/upload-defendant-response/upload-defendant-response-page';
 import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 import WitnessesSpecPage from '../directions-questionaire/lr-spec/witnesses-spec/witnesses-spec-page';
+import SolicitorReferencesDefendantResponsePage from './unspec/solicitor-references-defendant-response/solicitor-references-defendant-response-page';
+import SolicitorReferenceFragment from '../../../fragments/solicitor-reference/solicitor-reference-fragment';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -111,8 +112,8 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseTypePage(this.page, partys.DEFENDANT_2);
   }
 
-  get respondentResponseType1v2Page() {
-    return new RespondentResponseType1v2Page(this.page);
+  get respondentResponseType1v2SSPage() {
+    return new RespondentResponseType1v2SSPage(this.page);
   }
 
   get respondentResponseType2v1Page() {
@@ -131,8 +132,30 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseType2v1SpecPage(this.page);
   }
 
-  get solicitorReferencesPage() {
-    return new SolicitorReferencesPage(this.page);
+  get solicitorReferencesDefendantResponseDefendant1Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+    return new SolicitorReferencesDefendantResponsePage(
+      this.page,
+      solicitorReferenceFragment,
+      partys.DEFENDANT_1,
+    );
+  }
+
+  get solicitorReferencesDefendantResponseDefendant2Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
+    return new SolicitorReferencesDefendantResponsePage(
+      this.page,
+      solicitorReferenceFragment,
+      partys.DEFENDANT_2,
+    );
   }
 
   get defenceRouteDefendant1Page() {
