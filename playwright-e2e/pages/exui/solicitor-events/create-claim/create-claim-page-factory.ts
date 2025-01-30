@@ -127,7 +127,11 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get claimantLitigationFriendPage() {
-    return new ClaimantLitigationFriendPage(this.page);
+    const litigationFriendFragment = new LitigationFriendFragment(
+      this.page,
+      partys.CLAIMANT_1_LITIGATION_FRIEND,
+    );
+    return new ClaimantLitigationFriendPage(this.page, litigationFriendFragment);
   }
 
   get claimantSolicitorOrganisationPage() {
