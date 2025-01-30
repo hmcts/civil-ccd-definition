@@ -1,6 +1,7 @@
 import BasePage from '../../../../../../base/base-page';
 import ccdEvents from '../../../../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import { buttons } from '../../../../exui-page/exui-content';
 import ExuiPage from '../../../../exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
 
@@ -33,6 +34,14 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickBySelector(
+      buttons.submit.selector,
+      () =>
+        super.expectNoTab(dropdowns.jurisdiction.label, {
+          timeout: 5_000,
+          exact: true,
+        }),
+      { retries: 3 },
+    );
   }
 }

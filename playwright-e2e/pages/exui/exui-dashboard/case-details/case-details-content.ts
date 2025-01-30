@@ -1,4 +1,3 @@
-import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
 
 export const tabs = {

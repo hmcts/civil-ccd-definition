@@ -29,7 +29,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
         await this.processDefendant1DetailsPages();
         await this.processDefendantSolicitor1Pages();
         await this.processNoDefendant2Page();
-        await this.processPersonalInjuryClaimType();
+        await this.processClaimDetails();
         await this.processFastTrackClaimPages();
         await this.processFinalPages();
       },
@@ -47,7 +47,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
         await this.processDefendant1DetailsPages();
         await this.processDefendantSolicitor1Pages();
         await this.processNoDefendant2Page();
-        await this.processPersonalInjuryClaimType();
+        await this.processClaimDetails();
         await this.processSmallTrackClaimPages();
         await this.processFinalPages();
       },
@@ -80,7 +80,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
 
         await this.processDefendant1DetailsPages();
         await this.processDefendantSolicitor1Pages();
-        await this.processPersonalInjuryClaimType();
+        await this.processClaimDetails();
         await this.processSmallTrackClaimPages();
         await this.processFinalPages();
       },
@@ -105,7 +105,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
         await sameLegalRepresentativePage.selectYes();
         await sameLegalRepresentativePage.submit();
 
-        await this.processPersonalInjuryClaimType();
+        await this.processClaimDetails();
         await this.processSmallTrackClaimPages();
         await this.processFinalPages();
       },
@@ -150,7 +150,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
         await secondDefendantSolicitorEmailPage.enterEmail();
         await secondDefendantSolicitorEmailPage.submit();
 
-        await this.processPersonalInjuryClaimType();
+        await this.processClaimDetails();
         await this.processSmallTrackClaimPages();
         await this.processFinalPages();
       },
@@ -270,7 +270,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     await secondDefendantLegalRepresentationPage.submit();
   }
 
-  private async processPersonalInjuryClaimType() {
+  private async processClaimDetails() {
     const { claimTypePage } = this.createClaimPageFactory;
     await claimTypePage.verifyContent();
     await claimTypePage.selectPersonalInjury();

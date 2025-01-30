@@ -498,7 +498,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 500 });
+      await locator.waitFor({ state: 'visible', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {

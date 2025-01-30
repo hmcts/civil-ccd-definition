@@ -31,6 +31,8 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
+          const { caseListPage } = this.exuiDashboardPageFactory;
+          await caseListPage.openCaseList();
           const { navBar } = this.exuiDashboardPageFactory;
           await navBar.clickCreateCase();
         } else {
