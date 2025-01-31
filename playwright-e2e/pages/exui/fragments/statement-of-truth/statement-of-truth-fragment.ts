@@ -14,7 +14,7 @@ export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    super.runVerifications(
+    await super.runVerifications(
       [
         super.expectSubheading(subheadings.statementOfTruth),
         super.expectLabel(inputs.name.label),

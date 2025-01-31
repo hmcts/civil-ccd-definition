@@ -3,7 +3,7 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
 import OrganisationFragment from '../../../../fragments/organisation/organisation-fragment';
-import { heading, subheadings } from './defendant-solicitor-organisation-spec-content';
+import { heading, subheadings } from './defendant-solicitor-organisation-content';
 
 @AllMethodsStep()
 export default class DefendantSolicitorOrganisationPage extends ExuiPage(BasePage) {
@@ -28,6 +28,6 @@ export default class DefendantSolicitorOrganisationPage extends ExuiPage(BasePag
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

@@ -22,12 +22,12 @@ export default class SecondClaimantPage extends ExuiPage(BasePage) {
 
   constructor(page: Page) {
     super(page);
-    this.choosePartyTypeFragment = new ChoosePartyTypeFragment(page, partys.CLAIMANT_1);
-    this.partyTypeIndividualFragment = new PartyTypeIndividualFragment(page, partys.CLAIMANT_1);
-    this.partyTypeCompanyFragment = new PartyTypeCompanyFragment(page, partys.CLAIMANT_1);
-    this.partyTypeOrganisationFragment = new PartyTypeOrganisationFragment(page, partys.CLAIMANT_1);
-    this.partyTypeSoleTraderFragment = new PartyTypeSoleTraderFragment(page, partys.CLAIMANT_1);
-    this.addressFragment = new AddressFragment(page, partys.CLAIMANT_1);
+    this.choosePartyTypeFragment = new ChoosePartyTypeFragment(page, partys.CLAIMANT_2);
+    this.partyTypeIndividualFragment = new PartyTypeIndividualFragment(page, partys.CLAIMANT_2);
+    this.partyTypeCompanyFragment = new PartyTypeCompanyFragment(page, partys.CLAIMANT_2);
+    this.partyTypeOrganisationFragment = new PartyTypeOrganisationFragment(page, partys.CLAIMANT_2);
+    this.partyTypeSoleTraderFragment = new PartyTypeSoleTraderFragment(page, partys.CLAIMANT_2);
+    this.addressFragment = new AddressFragment(page, partys.CLAIMANT_2);
   }
 
   async verifyContent() {
@@ -68,6 +68,6 @@ export default class SecondClaimantPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

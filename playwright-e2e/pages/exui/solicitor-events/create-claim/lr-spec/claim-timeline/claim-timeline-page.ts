@@ -38,6 +38,6 @@ export default class ClaimTimelinePage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
