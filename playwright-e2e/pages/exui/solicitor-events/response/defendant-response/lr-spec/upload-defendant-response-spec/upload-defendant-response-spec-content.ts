@@ -13,6 +13,6 @@ export const inputs = {
   uploadEvidence: {
     label: '',
     selector: (defendantParty: Party) =>
-      `#respondent${defendantParty.number}SpecDefenceResponseDocument_file`,
+      `#${defendantParty.oldKey}SpecDefenceResponseDocument_file`,
   },
 };
