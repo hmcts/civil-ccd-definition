@@ -13,6 +13,7 @@ import {
 } from './mediation-availability-content.ts';
 import DateHelper from '../../../../../../helpers/date-helper.ts';
 import DateFragment from '../../../../fragments/date/date-fragment.ts';
+import StringHelper from '../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
@@ -26,13 +27,16 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.mediationAvailability),
-      super.expectText(paragraphs.descriptionText),
-      super.expectText(radioButtons.mediationAvailability.label),
-      super.expectText(radioButtons.mediationAvailability.hintText),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.mediationAvailability),
+        super.expectText(paragraphs.descriptionText),
+        super.expectText(radioButtons.mediationAvailability.label),
+        super.expectText(radioButtons.mediationAvailability.hintText),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
   async selectYes() {
