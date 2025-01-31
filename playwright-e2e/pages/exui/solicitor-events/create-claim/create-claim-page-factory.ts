@@ -65,6 +65,12 @@ import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/u
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page.ts';
 import SecondDefendantSolicitorOrganisationPage from './unspec/second-defendant-solicitor-organisation/second-defendant-solicitor-organisation-page.ts';
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
+import BreakDownInterestPage from './lr-spec/break-down-interest/break-down-interest-page.ts';
+import ClaimInterestOptionsPage from './lr-spec/claim-interest-options/claim-interest-options-page.ts';
+import InterestClaimFromPage from './lr-spec/interest-claim-from/interest-claim-from-page.ts';
+import InterestClaimUntilPage from './lr-spec/interest-claim-until/interest-claim-until-page.ts';
+import InterestFromSpecificDate from './lr-spec/interest-from-specific-date/interest-from-specific-date-page.ts';
+import SameRateInterestSelectionPage from './lr-spec/same-rate-interest-selection/same-rate-interest-selection-page.ts';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -370,5 +376,29 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get confirmCreateClaimSpecPage() {
     return new ConfirmCreateClaimSpecPage(this.page);
+  }
+
+  get breakDownInterestPage() {
+    return new BreakDownInterestPage(this.page);
+  }
+
+  get claimInterestOptionsPage() {
+    return new ClaimInterestOptionsPage(this.page);
+  }
+
+  get interestClaimFromPage() {
+    return new InterestClaimFromPage(this.page);
+  }
+
+  get interestClaimUntilPage() {
+    return new InterestClaimUntilPage(this.page);
+  }
+
+  get interestFromSpecificDate() {
+    return new InterestFromSpecificDate(this.page);
+  }
+
+  get sameRateInterestSelectionPage() {
+    return new SameRateInterestSelectionPage(this.page);
   }
 }

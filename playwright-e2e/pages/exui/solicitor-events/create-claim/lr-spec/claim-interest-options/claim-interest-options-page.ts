@@ -6,9 +6,7 @@ import { radioButtons, subheadings } from './claim-interest-options-content';
 @AllMethodsStep()
 export default class ClaimInterestOptionsPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    await super.runVerifications([
-      super.expectText(subheadings.claimInterestOptions),
-    ]);
+    await super.runVerifications([super.expectText(subheadings.claimInterestOptions)]);
   }
 
   async selectSameRateInterest() {
