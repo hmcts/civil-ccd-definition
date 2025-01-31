@@ -1,4 +1,4 @@
 export const subheadings = {
-  claimantDetails: "Claimant's details",
+  claimantDetails: "Second claimant's details",
   address: 'Address',
 };

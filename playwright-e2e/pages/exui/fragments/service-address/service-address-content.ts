@@ -1,3 +1,4 @@
+import PartyType from '../../../../enums/party-types';
 import StringHelper from '../../../../helpers/string-helper';
 import { Party } from '../../../../models/partys';
 
@@ -8,11 +9,11 @@ export const subheadings = {
 export const radioButtons = {
   addressRequired: {
     label: (claimantDefendantParty: Party) =>
-      `Postal correspondence for the ${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}'s legal representative will be sent to the address registered with MyHMCTS.` +
-      'You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS).' +
+      `Postal correspondence for the ${StringHelper.capitalise(claimantDefendantParty.partyType === PartyType.CLAIMANT ? claimantDefendantParty.partyType : claimantDefendantParty.oldPartyType)}’s legal representative will be sent to the address registered with MyHMCTS. ` +
+      'You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). ' +
       'Do you wish to enter a different address?',
     hintText: (claimantDefendantParty: Party) =>
-      `This is the address to which postal correspondence for the  ${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}'s legal representative will be sent.`,
+      `This is the address to which postal correspondence for the ${StringHelper.capitalise(claimantDefendantParty.partyType === PartyType.CLAIMANT ? claimantDefendantParty.partyType : claimantDefendantParty.oldPartyType)}’s legal representative will be sent.`,
     yes: {
       label: 'Yes',
       selector: (solicitorParty: Party) => `#${solicitorParty.oldKey}ServiceAddressRequired_Yes`,

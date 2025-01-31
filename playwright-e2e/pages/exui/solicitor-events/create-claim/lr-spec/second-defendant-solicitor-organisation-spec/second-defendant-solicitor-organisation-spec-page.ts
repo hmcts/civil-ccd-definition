@@ -37,6 +37,6 @@ export default class SecondDefendantSolicitorOrganisationSpecPage extends ExuiPa
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

@@ -9,7 +9,7 @@ export const dropdowns = {
     },
   },
   caseType: {
-    label: 'Case Type',
+    label: 'Case type',
     selector: '#cc-case-type',
     options: {
       civil: 'Civil',
