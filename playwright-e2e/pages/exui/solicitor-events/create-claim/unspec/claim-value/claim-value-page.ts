@@ -1,5 +1,4 @@
 import BasePage from '../../../../../../base/base-page';
-import partys from '../../../../../../constants/partys';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
@@ -19,17 +18,15 @@ export default class ClaimValuePage extends ExuiPage(BasePage) {
 
   async enterClaimDetailsSmallTrack() {
     const claimAmount = CaseDataHelper.getClaimValue(ClaimTrack.SMALL_CLAIM);
-    await super.inputText(`Roof damage - ${partys.CLAIMANT_1.key}`, inputs.amount.selector);
     await super.inputText(claimAmount, inputs.amount.selector);
   }
 
   async enterClaimDetailsFastTrack() {
     const claimAmount = CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM);
-    await super.inputText(`Roof damage - ${partys.CLAIMANT_1.key}`, inputs.amount.selector);
     await super.inputText(claimAmount, inputs.amount.selector);
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
