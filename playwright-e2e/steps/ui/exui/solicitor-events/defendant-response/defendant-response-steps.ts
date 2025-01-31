@@ -23,6 +23,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   async RespondToDefence1v1() {
+    await this.fetchAndSetCCDCaseData(defendantSolicitor1User, 1738326561453255);
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -52,11 +53,12 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant1Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant1Page.submit();
 
-        const { witnessesSpecDefendant1Page } = this.defendantResponsePageFactory;
-        await witnessesSpecDefendant1Page.verifyContent(this.ccdCaseData);
-        await witnessesSpecDefendant1Page.addWitnesses();
-        await witnessesSpecDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesSpecDefendant1Page.submit();
+        const { witnessesDefendant1Page } = this.defendantResponsePageFactory;
+        await witnessesDefendant1Page.verifyContent(this.ccdCaseData);
+        await witnessesDefendant1Page.selectYesWitnesses();
+        await witnessesDefendant1Page.addWitness();
+        await witnessesDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesDefendant1Page.submit();
 
         const { languageDefendant1Page } = this.defendantResponsePageFactory;
         await languageDefendant1Page.verifyContent(this.ccdCaseData);
@@ -121,7 +123,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   async RespondToDefence1v2DSDefendant1() {
-    //await this.fetchAndSetCCDCaseData(defendantSolicitor1User,  1737726972666406);
+    await this.fetchAndSetCCDCaseData(defendantSolicitor1User, 1738326585834159);
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -151,11 +153,12 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant1Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant1Page.submit();
 
-        const { witnessesSpecDefendant1Page } = this.defendantResponsePageFactory;
-        await witnessesSpecDefendant1Page.verifyContent(this.ccdCaseData);
-        await witnessesSpecDefendant1Page.addWitnesses();
-        await witnessesSpecDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesSpecDefendant1Page.submit();
+        const { witnessesDefendant1Page } = this.defendantResponsePageFactory;
+        await witnessesDefendant1Page.verifyContent(this.ccdCaseData);
+        await witnessesDefendant1Page.selectYesWitnesses();
+        await witnessesDefendant1Page.addWitness();
+        await witnessesDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesDefendant1Page.submit();
 
         const { languageDefendant1Page } = this.defendantResponsePageFactory;
         await languageDefendant1Page.verifyContent(this.ccdCaseData);
@@ -250,11 +253,12 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant2Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant2Page.submit();
 
-        const { witnessesSpecDefendant2Page } = this.defendantResponsePageFactory;
-        await witnessesSpecDefendant2Page.verifyContent(this.ccdCaseData);
-        await witnessesSpecDefendant2Page.addWitnesses();
-        await witnessesSpecDefendant2Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesSpecDefendant2Page.submit();
+        const { witnessesDefendant2Page } = this.defendantResponsePageFactory;
+        await witnessesDefendant2Page.verifyContent(this.ccdCaseData);
+        await witnessesDefendant2Page.selectYesWitnesses();
+        await witnessesDefendant2Page.addWitness();
+        await witnessesDefendant2Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesDefendant2Page.submit();
 
         const { languageDefendant2Page } = this.defendantResponsePageFactory;
         await languageDefendant2Page.verifyContent(this.ccdCaseData);

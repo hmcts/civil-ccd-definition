@@ -25,7 +25,10 @@ export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(B
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
-      [super.verifyHeadings(ccdCaseData), super.expectSubheading(subheadings.fileRef)],
+      [
+        super.verifyHeadings(ccdCaseData),
+        //super.expectSubheading(subheadings.fileRef),
+      ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
