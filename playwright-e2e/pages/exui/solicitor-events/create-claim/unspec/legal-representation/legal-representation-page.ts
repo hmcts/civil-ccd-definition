@@ -15,14 +15,14 @@ export default class LegalRepresentationPage extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    super.clickBySelector(radioButtons.defendantRepresented.yes.selector);
+    await super.clickBySelector(radioButtons.defendantRepresented.yes.selector);
   }
 
   async selectNo() {
-    super.clickBySelector(radioButtons.defendantRepresented.no.selector);
+    await super.clickBySelector(radioButtons.defendantRepresented.no.selector);
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
