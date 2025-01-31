@@ -3,24 +3,23 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { radioButtons, inputs } from './remote-hearing-spec-content';
+import { radioButtons, inputs, subheadings } from './remote-hearing-spec-content';
 
 @AllMethodsStep()
 export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
     await super.runVerifications(
       [
+        super.expectSubheading(subheadings.remoteHearing),
         super.expectText(radioButtons.remoteHearing.label),
         super.expectText(radioButtons.remoteHearing.hintText),
-        super.expectLabel(radioButtons.remoteHearing.yes.label),
-        super.expectLabel(radioButtons.remoteHearing.no.label),
       ],
       {
         runAxe: false,

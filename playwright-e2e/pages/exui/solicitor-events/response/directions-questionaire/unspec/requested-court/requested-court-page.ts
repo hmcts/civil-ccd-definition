@@ -6,6 +6,8 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { dropdowns, inputs, subheadings } from './requested-court-content.ts';
 import RemoteHearingFragment from '../../../../../fragments/remote-hearing/remote-hearing-fragment.ts';
 import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
 export default class RequestedCourtPage extends ExuiPage(BasePage) {
@@ -19,25 +21,28 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.courtLocation),
-      super.expectLabel(dropdowns.courtLocations.label),
-      super.expectLabel(inputs.preferredCourtReason.label),
-      this.remoteHearingFragment.verifyContent(),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.courtLocation),
+        super.expectLabel(dropdowns.courtLocations.label),
+        super.expectLabel(inputs.preferredCourtReason.label),
+        this.remoteHearingFragment.verifyContent(),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+    );
   }
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      dropdowns.courtLocations.options[0],
+      preferredCourts[this.defendantParty.key].default,
       dropdowns.courtLocations.selector(this.defendantParty),
     );
   }
 
   async enterPreferredCourtReason() {
     await super.inputText(
-      `Test reason - ${this.defendantParty.key}`,
+      `Reason for preferred court - ${this.defendantParty.key}`,
       inputs.preferredCourtReason.selector(this.defendantParty),
     );
   }

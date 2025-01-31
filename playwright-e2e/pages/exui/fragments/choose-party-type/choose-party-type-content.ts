@@ -1,20 +1,23 @@
 import { Party } from '../../../../models/partys';
 
-export const buttons = {
+export const radioButtons = {
   individual: {
     label: 'Individual',
-    selector: (party: Party) => `#${party.oldKey}_type-INDIVIDUAL`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}_type-INDIVIDUAL`,
   },
   company: {
     label: 'Company',
-    selector: (party: Party) => `#${party.oldKey}_type-COMPANY`,
+    selector: (claimantDefendantParty: Party) => `#${claimantDefendantParty.oldKey}_type-COMPANY`,
   },
-  organisaiton: {
-    label: 'Organisaiton',
-    selector: (party: Party) => `#${party.oldKey}_type-ORGANISATION`,
+  organisation: {
+    label: 'Organisation',
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}_type-ORGANISATION`,
   },
   soleTrader: {
     label: 'Sole trader',
-    selector: (party: Party) => `#${party.oldKey}_type-SOLE_TRADER`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}_type-SOLE_TRADER`,
   },
 };

@@ -1,81 +1,70 @@
-import BasePage from '../../../../../base/base-page.ts';
-import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import DateHelper from '../../../../../helpers/date-helper.ts';
-import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../exui-page/exui-page.ts';
-import {
-  heading,
-  subheading,
-  witnessesRadioButtonsFastTrack,
-  witnessesRadioButtonsSmallTrack,
-  witnessesRadioButtonsSmallTrack1v2,
-  witnessesRadioButtonsUnspecAndFastTrack1v2,
-  addWitnessButton,
-  witnessDetails,
-} from './witnesses-content.ts';
+import { Page } from 'playwright-core';
+import BasePage from '../../../../../../../base/base-page.ts';
+import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
+import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
+import ExuiPage from '../../../../../exui-page/exui-page.ts';
+import { subheadings, buttons, inputs, radioButtons } from './witnesses-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
 @AllMethodsStep()
 export default class WitnessesPage extends ExuiPage(BasePage) {
+  private claimantDefendantParty: Party;
+
+  constructor(page: Page, claimantDefendantParty: Party) {
+    super(page);
+    this.claimantDefendantParty = claimantDefendantParty;
+  }
+
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.witnesses, { index: 0 }),
+        super.expectText(radioButtons.witnessesRequired.label, { index: 0 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
-  async selectYesSmallTrack() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioYes.selector);
-  }
-
-  async selectNoSmallTrack() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack.radioNo.selector);
-  }
-
-  async selectYesFastTrack() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioYes.selector);
-  }
-
-  async selectNoFastTrack() {
-    await super.clickBySelector(witnessesRadioButtonsFastTrack.radioNo.selector);
-  }
-
-  async selectYesSmallTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioYes.selector);
-  }
-
-  async selectNoSmallTrack1v2() {
-    await super.clickBySelector(witnessesRadioButtonsSmallTrack1v2.radioNo.selector);
-  }
-
-  async selectYesUnspecAndFastTrack1v2(defendantNumber: number) {
+  async selectYes() {
     await super.clickBySelector(
-      witnessesRadioButtonsUnspecAndFastTrack1v2(defendantNumber).radioYes.selector,
+      radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
     );
   }
 
-  async selectNoUnspecAndFastTrack1v2(defendantNumber: number) {
+  async selectNo() {
     await super.clickBySelector(
-      witnessesRadioButtonsUnspecAndFastTrack1v2(defendantNumber).radioNo.selector,
+      radioButtons.witnessesRequired.no.selector(this.claimantDefendantParty),
     );
   }
 
-  async addWitnesses(defendantNumber: number) {
-    await super.clickBySelector(addWitnessButton(defendantNumber).addNewExpert.selector);
+  async addWitness() {
+    await super.clickBySelector(buttons.addNewWitness.selector(this.claimantDefendantParty));
   }
 
-  async enterWitnessDetails(defendantNumber: number, witnessNumber: number) {
+  async enterWitnessDetails(witnessParty: Party) {
+    const witnessData = CaseDataHelper.buildWitnessData(witnessParty);
     await super.inputText(
-      'First name',
-      witnessDetails(defendantNumber, witnessNumber).fields.firstName.selector,
+      witnessData.firstName,
+      inputs.witnessDetails.firstName.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'Last name',
-      witnessDetails(defendantNumber, witnessNumber).fields.lastName.selector,
+      witnessData.lastName,
+      inputs.witnessDetails.lastName.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'firstlast@gmail.com',
-      witnessDetails(defendantNumber, witnessNumber).fields.email.selector,
+      witnessData.phoneNumber,
+      inputs.witnessDetails.number.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'Event',
-      witnessDetails(defendantNumber, witnessNumber).fields.whatEvent.selector,
+      witnessData.emailAddress,
+      inputs.witnessDetails.email.selector(this.claimantDefendantParty, witnessParty),
+    );
+    await super.inputText(
+      witnessData.reasonForWitness,
+      inputs.witnessDetails.whatEvent.selector(this.claimantDefendantParty, witnessParty),
     );
   }
 

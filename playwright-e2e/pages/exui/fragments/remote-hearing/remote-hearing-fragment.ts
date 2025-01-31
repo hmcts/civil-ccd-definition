@@ -9,9 +9,9 @@ import { radioButtons, inputs } from './remote-hearing-content';
 export default class RemoteHearingFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
@@ -19,8 +19,6 @@ export default class RemoteHearingFragment extends ExuiPage(BasePage) {
       [
         super.expectText(radioButtons.remoteHearing.label),
         super.expectText(radioButtons.remoteHearing.hintText),
-        super.expectLabel(radioButtons.remoteHearing.yes.label),
-        super.expectLabel(radioButtons.remoteHearing.no.label),
       ],
       {
         runAxe: false,

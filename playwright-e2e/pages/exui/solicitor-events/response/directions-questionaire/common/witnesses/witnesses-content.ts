@@ -1,92 +1,59 @@
-export const heading = 'Witnesses';
+import { Party } from '../../../../../../../models/partys';
 
-export const subheading = 'Defendant 1 witnesses';
+export const subheadings = {
+  witnesses: 'Witnesses',
+};
 
-export const witnessesRadioButtonsSmallTrack = {
-  text: {
+export const radioButtons = {
+  witnessesRequired: {
     label: 'Are there any witnesses who should attend the hearing?',
-  },
-  radioYes: {
-    label: 'Yes',
-    selector: '#respondent1DQWitnessesSmallClaim_witnessesToAppear_Yes',
-  },
-  radioNo: {
-    label: 'No',
-    selector: '#respondent1DQWitnessesSmallClaim_witnessesToAppear_No',
+    yes: {
+      label: 'Yes',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_Yes`,
+    },
+    no: {
+      label: 'No',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_No`,
+    },
   },
 };
 
-export const witnessesRadioButtonsFastTrack = {
-  text: {
-    label: 'Are there any witnesses who should attend the hearing?',
-  },
-  radioYes: {
-    label: 'Yes',
-    selector: '#respondent1DQWitnessesRequiredSpec_Yes',
-  },
-  radioNo: {
-    label: 'No',
-    selector: '#respondent1DQWitnessesRequiredSpec_No',
-  },
-};
-
-export const witnessesRadioButtonsSmallTrack1v2 = {
-  text: {
-    label: 'Are there any witnesses who should attend the hearing?',
-  },
-  radioYes: {
-    label: 'Yes',
-    selector: '#respondent2DQWitnessesSmallClaim_witnessesToAppear_Yes',
-  },
-  radioNo: {
-    label: 'No',
-    selector: '#respondent2DQWitnessesSmallClaim_witnessesToAppear_No',
-  },
-};
-
-export const witnessesRadioButtonsUnspecAndFastTrack1v2 = (defendantNumber: number) => ({
-  text: {
-    label: 'Are there any witnesses who should attend the hearing?',
-  },
-  radioYes: {
-    label: 'Yes',
-    selector: `#respondent${defendantNumber}DQWitnesses_witnessesToAppear_Yes`,
-  },
-  radioNo: {
-    label: 'No',
-    selector: `#respondent${defendantNumber}DQWitnesses_witnessesToAppear_No`,
-  },
-});
-
-export const addWitnessButton = (defendantNumber: number) => ({
-  addNewExpert: {
+export const buttons = {
+  addNewWitness: {
     title: 'Add new',
-    selector: `div[id='respondent${defendantNumber}DQWitnesses_details'] button[class='button write-collection-add-item__top']`,
+    selector: (claimantDefendantParty: Party) =>
+      `div[id='${claimantDefendantParty.oldKey}DQWitnesses_details'] button[class='button write-collection-add-item__top']`,
   },
-});
+};
 
-export const witnessDetails = (defendantNumber: number, witnessNumber: number) => ({
-  label: 'Expert details',
-  fields: {
+export const inputs = {
+  witnessDetails: {
     firstName: {
       label: 'First name',
-      selector: `#respondent${defendantNumber}DQWitnesses_details_${witnessNumber}_firstName`,
+      selector: (claimantDefendantParty: Party, witnessParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_firstName`,
     },
     lastName: {
       label: 'Last name',
-      selector: `#respondent${defendantNumber}DQWitnesses_details_${witnessNumber}_lastName`,
+      selector: (claimantDefendantParty: Party, witnessParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_lastName`,
     },
     number: {
       label: 'Phone number (Optional)',
-      selector: `#respondent${defendantNumber}DQWitnessses_details_${witnessNumber}_phoneNumber`,
+      selector: (claimantDefendantParty: Party, witnessParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_phoneNumber`,
     },
     email: {
       label: 'Email address (Optional)',
-      selector: `#respondent${defendantNumber}DQWitnesses_details_${witnessNumber}_emailAddress`,
+      selector: (claimantDefendantParty: Party, witnessParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_emailAddress`,
     },
     whatEvent: {
       label: 'What event did they witness?',
-      selector: `#respondent${defendantNumber}DQWitnesses_details_${witnessNumber}_reasonForWitness`,
+      selector: (claimantDefendantParty: Party, witnessParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_reasonForWitness`,
     },
   },
-});
+};

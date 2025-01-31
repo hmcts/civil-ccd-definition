@@ -1,21 +1,27 @@
-import Party from '../../../../../../../enums/party';
+import { Party } from '../../../../../../../models/partys';
 
-export const heading = 'Further information';
+export const subheadings = { furtherInformation: 'Further information' };
 
 export const radioButtons = {
   yes: {
-    selector: (party: Party) => `#${party}DQFurtherInformation_futureApplications_Yes`,
+    label: 'Yes',
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQFurtherInformation_futureApplications_Yes`,
   },
   no: {
-    selector: (party: Party) => `#${party}DQFurtherInformation_futureApplications_No`,
+    label: 'No',
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQFurtherInformation_futureApplications_No`,
   },
 };
 
 export const form = {
   whatForForm: {
-    selector: (party: Party) => `#${party}DQFurtherInformation_reasonForFutureApplications`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQFurtherInformation_reasonForFutureApplications`,
   },
   furtherInformationForm: {
-    selector: (party: Party) => `#${party}DQFurtherInformation_otherInformationForJudge`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQFurtherInformation_otherInformationForJudge`,
   },
 };

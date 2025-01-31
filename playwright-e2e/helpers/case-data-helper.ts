@@ -3,18 +3,12 @@ import StringHelper from './string-helper';
 import ClaimTrack from '../enums/claim-track';
 import { Party } from '../models/partys';
 import partys from '../constants/partys';
-import { PartyType } from '../models/party-types';
-import partyTypes from '../constants/party-types';
+import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
+import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
     return '00' + Math.random().toString(36).slice(-6);
-  }
-
-  static formatCaseId(caseId: number) {
-    const groups = caseId.toString().match(/.{1,4}/g);
-    const formattedString = '#' + groups.join('-');
-    return formattedString;
   }
 
   static setCodeToData(data: any) {
@@ -70,6 +64,8 @@ export default class CaseDataHelper {
         return '07501234567';
       case partys.CLAIMANT_WITNESS_2:
         return '07984112233';
+      case partys.CLAIMANT_1_MEDIATION_FRIEND:
+        return '07984224466';
       case partys.DEFENDANT_1:
         return '07853654321';
       case partys.DEFENDANT_2:
@@ -94,6 +90,10 @@ export default class CaseDataHelper {
         return '07592345612';
       case partys.DEFENDANT_2_WITNESS_2:
         return '07985674230';
+      case partys.DEFENDANT_1_MEDIATION_FRIEND:
+        return '07985366442';
+      case partys.DEFENDANT_2_MEDIATION_FRIEND:
+        return '07985685321';
     }
   }
 
@@ -107,6 +107,8 @@ export default class CaseDataHelper {
         return 'CF10 1EP';
       case partys.CLAIMANT_2_LITIGATION_FRIEND:
         return 'LS1 4AP';
+      case partys.CLAIMANT_SOLICITOR_1:
+        return 'SW1A 1AA';
       case partys.DEFENDANT_1:
         return 'M1 1AE';
       case partys.DEFENDANT_2:
@@ -115,6 +117,10 @@ export default class CaseDataHelper {
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
         return 'EX1 1JG';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return 'B1 1AA';
+      case partys.DEFENDANT_SOLICITOR_2:
+        return 'M4 5DL';
     }
   }
 
@@ -138,16 +144,16 @@ export default class CaseDataHelper {
   static buildAddressData(party: Party) {
     return {
       AddressLine1: `Flat 12 - ${party.key}`,
-      AddressLine2: `${party.key} House 15 - 17`,
-      AddressLine3: `${party.key} Street`,
-      PostTown: `${party.key} Town`,
-      County: `${party.key} County`,
-      Country: `${party.key} Country`,
+      AddressLine2: `House 15 - 17 - ${party.key}`,
+      AddressLine3: `Street - ${party.key} `,
+      PostTown: `Town - ${party.key}`,
+      County: `County - ${party.key}`,
+      Country: `Country - ${party.key}`,
       PostCode: this.getPartyPostCode(party),
     };
   }
 
-  static buildClaimantAndDefendantData(party: Party, partyType: PartyType): any {
+  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantPartyType): any {
     const commonPartyData = {
       type: partyType.type,
       partyEmail: `${party.key}@${partyType.key}.com`,
@@ -159,7 +165,7 @@ export default class CaseDataHelper {
     const partyTypeKey = StringHelper.capitalise(partyType.key);
 
     switch (partyType) {
-      case partyTypes.INDIVIDUAL:
+      case claimantDefendantPartyTypes.INDIVIDUAL:
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
@@ -168,13 +174,13 @@ export default class CaseDataHelper {
           individualDateOfBirth: this.getPartyDateOfBirth(party),
         };
 
-      case partyTypes.COMPANY:
+      case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
         };
 
-      case partyTypes.SOLE_TRADER:
+      case claimantDefendantPartyTypes.SOLE_TRADER:
         return {
           ...commonPartyData,
           soleTraderTitle: 'Mx',
@@ -183,7 +189,7 @@ export default class CaseDataHelper {
           soleTraderTradingAs: `${partyKey} Trade`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(party),
         };
-      case partyTypes.ORGANISATION:
+      case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
           organisationName: `${partyKey} ${partyTypeKey}`,
@@ -208,9 +214,18 @@ export default class CaseDataHelper {
       lastName: 'Expert',
       emailAddress: `${party.key}@experts.com`,
       phoneNumber: this.getPartyPhoneNumber(party),
-      fieldOfExpertise: `Field of expertise ${party.key}`,
-      whyRequired: `Required for ${party.key}`,
+      fieldOfExpertise: `Field of expertise - ${party.key}`,
+      whyRequired: `Reason required - ${party.key}`,
       estimatedCost: this.getExpertEstimatedCost(party),
+    };
+  }
+
+  static buildMediationData(party: Party) {
+    return {
+      firstName: StringHelper.capitalise(party.key),
+      lastName: 'Mediation',
+      emailAddress: `${party.key}@mediation.com`,
+      phoneNumber: this.getPartyPhoneNumber(party),
     };
   }
 
@@ -220,7 +235,7 @@ export default class CaseDataHelper {
       lastName: 'Witness',
       phoneNumber: this.getPartyPhoneNumber(party),
       emailAddress: `${party.key}@witnesses.com`,
-      reasonForWitness: `Reason for witness ${party.key}`,
+      reasonForWitness: `Reason for witness - ${party.key}`,
     };
   }
 

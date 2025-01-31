@@ -9,42 +9,52 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.fixedRecoverableCosts),
-        super.expectText(radioButtons(this.party).fixedRecoverableCosts.label),
-        super.expectText(radioButtons(this.party).fixedRecoverableCosts.yes.label),
-        super.expectText(radioButtons(this.party).fixedRecoverableCosts.no.label),
+        super.expectSubheading(subheadings.fixedRecoverableCosts, { index: 0 }),
+        super.expectText(radioButtons.fixedRecoverableCosts.label, {
+          index: 0,
+        }),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.party.key) },
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons(this.party).fixedRecoverableCosts.no.selector);
+    await super.clickBySelector(
+      radioButtons.fixedRecoverableCosts.no.selector(this.claimantDefendantParty),
+    );
     await super.inputText(
-      'No explanation',
-      inputs(this.party).fixedRecoverableCostsReason.selector,
+      `No explanation - ${this.claimantDefendantParty.key}`,
+      inputs.fixedRecoverableCostsReason.selector(this.claimantDefendantParty),
     );
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons(this.party).fixedRecoverableCosts.yes.selector);
-    await super.clickBySelector(radioButtons(this.party).complexityBands.band1.selector);
-    await super.expectText(radioButtons(this.party).complexityBandAgreed.label);
-    await super.clickBySelector(radioButtons(this.party).complexityBandAgreed.yes.selector);
+    await super.clickBySelector(
+      radioButtons.fixedRecoverableCosts.yes.selector(this.claimantDefendantParty),
+    );
+    await super.clickBySelector(
+      radioButtons.complexityBands.band1.selector(this.claimantDefendantParty),
+    );
+    await super.expectText(radioButtons.complexityBandAgreed.label, {
+      index: 0,
+    });
+    await super.clickBySelector(
+      radioButtons.complexityBandAgreed.yes.selector(this.claimantDefendantParty),
+    );
     await super.inputText(
-      'No explanation',
-      inputs(this.party).fixedRecoverableCostsReason.selector,
+      `No explanation - ${this.claimantDefendantParty.key}`,
+      inputs.fixedRecoverableCostsReason.selector(this.claimantDefendantParty),
     );
   }
 

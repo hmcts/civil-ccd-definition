@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './date-content';
-import { PartyType } from '../../../../models/party-types';
+import { ClaimantDefendantPartyType } from '../../../../models/claimant-defendant-party-types';
 import DateHelper from '../../../../helpers/date-helper';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { Party } from '../../../../models/partys';
@@ -29,32 +29,36 @@ export default class DateFragment extends ExuiPage(BasePage) {
     );
   }
 
-  async enterDate(date: Date, selectorPrefix: string, index?: number) {
-    await super.inputText(DateHelper.getTwoDigitDay(date), inputs.day.selector(selectorPrefix), {
+  async enterDate(date: Date, selectorKey: string, index?: number) {
+    await super.inputText(DateHelper.getTwoDigitDay(date), inputs.day.selector(selectorKey), {
       index,
     });
-    await super.inputText(
-      DateHelper.getTwoDigitMonth(date),
-      inputs.month.selector(selectorPrefix),
-      { index },
-    );
-    await super.inputText(date.getFullYear(), inputs.year.selector(selectorPrefix), { index });
+    await super.inputText(DateHelper.getTwoDigitMonth(date), inputs.month.selector(selectorKey), {
+      index,
+    });
+    await super.inputText(date.getFullYear(), inputs.year.selector(selectorKey), {
+      index,
+    });
   }
 
-  async enterDateOfBirth(party: Party, partyType: PartyType, index?: number) {
-    const selectorPrefix = `${partyType.key}DateOfBirth`;
-    const dateOfBirth = new Date(CaseDataHelper.getPartyDateOfBirth(party));
+  async enterDateOfBirth(
+    claimantDefendantParty: Party,
+    partyType: ClaimantDefendantPartyType,
+    index?: number,
+  ) {
+    const selectorKey = `${partyType.key}DateOfBirth`;
+    const dateOfBirth = new Date(CaseDataHelper.getPartyDateOfBirth(claimantDefendantParty));
     await super.inputText(
       DateHelper.getTwoDigitDay(dateOfBirth),
-      inputs.day.selector(selectorPrefix),
+      inputs.day.selector(selectorKey),
       { index },
     );
     await super.inputText(
       DateHelper.getTwoDigitMonth(dateOfBirth),
-      inputs.month.selector(selectorPrefix),
+      inputs.month.selector(selectorKey),
       { index },
     );
-    await super.inputText(dateOfBirth.getFullYear(), inputs.year.selector(selectorPrefix), {
+    await super.inputText(dateOfBirth.getFullYear(), inputs.year.selector(selectorKey), {
       index,
     });
   }

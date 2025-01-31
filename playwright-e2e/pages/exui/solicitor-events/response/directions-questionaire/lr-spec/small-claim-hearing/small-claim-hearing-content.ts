@@ -11,22 +11,23 @@ export const radioButtons = {
       'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
     yes: {
       label: 'Yes',
-      selector: (party: Party) =>
-        `#${party.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQSmallClaimHearing_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) => `#${party.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
     },
   },
   availabilityOptions: {
     single: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber - 1}_unavailableDateType-SINGLE_DATE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${hearingNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
   },
   interpreter: {
@@ -46,12 +47,24 @@ export const radioButtons = {
 export const buttons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: (party: Party) =>
-      `div[id='${party.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (defendantParty: Party) =>
+      `div[id='${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
   },
 };
 
 export const inputs = {
+  singleDate: {
+    label: 'Unavailable date',
+    selectorKey: 'date',
+  },
+  dateFrom: {
+    label: 'Date from',
+    selectorKey: 'fromDate',
+  },
+  dateTo: {
+    label: 'Date to',
+    selectorKey: 'toDate',
+  },
   interpreterType: {
     label: 'Type of interpreter',
     selector: '#SmallClaimHearingInterpreterDescription',

@@ -10,72 +10,56 @@ export const radioButtons = {
     label:
       'Are there any dates when you, your client(s), experts or any witnesses are unavailable?',
     yes: {
-      selector: (party: Party) => `#${party.oldKey}DQHearingFastClaim_unavailableDatesRequired_Yes`,
+      label: 'Yes',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDatesRequired_Yes`,
     },
     no: {
-      selector: (party: Party) => `#${party.oldKey}DQHearingFastClaim_unavailableDatesRequired_No`,
+      no: 'No',
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDatesRequired_No`,
     },
   },
   unavailableDateType: {
     label: 'Add a single date or a date range',
     single: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingFastClaim_unavailableDate_${hearingNumber - 1}_unavailableDateType-SINGLE_DATE`,
+      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: (party: Party, hearingNumber: number) =>
-        `#${party.oldKey}DQHearingFastClaim_unavailableDate_${hearingNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+        `#${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
+  },
+};
+
+export const inputs = {
+  singleDate: {
+    label: 'Unavailable date',
+    hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'date',
+  },
+  dateFrom: {
+    label: 'Date from',
+    hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'fromDate',
+  },
+  dateTo: {
+    label: 'Date to',
+    hintText: 'This date cannot be in the past and must not be more than one year in the future',
+    selectorKey: 'toDate',
   },
 };
 
 export const buttons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: (party: Party) =>
-      `div[id='${party.oldKey}DQHearingFastClaim_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (claimantDefendantParty: Party) =>
+      `div[id='${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDates'] button[class='button write-collection-add-item__top']`,
   },
   removeAvailability: {
     title: 'Remove',
-    selector: (party: Party, hearingNumber: number) =>
-      `div[id='${party.oldKey}DQHearingFastClaim_unavailableDates_${hearingNumber - 1}_${hearingNumber - 1}'] button[class='button write-collection-remove-item__top']`,
-  },
-};
-
-export const inputs = {
-  unavailableSingleDate: {
-    day: {
-      selector: '#date-day',
-    },
-    month: {
-      selector: '#date-month',
-    },
-    year: {
-      selector: '#date-year',
-    },
-  },
-  unavailableDateRange: {
-    dateFrom: {
-      day: {
-        selector: '#fromDate-day',
-      },
-      month: {
-        selector: '#fromDate-month',
-      },
-      year: {
-        selector: '#fromDate-year',
-      },
-    },
-    dateTo: {
-      day: {
-        selector: '#toDate-day',
-      },
-      month: {
-        selector: '#toDate-month',
-      },
-      year: {
-        selector: '#toDate-year',
-      },
-    },
+    selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
+      `div[id='${claimantDefendantParty.oldKey}DQHearingFastClaim_unavailableDates_${unavailableDateNumber - 1}_${unavailableDateNumber - 1}'] button[class='button write-collection-remove-item__top']`,
   },
 };

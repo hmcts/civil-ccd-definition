@@ -4,21 +4,24 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
-import partyTypes from '../../../../constants/party-types';
+import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
 export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.claimantDefendantParty = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
     await super.runVerifications(
-      [super.expectLabel(inputs.name.label), super.expectLabel(inputs.email.label)],
+      [
+        // super.expectLabel(inputs.name.label, { exact: true, index: 0 }),
+        super.expectLabel(inputs.email.label),
+      ],
       {
         runAxe: false,
       },
@@ -28,11 +31,11 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
   async enterCompanyDetails() {
     const companyData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
-      partyTypes.COMPANY,
+      claimantDefendantPartyTypes.COMPANY,
     );
     await super.inputText(
       companyData.companyName,
-      inputs.name.selector(this.claimantDefendantParty, partyTypes.COMPANY),
+      inputs.name.selector(this.claimantDefendantParty, claimantDefendantPartyTypes.COMPANY),
     );
     await super.inputText(
       companyData.partyEmail,

@@ -1,38 +1,48 @@
 import { Page } from 'playwright-core';
-import Party from '../../../../../../../enums/party.ts';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { heading, radioButtons, form } from './further-information-content.ts';
+import { subheadings, radioButtons, form } from './further-information-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class FurtherInformationPage extends ExuiPage(BasePage) {
-  private party: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, party: Party) {
+  constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
-    this.party = party;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectText(heading, { ignoreDuplicates: true }),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.furtherInformation, { index: 0 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+    );
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons.yes.selector(this.party));
-    await super.inputText('test', form.whatForForm.selector(this.party));
+    await super.clickBySelector(radioButtons.yes.selector(this.claimantDefendantParty));
+    await super.inputText(
+      `Further information - ${this.claimantDefendantParty.key}`,
+      form.whatForForm.selector(this.claimantDefendantParty),
+    );
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons.no.selector(this.party));
+    await super.clickBySelector(radioButtons.no.selector(this.claimantDefendantParty));
   }
 
-  async inputFurtherInformation() {
-    await super.inputText('test', form.furtherInformationForm.selector(this.party));
+  async enterFurtherInformation() {
+    await super.inputText(
+      'test',
+      form.furtherInformationForm.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

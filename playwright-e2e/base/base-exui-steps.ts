@@ -6,8 +6,9 @@ import User from '../models/user';
 import ExuiDashboardPageFactory from '../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import RequestsFactory from '../requests/requests-factory';
 import BaseApiSteps from './base-api-steps';
+import { civilAdminUser } from '../config/users/exui-users';
+import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
 
-@AllMethodsStep()
 export default abstract class BaseExuiSteps extends BaseApiSteps {
   private exuiDashboardPageFactory: ExuiDashboardPageFactory;
 
@@ -20,16 +21,18 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     this.exuiDashboardPageFactory = exuiDashboardPageFactory;
   }
 
-  async retryExuiEvent(
+  protected async retryExuiEvent(
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 3 } = {},
+    { retries = 2, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    while (retries > 0) {
+    while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
+          const { caseListPage } = this.exuiDashboardPageFactory;
+          await caseListPage.openCaseList();
           const { navBar } = this.exuiDashboardPageFactory;
           await navBar.clickCreateCase();
         } else {
@@ -41,13 +44,20 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
         await steps();
         break;
       } catch (error) {
-        retries--;
-        if (!retries) throw error;
+        if (retries <= 0) throw error;
         console.log(`Event: ${ccdEvent.id} failed, trying again (Retries left: ${retries})`);
+        retries--;
+        caseDetailsPage.clearCCDEvent();
       }
     }
-    await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
+    if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
+      const caseId = await caseDetailsPage.grabCaseNumber();
+      super.setCCDCaseData = { id: caseId };
+      UserAssignedCasesHelper.addAssignedCaseToUser(user, this.ccdCaseData.id);
+    }
+    if (verifySuccessEvent) await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.clearCCDEvent();
-    await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
+    await this.fetchAndSetCCDCaseData(civilAdminUser, this.ccdCaseData.id);
   }
 }

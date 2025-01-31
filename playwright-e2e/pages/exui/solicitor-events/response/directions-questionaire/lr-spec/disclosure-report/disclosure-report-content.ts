@@ -10,13 +10,13 @@ export const radioButtons = {
       'Have you filed and served a disclosure report (Form N263) (see Civil Procedure Rules Part 31)? (Optional)',
     yes: {
       label: 'Yes',
-      selector: (party: Party) =>
-        `#${party.oldKey}DQDisclosureReport_disclosureFormFiledAndServed_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQDisclosureReport_disclosureFormFiledAndServed_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) =>
-        `#${party.oldKey}DQDisclosureReport_disclosureFormFiledAndServed_No`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQDisclosureReport_disclosureFormFiledAndServed_No`,
     },
   },
   disclosureProposalAgreed: {
@@ -24,11 +24,13 @@ export const radioButtons = {
       'Have you agreed a proposal in relation to disclosure that meets the overriding objective? (Optional)',
     yes: {
       label: 'Yes',
-      selector: (party: Party) => `#${party.oldKey}DQDisclosureReport_disclosureProposalAgreed_Yes`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQDisclosureReport_disclosureProposalAgreed_Yes`,
     },
     no: {
       label: 'No',
-      selector: (party: Party) => `#${party.oldKey}DQDisclosureReport_disclosureProposalAgreed_No`,
+      selector: (claimantDefendantParty: Party) =>
+        `#${claimantDefendantParty.oldKey}DQDisclosureReport_disclosureProposalAgreed_No`,
     },
   },
 };
@@ -37,6 +39,7 @@ export const inputs = {
   draftOrderNumber: {
     label:
       'Please ensure this is contained within the proposed directions attached and specify the draft order number (Optional)',
-    selector: (party: Party) => `#${party.oldKey}DQDisclosureReport_draftOrderNumber`,
+    selector: (claimantDefendantParty: Party) =>
+      `#${claimantDefendantParty.oldKey}DQDisclosureReport_draftOrderNumber`,
   },
 };
