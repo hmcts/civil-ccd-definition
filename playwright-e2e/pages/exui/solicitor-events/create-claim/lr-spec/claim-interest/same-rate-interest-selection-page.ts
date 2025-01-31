@@ -7,8 +7,8 @@ import { radioButtons, subheadings, paragraphs } from './same-rate-interest-sele
 export default class SameRateInterestSelectionPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectText(subheadings.sameRateInterestSelection),
-      super.expectText(paragraphs.sameRateInterestSelectionDescriptionText)
+      super.expectText(subheadings.whatInterest),
+      super.expectText(paragraphs.descriptionText),
     ]);
   }
 

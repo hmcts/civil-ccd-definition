@@ -1,17 +1,17 @@
 export const subheadings = {
-  interestFromSpecificDate: 'Date you want to claim interest from',
+  dateClaimFrom: 'Date you want to claim interest from',
 };
 
 export const paragraphs = {
-  interestFromSpecificDateDescriptionText: 'For example, 22 04 2021',
+  descriptionText: 'For example, 22 04 2021',
 };
 
 export const inputs = {
-  interestFromSpecificDate: {
+  specificDate: {
     selectorKey: 'interestFromSpecificDate',
   },
 
-  interestFromSpecificDateDescription: {
+  description: {
     label: 'Explain why you’re claiming from this date is required',
     selector: '#interestFromSpecificDateDescription',
   },

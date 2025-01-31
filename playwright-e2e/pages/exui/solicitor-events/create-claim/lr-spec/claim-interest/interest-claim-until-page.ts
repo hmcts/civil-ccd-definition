@@ -6,17 +6,15 @@ import { radioButtons, subheadings } from './interest-claim-until-content';
 @AllMethodsStep()
 export default class InterestClaimUntilPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    await super.runVerifications([
-      super.expectText(subheadings.interestClaimUntil),
-    ]);
+    await super.runVerifications([super.expectText(subheadings.interestClaimUntil)]);
   }
 
   async selectSameInterest() {
-    await super.clickBySelector(radioButtons.interestClaimUntil.untilClaimSubmitDate.selector);
+    await super.clickBySelector(radioButtons.interestClaimUntil.submitDate.selector);
   }
 
   async selectBreakDownInterest() {
-    await super.clickBySelector(radioButtons.interestClaimUntil.untilSettledOrJudgementMade.selector);
+    await super.clickBySelector(radioButtons.interestClaimUntil.untilSettledOrJudgement.selector);
   }
 
   async submit() {
