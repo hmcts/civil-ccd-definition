@@ -350,6 +350,30 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new ClaimInterestPage(this.page);
   }
 
+  get breakDownInterestPage() {
+    return new BreakDownInterestPage(this.page);
+  }
+
+  get claimInterestOptionsPage() {
+    return new ClaimInterestOptionsPage(this.page);
+  }
+
+  get interestClaimFromPage() {
+    return new InterestClaimFromPage(this.page);
+  }
+
+  get interestClaimUntilPage() {
+    return new InterestClaimUntilPage(this.page);
+  }
+
+  get interestFromSpecificDate() {
+    return new InterestFromSpecificDate(this.page);
+  }
+
+  get sameRateInterestSelectionPage() {
+    return new SameRateInterestSelectionPage(this.page);
+  }
+
   get pbaNumberPage() {
     return new PbaNumberPage(this.page);
   }
@@ -376,29 +400,5 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get confirmCreateClaimSpecPage() {
     return new ConfirmCreateClaimSpecPage(this.page);
-  }
-
-  get breakDownInterestPage() {
-    return new BreakDownInterestPage(this.page);
-  }
-
-  get claimInterestOptionsPage() {
-    return new ClaimInterestOptionsPage(this.page);
-  }
-
-  get interestClaimFromPage() {
-    return new InterestClaimFromPage(this.page);
-  }
-
-  get interestClaimUntilPage() {
-    return new InterestClaimUntilPage(this.page);
-  }
-
-  get interestFromSpecificDate() {
-    return new InterestFromSpecificDate(this.page);
-  }
-
-  get sameRateInterestSelectionPage() {
-    return new SameRateInterestSelectionPage(this.page);
   }
 }
