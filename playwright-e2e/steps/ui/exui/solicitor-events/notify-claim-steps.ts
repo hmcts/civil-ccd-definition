@@ -114,9 +114,9 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
         await certificateOfService1NotifyClaimPage.fillDetails();
         await certificateOfService1NotifyClaimPage.submit();
 
-        const { submitNotifyClaimCOSPage } = this.notifyClaimPageFactory;
-        await submitNotifyClaimCOSPage.verifyContent(this.ccdCaseData);
-        await submitNotifyClaimCOSPage.submit();
+        const { submitNotifyClaimPage } = this.notifyClaimPageFactory;
+        await submitNotifyClaimPage.verifyContent(this.ccdCaseData);
+        await submitNotifyClaimPage.submit();
 
         const { confirmNotifyClaimCOSPage } = this.notifyClaimPageFactory;
         await confirmNotifyClaimCOSPage.verifyContent(this.ccdCaseData);

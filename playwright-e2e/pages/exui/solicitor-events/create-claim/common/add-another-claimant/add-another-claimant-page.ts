@@ -21,6 +21,6 @@ export default class AddAnotherClaimantPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
