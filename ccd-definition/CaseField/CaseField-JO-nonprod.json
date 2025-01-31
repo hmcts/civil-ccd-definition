@@ -372,7 +372,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "joJudgementByAdmissionIssueDate",
-    "Label": "",
+    "Label": " ",
     "FieldType": "DateTime",
     "SecurityClassification": "Public",
     "Searchable": "N"
