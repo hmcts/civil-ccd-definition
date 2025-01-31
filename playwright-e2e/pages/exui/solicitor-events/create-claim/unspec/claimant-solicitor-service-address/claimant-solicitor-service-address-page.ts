@@ -22,15 +22,15 @@ export default class ClaimantSolicitorServiceAddressPage extends ExuiPage(BasePa
   }
 
   async selectYesAndEnterAddress() {
-    this.serviceAddressFragment.selectYes();
-    this.serviceAddressFragment.enterAddressManual();
+    await this.serviceAddressFragment.selectYes();
+    await this.serviceAddressFragment.enterAddressManual();
   }
 
   async selectNo() {
-    this.serviceAddressFragment.selectNo();
+    await this.serviceAddressFragment.selectNo();
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

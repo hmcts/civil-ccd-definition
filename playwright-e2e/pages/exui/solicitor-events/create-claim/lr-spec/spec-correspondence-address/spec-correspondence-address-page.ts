@@ -31,6 +31,6 @@ export default class SpecCorrespondenceAddressPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

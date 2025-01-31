@@ -1,3 +1,4 @@
+import { Page } from 'playwright-core';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
@@ -8,12 +9,18 @@ import { dropdowns, subheadings, inputs } from './court-content';
 export default class CourtPage extends ExuiPage(BasePage) {
   private remoteHearingFragment: RemoteHearingFragment;
 
+  constructor(page: Page, remoteHearingFragment: RemoteHearingFragment) {
+    super(page);
+    this.remoteHearingFragment = remoteHearingFragment;
+  }
+
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectSubheading(subheadings.courtLocationCode),
       super.expectLabel(dropdowns.courtLocation.label),
-      super.expectLabel(inputs.courtReason.label),
+      super.expectLabel(inputs.courtReason.label, { index: 0 }),
+      this.remoteHearingFragment.verifyContent(),
     ]);
   }
 
@@ -29,7 +36,11 @@ export default class CourtPage extends ExuiPage(BasePage) {
     await this.remoteHearingFragment.selectNo();
   }
 
+  async selectYesForRemoteHearing() {
+    await this.remoteHearingFragment.selectYes();
+  }
+
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
