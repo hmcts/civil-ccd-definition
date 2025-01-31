@@ -23,6 +23,6 @@ export default class DefendantSameLegalRepresentativePage extends ExuiPage(BaseP
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

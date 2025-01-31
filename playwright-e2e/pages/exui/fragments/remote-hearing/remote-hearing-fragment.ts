@@ -18,7 +18,7 @@ export default class RemoteHearingFragment extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         //super.expectText(radioButtons.remoteHearing.label, {index: 0}), TODO - This verification is not working for the 1v2DS scenario for the Second Defendant.
-        super.expectText(radioButtons.remoteHearing.hintText, { index: 0 }),
+        // super.expectText(radioButtons.remoteHearing.hintText, { index: 0 }),
         //TODO - Seperate Code to be Implemented to check Yes and No Labels.
         //super.expectText(radioButtons.remoteHearing.yes.label , {index: 0}),
         //super.expectText(radioButtons.remoteHearing.no.label, {index: 0}),

@@ -1,26 +1,25 @@
 export const subheadings = {
   uploadDocuments: 'Upload documents',
   partiularsOfClaim: 'Particulars of claim (Optional)',
-  medicalReports: 'Medical reports',
   scheduleOfLoss: 'Schedule of loss',
   certificateOfSuitability: 'Certificate of suitability',
 };
 
 export const inputs = {
   uploadPartiularsOfClaim: {
-    title: 'Choose file',
+    title: 'Document (Optional)',
     selector: '#servedDocumentFiles_particularsOfClaimDocument_value',
   },
   uploadMedicalReports: {
-    title: 'Choose file',
+    title: 'Document (Optional)',
     selector: '#servedDocumentFiles_medicalReport_0_document',
   },
   uploadScheduleOfLoss: {
-    title: 'Choose file',
+    title: 'Document (Optional)',
     selector: '#servedDocumentFiles_scheduleOfLoss_0_document',
   },
   uploadCertificateOfSuitability: {
-    title: 'Choose file',
+    title: 'Document (Optional)',
     selector: '#servedDocumentFiles_certificateOfSuitability_0_document',
   },
 };
