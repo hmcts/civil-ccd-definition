@@ -6,7 +6,7 @@ import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
-import { subheadings, inputs } from './solicitor-references-defendant-response-content.ts';
+import { subheadings } from './solicitor-references-defendant-response-content.ts';
 
 @AllMethodsStep()
 export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(BasePage) {
@@ -30,7 +30,7 @@ export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(B
     );
   }
 
-  async enterDetails() {
+  async enterReference() {
     await this.defendantSolicitorReferenceFragment.enterReference();
   }
 

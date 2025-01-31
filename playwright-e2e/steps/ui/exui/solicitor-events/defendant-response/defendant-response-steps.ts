@@ -6,11 +6,7 @@ import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-ev
 import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from '../../../../../constants/ccd-events.ts';
 import partys from '../../../../../constants/partys.ts';
-import {
-  claimantSolicitorUser,
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../../../../config/users/exui-users.ts';
+import { defendantSolicitor1User } from '../../../../../config/users/exui-users.ts';
 
 @AllMethodsStep()
 export default class DefendantResponseSteps extends BaseExuiSteps {
@@ -27,7 +23,6 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   async RespondToDefence1v1() {
-    //await this.fetchAndSetCCDCaseData(defendantSolicitor1User,  1737726972666406);
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -39,10 +34,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await respondentResponseTypeDefendant1Page.selectRejectAll();
         await respondentResponseTypeDefendant1Page.submit();
 
-        const { solicitorReferencesPage } = this.defendantResponsePageFactory;
-        await solicitorReferencesPage.verifyContent(this.ccdCaseData);
-        await solicitorReferencesPage.fillDefendant1Ref();
-        await solicitorReferencesPage.submit();
+        const { solicitorReferencesDefendantResponseDefendant1Page } =
+          this.defendantResponsePageFactory;
+        await solicitorReferencesDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
+        await solicitorReferencesDefendantResponseDefendant1Page.enterReference();
+        await solicitorReferencesDefendantResponseDefendant1Page.submit();
 
         const { uploadDefendantResponseDefendant1Page } = this.defendantResponsePageFactory;
         await uploadDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
@@ -56,12 +52,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant1Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant1Page.submit();
 
-        const { witnessesDefendant1Page } = this.defendantResponsePageFactory;
-        await witnessesDefendant1Page.verifyContent(this.ccdCaseData);
-        await witnessesDefendant1Page.useWitness();
-        await witnessesDefendant1Page.addWitnesses();
-        await witnessesDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesDefendant1Page.submit();
+        const { witnessesSpecDefendant1Page } = this.defendantResponsePageFactory;
+        await witnessesSpecDefendant1Page.verifyContent(this.ccdCaseData);
+        await witnessesSpecDefendant1Page.addWitnesses();
+        await witnessesSpecDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesSpecDefendant1Page.submit();
 
         const { languageDefendant1Page } = this.defendantResponsePageFactory;
         await languageDefendant1Page.verifyContent(this.ccdCaseData);
@@ -102,7 +97,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         const { furtherInformationDefendant1Page } = this.defendantResponsePageFactory;
         await furtherInformationDefendant1Page.verifyContent(this.ccdCaseData);
         await furtherInformationDefendant1Page.selectYes();
-        await furtherInformationDefendant1Page.inputFurtherInformation();
+        await furtherInformationDefendant1Page.enterFurtherInformation();
         await furtherInformationDefendant1Page.submit();
 
         const { statementOfTruthDefendantResponseDefendant1Page } =
@@ -138,10 +133,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await respondentResponseTypeDefendant1Page.selectRejectAll();
         await respondentResponseTypeDefendant1Page.submit();
 
-        const { solicitorReferencesPage } = this.defendantResponsePageFactory;
-        await solicitorReferencesPage.verifyContent(this.ccdCaseData);
-        await solicitorReferencesPage.fillDefendant1Ref();
-        await solicitorReferencesPage.submit();
+        const { solicitorReferencesDefendantResponseDefendant1Page } =
+          this.defendantResponsePageFactory;
+        await solicitorReferencesDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
+        await solicitorReferencesDefendantResponseDefendant1Page.enterReference();
+        await solicitorReferencesDefendantResponseDefendant1Page.submit();
 
         const { uploadDefendantResponseDefendant1Page } = this.defendantResponsePageFactory;
         await uploadDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
@@ -155,12 +151,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant1Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant1Page.submit();
 
-        const { witnessesDefendant1Page } = this.defendantResponsePageFactory;
-        await witnessesDefendant1Page.verifyContent(this.ccdCaseData);
-        await witnessesDefendant1Page.useWitness();
-        await witnessesDefendant1Page.addWitnesses();
-        await witnessesDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesDefendant1Page.submit();
+        const { witnessesSpecDefendant1Page } = this.defendantResponsePageFactory;
+        await witnessesSpecDefendant1Page.verifyContent(this.ccdCaseData);
+        await witnessesSpecDefendant1Page.addWitnesses();
+        await witnessesSpecDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesSpecDefendant1Page.submit();
 
         const { languageDefendant1Page } = this.defendantResponsePageFactory;
         await languageDefendant1Page.verifyContent(this.ccdCaseData);
@@ -201,7 +196,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         const { furtherInformationDefendant1Page } = this.defendantResponsePageFactory;
         await furtherInformationDefendant1Page.verifyContent(this.ccdCaseData);
         await furtherInformationDefendant1Page.selectYes();
-        await furtherInformationDefendant1Page.inputFurtherInformation();
+        await furtherInformationDefendant1Page.enterFurtherInformation();
         await furtherInformationDefendant1Page.submit();
 
         const { statementOfTruthDefendantResponseDefendant1Page } =
@@ -237,10 +232,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await respondentResponseTypeDefendant2Page.selectRejectAll();
         await respondentResponseTypeDefendant2Page.submit();
 
-        const { solicitorReferencesPage } = this.defendantResponsePageFactory;
-        await solicitorReferencesPage.verifyContent(this.ccdCaseData);
-        await solicitorReferencesPage.fillDefendant2Ref();
-        await solicitorReferencesPage.submit();
+        const { solicitorReferencesDefendantResponseDefendant2Page } =
+          this.defendantResponsePageFactory;
+        await solicitorReferencesDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
+        await solicitorReferencesDefendantResponseDefendant2Page.enterReference();
+        await solicitorReferencesDefendantResponseDefendant2Page.submit();
 
         const { uploadDefendantResponseDefendant2Page } = this.defendantResponsePageFactory;
         await uploadDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
@@ -254,12 +250,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await expertsDefendant2Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
         await expertsDefendant2Page.submit();
 
-        const { witnessesDefendant2Page } = this.defendantResponsePageFactory;
-        await witnessesDefendant2Page.verifyContent(this.ccdCaseData);
-        await witnessesDefendant2Page.useWitness();
-        await witnessesDefendant2Page.addWitnesses();
-        await witnessesDefendant2Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-        await witnessesDefendant2Page.submit();
+        const { witnessesSpecDefendant2Page } = this.defendantResponsePageFactory;
+        await witnessesSpecDefendant2Page.verifyContent(this.ccdCaseData);
+        await witnessesSpecDefendant2Page.addWitnesses();
+        await witnessesSpecDefendant2Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
+        await witnessesSpecDefendant2Page.submit();
 
         const { languageDefendant2Page } = this.defendantResponsePageFactory;
         await languageDefendant2Page.verifyContent(this.ccdCaseData);
@@ -300,7 +295,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         const { furtherInformationDefendant2Page } = this.defendantResponsePageFactory;
         await furtherInformationDefendant2Page.verifyContent(this.ccdCaseData);
         await furtherInformationDefendant2Page.selectYes();
-        await furtherInformationDefendant2Page.inputFurtherInformation();
+        await furtherInformationDefendant2Page.enterFurtherInformation();
         await furtherInformationDefendant2Page.submit();
 
         const { statementOfTruthDefendantResponseDefendant2Page } =

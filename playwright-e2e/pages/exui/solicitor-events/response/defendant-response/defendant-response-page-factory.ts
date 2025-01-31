@@ -332,7 +332,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new WitnessesSpecPage(this.page, partys.DEFENDANT_2);
   }
 
-  get languageSDefendant1Page() {
+  get languageDefendant1Page() {
     return new LanguagePage(this.page, partys.DEFENDANT_1);
   }
 
