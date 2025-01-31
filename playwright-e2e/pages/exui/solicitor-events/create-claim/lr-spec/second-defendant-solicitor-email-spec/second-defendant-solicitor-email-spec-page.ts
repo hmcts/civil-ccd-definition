@@ -25,6 +25,6 @@ export default class SecondDefendantSolicitorEmailSpecPage extends ExuiPage(Base
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

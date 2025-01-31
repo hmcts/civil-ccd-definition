@@ -1,3 +1,4 @@
+import ClaimType from '../../../../../../../enums/claim-type';
 import PartyType from '../../../../../../../enums/party-types';
 import { Party } from '../../../../../../../models/partys';
 
@@ -7,16 +8,19 @@ export const radioButtons = {
   expertsRequired: {
     label: 'Do you want to use an expert?',
     yes: {
+      selector2v1: '#applicantMPClaimExpertSpecRequired_Yes',
       selector: (claimantDefendantParty: Party) => {
-        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+        if (claimantDefendantParty.partyType === PartyType.CLAIMANT) {
           return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
+        }
         return `#responseClaimExpertSpecRequired${claimantDefendantParty.number === 1 ? '' : '2'}_Yes`;
       },
     },
     no: {
+      selector2v1: '#applicantMPClaimExpertSpecRequired_No',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_Yes`;
+          return `#${claimantDefendantParty.oldKey}ClaimExpertSpecRequired_No`;
         return `#responseClaimExpertSpecRequired${claimantDefendantParty.number === 1 ? '' : '2'}_No`;
       },
     },
@@ -32,7 +36,7 @@ export const inputs = {
         'Then use the Manage Contact Information event to provide the name when known',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_firstName`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_firstName`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_firstName`;
       },
     },
@@ -40,7 +44,7 @@ export const inputs = {
       label: 'Last name',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_lastName`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_lastName`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_lastName`;
       },
     },
@@ -48,7 +52,7 @@ export const inputs = {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_phoneNumber`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_phoneNumber`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_phoneNumber`;
       },
     },
@@ -56,7 +60,7 @@ export const inputs = {
       label: 'Email address (Optional)',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_emailAddress`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_emailAddress`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_emailAddress`;
       },
     },
@@ -64,7 +68,7 @@ export const inputs = {
       label: 'Field of expertise',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_fieldofExpertise`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_fieldofExpertise`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_fieldofExpertise`;
       },
     },
@@ -72,7 +76,7 @@ export const inputs = {
       label: 'Why do you need this expert?',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_whyRequired`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_whyRequired`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_whyRequired`;
       },
     },
@@ -80,7 +84,7 @@ export const inputs = {
       label: 'Estimated cost',
       selector: (claimantDefendantParty: Party) => {
         if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          `#${claimantDefendantParty.oldKey}RespondToClaimExperts_whyRequired`;
+          return `#${claimantDefendantParty.oldKey}RespondToClaimExperts_estimatedCost`;
         return `#respondToClaimExperts${claimantDefendantParty.number === 1 ? '' : '2'}_estimatedCost`;
       },
     },

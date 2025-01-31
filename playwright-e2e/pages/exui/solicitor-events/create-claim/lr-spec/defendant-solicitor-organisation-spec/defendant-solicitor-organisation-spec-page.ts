@@ -37,6 +37,6 @@ export default class DefendantSolicitorOrganisationSpecPage extends ExuiPage(Bas
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
