@@ -37,7 +37,6 @@
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "courtOfficerGiveReasonsComplex=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"
