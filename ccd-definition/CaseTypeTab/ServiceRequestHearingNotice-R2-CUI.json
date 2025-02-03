@@ -14,6 +14,6 @@
     "TabDisplayOrder": 6,
     "CaseFieldID": "casePaymentWaysToPay",
     "TabFieldDisplayOrder": 1,
-    "TabShowCondition": "hwfFeeType!=\"CLAIMISSUED\""
+    "TabShowCondition": "hwfFeeType!=\"CLAIMISSUED\" OR caseDismissedHearingFeeDueDate!=\"*\""
   }
 ]
