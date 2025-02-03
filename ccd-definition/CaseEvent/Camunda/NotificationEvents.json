@@ -300,9 +300,9 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "NOTIFY_1V2_PARTIES_FOR_CLAIM_DISMISSED",
+    "ID": "NOTIFY_PARTIES_FOR_CLAIM_DISMISSED",
     "Name": "Email: Claim dismissed",
-    "Description": "Notify 1V2 Parties for claim dismissed",
+    "Description": "Notify relevant parties for claim dismissed",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

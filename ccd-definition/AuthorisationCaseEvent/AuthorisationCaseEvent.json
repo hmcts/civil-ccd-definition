@@ -587,7 +587,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_1V2_PARTIES_FOR_CLAIM_DISMISSED",
+    "CaseEventID": "NOTIFY_PARTIES_FOR_CLAIM_DISMISSED",
     "AccessControl": [
       {
         "UserRoles": [
