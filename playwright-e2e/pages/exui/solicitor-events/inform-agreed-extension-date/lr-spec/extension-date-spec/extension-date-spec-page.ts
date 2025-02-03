@@ -3,7 +3,6 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import DateHelper from '../../../../../../helpers/date-helper';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
-import { Party } from '../../../../../../models/partys';
 import ExuiPage from '../../../../exui-page/exui-page';
 import DateFragment from '../../../../fragments/date/date-fragment';
 import { inputs } from './extension-date-spec-content';
@@ -28,6 +27,7 @@ export default class ExtensionDateSpecPage extends ExuiPage(BasePage) {
     const extensionDate = DateHelper.addToDate(ccdCaseData.respondent1ResponseDeadline, {
       days: 28,
       workingDay: true,
+      addDayAfter4pm: true,
     });
     await this.dateFragment.enterDate(extensionDate, inputs.extensionDate.selectorKey);
   }

@@ -4,7 +4,7 @@ import ccdEvents from '../../../constants/ccd-events';
 import CaseDataHelper from '../../../helpers/case-data-helper';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
-import { buttons, components } from './exui-content';
+import { buttons, components, getFormattedCaseId } from './exui-content';
 
 let ccdEventstate: CCDEvent;
 
@@ -23,13 +23,13 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
           super.expectHeading(ccdCaseData.caseNamePublic),
         ];
       } else {
         expects = [
           super.expectHeading(ccdEventstate.name),
-          super.expectHeading(CaseDataHelper.formatCaseId(ccdCaseData.id)),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
           super.expectHeading(ccdCaseData.caseNamePublic),
         ];
       }

@@ -19,7 +19,7 @@ export const radioButtons = {
     },
   },
   agreement: {
-    label: 'Is such an agreement likely?',
+    label: 'Is such agreement likely?',
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>
@@ -35,7 +35,8 @@ export const radioButtons = {
 
 export const inputs = {
   disagreementReason: {
-    label: 'What are the issues?',
+    label:
+      'What are the issues about disclosure of electronic documents which the court needs to address, and should they be dealt with at the CMC or at a separate hearing?',
     selector: (claimantDefendantParty: Party) =>
       `#spec${StringHelper.capitalise(claimantDefendantParty.oldKey)}DQDisclosureOfElectronicDocuments_reasonForNoAgreement`,
   },

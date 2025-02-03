@@ -24,6 +24,6 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
