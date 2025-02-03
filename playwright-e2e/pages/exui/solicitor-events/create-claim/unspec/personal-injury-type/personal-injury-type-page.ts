@@ -25,6 +25,6 @@ export default class PersonalInjuryTypePage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

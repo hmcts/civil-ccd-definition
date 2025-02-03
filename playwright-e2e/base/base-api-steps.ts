@@ -4,11 +4,8 @@ import User from '../models/user';
 import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
-import { AllMethodsStep } from '../decorators/test-steps';
 import TestData from '../models/test-data';
-import { civilAdminUser, claimantSolicitorUser } from '../config/users/exui-users';
 
-@AllMethodsStep()
 export default abstract class BaseApiSteps extends BaseSteps {
   private _requestsFactory: RequestsFactory;
 
