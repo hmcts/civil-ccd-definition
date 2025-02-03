@@ -8,6 +8,13 @@ export default class ExuiNavBar extends BasePage {
     throw new Error('Method not implemented.');
   }
 
+  async solicitorVerifyContent(): Promise<void> {
+    super.runVerifications(
+      [super.expectLink(links.createCase.title), super.expectLink(links.caseList.title)],
+      { runAxe: false },
+    );
+  }
+
   async clickCreateCase() {
     await super.clickLink(links.createCase.title);
   }

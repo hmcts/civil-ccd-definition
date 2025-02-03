@@ -12,6 +12,29 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CONFIRM_ORDER_REVIEW",
+    "CaseFieldID": "obligationData",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "EnterObligationData",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-obligation-date",
+    "PageShowCondition": "obligationDatePresent = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CONFIRM_ORDER_REVIEW",
+    "CaseFieldID": "isFinalOrder",
+    "PageDisplayOrder": 2,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY",
+    "PageID": "IsFinalOrder",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "obligationDatePresent = \"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CONFIRM_ORDER_REVIEW",
     "CaseFieldID": "courtStaffNextSteps",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,

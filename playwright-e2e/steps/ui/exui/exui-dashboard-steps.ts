@@ -1,10 +1,10 @@
 import ExuiDashboardPageFactory from '../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
-import BaseSteps from '../../../base/base-steps';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import User from '../../../models/user';
 import PageUtilsFactory from '../../../pages/utils/page-utils-factory';
 import CookiesHelper from '../../../helpers/cookies-helper';
+import BaseSteps from '../../../base/base-steps';
 
 @AllMethodsStep()
 export default class ExuiDashboardSteps extends BaseSteps {
@@ -36,6 +36,12 @@ export default class ExuiDashboardSteps extends BaseSteps {
   async GoToCaseList() {
     const { caseListPage } = this.exuiDashboardPageFactory;
     await caseListPage.openCaseList();
+  }
+
+  async GoToCaseDetails() {
+    const { caseDetailsPage } = this.exuiDashboardPageFactory;
+    await caseDetailsPage.goToCaseDetails(this.ccdCaseData.id);
+    await caseDetailsPage.verifyContent(this.ccdCaseData);
   }
 
   async SignOut() {

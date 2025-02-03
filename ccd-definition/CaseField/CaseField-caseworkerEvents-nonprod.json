@@ -106,6 +106,32 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationData",
+    "Label": "Obligation date",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "ObligationDataCollection",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "storedObligationData",
+    "Label": "Obligation date",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "StoredObligationData",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isFinalOrder",
+    "Label": "Is this a final order?",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtStaffNextSteps",
     "Label": "Have all the next steps for court staff been completed?",
     "FieldType": "FixedRadioList",
@@ -220,5 +246,46 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "lastMessage",
+    "Label": " ",
+    "FieldType": "Message",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "lastMessageAllocatedTrack",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "lastMessageJudgeLabel",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationWAFlag",
+    "Label": " ",
+    "FieldType": "ObligationWAFlag",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "gaEaCourtLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]

@@ -13,8 +13,6 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
-const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
-const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
@@ -39,11 +37,12 @@ const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
 
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  INITIATE_GENERAL_APPLICATION_LR: genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
   CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
@@ -97,7 +96,11 @@ const data = {
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
-  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
+  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData),
+  STAY_CASE: () => stayCase.stayCase(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdateDamages(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
+  DISMISS_CASE: () => dismissCase.dismissCaseDamages()
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -878,25 +881,6 @@ module.exports = {
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 
-  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
-    eventName = 'INITIATE_GENERAL_APPLICATION';
-    caseId = caseId || caseNumber;
-    console.log('caseid is..', caseId);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
-
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
-    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
-    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectedState);
-
-    console.log('General application created when main case state is', expectedState);
-    assert.equal(responseBody.callback_response_status_code, 200);
-  },
-
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     await apiRequest.setupTokens(user);
@@ -1145,10 +1129,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
     }
 
-    await assertSubmittedEvent(finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE' ? 'CASE_PROGRESSION' : 'All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1175,10 +1157,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1416,11 +1396,95 @@ module.exports = {
     await validateEventPages(data.TRANSFER_CASE());
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-        header: '',
-        body: ''
-      }, true);
-      await waitForFinishedBusinessProcess(caseId);
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
     }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate, isJudicialReferral) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (isJudicialReferral) {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+
 };
 
 // Functions
@@ -1470,6 +1534,14 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
+    // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
+    // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
+
+    if(pageId === 'TrackAllocation' || pageId === 'FinalOrderSelect') {
+      responseBody.data.respondent1Represented = caseData.respondent1Represented;
+    }
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
@@ -1972,6 +2044,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
+  delete responseBody.data['finalOrderTrackToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];

@@ -318,5 +318,55 @@
     "FieldTypeParameter": "JoJudgment",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joSetAsideApplicationDate",
+    "Label": "Enter the date of the application to set aside",
+    "HintText": "For example, 16 04 2021",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joDefendantMarkedPaidInFullIssueDate",
+    "Label": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joMarkedPaidInFullIssueDate",
+    "Label": " ",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joCoscRpaStatus",
+    "Label": " ",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "CoscRpaStatus",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "joSetAsideCreatedDate",
+    "Label": "Enter the date set aside is done",
+    "FieldType": "DateTime",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondForImmediateOption",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

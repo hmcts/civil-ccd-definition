@@ -4,6 +4,8 @@ import BaseApiSteps from '../../base/base-api-steps';
 import RequestsFactory from '../../requests/requests-factory';
 import TestData from '../../models/test-data';
 import UserStateHelper from '../../helpers/users-state-helper';
+import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
+import BaseSteps from '../../base/base-steps';
 
 @AllMethodsStep()
 export default class ApiUserSteps extends BaseApiSteps {

@@ -103,69 +103,69 @@ export default interface CCDCaseData {
   respondent2AcknowledgeNotificationDate?: string;
 }
 
-interface ServedDocumentFiles {
+export interface ServedDocumentFiles {
   particularsOfClaimDocument?: ParticularsOfClaimDocument[];
 }
 
-interface SolicitorReferences {
+export interface SolicitorReferences {
   applicantSolicitor1Reference?: string;
   respondentSolicitor1Reference?: string;
 }
 
-interface ParticularsOfClaimDocument {
+export interface ParticularsOfClaimDocument {
   id?: string;
-  value?: ParticularsOfClaimDocumentValue;
+  value?: UploadDocumentValue;
 }
 
-interface ApplicantSolicitor1PbaAccounts {
+export interface ApplicantSolicitor1PbaAccounts {
   value?: ApplicantSolicitor1PbaAccountsValue;
   list_items?: ApplicantSolicitor1PbaAccountsListItem[];
 }
 
-interface ApplicantSolicitor1PbaAccountsValue {
+export interface ApplicantSolicitor1PbaAccountsValue {
   code?: string;
   label?: string;
 }
 
-interface ApplicantSolicitor1PbaAccountsListItem {
+export interface ApplicantSolicitor1PbaAccountsListItem {
   code?: string;
   label?: string;
 }
 
-interface ClaimStatementOfTruth {
+export interface ClaimStatementOfTruth {
   name?: string;
   role?: string;
 }
 
-interface ClaimIssuedPaymentDetails {
+export interface ClaimIssuedPaymentDetails {
   status?: string;
   reference?: string;
   customerReference?: string;
 }
 
-interface ClaimValue {
+export interface ClaimValue {
   statementOfValueInPennies?: string;
 }
 
-interface ClaimMediationSpecRequired {
+export interface ClaimMediationSpecRequired {
   hasAgreedFreeMediation?: string;
 }
 
-interface NotifyClaimDetailsOptions {
+export interface NotifyClaimDetailsOptions {
   value?: NotifyClaimDetailsOptionsValue;
 }
 
-interface NotifyClaimDetailsOptionsValue {
+export interface NotifyClaimDetailsOptionsValue {
   code?: string;
   label?: string;
 }
 
-interface Expert {
+export interface Expert {
   id?: string;
   value?: ExpertValue;
 }
 
-interface ExpertValue {
+export interface ExpertValue {
   email?: string;
   flags?: CaseFlags;
   phone?: string;
@@ -174,12 +174,12 @@ interface ExpertValue {
   firstName?: string;
 }
 
-interface Witnesses {
+export interface Witnesses {
   id?: string;
   value?: Witness;
 }
 
-interface Witness {
+export interface Witness {
   email?: string;
   flags?: CaseFlags;
   phone?: string;
@@ -188,21 +188,21 @@ interface Witness {
   firstName?: string;
 }
 
-interface Party {
+export interface Party {
   type?: string;
   flags?: CaseFlags;
   partyID?: string;
   partyName?: string;
   partyEmail?: string;
   companyName?: string;
-  primaryAddress?: PrimaryAddress;
+  primaryAddress?: Address;
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
   partyTypeDisplayValue?: string;
 }
 
-interface ParticularsOfClaimDocumentValue {
+export interface UploadDocumentValue {
   category_id?: string;
   document_url?: string;
   upload_timestamp?: string;
@@ -210,16 +210,16 @@ interface ParticularsOfClaimDocumentValue {
   document_binary_url?: string;
 }
 
-interface ApplicantSolicitor1UserDetails {
+export interface ApplicantSolicitor1UserDetails {
   email?: string;
 }
 
-interface SystemGeneratedCaseDocument {
+export interface SystemGeneratedCaseDocument {
   id?: string;
   value?: SystemGeneratedCaseDocumentValue;
 }
 
-interface SystemGeneratedCaseDocumentValue {
+export interface SystemGeneratedCaseDocumentValue {
   createdBy?: string;
   documentLink?: SystemGeneratedDocumentDocumentLink;
   documentName?: string;
@@ -228,7 +228,7 @@ interface SystemGeneratedCaseDocumentValue {
   createdDatetime?: string;
 }
 
-interface SystemGeneratedDocumentDocumentLink {
+export interface SystemGeneratedDocumentDocumentLink {
   category_id?: string;
   document_url?: string;
   upload_timestamp?: string;
@@ -236,53 +236,53 @@ interface SystemGeneratedDocumentDocumentLink {
   document_binary_url?: string;
 }
 
-interface OrganisationPolicy {
+export interface OrganisationPolicy {
   Organisation?: Organisation;
   OrgPolicyReference?: string;
   OrgPolicyCaseAssignedRole?: string;
 }
 
-interface Organisation {
+export interface Organisation {
   OrganisationID?: string;
 }
 
-interface ClaimFee {
+export interface ClaimFee {
   code?: string;
   version?: number;
   calculatedAmountInPence?: number;
 }
 
-interface CaseManagementLocation {
+export interface CaseManagementLocation {
   region?: number;
   baseLocation?: number;
 }
 
-interface CaseManagementCategory {
+export interface CaseManagementCategory {
   value?: CaseManagementCategoryValue;
   list_items?: CaseManagementCategoryListItem[];
 }
 
-interface CaseManagementCategoryValue {
+export interface CaseManagementCategoryValue {
   code?: string;
   label?: string;
 }
 
-interface CaseManagementCategoryListItem {
+export interface CaseManagementCategoryListItem {
   id?: string;
   value?: CaseManagementCategoryListItemValue;
 }
 
-interface CaseManagementCategoryListItemValue {
+export interface CaseManagementCategoryListItemValue {
   code?: string;
   label?: string;
 }
 
-interface HearingAttendee {
+export interface HearingAttendee {
   id?: string;
   value?: HearingAttendeeValue;
 }
 
-interface HearingAttendeeValue {
+export interface HearingAttendeeValue {
   email?: string;
   flags?: CaseFlags;
   phone?: string;
@@ -291,18 +291,18 @@ interface HearingAttendeeValue {
   firstName?: string;
 }
 
-interface CaseFlags {
+export interface CaseFlags {
   details?: CaseFlagsDetails[];
   partyName?: string;
   roleOnCase?: string;
 }
 
-interface CaseFlagsDetails {
+export interface CaseFlagsDetails {
   id?: string;
   value?: CaseFlagsDetailsValue;
 }
 
-interface CaseFlagsDetailsValue {
+export interface CaseFlagsDetailsValue {
   name?: string;
   path?: CaseFlagsDetailsValuePath[];
   status?: string;
@@ -312,12 +312,12 @@ interface CaseFlagsDetailsValue {
   hearingRelevant?: string;
 }
 
-interface CaseFlagsDetailsValuePath {
+export interface CaseFlagsDetailsValuePath {
   id?: string;
   value?: string;
 }
 
-interface PrimaryAddress {
+export interface Address {
   County?: string;
   Country?: string;
   PostCode?: string;
@@ -327,19 +327,19 @@ interface PrimaryAddress {
   AddressLine3?: string;
 }
 
-interface DQExperts {
+export interface DQExperts {
   details?: DQExpertsDetails[];
   expertRequired?: string;
   expertReportsSent?: string;
   jointExpertSuitable?: string;
 }
 
-interface DQExpertsDetails {
+export interface DQExpertsDetails {
   id?: string;
   value?: DQExpertsDetailsValue;
 }
 
-interface DQExpertsDetailsValue {
+export interface DQExpertsDetailsValue {
   partyID?: string;
   lastName?: string;
   dateAdded?: string;
@@ -352,22 +352,22 @@ interface DQExpertsDetailsValue {
   fieldOfExpertise?: string;
 }
 
-interface DQHearingSupport {
+export interface DQHearingSupport {
   supportRequirements?: string;
   supportRequirementsAdditional?: string;
 }
 
-interface DQVulnerabilityQuestions {
+export interface DQVulnerabilityQuestions {
   vulnerabilityAdjustments?: string;
   vulnerabilityAdjustmentsRequired?: string;
 }
 
-interface DQWitnesses {
+export interface DQWitnesses {
   details?: DQWitness[];
   witnessesToAppear?: string;
 }
 
-interface DQWitness {
+export interface DQWitness {
   id?: string;
   value?: {
     partyID?: string;
@@ -381,64 +381,64 @@ interface DQWitness {
   };
 }
 
-interface DQHearing {
+export interface DQHearing {
   unavailableDates?: DQHearingUnavailableDate[];
   unavailableDatesRequired?: string;
 }
 
-interface DQHearingUnavailableDate {
+export interface DQHearingUnavailableDate {
   id?: string;
   value?: DQHearingUnavailableDateValue;
 }
 
-interface DQHearingUnavailableDateValue {
+export interface DQHearingUnavailableDateValue {
   date?: string;
   unavailableDateType?: string;
   toDate?: string;
   fromDate?: string;
 }
 
-interface DQFixedRecoverableCosts {
+export interface DQFixedRecoverableCosts {
   band?: string;
   reasons?: string;
   complexityBandingAgreed?: string;
   isSubjectToFixedRecoverableCostRegime?: string;
 }
 
-interface DQLanguage {
+export interface DQLanguage {
   court?: string;
   documents?: string;
 }
 
-interface DQRemoteHearing {
+export interface DQRemoteHearing {
   reasonForRemoteHearing?: string;
   remoteHearingRequested?: string;
 }
 
-interface DQDisclosureReport {
+export interface DQDisclosureReport {
   disclosureProposalAgreed?: string;
   disclosureFormFiledAndServed?: string;
 }
 
-interface DQDisclosureOfNonElectronicDocuments {
+export interface DQDisclosureOfNonElectronicDocuments {
   bespokeDirections?: string;
   standardDirectionsRequired?: string;
   directionsForDisclosureProposed?: string;
 }
 
-interface DQFileDirectionsQuestionnaire {
+export interface DQFileDirectionsQuestionnaire {
   explainedToClient?: string[];
   oneMonthStayRequested?: string;
   reactionProtocolCompliedWith?: string;
 }
 
-interface DQFurtherInformation {
+export interface DQFurtherInformation {
   futureApplications?: string;
   otherInformationForJudge?: string;
   reasonForFutureApplications?: string;
 }
 
-interface CourtLocation {
+export interface CourtLocation {
   caseLocation?: CaseManagementLocation;
   applicantPreferredCourt?: string;
 }

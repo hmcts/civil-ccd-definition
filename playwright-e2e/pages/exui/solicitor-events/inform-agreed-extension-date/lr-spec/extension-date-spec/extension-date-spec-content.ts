@@ -1,14 +1,7 @@
 export const inputs = {
-  day: {
-    label: 'Day',
-    selector: '#respondentSolicitor1AgreedDeadlineExtension-day',
-  },
-  month: {
-    label: 'Month',
-    selector: '#respondentSolicitor1AgreedDeadlineExtension-month',
-  },
-  year: {
-    label: 'Year',
-    selector: '#respondentSolicitor1AgreedDeadlineExtension-year',
+  extensionDate: {
+    label: 'Enter the extension date that was agreed with the other party',
+    hintText: 'This date cannot be more than 28 days from the original deadline.',
+    selectorKey: 'respondentSolicitor1AgreedDeadlineExtension',
   },
 };

@@ -7,7 +7,7 @@ export default defineConfig({
   globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
   forbidOnly: !!process.env.CI,
   fullyParallel: true,
-  retries: process.env.CI ? 2 : 0,
+  retries: config.playwright.retries ?? 0,
   workers: config.playwright.workers,
   reporter: process.env.CI
     ? [
@@ -43,7 +43,7 @@ export default defineConfig({
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
     launchOptions: {
-      slowMo: process.env.CI ? 200 : 500,
+      // slowMo: process.env.CI ? 200 : 500,
     },
   },
   projects: [
@@ -70,9 +70,15 @@ export default defineConfig({
       testMatch: '**playwright-e2e/tests/bootstrap/auth/**.teardown.ts',
     },
     {
+      name: 'case-role-assignment-teardown',
+      use: { ...devices['Desktop Chrome'] },
+      testMatch: '**playwright-e2e/tests/bootstrap/case-role-assignment/**.teardown.ts',
+    },
+    {
       name: 'e2e-full-functional',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'users-auth-setup'],
+      teardown: 'case-role-assignment-teardown'
     },
   ],
 });

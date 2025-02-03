@@ -1,8 +1,10 @@
 import BaseSteps from './base-steps';
-import TestData from '../models/test-data';
 import RequestsFactory from '../requests/requests-factory';
 import User from '../models/user';
 import { bankHolidays } from '../config/data';
+import { CCDEvent } from '../models/ccd/ccd-events';
+import ObjectHelper from '../helpers/object-helper';
+import TestData from '../models/test-data';
 
 export default abstract class BaseApiSteps extends BaseSteps {
   private _requestsFactory: RequestsFactory;
@@ -45,5 +47,40 @@ export default abstract class BaseApiSteps extends BaseSteps {
         user.userId = userId;
       }
     }
+  }
+
+  protected async validatePages(
+    ccdEvent: CCDEvent,
+    pageDataMap: Record<string, any>,
+    user: User,
+    ccdEventToken: string,
+  ) {
+    const { ccdRequests } = this.requestsFactory;
+    let eventData = {};
+    for (const pageId of Object.keys(pageDataMap)) {
+      eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
+      const pageData = await ccdRequests.validatePageData(
+        ccdEvent,
+        user,
+        pageId,
+        pageDataMap[pageId],
+        eventData,
+        ccdEventToken,
+      );
+      eventData = ObjectHelper.deepSpread(eventData, pageData);
+    }
+    return eventData;
+  }
+
+  protected async waitForFinishedBusinessProcess(user: User, caseId?: number) {
+    const { civilServiceRequests } = this.requestsFactory;
+    await this.setupUserData(user);
+    await civilServiceRequests.waitForFinishedBusinessProcess(user, caseId ?? this.ccdCaseData.id);
+  }
+
+  protected async fetchAndSetCCDCaseData(user: User, caseId?: number) {
+    const { ccdRequests } = this.requestsFactory;
+    await this.setupUserData(user);
+    this.setCCDCaseData = await ccdRequests.fetchCCDCaseData(user, caseId ?? this.ccdCaseData.id);
   }
 }
