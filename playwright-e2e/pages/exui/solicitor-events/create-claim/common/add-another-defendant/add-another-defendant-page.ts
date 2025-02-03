@@ -18,6 +18,6 @@ export default class AddAnotherDefendantPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

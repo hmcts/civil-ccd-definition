@@ -5,8 +5,8 @@ import ExuiPage from '../../../../exui-page/exui-page.ts';
 
 @AllMethodsStep()
 export default class SubmitCreateClaimPage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+  async verifyContent() {
+    await super.runVerifications([super.verifyHeadings()]);
   }
 
   async submit() {

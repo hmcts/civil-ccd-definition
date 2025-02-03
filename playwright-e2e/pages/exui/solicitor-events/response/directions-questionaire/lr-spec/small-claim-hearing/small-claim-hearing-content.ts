@@ -11,23 +11,23 @@ export const radioButtons = {
       'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
     yes: {
       label: 'Yes',
-      selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQSmallClaimHearing_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
     },
   },
   availabilityOptions: {
     single: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
   },
   interpreter: {
@@ -47,8 +47,8 @@ export const radioButtons = {
 export const buttons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: (claimantDefendantParty: Party) =>
-      `div[id='${claimantDefendantParty.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (defendantParty: Party) =>
+      `div[id='${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
   },
 };
 
