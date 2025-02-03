@@ -768,6 +768,48 @@ export default abstract class BasePage {
     });
   }
 
+  @BoxedDetailedStep(classKey, 'label', 'text')
+  @TruthyParams(classKey, 'label', 'text')
+  protected async expectTableRowValueByName(
+    label: string,
+    text: string | number,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    const rowLocator = this.page.locator('tr', {
+      has: this.page.locator(`td:text-is("${label}"), th:text-is("${label}")`),
+    });
+    const textLocator = rowLocator.locator('td').nth(1);
+    await pageExpect(textLocator, { message: options.message }).toHaveText(text.toString(), {
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async expectDataCellValue(
+    text: string | number,
+    options: {
+      message?: string;
+      timeout?: number;
+      first?: boolean;
+      index?: number;
+      exact?: boolean;
+    } = {},
+  ) {
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.getByRole('cell', { name: text.toString(), exact: options.exact });
+    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+
+    await pageExpect(locator, {
+      message: options.message,
+    }).toBeVisible({
+      timeout: options.timeout,
+    });
+  }
+
   @BoxedDetailedStep(classKey, 'text', 'selector')
   @TruthyParams(classKey, 'text', 'selector')
   protected async expectTableRowValue(
