@@ -21,6 +21,6 @@ export default class SecondDefendantLegalRepresentationPage extends ExuiPage(Bas
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
