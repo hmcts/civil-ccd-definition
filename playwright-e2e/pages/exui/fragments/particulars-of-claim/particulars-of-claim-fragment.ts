@@ -12,7 +12,6 @@ export default class ParticularsOfClaimFragment extends ExuiPage(BasePage) {
       [
         super.expectSubheading(subheadings.uploadDocuments),
         super.expectSubheading(subheadings.partiularsOfClaim),
-        super.expectText(subheadings.medicalReports, { exact: true }),
         super.expectSubheading(subheadings.scheduleOfLoss),
         super.expectSubheading(subheadings.certificateOfSuitability),
       ],
@@ -22,7 +21,7 @@ export default class ParticularsOfClaimFragment extends ExuiPage(BasePage) {
 
   async uploadDocuments() {
     await super.clickBySelector(buttons.addPartiularsOfClaim.selector);
-    // await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadPartiularsOfClaim.selector);
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadPartiularsOfClaim.selector);
     await super.clickBySelector(buttons.addMedicalReports.selector);
     await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadMedicalReports.selector);
     await super.clickBySelector(buttons.addScheduleOfLoss.selector);
