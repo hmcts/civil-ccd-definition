@@ -1,9 +1,10 @@
+import StringHelper from '../../../../../../../helpers/string-helper';
 import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
   witnesses: `Witnesses`,
-  claimantWitnesses: `Claimant 1 witnesses`,
-  defendantWitnesses: (defendantParty: Party) => `Defendant ${defendantParty.number} witnesses`,
+  partyWitnesses: (defendantParty: Party) =>
+    `${StringHelper.capitalise(defendantParty.partyType)} ${defendantParty.number} witnesses`,
 };
 
 export const radioButtons = {
@@ -26,7 +27,7 @@ export const buttons = {
   addNewWitness: {
     title: 'Add new',
     selector: (claimantDefendantParty: Party) =>
-      `div[id='${claimantDefendantParty.oldKey}DQWitnesses_details'] button[class='button write-collection-add-item__top']`,
+      `div[id='${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details'] button[class='button write-collection-add-item__top']`,
   },
 };
 
@@ -36,31 +37,31 @@ export const inputs = {
     firstName: {
       label: 'First name',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_firstName`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_firstName`,
     },
     lastName: {
       label: 'Last name',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_lastName`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_lastName`,
     },
-    number: {
+    phoneNumber: {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnessses_details_${claimantDefendantWitnessParty.number - 1}_phoneNumber`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_phoneNumber`,
     },
     email: {
       label: 'Email address (Optional)',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_emailAddress`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_emailAddress`,
     },
     whatEvent: {
       label: 'What event did they witness?',
       selector: (claimantDefendantParty: Party, claimantDefendantWitnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${claimantDefendantWitnessParty.number - 1}_reasonForWitness`,
+        `#${claimantDefendantParty.oldKey}DQWitnessesSmallClaim_details_${claimantDefendantWitnessParty.number - 1}_reasonForWitness`,
     },
   },
   witnessNumber: {
     label: 'How many witnesses, including the claimant, will give evidence at the hearing?',
-    selector: '#applicant1ClaimWitnesses',
+    selector: (claimantDefendantParty: Party) => `#${claimantDefendantParty.oldKey}ClaimWitnesses`,
   },
 };

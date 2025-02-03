@@ -21,7 +21,7 @@ export default class SecondClaimantLitigationFriendPage extends ExuiPage(BasePag
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectLabel(radioButtons.litigationFriendRequired.label),
+      super.expectText(radioButtons.litigationFriendRequired.label),
     ]);
   }
 
@@ -40,6 +40,6 @@ export default class SecondClaimantLitigationFriendPage extends ExuiPage(BasePag
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
