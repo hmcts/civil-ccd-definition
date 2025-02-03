@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-5963'
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -119,9 +119,9 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 xui-webapp:
-  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
+  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
   nodejs:
-    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
+    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
