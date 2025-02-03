@@ -65,5 +65,6 @@ export default class HearingFastPage extends ExuiPage(BasePage) {
 
   async submit() {
     await super.retryClickSubmit();
+    await super.retryClickSubmit();
   }
 }

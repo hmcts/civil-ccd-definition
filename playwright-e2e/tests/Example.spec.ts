@@ -20,9 +20,9 @@ test(
     // await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2DS();
     // await NotifyClaimDetailsSteps.NotifyClaimDetails1v2DS();
     await IdamSteps.DefendantSolicitor1Login();
-    await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
+    await DefendantResponseSteps.SmallTrackFullDefence1v2DSDefendant1();
     await IdamSteps.DefendantSolicitor2Login();
-    await DefendantResponseSteps.RespondToDefence1v2DSDefendant2();
+    await DefendantResponseSteps.SmallTrackFullDefence1v2DSDefendant2();
     await IdamSteps.ClaimantSolicitorLogin();
     await ClaimantResponseSteps.SmallClaim1v2DS();
   },
@@ -48,7 +48,7 @@ test(
     // await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2DS();
     // await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
     await IdamSteps.DefendantSolicitor1Login();
-    await DefendantResponseSteps.RespondToDefence1v1();
+    await DefendantResponseSteps.SmallTrackFullDefenceDefendant1();
     await IdamSteps.ClaimantSolicitorLogin();
     await ClaimantResponseSteps.SmallClaim1v1();
   },
@@ -87,7 +87,7 @@ test('Unspec with Defendant Response 1v1', async ({
   await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
-  await DefendantResponseSteps.RespondToDefence1v1();
+  await DefendantResponseSteps.SmallTrackFullDefenceDefendant1();
 });
 
 test('Unspec with Defendant Response 1V2 Different Solicitor', async ({
@@ -106,9 +106,9 @@ test('Unspec with Defendant Response 1V2 Different Solicitor', async ({
   await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2DS();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v2DS();
   await IdamSteps.DefendantSolicitor1Login();
-  await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
+  await DefendantResponseSteps.SmallTrackFullDefence1v2DSDefendant1();
   await IdamSteps.DefendantSolicitor2Login();
-  await DefendantResponseSteps.RespondToDefence1v2DSDefendant2();
+  await DefendantResponseSteps.SmallTrackFullDefence1v2DSDefendant2();
 });
 
 test('Unspec with Defendant Response 1V2 Same Solicitor', async ({
@@ -127,7 +127,7 @@ test('Unspec with Defendant Response 1V2 Same Solicitor', async ({
   await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v2SS();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v2SS();
   await IdamSteps.DefendantSolicitor1Login();
-  await DefendantResponseSteps.RespondToDefence1v2DSDefendant1();
+  await DefendantResponseSteps.SmallTrackFullDefence1v2DSDefendant1();
 });
 
 test('Unspec with Defendant Response 2V1', async ({

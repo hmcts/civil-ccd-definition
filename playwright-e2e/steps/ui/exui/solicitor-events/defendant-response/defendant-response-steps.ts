@@ -6,7 +6,10 @@ import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-ev
 import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from '../../../../../constants/ccd-events.ts';
 import partys from '../../../../../constants/partys.ts';
-import { defendantSolicitor1User } from '../../../../../config/users/exui-users.ts';
+import {
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+} from '../../../../../config/users/exui-users.ts';
 
 @AllMethodsStep()
 export default class DefendantResponseSteps extends BaseExuiSteps {
@@ -22,8 +25,9 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     this.defendantResponsePageFactory = defendantResponsePageFactory;
   }
 
-  async RespondToDefence1v1() {
-    await this.fetchAndSetCCDCaseData(defendantSolicitor1User, 1738326561453255);
+  async FastTrackFullDefenceDefendant1() {}
+
+  async SmallTrackFullDefenceDefendant1() {
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -122,8 +126,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondToDefence1v2DSDefendant1() {
-    await this.fetchAndSetCCDCaseData(defendantSolicitor1User, 1738326585834159);
+  async SmallTrackFullDefence1v2DSDefendant1() {
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -222,8 +225,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondToDefence1v2DSDefendant2() {
-    //await this.fetchAndSetCCDCaseData(defendantSolicitor2User,  1738088502048004);
+  async SmallTrackFullDefence1v2DSDefendant2() {
     await this.retryExuiEvent(
       async () => {
         const { confirmDetailsPage } = this.defendantResponsePageFactory;
@@ -317,7 +319,7 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await confirmDefendantResponsePage.submit();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor1User,
+      defendantSolicitor2User,
       { retries: 0 },
     );
   }

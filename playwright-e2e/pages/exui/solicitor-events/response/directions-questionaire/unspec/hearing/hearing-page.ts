@@ -67,6 +67,5 @@ export default class HearingPage extends ExuiPage(BasePage) {
     //TODO - The Continue button is not being clicked the first time this should be checked again.
     await super.retryClickSubmit();
     await super.retryClickSubmit();
-    await super.retryClickSubmit();
   }
 }

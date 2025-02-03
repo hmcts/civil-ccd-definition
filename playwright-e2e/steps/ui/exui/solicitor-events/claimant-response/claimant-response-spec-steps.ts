@@ -23,7 +23,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async FastTrack1v1() {
+  async FastTrackIntentToProceed1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponseSpecPage();
@@ -79,7 +79,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async SmallTrack1v1() {
+  async SmallTrackIntentToProceed1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponseSpecPage();
@@ -95,7 +95,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async SmallTrack2v1() {
+  async SmallTrackIntentToProceed2v1() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse2v1SpecPage } = this.claimantResponsePageFactory;
@@ -114,7 +114,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async SmallTrack1v2SS() {
+  async SmallTrackIntentToProceed1v2SS() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse1v2SSSpecPage } = this.claimantResponsePageFactory;
@@ -133,7 +133,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async SmallTrack1v2DS() {
+  async SmallTrackIntentToProceed1v2DS() {
     await this.retryExuiEvent(
       async () => {
         const { respondentResponse1v2DSSpecPage } = this.claimantResponsePageFactory;
