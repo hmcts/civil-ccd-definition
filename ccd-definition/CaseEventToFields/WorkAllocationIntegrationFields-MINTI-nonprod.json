@@ -30,5 +30,26 @@
     "PageDisplayOrder": 99,
     "PageShowCondition": "relistHearingNotice=\"DONOTSHOW\"",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "allocatedTrack",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "courtOfficerGiveReasonsComplex=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "COURT_OFFICER_ORDER",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
   }
 ]
