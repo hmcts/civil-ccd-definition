@@ -1,16 +1,6 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "hmcLipEnabled",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "hmcLipEnabled",
     "PageFieldDisplayOrder": 1,
