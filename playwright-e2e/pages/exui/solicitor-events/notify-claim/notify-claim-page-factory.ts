@@ -1,14 +1,13 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import CertificateOfServiceSubmitFragment from '../../fragments/certificate-of-service-submit/certificate-of-service-submit-fragment';
-import CertificateOfServiceFragment from '../../fragments/certificate-of-service/certificate-of-service-fragment';
+import partys from '../../../../constants/partys';
+import CertificateOfServiceNotifyClaimFragment from '../../fragments/certificate-of-service-notify-claim/certificate-of-service-notify-claim-fragment';
 import AccessGrantedWarningPage from './access-granted-warning/access-granted-warning-page';
+import CertificateOfService1NotifyClaimPage from './certificate-of-service-1-notify-claim/certificate-of-service-1-notify-claim-page';
+import CertificateOfService2NotifyClaimPage from './certificate-of-service-2-notify-claim/certificate-of-service-2-notify-claim-page';
+import ConfirmNotifyClaimCOSPage from './confirm-notify-claim/confirm-notify-claim-cos-page';
+import ConfirmNotifyClaimPage from './confirm-notify-claim/confirm-notify-claim-page';
 import DefendantSolicitorToNotifyPage from './defendant-solicitor-to-notify/defendant-solicitor-to-notify-page';
-import NotifyClaimConfirmPage from './notify-claim-confirm/notify-claim-confirm-page';
-import NotifyClaimCOSConfirmPage from './notify-claim-cos-confirm/notify-claim-cos-confirm-page';
-import NotifyClaimCOSDefendant1Page from './notify-claim-cos-defendant-1/notify-claim-cos-defendant-1-page';
-import NotifyClaimCOSDefendant2Page from './notify-claim-cos-defendant-2/notify-claim-cos-defendant-2-page';
-import NotifyClaimCOSSubmitPage from './notify-claim-cos-submit/notify-claim-cos-submit-page';
-import NotifyClaimSubmitPage from './notify-claim-submit/notify-claim-submit-page';
+import SubmitNotifyClaimPage from './submit-notify-claim/submit-notify-claim-page';
 
 export default class NotifyClaimPageFactory extends BasePageFactory {
   get defendantSolicitorToNotify() {
@@ -19,30 +18,37 @@ export default class NotifyClaimPageFactory extends BasePageFactory {
     return new AccessGrantedWarningPage(this.page);
   }
 
-  get notifyClaimSubmitPage() {
-    return new NotifyClaimSubmitPage(this.page);
+  get submitNotifyClaimPage() {
+    return new SubmitNotifyClaimPage(this.page);
   }
 
-  get notifyClaimConfirmPage() {
-    return new NotifyClaimConfirmPage(this.page);
+  get confirmNotifyClaimPage() {
+    return new ConfirmNotifyClaimPage(this.page);
   }
 
-  get notifyClaimCOSDefendant1Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
-    return new NotifyClaimCOSDefendant1Page(certificateOfServiceFragment, this.page);
+  get certificateOfService1NotifyClaimPage() {
+    const certificateOfServiceNotifyClaimFragment = new CertificateOfServiceNotifyClaimFragment(
+      this.page,
+      partys.DEFENDANT_1,
+    );
+    return new CertificateOfService1NotifyClaimPage(
+      certificateOfServiceNotifyClaimFragment,
+      this.page,
+    );
   }
 
-  get notifyClaimCOSDefendant2Page() {
-    const certificateOfServiceFragment = new CertificateOfServiceFragment(this.page);
-    return new NotifyClaimCOSDefendant2Page(certificateOfServiceFragment, this.page);
+  get certificateOfService2NotifyClaimPage() {
+    const certificateOfServiceNotifyClaimFragment = new CertificateOfServiceNotifyClaimFragment(
+      this.page,
+      partys.DEFENDANT_2,
+    );
+    return new CertificateOfService2NotifyClaimPage(
+      certificateOfServiceNotifyClaimFragment,
+      this.page,
+    );
   }
 
-  get notifyClaimCOSSubmitPage() {
-    const certificateOfServiceSubmitFragment = new CertificateOfServiceSubmitFragment(this.page);
-    return new NotifyClaimCOSSubmitPage(certificateOfServiceSubmitFragment, this.page);
-  }
-
-  get notifyClaimCOSConfirmPage() {
-    return new NotifyClaimCOSConfirmPage(this.page);
+  get confirmNotifyClaimCOSPage() {
+    return new ConfirmNotifyClaimCOSPage(this.page);
   }
 }

@@ -1,4 +1,4 @@
-export const heading = 'Money Claims';
+export const heading = 'Manage Cases';
 
 export const links = {
   signOut: {

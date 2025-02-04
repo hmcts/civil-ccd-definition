@@ -21,6 +21,9 @@ static Map<String, Object> secret(String secretName, String envVariable) {
 }
 
 def secrets = [
+  'rpx-${env}': [
+    secret('mc-idam-client-secret', 'IDAM_CLIENT_SECRET'),
+  ],
   's2s-${env}'  : [
     secret('microservicekey-ccd-gw', 'CCD_API_GATEWAY_S2S_SECRET'),
     secret('microservicekey-ccd-data', 'CCD_DATA_STORE_S2S_SECRET'),
@@ -41,6 +44,7 @@ def secrets = [
     secret('idam-data-store-system-user-username', 'ROLE_ASSIGNMENT_USER_EMAIL')
   ],
   'civil-${env}': [
+    secret('case-document-am-api-s2s-secret', 'CASE_DOCUMENT_AM_API_S2S_SECRET'),
     secret('microservicekey-civil-service', 'S2S_SECRET'),
     secret('ccd-importer-username', 'CCD_CONFIGURER_IMPORTER_USERNAME'),
     secret('ccd-importer-password', 'CCD_CONFIGURER_IMPORTER_PASSWORD'),
@@ -211,12 +215,14 @@ withPipeline(type, product, component) {
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
       env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
       env.AAC_API_URL = "https://manage-case-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.ROLE_ASSIGNMENT_URL = "https://am-role-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
+      ./bin/add-org-roles-to-users.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL = "https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"

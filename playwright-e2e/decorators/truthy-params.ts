@@ -55,7 +55,6 @@ export const TruthyParams = (classKey: string, ...paramNamesToCheck: string[]) =
 
     if (isAsyncFunction(target)) {
       return async function asyncReplacementMethod(this: any, ...args: any[]) {
-        const className = ClassMethodHelper.formatClassName(this.constructor.name);
         filterAndValidate(paramNamesToCheck, methodParamNames, args, methodName, className);
         return await target.call(this, ...args);
       };

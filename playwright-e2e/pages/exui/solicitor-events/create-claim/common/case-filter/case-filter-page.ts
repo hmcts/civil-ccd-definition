@@ -1,11 +1,12 @@
 import BasePage from '../../../../../../base/base-page';
+import ccdEvents from '../../../../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
-import ccdEvents from '../../../../../../fixtures/ccd-events/events';
-import ExuiEvent from '../../../../exui-event/exui-event';
+import { buttons } from '../../../../exui-page/exui-content';
+import ExuiPage from '../../../../exui-page/exui-page';
 import { dropdowns } from './case-filter-content';
 
 @AllMethodsStep()
-export default class CaseFilterPage extends ExuiEvent(BasePage) {
+export default class CaseFilterPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectLabel(dropdowns.jurisdiction.label),
@@ -21,7 +22,6 @@ export default class CaseFilterPage extends ExuiEvent(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.spec, dropdowns.event.selector);
-    super.setCCDEvent = ccdEvents.CREATE_CLAIM_SPEC;
   }
 
   async chooseUnSpec() {
@@ -31,10 +31,17 @@ export default class CaseFilterPage extends ExuiEvent(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.unspec, dropdowns.event.selector);
-    super.setCCDEvent = ccdEvents.CREATE_CLAIM;
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickBySelector(
+      buttons.submit.selector,
+      () =>
+        super.expectNoTab(dropdowns.jurisdiction.label, {
+          timeout: 5_000,
+          exact: true,
+        }),
+      { retries: 3 },
+    );
   }
 }

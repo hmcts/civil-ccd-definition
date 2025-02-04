@@ -18,7 +18,7 @@ export default class PageCookiesManager extends BasePage {
 
   async cookiesLogin(user: User, cookies: Cookie[]) {
     console.log(
-      `Authenticating ${user.key} with email ${user.email} by setting cookies stored in path: ${user.cookiesPath}`,
+      `Authenticating ${user.name} with email ${user.email} by setting cookies stored in path: ${user.cookiesPath}`,
     );
     await super.addCookies(cookies);
   }
@@ -27,9 +27,9 @@ export default class PageCookiesManager extends BasePage {
     await super.addCookies(acceptIdamCookies);
   }
 
-  async addExuiCookies({ userId, email }: User) {
+  async addExuiCookies({ userId, name }: User) {
     if (!userId) {
-      throw new PageError(`UserId for user: ${email} is invalid`);
+      throw new PageError(`UserId for user: ${name} is invalid`);
     }
     await super.addCookies(generateAcceptExuiCookies(userId));
   }

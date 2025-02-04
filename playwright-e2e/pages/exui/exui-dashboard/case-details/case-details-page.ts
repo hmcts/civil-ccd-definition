@@ -4,26 +4,27 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
-import ExuiEvent from '../../exui-event/exui-event';
-import { buttons, containers, dropdowns, getSuccessBannerText, tabs } from './case-details-content';
+import { getFormattedCaseId, getUnformattedCaseId, headings } from '../../exui-page/exui-content';
+import ExuiPage from '../../exui-page/exui-page';
+import { buttons, containers, dropdowns, successBannerText, tabs } from './case-details-content';
 
 const classKey = 'CaseDetailsPage';
 
 @AllMethodsStep()
-export default class CaseDetailsPage extends ExuiEvent(BasePage) {
+export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(caseData),
-        super.expectText(tabs.summary.title),
-        super.expectText(tabs.caseFile.title),
-        super.expectText(tabs.claimDetails.title, { exact: true }),
-        super.expectText(tabs.history.title, { exact: true }),
+        super.expectTab(tabs.summary.title),
+        super.expectTab(tabs.caseFile.title),
+        super.expectTab(tabs.claimDetails.title, { exact: true }),
+        super.expectTab(tabs.history.title, { exact: true }),
         // super.expectText(tabs.claimDocs.title),
-        super.expectText(tabs.paymentHistory.title),
+        super.expectTab(tabs.paymentHistory.title),
         // super.expectText(tabs.serviceRequest.title, { exact: true }),
-        super.expectText(tabs.bundles.title),
-        super.expectText(tabs.caseFlags.title),
+        super.expectTab(tabs.bundles.title),
+        super.expectTab(tabs.caseFlags.title),
         super.expectLabel(dropdowns.nextStep.label),
       ],
       { useAxeCache: false },
@@ -65,12 +66,14 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
     await super.runVerifications([], { useAxeCache: false });
   }
 
+  async grabCaseNumber() {
+    return getUnformattedCaseId(await super.getText(headings.caseNumber.selector));
+  }
+
   @TruthyParams(classKey, 'caseId')
   async goToCaseDetails(caseId: number) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, {
-      force: true,
-    });
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`);
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
@@ -79,26 +82,27 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
     await super.retryClickBySelector(
       buttons.go.selector,
       () =>
-        super.expectNoText(tabs.summary.title, {
+        super.expectNoTab(tabs.summary.title, {
           timeout: 15_000,
+          exact: true,
         }),
       { retries: 3 },
     );
-    super.setCCDEvent = ccdEvent;
   }
 
   async chooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
     await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
     await super.clickBySelector(buttons.go.selector);
+    super.setCCDEvent = ccdEvent;
   }
 
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
     await super.runVerifications(
       [
-        super.expectText(getSuccessBannerText(caseId, ccdEvent)),
-        super.clickByText(tabs.history.title),
+        super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
+        super.clickByText(tabs.history.title, { exact: true }),
         super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
           rowNum: 1,
         }),

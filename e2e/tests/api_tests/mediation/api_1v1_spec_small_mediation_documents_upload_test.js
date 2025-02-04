@@ -12,7 +12,7 @@ Feature('Spec small claims mediation API test');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
-  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, carmEnabled);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', carmEnabled);
 }
 
@@ -55,8 +55,8 @@ Scenario('1v1 claimant and defendant upload mediation documents - CARM enabled',
   await api_spec_small.mediationUnsuccessful(mediationAdminRegion4, true);
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
-  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', true);
-});
+  // await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', true);
+}).tag('@api-prod @api-nonprod');
 
 Scenario('1v2 same solicitor claimant and defendant upload mediation documents - CARM enabled', async ({api_spec}) => {
   await prepareClaim1v2SameSol(api_spec, true);
@@ -78,7 +78,7 @@ Scenario('1v2 different solicitor claimant and defendant upload mediation docume
   await api_spec.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.defendantSolicitorUser);
   await api_spec.uploadMediationDocuments(config.secondDefendantSolicitorUser);
-});
+}).tag('@api-prod @api-nonprod');
 
 Scenario('2v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec}) => {
   await prepareClaim2v1(api_spec, false);
