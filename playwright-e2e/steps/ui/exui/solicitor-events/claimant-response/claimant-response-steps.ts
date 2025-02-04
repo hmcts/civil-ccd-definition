@@ -26,25 +26,21 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponsePage();
-
         await this.processDefenceResponseDocumentPage();
-
-        const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
-        await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
-        await fileDirectionsQuestionairePage.enterDetails();
-        await fileDirectionsQuestionairePage.submit();
-
-        const { fixedRecoverableCostsPage } = this.claimantResponsePageFactory;
-        await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
-        await fixedRecoverableCostsPage.selectYes();
-        await fixedRecoverableCostsPage.submit();
-
-        const { disclosureOfNonElectronicDocumentsPage } = this.claimantResponsePageFactory;
-        await disclosureOfNonElectronicDocumentsPage.verifyContent(this.ccdCaseData);
-        await disclosureOfNonElectronicDocumentsPage.enterDetails();
-        await disclosureOfNonElectronicDocumentsPage.submit();
-
-        await this.processDirectionsQuestionairePages();
+        await this.processFileDirectionsQuestionairePage();
+        await this.processFixedRecoverableCostsPage();
+        await this.processDisclosureOfNonElectronicDocumentsSpecPage();
+        await this.processExpertsPage();
+        await this.processWitnessesPage();
+        await this.processLanguagePage();
+        await this.processHearingSmallClaimPage();
+        await this.processDraftDirectionsPage();
+        await this.processHearingSupportPage();
+        await this.processVulnerabilityQuestionsPage();
+        await this.processFutherInformationPage();
+        await this.processStatementOfTruthPage();
+        await this.processSubmitPage();
+        await this.processConfirmPage();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
       civilAdminUser,
@@ -57,7 +53,17 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
       async () => {
         await this.processRespondentResponsePage();
         await this.processDefenceResponseDocumentPage();
-        await this.processDirectionsQuestionairePages();
+        await this.processExpertsPage();
+        await this.processWitnessesPage();
+        await this.processLanguagePage();
+        await this.processHearingSmallClaimPage();
+        await this.processDraftDirectionsPage();
+        await this.processHearingSupportPage();
+        await this.processVulnerabilityQuestionsPage();
+        await this.processFutherInformationPage();
+        await this.processStatementOfTruthPage();
+        await this.processSubmitPage();
+        await this.processConfirmPage();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -68,13 +74,19 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   async SmallClaim2v1() {
     await this.retryExuiEvent(
       async () => {
-        const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
-        await respondentResponse2v1Page.verifyContent(this.ccdCaseData);
-        await respondentResponse2v1Page.selectYesBothClaimants();
-        await respondentResponse2v1Page.submit();
-
+        await this.processRespondentResponse2v1PagePage();
         await this.processDefenceResponseDocumentPage();
-        await this.processDirectionsQuestionairePages();
+        await this.processExpertsPage();
+        await this.processWitnessesPage();
+        await this.processLanguagePage();
+        await this.processHearingSmallClaimPage();
+        await this.processDraftDirectionsPage();
+        await this.processHearingSupportPage();
+        await this.processVulnerabilityQuestionsPage();
+        await this.processFutherInformationPage();
+        await this.processStatementOfTruthPage();
+        await this.processSubmitPage();
+        await this.processConfirmPage();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -85,8 +97,19 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   async SmallClaim1v2SS() {
     await this.retryExuiEvent(
       async () => {
-        await this.processResponse1v2Pages();
-        await this.processDirectionsQuestionairePages();
+        await this.processRespondentResponse1v2Pages();
+        await this.processDefenceResponseDocument1v2Page();
+        await this.processExpertsPage();
+        await this.processWitnessesPage();
+        await this.processLanguagePage();
+        await this.processHearingSmallClaimPage();
+        await this.processDraftDirectionsPage();
+        await this.processHearingSupportPage();
+        await this.processVulnerabilityQuestionsPage();
+        await this.processFutherInformationPage();
+        await this.processStatementOfTruthPage();
+        await this.processSubmitPage();
+        await this.processConfirmPage();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -97,8 +120,19 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   async SmallClaim1v2DS() {
     await this.retryExuiEvent(
       async () => {
-        await this.processResponse1v2Pages();
-        await this.processDirectionsQuestionairePages();
+        await this.processRespondentResponse1v2Pages();
+        await this.processDefenceResponseDocument1v2Page();
+        await this.processExpertsPage();
+        await this.processWitnessesPage();
+        await this.processLanguagePage();
+        await this.processHearingSmallClaimPage();
+        await this.processDraftDirectionsPage();
+        await this.processHearingSupportPage();
+        await this.processVulnerabilityQuestionsPage();
+        await this.processFutherInformationPage();
+        await this.processStatementOfTruthPage();
+        await this.processSubmitPage();
+        await this.processConfirmPage();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -112,11 +146,20 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await respondentResponsePage.submit();
   }
 
-  private async processResponse1v2Pages() {
+  private async processRespondentResponse2v1PagePage() {
+    const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
+    await respondentResponse2v1Page.verifyContent(this.ccdCaseData);
+    await respondentResponse2v1Page.selectYesBothClaimants();
+    await respondentResponse2v1Page.submit();
+  }
+
+  private async processRespondentResponse1v2Pages() {
     const { respondentResponse1v2Page } = this.claimantResponsePageFactory;
     await respondentResponse1v2Page.selectYesBothDefendants();
     await respondentResponse1v2Page.submit();
+  }
 
+  private async processDefenceResponseDocument1v2Page() {
     const { defenceResponseDocument1v2Page } = this.claimantResponsePageFactory;
     await defenceResponseDocument1v2Page.uploadDocumentBothDefendants();
     await defenceResponseDocument1v2Page.submit();
@@ -128,18 +171,25 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     await defenceResponseDocumentPage.submit();
   }
 
-  private async processDirectionsQuestionairePages() {
-    await this.processExpertsPage();
-    await this.processWitnessesPage();
-    await this.processLanguagePage();
-    await this.processHearingSmallClaimPage();
-    await this.processDraftDirectionsPage();
-    await this.processHearingSupportPage();
-    await this.processVulnerabilityQuestionsPage();
-    await this.processFutherInformationPage();
-    await this.processStatementOfTruthPage();
-    await this.processSubmitPage();
-    await this.processConfirmPage();
+  private async processFileDirectionsQuestionairePage() {
+    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
+    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionairePage.enterDetails();
+    await fileDirectionsQuestionairePage.submit();
+  }
+
+  private async processFixedRecoverableCostsPage() {
+    const { fixedRecoverableCostsPage } = this.claimantResponsePageFactory;
+    await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPage.selectYes();
+    await fixedRecoverableCostsPage.submit();
+  }
+
+  private async processDisclosureOfNonElectronicDocumentsSpecPage() {
+    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsSpecPage.enterDetails();
+    await disclosureOfNonElectronicDocumentsSpecPage.submit();
   }
 
   private async processExpertsPage() {

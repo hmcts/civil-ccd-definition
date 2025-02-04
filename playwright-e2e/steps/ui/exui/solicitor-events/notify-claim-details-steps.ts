@@ -22,7 +22,6 @@ export default class NotifyClaimDetailsSteps extends BaseExuiSteps {
   }
 
   async NotifyClaimDetails1v1() {
-    //await this.fetchAndSetCCDCaseData(claimantSolicitorUser,  1738243380923287);
     await this.retryExuiEvent(
       async () => {
         const { uploadNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
