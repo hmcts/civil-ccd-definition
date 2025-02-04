@@ -43,7 +43,7 @@ export default defineConfig({
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
     launchOptions: {
-      slowMo: process.env.CI ? 200 : 500,
+      // slowMo: process.env.CI ? 200 : 500,
     },
   },
   projects: [
