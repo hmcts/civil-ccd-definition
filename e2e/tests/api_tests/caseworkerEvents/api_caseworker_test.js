@@ -98,9 +98,10 @@ Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', 'MULTI_CLAIM');
   await api.stayCase(config.hearingCenterAdminWithRegionId1);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, true);
-  await api.sendMessage(config.ctscAdminUser);
-  await api.replyMessage(config.judgeUserWithRegionId1);
-  await api.replyMessage(config.ctscAdminUser);
+  //commenting this for multi claim as send and reply is not enabled yet
+  // await api.sendMessage(config.ctscAdminUser);
+  // await api.replyMessage(config.judgeUserWithRegionId1);
+  // await api.replyMessage(config.ctscAdminUser);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, false, true);
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');

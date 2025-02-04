@@ -102,8 +102,8 @@ const data = {
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
   DISMISS_CASE: () => dismissCase.dismissCase(),
-  SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
-  REPLY_MESSAGE: () => sendAndReplyMessage.replyMessage()
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
 };
 
 const eventData = {
@@ -1888,12 +1888,12 @@ module.exports = {
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     let disposalData = data.SEND_MESSAGE();
-    for (let pageId of Object.keys(disposalData.valid)) {
+    for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent('SEND_AND_REPLY', {
+    await assertSubmittedEvent('CASE_STAYED', {
       header: '# Your message has been sent',
-      body: '&nbsp;'
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
     }, true);
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1907,17 +1907,31 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
-    let disposalData = data.REPLY_MESSAGE();
-    for (let pageId of Object.keys(disposalData.valid)) {
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent('SEND_AND_REPLY', {
+    await assertSubmittedEvent('CASE_STAYED', {
       header: '# Reply sent',
-      body: '&nbsp;'
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
     }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
+};
+
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
 };
 
 // Functions

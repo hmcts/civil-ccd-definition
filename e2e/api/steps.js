@@ -103,57 +103,56 @@ const data = {
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
   DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
   SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
-  REPLY_MESSAGE: () => sendAndReplyMessage.replyMessage()
-
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel)
 };
 const calculatedClaimsTrackDRH = {
-    disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
-    fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
-    fastTrackHearingTime: (d) =>
-      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
-      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
-      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
-      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
-      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
-    disposalHearingHearingTime: (d) =>
-      d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
-      && d.dateTo,
-    sdoR2SmallClaimsJudgesRecital: (data) => {
-      return typeof data.input === 'string';
-    },
-    sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
-    sdoR2SmallClaimsWitnessStatements: (data) => {
-      return typeof data.sdoStatementOfWitness === 'string'
-        && typeof data.isRestrictWitness === 'string'
-        && typeof data.isRestrictPages === 'string'
-        && typeof data.text === 'string';
-    },
-    sdoR2SmallClaimsUploadDoc: (data) => {
-      return typeof data.sdoUploadOfDocumentsTxt === 'string';
-    },
-    sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
-    sdoR2DrhUseOfWelshLanguage: (data) => {
-      return typeof data.description === 'string';
-    },
-    sdoR2SmallClaimsHearing: (data) => {
-      return typeof data.trialOnOptions === 'string'
-        && typeof data.trialOnOptions === 'string'
-        && typeof data.hearingCourtLocationList === 'object'
-        && typeof data.methodOfHearing === 'string'
-        && typeof data.physicalBundleOptions === 'string'
-        && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
-    },
-    sdoR2SmallClaimsImpNotes: (data) => {
-      return typeof data.text === 'string'
-        && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
-    },
-    sdoR2SmallClaimsPPI: (data) => {
-      return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
-        && typeof data.text === 'string';
-    }
+  disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
+  fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
+  fastTrackHearingTime: (d) =>
+    d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
+    && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
+    + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
+    + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
+    + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+  disposalHearingHearingTime: (d) =>
+    d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
+    && d.dateTo,
+  sdoR2SmallClaimsJudgesRecital: (data) => {
+    return typeof data.input === 'string';
+  },
+  sdoR2SmallClaimsPPIToggle: (data) => Array.isArray(data),
+  sdoR2SmallClaimsWitnessStatementsToggle: (data) => Array.isArray(data),
+  sdoR2SmallClaimsUploadDocToggle: (data) => Array.isArray(data),
+  sdoR2SmallClaimsHearingToggle: (data) => Array.isArray(data),
+  sdoR2SmallClaimsWitnessStatements: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.isRestrictWitness === 'string'
+      && typeof data.isRestrictPages === 'string'
+      && typeof data.text === 'string';
+  },
+  sdoR2SmallClaimsUploadDoc: (data) => {
+    return typeof data.sdoUploadOfDocumentsTxt === 'string';
+  },
+  sdoR2DrhUseOfWelshIncludeInOrderToggle: (data) => Array.isArray(data),
+  sdoR2DrhUseOfWelshLanguage: (data) => {
+    return typeof data.description === 'string';
+  },
+  sdoR2SmallClaimsHearing: (data) => {
+    return typeof data.trialOnOptions === 'string'
+      && typeof data.trialOnOptions === 'string'
+      && typeof data.hearingCourtLocationList === 'object'
+      && typeof data.methodOfHearing === 'string'
+      && typeof data.physicalBundleOptions === 'string'
+      && typeof data.sdoR2SmallClaimsHearingFirstOpenDateAfter.listFrom.match(/\d{4}-\d{2}-\d{2}/);
+  },
+  sdoR2SmallClaimsImpNotes: (data) => {
+    return typeof data.text === 'string'
+      && typeof data.date.match(/\d{4}-\d{2}-\d{2}/);
+  },
+  sdoR2SmallClaimsPPI: (data) => {
+    return typeof data.ppiDate.match(/\d{4}-\d{2}-\d{2}/)
+      && typeof data.text === 'string';
+  }
 };
 const eventData = {
   acknowledgeClaims: {
@@ -232,11 +231,11 @@ const newSdoR2FieldsFastTrack = {
 
 const newSdoR2FastTrackCreditHireFields ={
   sdoR2FastTrackCreditHire: (data) => {
-  return typeof data.input1 === 'string'
-    && typeof data.input5 === 'string'
-    && typeof data.input6 === 'string'
-    && typeof data.input7 === 'string'
-    && typeof data.input8 === 'string';
+    return typeof data.input1 === 'string'
+      && typeof data.input5 === 'string'
+      && typeof data.input6 === 'string'
+      && typeof data.input7 === 'string'
+      && typeof data.input8 === 'string';
   }
 };
 
@@ -788,7 +787,7 @@ module.exports = {
       'From Date should be less than To Date');
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
-   // console.log('Hearing>>>', caseData);
+    // console.log('Hearing>>>', caseData);
     if (solicitor === 'solicitorOne') {
       // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -1487,7 +1486,6 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
-
   sendMessage: async (user) => {
     console.log('Send message  case for case id ' + caseId);
     await apiRequest.setupTokens(user);
@@ -1500,9 +1498,9 @@ module.exports = {
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent('SEND_AND_REPLY', {
+    await assertSubmittedEvent('CASE_STAYED', {
       header: '# Your message has been sent',
-      body: '&nbsp;'
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
     }, true);
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1516,20 +1514,35 @@ module.exports = {
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
-    let disposalData = data.REPLY_MESSAGE();
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
-    await assertSubmittedEvent('SEND_AND_REPLY', {
+    await assertSubmittedEvent('CASE_STAYED', {
       header: '# Reply sent',
-      body: '&nbsp;'
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
     }, true);
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
 };
 
 // Functions
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
+};
+
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
@@ -1582,6 +1595,19 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.allocatedTrack = caseData.allocatedTrack;
     responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
+
+  if(eventName === "SEND_AND_REPLY") {
+    if (pageId === 'sendAndReplyOption') {
+      if (typeof caseData.lastMessage !== 'undefined') {
+        responseBody.data.lastMessageJudgeLabel = caseData.lastMessageJudgeLabel;
+        responseBody.data.lastMessage = caseData.lastMessage;
+        responseBody.data.lastMessageAllocatedTrack = caseData.lastMessageAllocatedTrack;
+      }
+
+      delete responseBody.data['messageHistory'];
+    }
+  }
+
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
@@ -1660,7 +1686,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
 
   try {
-     assert.deepEqual(responseBody.data, caseData);
+    assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
@@ -2150,9 +2176,9 @@ const addCaseId = (pageId) => {
 
 const isEvidenceUpload = (pageId) => {
   return (pageId === 'DocumentSelectionFastTrack'
-          || pageId === 'DocumentSelectionSmallClaim')
-         && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
-             || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
+      || pageId === 'DocumentSelectionSmallClaim')
+    && (eventName === 'EVIDENCE_UPLOAD_APPLICANT'
+      || eventName === 'EVIDENCE_UPLOAD_RESPONDENT');
 };
 
 const isManageContactInformation = () => {
@@ -2164,7 +2190,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-   let fixtureClone = cloneDeep(data);
+  let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }
