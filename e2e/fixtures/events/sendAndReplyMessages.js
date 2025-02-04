@@ -41,11 +41,10 @@ module.exports = {
           messageReplyMetadata: {
             recipientRoleType: 'ADMIN',
             isUrgent: 'No',
-            messageContent: "Test reply",
+            messageContent: 'Test reply',
             senderRoleType: null,
             sentTime: null,
             senderName: null,
-            recipientRoleType: null,
             subjectType: null,
             subject: null
           },
@@ -96,11 +95,10 @@ module.exports = {
           messageReplyMetadata: {
             recipientRoleType: 'ADMIN',
             isUrgent: 'No',
-            messageContent: "Test reply",
+            messageContent: 'Test reply',
             senderRoleType: null,
             sentTime: null,
             senderName: null,
-            recipientRoleType: null,
             subjectType: null,
             subject: null
           },
