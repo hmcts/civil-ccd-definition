@@ -17,12 +17,12 @@ export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.rejectAll.label),
-      super.expectLabel(radioButtons.admitAll.label),
-      super.expectLabel(radioButtons.partAdmit.label),
-      super.expectLabel(radioButtons.counterClaim.label),
+      super.expectLabel(radioButtons.rejectAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.admitAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.partAdmit.label, { index: 0 }),
+      super.expectLabel(radioButtons.counterClaim.label, { index: 0 }),
     ]);
   }
 

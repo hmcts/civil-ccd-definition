@@ -6,7 +6,7 @@ export const subheadings = {
 
 export const dropdowns = {
   courtLocations: {
-    label: 'Please select your preferred court hearing location.',
+    label: 'Please select your preferred court hearing location',
     selector: (defendantParty: Party) =>
       `#${defendantParty.oldKey}DQRequestedCourt_responseCourtLocations`,
     options: [

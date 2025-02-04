@@ -154,7 +154,7 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
   private async processWitnessesPage() {
     const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
-    await witnessesPage.selectYes();
+    await witnessesPage.selectYesWitnesses();
     await witnessesPage.addWitness();
     await witnessesPage.enterWitnessDetails(partys.CLAIMANT_WITNESS_1);
     await witnessesPage.submit();

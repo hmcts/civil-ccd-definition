@@ -64,6 +64,11 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
   async NotifyClaim1v2SS() {
     await this.retryExuiEvent(
       async () => {
+        const { defendantSolicitorToNotify } = this.notifyClaimPageFactory;
+        await defendantSolicitorToNotify.verifyContent(this.ccdCaseData);
+        await defendantSolicitorToNotify.selectBoth();
+        await defendantSolicitorToNotify.submit();
+
         const { accessGrantedWarningPage } = this.notifyClaimPageFactory;
         await accessGrantedWarningPage.verifyContent(this.ccdCaseData);
         await accessGrantedWarningPage.submit();

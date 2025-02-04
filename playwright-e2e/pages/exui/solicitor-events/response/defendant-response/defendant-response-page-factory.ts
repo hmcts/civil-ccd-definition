@@ -58,6 +58,7 @@ import MediationAvailabilityPage from '../mediation/mediation-availability/media
 import WitnessesSpecPage from '../directions-questionaire/lr-spec/witnesses-spec/witnesses-spec-page';
 import SolicitorReferencesDefendantResponsePage from './unspec/solicitor-references-defendant-response/solicitor-references-defendant-response-page';
 import SolicitorReferenceFragment from '../../../fragments/solicitor-reference/solicitor-reference-fragment';
+import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -332,7 +333,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new WitnessesSpecPage(this.page, partys.DEFENDANT_2);
   }
 
-  get languageSDefendant1Page() {
+  get witnessesDefendant1Page() {
+    return new WitnessesPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get witnessesDefendant2Page() {
+    return new WitnessesPage(this.page, partys.DEFENDANT_2);
+  }
+
+  get languageDefendant1Page() {
     return new LanguagePage(this.page, partys.DEFENDANT_1);
   }
 
