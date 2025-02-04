@@ -11,7 +11,7 @@ export default class SubmitNotifyClaimDetailsPage extends ExuiPage(BasePage) {
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheading),
       super.expectText(table.uploadDocuments, { index: 1 }),
-      super.expectText(table.partiularsOfClaim, { first: true }),
+      super.expectText(table.particularsOfClaim, { first: true }),
       super.expectText(table.medicalReports, { first: true }),
       super.expectText(table.scheduleOfLoss, { first: true }),
       super.expectText(table.certificateOfSuitability, { first: true }),
