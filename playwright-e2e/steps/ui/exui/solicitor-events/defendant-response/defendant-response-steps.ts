@@ -32,7 +32,9 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await this.processRespondentResponseTypeDefendant1Page();
         await this.processSolicitorReferencesDefendantResponseDefendant1Page();
         await this.processUploadDefendantResponseDefendant1Page();
-        const {} = this.defendantResponsePageFactory;
+        await this.processFileDirectionsQuestionaireDefendant1Page();
+        await this.processFixedRecoverableCostsPageDefendant1();
+        await this.processDisclosureOfNonElectronicDocumentsDefendant1Page();
         await this.processExpertsDefendant1Page();
         await this.processWitnessesDefendant1Page();
         await this.processLanguageDefendant1Page();
@@ -43,6 +45,64 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
         await this.processVulnerabilityQuestionsDefendant1Page();
         await this.processFurtherInformationDefendant1Page();
         await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processSubmitDefendantResponsePage();
+        await this.processConfirmDefendantResponsePage();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      defendantSolicitor1User,
+      { retries: 0 },
+    );
+  }
+
+  async FastTrackFullDefence1v2DSDefendant1() {
+    await this.retryExuiEvent(
+      async () => {
+        await this.processConfirmDetailsPage();
+        await this.processRespondentResponseTypeDefendant1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
+        await this.processUploadDefendantResponseDefendant1Page();
+        await this.processFileDirectionsQuestionaireDefendant1Page();
+        await this.processFixedRecoverableCostsPageDefendant1();
+        await this.processDisclosureOfNonElectronicDocumentsDefendant1Page();
+        await this.processExpertsDefendant1Page();
+        await this.processWitnessesDefendant1Page();
+        await this.processLanguageDefendant1Page();
+        await this.processHearingDefendant1Page();
+        await this.processDraftDirectionsDefendant1Page();
+        await this.processRequestedCourtDefendant1Page();
+        await this.processHearingSupportDefendant1Page();
+        await this.processVulnerabilityQuestionsDefendant1Page();
+        await this.processFurtherInformationDefendant1Page();
+        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processSubmitDefendantResponsePage();
+        await this.processConfirm1v2DSDefendantResponsePage();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      defendantSolicitor1User,
+      { retries: 0 },
+    );
+  }
+
+  async FastTrackFullDefence1v2DSDefendant2() {
+    await this.retryExuiEvent(
+      async () => {
+        await this.processConfirmDetailsPage();
+        await this.processRespondentResponseTypeDefendant2Page();
+        await this.processSolicitorReferencesDefendantResponseDefendant2Page();
+        await this.processUploadDefendantResponseDefendant2Page();
+        await this.processFileDirectionsQuestionaireDefendant2Page();
+        await this.processFixedRecoverableCostsPageDefendant2();
+        await this.processDisclosureOfNonElectronicDocumentsDefendant2Page();
+        await this.processExpertsDefendant2Page();
+        await this.processWitnessesDefendant2Page();
+        await this.processLanguageDefendant2Page();
+        await this.processHearingDefendant2Page();
+        await this.processDraftDirectionsDefendant2Page();
+        await this.processRequestedCourtDefendant2Page();
+        await this.processHearingSupportDefendant2Page();
+        await this.processVulnerabilityQuestionsDefendant2Page();
+        await this.processFurtherInformationDefendant2Page();
+        await this.processStatementOfTruthDefendantResponseDefendant2Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -158,6 +218,27 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     await uploadDefendantResponseDefendant1Page.submit();
   }
 
+  private async processFileDirectionsQuestionaireDefendant1Page() {
+    const { fileDirectionsQuestionaireDefendant1Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDefendant1Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDefendant1Page.enterDetails();
+    await fileDirectionsQuestionaireDefendant1Page.submit();
+  }
+
+  private async processFixedRecoverableCostsPageDefendant1() {
+    const { fixedRecoverableCostsPageDefendant1 } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsPageDefendant1.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPageDefendant1.selectYes();
+    await fixedRecoverableCostsPageDefendant1.submit();
+  }
+
+  private async processDisclosureOfNonElectronicDocumentsDefendant1Page() {
+    const { disclosureOfNonElectronicDocumentsDefendant1Page } = this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsDefendant1Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsDefendant1Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsDefendant1Page.submit();
+  }
+
   private async processExpertsDefendant1Page() {
     const { expertsDefendant1Page } = this.defendantResponsePageFactory;
     await expertsDefendant1Page.verifyContent(this.ccdCaseData);
@@ -259,6 +340,27 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     await uploadDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
     await uploadDefendantResponseDefendant2Page.uploadDefence();
     await uploadDefendantResponseDefendant2Page.submit();
+  }
+
+  private async processFileDirectionsQuestionaireDefendant2Page() {
+    const { fileDirectionsQuestionaireDefendant2Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDefendant2Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDefendant2Page.enterDetails();
+    await fileDirectionsQuestionaireDefendant2Page.submit();
+  }
+
+  private async processFixedRecoverableCostsPageDefendant2() {
+    const { fixedRecoverableCostsPageDefendant2 } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsPageDefendant2.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPageDefendant2.selectYes();
+    await fixedRecoverableCostsPageDefendant2.submit();
+  }
+
+  private async processDisclosureOfNonElectronicDocumentsDefendant2Page() {
+    const { disclosureOfNonElectronicDocumentsDefendant2Page } = this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsDefendant2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsDefendant2Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsDefendant2Page.submit();
   }
 
   private async processExpertsDefendant2Page() {
