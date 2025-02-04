@@ -126,7 +126,9 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 xui-webapp:
+  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
   nodejs:
+    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
@@ -162,6 +164,8 @@ ccd:
         DATA_STORE_DEFAULT_LOG_LEVEL: WARN
         CASE_DATA_ISSUE_LOG_LEVEL: WARN
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
+        CCD_MULTIPARTY_CASE_TYPES: "*"
+        CCD_MULTIPARTY_EVENTS: "*"
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
