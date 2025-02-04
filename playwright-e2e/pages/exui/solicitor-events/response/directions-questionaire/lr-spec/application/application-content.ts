@@ -1,4 +1,5 @@
 import { Party } from '../../../../../../../models/partys';
+import PartyType from '../../../../../../../enums/party-types.ts';
 
 export const subheadings = {
   application: 'Application',
@@ -26,8 +27,13 @@ export const inputs = {
     selector: (claimantDefendantParty: Party) =>
       `#${claimantDefendantParty.oldKey}DQFutureApplications_whatWillFutureApplicationsBeMadeFor`,
   },
+
   otherInformation: {
     label: 'Provide any other information the judge may need (Optional)',
-    selector: '#additionalInformationForJudge',
+    selector: (claimantDefendantParty: Party) => {
+      if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
+        return `#${claimantDefendantParty.oldKey}AdditionalInformationForJudge`;
+      return '#additionalInformationForJudge';
+    },
   },
 };

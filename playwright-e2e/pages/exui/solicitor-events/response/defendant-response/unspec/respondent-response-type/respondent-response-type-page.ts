@@ -5,6 +5,7 @@ import { radioButtons } from './respondent-response-type-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import { Page } from 'playwright-core';
+import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
@@ -26,7 +27,9 @@ export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(this.defendantParty));
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(this.defendantParty, partys.CLAIMANT_1),
+    );
   }
 
   async submit() {
