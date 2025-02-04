@@ -1596,7 +1596,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
 
-  if(eventName === "SEND_AND_REPLY") {
+  if(eventName === 'SEND_AND_REPLY') {
     if (pageId === 'sendAndReplyOption') {
       if (typeof caseData.lastMessage !== 'undefined') {
         responseBody.data.lastMessageJudgeLabel = caseData.lastMessageJudgeLabel;
