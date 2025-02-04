@@ -62,7 +62,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "PageLabel": "Select track",
-    "CaseEventFieldLabel": "Are you allocating the claim to a track?",
+    "CaseEventFieldLabel": "Are you allocating or re-allocating the claim to a track or are you changing the complexity band?",
     "CaseFieldID": "finalOrderAllocateToTrack",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
@@ -75,7 +75,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "finalOrderTrackAllocation",
-    "CaseEventFieldLabel": "What track are you allocating the claim to?",
+    "CaseEventFieldLabel": "What track are you allocating or re-allocating the claim to?",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
@@ -93,7 +93,7 @@
     "DisplayContext": "READONLY",
     "PageID": "IntermediateTrackComplexityBand",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "finalOrderTrackToggle=\"INTERMEDIATE_CLAIM\""
+    "PageShowCondition": "finalOrderTrackToggle=\"INTERMEDIATE_CLAIM\" AND finalOrderAllocateToTrack=\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

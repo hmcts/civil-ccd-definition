@@ -1538,10 +1538,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
     // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
     responseBody.data.allocatedTrack = caseData.allocatedTrack;
-
-    if(pageId === 'TrackAllocation' || pageId === 'FinalOrderSelect') {
-      responseBody.data.respondent1Represented = caseData.respondent1Represented;
-    }
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
@@ -1556,6 +1553,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
     delete responseBody.data['sdoR2FastTrackCreditHire'];
     delete responseBody.data['sdoDJR2TrialCreditHire'];
+    delete responseBody.data['gaEaCourtLocation'];
   }
 
   assert.equal(response.status, 200);
