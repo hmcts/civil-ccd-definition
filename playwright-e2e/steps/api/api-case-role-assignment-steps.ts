@@ -13,7 +13,7 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     super(requestsFactory, testData);
   }
 
-  async AssignDefendantCaseRoles1v1() {
+  async AssignRoleToDefendant1() {
     await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
@@ -24,33 +24,9 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
   }
 
-  async AssignDefendantCaseRoles1v2SS() {
-    await this.setupUserData(defendantSolicitor1User);
-    const { civilServiceRequests } = this.requestsFactory;
-    await civilServiceRequests.assignCaseToDefendant(
-      defendantSolicitor1User,
-      this.ccdCaseData.id,
-      CaseRole.RESPONDENT_SOLICITOR_ONE,
-    );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
-    await civilServiceRequests.assignCaseToDefendant(
-      defendantSolicitor1User,
-      this.ccdCaseData.id,
-      CaseRole.RESPONDENT_SOLICITOR_ONE,
-    );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
-  }
-
-  async AssignDefendantCaseRoles1v2DS() {
-    await this.setupUserData(defendantSolicitor1User);
+  async AssignCaseRoleToDefendant2() {
     await this.setupUserData(defendantSolicitor2User);
     const { civilServiceRequests } = this.requestsFactory;
-    await civilServiceRequests.assignCaseToDefendant(
-      defendantSolicitor1User,
-      this.ccdCaseData.id,
-      CaseRole.RESPONDENT_SOLICITOR_ONE,
-    );
-    UserAssignedCasesHelper.addAssignedCaseToUser(defendantSolicitor1User, this.ccdCaseData.id);
     await civilServiceRequests.assignCaseToDefendant(
       defendantSolicitor2User,
       this.ccdCaseData.id,

@@ -59,7 +59,6 @@ export default abstract class BaseApiSteps extends BaseSteps {
     let eventData = {};
     for (const pageId of Object.keys(pageDataMap)) {
       eventData = ObjectHelper.deepSpread(eventData, pageDataMap[pageId]);
-      if (pageId === 'Upload') console.log(pageDataMap[pageId]);
       const pageData = await ccdRequests.validatePageData(
         ccdEvent,
         user,

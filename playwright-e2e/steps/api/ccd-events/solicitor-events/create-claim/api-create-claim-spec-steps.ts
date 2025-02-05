@@ -21,7 +21,7 @@ export default class ApiCreateClaimSpecSteps extends BaseApiSteps {
     this.createClaimSpecDataBuilder = createClaimSpecDataBuilder;
   }
 
-  async Create1v1Claim() {
+  async SmallTrack1v1() {
     await this.setupUserData(claimantSolicitorUser);
     const createClaimEventData = await this.createClaimSpecDataBuilder.buildSmallTrack1v1();
     const { ccdRequests } = this.requestsFactory;

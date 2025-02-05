@@ -1,6 +1,6 @@
 import { test } from '../playwright-fixtures/index';
 
-test('Unspec Test 1v1 Example', async ({
+test('Test 1v1 example', async ({
   CreateClaimSteps,
   ApiServiceRequestsSteps,
   NotifyClaimSteps,
@@ -14,7 +14,7 @@ test('Unspec Test 1v1 Example', async ({
   await CreateClaimSteps.SmallTrack1v1();
   await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
   await NotifyClaimSteps.NotifyClaim1v1();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
+  await ApiCaseRoleAssignmentSteps.AssignRoleToDefendant1();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
   await DefendantResponseSteps.SmallTrackFullDefence1v1();
@@ -22,19 +22,19 @@ test('Unspec Test 1v1 Example', async ({
   await ClaimantResponseSteps.SmallClaimIntentToProceed1v1();
 });
 
-test('Api Unspec Test Example', async ({
-  ApiCreateClaimSteps,
+test('Api spec test example', async ({
+  ApiCreateClaimSpecSteps,
   ApiServiceRequestsSteps,
   IdamSteps,
   NotifyClaimSteps,
   ApiCaseRoleAssignmentSteps,
   NotifyClaimDetailsSteps,
 }) => {
-  await ApiCreateClaimSteps.SmallTrack1v1();
+  await ApiCreateClaimSpecSteps.SmallTrack1v1();
   await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
   await IdamSteps.ClaimantSolicitorLogin();
   await NotifyClaimSteps.NotifyClaim1v1();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
+  await ApiCaseRoleAssignmentSteps.AssignRoleToDefendant1();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
 });

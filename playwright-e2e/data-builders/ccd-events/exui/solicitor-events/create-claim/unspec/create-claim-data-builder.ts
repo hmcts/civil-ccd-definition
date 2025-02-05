@@ -3,7 +3,6 @@ import claimantDefendantPartyTypes from '../../../../../../constants/claimant-de
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import ClaimType from '../../../../../../enums/claim-type';
-import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
 @AllMethodsStep()
@@ -27,7 +26,6 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
     defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    particularsOfClaimDocument,
   }: {
     claimType?: ClaimType;
     claimTrack?: ClaimTrack;
@@ -35,7 +33,6 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     claimant2PartyType?: ClaimantDefendantPartyType;
     defendant1PartyType?: ClaimantDefendantPartyType;
     defendant2PartyType?: ClaimantDefendantPartyType;
-    particularsOfClaimDocument?: UploadDocumentValue;
   } = {}) {
     return {
       ...createClaimData.references,
