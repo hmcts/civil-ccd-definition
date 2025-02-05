@@ -442,5 +442,15 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joJudgementByAdmissionIssueDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRU"
   }
 ]
