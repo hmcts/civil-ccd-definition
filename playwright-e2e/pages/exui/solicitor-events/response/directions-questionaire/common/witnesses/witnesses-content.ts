@@ -1,6 +1,6 @@
 import { Party } from '../../../../../../../models/partys';
 
-export const subHeadings = {
+export const subheadings = {
   witnesses: 'Witnesses',
 };
 
@@ -10,12 +10,12 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQExperts_witnessesToAppear_Yes`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_Yes`,
     },
     no: {
       label: 'No',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQExperts_witnessesToAppear_No`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_witnessesToAppear_No`,
     },
   },
 };
@@ -43,7 +43,7 @@ export const inputs = {
     number: {
       label: 'Phone number (Optional)',
       selector: (claimantDefendantParty: Party, witnessParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQWitnessses_details_${witnessParty.number - 1}_phoneNumber`,
+        `#${claimantDefendantParty.oldKey}DQWitnesses_details_${witnessParty.number - 1}_phoneNumber`,
     },
     email: {
       label: 'Email address (Optional)',

@@ -3,19 +3,18 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { radioButtons, buttons, inputs, subheadings } from './litigation-friend-content';
+import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
 import AddressFragment from '../address/address-fragment';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import partys from '../../../../constants/partys';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
-  private addressFragment: AddressFragment;
   private litigationFriendParty: Party;
 
   constructor(page: Page, litigationFriendParty: Party) {
     super(page);
-    this.addressFragment = new AddressFragment(page, litigationFriendParty);
     this.litigationFriendParty = litigationFriendParty;
   }
 
@@ -61,13 +60,47 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   }
 
   async chooseNoSameAddress() {
+    const addressData = CaseDataHelper.buildAddressData(this.litigationFriendParty);
     await super.clickBySelector(radioButtons.address.no.selector(this.litigationFriendParty));
-    await this.addressFragment.enterAddressManual();
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.clickLink(links.cannotFindAddress.title);
+    await super.inputText(
+      addressData.AddressLine1,
+      inputs.address.addressLine1.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine2,
+      inputs.address.addressLine2.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.AddressLine3,
+      inputs.address.addressLine3.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostTown,
+      inputs.address.postTown.selector(this.litigationFriendParty),
+    );
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.inputText(
+        addressData.County,
+        inputs.address.county.selector(this.litigationFriendParty),
+      );
+    await super.inputText(
+      addressData.Country,
+      inputs.address.country.selector(this.litigationFriendParty),
+    );
+    await super.inputText(
+      addressData.PostCode,
+      inputs.address.postCode.selector(this.litigationFriendParty),
+    );
   }
 
   async uploadCertificateOfSuitability() {
     await super.clickBySelector(buttons.addNewCertificate.selector(this.litigationFriendParty));
-    await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label);
+    await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label, {
+      exact: true,
+      index: 0,
+    });
     await super.retryUploadFile(
       filePaths.testPdfFile,
       inputs.certificateOfSuitability.uploadDoc.selector(this.litigationFriendParty),
