@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "INITIATE_GENERAL_APPLICATION",
     "Name": "Make an application",
     "Description": "Application created, post actions triggered",

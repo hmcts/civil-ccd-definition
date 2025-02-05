@@ -1,0 +1,42 @@
+#!/bin/bash
+
+#When updating file glob patterns here, also update glob patterns in ./custom-eslint-configs/no-dup-classes.config.sh
+
+GLOB_PATTERNS=(
+    'playwright-e2e/pages/*.ts'         
+    'playwright-e2e/pages/**/*.ts'     
+    'playwright-e2e/base/*.ts'         
+    'playwright-e2e/base/**/*.ts'       
+    'playwright-e2e/steps/*.ts'        
+    'playwright-e2e/steps/**/*.ts'      
+    'playwright-e2e/requests/*.ts'      
+    'playwright-e2e/requests/**/*.ts',
+    'playwright-e2e/data-builders/*.ts'      
+    'playwright-e2e/data-builders/**/*.ts' 
+)
+
+# Get the list of changed files
+CHANGED_FILES=$(git diff --cached --name-only)
+
+# Initialize a flag to check if we need to lint
+NEED_FULL_LINT=false
+
+# Loop through the changed files
+for FILE in $CHANGED_FILES; do
+    for PATTERN in "${GLOB_PATTERNS[@]}"; do
+        # Check if the file matches the current pattern
+        if [[ $FILE == $PATTERN ]]; then
+            NEED_FULL_LINT=true
+            break 2 # Exit both loops if a match is found
+        fi
+    done
+done
+
+
+if $NEED_FULL_LINT; then
+    #Run lint staged and ensure no duplicate classes
+    yarn lint:staged:no-dup-classes
+else
+    #Only run lint staged
+    yarn lint-staged
+fi

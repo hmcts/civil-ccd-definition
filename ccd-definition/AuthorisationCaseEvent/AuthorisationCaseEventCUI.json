@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "AccessControl": [
       {
@@ -20,7 +20,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CONTACT_DETAILS_CHANGE",
     "AccessControl": [
       {
@@ -42,7 +42,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_CUI",
     "AccessControl": [
       {
@@ -64,7 +64,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CUI",
     "AccessControl": [
       {
@@ -86,7 +86,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
     "AccessControl": [
       {
@@ -108,7 +108,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
     "AccessControl": [
       {
@@ -131,7 +131,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
     "AccessControl": [
       {
@@ -154,7 +154,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RESET_PIN",
     "AccessControl": [
       {
@@ -166,7 +166,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_UNSUCCESSFUL",
     "AccessControl": [
       {
@@ -192,7 +192,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "AccessControl": [
       {
@@ -212,7 +212,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EXTEND_RESPONSE_DEADLINE",
     "AccessControl": [
       {
@@ -233,7 +233,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT1_FOR_CLAIMANT_AGREED_REPAYMENT",
     "AccessControl": [
       {
@@ -254,7 +254,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MEDIATION_SUCCESSFUL",
     "AccessControl": [
       {
@@ -280,7 +280,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "UPLOAD_TRANSLATED_DOCUMENT",
     "AccessControl": [
       {
@@ -301,7 +301,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_DOCUMENTS",
     "AccessControl": [
       {
@@ -324,7 +324,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CLAIMANT_FOR_RESPONDENT1_REJECT_REPAYMENT",
     "AccessControl": [
       {
@@ -345,7 +345,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_REJECT_REPAYMENT",
     "AccessControl": [
       {
@@ -366,30 +366,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate",
-          "caseworker-civil-admin",
-          "caseworker-civil"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_MEDIATION_AGREEMENT",
     "AccessControl": [
       {
@@ -411,7 +388,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_MEDIATION_AGREEMENT",
     "AccessControl": [
       {
@@ -433,7 +410,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT2_MEDIATION_AGREEMENT",
     "AccessControl": [
       {
@@ -455,7 +432,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_LIP_DEFENDANT_PART_ADMIT_CLAIM_SETTLED",
     "AccessControl": [
       {
@@ -476,7 +453,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_UNSUCCESSFUL_CLAIMANT_LR",
     "AccessControl": [
       {
@@ -498,7 +475,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_MEDIATION_UNSUCCESSFUL_DEFENDANT_LIP",
     "AccessControl": [
       {
@@ -520,7 +497,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CLAIMANT_TRANSLATED_DOCUMENT_UPLOADED",
     "AccessControl": [
       {
@@ -541,7 +518,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT_TRANSLATED_DOCUMENT_UPLOADED",
     "AccessControl": [
       {
@@ -562,7 +539,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_MEDIATION_SUCCESSFUL",
     "AccessControl": [
       {
@@ -583,7 +560,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_MEDIATION_SUCCESSFUL",
     "AccessControl": [
       {
@@ -604,7 +581,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION",
     "AccessControl": [
       {
@@ -626,7 +603,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_RESPONSE_CUI_SEALED",
     "AccessControl": [
       {
@@ -651,7 +628,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_SDO_ORDER_TO_LIP_DEFENDANT",
     "AccessControl": [
       {
@@ -672,7 +649,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
     "AccessControl": [
       {
@@ -695,7 +672,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ASSIGN_LIP_DEFENDANT",
     "AccessControl": [
       {
@@ -708,13 +685,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "CITIZEN_HEARING_FEE_PAYMENT",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label",
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### The",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "list",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "otherText",
     "ID": "FinalOrderAppeal",
     "ElementLabel": "Please specify",
@@ -29,7 +29,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "applicationLabel",
     "ID": "FinalOrderAppeal",
     "ElementLabel": "### application for permission to appeal is",
@@ -38,7 +38,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "applicationList",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
@@ -48,7 +48,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealGrantedDropdown",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",
@@ -59,7 +59,7 @@
   },
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "appealRefusedDropdown",
     "ID": "FinalOrderAppeal",
     "ElementLabel": " ",

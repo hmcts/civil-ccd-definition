@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_HEARING_FORM",
     "Name": "Generate hearing form",
     "Description": "Generates hearing form",

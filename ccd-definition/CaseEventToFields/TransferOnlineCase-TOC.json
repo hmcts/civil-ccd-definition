@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "transferCourtLocationList",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-court-location"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "reasonForTransfer",
     "PageFieldDisplayOrder": 2,
@@ -25,7 +25,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -36,7 +36,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 4,
@@ -47,7 +47,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 5,
@@ -58,7 +58,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 6,
@@ -69,7 +69,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "claimType",
     "PageFieldDisplayOrder": 7,
@@ -80,7 +80,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "setRequestDJDamagesFlagForWA",
     "PageFieldDisplayOrder": 8,
@@ -91,13 +91,24 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRANSFER_ONLINE_CASE",
     "CaseFieldID": "notSuitableSdoOptions",
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "READONLY",
     "PageID": "TransferOnlineCase",
     "PageDisplayOrder": 1,
+    "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "personalInjuryType",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "TransferOnlineCase",
+    "PageDisplayOrder": 10,
     "FieldShowCondition": "reasonForTransfer=\"DO NOT SHOW IN UI\"",
     "Publish": "Y"
   }

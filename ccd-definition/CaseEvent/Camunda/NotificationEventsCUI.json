@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "Name": "Email: issue claim",
     "Description": "Notify respondent 1 for claim continuing online",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CONTACT_DETAILS_CHANGE",
     "Name": "Email: Contact Details Change",
     "Description": "Notify applicant solicitor 1 for contact details change",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_DEFENDANT_RESPONSE_CUI",
     "Name": "Email: Respond to claim",
     "Description": "Notify applicant solicitor 1 for defendant response",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_LIP_DEFENDANT_RESPONSE_SUBMISSION",
     "Name": "Email: Respond to claim",
     "Description": "Notify lip defendant for defendant response",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT_CUI_FOR_DEADLINE_EXTENSION",
     "Name": "Email: Extension agreed",
     "Description": "Notify claimant for defendant response deadline extension",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIMANT_CUI_FOR_DEADLINE_EXTENSION",
     "Name": "Email: Extension agreed",
     "Description": "Notify lip defendant for defendant response deadline extension",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT1_FOR_CLAIMANT_AGREED_REPAYMENT",
     "Name": "Email: Transferred offline",
     "Description": "Notify respondent 1 for claimant agreed repayment plan",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT1_FOR_CLAIM_CONTINUING_ONLINE_SPEC",
     "Name": "Email: issue claim",
     "Description": "Notify applicant 1 for claim continuing online",
@@ -104,7 +104,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIMANT_FOR_RESPONDENT1_REJECT_REPAYMENT",
     "Name": "Email: Transferred offline",
     "Description": "Notify claimant 1 for respondent disagreed repayment plan",
@@ -117,7 +117,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_LIP_DEFENDANT_REJECT_REPAYMENT",
     "Name": "Email: Transferred offline",
     "Description": "Notify lip defendant for defendant disagreed repayment plan",
@@ -130,7 +130,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_MEDIATION_AGREEMENT",
     "Name": "Email: Mediation Pending",
     "Description": "Notify applicant for mediation agreement",
@@ -143,7 +143,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_MEDIATION_AGREEMENT",
     "Name": "Email: Mediation Pending",
     "Description": "Notify defendant for mediation agreement",
@@ -156,7 +156,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT2_MEDIATION_AGREEMENT",
     "Name": "Email: Mediation Pending",
     "Description": "Notify defendant 2 for mediation agreement",
@@ -169,7 +169,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_LIP_DEFENDANT_PART_ADMIT_CLAIM_SETTLED",
     "Name": "Email: Claim Settled",
     "Description": "Notify lip defendant for claimant agreed to settle claim",
@@ -182,7 +182,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_MEDIATION_UNSUCCESSFUL_CLAIMANT_LR",
     "Name": "Unsuccessful mediation",
     "Description": "Notify claimant LR for unsuccessful mediation",
@@ -195,7 +195,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_MEDIATION_UNSUCCESSFUL_DEFENDANT_LIP",
     "Name": "Unsuccessful mediation",
     "Description": "Notify claimant LR for unsuccessful mediation",
@@ -208,7 +208,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIMANT_TRANSLATED_DOCUMENT_UPLOADED",
     "Name": "Email: Document uploaded ",
     "Description": "Notify claimant that case worker has uploaded the translated document.",
@@ -221,7 +221,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT_TRANSLATED_DOCUMENT_UPLOADED",
     "Name": "Email: Document uploaded",
     "Description": "Notify defendant that case worker has uploaded the translated document.",
@@ -234,7 +234,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_MEDIATION_SUCCESSFUL",
     "Name": "Email: Mediation successful",
     "Description": "Notify applicant for mediation successful",
@@ -247,7 +247,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_MEDIATION_SUCCESSFUL",
     "Name": "Email: Mediation successful",
     "Description": "Notify defendant for mediation successful",
@@ -260,7 +260,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION",
     "Name": "Email: Transferred offline",
     "Description": "Notify respondent 1 for request judgement by admission",
@@ -273,7 +273,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_SDO_ORDER_TO_LIP_DEFENDANT",
     "Name": "Email:Send to Defendant.",
     "Description": "Bulk Email Send to Defendant",

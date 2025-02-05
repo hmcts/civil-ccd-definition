@@ -27,7 +27,7 @@
     "Label": "When was this amount paid?"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "howWasThisAmountPaid",
     "ID": "RespondToClaim",
     "Label": " ",
@@ -38,7 +38,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "howWasThisAmountPaidOther",
     "ID": "RespondToClaim",
     "Label": " ",

@@ -1,7 +1,14 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
+
+let defendantCourt = config.claimantSelectedCourt;
+const useHmcEaCourt = config.claimantSelectedCourtHmc;
+const useDefendantSelectedCourt = config.claimantSelectedCourt;
+
 module.exports = {
-  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC') => {
+  respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', hmcTest) => {
+    defendantCourt = hmcTest ? useHmcEaCourt : useDefendantSelectedCourt;
+
     const responseData = {
       userInput: {
         ResponseConfirmNameAddress: {
@@ -116,9 +123,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendantSelectedCourt)
+                  listElement(defendantCourt)
                 ],
-                value: listElement(config.defendantSelectedCourt)
+                value: listElement(defendantCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             },
@@ -297,9 +304,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendantSelectedCourt)
+                  listElement(defendantCourt)
                 ],
-                value: listElement(config.defendantSelectedCourt)
+                value: listElement(defendantCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             },
@@ -469,9 +476,9 @@ module.exports = {
             respondToCourtLocation: {
               responseCourtLocations: {
                 list_items: [
-                  listElement(config.defendantSelectedCourt)
+                  listElement(defendantCourt)
                 ],
-                value: listElement(config.defendantSelectedCourt)
+                value: listElement(defendantCourt)
               },
               reasonForHearingAtSpecificCourt: 'Reasons'
             },

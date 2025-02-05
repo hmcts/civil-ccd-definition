@@ -18,15 +18,14 @@ module.exports = {
   async enterLitigantFriend(party = 'applicant1', address, file) {
     I.waitForElement(this.fields(party).childApplicant.id);
     await I.runAccessibilityTest();
-    await within(this.fields(party).childApplicant.id, () => {
-      const { yes, no } = this.fields(party).childApplicant.options;
-      I.click(address ? yes : no);
-    });
+    const { yes, no } = this.fields(party).childApplicant.options;
+    I.click(address ? yes : no);
 
     if(address) {
       await litigationFriend.enterLitigantFriendWithDifferentAddressToLitigant(party, address, file);
     }
 
+    await I.wait(10);
     await I.clickContinue();
   }
 };

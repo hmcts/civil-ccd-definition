@@ -14,11 +14,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'MONTHLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes'
             },
@@ -31,11 +33,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'EVERY_TWO_WEEKS',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'No'
             },
@@ -53,8 +57,10 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1),
+              joPaymentPlan:{
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
               joIsRegisteredWithRTL: 'Yes'
             },
           };
@@ -66,8 +72,10 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1),
+              joPaymentPlan:{
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
               joIsRegisteredWithRTL: 'No'
             },
           };
@@ -84,7 +92,9 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IMMEDIATELY',
+              joPaymentPlan: {
+                type: 'PAY_IMMEDIATELY'
+              },
               joIsRegisteredWithRTL: 'No'
             },
           };
@@ -96,7 +106,9 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IMMEDIATELY',
+              joPaymentPlan: {
+                type: 'PAY_IMMEDIATELY'
+              },
               joIsRegisteredWithRTL: 'Yes'
             },
           };
@@ -120,11 +132,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'MONTHLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes'
             },
@@ -137,11 +151,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'EVERY_TWO_WEEKS',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'No'
             },
@@ -159,8 +175,11 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1)
+              joPaymentPlan: {
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
+
             },
           };
         } else if (whyRecorded === 'JUDGE_ORDER') {
@@ -171,8 +190,10 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1)
+              joPaymentPlan: {
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
             },
           };
         }
@@ -190,6 +211,7 @@ module.exports = {
           setAsideJudgment.userInput = {
             ...setAsideJudgment.userInput,
             SetAsideJudgment: {
+              joSetAsideApplicationDate: '2008-06-06',
               joSetAsideOrderDate: '2008-06-06',
               joSetAsideOrderType: setAsideOrderType,
               joSetAsideReason: setAsideReason
@@ -213,7 +235,9 @@ module.exports = {
         setAsideJudgment.userInput = {
           ...setAsideJudgment.userInput,
           SetAsideJudgment: {
-            joSetAsideOrderDate: '2008-06-06'
+            joSetAsideOrderDate: '2008-06-06',
+            joSetAsideReason: setAsideReason,
+            joSetAsideJudgmentErrorText: 'Set Aside Judgment error text'
           }
         };
 
@@ -246,4 +270,17 @@ module.exports = {
     };
     return referJudgeDefenceReceived;
   },
+  confirmOrderReview: () => {
+    const confirmReview = {};
+    confirmReview.userInput = {
+      ...confirmReview.userInput,
+      ObligationDate: {
+        obligationDatePresent: 'No'
+      },
+      IsFinalOrder: {
+        isFinalOrder: 'Yes'
+      }
+    };
+    return confirmReview;
+  }
 };

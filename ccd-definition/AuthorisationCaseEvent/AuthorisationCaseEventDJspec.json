@@ -1,22 +1,21 @@
 [
-
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
     "AccessControl": [
-      {
-        "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
-          "[CREATOR]"
-        ],
-        "CRUD": "CRU"
-      },
       {
         "UserRoles": [
           "caseworker-civil-admin",
           "judge-profile"
         ],
         "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "[CREATOR]"
+        ],
+        "CRUD": "CRU"
       }
     ]
   }

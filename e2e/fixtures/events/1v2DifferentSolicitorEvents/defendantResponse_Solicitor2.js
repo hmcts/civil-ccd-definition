@@ -1,4 +1,5 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 module.exports = {
   defendantResponse: (allocatedTrack = 'MULTI_CLAIM') => {
@@ -7,6 +8,7 @@ module.exports = {
         ConfirmDetails: {
           respondent2: {
             type: 'INDIVIDUAL',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             individualFirstName: 'Foo',
             individualLastName: 'Bar',
             individualTitle: 'Dr',
@@ -37,13 +39,28 @@ module.exports = {
             reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             respondent2DQFixedRecoverableCosts: {
               band: 'BAND_3',
               reasons: 'reasons',
               complexityBandingAgreed: 'Yes',
               isSubjectToFixedRecoverableCostRegime: 'Yes'
+            }
+          }
+        } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
+          FixedRecoverableCosts: {
+            respondent2DQFixedRecoverableCostsIntermediate: {
+              band: 'BAND_2',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
             }
           }
         } : {}),
@@ -60,6 +77,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
+        ...(allocatedTrack != 'SMALL_CLAIM' ? {
+          DisclosureReport: {
+            respondent2DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
+          }
+        } : {}),
         Experts: {
           respondent2DQExperts: {
             expertRequired: 'Yes',

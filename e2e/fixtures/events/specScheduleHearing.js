@@ -21,7 +21,7 @@ module.exports = {
           channel: 'IN_PERSON',
           hearingDate: date(60),
           hearingTimeHourMinute: '1015',
-          hearingDuration: 'MINUTES_90'
+          hearingDuration: 'MINUTES_55'
         },
         HearingInformation: {
           information: 'string'

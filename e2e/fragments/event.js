@@ -1,6 +1,6 @@
 const {I} = inject();
 
-const CASE_HEADER = 'ccd-case-header > h1';
+const CASE_HEADER = 'ccd-markdown >> h1';
 const CONFIRMATION_HEADER = '#confirmation-header';
 
 module.exports = {

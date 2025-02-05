@@ -74,7 +74,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "JUDGE_FINAL_ORDER",
-    "ListElement": "Judge final order",
+    "ListElement": "Order",
     "DisplayOrder": 13
   },
   {
@@ -82,6 +82,23 @@
     "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
     "ListElement": "Defence Translated Document",
     "DisplayOrder": 14
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "COURT_OFFICER_ORDER",
+    "ListElement": "Court Officer Order",
+    "DisplayOrder": 15
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
+    "ListElement": "Decision made on applications",
+    "DisplayOrder": 16
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SEND_APP_TO_OTHER_PARTY",
+    "ListElement": "Send Application to other party",
+    "DisplayOrder": 17
   }
-
 ]

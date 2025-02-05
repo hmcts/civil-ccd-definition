@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -9,7 +9,7 @@
     "TabShowCondition": "paymentTypeSelection = \"*\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -17,7 +17,7 @@
     "TabFieldDisplayOrder": 2
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -26,7 +26,7 @@
     "FieldShowCondition": "defendantDetailsSpec = \"DO_NOT_SHOW_IN_UI\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -34,7 +34,7 @@
     "TabFieldDisplayOrder": 4
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -42,7 +42,7 @@
     "TabFieldDisplayOrder": 5
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -50,7 +50,7 @@
     "TabFieldDisplayOrder": 6
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,
@@ -58,7 +58,7 @@
     "TabFieldDisplayOrder": 7
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "DefaultJudgmentSpec",
     "TabLabel": "Judgment",
     "TabDisplayOrder": 9,

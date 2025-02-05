@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseHistory",
     "Label": " ",
     "FieldType": "CaseHistoryViewer",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "solicitorReferences",
     "Label": "Your File Reference",
     "FieldType": "SolicitorReferences",
@@ -16,7 +16,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "solicitorReferencesCopy",
     "Label": "Workaround for solicitorReferences label",
     "FieldType": "SolicitorReferences",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "courtLocation",
     "Label": "Court location code",
     "FieldType": "CourtLocation",
@@ -32,7 +32,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQRemoteHearing",
     "Label": "Claimant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearing",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1",
     "Label": "Claimant's details",
     "FieldType": "Party",
@@ -50,7 +50,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1LitigationFriendRequired",
     "Label": "Is the claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
@@ -58,7 +58,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1LitigationFriend",
     "Label": "Claimant litigation friend details",
     "FieldType": "LitigationFriend",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1",
     "Label": "Defendant details",
     "FieldType": "Party",
@@ -76,15 +76,16 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1Represented",
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "FieldType": "YesOrNo",
@@ -92,7 +93,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimValue",
     "Label": "Expected claim value",
     "FieldType": "ClaimValue",
@@ -100,7 +101,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimType",
     "Label": "Type of claim",
     "FieldType": "FixedRadioList",
@@ -109,7 +110,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimTypeOther",
     "Label": "Enter Claim type",
     "FieldType": "Text",
@@ -117,7 +118,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "personalInjuryType",
     "Label": "What type of personal injury is this?",
     "FieldType": "FixedRadioList",
@@ -126,7 +127,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "personalInjuryTypeOther",
     "Label": "Enter personal injury type",
     "FieldType": "Text",
@@ -134,7 +135,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "allocatedTrack",
     "Label": "Allocated track",
     "FieldType": "FixedList",
@@ -143,7 +144,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "litigantFriendSelection",
     "Label": " ",
     "FieldType": "Text",
@@ -151,7 +152,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimFee",
     "Label": "Claim fee",
     "FieldType": "Fee",
@@ -159,7 +160,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1PbaAccounts",
     "Label": "PBA Number",
     "FieldType": "DynamicList",
@@ -167,7 +168,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "noPbaAccountsLabel",
     "Label": "### You don't have a registered PBA.\n### This case will not be saved.\n## Register an existing PBA with MyHMCTS\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## Apply to get a new PBA\n\nYou can <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-fee-account-application-form-fee-account-customer-application-form\">use this form to apply for a new PBA account.</a>\n\nYou’ll need to provide details for you and your organisation, including the required credit limit for your account.\n\nOnce your account has been registered, you’ll need to start your claim again to pay the fee.\n\nRead more information on <a target=\"_blank\" href=\"https://www.gov.uk/guidance/myhmcts-online-case-management-for-legal-professionals\">registering a PBA.</a>",
     "FieldType": "Label",
@@ -175,7 +176,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1PbaAccountsIsEmpty",
     "Label": "Hide pba and show noPbaAccountLabel",
     "FieldType": "YesOrNo",
@@ -184,7 +185,7 @@
     "Comment": "workaround field to show noPbaAccountsLabel when applicantSolicitor1PbaAccounts is empty. Also hides applicantSolicitor1PbaAccounts"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "pbaAccountsInformationLabel",
     "Label": "<details><summary><u>Pay with another PBA</u></summary><div class=\"panel\">\n\n## If there’s 1 PBA listed\n\nIf you want to pay with a different PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk to ask for your PBA to be registered with your MyHMCTS account. You should include your organisation name and PBA number.\n\nIt can then take up to 3 days for your account to be updated. You’ll need to start your claim again to pay the fee.\n## If there are 2 PBAs listed\n\nYou won’t be able to add another PBA.\n\nYou can only submit this case online using one of the PBAs from the menu.\n\nIf you want to remove a PBA, you or your organisation administrator will need to email MyHMCTSsupport@justice.gov.uk. You should include the PBA number. It can then take up to 3 days for the PBA to be removed. We’ll send you confirmation.\n\n\nSelect ‘cancel’ below to discard the case.\n</div></details><br />",
     "FieldType": "Label",
@@ -192,7 +193,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimStatementOfTruthLabel",
     "Label": "The claimant(s) believes that the facts stated in the brief details of claim are true. \n\nI am duly authorised by the claimant(s) to sign this statement.\n\nThe claimant(s) understands that proceedings for contempt of court may be brought against anyone who makes, or causes to be made, a false statement in a document verified by a statement of truth without an honest belief in its truth.",
     "FieldType": "Label",
@@ -200,7 +201,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1ClaimStatementOfTruth",
     "Label": " ",
     "FieldType": "StatementOfTruth",
@@ -210,7 +211,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "issueDate",
     "Label": "Date claim issued",
     "FieldType": "Date",
@@ -220,7 +221,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "submittedDate",
     "Label": "Date claim Submitted",
     "FieldType": "DateTime",
@@ -228,7 +229,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "servedDocumentFiles",
     "Label": "Upload documents",
     "FieldType": "ServedDocumentFiles",
@@ -236,7 +237,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ResponseDeadline",
     "Label": "Defendant 2 solicitor deadline",
     "FieldType": "DateTime",
@@ -246,7 +247,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1AgreedDeadlineExtension",
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
@@ -255,7 +256,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2AgreedDeadlineExtension",
     "Label": "Enter the extension date that was agreed with the other party",
     "HintText": "This date cannot be more than 28 days from the original deadline.",
@@ -264,7 +265,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "systemGeneratedCaseDocuments",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
@@ -273,7 +274,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantResponseDocuments",
     "Label": "Defendant response Case Documents",
     "FieldType": "Collection",
@@ -282,7 +283,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseDocuments",
     "Label": "Claimant response to defence documents",
     "FieldType": "Collection",
@@ -291,7 +292,25 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "duplicateSystemGeneratedCaseDocs",
+    "Label": "Duplicate system generated documents for case file view",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "duplicateClaimantDefResponseDocs",
+    "Label": "Duplicate claimant and defendant response documents for case file view",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
@@ -301,7 +320,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2Copy",
     "Label": "Workaround for respondentDetails label",
     "FieldType": "Party",
@@ -311,7 +330,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentDetailsAcknowledgeClaim",
     "Label": "<br/>The Claimant legal representative has provided the following name and address for the Defendant.\nIf these are not correct, you should contact the Claimant's legal representative.\n\n**Claimant's email address**<br/>${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
@@ -319,7 +338,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "confirmRespondentDetailsAdvice",
     "Label": "The claimant has provided the following name and address for the defendant.\n\nIf this is not correct, you should contact the claimant's legal representative.\n\n",
     "FieldType": "Label",
@@ -327,7 +346,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentDetails",
     "Label": "**Party type:** ${respondent1Copy.partyTypeDisplayValue}\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
@@ -335,7 +354,7 @@
     "Searchable": "N"
   },
     {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantSolicitorEmail",
     "Label": "**Claimant’s email address:** ${applicantSolicitor1UserDetails.email}",
     "FieldType": "Label",
@@ -343,7 +362,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentResponseIsSame",
     "Label": "Do the defendants intend to file a single response to the claim?",
     "FieldType": "YesOrNo",
@@ -351,7 +370,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseIntentionType",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -362,7 +381,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentBothLabel",
     "Label": "<br/>**Both defendants intend to:**",
     "FieldType": "Label",
@@ -370,7 +389,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabel",
     "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
     "FieldType": "Label",
@@ -378,7 +397,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelDisclosureOfElectronicDocuments",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -386,7 +405,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelVulnerabilityQuestions",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -394,7 +413,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -402,7 +421,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelUpload",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -410,7 +429,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelUpload",
     "Label": "<br/>**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -418,7 +437,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabel2",
     "Label": "<br/>**Defendant: ${respondent1.partyName} intends to**",
     "FieldType": "Label",
@@ -427,7 +446,7 @@
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabel",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
@@ -435,7 +454,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelFileDirectionsQuestionnaire",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -443,7 +462,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabel",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -451,7 +470,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -459,7 +478,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelVulnerabilityQuestions1",
     "Label": "**${applicant1.partyName}**",
     "FieldType": "Label",
@@ -467,7 +486,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -475,7 +494,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelFileDirectionsQuestionnaire2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -483,7 +502,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelUpload1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -491,7 +510,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelUpload2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -499,7 +518,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabel2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -508,7 +527,7 @@
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2PartyNameLabel",
     "Label": "**against Claimant: ${applicant2.partyName}**",
     "FieldType": "Label",
@@ -516,7 +535,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseType",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -525,7 +544,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "multiPartyResponseTypeFlags",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -534,7 +553,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseTypeToApplicant2",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -543,7 +562,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ClaimResponseType",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -552,7 +571,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSingleResponseRequiredLabel",
     "Label": "You will be required to complete a single directions questionnaire for all defendants.",
     "FieldType": "Label",
@@ -560,7 +579,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseHandOffLabel",
     "Label": "This online service only currently supports full defences. Post your response to:\n\nCounty Court Money Claims Centre\n\nPO Box 527\n\nSalford\n\nM5 0BY\n\nDX:702634 Salford 5",
     "FieldType": "Label",
@@ -568,7 +587,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
@@ -576,7 +595,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ClaimResponseDocument",
     "Label": "Upload defence",
     "FieldType": "ResponseDocument",
@@ -584,7 +603,7 @@
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "respondentSharedClaimResponseDocument",
   "Label": "Upload defence",
   "FieldType": "ResponseDocument",
@@ -592,7 +611,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ResponseDeadline",
     "Label": "Claimant response deadline",
     "FieldType": "DateTime",
@@ -600,7 +619,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ProceedWithClaim",
     "Label": "Do you want to proceed with the claim",
     "FieldType": "YesOrNo",
@@ -608,7 +627,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DefenceResponseDocument",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
@@ -616,7 +635,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "legacyCaseReference",
     "FieldType": "Text",
     "Label": "CaseMan reference number",
@@ -624,7 +643,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "withdrawClaim",
     "Label": "Withdraw claim",
     "FieldType": "CloseClaim",
@@ -632,7 +651,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "discontinueClaim",
     "Label": "Discontinue claim",
     "FieldType": "CloseClaim",
@@ -640,15 +659,15 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "businessProcess",
     "Label": "Business process for camunda",
     "FieldType": "BusinessProcess",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -656,7 +675,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -664,15 +683,15 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQVulnerabilityQuestions",
     "Label": "Defendant 1 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
@@ -680,15 +699,15 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Defendant 2 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "respondent2DQVulnerabilityQuestions",
   "Label": "Defendant 2 Vulnerability Questions",
   "FieldType": "VulnerabilityQuestions",
@@ -696,39 +715,39 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Defendant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Defendant 1 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Defendant 2 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQExperts",
     "Label": "Defendant 1 experts",
     "FieldType": "Experts",
@@ -736,7 +755,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQExperts",
     "Label": "Defendant 2 experts",
     "FieldType": "Experts",
@@ -744,7 +763,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQWitnesses",
     "Label": "Defendant 1 witnesses",
     "FieldType": "Witnesses",
@@ -752,7 +771,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQWitnesses",
     "Label": "Defendant 2 witnesses",
     "FieldType": "Witnesses",
@@ -760,7 +779,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQHearing",
     "Label": "Defendant 1 Hearing",
     "FieldType": "Hearing",
@@ -768,7 +787,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQHearing",
     "Label": "Defendant 2 Hearing",
     "FieldType": "Hearing",
@@ -776,7 +795,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -784,7 +803,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -792,7 +811,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -802,7 +821,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -812,7 +831,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
@@ -820,7 +839,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQRemoteHearing",
     "Label": "Defendant 1 Remote Hearing Questions",
     "FieldType": "RemoteHearing",
@@ -828,7 +847,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQRemoteHearing",
     "Label": "Defendant 2 Remote Hearing Questions",
     "FieldType": "RemoteHearing",
@@ -836,7 +855,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQRequestedCourt",
     "Label": "Court location code",
     "FieldType": "RequestedCourt",
@@ -844,7 +863,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQHearingSupport",
     "Label": "Defendant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -852,7 +871,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQHearingSupport",
     "Label": "Defendant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -860,7 +879,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQFurtherInformation",
     "Label": "Defendant 1 Further information",
     "FieldType": "FurtherInformation",
@@ -868,7 +887,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQFurtherInformation",
     "Label": "Defendant 2 Further information",
     "FieldType": "FurtherInformation",
@@ -876,7 +895,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -884,7 +903,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -892,7 +911,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -900,7 +919,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQVulnerabilityQuestions",
     "Label": "Claimant 1 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
@@ -908,31 +927,31 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Claimant 1 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 1 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Claimant 1 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQExperts",
     "Label": "Claimant 1 experts",
     "FieldType": "Experts",
@@ -940,7 +959,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQWitnesses",
     "Label": "Claimant 1 witnesses",
     "FieldType": "Witnesses",
@@ -948,7 +967,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQHearing",
     "Label": "Claimant 1 Hearing",
     "FieldType": "Hearing",
@@ -956,7 +975,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -964,7 +983,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -974,7 +993,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQHearingSupport",
     "Label": "Claimant 1 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -982,7 +1001,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQFurtherInformation",
     "Label": "Claimant 1 Further information",
     "FieldType": "FurtherInformation",
@@ -990,7 +1009,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -998,7 +1017,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1LitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
@@ -1006,7 +1025,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2LitigationFriend",
     "Label": "Defendant 2 litigation details",
     "FieldType": "LitigationFriend",
@@ -1014,7 +1033,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "genericLitigationFriend",
     "Label": "Defendant litigation details",
     "FieldType": "LitigationFriend",
@@ -1022,7 +1041,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimIssuedPaymentDetails",
     "Label": "Details of PBA payment",
     "FieldType": "PaymentDetails",
@@ -1030,7 +1049,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimDismissedDeadline",
     "Label": "Case dismissed deadline",
     "FieldType": "DateTime",
@@ -1038,7 +1057,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ResponseDate",
     "Label": "Defendant response date",
     "FieldType": "DateTime",
@@ -1046,7 +1065,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ResponseDate",
     "Label": "Defendant 2 response date",
     "FieldType": "DateTime",
@@ -1054,7 +1073,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1OrganisationPolicy",
     "Label": "Claimant's legal representative",
     "FieldType": "OrganisationPolicy",
@@ -1062,7 +1081,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1ServiceAddressRequired",
     "Label": "Postal correspondence for the Claimant’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Claimant’s legal representative will be sent.",
@@ -1071,7 +1090,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1ServiceAddress",
     "Label": "Claimant's legal representative correspondence address",
     "FieldType": "AddressUK",
@@ -1079,7 +1098,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2OrganisationPolicy",
     "Label": "Applicant 2 organisation policy",
     "FieldType": "OrganisationPolicy",
@@ -1087,7 +1106,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1OrganisationPolicy",
     "Label": "Defendant's legal representative",
     "FieldType": "OrganisationPolicy",
@@ -1095,7 +1114,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1ServiceAddressRequired",
     "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
@@ -1104,7 +1123,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1ServiceAddress",
     "Label": "Defendant's legal representative Correspondence address",
     "FieldType": "AddressUK",
@@ -1112,7 +1131,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2ServiceAddressRequired",
     "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
     "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
@@ -1121,7 +1140,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2ServiceAddress",
     "Label": "Defendant 2's legal representative Correspondence address",
     "FieldType": "AddressUK",
@@ -1129,7 +1148,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1EmailAddress",
     "Label": "Enter defendant legal representative's email address to be used for notifications",
     "FieldType": "Email",
@@ -1137,7 +1156,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
@@ -1145,7 +1164,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
@@ -1153,7 +1172,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimProceedsInCaseman",
     "Label": "Case proceeds in Caseman",
     "FieldType": "ClaimProceedsInCaseman",
@@ -1161,7 +1180,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimNotificationDate",
     "Label": "Date claim notified",
     "FieldType": "DateTime",
@@ -1169,7 +1188,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "notifyClaimLabel",
     "Label": "If you continue the defendant legal representative's organisation will be notified and will be granted access to this claim.",
     "FieldType": "Label",
@@ -1177,7 +1196,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1CheckEmail",
     "Label": "Notifications",
     "FieldType": "CorrectEmail",
@@ -1185,7 +1204,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1UserDetails",
     "Label": "Notification details",
     "FieldType": "UserDetails",
@@ -1193,7 +1212,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "detailsOfClaimLabel",
     "Label": "## Provide brief details of the claim\nBriefly describe the claim but do not include the full Particulars of Claim. You can provide the Particulars of Claim on the next page.\n\nUse this space to provide additional details such as the date of the accident if making a Personal Injury claim, the date of the alleged negligence if making a clinical negligence claim, the contract start date if making a claim for breach of contract and any other supporting details.",
     "FieldType": "Label",
@@ -1201,7 +1220,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "detailsOfClaim",
     "Label": "Description of claim",
     "FieldType": "TextArea",
@@ -1209,7 +1228,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimDetailsNotificationDate",
     "Label": "Case details notification date",
     "FieldType": "DateTime",
@@ -1217,7 +1236,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "pbaPaymentFailedLabel",
     "Label": "#### Your payment did not go through. To resubmit the same claim please try again by selecting the PBA account number",
     "FieldType": "Label",
@@ -1225,7 +1244,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "amendPartyDetailsLabel",
     "Label": "Update a legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -1233,7 +1252,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "paymentSuccessfulDate",
     "Label": "Payment successful date",
     "FieldType": "DateTime",
@@ -1241,7 +1260,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimNotificationDeadline",
     "Label": "Claim notification deadline",
     "FieldType": "DateTime",
@@ -1249,7 +1268,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimDetailsNotificationDeadline",
     "Label": "Case details notification deadline",
     "FieldType": "DateTime",
@@ -1257,7 +1276,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1TimeExtensionDate",
     "Label": "Date respondent 1 submitted time extension",
     "FieldType": "DateTime",
@@ -1265,7 +1284,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2TimeExtensionDate",
     "Label": "Date respondent 2 submitted time extension",
     "FieldType": "DateTime",
@@ -1273,7 +1292,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1AcknowledgeNotificationDate",
     "Label": "Date respondent 1 acknowledged notification",
     "FieldType": "DateTime",
@@ -1281,7 +1300,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2AcknowledgeNotificationDate",
     "Label": "Date respondent 2 acknowledged notification",
     "FieldType": "DateTime",
@@ -1289,7 +1308,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
@@ -1297,7 +1316,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "takenOfflineDate",
     "Label": "Date claim moved offline",
     "FieldType": "DateTime",
@@ -1305,7 +1324,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "takenOfflineByStaffDate",
     "Label": "Date claim moved offline by staff",
     "FieldType": "DateTime",
@@ -1313,7 +1332,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimDismissedDate",
     "Label": "Claim dismissed date",
     "FieldType": "DateTime",
@@ -1321,7 +1340,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1LitigationFriendDate",
     "Label": "Date respondent 1 added or last updated litigation friend",
     "FieldType": "DateTime",
@@ -1329,7 +1348,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1LitigationFriendCreatedDate",
     "Label": "Date respondent 1 added litigation friend",
     "FieldType": "DateTime",
@@ -1337,7 +1356,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2LitigationFriendDate",
     "Label": "Date respondent 2 added or last updated litigation friend",
     "FieldType": "DateTime",
@@ -1345,7 +1364,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2LitigationFriendCreatedDate",
     "Label": "Date respondent 2 added litigation friend",
     "FieldType": "DateTime",
@@ -1353,7 +1372,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "uploadParticularsOfClaim",
     "Label": "Do you want to upload Particulars of claim?",
     "FieldType": "YesOrNo",
@@ -1361,7 +1380,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "statementOfTruthSubmitLabel",
     "Label": "In order to verify the claim by a statement of truth please click \"submit\" on the next screen. Doing so will be taken as verifying the claim by the above statement of truth. Alternatively, you will have the opportunity, on the next screen, to change any of the answers before clicking the \"submit\" button.",
     "FieldType": "Label",
@@ -1369,7 +1388,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "uiStatementOfTruth",
     "Label": " ",
     "FieldType": "StatementOfTruth",
@@ -1378,7 +1397,7 @@
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "casePaymentHistoryViewer",
     "Label": "Custom Payment History Viewer",
     "FieldType": "CasePaymentHistoryViewer",
@@ -1386,7 +1405,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addApplicant2Label",
     "Label": "You can add another Claimant after you have issued the claim but you will need to submit a separate application.",
     "FieldType": "Label",
@@ -1394,7 +1413,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addApplicant2",
     "Label": "Do you want to add another claimant now?",
     "FieldType": "YesOrNo",
@@ -1402,7 +1421,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2",
     "Label": "Second claimant's details",
     "FieldType": "Party",
@@ -1410,7 +1429,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2LitigationFriendRequired",
     "Label": "Is the second Claimant a child i.e. under the age of 18?",
     "FieldType": "YesOrNo",
@@ -1418,7 +1437,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2LitigationFriend",
     "Label": "Second Claimant litigation friend details",
     "FieldType": "LitigationFriend",
@@ -1426,7 +1445,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addRespondent2",
     "Label": "Is there another defendant?",
     "FieldType": "YesOrNo",
@@ -1434,7 +1453,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2",
     "Label": "Second defendant's details",
     "FieldType": "Party",
@@ -1442,7 +1461,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2Represented",
     "Label": "Does the second defendant have a legal representative?",
     "HintText": "If they are not legally represented you can still continue with the claim but the Defendant will be served offline (on paper)",
@@ -1451,7 +1470,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2SameLegalRepresentative",
     "Label": "Does the second defendant have the same legal representative?",
     "FieldType": "YesOrNo",
@@ -1459,7 +1478,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2OrgRegistered",
     "Label": "Is the organisation registered with MyHMCTS?",
     "FieldType": "YesOrNo",
@@ -1467,7 +1486,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2OrganisationPolicy",
     "Label": "Defendant 2's legal representative",
     "FieldType": "OrganisationPolicy",
@@ -1475,7 +1494,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseNote",
     "Label": "Note",
     "HintText": "Add note detail, including relevant dates and people involved",
@@ -1485,7 +1504,7 @@
     "Comment": "The note field to be displayed in an event"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseNotes",
     "Label": "Note",
     "FieldType": "Collection",
@@ -1495,7 +1514,7 @@
     "Comment": "The note fields to be displayed in the tab"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2EmailAddress",
     "Label": "Enter the second defendant legal representatives email address to be used for notifications",
     "HintText": "This should be the email address that the defendant's legal representative provided. You can still issue the claim without their email address but the claim will then continue on paper (offline).",
@@ -1504,7 +1523,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2OrgLabel",
     "Label": "Enter organisation details manually. The claim will then continue offline.",
     "FieldType": "Label",
@@ -1512,7 +1531,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2OrganisationDetails",
     "Label": " ",
     "FieldType": "SolicitorOrganisationDetails",
@@ -1520,7 +1539,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2Reference",
     "Label": "Defendant's legal representative's reference",
     "FieldType": "Text",
@@ -1529,7 +1548,7 @@
     "_Max": "24"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isApplicant1",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1539,7 +1558,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isRespondent1",
     "Label": "Is respondent1?",
     "FieldType": "YesOrNo",
@@ -1549,7 +1568,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isRespondent2",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1559,7 +1578,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantSolicitorNotifyClaimOptions",
     "Label": "Which defendant legal representative do you want to notify?",
     "FieldType": "DynamicList",
@@ -1568,7 +1587,7 @@
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantSolicitorNotifyClaimDetailsOptions",
     "Label": "Which defendant legal representative do you want to notify of the claim details?",
     "FieldType": "DynamicList",
@@ -1577,7 +1596,7 @@
     "_Comments": "This field type should change to 'DynamicRadioList when EUI supports this"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimant1Name",
     "Label": "Claimant 1 Name",
     "FieldType": "Label",
@@ -1585,7 +1604,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimant2Name",
     "Label": "Claimant 2 Name",
     "FieldType": "Label",
@@ -1593,7 +1612,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ClaimResponseIntentionType",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -1602,7 +1621,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyName",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
@@ -1610,7 +1629,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseIntentionTypeApplicant2",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -1619,7 +1638,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelFurtherInformation",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1627,7 +1646,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelHearingSupport",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1635,7 +1654,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelRequestedCourt",
     "Label": "**Defendant: ${respondent2.partyName} intends to**",
     "FieldType": "Label",
@@ -1643,7 +1662,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelDraftDirections",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1651,7 +1670,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelHearing",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1659,7 +1678,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelLanguage",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1667,7 +1686,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelWitnesses",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1675,7 +1694,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelExperts",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1683,7 +1702,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelDisclosureReport",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1691,7 +1710,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelVulnerabilityQuestions",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1699,7 +1718,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1707,7 +1726,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2PartyNameLabelDisclosureOfElectronicDocuments",
     "Label": "**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -1715,7 +1734,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1723,7 +1742,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1731,7 +1750,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1739,7 +1758,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1747,7 +1766,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureReport1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1755,7 +1774,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDisclosureReport2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1763,7 +1782,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelExperts1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1771,7 +1790,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelExperts2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1779,7 +1798,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelWitnesses1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1787,7 +1806,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelWitnesses2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1795,7 +1814,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelLanguage1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1803,7 +1822,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelLanguage2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1811,7 +1830,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelHearing1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1819,7 +1838,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelHearing2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1827,7 +1846,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDraftDirections1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1835,7 +1854,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelDraftDirections2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1843,7 +1862,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelRequestedCourt1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1851,7 +1870,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelRequestedCourt2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1859,7 +1878,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelHearingSupport1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1867,7 +1886,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelHearingSupport2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1875,7 +1894,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelFurtherInformation1",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1883,7 +1902,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartyNameLabelFurtherInformation2",
     "Label": "**against Claimant: ${applicant1.partyName}**",
     "FieldType": "Label",
@@ -1891,7 +1910,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelDisclosureOfNonElectronicDocuments",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1899,7 +1918,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelDisclosureReport",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1907,7 +1926,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelExperts",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1915,7 +1934,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelWitnesses",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1923,7 +1942,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelLanguage",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1931,7 +1950,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelHearing",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1939,7 +1958,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelDraftDirections",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1947,7 +1966,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelRequestedCourt",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1955,7 +1974,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelHearingSupport",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1963,7 +1982,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartyNameLabelFurtherInformation",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -1971,23 +1990,16 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "selectLitigationFriend",
     "Label": "Who requires a litigation friend?",
     "FieldType": "DynamicList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
+
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "eligibilityQuestions",
-    "Label": "## Issue civil court proceedings\n### Who can use this service\n### Please note: You can only use this service if you are a solicitor organisation\nYou must be:\n* bringing a claim for damages\n* representing 1 claimant against up to 2 Defendants, or 2 claimants against 1 defendant \n* able to pay the full issue fee using Payment by Account (PBA) or card payment\n\nIf the defendant has legal representation, you'll need:\n* name of the defendant's firm of solicitors \n* email address the firm uses for notifications from MyHMCTS \n\n### About the Claimants\n Claimants must: \n* have an address in England or Wales \n* have a litigation friend who can provide a certificate of suitability if they are under 18 \n* not be a protected party as defined in CPR 21.1(2)(d)\n* not have an all proceedings order, civil proceedings order, or civil restraint order in force against them\n\n### About the Defendants \n Defendants must (as far as the Claimant is aware):\n* have a postal address for service in England or Wales\n* be aged 18 years or older\n* not be a protected party\n\n### About the claim\nA County Court damages claim is only suitable for the pilot if it:\n* would not ordinarily follow the Part 8 procedure\n* meets all the conditions in PD51ZB 1.6(3)\n* is conducted in English \n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentUploadWarning",
     "Label": "### Documents uploaded to the Damages Claims Portal prior to the 'notify claim details' next step (refer to PD51ZB section 4), will be visible to the defendant solicitor once the claim has been issued. \n### If you do not want to provide access to these documents prior to completing the 'notify claim details' next step, please do not upload them now.",
     "FieldType": "Label",
@@ -1995,7 +2007,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "vulnerabilityQuestionsInfoLabel",
     "Label": "Your answers to the questions above will enable the court and the judge, to consider what steps, adjustments or support can be arranged.\n\nYou are reminded that a copy of this directions questionnaire will be shared with all other parties.",
     "FieldType": "Label",
@@ -2003,7 +2015,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DetailsForClaimDetailsTab",
     "Label": "Defendant details",
     "FieldType": "Party",
@@ -2013,7 +2025,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DetailsForClaimDetailsTab",
     "Label": "Second Defendant's details",
     "FieldType": "Party",
@@ -2023,7 +2035,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "amendRespondent1SolicitorEmailLabel",
     "Label": "Update the defendant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -2031,7 +2043,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "amendRespondent2SolicitorEmailLabel",
     "Label": "Update the second defendant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -2039,7 +2051,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "amendApplicant1SolicitorEmailLabel",
     "Label": "Update the claimant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -2047,7 +2059,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "amendApplicant2SolicitorEmailLabel",
     "Label": "Update the second claimant's legal representative's email address by replacing the existing email.",
     "FieldType": "Label",
@@ -2055,7 +2067,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantsProceedIntention",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
@@ -2063,7 +2075,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseDocumentToDefendant2Flag",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
@@ -2071,7 +2083,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimant2ResponseFlag",
     "Label": "Not shown in UI",
     "FieldType": "YesOrNo",
@@ -2080,7 +2092,7 @@
   },
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQFileDirectionsQuestionnaire",
     "Label": "File directions questionnaire",
     "FieldType": "FileDirectionsQuestionnaire",
@@ -2088,7 +2100,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQVulnerabilityQuestions",
     "Label": "Claimant 2 Vulnerability Questions",
     "FieldType": "VulnerabilityQuestions",
@@ -2096,7 +2108,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseScenarioFlag",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -2105,7 +2117,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseToDefendantLabel",
     "Label": "<br/>**Claimant's response to defendant**",
     "FieldType": "Label",
@@ -2113,7 +2125,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendant1ResponseToDefendantLabel",
     "Label": "<br/>**Defendant: ${respondent1.partyName}**",
     "FieldType": "Label",
@@ -2121,7 +2133,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendant2ResponseToDefendantLabel",
     "Label": "<br/>**Defendant: ${respondent2.partyName}**",
     "FieldType": "Label",
@@ -2129,7 +2141,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ProceedWithClaimMultiParty2v1",
     "Label": "Does Claimant 1 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
@@ -2137,7 +2149,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2ProceedWithClaimMultiParty2v1",
     "Label": "Does Claimant 2 want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
@@ -2145,7 +2157,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ProceedWithClaimAgainstRespondent1MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent1.partyName}",
     "FieldType": "YesOrNo",
@@ -2153,7 +2165,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ProceedWithClaimAgainstRespondent2MultiParty1v2",
     "Label": "Do you want to proceed with the claim against ${respondent2.partyName}",
     "FieldType": "YesOrNo",
@@ -2161,7 +2173,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantDefenceResDocToDefendant2",
     "Label": "Respond to the defence",
     "FieldType": "ResponseDocument",
@@ -2169,31 +2181,31 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQDisclosureOfElectronicDocuments",
-    "Label": "Disclosure of electronic documents",
+    "Label": "Claimant 2 Disclosure of electronic documents",
     "FieldType": "DisclosureOfElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQDisclosureOfNonElectronicDocuments",
-    "Label": "Disclosure of non-electronic documents",
+    "Label": "Claimant 2 Disclosure of non-electronic documents",
     "FieldType": "DisclosureOfNonElectronicDocuments",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQDisclosureReport",
-    "Label": "Disclosure report",
+    "Label": "Claimant 2 Disclosure report",
     "FieldType": "DisclosureReport",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQExperts",
     "Label": "Claimant 2 experts",
     "FieldType": "Experts",
@@ -2201,7 +2213,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQWitnesses",
     "Label": "Claimant 2 witnesses",
     "FieldType": "Witnesses",
@@ -2209,7 +2221,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQHearing",
     "Label": "Claimant 2 Hearing",
     "FieldType": "Hearing",
@@ -2217,7 +2229,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQDraftDirectionsLabel",
     "Label": "## Upload draft directions",
     "FieldType": "Label",
@@ -2225,7 +2237,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQDraftDirections",
     "Label": "Upload file",
     "HintText": "We accept documents sized 10MB or smaller, in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png",
@@ -2235,7 +2247,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQHearingSupport",
     "Label": "Claimant 2 Hearing support requirements",
     "FieldType": "HearingSupportRequirements",
@@ -2243,7 +2255,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQFurtherInformation",
     "Label": "Claimant 2 Further information",
     "FieldType": "FurtherInformation",
@@ -2251,7 +2263,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQStatementOfTruth",
     "Label": "Statement of truth",
     "FieldType": "StatementOfTruth",
@@ -2259,7 +2271,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2ResponseDate",
     "Label": "Date applicant 1 responded to defence",
     "FieldType": "DateTime",
@@ -2267,7 +2279,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimStarted",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -2277,7 +2289,7 @@
     "_Category": "WORKAROUND"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1GeneratedResponseDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -2285,7 +2297,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2GeneratedResponseDocument",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -2293,7 +2305,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1OrganisationIDCopy",
     "Label": "Respondent 1 Organisation ID Copy",
     "FieldType": "Text",
@@ -2302,7 +2314,7 @@
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2OrganisationIDCopy",
     "Label": "Respondent 2 Organisation ID Copy",
     "FieldType": "Text",
@@ -2311,7 +2323,7 @@
     "_Comments": "A workaround to stop caa users from seeing case before claim notify"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addLegalRepDeadline",
     "Label": "Add Legal Rep Deadline",
     "FieldType": "DateTime",
@@ -2321,7 +2333,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addLegalRepDeadlineRes1",
     "Label": "Add Legal Rep 1 Deadline",
     "FieldType": "DateTime",
@@ -2329,7 +2341,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "addLegalRepDeadlineRes2",
     "Label": "Add Legal Rep 2 Deadline",
     "FieldType": "DateTime",
@@ -2337,7 +2349,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "allPartyNames",
     "Label": "All party names",
     "FieldType": "Text",
@@ -2345,7 +2357,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Unassigned Case List Solicitor References",
     "FieldType": "Text",
@@ -2353,7 +2365,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseListDisplayDefendantSolicitorReferences",
     "Label": "Case List Display Defendant Solicitor Reference",
     "FieldType": "Text",
@@ -2361,7 +2373,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "nextDeadline",
     "Label": "Next Deadline",
     "FieldType": "Date",
@@ -2371,7 +2383,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingParticularsOfClaim",
     "Label": "## Particulars of claim",
     "FieldType": "Label",
@@ -2379,7 +2391,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingClaimantDetails",
     "Label": "## Claimant details",
     "FieldType": "Label",
@@ -2387,7 +2399,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingDefendantDetails",
     "Label": "## Defendant details",
     "FieldType": "Label",
@@ -2395,7 +2407,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingClaimantDQ",
     "Label": "## Claimant directions questionnaire",
     "FieldType": "Label",
@@ -2403,7 +2415,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingDefendantDQ",
     "Label": "## Defendant directions questionnaire",
     "FieldType": "Label",
@@ -2411,7 +2423,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingSolicitorReferences",
     "Label": "## Solicitor references",
     "FieldType": "Label",
@@ -2419,7 +2431,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "headingAmountClaiming",
     "Label": "## Amount claiming",
     "FieldType": "Label",
@@ -2427,7 +2439,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "migrationId",
     "Label": "Migration Id",
     "FieldType": "Text",
@@ -2435,7 +2447,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CaseAccessCategory",
     "Label": "Case Access Category",
     "FieldType": "FixedList",
@@ -2446,7 +2458,7 @@
     "_Category":  "CIVIL"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseManagementLocation",
     "Label": " ",
     "FieldType": "CaseLocationCivil",
@@ -2454,7 +2466,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "locationName",
     "Label": " ",
     "FieldType": "Text",
@@ -2462,7 +2474,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "paymentTypePBA",
     "Label": " ",
     "FieldType": "Text",
@@ -2470,7 +2482,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "registrationTypeRespondentOne",
     "Label": "registration information respondent one",
     "FieldType": "Collection",
@@ -2479,7 +2491,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "registrationTypeRespondentTwo",
     "Label": "registration information respondent two",
     "FieldType": "Collection",
@@ -2488,7 +2500,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseNamePublic",
     "Label": "Public case name",
     "FieldType": "Text",
@@ -2496,7 +2508,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1Details",
     "Label": "**Defendant**\n\n**Name:** ${respondent1Copy.partyName} ${respondent1Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent1Copy.partyEmail}\n\n**Phone number:** ${respondent1Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent1Copy.primaryAddress.AddressLine1}<br />${respondent1Copy.primaryAddress.AddressLine2}<br />${respondent1Copy.primaryAddress.AddressLine3}<br />${respondent1Copy.primaryAddress.PostTown}<br />${respondent1Copy.primaryAddress.County}<br />${respondent1Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
@@ -2504,7 +2516,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2Details",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
@@ -2512,7 +2524,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DetailsDiffLR",
     "Label": "**Defendant**\n\n**Name:** ${respondent2Copy.partyName} ${respondent2Copy.soleTraderTradingAs}\n\n**Email address:** ${respondent2Copy.partyEmail}\n\n**Phone number:** ${respondent2Copy.partyPhone}\n\n\n\n**Address:**<br />\r\n${respondent2Copy.primaryAddress.AddressLine1}<br />${respondent2Copy.primaryAddress.AddressLine2}<br />${respondent2Copy.primaryAddress.AddressLine3}<br />${respondent2Copy.primaryAddress.PostTown}<br />${respondent2Copy.primaryAddress.County}<br />${respondent2Copy.primaryAddress.PostCode}",
     "FieldType": "Label",
@@ -2520,7 +2532,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "casePaymentWaysToPay",
     "Label": "Service Request",
     "FieldType": "WaysToPay",
@@ -2528,7 +2540,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimIssuedPBADetails",
     "Label": "Claim Issued PBA details\n",
     "FieldType": "SRPbaDetails",
@@ -2536,7 +2548,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantLitigationFriendWarning",
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
@@ -2544,7 +2556,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendant2LitigationFriendWarning",
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
@@ -2553,7 +2565,7 @@
     "Comment": "Copy field for 1v2DS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantCommonLitigationFriendWarning",
     "Label": "<div class=\"govuk-warning-text\"><span class=\"govuk-warning-text__icon\" aria-hidden=\"true\">!</span><strong class=\"govuk-warning-text__text\"><span class=\"govuk-warning-text__assistive\">Warning</span>You should only be adding a litigation friend for an individual</strong></div>",
     "FieldType": "Label",
@@ -2562,7 +2574,7 @@
     "Comment": "Copy field for 1v2SS as CCD doesn't allow the same field defined more than once for an event even if the page ID is different"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantSolicitor1AddressLabel",
     "Label": "Claimant's legal representative's correspondence address",
     "FieldType": "Label",
@@ -2570,7 +2582,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1AddressLabel",
     "Label": "Defendant's legal representative's correspondence address",
     "FieldType": "Label",
@@ -2578,7 +2590,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
@@ -2587,7 +2599,7 @@
     "Comment": "Field storing noc update details"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosNotifyClaimDetails1",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
@@ -2595,7 +2607,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosNotifyClaimDetails2",
     "Label": " ",
     "FieldType": "NotifyClaimDetailsCoS",
@@ -2603,7 +2615,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelForClaimant1_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
@@ -2611,7 +2623,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelForClaimant2_1",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
@@ -2619,7 +2631,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelForDefendant1",
     "Label": "Defendant's name <br /> ${respondent1.partyName}",
     "FieldType": "Label",
@@ -2627,7 +2639,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelForDefendant2",
     "Label": "Defendant's name <br /> ${respondent2.partyName}",
     "FieldType": "Label",
@@ -2635,7 +2647,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendant1LIPAtClaimIssued",
     "Label": "Is defendant 1 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
@@ -2643,7 +2655,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendant2LIPAtClaimIssued",
     "Label": "Is defendant 2 is litigant Party at claim issue?",
     "FieldType": "YesOrNo",
@@ -2651,7 +2663,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabel",
     "Label": "# Certificate of Service",
     "FieldType": "Label",
@@ -2659,7 +2671,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelDef1",
     "Label": "# Certificate of Service [defendant1]",
     "FieldType": "Label",
@@ -2667,7 +2679,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelDef2",
     "Label": "# Certificate of Service [defendant2]",
     "FieldType": "Label",
@@ -2675,7 +2687,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosNotifyClaimDefendant1",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
@@ -2683,7 +2695,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosNotifyClaimDefendant2",
     "Label": " ",
     "FieldType": "NotifyClaimCoS",
@@ -2691,7 +2703,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelForClaimant1_2",
     "Label": "Claimant's name <br /> ${applicant1.partyName}",
     "FieldType": "Label",
@@ -2699,7 +2711,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef1",
     "Label": "# Defendant 1 details",
     "FieldType": "Label",
@@ -2707,7 +2719,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef1CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
@@ -2715,7 +2727,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef1CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
@@ -2723,7 +2735,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef2",
     "Label": "# Defendant 2 details",
     "FieldType": "Label",
@@ -2731,7 +2743,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef2CoSNc",
     "Label": "Certificate of Service - Notify Claim",
     "FieldType": "Label",
@@ -2739,7 +2751,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "cosLabelTabDef2CoSNcd",
     "Label": "Certificate of Service - Notify Claim Details",
     "FieldType": "Label",
@@ -2747,7 +2759,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1DQFixedRecoverableCosts",
     "Label": "Claimant 1 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
@@ -2755,7 +2767,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2DQFixedRecoverableCosts",
     "Label": "Claimant 2 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
@@ -2763,7 +2775,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1DQFixedRecoverableCosts",
     "Label": "Defendant 1 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
@@ -2771,10 +2783,590 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2DQFixedRecoverableCosts",
     "Label": "Defendant 2 Fixed Recoverable Costs",
     "FieldType": "FixedRecoverableCosts",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2LRIndividuals",
+    "Label": "Individual attending for the legal representative details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hmcEaCourtLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "Searchable": "N",
+    "SecurityClassification": "Public",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "nextHearingDetails",
+    "Label": "Next hearing details",
+    "FieldType": "NextHearingDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "Y",
+    "_Definition":  "Details of the next hearing on a case",
+    "_Category":  "CIVIL",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "choosePartyHeader",
+    "Label": "### Which party's contact information do you want to change?\n This includes any other attendees linked to the party, such as:\n* litigation friends\n* experts\n* witnesses\n\n ### Which details do you want to update?",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partyChosenId",
+    "Label": "Party chosen id",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "manageContactDetailsEventUsed",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "expertsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Experts</h2>\n Please update the contact details of any individual who may attend a hearing as an expert.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "witnessesLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Witnesses</h2>\n Please update the contact details of any individual who may attend a hearing as a witness.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "updateWitnessesDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Witnesses",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "updateExpertsDetailsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Experts",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partyChosenType",
+    "Label": "Party chosen type",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1PartyNameManageContactLabel",
+    "Label": "### Claimant: ${applicant1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2PartyNameManageContactLabel",
+    "Label": "### Claimant: ${applicant2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1PartyNameManageContactLabel",
+    "Label": "### Defendant: ${respondent1.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2PartyNameManageContactLabel",
+    "Label": "### Defendant: ${respondent2.partyName}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1PartyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1PartyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1PartyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2PartyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2PartyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2PartyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant1PartyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant1PartyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant1PartyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant2PartyTypeIndividualLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant2PartyTypeCompanyLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Company name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant2PartyTypeSoleTraderLabel",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* Trading as\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1IndividualTypeLabel",
+    "Label": "### Title:\n${applicant1.individualTitle}\n\n### First name:\n${applicant1.individualFirstName}\n\n### Last name:\n${applicant1.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2IndividualTypeLabel",
+    "Label": "### Title:\n${applicant2.individualTitle}\n\n### First name:\n${applicant2.individualFirstName}\n\n### Last name:\n${applicant2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1IndividualTypeLabel",
+    "Label": "### Title:\n${respondent1.individualTitle}\n\n### First name:\n${respondent1.individualFirstName}\n\n### Last name:\n${respondent1.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2IndividualTypeLabel",
+    "Label": "### Title:\n${respondent2.individualTitle}\n\n### First name:\n${respondent2.individualFirstName}\n\n### Last name:\n${respondent2.individualLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant1.companyName}${applicant1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2OrganisationTypeLabel",
+    "Label": "### Company name:\n${applicant2.companyName}${applicant2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent1.companyName}${respondent1.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2OrganisationTypeLabel",
+    "Label": "### Company name:\n${respondent2.companyName}${respondent2.organisationName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant1.soleTraderTradingAs}\n\n### First name:\n${applicant1.soleTraderFirstName}\n\n### Last name:\n${applicant1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${applicant2.soleTraderTradingAs}\n\n### First name:\n${applicant2.soleTraderFirstName}\n\n### Last name:\n${applicant2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent1.soleTraderTradingAs}\n\n### First name:\n${respondent1.soleTraderFirstName}\n\n### Last name:\n${respondent1.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2SoleTraderTypeLabel",
+    "Label": "### Trading as:\n${respondent2.soleTraderTradingAs}\n\n### First name:\n${respondent2.soleTraderFirstName}\n\n### Last name:\n${respondent2.soleTraderLastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable for both organisation/company",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "LROrgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the legal representatives</h2>\n Please add or update the contact details of any individual who may attend a hearing.\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "orgIndividualsLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Individuals attending for the organisation</h2>\n Please add or update the contact details of any individual who may attend a hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2OrgIndividuals",
+    "Label": "Individuals attending for the organisation details",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "PartyFlagStructure",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "litigationFriendTitle",
+    "Label": "## Litigation friend",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "litigationFriendHeader",
+    "Label": "### Do you have a signed order from a judge?\n You can only update the following details if a judge has given their permission to do so.\n* First name\n* Last name",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant1LitigationFriend.firstName}\n\n### Last name:\n${applicant1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${applicant2LitigationFriend.firstName}\n\n### Last name:\n${applicant2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant1LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent1LitigationFriend.firstName}\n\n### Last name:\n${respondent1LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendant2LitigationFriendTypeLabel",
+    "Label": "### First name:\n${respondent2LitigationFriend.firstName}\n\n### Last name:\n${respondent2LitigationFriend.lastName}\n",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for Legal rep view for party because these fields are not editable",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "contactDetailsChangedLabel",
+    "Label": "### Details of this claim have been updated.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "_Comment": "Label for contact details have changed on the case details tab screen",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "contactDetailsUpdatedEvent",
+    "Label": " ",
+    "FieldType": "ContactDetailsChangedEvent",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "updateLRIndividualsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Individual attending for the legal representative details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "updateOrgIndividualsForm",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UpdatePartyDetailsForm",
+    "Label": "Individuals attending for the organisation details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant1UnavailableDatesForTab",
+    "Label": "Claimant 1 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "applicant2UnavailableDatesForTab",
+    "Label": "Claimant 2 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1UnavailableDatesForTab",
+    "Label": "Defendant 1 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2UnavailableDatesForTab",
+    "Label": "Defendant 2 unavailable dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "additionalUnavailableDatesTitle",
+    "Label": "<h2 class=\"govuk-heading-l\">Unavailable Dates</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "additionalUnavailableDatesSubText",
+    "Label": "Please add any new dates when a party, or any of their attendees, are not available for a hearing.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "additionalUnavailableDatesPartyChoiceQuestion",
+    "Label": "<h2 class=\"govuk-heading-l\">Which party's availability do you want to update?</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "additionalUnavailableDatesPartyChoiceSubText",
+    "Label": "You can find the dates that have already been marked as unavailable in the listing notes tab",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "additionalUnavailableDates",
+    "Label": "Unavailable Dates",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "UnavailableDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hidePartyChoice",
+    "Label": "Hide party choice",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partyChosen",
+    "Label": "Select party",
+    "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

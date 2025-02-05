@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "statementOfTruthSubmitLabel",
     "PageDisplayOrder": 20,
@@ -9,7 +9,7 @@
     "PageID": "StatementOfTruth"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "uiStatementOfTruth",
     "PageDisplayOrder": 20,
@@ -21,7 +21,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/statement-of-truth"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelFurtherInformation2",
     "PageLabel": "Respond to claim",
@@ -33,7 +33,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQFurtherInformation",
     "PageDisplayOrder": 19,
@@ -45,7 +45,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelFurtherInformation",
     "PageLabel": "Respond to claim",
@@ -57,7 +57,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelFurtherInformation1",
     "PageLabel": "Respond to claim",
@@ -69,7 +69,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFurtherInformation",
     "PageDisplayOrder": 19,
@@ -82,7 +82,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelFurtherInformation",
     "PageLabel": "Respond to claim",
@@ -94,7 +94,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelVulnerabilityQuestions1",
     "PageLabel": "Respond to claim",
@@ -106,7 +106,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelVulnerabilityQuestions",
     "PageLabel": "Respond to claim",
@@ -118,7 +118,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "PageDisplayOrder": 18,
@@ -130,7 +130,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelVulnerabilityQuestions2",
     "PageLabel": "Respond to claim",
@@ -142,7 +142,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQVulnerabilityQuestions",
     "PageDisplayOrder": 18,
@@ -155,7 +155,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelVulnerabilityQuestions",
     "PageLabel": "Respond to claim",
@@ -167,7 +167,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "vulnerabilityQuestionsInfoLabel",
     "PageDisplayOrder": 18,
@@ -177,7 +177,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelHearingSupport2",
     "PageLabel": "Respond to claim",
@@ -189,7 +189,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelHearingSupport",
     "PageLabel": "Respond to claim",
@@ -201,7 +201,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelHearingSupport1",
     "PageLabel": "Respond to claim",
@@ -213,7 +213,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelHearingSupport",
     "PageLabel": "Respond to claim",
@@ -225,7 +225,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelRequestedCourt",
     "PageLabel": "Respond to claim",
@@ -237,7 +237,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQRequestedCourt",
     "PageDisplayOrder": 16,
@@ -249,7 +249,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelRequestedCourt1",
     "PageLabel": "Respond to claim",
@@ -261,7 +261,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelRequestedCourt",
     "PageLabel": "Respond to claim",
@@ -273,7 +273,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQRequestedCourt",
     "PageDisplayOrder": 16,
@@ -284,7 +284,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelRequestedCourt2",
     "PageLabel": "Respond to claim",
@@ -296,7 +296,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQRemoteHearing",
     "PageDisplayOrder": 16,
@@ -308,7 +308,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQRemoteHearing",
     "PageDisplayOrder": 16,
@@ -320,7 +320,7 @@
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDraftDirections2",
     "PageLabel": "Respond to claim",
@@ -332,7 +332,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQDraftDirections",
     "PageDisplayOrder": 15,
@@ -343,7 +343,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQDraftDirectionsLabel",
     "PageDisplayOrder": 15,
@@ -354,7 +354,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelDraftDirections",
     "PageLabel": "Respond to claim",
@@ -366,7 +366,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDraftDirections1",
     "PageLabel": "Respond to claim",
@@ -378,7 +378,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirections",
     "PageDisplayOrder": 15,
@@ -389,7 +389,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDraftDirectionsLabel",
     "PageDisplayOrder": 15,
@@ -401,7 +401,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelDraftDirections",
     "PageLabel": "Respond to claim",
@@ -413,7 +413,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelHearing2",
     "PageLabel": "Respond to claim",
@@ -425,7 +425,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelHearing",
     "PageLabel": "Respond to claim",
@@ -437,7 +437,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelHearing1",
     "PageLabel": "Respond to claim",
@@ -449,7 +449,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelHearing",
     "PageLabel": "Respond to claim",
@@ -461,7 +461,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelLanguage2",
     "PageLabel": "Respond to claim",
@@ -473,7 +473,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelLanguage",
     "PageLabel": "Respond to claim",
@@ -485,7 +485,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQLanguage",
     "PageDisplayOrder": 13,
@@ -496,7 +496,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelLanguage1",
     "PageLabel": "Respond to claim",
@@ -508,7 +508,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQLanguage",
     "PageDisplayOrder": 13,
@@ -520,7 +520,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelLanguage",
     "PageLabel": "Respond to claim",
@@ -532,7 +532,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelWitnesses2",
     "PageLabel": "Respond to claim",
@@ -544,7 +544,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelWitnesses1",
     "PageLabel": "Respond to claim",
@@ -556,7 +556,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelWitnesses",
     "PageLabel": "Respond to claim",
@@ -568,7 +568,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQWitnesses",
     "PageDisplayOrder": 12,
@@ -582,7 +582,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQWitnesses",
     "PageDisplayOrder": 12,
@@ -597,7 +597,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelExperts1",
     "PageLabel": "Respond to claim",
@@ -609,7 +609,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelExperts",
     "PageLabel": "Respond to claim",
@@ -621,7 +621,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQExperts",
     "PageDisplayOrder": 11,
@@ -635,7 +635,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelExperts2",
     "PageLabel": "Respond to claim",
@@ -647,7 +647,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelWitnesses",
     "PageLabel": "Respond to claim",
@@ -659,7 +659,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",
     "PageDisplayOrder": 11,
@@ -674,7 +674,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureReport1",
     "PageLabel": "Respond to claim",
@@ -686,7 +686,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelDisclosureReport",
     "PageLabel": "Respond to claim",
@@ -698,18 +698,19 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQDisclosureReport",
     "PageDisplayOrder": 10,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
+    "CaseEventFieldLabel": "Disclosure report",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureReport2",
     "PageLabel": "Respond to claim",
@@ -721,7 +722,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelExperts",
     "PageLabel": "Respond to claim",
@@ -733,19 +734,20 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureReport",
     "PageDisplayOrder": 10,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
     "PageID": "DisclosureReport",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\" AND claimType!=\"PERSONAL_INJURY\"",
+    "CaseEventFieldLabel": "Disclosure report",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND claimType!=\"PERSONAL_INJURY\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments1",
     "PageLabel": "Respond to claim",
@@ -757,7 +759,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelDisclosureOfNonElectronicDocuments",
     "PageLabel": "Respond to claim",
@@ -769,18 +771,19 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
     "PageID": "DisclosureOfNonElectronicDocuments",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureOfNonElectronicDocuments2",
     "PageLabel": "Respond to claim",
@@ -792,7 +795,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelDisclosureReport",
     "PageLabel": "Respond to claim",
@@ -804,19 +807,20 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfNonElectronicDocuments",
     "PageDisplayOrder": 9,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of non-electronic documents",
     "PageID": "DisclosureOfNonElectronicDocuments",
     "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack !=\"SMALL_CLAIM\"",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments1",
     "PageLabel": "Respond to claim",
@@ -828,7 +832,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelDisclosureOfElectronicDocuments",
     "PageLabel": "Respond to claim",
@@ -840,18 +844,19 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "FieldShowCondition": "respondent2ClaimResponseType=\"FULL_DEFENCE\"",
     "PageID": "DisclosureOfElectronicDocuments",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelDisclosureOfElectronicDocuments2",
     "PageLabel": "Respond to claim",
@@ -863,7 +868,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelDisclosureOfNonElectronicDocuments",
     "PageLabel": "Respond to claim",
@@ -875,19 +880,20 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQDisclosureOfElectronicDocuments",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY",
+    "CaseEventFieldLabel": "Disclosure of electronic documents",
     "PageID": "DisclosureOfElectronicDocuments",
-    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack=\"MULTI_CLAIM\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"MULTI_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 6,
@@ -899,7 +905,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelFileDirectionsQuestionnaire1",
     "PageLabel": "Respond to claim",
@@ -911,7 +917,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelFileDirectionsQuestionnaire",
     "PageLabel": "Respond to claim",
@@ -923,7 +929,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQFileDirectionsQuestionnaire",
     "PageDisplayOrder": 6,
@@ -934,7 +940,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelFileDirectionsQuestionnaire2",
     "PageLabel": "Respond to claim",
@@ -946,7 +952,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQFixedRecoverableCosts",
     "PageDisplayOrder": 7,
@@ -954,12 +960,12 @@
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCosts",
-    "PageShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND multiPartyResponseTypeFlags=\"FULL_DEFENCE\"",
-    "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\"",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND (allocatedTrack=\"FAST_CLAIM\" OR allocatedTrack=\"INTERMEDIATE_CLAIM\")",
+    "FieldShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND (respondent1ClaimResponseType=\"FULL_DEFENCE\" OR respondent1ClaimResponseTypeToApplicant2=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQFixedRecoverableCosts",
     "PageDisplayOrder": 7,
@@ -967,11 +973,11 @@
     "DisplayContext": "COMPLEX",
     "CaseEventFieldLabel": "Fixed Recoverable Costs",
     "PageID": "FixedRecoverableCosts",
-    "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\"",
+    "FieldShowCondition": "allocatedTrack=\"FAST_CLAIM\" AND (respondentResponseIsSame != \"Yes\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\")",
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelDisclosureOfElectronicDocuments",
     "PageLabel": "Respond to claim",
@@ -983,7 +989,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseDocument",
     "PageDisplayOrder": 5,
@@ -995,7 +1001,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelUpload1",
     "PageLabel": "Respond to claim",
@@ -1007,7 +1013,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabelUpload",
     "PageLabel": "Respond to claim",
@@ -1019,7 +1025,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseDocument",
     "PageDisplayOrder": 5,
@@ -1030,7 +1036,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelUpload2",
     "PageLabel": "Respond to claim",
@@ -1042,7 +1048,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelFileDirectionsQuestionnaire",
     "PageLabel": "Respond to claim",
@@ -1054,7 +1060,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabelUpload",
     "PageLabel": "Respond to claim",
@@ -1066,7 +1072,7 @@
     "FieldShowCondition": "respondent1ClaimResponseType=\"FULL_DEFENCE\" AND respondent2ClaimResponseType=\"FULL_DEFENCE\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "isRespondent1",
     "PageFieldDisplayOrder": 1,
@@ -1078,7 +1084,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "solicitorReferences",
     "PageLabel": "Solicitor References",
@@ -1090,7 +1096,7 @@
     "FieldShowCondition": "isRespondent1 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentSolicitor2Reference",
     "PageLabel": "Solicitor References",
@@ -1102,7 +1108,7 @@
     "FieldShowCondition": "isRespondent1 != \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "responseHandOffLabel",
     "PageDisplayOrder": 3,
@@ -1113,7 +1119,7 @@
     "Comment": "Need to add other claimResponses to show hide condition"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant2PartyNameLabel",
     "PageDisplayOrder": 3,
@@ -1124,7 +1130,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseType",
     "PageDisplayOrder": 3,
@@ -1134,7 +1140,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabel",
     "PageDisplayOrder": 3,
@@ -1144,7 +1150,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2PartyNameLabel",
     "PageDisplayOrder": 3,
@@ -1155,7 +1161,7 @@
     "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseType",
     "PageDisplayOrder": 3,
@@ -1167,7 +1173,7 @@
     "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabel2",
     "PageDisplayOrder": 3,
@@ -1178,7 +1184,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentSingleResponseRequiredLabel",
     "PageDisplayOrder": 3,
@@ -1188,7 +1194,7 @@
     "FieldShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabel2",
     "PageDisplayOrder": 3,
@@ -1199,7 +1205,7 @@
     "FieldShowCondition": "addApplicant2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
     "PageDisplayOrder": 3,
@@ -1210,7 +1216,7 @@
     "FieldShowCondition": "addApplicant2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DetailsDiffLR",
     "PageDisplayOrder": 1,
@@ -1221,7 +1227,7 @@
     "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2Details",
     "PageDisplayOrder": 1,
@@ -1232,7 +1238,7 @@
     "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseEventFieldLabel": " ",
     "CaseFieldID": "respondent2",
@@ -1244,7 +1250,7 @@
     "FieldShowCondition": "addRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "multiPartyResponseTypeFlags",
     "PageDisplayOrder": 1,
@@ -1256,7 +1262,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentResponseIsSame",
     "PageDisplayOrder": 2,
@@ -1267,7 +1273,7 @@
     "PageShowCondition": "respondent2SameLegalRepresentative = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1PartyNameLabel",
     "PageLabel": "Respond to claim",
@@ -1279,7 +1285,7 @@
     "FieldShowCondition": "respondentResponseIsSame != \"Yes\" AND addRespondent2 = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondentBothLabel",
     "PageDisplayOrder": 3,
@@ -1290,7 +1296,7 @@
     "FieldShowCondition": "respondentResponseIsSame = \"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseEventFieldLabel": " ",
     "CaseFieldID": "respondent1",
@@ -1303,7 +1309,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "confirmRespondentDetailsAdvice",
     "PageDisplayOrder": 1,
@@ -1313,7 +1319,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1Details",
     "PageDisplayOrder": 1,
@@ -1323,7 +1329,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2SameLegalRepresentative",
     "PageDisplayOrder": 1,
@@ -1335,7 +1341,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "addRespondent2",
     "PageDisplayOrder": 1,
@@ -1347,7 +1353,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "addApplicant2",
     "PageDisplayOrder": 1,
@@ -1359,7 +1365,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "claimType",
     "PageDisplayOrder": 1,
@@ -1371,7 +1377,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -1383,7 +1389,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2Copy",
     "PageDisplayOrder": 1,
@@ -1395,7 +1401,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1Copy",
     "PageLabel": "Confirm defendant details",
@@ -1408,7 +1414,7 @@
     "RetainHiddenValue": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearing",
     "PageDisplayOrder": 14,
@@ -1423,7 +1429,7 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQHearing",
     "PageDisplayOrder": 14,
@@ -1437,7 +1443,7 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageDisplayOrder": 17,
@@ -1450,7 +1456,7 @@
     "ShowSummaryChangeOption": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent2DQHearingSupport",
     "PageDisplayOrder": 17,

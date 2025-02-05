@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_TRIAL_READY_FORM_APPLICANT",
     "Name": "Generate trial ready documents",
     "Description": "Generate trial ready documents",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_TRIAL_READY_FORM_RESPONDENT1",
     "Name": "Generate trial ready documents",
     "Description": "Generate trial ready documents",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_TRIAL_READY_FORM_RESPONDENT2",
     "Name": "Generate trial ready documents",
     "Description": "Generate trial ready documents",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED",
     "AccessControl": [
       {
@@ -19,7 +19,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_JUDGE",
     "AccessControl": [
       {
@@ -37,7 +37,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_APPLICANT",
     "AccessControl": [
       {
@@ -54,15 +54,14 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_RESPONDENT",
     "AccessControl": [
       {
@@ -70,8 +69,7 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -87,7 +85,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_FEE_UNPAID",
     "AccessControl": [
       {
@@ -106,7 +104,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_FEE_PAID",
     "AccessControl": [
       {
@@ -123,21 +121,19 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READINESS",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
           "citizen-profile"
         ],
         "CRUD": "CRU"
@@ -152,7 +148,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READY_NOTIFICATION",
     "AccessControl": [
       {
@@ -176,7 +172,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIAL_READY_CHECK",
     "AccessControl": [
       {
@@ -198,7 +194,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MOVE_TO_DECISION_OUTCOME",
     "AccessControl": [
       {
@@ -218,13 +214,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SERVICE_REQUEST_RECEIVED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "AccessControl": [
       {
@@ -244,25 +240,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseEventID": "asyncStitchingComplete",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_BUNDLE",
     "AccessControl": [
       {
@@ -282,7 +260,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "AccessControl": [
       {
@@ -294,7 +272,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "BUNDLE_CREATION_NOTIFICATION",
     "AccessControl": [
       {
@@ -306,7 +284,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "EVIDENCE_UPLOAD_CHECK",
     "AccessControl": [
       {
@@ -318,7 +296,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DocumentUpdated",
     "AccessControl": [
       {
@@ -330,7 +308,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "AccessControl": [
       {
@@ -343,7 +321,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "AccessControl": [
       {
@@ -356,7 +334,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
     "AccessControl": [
       {
@@ -369,7 +347,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
     "AccessControl": [
       {
@@ -382,7 +360,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
     "AccessControl": [
       {
@@ -395,7 +373,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
     "AccessControl": [
       {
@@ -408,7 +386,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_FOR_OTHER_TRIAL_READY",
     "AccessControl": [
       {
@@ -421,7 +399,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_OTHER_TRIAL_READY",
     "AccessControl": [
       {
@@ -434,7 +412,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_OTHER_TRIAL_READY",
     "AccessControl": [
       {
@@ -447,7 +425,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_CLAIMANT_HEARING",
     "AccessControl": [
       {
@@ -460,7 +438,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT1_HEARING",
     "AccessControl": [
       {
@@ -473,7 +451,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_DEFENDANT2_HEARING",
     "AccessControl": [
       {
@@ -486,7 +464,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_GENERATE_ORDER",
     "AccessControl": [
       {
@@ -499,7 +477,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_GENERATE_ORDER",
     "AccessControl": [
       {
@@ -512,7 +490,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_GENERATE_ORDER",
     "AccessControl": [
       {
@@ -525,7 +503,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR_FOR_HEARING_FEE_AFTER_NOC",
     "AccessControl": [
       {
@@ -538,7 +516,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "AccessControl": [
       {
@@ -551,7 +529,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "AccessControl": [
       {
@@ -564,7 +542,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_BUNDLE_CREATED",
     "AccessControl": [
       {
@@ -577,7 +555,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "AccessControl": [
       {

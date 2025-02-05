@@ -38,7 +38,7 @@
     "FieldType": "DateTime",
     "ElementLabel": "Date Business process Ready",
     "SecurityClassification": "Public",
-    "Searchable": "N",
+    "Searchable": "Y",
     "FieldShowCondition": "camundaEvent = \"DO_NOT_SHOW\""
   }
 ]

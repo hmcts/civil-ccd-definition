@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseParticipants",
     "UserRoles": [
       "judge-profile"
@@ -8,7 +8,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderSelectionLabel",
     "UserRoles": [
       "judge-profile"
@@ -16,7 +16,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderSelection",
     "UserRoles": [
       "judge-profile"
@@ -24,7 +24,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderMadeLabel",
     "UserRoles": [
       "judge-profile"
@@ -32,7 +32,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseParticipantsFreeForm",
     "UserRoles": [
       "judge-profile"
@@ -40,7 +40,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderMadeSelectionLabel",
     "UserRoles": [
       "judge-profile"
@@ -48,7 +48,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormRecitalAndOrderLabel",
     "UserRoles": [
       "judge-profile"
@@ -56,7 +56,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderMadeSelection",
     "UserRoles": [
       "judge-profile"
@@ -64,7 +64,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderDateHeardComplex",
     "UserRoles": [
       "judge-profile"
@@ -72,7 +72,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormRecordedTextAreaLabel",
     "UserRoles": [
       "judge-profile"
@@ -80,7 +80,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseParticipantsAssistedOrder",
     "UserRoles": [
       "judge-profile"
@@ -88,7 +88,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormRecordedTextArea",
     "UserRoles": [
       "judge-profile"
@@ -96,7 +96,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderJudgeHeardLabel",
     "UserRoles": [
       "judge-profile"
@@ -104,7 +104,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormOrderedLabel",
     "UserRoles": [
       "judge-profile"
@@ -112,7 +112,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderJudgeHeardFrom",
     "UserRoles": [
       "judge-profile"
@@ -120,7 +120,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormOrderedTextArea",
     "UserRoles": [
       "judge-profile"
@@ -128,7 +128,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderJudgePapersLabel",
     "UserRoles": [
       "judge-profile"
@@ -136,7 +136,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderJudgePapers",
     "UserRoles": [
       "judge-profile"
@@ -144,7 +144,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderRepresentation",
     "UserRoles": [
       "judge-profile"
@@ -152,7 +152,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderOnCourtsListLabel",
     "UserRoles": [
       "judge-profile"
@@ -160,7 +160,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderRecitalsLabel",
     "UserRoles": [
       "judge-profile"
@@ -168,7 +168,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderOnCourtsList",
     "UserRoles": [
       "judge-profile"
@@ -176,7 +176,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderRecitals",
     "UserRoles": [
       "judge-profile"
@@ -184,7 +184,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderRecitalsRecorded",
     "UserRoles": [
       "judge-profile"
@@ -192,7 +192,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderOrdered",
     "UserRoles": [
       "judge-profile"
@@ -200,7 +200,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderOrderedThat",
     "UserRoles": [
       "judge-profile"
@@ -208,7 +208,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderOrderedThatText",
     "UserRoles": [
       "judge-profile"
@@ -216,7 +216,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderFurtherHearingLabel",
     "UserRoles": [
       "judge-profile"
@@ -224,7 +224,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderFurtherHearingToggle",
     "UserRoles": [
       "judge-profile"
@@ -232,7 +232,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "UserRoles": [
       "judge-profile"
@@ -240,7 +240,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderAppealLabel",
     "UserRoles": [
       "judge-profile"
@@ -248,7 +248,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderAppealToggle",
     "UserRoles": [
       "judge-profile"
@@ -256,7 +256,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderAppealComplex",
     "UserRoles": [
       "judge-profile"
@@ -264,7 +264,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderReasonsLabel",
     "UserRoles": [
       "judge-profile"
@@ -272,7 +272,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderGiveReasonsLabel",
     "UserRoles": [
       "judge-profile"
@@ -280,7 +280,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderGiveReasonsYesNo",
     "UserRoles": [
       "judge-profile"
@@ -288,7 +288,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderGiveReasonsComplex",
     "UserRoles": [
       "judge-profile"
@@ -296,7 +296,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderMadeOnDetailsPrimaryLabel",
     "UserRoles": [
       "judge-profile"
@@ -304,7 +304,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderMadeOnDetailsSecondaryLabel",
     "UserRoles": [
       "judge-profile"
@@ -312,7 +312,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderCost",
     "UserRoles": [
       "judge-profile"
@@ -320,7 +320,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderCostSecondaryLabel",
     "UserRoles": [
       "judge-profile"
@@ -328,7 +328,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "assistedOrderCostList",
     "UserRoles": [
       "judge-profile"
@@ -336,7 +336,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "assistedOrderCostsReserved",
     "UserRoles": [
       "judge-profile"
@@ -344,7 +344,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "assistedOrderMakeAnOrderForCosts",
     "UserRoles": [
       "judge-profile"
@@ -352,7 +352,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "assistedOrderCostsBespoke",
     "UserRoles": [
       "judge-profile"
@@ -360,7 +360,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "publicFundingCostsProtectionLabel",
     "UserRoles": [
       "judge-profile"
@@ -368,7 +368,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "publicFundingCostsProtection",
     "UserRoles": [
       "judge-profile"
@@ -376,7 +376,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "publicFundingCostsProtectionDropdown",
     "UserRoles": [
       "judge-profile"
@@ -384,7 +384,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderMadeOnDetailsList",
     "UserRoles": [
       "judge-profile"
@@ -392,7 +392,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderMadeOnDetailsOrderCourt",
     "UserRoles": [
       "judge-profile"
@@ -400,7 +400,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderMadeOnDetailsOrderWithoutNotice",
     "UserRoles": [
       "judge-profile"
@@ -408,7 +408,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderOnCourtInitiative",
     "UserRoles": [
       "judge-profile"
@@ -416,7 +416,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderWithoutNotice",
     "UserRoles": [
       "judge-profile"
@@ -424,7 +424,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormHearingNotesLabel",
     "UserRoles": [
       "judge-profile"
@@ -432,7 +432,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "freeFormHearingNotes",
     "UserRoles": [
       "judge-profile"
@@ -440,7 +440,7 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderDocument",
     "UserRoles": [
       "judge-profile"
@@ -448,12 +448,13 @@
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderDocumentCollection",
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },

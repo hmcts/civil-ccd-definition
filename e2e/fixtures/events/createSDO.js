@@ -236,7 +236,6 @@ const calculatedClaimsTrackDRH = {
     },
     sdoR2SmallClaimsHearing: (data) => {
       return typeof data.trialOnOptions === 'string'
-      && typeof data.trialOnOptions === 'string'
       && typeof data.hearingCourtLocationList === 'object'
       && typeof data.methodOfHearing === 'string'
         && typeof data.physicalBundleOptions === 'string'

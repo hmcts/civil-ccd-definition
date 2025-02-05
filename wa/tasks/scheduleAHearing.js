@@ -10,7 +10,7 @@ module.exports = {
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
     region: '2',
-    case_type_id: 'CIVIL',
+    case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     case_name: 'Test Inc',
     auto_assigned: false,
@@ -33,4 +33,4 @@ module.exports = {
     role_category: 'ADMIN',
     minor_priority: 500,
     major_priority: 5000
-  }
+  };

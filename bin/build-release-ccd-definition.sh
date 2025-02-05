@@ -2,6 +2,7 @@
 
 set -eu
 
+
 environment=${1:-prod}
 activateShutter=${2:-false}
 

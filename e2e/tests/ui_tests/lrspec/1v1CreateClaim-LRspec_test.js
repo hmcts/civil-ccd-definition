@@ -38,12 +38,13 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   addUserCaseMapping(caseId(), config.applicantSolicitorUser);
 }).retry(3);
 
-Scenario('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
+//As part of CIV-13925 this functionality is hidden
+Scenario.skip('1v1 Claimant solicitor Enter Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.enterBreathingSpace();
 }).retry(3);
 
-Scenario('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
+Scenario.skip('1v1 Claimant solicitor Lift Breathing Space', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.liftBreathingSpace();
 }).retry(3);

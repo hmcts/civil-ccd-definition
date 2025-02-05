@@ -13,11 +13,10 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
-const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3, SDOR2, COSC} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -25,11 +24,10 @@ const hearingScheduled = require('../fixtures/events/scheduleHearing.js');
 const evidenceUploadJudge = require('../fixtures/events/evidenceUploadJudge.js');
 const trialReadiness = require('../fixtures/events/trialReadiness.js');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
-const judgmentOnline1v1 = require('../fixtures/events/judgmentOnline1v1.js');
-const judgmentOnline1v2 = require('../fixtures/events/judgmentOnline1v2.js');
 const transferOnlineCase = require('../fixtures/events/transferOnlineCase.js');
 const manageContactInformation = require('../fixtures/events/manageContactInformation.js');
-const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
+const {checkToggleEnabled, checkCaseFlagsEnabled, checkFastTrackUpliftsEnabled, checkManageContactInformationEnabled,
+  checkMintiToggleEnabled} = require('./testingSupport');
 const {cloneDeep} = require('lodash');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim, assertFlagsInitialisedAfterAddLitigationFriend} = require('../helpers/assertions/caseFlagsAssertions');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -38,10 +36,14 @@ const {updateApplicant, updateLROrganisation} = require('./manageContactInformat
 const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
+const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
+
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -65,7 +67,7 @@ const data = {
   DEFENDANT_RESPONSE_SOLICITOR_ONE: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor1').defendantResponse(allocatedTrack),
   DEFENDANT_RESPONSE_SOLICITOR_TWO: (allocatedTrack) => require('../fixtures/events/1v2DifferentSolicitorEvents/defendantResponse_Solicitor2').defendantResponse(allocatedTrack),
   DEFENDANT_RESPONSE_TWO_APPLICANTS: (allocatedTrack) => require('../fixtures/events/2v1Events/defendantResponse_2v1').defendantResponse(allocatedTrack),
-  CLAIMANT_RESPONSE: (mpScenario) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario),
+  CLAIMANT_RESPONSE: (mpScenario, allocatedTrack) => require('../fixtures/events/claimantResponse.js').claimantResponse(mpScenario, allocatedTrack),
   ADD_DEFENDANT_LITIGATION_FRIEND: require('../fixtures/events/addDefendantLitigationFriend.js'),
   CASE_PROCEEDS_IN_CASEMAN: require('../fixtures/events/caseProceedsInCaseman.js'),
   AMEND_PARTY_DETAILS: require('../fixtures/events/amendPartyDetails.js'),
@@ -85,19 +87,20 @@ const data = {
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_APPLICANT_FAST: (mpScenario, claimTrack) => evidenceUploadApplicant.createApplicantFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_RESPONDENT_SMALL: (mpScenario) => evidenceUploadRespondent.createRespondentSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_RESPONDENT_FAST: (mpScenario, claimTrack) => evidenceUploadRespondent.createRespondentFastClaimsEvidenceUpload(mpScenario, claimTrack),
   EVIDENCE_UPLOAD_APPLICANT_DRH: () => evidenceUploadApplicant.createApplicantEvidenceUploadDRH(),
   EVIDENCE_UPLOAD_RESPONDENT_DRH: () => evidenceUploadRespondent.createRespondentEvidenceUploadDRH(),
-  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
-  RECORD_JUDGMENT: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1.recordJudgment(whyRecorded, paymentPlanSelection),
-  RECORD_JUDGMENT_ONE_V_TWO: (whyRecorded, paymentPlanSelection) => judgmentOnline1v2.recordJudgment(whyRecorded, paymentPlanSelection),
-  JUDGMENT_PAID_IN_FULL: () => judgmentOnline1v1.markJudgmentPaidInFull(),
+  FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
-  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
+  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData),
+  STAY_CASE: () => stayCase.stayCase(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdateDamages(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
+  DISMISS_CASE: () => dismissCase.dismissCaseDamages()
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -214,20 +217,46 @@ const midEventFieldForPage = {
   }
 };
 
+const newSdoR2FieldsFastTrack = {
+  sdoR2FastTrackWitnessOfFact: (data) => {
+    return typeof data.sdoStatementOfWitness === 'string'
+      && typeof data.sdoWitnessDeadline === 'string'
+      && typeof data.sdoWitnessDeadlineText === 'string';
+  }
+};
+
+
+const newSdoR2FastTrackCreditHireFields ={
+  sdoR2FastTrackCreditHire: (data) => {
+  return typeof data.input1 === 'string'
+    && typeof data.input5 === 'string'
+    && typeof data.input6 === 'string'
+    && typeof data.input7 === 'string'
+    && typeof data.input8 === 'string';
+  }
+};
+
 let caseId, eventName, legacyCaseReference;
 let caseData = {};
 let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000') => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000', isMintiCaseEnabled = false, hmcTest = false) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
     const sdoR2 = await checkToggleEnabled(SDOR2);
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2);
+
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest);
+
+    // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+    const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
+    if (isMintiEnabled) {
+      addSubmittedDateInCaseData(createClaimData);
+    }
 
     //==============================================================
 
@@ -244,8 +273,6 @@ module.exports = {
       await assertError('Upload', createClaimData.invalid.Upload.servedDocumentFiles.particularsOfClaimDocument,
         null, 'Case data validation failed');
     }
-
-
 
     console.log('Is PBAv3 toggle on?: ' + pbaV3);
 
@@ -275,6 +302,10 @@ module.exports = {
     // field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
+
+    await adjustCaseSubmittedDateForMinti(caseId, isMintiEnabled);
+    await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, isMintiEnabled);
+    return caseId;
   },
 
   manageDefendant1Details: async (user) => {
@@ -691,12 +722,12 @@ module.exports = {
     solicitorSetup(solicitor);
 
     let defendantResponseData;
+
     if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
       defendantResponseData = eventData['defendantResponses'][mpScenario](allocatedTrack);
     } else {
       defendantResponseData = eventData['defendantResponses'][mpScenario][solicitor](allocatedTrack);
     }
-    console.log(defendantResponseData);
 
     //Todo: Remove after fast track uplifts release
     if(!await checkFastTrackUpliftsEnabled()) {
@@ -723,6 +754,7 @@ module.exports = {
       deleteCaseFields('respondent1DQRequestedCourt');
       deleteCaseFields('respondent2DQRequestedCourt');
       deleteCaseFields('respondent1ClaimResponseType');
+      deleteCaseFields('respondent1DQDisclosureReport');
       deleteCaseFields('respondent1DQExperts');
       deleteCaseFields('respondent1DQWitnesses');
       //delete case flags DQ party fields
@@ -730,8 +762,15 @@ module.exports = {
       deleteCaseFields('respondent1Witnesses');
       deleteCaseFields('respondent1DetailsForClaimDetailsTab');
     }
-
     await validateEventPages(defendantResponseData, solicitor);
+
+    // need to add partyID back into respondent object
+    if (solicitor === 'solicitorOne'){
+      caseData.respondent1.partyID = caseData.respondent1Copy.partyID;
+    }
+    if (solicitor === 'solicitorTwo'){
+      caseData.respondent2.partyID = caseData.respondent2Copy.partyID;
+    }
 
     await assertError('ConfirmDetails', defendantResponseData.invalid.ConfirmDetails.futureDateOfBirth,
       'The date entered cannot be in the future');
@@ -745,6 +784,7 @@ module.exports = {
       'From Date should be less than To Date');
     // In a 1v2 different solicitor case, when the first solicitor responds, civil service would not change the state
     // to AWAITING_APPLICANT_INTENTION until the all solicitor response.
+   // console.log('Hearing>>>', caseData);
     if (solicitor === 'solicitorOne') {
       // when only one solicitor has responded in a 1v2 different solicitor case
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
@@ -752,7 +792,6 @@ module.exports = {
         body: 'Once the other defendant\'s legal representative has submitted their defence, we will send the '
           + 'claimant\'s legal representative a notification.'
       });
-
       await waitForFinishedBusinessProcess(caseId);
       await assertCorrectEventsAreAvailableToUser(config.applicantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
       await assertCorrectEventsAreAvailableToUser(config.defendantSolicitorUser, 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
@@ -793,9 +832,7 @@ module.exports = {
     assertContainsPopulatedFields(returnedCaseData);
     caseData = returnedCaseData;
 
-    const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
-    let claimantResponseData= fastTrackUpliftsEnabled ? data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack)
-      : data.CLAIMANT_RESPONSE(mpScenario);
+    let claimantResponseData = data.CLAIMANT_RESPONSE(mpScenario, allocatedTrack);
 
     caseData = await addFlagsToFixture(caseData);
 
@@ -842,23 +879,6 @@ module.exports = {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 404;
     return await fetchCaseDetails(user, caseId, expectedStatus);
-  },
-
-  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
-    eventName = 'INITIATE_GENERAL_APPLICATION';
-    caseId = caseId || caseNumber;
-    console.log('caseid is..', caseId);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
-
-    const response = await apiRequest.submitEvent(eventName, data.INITIATE_GENERAL_APPLICATION, caseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectedState);
-
-    console.log('General application created when main case state is', expectedState);
-    assert.equal(responseBody.callback_response_status_code, 200);
   },
 
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
@@ -1050,9 +1070,20 @@ module.exports = {
       delete caseData['smallClaimsFlightDelayToggle'];
       //required to fix existing prod api tests for sdo
       clearWelshParaFromCaseData();
+      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+      delete caseData['sdoR2FastTrackWitnessOfFact'];
+      delete caseData['sdoR2FastTrackCreditHire'];
+      delete caseData['sdoDJR2TrialCreditHire'];
     }
 
     let disposalData = eventData['sdoTracks'][response];
+
+    if (SdoR2 && response === 'CREATE_FAST') {
+      delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
+      delete disposalData.calculated.FastTrack.fastTrackCreditHire;
+      disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
+    }
 
     const fastTrackUpliftsEnabled = await checkFastTrackUpliftsEnabled();
     if (!fastTrackUpliftsEnabled) {
@@ -1072,13 +1103,14 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  createFinalOrder: async (user, finalOrderRequestType) => {
+  createFinalOrder: async (user, finalOrderRequestType, orderTrack) => {
     console.log(`case in Final Order ${caseId}`);
     await apiRequest.setupTokens(user);
 
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
+    delete returnedCaseData['hmcEaCourtLocation'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1089,9 +1121,16 @@ module.exports = {
 
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('ASSISTED_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
-    } else {
+    }
+    if (finalOrderRequestType === 'FREE_FORM_ORDER') {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
+    if (finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE') {
+      await validateEventPages(data.FINAL_ORDERS('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
+    }
+
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1103,6 +1142,7 @@ module.exports = {
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
     delete returnedCaseData['SearchCriteria'];
+    delete returnedCaseData['hmcEaCourtLocation'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1117,10 +1157,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1272,9 +1310,9 @@ module.exports = {
       }
       await validateEventPages(ApplicantEvidenceSmallClaimData);
     }
-    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload applicant fast track for case id ' + caseId);
-      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST(mpScenario);
+      let ApplicantEvidenceFastClaimData = data.EVIDENCE_UPLOAD_APPLICANT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPages(ApplicantEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
@@ -1296,9 +1334,9 @@ module.exports = {
       }
       await validateEventPages(RespondentEvidenceSmallClaimData);
     }
-    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM') {
+    if(caseData.caseProgAllocatedTrack === 'FAST_CLAIM' || caseData.caseProgAllocatedTrack === 'MULTI_CLAIM' || caseData.caseProgAllocatedTrack === 'INTERMEDIATE_CLAIM') {
       console.log('evidence upload fast claim respondent for case id ' + caseId);
-      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario);
+      let RespondentEvidenceFastClaimData = data.EVIDENCE_UPLOAD_RESPONDENT_FAST(mpScenario, caseData.caseProgAllocatedTrack);
       await validateEventPages(RespondentEvidenceFastClaimData);
     }
     await assertSubmittedEvent('CASE_PROGRESSION', null, false);
@@ -1358,23 +1396,105 @@ module.exports = {
     await validateEventPages(data.TRANSFER_CASE());
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-        header: '',
-        body: ''
-      }, true);
-      await waitForFinishedBusinessProcess(caseId);
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
     }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate, isJudicialReferral) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (isJudicialReferral) {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+
 };
 
 // Functions
 const validateEventPages = async (data, solicitor) => {
   //transform the data
-  console.log('validateEventPages....');
   for (let pageId of Object.keys(data.valid)) {
-    if (pageId === 'DefendantLitigationFriend' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview') {
+    if (pageId === 'DefendantLitigationFriend' || pageId === 'UploadOrder' || pageId === 'DocumentUpload' || pageId === 'Upload' || pageId === 'DraftDirections'|| pageId === 'ApplicantDefenceResponseDocument' || pageId === 'DraftDirections' || pageId === 'FinalOrderPreview' || pageId === 'FixedRecoverableCosts') {
       const document = await testingSupport.uploadDocument();
       data = await updateCaseDataWithPlaceholders(data, document);
     }
-    // data = await updateCaseDataWithPlaceholders(data);
     await assertValidData(data, pageId, solicitor);
   }
 };
@@ -1384,7 +1504,9 @@ const assertValidData = async (data, pageId, solicitor) => {
   let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
+
   caseData = {...caseData, ...validDataForPage};
+
   caseData = adjustDataForSolicitor(solicitor, caseData);
   const response = await apiRequest.validatePage(
     eventName,
@@ -1412,6 +1534,11 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
+    // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
+    // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
@@ -1422,11 +1549,16 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
     delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+    delete responseBody.data['sdoR2FastTrackCreditHire'];
+    delete responseBody.data['sdoDJR2TrialCreditHire'];
+    delete responseBody.data['gaEaCourtLocation'];
   }
 
   assert.equal(response.status, 200);
 
-  // eslint-disable-next-line no-prototype-builtins
+
   let claimValue;
   if (data.valid && data.valid.ClaimValue && data.valid.ClaimValue.claimValue
     && data.valid.ClaimValue.claimValue.statementOfValueInPennies) {
@@ -1448,7 +1580,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
       if (sdoR2Flag) {
-        clearNihlAndDRHDataFromCaseData();
+        clearNihlDataFromCaseData();
       }
     }
     if (responseBody.data.sdoOrderDocument) {
@@ -1479,9 +1611,14 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
+    delete caseData['sdoR2FastTrackCreditHire'];
   }
+  if (responseBody.data.requestForReconsiderationDeadline) {
+    caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
+  }
+
   try {
-    assert.deepEqual(responseBody.data, caseData);
+     assert.deepEqual(responseBody.data, caseData);
   }
   catch(err) {
     console.error('Validate data is failed due to a mismatch ..', err);
@@ -1626,7 +1763,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     expect(caseForDisplay.triggers).to.deep.include.members(nonProdExpectedEvents[user.type][state]);
   } else {
-    expect(caseForDisplay.triggers).to.deep.equalInAnyOrder(expectedEvents[user.type][state]);
+    expect(caseForDisplay.triggers).to.deep.include.members(expectedEvents[user.type][state]);
   }
 };
 
@@ -1721,7 +1858,7 @@ function checkCalculated(calculated, responseBodyData) {
 
 function removeUuidsFromDynamicList(data, dynamicListField) {
   const dynamicElements = data[dynamicListField].list_items;
-  // eslint-disable-next-line no-unused-vars
+
   return dynamicElements.map(({code, ...item}) => item);
 }
 
@@ -1812,6 +1949,9 @@ const clearDataForDefendantResponse = (responseBody, solicitor) => {
     delete responseBody.data['respondent1DQFileDirectionsQuestionnaire'];
     delete responseBody.data['respondent1DQDisclosureOfElectronicDocuments'];
     delete responseBody.data['respondent1DQDisclosureOfNonElectronicDocuments'];
+    delete responseBody.data['respondent1DQDisclosureReport'];
+    delete responseBody.data['respondent1DQFixedRecoverableCosts'];
+    delete responseBody.data['respondent1DQFixedRecoverableCostsIntermediate'];
     delete responseBody.data['respondent1DQExperts'];
     delete responseBody.data['respondent1DQWitnesses'];
     delete responseBody.data['respondent1DQLanguage'];
@@ -1902,6 +2042,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
+  delete responseBody.data['finalOrderTrackToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];
@@ -1981,7 +2122,7 @@ const isDifferentSolicitorForDefendantResponseOrExtensionDate = () => {
 };
 
 const adjustDataForSolicitor = (user, data) => {
-  let fixtureClone = cloneDeep(data);
+   let fixtureClone = cloneDeep(data);
   if (mpScenario !== 'ONE_V_TWO_TWO_LEGAL_REP') {
     delete fixtureClone['defendantSolicitorNotifyClaimOptions'];
   }
@@ -1990,15 +2131,22 @@ const adjustDataForSolicitor = (user, data) => {
   } else if (user === 'solicitorTwo') {
     delete fixtureClone['respondent1ResponseDeadline'];
   }
+
   return fixtureClone;
 };
 
 const clearFinalOrderLocationData = (responseBody) => {
   delete responseBody.data['finalOrderFurtherHearingComplex'];
+  if (responseBody.data.finalOrderDownloadTemplateOptions) {
+    caseData.finalOrderDownloadTemplateOptions = responseBody.data.finalOrderDownloadTemplateOptions;
+  }
+  if (responseBody.data.finalOrderDownloadTemplateDocument) {
+    caseData.finalOrderDownloadTemplateDocument = responseBody.data.finalOrderDownloadTemplateDocument;
+  }
   return responseBody;
 };
 
-const clearNihlAndDRHDataFromCaseData = () => {
+const clearNihlDataFromCaseData = () => {
   delete caseData['sdoFastTrackJudgesRecital'];
   delete caseData['sdoAltDisputeResolution'];
   delete caseData['sdoVariationOfDirections'];

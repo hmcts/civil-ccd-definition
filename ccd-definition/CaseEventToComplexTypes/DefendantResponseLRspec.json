@@ -933,7 +933,7 @@
     "CaseFieldID": "respondent1DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -941,7 +941,7 @@
     "CaseFieldID": "respondent1DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -1013,7 +1013,7 @@
     "CaseFieldID": "respondent2DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -1021,7 +1021,7 @@
     "CaseFieldID": "respondent2DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -1336,5 +1336,165 @@
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "ListElementCode": "emailAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationContactInfo",
+    "ListElementCode": "telephoneNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "isMediationUnavailablityExists",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.unavailableDateType",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.date",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.fromDate",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp1MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.toDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "ListElementCode": "firstName",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "ListElementCode": "lastName",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "ListElementCode": "emailAddress",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationContactInformation",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationContactInfo",
+    "ListElementCode": "telephoneNumber",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "isMediationUnavailablityExists",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.unavailableDateType",
+    "FieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.date",
+    "FieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.fromDate",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "MediationAvailability",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "resp2MediationAvailability",
+    "ListElementCode": "unavailableDatesForMediation.toDate",
+    "FieldDisplayOrder": 6,
+    "DisplayContext": "MANDATORY"
   }
 ]

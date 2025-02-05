@@ -1,5 +1,6 @@
 const { date, element, buildAddress, listElement} = require('../../api/dataHelper');
 const config = require('../../config.js');
+const uuid = require('uuid');
 module.exports = {
   defendantResponse: (allocatedTrack = 'MULTI_CLAIM') => {
     return {
@@ -13,6 +14,7 @@ module.exports = {
             individualDateOfBirth: date(-1),
             primaryAddress: buildAddress('respondent'),
             partyName: 'Sir John Doe',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             partyTypeDisplayValue: 'Individual',
             flags: {
               partyName: 'Sir John Doe',
@@ -41,7 +43,7 @@ module.exports = {
             reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             respondent1DQFixedRecoverableCosts: {
               band: 'BAND_1',
@@ -61,6 +63,21 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' ? {
+          FixedRecoverableCosts: {
+            respondent1DQFixedRecoverableCostsIntermediate: {
+              band: 'BAND_1',
+              reasons: 'reasons',
+              complexityBandingAgreed: 'Yes',
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
+            }
+          }
+        } : {}),
         DisclosureOfElectronicDocuments: {
           respondent1DQDisclosureOfElectronicDocuments: {
             reachedAgreement: 'No',
@@ -74,6 +91,14 @@ module.exports = {
             bespokeDirections: 'directions'
           }
         },
+        ...(allocatedTrack === 'INTERMEDIATE_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
+          DisclosureReport: {
+            respondent1DQDisclosureReport: {
+              disclosureFormFiledAndServed: 'Yes',
+              disclosureProposalAgreed: 'No',
+            }
+          },
+        }: {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',

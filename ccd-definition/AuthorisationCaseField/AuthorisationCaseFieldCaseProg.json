@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyNotified",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyChecked",
     "AccessControl": [
       {
@@ -24,7 +24,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextApplicant",
     "AccessControl": [
       {
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextRespondent1",
     "AccessControl": [
       {
@@ -48,7 +48,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextRespondent2",
     "AccessControl": [
       {
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyApplicant",
     "AccessControl": [
       {
@@ -76,15 +76,14 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyRespondent1",
     "AccessControl": [
       {
@@ -92,8 +91,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -108,14 +106,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyRespondent2",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -128,7 +125,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyApplicant",
     "AccessControl": [
       {
@@ -140,7 +137,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyRespondent1",
     "AccessControl": [
       {
@@ -152,7 +149,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicationNotReadyRespondent2",
     "AccessControl": [
       {
@@ -164,7 +161,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantRevisedHearingRequirements",
     "AccessControl": [
       {
@@ -183,14 +180,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1RevisedHearingRequirements",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -203,14 +199,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2RevisedHearingRequirements",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -223,7 +218,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantHearingOtherComments",
     "AccessControl": [
       {
@@ -242,14 +237,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1HearingOtherComments",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -262,14 +256,13 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2HearingOtherComments",
     "AccessControl": [
       {
         "UserRoles": [
           "RES-SOL-TWO-SPEC-PROFILE",
-          "RES-SOL-TWO-UNSPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -282,7 +275,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialReadyDocuments",
     "UserRoles": [
       "APP-SOL-UNSPEC-PROFILE",
@@ -293,13 +286,12 @@
       "RES-SOL-TWO-SPEC-PROFILE",
       "judge-profile",
       "hearing-schedule-access",
-      "caseworker-civil-admin",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "caseworker-civil-admin"
     ],
     "CRUD": "CRU"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "evidenceUploadOptions",
     "AccessControl": [
       {

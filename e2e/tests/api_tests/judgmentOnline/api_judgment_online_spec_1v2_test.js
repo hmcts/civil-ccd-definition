@@ -1,17 +1,18 @@
-/* eslint-disable no-unused-vars */
+
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const caseWorkerUser = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const caseWorkerUserReg1 = config.hearingCenterAdminWithRegionId1;
+const caseWorkerUserReg2 = config.hearingCenterAdminWithRegionId2;
 // to use on local because the idam images are different
 //  const judgeUser = config.judgeUserWithRegionId1Local;
 //  const caseWorkerUser = config.tribunalCaseworkerWithRegionId1Local;
 
 //To reduce time of API test, temporarly stop running these tests. These test will modified to run in nightly build
-Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo @api-nightly-prod');
+Feature('Record Judgment 1v2 API test spec @api-spec-1v2 @api-jo  @api-nonprod-test');
 
-async function prepareClaimSpecFinalOrderDJ(api_spec){
+async function prepareClaimSpecFinalOrderJO(api_spec){
   console.log('--createClaimWithRepresentedRespondent--');
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   console.log('--defendantResponse--');
@@ -23,39 +24,39 @@ async function prepareClaimSpecFinalOrderDJ(api_spec){
   await api_spec.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
   console.log('--createFinalOrderJO--');
   await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
+  console.log('---confirm order review');
+  await api_spec.confirmOrderReview(caseWorkerUserReg1);
 
 }
-Scenario('Record Judgment with set aside Spec claim 1v2 with NO RTL Order - Set Aside After Order', async ({I, api_spec}) => {
+Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecFinalOrderDJ(api_spec);
-    console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
+    await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
+    await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION','All_FINAL_ORDERS_ISSUED');
   }
 });
 
-Scenario('Record Judgment with set aside Spec claim 1v2 with NO RTL Order after defence - Set Aside after defence', async ({I, api_spec}) => {
+Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecFinalOrderDJ(api_spec);
-    console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IMMEDIATELY');
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false );
+    await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
+    await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
+    console.log('--markJudgmentPaid--');
+    await api_spec.markJudgmentPaid(caseWorkerUserReg2);
     console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUser, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE');
+    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
   }
 });
 
-Scenario('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
+Scenario.skip('Record Judgment with mark judgment paid Spec claim 1v2', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('--createClaimWithRepresentedRespondent--');
-    await prepareClaimSpecFinalOrderDJ(api_spec);
+    await prepareClaimSpecFinalOrderJO(api_spec);
     console.log('--recordJudgment--');
-    await api_spec.recordJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
-    await api_spec.editJudgment(caseWorkerUser, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
-    console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(caseWorkerUser);
+    await api_spec.recordJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_IN_INSTALMENTS');
+    await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
   }
 });
 

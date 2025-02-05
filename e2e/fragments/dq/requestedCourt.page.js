@@ -23,12 +23,19 @@ module.exports = {
           no: `#${party}DQRemoteHearing_remoteHearingRequested_No`
         }
       },
+      remoteHearingSpecRequested: {
+        id: `#${party}DQRemoteHearingLRspec_remoteHearingRequested`,
+        options: {
+          yes: `#${party}DQRemoteHearingLRspec_remoteHearingRequested_Yes`,
+          no: `#${party}DQRemoteHearingLRspec_remoteHearingRequested_No`
+        }
+      },
       reasonForRemoteHearing: `#${party}DQRemoteHearing_reasonForRemoteHearing`,
       reasonForHearingAtSpecificCourt: `#${party}DQRequestedCourt_reasonForHearingAtSpecificCourt`,
       courtLocation: {
         id: `#${party}DQRequestedCourt_responseCourtLocations`,
         options: {
-          defendantPreferredCourt: config.liverpoolCourt
+          defendantPreferredCourt: config.defendantSelectedCourt
         }
       }
     };
@@ -48,4 +55,15 @@ module.exports = {
     I.fillField(this.fields(party).reasonForRemoteHearing, 'Reason for remote hearing');
     await I.clickContinue();
   },
+
+  async selectSpecCourtLocation(party) {
+    I.waitForElement(this.fields(party).courtLocation.id);
+    await I.runAccessibilityTest();
+    I.selectOption(this.fields(party).courtLocation.id, this.fields(party).courtLocation.options.defendantPreferredCourt);
+    await within(this.fields(party).remoteHearingSpecRequested.id, () => {
+      I.click(this.fields(party).remoteHearingSpecRequested.options.no);
+    });
+    await I.clickContinue();
+  },
+
 };

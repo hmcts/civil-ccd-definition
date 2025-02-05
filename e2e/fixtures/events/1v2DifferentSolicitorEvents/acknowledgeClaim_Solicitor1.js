@@ -1,4 +1,5 @@
 const { date, buildAddress } = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 module.exports = {
   midEventData:{
@@ -19,6 +20,7 @@ module.exports = {
         individualDateOfBirth: date(-1),
         primaryAddress: buildAddress('respondent'),
         partyName: 'Sir John Doe',
+        partyID: `${uuid.v1()}`.substring(0, 16),
         partyTypeDisplayValue: 'Individual',flags: {
           partyName: 'Sir John Doe',
           roleOnCase: 'Defendant 1'

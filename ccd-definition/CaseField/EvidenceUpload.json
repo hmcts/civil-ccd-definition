@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseTypeFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessStatementFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessSummaryFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessReferredStatementFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -32,7 +32,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertReportFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertJointFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -48,7 +48,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialAuthorityFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -56,7 +56,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialCostsFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -64,7 +64,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialDocumentaryFlag",
     "Label":" ",
     "FieldType": "Text",
@@ -72,7 +72,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseProgAllocatedTrack",
     "Label":" ",
     "FieldType": "Text",
@@ -80,7 +80,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "evidenceUploadText",
     "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\". \n\n The other parties will be able to see the documents you have uploaded, and \n you will be able to see their documents \n # Deadlines for uploading documents \n Check the order the court sent you for the deadlines for uploading your documents. If you upload a document after the deadline, you will have to apply to the court to use it at the hearing and the judge will decide if it can be accepted \n\n You do not have to upload all your documents at once. You can return to upload them later. \n # How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files. \n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
     "FieldType": "Label",
@@ -88,7 +88,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureLabel",
     "Label": "You can select more than one type of document \n\n\n ## Disclosure",
     "FieldType": "Label",
@@ -96,7 +96,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureToggleText",
     "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information that you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
@@ -104,7 +104,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureSelectionEvidence",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadDisclosure",
@@ -113,7 +113,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessLabel",
     "Label": "## Witness evidence",
     "FieldType": "Label",
@@ -121,7 +121,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessToggleText",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
@@ -129,7 +129,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessSelectionEvidence",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitness",
@@ -138,7 +138,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertLabel",
     "Label": "## Expert evidence",
     "FieldType": "Label",
@@ -146,7 +146,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertToggleText",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
@@ -154,7 +154,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertSelectionEvidence",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpert",
@@ -163,7 +163,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialLabel",
     "Label": "## Trial Documents",
     "FieldType": "Label",
@@ -171,7 +171,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialToggleText",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
@@ -179,7 +179,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialSelectionEvidence",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrial",
@@ -188,7 +188,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessLabelSmallClaim",
     "Label": "You can select more than one type of document \n\n\n ## Witness evidence \n\n Your statement if you are giving evidence, statement written by your witness, summary of evidence",
     "FieldType": "Label",
@@ -196,7 +196,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessToggleTextSmallClaim",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
@@ -204,7 +204,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessSelectionEvidenceSmallClaim",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitnessSmallClaim",
@@ -213,7 +213,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertLabelSmallClaim",
     "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
@@ -221,7 +221,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertToggleTextSmallClaim",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
@@ -229,7 +229,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertSelectionEvidenceSmallClaim",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpertSmallClaim",
@@ -238,7 +238,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialLabelSmallClaim",
     "Label": "## Trial Documents \n\n Documents for your trial including authorities, costs and documentary evidence for trial.",
     "FieldType": "Label",
@@ -246,7 +246,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialToggleTextSmallClaim",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
@@ -254,7 +254,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialSelectionEvidenceSmallClaim",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrialSmallClaim",
@@ -263,7 +263,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentUploadLabel",
     "Label": "## You cannot withdraw a document once you have uploaded it \n ****",
     "FieldType": "Label",
@@ -271,7 +271,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentDisclosureList",
     "Label": "Disclosure list",
     "FieldType": "Collection",
@@ -280,7 +280,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentForDisclosure",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
@@ -289,7 +289,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessStatement",
     "Label": "Witness statement",
     "FieldType": "Collection",
@@ -298,7 +298,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessSummary",
     "Label": "Witness summary",
     "FieldType": "Collection",
@@ -307,7 +307,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentHearsayNotice",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
@@ -316,7 +316,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentReferredInStatement",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
@@ -325,7 +325,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentExpertReport",
     "Label": "Expert's report",
     "FieldType": "Collection",
@@ -334,7 +334,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentJointStatement",
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
@@ -343,7 +343,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentQuestions",
     "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
@@ -352,7 +352,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAnswers",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
@@ -361,7 +361,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCaseSummary",
     "Label": "Case summary",
     "FieldType": "Collection",
@@ -370,7 +370,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentSkeletonArgument",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
@@ -379,7 +379,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAuthorities",
     "Label": "Authorities",
     "FieldType": "Collection",
@@ -388,7 +388,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCosts",
     "Label": "Costs",
     "FieldType": "Collection",
@@ -397,7 +397,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentEvidenceForTrial",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
@@ -406,7 +406,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseDocumentUploadDate",
     "Label": "upload date",
     "FieldType": "DateTime",
@@ -414,7 +414,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantDocsUploadedAfterBundle",
     "Label": "Claimant uploaded documents",
     "FieldType": "Collection",
@@ -423,7 +423,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "evidenceUploadTextRes",
     "Label": "Check the order the court sent you for what documents you need to upload \n for your case. \n\n You cannot withdraw a document once you have uploaded it. If you want to \n add more information to something you have already uploaded, you can \n upload the document again and add a version number to the name, for \n example \"version 2\". \n\n The other parties will be able to see the documents you have uploaded, and \n you will be able to see their documents \n # Deadlines for uploading documents \n Check the order the court sent you for the deadlines for uploading your documents. If you upload a document after the deadline, you will have to apply to the court to use it at the hearing and the judge will decide if it can be accepted \n\n You do not have to upload all your documents at once. You can return to upload them later. \n # How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files. \n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith\". \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP. TIF, TIFF.",
     "FieldType": "Label",
@@ -431,7 +431,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureLabelRes",
     "Label": "You can select more than one type of document \n\n\n ## Disclosure",
     "FieldType": "Label",
@@ -439,7 +439,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureToggleTextRes",
     "Label": "<details><summary><u>Disclosure</u></summary><div class=\"panel\">\n\n ## Disclosure list \n\n A list of the document that you must show the other parties \n\n ## Documents for disclosure \n\n Recorded information that you must show the other parties - for example, contracts, invoices, receipts, emails, text messages, photos, social media messages.</div></details><br />",
     "FieldType": "Label",
@@ -447,7 +447,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disclosureSelectionEvidenceRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadDisclosure",
@@ -456,7 +456,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessLabelRes",
     "Label": "## Witness evidence",
     "FieldType": "Label",
@@ -464,7 +464,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessToggleTextRes",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Notice of the intention to rely on hearsay evidence \n\n Notice to tell the other parties that you intend to rely on hearsay evidence at the trial. If the evidence is in a witness statement and the witness is not going to be in court, you must say why. \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
@@ -472,7 +472,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessSelectionEvidenceRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitness",
@@ -481,7 +481,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertLabelRes",
     "Label": "## Expert evidence",
     "FieldType": "Label",
@@ -489,7 +489,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertToggleTextRes",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement. \n\n ## Questions for other party/other joint expert \n\n Written questions about an expert's report or a joint statement of experts \n\n ## Answers to questions asked \n\n Your expert's answers to questions put by the other party.</div></details><br />",
     "FieldType": "Label",
@@ -497,7 +497,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertSelectionEvidenceRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpert",
@@ -506,7 +506,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialLabelRes",
     "Label": "## Trial Documents",
     "FieldType": "Label",
@@ -514,7 +514,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialToggleTextRes",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n ## Case summary \n\n Overview of your whole case \n\n ## Skeleton argument \n\n Summary of the case, the areas in dispute and the reason why you think those disputes should be resolved in your favour \n\n ## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
@@ -522,7 +522,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialSelectionEvidenceRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrial",
@@ -531,7 +531,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessLabelSmallClaimRes",
     "Label": "You can select more than one type of document \n\n\n ## Witness evidence \n\n Your statement if you are giving evidence, statement written by your witness, summary of evidence",
     "FieldType": "Label",
@@ -539,7 +539,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Witness evidence</u></summary><div class=\"panel\">\n\n ## Witness statement \n\n Your written evidence if you are giving evidence, written evidence by your witness \n\n ## Witness summary \n\n If you cannot get a full witness statement, you can use a witness summary of the evidence you would include in a witness statement. You need permission from the court to use a witness summary \n\n ## Documents referred to in the statement \n\n Documents you or your witness must refer to in the statement - for example, emails, receipts, invoices, contracts and photos.</div></details><br />",
     "FieldType": "Label",
@@ -547,7 +547,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "witnessSelectionEvidenceSmallClaimRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadWitnessSmallClaim",
@@ -556,7 +556,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertLabelSmallClaimRes",
     "Label": "## Expert evidence \n\n Written evidence by your expert, joint statement by both parties' experts.",
     "FieldType": "Label",
@@ -564,7 +564,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Expert evidence</u></summary><div class=\"panel\">\n\n ## Expert's report \n\n Written evidence by an expert, If you gave agreed to share a single joint expert, check if the other party has uploaded the report \n\n ## Joint Statement of Experts / Single Joint Expert Report \n\n Statement by both parties' experts setting out their areas of agreement and disagreement.</div></details><br />",
     "FieldType": "Label",
@@ -572,7 +572,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "expertSelectionEvidenceSmallClaimRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadExpertSmallClaim",
@@ -581,7 +581,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialLabelSmallClaimRes",
     "Label": "## Trial Documents \n\n Documents for your trial including case summary, skeleton argument and authorities and Costs.",
     "FieldType": "Label",
@@ -589,7 +589,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialToggleTextSmallClaimRes",
     "Label": "<details><summary><u>Trial documents</u></summary><div class=\"panel\">\n\n## Authorities \n\n Details of the case law, legislation or other legal precedent that you are going to rely on in court \n\n ## Costs \n\n A detailed list of the costs you have incurred in making or defending the claim, for example photocopying, getting copies of contracts and legal fees. Include receipts \n\n ## Documentary evidence for trial \n\n Documents that you wish to reply on at the trial - for example, emails, receipts, invoices, contracts and photos. You do not need to upload documents you have already uploaded</div></details><br />",
     "FieldType": "Label",
@@ -597,7 +597,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialSelectionEvidenceSmallClaimRes",
     "FieldType": "MultiSelectList",
     "FieldTypeParameter": "EvidenceUploadTrialSmallClaim",
@@ -606,7 +606,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentUploadLabelRes",
     "Label": "## You cannot withdraw a document once you have uploaded it \n ****",
     "FieldType": "Label",
@@ -614,7 +614,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentDisclosureListRes",
     "Label": "Disclosure list",
     "FieldType": "Collection",
@@ -623,7 +623,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentForDisclosureRes",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
@@ -632,7 +632,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessStatementRes",
     "Label": "Witness statement",
     "FieldType": "Collection",
@@ -641,7 +641,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessSummaryRes",
     "Label": "Witness summary",
     "FieldType": "Collection",
@@ -650,7 +650,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentHearsayNoticeRes",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
@@ -659,7 +659,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentReferredInStatementRes",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
@@ -668,7 +668,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentExpertReportRes",
     "Label": "Expert's report",
     "FieldType": "Collection",
@@ -677,7 +677,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentJointStatementRes",
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
@@ -686,7 +686,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentQuestionsRes",
     "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
@@ -695,7 +695,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAnswersRes",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
@@ -704,7 +704,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCaseSummaryRes",
     "Label": "Case summary",
     "FieldType": "Collection",
@@ -713,7 +713,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentSkeletonArgumentRes",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
@@ -722,7 +722,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAuthoritiesRes",
     "Label": "Authorities",
     "FieldType": "Collection",
@@ -731,7 +731,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCostsRes",
     "Label": "Costs",
     "FieldType": "Collection",
@@ -740,7 +740,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentEvidenceForTrialRes",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
@@ -749,7 +749,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentDisclosureListRes2",
     "Label": "Disclosure list",
     "FieldType": "Collection",
@@ -758,7 +758,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentForDisclosureRes2",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
@@ -767,7 +767,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessStatementRes2",
     "Label": "Witness statement",
     "FieldType": "Collection",
@@ -776,7 +776,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessSummaryRes2",
     "Label": "Witness summary",
     "FieldType": "Collection",
@@ -785,7 +785,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentHearsayNoticeRes2",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
@@ -794,7 +794,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentReferredInStatementRes2",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
@@ -803,7 +803,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentExpertReportRes2",
     "Label": "Expert's report",
     "FieldType": "Collection",
@@ -812,7 +812,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentJointStatementRes2",
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
@@ -821,7 +821,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentQuestionsRes2",
     "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
@@ -830,7 +830,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAnswersRes2",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
@@ -839,7 +839,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCaseSummaryRes2",
     "Label": "Case summary",
     "FieldType": "Collection",
@@ -848,7 +848,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentSkeletonArgumentRes2",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
@@ -857,7 +857,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAuthoritiesRes2",
     "Label": "Authorities",
     "FieldType": "Collection",
@@ -866,7 +866,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCostsRes2",
     "Label": "Costs",
     "FieldType": "Collection",
@@ -875,7 +875,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentEvidenceForTrialRes2",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
@@ -884,7 +884,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentDisclosureListApp2",
     "Label": "Disclosure list",
     "FieldType": "Collection",
@@ -893,7 +893,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentForDisclosureApp2",
     "Label": "Documents for disclosure",
     "FieldType": "Collection",
@@ -902,7 +902,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessStatementApp2",
     "Label": "Witness statement",
     "FieldType": "Collection",
@@ -911,7 +911,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentWitnessSummaryApp2",
     "Label": "Witness summary",
     "FieldType": "Collection",
@@ -920,7 +920,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentHearsayNoticeApp2",
     "Label": "Notice of the intention to rely on hearsay evidence",
     "FieldType": "Collection",
@@ -929,7 +929,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentReferredInStatementApp2",
     "Label": "Documents referred to in the statement",
     "FieldType": "Collection",
@@ -938,7 +938,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentExpertReportApp2",
     "Label": "Expert's report",
     "FieldType": "Collection",
@@ -947,7 +947,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentJointStatementApp2",
     "Label": "Joint Statement of Experts / Single Joint Expert Report",
     "FieldType": "Collection",
@@ -956,7 +956,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentQuestionsApp2",
     "Label": "Questions asked of other party expert",
     "FieldType": "Collection",
@@ -965,7 +965,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAnswersApp2",
     "Label": "Answers to questions asked by the other party",
     "FieldType": "Collection",
@@ -974,7 +974,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCaseSummaryApp2",
     "Label": "Case summary",
     "FieldType": "Collection",
@@ -983,7 +983,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentSkeletonArgumentApp2",
     "Label": "Skeleton argument",
     "FieldType": "Collection",
@@ -992,7 +992,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentAuthoritiesApp2",
     "Label": "Authorities",
     "FieldType": "Collection",
@@ -1001,7 +1001,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentCostsApp2",
     "Label": "Costs",
     "FieldType": "Collection",
@@ -1010,7 +1010,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentEvidenceForTrialApp2",
     "Label": "Documentary evidence for trial",
     "FieldType": "Collection",
@@ -1019,7 +1019,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseDocumentUploadDateRes",
     "Label": "upload date",
     "FieldType": "DateTime",
@@ -1027,7 +1027,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentDocsUploadedAfterBundle",
     "Label": "Defendant uploaded documents",
     "FieldType": "Collection",
@@ -1036,7 +1036,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "notificationText",
     "Label":" ",
     "FieldType": "Text",

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_CUI",
     "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 1,

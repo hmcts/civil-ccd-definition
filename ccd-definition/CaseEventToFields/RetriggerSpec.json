@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQHearingSupport",
     "PageDisplayOrder": 12,
@@ -12,7 +12,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQHearingSupport",
     "PageDisplayOrder": 12,
@@ -24,7 +24,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQVulnerabilityQuestions",
     "PageDisplayOrder": 13,
@@ -36,7 +36,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1DQLanguage",
     "PageDisplayOrder": 9,
@@ -47,7 +47,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2DQLanguage",
     "PageDisplayOrder": 9,
@@ -58,7 +58,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 2,
@@ -68,7 +68,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "PageID": "WorkAllocationIntegrationFields",
@@ -80,7 +80,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpec2Required",
     "PageID": "WorkAllocationIntegrationFields",
@@ -92,7 +92,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "PageID": "WorkAllocationIntegrationFields",
@@ -104,7 +104,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
@@ -115,7 +115,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "claimantResponseScenarioFlag",
     "PageDisplayOrder": 1,
@@ -126,7 +126,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "PageDisplayOrder": 1,
@@ -137,7 +137,7 @@
     "Publish" : "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "PageDisplayOrder": 1,
@@ -148,7 +148,7 @@
     "Publish" : "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimTrack",
     "PageDisplayOrder": 1,
@@ -158,7 +158,7 @@
     "Publish" : "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "allocatedTrack",
     "PageDisplayOrder": 1,
@@ -168,7 +168,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
     "PageDisplayOrder": 1,
@@ -179,7 +179,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
     "PageDisplayOrder": 6,
@@ -191,7 +191,7 @@
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimMediationSpecRequired",
     "PageDisplayOrder": 6,
@@ -203,7 +203,7 @@
   },
   {
     "_Comment": "This is the field that have changes from ClaimantResponseLRspec-nonprod.json",
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicantMPClaimMediationSpecRequired",
     "PageDisplayOrder": 6,
@@ -214,7 +214,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQHearingSupport",
     "PageDisplayOrder": 13,
@@ -226,7 +226,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "RETRIGGER_CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQVulnerabilityQuestions",
     "PageDisplayOrder": 14,

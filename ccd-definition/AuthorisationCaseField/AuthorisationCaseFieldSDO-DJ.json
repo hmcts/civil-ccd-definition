@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
     "AccessControl": [
       {
@@ -12,7 +12,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseManagementOrder",
     "AccessControl": [
       {
@@ -31,7 +31,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseManagementOrderSelection",
     "AccessControl": [
       {
@@ -50,7 +50,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseManagementOrderAdditional",
     "AccessControl": [
       {
@@ -69,7 +69,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantVRespondentText",
     "AccessControl": [
       {
@@ -88,7 +88,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseManagementOrderDisposal",
     "AccessControl": [
       {
@@ -102,7 +102,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingOrderAndHearingDetailsDJ",
     "AccessControl": [
       {
@@ -116,7 +116,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingJudgesRecitalDJ",
     "AccessControl": [
       {
@@ -130,7 +130,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingJudgementStatementDJ",
     "AccessControl": [
       {
@@ -144,7 +144,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsDJ",
     "AccessControl": [
       {
@@ -158,7 +158,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsDJToggle",
     "AccessControl": [
       {
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingWitnessOfFactDJToggle",
     "AccessControl": [
       {
@@ -186,7 +186,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingWitnessOfFactDJ",
     "AccessControl": [
       {
@@ -200,7 +200,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMedicalEvidenceDJToggle",
     "AccessControl": [
       {
@@ -214,7 +214,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMedicalEvidenceDJ",
     "AccessControl": [
       {
@@ -228,7 +228,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingQuestionsToExpertsDJToggle",
     "AccessControl": [
       {
@@ -242,7 +242,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingQuestionsToExpertsDJ",
     "AccessControl": [
       {
@@ -256,7 +256,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJToggle",
     "AccessControl": [
       {
@@ -270,7 +270,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingSchedulesOfLossDJ",
     "AccessControl": [
       {
@@ -284,7 +284,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingFinalDisposalHearingDJToggle",
     "AccessControl": [
       {
@@ -298,7 +298,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingFinalDisposalHearingDJ",
     "AccessControl": [
       {
@@ -312,7 +312,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodTitleDJ",
     "AccessControl": [
       {
@@ -326,7 +326,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodDJ",
     "AccessControl": [
       {
@@ -340,7 +340,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodInPersonDJ",
     "AccessControl": [
       {
@@ -354,7 +354,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodVideoConferenceHearingDJ",
     "AccessControl": [
       {
@@ -368,7 +368,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodVideoConferenceHearingCourtStatementDJ",
     "AccessControl": [
       {
@@ -382,7 +382,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodTelephoneHearingDJ",
     "AccessControl": [
       {
@@ -396,7 +396,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMethodTelephoneHearingCourtStatementDJ",
     "AccessControl": [
       {
@@ -410,7 +410,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingBundleDJToggle",
     "AccessControl": [
       {
@@ -424,21 +424,22 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingBundleDJ",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-solicitor",
-          "judge-profile"
+          "judge-profile",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingClaimSettlingDJToggle",
     "AccessControl": [
       {
@@ -452,7 +453,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingClaimSettlingDJ",
     "AccessControl": [
       {
@@ -466,7 +467,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingCostsDJToggle",
     "AccessControl": [
       {
@@ -480,7 +481,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "DisposalHearingCostsDJ",
     "AccessControl": [
       {
@@ -494,7 +495,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingNotesDJ",
     "AccessControl": [
       {
@@ -508,7 +509,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingHearingNotesDJ",
     "AccessControl": [
       {
@@ -521,7 +522,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingOrderMadeWithoutHearingDJ",
     "AccessControl": [
       {
@@ -534,7 +535,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingAddNewDirectionsDJ",
     "AccessControl": [
       {
@@ -548,7 +549,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseManagementOrderTrial",
     "AccessControl": [
       {
@@ -562,7 +563,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingOrderAndHearingDetailsDJ",
     "AccessControl": [
       {
@@ -576,7 +577,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingJudgesRecitalDJ",
     "AccessControl": [
       {
@@ -590,7 +591,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingAllocation",
     "AccessControl": [
       {
@@ -604,7 +605,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingAlternativeDisputeDJToggle",
     "AccessControl": [
       {
@@ -618,7 +619,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialFastTrackAltDisputeResolution",
     "AccessControl": [
       {
@@ -632,7 +633,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingVariationsDirectionsDJToggle",
     "AccessControl": [
       {
@@ -646,7 +647,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialFastTrackVariationOfDirections",
     "AccessControl": [
       {
@@ -660,7 +661,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingSettlementDJToggle",
     "AccessControl": [
       {
@@ -674,7 +675,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialFastTrackSettlement",
     "AccessControl": [
       {
@@ -688,7 +689,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingDisclosureOfDocumentsDJToggle",
     "AccessControl": [
       {
@@ -702,7 +703,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingDisclosureOfDocumentsDJ",
     "AccessControl": [
       {
@@ -716,7 +717,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingWitnessOfFactDJToggle",
     "AccessControl": [
       {
@@ -730,7 +731,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingWitnessOfFactDJ",
     "AccessControl": [
       {
@@ -744,7 +745,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingSchedulesOfLossDJToggle",
     "AccessControl": [
       {
@@ -758,7 +759,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingSchedulesOfLossDJ",
     "AccessControl": [
       {
@@ -772,7 +773,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingCostsToggle",
     "AccessControl": [
       {
@@ -786,7 +787,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingCosts",
     "AccessControl": [
       {
@@ -800,7 +801,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingTrialDJToggle",
     "AccessControl": [
       {
@@ -814,7 +815,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingTrialDJ",
     "AccessControl": [
       {
@@ -828,7 +829,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingTimeDJ",
     "AccessControl": [
       {
@@ -842,7 +843,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodTitleDJ",
     "AccessControl": [
       {
@@ -856,7 +857,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodDJ",
     "AccessControl": [
       {
@@ -870,7 +871,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodInPersonDJ",
     "AccessControl": [
       {
@@ -884,7 +885,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodVideoConferenceHearingDJ",
     "AccessControl": [
       {
@@ -898,7 +899,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodVideoConferenceHearingCourtStatementDJ",
     "AccessControl": [
       {
@@ -912,7 +913,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodTelephoneHearingDJ",
     "AccessControl": [
       {
@@ -926,7 +927,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingMethodTelephoneHearingCourtStatementDJ",
     "AccessControl": [
       {
@@ -940,7 +941,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingNotesDJ",
     "AccessControl": [
       {
@@ -954,7 +955,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingHearingNotesDJ",
     "AccessControl": [
       {
@@ -968,7 +969,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialOrderMadeWithoutHearingDJ",
     "AccessControl": [
       {
@@ -982,7 +983,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialBuildingDispute",
     "AccessControl": [
       {
@@ -996,7 +997,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialClinicalNegligence",
     "AccessControl": [
       {
@@ -1010,21 +1011,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
-    "CaseFieldID": "trialCreditHire",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor",
-          "judge-profile"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHousingDisrepair",
     "AccessControl": [
       {
@@ -1038,7 +1025,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialEmployersLiability",
     "AccessControl": [
       {
@@ -1052,7 +1039,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialPersonalInjury",
     "AccessControl": [
       {
@@ -1066,7 +1053,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialRoadTrafficAccident",
     "AccessControl": [
       {
@@ -1080,7 +1067,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialHearingAddNewDirectionsDJ",
     "AccessControl": [
       {
@@ -1094,7 +1081,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderSDODocumentDJ",
     "AccessControl": [
       {
@@ -1115,7 +1102,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderSDODocumentDJCollection",
     "AccessControl": [
       {
@@ -1135,7 +1122,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingNotes",
     "AccessControl": [
       {
@@ -1149,7 +1136,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingMethodValuesDisposalHearingDJ",
     "AccessControl": [
       {
@@ -1163,8 +1150,108 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingMethodValuesTrialHearingDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2DisposalHearingUseOfWelshLangToggleDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2DisposalHearingWelshLanguageEndLineDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2TrialUseOfWelshLangToggleDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2TrialWelshLanguageDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoR2TrialWelshLanguageEndLineDJ",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "sdoDJR2TrialCreditHire",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "trialCreditHire",
     "AccessControl": [
       {
         "UserRoles": [

@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async enterRespondentRepresented(respondent, respondentRepresented) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     I.waitForElement(this.fields(respondent).respondentRepresented.id);
     await I.runAccessibilityTest();
     await within(this.fields(respondent).respondentRepresented.id, () => {

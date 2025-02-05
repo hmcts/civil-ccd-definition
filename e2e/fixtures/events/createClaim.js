@@ -71,8 +71,14 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000',sdoR2) => {
+let claimantCourt = config.claimantSelectedCourt;
+const useHmcEaCourt = config.claimantSelectedCourtHmc;
+const useClaimantSelectedCourt = config.claimantSelectedCourt;
+
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2, hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
+  claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt;
+
   const claimData = {
     References: {
       CaseAccessCategory: 'UNSPEC_CLAIM',
@@ -85,9 +91,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement(config.claimantSelectedCourt)
+            listElement(claimantCourt)
           ],
-          value: listElement(config.claimantSelectedCourt)
+          value: listElement(claimantCourt)
         }
       },
       applicant1DQRemoteHearing: {
@@ -316,6 +322,8 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
     }
     case 'ONE_V_TWO_LIPS': {
       delete claimData.SecondDefendantLegalRepresentation;
+      delete claimData.LegalRepresentation;
+
       return {
         ...claimData,
         AddAnotherClaimant: {
@@ -325,12 +333,12 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
           addRespondent2: 'Yes'
         },
         SecondDefendant: {
-          respondent2: respondent2WithPartyName,
+          respondent2: respondent2WithPartyName
         },
         LegalRepresentation: {
           respondent1Represented: 'No',
           respondent2Represented: 'No'
-        },
+        }
       };
     }
 
@@ -349,6 +357,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
         ...claimData,
         ClaimType: {
           claimType: 'PERSONAL_INJURY'
+        },
+        ClaimTypeUnSpec: {
+          claimTypeUnSpec: 'PERSONAL_INJURY'
         },
         PersonalInjuryType: {
           personalInjuryType: 'NOISE_INDUCED_HEARING_LOSS'
@@ -376,7 +387,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -412,7 +423,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
       },
       invalid: {
         Upload: {

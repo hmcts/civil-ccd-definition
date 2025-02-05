@@ -146,7 +146,7 @@
     "ElementLabel": " ",
     "FieldType": "BusinessProcess",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "GeneralApplicationGAspec",
@@ -324,5 +324,53 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "FieldShowCondition": "applicationTakenOfflineDate = \"DO_NOT_SHOW_IN_UI\""
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isGaApplicantLip",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isGaRespondentOneLip",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "isGaRespondentTwoLip",
+    "FieldType": "YesOrNo",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "caseNameGaInternal",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "gaWaTrackLabel",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "emailPartyReference",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

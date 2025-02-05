@@ -14,11 +14,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -32,11 +34,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -54,7 +58,9 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IMMEDIATELY',
+              joPaymentPlan: {
+                type: 'PAY_IMMEDIATELY'
+              },
               joIsRegisteredWithRTL: 'No',
               addRespondent2: 'Yes'
             },
@@ -67,7 +73,9 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IMMEDIATELY',
+              joPaymentPlan: {
+                type: 'PAY_IMMEDIATELY'
+              },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes'
             },
@@ -91,11 +99,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -109,11 +119,13 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_IN_INSTALMENTS',
-              joJudgmentInstalmentDetails: {
-                instalmentAmount: '10000',
+              joPaymentPlan: {
+                type: 'PAY_IN_INSTALMENTS'
+              },
+              joInstalmentDetails: {
+                amount: '10000',
                 paymentFrequency: 'WEEKLY',
-                firstInstalmentDate: date(1)
+                startDate: date(1)
               },
               joIsRegisteredWithRTL: 'Yes',
               addRespondent2: 'Yes',
@@ -131,8 +143,10 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1),
+              joPaymentPlan: {
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
               addRespondent2: 'Yes'
             },
           };
@@ -144,8 +158,10 @@ module.exports = {
               joOrderMadeDate: date(-1),
               joAmountOrdered: '40000',
               joAmountCostOrdered: '20000',
-              joPaymentPlanSelection: 'PAY_BY_DATE',
-              joPaymentToBeMadeByDate: date(1),
+              joPaymentPlan: {
+                type: 'PAY_BY_DATE',
+                paymentDeadlineDate: date(1)
+              },
               addRespondent2: 'Yes'
             },
           };

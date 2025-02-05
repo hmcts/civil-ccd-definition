@@ -1,0 +1,15 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1DQHearingFastClaimLabel",
+    "PageDisplayOrder": 49,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "HearingLRspec",
+    "PageShowCondition": "showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack= \"FAST_CLAIM\"",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "",
+    "RetriesTimeoutURLMidEvent": 0
+  }
+]

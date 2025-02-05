@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 
 const config = require('../../../config.js');
 
@@ -20,12 +20,13 @@ Scenario('1v1 part admit', async ({I, api_spec}) => {
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION');
 });
 
-Scenario('1v1 counter claim', async ({I, api_spec}) => {
+Scenario('1v1 counter claim @api-spec-counterclaim', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM');
 });
 
-Scenario('1v1 full defence claimant and defendant response @api-prod @api-nonprod-specified', async ({I, api_spec}) => {
+
+Scenario('1v1 full defence claimant and defendant response @api-spec-full-defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
@@ -33,18 +34,29 @@ Scenario('1v1 full defence claimant and defendant response @api-prod @api-nonpro
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('1v1 full admit claimant and defendant response', async ({I, api_spec}) => {
+Scenario('1v1 full admit claimant and defendant response @api-spec-full-admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'FULL_ADMISSION');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
 });
 
-Scenario('1v1 part admit defence claimant and defendant response', async ({I, api_spec}) => {
+Scenario('1v1 part admit defence claimant and defendant response @api-spec-part-admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'PART_ADMISSION');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
+});
+
+Scenario('1v1 Settle claim - full defence claimant and defendant response', async ({I, api_spec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
+    await api_spec.informAgreedExtensionDate(config.applicantSolicitorUser);
+    await api_spec.defendantResponse(config.defendantSolicitorUser);
+    await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
+      'AWAITING_APPLICANT_INTENTION');
+    await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
+  }
 });
 
 AfterSuite(async  ({api_spec}) => {

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalApplications",
     "Label": " ",
     "FieldType": "Collection",
@@ -11,7 +11,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppType",
     "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
@@ -22,7 +22,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalApplicationType",
     "Label": "What type of application(s) do you want to make?",
     "HintText": "  ",
@@ -33,7 +33,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppRespondentAgreement",
     "Label": "Has the respondent agreed to the order that you want the judge to make?",
     "FieldType": "GARespondentAgreementGAspec",
@@ -43,7 +43,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppStatementOfTruthLabel",
     "Label": "## Statement of truth\n",
     "FieldType": "Label",
@@ -51,7 +51,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppStatementOfTruth",
     "Label": " ",
     "FieldType": "GAStatementOfTruthGAspec",
@@ -60,7 +60,7 @@
     "Comment": "This field is used to capture information and is then cleared immediately. Required to reset SoT when user changes answer in CYA"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppStatementOfTruthConsent",
     "Label": " ",
     "ListElementCode": "ConsentAgreementCheckBox",
@@ -71,7 +71,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppUrgencyRequirement",
     "Label": "Is this an urgent application?",
     "FieldType": "GAUrgencyRecordGAspec",
@@ -81,7 +81,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "isApplicationUrgent",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -90,7 +90,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppInformOtherParty",
     "Label": "Do you want the court to inform the other party of this application?\n",
     "FieldType": "GAWithOrWithoutNotice",
@@ -100,7 +100,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppDetailsOfOrder",
     "Label": "What order do you want the court to make?",
     "HintText": "This is the draft order that you are requesting from the court",
@@ -110,7 +110,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppReasonsOfOrder",
     "Label": "Reasons for requesting this order",
     "FieldType": "TextArea",
@@ -119,7 +119,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppUploadEvidenceLabel",
     "Label": "## How to upload your evidence \n If a document has multiple pages, upload them as one file rather than multiple files.\n\n Before you upload the document, give it a name that tells the court what it is, for example \"Witness statement by Jane Smith dated DD/MM/YYYY\" \n\n Each document must be less than 100MB. You can upload the following file types: Word, Excel, PowerPoint, PDF, RTF, TXT, CSV, JPG, JPEG, PNG, BMP, TIF, TIFF.\n",
     "FieldType": "Label",
@@ -127,7 +127,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
@@ -139,7 +139,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDetailsMasterCollection",
     "Label": " ",
     "ElementLabel": "Application Type",
@@ -151,7 +151,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
@@ -163,7 +163,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolTwoGaAppDetails",
     "Label": " ",
     "ElementLabel": "Application Type",
@@ -175,7 +175,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppHearingDetails",
     "Label": "Scheduled hearings and trials",
     "FieldType": "GAHearingDetailsGAspec",
@@ -183,7 +183,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppPBADetails",
     "Label": "Paying for an application",
     "FieldType": "GAPBADetailsGAspec",
@@ -193,7 +193,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppApplnSolicitor",
     "Label": "Applicant Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
@@ -203,7 +203,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppRespondentSolicitors",
     "Label": "Respondent Solicitor Details",
     "FieldType": "GASolicitorDetailsGAspec",
@@ -213,7 +213,7 @@
     "_Category":  "COMMON"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppEvidenceDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -224,7 +224,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseLink",
     "Label": " ",
     "FieldType": "CaseLink",
@@ -232,7 +232,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseState",
     "Label": " ",
     "FieldType": "Text",
@@ -240,7 +240,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppStatusGAspec",
     "Label": "Status",
     "FieldType": "GAStatusGAspec",
@@ -248,7 +248,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppSubmittedDateGAspec",
     "Label": "General Application Submitted on",
     "FieldType": "DateTime",
@@ -256,7 +256,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppDateDeadline",
     "Label": " ",
     "FieldType": "GeneralApplicationGAspec",
@@ -264,7 +264,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "civilServiceUserRoles",
     "Label": " ",
     "FieldType": "GAUserDetailsGAspec",
@@ -272,7 +272,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalOrderDocument",
     "Label": "General order document",
     "FieldType": "Collection",
@@ -281,7 +281,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dismissalOrderDocument",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
@@ -290,7 +290,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "directionOrderDocument",
     "Label": "Directions order document",
     "FieldType": "Collection",
@@ -299,7 +299,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppVaryJudgementType",
     "Label": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
@@ -307,7 +307,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppParentClaimantIsApplicant",
     "Label": "Vary Judgement GA Type",
     "FieldType": "YesOrNo",
@@ -315,7 +315,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaUploadN245FormUploadLabel",
     "Label": "Upload your completed N245 form",
     "FieldType": "GAN245FormUpload",
@@ -323,7 +323,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppN245FormUpload",
     "Label": "N245 form",
     "FieldType": "Document",
@@ -333,14 +333,14 @@
     "CategoryID": "applications"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalAppHearingDate",
     "Label": " ",
     "FieldType": "GAHearingDateGAspec",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },  {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "hearingNoticeDocStaff",
   "Label": "Hearing Notice",
   "FieldType": "Collection",
@@ -349,7 +349,7 @@
   "Searchable": "N"
 },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingNoticeDocClaimant",
     "Label": "Hearing Notice",
     "FieldType": "Collection",
@@ -358,7 +358,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingNoticeDocRespondentSol",
     "Label": "Hearing Notice",
     "FieldType": "Collection",
@@ -367,7 +367,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingNoticeDocRespondentSolTwo",
     "Label": "Hearing Notice",
     "FieldType": "Collection",
@@ -376,7 +376,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalOrderDocStaff",
     "Label": "General order document",
     "FieldType": "Collection",
@@ -385,7 +385,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalOrderDocClaimant",
     "Label": "General order document",
     "FieldType": "Collection",
@@ -394,7 +394,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalOrderDocRespondentSol",
     "Label": "General order document",
     "FieldType": "Collection",
@@ -403,7 +403,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "generalOrderDocRespondentSolTwo",
     "Label": "General order document",
     "FieldType": "Collection",
@@ -412,7 +412,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dismissalOrderDocStaff",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
@@ -421,7 +421,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dismissalOrderDocClaimant",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
@@ -430,7 +430,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dismissalOrderDocRespondentSol",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
@@ -439,7 +439,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dismissalOrderDocRespondentSolTwo",
     "Label": "Dismissal order document",
     "FieldType": "Collection",
@@ -448,7 +448,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "directionOrderDocStaff",
     "Label": "Directions order document",
     "FieldType": "Collection",
@@ -457,7 +457,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "directionOrderDocClaimant",
     "Label": "Directions order document",
     "FieldType": "Collection",
@@ -466,7 +466,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "directionOrderDocRespondentSol",
     "Label": "Directions order document",
     "FieldType": "Collection",
@@ -475,7 +475,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "directionOrderDocRespondentSolTwo",
     "Label": "Directions order document",
     "FieldType": "Collection",
@@ -484,7 +484,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaEvidenceDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -494,7 +494,7 @@
     "CategoryID": "applications"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaEvidenceDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -504,7 +504,7 @@
     "CategoryID": "applications"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaEvidenceDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -514,7 +514,7 @@
     "CategoryID": "applications"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaEvidenceDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -524,7 +524,7 @@
     "CategoryID": "applications"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingOrderDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -533,7 +533,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingOrderDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -542,7 +542,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingOrderDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -551,7 +551,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingOrderDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -560,7 +560,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingOrderDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -569,7 +569,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForInformationDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -578,7 +578,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForInfoDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -587,7 +587,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForInfoDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -596,7 +596,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForInfoDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -605,7 +605,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "requestForInfoDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -614,7 +614,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepSequentialDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -623,7 +623,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepSeqDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -632,7 +632,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepSeqDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -641,7 +641,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepSeqDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -650,7 +650,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepSeqDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -659,7 +659,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepConcurrentDocument",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -668,7 +668,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepConDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -677,7 +677,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepConDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -686,7 +686,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepConDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -695,7 +695,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "writtenRepConDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -704,7 +704,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaRespDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -713,7 +713,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaRespDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -722,7 +722,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaRespDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -731,7 +731,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaRespDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "Document",
@@ -740,7 +740,7 @@
     "SecurityClassification": "Public"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDraftDocument",
     "Label": "Draft Application document",
     "FieldType": "Collection",
@@ -749,7 +749,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDraftDocStaff",
     "Label": "Draft Application document",
     "FieldType": "Collection",
@@ -758,7 +758,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDraftDocClaimant",
     "Label": "Draft Application document",
     "FieldType": "Collection",
@@ -767,7 +767,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDraftDocRespondentSol",
     "Label": "Draft Application document",
     "FieldType": "Collection",
@@ -776,7 +776,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaDraftDocRespondentSolTwo",
     "Label": "Draft Application document",
     "FieldType": "Collection",
@@ -785,7 +785,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "consentOrderDocument",
     "Label": "Consent order document",
     "FieldType": "Collection",
@@ -794,7 +794,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "consentOrderDocStaff",
     "Label": "Consent order document",
     "FieldType": "Collection",
@@ -803,7 +803,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "consentOrderDocClaimant",
     "Label": "Consent order document",
     "FieldType": "Collection",
@@ -812,7 +812,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "consentOrderDocRespondentSol",
     "Label": "Consent order document",
     "FieldType": "Collection",
@@ -821,7 +821,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "consentOrderDocRespondentSolTwo",
     "Label": "Consent order document",
     "FieldType": "Collection",
@@ -830,7 +830,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaRespondDoc",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -839,7 +839,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDoc",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -849,7 +849,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDocStaff",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -858,7 +858,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDocClaimant",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -867,7 +867,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDocRespondentSol",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -876,7 +876,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDocRespondentSolTwo",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
@@ -885,12 +885,36 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "gaAddlDocBundle",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "Label": "Upload addl Doc casefile view",
     "RegularExpression": ".pdf,.txt,.doc,.dot,.docx,.rtf,.xls,.xlt,.xla,.xlsx,.xltx,.xlsb,.ppt,.pot,.pps,.ppa,.pptx,.potx,.ppsx,.jpg,.jpeg,.bmp,.tif,.tiff,.png,.csv",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isGaApplicantLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Applicant Lip",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isGaRespondentOneLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Respondent One LIP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isGaRespondentTwoLip",
+    "FieldType": "YesOrNo",
+    "Label": "Is GA Respondent Two LIP",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

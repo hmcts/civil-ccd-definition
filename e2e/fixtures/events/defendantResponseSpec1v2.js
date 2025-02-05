@@ -89,7 +89,11 @@ module.exports = {
                 ],
                 value: listElement(config.defendantSelectedCourt)
               },
-              reasonForHearingAtSpecificCourt: 'Reasons'
+              reasonForHearingAtSpecificCourt: 'Reasons',
+              caseLocation: {
+                region: '2',
+                baseLocation: '420219'
+              }
             },
             respondent1DQRemoteHearingLRspec: {
               remoteHearingRequested: 'Yes',

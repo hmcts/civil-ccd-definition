@@ -12,8 +12,9 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToClaimExperts",
     "ListElementCode": "firstName",
+    "EventHintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SolicitorReferences",
@@ -21,7 +22,7 @@
     "CaseFieldID": "respondToClaimExperts",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SolicitorReferences",
@@ -68,8 +69,9 @@
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "firstName",
+    "EventHintText": "If the name is unknown at this time please add TBC to both the first name and last name lines. Then use the Manage Contact Information event to provide the name when known\n",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SolicitorReferences",
@@ -77,7 +79,7 @@
     "CaseFieldID": "respondToClaimExperts2",
     "ListElementCode": "lastName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SolicitorReferences",

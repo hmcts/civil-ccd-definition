@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "totalClaimAmount",
     "PageID": "WorkAllocationIntegrationFields",
@@ -13,7 +13,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent1ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
@@ -25,7 +25,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "respondent2ClaimResponseIntentionType",
     "PageID": "WorkAllocationIntegrationFields",
@@ -37,7 +37,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
@@ -49,7 +49,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "PageID": "WorkAllocationIntegrationFields",
@@ -61,7 +61,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "PageID": "WorkAllocationIntegrationFields",
@@ -74,7 +74,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimMediationSpec2Required",
     "PageID": "WorkAllocationIntegrationFields",
@@ -86,7 +86,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
     "PageID": "WorkAllocationIntegrationFields",
@@ -98,7 +98,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "claimValue",
     "PageFieldDisplayOrder": 2,
@@ -108,13 +108,37 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "totalClaimAmount",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 11,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "personalInjuryType",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 1,
+    "FieldShowCondition": "claimType=\"DO NOT SHOW IN UI\"",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "FieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "CaseFieldID": "claimValue",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   }
 ]

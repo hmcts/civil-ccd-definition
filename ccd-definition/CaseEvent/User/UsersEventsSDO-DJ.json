@@ -1,5 +1,5 @@
 {
-  "CaseTypeID": "CIVIL",
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "ID": "STANDARD_DIRECTION_ORDER_DJ",
   "Name": "Directions Order (Judgment)",
   "Description": "Standard Directions Order (Judgment)",

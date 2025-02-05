@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ 
 
 const { assert } = require('chai');
 const config = require('../../../config.js');

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "drawDirectionsOrderRequired",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "drawDirectionsOrder",
     "Label": " ",
     "FieldType": "JudgementSum",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimsTrack",
     "Label": "What track are you allocating the claim to?",
     "FieldType": "FixedRadioList",
@@ -25,7 +25,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaims",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
@@ -34,7 +34,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastClaims",
     "Label": "Select additional directions for Fast Track, if any ",
     "FieldType": "MultiSelectList",
@@ -43,7 +43,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "trialAdditionalDirectionsForFastTrack",
     "Label": "Select additional directions for Fast Track, if any ",
     "FieldType": "MultiSelectList",
@@ -52,7 +52,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "drawDirectionsOrderSmallClaims",
     "Label": "Do you want to allocate this claim to the small claims track?",
     "FieldType": "YesOrNo",
@@ -60,7 +60,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "drawDirectionsOrderSmallClaimsAdditionalDirections",
     "Label": "Select additional directions for Small Claims Track, if any ",
     "FieldType": "MultiSelectList",
@@ -69,7 +69,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "orderType",
     "Label": "What order would you like to make?",
     "FieldType": "FixedRadioList",
@@ -78,7 +78,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "orderTypeTrialAdditionalDirections",
     "Label": "Select additional directions, if any ",
     "FieldType": "MultiSelectList",
@@ -87,7 +87,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingOrderAndHearingDetails",
     "Label": "Order and hearing details",
     "FieldType": "DisposalHearingOrderAndHearingDetails",
@@ -95,7 +95,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "DisposalHearingJudgesRecital",
@@ -103,7 +103,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "DisposalHearingJudgementDeductionStatement",
@@ -111,7 +111,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingJudgementDeductionValue",
     "Label": " ",
     "FieldType": "DisposalHearingJudgementDeductionValue",
@@ -119,7 +119,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingDisclosureOfDocumentsStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -127,7 +127,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingDisclosureOfDocumentsTitle",
     "Label": "## Disclosure of documents",
     "FieldType": "Label",
@@ -135,7 +135,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingDisclosureOfDocumentsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -144,7 +144,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingDisclosureOfDocuments",
     "Label": " ",
     "FieldType": "DisposalHearingDisclosureOfDocuments",
@@ -152,7 +152,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingDisclosureOfDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -160,7 +160,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingWitnessOfFactTitle",
     "Label": "## Witnesses of Fact",
     "FieldType": "Label",
@@ -168,7 +168,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingWitnessOfFactToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -177,7 +177,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingWitnessOfFact",
     "Label": " ",
     "FieldType": "DisposalHearingWitnessOfFact",
@@ -185,7 +185,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingWitnessOfFactEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -193,7 +193,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMedicalEvidenceTitle",
     "Label": "## Medical evidence",
     "FieldType": "Label",
@@ -201,7 +201,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMedicalEvidenceToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -210,7 +210,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMedicalEvidence",
     "Label": " ",
     "FieldType": "DisposalHearingMedicalEvidence",
@@ -218,7 +218,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMedicalEvidenceEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -226,7 +226,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingQuestionsToExpertsTitle",
     "Label": "## Questions to experts",
     "FieldType": "Label",
@@ -234,7 +234,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingQuestionsToExpertsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -243,7 +243,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingQuestionsToExperts",
     "Label": " ",
     "FieldType": "DisposalHearingQuestionsToExperts",
@@ -251,7 +251,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingQuestionsToExpertsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -259,7 +259,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingSchedulesOfLossTitle",
     "Label": "## Schedules or counter-schedules of loss",
     "FieldType": "Label",
@@ -267,7 +267,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingSchedulesOfLossToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -276,7 +276,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingSchedulesOfLoss",
     "Label": " ",
     "FieldType": "DisposalHearingSchedulesOfLoss",
@@ -284,7 +284,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingSchedulesOfLossEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -292,7 +292,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingFinalDisposalHearingTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
@@ -300,7 +300,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingFinalDisposalHearingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -309,7 +309,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingFinalDisposalHearing",
     "Label": " ",
     "FieldType": "DisposalHearingFinalDisposalHearing",
@@ -317,7 +317,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingHearingTime",
     "Label": " ",
     "FieldType": "DisposalHearingHearingTime",
@@ -325,7 +325,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingFinalDisposalHearingEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -333,7 +333,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
@@ -341,7 +341,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -350,7 +350,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethod",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -359,7 +359,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodInPerson",
     "Label": "Select hearing location ",
     "FieldType": "DynamicList",
@@ -368,7 +368,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodVideoConferenceHearing",
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
@@ -377,7 +377,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodVideoConferenceHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant email addresses by 4.00pm\n 7 days before the disposal hearing so that the court may send out invitations for them to join the disposal hearing",
     "FieldType": "Label",
@@ -385,7 +385,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodTelephoneHearing",
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
@@ -394,7 +394,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingMethodTelephoneHearingCourtStatement",
     "Label": "Parties must file at court details of their respective relevant telephone numbers by 4.00pm\n 7 days before the disposal hearing so that the court may telephone them to join them to the disposal hearing",
     "FieldType": "Label",
@@ -402,7 +402,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingHearingNotesStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -410,7 +410,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingHearingNotesTitle",
     "Label": "## Hearing notes",
     "FieldType": "Label",
@@ -418,7 +418,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingHearingNotes",
     "Label": "This is only seen by the listing officer",
     "FieldType": "TextArea",
@@ -426,7 +426,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalOrderWithoutHearing",
     "Label": " ",
     "FieldType": "DisposalOrderWithoutHearing",
@@ -434,7 +434,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingBundleStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -442,7 +442,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingBundleTitle",
     "Label": "## Disposal hearing bundle",
     "FieldType": "Label",
@@ -450,7 +450,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingBundleToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -459,7 +459,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingBundle",
     "Label": " ",
     "FieldType": "DisposalHearingBundle",
@@ -467,7 +467,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingBundleEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -475,7 +475,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingClaimSettlingTitle",
     "Label": "## Claim Settling",
     "FieldType": "Label",
@@ -483,7 +483,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingClaimSettlingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -492,7 +492,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingClaimSettling",
     "Label": " ",
     "FieldType": "DisposalHearingClaimSettling",
@@ -500,7 +500,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingClaimSettlingEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -508,7 +508,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingCostsTitle",
     "Label": "## Costs",
     "FieldType": "Label",
@@ -516,7 +516,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingCostsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -525,7 +525,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingCosts",
     "Label": " ",
     "FieldType": "DisposalHearingCosts",
@@ -533,7 +533,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingCostsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -541,7 +541,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
@@ -550,7 +550,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -558,7 +558,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "disposalHearingNotes",
     "Label": "Notes",
     "FieldType": "DisposalHearingNotes",
@@ -566,7 +566,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "setSmallClaimsFlag",
     "Label": "small claims flag",
     "FieldType": "YesOrNo",
@@ -574,7 +574,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsOrderAndHearingDetails",
     "Label": " ",
     "FieldType": "SmallClaimsOrderAndHearingDetails",
@@ -582,7 +582,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "SmallClaimsJudgesRecital",
@@ -590,7 +590,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "SmallClaimsJudgementDeductionStatement",
@@ -598,7 +598,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsJudgementDeductionValue",
     "Label": " ",
     "FieldType": "SmallClaimsJudgementDeductionValue",
@@ -606,7 +606,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsAllocation",
     "Label": " ",
     "FieldType": "SmallClaimsAllocation",
@@ -614,7 +614,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsHearingStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -622,7 +622,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsHearingTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
@@ -630,7 +630,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsHearingToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -639,7 +639,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsHearing",
     "Label": " ",
     "FieldType": "SmallClaimsHearing",
@@ -647,7 +647,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsHearingEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -655,7 +655,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsDocumentsStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -663,7 +663,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsDocumentsTitle",
     "Label": "## Documents",
     "FieldType": "Label",
@@ -671,7 +671,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsDocumentsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -680,7 +680,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsDocuments",
     "Label": " ",
     "FieldType": "SmallClaimsDocuments",
@@ -688,7 +688,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -696,7 +696,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsWitnessStatementTitle",
     "Label": "## Witness Statement",
     "FieldType": "Label",
@@ -704,7 +704,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsWitnessStatementToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -713,7 +713,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsWitnessStatement",
     "Label": " ",
     "FieldType": "SmallClaimsWitnessStatement",
@@ -721,7 +721,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsWitnessStatementEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -729,7 +729,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
@@ -737,7 +737,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethodToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -746,7 +746,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethod",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -755,7 +755,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethodInPerson",
     "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
@@ -764,7 +764,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethodVideoConferenceHearing",
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
@@ -773,7 +773,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsMethodTelephoneHearing",
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
@@ -782,7 +782,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsNotes",
     "Label": "Important notes",
     "FieldType": "SmallClaimsNotes",
@@ -790,7 +790,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoHearingNotes",
     "Label": "Hearing notes",
     "FieldType": "SDOHearingNotes",
@@ -798,7 +798,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsCreditHire",
     "Label": "Credit hire",
     "FieldType": "SmallClaimsCreditHire",
@@ -806,7 +806,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsRoadTrafficAccident",
     "Label": "Road traffic accident ",
     "FieldType": "SmallClaimsRoadTrafficAccident",
@@ -814,7 +814,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
@@ -823,7 +823,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "smallClaimsAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -831,7 +831,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "setFastTrackFlag",
     "Label": "fast track flag",
     "FieldType": "YesOrNo",
@@ -839,7 +839,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackOrderAndHearingDetails",
     "Label": " ",
     "FieldType": "FastTrackOrderAndHearingDetails",
@@ -847,7 +847,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackJudgesRecital",
     "Label": "Judge's recital",
     "FieldType": "FastTrackJudgesRecital",
@@ -855,7 +855,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackJudgementDeductionStatement",
     "Label": " ",
     "FieldType": "FastTrackJudgementDeductionStatement",
@@ -863,7 +863,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackJudgementDeductionValue",
     "Label": " ",
     "FieldType": "FastTrackJudgementDeductionValue",
@@ -871,7 +871,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAllocation",
     "Label": " ",
     "FieldType": "FastTrackAllocation",
@@ -879,7 +879,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAltDisputeResolutionStartLine",
     "Label": "****",
     "FieldType": "Label",
@@ -887,7 +887,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAltDisputeResolutionTitle",
     "Label": "## Alternative dispute resolution",
     "FieldType": "Label",
@@ -895,7 +895,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAltDisputeResolutionToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -904,7 +904,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAltDisputeResolution",
     "Label": " ",
     "FieldType": "FastTrackAltDisputeResolution",
@@ -912,7 +912,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAltDisputeResolutionEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -920,7 +920,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackVariationOfDirectionsTitle",
     "Label": "## Variation of directions",
     "FieldType": "Label",
@@ -928,7 +928,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackVariationOfDirectionsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -937,7 +937,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackVariationOfDirections",
     "Label": " ",
     "FieldType": "FastTrackVariationOfDirections",
@@ -945,7 +945,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackVariationOfDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -953,7 +953,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSettlementTitle",
     "Label": "## Settlement",
     "FieldType": "Label",
@@ -961,7 +961,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSettlementToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -970,7 +970,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSettlement",
     "Label": " ",
     "FieldType": "FastTrackSettlement",
@@ -978,7 +978,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSettlementEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -986,7 +986,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackDisclosureOfDocumentsTitle",
     "Label": "## Disclosure of documents",
     "FieldType": "Label",
@@ -994,7 +994,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackDisclosureOfDocumentsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1003,7 +1003,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackDisclosureOfDocuments",
     "Label": " ",
     "FieldType": "FastTrackDisclosureOfDocuments",
@@ -1011,7 +1011,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackDisclosureOfDocumentsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1019,7 +1019,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackWitnessOfFactTitle",
     "Label": "## Witnesses of Fact",
     "FieldType": "Label",
@@ -1027,7 +1027,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackWitnessOfFactToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1036,7 +1036,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackWitnessOfFact",
     "Label": " ",
     "FieldType": "FastTrackWitnessOfFact",
@@ -1044,7 +1044,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackWitnessOfFactEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1052,7 +1052,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSchedulesOfLossTitle",
     "Label": "## Schedules of loss",
     "FieldType": "Label",
@@ -1060,7 +1060,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSchedulesOfLossToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1069,7 +1069,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSchedulesOfLoss",
     "Label": " ",
     "FieldType": "FastTrackSchedulesOfLoss",
@@ -1077,7 +1077,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackSchedulesOfLossEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1085,7 +1085,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackCostsTitle",
     "Label": "## Costs",
     "FieldType": "Label",
@@ -1093,7 +1093,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackCostsToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1102,7 +1102,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackCosts",
     "Label": " ",
     "FieldType": "FastTrackCosts",
@@ -1110,7 +1110,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackCostsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1118,7 +1118,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackTrialTitle",
     "Label": "## Hearing time",
     "FieldType": "Label",
@@ -1126,7 +1126,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackTrialToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1135,7 +1135,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackTrial",
     "Label": " ",
     "FieldType": "FastTrackTrial",
@@ -1143,7 +1143,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackHearingTime",
     "Label": " ",
     "FieldType": "FastTrackHearingTime",
@@ -1151,7 +1151,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackTrialEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1159,7 +1159,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodTitle",
     "Label": "## Hearing Method",
     "FieldType": "Label",
@@ -1167,7 +1167,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethod",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -1176,7 +1176,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodToggle",
     "Label": " ",
     "FieldType": "MultiSelectList",
@@ -1185,7 +1185,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodInPerson",
     "Label": "This hearing will take place at:",
     "FieldType": "DynamicList",
@@ -1194,7 +1194,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodVideoConferenceHearing",
     "Label": "Who will arrange the video conference? ",
     "FieldType": "FixedRadioList",
@@ -1203,7 +1203,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodTelephoneHearing",
     "Label": "Who will arrange the telephone hearing? ",
     "FieldType": "FixedRadioList",
@@ -1212,7 +1212,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackMethodEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1220,7 +1220,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackNotes",
     "Label": " ",
     "FieldType": "FastTrackNotes",
@@ -1228,7 +1228,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackHearingNotes",
     "Label": "Hearing notes",
     "FieldType": "FastTrackHearingNotes",
@@ -1236,7 +1236,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackOrderWithoutJudgement",
     "Label": "Important notes",
     "FieldType": "FastTrackOrderWithoutJudgement",
@@ -1244,7 +1244,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackBuildingDispute",
     "Label": "Building dispute",
     "FieldType": "FastTrackBuildingDispute",
@@ -1252,7 +1252,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackClinicalNegligence",
     "Label": "Clinical negligence",
     "FieldType": "FastTrackClinicalNegligence",
@@ -1260,7 +1260,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackCreditHire",
     "Label": "Credit hire",
     "FieldType": "FastTrackCreditHire",
@@ -1268,7 +1268,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackEmployersLiability",
     "Label": "Employer's liability",
     "FieldType": "FastTrackEmployersLiability",
@@ -1276,7 +1276,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackHousingDisrepair",
     "Label": "Housing Disrepair",
     "FieldType": "FastTrackHousingDisrepair",
@@ -1284,7 +1284,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackPersonalInjury",
     "Label": "Expert Evidence",
     "FieldType": "FastTrackPersonalInjury",
@@ -1292,7 +1292,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackRoadTrafficAccident",
     "Label": "Road traffic accident",
     "FieldType": "FastTrackRoadTrafficAccident",
@@ -1300,7 +1300,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAddNewDirections",
     "Label": "Add a new direction",
     "FieldType": "Collection",
@@ -1309,7 +1309,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "fastTrackAddNewDirectionsEndLine",
     "Label": "****",
     "FieldType": "Label",
@@ -1317,7 +1317,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "unsuitableSDODate",
     "Label": "SDO unsuitable date",
     "FieldType": "DateTime",
@@ -1325,7 +1325,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "sdoOrderDocument",
     "Label": "View directions order",
     "FieldType": "CaseDocument",
@@ -1333,7 +1333,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1341,7 +1341,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantResponseDocumentsContainsDefenceAndDirectionsDocuments",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -1349,7 +1349,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "otherDetails",
     "Label": "Other Details",
     "FieldType": "OtherDetails",
@@ -1357,7 +1357,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingMethodValuesDisposalHearing",
     "Label": " ",
     "FieldType": "DynamicRadioList",
@@ -1365,7 +1365,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingMethodValuesSmallClaims",
     "Label": " ",
     "FieldType": "DynamicRadioList",
@@ -1373,10 +1373,43 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingMethodValuesFastTrack",
     "Label": " ",
     "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsMediationSectionTitle",
+    "Label": "## Mediation representation",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsMediationSectionToggle",
+    "Label": " ",
+    "FieldType": "MultiSelectList",
+    "FieldTypeParameter": "OrderDetailsPagesSectionsToggle",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsMediationSectionStatement",
+    "Label": " ",
+    "FieldType": "SmallClaimsMediation",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "smallClaimsMediationSectionEndLine",
+    "Label": "****",
+    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

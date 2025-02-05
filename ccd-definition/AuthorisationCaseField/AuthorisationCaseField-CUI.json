@@ -1,26 +1,21 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1Represented",
     "AccessControl": [
       {
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-admin"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1AgreedDeadlineExtension",
     "AccessControl": [
       {
@@ -33,7 +28,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LiPResponse",
     "AccessControl": [
       {
@@ -54,7 +49,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LiPFinancialDetails",
     "AccessControl": [
       {
@@ -75,7 +70,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "translatedDocuments",
     "AccessControl": [
       {
@@ -96,7 +91,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingManualDetermination",
     "AccessControl": [
       {
@@ -110,7 +105,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingDefendantProposedPlan",
     "AccessControl": [
       {
@@ -124,7 +119,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingDefendantFinancialDetails",
     "AccessControl": [
       {
@@ -138,7 +133,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingClaimantProposedPlan",
     "AccessControl": [
       {
@@ -152,7 +147,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingDisabilityPremiumPayments",
     "AccessControl": [
       {
@@ -166,7 +161,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingBankAccount",
     "AccessControl": [
       {
@@ -180,7 +175,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingHomeDetails",
     "AccessControl": [
       {
@@ -194,7 +189,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingEmployment",
     "AccessControl": [
       {
@@ -208,7 +203,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "headingCourtOrder",
     "AccessControl": [
       {
@@ -222,7 +217,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "manageDocuments",
     "AccessControl": [
       {
@@ -236,7 +231,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "defendantUserDetails",
     "AccessControl": [
       {
@@ -256,7 +251,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimMovedToMediationOn",
     "AccessControl": [
       {

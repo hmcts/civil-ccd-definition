@@ -395,7 +395,7 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -403,7 +403,7 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -451,7 +451,7 @@
     "CaseFieldID": "applicant2DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -459,7 +459,7 @@
     "CaseFieldID": "applicant2DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -656,5 +656,113 @@
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 7,
     "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQExperts",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQWitnesses",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQExperts",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Experts",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQExperts",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQExperts=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQWitnesses",
+    "ListElementCode": "details.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Witnesses",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQWitnesses",
+    "ListElementCode": "details.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQWitnesses=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDates.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQHearing=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant1DQHearing",
+    "ListElementCode": "unavailableDates.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant1DQHearing=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDates.eventAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQHearing=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "ID": "Hearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "applicant2DQHearing",
+    "ListElementCode": "unavailableDates.dateAdded",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "OPTIONAL",
+    "FieldShowCondition": "applicant2DQHearing=\"DO NOT SHOW IN UI\""
   }
 ]

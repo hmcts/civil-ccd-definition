@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseTypeLabelForSpec",
     "Label": "${respondent1ClaimResponseTypeForSpec}",
     "FieldType": "Label",
@@ -8,7 +8,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "Label": "${respondent1.partyName} admits all of the claim and has offered to pay in instalments. \n\nDetails of the repayment plan can be found in the Defendant response document",
     "FieldType": "Label",
@@ -16,7 +16,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimAdmitAllBySetDateLabel",
     "Label": "${respondent1.partyName} admits all of the claim and said that they will pay by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
@@ -24,7 +24,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
@@ -32,7 +32,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimResponseDocumentSpec",
     "Label": " ",
     "FieldType": "CaseDocument",
@@ -40,7 +40,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PaymentDateToStringSpec",
     "Label": " ",
     "FieldType": "Text",
@@ -48,7 +48,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AcceptAdmitAmountPaidSpec",
     "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted?",
     "FieldType": "YesOrNo",
@@ -56,7 +56,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
@@ -64,7 +64,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicantDefenceResponseDocumentAndDQFlag",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -72,7 +72,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimPartAdmitImmediatelyLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay the £${respondToAdmittedClaimOwingAmountPounds} immediately. \n\n They must make sure the claimant has the money by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
@@ -80,7 +80,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimPartAdmitBySetDateLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay by ${respondent1PaymentDateToStringSpec}.",
     "FieldType": "Label",
@@ -88,7 +88,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimPartAdmitInstalmentLabel",
     "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds}. They don't believe they owe the full amount claimed. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
     "FieldType": "Label",
@@ -96,7 +96,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "unsuccessfulMediationReason",
     "Label": "Mediation failed reason",
     "FieldType": "FixedList",
@@ -105,7 +105,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">How do you want ${respondent1.partyName} to pay?</h2>",
     "FieldType": "Label",
@@ -113,7 +113,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1RepaymentOptionForDefendantSpec",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -122,7 +122,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1RequestedPaymentDateForDefendantSpec",
     "Label": "When do you want ${respondent1.partyName} to pay?",
     "FieldType": "PaymentBySetDate",
@@ -130,7 +130,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
     "Label": "<h2 class=\"govuk-heading-l\">Suggest instalments for ${respondent1.partyName}</h2>",
     "FieldType": "Label",
@@ -138,7 +138,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
     "FieldType": "Label",
     "Label": "The claim amount is £${totalClaimAmount}. This includes all court fees and interest.\n",
@@ -146,7 +146,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
     "FieldType": "MoneyGBP",
     "Label": "Regular payments of\n",
@@ -155,7 +155,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "PaymentFrequencyClaimantResponseLRspec",
@@ -164,7 +164,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "currentDateboxDefendantSpec",
     "Label": "currentDate",
     "FieldType": "Text",
@@ -172,7 +172,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
     "FieldType": "Date",
     "Label": "Date for first instalment",
@@ -181,7 +181,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Has ${respondent1.partyName} paid some of the amount owed?</h2>",
     "FieldType": "Label",
@@ -189,7 +189,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeOption",
     "Label": " ",
     "FieldType": "YesOrNo",
@@ -197,15 +197,24 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "ccjPaymentPaidSomeLabelInsetHelpText",
+    "Label": "<div class=\"govuk-inset-text\">The system only allows interest to be calculated on the full claim amount. If you have received any part payment and you are requesting a CCJ, please use form <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-n225-request-for-judgment-and-reply-to-admission-specified-amount\">N225</a>. If you have received any part payment and you are requesting a Judgment on a Part Admission response, please use form <a target=\"_blank\" href=\"https://assets.publishing.service.gov.uk/media/63f49b03e90e077bb3d7af45/n225a-eng-04-13_save.pdf\">N225a</a>. You can calculate the correct interest, and send to <a target=\"_blank\" href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeAmount",
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
+
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partAdmitPaidValuePounds",
     "Label": " ",
     "FieldType": "Text",
@@ -213,7 +222,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
     "Label": "${respondent1.partyName} states they paid the claimant £${partAdmitPaidValuePounds} on ${respondent1PaymentDateToStringSpec}",
     "FieldType": "Label",
@@ -221,7 +230,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "Label": "Has ${respondent1.partyName} paid the claimant £${partAdmitPaidValuePounds}?",
     "FieldType": "YesOrNo",
@@ -229,7 +238,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartAdmitIntentionToSettleClaimSpec",
     "Label": "Does the claimant want to settle the claim for the £${partAdmitPaidValuePounds} the defendant has paid?",
     "FieldType": "YesOrNo",
@@ -237,7 +246,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1PartAdmitRejectReasonSpec",
     "Label": "Why does the claimant reject their response?",
     "FieldType": "TextArea",
@@ -245,7 +254,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "claimantUserDetails",
     "Label": "Claimant User Details",
     "FieldType": "UserDetails",
@@ -253,7 +262,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountSummaryLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Judgment Amount</h2>",
     "FieldType": "Label",
@@ -261,7 +270,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentSummarySubtotalAmount",
     "Label": " ",
     "FieldType": "Text",
@@ -269,7 +278,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountSummaryResponse",
     "Label": "${ccjJudgmentStatement}",
     "FieldType": "Label",
@@ -277,7 +286,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentStatement",
     "Label": " ",
     "FieldType": "Text",
@@ -285,7 +294,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimAmountLabel",
     "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
     "FieldType": "Label",
@@ -293,7 +302,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimAmount",
     "Label": " ",
     "FieldType": "Text",
@@ -301,7 +310,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountInterestToDateLabel",
     "Label": "### Interest to date\n\n£${ccjJudgmentAmountInterestToDate}",
     "FieldType": "Label",
@@ -309,7 +318,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountInterestToDate",
     "Label": " ",
     "FieldType": "Text",
@@ -317,7 +326,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimFeeLabel",
     "Label": "### Claim fee amount\n\n£${ccjJudgmentAmountClaimFee}",
     "FieldType": "Label",
@@ -325,7 +334,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimFee",
     "Label": " ",
     "FieldType": "Text",
@@ -333,7 +342,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountSubtotalLabel",
     "Label": "### Subtotal\n\n£${ccjJudgmentSummarySubtotalAmount}",
     "FieldType": "Label",
@@ -341,7 +350,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountSubtotal",
     "Label": " ",
     "FieldType": "Text",
@@ -349,7 +358,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "Label": "### Amount already paid\n\n£${ccjPaymentPaidSomeAmountInPounds}",
     "FieldType": "Label",
@@ -357,7 +366,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeAmountInPounds",
     "Label": " ",
     "FieldType": "Text",
@@ -365,7 +374,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentTotalStillOwedLabel",
     "Label": "### Total still owed\n\n£${ccjJudgmentTotalStillOwed}",
     "FieldType": "Label",
@@ -373,7 +382,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentTotalStillOwed",
     "Label": " ",
     "FieldType": "Text",
@@ -381,7 +390,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1FullAdmitAmountLabel",
     "Label": "Total Claim amount is £${totalClaimAmount}. This includes all court fees and interest.",
     "FieldType": "Label",
@@ -389,7 +398,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseTitle",
     "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
@@ -397,7 +406,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantNameLabel",
     "Label": "### Defendant Name",
     "FieldType": "Label",
@@ -405,7 +414,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "defendantName",
     "Label": "${respondent1.partyName}",
     "FieldType": "Label",
@@ -413,7 +422,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "mediationSettlementAgreedAt",
     "Label": "Mediation settlement agreed on",
     "FieldType": "Date",
@@ -421,7 +430,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "mediationAgreementTitle",
     "Label": "## Upload Mediation Agreement",
     "FieldType": "Label",
@@ -429,7 +438,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "staffUploadedDocumentsLabel",
     "Label": "### Staff uploaded documents",
     "FieldType": "Label",
@@ -437,7 +446,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "mediationAgreement",
     "Label": " ",
     "FieldType": "MediationAgreementDocument",
@@ -445,7 +454,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostOptionLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Would you like to claim for fixed costs?</h2>",
     "FieldType": "Label",
@@ -453,7 +462,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostOption",
     "Label": " ",
     "HintText": "This will include fixed costs for judgement",
@@ -462,7 +471,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostAmountLabel",
     "Label": "### Fixed cost amount\n\n£${ccjJudgmentFixedCostAmount}",
     "FieldType": "Label",
@@ -470,7 +479,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostAmount",
     "Label": " ",
     "FieldType": "Text",
@@ -478,7 +487,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1ClaimMediationSpecRequiredLip",
     "Label": " ",
     "FieldType": "ClaimantMediationLip",
