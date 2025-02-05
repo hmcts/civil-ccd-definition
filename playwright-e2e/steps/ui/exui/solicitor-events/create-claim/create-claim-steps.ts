@@ -1,5 +1,5 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { Step } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import CreateClaimPageFactory from '../../../../../pages/exui/solicitor-events/create-claim/create-claim-page-factory';
@@ -7,7 +7,7 @@ import RequestsFactory from '../../../../../requests/requests-factory';
 import ccdEvents from '../../../../../constants/ccd-events';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 
-@AllMethodsStep()
+const classKey = 'CreateClaimSteps';
 export default class CreateClaimSteps extends BaseExuiSteps {
   private createClaimPageFactory: CreateClaimPageFactory;
 
@@ -21,6 +21,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     this.createClaimPageFactory = createClaimPageFactory;
   }
 
+  @Step(classKey)
   async FastTrack1v1() {
     await super.retryExuiEvent(
       async () => {
@@ -55,6 +56,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v1() {
     await super.retryExuiEvent(
       async () => {
@@ -90,6 +92,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack2v1() {
     await super.retryExuiEvent(
       async () => {
@@ -126,6 +129,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v2SS() {
     await super.retryExuiEvent(
       async () => {
@@ -164,6 +168,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async SmallTrack1v2DS() {
     await super.retryExuiEvent(
       async () => {

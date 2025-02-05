@@ -1,13 +1,14 @@
 import BaseExuiSteps from '../../../../base/base-exui-steps';
 import { claimantSolicitorUser } from '../../../../config/users/exui-users';
-import { AllMethodsStep } from '../../../../decorators/test-steps';
+import { Step } from '../../../../decorators/test-steps';
 import ccdEvents from '../../../../constants/ccd-events';
 import TestData from '../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import NotifyClaimPageFactory from '../../../../pages/exui/solicitor-events/notify-claim/notify-claim-page-factory';
 import RequestsFactory from '../../../../requests/requests-factory';
 
-@AllMethodsStep()
+const classKey = 'NotifyClaimSteps';
+
 export default class NotifyClaimSteps extends BaseExuiSteps {
   private notifyClaimPageFactory: NotifyClaimPageFactory;
 
@@ -21,6 +22,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     this.notifyClaimPageFactory = notifyClaimPageFactory;
   }
 
+  @Step(classKey)
   async NotifyClaim1v1() {
     await this.retryExuiEvent(
       async () => {
@@ -33,6 +35,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim2v1() {
     await this.retryExuiEvent(
       async () => {
@@ -45,6 +48,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim1v2SS() {
     await this.retryExuiEvent(
       async () => {
@@ -58,6 +62,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim1v2DS() {
     await this.retryExuiEvent(
       async () => {
@@ -71,6 +76,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim1v1LIP() {
     await this.retryExuiEvent(
       async () => {
@@ -83,6 +89,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim1v2LIPS() {
     await this.retryExuiEvent(
       async () => {
@@ -96,6 +103,7 @@ export default class NotifyClaimSteps extends BaseExuiSteps {
     );
   }
 
+  @Step(classKey)
   async NotifyClaim1v1LIP1LR() {
     await this.retryExuiEvent(
       async () => {

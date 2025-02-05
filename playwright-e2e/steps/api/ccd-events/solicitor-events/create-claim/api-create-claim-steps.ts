@@ -21,14 +21,9 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     this.createClaimDataBuilder = createClaimDataBuilder;
   }
 
-  async Create1v1Claim() {
+  async SmallTrack1v1() {
     await this.setupUserData(claimantSolicitorUser);
-    const { civilServiceRequests } = this.requestsFactory;
-    const particularsOfClaimDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack1v1(
-      particularsOfClaimDocument,
-    );
+    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack1v1();
 
     const { ccdRequests } = this.requestsFactory;
     const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
@@ -50,14 +45,10 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
 
-  async Create1v2Claim() {
+  async SmallTrack1v2DS() {
     await this.setupUserData(claimantSolicitorUser);
-    const { civilServiceRequests } = this.requestsFactory;
-    const particularsOfClaimDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack1v2DifferentSolicitor(
-      particularsOfClaimDocument,
-    );
+    const createClaimData =
+      await this.createClaimDataBuilder.buildSmallTrack1v2DifferentSolicitor();
 
     const { ccdRequests } = this.requestsFactory;
     const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
@@ -79,14 +70,9 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
 
-  async Create2v1Claim() {
+  async SmallTrack2v1() {
     await this.setupUserData(claimantSolicitorUser);
-    const { civilServiceRequests } = this.requestsFactory;
-    const particularsOfClaimDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack2v1(
-      particularsOfClaimDocument,
-    );
+    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack2v1();
 
     const { ccdRequests } = this.requestsFactory;
     const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);

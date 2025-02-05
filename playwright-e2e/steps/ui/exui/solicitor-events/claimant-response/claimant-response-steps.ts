@@ -1,5 +1,5 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { Step } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import ClaimantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/claimant-response/claimant-response-page-factory';
@@ -8,7 +8,8 @@ import ccdEvents from '../../../../../constants/ccd-events.ts';
 import { civilAdminUser, claimantSolicitorUser } from '../../../../../config/users/exui-users.ts';
 import partys from '../../../../../constants/partys.ts';
 
-@AllMethodsStep()
+const classKey = 'ClaimantResponseSteps';
+
 export default class ClaimantResponseSteps extends BaseExuiSteps {
   private claimantResponsePageFactory: ClaimantResponsePageFactory;
 
@@ -22,7 +23,8 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     this.claimantResponsePageFactory = claimantResponsePageFactory;
   }
 
-  async FastTrack1v1() {
+  @Step(classKey)
+  async FastTrackIntentToProceed1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponsePage();
@@ -48,7 +50,8 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async SmallClaim1v1() {
+  @Step(classKey)
+  async SmallClaimIntentToProceed1v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponsePage();
@@ -71,7 +74,8 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async SmallClaim2v1() {
+  @Step(classKey)
+  async SmallClaimIntentToProceed2v1() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponse2v1PagePage();
@@ -94,7 +98,8 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async SmallClaim1v2SS() {
+  @Step(classKey)
+  async SmallClaimIntentToProceed1v2SS() {
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponse1v2Pages();
@@ -117,7 +122,9 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  async SmallClaim1v2DS() {
+  @Step(classKey)
+  async SmallClaimIntentToProceed1v2DS() {
+    await super.fetchAndSetCCDCaseData(civilAdminUser, 1738766651688403);
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponse1v2Pages();

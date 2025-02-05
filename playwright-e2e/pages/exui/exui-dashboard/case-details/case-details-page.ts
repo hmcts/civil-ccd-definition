@@ -78,15 +78,18 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
-    await super.retryClickBySelector(
-      buttons.go.selector,
-      () =>
+    await super.retryAction(
+      async () => {
+        await this.selectFromDropdown(0, dropdowns.nextStep.selector);
+        await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+        await super.clickBySelector(buttons.go.selector);
+      },
+      async () =>
         super.expectNoTab(tabs.summary.title, {
           timeout: 15_000,
           exact: true,
         }),
-      { retries: 3 },
+      `Starting event: ${ccdEvent.name}, trying again`,
     );
   }
 

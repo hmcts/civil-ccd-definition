@@ -6,41 +6,37 @@ import ClaimType from '../../../../../../enums/claim-type';
 import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
-
 @AllMethodsStep()
 export default class CreateClaimDataBuilder extends BaseDataBuilder {
-  async buildSmallTrack1v1(particularsOfClaimDocument: UploadDocumentValue) {
-    return this.buildData(particularsOfClaimDocument);
+  async buildSmallTrack1v1() {
+    return this.buildData();
   }
 
-  async buildSmallTrack1v2DifferentSolicitor(particularsOfClaimDocument: UploadDocumentValue) {
-    return this.buildData(particularsOfClaimDocument,
-      { claimType : ClaimType.ONE_VS_TWO_DIFF_SOL});
+  async buildSmallTrack1v2DifferentSolicitor() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
-  async buildSmallTrack2v1(particularsOfClaimDocument: UploadDocumentValue) {
-    return this.buildData(particularsOfClaimDocument,
-      { claimType : ClaimType.TWO_VS_ONE});
+  async buildSmallTrack2v1() {
+    return this.buildData({ claimType: ClaimType.TWO_VS_ONE });
   }
 
-  protected async buildData(
-    particularsOfClaimDocument: UploadDocumentValue,
-    {
-      claimType = ClaimType.ONE_VS_ONE,
-      claimTrack = ClaimTrack.SMALL_CLAIM,
-      claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-      claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-      defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-      defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
-    }: {
-      claimType?: ClaimType;
-      claimTrack?: ClaimTrack;
-      claimant1PartyType?: ClaimantDefendantPartyType;
-      claimant2PartyType?: ClaimantDefendantPartyType;
-      defendant1PartyType?: ClaimantDefendantPartyType;
-      defendant2PartyType?: ClaimantDefendantPartyType;
-    } = {},
-  ) {
+  protected async buildData({
+    claimType = ClaimType.ONE_VS_ONE,
+    claimTrack = ClaimTrack.SMALL_CLAIM,
+    claimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    claimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    defendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL,
+    particularsOfClaimDocument,
+  }: {
+    claimType?: ClaimType;
+    claimTrack?: ClaimTrack;
+    claimant1PartyType?: ClaimantDefendantPartyType;
+    claimant2PartyType?: ClaimantDefendantPartyType;
+    defendant1PartyType?: ClaimantDefendantPartyType;
+    defendant2PartyType?: ClaimantDefendantPartyType;
+    particularsOfClaimDocument?: UploadDocumentValue;
+  } = {}) {
     return {
       ...createClaimData.references,
       ...createClaimData.claimantCourt,
@@ -53,7 +49,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
       ...createClaimData.defendant2Represented(claimType),
       ...createClaimData.defendant2SameSolicitor(claimType),
       ...createClaimData.defendantSolicitor2(claimType),
-      ...createClaimData.claimDetails(claimTrack, particularsOfClaimDocument),
+      ...createClaimData.claimDetails(claimTrack),
       ...createClaimData.statementOfTruth,
     };
   }

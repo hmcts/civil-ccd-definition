@@ -64,15 +64,20 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         buttons.submit.selector,
         async () => {
           await super.waitForSelectorToDetach(components.loading.selector, {
-            timeout: 30_000,
+            timeout: 15_000,
           });
           await super.expectNoSelector(components.error.selector, {
             timeout: 500,
             all: true,
           });
+          await super.expectNoSelector(components.fieldError.selector, {
+            timeout: 500,
+            all: true,
+            message: 'Field Validation Error on UI',
+          });
           if (expect) await expect();
         },
-        { timeout: 45_000 },
+        { timeout: 30_000 },
       );
     }
 
