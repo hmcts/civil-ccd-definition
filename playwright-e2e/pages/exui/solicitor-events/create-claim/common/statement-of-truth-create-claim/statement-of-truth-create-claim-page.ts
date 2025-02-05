@@ -15,7 +15,7 @@ export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) 
   }
 
   async verifyContent() {
-    await super.runVerifications([super.expectHeading(heading)]);
+    await super.runVerifications([super.expectSubheading(heading)]);
   }
 
   async enterDetails() {

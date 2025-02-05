@@ -40,6 +40,7 @@ import SecondDefendantSolicitorEmailSpecPage from './lr-spec/second-defendant-so
 import ClaimTypePage from './unspec/claim-type/claim-type-page.ts';
 import FlightDelayClaimPage from './lr-spec/flight-delay-claim/flight-delay-claim-page.ts';
 import PersonalInjuryTypePage from './unspec/personal-injury-type/personal-injury-type-page.ts';
+import InterestSummaryPage from "./lr-spec/interest-summary/interest-summary-page.ts";
 import DetailsPage from './unspec/details/details-page.ts';
 import DetailsSpecPage from './lr-spec/details-spec/details-spec-page.ts';
 import UploadCreateClaimPage from './unspec/upload-create-claim/upload-create-claim-page.ts';
@@ -65,6 +66,7 @@ import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/u
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page.ts';
 import SecondDefendantSolicitorOrganisationPage from './unspec/second-defendant-solicitor-organisation/second-defendant-solicitor-organisation-page.ts';
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
+import ClaimAmountDetailsPage from "./lr-spec/claim-amount-details/claim-amount-details-page.ts";
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -152,6 +154,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_1
     );
     return new SpecCorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -199,6 +202,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1
     );
     return new SpecRespondentCorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -262,6 +266,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1,
     );
     return new SpecRespondent2CorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -315,7 +320,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new UploadCreateClaimPage(this.page, particularsOfClaimFragment);
   }
 
-  get uploadClaimDeocumentPage() {
+  get uploadClaimDocumentPage() {
     return new UploadClaimDocumentPage(this.page);
   }
 
@@ -340,8 +345,16 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new ClaimAmountPage(this.page);
   }
 
+  get claimAmountDetailsPage() {
+    return new ClaimAmountDetailsPage(this.page);
+  }
+
   get claimInterestPage() {
     return new ClaimInterestPage(this.page);
+  }
+
+  get interestSummaryPage() {
+    return new InterestSummaryPage(this.page);
   }
 
   get pbaNumberPage() {

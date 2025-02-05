@@ -15,10 +15,12 @@ import {
 
 export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   private solicitorParty: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, solicitorParty: Party) {
+  constructor(page: Page, solicitorParty: Party, claimantDefendantParty: Party) {
     super(page);
     this.solicitorParty = solicitorParty;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
@@ -34,12 +36,13 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons.addressRequired.yes.selector(this.solicitorParty));
+    console.log("this is the solicitor "+ this.claimantDefendantParty);
+    await super.clickBySelector(radioButtons.addressRequired.yes.selector(this.claimantDefendantParty));
     await super.expectSubheading(subheadings.correspondenceAddress);
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons.addressRequired.no.selector(this.solicitorParty));
+     await super.clickBySelector(radioButtons.addressRequired.no.selector(this.claimantDefendantParty));
   }
 
   async enterAddressManual() {
