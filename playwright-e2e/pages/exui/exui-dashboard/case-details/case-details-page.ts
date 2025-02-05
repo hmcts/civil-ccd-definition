@@ -89,7 +89,8 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           timeout: 15_000,
           exact: true,
         }),
-      `Starting event: ${ccdEvent.name}, trying again`,
+      `Starting event: ${ccdEvent.name} failed, trying again`,
+      { retries: 3 },
     );
   }
 
