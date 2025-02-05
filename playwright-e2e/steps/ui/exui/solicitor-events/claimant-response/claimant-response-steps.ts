@@ -124,7 +124,6 @@ export default class ClaimantResponseSteps extends BaseExuiSteps {
 
   @Step(classKey)
   async SmallClaimIntentToProceed1v2DS() {
-    await super.fetchAndSetCCDCaseData(civilAdminUser, 1738766651688403);
     await this.retryExuiEvent(
       async () => {
         await this.processRespondentResponse1v2Pages();

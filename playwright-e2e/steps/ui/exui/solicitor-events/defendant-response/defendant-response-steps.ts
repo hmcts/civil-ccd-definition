@@ -111,6 +111,34 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
+  async SmallTrackFullDefence1v2SS() {
+    await this.retryExuiEvent(
+      async () => {
+        await this.processConfirmDetailsPage();
+        await this.processSingleResponsePage();
+        await this.processRespondentResponseTypeDefendant1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
+        await this.processUploadDefendantResponseDefendant1Page();
+        await this.processExpertsDefendant1Page();
+        await this.processWitnessesDefendant1Page();
+        await this.processLanguageDefendant1Page();
+        await this.processHearingDefendant1Page();
+        await this.processDraftDirectionsDefendant1Page();
+        await this.processRequestedCourtDefendant1Page();
+        await this.processHearingSupportDefendant1Page();
+        await this.processVulnerabilityQuestionsDefendant1Page();
+        await this.processFurtherInformationDefendant1Page();
+        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processSubmitDefendantResponsePage();
+        await this.processConfirmDefendantResponsePage();
+      },
+      ccdEvents.DEFENDANT_RESPONSE,
+      defendantSolicitor1User,
+      { retries: 0 },
+    );
+  }
+
+  @Step(classKey)
   async SmallTrackFullDefence1v2DSDefendant1() {
     await this.retryExuiEvent(
       async () => {
@@ -168,6 +196,13 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     const { confirmDetailsPage } = this.defendantResponsePageFactory;
     await confirmDetailsPage.verifyContent(this.ccdCaseData);
     await confirmDetailsPage.submit();
+  }
+
+  private async processSingleResponsePage() {
+    const { singleResponsePage } = this.defendantResponsePageFactory;
+    await singleResponsePage.verifyContent(this.ccdCaseData);
+    await singleResponsePage.selectYes();
+    await singleResponsePage.submit();
   }
 
   private async processRespondentResponseTypeDefendant1Page() {
