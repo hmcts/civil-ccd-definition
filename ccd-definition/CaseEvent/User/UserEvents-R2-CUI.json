@@ -41,7 +41,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "LIP_CLAIM_SETTLED",
-    "Name": "Claim is settle",
+    "Name": "Claim is settled",
     "Description": "Claim settle response from Citizen Claimant",
     "PreConditionState(s)": "*",
     "PostConditionState": "CASE_SETTLED",

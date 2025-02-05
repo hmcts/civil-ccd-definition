@@ -157,6 +157,7 @@
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 2,
+    "PageShowCondition": "ccjPaymentPaidSomeLabel=\"DONOTSHOW\"",
     "Publish": "Y"
   },
   {
