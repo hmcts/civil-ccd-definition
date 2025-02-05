@@ -460,5 +460,14 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "hearingDurationMinti",
+    "UserRoles": [
+      "hearing-schedule-access",
+      "caseworker-civil-solicitor"
+    ],
+    "CRUD": "CRU"
   }
 ]

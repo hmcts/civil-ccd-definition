@@ -1,7 +1,7 @@
 const {date, listElement} = require('../../api/dataHelper');
 const config = require('../../config');
 module.exports = {
-  scheduleHearing: (allocatedTrack) => {
+  scheduleHearing: (allocatedTrack, isMinti) => {
     return {
       valid: {
         HearingNoticeSelect: {
@@ -21,7 +21,12 @@ module.exports = {
           channel: 'IN_PERSON',
           hearingDate: date(60),
           hearingTimeHourMinute: '1015',
-          hearingDuration: 'MINUTES_55'
+          ...(!isMinti? {
+            hearingDuration: 'MINUTES_55'
+          } : {}),
+          ...(isMinti? {
+            hearingDurationMinti: 'custom hearing duration'
+          } : {}),
         },
         HearingInformation: {
           information: 'string'
