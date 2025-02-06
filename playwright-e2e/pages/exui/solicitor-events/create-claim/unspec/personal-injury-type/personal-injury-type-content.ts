@@ -2,7 +2,7 @@ export const radioButtons = {
   personalInjuryType: {
     label: 'What type of personal injury is this?',
     roadAccident: {
-      label: 'Road Accident',
+      label: 'Road accident',
       selector: '#personalInjuryType-ROAD_ACCIDENT',
     },
     workAccident: {

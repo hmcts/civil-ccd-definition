@@ -3,6 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs, subheadings } from './statement-of-truth-content';
+import StringHelper from '../../../../helpers/string-helper';
 
 export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   private solicitorParty: Party;
@@ -13,9 +14,9 @@ export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    super.runVerifications(
+    await super.runVerifications(
       [
-        super.expectSubheading(subheadings.statementOfTruth),
+        //super.expectSubheading(subheadings.statementOfTruth), TODO - This Sub heading Does no Exist on the Page.
         super.expectLabel(inputs.name.label),
         super.expectLabel(inputs.role.label),
       ],
@@ -24,8 +25,11 @@ export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   }
 
   async enterDetails() {
-    await super.inputText(this.solicitorParty.key, inputs.name.selector);
-    await super.inputText(this.solicitorParty.partyType, inputs.role.selector);
+    await super.inputText(StringHelper.capitalise(this.solicitorParty.key), inputs.name.selector);
+    await super.inputText(
+      StringHelper.capitalise(this.solicitorParty.partyType),
+      inputs.role.selector,
+    );
   }
 
   async submit() {

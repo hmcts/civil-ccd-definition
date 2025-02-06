@@ -21,6 +21,6 @@ export default class LegalRepresentationSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

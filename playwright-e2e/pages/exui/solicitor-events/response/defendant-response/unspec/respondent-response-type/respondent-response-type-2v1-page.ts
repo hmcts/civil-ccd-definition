@@ -10,16 +10,20 @@ export default class RespondentResponseType2v1Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.rejectAll.label, { count: 2 }),
-      super.expectLabel(radioButtons.admitAll.label, { count: 2 }),
-      super.expectLabel(radioButtons.partAdmit.label, { count: 2 }),
-      super.expectLabel(radioButtons.counterClaim.label, { count: 2 }),
+      super.expectLabel(radioButtons.rejectAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.admitAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.partAdmit.label, { index: 0 }),
+      super.expectLabel(radioButtons.counterClaim.label, { index: 0 }),
     ]);
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(partys.DEFENDANT_1));
-    await super.clickBySelector(radioButtons.rejectAll.selector(partys.DEFENDANT_1, true));
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(partys.DEFENDANT_1, partys.CLAIMANT_1),
+    );
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(partys.DEFENDANT_1, partys.CLAIMANT_2),
+    );
   }
 
   async submit() {

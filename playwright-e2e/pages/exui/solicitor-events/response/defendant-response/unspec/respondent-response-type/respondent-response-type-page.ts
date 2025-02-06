@@ -5,6 +5,7 @@ import { radioButtons } from './respondent-response-type-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import { Page } from 'playwright-core';
+import partys from '../../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
 export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
@@ -16,17 +17,19 @@ export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.rejectAll.label),
-      super.expectLabel(radioButtons.admitAll.label),
-      super.expectLabel(radioButtons.partAdmit.label),
-      super.expectLabel(radioButtons.counterClaim.label),
+      super.expectLabel(radioButtons.rejectAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.admitAll.label, { index: 0 }),
+      super.expectLabel(radioButtons.partAdmit.label, { index: 0 }),
+      super.expectLabel(radioButtons.counterClaim.label, { index: 0 }),
     ]);
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(this.defendantParty));
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(this.defendantParty, partys.CLAIMANT_1),
+    );
   }
 
   async submit() {

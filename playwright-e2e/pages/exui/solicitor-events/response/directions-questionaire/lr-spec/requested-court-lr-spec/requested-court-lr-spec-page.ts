@@ -7,6 +7,7 @@ import { dropdowns, inputs, subheadings } from './requested-court-lr-spec-conten
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
+import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
 export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
@@ -37,7 +38,7 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      dropdowns.courtLocationDropdown.options[0],
+      preferredCourts[this.defendantParty.key].default,
       dropdowns.courtLocationDropdown.selector,
     );
     await super.inputText(
