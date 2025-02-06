@@ -1,23 +1,18 @@
-import { civilAdminUser } from '../config/users/exui-users';
-import ccdEvents from '../fixtures/ccd-events/events';
 import { test } from '../playwright-fixtures/index';
 
-test(
-  'Testing Login',
-  { tag: '@debug' },
-  async ({
-    IdamSteps,
-    ExuiDashboardSteps,
-    ApiUserSteps,
-    ApiDataSteps,
-    _requestsFactory,
-    _exuiDashboardPageFactory,
-    _defaultJudgmentPageFactory,
-  }) => {
-    await ApiUserSteps.SetupUserData(civilAdminUser);
-    // await ApiDataSteps.SetupBankHolidaysData();
-    await IdamSteps.ClaimantSolicitorLogin();
-    await ExuiDashboardSteps.GoToCaseList();
+test('Testing Login', async ({
+  IdamSteps,
+  ExuiDashboardSteps,
+  ApiUserSteps,
+  ApiDataSteps,
+  _requestsFactory,
+  _exuiDashboardPageFactory,
+  _notifyClaimPageFactory,
+}) => {
+  // await ApiUserSteps.SetupUserData(civilAdminUser);
+  // await ApiDataSteps.SetupBankHolidaysData();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await ExuiDashboardSteps.GoToCaseDetails();
 
     const { ccdRequests } = _requestsFactory;
     const ccdCaseData = await ccdRequests.fetchCCDCaseData(civilAdminUser, 1734098288558534);
@@ -37,6 +32,16 @@ test(
     await showCertifyStatementPage.verifyText();
     await showCertifyStatementPage.selectCheckbox();
     await showCertifyStatementPage.submit();
+
+  // const { certificateOfService1NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService1NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService1NotifyClaimPage.fillDetails();
+  // await certificateOfService1NotifyClaimPage.submit();
+
+  // const { certificateOfService2NotifyClaimPage } = _notifyClaimPageFactory;
+  // await certificateOfService2NotifyClaimPage.verifyContent(ccdCaseData);
+  // await certificateOfService2NotifyClaimPage.fillDetails();
+  // await certificateOfService2NotifyClaimPage.submit();
 
     const { hearingTypePage } = _defaultJudgmentPageFactory;
     await hearingTypePage.verifyContent(ccdCaseData);

@@ -12,10 +12,10 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.72
+    version: 0.0.67
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
   - name: civil-general-applications
-    version: 0.0.65
+    version: 0.0.64
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: civil-general-applications.enabled
   - name: ccd
@@ -35,7 +35,7 @@ dependencies:
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: idam-pr.enabled
   - name: camunda-bpm
-    version: 0.0.47
+    version: 0.0.44
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: camunda-bpm.enabled
   - name: servicebus
@@ -66,3 +66,17 @@ dependencies:
     version: ~0.0.58
     repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
     condition: am-org-role-mapping-service.enabled
+
+# Stiching
+  - name: ccd-case-document-am-api
+    version: 1.7.14
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: ccd-case-document-am-api.enabled
+  - name: em-ccdorc
+    version: 2.0.25
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: em-ccdorc.enabled
+  - name: em-stitching
+    version: 1.0.55
+    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    condition: em-stitching.enabled

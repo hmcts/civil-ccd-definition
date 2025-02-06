@@ -83,7 +83,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
@@ -1129,10 +1129,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
     }
 
-    await assertSubmittedEvent(finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE' ? 'CASE_PROGRESSION' : 'All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1159,10 +1157,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1205,7 +1201,7 @@ module.exports = {
     }
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
+  scheduleHearing: async (user, allocatedTrack, isMinti = false) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -1214,7 +1210,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
 
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
@@ -1535,9 +1531,15 @@ const assertValidData = async (data, pageId, solicitor) => {
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
+    // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
+    // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
@@ -1552,6 +1554,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
     delete responseBody.data['sdoR2FastTrackCreditHire'];
     delete responseBody.data['sdoDJR2TrialCreditHire'];
+    delete responseBody.data['gaEaCourtLocation'];
   }
 
   assert.equal(response.status, 200);

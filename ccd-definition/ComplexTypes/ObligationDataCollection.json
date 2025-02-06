@@ -3,14 +3,14 @@
     "ID": "ObligationDataCollection",
     "ListElementCode": "obligationDate",
     "FieldType": "Date",
-    "ElementLabel": "Enter the date that this case should be reviewed",
+    "ElementLabel": "Review date",
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
   {
     "ID": "ObligationDataCollection",
     "ListElementCode": "obligationReason",
-    "ElementLabel": "Why does this case need to be reviewed?",
+    "ElementLabel": "Reason",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "ObligationReason",
     "SecurityClassification": "Public",
@@ -20,7 +20,7 @@
     "ID": "ObligationDataCollection",
     "ListElementCode": "otherObligationReason",
     "FieldType": "Text",
-    "ElementLabel": " ",
+    "ElementLabel": "Info for other",
     "SecurityClassification": "Public",
     "FieldShowCondition": "obligationReason = \"OTHER\"",
     "Searchable": "Y"
@@ -29,7 +29,7 @@
     "ID": "ObligationDataCollection",
     "ListElementCode": "obligationAction",
     "FieldType": "TextArea",
-    "ElementLabel": "What action is required when the case is reviewed?",
+    "ElementLabel": "Description of review",
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },

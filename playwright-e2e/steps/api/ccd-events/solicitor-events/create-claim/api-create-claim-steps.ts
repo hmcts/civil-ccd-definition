@@ -2,8 +2,8 @@ import BaseApiSteps from '../../../../../base/base-api-steps';
 import { claimantSolicitorUser } from '../../../../../config/users/exui-users';
 import CreateClaimDataBuilder from '../../../../../data-builders/ccd-events/exui/solicitor-events/create-claim/unspec/create-claim-data-builder';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
-import CaseStates from '../../../../../enums/case-states';
-import ccdEvents from '../../../../../fixtures/ccd-events/events';
+import CaseState from '../../../../../enums/case-state';
+import ccdEvents from '../../../../../constants/ccd-events';
 import UserAssignedCasesHelper from '../../../../../helpers/user-assigned-cases-helper';
 import TestData from '../../../../../models/test-data';
 import RequestsFactory from '../../../../../requests/requests-factory';
@@ -21,14 +21,9 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     this.createClaimDataBuilder = createClaimDataBuilder;
   }
 
-  async Create1v1Claim() {
+  async SmallTrack1v1() {
     await this.setupUserData(claimantSolicitorUser);
-    const { civilServiceRequests } = this.requestsFactory;
-    const particularsOfClaimDocument =
-      await civilServiceRequests.uploadTestDocument(claimantSolicitorUser);
-    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack1v1(
-      particularsOfClaimDocument,
-    );
+    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack1v1();
 
     const { ccdRequests } = this.requestsFactory;
     const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
@@ -41,7 +36,56 @@ export default class ApiCreateClaimSteps extends BaseApiSteps {
     const eventCaseData = await ccdRequests.submitEvent(
       claimantSolicitorUser,
       ccdEvents.CREATE_CLAIM,
-      CaseStates.PENDING_CASE_ISSUED,
+      CaseState.PENDING_CASE_ISSUED,
+      eventData,
+      eventToken,
+    );
+    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, eventCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+  }
+
+  async SmallTrack1v2DS() {
+    await this.setupUserData(claimantSolicitorUser);
+    const createClaimData =
+      await this.createClaimDataBuilder.buildSmallTrack1v2DifferentSolicitor();
+
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
+    const eventData = await super.validatePages(
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      claimantSolicitorUser,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      CaseState.PENDING_CASE_ISSUED,
+      eventData,
+      eventToken,
+    );
+    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, eventCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+  }
+
+  async SmallTrack2v1() {
+    await this.setupUserData(claimantSolicitorUser);
+    const createClaimData = await this.createClaimDataBuilder.buildSmallTrack2v1();
+
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);
+    const eventData = await super.validatePages(
+      ccdEvents.CREATE_CLAIM,
+      createClaimData,
+      claimantSolicitorUser,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM,
+      CaseState.PENDING_CASE_ISSUED,
       eventData,
       eventToken,
     );

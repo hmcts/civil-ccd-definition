@@ -118,7 +118,7 @@
     "ID": "storedObligationData",
     "Label": "Obligation date",
     "FieldType": "Collection",
-    "FieldTypeParameter": "ObligationDataCollection",
+    "FieldTypeParameter": "StoredObligationData",
     "SecurityClassification": "Public",
     "Searchable": "Y"
   },
@@ -270,5 +270,22 @@
     "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "obligationWAFlag",
+    "Label": " ",
+    "FieldType": "ObligationWAFlag",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "gaEaCourtLocation",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
   }
 ]
