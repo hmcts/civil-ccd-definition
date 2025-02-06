@@ -12,7 +12,13 @@ module.exports = {
           no: `#${party}DQHearing_unavailableDatesRequired_No`
         }
       },
-      //respondent1DQHearing_unavailableDates_0_unavailableDateType
+      specHearingAvailableDatesRequired: {
+        id: `#${party}DQHearingLRspec_unavailableDatesRequired`,
+        options: {
+          yes: `#${party}DQHearingLRspec_unavailableDatesRequired_Yes`,
+          no: `#${party}DQHearingLRspec_unavailableDatesRequired_No`
+        }
+      },
       unavailableDates: {
         id: `#${party}DQHearing_unavailableDates`,
         element: {
@@ -38,6 +44,16 @@ module.exports = {
     });
     await this.addUnavailableDates(party);
 
+    await I.clickContinue();
+  },
+
+  async enterHearingAvailability(party) {
+    I.waitForElement(this.fields(party).specHearingAvailableDatesRequired.id);
+    await I.runAccessibilityTest();
+
+    await within(this.fields(party).specHearingAvailableDatesRequired.id, () => {
+      I.click(this.fields(party).specHearingAvailableDatesRequired.options.no);
+    });
     await I.clickContinue();
   },
 

@@ -1,4 +1,3 @@
-import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
 
 export const tabs = {
@@ -58,5 +57,5 @@ export const containers = {
   },
 };
 
-export const getSuccessBannerText = (caseId: number, ccdEvent: CCDEvent) =>
-  `Case ${CaseDataHelper.formatCaseId(caseId)} has been updated with event: ${ccdEvent.name}`;
+export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
+  `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;

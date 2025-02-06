@@ -1,9 +1,10 @@
 export const subheadings = {
   courtLocation: 'Court Location',
+  claimant: `Claimant's requested court`,
 };
 
 export const dropdowns = {
-  courtLocationDropdown: {
+  courtLocations: {
     label: 'Please select your preferred court hearing location',
     hintText:
       "Where the defendant is an individual or a sole trader, the case will be held at the defendant's preferred court.",

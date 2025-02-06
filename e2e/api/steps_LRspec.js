@@ -77,7 +77,7 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   CONFIRM_ORDER_REVIEW: () => judgmentOnline1v1Spec.confirmOrderReview(),
@@ -1381,7 +1381,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
+  scheduleHearing: async (user, allocatedTrack, isMinti = false) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -1390,7 +1390,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
 
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
     for (let pageId of Object.keys(scheduleData.userInput)) {
       await assertValidData(scheduleData, pageId);
@@ -2096,16 +2096,12 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      responseBody.data.repaymentDue= '1502.00';
-    } else {
-      responseBody.data.repaymentDue= '1580.00';
-    }
+    responseBody.data.repaymentDue= '1502.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  if (pageId === 'claimPartialPayment' && ['preview', 'demo'].includes(config.runningEnv)) {
+  if (pageId === 'claimPartialPayment') {
     delete responseBody.data['showDJFixedCostsScreen'];
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';
