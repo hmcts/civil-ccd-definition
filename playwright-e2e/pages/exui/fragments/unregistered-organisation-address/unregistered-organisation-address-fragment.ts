@@ -2,12 +2,12 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import ExuiPage from '../../exui-page/exui-page';
-import { buttons, inputs, dropdowns, links } from './organisation-address-content';
+import { buttons, inputs, dropdowns, links } from './unregistered-organisation-address-content';
 import { Party } from '../../../../models/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
-export default class OrganisationAddressFragment extends ExuiPage(BasePage) {
+export default class UnregisteredOrganisationAddressFragment extends ExuiPage(BasePage) {
   private party: Party;
 
   constructor(page: Page, party: Party) {

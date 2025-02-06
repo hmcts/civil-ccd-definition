@@ -201,10 +201,10 @@ export default class CaseDataHelper {
     }
   }
 
-  static buildLegalRepresentativeData(party: Party) {
+  static buildUnregisteredOrganisationData(party: Party) {
     return {
       address: this.buildAddressData(party),
-      organisationName: `${party.key} Solicitors`,
+      organisationName: `${party.key} - Solicitors`,
       phoneNumber: this.getPartyPhoneNumber(party),
       email: `${party.key}@solicitor.com`,
       DX: '123',

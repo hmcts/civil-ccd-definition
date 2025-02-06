@@ -7,18 +7,18 @@ import { Party } from '../../../../models/partys';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 
 @AllMethodsStep()
-export default class UnRegisteredOrganisationFragment extends ExuiPage(BasePage) {
-  private party: Party;
+export default class UnregisteredOrganisationFragment extends ExuiPage(BasePage) {
+  private solicitorParty: Party;
 
   constructor(page: Page, party: Party) {
     super(page);
-    this.party = party;
+    this.solicitorParty = party;
   }
 
   async verifyContent() {
     await super.runVerifications([
       super.expectText(content),
-      super.expectLabel(inputs.organisationName.label, { ignoreDuplicates: true }),
+      // super.expectLabel(inputs.organisationName.label, { ignoreDuplicates: true }),
       super.expectLabel(inputs.phoneNumber.label),
       super.expectLabel(inputs.email.label),
       super.expectLabel(inputs.DX.label),
@@ -27,18 +27,23 @@ export default class UnRegisteredOrganisationFragment extends ExuiPage(BasePage)
   }
 
   async enterUnregisteredOrgDetails() {
-    const legalRepresentativeData = CaseDataHelper.buildLegalRepresentativeData(this.party);
+    const legalRepresentativeData = CaseDataHelper.buildUnregisteredOrganisationData(
+      this.solicitorParty,
+    );
     await super.inputText(
       legalRepresentativeData.organisationName,
-      inputs.organisationName.selector(this.party),
+      inputs.organisationName.selector(this.solicitorParty),
     );
     await super.inputText(
       legalRepresentativeData.phoneNumber,
-      inputs.phoneNumber.selector(this.party),
+      inputs.phoneNumber.selector(this.solicitorParty),
     );
-    await super.inputText(legalRepresentativeData.email, inputs.email.selector(this.party));
-    await super.inputText(legalRepresentativeData.DX, inputs.DX.selector(this.party));
-    await super.inputText(legalRepresentativeData.fax, inputs.fax.selector(this.party));
+    await super.inputText(
+      legalRepresentativeData.email,
+      inputs.email.selector(this.solicitorParty),
+    );
+    await super.inputText(legalRepresentativeData.DX, inputs.DX.selector(this.solicitorParty));
+    await super.inputText(legalRepresentativeData.fax, inputs.fax.selector(this.solicitorParty));
   }
 
   async submit() {

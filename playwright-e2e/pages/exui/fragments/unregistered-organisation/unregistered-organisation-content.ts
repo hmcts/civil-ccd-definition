@@ -5,27 +5,23 @@ export const content = 'Enter organisation details manually. The claim will then
 export const inputs = {
   organisationName: {
     label: 'Organisation name',
-    selector: (claimantDefendantParty: Party) =>
-      `#${claimantDefendantParty.oldKey}OrganisationDetails_organisationName`,
+    selector: (solicitorParty: Party) =>
+      `#${solicitorParty.oldKey}OrganisationDetails_organisationName`,
   },
   phoneNumber: {
     label: 'Phone number (Optional)',
-    selector: (claimantDefendantParty: Party) =>
-      `#${claimantDefendantParty.oldKey}OrganisationDetails_phoneNumber`,
+    selector: (solicitorParty: Party) => `#${solicitorParty.oldKey}OrganisationDetails_phoneNumber`,
   },
   email: {
     label: 'Email (Optional)',
-    selector: (claimantDefendantParty: Party) =>
-      `#${claimantDefendantParty.oldKey}OrganisationDetails_email`,
+    selector: (solicitorParty: Party) => `#${solicitorParty.oldKey}OrganisationDetails_email`,
   },
   DX: {
     label: 'DX (Optional)',
-    selector: (claimantDefendantParty: Party) =>
-      `#${claimantDefendantParty.oldKey}OrganisationDetails_dx`,
+    selector: (solicitorParty: Party) => `#${solicitorParty.oldKey}OrganisationDetails_dx`,
   },
   fax: {
     label: 'Fax (Optional)',
-    selector: (claimantDefendantParty: Party) =>
-      `#${claimantDefendantParty.oldKey}OrganisationDetails_fax`,
+    selector: (solicitorParty: Party) => `#${solicitorParty.oldKey}OrganisationDetails_fax`,
   },
 };
