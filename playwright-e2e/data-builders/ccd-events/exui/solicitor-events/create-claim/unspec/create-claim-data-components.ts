@@ -218,7 +218,7 @@ const defendantSolicitor2 = (claimType: ClaimType) => {
   return {};
 };
 
-const claimDetails = (claimTrack: ClaimTrack, particularsOfClaimDocument: UploadDocumentValue) => ({
+const claimDetails = (claimTrack: ClaimTrack) => ({
   ClaimTypeUnSpec: {
     claimTypeUnSpec: 'PERSONAL_INJURY',
   },
@@ -231,11 +231,11 @@ const claimDetails = (claimTrack: ClaimTrack, particularsOfClaimDocument: Upload
   Details: {
     detailsOfClaim: 'Test details of claim',
   },
-  Upload: {
-    servedDocumentFiles: {
-      particularsOfClaimDocument: [CaseDataHelper.setIdToData(particularsOfClaimDocument)],
-    },
-  },
+  // Upload: {
+  //   servedDocumentFiles: {
+  //     particularsOfClaimDocument: [CaseDataHelper.setIdToData(particularsOfClaimDocument)],
+  //   },
+  // },
   ClaimValue: {
     claimValue: {
       statementOfValueInPennies: `${CaseDataHelper.getClaimValue(claimTrack) * 100}`,
