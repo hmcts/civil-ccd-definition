@@ -1,3 +1,5 @@
+import defendantResponseMultiClaimSpec from '../../e2e/fixtures/events/defendantResponseMultiClaimSpec';
+import { civilAdminUser, defendantSolicitor1User } from '../config/users/exui-users';
 import { test } from '../playwright-fixtures/index';
 
 test(
@@ -11,11 +13,13 @@ test(
     _requestsFactory,
     _exuiDashboardPageFactory,
     _notifyClaimPageFactory,
+    AddDefendantLitigationFriendSteps,
   }) => {
-    // await ApiUserSteps.SetupUserData(civilAdminUser);
+    await ApiUserSteps.SetupUserData(civilAdminUser);
     // await ApiDataSteps.SetupBankHolidaysData();
     await IdamSteps.ClaimantSolicitorLogin();
-    await ExuiDashboardSteps.GoToCaseDetails();
+    // await ExuiDashboardSteps.GoToCaseDetails();
+    await AddDefendantLitigationFriendSteps.Defendant1Journey();
 
     // const { ccdRequests } = _requestsFactory;
     // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);
