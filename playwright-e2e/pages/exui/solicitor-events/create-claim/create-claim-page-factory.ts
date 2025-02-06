@@ -67,6 +67,8 @@ import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigat
 import SecondDefendantSolicitorOrganisationPage from './unspec/second-defendant-solicitor-organisation/second-defendant-solicitor-organisation-page.ts';
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
 import ClaimAmountDetailsPage from "./lr-spec/claim-amount-details/claim-amount-details-page.ts";
+import SecondDefendantSolicitorOrganisationSpecPage
+  from "./lr-spec/second-defendant-solicitor-organisation-spec/second-defendant-solicitor-organisation-spec-page.ts";
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -246,7 +248,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
       partys.DEFENDANT_2,
     );
     const organisationFragment = new OrganisationFragment(this.page, partys.DEFENDANT_2);
-    return new DefendantSolicitorOrganisationSpecPage(
+    return new SecondDefendantSolicitorOrganisationSpecPage(
       this.page,
       organisationRegisteredFragment,
       organisationFragment,
@@ -265,8 +267,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   get specRespondent2CorrespondenceAddressPage() {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
-      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_2,
     );
     return new SpecRespondent2CorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }

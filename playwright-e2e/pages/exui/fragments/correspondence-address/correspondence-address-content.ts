@@ -1,6 +1,5 @@
 import StringHelper from '../../../../helpers/string-helper';
 import { Party } from '../../../../models/partys';
-import PartyType from "../../../../enums/party-types.ts";
 
 export const subheadings = {
   correspondenceAddress: 'Enter the correspondence address of the organisation',
@@ -17,19 +16,13 @@ export const radioButtons = {
     label: 'Do you want to enter a different address?',
     yes: {
       label: 'Yes',
-      selector: (claimantDefendantParty: Party) => {
-        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          return `#spec${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}${claimantDefendantParty.number === 1 ? '' : claimantDefendantParty.number}CorrespondenceAddressRequired_Yes`;
-        return `#specRespondentCorrespondenceAddressRequired_Yes`;
-      },
+      selector: (claimantDefendantParty: Party) =>
+        `#spec${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}${claimantDefendantParty.number === 1 ? '' : claimantDefendantParty.number}CorrespondenceAddressRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: (claimantDefendantParty: Party) => {
-        if (claimantDefendantParty.partyType === PartyType.CLAIMANT)
-          return  `#spec${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}${claimantDefendantParty.number === 1 ? '' : claimantDefendantParty.number}CorrespondenceAddressRequired_No`;
-        return `#specRespondentCorrespondenceAddressRequired_No`;
-      },
+      selector: (claimantDefendantParty: Party) =>
+        `#spec${StringHelper.capitalise(claimantDefendantParty.oldPartyType)}${claimantDefendantParty.number === 1 ? '' : claimantDefendantParty.number}CorrespondenceAddressRequired_No`,
     },
   },
 };
