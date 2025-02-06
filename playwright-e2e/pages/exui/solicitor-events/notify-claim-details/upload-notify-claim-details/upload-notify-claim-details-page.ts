@@ -1,10 +1,10 @@
 import { Page } from 'playwright-core';
 import BasePage from '../../../../../base/base-page';
-import filePaths from '../../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../exui-page/exui-page';
 import ParticularsOfClaimFragment from '../../../fragments/particulars-of-claim/particulars-of-claim-fragment';
+import { subheadings } from './upload-notify-claim-details-content';
 
 @AllMethodsStep()
 export default class UploadNotifyClaimDetailsPage extends ExuiPage(BasePage) {
@@ -18,6 +18,7 @@ export default class UploadNotifyClaimDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
+      super.expectSubheading(subheadings.medicalReports),
       this.particularsOfClaimFragment.verifyContent(),
     ]);
   }

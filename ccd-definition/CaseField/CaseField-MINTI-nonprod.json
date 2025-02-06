@@ -163,7 +163,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "uploadOrderDocumentFromTemplateLabel",
-    "Label": "**** \n ## Add document \n Make sure your file is named either directions or order, the party names and the date. Upload your completed order in DOC/DOCX (Word) format.",
+    "Label": "**** \n ## Add document \n Upload your completed order in DOC/DOCX (Word) format.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -223,6 +223,14 @@
     "ID": "showOrderAfterHearingDatePage",
     "Label": " ",
     "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingDurationMinti",
+    "Label": "Duration",
+    "FieldType": "TextArea",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

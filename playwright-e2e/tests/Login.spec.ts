@@ -1,5 +1,3 @@
-import { civilAdminUser } from '../config/users/exui-users';
-import ccdEvents from '../constants/ccd-events';
 import { test } from '../playwright-fixtures/index';
 
 test('Testing Login', async ({
@@ -14,7 +12,7 @@ test('Testing Login', async ({
   // await ApiUserSteps.SetupUserData(civilAdminUser);
   // await ApiDataSteps.SetupBankHolidaysData();
   await IdamSteps.ClaimantSolicitorLogin();
-  await ExuiDashboardSteps.GoToCaseList();
+  await ExuiDashboardSteps.GoToCaseDetails();
 
   // const { ccdRequests } = _requestsFactory;
   // const ccdCaseData = await ccdRequests.fetchCCDCaseData(1732120625619001, civilAdminUser);

@@ -17,7 +17,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', track);
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }
 
 Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
