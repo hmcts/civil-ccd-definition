@@ -12,6 +12,7 @@ import DefendantResponseSteps from '../../steps/ui/exui/solicitor-events/defenda
 import NotifyClaimDetailsSteps from '../../steps/ui/exui/solicitor-events/notify-claim-details-steps';
 import NotifyClaimSteps from '../../steps/ui/exui/solicitor-events/notify-claim-steps';
 import IdamSteps from '../../steps/ui/idam/idam-steps';
+import AddDefendantLitigationFriendSteps from '../../steps/ui/exui/solicitor-events/add-defendant-litigation-friend-steps';
 
 type UiStepsFixtures = {
   IdamSteps: IdamSteps;
@@ -24,6 +25,7 @@ type UiStepsFixtures = {
   DefendantResponseSteps: DefendantResponseSteps;
   ClaimantResponseSpecSteps: ClaimantResponseSpecSteps;
   ClaimantResponseSteps: ClaimantResponseSteps;
+  AddDefendantLitigationFriendSteps: AddDefendantLitigationFriendSteps;
 };
 
 export const test = mergeTests(testUtils, pageFactories, requestFactories).extend<UiStepsFixtures>({
@@ -56,5 +58,8 @@ export const test = mergeTests(testUtils, pageFactories, requestFactories).exten
   },
   ClaimantResponseSteps: async ({ _claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
     await use(new ClaimantResponseSteps(_claimantResponsePageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
+  },
+  AddDefendantLitigationFriendSteps: async ({ _addDefendantLitigationFriendPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData }, use) => {
+    await use(new AddDefendantLitigationFriendSteps(_addDefendantLitigationFriendPageFactory, _exuiDashboardPageFactory, _requestsFactory, _testData));
   }
 });
