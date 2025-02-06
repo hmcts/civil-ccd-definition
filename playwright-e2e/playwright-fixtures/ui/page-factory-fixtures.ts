@@ -63,12 +63,11 @@ export const test = base.extend<PageFactoryFixtures>({
 
   _defaultJudgmentPageFactory: async ({ page }, use) => {
     await use(new DefaultJudgmentPageFactory(page));
-
+  },
   _acknowledgeClaimPageFactory: async ({ page }, use) => {
     await use(new AcknowledgeClaimPageFactory(page));
   },
   _addDefendantLitigationFriendPageFactory: async ({ page }, use) => {
     await use(new AddDefendantLitigationFriendPageFactory(page));
-
   }
 });
