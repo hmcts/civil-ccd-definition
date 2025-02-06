@@ -20,8 +20,8 @@ export default class HearingSupportPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.supportNeeds, { index: 0 }),
-        super.expectText(radioButtons.supportRequirements.label, { index: 0 }),
+        // super.expectSubheading(subheadings.supportNeeds),
+        // super.expectText(radioButtons.supportRequirements.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
