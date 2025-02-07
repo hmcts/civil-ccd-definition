@@ -10,7 +10,7 @@ import FixedRecoverableCostsPage from '../directions-questionaire/common/fixed-r
 import HearingSupportPage from '../directions-questionaire/common/hearing-support/hearing-support-page';
 import LanguagePage from '../directions-questionaire/common/language/language-page';
 import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
-import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/discloure-of-electronic-documents-lr-spec-page';
+import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/disclosure-of-electronic-documents-lr-spec-page';
 import DisclosureOfNonElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-lr-spec/disclosure-of-non-electronic-documents-lr-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
