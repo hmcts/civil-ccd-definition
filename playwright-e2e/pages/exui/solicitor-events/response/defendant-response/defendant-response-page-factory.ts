@@ -16,7 +16,7 @@ import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-
 import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
 import RequestedCourtLRSpecPage from '../directions-questionaire/lr-spec/requested-court-lr-spec/requested-court-lr-spec-page';
 import SmallClaimExpertsPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-page';
-import SmallClaimHearingPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-spec-page';
+import SmallClaimHearingPage from '../directions-questionaire/lr-spec/small-claim-hearing/small-claim-hearing-page';
 import SmallClaimWitnessesDefendantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
