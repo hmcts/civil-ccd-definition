@@ -1,0 +1,26 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_LIP_APPLICANT_FOR_AGREED_EXTENSION_DATE_FOR_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
