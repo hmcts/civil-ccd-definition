@@ -60,7 +60,6 @@ civil-service:
       SERVICE_REQUEST_UPDATE: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update
       SERVICE_REQUEST_UPDATE_CLAIM_ISSUED: https://${SERVICE_NAME}.preview.platform.hmcts.net/service-request-update-claim-issued
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
-      CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
       ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
@@ -69,7 +68,7 @@ civil-service:
 #      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
     secrets:
       CMC_DB_PASSWORD:
-        secretRef: postgres
+        secretRef: postgres-pod
         key: PASSWORD
         disabled: true
     postgresql:
@@ -154,7 +153,6 @@ ccd:
         CCD_S2S_AUTHORISED_SERVICES_CASE_USER_ROLES: civil_service,aac_manage_case_assignment
         DATA_STORE_S2S_AUTHORISED_SERVICES: ccd_data,ccd_gw,ccd_ps,bulk_scan_orchestrator,ccpay_bubble,ctsc_work_allocation,em_ccd_orchestrator,xui_webapp,civil_service,ccd_case_document_am_api,aac_manage_case_assignment,wa_task_management_api,wa_task_monitor,wa_case_event_handler,wa_workflow_api,civil_general_applications
         DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
-        DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
         DATA_STORE_DEFAULT_LOG_LEVEL: WARN
         CASE_DATA_ISSUE_LOG_LEVEL: WARN
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
@@ -162,7 +160,7 @@ ccd:
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
         DATA_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
+          secretRef: postgres-pod
           key: PASSWORD
           disabled: true
   am-role-assignment-service:
@@ -185,10 +183,9 @@ ccd:
       ingressHost: ccd-definition-store-${SERVICE_FQDN}
       environment:
         DEFINITION_STORE_DB_OPTIONS: "?stringtype=unspecified"
-        DEFINITION_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
       secrets:
         DEFINITION_STORE_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
+          secretRef: postgres-pod
           key: PASSWORD
           disabled: true
   ccd-user-profile-api:
@@ -211,12 +208,11 @@ camunda-bpm:
 #      CAMUNDA_DB_USER_NAME: hmcts
 #      CAMUNDA_DB_CONN_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CAMUNDA_DB_NAME: "pr-${CHANGE_ID}-camunda"
-      CAMUNDA_DB_PASSWORD: ${POSTGRES_PASSWORD}
       CAMUNDA_DB_USER_NAME: ${POSTGRES_USER}
       TEMP_VAR: false
     secrets:
       CAMUNDA_DB_PASSWORD:
-        secretRef: postgres
+        secretRef: postgres-pod
         key: PASSWORD
         disabled: true
 
