@@ -9,7 +9,10 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (defendantParty: Party, claimTrack?: ClaimTrack) => {
+        console.log('CLAIMTRACK', claimTrack);
         if (defendantParty.number === 2 && claimTrack === ClaimTrack.FAST_CLAIM)
+          return '#specAoSRespondent2HomeAddressRequired_Yes';
+        else if (defendantParty.number === 2 && claimTrack === ClaimTrack.SMALL_CLAIM)
           return '#specAoSRespondent2HomeAddressRequired_Yes';
         else if (defendantParty.number === 2)
           return '#specAoSRespondent2CorrespondenceAddressRequired_Yes';
@@ -21,9 +24,11 @@ export const radioButtons = {
       selector: (defendantParty: Party, claimTrack?: ClaimTrack) => {
         if (defendantParty.number === 2 && claimTrack === ClaimTrack.FAST_CLAIM)
           return '#specAoSRespondent2HomeAddressRequired_No';
-        else if (defendantParty.number === 2)
+        else if (defendantParty.number === 2 && claimTrack === ClaimTrack.SMALL_CLAIM)
+          return '#specAoSRespondent2HomeAddressRequired_No';
+        else if (defendantParty.number === 2) {
           return '#specAoSRespondent2CorrespondenceAddressRequired_No';
-        else return '#specAoSApplicantCorrespondenceAddressRequired_No';
+        } else return '#specAoSApplicantCorrespondenceAddressRequired_No';
       },
     },
   },

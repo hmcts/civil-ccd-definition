@@ -1,3 +1,5 @@
+import { Party } from '../../../../../../../models/partys';
+
 export const heading = "Defendant's legal representative's reference (optional)";
 
 export const inputs = {
@@ -19,26 +21,27 @@ export const tableHeadings = {
 };
 
 export const radioButtons = {
-  defendant1Address: {
+  defendantAddress: {
     label: 'Is this address correct?',
     yes: {
       label: 'Yes',
-      selector: '#specAoSRespondentCorrespondenceAddressRequired_Yes',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#specAoSRespondentCorrespondenceAddressRequired_Yes';
+        } else {
+          return '#specAoSRespondent2CorrespondenceAddressRequired_Yes';
+        }
+      },
     },
     no: {
       label: 'No',
-      selector: '#specAoSRespondentCorrespondenceAddressRequired_No',
-    },
-  },
-  defendant2Address: {
-    label: 'Is this address correct?',
-    yes: {
-      label: 'Yes',
-      selector: '#specAoSRespondent2CorrespondenceAddressRequired_Yes',
-    },
-    no: {
-      label: 'No',
-      selector: '#specAoSRespondent2CorrespondenceAddressRequired_No',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#specAoSRespondentCorrespondenceAddressRequired_No';
+        } else {
+          return '#specAoSRespondent2CorrespondenceAddressRequired_No';
+        }
+      },
     },
   },
 };
