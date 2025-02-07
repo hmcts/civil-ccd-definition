@@ -43,6 +43,7 @@ import SecondDefendantSolicitorEmailSpecPage from './lr-spec/second-defendant-so
 import ClaimTypePage from './unspec/claim-type/claim-type-page.ts';
 import FlightDelayClaimPage from './lr-spec/flight-delay-claim/flight-delay-claim-page.ts';
 import PersonalInjuryTypePage from './unspec/personal-injury-type/personal-injury-type-page.ts';
+import InterestSummaryPage from "./lr-spec/interest-summary/interest-summary-page.ts";
 import DetailsPage from './unspec/details/details-page.ts';
 import DetailsSpecPage from './lr-spec/details-spec/details-spec-page.ts';
 import UploadCreateClaimPage from './unspec/upload-create-claim/upload-create-claim-page.ts';
@@ -67,6 +68,9 @@ import UploadParticularsOfClaimPage from './unspec/upload-particulars-of-claim/u
 import SecondClaimantLitigationFriendPage from './unspec/second-claimant-litigation-friend/second-claimant-litigation-friend-page.ts';
 import SecondDefendantSolicitorOrganisationPage from './unspec/second-defendant-solicitor-organisation/second-defendant-solicitor-organisation-page.ts';
 import LitigationFriendFragment from '../../fragments/litigation-friend/litigation-friend-fragment.ts';
+import ClaimAmountDetailsPage from "./lr-spec/claim-amount-details/claim-amount-details-page.ts";
+import SecondDefendantSolicitorOrganisationSpecPage
+  from "./lr-spec/second-defendant-solicitor-organisation-spec/second-defendant-solicitor-organisation-spec-page.ts";
 import BreakDownInterestPage from './lr-spec/break-down-interest/break-down-interest-page.ts';
 import ClaimInterestOptionsPage from './lr-spec/claim-interest-options/claim-interest-options-page.ts';
 import InterestClaimFromPage from './lr-spec/interest-claim-from/interest-claim-from-page.ts';
@@ -75,6 +79,7 @@ import InterestFromSpecificDate from './lr-spec/interest-from-specific-date/inte
 import SameRateInterestSelectionPage from './lr-spec/same-rate-interest-selection/same-rate-interest-selection-page.ts';
 import UnregisteredOrganisationFragment from '../../fragments/unregistered-organisation/unregistered-organisation-fragment.ts';
 import UnregisteredOrganisationAddressFragment from '../../fragments/unregistered-organisation-address/unregistered-organisation-address-fragment.ts';
+
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -162,6 +167,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_1
     );
     return new SpecCorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -241,6 +247,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1
     );
     return new SpecRespondentCorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -284,7 +291,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
       partys.DEFENDANT_2,
     );
     const organisationFragment = new OrganisationFragment(this.page, partys.DEFENDANT_2);
-    return new DefendantSolicitorOrganisationSpecPage(
+    return new SecondDefendantSolicitorOrganisationSpecPage(
       this.page,
       organisationRegisteredFragment,
       organisationFragment,
@@ -303,7 +310,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   get specRespondent2CorrespondenceAddressPage() {
     const correspondenceAddressFragment = new CorrespondenceAddressFragment(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_2,
     );
     return new SpecRespondent2CorrespondenceAddressPage(this.page, correspondenceAddressFragment);
   }
@@ -357,7 +365,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new UploadCreateClaimPage(this.page, particularsOfClaimFragment);
   }
 
-  get uploadClaimDeocumentPage() {
+  get uploadClaimDocumentPage() {
     return new UploadClaimDocumentPage(this.page);
   }
 
@@ -382,8 +390,16 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new ClaimAmountPage(this.page);
   }
 
+  get claimAmountDetailsPage() {
+    return new ClaimAmountDetailsPage(this.page);
+  }
+
   get claimInterestPage() {
     return new ClaimInterestPage(this.page);
+  }
+
+  get interestSummaryPage() {
+    return new InterestSummaryPage(this.page);
   }
 
   get breakDownInterestPage() {

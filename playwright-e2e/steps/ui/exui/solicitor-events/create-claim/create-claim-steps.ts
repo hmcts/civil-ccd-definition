@@ -264,7 +264,7 @@ export default class CreateClaimSteps extends BaseExuiSteps {
   private async processClaimantSolicitorOrganisationPage() {
     const { claimantSolicitorOrganisationPage } = this.createClaimPageFactory;
     await claimantSolicitorOrganisationPage.verifyContent();
-    await claimantSolicitorOrganisationPage.selectOrganisation();
+    await claimantSolicitorOrganisationPage.enterReference();
     await claimantSolicitorOrganisationPage.submit();
   }
 
