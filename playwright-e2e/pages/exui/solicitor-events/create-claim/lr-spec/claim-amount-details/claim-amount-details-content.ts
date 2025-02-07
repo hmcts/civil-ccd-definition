@@ -1,4 +1,4 @@
-export const tableHeaders = {
+export const tableHeadings = {
   description: 'Description',
   amount: 'Amount',
 };

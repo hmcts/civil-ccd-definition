@@ -100,7 +100,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
-      { verifySuccessEvent: false },
+      { verifySuccessEvent: false, retries: 0 },
     );
   }
 

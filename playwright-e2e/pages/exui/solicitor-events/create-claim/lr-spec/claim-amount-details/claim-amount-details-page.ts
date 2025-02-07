@@ -3,15 +3,15 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ClaimTrack from '../../../../../../enums/claim-track';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { tableHeaders } from './claim-amount-details-content';
+import { tableHeadings } from './claim-amount-details-content';
 import partys from '../../../../../../constants/partys';
 
 @AllMethodsStep()
 export default class ClaimAmountDetailsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectText(tableHeaders.description, { ignoreDuplicates: true }),
-      super.expectText(tableHeaders.amount, { ignoreDuplicates: true }),
+      super.expectText(tableHeadings.description, { ignoreDuplicates: true }),
+      super.expectText(tableHeadings.amount, { ignoreDuplicates: true }),
     ]);
   }
 
