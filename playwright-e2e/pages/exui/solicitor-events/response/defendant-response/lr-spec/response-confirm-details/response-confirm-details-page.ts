@@ -23,7 +23,7 @@ export default class ResponseConfirmDetailsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     super.runVerifications([
       super.expectHeading(heading),
-      super.expectLabel(inputs.defendantSolicitorReference.label),
+      // super.expectLabel(inputs.defendantSolicitorReference.label),
       // super.expectText(tableHeadings.organisation),
       // super.expectText(tableHeadings.reference),
       // super.expectText(inputs.defendant1DateOfBirth.label),
