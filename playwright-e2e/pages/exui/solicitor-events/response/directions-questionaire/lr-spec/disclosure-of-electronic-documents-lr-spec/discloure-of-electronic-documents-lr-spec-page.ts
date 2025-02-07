@@ -24,8 +24,8 @@ export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectText(radioButtons.disclosureOfElectronicDocs.label),
+        super.expectSubheading(subheadings.disclosureOfDocs, { ignoreDuplicates: true }),
+        super.expectText(radioButtons.disclosureOfElectronicDocs.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -35,9 +35,9 @@ export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(
     await super.clickBySelector(
       radioButtons.disclosureOfElectronicDocs.no.selector(this.claimantDefendantParty),
     );
-    await super.expectText(radioButtons.agreement.label);
+    await super.expectText(radioButtons.agreement.label, { ignoreDuplicates: true });
     await super.clickBySelector(radioButtons.agreement.no.selector(this.claimantDefendantParty));
-    await super.expectText(inputs.disagreementReason.label);
+    await super.expectText(inputs.disagreementReason.label, { ignoreDuplicates: true });
     await super.inputText(
       `Disagreement reason - ${this.claimantDefendantParty.key}`,
       inputs.disagreementReason.selector(this.claimantDefendantParty),

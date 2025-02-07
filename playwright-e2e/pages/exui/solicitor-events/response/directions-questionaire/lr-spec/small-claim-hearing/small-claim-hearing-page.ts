@@ -24,8 +24,8 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.availability),
-        super.expectText(radioButtons.unavailableDatesRequired.label),
+        super.expectSubheading(subheadings.availability, { ignoreDuplicates: true }),
+        super.expectText(radioButtons.unavailableDatesRequired.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
@@ -44,11 +44,15 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
   }
 
   async selectYesInterpreter() {
-    await super.clickBySelector(radioButtons.interpreter.yes.selector);
+    await super.clickBySelector(radioButtons.interpreter.yes.selector(this.defendantParty));
   }
 
   async selectNoInterpreter() {
-    await super.clickBySelector(radioButtons.interpreter.no.selector);
+    await super.clickBySelector(radioButtons.interpreter.no.selector(this.defendantParty));
+  }
+
+  async enterTypeOfInterpreter() {
+    await super.inputText('English', inputs.interpreterType.selector(this.defendantParty));
   }
 
   async addNewUnavailableDate() {
@@ -60,7 +64,7 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
       radioButtons.availabilityOptions.single.selector(this.defendantParty, unavailableDateNumber),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, inputs.dateTo.selectorKey);
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
   async selectDateRange(unavailableDateNumber: number) {

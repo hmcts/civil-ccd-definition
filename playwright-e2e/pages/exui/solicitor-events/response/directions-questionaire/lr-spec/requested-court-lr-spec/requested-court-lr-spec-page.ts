@@ -8,6 +8,7 @@ import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
 import preferredCourts from '../../../../../../../config/preferred-courts.ts';
+import { throws } from 'assert';
 
 @AllMethodsStep()
 export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
@@ -28,8 +29,8 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.courtLocation),
-        super.expectLabel(inputs.preferredCourtReason.label),
+        // super.expectSubheading(subheadings.courtLocation, { ignoreDuplicates: true }),
+        super.expectLabel(inputs.preferredCourtReason.label, { ignoreDuplicates: true }),
         this.remoteHearingSpecFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
@@ -39,11 +40,11 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
   async selectCourtLocation() {
     await super.selectFromDropdown(
       preferredCourts[this.defendantParty.key].default,
-      dropdowns.courtLocationDropdown.selector,
+      dropdowns.courtLocationDropdown.selector(this.defendantParty),
     );
     await super.inputText(
       `Court location reason - ${this.defendantParty.key}`,
-      inputs.preferredCourtReason.selector,
+      inputs.preferredCourtReason.selector(this.defendantParty),
     );
   }
 

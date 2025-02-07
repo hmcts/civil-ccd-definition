@@ -20,8 +20,8 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.application),
-        super.expectText(inputs.otherInformation.label),
+        super.expectSubheading(subheadings.application, { ignoreDuplicates: true }),
+        super.expectText(inputs.otherInformation.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );

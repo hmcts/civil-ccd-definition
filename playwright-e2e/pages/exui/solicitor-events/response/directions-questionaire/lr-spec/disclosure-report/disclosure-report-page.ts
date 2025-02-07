@@ -20,9 +20,11 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.report),
-        super.expectText(radioButtons.disclosureReportFilledAndServed.label),
-        super.expectText(radioButtons.disclosureProposalAgreed.label),
+        super.expectSubheading(subheadings.report, { ignoreDuplicates: true }),
+        super.expectText(radioButtons.disclosureReportFilledAndServed.label, {
+          ignoreDuplicates: true,
+        }),
+        super.expectText(radioButtons.disclosureProposalAgreed.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -35,7 +37,7 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.disclosureProposalAgreed.yes.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.draftOrderNumber.label);
+    await super.expectLabel(inputs.draftOrderNumber.label, { ignoreDuplicates: true });
     await super.inputText('12345', inputs.draftOrderNumber.selector(this.claimantDefendantParty));
   }
 

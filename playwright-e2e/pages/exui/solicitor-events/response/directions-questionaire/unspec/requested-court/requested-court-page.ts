@@ -24,9 +24,9 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.courtLocation),
-        // super.expectLabel(dropdowns.courtLocations.label), //TODO - This is commented as there are issues with the 1v2DS Defendant
-        super.expectLabel(inputs.preferredCourtReason.label, { index: 0 }),
+        super.expectSubheading(subheadings.courtLocation, { ignoreDuplicates: true }),
+        super.expectLabel(dropdowns.courtLocations.label, { ignoreDuplicates: true }),
+        super.expectLabel(inputs.preferredCourtReason.label, { ignoreDuplicates: true }),
         this.remoteHearingFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },

@@ -24,8 +24,8 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.availability),
-        super.expectText(radioButtons.unavailableDateRequired.label),
+        super.expectSubheading(subheadings.availability, { ignoreDuplicates: true }),
+        super.expectText(radioButtons.unavailableDateRequired.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -45,7 +45,7 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
 
   async addNewUnavailableDate() {
     await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDate);
+    await super.expectSubheading(subheadings.unavailableDate, { ignoreDuplicates: true });
   }
 
   async selectSingleDate(unavailableDateNumber: number) {

@@ -20,17 +20,16 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
+        super.verifyHeadings(ccdCaseData),
         super.expectHeading(heading),
-        super.expectHeading(ccdCaseData.id),
-        super.expectHeading(ccdCaseData.caseNamePublic),
-        super.expectLabel(inputs.upload.label),
+        super.expectLabel(inputs.upload.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
   }
 
   async uploadDoc() {
-    await super.retryUploadFile(inputs.upload.selector(this.defendantParty), filePaths.testPdfFile);
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.upload.selector(this.defendantParty));
   }
 
   async submit() {

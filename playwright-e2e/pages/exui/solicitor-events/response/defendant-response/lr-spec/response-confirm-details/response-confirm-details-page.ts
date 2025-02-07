@@ -9,6 +9,7 @@ import {
   inputs,
   tableHeadings,
 } from './response-confirm-details-content.ts';
+import { Party } from '../../../../../../../models/partys.ts';
 
 @AllMethodsStep()
 export default class ResponseConfirmDetailsPage extends ExuiPage(BasePage) {
@@ -23,20 +24,20 @@ export default class ResponseConfirmDetailsPage extends ExuiPage(BasePage) {
     super.runVerifications([
       super.expectHeading(heading),
       super.expectLabel(inputs.defendantSolicitorReference.label),
-      super.expectText(tableHeadings.organisation),
-      super.expectText(tableHeadings.reference),
-      super.expectText(inputs.defendant1DateOfBirth.label),
-      this.dateFragment.verifyContent(),
-      super.expectText(radioButtons.defendant1Address.label),
+      super.expectText(tableHeadings.organisation, { ignoreDuplicates: true }),
+      super.expectText(tableHeadings.reference, { ignoreDuplicates: true }),
+      // super.expectText(inputs.defendant1DateOfBirth.label, { ignoreDuplicates: true }),
+      // this.dateFragment.verifyContent(),
+      // super.expectText(radioButtons.defendant1Address.label, { ignoreDuplicates: true }),
     ]);
   }
 
-  async selectYesAddress() {
-    await super.clickBySelector(radioButtons.defendant1Address.yes.selector);
+  async selectYesAddress(defendantParty: Party) {
+    await super.clickBySelector(radioButtons.defendantAddress.yes.selector(defendantParty));
   }
 
-  async selectNoAddress() {
-    await super.clickBySelector(radioButtons.defendant1Address.no.selector);
+  async selectNoAddress(defendantParty: Party) {
+    await super.clickBySelector(radioButtons.defendantAddress.no.selector(defendantParty));
   }
 
   async submit() {

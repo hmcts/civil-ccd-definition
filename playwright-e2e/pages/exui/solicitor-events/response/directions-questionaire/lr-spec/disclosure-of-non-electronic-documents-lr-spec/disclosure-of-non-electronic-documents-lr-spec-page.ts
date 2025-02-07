@@ -20,8 +20,8 @@ export default class DisclosureOfNonElectronicDocumentsLRSpecPage extends ExuiPa
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.disclosureOfDocs),
-        super.expectLabel(inputs.bespokeDirections.label),
+        super.expectSubheading(subheadings.disclosureOfDocs, { ignoreDuplicates: true }),
+        super.expectLabel(inputs.bespokeDirections.label, { ignoreDuplicates: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
