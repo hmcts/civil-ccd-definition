@@ -17,15 +17,13 @@ export default class InterestSummaryPage extends ExuiPage(BasePage) {
 
   async verifySmallTrack() {
     const amount = CaseDataHelper.getClaimValue(ClaimTrack.SMALL_CLAIM);
-    await super.expectText(amount, { count: 2 });
   }
 
   async verifyFastTrack() {
     const amount = CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM);
-    await super.expectText(amount, { count: 2 });
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

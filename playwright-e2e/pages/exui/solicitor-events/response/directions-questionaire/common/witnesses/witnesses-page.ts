@@ -6,6 +6,7 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { subheadings, buttons, inputs, radioButtons } from './witnesses-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
 @AllMethodsStep()
 export default class WitnessesPage extends ExuiPage(BasePage) {
@@ -20,32 +21,49 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.witnesses),
-        super.expectText(radioButtons.witnessesRequired.label),
+        super.expectSubheading(subheadings.witnesses, { index: 0 }),
+        super.expectText(radioButtons.witnessesRequired.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
   }
 
-  async addWitnesses() {
+  async selectYesWitnesses() {
+    await super.clickBySelector(
+      radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
+    );
+  }
+
+  async selectNoWitnesses() {
+    await super.clickBySelector(
+      radioButtons.witnessesRequired.no.selector(this.claimantDefendantParty),
+    );
+  }
+
+  async addWitness() {
     await super.clickBySelector(buttons.addNewWitness.selector(this.claimantDefendantParty));
   }
 
   async enterWitnessDetails(witnessParty: Party) {
+    const witnessData = CaseDataHelper.buildWitnessData(witnessParty);
     await super.inputText(
-      'First name',
+      witnessData.firstName,
       inputs.witnessDetails.firstName.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'Last name',
+      witnessData.lastName,
       inputs.witnessDetails.lastName.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'firstlast@gmail.com',
+      witnessData.phoneNumber,
+      inputs.witnessDetails.number.selector(this.claimantDefendantParty, witnessParty),
+    );
+    await super.inputText(
+      witnessData.emailAddress,
       inputs.witnessDetails.email.selector(this.claimantDefendantParty, witnessParty),
     );
     await super.inputText(
-      'Event',
+      witnessData.reasonForWitness,
       inputs.witnessDetails.whatEvent.selector(this.claimantDefendantParty, witnessParty),
     );
   }

@@ -122,6 +122,13 @@ module.exports = {
   },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
+    email: 'DJ.Amy.Powell@ejudiciary.net',
+    type: 'judge',
+    roleCategory: 'JUDICIAL',
+    regionId: '1'
+  },
+  circuitJudgeUserWithRegionId1: {
+    password: judgeDefaultPassword,
     email: '4917924EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',

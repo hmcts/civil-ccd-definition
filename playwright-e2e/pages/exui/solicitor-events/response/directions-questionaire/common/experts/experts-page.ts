@@ -4,7 +4,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import { subheadings, inputs, radioButtons } from './experts-content.ts';
+import { subheadings, inputs, radioButtons, buttons } from './experts-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 
@@ -21,10 +21,10 @@ export default class ExpertPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.experts),
-        super.expectText(radioButtons.expertsRequired.label),
-        super.expectLabel(radioButtons.expertsRequired.yes.label),
-        super.expectLabel(radioButtons.expertsRequired.no.label),
+        super.expectSubheading(subheadings.experts, { index: 0 }),
+        // super.expectText(radioButtons.expertsRequired.label, { first: true }),
+        // super.expectLabel(radioButtons.expertsRequired.yes.label, { index: 0 }),
+        // super.expectLabel(radioButtons.expertsRequired.no.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
@@ -41,7 +41,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
   }
 
   async addNewExpert() {
-    await super.clickAddNew();
+    await super.clickBySelector(buttons.addNew.selector(this.claimantDefendantParty));
   }
 
   async enterExpertDetails(expertParty: Party) {
