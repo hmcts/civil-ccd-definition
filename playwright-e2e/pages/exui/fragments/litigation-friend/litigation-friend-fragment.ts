@@ -5,7 +5,6 @@ import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
-import AddressFragment from '../address/address-fragment';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import partys from '../../../../constants/partys';
 

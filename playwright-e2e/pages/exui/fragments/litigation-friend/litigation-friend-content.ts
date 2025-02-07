@@ -12,7 +12,7 @@ export const inputs = {
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_firstName`,
     },
     lastName: {
-      label: 'Last Name',
+      label: 'Last name',
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_lastName`,
     },
     email: {

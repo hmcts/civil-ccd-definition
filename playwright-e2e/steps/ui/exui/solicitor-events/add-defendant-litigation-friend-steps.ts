@@ -61,7 +61,7 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
 
   private async processLitigationFriendPage() {
     const { litigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
-    await litigationFriendPage.verifyContent();
+    await litigationFriendPage.verifyContent(this.ccdCaseData);
     await litigationFriendPage.enterLitigationFriendDetails();
     await litigationFriendPage.submit();
   }
