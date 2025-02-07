@@ -1,13 +1,16 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { Step } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import CreateClaimPageFactory from '../../../../../pages/exui/solicitor-events/create-claim/create-claim-page-factory';
 import RequestsFactory from '../../../../../requests/requests-factory';
-import ccdEvents from "../../../../../constants/ccd-events.ts";
-import {claimantSolicitorUser, defendantSolicitor1User} from "../../../../../config/users/exui-users.ts";
+import ccdEvents from '../../../../../constants/ccd-events.ts';
+import {
+  claimantSolicitorUser,
+  defendantSolicitor1User,
+} from '../../../../../config/users/exui-users.ts';
 
-@AllMethodsStep()
+const classKey = 'CreateClaimSpecSteps';
 export default class CreateClaimSpecSteps extends BaseExuiSteps {
   private createClaimPageFactory: CreateClaimPageFactory;
 
@@ -21,7 +24,8 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     this.createClaimPageFactory = createClaimPageFactory;
   }
 
-  async CreateClaim1v1SpecFastTrack() {
+  @Step(classKey)
+  async FastTrack1v1() {
     await super.retryExuiEvent(
       async () => {
         await this.processCaseFilterPage();
@@ -29,7 +33,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processEligibiltySpecPage();
         await this.processReferencesPage();
         await this.processClaimant1Page();
-        await this.processAddClaimant2No();
+        await this.processNoAddClaimant2();
         await this.processNotificationsPage();
         await this.processClaimantSolicitorOrganisationPage();
         await this.processSpecCorrespondenceAddressPage();
@@ -50,7 +54,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processInterestSummaryFastTrackPage();
         await this.processPbaNumberPage();
         await this.processFixedCommencementCostsPage();
-        await this.processStatementOfTruthCreateClaimPage() ;
+        await this.processStatementOfTruthCreateClaimPage();
         await this.processSubmitCreateClaimPage();
         await this.processConfirmCreateClaimSpecPage();
       },
@@ -60,7 +64,8 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async CreateClaim1v1SpecSmallClaim() {
+  @Step(classKey)
+  async SmallTrack1v1() {
     await super.retryExuiEvent(
       async () => {
         await this.processCaseFilterPage();
@@ -68,7 +73,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processEligibiltySpecPage();
         await this.processReferencesPage();
         await this.processClaimant1Page();
-        await this.processAddClaimant2No();
+        await this.processNoAddClaimant2();
         await this.processNotificationsPage();
         await this.processClaimantSolicitorOrganisationPage();
         await this.processSpecCorrespondenceAddressPage();
@@ -89,7 +94,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processClaimInterestSummarySmallTrackPage();
         await this.processPbaNumberPage();
         await this.processFixedCommencementCostsPage();
-        await this.processStatementOfTruthCreateClaimPage() ;
+        await this.processStatementOfTruthCreateClaimPage();
         await this.processSubmitCreateClaimPage();
         await this.processConfirmCreateClaimSpecPage();
       },
@@ -99,7 +104,8 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async CreateClaim1v2SameSolicitorSpecSmallClaim() {
+  @Step(classKey)
+  async SmallTrack2v1() {
     await super.retryExuiEvent(
       async () => {
         await this.processCaseFilterPage();
@@ -107,7 +113,47 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processEligibiltySpecPage();
         await this.processReferencesPage();
         await this.processClaimant1Page();
-        await this.processAddClaimant2No();
+        await this.processAddAnotherClaimantPage();
+        await this.processSecondClaimantPage();
+        await this.processNotificationsPage();
+        await this.processClaimantSolicitorOrganisationPage();
+        await this.processSpecCorrespondenceAddressPage();
+        await this.processDefendantPage();
+        await this.processLegalRepresentationSpecPage();
+        await this.processDefendantSolicitorOrganisationSpecPage();
+        await this.processDefendantSolicitorEmailSpecPage();
+        await this.processRespondentCorrespondenceAddressPage();
+        await this.processFlightDelayClaimPage();
+        await this.processDetailsSpecPage();
+        await this.processUploadClaimDocumentPage();
+        await this.processClaimTimeLineUploadPage();
+        await this.processEvidenceListPage();
+        await this.processClaimAmountSmallTrackPage();
+        await this.processClaimAmountDetailsSmallTrackPage();
+        await this.processClaimInterestPage();
+        await this.processClaimInterestSummarySmallTrackPage();
+        await this.processPbaNumberPage();
+        await this.processFixedCommencementCostsPage();
+        await this.processStatementOfTruthCreateClaimPage();
+        await this.processSubmitCreateClaimPage();
+        await this.processConfirmCreateClaimSpecPage();
+      },
+      ccdEvents.CREATE_CLAIM_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  @Step(classKey)
+  async SmallTrack1v2SS() {
+    await super.retryExuiEvent(
+      async () => {
+        await this.processCaseFilterPage();
+        await this.processChecklistPage();
+        await this.processEligibiltySpecPage();
+        await this.processReferencesPage();
+        await this.processClaimant1Page();
+        await this.processNoAddClaimant2();
         await this.processNotificationsPage();
         await this.processClaimantSolicitorOrganisationPage();
         await this.processSpecCorrespondenceAddressPage();
@@ -131,7 +177,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processClaimInterestSummarySmallTrackPage();
         await this.processPbaNumberPage();
         await this.processFixedCommencementCostsPage();
-        await this.processStatementOfTruthCreateClaimPage() ;
+        await this.processStatementOfTruthCreateClaimPage();
         await this.processSubmitCreateClaimPage();
         await this.processConfirmCreateClaimSpecPage();
       },
@@ -141,7 +187,8 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async CreateClaim1v2DifferentSolicitorSpecSmallClaim() {
+  @Step(classKey)
+  async SmallTrack1v2DS() {
     await super.retryExuiEvent(
       async () => {
         await this.processCaseFilterPage();
@@ -149,7 +196,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processEligibiltySpecPage();
         await this.processReferencesPage();
         await this.processClaimant1Page();
-        await this.processAddClaimant2No();
+        await this.processNoAddClaimant2();
         await this.processNotificationsPage();
         await this.processClaimantSolicitorOrganisationPage();
         await this.processSpecCorrespondenceAddressPage();
@@ -176,7 +223,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
         await this.processClaimInterestSummarySmallTrackPage();
         await this.processPbaNumberPage();
         await this.processFixedCommencementCostsPage();
-        await this.processStatementOfTruthCreateClaimPage() ;
+        await this.processStatementOfTruthCreateClaimPage();
         await this.processSubmitCreateClaimPage();
         await this.processConfirmCreateClaimSpecPage();
       },
@@ -186,67 +233,26 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     );
   }
 
-  async CreateClaim2v1SpecSmallClaim() {
-    await super.retryExuiEvent(
-      async () => {
-        await this.processCaseFilterPage();
-        await this.processChecklistPage();
-        await this.processEligibiltySpecPage();
-        await this.processReferencesPage();
-        await this.processClaimant1Page();
-        await this.processAddAnotherClaimantPage();
-        await this.processSecondClaimantPage()
-        await this.processNotificationsPage();
-        await this.processClaimantSolicitorOrganisationPage();
-        await this.processSpecCorrespondenceAddressPage();
-        await this.processDefendantPage();
-        await this.processLegalRepresentationSpecPage();
-        await this.processDefendantSolicitorOrganisationSpecPage();
-        await this.processDefendantSolicitorEmailSpecPage();
-        await this.processRespondentCorrespondenceAddressPage();
-        await this.processFlightDelayClaimPage();
-        await this.processDetailsSpecPage();
-        await this.processUploadClaimDocumentPage();
-        await this.processClaimTimeLineUploadPage();
-        await this.processEvidenceListPage();
-        await this.processClaimAmountSmallTrackPage();
-        await this.processClaimAmountDetailsSmallTrackPage();
-        await this.processClaimInterestPage();
-        await this.processClaimInterestSummarySmallTrackPage();
-        await this.processPbaNumberPage();
-        await this.processFixedCommencementCostsPage();
-        await this.processStatementOfTruthCreateClaimPage() ;
-        await this.processSubmitCreateClaimPage();
-        await this.processConfirmCreateClaimSpecPage();
-      },
-      ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
-      { verifySuccessEvent: false },
-    );
-  }
-
-  private async processCaseFilterPage( ) {
+  private async processCaseFilterPage() {
     const { caseFilterPage } = this.createClaimPageFactory;
     await caseFilterPage.verifyContent();
     await caseFilterPage.chooseSpec();
     await caseFilterPage.submit();
-
   }
-
 
   private async processChecklistPage() {
-  const { checkListPage } = this.createClaimPageFactory
-  await checkListPage.verifyContent();
-  await checkListPage.submit();
+    const { checkListPage } = this.createClaimPageFactory;
+    await checkListPage.verifyContent();
+    await checkListPage.submit();
   }
 
-  private async processEligibiltySpecPage(){
+  private async processEligibiltySpecPage() {
     const { eligibilitySpecPage } = this.createClaimPageFactory;
     await eligibilitySpecPage.verifyContent();
     await eligibilitySpecPage.submit();
   }
 
-  private async processReferencesPage(){
+  private async processReferencesPage() {
     const { referencesPage } = this.createClaimPageFactory;
     await referencesPage.verifyContent();
     await referencesPage.enterReferences();
@@ -260,7 +266,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await claimantPage.submit();
   }
 
-  private async processAddClaimant2No() {
+  private async processNoAddClaimant2() {
     const { addAnotherClaimantPage } = this.createClaimPageFactory;
     await addAnotherClaimantPage.verifyContent();
     await addAnotherClaimantPage.selectNo();
@@ -274,8 +280,8 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await addAnotherClaimantPage.submit();
   }
 
-  private async processSecondClaimantPage(){
-    const {secondClaimantPage} = this.createClaimPageFactory;
+  private async processSecondClaimantPage() {
+    const { secondClaimantPage } = this.createClaimPageFactory;
     await secondClaimantPage.verifyContent();
     await secondClaimantPage.chooseIndividualAndEnterDetails();
     await secondClaimantPage.submit();
@@ -291,14 +297,15 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
   private async processClaimantSolicitorOrganisationPage() {
     const { claimantSolicitorOrganisationPage } = this.createClaimPageFactory;
     await claimantSolicitorOrganisationPage.verifyContent();
+    await claimantSolicitorOrganisationPage.enterReference();
     await claimantSolicitorOrganisationPage.selectOrganisation();
     await claimantSolicitorOrganisationPage.submit();
   }
 
-  private async processSpecCorrespondenceAddressPage(){
+  private async processSpecCorrespondenceAddressPage() {
     const { specCorrespondenceAddressPage } = this.createClaimPageFactory;
     await specCorrespondenceAddressPage.verifyContent();
-    await specCorrespondenceAddressPage.selectNo();
+    await specCorrespondenceAddressPage.selectYesAndEnterAddress();
     await specCorrespondenceAddressPage.submit();
   }
 
@@ -309,80 +316,77 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await defendantPage.submit();
   }
 
-  private async processLegalRepresentationSpecPage(){
-    const { legalRepresentationSpecPage} = this.createClaimPageFactory;
+  private async processLegalRepresentationSpecPage() {
+    const { legalRepresentationSpecPage } = this.createClaimPageFactory;
     await legalRepresentationSpecPage.verifyContent();
     await legalRepresentationSpecPage.selectYes();
     await legalRepresentationSpecPage.submit();
   }
 
   private async processDefendantSolicitorOrganisationSpecPage() {
-    const { defendantSolicitorOrganisationSpecPage} = this.createClaimPageFactory;
+    const { defendantSolicitorOrganisationSpecPage } = this.createClaimPageFactory;
     await defendantSolicitorOrganisationSpecPage.verifyContent();
     await defendantSolicitorOrganisationSpecPage.selectOrganisation();
     await defendantSolicitorOrganisationSpecPage.submit();
   }
 
-  private async processDefendantSolicitorEmailSpecPage(){
-    const { defendantSolicitorEmailSpecPage} = this.createClaimPageFactory;
+  private async processDefendantSolicitorEmailSpecPage() {
+    const { defendantSolicitorEmailSpecPage } = this.createClaimPageFactory;
     await defendantSolicitorEmailSpecPage.verifyContent();
     await defendantSolicitorEmailSpecPage.enterEmail();
     await defendantSolicitorEmailSpecPage.submit();
-
   }
 
   private async processRespondentCorrespondenceAddressPage() {
-    const { specRespondentCorrespondenceAddressPage} = this.createClaimPageFactory;
+    const { specRespondentCorrespondenceAddressPage } = this.createClaimPageFactory;
     await specRespondentCorrespondenceAddressPage.verifyContent();
-    await specRespondentCorrespondenceAddressPage.selectNo();
+    await specRespondentCorrespondenceAddressPage.selectYesAndEnterAddress();
     await specRespondentCorrespondenceAddressPage.submit();
-
   }
 
   private async processAddDefendant2No() {
-    const {addAnotherDefendantPage} = this.createClaimPageFactory;
+    const { addAnotherDefendantPage } = this.createClaimPageFactory;
     await addAnotherDefendantPage.verifyContent();
     await addAnotherDefendantPage.selectNo();
     await addAnotherDefendantPage.submit();
   }
 
   private async processAddDefendant2Yes() {
-    const {addAnotherDefendantPage} = this.createClaimPageFactory;
+    const { addAnotherDefendantPage } = this.createClaimPageFactory;
     await addAnotherDefendantPage.verifyContent();
     await addAnotherDefendantPage.selectYes();
     await addAnotherDefendantPage.submit();
   }
 
   private async processSecondDefendantPage() {
-    const {secondDefendantPage} = this.createClaimPageFactory;
+    const { secondDefendantPage } = this.createClaimPageFactory;
     await secondDefendantPage.verifyContent();
     await secondDefendantPage.chooseIndividualAndEnterDetails();
     await secondDefendantPage.submit();
   }
 
-  private async processLegalRepresentationRespondent2Page(){
-    const { legalRepresentationRespondent2Page} = this.createClaimPageFactory;
+  private async processLegalRepresentationRespondent2Page() {
+    const { legalRepresentationRespondent2Page } = this.createClaimPageFactory;
     await legalRepresentationRespondent2Page.verifyContent();
     await legalRepresentationRespondent2Page.selectYes();
     await legalRepresentationRespondent2Page.submit();
   }
 
-
   private async processSameLegalRepresentativeSmallClaimPage() {
-     const { sameLegalRepresentativePage} = this.createClaimPageFactory;
-     await sameLegalRepresentativePage.verifyContent();
-     await sameLegalRepresentativePage.selectYes();
-     await sameLegalRepresentativePage.submit();
-   }
+    const { sameLegalRepresentativePage } = this.createClaimPageFactory;
+    await sameLegalRepresentativePage.verifyContent();
+    await sameLegalRepresentativePage.selectYes();
+    await sameLegalRepresentativePage.submit();
+  }
 
   private async processDifferentLegalRepresentativeSmallClaimPage() {
-    const { sameLegalRepresentativePage} = this.createClaimPageFactory;
+    const { sameLegalRepresentativePage } = this.createClaimPageFactory;
     await sameLegalRepresentativePage.verifyContent();
     await sameLegalRepresentativePage.selectNo();
     await sameLegalRepresentativePage.submit();
   }
 
-  private async processSecondDefendantSolicitorOrganisationSpecPage(){
+  private async processSecondDefendantSolicitorOrganisationSpecPage() {
     const { secondDefendantSolicitorOrganisationSpecPage } = this.createClaimPageFactory;
     await secondDefendantSolicitorOrganisationSpecPage.verifyContent();
     await secondDefendantSolicitorOrganisationSpecPage.selectOrganisation();
@@ -396,10 +400,10 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await secondDefendantSolicitorEmailSpecPage.submit();
   }
 
-  private async processSpecRespondent2CorrespondenceAddressPage(){
-    const { specRespondent2CorrespondenceAddressPage} = this.createClaimPageFactory;
+  private async processSpecRespondent2CorrespondenceAddressPage() {
+    const { specRespondent2CorrespondenceAddressPage } = this.createClaimPageFactory;
     await specRespondent2CorrespondenceAddressPage.verifyContent();
-    await specRespondent2CorrespondenceAddressPage.selectNo();
+    await specRespondent2CorrespondenceAddressPage.selectYesAndEnterAddress();
     await specRespondent2CorrespondenceAddressPage.submit();
   }
 
@@ -411,28 +415,28 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
   }
 
   private async processDetailsSpecPage() {
-    const { detailsSpecPage} = this.createClaimPageFactory;
+    const { detailsSpecPage } = this.createClaimPageFactory;
     await detailsSpecPage.verifyContent();
     await detailsSpecPage.enterDetails();
     await detailsSpecPage.submit();
   }
 
-  private async processUploadClaimDocumentPage(){
-    const { uploadClaimDocumentPage} = this.createClaimPageFactory;
+  private async processUploadClaimDocumentPage() {
+    const { uploadClaimDocumentPage } = this.createClaimPageFactory;
     await uploadClaimDocumentPage.verifyContent();
     await uploadClaimDocumentPage.selectUpload();
     await uploadClaimDocumentPage.submit();
   }
 
-  private async processClaimTimeLineUploadPage(){
-    const { claimTimelineUploadPage} = this.createClaimPageFactory;
+  private async processClaimTimeLineUploadPage() {
+    const { claimTimelineUploadPage } = this.createClaimPageFactory;
     await claimTimelineUploadPage.verifyContent();
     await claimTimelineUploadPage.uploadDocument();
     await claimTimelineUploadPage.submit();
   }
 
   private async processEvidenceListPage() {
-    const { evidenceListPage} = this.createClaimPageFactory;
+    const { evidenceListPage } = this.createClaimPageFactory;
     await evidenceListPage.verifyContent();
     await evidenceListPage.addNew();
     await evidenceListPage.enterEvidence1Details();
@@ -454,15 +458,15 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await claimAmountDetailsPage.submit();
   }
 
-  private async processClaimInterestPage(){
-    const { claimInterestPage} = this.createClaimPageFactory;
+  private async processClaimInterestPage() {
+    const { claimInterestPage } = this.createClaimPageFactory;
     await claimInterestPage.verifyContent();
     await claimInterestPage.selectNo();
     await claimInterestPage.submit();
   }
 
   private async processInterestSummaryFastTrackPage() {
-    const { interestSummaryPage} = this.createClaimPageFactory;
+    const { interestSummaryPage } = this.createClaimPageFactory;
     await interestSummaryPage.verifyContent();
     await interestSummaryPage.verifyFastTrack();
     await interestSummaryPage.submit();
@@ -476,7 +480,7 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
     await claimAmountPage.submit();
   }
 
-  private async processClaimAmountDetailsSmallTrackPage(){
+  private async processClaimAmountDetailsSmallTrackPage() {
     const { claimAmountDetailsPage } = this.createClaimPageFactory;
     await claimAmountDetailsPage.verifyContent();
     await claimAmountDetailsPage.verifySmallTrack();
@@ -484,34 +488,34 @@ export default class CreateClaimSpecSteps extends BaseExuiSteps {
   }
 
   private async processClaimInterestSummarySmallTrackPage() {
-    const { interestSummaryPage} = this.createClaimPageFactory;
+    const { interestSummaryPage } = this.createClaimPageFactory;
     await interestSummaryPage.verifyContent();
     await interestSummaryPage.verifySmallTrack();
     await interestSummaryPage.submit();
   }
 
   private async processPbaNumberPage() {
-    const {pbaNumberPage} = this.createClaimPageFactory;
+    const { pbaNumberPage } = this.createClaimPageFactory;
     await pbaNumberPage.verifyContent();
     await pbaNumberPage.submit();
   }
 
-  private async processFixedCommencementCostsPage(){
-    const { fixedCommencementCostsPage} = this.createClaimPageFactory;
+  private async processFixedCommencementCostsPage() {
+    const { fixedCommencementCostsPage } = this.createClaimPageFactory;
     await fixedCommencementCostsPage.verifyContent();
     await fixedCommencementCostsPage.selectYesAndEnterAmount();
     await fixedCommencementCostsPage.submit();
   }
 
   private async processStatementOfTruthCreateClaimPage() {
-    const { statementOfTruthCreateClaimPage} = this.createClaimPageFactory;
+    const { statementOfTruthCreateClaimPage } = this.createClaimPageFactory;
     await statementOfTruthCreateClaimPage.verifyContent();
     await statementOfTruthCreateClaimPage.enterDetails();
     await statementOfTruthCreateClaimPage.submit();
   }
 
   private async processSubmitCreateClaimPage() {
-    const { submitCreateClaimPage} = this.createClaimPageFactory;
+    const { submitCreateClaimPage } = this.createClaimPageFactory;
     await submitCreateClaimPage.verifyContent();
     await submitCreateClaimPage.submit();
   }

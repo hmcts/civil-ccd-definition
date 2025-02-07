@@ -22,8 +22,11 @@ export default class ClaimantSolicitorOrganisationPage extends ExuiPage(BasePage
     ]);
   }
 
-  async selectOrganisation() {
+  async enterReference() {
     await this.organisationFragment.enterReference();
+  }
+
+  async selectOrganisation() {
     await this.organisationFragment.searchForOrganisation('Civil - Organisation 1');
   }
 

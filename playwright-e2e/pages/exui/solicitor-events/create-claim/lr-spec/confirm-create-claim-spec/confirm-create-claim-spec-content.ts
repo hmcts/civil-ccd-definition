@@ -1,5 +1,7 @@
-export const confirmationHeadingPart1 = 'Please now pay your claim fee';
-export const confirmationHeadingPart2 = 'using the link below';
+export const confirmationHeading = {
+  part1: 'Please now pay your claim fee',
+  part2: 'using the link below',
+};
 
 export const paragraphs = {
   descriptionText:
