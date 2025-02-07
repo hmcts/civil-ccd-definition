@@ -268,11 +268,15 @@ em-stitching:
       SPRING_DATASOURCE_OPTIONS: "?ssl=disable"
       SPRING_DATASOURCE_PORT: 5432
       SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
       ENABLE_DB_MIGRATE: true
       RUN_DB_MIGRATION_ON_STARTUP: true
       FLYWAY_POSTGRESQL_TRANSACTIONAL_LOCK: false
       LOGGING_LEVEL_UK_GOV_HMCTS_REFORM_EM: DEBUG
+    secrets:
+      SPRING_DATASOURCE_PASSWORD:
+        secretRef: postgres-pod
+        key: PASSWORD
+        disabled: true
 
 ccd-case-document-am-api:
   enabled: true
