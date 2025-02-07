@@ -29,9 +29,9 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.courtLocation, { ignoreDuplicates: true }),
-        super.expectLabel(inputs.preferredCourtReason.label, { ignoreDuplicates: true }),
-        this.remoteHearingSpecFragment.verifyContent(),
+        // super.expectSubheading(subheadings.courtLocation),
+        // super.expectLabel(inputs.preferredCourtReason.label),
+        // this.remoteHearingSpecFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

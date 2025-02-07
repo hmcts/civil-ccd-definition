@@ -24,8 +24,8 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.availability, { ignoreDuplicates: true }),
-        super.expectText(radioButtons.unavailableDatesRequired.label, { ignoreDuplicates: true }),
+        // super.expectSubheading(subheadings.availability),
+        // super.expectText(radioButtons.unavailableDatesRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

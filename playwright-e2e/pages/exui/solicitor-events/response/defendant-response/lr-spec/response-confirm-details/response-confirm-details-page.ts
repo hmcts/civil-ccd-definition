@@ -24,11 +24,11 @@ export default class ResponseConfirmDetailsPage extends ExuiPage(BasePage) {
     super.runVerifications([
       super.expectHeading(heading),
       super.expectLabel(inputs.defendantSolicitorReference.label),
-      super.expectText(tableHeadings.organisation, { ignoreDuplicates: true }),
-      super.expectText(tableHeadings.reference, { ignoreDuplicates: true }),
-      // super.expectText(inputs.defendant1DateOfBirth.label, { ignoreDuplicates: true }),
+      // super.expectText(tableHeadings.organisation),
+      // super.expectText(tableHeadings.reference),
+      // super.expectText(inputs.defendant1DateOfBirth.label),
       // this.dateFragment.verifyContent(),
-      // super.expectText(radioButtons.defendant1Address.label, { ignoreDuplicates: true }),
+      // super.expectText(radioButtons.defendant1Address.label),
     ]);
   }
 

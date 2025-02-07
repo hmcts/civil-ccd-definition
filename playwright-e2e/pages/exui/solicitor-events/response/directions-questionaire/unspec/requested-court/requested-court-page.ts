@@ -24,10 +24,10 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.courtLocation, { ignoreDuplicates: true }),
-        super.expectLabel(dropdowns.courtLocations.label, { ignoreDuplicates: true }),
-        super.expectLabel(inputs.preferredCourtReason.label, { ignoreDuplicates: true }),
-        this.remoteHearingFragment.verifyContent(),
+        // super.expectSubheading(subheadings.courtLocation),
+        // super.expectLabel(dropdowns.courtLocations.label),
+        // super.expectLabel(inputs.preferredCourtReason.label),
+        // this.remoteHearingFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

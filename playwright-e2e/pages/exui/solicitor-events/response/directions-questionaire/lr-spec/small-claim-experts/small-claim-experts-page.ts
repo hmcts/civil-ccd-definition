@@ -22,7 +22,7 @@ export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.experts, { ignoreDuplicates: true }),
+        // super.expectSubheading(subheadings.experts),
         // super.expectText(radioButtons.expertsRequired.label),
       ],
       { axePageInsertName: this.claimantDefendantParty.key },

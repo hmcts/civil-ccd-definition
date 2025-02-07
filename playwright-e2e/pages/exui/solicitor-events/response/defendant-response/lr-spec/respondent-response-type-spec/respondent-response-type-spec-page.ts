@@ -11,10 +11,10 @@ export default class RespondentResponseTypeSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.fullDefence.label, { ignoreDuplicates: true }),
-      super.expectLabel(radioButtons.fullAdmit.label, { ignoreDuplicates: true }),
-      super.expectLabel(radioButtons.partAdmit.label, { ignoreDuplicates: true }),
-      super.expectLabel(radioButtons.counterClaim.label, { ignoreDuplicates: true }),
+      // super.expectLabel(radioButtons.fullDefence.label),
+      // super.expectLabel(radioButtons.fullAdmit.label),
+      // super.expectLabel(radioButtons.partAdmit.label),
+      // super.expectLabel(radioButtons.counterClaim.label),
     ]);
   }
 

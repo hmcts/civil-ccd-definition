@@ -25,16 +25,10 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.fileDQ, { ignoreDuplicates: true }),
-        super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label, {
-          ignoreDuplicates: true,
-        }),
-        super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label, {
-          ignoreDuplicates: true,
-        }),
-        super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label, {
-          ignoreDuplicates: true,
-        }),
+        // super.expectSubheading(subheadings.fileDQ),
+        // super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label),
+        // super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label),
+        // super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );

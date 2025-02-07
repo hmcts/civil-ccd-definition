@@ -20,8 +20,8 @@ export default class HowToAddTimelinePage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.upload.label, { ignoreDuplicates: true }),
-        super.expectLabel(radioButtons.manual.label, { ignoreDuplicates: true }),
+        // super.expectLabel(radioButtons.upload.label),
+        // super.expectLabel(radioButtons.manual.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

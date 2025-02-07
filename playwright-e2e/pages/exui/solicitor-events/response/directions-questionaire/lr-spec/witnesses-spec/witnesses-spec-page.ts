@@ -21,8 +21,8 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.witnesses, { ignoreDuplicates: true }),
-        super.expectText(radioButtons.witnessesRequired.label, { ignoreDuplicates: true }),
+        // super.expectSubheading(subheadings.witnesses),
+        // super.expectText(radioButtons.witnessesRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );

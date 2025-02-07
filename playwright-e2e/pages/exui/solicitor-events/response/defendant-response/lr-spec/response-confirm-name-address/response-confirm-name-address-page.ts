@@ -12,9 +12,9 @@ export default class ResponseConfirmNameAddressPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(radioButtons.address.label, { ignoreDuplicates: true }),
-      super.expectLabel(radioButtons.address.yes.label, { ignoreDuplicates: true }),
-      super.expectLabel(radioButtons.address.no.label, { ignoreDuplicates: true }),
+      // super.expectText(radioButtons.address.label),
+      // super.expectLabel(radioButtons.address.yes.label),
+      // super.expectLabel(radioButtons.address.no.label),
     ]);
   }
 

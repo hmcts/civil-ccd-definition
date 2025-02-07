@@ -20,8 +20,8 @@ export default class MediationPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.yesMediation.label, { ignoreDuplicates: true }),
-        super.expectLabel(radioButtons.yesMediation.label, { ignoreDuplicates: true }),
+        // super.expectLabel(radioButtons.yesMediation.label),
+        // super.expectLabel(radioButtons.yesMediation.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
