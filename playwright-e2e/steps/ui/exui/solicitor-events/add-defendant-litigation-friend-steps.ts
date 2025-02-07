@@ -25,7 +25,7 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
     this.addDefendantLitigationFriendPageFactory = addDefendantLitigationFriendPageFactory;
   }
   async Defendant1Journey() {
-    await super.fetchAndSetCCDCaseData(claimantSolicitorUser, 1738856115883045);
+    await super.fetchAndSetCCDCaseData(civilAdminUser, 1738856115883045);
     await this.retryExuiEvent(
       async () => {
         await this.processLitigationFriendPage();
