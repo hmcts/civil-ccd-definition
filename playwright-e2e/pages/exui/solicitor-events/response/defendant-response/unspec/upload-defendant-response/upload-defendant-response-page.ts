@@ -22,7 +22,7 @@ export default class UploadDefendantResponsePage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.uploadDefence),
-        super.expectLabel(inputs.uploadDoc.label),
+        super.expectLabel(inputs.uploadDoc.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
