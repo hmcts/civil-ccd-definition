@@ -128,8 +128,8 @@ export default class CaseDataHelper {
     }
   }
 
-  static getExpertEstimatedCost(party: Party) {
-    switch (party) {
+  static getExpertEstimatedCost(expertParty: Party) {
+    switch (expertParty) {
       case partys.CLAIMANT_EXPERT_1:
         return '587';
       case partys.CLAIMANT_EXPERT_2:
@@ -157,25 +157,28 @@ export default class CaseDataHelper {
     };
   }
 
-  static buildClaimantAndDefendantData(party: Party, partyType: ClaimantDefendantPartyType): any {
+  static buildClaimantAndDefendantData(
+    claimantDefendantParty: Party,
+    claimantDefendantPartyType: ClaimantDefendantPartyType,
+  ): any {
     const commonPartyData = {
-      type: partyType.type,
-      partyEmail: `${party.key}@${partyType.key}.com`,
-      partyPhone: this.getPartyPhoneNumber(party),
-      primaryAddress: this.buildAddressData(party),
+      type: claimantDefendantPartyType.type,
+      partyEmail: `${claimantDefendantParty.key}@${claimantDefendantPartyType.key}.com`,
+      partyPhone: this.getPartyPhoneNumber(claimantDefendantParty),
+      primaryAddress: this.buildAddressData(claimantDefendantParty),
     };
 
-    const partyKey = StringHelper.capitalise(party.key);
-    const partyTypeKey = StringHelper.capitalise(partyType.key);
+    const partyKey = StringHelper.capitalise(claimantDefendantParty.key);
+    const partyTypeKey = StringHelper.capitalise(claimantDefendantPartyType.key);
 
-    switch (partyType) {
+    switch (claimantDefendantPartyType) {
       case claimantDefendantPartyTypes.INDIVIDUAL:
         return {
           ...commonPartyData,
           individualTitle: 'Mx',
           individualFirstName: partyKey,
           individualLastName: partyTypeKey,
-          individualDateOfBirth: this.getPartyDateOfBirth(party),
+          individualDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
         };
 
       case claimantDefendantPartyTypes.COMPANY:
@@ -191,7 +194,7 @@ export default class CaseDataHelper {
           soleTraderFirstName: partyKey,
           soleTraderLastName: partyTypeKey,
           soleTraderTradingAs: `${partyKey} Trade`,
-          soleTraderDateOfBirth: this.getPartyDateOfBirth(party),
+          soleTraderDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
         };
       case claimantDefendantPartyTypes.ORGANISATION:
         return {
@@ -201,56 +204,56 @@ export default class CaseDataHelper {
     }
   }
 
-  static buildUnregisteredOrganisationData(party: Party) {
+  static buildUnregisteredOrganisationData(solicitorParty: Party) {
     return {
-      address: this.buildAddressData(party),
-      organisationName: `${party.key} - Solicitors`,
-      phoneNumber: this.getPartyPhoneNumber(party),
-      email: `${party.key}@solicitor.com`,
-      DX: '123',
-      fax: '5550234',
+      address: this.buildAddressData(solicitorParty),
+      organisationName: `${solicitorParty.key} - Solicitors`,
+      phoneNumber: this.getPartyPhoneNumber(solicitorParty),
+      email: `${solicitorParty.key}@solicitor.com`,
+      DX: `123 - ${solicitorParty.key}`,
+      fax: `5550234 - ${solicitorParty.key}`,
     };
   }
 
-  static buildLitigationFriendData(party: Party) {
+  static buildLitigationFriendData(litigationFriendParty: Party) {
     return {
-      firstName: StringHelper.capitalise(party.key),
+      firstName: StringHelper.capitalise(litigationFriendParty.key),
       lastName: 'Litigation',
-      emailAddress: `${party.key}@litigants.com`,
-      phoneNumber: this.getPartyPhoneNumber(party),
+      emailAddress: `${litigationFriendParty.key}@litigants.com`,
+      phoneNumber: this.getPartyPhoneNumber(litigationFriendParty),
       hasSameAddressAsLitigant: 'No',
-      primaryAddress: this.buildAddressData(party),
+      primaryAddress: this.buildAddressData(litigationFriendParty),
     };
   }
 
-  static buildExpertData(party: Party) {
+  static buildExpertData(expertParty: Party) {
     return {
-      firstName: StringHelper.capitalise(party.key),
+      firstName: StringHelper.capitalise(expertParty.key),
       lastName: 'Expert',
-      emailAddress: `${party.key}@experts.com`,
-      phoneNumber: this.getPartyPhoneNumber(party),
-      fieldOfExpertise: `Field of expertise - ${party.key}`,
-      whyRequired: `Reason required - ${party.key}`,
-      estimatedCost: this.getExpertEstimatedCost(party),
+      emailAddress: `${expertParty.key}@experts.com`,
+      phoneNumber: this.getPartyPhoneNumber(expertParty),
+      fieldOfExpertise: `Field of expertise - ${expertParty.key}`,
+      whyRequired: `Reason required - ${expertParty.key}`,
+      estimatedCost: this.getExpertEstimatedCost(expertParty),
     };
   }
 
-  static buildMediationData(party: Party) {
+  static buildMediationData(mediationFriendParty: Party) {
     return {
-      firstName: StringHelper.capitalise(party.key),
+      firstName: StringHelper.capitalise(mediationFriendParty.key),
       lastName: 'Mediation',
-      emailAddress: `${party.key}@mediation.com`,
-      phoneNumber: this.getPartyPhoneNumber(party),
+      emailAddress: `${mediationFriendParty.key}@mediation.com`,
+      phoneNumber: this.getPartyPhoneNumber(mediationFriendParty),
     };
   }
 
-  static buildWitnessData(party: Party) {
+  static buildWitnessData(witnessParty: Party) {
     return {
-      firstName: StringHelper.capitalise(party.key),
+      firstName: StringHelper.capitalise(witnessParty.key),
       lastName: 'Witness',
-      phoneNumber: this.getPartyPhoneNumber(party),
-      emailAddress: `${party.key}@witnesses.com`,
-      reasonForWitness: `Reason for witness - ${party.key}`,
+      phoneNumber: this.getPartyPhoneNumber(witnessParty),
+      emailAddress: `${witnessParty.key}@witnesses.com`,
+      reasonForWitness: `Reason for witness - ${witnessParty.key}`,
     };
   }
 
