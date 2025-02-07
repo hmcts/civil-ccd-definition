@@ -3,7 +3,6 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import StatementOfTruthFragment from '../../../../fragments/statement-of-truth/statement-of-truth-fragment.ts';
-import { heading } from './statement-of-truth-create-claim-content.ts';
 
 @AllMethodsStep()
 export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) {
@@ -15,7 +14,7 @@ export default class StatementOfTruthCreateClaimPage extends ExuiPage(BasePage) 
   }
 
   async verifyContent() {
-    await super.runVerifications([super.expectHeading(heading)]);
+    await super.runVerifications([this.statementOfTruthFragment.verifyContent()]);
   }
 
   async enterDetails() {
