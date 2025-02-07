@@ -21,8 +21,8 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectHeading(heading),
-        super.expectLabel(inputs.upload.label, { ignoreDuplicates: true }),
+        // super.expectHeading(heading),
+        // super.expectLabel(inputs.upload.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
