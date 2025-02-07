@@ -23,6 +23,7 @@ test('Test 1v1 example', async ({
 });
 
 test('Api spec test example', async ({
+  CreateClaimSpecSteps,
   ApiCreateClaimSpecSteps,
   ApiServiceRequestsSteps,
   IdamSteps,

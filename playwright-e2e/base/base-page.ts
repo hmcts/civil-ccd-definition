@@ -824,46 +824,67 @@ export default abstract class BasePage {
     });
   }
 
-  @BoxedDetailedStep(classKey, 'label', 'text')
-  @TruthyParams(classKey, 'label', 'text')
-  protected async expectTableRowValueByName(
-    label: string,
-    text: string | number,
+  @BoxedDetailedStep(classKey, 'rowName', 'value')
+  @TruthyParams(classKey, 'rowName', 'value')
+  protected async expectTableValueByRowName(
+    rowName: string,
+    value: string | number,
     options: { message?: string; timeout?: number } = {},
   ) {
     const rowLocator = this.page.locator('tr', {
-      has: this.page.locator(`td:text-is("${label}"), th:text-is("${label}")`),
+      has: this.page.locator(`td:text-is("${rowName}"), th:text-is("${rowName}")`),
     });
     const textLocator = rowLocator.locator('td').nth(1);
-    await pageExpect(textLocator, { message: options.message }).toHaveText(text.toString(), {
+    await pageExpect(textLocator, { message: options.message }).toHaveText(value.toString(), {
       timeout: options.timeout,
     });
   }
 
-  @BoxedDetailedStep(classKey, 'text')
-  @TruthyParams(classKey, 'text')
+  @BoxedDetailedStep(classKey, 'value')
+  @TruthyParams(classKey, 'value')
   protected async expectDataCellValue(
-    text: string | number,
+    value: string | number,
     options: {
-      message?: string;
-      timeout?: number;
-      first?: boolean;
+      containerSelector?: string;
       index?: number;
+      first?: boolean;
+      count?: number;
+      ignoreDuplicates?: boolean;
+      message?: string;
       exact?: boolean;
+      timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.ignoreDuplicates && options.count !== undefined) {
+      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    let locator = this.page.getByRole('cell', { name: text.toString(), exact: options.exact });
-    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    if (options.first && options.index !== undefined && options.count) {
+      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    }
 
-    await pageExpect(locator, {
-      message: options.message,
-    }).toBeVisible({
-      timeout: options.timeout,
-    });
+    if (options.count && options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.getByRole('cell', { name: value.toString(), exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'text', 'selector')

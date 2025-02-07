@@ -40,7 +40,6 @@ import MediationContactInformationPage from '../mediation/mediation-contact-info
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
 import DateFragment from '../../../fragments/date/date-fragment';
 import HearingFastSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-fast-spec-page.ts';
-import ClaimType from '../../../../../enums/claim-type.ts';
 import SmallClaimExperts2v1ClaimantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-2v1-claimant-page.ts';
 import HearingFastPage from '../directions-questionaire/unspec/hearing/hearing-fast-page.ts';
 

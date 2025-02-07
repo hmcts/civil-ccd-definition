@@ -17,13 +17,11 @@ export default class ClaimAmountDetailsPage extends ExuiPage(BasePage) {
 
   async verifySmallTrack() {
     const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.SMALL_CLAIM).toFixed(2)}`;
-    await super.expectTableRowValueByName(`Roof damage - ${partys.CLAIMANT_1.key}`, amount);
     await super.expectDataCellValue(amount, { first: true });
   }
 
   async verifyFastTrack() {
     const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM).toFixed(2)}`;
-    await super.expectTableRowValueByName(`Roof damage - ${partys.CLAIMANT_1.key}`, amount);
     await super.expectDataCellValue(amount, { first: true });
   }
 

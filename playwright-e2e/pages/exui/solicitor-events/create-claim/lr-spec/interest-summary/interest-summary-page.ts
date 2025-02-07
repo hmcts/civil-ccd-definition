@@ -18,13 +18,13 @@ export default class InterestSummaryPage extends ExuiPage(BasePage) {
 
   async verifySmallTrack() {
     const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.SMALL_CLAIM)}`;
-    await super.expectTableRowValueByName(`Claim amount`, amount);
+    await super.expectTableValueByRowName(`Claim amount`, amount);
     await super.expectDataCellValue(amount, { first: true });
   }
 
   async verifyFastTrack() {
     const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM)}`;
-    await super.expectTableRowValueByName(`Claim amount`, amount);
+    await super.expectTableValueByRowName(`Claim amount`, amount);
     await super.expectDataCellValue(amount, { first: true });
   }
 
