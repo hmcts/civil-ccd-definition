@@ -36,13 +36,16 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    console.log("this is the solicitor "+ this.claimantDefendantParty);
-    await super.clickBySelector(radioButtons.addressRequired.yes.selector(this.claimantDefendantParty));
+    await super.clickBySelector(
+      radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
+    );
     await super.expectSubheading(subheadings.correspondenceAddress);
   }
 
   async selectNo() {
-     await super.clickBySelector(radioButtons.addressRequired.no.selector(this.claimantDefendantParty));
+    await super.clickBySelector(
+      radioButtons.addressRequired.no.selector(this.claimantDefendantParty),
+    );
   }
 
   async enterAddressManual() {
