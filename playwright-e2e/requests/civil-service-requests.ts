@@ -39,7 +39,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 100,
+      retries: 50,
       retryTimeInterval: 5000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
@@ -63,7 +63,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async updatePaymentForClaimIssue(user: User, serviceRequestDTO: any) {
-    console.log(`Updating payment for claim issue, caseId: ${serviceRequestDTO.id}...`);
+    console.log(
+      `Updating payment for claim issue, caseId: ${serviceRequestDTO.ccd_case_number}...`,
+    );
     const url = `${urls.civilService}/service-request-update-claim-issued`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),
