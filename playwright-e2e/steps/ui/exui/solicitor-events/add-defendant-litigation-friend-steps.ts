@@ -34,7 +34,7 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
       defendantSolicitor1User,
-      { verifySuccessEvent: false },
+      { retries: 0 },
     );
   }
 

@@ -15,9 +15,9 @@ test(
     _notifyClaimPageFactory,
     AddDefendantLitigationFriendSteps,
   }) => {
-    await ApiUserSteps.SetupUserData(civilAdminUser);
+    await ApiUserSteps.SetupUserData(defendantSolicitor1User);
     // await ApiDataSteps.SetupBankHolidaysData();
-    await IdamSteps.ClaimantSolicitorLogin();
+    await IdamSteps.DefendantSolicitor1Login();
     // await ExuiDashboardSteps.GoToCaseDetails();
     await AddDefendantLitigationFriendSteps.Defendant1Journey();
 
