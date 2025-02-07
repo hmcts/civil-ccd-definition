@@ -57,6 +57,11 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     protected async clickSubmit() {
       await super.clickBySelector(buttons.submit.selector);
       await super.waitForSelectorToDetach(components.loading.selector);
+      await super.expectNoSelector(components.fieldError.selector, {
+        timeout: 300,
+        all: true,
+        message: 'Field Validation Error on UI',
+      });
     }
 
     protected async retryClickSubmit(expect?: () => Promise<void>) {
@@ -64,7 +69,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         buttons.submit.selector,
         async () => {
           await super.waitForSelectorToDetach(components.loading.selector, {
-            timeout: 30_000,
+            timeout: 15_000,
           });
           await super.expectNoSelector(components.error.selector, {
             timeout: 500,
@@ -72,8 +77,13 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
           });
           if (expect) await expect();
         },
-        { timeout: 45_000 },
+        { timeout: 30_000 },
       );
+      await super.expectNoSelector(components.fieldError.selector, {
+        timeout: 300,
+        all: true,
+        message: 'Field Validation Error on UI',
+      });
     }
 
     abstract submit(...args: any[]): Promise<void>;

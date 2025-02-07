@@ -1,34 +1,37 @@
 import { test } from '../playwright-fixtures/index';
 
-test('Api Spec Test Example', async ({
-  ApiCreateClaimSpecSteps,
+test('Test 1v1 example', async ({
+  CreateClaimSteps,
   ApiServiceRequestsSteps,
-  ApiCaseRoleAssignmentSteps,
-  IdamSteps,
-  ExuiDashboardSteps,
-}) => {
-  await ApiCreateClaimSpecSteps.Create1v1Claim();
-  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await ExuiDashboardSteps.GoToCaseDetails();
-  await IdamSteps.DefendantSolicitor1Login();
-  await ExuiDashboardSteps.GoToCaseDetails();
-});
-
-test('Api Unspec Test Example', async ({
-  ApiCreateClaimSteps,
-  ApiServiceRequestsSteps,
-  IdamSteps,
   NotifyClaimSteps,
-  ApiCaseRoleAssignmentSteps,
   NotifyClaimDetailsSteps,
+  ApiCaseRoleAssignmentSteps,
+  IdamSteps,
+  DefendantResponseSteps,
+  ClaimantResponseSteps,
 }) => {
-  await ApiCreateClaimSteps.Create1v1Claim();
-  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
   await IdamSteps.ClaimantSolicitorLogin();
+  await CreateClaimSteps.SmallTrack1v1();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
   await NotifyClaimSteps.NotifyClaim1v1();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
+  await ApiCaseRoleAssignmentSteps.AssignRoleToDefendant1();
   await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
+  await DefendantResponseSteps.SmallTrackFullDefence1v1();
+  await IdamSteps.ClaimantSolicitorLogin();
+  await ClaimantResponseSteps.SmallClaimIntentToProceed1v1();
+});
+
+test('Api spec test example', async ({
+  ApiCreateClaimSpecSteps,
+  ApiServiceRequestsSteps,
+  IdamSteps,
+  ApiCaseRoleAssignmentSteps,
+  ExuiDashboardSteps,
+}) => {
+  await ApiCreateClaimSpecSteps.SmallTrack1v1();
+  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
+  await ApiCaseRoleAssignmentSteps.AssignRoleToDefendant1();
+  await IdamSteps.DefendantSolicitor1Login();
+  await ExuiDashboardSteps.GoToCaseDetails();
 });
