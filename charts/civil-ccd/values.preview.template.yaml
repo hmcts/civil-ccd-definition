@@ -136,9 +136,9 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 xui-webapp:
-  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
+  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-56706d6-20250203134213'
   nodejs:
-    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-7d6d3bd-20250129152437'
+    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-56706d6-20250203134213'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
