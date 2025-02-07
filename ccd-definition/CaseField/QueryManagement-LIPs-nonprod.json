@@ -12,17 +12,7 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "qmRespondentCitizen1Queries",
-    "FieldType": "CaseQueriesCollection",
-    "Label": " ",
-    "CRUD": "CRUD",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "LiveFrom": "01/01/2017",
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "qmRespondentCitizen2Queries",
+    "ID": "qmRespondentCitizenQueries",
     "FieldType": "CaseQueriesCollection",
     "Label": " ",
     "CRUD": "CRUD",

@@ -41,7 +41,9 @@
           "court-officer-order",
           "ctsc",
           "nbc-team-leader",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       },
@@ -54,9 +56,7 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
-          "GS_profile",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
