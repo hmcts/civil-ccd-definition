@@ -364,6 +364,7 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get interestSummaryPage() {
     return new InterestSummaryPage(this.page);
+  }
 
   get breakDownInterestPage() {
     return new BreakDownInterestPage(this.page);
