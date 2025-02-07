@@ -148,11 +148,8 @@ camunda-bpm:
 em-stitching:
   enabled: true
   java:
-    imagePullPolicy: Always
-    releaseNameOverride: ${SERVICE_NAME}-em-stitching
-    image: hmctspublic.azurecr.io/em/stitching:latest
-    ingressHost: em-stitching-${SERVICE_FQDN}
     environment:
+      SPRING_DATASOURCE_HOST: civil-preview.postgres.database.azure.com
       SPRING_DATASOURCE_NAME: "pr-${CHANGE_ID}-emstitch"
     secrets:
       SPRING_DATASOURCE_PASSWORD:
