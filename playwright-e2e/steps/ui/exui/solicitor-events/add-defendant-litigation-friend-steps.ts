@@ -9,6 +9,7 @@ import {
   civilAdminUser,
   claimantSolicitorUser,
   defendantSolicitor1User,
+  defendantSolicitor2User,
 } from '../../../../config/users/exui-users.ts';
 
 @AllMethodsStep()
@@ -24,8 +25,8 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
     super(exuiDashboardPageFactory, requestsFactory, testData);
     this.addDefendantLitigationFriendPageFactory = addDefendantLitigationFriendPageFactory;
   }
+
   async Defendant1Journey() {
-    await super.fetchAndSetCCDCaseData(civilAdminUser, 1738856115883045);
     await this.retryExuiEvent(
       async () => {
         await this.processLitigationFriendPage();
@@ -42,14 +43,12 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
     await this.retryExuiEvent(
       async () => {
         await this.processAddLitigationFriendDefendant2();
-
         await this.processSubmitAddLitigationFriend();
-
         await this.processConfirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-      civilAdminUser,
-      { verifySuccessEvent: false },
+      defendantSolicitor2User,
+      { retries: 0 },
     );
   }
 
@@ -74,7 +73,7 @@ export default class AddDefendantLitigationFriendSteps extends BaseExuiSteps {
 
   private async processAddLitigationFriendDefendant2() {
     const { defendant2LitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
-    await defendant2LitigationFriendPage.verifyContent();
+    await defendant2LitigationFriendPage.verifyContent(this.ccdCaseData);
     await defendant2LitigationFriendPage.enterLitigationFriendDetails();
     await defendant2LitigationFriendPage.submit();
   }
