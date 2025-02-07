@@ -171,7 +171,6 @@ ccd:
       ingressHost: am-role-assignment-${SERVICE_FQDN}
       environment:
         RELEASE_REVISION: "{{ .Release.Revision }}"
-        ROLE_ASSIGNMENT_DB_PASSWORD: ${POSTGRES_PASSWORD}
         ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
       secrets:
         ROLE_ASSIGNMENT_DB_PASSWORD:
