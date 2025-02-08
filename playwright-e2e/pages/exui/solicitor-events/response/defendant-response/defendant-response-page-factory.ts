@@ -386,80 +386,80 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   get fileDirectionsQuestionaireDefendantSolicitor1Page() {
     return new FileDirectionsQuestionnairePage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get fileDirectionsQuestionaireDefendantSolicitor2Page() {
     return new FileDirectionsQuestionnairePage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
   get fixedRecoverableCostsPageDefendantSolicitor1() {
     return new FixedRecoverableCostsPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get fixedRecoverableCostsPageDefendantSolicitor2() {
     return new FixedRecoverableCostsPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
   get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page() {
     return new DisclosureOfElectronicDocumentsLRSpecPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor2Page() {
     return new DisclosureOfElectronicDocumentsLRSpecPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
   get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page() {
     return new DisclosureOfNonElectronicDocumentsLRSpecPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor2Page() {
     return new DisclosureOfNonElectronicDocumentsLRSpecPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
   get disclosureOfNonElectronicDocumentsDefendantSolicitor1Page() {
     return new DisclosureOfNonElectronicDocumentsPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get disclosureOfNonElectronicDocumentsDefendantSolicitor2Page() {
     return new DisclosureOfNonElectronicDocumentsPage(
       this.page,
-      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 

@@ -6,7 +6,7 @@ import ClaimTrack from '../../../../../../enums/claim-track';
 import claimantDefendantPartyTypes from '../../../../../../constants/claimant-defendant-party-types';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 
-@AllMethodsStep()
+@AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
   async buildSmallTrack1v1() {
     return this.buildData();
