@@ -11,11 +11,18 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class SmallClaimWitnessesDefendantPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
   private witnessParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party, witnessParty: Party) {
+  constructor(
+    page: Page,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+    witnessParty: Party,
+  ) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
     this.witnessParty = witnessParty;
   }
 
@@ -27,7 +34,7 @@ export default class SmallClaimWitnessesDefendantPage extends ExuiPage(BasePage)
         // super.expectSubheading(subheadings.partyWitnesses(this.claimantDefendantParty)),
         // super.expectText(radioButtons.witnessesRequired.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

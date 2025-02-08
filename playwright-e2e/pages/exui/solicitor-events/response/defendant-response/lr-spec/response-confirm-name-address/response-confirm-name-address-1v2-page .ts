@@ -17,13 +17,21 @@ export default class ResponseConfirmNameAddress1v2Page extends ExuiPage(BasePage
   }
 
   async selectYesAddress() {
-    await super.clickBySelector(radioButtons.address.yes.selector(partys.DEFENDANT_1));
-    await super.clickBySelector(radioButtons.address.yes.selector(partys.DEFENDANT_2));
+    await super.clickBySelector(
+      radioButtons.address.yes.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+    );
+    await super.clickBySelector(
+      radioButtons.address.yes.selector(partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_1),
+    );
   }
 
   async selectNoAddress() {
-    await super.clickBySelector(radioButtons.address.no.selector(partys.DEFENDANT_1));
-    await super.clickBySelector(radioButtons.address.no.selector(partys.DEFENDANT_2));
+    await super.clickBySelector(
+      radioButtons.address.no.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+    );
+    await super.clickBySelector(
+      radioButtons.address.no.selector(partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_1),
+    );
   }
 
   async submit() {

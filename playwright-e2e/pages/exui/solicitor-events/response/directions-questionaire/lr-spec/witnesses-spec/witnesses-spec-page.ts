@@ -11,10 +11,14 @@ import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 @AllMethodsStep()
 export default class WitnessesSpecPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
+  private witnessParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, defendantParty: Party, solicitorParty: Party, witnessParty: Party) {
     super(page);
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
+    this.witnessParty = witnessParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -24,7 +28,7 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
         // super.expectSubheading(subheadings.witnesses),
         // super.expectText(radioButtons.witnessesRequired.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
@@ -33,27 +37,27 @@ export default class WitnessesSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNewWitness.selector(this.defendantParty));
   }
 
-  async enterWitnessDetails(witnessParty: Party) {
-    const witnessData = CaseDataHelper.buildWitnessData(witnessParty);
+  async enterWitnessDetails() {
+    const witnessData = CaseDataHelper.buildWitnessData(this.witnessParty);
     await super.inputText(
       witnessData.firstName,
-      inputs.witnessDetails.firstName.selector(this.defendantParty, witnessParty),
+      inputs.witnessDetails.firstName.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
       witnessData.lastName,
-      inputs.witnessDetails.lastName.selector(this.defendantParty, witnessParty),
+      inputs.witnessDetails.lastName.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
       witnessData.phoneNumber,
-      inputs.witnessDetails.number.selector(this.defendantParty, witnessParty),
+      inputs.witnessDetails.number.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
       witnessData.emailAddress,
-      inputs.witnessDetails.email.selector(this.defendantParty, witnessParty),
+      inputs.witnessDetails.email.selector(this.defendantParty, this.witnessParty),
     );
     await super.inputText(
       witnessData.reasonForWitness,
-      inputs.witnessDetails.reasonForWitness.selector(this.defendantParty, witnessParty),
+      inputs.witnessDetails.reasonForWitness.selector(this.defendantParty, this.witnessParty),
     );
   }
 

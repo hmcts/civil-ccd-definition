@@ -11,7 +11,7 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData();
   }
 
-  async buildSmallTrack1v2DifferentSolicitor() {
+  async buildSmallTrack1v2DS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 

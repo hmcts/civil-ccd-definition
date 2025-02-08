@@ -11,11 +11,18 @@ import StringHelper from '../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class MediationContactInformationPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
   private mediationParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party, mediationParty: Party) {
+  constructor(
+    page: Page,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+    mediationParty: Party,
+  ) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
     this.mediationParty = mediationParty;
   }
 
@@ -31,7 +38,7 @@ export default class MediationContactInformationPage extends ExuiPage(BasePage) 
         super.expectText(inputs.mediationFriendDetails.emailAddress.label),
         super.expectText(inputs.mediationFriendDetails.telephoneNumber.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

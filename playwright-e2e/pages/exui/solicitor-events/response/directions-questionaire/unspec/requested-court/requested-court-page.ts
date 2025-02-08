@@ -13,11 +13,18 @@ import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 export default class RequestedCourtPage extends ExuiPage(BasePage) {
   private remoteHearingFragment: RemoteHearingFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, remoteHearingFragment: RemoteHearingFragment, defendantParty: Party) {
+  constructor(
+    page: Page,
+    remoteHearingFragment: RemoteHearingFragment,
+    defendantParty: Party,
+    solicitorParty: Party,
+  ) {
     super(page);
     this.remoteHearingFragment = remoteHearingFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -29,7 +36,7 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
         // super.expectLabel(inputs.preferredCourtReason.label),
         // this.remoteHearingFragment.verifyContent(),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

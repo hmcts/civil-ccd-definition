@@ -11,16 +11,18 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class UploadDefendantResponseSpecPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, defendantParty: Party, solicitorParty: Party) {
     super(page);
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [super.verifyHeadings(ccdCaseData), super.expectSubheading(subheadings.uploadEvidence)],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

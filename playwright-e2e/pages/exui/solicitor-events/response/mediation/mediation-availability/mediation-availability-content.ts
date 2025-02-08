@@ -22,12 +22,12 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>
-        `#r${claimantDefendantParty.shortOldKey}MediationAvailability_isMediationUnavailablityExists_Yes`,
+        `#${claimantDefendantParty.shortOldKey}MediationAvailability_isMediationUnavailablityExists_Yes`,
     },
     no: {
       label: 'No',
       selector: (claimantDefendantParty: Party) =>
-        `#r${claimantDefendantParty.shortOldKey}MediationAvailability_isMediationUnavailablityExists_No`,
+        `#${claimantDefendantParty.shortOldKey}MediationAvailability_isMediationUnavailablityExists_No`,
     },
   },
   unavailableDateType: {

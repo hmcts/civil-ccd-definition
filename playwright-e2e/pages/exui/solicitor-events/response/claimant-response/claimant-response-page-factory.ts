@@ -86,33 +86,50 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get fileDirectionsQuestionairePage() {
-    return new FileDirectionsQuestionnairePage(this.page, partys.CLAIMANT_1);
+    return new FileDirectionsQuestionnairePage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get fixedRecoverableCostsPage() {
-    return new FixedRecoverableCostsPage(this.page, partys.CLAIMANT_1);
+    return new FixedRecoverableCostsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get disclosureOfElectronicDocumentsPage() {
-    return new DisclosureOfElectronicDocumentsPage(this.page, partys.CLAIMANT_1);
+    return new DisclosureOfElectronicDocumentsPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get disclosureOfNonElectronicDocumentsPage() {
-    return new DisclosureOfNonElectronicDocumentsPage(this.page, partys.CLAIMANT_1);
+    return new DisclosureOfNonElectronicDocumentsPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get disclosureOfNonElectronicDocumentsSpecPage() {
-    return new DisclosureOfNonElectronicDocumentsSpecPage(this.page, partys.CLAIMANT_1);
+    return new DisclosureOfNonElectronicDocumentsSpecPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get disclosureReportPage() {
-    return new DisclosureReportPage(this.page, partys.CLAIMANT_1);
+    return new DisclosureReportPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get mediationContactInformationPage() {
     return new MediationContactInformationPage(
       this.page,
       partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
       partys.CLAIMANT_1_MEDIATION_FRIEND,
     );
   }
@@ -122,12 +139,18 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new MediationAvailabilityPage(
       this.page,
       dateFragment,
-      partys.CLAIMANT_1_MEDIATION_FRIEND,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
     );
   }
 
   get smallClaimExpertsPage() {
-    return new SmallClaimExpertsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_EXPERT_1);
+    return new SmallClaimExpertsPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_EXPERT_1,
+    );
   }
 
   get smallClaimExperts2v1Page() {
@@ -135,24 +158,39 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get smallClaimWitnessesPage() {
-    return new SmallClaimWitnessesPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_WITNESS_1);
+    return new SmallClaimWitnessesPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_WITNESS_1,
+    );
   }
 
   get expertsPage() {
-    return new ExpertPage(this.page, partys.CLAIMANT_1);
+    return new ExpertPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_EXPERT_1,
+    );
   }
 
   get witnessesPage() {
-    return new WitnessesPage(this.page, partys.CLAIMANT_1);
+    return new WitnessesPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+      partys.CLAIMANT_WITNESS_1,
+    );
   }
 
   get languagePage() {
-    return new LanguagePage(this.page, partys.CLAIMANT_1);
+    return new LanguagePage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get hearingPage() {
     const dateFragment = new DateFragment(this.page);
-    return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1);
+    return new HearingPage(this.page, dateFragment, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get hearingFastPage() {
@@ -171,7 +209,7 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get draftDirectionsPage() {
-    return new DraftDirectionsPage(this.page, partys.CLAIMANT_1);
+    return new DraftDirectionsPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get applicantCourtLocationLRSpecPage() {
@@ -180,23 +218,31 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
   }
 
   get vulnerabilityQuestionsPage() {
-    return new VulnerabilityQuestionsPage(this.page, partys.CLAIMANT_1);
+    return new VulnerabilityQuestionsPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get vulnerabilityQuestionsSpecPage() {
-    return new VulnerabilityQuestionsSpecPage(this.page, partys.CLAIMANT_1);
+    return new VulnerabilityQuestionsSpecPage(
+      this.page,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get hearingSupportPage() {
-    return new HearingSupportPage(this.page, partys.CLAIMANT_1);
+    return new HearingSupportPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get furtherInformationPage() {
-    return new FurtherInformationPage(this.page, partys.CLAIMANT_1);
+    return new FurtherInformationPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get applicationPage() {
-    return new ApplicationPage(this.page, partys.CLAIMANT_1);
+    return new ApplicationPage(this.page, partys.CLAIMANT_1, partys.CLAIMANT_SOLICITOR_1);
   }
 
   get statementOfTruthClaimantResponsePage() {

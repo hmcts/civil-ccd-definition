@@ -19,11 +19,18 @@ import StringHelper from '../../../../../../helpers/string-helper.ts';
 export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, claimantDefendantParty: Party) {
+  constructor(
+    page: Page,
+    dateFragment: DateFragment,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+  ) {
     super(page);
     this.dateFragment = dateFragment;
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -35,7 +42,7 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
         super.expectText(radioButtons.mediationAvailability.label),
         super.expectText(radioButtons.mediationAvailability.hintText),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

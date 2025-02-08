@@ -8,21 +8,23 @@ import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
 import preferredCourts from '../../../../../../../config/preferred-courts.ts';
-import { throws } from 'assert';
 
 @AllMethodsStep()
 export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
   private remoteHearingSpecFragment: RemoteHearingSpecFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
   constructor(
     page: Page,
     remoteHearingSpecFragment: RemoteHearingSpecFragment,
     defendantParty: Party,
+    solicitorParty: Party,
   ) {
     super(page);
     this.remoteHearingSpecFragment = remoteHearingSpecFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -33,7 +35,7 @@ export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
         // super.expectLabel(inputs.preferredCourtReason.label),
         // this.remoteHearingSpecFragment.verifyContent(),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

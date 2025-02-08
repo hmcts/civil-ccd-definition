@@ -10,10 +10,12 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class HowToAddTimelinePage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, defendantParty: Party, solicitorParty: Party) {
     super(page);
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -23,7 +25,7 @@ export default class HowToAddTimelinePage extends ExuiPage(BasePage) {
         // super.expectLabel(radioButtons.upload.label),
         // super.expectLabel(radioButtons.manual.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

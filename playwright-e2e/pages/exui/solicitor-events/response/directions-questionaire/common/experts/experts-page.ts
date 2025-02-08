@@ -11,10 +11,19 @@ import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 @AllMethodsStep()
 export default class ExpertPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
+  private expertParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(
+    page: Page,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+    expertParty: Party,
+  ) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
+    this.expertParty = expertParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -26,7 +35,7 @@ export default class ExpertPage extends ExuiPage(BasePage) {
         // super.expectLabel(radioButtons.expertsRequired.yes.label),
         // super.expectLabel(radioButtons.expertsRequired.no.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
@@ -44,41 +53,41 @@ export default class ExpertPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNew.selector(this.claimantDefendantParty));
   }
 
-  async enterExpertDetails(expertParty: Party) {
-    const expertData = CaseDataHelper.buildExpertData(expertParty);
+  async enterExpertDetails() {
+    const expertData = CaseDataHelper.buildExpertData(this.expertParty);
     await super.inputText(
       expertData.firstName,
-      inputs.expertDetails.firstName.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.firstName.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.lastName,
-      inputs.expertDetails.lastName.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.lastName.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.emailAddress,
-      inputs.expertDetails.emailAddress.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.emailAddress.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.phoneNumber,
-      inputs.expertDetails.phoneNumber.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.phoneNumber.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.fieldOfExpertise,
-      inputs.expertDetails.expertise.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.expertise.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.whyRequired,
-      inputs.expertDetails.whyRequired.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.whyRequired.selector(this.claimantDefendantParty, this.expertParty),
     );
 
     await super.inputText(
       expertData.estimatedCost,
-      inputs.expertDetails.estimatedCost.selector(this.claimantDefendantParty, expertParty),
+      inputs.expertDetails.estimatedCost.selector(this.claimantDefendantParty, this.expertParty),
     );
   }
 

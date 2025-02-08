@@ -10,11 +10,18 @@ import CaseDataHelper from '../../../../../../../helpers/case-data-helper.ts';
 @AllMethodsStep()
 export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
   private expertParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party, expertParty: Party) {
+  constructor(
+    page: Page,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+    expertParty: Party,
+  ) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
     this.expertParty = expertParty;
   }
 
@@ -25,7 +32,7 @@ export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
         // super.expectSubheading(subheadings.experts),
         // super.expectText(radioButtons.expertsRequired.label),
       ],
-      { axePageInsertName: this.claimantDefendantParty.key },
+      { axePageInsertName: this.solicitorParty.key },
     );
   }
 
