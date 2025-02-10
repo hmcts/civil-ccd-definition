@@ -1,23 +1,25 @@
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
-import BaseExuiSteps from '../../../base/base-exui-steps';
-import { defendantSolicitor1User } from '../../../config/users/exui-users';
+import BaseExui from '../../../base/base-exui';
+import { civilAdminUser, defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
+import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class DefendantSolicitor1Steps extends BaseExuiSteps {
+export default class DefendantSolicitor1Steps extends BaseExui {
   private defendantActionsFactory: DefendantActionsFactory;
 
   constructor(
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     defendantActionsFactory: DefendantActionsFactory,
+    requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
-    super(exuiDashboardActions, idamActions, testData);
+    super(exuiDashboardActions, idamActions, requestsFactory, testData);
     this.defendantActionsFactory = defendantActionsFactory;
   }
 
@@ -26,7 +28,7 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
   }
 
   async RespondFastTrackFullDefence1v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    await super.retryExuiEvent(
       async () => {
         const { defendantResponseActions } = this.defendantActionsFactory;
         await defendantResponseActions.confirmDetailsDefendantSolicitor1Page();
@@ -55,7 +57,7 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence1v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    await super.retryExuiEvent(
       async () => {
         const { defendantResponseActions } = this.defendantActionsFactory;
 
@@ -82,7 +84,7 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence2v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    await super.retryExuiEvent(
       async () => {
         const { defendantResponseActions } = this.defendantActionsFactory;
 
@@ -109,7 +111,7 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence1v2SS() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    await super.retryExuiEvent(
       async () => {
         const { defendantResponseActions } = this.defendantActionsFactory;
 
@@ -137,7 +139,7 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence1v2DS() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    await super.retryExuiEvent(
       async () => {
         const { defendantResponseActions } = this.defendantActionsFactory;
 
