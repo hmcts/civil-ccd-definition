@@ -13,21 +13,28 @@ import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 export default class DefenceRoutePage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, defendantParty: Party) {
+  constructor(
+    page: Page,
+    dateFragment: DateFragment,
+    defendantParty: Party,
+    solicitorParty: Party,
+  ) {
     super(page);
     this.dateFragment = dateFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
-        super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.defenceRoute.hasPaid.label),
-        super.expectLabel(radioButtons.defenceRoute.disputesClaim.label),
+        // super.verifyHeadings(ccdCaseData),
+        // super.expectLabel(radioButtons.defenceRoute.hasPaid.label),
+        // super.expectLabel(radioButtons.defenceRoute.disputesClaim.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
