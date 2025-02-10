@@ -4,20 +4,18 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
-import {
-  subheadings,
-  inputs,
-  radioButtons,
-} from './disclosure-of-electronic-documents-lr-spec-content.ts';
+import { subheadings, inputs, radioButtons } from './disclosure-of-electronic-documents-content.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
-export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(BasePage) {
+export default class DisclosureOfElectronicDocumentsPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -27,7 +25,7 @@ export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(
         super.expectSubheading(subheadings.disclosureOfDocs),
         super.expectText(radioButtons.disclosureOfElectronicDocs.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

@@ -13,7 +13,7 @@ export default class ApiCaseRoleAssignmentSteps extends BaseApiSteps {
     super(requestsFactory, testData);
   }
 
-  async AssignRoleToDefendant1() {
+  async AssignCaseRoleToDefendant1() {
     await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(
