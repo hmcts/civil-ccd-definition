@@ -1,10 +1,10 @@
-import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import BaseDataBuilder from '../../../../../base/base-data-builder';
+import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import ClaimTrack from '../../../../../enums/claim-track';
+import ClaimType from '../../../../../enums/claim-type';
+import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
 import createClaimSpecData from './create-claim-spec-data-components';
-import BaseDataBuilder from '../../../../../../base/base-data-builder';
-import ClaimType from '../../../../../../enums/claim-type';
-import ClaimTrack from '../../../../../../enums/claim-track';
-import claimantDefendantPartyTypes from '../../../../../../constants/claimant-defendant-party-types';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 
 @AllMethodsStep()
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {

@@ -1,16 +1,15 @@
-import preferredCourts from '../../../../../../config/preferred-courts';
+import preferredCourts from '../../../../../config/preferred-courts';
 import {
   claimantSolicitorUser,
   defendantSolicitor1User,
   defendantSolicitor2User,
-} from '../../../../../../config/users/exui-users';
-import partys from '../../../../../../constants/partys';
-import ClaimTrack from '../../../../../../enums/claim-track';
-import ClaimType from '../../../../../../enums/claim-type';
-import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import ClaimTypeHelper from '../../../../../../helpers/claim-type-helper';
-import { UploadDocumentValue } from '../../../../../../models/ccd/ccd-case-data';
-import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
+} from '../../../../../config/users/exui-users';
+import partys from '../../../../../constants/partys';
+import ClaimTrack from '../../../../../enums/claim-track';
+import ClaimType from '../../../../../enums/claim-type';
+import CaseDataHelper from '../../../../../helpers/case-data-helper';
+import ClaimTypeHelper from '../../../../../helpers/claim-type-helper';
+import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
 
 const references = {
   References: {
