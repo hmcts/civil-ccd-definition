@@ -1,8 +1,6 @@
 xui-webapp:
-  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
   enabled: true
   nodejs:
-    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     devcpuRequests: 100m
