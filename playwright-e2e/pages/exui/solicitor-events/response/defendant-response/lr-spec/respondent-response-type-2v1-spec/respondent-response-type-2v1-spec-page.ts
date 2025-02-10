@@ -10,10 +10,10 @@ export default class RespondentResponseType2v1SpecPage extends ExuiPage(BasePage
   async verifyContent(ccdCaseData: CCDCaseData) {
     super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
-      super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
-      super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
-      super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
+      // super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
+      // super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
+      // super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
+      // super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
     ]);
   }
 

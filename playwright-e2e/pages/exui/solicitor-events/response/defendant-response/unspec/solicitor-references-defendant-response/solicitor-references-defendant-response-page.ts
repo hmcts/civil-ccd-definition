@@ -11,16 +11,19 @@ import { subheadings } from './solicitor-references-defendant-response-content.t
 @AllMethodsStep()
 export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
   private defendantSolicitorReferenceFragment: SolicitorReferenceFragment;
 
   constructor(
     page: Page,
     defendantSolicitorReferenceFragment: SolicitorReferenceFragment,
     defendantParty: Party,
+    solicitorParty: Party,
   ) {
     super(page);
     this.defendantSolicitorReferenceFragment = defendantSolicitorReferenceFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -29,7 +32,7 @@ export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(B
         super.verifyHeadings(ccdCaseData),
         //super.expectSubheading(subheadings.fileRef),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
