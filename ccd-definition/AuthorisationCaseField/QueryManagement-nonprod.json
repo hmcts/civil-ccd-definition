@@ -40,10 +40,16 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "ctsc",
-          "nbc-team-leader",
-          "judge-profile"
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -70,6 +76,13 @@
           "nbc-team-leader"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -96,7 +109,14 @@
           "nbc-team-leader"
         ],
         "CRUD": "CRU"
-      }
+      },
+     {
+       "UserRoles": [
+         "judge-profile",
+         "GS_profile"
+       ],
+       "CRUD": "R"
+     }
     ]
   },
   {
@@ -121,7 +141,6 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "court-officer-order",
           "ctsc",
           "nbc-team-leader"
         ],
