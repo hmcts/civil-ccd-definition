@@ -18,7 +18,7 @@ export default class ConfirmDetails1v2Page extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       this.dateFragment.verifyContent(),
       super.expectText(inputs.dateOfBirth.label, { count: 2 }),
