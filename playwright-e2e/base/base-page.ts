@@ -278,7 +278,7 @@ export default abstract class BasePage {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      axePageInsertName?: string;
+      axePageInsertName?: string | number;
     } = {},
   ) {
     if (expects) {
@@ -317,7 +317,7 @@ export default abstract class BasePage {
   private async expectAxeToPass(
     axeExclusions: string[],
     useAxeCache: boolean,
-    axePageInsertName?: string,
+    axePageInsertName?: string | number,
   ) {
     const axeBuilder = new AxeBuilder({ page: this.page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
@@ -395,6 +395,26 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async expectNoHeading(
+    text: string | number,
+    options: {
+      message?: string;
+      timeout?: number;
+    } = {},
+  ) {
+    const locator = this.page.locator('h1', { has: this.page.locator(`text="${text}"`) });
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    await pageExpect(locator, { message: options.message }).toBeHidden({
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'text')
   protected async expectSubheading(
     text: string,
     options: {
@@ -434,6 +454,42 @@ export default abstract class BasePage {
       await pageExpect(locator, {
         message: options.message,
       }).toBeVisible({ timeout: options.timeout });
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'text')
+  @TruthyParams(classKey, 'text')
+  protected async expectNoSubheading(
+    text: string | number,
+    options: {
+      message?: string;
+      exact?: boolean;
+      containerSelector?: string;
+      all?: boolean;
+      index?: number;
+      first?: boolean;
+      timeout?: number;
+    } = {},
+  ) {
+    if (options.first && options.index !== undefined) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+
+    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    if (options.all) {
+      await pageExpect(locator, { message: options.message }).allToBeHidden({
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeHidden({
+        timeout: options.timeout,
+      });
     }
   }
 
@@ -498,7 +554,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 500 });
+      await locator.waitFor({ state: 'visible', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -579,7 +635,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 500 });
+      await locator.waitFor({ state: 'visible', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -605,7 +661,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = { exact: false },
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -651,7 +707,7 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = { exact: false },
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -688,7 +744,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectTab(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
       message: options.message,
@@ -700,7 +756,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectNoTab(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
       message: options.message,
@@ -712,7 +768,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectButton(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
       message: options.message,
@@ -724,7 +780,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'name')
   protected async expectNoButton(
     name: string,
-    options: { message?: string; exact?: boolean; timeout?: number } = { exact: false },
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
       message: options.message,
@@ -785,7 +841,7 @@ export default abstract class BasePage {
   protected async retryAction(
     action: () => Promise<void>,
     assertions: () => Promise<void>[] | Promise<void>,
-    message: string,
+    message?: string,
     { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
   ) {
     while (retries >= 0) {
@@ -796,7 +852,7 @@ export default abstract class BasePage {
         break;
       } catch (error) {
         if (retries <= 0) throw error;
-        console.log(message);
+        console.log(message ?? 'Action failed, trying again');
         console.log(`Retries: ${retries} remaining`);
         retries--;
         assertFirst = false;

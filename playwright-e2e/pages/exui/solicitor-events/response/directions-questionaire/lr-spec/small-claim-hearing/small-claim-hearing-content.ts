@@ -11,23 +11,23 @@ export const radioButtons = {
       'Are there any days in the next 12 months when you, your client, an expert, or a witness, cannot attend a hearing?',
     yes: {
       label: 'Yes',
-      selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
-      selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
+      selector: (defendantParty: Party) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_No`,
     },
   },
   availabilityOptions: {
     single: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
-      selector: (claimantDefendantParty: Party, unavailableDateNumber: number) =>
-        `#${claimantDefendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
+      selector: (defendantParty: Party, unavailableDateNumber: number) =>
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },
   interpreter: {
@@ -35,11 +35,23 @@ export const radioButtons = {
       'Will you be using an interpreter at the hearing, either for your client, or for a witness?',
     yes: {
       label: 'Yes',
-      selector: '#SmallClaimHearingInterpreterRequired_Yes',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#SmallClaimHearingInterpreterRequired_Yes';
+        } else {
+          return '#SmallClaimHearingInterpreter2Required_Yes';
+        }
+      },
     },
     no: {
       label: 'No',
-      selector: '#SmallClaimHearingInterpreterRequired_No',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#SmallClaimHearingInterpreterRequired_No';
+        } else {
+          return '#SmallClaimHearingInterpreter2Required_No';
+        }
+      },
     },
   },
 };
@@ -47,8 +59,8 @@ export const radioButtons = {
 export const buttons = {
   addNewAvailability: {
     title: 'Add new',
-    selector: (claimantDefendantParty: Party) =>
-      `div[id='${claimantDefendantParty.oldKey}DQHearing_unavailableDates'] button[class='button write-collection-add-item__top']`,
+    selector: (defendantParty: Party) =>
+      `div[id='${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate'] button[type='button']`,
   },
 };
 
@@ -67,6 +79,12 @@ export const inputs = {
   },
   interpreterType: {
     label: 'Type of interpreter',
-    selector: '#SmallClaimHearingInterpreterDescription',
+    selector: (defendantParty: Party) => {
+      if (defendantParty.number === 1) {
+        return '#SmallClaimHearingInterpreterDescription';
+      } else {
+        return '#smallClaimHearingInterpreterDescription2';
+      }
+    },
   },
 };

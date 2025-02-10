@@ -15,7 +15,7 @@ export const inputs = {
   uploadFile: {
     label: 'Upload file (Optional)',
     hintText:
-      'We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png.' +
+      'We accept documents in these formats: pdf, txt, doc, dot, docx, rtf, xlt, xlsx, jpg, jpeg or png. ' +
       'Please do not upload password protected documents as this will prevent the claim from being processed.',
     selector: '#specClaimDetailsDocumentFiles',
   },

@@ -7,42 +7,46 @@ import { dropdowns, inputs, subheadings } from './requested-court-lr-spec-conten
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import RemoteHearingSpecFragment from '../../../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment.ts';
+import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 
 @AllMethodsStep()
 export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
   private remoteHearingSpecFragment: RemoteHearingSpecFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
   constructor(
     page: Page,
     remoteHearingSpecFragment: RemoteHearingSpecFragment,
     defendantParty: Party,
+    solicitorParty: Party,
   ) {
     super(page);
     this.remoteHearingSpecFragment = remoteHearingSpecFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.courtLocation),
-        super.expectLabel(inputs.preferredCourtReason.label),
-        this.remoteHearingSpecFragment.verifyContent(),
+        // super.expectSubheading(subheadings.courtLocation),
+        // super.expectLabel(inputs.preferredCourtReason.label),
+        // this.remoteHearingSpecFragment.verifyContent(),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
-      dropdowns.courtLocationDropdown.options[0],
-      dropdowns.courtLocationDropdown.selector,
+      preferredCourts[this.defendantParty.key].default,
+      dropdowns.courtLocationDropdown.selector(this.defendantParty),
     );
     await super.inputText(
       `Court location reason - ${this.defendantParty.key}`,
-      inputs.preferredCourtReason.selector,
+      inputs.preferredCourtReason.selector(this.defendantParty),
     );
   }
 

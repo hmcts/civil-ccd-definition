@@ -9,16 +9,15 @@ import FileDirectionsQuestionnairePage from '../directions-questionaire/common/f
 import FixedRecoverableCostsPage from '../directions-questionaire/common/fixed-recoverable-costs/fixed-recoverable-costs-page';
 import HearingSupportPage from '../directions-questionaire/common/hearing-support/hearing-support-page';
 import LanguagePage from '../directions-questionaire/common/language/language-page';
-import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
 import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
-import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/discloure-of-electronic-documents-lr-spec-page';
+import DisclosureOfElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents-lr-spec/disclosure-of-electronic-documents-lr-spec-page';
 import DisclosureOfNonElectronicDocumentsLRSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-lr-spec/disclosure-of-non-electronic-documents-lr-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingLRSpecPage from '../directions-questionaire/lr-spec/hearing-lr-spec/hearing-lr-spec-page';
 import RequestedCourtLRSpecPage from '../directions-questionaire/lr-spec/requested-court-lr-spec/requested-court-lr-spec-page';
-import SmallClaimExpertsDefendantPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-defendant-page';
+import SmallClaimExpertsPage from '../directions-questionaire/lr-spec/small-claim-experts/small-claim-experts-page';
 import SmallClaimHearingPage from '../directions-questionaire/lr-spec/small-claim-hearing/small-claim-hearing-page';
-import SmallClaimWitnessesDefendantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-defendant-page';
+import SmallClaimWitnessesDefendantPage from '../directions-questionaire/lr-spec/small-claim-witnesses/small-claim-witnesses-page';
 import VulnerabilityQuestionsSpecPage from '../directions-questionaire/lr-spec/vulnerability-questions-spec/vulnerability-questions-spec-page';
 import DraftDirectionsPage from '../directions-questionaire/unspec/draft-directions/draft-directions-page';
 import FurtherInformationPage from '../directions-questionaire/unspec/further-information/further-information-page';
@@ -31,7 +30,7 @@ import StatmentOfTruthDefendantResponsePage from './common/statement-of-truth-de
 import SubmitDefendantResponsePage from './common/submit-defendant-response/submit-defendant-response-page';
 import Confirm1v2SSDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-1v2SS-defendant-response-spec-page';
 import ConfirmDefendantResponseSpecPage from './lr-spec/confirm-defendant-response-spec/confirm-defendant-response-spec-page';
-import DefenceRouteDefendant1Page from './lr-spec/defence-route/defence-route-page';
+import DefenceRouteDefendantSolicitor1Page from './lr-spec/defence-route/defence-route-page';
 import HowToAddTimelineManualPage from './lr-spec/how-to-add-timeline-manual/how-to-add-timeline-manual-page';
 import HowToAddTimelineUploadPage from './lr-spec/how-to-add-timeline-upload/how-to-add-timeline-upload-page';
 import HowToAddTimelinePage from './lr-spec/how-to-add-timeline/how-to-add-timeline-page';
@@ -50,22 +49,41 @@ import Confirm1v2DSDefendantResponsePage from './unspec/confirm-defendant-respon
 import ConfirmDefendantResponsePage from './unspec/confirm-defendant-response/confirm-defendant-response-page';
 import ConfirmDetails1v2Page from './unspec/confirm-details/confirm-details-1v2-page';
 import ConfirmDetailsPage from './unspec/confirm-details/confirm-details-page';
-import RespondentResponseType1v2Page from './unspec/respondent-response-type/respondent-response-type-1v2-page';
+import RespondentResponseType1v2SSPage from './unspec/respondent-response-type/respondent-response-type-1v2SS-page';
 import RespondentResponseType2v1Page from './unspec/respondent-response-type/respondent-response-type-2v1-page';
 import RespondentResponseTypePage from './unspec/respondent-response-type/respondent-response-type-page';
-import SolicitorReferencesPage from './unspec/solicitor-references/solicitor-references-page';
 import UploadDefendantResponsePage from './unspec/upload-defendant-response/upload-defendant-response-page';
 import MediationContactInformationPage from '../mediation/mediation-contact-information/mediation-contact-information-page';
 import MediationAvailabilityPage from '../mediation/mediation-availability/mediation-availability-page';
+import WitnessesSpecPage from '../directions-questionaire/lr-spec/witnesses-spec/witnesses-spec-page';
+import SolicitorReferencesDefendantResponsePage from './unspec/solicitor-references-defendant-response/solicitor-references-defendant-response-page';
+import SolicitorReferenceFragment from '../../../fragments/solicitor-reference/solicitor-reference-fragment';
+import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
+import DisclosureOfNonElectronicDocumentsPage from '../directions-questionaire/unspec/disclosure-of-non-electronic-documents/disclosure-of-non-electronic-documents-page';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
     return new RespondentChecklistPage(this.page);
   }
 
-  get confirmDetailsPage() {
+  get confirmDetailsDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new ConfirmDetailsPage(this.page, dateFragment);
+    return new ConfirmDetailsPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+  }
+
+  get confirmDetailsDefendantSolicitor2Page() {
+    const dateFragment = new DateFragment(this.page);
+    return new ConfirmDetailsPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
   get confirmDetails1v2Page() {
@@ -73,8 +91,20 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ConfirmDetails1v2Page(this.page, dateFragment);
   }
 
-  get responseConfirmNameAddressPage() {
-    return new ResponseConfirmNameAddressPage(this.page);
+  get responseConfirmNameAddressDefendantSolicitor1Page() {
+    return new ResponseConfirmNameAddressPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+  }
+
+  get responseConfirmNameAddressDefendantSolicitor2Page() {
+    return new ResponseConfirmNameAddressPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
   get responseConfirmNameAddress1v2Page() {
@@ -85,14 +115,46 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ResponseConfirmNameAddress1v2FastPage(this.page);
   }
 
-  get responseConfirmDetailsPage() {
+  get responseConfirmDetailsDefendantSolicitor1Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
     const dateFragment = new DateFragment(this.page);
-    return new ResponseConfirmDetailsPage(this.page, dateFragment);
+    return new ResponseConfirmDetailsPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      solicitorReferenceFragment,
+      dateFragment,
+    );
+  }
+
+  get responseConfirmDetailsDefendantSolicitor2Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+    const dateFragment = new DateFragment(this.page);
+    return new ResponseConfirmDetailsPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      solicitorReferenceFragment,
+      dateFragment,
+    );
   }
 
   get responseConfirmDetails1v2Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
     const dateFragment = new DateFragment(this.page);
-    return new ResponseConfirmDetails1v2Page(this.page, dateFragment);
+    return new ResponseConfirmDetails1v2Page(this.page, solicitorReferenceFragment, dateFragment);
   }
 
   get singleResponsePage() {
@@ -103,311 +165,575 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new SingleResponse2v1Page(this.page);
   }
 
-  get respondentResponseTypeDefendant1Page() {
-    return new RespondentResponseTypePage(this.page, partys.DEFENDANT_1);
+  get respondentResponseTypeDefendantSolicitor1Page() {
+    return new RespondentResponseTypePage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get respondentResponseTypeDefendant2Page() {
-    return new RespondentResponseTypePage(this.page, partys.DEFENDANT_2);
+  get respondentResponseTypeDefendantSolicitor2Page() {
+    return new RespondentResponseTypePage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get respondentResponseType1v2Page() {
-    return new RespondentResponseType1v2Page(this.page);
+  get respondentResponseType1v2SSPage() {
+    return new RespondentResponseType1v2SSPage(this.page);
   }
 
   get respondentResponseType2v1Page() {
     return new RespondentResponseType2v1Page(this.page);
   }
 
-  get respondentResponseTypeSpecPage() {
-    return new RespondentResponseTypeSpecPage(this.page);
+  get respondentResponseTypeSpecDefendantSolicitor1Page() {
+    return new RespondentResponseTypeSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+  }
+
+  get respondentResponseTypeSpecDefendantSolicitor2Page() {
+    return new RespondentResponseTypeSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
   get respondentResponseType1v2SpecPage() {
     return new RespondentResponseType1v2SpecPage(this.page);
   }
 
-  get respondentResponseType2v1Spec() {
+  get respondentResponseType2v1SpecPage() {
     return new RespondentResponseType2v1SpecPage(this.page);
   }
 
-  get solicitorReferencesPage() {
-    return new SolicitorReferencesPage(this.page);
+  get solicitorReferencesDefendantResponseDefendantSolicitor1Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+    return new SolicitorReferencesDefendantResponsePage(
+      this.page,
+      solicitorReferenceFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get defenceRouteDefendant1Page() {
+  get solicitorReferencesDefendantResponseDefendantSolicitor2Page() {
+    const solicitorReferenceFragment = new SolicitorReferenceFragment(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
+    return new SolicitorReferencesDefendantResponsePage(
+      this.page,
+      solicitorReferenceFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
+  }
+
+  get defenceRouteDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new DefenceRouteDefendant1Page(this.page, dateFragment, partys.DEFENDANT_1);
+    return new DefenceRouteDefendantSolicitor1Page(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get defenceRouteDefendant2Page() {
+  get defenceRouteDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
-    return new DefenceRouteDefendant1Page(this.page, dateFragment, partys.DEFENDANT_2);
+    return new DefenceRouteDefendantSolicitor1Page(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get uploadDefendantResponseDefendant1Page() {
-    return new UploadDefendantResponsePage(this.page, partys.DEFENDANT_1);
+  get uploadDefendantResponseDefendantSolicitor1Page() {
+    return new UploadDefendantResponsePage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get uploadDefendantResponseDefendant2Page() {
-    return new UploadDefendantResponsePage(this.page, partys.DEFENDANT_2);
+  get uploadDefendantResponseDefendantSolicitor2Page() {
+    return new UploadDefendantResponsePage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get uploadDefendantResponseSpecDefendant1Page() {
-    return new UploadDefendantResponseSpecPage(this.page, partys.DEFENDANT_1);
+  get uploadDefendantResponseSpecDefendantSolicitor1Page() {
+    return new UploadDefendantResponseSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get uploadDefendantResponseSpecDefendant2Page() {
-    return new UploadDefendantResponseSpecPage(this.page, partys.DEFENDANT_2);
+  get uploadDefendantResponseSpecDefendantSolicitor2Page() {
+    return new UploadDefendantResponseSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get howToAddTimelineDefendant1Page() {
-    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_1);
+  get howToAddTimelineDefendantSolicitor1Page() {
+    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get howToAddTimelineDefendant2Page() {
-    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_2);
+  get howToAddTimelineDefendantSolicitor2Page() {
+    return new HowToAddTimelinePage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get howToAddTimelineManualDefendant1Page() {
+  get howToAddTimelineManualDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HowToAddTimelineManualPage(this.page, dateFragment, partys.DEFENDANT_1);
+    return new HowToAddTimelineManualPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get howToAddTimelineManualDefendant2Page() {
+  get howToAddTimelineManualDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HowToAddTimelineManualPage(this.page, dateFragment, partys.DEFENDANT_2);
+    return new HowToAddTimelineManualPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get howToAddTimelineUploadDefendant1Page() {
-    return new HowToAddTimelineUploadPage(this.page, partys.DEFENDANT_1);
+  get howToAddTimelineUploadDefendantSolicitor1Page() {
+    return new HowToAddTimelineUploadPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get howToAddTimelineUploadDefendant2Page() {
-    return new HowToAddTimelineUploadPage(this.page, partys.DEFENDANT_2);
+  get howToAddTimelineUploadDefendantSolicitor2Page() {
+    return new HowToAddTimelineUploadPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get mediationDefendant1Page() {
-    return new MediationPage(this.page, partys.DEFENDANT_1);
+  get mediationDefendantSolicitor1Page() {
+    return new MediationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get mediationDefendant2Page() {
-    return new MediationPage(this.page, partys.DEFENDANT_2);
+  get mediationDefendantSolicitor2Page() {
+    return new MediationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get mediationContactInformationDefendant1Page() {
+  get mediationContactInformationDefendantSolicitor1Page() {
     return new MediationContactInformationPage(
       this.page,
       partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
       partys.DEFENDANT_1_MEDIATION_FRIEND,
     );
   }
 
-  get mediationContactInformationDefendant2Page() {
+  get mediationContactInformationDefendantSolicitor2Page() {
     return new MediationContactInformationPage(
       this.page,
       partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
       partys.DEFENDANT_2_MEDIATION_FRIEND,
     );
   }
 
-  get mediationAvailabilityDefendant1Page() {
+  get mediationAvailabilityDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
     return new MediationAvailabilityPage(
       this.page,
       dateFragment,
-      partys.DEFENDANT_1_MEDIATION_FRIEND,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
-  get mediationAvailabilityDefendant2Page() {
+  get mediationAvailabilityDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
     return new MediationAvailabilityPage(
       this.page,
       dateFragment,
-      partys.DEFENDANT_2_MEDIATION_FRIEND,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
-  get fileDirectionsQuestionaireDefendant1Page() {
-    return new FileDirectionsQuestionnairePage(this.page, partys.DEFENDANT_1);
+  get fileDirectionsQuestionaireDefendantSolicitor1Page() {
+    return new FileDirectionsQuestionnairePage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get fileDirectionsQuestionaireDefendant2Page() {
-    return new FileDirectionsQuestionnairePage(this.page, partys.DEFENDANT_2);
+  get fileDirectionsQuestionaireDefendantSolicitor2Page() {
+    return new FileDirectionsQuestionnairePage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get fixedRecoverableCostsPageDefendant1() {
-    return new FixedRecoverableCostsPage(this.page, partys.DEFENDANT_1);
+  get fixedRecoverableCostsPageDefendantSolicitor1() {
+    return new FixedRecoverableCostsPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get fixedRecoverableCostsPageDefendant2() {
-    return new FixedRecoverableCostsPage(this.page, partys.DEFENDANT_2);
+  get fixedRecoverableCostsPageDefendantSolicitor2() {
+    return new FixedRecoverableCostsPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get disclosureOfElectronicDocumentsLRSpecDefendant1Page() {
-    return new DisclosureOfElectronicDocumentsLRSpecPage(this.page, partys.DEFENDANT_1);
+  get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page() {
+    return new DisclosureOfElectronicDocumentsLRSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get disclosureOfElectronicDocumentsLRSpecDefendant2Page() {
-    return new DisclosureOfElectronicDocumentsLRSpecPage(this.page, partys.DEFENDANT_2);
+  get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor2Page() {
+    return new DisclosureOfElectronicDocumentsLRSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get disclosureOfNonElectronicDocumentsLRSpecDefendant1Page() {
-    return new DisclosureOfNonElectronicDocumentsLRSpecPage(this.page, partys.DEFENDANT_1);
+  get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page() {
+    return new DisclosureOfNonElectronicDocumentsLRSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get disclosureOfNonElectronicDocumentsLRSpecDefendant2Page() {
-    return new DisclosureOfNonElectronicDocumentsLRSpecPage(this.page, partys.DEFENDANT_2);
+  get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor2Page() {
+    return new DisclosureOfNonElectronicDocumentsLRSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get disclosureReportDefendant1Page() {
-    return new DisclosureReportPage(this.page, partys.DEFENDANT_1);
+  get disclosureOfNonElectronicDocumentsDefendantSolicitor1Page() {
+    return new DisclosureOfNonElectronicDocumentsPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get disclosureReportDefendant2Page() {
-    return new DisclosureReportPage(this.page, partys.DEFENDANT_2);
+  get disclosureOfNonElectronicDocumentsDefendantSolicitor2Page() {
+    return new DisclosureOfNonElectronicDocumentsPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get smallClaimExpertsDefendant1Page() {
-    return new SmallClaimExpertsDefendantPage(this.page, partys.DEFENDANT_1);
+  get disclosureReportDefendantSolicitor1Page() {
+    return new DisclosureReportPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get smallClaimExpertsDefendant2Page() {
-    return new SmallClaimExpertsDefendantPage(this.page, partys.DEFENDANT_2);
+  get disclosureReportDefendantSolicitor2Page() {
+    return new DisclosureReportPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get expertsDefendant1Page() {
-    return new ExpertPage(this.page, partys.DEFENDANT_1);
+  get smallClaimExpertsDefendantSolicitor1Page() {
+    return new SmallClaimExpertsPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1_EXPERT_1,
+    );
   }
 
-  get expertsDefendant2Page() {
-    return new ExpertPage(this.page, partys.DEFENDANT_2);
+  get smallClaimExpertsDefendantSolicitor2Page() {
+    return new SmallClaimExpertsPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_2_EXPERT_1,
+    );
   }
 
-  get smallClaimWitnessesDefendant1Page() {
-    return new SmallClaimWitnessesDefendantPage(this.page, partys.DEFENDANT_1);
+  get expertsDefendantSolicitor1Page() {
+    return new ExpertPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1_EXPERT_1,
+    );
   }
 
-  get smallClaimWitnessesDefendant2Page() {
-    return new SmallClaimWitnessesDefendantPage(this.page, partys.DEFENDANT_2);
+  get expertsDefendantSolicitor2Page() {
+    return new ExpertPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_1_EXPERT_2,
+    );
   }
 
-  get witnessesDefendant1Page() {
-    return new WitnessesPage(this.page, partys.DEFENDANT_1);
+  get smallClaimWitnessesDefendantSolicitor1Page() {
+    return new SmallClaimWitnessesDefendantPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1_WITNESS_1,
+    );
   }
 
-  get witnessesDefendant2Page() {
-    return new WitnessesPage(this.page, partys.DEFENDANT_2);
+  get smallClaimWitnessesDefendantSolicitor2Page() {
+    return new SmallClaimWitnessesDefendantPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_2_WITNESS_1,
+    );
   }
 
-  get languageDefendant1Page() {
-    return new LanguagePage(this.page, partys.DEFENDANT_1);
+  get witnessesSpecDefendantSolicitor1Page() {
+    return new WitnessesSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1_WITNESS_1,
+    );
   }
 
-  get languageDefendant2Page() {
-    return new LanguagePage(this.page, partys.DEFENDANT_2);
+  get witnessesSpecDefendantSolicitor2Page() {
+    return new WitnessesSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_1_WITNESS_2,
+    );
   }
 
-  get hearingDefendant1Page() {
+  get witnessesDefendantSolicitor1Page() {
+    return new WitnessesPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+      partys.DEFENDANT_1_WITNESS_1,
+    );
+  }
+
+  get witnessesDefendantSolicitor2Page() {
+    return new WitnessesPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+      partys.DEFENDANT_1_WITNESS_2,
+    );
+  }
+
+  get languageDefendantSolicitor1Page() {
+    return new LanguagePage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
+  }
+
+  get languageDefendantSolicitor2Page() {
+    return new LanguagePage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
+  }
+
+  get hearingDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_1);
+    return new HearingPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get hearingDefendant2Page() {
+  get hearingDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HearingPage(this.page, dateFragment, partys.DEFENDANT_2);
+    return new HearingPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get smallClaimHearingDefendant1Page() {
+  get smallClaimHearingDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new SmallClaimHearingPage(this.page, dateFragment, partys.DEFENDANT_1);
+    return new SmallClaimHearingPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get smallClaimHearingDefendant2Page() {
+  get smallClaimHearingDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
-    return new SmallClaimHearingPage(this.page, dateFragment, partys.DEFENDANT_2);
+    return new SmallClaimHearingPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get hearingLRSpecDefendant1Page() {
+  get hearingLRSpecDefendantSolicitor1Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HearingLRSpecPage(this.page, dateFragment, partys.DEFENDANT_1);
+    return new HearingLRSpecPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get hearingLRSpecDefendant2Page() {
+  get hearingLRSpecDefendantSolicitor2Page() {
     const dateFragment = new DateFragment(this.page);
-    return new HearingLRSpecPage(this.page, dateFragment, partys.DEFENDANT_2);
+    return new HearingLRSpecPage(
+      this.page,
+      dateFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get draftDirectionsDefendant1Page() {
-    return new DraftDirectionsPage(this.page, partys.DEFENDANT_1);
+  get draftDirectionsDefendantSolicitor1Page() {
+    return new DraftDirectionsPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get draftDirectionsDefendant2Page() {
-    return new DraftDirectionsPage(this.page, partys.DEFENDANT_2);
+  get draftDirectionsDefendantSolicitor2Page() {
+    return new DraftDirectionsPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get requestedCourtDefendant1Page() {
+  get requestedCourtDefendantSolicitor1Page() {
     const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_1);
-    return new RequestedCourtPage(this.page, remoteHearingFragment, partys.DEFENDANT_1);
+    return new RequestedCourtPage(
+      this.page,
+      remoteHearingFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get requestedCourtDefendant2Page() {
+  get requestedCourtDefendantSolicitor2Page() {
     const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_2);
-    return new RequestedCourtPage(this.page, remoteHearingFragment, partys.DEFENDANT_2);
+    return new RequestedCourtPage(
+      this.page,
+      remoteHearingFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get requestedCourtLRSpecDefendant1Page() {
+  get requestedCourtLRSpecDefendantSolicitor1Page() {
     const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_1);
-    return new RequestedCourtLRSpecPage(this.page, remoteHearingSpecFragment, partys.DEFENDANT_1);
+    return new RequestedCourtLRSpecPage(
+      this.page,
+      remoteHearingSpecFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get requestedCourtLRSpecDefendant2Page() {
+  get requestedCourtLRSpecDefendantSolicitor2Page() {
     const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_2);
-    return new RequestedCourtLRSpecPage(this.page, remoteHearingSpecFragment, partys.DEFENDANT_2);
+    return new RequestedCourtLRSpecPage(
+      this.page,
+      remoteHearingSpecFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get hearingSupportDefendant1Page() {
-    return new HearingSupportPage(this.page, partys.DEFENDANT_1);
+  get hearingSupportDefendantSolicitor1Page() {
+    return new HearingSupportPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get hearingSupportDefendant2Page() {
-    return new HearingSupportPage(this.page, partys.DEFENDANT_2);
+  get hearingSupportDefendantSolicitor2Page() {
+    return new HearingSupportPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get vulnerabilityQuestionsDefendant1Page() {
-    return new VulnerabilityQuestionsPage(this.page, partys.DEFENDANT_1);
+  get vulnerabilityQuestionsDefendantSolicitor1Page() {
+    return new VulnerabilityQuestionsPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get vulnerabilityQuestionsDefendant2Page() {
-    return new VulnerabilityQuestionsPage(this.page, partys.DEFENDANT_2);
+  get vulnerabilityQuestionsDefendantSolicitor2Page() {
+    return new VulnerabilityQuestionsPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get vulnerabilityQuestionsSpecDefendant1Page() {
-    return new VulnerabilityQuestionsSpecPage(this.page, partys.DEFENDANT_1);
+  get vulnerabilityQuestionsSpecDefendantSolicitor1Page() {
+    return new VulnerabilityQuestionsSpecPage(
+      this.page,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
   }
 
-  get vulnerabilityQuestionsSpecDefendant2Page() {
-    return new VulnerabilityQuestionsSpecPage(this.page, partys.DEFENDANT_2);
+  get vulnerabilityQuestionsSpecDefendantSolicitor2Page() {
+    return new VulnerabilityQuestionsSpecPage(
+      this.page,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
-  get furtherInformationDefendant1Page() {
-    return new FurtherInformationPage(this.page, partys.DEFENDANT_1);
+  get furtherInformationDefendantSolicitor1Page() {
+    return new FurtherInformationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get furtherInformationDefendant2Page() {
-    return new FurtherInformationPage(this.page, partys.DEFENDANT_2);
+  get furtherInformationDefendantSolicitor2Page() {
+    return new FurtherInformationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get applicationDefendant1Page() {
-    return new ApplicationPage(this.page, partys.DEFENDANT_1);
+  get applicationDefendantSolicitor1Page() {
+    return new ApplicationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get applicationDefendant2Page() {
-    return new ApplicationPage(this.page, partys.DEFENDANT_2);
+  get applicationDefendantSolicitor2Page() {
+    return new ApplicationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get statementOfTruthDefendantResponseDefendant1Page() {
+  get statementOfTruthDefendantResponseDefendantSolicitor1Page() {
     const statementofTruthFragment = new StatementOfTruthFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
@@ -415,7 +741,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new StatmentOfTruthDefendantResponsePage(this.page, statementofTruthFragment);
   }
 
-  get statementOfTruthDefendantResponseDefendant2Page() {
+  get statementOfTruthDefendantResponseDefendantSolicitor2Page() {
     const statementofTruthFragment = new StatementOfTruthFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_2,

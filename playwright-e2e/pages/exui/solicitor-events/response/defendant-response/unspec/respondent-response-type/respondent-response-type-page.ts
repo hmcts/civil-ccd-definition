@@ -5,28 +5,37 @@ import { radioButtons } from './respondent-response-type-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import { Page } from 'playwright-core';
+import partys from '../../../../../../../constants/partys.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, defendantParty: Party, solicitorParty: Party) {
     super(page);
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.rejectAll.label),
-      super.expectLabel(radioButtons.admitAll.label),
-      super.expectLabel(radioButtons.partAdmit.label),
-      super.expectLabel(radioButtons.counterClaim.label),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectLabel(radioButtons.rejectAll.label, { index: 0 }),
+        super.expectLabel(radioButtons.admitAll.label, { index: 0 }),
+        super.expectLabel(radioButtons.partAdmit.label, { index: 0 }),
+        super.expectLabel(radioButtons.counterClaim.label, { index: 0 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
+    );
   }
 
   async selectRejectAll() {
-    await super.clickBySelector(radioButtons.rejectAll.selector(this.defendantParty));
+    await super.clickBySelector(
+      radioButtons.rejectAll.selector(this.defendantParty, partys.CLAIMANT_1),
+    );
   }
 
   async submit() {

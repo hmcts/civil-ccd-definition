@@ -18,16 +18,28 @@ export default class ResponseConfirmNameAddress1v2FastPage extends ExuiPage(Base
   }
 
   async selectYesAddress() {
-    await super.clickBySelector(radioButtons.address.yes.selector(partys.DEFENDANT_1));
     await super.clickBySelector(
-      radioButtons.address.yes.selector(partys.DEFENDANT_2, ClaimTrack.FAST_CLAIM),
+      radioButtons.address.yes.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+    );
+    await super.clickBySelector(
+      radioButtons.address.yes.selector(
+        partys.DEFENDANT_2,
+        partys.DEFENDANT_SOLICITOR_1,
+        ClaimTrack.FAST_CLAIM,
+      ),
     );
   }
 
   async selectNoAddress() {
-    await super.clickBySelector(radioButtons.address.no.selector(partys.DEFENDANT_1));
     await super.clickBySelector(
-      radioButtons.address.no.selector(partys.DEFENDANT_2, ClaimTrack.FAST_CLAIM),
+      radioButtons.address.no.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+    );
+    await super.clickBySelector(
+      radioButtons.address.no.selector(
+        partys.DEFENDANT_2,
+        partys.DEFENDANT_SOLICITOR_1,
+        ClaimTrack.FAST_CLAIM,
+      ),
     );
   }
 

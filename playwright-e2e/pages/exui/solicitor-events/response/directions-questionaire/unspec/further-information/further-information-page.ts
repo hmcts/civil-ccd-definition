@@ -10,29 +10,37 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class FurtherInformationPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
-      [super.verifyHeadings(ccdCaseData), super.expectSubheading(subheadings.furtherInformation)],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.furtherInformation, { index: 0 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async selectYes() {
     await super.clickBySelector(radioButtons.yes.selector(this.claimantDefendantParty));
-    await super.inputText('test', form.whatForForm.selector(this.claimantDefendantParty));
+    await super.inputText(
+      `Further information - ${this.claimantDefendantParty.key}`,
+      form.whatForForm.selector(this.claimantDefendantParty),
+    );
   }
 
   async selectNo() {
     await super.clickBySelector(radioButtons.no.selector(this.claimantDefendantParty));
   }
 
-  async inputFurtherInformation() {
+  async enterFurtherInformation() {
     await super.inputText(
       'test',
       form.furtherInformationForm.selector(this.claimantDefendantParty),

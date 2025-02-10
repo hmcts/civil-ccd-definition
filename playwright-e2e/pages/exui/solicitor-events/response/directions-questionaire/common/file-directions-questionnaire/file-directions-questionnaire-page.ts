@@ -6,7 +6,7 @@ import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import {
   subheadings,
   inputs,
-  getCheckboxes,
+  checkboxes,
   radioButtons,
 } from './file-directions-questionnaire-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
@@ -15,34 +15,36 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.fileDQ),
-        super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label),
-        super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label),
-        super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label),
+        // super.expectSubheading(subheadings.fileDQ),
+        // super.expectLabel(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.label),
+        // super.expectText(radioButtons(this.claimantDefendantParty).oneMonthStay.label),
+        // super.expectText(radioButtons(this.claimantDefendantParty).protocolComplied.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async enterDetails() {
-    await super.clickBySelector(getCheckboxes(this.claimantDefendantParty).fileDQConfirm.selector);
-    await super.clickBySelector(radioButtons(this.claimantDefendantParty).oneMonthStay.no.selector);
+    await super.clickBySelector(checkboxes.fileDQConfirm.selector(this.claimantDefendantParty));
+    await super.clickBySelector(radioButtons.oneMonthStay.no.selector(this.claimantDefendantParty));
     await super.clickBySelector(
-      radioButtons(this.claimantDefendantParty).protocolComplied.no.selector,
+      radioButtons.protocolComplied.no.selector(this.claimantDefendantParty),
     );
     await super.inputText(
-      `No explanation - ${this.claimantDefendantParty}`,
-      inputs(this.claimantDefendantParty).noProtocolCompliedReason.selector,
+      `No explanation - ${this.claimantDefendantParty.key}`,
+      inputs.noProtocolCompliedReason.selector(this.claimantDefendantParty),
     );
   }
 

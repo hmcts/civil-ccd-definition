@@ -12,7 +12,7 @@ export default class DetailsSpecPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.uploadDocs),
       super.expectText(paragraphs.timeline),
       super.expectLabel(inputs.details.label),
-      super.expectLabel(inputs.uploadFile.label),
+      super.expectLabel(inputs.uploadFile.label, { first: true }),
       super.expectText(inputs.uploadFile.hintText),
     ]);
   }
@@ -23,6 +23,6 @@ export default class DetailsSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

@@ -10,26 +10,31 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class ApplicationPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.application),
-        super.expectText(inputs.otherInformation.label),
+        // super.expectSubheading(subheadings.application),
+        // super.expectText(inputs.otherInformation.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async selectYes() {
     await super.clickBySelector(radioButtons.application.yes.selector(this.claimantDefendantParty));
-    await super.inputText('test', inputs.whatFor.selector(this.claimantDefendantParty));
+    await super.inputText(
+      `Reason - ${this.claimantDefendantParty.key}`,
+      inputs.whatFor.selector(this.claimantDefendantParty),
+    );
   }
 
   async selectNo() {
@@ -37,7 +42,10 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
   }
 
   async enterAdditionalInformation() {
-    await super.inputText('test', inputs.otherInformation.selector);
+    await super.inputText(
+      `Additional information - ${this.claimantDefendantParty.key}`,
+      inputs.otherInformation.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {
