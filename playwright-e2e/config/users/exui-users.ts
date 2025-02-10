@@ -182,6 +182,7 @@ export const solicitorUsers = [
 export const exuiAuthSetupUsers = [
   claimantSolicitorUser,
   defendantSolicitor1User,
+  defendantSolicitor2User,
   civilAdminUser,
   judgeRegion1User,
 ];
