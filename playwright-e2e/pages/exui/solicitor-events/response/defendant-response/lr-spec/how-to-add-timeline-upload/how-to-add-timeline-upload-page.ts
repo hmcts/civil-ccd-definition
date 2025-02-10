@@ -7,6 +7,7 @@ import { heading, inputs } from './how-to-add-timeline-upload-content.ts';
 import filePaths from '../../../../../../../config/file-paths.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import { getFormattedCaseId } from '../../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
@@ -22,8 +23,9 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
-        super.verifyHeadings(ccdCaseData),
-        // super.expectHeading(heading),
+        super.expectHeading(heading),
+        super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
+        super.expectHeading(ccdCaseData.caseNamePublic),
         // super.expectLabel(inputs.upload.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },

@@ -35,10 +35,6 @@ export default class UploadDefendantResponseSpecPage extends ExuiPage(BasePage) 
       filePaths.testPdfFile,
       inputs.uploadEvidence.selector(this.defendantParty),
     );
-    await super.retryUploadFile(
-      filePaths.testPdfFile,
-      inputs.uploadEvidence.selector(this.defendantParty),
-    );
   }
 
   async submit() {

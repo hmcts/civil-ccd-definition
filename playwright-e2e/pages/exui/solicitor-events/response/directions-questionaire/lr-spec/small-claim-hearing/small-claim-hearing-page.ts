@@ -47,7 +47,9 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
 
   async selectYesInterpreter() {
     const selector = radioButtons.interpreter.yes.selector(this.defendantParty);
-    await super.retryClickBySelector(selector, () => super.expectOptionChecked(selector));
+    await super.retryClickBySelector(selector, () =>
+      super.expectOptionChecked(selector, { timeout: 500 }),
+    );
   }
 
   async selectNoInterpreter() {

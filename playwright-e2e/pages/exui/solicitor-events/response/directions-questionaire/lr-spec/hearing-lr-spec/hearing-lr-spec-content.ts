@@ -1,7 +1,7 @@
 import { Party } from '../../../../../../../models/partys';
 
 export const subheadings = {
-  availability: 'Hearing availability',
+  hearingAvailability: 'Hearing availability',
   unavailableDate: 'Unavailable date',
 };
 

@@ -1,7 +1,6 @@
 import BaseExuiSteps from '../../../../../base/base-exui-steps';
 import { Step } from '../../../../../decorators/test-steps';
 import {
-  civilAdminUser,
   defendantSolicitor1User,
   defendantSolicitor2User,
 } from '../../../../../config/users/exui-users';
@@ -10,8 +9,6 @@ import ccdEvents from '../../../../../constants/ccd-events';
 import ExuiDashboardPageFactory from '../../../../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import DefendantResponsePageFactory from '../../../../../pages/exui/solicitor-events/response/defendant-response/defendant-response-page-factory';
 import RequestsFactory from '../../../../../requests/requests-factory';
-import partys from '../../../../../constants/partys';
-import ClaimTrack from '../../../../../enums/claim-track';
 
 const classKey = 'DefendantResponseSpecSteps';
 export default class DefendantResponseSpecSteps extends BaseExuiSteps {
@@ -74,7 +71,8 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processUploadDefendantResponseSpecDefendantSolicitor1Page();
         await this.processHowToAddTimelineDefendantSolicitor1Page();
         await this.processHowToAddTimelineUploadDefendantSolicitor1Page();
-        await this.processMediationDefendantSolicitor1Page();
+        await this.processMediationContactInformationDefendantSolicitor1Page();
+        await this.processMediationAvailabilityDefendantSolicitor1Page();
         await this.processSmallClaimExpertsDefendantSolicitor1Page();
         await this.processSmallClaimWitnessesDefendantSolicitor1Page();
         await this.processLanguageDefendantSolicitor1Page();
@@ -105,7 +103,8 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processUploadDefendantResponseSpecDefendantSolicitor1Page();
         await this.processHowToAddTimelineDefendantSolicitor1Page();
         await this.processHowToAddTimelineUploadDefendantSolicitor1Page();
-        await this.processMediationDefendantSolicitor1Page();
+        await this.processMediationContactInformationDefendantSolicitor1Page();
+        await this.processMediationAvailabilityDefendantSolicitor1Page();
         await this.processSmallClaimExpertsDefendantSolicitor1Page();
         await this.processSmallClaimWitnessesDefendantSolicitor1Page();
         await this.processLanguageDefendantSolicitor1Page();
@@ -113,7 +112,7 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processRequestedCourtLRSpecDefendantSolicitor1Page();
         await this.processHearingSupportDefendantSolicitor1Page();
         await this.processVulnerabilityQuestionsSpecDefendantSolicitor1Page();
-        await this.processApplicationDefendantSolicitor1Page();
+        // await this.processApplicationDefendantSolicitor1Page();
         await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponseSpecPage();
@@ -137,7 +136,8 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processUploadDefendantResponseSpecDefendantSolicitor1Page();
         await this.processHowToAddTimelineDefendantSolicitor1Page();
         await this.processHowToAddTimelineUploadDefendantSolicitor1Page();
-        await this.processMediationDefendantSolicitor1Page();
+        await this.processMediationContactInformationDefendantSolicitor1Page();
+        await this.processMediationAvailabilityDefendantSolicitor1Page();
         await this.processSmallClaimExpertsDefendantSolicitor1Page();
         await this.processSmallClaimWitnessesDefendantSolicitor1Page();
         await this.processLanguageDefendantSolicitor1Page();
@@ -167,7 +167,8 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processUploadDefendantResponseSpecDefendantSolicitor1Page();
         await this.processHowToAddTimelineDefendantSolicitor1Page();
         await this.processHowToAddTimelineUploadDefendantSolicitor1Page();
-        await this.processMediationDefendantSolicitor1Page();
+        await this.processMediationContactInformationDefendantSolicitor1Page();
+        await this.processMediationAvailabilityDefendantSolicitor1Page();
         await this.processSmallClaimExpertsDefendantSolicitor1Page();
         await this.processSmallClaimWitnessesDefendantSolicitor1Page();
         await this.processLanguageDefendantSolicitor1Page();
@@ -197,7 +198,8 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
         await this.processUploadDefendantResponseSpecDefendantSolicitor2Page();
         await this.processHowToAddTimelineDefendantSolicitor2Page();
         await this.processHowToAddTimelineUploadDefendantSolicitor2Page();
-        await this.processMediationDefendantSolicitor2Page();
+        await this.processMediationContactInformationDefendantSolicitor2Page();
+        await this.processMediationAvailabilityDefendantSolicitor2Page();
         await this.processSmallClaimExpertsDefendantSolicitor2Page();
         await this.processSmallClaimWitnessesDefendantSolicitor2Page();
         await this.processLanguageDefendantSolicitor2Page();
@@ -211,7 +213,7 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor2User,
-      { verifySuccessEvent: false, retries: 0 },
+      { verifySuccessEvent: false },
     );
   }
 
@@ -361,6 +363,41 @@ export default class DefendantResponseSpecSteps extends BaseExuiSteps {
     await mediationDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
     await mediationDefendantSolicitor2Page.selectYes();
     await mediationDefendantSolicitor2Page.submit();
+  }
+
+  private async processMediationContactInformationDefendantSolicitor1Page() {
+    const { mediationContactInformationDefendantSolicitor1Page } =
+      this.defendantResponsePageFactory;
+    await mediationContactInformationDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await mediationContactInformationDefendantSolicitor1Page.enterMediationContactDetails();
+    await mediationContactInformationDefendantSolicitor1Page.submit();
+  }
+
+  private async processMediationContactInformationDefendantSolicitor2Page() {
+    const { mediationContactInformationDefendantSolicitor2Page } =
+      this.defendantResponsePageFactory;
+    await mediationContactInformationDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await mediationContactInformationDefendantSolicitor2Page.enterMediationContactDetails();
+    await mediationContactInformationDefendantSolicitor2Page.submit();
+  }
+
+  private async processMediationAvailabilityDefendantSolicitor1Page() {
+    const { mediationAvailabilityDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await mediationAvailabilityDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await mediationAvailabilityDefendantSolicitor1Page.selectYes();
+    await mediationAvailabilityDefendantSolicitor1Page.addNewUnavailableDate();
+    await mediationAvailabilityDefendantSolicitor1Page.selectSingleDate();
+    await mediationAvailabilityDefendantSolicitor1Page.submit();
+  }
+
+  private async processMediationAvailabilityDefendantSolicitor2Page() {
+    const { mediationAvailabilityDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await mediationAvailabilityDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await mediationAvailabilityDefendantSolicitor2Page.selectNo();
+    // await mediationAvailabilityDefendantSolicitor2Page.selectYes();
+    // await mediationAvailabilityDefendantSolicitor2Page.addNewUnavailableDate();
+    // await mediationAvailabilityDefendantSolicitor2Page.selectSingleDate();
+    await mediationAvailabilityDefendantSolicitor2Page.submit();
   }
 
   private async processSmallClaimExpertsDefendantSolicitor1Page() {

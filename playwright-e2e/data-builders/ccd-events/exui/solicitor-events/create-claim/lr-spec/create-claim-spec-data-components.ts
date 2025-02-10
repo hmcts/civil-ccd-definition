@@ -231,7 +231,7 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
     ],
   },
   ClaimAmountDetails: {
-    totalClaimAmount: `${CaseDataHelper.getClaimValue(claimTrack) * 100}`,
+    totalClaimAmount: CaseDataHelper.getClaimValue(claimTrack),
   },
   ClaimInterest: {
     claimInterest: 'No',

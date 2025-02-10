@@ -31,7 +31,7 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.availability),
+        super.expectSubheading(subheadings.hearingAvailability),
         // super.expectText(radioButtons.unavailableDateRequired.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
@@ -80,6 +80,8 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      this.expectNoSubheading(subheadings.hearingAvailability, { timeout: 500 }),
+    );
   }
 }

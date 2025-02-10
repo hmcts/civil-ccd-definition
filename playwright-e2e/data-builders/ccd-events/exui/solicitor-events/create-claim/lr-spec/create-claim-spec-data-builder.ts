@@ -8,6 +8,10 @@ import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-de
 
 @AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimSpecDataBuilder extends BaseDataBuilder {
+  async buildFastTrack1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
   async buildSmallTrack1v1() {
     return this.buildData();
   }
