@@ -3,28 +3,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "QueryDocuments",
     "CategoryLabel": "Query documents",
-    "DisplayOrder": "50",
+    "DisplayOrder": "13",
     "ParentCategoryID": ""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CategoryID": "ApplicantSolicitorQueryDocuments",
-    "CategoryLabel": "Claimant One",
-    "DisplayOrder": "1",
-    "ParentCategoryID": "QueryDocuments"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CategoryID": "RespondentSolicitorOneQueryDocuments",
-    "CategoryLabel": "Defendant Solicitor One",
-    "DisplayOrder": "2",
-    "ParentCategoryID": "QueryDocuments"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CategoryID": "RespondentSolicitorTwoQueryDocuments",
-    "CategoryLabel": "Defendant Solicitor Two",
-    "DisplayOrder": "3",
-    "ParentCategoryID": "QueryDocuments"
   }
 ]

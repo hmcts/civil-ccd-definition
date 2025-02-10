@@ -4,41 +4,83 @@
     "CaseFieldID": "qmApplicantSolicitorQueries",
     "ListElementCode": "caseMessages",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "ListElementCode": "caseMessages",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmApplicantSolicitorQueries",
     "ListElementCode": "caseMessages.attachments",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmApplicantSolicitorQueries",
+    "ListElementCode": "caseMessages.attachments",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor1Queries",
     "ListElementCode": "caseMessages",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "ListElementCode": "caseMessages",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor1Queries",
     "ListElementCode": "caseMessages.attachments",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmRespondentSolicitor1Queries",
+    "ListElementCode": "caseMessages.attachments",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor2Queries",
     "ListElementCode": "caseMessages",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "ListElementCode": "caseMessages",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmRespondentSolicitor2Queries",
     "ListElementCode": "caseMessages.attachments",
     "UserRole": "judge-profile",
-    "CRUD": "CRU"
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "qmRespondentSolicitor2Queries",
+    "ListElementCode": "caseMessages.attachments",
+    "UserRole": "GS_profile",
+    "CRUD": "R"
   }
 ]

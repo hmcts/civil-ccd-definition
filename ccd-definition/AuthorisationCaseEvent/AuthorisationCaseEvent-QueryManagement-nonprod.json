@@ -20,7 +20,6 @@
           "caseworker-civil-staff",
           "judge-profile",
           "GS_profile",
-          "court-officer-order",
           "ctsc",
           "nbc-team-leader"
         ],
@@ -36,7 +35,6 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "court-officer-order",
           "ctsc",
           "nbc-team-leader"
         ],
