@@ -2,7 +2,7 @@ export const heading = 'Sign in or create an account';
 
 export const inputs = {
   email: {
-    label: 'Email Address',
+    label: 'Email address',
     selector: '#username',
   },
   password: {
