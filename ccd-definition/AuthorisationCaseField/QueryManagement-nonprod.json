@@ -71,7 +71,6 @@
           "RES-SOL-ONE-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "judge-profile",
           "ctsc",
           "nbc-team-leader"
         ],
@@ -104,7 +103,6 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "judge-profile",
           "ctsc",
           "nbc-team-leader"
         ],
