@@ -80,7 +80,6 @@ export default class HearingFastSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() => this.expectNoHeading(heading, { timeout: 500 }));
   }
 }
