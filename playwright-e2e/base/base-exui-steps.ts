@@ -25,7 +25,7 @@ export default abstract class BaseExuiSteps extends BaseApiSteps {
     steps: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 2, verifySuccessEvent = true, camundaProcess = true } = {},
+    { retries = 1, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     while (retries >= 0) {

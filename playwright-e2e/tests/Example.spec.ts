@@ -26,15 +26,12 @@ test('Api spec test example', async ({
   ApiCreateClaimSpecSteps,
   ApiServiceRequestsSteps,
   IdamSteps,
-  NotifyClaimSteps,
   ApiCaseRoleAssignmentSteps,
-  NotifyClaimDetailsSteps,
+  ExuiDashboardSteps,
 }) => {
   await ApiCreateClaimSpecSteps.SmallTrack1v1();
   await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await NotifyClaimSteps.NotifyClaim1v1();
   await ApiCaseRoleAssignmentSteps.AssignRoleToDefendant1();
-  await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
   await IdamSteps.DefendantSolicitor1Login();
+  await ExuiDashboardSteps.GoToCaseDetails();
 });
