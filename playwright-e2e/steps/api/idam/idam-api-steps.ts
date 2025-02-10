@@ -12,7 +12,7 @@ export default class IdamApiSteps extends BaseApi {
     UserStateHelper.addUsersToState(users);
   }
 
-  async setupUserData(user: User) {
+  async SetupUserData(user: User) {
     await this.setupUserData(user);
     UserStateHelper.addUserToState(user);
   }

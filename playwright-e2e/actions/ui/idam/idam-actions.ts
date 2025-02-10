@@ -36,7 +36,7 @@ export default class IdamActions extends BaseApi {
   async exuiLogin(user: User) {
     const { pageCookiesManager } = this.pageUtilsFactory;
     await pageCookiesManager.cookiesSignOut();
-    if (!config.runSetup || this.isSetupTest || !CookiesHelper.cookiesExist(user)) {
+    if (!config.runSetup || this.isSetupTest || !(await CookiesHelper.cookiesExist(user))) {
       const { loginPage } = this.idamPageFactory;
 
       if (this.verifyCookiesBanner) {

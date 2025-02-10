@@ -83,6 +83,11 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      super.expectNoSelector(
+        radioButtons.unavailableDatesRequired.yes.selector(this.defendantParty),
+        { timeout: 500 },
+      ),
+    );
   }
 }

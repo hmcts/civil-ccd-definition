@@ -5,6 +5,7 @@ import BaseExuiSteps from '../../../base/base-exui-steps';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import TestData from '../../../models/test-data';
 
 @AllMethodsStep()
 export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
@@ -14,8 +15,9 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     defendantActionsFactory: DefendantActionsFactory,
+    testData: TestData,
   ) {
-    super(exuiDashboardActions, idamActions);
+    super(exuiDashboardActions, idamActions, testData);
     this.defendantActionsFactory = defendantActionsFactory;
   }
 
@@ -23,7 +25,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     await super.idamActions.exuiLogin(defendantSolicitor1User);
   }
 
-  async RespondFastTrack1v1FullDefence() {
+  async RespondFastTrackFullDefence1v1() {
     await super.exuiDashboardActions.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
@@ -58,7 +60,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondSmallTrack1v1FullDefence() {
+  async RespondSmallTrackFullDefence1v1() {
     await super.exuiDashboardActions.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
@@ -89,7 +91,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondSmallTrack2v1FullDefence() {
+  async RespondSmallTrackFullDefence2v1() {
     await super.exuiDashboardActions.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
@@ -122,7 +124,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondSmallTrack1v2SSFullDefence() {
+  async RespondSmallTrackFullDefence1v2SS() {
     await super.exuiDashboardActions.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;

@@ -22,7 +22,7 @@ import LanguagePage from '../directions-questionaire/common/language/language-pa
 import WitnessesPage from '../directions-questionaire/common/witnesses/witnesses-page';
 import ApplicantCourtLocationLRSpecPage from '../directions-questionaire/lr-spec/applicant-court-location-lr-spec/applicant-court-lr-spec-page';
 import ApplicationPage from '../directions-questionaire/lr-spec/application/application-page';
-import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/discloure-of-electronic-documents-page';
+import DisclosureOfElectronicDocumentsPage from '../directions-questionaire/lr-spec/disclosure-of-electronic-documents/disclosure-of-electronic-documents-page';
 import DisclosureOfNonElectronicDocumentsSpecPage from '../directions-questionaire/lr-spec/disclosure-of-non-electronic-documents-spec/disclosure-of-non-electronic-documents-spec-page';
 import DisclosureReportPage from '../directions-questionaire/lr-spec/disclosure-report/disclosure-report-page';
 import HearingFastSpecPage from '../directions-questionaire/lr-spec/hearing-spec/hearing-fast-spec-page';

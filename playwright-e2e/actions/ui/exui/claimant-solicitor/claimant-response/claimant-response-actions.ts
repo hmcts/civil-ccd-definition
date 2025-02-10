@@ -70,7 +70,7 @@ export default class ClaimantResponseActions extends BaseTestData {
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
     await expertsPage.addNewExpert();
-    await expertsPage.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
+    await expertsPage.enterExpertDetails();
     await expertsPage.submit();
   }
 
@@ -79,7 +79,7 @@ export default class ClaimantResponseActions extends BaseTestData {
     await witnessesPage.verifyContent(this.ccdCaseData);
     await witnessesPage.selectYesWitnesses();
     await witnessesPage.addWitness();
-    await witnessesPage.enterWitnessDetails(partys.CLAIMANT_WITNESS_1);
+    await witnessesPage.enterWitnessDetails();
     await witnessesPage.submit();
   }
 
@@ -95,7 +95,7 @@ export default class ClaimantResponseActions extends BaseTestData {
     await hearingPage.verifyContent(this.ccdCaseData);
     await hearingPage.selectYesAvailabilityRequired();
     await hearingPage.addNewUnavailableDate();
-    await hearingPage.selectSingleDate(1);
+    await hearingPage.selectSingleDate();
     await hearingPage.submit();
   }
 

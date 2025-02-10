@@ -78,6 +78,22 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     await disclosureReportPage.submit();
   }
 
+  async mediationContactInformationPage() {
+    const { mediationContactInformationPage } = this.claimantResponsePageFactory;
+    await mediationContactInformationPage.verifyContent(this.ccdCaseData);
+    await mediationContactInformationPage.enterMediationContactDetails();
+    await mediationContactInformationPage.submit();
+  }
+
+  async mediationAvailabilityPage() {
+    const { mediationAvailabilityPage } = this.claimantResponsePageFactory;
+    await mediationAvailabilityPage.verifyContent(this.ccdCaseData);
+    await mediationAvailabilityPage.selectYes();
+    await mediationAvailabilityPage.addNewUnavailableDate();
+    await mediationAvailabilityPage.selectSingleDate();
+    await mediationAvailabilityPage.submit();
+  }
+
   async expertsPage() {
     const { expertsPage } = this.claimantResponsePageFactory;
     await expertsPage.verifyContent(this.ccdCaseData);

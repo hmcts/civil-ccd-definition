@@ -5,8 +5,8 @@ if (config.runSetup) {
   setup.describe('Setting up data', () => {
     setup.describe.configure({ mode: 'parallel' });
 
-    setup('Upcoming bank holidays', async ({ DataApiStep }) => {
-      await DataApiStep.SetupBankHolidaysData();
+    setup('Upcoming bank holidays', async ({ DataApiSteps }) => {
+      await DataApiSteps.SetupBankHolidaysData();
     });
   });
 } else {

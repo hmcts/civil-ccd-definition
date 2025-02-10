@@ -8,7 +8,7 @@ if (config.runSetup) {
 
     exuiUserDataSetupUsers.forEach((exuiAuthSetupUser) => {
       setup(exuiAuthSetupUser.name, async ({ IdamApiSteps }) => {
-        await IdamApiSteps.setupUserData(exuiAuthSetupUser);
+        await IdamApiSteps.SetupUserData(exuiAuthSetupUser);
       });
     });
   });

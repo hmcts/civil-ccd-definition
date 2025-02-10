@@ -1,3 +1,4 @@
+import test from 'node:test';
 import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-solicitor/claimant-solcitor-actions-factory';
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
@@ -5,6 +6,7 @@ import BaseExuiSteps from '../../../base/base-exui-steps';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import TestData from '../../../models/test-data';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
@@ -14,8 +16,9 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     claimantSolicitorActionsFactory: ClaimantSolicitorActionsFactory,
+    testData: TestData,
   ) {
-    super(exuiDashboardActions, idamActions);
+    super(exuiDashboardActions, idamActions, testData);
     this.claimantSolicitorActionsFactory = claimantSolicitorActionsFactory;
   }
 
@@ -271,6 +274,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
         const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
         await claimantResponseSpecActions.respondentResponseSpecPage();
         await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.mediationContactInformationPage();
+        await claimantResponseSpecActions.mediationAvailabilityPage();
         await claimantResponseSpecActions.smallClaimExpertsPage();
         await claimantResponseSpecActions.smallClaimWitnessesPage();
         await claimantResponseSpecActions.languagePage();
@@ -294,6 +299,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
         const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
         await claimantResponseSpecActions.respondentResponse2v1SpecPage();
         await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.mediationContactInformationPage();
+        await claimantResponseSpecActions.mediationAvailabilityPage();
         await claimantResponseSpecActions.smallClaimExpertsPage();
         await claimantResponseSpecActions.smallClaimWitnessesPage();
         await claimantResponseSpecActions.languagePage();
@@ -317,6 +324,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
         const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
         await claimantResponseSpecActions.respondentResponse1v2SSSpecPage();
         await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.mediationContactInformationPage();
+        await claimantResponseSpecActions.mediationAvailabilityPage();
         await claimantResponseSpecActions.smallClaimExpertsPage();
         await claimantResponseSpecActions.smallClaimWitnessesPage();
         await claimantResponseSpecActions.languagePage();
@@ -340,6 +349,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
         const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
         await claimantResponseSpecActions.respondentResponse1v2DSSpecPage();
         await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.mediationContactInformationPage();
+        await claimantResponseSpecActions.mediationAvailabilityPage();
         await claimantResponseSpecActions.smallClaimExpertsPage();
         await claimantResponseSpecActions.smallClaimWitnessesPage();
         await claimantResponseSpecActions.languagePage();

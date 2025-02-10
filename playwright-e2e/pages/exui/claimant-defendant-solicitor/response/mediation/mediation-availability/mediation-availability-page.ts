@@ -85,6 +85,11 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      this.expectNoSelector(
+        radioButtons.mediationAvailability.yes.selector(this.claimantDefendantParty),
+        { timeout: 500 },
+      ),
+    );
   }
 }

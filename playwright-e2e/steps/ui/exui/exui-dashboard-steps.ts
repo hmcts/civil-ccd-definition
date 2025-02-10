@@ -3,22 +3,22 @@ import User from '../../../models/user';
 
 export default class ExuiDashboardSteps extends BaseExuiSteps {
   async AcceptCookies() {
-    this.exuiDashboardActions.acceptCookies();
+    await this.exuiDashboardActions.acceptCookies();
   }
 
   async SaveCookies(user: User) {
-    this.exuiDashboardActions.saveCookies(user);
+    await this.exuiDashboardActions.saveCookies(user);
   }
 
   async GoToCaseList() {
-    this.exuiDashboardActions.goToCaseList();
+    await this.exuiDashboardActions.goToCaseList();
   }
 
   async GoToCaseDetails() {
-    this.exuiDashboardActions.goToCaseDetails();
+    await this.exuiDashboardActions.goToCaseDetails();
   }
 
   async SignOut() {
-    this.exuiDashboardActions.signOut();
+    await this.exuiDashboardActions.signOut();
   }
 }

@@ -5,6 +5,7 @@ import BaseExuiSteps from '../../../base/base-exui-steps';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import TestData from '../../../models/test-data';
 
 @AllMethodsStep()
 export default class DefendantSolicitor1Steps extends BaseExuiSteps {
@@ -14,8 +15,9 @@ export default class DefendantSolicitor1Steps extends BaseExuiSteps {
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     defendantActionsFactory: DefendantActionsFactory,
+    testData: TestData,
   ) {
-    super(exuiDashboardActions, idamActions);
+    super(exuiDashboardActions, idamActions, testData);
     this.defendantActionsFactory = defendantActionsFactory;
   }
 
