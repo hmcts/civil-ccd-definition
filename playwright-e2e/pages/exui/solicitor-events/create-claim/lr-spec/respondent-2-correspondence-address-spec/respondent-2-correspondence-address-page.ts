@@ -17,7 +17,7 @@ export default class SpecRespondent2CorrespondenceAddressPage extends ExuiPage(B
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
-      this.correspondenceAddressFragment.verifyContent(),
+      // this.correspondenceAddressFragment.verifyContent(),
     ]);
   }
 

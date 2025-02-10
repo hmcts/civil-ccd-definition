@@ -14,10 +14,10 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantParty: Party;
 
-  constructor(page: Page, dateFrament: DateFragment, claimantParty: Party) {
+  constructor(page: Page, dateFragment: DateFragment, claimantParty: Party) {
     super(page);
-    this.dateFragment = dateFrament;
     this.claimantParty = claimantParty;
+    this.dateFragment = dateFragment;
   }
 
   async verifyContent() {
@@ -47,17 +47,17 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
     await super.clickBySelector(buttons.addNewUnavailability.selector(this.claimantParty));
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDate() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selector(this.claimantParty, unavailableDateNumber),
+      radioButtons.unavailableDateType.single.selector(this.claimantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
-  async selectDateRange(unavailableDateNumber: number) {
+  async selectDateRange() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.range.selector(this.claimantParty, unavailableDateNumber),
+      radioButtons.unavailableDateType.range.selector(this.claimantParty, 1),
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });
@@ -66,7 +66,6 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() => this.expectNoHeading(heading, { timeout: 500 }));
   }
 }

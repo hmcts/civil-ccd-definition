@@ -7,55 +7,66 @@ import { buttons, inputs, radioButtons, subheadings } from './hearing-content.ts
 import { Party } from '../../../../../../../models/partys.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
 import DateHelper from '../../../../../../../helpers/date-helper.ts';
+import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
 @AllMethodsStep()
 export default class HearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private claimantParty: Party;
+  private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, claimantParty: Party) {
+  constructor(
+    page: Page,
+    dateFragment: DateFragment,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+  ) {
     super(page);
     this.dateFragment = dateFragment;
-    this.claimantParty = claimantParty;
+    this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
     this.dateFragment = dateFragment;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.availability, { index: 0 }),
-      super.expectText(radioButtons.unavailableDateRequired.label, { index: 0 }),
-    ]);
+    await super.runVerifications(
+      [
+        super.verifyHeadings(ccdCaseData),
+        super.expectSubheading(subheadings.availability, { index: 0 }),
+        super.expectText(radioButtons.unavailableDateRequired.label, { index: 0 }),
+      ],
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
+    );
   }
 
   async selectYesAvailabilityRequired() {
     await super.clickBySelector(
-      radioButtons.unavailableDateRequired.yes.selector(this.claimantParty),
+      radioButtons.unavailableDateRequired.yes.selector(this.claimantDefendantParty),
     );
   }
 
   async selectNoAvailabilityRequired() {
     await super.clickBySelector(
-      radioButtons.unavailableDateRequired.no.selector(this.claimantParty),
+      radioButtons.unavailableDateRequired.no.selector(this.claimantDefendantParty),
     );
   }
 
   async addNewUnavailableDate() {
-    await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantParty));
+    await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantDefendantParty));
     await super.expectSubheading(subheadings.unavailableDate, { index: 0 });
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDate() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selector(this.claimantParty, unavailableDateNumber),
+      radioButtons.unavailableDateType.single.selector(this.claimantDefendantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
-  async selectDateRange(unavailableDateNumber: number) {
+  async selectDateRange() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.range.selector(this.claimantParty, unavailableDateNumber),
+      radioButtons.unavailableDateType.range.selector(this.claimantDefendantParty, 1),
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });
@@ -64,7 +75,8 @@ export default class HearingPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      super.expectNoSubheading(subheadings.availability, { all: true, timeout: 500 }),
+    );
   }
 }

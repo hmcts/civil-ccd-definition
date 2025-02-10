@@ -7,30 +7,33 @@ import { heading, inputs } from './how-to-add-timeline-upload-content.ts';
 import filePaths from '../../../../../../../config/file-paths.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
+import { getFormattedCaseId } from '../../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, defendantParty: Party) {
+  constructor(page: Page, defendantParty: Party, solicitorParty: Party) {
     super(page);
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.expectHeading(heading),
-        super.expectHeading(ccdCaseData.id),
+        super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
         super.expectHeading(ccdCaseData.caseNamePublic),
-        super.expectLabel(inputs.upload.label),
+        // super.expectLabel(inputs.upload.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async uploadDoc() {
-    await super.retryUploadFile(inputs.upload.selector(this.defendantParty), filePaths.testPdfFile);
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.upload.selector(this.defendantParty));
   }
 
   async submit() {

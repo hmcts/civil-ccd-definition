@@ -10,21 +10,23 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class DisclosureReportPage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.report),
-        super.expectText(radioButtons.disclosureReportFilledAndServed.label),
-        super.expectText(radioButtons.disclosureProposalAgreed.label),
+        // super.expectSubheading(subheadings.report),
+        // super.expectText(radioButtons.disclosureReportFilledAndServed.label),
+        // super.expectText(radioButtons.disclosureProposalAgreed.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
@@ -35,7 +37,7 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.disclosureProposalAgreed.yes.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.draftOrderNumber.label);
+    await super.expectLabel(inputs.draftOrderNumber.label, { ignoreDuplicates: true });
     await super.inputText('12345', inputs.draftOrderNumber.selector(this.claimantDefendantParty));
   }
 

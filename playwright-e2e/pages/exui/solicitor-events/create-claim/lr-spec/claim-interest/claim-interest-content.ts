@@ -5,7 +5,7 @@ export const subheadings = {
 export const radioButtons = {
   claimInterest: {
     label:
-      "You can claim interest on the money your client is owed. The court will decide if they're entitled to it.",
+      "You can claim interest on the money your client is owed. The court will decide if they’re entitled to it.",
     yes: {
       label: 'Yes',
       selector: '#claimInterest_Yes',
