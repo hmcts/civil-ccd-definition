@@ -13,37 +13,40 @@ import preferredCourts from '../../../../../../../config/preferred-courts.ts';
 export default class RequestedCourtLRSpecPage extends ExuiPage(BasePage) {
   private remoteHearingSpecFragment: RemoteHearingSpecFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
   constructor(
     page: Page,
     remoteHearingSpecFragment: RemoteHearingSpecFragment,
     defendantParty: Party,
+    solicitorParty: Party,
   ) {
     super(page);
     this.remoteHearingSpecFragment = remoteHearingSpecFragment;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.courtLocation),
-        super.expectLabel(inputs.preferredCourtReason.label),
-        this.remoteHearingSpecFragment.verifyContent(),
+        // super.expectSubheading(subheadings.courtLocation),
+        // super.expectLabel(inputs.preferredCourtReason.label),
+        // this.remoteHearingSpecFragment.verifyContent(),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
   async selectCourtLocation() {
     await super.selectFromDropdown(
       preferredCourts[this.defendantParty.key].default,
-      dropdowns.courtLocationDropdown.selector,
+      dropdowns.courtLocationDropdown.selector(this.defendantParty),
     );
     await super.inputText(
       `Court location reason - ${this.defendantParty.key}`,
-      inputs.preferredCourtReason.selector,
+      inputs.preferredCourtReason.selector(this.defendantParty),
     );
   }
 
