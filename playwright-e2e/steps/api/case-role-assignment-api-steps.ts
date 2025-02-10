@@ -7,7 +7,7 @@ import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 
 @AllMethodsStep()
 export default class CaseRoleAssignmentApiSteps extends BaseApi {
-  async AssignRoleToDefendant1() {
+  async AssignCaseRoleToDefendant1() {
     await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(

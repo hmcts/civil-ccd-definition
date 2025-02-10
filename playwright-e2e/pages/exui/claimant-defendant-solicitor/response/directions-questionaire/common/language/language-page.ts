@@ -10,10 +10,12 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 @AllMethodsStep()
 export default class LanguagePage extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, claimantDefendantParty: Party) {
+  constructor(page: Page, claimantDefendantParty: Party, solicitorParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
@@ -31,7 +33,7 @@ export default class LanguagePage extends ExuiPage(BasePage) {
         // super.expectLabel(radioButtons.documentLanguage.english.label, { index: 1 }),
         // super.expectLabel(radioButtons.documentLanguage.welshAndEnglish.label, { index: 1 }),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 

@@ -49,7 +49,7 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
   async CreateClaimSmallTrack1v2DS() {
     const { createClaimDataBuilder } = this.claimantSolicitorDataBuilderFactory;
     await this.setupUserData(claimantSolicitorUser);
-    const createClaimData = await createClaimDataBuilder.buildSmallTrack1v2DifferentSolicitor();
+    const createClaimData = await createClaimDataBuilder.buildSmallTrack1v2DS();
 
     const { ccdRequests } = this.requestsFactory;
     const eventToken = await ccdRequests.startEvent(claimantSolicitorUser, ccdEvents.CREATE_CLAIM);

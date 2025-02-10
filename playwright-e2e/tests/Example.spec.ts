@@ -10,7 +10,7 @@ test('Test 1v1 example', async ({
   await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
   await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
   await ClaimantSolicitorSteps.NotifyClaim1v1();
-  await CaseRoleAssignmentApiSteps.AssignRoleToDefendant1();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
   await ClaimantSolicitorSteps.NotifyClaimDetails1v1();
   await DefendantSolicitor1Steps.Login();
   await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
@@ -26,7 +26,7 @@ test('Api spec test example', async ({
 }) => {
   await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
   await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-  await CaseRoleAssignmentApiSteps.AssignRoleToDefendant1();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
   await IdamSteps.DefendantSolicitor1Login();
   await ExuiDashboardSteps.GoToCaseDetails();
 });

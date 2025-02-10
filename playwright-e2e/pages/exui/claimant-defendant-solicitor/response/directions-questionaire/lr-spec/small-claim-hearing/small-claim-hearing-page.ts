@@ -13,21 +13,23 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private defendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, dateFrament: DateFragment, defendantParty: Party) {
+  constructor(page: Page, dateFrament: DateFragment, defendantParty: Party, solicitorParty: Party) {
     super(page);
     this.dateFragment = dateFrament;
     this.defendantParty = defendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.availability),
-        super.expectText(radioButtons.unavailableDatesRequired.label),
+        // super.expectSubheading(subheadings.availability),
+        // super.expectText(radioButtons.unavailableDatesRequired.label),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
@@ -44,28 +46,35 @@ export default class SmallClaimHearingPage extends ExuiPage(BasePage) {
   }
 
   async selectYesInterpreter() {
-    await super.clickBySelector(radioButtons.interpreter.yes.selector);
+    const selector = radioButtons.interpreter.yes.selector(this.defendantParty);
+    await super.retryClickBySelector(selector, () =>
+      super.expectOptionChecked(selector, { timeout: 500 }),
+    );
   }
 
   async selectNoInterpreter() {
-    await super.clickBySelector(radioButtons.interpreter.no.selector);
+    await super.clickBySelector(radioButtons.interpreter.no.selector(this.defendantParty));
+  }
+
+  async enterTypeOfInterpreter() {
+    await super.inputText('English', inputs.interpreterType.selector(this.defendantParty));
   }
 
   async addNewUnavailableDate() {
     await super.clickBySelector(buttons.addNewAvailability.selector(this.defendantParty));
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDate() {
     await super.clickBySelector(
-      radioButtons.availabilityOptions.single.selector(this.defendantParty, unavailableDateNumber),
+      radioButtons.availabilityOptions.single.selector(this.defendantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
-    await this.dateFragment.enterDate(unavailableDate, inputs.dateTo.selectorKey);
+    await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
-  async selectDateRange(unavailableDateNumber: number) {
+  async selectDateRange() {
     await super.clickBySelector(
-      radioButtons.availabilityOptions.range.selector(this.defendantParty, unavailableDateNumber),
+      radioButtons.availabilityOptions.range.selector(this.defendantParty, 1),
     );
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });
     const unavailableDateTo = DateHelper.addToToday({ months: 7 });

@@ -83,11 +83,11 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
     await expertsPage.addNewExpert();
-    await expertsPage.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
+    await expertsPage.enterExpertDetails();
     await expertsPage.submit();
   }
 
-  async smallClaimExperts() {
+  async smallClaimExpertsPage() {
     const { smallClaimExpertsPage } = this.claimantResponsePageFactory;
     await smallClaimExpertsPage.verifyContent(this.ccdCaseData);
     await smallClaimExpertsPage.selectYesExperts();
@@ -95,7 +95,7 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     await smallClaimExpertsPage.submit();
   }
 
-  async smallClaimExperts2v1() {
+  async smallClaimExperts2v1Page() {
     const { smallClaimExperts2v1Page } = this.claimantResponsePageFactory;
     await smallClaimExperts2v1Page.verifyContent(this.ccdCaseData);
     await smallClaimExperts2v1Page.selectYesExperts();
@@ -107,11 +107,11 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
     await witnessesPage.addWitness();
-    await witnessesPage.enterWitnessDetails(partys.CLAIMANT_WITNESS_1);
+    await witnessesPage.enterWitnessDetails();
     await witnessesPage.submit();
   }
 
-  async smallClaimWitnesses() {
+  async smallClaimWitnessesPage() {
     const { smallClaimWitnessesPage } = this.claimantResponsePageFactory;
     await smallClaimWitnessesPage.verifyContent(this.ccdCaseData);
     await smallClaimWitnessesPage.selectYes();
@@ -133,7 +133,7 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     await hearingSpecPage.verifyContent();
     await hearingSpecPage.selectYesUnavailabilityRequired();
     await hearingSpecPage.addNewUnavailableDate();
-    await hearingSpecPage.selectSingleDate(1);
+    await hearingSpecPage.selectSingleDate();
     await hearingSpecPage.submit();
   }
 
@@ -142,7 +142,7 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     await hearingFastSpecPage.verifyContent();
     await hearingFastSpecPage.selectYesUnavailabilityRequired();
     await hearingFastSpecPage.addNewUnavailableDate();
-    await hearingFastSpecPage.selectSingleDateFastTrack(1);
+    await hearingFastSpecPage.selectSingleDateFastTrack();
     await hearingFastSpecPage.submit();
   }
   async applicantCourtLocationLRSpecPage() {

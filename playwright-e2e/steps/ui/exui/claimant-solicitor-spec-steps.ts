@@ -5,7 +5,6 @@ import BaseExuiSteps from '../../../base/base-exui-steps';
 import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
-import User from '../../../models/user';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
@@ -232,6 +231,127 @@ export default class ClaimantSolicitorSpecSteps extends BaseExuiSteps {
         await createClaimSpecActions.confirmCreateClaimSpecPage();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondFastTrackIntentToProceed1v1() {
+    await super.exuiDashboardActions.retryExuiEvent(
+      async () => {
+        const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+        await claimantResponseSpecActions.respondentResponseSpecPage();
+        await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.fileDirectionsQuestionairePage();
+        await claimantResponseSpecActions.fixedRecoverableCostsPage();
+        await claimantResponseSpecActions.disclosureOfElectronicDocumentsPage();
+        await claimantResponseSpecActions.disclosureOfNonElectronicDocumentsSpecPage();
+        await claimantResponseSpecActions.disclosureReportPage();
+        await claimantResponseSpecActions.expertsPage();
+        await claimantResponseSpecActions.witnessesPage();
+        await claimantResponseSpecActions.languagePage();
+        await claimantResponseSpecActions.hearingSpecFastTrackPage();
+        await claimantResponseSpecActions.applicantCourtLocationLRSpecPage();
+        await claimantResponseSpecActions.hearingSupportPage();
+        await claimantResponseSpecActions.vulnerabilityQuestionsSpecPage();
+        await claimantResponseSpecActions.applicationsPage();
+        await claimantResponseSpecActions.statementOfTruthPage();
+        await claimantResponseSpecActions.submitPage();
+        await claimantResponseSpecActions.confirmPage();
+      },
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RespondSmallClaimIntentToProceed1v1() {
+    await super.exuiDashboardActions.retryExuiEvent(
+      async () => {
+        const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+        await claimantResponseSpecActions.respondentResponseSpecPage();
+        await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.smallClaimExpertsPage();
+        await claimantResponseSpecActions.smallClaimWitnessesPage();
+        await claimantResponseSpecActions.languagePage();
+        await claimantResponseSpecActions.hearingSpecSmallClaimPage();
+        await claimantResponseSpecActions.applicantCourtLocationLRSpecPage();
+        await claimantResponseSpecActions.hearingSupportPage();
+        await claimantResponseSpecActions.vulnerabilityQuestionsSpecPage();
+        await claimantResponseSpecActions.statementOfTruthPage();
+        await claimantResponseSpecActions.submitPage();
+        await claimantResponseSpecActions.confirmPage();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SmallClaimIntentToProceed2v1() {
+    await super.exuiDashboardActions.retryExuiEvent(
+      async () => {
+        const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+        await claimantResponseSpecActions.respondentResponse2v1SpecPage();
+        await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.smallClaimExpertsPage();
+        await claimantResponseSpecActions.smallClaimWitnessesPage();
+        await claimantResponseSpecActions.languagePage();
+        await claimantResponseSpecActions.hearingSpecSmallClaimPage();
+        await claimantResponseSpecActions.applicantCourtLocationLRSpecPage();
+        await claimantResponseSpecActions.hearingSupportPage();
+        await claimantResponseSpecActions.vulnerabilityQuestionsSpecPage();
+        await claimantResponseSpecActions.statementOfTruthPage();
+        await claimantResponseSpecActions.submitPage();
+        await claimantResponseSpecActions.confirmPage();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SmallClaimIntentToProceed1v2SS() {
+    await super.exuiDashboardActions.retryExuiEvent(
+      async () => {
+        const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+        await claimantResponseSpecActions.respondentResponse1v2SSSpecPage();
+        await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.smallClaimExpertsPage();
+        await claimantResponseSpecActions.smallClaimWitnessesPage();
+        await claimantResponseSpecActions.languagePage();
+        await claimantResponseSpecActions.hearingSpecSmallClaimPage();
+        await claimantResponseSpecActions.applicantCourtLocationLRSpecPage();
+        await claimantResponseSpecActions.hearingSupportPage();
+        await claimantResponseSpecActions.vulnerabilityQuestionsSpecPage();
+        await claimantResponseSpecActions.statementOfTruthPage();
+        await claimantResponseSpecActions.submitPage();
+        await claimantResponseSpecActions.confirmPage();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async SmallClaimIntentToProceed1v2DS() {
+    await super.exuiDashboardActions.retryExuiEvent(
+      async () => {
+        const { claimantResponseSpecActions } = this.claimantSolicitorActionsFactory;
+        await claimantResponseSpecActions.respondentResponse1v2DSSpecPage();
+        await claimantResponseSpecActions.defenceDocumentSpecPage();
+        await claimantResponseSpecActions.smallClaimExpertsPage();
+        await claimantResponseSpecActions.smallClaimWitnessesPage();
+        await claimantResponseSpecActions.languagePage();
+        await claimantResponseSpecActions.hearingSpecSmallClaimPage();
+        await claimantResponseSpecActions.applicantCourtLocationLRSpecPage();
+        await claimantResponseSpecActions.hearingSupportPage();
+        await claimantResponseSpecActions.vulnerabilityQuestionsSpecPage();
+        await claimantResponseSpecActions.statementOfTruthPage();
+        await claimantResponseSpecActions.submitPage();
+        await claimantResponseSpecActions.confirmPage();
+      },
+      ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );

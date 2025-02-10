@@ -103,7 +103,11 @@ const claimant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType) 
 
 const defendant1 = (partyType: ClaimantDefendantPartyType) => ({
   Defendant: {
-    respondent1: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, partyType),
+    respondent1: {
+      ...CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_1, partyType),
+      individualDateOfBirth: undefined,
+      soleTraderDateOfBirth: undefined,
+    },
   },
 });
 
@@ -147,7 +151,11 @@ const defendant2 = (claimType: ClaimType, partyType: ClaimantDefendantPartyType)
         addRespondent2: 'Yes',
       },
       SecondDefendant: {
-        respondent2: CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_2, partyType),
+        respondent2: {
+          ...CaseDataHelper.buildClaimantAndDefendantData(partys.DEFENDANT_2, partyType),
+          individualDateOfBirth: undefined,
+          soleTraderDateOfBirth: undefined,
+        },
       },
     };
   return {

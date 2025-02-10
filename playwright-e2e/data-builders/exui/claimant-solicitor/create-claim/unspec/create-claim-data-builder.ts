@@ -5,13 +5,17 @@ import ClaimTrack from '../../../../../enums/claim-track';
 import ClaimType from '../../../../../enums/claim-type';
 import { ClaimantDefendantPartyType } from '../../../../../models/claimant-defendant-party-types';
 import createClaimData from './create-claim-data-components';
-@AllMethodsStep()
+@AllMethodsStep({ methodNamesToIgnore: ['buildData'] })
 export default class CreateClaimDataBuilder extends BaseDataBuilder {
+  async buildFastTrack1v1() {
+    return this.buildData({ claimTrack: ClaimTrack.FAST_CLAIM });
+  }
+
   async buildSmallTrack1v1() {
     return this.buildData();
   }
 
-  async buildSmallTrack1v2DifferentSolicitor() {
+  async buildSmallTrack1v2DS() {
     return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 

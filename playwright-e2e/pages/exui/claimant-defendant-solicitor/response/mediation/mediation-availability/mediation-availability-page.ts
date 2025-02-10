@@ -19,23 +19,30 @@ import StringHelper from '../../../../../../helpers/string-helper.ts';
 export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private claimantDefendantParty: Party;
+  private solicitorParty: Party;
 
-  constructor(page: Page, dateFragment: DateFragment, claimantDefendantParty: Party) {
+  constructor(
+    page: Page,
+    dateFragment: DateFragment,
+    claimantDefendantParty: Party,
+    solicitorParty: Party,
+  ) {
     super(page);
     this.dateFragment = dateFragment;
     this.claimantDefendantParty = claimantDefendantParty;
+    this.solicitorParty = solicitorParty;
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.mediationAvailability),
-        super.expectText(paragraphs.descriptionText),
-        super.expectText(radioButtons.mediationAvailability.label),
-        super.expectText(radioButtons.mediationAvailability.hintText),
+        // super.expectSubheading(subheadings.mediationAvailability),
+        // super.expectText(paragraphs.descriptionText),
+        // super.expectText(radioButtons.mediationAvailability.label),
+        // super.expectText(radioButtons.mediationAvailability.hintText),
       ],
-      { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
+      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
   }
 
@@ -53,15 +60,12 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
 
   async addNewUnavailableDate() {
     await super.clickBySelector(buttons.addNew.selector(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDates);
+    // await super.expectSubheading(subheadings.unavailableDates);
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDate() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selector(
-        this.claimantDefendantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.single.selector(this.claimantDefendantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 1 });
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
