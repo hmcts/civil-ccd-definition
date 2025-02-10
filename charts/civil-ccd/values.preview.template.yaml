@@ -190,7 +190,7 @@ ccd:
         ROLE_ASSIGNMENT_DB_PASSWORD:
           secretRef: postgres-pod
           key: PASSWORD
-          disabled: false
+          disabled: true
       keyVaults:
         am:
           secrets:
