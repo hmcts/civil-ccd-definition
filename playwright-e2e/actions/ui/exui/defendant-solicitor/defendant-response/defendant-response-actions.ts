@@ -2,7 +2,9 @@ import TestData from '../../../../../models/test-data.ts';
 
 import BaseAction from '../../../../../base/base-test-data.ts';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 
+@AllMethodsStep()
 export default class DefendantResponseActions extends BaseAction {
   private defendantResponsePageFactory: DefendantResponsePageFactory;
 
