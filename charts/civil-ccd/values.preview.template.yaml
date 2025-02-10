@@ -119,9 +119,7 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 xui-webapp:
-  image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
   nodejs:
-    image: 'hmctspublic.azurecr.io/xui/webapp:pr-4193-d7394b4-20250123152639'
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
