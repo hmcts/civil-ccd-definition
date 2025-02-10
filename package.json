@@ -102,8 +102,8 @@
     "test:playwright-e2e:local": "npx playwright test --project e2e-full-functional",
     "test:playwright-functional:generate-report": "allure generate playwright-allure-functional-results --clean -o playwright-allure-functional-report",
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
-    "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
     "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
+    "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
     "prepare": "husky"
   },
   "license": "MIT",
