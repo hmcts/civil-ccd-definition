@@ -7,8 +7,8 @@ if (config.unassignCases) {
     teardown.describe.configure({ mode: 'parallel' });
 
     for (const solicitorUser of solicitorUsers) {
-      teardown(solicitorUser.name, async ({ ApiCaseRoleAssignmentSteps }) => {
-        await ApiCaseRoleAssignmentSteps.UnassignCasesForUser(solicitorUser);
+      teardown(solicitorUser.name, async ({ CaseRoleAssignmentApiSteps }) => {
+        await CaseRoleAssignmentApiSteps.UnassignCasesForUser(solicitorUser);
       });
     }
   });
