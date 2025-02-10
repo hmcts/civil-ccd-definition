@@ -528,6 +528,15 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "unfinishedBackEndProcess",
+    "Label": "The case processing has not completed, please refresh this page in one minute. If the problem persists please contact the helpdesk 0300 123 7050",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Comment": "Case is stuck in Camunda or the backend services are taking long to respond."
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant2PartyNameLabel",
     "Label": "**against Claimant: ${applicant2.partyName}**",
     "FieldType": "Label",
