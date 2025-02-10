@@ -12,7 +12,7 @@ export const radioButtons = {
     yes: {
       label: 'Yes',
       selector: (defendantParty: Party) =>
-        `#${defendantParty.oldKey}DQSmallClaimHearing_unavailableDatesRequired_Yes`,
+        `#${defendantParty.oldKey}DQHearingSmallClaim_unavailableDatesRequired_Yes`,
     },
     no: {
       label: 'No',
@@ -23,11 +23,11 @@ export const radioButtons = {
   availabilityOptions: {
     single: {
       selector: (defendantParty: Party, unavailableDateNumber: number) =>
-        `#${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
     },
     range: {
       selector: (defendantParty: Party, unavailableDateNumber: number) =>
-        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-SINGLE_DATE`,
+        `#${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate_${unavailableDateNumber - 1}_unavailableDateType-DATE_RANGE`,
     },
   },
   interpreter: {
@@ -35,11 +35,23 @@ export const radioButtons = {
       'Will you be using an interpreter at the hearing, either for your client, or for a witness?',
     yes: {
       label: 'Yes',
-      selector: '#SmallClaimHearingInterpreterRequired_Yes',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#SmallClaimHearingInterpreterRequired_Yes';
+        } else {
+          return '#SmallClaimHearingInterpreter2Required_Yes';
+        }
+      },
     },
     no: {
       label: 'No',
-      selector: '#SmallClaimHearingInterpreterRequired_No',
+      selector: (defendantParty: Party) => {
+        if (defendantParty.number === 1) {
+          return '#SmallClaimHearingInterpreterRequired_No';
+        } else {
+          return '#SmallClaimHearingInterpreter2Required_No';
+        }
+      },
     },
   },
 };
@@ -48,7 +60,7 @@ export const buttons = {
   addNewAvailability: {
     title: 'Add new',
     selector: (defendantParty: Party) =>
-      `div[id='${defendantParty.oldKey}DQSmallClaimHearing_smallClaimUnavailableDate'] button[type='button']`,
+      `div[id='${defendantParty.oldKey}DQHearingSmallClaim_smallClaimUnavailableDate'] button[type='button']`,
   },
 };
 
@@ -67,6 +79,12 @@ export const inputs = {
   },
   interpreterType: {
     label: 'Type of interpreter',
-    selector: '#SmallClaimHearingInterpreterDescription',
+    selector: (defendantParty: Party) => {
+      if (defendantParty.number === 1) {
+        return '#SmallClaimHearingInterpreterDescription';
+      } else {
+        return '#smallClaimHearingInterpreterDescription2';
+      }
+    },
   },
 };

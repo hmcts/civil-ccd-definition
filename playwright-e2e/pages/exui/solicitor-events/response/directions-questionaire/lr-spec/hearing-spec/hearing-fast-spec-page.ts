@@ -43,34 +43,25 @@ export default class HearingFastSpecPage extends ExuiPage(BasePage) {
     await super.expectSubheading(subheadings.unavailableDate, { ignoreDuplicates: true });
   }
 
-  async selectSingleDate(unavailableDateNumber: number) {
+  async selectSingleDate() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selectorFast(
-        this.claimantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.single.selectorFast(this.claimantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, inputs.singleDate.selectorKey);
   }
 
-  async selectSingleDateFastTrack(unavailableDateNumber: number) {
+  async selectSingleDateFastTrack() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.single.selectorFast(
-        this.claimantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.single.selectorFast(this.claimantParty, 1),
     );
     const unavailableDate = DateHelper.addToToday({ months: 6 });
     await this.dateFragment.enterDate(unavailableDate, 'date');
   }
 
-  async selectDateRange(unavailableDateNumber: number) {
+  async selectDateRange() {
     await super.clickBySelector(
-      radioButtons.unavailableDateType.range.selectorFast(
-        this.claimantParty,
-        unavailableDateNumber,
-      ),
+      radioButtons.unavailableDateType.range.selectorFast(this.claimantParty, 1),
     );
 
     const unavailableDateFrom = DateHelper.addToToday({ months: 6 });

@@ -46,7 +46,7 @@ export const inputs = {
     email: {
       label: 'Email address (Optional)',
       selector: (defendantParty: Party, witnessParty: Party) =>
-        `#${defendantParty.oldKey}DQWitnessesDetailsSpec_${witnessParty.number - 1}_email`,
+        `#${defendantParty.oldKey}DQWitnessesDetailsSpec_${witnessParty.number - 1}_emailAddress`,
     },
     reasonForWitness: {
       label: 'What event did they witness?',

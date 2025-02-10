@@ -212,7 +212,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
     await expertsPage.addNewExpert();
-    await expertsPage.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
+    await expertsPage.enterExpertDetails();
     await expertsPage.submit();
   }
 
@@ -236,7 +236,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
     await witnessesPage.addWitness();
-    await witnessesPage.enterWitnessDetails(partys.CLAIMANT_WITNESS_1);
+    await witnessesPage.enterWitnessDetails();
     await witnessesPage.submit();
   }
 
@@ -262,7 +262,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     await hearingSpecPage.verifyContent();
     await hearingSpecPage.selectYesUnavailabilityRequired();
     await hearingSpecPage.addNewUnavailableDate();
-    await hearingSpecPage.selectSingleDate(1);
+    await hearingSpecPage.selectSingleDate();
     await hearingSpecPage.submit();
   }
 
@@ -271,7 +271,7 @@ export default class ClaimantResponseSpecSteps extends BaseExuiSteps {
     await hearingFastSpecPage.verifyContent();
     await hearingFastSpecPage.selectYesUnavailabilityRequired();
     await hearingFastSpecPage.addNewUnavailableDate();
-    await hearingFastSpecPage.selectSingleDateFastTrack(1);
+    await hearingFastSpecPage.selectSingleDateFastTrack();
     await hearingFastSpecPage.submit();
   }
   private async processApplicantCourtLocationLRSpecPage() {

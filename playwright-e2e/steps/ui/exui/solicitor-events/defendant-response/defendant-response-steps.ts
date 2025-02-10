@@ -30,23 +30,23 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   async FastTrackFullDefence1v1() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
-        await this.processRespondentResponseTypeDefendant1Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
-        await this.processUploadDefendantResponseDefendant1Page();
-        await this.processFileDirectionsQuestionaireDefendant1Page();
-        await this.processFixedRecoverableCostsPageDefendant1();
-        await this.processDisclosureOfNonElectronicDocumentsDefendant1Page();
-        await this.processExpertsDefendant1Page();
-        await this.processWitnessesDefendant1Page();
-        await this.processLanguageDefendant1Page();
-        await this.processHearingDefendant1Page();
-        await this.processDraftDirectionsDefendant1Page();
-        await this.processRequestedCourtDefendant1Page();
-        await this.processHearingSupportDefendant1Page();
-        await this.processVulnerabilityQuestionsDefendant1Page();
-        await this.processFurtherInformationDefendant1Page();
-        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processConfirmDetailsDefendantSolicitor1Page();
+        await this.processRespondentResponseTypeDefendantSolicitor1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor1Page();
+        await this.processUploadDefendantResponseDefendantSolicitor1Page();
+        await this.processFileDirectionsQuestionaireDefendantSolicitor1Page();
+        await this.processFixedRecoverableCostsPageDefendantSolicitor1();
+        await this.processDisclosureOfNonElectronicDocumentsDefendantSolicitor1Page();
+        await this.processExpertsDefendantSolicitor1Page();
+        await this.processWitnessesDefendantSolicitor1Page();
+        await this.processLanguageDefendantSolicitor1Page();
+        await this.processHearingDefendantSolicitor1Page();
+        await this.processDraftDirectionsDefendantSolicitor1Page();
+        await this.processRequestedCourtDefendantSolicitor1Page();
+        await this.processHearingSupportDefendantSolicitor1Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor1Page();
+        await this.processFurtherInformationDefendantSolicitor1Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -60,20 +60,20 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   async SmallTrackFullDefence1v1() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
-        await this.processRespondentResponseTypeDefendant1Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
-        await this.processUploadDefendantResponseDefendant1Page();
-        await this.processExpertsDefendant1Page();
-        await this.processWitnessesDefendant1Page();
-        await this.processLanguageDefendant1Page();
-        await this.processHearingDefendant1Page();
-        await this.processDraftDirectionsDefendant1Page();
-        await this.processRequestedCourtDefendant1Page();
-        await this.processHearingSupportDefendant1Page();
-        await this.processVulnerabilityQuestionsDefendant1Page();
-        await this.processFurtherInformationDefendant1Page();
-        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processConfirmDetailsDefendantSolicitor1Page();
+        await this.processRespondentResponseTypeDefendantSolicitor1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor1Page();
+        await this.processUploadDefendantResponseDefendantSolicitor1Page();
+        await this.processExpertsDefendantSolicitor1Page();
+        await this.processWitnessesDefendantSolicitor1Page();
+        await this.processLanguageDefendantSolicitor1Page();
+        await this.processHearingDefendantSolicitor1Page();
+        await this.processDraftDirectionsDefendantSolicitor1Page();
+        await this.processRequestedCourtDefendantSolicitor1Page();
+        await this.processHearingSupportDefendantSolicitor1Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor1Page();
+        await this.processFurtherInformationDefendantSolicitor1Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -87,20 +87,20 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   async SmallTrackFullDefence2v1() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
+        await this.processConfirmDetailsDefendantSolicitor1Page();
         await this.processRespondentResponseType2v1Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
-        await this.processUploadDefendantResponseDefendant1Page();
-        await this.processExpertsDefendant1Page();
-        await this.processWitnessesDefendant1Page();
-        await this.processLanguageDefendant1Page();
-        await this.processHearingDefendant1Page();
-        await this.processDraftDirectionsDefendant1Page();
-        await this.processRequestedCourtDefendant1Page();
-        await this.processHearingSupportDefendant1Page();
-        await this.processVulnerabilityQuestionsDefendant1Page();
-        await this.processFurtherInformationDefendant1Page();
-        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor1Page();
+        await this.processUploadDefendantResponseDefendantSolicitor1Page();
+        await this.processExpertsDefendantSolicitor1Page();
+        await this.processWitnessesDefendantSolicitor1Page();
+        await this.processLanguageDefendantSolicitor1Page();
+        await this.processHearingDefendantSolicitor1Page();
+        await this.processDraftDirectionsDefendantSolicitor1Page();
+        await this.processRequestedCourtDefendantSolicitor1Page();
+        await this.processHearingSupportDefendantSolicitor1Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor1Page();
+        await this.processFurtherInformationDefendantSolicitor1Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -114,21 +114,21 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   async SmallTrackFullDefence1v2SS() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
+        await this.processConfirmDetailsDefendantSolicitor1Page();
         await this.processSingleResponsePage();
-        await this.processRespondentResponseTypeDefendant1Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
-        await this.processUploadDefendantResponseDefendant1Page();
-        await this.processExpertsDefendant1Page();
-        await this.processWitnessesDefendant1Page();
-        await this.processLanguageDefendant1Page();
-        await this.processHearingDefendant1Page();
-        await this.processDraftDirectionsDefendant1Page();
-        await this.processRequestedCourtDefendant1Page();
-        await this.processHearingSupportDefendant1Page();
-        await this.processVulnerabilityQuestionsDefendant1Page();
-        await this.processFurtherInformationDefendant1Page();
-        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processRespondentResponseTypeDefendantSolicitor1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor1Page();
+        await this.processUploadDefendantResponseDefendantSolicitor1Page();
+        await this.processExpertsDefendantSolicitor1Page();
+        await this.processWitnessesDefendantSolicitor1Page();
+        await this.processLanguageDefendantSolicitor1Page();
+        await this.processHearingDefendantSolicitor1Page();
+        await this.processDraftDirectionsDefendantSolicitor1Page();
+        await this.processRequestedCourtDefendantSolicitor1Page();
+        await this.processHearingSupportDefendantSolicitor1Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor1Page();
+        await this.processFurtherInformationDefendantSolicitor1Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -139,23 +139,23 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async SmallTrackFullDefence1v2DSDefendant1() {
+  async SmallTrackFullDefence1v2DSDefendantSolicitor1() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
-        await this.processRespondentResponseTypeDefendant1Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant1Page();
-        await this.processUploadDefendantResponseDefendant1Page();
-        await this.processExpertsDefendant1Page();
-        await this.processWitnessesDefendant1Page();
-        await this.processLanguageDefendant1Page();
-        await this.processHearingDefendant1Page();
-        await this.processDraftDirectionsDefendant1Page();
-        await this.processRequestedCourtDefendant1Page();
-        await this.processHearingSupportDefendant1Page();
-        await this.processVulnerabilityQuestionsDefendant1Page();
-        await this.processFurtherInformationDefendant1Page();
-        await this.processStatementOfTruthDefendantResponseDefendant1Page();
+        await this.processConfirmDetailsDefendantSolicitor1Page();
+        await this.processRespondentResponseTypeDefendantSolicitor1Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor1Page();
+        await this.processUploadDefendantResponseDefendantSolicitor1Page();
+        await this.processExpertsDefendantSolicitor1Page();
+        await this.processWitnessesDefendantSolicitor1Page();
+        await this.processLanguageDefendantSolicitor1Page();
+        await this.processHearingDefendantSolicitor1Page();
+        await this.processDraftDirectionsDefendantSolicitor1Page();
+        await this.processRequestedCourtDefendantSolicitor1Page();
+        await this.processHearingSupportDefendantSolicitor1Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor1Page();
+        await this.processFurtherInformationDefendantSolicitor1Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor1Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirm1v2DSDefendantResponsePage();
       },
@@ -166,23 +166,23 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
   }
 
   @Step(classKey)
-  async SmallTrackFullDefence1v2DSDefendant2() {
+  async SmallTrackFullDefence1v2DSDefendantSolicitor2() {
     await this.retryExuiEvent(
       async () => {
-        await this.processConfirmDetailsPage();
-        await this.processRespondentResponseTypeDefendant2Page();
-        await this.processSolicitorReferencesDefendantResponseDefendant2Page();
-        await this.processUploadDefendantResponseDefendant2Page();
-        await this.processExpertsDefendant2Page();
-        await this.processWitnessesDefendant2Page();
-        await this.processLanguageDefendant2Page();
-        await this.processHearingDefendant2Page();
-        await this.processDraftDirectionsDefendant2Page();
-        await this.processRequestedCourtDefendant2Page();
-        await this.processHearingSupportDefendant2Page();
-        await this.processVulnerabilityQuestionsDefendant2Page();
-        await this.processFurtherInformationDefendant2Page();
-        await this.processStatementOfTruthDefendantResponseDefendant2Page();
+        await this.processConfirmDetailsDefendantSolicitor2Page();
+        await this.processRespondentResponseTypeDefendantSolicitor2Page();
+        await this.processSolicitorReferencesDefendantResponseDefendantSolicitor2Page();
+        await this.processUploadDefendantResponseDefendantSolicitor2Page();
+        await this.processExpertsDefendantSolicitor2Page();
+        await this.processWitnessesDefendantSolicitor2Page();
+        await this.processLanguageDefendantSolicitor2Page();
+        await this.processHearingDefendantSolicitor2Page();
+        await this.processDraftDirectionsDefendantSolicitor2Page();
+        await this.processRequestedCourtDefendantSolicitor2Page();
+        await this.processHearingSupportDefendantSolicitor2Page();
+        await this.processVulnerabilityQuestionsDefendantSolicitor2Page();
+        await this.processFurtherInformationDefendantSolicitor2Page();
+        await this.processStatementOfTruthDefendantResponseDefendantSolicitor2Page();
         await this.processSubmitDefendantResponsePage();
         await this.processConfirmDefendantResponsePage();
       },
@@ -192,10 +192,16 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     );
   }
 
-  private async processConfirmDetailsPage() {
-    const { confirmDetailsPage } = this.defendantResponsePageFactory;
-    await confirmDetailsPage.verifyContent(this.ccdCaseData);
-    await confirmDetailsPage.submit();
+  private async processConfirmDetailsDefendantSolicitor1Page() {
+    const { confirmDetailsDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await confirmDetailsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await confirmDetailsDefendantSolicitor1Page.submit();
+  }
+
+  private async processConfirmDetailsDefendantSolicitor2Page() {
+    const { confirmDetailsDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await confirmDetailsDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await confirmDetailsDefendantSolicitor2Page.submit();
   }
 
   private async processSingleResponsePage() {
@@ -205,11 +211,11 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     await singleResponsePage.submit();
   }
 
-  private async processRespondentResponseTypeDefendant1Page() {
-    const { respondentResponseTypeDefendant1Page } = this.defendantResponsePageFactory;
-    await respondentResponseTypeDefendant1Page.verifyContent(this.ccdCaseData);
-    await respondentResponseTypeDefendant1Page.selectRejectAll();
-    await respondentResponseTypeDefendant1Page.submit();
+  private async processRespondentResponseTypeDefendantSolicitor1Page() {
+    const { respondentResponseTypeDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeDefendantSolicitor1Page.selectRejectAll();
+    await respondentResponseTypeDefendantSolicitor1Page.submit();
   }
 
   private async processRespondentResponseType2v1Page() {
@@ -219,245 +225,254 @@ export default class DefendantResponseSteps extends BaseExuiSteps {
     await respondentResponseType2v1Page.submit();
   }
 
-  private async processRespondentResponseTypeDefendant2Page() {
-    const { respondentResponseTypeDefendant2Page } = this.defendantResponsePageFactory;
-    await respondentResponseTypeDefendant2Page.verifyContent(this.ccdCaseData);
-    await respondentResponseTypeDefendant2Page.selectRejectAll();
-    await respondentResponseTypeDefendant2Page.submit();
+  private async processRespondentResponseTypeDefendantSolicitor2Page() {
+    const { respondentResponseTypeDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await respondentResponseTypeDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await respondentResponseTypeDefendantSolicitor2Page.selectRejectAll();
+    await respondentResponseTypeDefendantSolicitor2Page.submit();
   }
 
-  private async processSolicitorReferencesDefendantResponseDefendant1Page() {
-    const { solicitorReferencesDefendantResponseDefendant1Page } =
+  private async processSolicitorReferencesDefendantResponseDefendantSolicitor1Page() {
+    const { solicitorReferencesDefendantResponseDefendantSolicitor1Page } =
       this.defendantResponsePageFactory;
-    await solicitorReferencesDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
-    await solicitorReferencesDefendantResponseDefendant1Page.enterReference();
-    await solicitorReferencesDefendantResponseDefendant1Page.submit();
+    await solicitorReferencesDefendantResponseDefendantSolicitor1Page.verifyContent(
+      this.ccdCaseData,
+    );
+    await solicitorReferencesDefendantResponseDefendantSolicitor1Page.enterReference();
+    await solicitorReferencesDefendantResponseDefendantSolicitor1Page.submit();
   }
 
-  private async processSolicitorReferencesDefendantResponseDefendant2Page() {
-    const { solicitorReferencesDefendantResponseDefendant2Page } =
+  private async processSolicitorReferencesDefendantResponseDefendantSolicitor2Page() {
+    const { solicitorReferencesDefendantResponseDefendantSolicitor2Page } =
       this.defendantResponsePageFactory;
-    await solicitorReferencesDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
-    await solicitorReferencesDefendantResponseDefendant2Page.enterReference();
-    await solicitorReferencesDefendantResponseDefendant2Page.submit();
+    await solicitorReferencesDefendantResponseDefendantSolicitor2Page.verifyContent(
+      this.ccdCaseData,
+    );
+    await solicitorReferencesDefendantResponseDefendantSolicitor2Page.enterReference();
+    await solicitorReferencesDefendantResponseDefendantSolicitor2Page.submit();
   }
 
-  private async processUploadDefendantResponseDefendant1Page() {
-    const { uploadDefendantResponseDefendant1Page } = this.defendantResponsePageFactory;
-    await uploadDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
-    await uploadDefendantResponseDefendant1Page.uploadDefence();
-    await uploadDefendantResponseDefendant1Page.submit();
+  private async processUploadDefendantResponseDefendantSolicitor1Page() {
+    const { uploadDefendantResponseDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await uploadDefendantResponseDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await uploadDefendantResponseDefendantSolicitor1Page.uploadDefence();
+    await uploadDefendantResponseDefendantSolicitor1Page.submit();
   }
 
-  private async processUploadDefendantResponseDefendant2Page() {
-    const { uploadDefendantResponseDefendant2Page } = this.defendantResponsePageFactory;
-    await uploadDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
-    await uploadDefendantResponseDefendant2Page.uploadDefence();
-    await uploadDefendantResponseDefendant2Page.submit();
+  private async processUploadDefendantResponseDefendantSolicitor2Page() {
+    const { uploadDefendantResponseDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await uploadDefendantResponseDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await uploadDefendantResponseDefendantSolicitor2Page.uploadDefence();
+    await uploadDefendantResponseDefendantSolicitor2Page.submit();
   }
 
-  private async processFileDirectionsQuestionaireDefendant1Page() {
-    const { fileDirectionsQuestionaireDefendant1Page } = this.defendantResponsePageFactory;
-    await fileDirectionsQuestionaireDefendant1Page.verifyContent(this.ccdCaseData);
-    await fileDirectionsQuestionaireDefendant1Page.enterDetails();
-    await fileDirectionsQuestionaireDefendant1Page.submit();
+  private async processFileDirectionsQuestionaireDefendantSolicitor1Page() {
+    const { fileDirectionsQuestionaireDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDefendantSolicitor1Page.enterDetails();
+    await fileDirectionsQuestionaireDefendantSolicitor1Page.submit();
   }
 
-  private async processFileDirectionsQuestionaireDefendant2Page() {
-    const { fileDirectionsQuestionaireDefendant2Page } = this.defendantResponsePageFactory;
-    await fileDirectionsQuestionaireDefendant2Page.verifyContent(this.ccdCaseData);
-    await fileDirectionsQuestionaireDefendant2Page.enterDetails();
-    await fileDirectionsQuestionaireDefendant2Page.submit();
+  private async processFileDirectionsQuestionaireDefendantSolicitor2Page() {
+    const { fileDirectionsQuestionaireDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await fileDirectionsQuestionaireDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionaireDefendantSolicitor2Page.enterDetails();
+    await fileDirectionsQuestionaireDefendantSolicitor2Page.submit();
   }
 
-  private async processFixedRecoverableCostsPageDefendant1() {
-    const { fixedRecoverableCostsPageDefendant1 } = this.defendantResponsePageFactory;
-    await fixedRecoverableCostsPageDefendant1.verifyContent(this.ccdCaseData);
-    await fixedRecoverableCostsPageDefendant1.selectYes();
-    await fixedRecoverableCostsPageDefendant1.submit();
+  private async processFixedRecoverableCostsPageDefendantSolicitor1() {
+    const { fixedRecoverableCostsPageDefendantSolicitor1 } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsPageDefendantSolicitor1.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPageDefendantSolicitor1.selectYes();
+    await fixedRecoverableCostsPageDefendantSolicitor1.submit();
   }
 
-  private async processFixedRecoverableCostsPageDefendant2() {
-    const { fixedRecoverableCostsPageDefendant2 } = this.defendantResponsePageFactory;
-    await fixedRecoverableCostsPageDefendant2.verifyContent(this.ccdCaseData);
-    await fixedRecoverableCostsPageDefendant2.selectYes();
-    await fixedRecoverableCostsPageDefendant2.submit();
+  private async processFixedRecoverableCostsPageDefendantSolicitor2() {
+    const { fixedRecoverableCostsPageDefendantSolicitor2 } = this.defendantResponsePageFactory;
+    await fixedRecoverableCostsPageDefendantSolicitor2.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPageDefendantSolicitor2.selectYes();
+    await fixedRecoverableCostsPageDefendantSolicitor2.submit();
   }
 
-  private async processDisclosureOfNonElectronicDocumentsDefendant1Page() {
-    const { disclosureOfNonElectronicDocumentsDefendant1Page } = this.defendantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsDefendant1Page.verifyContent(this.ccdCaseData);
-    await disclosureOfNonElectronicDocumentsDefendant1Page.enterDetails();
-    await disclosureOfNonElectronicDocumentsDefendant1Page.submit();
+  private async processDisclosureOfNonElectronicDocumentsDefendantSolicitor1Page() {
+    const { disclosureOfNonElectronicDocumentsDefendantSolicitor1Page } =
+      this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor1Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor1Page.submit();
   }
 
-  private async processDisclosureOfNonElectronicDocumentsDefendant2Page() {
-    const { disclosureOfNonElectronicDocumentsDefendant2Page } = this.defendantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsDefendant2Page.verifyContent(this.ccdCaseData);
-    await disclosureOfNonElectronicDocumentsDefendant2Page.enterDetails();
-    await disclosureOfNonElectronicDocumentsDefendant2Page.submit();
+  private async processDisclosureOfNonElectronicDocumentsDefendantSolicitor2Page() {
+    const { disclosureOfNonElectronicDocumentsDefendantSolicitor2Page } =
+      this.defendantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor2Page.enterDetails();
+    await disclosureOfNonElectronicDocumentsDefendantSolicitor2Page.submit();
   }
 
-  private async processExpertsDefendant1Page() {
-    const { expertsDefendant1Page } = this.defendantResponsePageFactory;
-    await expertsDefendant1Page.verifyContent(this.ccdCaseData);
-    await expertsDefendant1Page.useExperts();
-    await expertsDefendant1Page.addNewExpert();
-    await expertsDefendant1Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
-    await expertsDefendant1Page.submit();
+  private async processExpertsDefendantSolicitor1Page() {
+    const { expertsDefendantSolicitor1Page: expertsDefendantSolicitor1Page } =
+      this.defendantResponsePageFactory;
+    await expertsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await expertsDefendantSolicitor1Page.useExperts();
+    await expertsDefendantSolicitor1Page.addNewExpert();
+    await expertsDefendantSolicitor1Page.enterExpertDetails();
+    await expertsDefendantSolicitor1Page.submit();
   }
 
-  private async processExpertsDefendant2Page() {
-    const { expertsDefendant2Page } = this.defendantResponsePageFactory;
-    await expertsDefendant2Page.verifyContent(this.ccdCaseData);
-    await expertsDefendant2Page.useExperts();
-    await expertsDefendant2Page.addNewExpert();
-    await expertsDefendant2Page.enterExpertDetails(partys.CLAIMANT_EXPERT_1);
-    await expertsDefendant2Page.submit();
+  private async processExpertsDefendantSolicitor2Page() {
+    const { expertsDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await expertsDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await expertsDefendantSolicitor2Page.useExperts();
+    await expertsDefendantSolicitor2Page.addNewExpert();
+    await expertsDefendantSolicitor2Page.enterExpertDetails();
+    await expertsDefendantSolicitor2Page.submit();
   }
 
-  private async processWitnessesDefendant1Page() {
-    const { witnessesDefendant1Page } = this.defendantResponsePageFactory;
-    await witnessesDefendant1Page.verifyContent(this.ccdCaseData);
-    await witnessesDefendant1Page.selectYesWitnesses();
-    await witnessesDefendant1Page.addWitness();
-    await witnessesDefendant1Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-    await witnessesDefendant1Page.submit();
+  private async processWitnessesDefendantSolicitor1Page() {
+    const { witnessesDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await witnessesDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await witnessesDefendantSolicitor1Page.selectYesWitnesses();
+    await witnessesDefendantSolicitor1Page.addWitness();
+    await witnessesDefendantSolicitor1Page.enterWitnessDetails();
+    await witnessesDefendantSolicitor1Page.submit();
   }
 
-  private async processWitnessesDefendant2Page() {
-    const { witnessesDefendant2Page } = this.defendantResponsePageFactory;
-    await witnessesDefendant2Page.verifyContent(this.ccdCaseData);
-    await witnessesDefendant2Page.selectYesWitnesses();
-    await witnessesDefendant2Page.addWitness();
-    await witnessesDefendant2Page.enterWitnessDetails(partys.DEFENDANT_1_WITNESS_1);
-    await witnessesDefendant2Page.submit();
+  private async processWitnessesDefendantSolicitor2Page() {
+    const { witnessesDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await witnessesDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await witnessesDefendantSolicitor2Page.selectYesWitnesses();
+    await witnessesDefendantSolicitor2Page.addWitness();
+    await witnessesDefendantSolicitor2Page.enterWitnessDetails();
+    await witnessesDefendantSolicitor2Page.submit();
   }
 
-  private async processLanguageDefendant1Page() {
-    const { languageDefendant1Page } = this.defendantResponsePageFactory;
-    await languageDefendant1Page.verifyContent(this.ccdCaseData);
-    await languageDefendant1Page.selectEnglishAndWelsh();
-    await languageDefendant1Page.submit();
+  private async processLanguageDefendantSolicitor1Page() {
+    const { languageDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await languageDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await languageDefendantSolicitor1Page.selectEnglishAndWelsh();
+    await languageDefendantSolicitor1Page.submit();
   }
 
-  private async processLanguageDefendant2Page() {
-    const { languageDefendant2Page } = this.defendantResponsePageFactory;
-    await languageDefendant2Page.verifyContent(this.ccdCaseData);
-    await languageDefendant2Page.selectEnglishAndWelsh();
-    await languageDefendant2Page.submit();
+  private async processLanguageDefendantSolicitor2Page() {
+    const { languageDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await languageDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await languageDefendantSolicitor2Page.selectEnglishAndWelsh();
+    await languageDefendantSolicitor2Page.submit();
   }
 
-  private async processHearingDefendant1Page() {
-    const { hearingDefendant1Page } = this.defendantResponsePageFactory;
-    await hearingDefendant1Page.verifyContent(this.ccdCaseData);
-    await hearingDefendant1Page.selectYesAvailabilityRequired();
-    await hearingDefendant1Page.addNewUnavailableDate();
-    await hearingDefendant1Page.selectSingleDate(1);
-    await hearingDefendant1Page.submit();
+  private async processHearingDefendantSolicitor1Page() {
+    const { hearingDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await hearingDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await hearingDefendantSolicitor1Page.selectYesAvailabilityRequired();
+    await hearingDefendantSolicitor1Page.addNewUnavailableDate();
+    await hearingDefendantSolicitor1Page.selectSingleDate();
+    await hearingDefendantSolicitor1Page.submit();
   }
 
-  private async processHearingDefendant2Page() {
-    const { hearingDefendant2Page } = this.defendantResponsePageFactory;
-    await hearingDefendant2Page.verifyContent(this.ccdCaseData);
-    await hearingDefendant2Page.selectYesAvailabilityRequired();
-    await hearingDefendant2Page.addNewUnavailableDate();
-    await hearingDefendant2Page.selectSingleDate(1);
-    await hearingDefendant2Page.submit();
+  private async processHearingDefendantSolicitor2Page() {
+    const { hearingDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await hearingDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await hearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
+    await hearingDefendantSolicitor2Page.addNewUnavailableDate();
+    await hearingDefendantSolicitor2Page.selectSingleDate();
+    await hearingDefendantSolicitor2Page.submit();
   }
 
-  private async processDraftDirectionsDefendant1Page() {
-    const { draftDirectionsDefendant1Page } = this.defendantResponsePageFactory;
-    await draftDirectionsDefendant1Page.verifyContent(this.ccdCaseData);
-    await draftDirectionsDefendant1Page.uploadEvidence();
-    await draftDirectionsDefendant1Page.submit();
+  private async processDraftDirectionsDefendantSolicitor1Page() {
+    const { draftDirectionsDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await draftDirectionsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await draftDirectionsDefendantSolicitor1Page.uploadEvidence();
+    await draftDirectionsDefendantSolicitor1Page.submit();
   }
 
-  private async processDraftDirectionsDefendant2Page() {
-    const { draftDirectionsDefendant2Page } = this.defendantResponsePageFactory;
-    await draftDirectionsDefendant2Page.verifyContent(this.ccdCaseData);
-    await draftDirectionsDefendant2Page.uploadEvidence();
-    await draftDirectionsDefendant2Page.submit();
+  private async processDraftDirectionsDefendantSolicitor2Page() {
+    const { draftDirectionsDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await draftDirectionsDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await draftDirectionsDefendantSolicitor2Page.uploadEvidence();
+    await draftDirectionsDefendantSolicitor2Page.submit();
   }
 
-  private async processRequestedCourtDefendant1Page() {
-    const { requestedCourtDefendant1Page } = this.defendantResponsePageFactory;
-    await requestedCourtDefendant1Page.verifyContent(this.ccdCaseData);
-    await requestedCourtDefendant1Page.selectCourtLocation();
-    await requestedCourtDefendant1Page.enterPreferredCourtReason();
-    await requestedCourtDefendant1Page.selectNoRemoteHearing();
-    await requestedCourtDefendant1Page.submit();
+  private async processRequestedCourtDefendantSolicitor1Page() {
+    const { requestedCourtDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await requestedCourtDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await requestedCourtDefendantSolicitor1Page.selectCourtLocation();
+    await requestedCourtDefendantSolicitor1Page.enterPreferredCourtReason();
+    await requestedCourtDefendantSolicitor1Page.selectNoRemoteHearing();
+    await requestedCourtDefendantSolicitor1Page.submit();
   }
 
-  private async processRequestedCourtDefendant2Page() {
-    const { requestedCourtDefendant2Page } = this.defendantResponsePageFactory;
-    await requestedCourtDefendant2Page.verifyContent(this.ccdCaseData);
-    await requestedCourtDefendant2Page.selectCourtLocation();
-    await requestedCourtDefendant2Page.enterPreferredCourtReason();
-    await requestedCourtDefendant2Page.selectNoRemoteHearing();
-    await requestedCourtDefendant2Page.submit();
+  private async processRequestedCourtDefendantSolicitor2Page() {
+    const { requestedCourtDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await requestedCourtDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await requestedCourtDefendantSolicitor2Page.selectCourtLocation();
+    await requestedCourtDefendantSolicitor2Page.enterPreferredCourtReason();
+    await requestedCourtDefendantSolicitor2Page.selectNoRemoteHearing();
+    await requestedCourtDefendantSolicitor2Page.submit();
   }
 
-  private async processHearingSupportDefendant1Page() {
-    const { hearingSupportDefendant1Page } = this.defendantResponsePageFactory;
-    await hearingSupportDefendant1Page.verifyContent(this.ccdCaseData);
-    await hearingSupportDefendant1Page.selectYes();
-    await hearingSupportDefendant1Page.enterSupportRequirementsAdditional();
-    await hearingSupportDefendant1Page.submit();
+  private async processHearingSupportDefendantSolicitor1Page() {
+    const { hearingSupportDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await hearingSupportDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await hearingSupportDefendantSolicitor1Page.selectYes();
+    await hearingSupportDefendantSolicitor1Page.enterSupportRequirementsAdditional();
+    await hearingSupportDefendantSolicitor1Page.submit();
   }
 
-  private async processHearingSupportDefendant2Page() {
-    const { hearingSupportDefendant2Page } = this.defendantResponsePageFactory;
-    await hearingSupportDefendant2Page.verifyContent(this.ccdCaseData);
-    await hearingSupportDefendant2Page.selectYes();
-    await hearingSupportDefendant2Page.enterSupportRequirementsAdditional();
-    await hearingSupportDefendant2Page.submit();
+  private async processHearingSupportDefendantSolicitor2Page() {
+    const { hearingSupportDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await hearingSupportDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await hearingSupportDefendantSolicitor2Page.selectYes();
+    await hearingSupportDefendantSolicitor2Page.enterSupportRequirementsAdditional();
+    await hearingSupportDefendantSolicitor2Page.submit();
   }
 
-  private async processVulnerabilityQuestionsDefendant1Page() {
-    const { vulnerabilityQuestionsDefendant1Page } = this.defendantResponsePageFactory;
-    await vulnerabilityQuestionsDefendant1Page.verifyContent(this.ccdCaseData);
-    await vulnerabilityQuestionsDefendant1Page.selectYes();
-    await vulnerabilityQuestionsDefendant1Page.enterVulnerabilityAdjustments();
-    await vulnerabilityQuestionsDefendant1Page.submit();
+  private async processVulnerabilityQuestionsDefendantSolicitor1Page() {
+    const { vulnerabilityQuestionsDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await vulnerabilityQuestionsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await vulnerabilityQuestionsDefendantSolicitor1Page.selectYes();
+    await vulnerabilityQuestionsDefendantSolicitor1Page.enterVulnerabilityAdjustments();
+    await vulnerabilityQuestionsDefendantSolicitor1Page.submit();
   }
 
-  private async processVulnerabilityQuestionsDefendant2Page() {
-    const { vulnerabilityQuestionsDefendant2Page } = this.defendantResponsePageFactory;
-    await vulnerabilityQuestionsDefendant2Page.verifyContent(this.ccdCaseData);
-    await vulnerabilityQuestionsDefendant2Page.selectYes();
-    await vulnerabilityQuestionsDefendant2Page.enterVulnerabilityAdjustments();
-    await vulnerabilityQuestionsDefendant2Page.submit();
+  private async processVulnerabilityQuestionsDefendantSolicitor2Page() {
+    const { vulnerabilityQuestionsDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await vulnerabilityQuestionsDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await vulnerabilityQuestionsDefendantSolicitor2Page.selectYes();
+    await vulnerabilityQuestionsDefendantSolicitor2Page.enterVulnerabilityAdjustments();
+    await vulnerabilityQuestionsDefendantSolicitor2Page.submit();
   }
 
-  private async processFurtherInformationDefendant1Page() {
-    const { furtherInformationDefendant1Page } = this.defendantResponsePageFactory;
-    await furtherInformationDefendant1Page.verifyContent(this.ccdCaseData);
-    await furtherInformationDefendant1Page.selectYes();
-    await furtherInformationDefendant1Page.enterFurtherInformation();
-    await furtherInformationDefendant1Page.submit();
+  private async processFurtherInformationDefendantSolicitor1Page() {
+    const { furtherInformationDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+    await furtherInformationDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await furtherInformationDefendantSolicitor1Page.selectYes();
+    await furtherInformationDefendantSolicitor1Page.enterFurtherInformation();
+    await furtherInformationDefendantSolicitor1Page.submit();
   }
 
-  private async processFurtherInformationDefendant2Page() {
-    const { furtherInformationDefendant2Page } = this.defendantResponsePageFactory;
-    await furtherInformationDefendant2Page.verifyContent(this.ccdCaseData);
-    await furtherInformationDefendant2Page.selectYes();
-    await furtherInformationDefendant2Page.enterFurtherInformation();
-    await furtherInformationDefendant2Page.submit();
+  private async processFurtherInformationDefendantSolicitor2Page() {
+    const { furtherInformationDefendantSolicitor2Page } = this.defendantResponsePageFactory;
+    await furtherInformationDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await furtherInformationDefendantSolicitor2Page.selectYes();
+    await furtherInformationDefendantSolicitor2Page.enterFurtherInformation();
+    await furtherInformationDefendantSolicitor2Page.submit();
   }
 
-  private async processStatementOfTruthDefendantResponseDefendant1Page() {
-    const { statementOfTruthDefendantResponseDefendant1Page } = this.defendantResponsePageFactory;
-    await statementOfTruthDefendantResponseDefendant1Page.verifyContent(this.ccdCaseData);
-    await statementOfTruthDefendantResponseDefendant1Page.enterDetails();
-    await statementOfTruthDefendantResponseDefendant1Page.submit();
+  private async processStatementOfTruthDefendantResponseDefendantSolicitor1Page() {
+    const { statementOfTruthDefendantResponseDefendantSolicitor1Page } =
+      this.defendantResponsePageFactory;
+    await statementOfTruthDefendantResponseDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await statementOfTruthDefendantResponseDefendantSolicitor1Page.enterDetails();
+    await statementOfTruthDefendantResponseDefendantSolicitor1Page.submit();
   }
 
-  private async processStatementOfTruthDefendantResponseDefendant2Page() {
-    const { statementOfTruthDefendantResponseDefendant2Page } = this.defendantResponsePageFactory;
-    await statementOfTruthDefendantResponseDefendant2Page.verifyContent(this.ccdCaseData);
-    await statementOfTruthDefendantResponseDefendant2Page.enterDetails();
-    await statementOfTruthDefendantResponseDefendant2Page.submit();
+  private async processStatementOfTruthDefendantResponseDefendantSolicitor2Page() {
+    const { statementOfTruthDefendantResponseDefendantSolicitor2Page } =
+      this.defendantResponsePageFactory;
+    await statementOfTruthDefendantResponseDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
+    await statementOfTruthDefendantResponseDefendantSolicitor2Page.enterDetails();
+    await statementOfTruthDefendantResponseDefendantSolicitor2Page.submit();
   }
 
   private async processSubmitDefendantResponsePage() {
