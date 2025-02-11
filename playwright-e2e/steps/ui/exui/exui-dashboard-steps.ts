@@ -1,9 +1,9 @@
-import BaseExuiSteps from '../../../base/base-exui-steps';
+import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import User from '../../../models/user';
 
 @AllMethodsStep()
-export default class ExuiDashboardSteps extends BaseExuiSteps {
+export default class ExuiDashboardSteps extends BaseExui {
   async AcceptCookies() {
     await this.exuiDashboardActions.acceptCookies();
   }
