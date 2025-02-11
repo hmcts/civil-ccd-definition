@@ -2,7 +2,7 @@ import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-s
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import {claimantSolicitorUser, defendantSolicitor1User} from '../../../config/users/exui-users';
+import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
