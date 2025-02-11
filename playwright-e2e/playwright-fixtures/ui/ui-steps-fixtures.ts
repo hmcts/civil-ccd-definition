@@ -30,31 +30,31 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   IdamSteps: async ({ _idamActions }, use) => {
     await use(new IdamSteps(_idamActions));
   },
-  ExuiDashboardSteps: async ({ _exuiDashboardActions, _idamActions, _testData }, use) => {
-    await use(new ExuiDashboardSteps(_exuiDashboardActions, _idamActions, _testData));
+  ExuiDashboardSteps: async ({ _exuiDashboardActions, _idamActions, _requestsFactory, _testData }, use) => {
+    await use(new ExuiDashboardSteps(_exuiDashboardActions, _idamActions, _requestsFactory, _testData));
   },
-  ClaimantSolicitorSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _testData }, use) => {
-    await use(new ClaimantSolcitorSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _testData));
+  ClaimantSolicitorSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolcitorSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData));
   },
-  ClaimantSolicitorSpecSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _testData }, use) => {
-    await use(new ClaimantSolicitorSpecSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _testData));
+  ClaimantSolicitorSpecSteps: async ({ _exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new ClaimantSolicitorSpecSteps(_exuiDashboardActions, _idamActions, _claimantSolicitor1ActionsFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor1Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor1Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData));
+  DefendantSolicitor1Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor1Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor1SpecSteps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor1SpecSteps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData));
+  DefendantSolicitor1SpecSteps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor1SpecSteps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor2Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor2Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData));
+  DefendantSolicitor2Steps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor2Steps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
   },
-  DefendantSolicitor2SpecSteps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData }, use) => {
-    await use(new DefendantSolicitor2SpecSteps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _testData));
+  DefendantSolicitor2SpecSteps: async ({ _exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new DefendantSolicitor2SpecSteps(_exuiDashboardActions, _idamActions, _defendantActionsFactory, _requestsFactory, _testData));
   },
-  CaseworkerSteps: async ({ _exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _testData }, use) => {
-    await use(new CaseworkerSteps(_exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _testData));
+  CaseworkerSteps: async ({ _exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new CaseworkerSteps(_exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData));
   },
-  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeActionsFactory, _testData }, use) => {
-    await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _testData));
+  JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData));
   }
 });
