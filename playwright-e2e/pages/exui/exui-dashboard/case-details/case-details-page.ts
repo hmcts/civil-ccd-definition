@@ -73,8 +73,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   @TruthyParams(classKey, 'caseId')
   async goToCaseDetails(caseId: number) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
-    // await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, {force:true});
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`);
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, {force:true});
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
