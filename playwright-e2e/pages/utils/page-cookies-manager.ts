@@ -20,6 +20,7 @@ export default class PageCookiesManager extends BasePage {
     console.log(
       `Authenticating ${user.name} with email ${user.email} by setting cookies stored in path: ${user.cookiesPath}`,
     );
+    await super.clearCookies();
     await super.addCookies(cookies);
   }
 
