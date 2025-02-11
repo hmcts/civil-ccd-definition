@@ -46,7 +46,7 @@ export default abstract class BaseExui extends BaseApi {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
           await this.exuiDashboardActions.createCase(ccdEvent);
         } else {
-          this.exuiDashboardActions.startExuiEvent(ccdEvent);
+          await this.exuiDashboardActions.startExuiEvent(ccdEvent);
         }
         await actions();
         break;
