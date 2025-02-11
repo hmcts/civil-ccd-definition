@@ -2,14 +2,14 @@ import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-s
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { claimantSolicitorUser } from '../../../config/users/exui-users';
+import {claimantSolicitorUser, defendantSolicitor1User} from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class ClaimantSolcitorSteps extends BaseExui {
+export default class ClaimantSolicitorSteps extends BaseExui {
   private claimantSolicitorActionsFactory: ClaimantSolicitorActionsFactory;
 
   constructor(
@@ -408,7 +408,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.defenceResponseDocumentPage();
         await claimantResponseActions.fileDirectionsQuestionairePage();
         await claimantResponseActions.fixedRecoverableCostsPage();
-        await claimantResponseActions.disclosureOfNonElectronicDocumentsSpecPage();
+        await claimantResponseActions.disclosureOfNonElectronicDocumentsPage();
         await claimantResponseActions.expertsPage();
         await claimantResponseActions.witnessesPage();
         await claimantResponseActions.languagePage();
@@ -421,7 +421,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.submitPage();
         await claimantResponseActions.confirmPage();
       },
-      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
