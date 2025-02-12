@@ -60,6 +60,7 @@ Running Crossbrowser tests:
 
 Install saucelabs on local machine
 
+
 ```bash
 $ yarn test:crossbrowser
 ```
