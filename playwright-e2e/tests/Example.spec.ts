@@ -1,34 +1,32 @@
 import { test } from '../playwright-fixtures/index';
 
-test('Api Spec Test Example', async ({
-  ApiCreateClaimSpecSteps,
-  ApiServiceRequestsSteps,
-  ApiCaseRoleAssignmentSteps,
-  IdamSteps,
-  ExuiDashboardSteps,
+test.skip('Test 1v1 example', async ({
+  ClaimantSolicitorSteps,
+  DefendantSolicitor1Steps,
+  ClaimantSolicitorApiSteps,
+  CaseRoleAssignmentApiSteps,
 }) => {
-  await ApiCreateClaimSpecSteps.Create1v1Claim();
-  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await ExuiDashboardSteps.GoToCaseDetails();
-  await IdamSteps.DefendantSolicitor1Login();
-  await ExuiDashboardSteps.GoToCaseDetails();
+  await ClaimantSolicitorSteps.Login();
+  await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
+  await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+  await ClaimantSolicitorSteps.NotifyClaim1v1();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
+  await ClaimantSolicitorSteps.NotifyClaimDetails1v1();
+  await DefendantSolicitor1Steps.Login();
+  await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
+  await ClaimantSolicitorSteps.Login();
+  await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
 });
 
-test('Api Unspec Test Example', async ({
-  ApiCreateClaimSteps,
-  ApiServiceRequestsSteps,
+test.skip('Api spec test example', async ({
+  ClaimantSolicitorSpecApiSteps,
   IdamSteps,
-  NotifyClaimSteps,
-  ApiCaseRoleAssignmentSteps,
-  NotifyClaimDetailsSteps,
+  CaseRoleAssignmentApiSteps,
+  ExuiDashboardSteps,
 }) => {
-  await ApiCreateClaimSteps.Create1v1Claim();
-  await ApiServiceRequestsSteps.MakePaymentForClaimIssue();
-  await IdamSteps.ClaimantSolicitorLogin();
-  await NotifyClaimSteps.NotifyClaim1v1();
-  await ApiCaseRoleAssignmentSteps.AssignDefendantCaseRoles1v1();
-  await NotifyClaimDetailsSteps.NotifyClaimDetails1v1();
+  await ClaimantSolicitorSpecApiSteps.CreateClaimSmallTrack1v1();
+  await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
   await IdamSteps.DefendantSolicitor1Login();
+  await ExuiDashboardSteps.GoToCaseDetails();
 });
