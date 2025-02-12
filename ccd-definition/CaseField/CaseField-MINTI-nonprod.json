@@ -179,6 +179,23 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingListedDynamicListLabel",
+    "Label": "What type of hearing have you listed?",
+    "FieldType": "Label",
+    "FieldTypeParameter": "ConfirmListingTickBox",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingListedDynamicList",
+    "Label": "Hearing type",
+    "FieldType": "DynamicRadioList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "confirmListingTickBox",
     "Label": " ",
     "FieldType": "MultiSelectList",
