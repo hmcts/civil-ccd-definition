@@ -1,7 +1,9 @@
 import BaseAction from '../../../../../base/base-test-data.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import TestData from '../../../../../models/test-data.ts';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory.ts';
 
+@AllMethodsStep()
 export default class CreateClaimSpecActions extends BaseAction {
   private createClaimPageFactory: CreateClaimPageFactory;
 

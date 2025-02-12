@@ -1,11 +1,13 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
+import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
 import { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
+@AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private testingSupportUrl = `${urls.civilService}/testing-support`;
 
