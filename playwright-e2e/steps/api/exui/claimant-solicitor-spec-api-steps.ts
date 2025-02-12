@@ -48,6 +48,87 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
 
+  async CreateClaimSmallTrack2v1() {
+    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
+    await this.setupUserData(claimantSolicitorUser);
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack2v1();
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+    );
+    const eventData = await super.validatePages(
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      claimantSolicitorUser,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      CaseState.PENDING_CASE_ISSUED,
+      eventData,
+      eventToken,
+    );
+    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, eventCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+  }
+
+  async CreateClaimSmallTrack1v2SS() {
+    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
+    await this.setupUserData(claimantSolicitorUser);
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack1v2SS();
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+    );
+    const eventData = await super.validatePages(
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      claimantSolicitorUser,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      CaseState.PENDING_CASE_ISSUED,
+      eventData,
+      eventToken,
+    );
+    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, eventCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+  }
+
+  async CreateClaimSmallTrack1v2DS() {
+    const { createClaimSpecDataBuilder } = this.claimantSolicitorDataBuilderFactory;
+    await this.setupUserData(claimantSolicitorUser);
+    const createClaimEventData = await createClaimSpecDataBuilder.buildSmallTrack1v2DS();
+    const { ccdRequests } = this.requestsFactory;
+    const eventToken = await ccdRequests.startEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+    );
+    const eventData = await super.validatePages(
+      ccdEvents.CREATE_CLAIM_SPEC,
+      createClaimEventData,
+      claimantSolicitorUser,
+      eventToken,
+    );
+    const eventCaseData = await ccdRequests.submitEvent(
+      claimantSolicitorUser,
+      ccdEvents.CREATE_CLAIM_SPEC,
+      CaseState.PENDING_CASE_ISSUED,
+      eventData,
+      eventToken,
+    );
+    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await this.fetchAndSetCCDCaseData(claimantSolicitorUser, eventCaseData.id);
+    UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
+  }
+
   async MakePaymentForClaimIssue() {
     const { serviceRequestDataBuilder } = this.claimantSolicitorDataBuilderFactory;
     const paidServiceRequestDTO = await serviceRequestDataBuilder.buildPaidServiceRequestDTO(

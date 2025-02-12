@@ -122,7 +122,8 @@ export default class ClaimantResponseSpecActions extends BaseAction {
   async witnessesPage() {
     const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
-    await witnessesPage.addWitness();
+    await witnessesPage.selectYesWitnesses();
+    await witnessesPage.addWitness()
     await witnessesPage.enterWitnessDetails();
     await witnessesPage.submit();
   }
