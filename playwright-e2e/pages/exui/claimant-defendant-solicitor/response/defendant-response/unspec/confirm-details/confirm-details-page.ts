@@ -29,7 +29,7 @@ export default class ConfirmDetailsPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications(
+    await super.runVerifications(
       [super.verifyHeadings(ccdCaseData), super.expectText(inputs.dateOfBirth.label, { index: 0 })],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
