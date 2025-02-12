@@ -829,13 +829,18 @@ export default abstract class BasePage {
   protected async expectTableValueByRowName(
     rowName: string,
     value: string | number,
-    options: { message?: string; timeout?: number } = {},
+    options: { message?: string; timeout?: number; index?: number; valueIndex?: number } = {},
   ) {
-    const rowLocator = this.page.locator('tr', {
-      has: this.page.locator(`td:text-is("${rowName}"), th:text-is("${rowName}")`),
-    });
-    const textLocator = rowLocator.locator('td').nth(1);
-    await pageExpect(textLocator, { message: options.message }).toHaveText(value.toString(), {
+    const rowIndex = options.index ?? 0;
+    const valueIndex = options.valueIndex ?? 1;
+    const rowLocator = this.page
+      .locator('tr', {
+        has: this.page.locator(`*:has-text("${rowName}")`),
+      })
+      .nth(rowIndex);
+
+    const valueLocator = rowLocator.locator('td').nth(valueIndex);
+    await pageExpect(valueLocator, { message: options.message }).toHaveText(value.toString(), {
       timeout: options.timeout,
     });
   }
