@@ -1,5 +1,5 @@
 export const subheadings = {
-  emailForDefendantLegalRep: "Email for defendant’s legal representative",
+  emailForDefendantLegalRep: 'Email for defendant’s legal representative',
 };
 
 export const paragraphs = {
