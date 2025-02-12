@@ -143,6 +143,31 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "queriesStatus",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "court-officer-order",
+          "ctsc",
+          "nbc-team-leader",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmLatestQuery",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
