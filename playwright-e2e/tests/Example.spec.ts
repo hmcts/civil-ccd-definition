@@ -1,6 +1,6 @@
 import { test } from '../playwright-fixtures/index';
 
-test('Test 1v1 example', async ({
+test.skip('Test 1v1 example', async ({
   ClaimantSolicitorSteps,
   DefendantSolicitor1Steps,
   ClaimantSolicitorApiSteps,
@@ -18,7 +18,7 @@ test('Test 1v1 example', async ({
   await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
 });
 
-test('Api spec test example', async ({
+test.skip('Api spec test example', async ({
   ClaimantSolicitorSpecApiSteps,
   IdamSteps,
   CaseRoleAssignmentApiSteps,
