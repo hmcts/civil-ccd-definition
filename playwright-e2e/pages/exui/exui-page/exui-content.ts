@@ -16,7 +16,10 @@ export const components = {
     selector: '.spinner-container',
   },
   error: {
-    selector: 'div.error-summary.ng-star-inserted',
+    selector: "div[aria-labelledby='edit-case-event_error-summary-heading']",
+  },
+  fieldError: {
+    selector: "div[data-module='govuk-error-summary']",
   },
 };
 
