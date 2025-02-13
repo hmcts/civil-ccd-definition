@@ -180,7 +180,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingListedDynamicListLabel",
-    "Label": "What type of hearing have you listed?",
+    "Label": "## What type of hearing have you listed?",
     "FieldType": "Label",
     "FieldTypeParameter": "ConfirmListingTickBox",
     "SecurityClassification": "Public",
