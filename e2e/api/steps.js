@@ -1582,6 +1582,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete caseData['businessProcess'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -2000,7 +2001,7 @@ const clearHearingLocationData = (responseBody) => {
 };
 
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondentSolicitor2Reference'];

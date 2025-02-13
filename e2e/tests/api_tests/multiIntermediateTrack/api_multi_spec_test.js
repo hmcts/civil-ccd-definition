@@ -13,7 +13,7 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
 }
 
-Scenario.skip('1v1 full defence Multi claim Specified @api-nonprod-specified', async ({api_spec}) => {
+Scenario('1v1 full defence Multi claim Specified @api-nonprod-specified', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);
