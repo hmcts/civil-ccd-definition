@@ -79,10 +79,11 @@ export default [
       'playwright-e2e/pages/**/*fragment.ts',
       'playwright-e2e/steps/**/*steps.ts',
       'playwright-e2e/data-builders/**/*data-builder.ts',
+      'playwright-e2e/data-builders/**/*actions.ts',
       'playwright-e2e/base/base-page.ts',
       'playwright-e2e/base/base-requests.ts',
-      'playwright-e2e/base/base-api-steps.ts',
-      'playwright-e2e/base/base-exui-steps.ts',
+      'playwright-e2e/base/base-api.ts',
+      'playwright-e2e/base/base-exui.ts',
     ],
     rules: {
       'customEslintPlugin/prefer-step-decorator': 'warn',
