@@ -25,7 +25,9 @@
           "court-officer-order",
           "ctsc",
           "nbc-team-leader",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
       }
@@ -52,7 +54,6 @@
           "court-officer-order",
           "ctsc",
           "nbc-team-leader",
-          "CITIZEN-CLAIMANT-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
