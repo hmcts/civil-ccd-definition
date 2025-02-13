@@ -1645,6 +1645,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
     if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
