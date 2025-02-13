@@ -1527,6 +1527,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete caseData['businessProcess'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
@@ -1576,6 +1577,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
     if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
@@ -1932,7 +1934,7 @@ const clearHearingLocationData = (responseBody) => {
 };
 
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondentSolicitor2Reference'];
