@@ -120,9 +120,9 @@ export default class CaseDataHelper {
       case partys.DEFENDANT_1_LITIGATION_FRIEND:
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
-        return 'EX1 1JG';
-      case partys.DEFENDANT_SOLICITOR_1:
         return 'B1 1AA';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return 'EX1 1JG';
       case partys.DEFENDANT_SOLICITOR_2:
         return 'M4 5DL';
     }

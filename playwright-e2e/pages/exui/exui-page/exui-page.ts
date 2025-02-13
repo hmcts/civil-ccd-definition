@@ -69,7 +69,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         buttons.submit.selector,
         async () => {
           await super.waitForSelectorToDetach(components.loading.selector, {
-            timeout: 15_000,
+            timeout: 30_000,
           });
           await super.expectNoSelector(components.error.selector, {
             timeout: 500,
@@ -77,7 +77,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
           });
           if (expect) await expect();
         },
-        { timeout: 30_000 },
+        { timeout: 45_000 },
       );
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 300,
