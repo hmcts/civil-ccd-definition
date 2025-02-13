@@ -1,6 +1,6 @@
 import { test } from '../../playwright-fixtures/index';
 
-test('Test 2v1 small track spec', async ({
+test('2v1 Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
   ClaimantSolicitorSpecSteps,
   DefendantSolicitor1SpecSteps,
   ClaimantSolicitorApiSteps,
