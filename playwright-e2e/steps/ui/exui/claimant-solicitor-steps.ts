@@ -9,7 +9,7 @@ import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class ClaimantSolcitorSteps extends BaseExui {
+export default class ClaimantSolicitorSteps extends BaseExui {
   private claimantSolicitorActionsFactory: ClaimantSolicitorActionsFactory;
 
   constructor(
@@ -408,7 +408,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.defenceResponseDocumentPage();
         await claimantResponseActions.fileDirectionsQuestionairePage();
         await claimantResponseActions.fixedRecoverableCostsPage();
-        await claimantResponseActions.disclosureOfNonElectronicDocumentsSpecPage();
+        await claimantResponseActions.disclosureOfNonElectronicDocumentsPage();
         await claimantResponseActions.expertsPage();
         await claimantResponseActions.witnessesPage();
         await claimantResponseActions.languagePage();
@@ -421,7 +421,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.submitPage();
         await claimantResponseActions.confirmPage();
       },
-      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
