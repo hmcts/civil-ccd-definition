@@ -109,13 +109,14 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.notificationsPage();
         await createClaimActions.claimantSolicitorOrganisationPage();
         await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
+        await createClaimActions.addAnotherClaimantPage();
+        await createClaimActions.secondClaimantPage();
+        await createClaimActions.secondClaimantLitigationFriendPage();
         await createClaimActions.defendantPage();
         await createClaimActions.legalRepresentationPage();
         await createClaimActions.defendantSolicitorOrganisationPage();
         await createClaimActions.defendantSolicitorServiceAddressPage();
         await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.noAddAnotherDefendantPage();
         await createClaimActions.claimTypePage();
         await createClaimActions.personalInjuryTypePage();
         await createClaimActions.detailsPage();
