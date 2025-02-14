@@ -27,7 +27,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
   }
 
-  async SmallTrackFullDefence1v2DSDefendantSolicitor2() {
+  async RespondSmallTrackFullDefence1v2DSDefendantSolicitor2() {
     await this.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
