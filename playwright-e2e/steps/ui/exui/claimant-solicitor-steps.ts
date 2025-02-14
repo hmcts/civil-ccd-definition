@@ -9,7 +9,7 @@ import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class ClaimantSolcitorSteps extends BaseExui {
+export default class ClaimantSolicitorSteps extends BaseExui {
   private claimantSolicitorActionsFactory: ClaimantSolicitorActionsFactory;
 
   constructor(
@@ -109,13 +109,14 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await createClaimActions.notificationsPage();
         await createClaimActions.claimantSolicitorOrganisationPage();
         await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
+        await createClaimActions.addAnotherClaimantPage();
+        await createClaimActions.secondClaimantPage();
+        await createClaimActions.secondClaimantLitigationFriendPage();
         await createClaimActions.defendantPage();
         await createClaimActions.legalRepresentationPage();
         await createClaimActions.defendantSolicitorOrganisationPage();
         await createClaimActions.defendantSolicitorServiceAddressPage();
         await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.noAddAnotherDefendantPage();
         await createClaimActions.claimTypePage();
         await createClaimActions.personalInjuryTypePage();
         await createClaimActions.detailsPage();
@@ -408,7 +409,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.defenceResponseDocumentPage();
         await claimantResponseActions.fileDirectionsQuestionairePage();
         await claimantResponseActions.fixedRecoverableCostsPage();
-        await claimantResponseActions.disclosureOfNonElectronicDocumentsSpecPage();
+        await claimantResponseActions.disclosureOfNonElectronicDocumentsPage();
         await claimantResponseActions.expertsPage();
         await claimantResponseActions.witnessesPage();
         await claimantResponseActions.languagePage();
@@ -421,7 +422,7 @@ export default class ClaimantSolcitorSteps extends BaseExui {
         await claimantResponseActions.submitPage();
         await claimantResponseActions.confirmPage();
       },
-      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
