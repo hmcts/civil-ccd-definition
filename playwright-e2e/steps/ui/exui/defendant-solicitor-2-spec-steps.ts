@@ -2,7 +2,7 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { defendantSolicitor2User } from '../../../config/users/exui-users';
+import { civilAdminUser, defendantSolicitor2User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
@@ -28,6 +28,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
   }
 
   async SmallTrackFullDefence1v2DSDefendantSolicitor2() {
+    await this.fetchAndSetCCDCaseData(civilAdminUser, 1739526814685665);
     await this.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
