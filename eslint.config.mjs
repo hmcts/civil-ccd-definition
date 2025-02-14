@@ -83,7 +83,7 @@ export default [
       'playwright-e2e/base/base-page.ts',
       'playwright-e2e/base/base-requests.ts',
       'playwright-e2e/base/base-api.ts',
-      'playwright-e2e/base/base-exui-steps.ts',
+      'playwright-e2e/base/base-exui.ts',
     ],
     rules: {
       'customEslintPlugin/prefer-step-decorator': 'warn',
