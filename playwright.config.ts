@@ -1,3 +1,4 @@
+import playwrightSpeeds from "./playwright-e2e/constants/playwright-test-speeds.ts";
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
 import os from 'node:os';
@@ -43,7 +44,7 @@ export default defineConfig({
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
     launchOptions: {
-      slowMo: process.env.CI ? 200 : 500,
+      slowMo: process.env.PLAYWRIGHT_SPEED ? playwrightSpeeds.MEDIUM.speedDuration : playwrightSpeeds.FAST.speedDuration,
     },
   },
   projects: [

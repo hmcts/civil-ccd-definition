@@ -26,6 +26,7 @@ const config = {
     actionTimeout: 25_000,
     showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
     retries: process.env.PLAYWRIGHT_RETRIES ? parseInt(process.env.PLAYWRIGHT_RETRIES) : undefined,
+    testSpeed: parseInt(process.env.PLAYWRIGHT_SPEED),
   },
 };
 
