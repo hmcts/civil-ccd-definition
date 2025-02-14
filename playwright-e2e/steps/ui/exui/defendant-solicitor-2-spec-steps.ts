@@ -2,7 +2,7 @@ import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard
 import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { civilAdminUser, defendantSolicitor2User } from '../../../config/users/exui-users';
+import { defendantSolicitor2User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';

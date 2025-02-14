@@ -1,11 +1,7 @@
 import { AllMethodsStep } from '../../decorators/test-steps';
 import User from '../../models/user';
 import BaseApi from '../../base/base-api';
-import {
-  civilAdminUser,
-  defendantSolicitor1User,
-  defendantSolicitor2User,
-} from '../../config/users/exui-users';
+import { defendantSolicitor1User, defendantSolicitor2User } from '../../config/users/exui-users';
 import CaseRole from '../../enums/case-role';
 import UserAssignedCasesHelper from '../../helpers/user-assigned-cases-helper';
 
