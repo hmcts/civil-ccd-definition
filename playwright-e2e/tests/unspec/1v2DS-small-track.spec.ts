@@ -15,6 +15,7 @@ test('1v2 Different Solicitors UnSpec Small track Defendant Full Defence Claiman
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
     await ClaimantSolicitorSteps.NotifyClaim1v2DS();
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant2();
     await ClaimantSolicitorSteps.NotifyClaimDetails1v2DS();
     await DefendantSolicitor1Steps.Login();
     await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v2DS();
