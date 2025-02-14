@@ -2,9 +2,11 @@ import { Page } from 'playwright-core';
 import BasePage from '../../../../base/base-page';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { inputs, subheadings } from './statement-of-truth-content';
+import { inputs } from './statement-of-truth-content';
 import StringHelper from '../../../../helpers/string-helper';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
 
+@AllMethodsStep()
 export default class StatementOfTruthFragment extends ExuiPage(BasePage) {
   private solicitorParty: Party;
 
