@@ -172,6 +172,8 @@ ccd:
         DATA_STORE_DEFAULT_LOG_LEVEL: WARN
         CASE_DATA_ISSUE_LOG_LEVEL: WARN
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
+        CCD_MULTIPARTY_CASE_TYPES: CIVIL
+        CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
