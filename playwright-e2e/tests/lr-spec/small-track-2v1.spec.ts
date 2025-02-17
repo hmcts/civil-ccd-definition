@@ -1,17 +1,17 @@
 import { test } from '../../playwright-fixtures/index';
 
-test('Test 1v1 spec example', async ({
+test('2v1 Specified Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
   ClaimantSolicitorSpecSteps,
   DefendantSolicitor1SpecSteps,
   ClaimantSolicitorApiSteps,
   CaseRoleAssignmentApiSteps,
 }) => {
   await ClaimantSolicitorSpecSteps.Login();
-  await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v1();
+  await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack2v1();
   await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
   await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
   await DefendantSolicitor1SpecSteps.Login();
-  await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v1();
+  await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence2v1();
   await ClaimantSolicitorSpecSteps.Login();
-  await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v1();
+  await ClaimantSolicitorSpecSteps.SmallClaimIntentToProceed2v1();
 });
