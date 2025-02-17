@@ -238,6 +238,12 @@ const claimDetails = (claimTrack: ClaimTrack) => ({
   },
   InterestSummary: {},
   PbaNumber: {},
+  FixedCommencementCosts: {
+    fixedCosts: {
+      claimFixedCosts: 'Yes',
+      fixedCostAmount: '10000',
+    },
+  },
 });
 
 const statementOfTruth = {
