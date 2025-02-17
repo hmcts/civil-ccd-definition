@@ -65,6 +65,6 @@ export default abstract class BaseExui extends BaseApi {
     if (verifySuccessEvent) this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
-    await this.fetchAndSetCCDCaseData(civilAdminUser, this.ccdCaseData.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
   }
 }

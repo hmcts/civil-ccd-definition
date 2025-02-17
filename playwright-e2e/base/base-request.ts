@@ -236,8 +236,8 @@ export default abstract class BaseRequest {
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToContain(
-    partialObject: Record<string, unknown> | Array<unknown>,
-    responseJson: Record<string, unknown>,
+    partialObject: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(responseJson, options.message).toMatchObject(partialObject);

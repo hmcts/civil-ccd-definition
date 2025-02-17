@@ -13,5 +13,5 @@ test('2v1 Specified Small Track Defendant Full Defence Claimant Intent To Procee
   await DefendantSolicitor1SpecSteps.Login();
   await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence2v1();
   await ClaimantSolicitorSpecSteps.Login();
-  await ClaimantSolicitorSpecSteps.SmallClaimIntentToProceed2v1();
+  await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed2v1();
 });
