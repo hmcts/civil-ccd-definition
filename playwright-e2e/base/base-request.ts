@@ -197,7 +197,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToHaveProperty(
     keyPath: string,
-    responseJson: Record<string, unknown>,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -210,7 +210,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToNotHaveProperty(
     keyPath: string,
-    responseJson: Record<string, unknown>,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -223,8 +223,8 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath', 'value')
   protected async expectResponseJsonToHavePropertyValue(
     keyPath: string,
-    value: unknown,
-    responseJson: Record<string, unknown>,
+    value: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -245,8 +245,8 @@ export default abstract class BaseRequest {
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToEqual(
-    object: Record<string, unknown> | Array<unknown>,
-    responseJson: Record<string, unknown>,
+    object: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(responseJson, options.message).toEqual(object);
