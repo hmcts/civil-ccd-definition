@@ -31,7 +31,7 @@ declare global {
       XUI_S2S_SECRET: string;
       PLAYWRIGHT_RUN_SETUP: string;
       PLAYWRIGHT_UNASSIGN_CASES: string;
-      PLAYWRIGHT_SPEED: string;
+      PLAYWRIGHT_TEST_SPEED: string;
       PLAYWRIGHT_RETRIES: string;
     }
   }
