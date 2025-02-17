@@ -503,7 +503,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_EXPERT_2,
+      partys.DEFENDANT_2_EXPERT_1,
     );
   }
 
@@ -539,7 +539,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_WITNESS_2,
+      partys.DEFENDANT_2_WITNESS_1,
     );
   }
 
@@ -557,7 +557,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_WITNESS_2,
+      partys.DEFENDANT_2_WITNESS_1,
     );
   }
 
