@@ -1,11 +1,13 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
+import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
 import { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
+@AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private testingSupportUrl = `${urls.civilService}/testing-support`;
 
@@ -39,7 +41,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 100,
+      retries: 50,
       retryTimeInterval: 5000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
@@ -63,7 +65,9 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async updatePaymentForClaimIssue(user: User, serviceRequestDTO: any) {
-    console.log(`Updating payment for claim issue, caseId: ${serviceRequestDTO.id}...`);
+    console.log(
+      `Updating payment for claim issue, caseId: ${serviceRequestDTO.ccd_case_number}...`,
+    );
     const url = `${urls.civilService}/service-request-update-claim-issued`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),

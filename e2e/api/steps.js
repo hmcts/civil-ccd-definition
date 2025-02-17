@@ -40,6 +40,7 @@ const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmit
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 
 const data = {
@@ -83,7 +84,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
@@ -100,7 +101,9 @@ const data = {
   STAY_CASE: () => stayCase.stayCase(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdateDamages(),
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
-  DISMISS_CASE: () => dismissCase.dismissCaseDamages()
+  DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel)
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
@@ -1201,7 +1204,7 @@ module.exports = {
     }
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
+  scheduleHearing: async (user, allocatedTrack, isMinti = false) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -1210,7 +1213,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
 
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
@@ -1483,11 +1486,63 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
 
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Your message has been sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Reply sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
 
 };
 
 // Functions
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
+};
+
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
@@ -1527,10 +1582,12 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete caseData['businessProcess'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
@@ -1540,6 +1597,19 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.allocatedTrack = caseData.allocatedTrack;
     responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
+
+  if(eventName === 'SEND_AND_REPLY') {
+    if (pageId === 'sendAndReplyOption') {
+      if (typeof caseData.lastMessage !== 'undefined') {
+        responseBody.data.lastMessageJudgeLabel = caseData.lastMessageJudgeLabel;
+        responseBody.data.lastMessage = caseData.lastMessage;
+        responseBody.data.lastMessageAllocatedTrack = caseData.lastMessageAllocatedTrack;
+      }
+
+      delete responseBody.data['messageHistory'];
+    }
+  }
+
   if(sdoR2Flag){
     delete responseBody.data['smallClaimsFlightDelayToggle'];
     delete responseBody.data['smallClaimsFlightDelay'];
@@ -1575,6 +1645,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
     if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
@@ -1931,7 +2002,7 @@ const clearHearingLocationData = (responseBody) => {
 };
 
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondentSolicitor2Reference'];
