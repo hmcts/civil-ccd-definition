@@ -193,9 +193,10 @@ export default class DefendantResponseActions extends BaseAction {
   async hearingDefendantSolicitor2Page() {
     const { hearingDefendantSolicitor2Page } = this.defendantResponsePageFactory;
     await hearingDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
-    await hearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
-    await hearingDefendantSolicitor2Page.addNewUnavailableDate();
-    await hearingDefendantSolicitor2Page.selectSingleDate();
+    await hearingDefendantSolicitor2Page.selectNoAvailabilityRequired();
+    // await hearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
+    // await hearingDefendantSolicitor2Page.addNewUnavailableDate();
+    // await hearingDefendantSolicitor2Page.selectSingleDate();
     await hearingDefendantSolicitor2Page.submit();
   }
 
