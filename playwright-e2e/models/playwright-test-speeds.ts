@@ -1,7 +1,6 @@
-import PlaywrightSpeed from "../enums/playwright-speed.ts";
 
 export type TestSpeed = {
-  speed: PlaywrightSpeed;
+  speed: 'fast' | 'medium' | 'slow'
   speedDuration: number;
 };
 

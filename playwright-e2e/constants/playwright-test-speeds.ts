@@ -1,17 +1,16 @@
-import PlaywrightSpeed from "../enums/playwright-speed.ts";
 import PlaywrightTestSpeeds from "../models/playwright-test-speeds.ts";
 
 const playwrightSpeeds : PlaywrightTestSpeeds = {
   SLOW: {
-    speed : PlaywrightSpeed.SLOW,
+    speed : "slow",
     speedDuration: 1000
   },
   MEDIUM: {
-    speed : PlaywrightSpeed.MEDIUM,
+    speed : "medium",
     speedDuration: 500
   },
   FAST: {
-    speed : PlaywrightSpeed.FAST,
+    speed : "fast",
     speedDuration: 0
   }
 }
