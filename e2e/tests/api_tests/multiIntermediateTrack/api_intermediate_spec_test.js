@@ -61,11 +61,11 @@ Scenario('1v2  full defence Intermediate claim Specified same solicitor', async 
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO','AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
-  await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
+  // await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
+  // await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
 AfterSuite(async  ({api_spec}) => {
-  await api_spec.cleanUp();
+ // await api_spec.cleanUp();
 });
 
