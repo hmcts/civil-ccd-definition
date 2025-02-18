@@ -12,19 +12,14 @@
       },
       {
         "UserRoles": [
-          {
-            "UserRoles": [
-              "CITIZEN-CLAIMANT-PROFILE",
-              "CITIZEN-DEFENDANT-PROFILE",
-              "cui-nbc-profile",
-              "hearing-schedule-access",
-              "judge-profile",
-              "legal-adviser",
-              "GS_profile",
-              "caseworker-civil-solicitor"
-            ],
-            "CRUD": "R"
-          }
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "cui-nbc-profile",
+          "hearing-schedule-access",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
