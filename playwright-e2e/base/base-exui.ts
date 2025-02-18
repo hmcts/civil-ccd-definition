@@ -1,6 +1,5 @@
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
-import { civilAdminUser } from '../config/users/exui-users';
 import ccdEvents from '../constants/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
