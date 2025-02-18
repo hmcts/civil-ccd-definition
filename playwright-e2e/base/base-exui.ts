@@ -36,7 +36,8 @@ export default abstract class BaseExui extends BaseApi {
 
   @Step(classKey)
   async retryExuiEvent(
-    actions: () => Promise<void>,
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
     { retries = 1, verifySuccessEvent = true, camundaProcess = true } = {},
@@ -48,7 +49,7 @@ export default abstract class BaseExui extends BaseApi {
         } else {
           await this.exuiDashboardActions.startExuiEvent(ccdEvent);
         }
-        await actions();
+        await eventActions();
         break;
       } catch (error) {
         if (retries <= 0) throw error;
@@ -57,6 +58,7 @@ export default abstract class BaseExui extends BaseApi {
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
+    await confirmActions();
     if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
       const caseId = await this.exuiDashboardActions.grabCaseNumber();
       super.setCCDCaseData = { id: caseId };
