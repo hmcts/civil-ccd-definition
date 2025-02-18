@@ -7,7 +7,7 @@ export const subheadings = {
 
 export const paragraphs = {
   descriptionText:
-    'Postal correspondence will be sent to the address registered with MyHMCTS.' +
+    'Postal correspondence will be sent to the address registered with MyHMCTS. ' +
     'You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.',
 };
 

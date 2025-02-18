@@ -16,7 +16,7 @@ import { Party } from '../../../../models/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
-export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(BasePage) {
+export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private defendantParty: Party;
 

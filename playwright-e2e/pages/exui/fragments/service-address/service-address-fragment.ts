@@ -11,7 +11,9 @@ import {
   buttons,
   dropdowns,
 } from './service-address-content';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
 
+@AllMethodsStep()
 export default class ServiceAddressFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
   private solicitorParty: Party;
