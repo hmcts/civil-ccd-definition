@@ -12,8 +12,19 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          {
+            "UserRoles": [
+              "CITIZEN-CLAIMANT-PROFILE",
+              "CITIZEN-DEFENDANT-PROFILE",
+              "cui-nbc-profile",
+              "hearing-schedule-access",
+              "judge-profile",
+              "legal-adviser",
+              "GS_profile",
+              "caseworker-civil-solicitor"
+            ],
+            "CRUD": "R"
+          }
         ],
         "CRUD": "R"
       }
@@ -32,8 +43,14 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "cui-nbc-profile",
+          "hearing-schedule-access",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -52,8 +69,14 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "cui-nbc-profile",
+          "hearing-schedule-access",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -72,8 +95,14 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "cui-nbc-profile",
+          "hearing-schedule-access",
+          "judge-profile",
+          "legal-adviser",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
