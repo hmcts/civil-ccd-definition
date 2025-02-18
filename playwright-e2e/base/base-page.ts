@@ -246,6 +246,16 @@ export default abstract class BasePage {
     await locator.waitFor({ state: 'detached', ...options });
   }
 
+  protected async waitForUrlToChange(options: { timeout?: number } = {}) {
+    const url = new URL(this.page.url());
+    await this.page.waitForURL(
+      (newUrl) => {
+        return url.pathname !== newUrl.pathname;
+      },
+      { timeout: options.timeout },
+    );
+  }
+
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
   protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
