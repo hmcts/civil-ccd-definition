@@ -2,7 +2,7 @@ import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-s
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { claimantSolicitorUser } from '../../../config/users/exui-users';
+import { civilAdminUser, claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
@@ -109,13 +109,14 @@ export default class ClaimantSolicitorSteps extends BaseExui {
         await createClaimActions.notificationsPage();
         await createClaimActions.claimantSolicitorOrganisationPage();
         await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
+        await createClaimActions.addAnotherClaimantPage();
+        await createClaimActions.secondClaimantPage();
+        await createClaimActions.secondClaimantLitigationFriendPage();
         await createClaimActions.defendantPage();
         await createClaimActions.legalRepresentationPage();
         await createClaimActions.defendantSolicitorOrganisationPage();
         await createClaimActions.defendantSolicitorServiceAddressPage();
         await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.noAddAnotherDefendantPage();
         await createClaimActions.claimTypePage();
         await createClaimActions.personalInjuryTypePage();
         await createClaimActions.detailsPage();

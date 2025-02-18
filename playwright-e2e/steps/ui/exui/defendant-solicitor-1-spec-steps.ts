@@ -158,7 +158,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DSDefendantSolicitor1() {
+  async RespondSmallTrackFullDefence1v2DS() {
     await super.retryExuiEvent(
       async () => {
         const { defendantResponseSpecActions } = this.defendantActionsFactory;
