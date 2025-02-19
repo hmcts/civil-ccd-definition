@@ -28,10 +28,9 @@ export default class DefendantSolicitor2Steps extends BaseExui {
   }
 
   async RespondSmallTrackFullDefence1v2DS() {
+    const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { defendantResponseActions } = this.defendantActionsFactory;
-
         await defendantResponseActions.confirmDetailsDefendantSolicitor1Page();
         await defendantResponseActions.respondentResponseTypeDefendantSolicitor2Page();
         await defendantResponseActions.solicitorReferencesDefendantResponseDefendantSolicitor2Page();
@@ -47,6 +46,8 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.furtherInformationDefendantSolicitor2Page();
         await defendantResponseActions.statementOfTruthDefendantResponseDefendantSolicitor2Page();
         await defendantResponseActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseActions.confirmDefendantResponsePage();
       },
       ccdEvents.DEFENDANT_RESPONSE,
