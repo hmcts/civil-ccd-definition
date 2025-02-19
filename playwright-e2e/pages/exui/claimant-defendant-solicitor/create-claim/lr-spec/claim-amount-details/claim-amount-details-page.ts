@@ -9,8 +9,8 @@ import { tableHeaders } from './claim-amount-details-content';
 export default class ClaimAmountDetailsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectText(tableHeaders.description, { ignoreDuplicates: true }),
-      super.expectText(tableHeaders.amount, { ignoreDuplicates: true }),
+      super.expectText(tableHeaders.description, { exact: true }),
+      super.expectText(tableHeaders.amount, { exact: true }),
     ]);
   }
 

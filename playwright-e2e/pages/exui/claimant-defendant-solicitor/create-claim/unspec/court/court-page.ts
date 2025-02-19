@@ -19,7 +19,7 @@ export default class CourtPage extends ExuiPage(BasePage) {
       super.verifyHeadings(),
       super.expectSubheading(subheadings.courtLocationCode),
       super.expectLabel(dropdowns.courtLocation.label),
-      super.expectLabel(inputs.courtReason.label, { index: 0 }),
+      super.expectLabel(inputs.courtReason.label, { count: 1 }),
       this.remoteHearingFragment.verifyContent(),
     ]);
   }

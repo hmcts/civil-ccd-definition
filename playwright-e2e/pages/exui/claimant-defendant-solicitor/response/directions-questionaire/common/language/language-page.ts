@@ -22,16 +22,13 @@ export default class LanguagePage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.welsh, { index: 0 }),
-        // super.expectText(paragraphs.descriptionText, { index: 0 }),
-        // super.expectText(radioButtons.courtLanguage.label, { index: 0 }),
-        // super.expectText(radioButtons.documentLanguage.label, { index: 0 }),
-        // super.expectLabel(radioButtons.courtLanguage.welsh.label, { index: 0 }),
-        // super.expectLabel(radioButtons.courtLanguage.english.label, { index: 0 }),
-        // super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { index: 0 }),
-        // super.expectLabel(radioButtons.documentLanguage.welsh.label, { index: 1 }),
-        // super.expectLabel(radioButtons.documentLanguage.english.label, { index: 1 }),
-        // super.expectLabel(radioButtons.documentLanguage.welshAndEnglish.label, { index: 1 }),
+        super.expectSubheading(subheadings.welsh, { count: 1 }),
+        super.expectText(paragraphs.descriptionText, { count: 1 }),
+        super.expectText(radioButtons.courtLanguage.label, { count: 1 }),
+        super.expectText(radioButtons.documentLanguage.label, { count: 1 }),
+        super.expectLabel(radioButtons.courtLanguage.welsh.label, { count: 2, exact: true }),
+        super.expectLabel(radioButtons.courtLanguage.english.label, { count: 2, exact: true }),
+        super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { count: 2 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
