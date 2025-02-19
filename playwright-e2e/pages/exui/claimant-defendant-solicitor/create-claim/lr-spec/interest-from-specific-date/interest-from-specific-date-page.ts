@@ -26,6 +26,6 @@ export default class InterestFromSpecificDate extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }
