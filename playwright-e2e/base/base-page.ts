@@ -395,10 +395,10 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'text')
   protected async expectHeading(
     text: string | number,
-    options: { message?: string; timeout?: number } = {},
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(
-      this.page.locator('h1', { has: this.page.locator(`text="${text}"`) }),
+      this.page.getByRole('heading', { name: text.toString(), level: 1, exact: options.exact }),
     ).toBeVisible({
       timeout: options.timeout,
     });
@@ -410,10 +410,15 @@ export default abstract class BasePage {
     text: string | number,
     options: {
       message?: string;
+      exact?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    const locator = this.page.locator('h1', { has: this.page.locator(`text="${text}"`) });
+    const locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 1,
+      exact: options.exact,
+    });
 
     try {
       await locator.waitFor({ state: 'visible', timeout: 20 });
@@ -434,8 +439,9 @@ export default abstract class BasePage {
       count?: number;
       ignoreDuplicates?: boolean;
       message?: string;
+      exact?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -449,7 +455,11 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
+    let locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 2,
+      exact: options.exact,
+    });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -479,13 +489,17 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
 
-    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
+    let locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 2,
+      exact: options.exact,
+    });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
@@ -591,7 +605,7 @@ export default abstract class BasePage {
       ignoreDuplicates?: boolean;
       count?: number | null;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
     if (options.ignoreDuplicates && options.count !== undefined) {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
@@ -635,7 +649,7 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
