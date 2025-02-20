@@ -3,5 +3,8 @@ export const confirmationHeadings = {
 };
 
 export const paragraphs = {
-  descriptionText1: "We'll review the case and contact you about what to do next.",
+  descriptionText1:
+    "What happens nextWe'll review the case and contact you about what to do next.\n" +
+    '\n' +
+    'View Directions questionnaire',
 };

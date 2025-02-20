@@ -8,7 +8,7 @@ export default class EligibilitySpecPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectSubheading(subheadings.issueCivilCourtProceedings),
+      super.expectSubheading(subheadings.issueCivilCourtProceedings, { exact: true }),
       super.expectText(paragraphs.eligibilityCriteria),
       super.expectText(paragraphs.claimantCriteria),
       super.expectText(paragraphs.claimRestrictions),

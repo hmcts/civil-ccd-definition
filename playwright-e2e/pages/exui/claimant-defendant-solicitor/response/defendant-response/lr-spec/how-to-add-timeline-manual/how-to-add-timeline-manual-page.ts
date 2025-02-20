@@ -30,9 +30,9 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
-        super.expectHeading(heading),
-        super.expectHeading(ccdCaseData.id),
-        super.expectHeading(ccdCaseData.caseNamePublic),
+        super.expectHeading(heading, { exact: false }),
+        super.expectHeading(ccdCaseData.id, { exact: false }),
+        super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

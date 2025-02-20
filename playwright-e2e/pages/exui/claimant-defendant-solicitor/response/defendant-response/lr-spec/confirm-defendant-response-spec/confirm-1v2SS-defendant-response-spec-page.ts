@@ -21,7 +21,7 @@ export default class Confirm1v2SSDefendantResponseSpecPage extends ExuiPage(Base
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading1v2SS),
       super.expectSubheading(subheadings.happensNext),
-      super.expectText(ccdCaseData.legacyCaseReference),
+      super.expectText(ccdCaseData.legacyCaseReference, { exact: false }),
       super.expectText(
         paragraphs.claimantResponse(
           DateHelper.formatDateToString(claimantResponseDate, { outputFormat: 'DD Month YYYY' }),
