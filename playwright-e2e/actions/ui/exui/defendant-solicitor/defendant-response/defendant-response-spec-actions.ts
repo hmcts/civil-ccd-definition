@@ -12,18 +12,37 @@ export default class respondentResponseSpecActions extends BaseTestData {
     this.defendantResponsePageFactory = defendantResponsePageFactory;
   }
 
-  async respondentChecklistPage() {
+  async processDefendantSolicitor1InitialPages() {
+    await this.respondentChecklistPage();
+
+      const { responseConfirmNameAddressDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await responseConfirmNameAddressDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await responseConfirmNameAddressDefendantSolicitor1Page.selectYesAddress();
+      await responseConfirmNameAddressDefendantSolicitor1Page.submit();
+
+      await this.responseConfirmDetailsDefendantSolicitor1Page();
+
+  }
+
+  async processDefendantSolicitor1InitialPages1v2SS() {
+    await this.respondentChecklistPage();
+
+      const { responseConfirmNameAddress1v2Page } = this.defendantResponsePageFactory;
+      await responseConfirmNameAddress1v2Page.verifyContent(this.ccdCaseData);
+      await responseConfirmNameAddress1v2Page.selectYesAddress();
+      await responseConfirmNameAddress1v2Page.submit();
+
+    await this.responseConfirmDetailsDefendantSolicitor1Page();
+
+  }
+
+  private async respondentChecklistPage() {
     const { respondentChecklistPage } = this.defendantResponsePageFactory;
     await respondentChecklistPage.verifyContent();
     await respondentChecklistPage.submit();
   }
 
-  async responseConfirmNameAddressDefendantSolicitor1Page() {
-    const { responseConfirmNameAddressDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await responseConfirmNameAddressDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await responseConfirmNameAddressDefendantSolicitor1Page.selectYesAddress();
-    await responseConfirmNameAddressDefendantSolicitor1Page.submit();
-  }
+
 
   async responseConfirmNameAddressDefendantSolicitor2Page() {
     const { responseConfirmNameAddressDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -32,14 +51,8 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await responseConfirmNameAddressDefendantSolicitor2Page.submit();
   }
 
-  async responseConfirmNameAddress1v2Page() {
-    const { responseConfirmNameAddress1v2Page } = this.defendantResponsePageFactory;
-    await responseConfirmNameAddress1v2Page.verifyContent(this.ccdCaseData);
-    await responseConfirmNameAddress1v2Page.selectYesAddress();
-    await responseConfirmNameAddress1v2Page.submit();
-  }
 
-  async responseConfirmDetailsDefendantSolicitor1Page() {
+  private async responseConfirmDetailsDefendantSolicitor1Page() {
     const { responseConfirmDetailsDefendantSolicitor1Page } = this.defendantResponsePageFactory;
     await responseConfirmDetailsDefendantSolicitor1Page.verifyContent();
     await responseConfirmDetailsDefendantSolicitor1Page.selectYesAddress();
@@ -118,12 +131,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await uploadDefendantResponseSpecDefendantSolicitor2Page.submit();
   }
 
-  async howToAddTimelineDefendantSolicitor1Page() {
-    const { howToAddTimelineDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await howToAddTimelineDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await howToAddTimelineDefendantSolicitor1Page.selectUpload();
-    await howToAddTimelineDefendantSolicitor1Page.submit();
-  }
 
   async howToAddTimelineDefendantSolicitor2Page() {
     const { howToAddTimelineDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -132,11 +139,16 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await howToAddTimelineDefendantSolicitor2Page.submit();
   }
 
-  async howToAddTimelineUploadDefendantSolicitor1Page() {
-    const { howToAddTimelineUploadDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await howToAddTimelineUploadDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await howToAddTimelineUploadDefendantSolicitor1Page.uploadDoc();
-    await howToAddTimelineUploadDefendantSolicitor1Page.submit();
+  async processDefendantSolicitor1TimelinePages() {
+      const { howToAddTimelineDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await howToAddTimelineDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await howToAddTimelineDefendantSolicitor1Page.selectUpload();
+      await howToAddTimelineDefendantSolicitor1Page.submit();
+
+      const { howToAddTimelineUploadDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await howToAddTimelineUploadDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await howToAddTimelineUploadDefendantSolicitor1Page.uploadDoc();
+      await howToAddTimelineUploadDefendantSolicitor1Page.submit();
   }
 
   async howToAddTimelineUploadDefendantSolicitor2Page() {
@@ -160,13 +172,7 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await mediationDefendantSolicitor2Page.submit();
   }
 
-  async mediationContactInformationDefendantSolicitor1Page() {
-    const { mediationContactInformationDefendantSolicitor1Page } =
-      this.defendantResponsePageFactory;
-    await mediationContactInformationDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await mediationContactInformationDefendantSolicitor1Page.enterMediationContactDetails();
-    await mediationContactInformationDefendantSolicitor1Page.submit();
-  }
+
 
   async mediationContactInformationDefendantSolicitor2Page() {
     const { mediationContactInformationDefendantSolicitor2Page } =
@@ -176,14 +182,21 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await mediationContactInformationDefendantSolicitor2Page.submit();
   }
 
-  async mediationAvailabilityDefendantSolicitor1Page() {
-    const { mediationAvailabilityDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await mediationAvailabilityDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await mediationAvailabilityDefendantSolicitor1Page.selectYes();
-    await mediationAvailabilityDefendantSolicitor1Page.addNewUnavailableDate();
-    await mediationAvailabilityDefendantSolicitor1Page.selectSingleDate();
-    await mediationAvailabilityDefendantSolicitor1Page.submit();
+  async processDefendantSolicitor1MediationPages() {
+      const { mediationContactInformationDefendantSolicitor1Page } =
+        this.defendantResponsePageFactory;
+      await mediationContactInformationDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await mediationContactInformationDefendantSolicitor1Page.enterMediationContactDetails();
+      await mediationContactInformationDefendantSolicitor1Page.submit();
+
+      const { mediationAvailabilityDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await mediationAvailabilityDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await mediationAvailabilityDefendantSolicitor1Page.selectYes();
+      await mediationAvailabilityDefendantSolicitor1Page.addNewUnavailableDate();
+      await mediationAvailabilityDefendantSolicitor1Page.selectSingleDate();
+      await mediationAvailabilityDefendantSolicitor1Page.submit();
   }
+
 
   async mediationAvailabilityDefendantSolicitor2Page() {
     const { mediationAvailabilityDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -195,13 +208,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await mediationAvailabilityDefendantSolicitor2Page.submit();
   }
 
-  async smallClaimExpertsDefendantSolicitor1Page() {
-    const { smallClaimExpertsDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await smallClaimExpertsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await smallClaimExpertsDefendantSolicitor1Page.selectYesExperts();
-    await smallClaimExpertsDefendantSolicitor1Page.enterExpertDetails();
-    await smallClaimExpertsDefendantSolicitor1Page.submit();
-  }
 
   async smallClaimExpertsDefendantSolicitor2Page() {
     const { smallClaimExpertsDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -211,65 +217,44 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await smallClaimExpertsDefendantSolicitor2Page.submit();
   }
 
-  async fileDirectionsQuestionaireDefendantSolicitor1Page() {
-    const { fileDirectionsQuestionaireDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await fileDirectionsQuestionaireDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await fileDirectionsQuestionaireDefendantSolicitor1Page.enterDetails();
-    await fileDirectionsQuestionaireDefendantSolicitor1Page.submit();
+  async processDefendantSolicitor1FastTrackPages() {
+      const { fileDirectionsQuestionaireDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await fileDirectionsQuestionaireDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await fileDirectionsQuestionaireDefendantSolicitor1Page.enterDetails();
+      await fileDirectionsQuestionaireDefendantSolicitor1Page.submit();
+
+      const { fixedRecoverableCostsPageDefendantSolicitor1 } = this.defendantResponsePageFactory;
+      await fixedRecoverableCostsPageDefendantSolicitor1.verifyContent(this.ccdCaseData);
+      await fixedRecoverableCostsPageDefendantSolicitor1.selectYes();
+      await fixedRecoverableCostsPageDefendantSolicitor1.submit();
+
+      const { disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page } =
+        this.defendantResponsePageFactory;
+      await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.verifyContent(
+        this.ccdCaseData,
+      );
+      await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.enterDetails();
+      await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.submit();
+
+      const { disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page } =
+        this.defendantResponsePageFactory;
+      await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.verifyContent(
+        this.ccdCaseData,
+      );
+      await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.enterDetails();
+      await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.submit();
+
+      const { disclosureReportDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await disclosureReportDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await disclosureReportDefendantSolicitor1Page.enterDetails();
+      await disclosureReportDefendantSolicitor1Page.submit();
   }
 
-  async fixedRecoverableCostsPageDefendantSolicitor1Page() {
-    const { fixedRecoverableCostsPageDefendantSolicitor1 } = this.defendantResponsePageFactory;
-    await fixedRecoverableCostsPageDefendantSolicitor1.verifyContent(this.ccdCaseData);
-    await fixedRecoverableCostsPageDefendantSolicitor1.selectYes();
-    await fixedRecoverableCostsPageDefendantSolicitor1.submit();
-  }
 
-  async disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page() {
-    const { disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page } =
-      this.defendantResponsePageFactory;
-    await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.verifyContent(
-      this.ccdCaseData,
-    );
-    await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.enterDetails();
-    await disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page.submit();
-  }
 
-  async disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page() {
-    const { disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page } =
-      this.defendantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.verifyContent(
-      this.ccdCaseData,
-    );
-    await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.enterDetails();
-    await disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page.submit();
-  }
 
-  async disclosureReportDefendantSolicitor1Page() {
-    const { disclosureReportDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await disclosureReportDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await disclosureReportDefendantSolicitor1Page.enterDetails();
-    await disclosureReportDefendantSolicitor1Page.submit();
-  }
 
-  async expertsDefendantSolicitor1Page() {
-    const { expertsDefendantSolicitor1Page: expertsDefendantSolicitor1Page } =
-      this.defendantResponsePageFactory;
-    await expertsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await expertsDefendantSolicitor1Page.useExperts();
-    await expertsDefendantSolicitor1Page.addNewExpert();
-    await expertsDefendantSolicitor1Page.enterExpertDetails();
-    await expertsDefendantSolicitor1Page.submit();
-  }
 
-  async smallClaimWitnessesDefendantSolicitor1Page() {
-    const { smallClaimWitnessesDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await smallClaimWitnessesDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await smallClaimWitnessesDefendantSolicitor1Page.selectYes();
-    await smallClaimWitnessesDefendantSolicitor1Page.addWitness();
-    await smallClaimWitnessesDefendantSolicitor1Page.enterWitnessDetails();
-    await smallClaimWitnessesDefendantSolicitor1Page.submit();
-  }
 
   async smallClaimWitnessesDefendantSolicitor2Page() {
     const { smallClaimWitnessesDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -280,20 +265,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await smallClaimWitnessesDefendantSolicitor2Page.submit();
   }
 
-  async witnessesSpecDefendantSolicitor1Page() {
-    const { witnessesSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await witnessesSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await witnessesSpecDefendantSolicitor1Page.addWitnesses();
-    await witnessesSpecDefendantSolicitor1Page.enterWitnessDetails();
-    await witnessesSpecDefendantSolicitor1Page.submit();
-  }
-
-  async languageDefendantSolicitor1Page() {
-    const { languageDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await languageDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await languageDefendantSolicitor1Page.selectEnglishAndWelsh();
-    await languageDefendantSolicitor1Page.submit();
-  }
 
   async languageDefendantSolicitor2Page() {
     const { languageDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -302,17 +273,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await languageDefendantSolicitor2Page.submit();
   }
 
-  async smallClaimHearingDefendantSolicitor1Page() {
-    const { smallClaimHearingDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await smallClaimHearingDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await smallClaimHearingDefendantSolicitor1Page.selectYesAvailabilityRequired();
-    await smallClaimHearingDefendantSolicitor1Page.addNewUnavailableDate();
-    await smallClaimHearingDefendantSolicitor1Page.selectSingleDate();
-    await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
-    await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
-    await smallClaimHearingDefendantSolicitor1Page.enterTypeOfInterpreter();
-    await smallClaimHearingDefendantSolicitor1Page.submit();
-  }
 
   async smallClaimHearingDefendantSolicitor2Page() {
     const { smallClaimHearingDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -325,23 +285,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await smallClaimHearingDefendantSolicitor2Page.submit();
   }
 
-  async hearingLRSpecDefendantSolicitor1Page() {
-    const { hearingLRSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await hearingLRSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await hearingLRSpecDefendantSolicitor1Page.selectYesAvailabilityRequired();
-    await hearingLRSpecDefendantSolicitor1Page.addNewUnavailableDate();
-    await hearingLRSpecDefendantSolicitor1Page.selectSingleDate();
-    await hearingLRSpecDefendantSolicitor1Page.submit();
-  }
-
-  async requestedCourtLRSpecDefendantSolicitor1Page() {
-    const { requestedCourtLRSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await requestedCourtLRSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await requestedCourtLRSpecDefendantSolicitor1Page.selectCourtLocation();
-    await requestedCourtLRSpecDefendantSolicitor1Page.selectNoRemoteHearing();
-    await requestedCourtLRSpecDefendantSolicitor1Page.submit();
-  }
-
   async requestedCourtLRSpecDefendantSolicitor2Page() {
     const { requestedCourtLRSpecDefendantSolicitor2Page } = this.defendantResponsePageFactory;
     await requestedCourtLRSpecDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
@@ -350,13 +293,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await requestedCourtLRSpecDefendantSolicitor2Page.submit();
   }
 
-  async hearingSupportDefendantSolicitor1Page() {
-    const { hearingSupportDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await hearingSupportDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await hearingSupportDefendantSolicitor1Page.selectYes();
-    await hearingSupportDefendantSolicitor1Page.enterSupportRequirementsAdditional();
-    await hearingSupportDefendantSolicitor1Page.submit();
-  }
 
   async hearingSupportDefendantSolicitor2Page() {
     const { hearingSupportDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -366,13 +302,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await hearingSupportDefendantSolicitor2Page.submit();
   }
 
-  async vulnerabilityQuestionsSpecDefendantSolicitor1Page() {
-    const { vulnerabilityQuestionsSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
-    await vulnerabilityQuestionsSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await vulnerabilityQuestionsSpecDefendantSolicitor1Page.selectYes();
-    await vulnerabilityQuestionsSpecDefendantSolicitor1Page.enterVulnerabilityAdjustments();
-    await vulnerabilityQuestionsSpecDefendantSolicitor1Page.submit();
-  }
 
   async vulnerabilityQuestionsSpecDefendantSolicitor2Page() {
     const { vulnerabilityQuestionsSpecDefendantSolicitor2Page } = this.defendantResponsePageFactory;
@@ -390,13 +319,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await applicationDefendantSolicitor1Page.submit();
   }
 
-  async statementOfTruthDefendantResponseDefendantSolicitor1Page() {
-    const { statementOfTruthDefendantResponseDefendantSolicitor1Page } =
-      this.defendantResponsePageFactory;
-    await statementOfTruthDefendantResponseDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
-    await statementOfTruthDefendantResponseDefendantSolicitor1Page.enterDetails();
-    await statementOfTruthDefendantResponseDefendantSolicitor1Page.submit();
-  }
 
   async statementOfTruthDefendantResponseDefendantSolicitor2Page() {
     const { statementOfTruthDefendantResponseDefendantSolicitor2Page } =
@@ -406,11 +328,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await statementOfTruthDefendantResponseDefendantSolicitor2Page.submit();
   }
 
-  async submitDefendantResponsePage() {
-    const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
-    await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
-    await submitDefendantResponsePage.submit();
-  }
 
   async confirmDefendantResponseSpecPage() {
     const { confirmDefendantResponseSpecPage } = this.defendantResponsePageFactory;
@@ -423,4 +340,107 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirm1v2SSDefendantResponseSpecPage.submit();
   }
+
+  async processDefendantSolicitor1FastTrackDQPages() {
+    const { expertsDefendantSolicitor1Page: expertsDefendantSolicitor1Page } =
+          this.defendantResponsePageFactory;
+        await expertsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+        await expertsDefendantSolicitor1Page.useExperts();
+        await expertsDefendantSolicitor1Page.addNewExpert();
+        await expertsDefendantSolicitor1Page.enterExpertDetails();
+        await expertsDefendantSolicitor1Page.submit();
+
+      const { witnessesSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await witnessesSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await witnessesSpecDefendantSolicitor1Page.addWitnesses();
+      await witnessesSpecDefendantSolicitor1Page.enterWitnessDetails();
+      await witnessesSpecDefendantSolicitor1Page.submit();
+
+      await this.languageDefendantSolicitor2Page();
+
+      const { hearingLRSpecDefendantSolicitor1Page } = this.defendantResponsePageFactory;
+      await hearingLRSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await hearingLRSpecDefendantSolicitor1Page.selectYesAvailabilityRequired();
+      await hearingLRSpecDefendantSolicitor1Page.addNewUnavailableDate();
+      await hearingLRSpecDefendantSolicitor1Page.selectSingleDate();
+      await hearingLRSpecDefendantSolicitor1Page.submit();
+
+      await this.requestedCourtLRSpecDefendantSolicitor1Page();
+      await this.hearingSupportDefendantSolicitor1Page();
+      await this.vulnerabilityQuestionsSpecDefendantSolicitor1Page();
+  }
+
+  async processDefendantSolicitor1SmallTrackDQPages() {
+    const {smallClaimExpertsDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+    await smallClaimExpertsDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await smallClaimExpertsDefendantSolicitor1Page.selectYesExperts();
+    await smallClaimExpertsDefendantSolicitor1Page.enterExpertDetails();
+    await smallClaimExpertsDefendantSolicitor1Page.submit();
+
+    const {smallClaimWitnessesDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+    await smallClaimWitnessesDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await smallClaimWitnessesDefendantSolicitor1Page.selectYes();
+    await smallClaimWitnessesDefendantSolicitor1Page.addWitness();
+    await smallClaimWitnessesDefendantSolicitor1Page.enterWitnessDetails();
+    await smallClaimWitnessesDefendantSolicitor1Page.submit();
+
+    await this.languageDefendantSolicitor1Page();
+
+    const {smallClaimHearingDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+    await smallClaimHearingDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+    await smallClaimHearingDefendantSolicitor1Page.selectYesAvailabilityRequired();
+    await smallClaimHearingDefendantSolicitor1Page.addNewUnavailableDate();
+    await smallClaimHearingDefendantSolicitor1Page.selectSingleDate();
+    await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
+    await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
+    await smallClaimHearingDefendantSolicitor1Page.enterTypeOfInterpreter();
+    await smallClaimHearingDefendantSolicitor1Page.submit();
+
+    await this.requestedCourtLRSpecDefendantSolicitor1Page();
+    await this.hearingSupportDefendantSolicitor1Page();
+    await this.vulnerabilityQuestionsSpecDefendantSolicitor1Page();
+  }
+
+   async processDefendantSolicitor1finalPages(){
+      const { statementOfTruthDefendantResponseDefendantSolicitor1Page } =
+        this.defendantResponsePageFactory;
+      await statementOfTruthDefendantResponseDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await statementOfTruthDefendantResponseDefendantSolicitor1Page.enterDetails();
+      await statementOfTruthDefendantResponseDefendantSolicitor1Page.submit();
+
+    const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
+    await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
+    await submitDefendantResponsePage.submit();
+    }
+
+    private async languageDefendantSolicitor1Page() {
+      const {languageDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+      await languageDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await languageDefendantSolicitor1Page.selectEnglishAndWelsh();
+      await languageDefendantSolicitor1Page.submit();
+    }
+
+    private async requestedCourtLRSpecDefendantSolicitor1Page() {
+      const {requestedCourtLRSpecDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+      await requestedCourtLRSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await requestedCourtLRSpecDefendantSolicitor1Page.selectCourtLocation();
+      await requestedCourtLRSpecDefendantSolicitor1Page.selectNoRemoteHearing();
+      await requestedCourtLRSpecDefendantSolicitor1Page.submit();
+    }
+
+    private async hearingSupportDefendantSolicitor1Page() {
+      const {hearingSupportDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+      await hearingSupportDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await hearingSupportDefendantSolicitor1Page.selectYes();
+      await hearingSupportDefendantSolicitor1Page.enterSupportRequirementsAdditional();
+      await hearingSupportDefendantSolicitor1Page.submit();
+    }
+
+    private async vulnerabilityQuestionsSpecDefendantSolicitor1Page () {
+      const {vulnerabilityQuestionsSpecDefendantSolicitor1Page} = this.defendantResponsePageFactory;
+      await vulnerabilityQuestionsSpecDefendantSolicitor1Page.verifyContent(this.ccdCaseData);
+      await vulnerabilityQuestionsSpecDefendantSolicitor1Page.selectYes();
+      await vulnerabilityQuestionsSpecDefendantSolicitor1Page.enterVulnerabilityAdjustments();
+      await vulnerabilityQuestionsSpecDefendantSolicitor1Page.submit();
+    }
 }
