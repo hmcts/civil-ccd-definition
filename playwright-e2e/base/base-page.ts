@@ -439,18 +439,20 @@ export default abstract class BasePage {
     } = {},
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -490,7 +492,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -527,18 +532,20 @@ export default abstract class BasePage {
     } = {},
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -574,7 +581,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -613,18 +623,20 @@ export default abstract class BasePage {
     } = {},
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -664,7 +676,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -702,18 +717,20 @@ export default abstract class BasePage {
     } = { exact: true },
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -757,18 +774,20 @@ export default abstract class BasePage {
     } = { exact: true },
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -812,15 +831,21 @@ export default abstract class BasePage {
     } = { exact: true },
   ) {
     if (
-      options.first &&
-      options.index !== undefined &&
-      options.ignoreDuplicates &&
-      options.count &&
-      options.all
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
     ) {
       throw new ExpectError(
         "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
     }
 
     let locator = this.page.locator('legend').getByText(label, { exact: options.exact });
