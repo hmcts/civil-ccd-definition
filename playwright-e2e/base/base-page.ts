@@ -437,6 +437,7 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       count?: number;
+      all?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
       exact?: boolean;
@@ -447,8 +448,10 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    if (options.first && options.index !== undefined && options.count && options.all) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+      );
     }
 
     if (options.count && options.count === 0) {
@@ -468,6 +471,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
@@ -491,8 +498,8 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.all) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
     let locator = this.page.getByRole('heading', {
@@ -524,6 +531,7 @@ export default abstract class BasePage {
       containerSelector?: string;
       index?: number;
       first?: boolean;
+      all?: boolean;
       count?: number;
       ignoreDuplicates?: boolean;
       message?: string;
@@ -534,8 +542,10 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    if (options.first && options.index !== undefined && options.count && options.all) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+      );
     }
 
     if (options.count && options.count === 0) {
@@ -551,6 +561,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
@@ -570,8 +584,8 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.all) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
     let locator = this.page.locator(selector);
@@ -600,10 +614,11 @@ export default abstract class BasePage {
       message?: string;
       exact?: boolean;
       containerSelector?: string;
+      all?: boolean;
       index?: number;
       first?: boolean;
       ignoreDuplicates?: boolean;
-      count?: number | null;
+      count?: number;
       timeout?: number;
     } = { exact: true },
   ) {
@@ -611,8 +626,10 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    if (options.first && options.index !== undefined && options.count && options.all) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+      );
     }
 
     if (options.count && options.count === 0) {
@@ -628,6 +645,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
@@ -651,8 +672,8 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined) {
-      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    if (options.first && options.index !== undefined && options.all) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
     let locator = this.page.getByText(text.toString(), { exact: options.exact });
@@ -681,6 +702,7 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       count?: number;
+      all?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
       exact?: boolean;
@@ -691,8 +713,10 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    if (options.first && options.index !== undefined && options.count && options.all) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+      );
     }
 
     if (options.count && options.count === 0) {
@@ -708,6 +732,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
@@ -727,6 +755,7 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       count?: number;
+      all?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
       exact?: boolean;
@@ -737,8 +766,10 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
+    if (options.first && options.index !== undefined && options.count && options.all) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+      );
     }
 
     if (options.count && options.count === 0) {
@@ -754,6 +785,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
