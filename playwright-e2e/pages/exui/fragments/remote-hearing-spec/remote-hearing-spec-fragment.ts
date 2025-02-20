@@ -17,9 +17,9 @@ export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        // super.expectSubheading(subheadings.remoteHearing),
-        // super.expectText(radioButtons.remoteHearing.label),
-        // super.expectText(radioButtons.remoteHearing.hintText),
+        super.expectSubheading(subheadings.remoteHearing, { count: 1 }),
+        super.expectText(radioButtons.remoteHearing.label, { count: 1 }),
+        super.expectText(radioButtons.remoteHearing.hintText, { count: 1 }),
       ],
       {
         runAxe: false,

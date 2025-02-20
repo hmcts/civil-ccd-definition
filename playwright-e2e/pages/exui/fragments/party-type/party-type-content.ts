@@ -24,14 +24,14 @@ export const inputs = {
     ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}TradingAs`,
   },
   firstName: {
-    label: 'Title (Optional)',
+    label: 'First name',
     selector: (
       claimantDefendantParty: Party,
       claimantDefendantPartyType: ClaimantDefendantPartyType,
     ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}FirstName`,
   },
   lastName: {
-    label: 'Title (Optional)',
+    label: 'Last name',
     selector: (
       claimantDefendantParty: Party,
       claimantDefendantPartyType: ClaimantDefendantPartyType,

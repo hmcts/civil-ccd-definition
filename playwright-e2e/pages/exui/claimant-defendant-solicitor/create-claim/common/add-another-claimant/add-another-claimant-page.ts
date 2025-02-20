@@ -8,7 +8,7 @@ export default class AddAnotherClaimantPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectText(radioButtons.addAnotherClaimant.label, { ignoreDuplicates: true }),
+      super.expectText(radioButtons.addAnotherClaimant.label, { count: 1 }),
     ]);
   }
 

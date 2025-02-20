@@ -8,7 +8,7 @@ import partys from '../../../../../../../constants/partys.ts';
 @AllMethodsStep()
 export default class RespondentResponseType1v2SSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       // super.expectLabel(radioButtons.rejectAll.label, { count: 2 }),
       // super.expectLabel(radioButtons.admitAll.label, { count: 2 }),
