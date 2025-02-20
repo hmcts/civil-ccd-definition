@@ -22,7 +22,8 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Is your case reserved to a judge?",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "judgeRequiredYesOrNo = \"DEPRECATED_DO_NOT_SHOW\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
