@@ -27,10 +27,10 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
   }
 
-  async RespondSmallTrackFullDefence1v2DSDefendantSolicitor2() {
+  async RespondSmallTrackFullDefence1v2DS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddressDefendantSolicitor2Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor2Page();
@@ -50,6 +50,8 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.vulnerabilityQuestionsSpecDefendantSolicitor2Page();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,

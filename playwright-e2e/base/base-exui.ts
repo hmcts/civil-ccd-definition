@@ -1,6 +1,5 @@
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
-import { civilAdminUser } from '../config/users/exui-users';
 import ccdEvents from '../constants/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
@@ -36,7 +35,8 @@ export default abstract class BaseExui extends BaseApi {
 
   @Step(classKey)
   async retryExuiEvent(
-    actions: () => Promise<void>,
+    eventActions: () => Promise<void>,
+    confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
     { retries = 1, verifySuccessEvent = true, camundaProcess = true } = {},
@@ -48,7 +48,7 @@ export default abstract class BaseExui extends BaseApi {
         } else {
           await this.exuiDashboardActions.startExuiEvent(ccdEvent);
         }
-        await actions();
+        await eventActions();
         break;
       } catch (error) {
         if (retries <= 0) throw error;
@@ -57,6 +57,7 @@ export default abstract class BaseExui extends BaseApi {
         await this.exuiDashboardActions.clearCCDEvent();
       }
     }
+    await confirmActions();
     if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {
       const caseId = await this.exuiDashboardActions.grabCaseNumber();
       super.setCCDCaseData = { id: caseId };
@@ -65,6 +66,6 @@ export default abstract class BaseExui extends BaseApi {
     if (verifySuccessEvent) this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
-    await this.fetchAndSetCCDCaseData(civilAdminUser, this.ccdCaseData.id);
+    await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
   }
 }

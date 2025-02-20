@@ -9,6 +9,6 @@ export default class CaseListPage extends BasePage {
   }
 
   async openCaseList() {
-    await super.goTo(`${urls.manageCase}/cases`, { force: true });
+    await super.goTo(`${urls.manageCase}/cases`);
   }
 }
