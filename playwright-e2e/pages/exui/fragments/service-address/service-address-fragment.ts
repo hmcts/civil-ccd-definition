@@ -27,8 +27,12 @@ export default class ServiceAddressFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.addressRequired.label(this.claimantDefendantParty)),
+        super.expectRadioGroupLabel(
+          radioButtons.addressRequired.label(this.claimantDefendantParty),
+        ),
         super.expectText(radioButtons.addressRequired.hintText(this.claimantDefendantParty)),
+        super.expectRadioYesLabel(radioButtons.addressRequired.yes.selector(this.solicitorParty)),
+        super.expectRadioNoLabel(radioButtons.addressRequired.no.selector(this.solicitorParty)),
       ],
       {
         runAxe: false,

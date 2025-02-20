@@ -8,7 +8,9 @@ export default class LegalRepresentationRespondent2Page extends ExuiPage(BasePag
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectText(radioButtons.defendantRepresented.label),
+      super.expectRadioGroupLabel(radioButtons.defendantRepresented.label),
+      super.expectRadioYesLabel(radioButtons.defendantRepresented.yes.selector),
+      super.expectRadioNoLabel(radioButtons.defendantRepresented.no.selector),
     ]);
   }
 
