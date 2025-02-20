@@ -53,14 +53,18 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       await super.clickBySelector(buttons.addNew.selector);
     }
 
-    protected async clickSubmit() {
-      await super.clickBySelector(buttons.submit.selector);
+    protected async waitForPageToLoad() {
       await Promise.race([
         super.waitForSelectorToDetach(components.loading.selector, {
-          timeout: 30_000,
+          timeout: 15_000,
         }),
-        super.waitForUrlToChange({ timeout: 30_000 }),
+        super.waitForUrlToChange({ timeout: 15_000 }),
       ]);
+    }
+
+    protected async clickSubmit() {
+      await super.clickBySelector(buttons.submit.selector);
+      await this.waitForPageToLoad();
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 300,
         all: true,
@@ -68,17 +72,11 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       });
     }
 
-    //Monitoring the usage of the other retryClickSubmit method. May need to revert back to this if it does not work well
     // protected async retryClickSubmit(expect?: () => Promise<void>) {
     //   await super.retryClickBySelectorTimeout(
     //     buttons.submit.selector,
     //     async () => {
-    //       await Promise.race([
-    //         super.waitForSelectorToDetach(components.loading.selector, {
-    //           timeout: 30_000,
-    //         }),
-    //         super.waitForUrlToChange({ timeout: 30_000 }),
-    //       ]);
+    //       await this.waitForPageToLoad();
     //       await super.expectNoSelector(components.error.selector, {
     //         timeout: 200,
     //         all: true,
@@ -93,15 +91,6 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     //     message: 'Field Validation Error on UI',
     //   });
     // }
-
-    protected async waitForPageToLoad() {
-      await Promise.race([
-        super.waitForSelectorToDetach(components.loading.selector, {
-          timeout: 15_000,
-        }),
-        super.waitForUrlToChange({ timeout: 15_000 }),
-      ]);
-    }
 
     protected async retryClickSubmit(expect?: () => Promise<void>) {
       await super.retryClickBySelector(buttons.submit.selector, async () => {

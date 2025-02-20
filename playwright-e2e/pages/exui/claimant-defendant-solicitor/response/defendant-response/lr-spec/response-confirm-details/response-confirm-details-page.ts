@@ -3,7 +3,7 @@ import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import DateFragment from '../../../../../fragments/date/date-fragment.ts';
-import { heading, radioButtons } from './response-confirm-details-content.ts';
+import { heading, radioButtons, tableHeadings } from './response-confirm-details-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
@@ -30,11 +30,10 @@ export default class ResponseConfirmDetailsPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    super.runVerifications(
+    await super.runVerifications(
       [
         super.expectHeading(heading),
         this.solicitorReferenceFragment.verifyContent(),
-        // super.expectLabel(inputs.defendantSolicitorReference.label),
         // super.expectText(tableHeadings.organisation),
         // super.expectText(tableHeadings.reference),
         // super.expectText(inputs.defendant1DateOfBirth.label),
