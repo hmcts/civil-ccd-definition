@@ -29,7 +29,6 @@ export default class DefendantSolicitor2Steps extends BaseExui {
 
   async RespondSmallTrackFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
-    await super.fetchAndSetCCDCaseData(1740142254922266);
     await super.retryExuiEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDefendantSolicitor1Page();
