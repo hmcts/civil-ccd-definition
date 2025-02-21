@@ -89,5 +89,18 @@
     "ShowEventNotes": "N",
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "TRIGGER_MAIN_CASE_FROM_GA",
+    "Name": "Trigger main case from ga",
+    "Description": "Trigger Main case to move offline fro  ga",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
   }
 ]
