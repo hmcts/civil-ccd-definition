@@ -1,6 +1,6 @@
 import { test } from '../../playwright-fixtures/index';
 
-test.only('2v1 Specified Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
+test('2v1 Specified Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
   ClaimantSolicitorSpecSteps,
   DefendantSolicitor1SpecSteps,
   ClaimantSolicitorApiSteps,
