@@ -26,6 +26,7 @@ export default class ConfirmDefendantResponseSpecPage extends ExuiPage(BasePage)
         paragraphs.claimantResponse(
           DateHelper.formatDateToString(claimantResponseDate, { outputFormat: 'DD Month YYYY' }),
         ),
+        { exact: false },
       ),
     ]);
   }

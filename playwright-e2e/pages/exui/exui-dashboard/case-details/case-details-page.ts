@@ -114,7 +114,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
-        super.clickByText(tabs.history.title, { exact: true }),
+        super.clickByText(tabs.history.title),
         super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
           rowNum: 1,
         }),

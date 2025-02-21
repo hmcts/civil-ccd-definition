@@ -48,7 +48,9 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'label')
   protected async clickByLabel(
     label: string,
-    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {},
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {
+      exact: true,
+    },
   ) {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
@@ -60,20 +62,24 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
-  protected async clickButtonByName(name: string, options: { timeout?: number } = {}) {
-    await this.page.getByRole('button', { name }).click(options);
+  protected async clickButtonByName(
+    name: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
+    await this.page.getByRole('button', { name, exact: options.exact }).click(options);
   }
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number } = {
+    options: { index?: number; timeout?: number; exact?: boolean } = {
+      exact: true,
       index: 0,
     },
   ) {
     await this.page
-      .getByRole('link', { name })
+      .getByRole('link', { name, exact: true })
       .nth(options.index)
       .click({ timeout: options.timeout });
   }
@@ -110,7 +116,10 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async clickByText(text: string, options: { timeout?: number; exact?: boolean } = {}) {
+  protected async clickByText(
+    text: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
     await this.page.getByText(text, { exact: options.exact }).click({ timeout: options.timeout });
   }
 
@@ -135,7 +144,7 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {},
+    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (options.index) {
       await this.page
@@ -183,7 +192,7 @@ export default abstract class BasePage {
   protected async selectFromDropdownByLabel(
     option: string | number,
     selector: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    options: { timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (typeof option === 'number')
       await this.page
