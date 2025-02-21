@@ -18,6 +18,13 @@
           "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
