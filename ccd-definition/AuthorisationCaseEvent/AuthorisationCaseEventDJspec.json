@@ -5,13 +5,13 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
           "judge-profile"
         ],
         "CRUD": "R"
       },
       {
         "UserRoles": [
+          "caseworker-civil-admin",
           "APP-SOL-SPEC-PROFILE",
           "[CREATOR]"
         ],
