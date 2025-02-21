@@ -39,7 +39,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.processDefendantSolicitor1FastTrackPages();
         await defendantResponseSpecActions.processDefendantSolicitor1FastTrackDQPages();
         await defendantResponseSpecActions.applicationDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1finalPages();
+        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -61,7 +61,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
         await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
         await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1finalPages();
+        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -84,7 +84,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
         await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
         await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1finalPages();
+        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -107,7 +107,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
         await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
         await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1finalPages();
+        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
       },
       async () => {
         await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpecPage();
@@ -129,7 +129,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
         await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
         await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1finalPages();
+        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
