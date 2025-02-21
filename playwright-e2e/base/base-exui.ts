@@ -1,5 +1,6 @@
 import ExuiDashboardActions from '../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../actions/ui/idam/idam-actions';
+import config from '../config/config';
 import ccdEvents from '../constants/ccd-events';
 import { Step } from '../decorators/test-steps';
 import UserAssignedCasesHelper from '../helpers/user-assigned-cases-helper';
@@ -39,7 +40,11 @@ export default abstract class BaseExui extends BaseApi {
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    { retries = 1, verifySuccessEvent = true, camundaProcess = true } = {},
+    {
+      retries = config.playwright.exuiRetries,
+      verifySuccessEvent = true,
+      camundaProcess = true,
+    } = {},
   ) {
     while (retries >= 0) {
       try {
