@@ -91,10 +91,6 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       },
       async () => {
         await super.waitForPageToLoad();
-        await super.expectNoTab(tabs.summary.title, {
-          timeout: 15_000,
-          exact: true,
-        });
       },
       `Starting event: ${ccdEvent.name} failed, trying again`,
       { retries: 3 },

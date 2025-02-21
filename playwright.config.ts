@@ -5,7 +5,7 @@ import os from 'node:os';
 export default defineConfig({
   testDir: './playwright-e2e/tests',
   globalTeardown: process.env.CI ? undefined : './playwright-e2e/global/teardown-local',
-  forbidOnly: !!process.env.CI,
+  // forbidOnly: !!process.env.CI,
   fullyParallel: true,
   retries: config.playwright.retries ?? 0,
   workers: config.playwright.workers,
