@@ -8,7 +8,7 @@ export default class ClaimTypePage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectText(labels.claimType),
+      super.expectRadioGroupLabel(labels.claimType),
       super.expectLabel(radioButtons.claimType.personalInjury.label),
       super.expectLabel(radioButtons.claimType.clinicalNegligence.label),
       super.expectLabel(radioButtons.claimType.professionalNegligence.label),

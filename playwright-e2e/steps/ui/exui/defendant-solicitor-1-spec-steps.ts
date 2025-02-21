@@ -1,23 +1,25 @@
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
-import BaseExuiSteps from '../../../base/base-exui-steps';
+import BaseExui from '../../../base/base-exui';
 import { defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
+import RequestsFactory from '../../../requests/requests-factory';
 
 @AllMethodsStep()
-export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
+export default class DefendantSolicitor1SpecSteps extends BaseExui {
   private defendantActionsFactory: DefendantActionsFactory;
 
   constructor(
     exuiDashboardActions: ExuiDashboardActions,
     idamActions: IdamActions,
     defendantActionsFactory: DefendantActionsFactory,
+    requestsFactory: RequestsFactory,
     testData: TestData,
   ) {
-    super(exuiDashboardActions, idamActions, testData);
+    super(exuiDashboardActions, idamActions, requestsFactory, testData);
     this.defendantActionsFactory = defendantActionsFactory;
   }
 
@@ -26,9 +28,9 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
   }
 
   async RespondFastTrackFullDefence1v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddressDefendantSolicitor1Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor1Page();
@@ -52,6 +54,8 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
         await defendantResponseSpecActions.applicationDefendantSolicitor1Page();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
@@ -61,9 +65,9 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence1v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddressDefendantSolicitor1Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor1Page();
@@ -83,6 +87,8 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
         await defendantResponseSpecActions.vulnerabilityQuestionsSpecDefendantSolicitor1Page();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
@@ -92,9 +98,9 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence2v1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddressDefendantSolicitor1Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor1Page();
@@ -116,6 +122,8 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
         // await defendantResponseSpecActions.applicationDefendantSolicitor1Page(); //
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
@@ -125,9 +133,9 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
   }
 
   async RespondSmallTrackFullDefence1v2SS() {
-    await super.exuiDashboardActions.retryExuiEvent(
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddress1v2Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor1Page();
@@ -148,6 +156,8 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
         await defendantResponseSpecActions.vulnerabilityQuestionsSpecDefendantSolicitor1Page();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
@@ -156,11 +166,10 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
     );
   }
 
-  async RespondSmallTrackFullDefence1v2DSDefendantSolicitor1() {
-    await super.exuiDashboardActions.retryExuiEvent(
+  async RespondSmallTrackFullDefence1v2DS() {
+    const { defendantResponseSpecActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
       async () => {
-        const { defendantResponseSpecActions } = this.defendantActionsFactory;
-
         await defendantResponseSpecActions.respondentChecklistPage();
         await defendantResponseSpecActions.responseConfirmNameAddressDefendantSolicitor1Page();
         await defendantResponseSpecActions.responseConfirmDetailsDefendantSolicitor1Page();
@@ -180,6 +189,8 @@ export default class DefendantSolicitor1SpecSteps extends BaseExuiSteps {
         await defendantResponseSpecActions.vulnerabilityQuestionsSpecDefendantSolicitor1Page();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDefendantSolicitor1Page();
         await defendantResponseSpecActions.submitDefendantResponsePage();
+      },
+      async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,

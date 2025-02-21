@@ -1,5 +1,7 @@
 import 'dotenv/config';
 import Environment from '../enums/environment';
+import testSpeeds from '../constants/test-speeds';
+import { TestSpeed } from '../models/test-speeds';
 
 const config = {
   environment: process.env.ENVIRONMENT as Environment,
@@ -26,6 +28,7 @@ const config = {
     actionTimeout: 25_000,
     showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
     retries: process.env.PLAYWRIGHT_RETRIES ? parseInt(process.env.PLAYWRIGHT_RETRIES) : undefined,
+    testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
   },
 };
 

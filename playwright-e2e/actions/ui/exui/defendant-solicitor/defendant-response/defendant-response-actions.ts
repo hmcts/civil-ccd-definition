@@ -2,7 +2,9 @@ import TestData from '../../../../../models/test-data.ts';
 
 import BaseAction from '../../../../../base/base-test-data.ts';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 
+@AllMethodsStep()
 export default class DefendantResponseActions extends BaseAction {
   private defendantResponsePageFactory: DefendantResponsePageFactory;
 
@@ -191,9 +193,10 @@ export default class DefendantResponseActions extends BaseAction {
   async hearingDefendantSolicitor2Page() {
     const { hearingDefendantSolicitor2Page } = this.defendantResponsePageFactory;
     await hearingDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
-    await hearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
-    await hearingDefendantSolicitor2Page.addNewUnavailableDate();
-    await hearingDefendantSolicitor2Page.selectSingleDate();
+    await hearingDefendantSolicitor2Page.selectNoAvailabilityRequired();
+    // await hearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
+    // await hearingDefendantSolicitor2Page.addNewUnavailableDate();
+    // await hearingDefendantSolicitor2Page.selectSingleDate();
     await hearingDefendantSolicitor2Page.submit();
   }
 

@@ -4,7 +4,12 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
-import { getFormattedCaseId, getUnformattedCaseId, headings } from '../../exui-page/exui-content';
+import {
+  components,
+  getFormattedCaseId,
+  getUnformattedCaseId,
+  headings,
+} from '../../exui-page/exui-content';
 import ExuiPage from '../../exui-page/exui-page';
 import { buttons, containers, dropdowns, successBannerText, tabs } from './case-details-content';
 
@@ -73,7 +78,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   @TruthyParams(classKey, 'caseId')
   async goToCaseDetails(caseId: number) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`);
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force: true });
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
@@ -84,11 +89,13 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
         await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
         await super.clickBySelector(buttons.go.selector);
       },
-      async () =>
-        super.expectNoTab(tabs.summary.title, {
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoTab(tabs.summary.title, {
           timeout: 15_000,
           exact: true,
-        }),
+        });
+      },
       `Starting event: ${ccdEvent.name} failed, trying again`,
       { retries: 3 },
     );

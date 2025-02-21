@@ -51,6 +51,7 @@ export default class CreateClaimActions extends BaseTestData {
     const { claimantLitigationFriendPage } = this.createClaimPageFactory;
     await claimantLitigationFriendPage.verifyContent();
     await claimantLitigationFriendPage.selectNo();
+    // await claimantLitigationFriendPage.selectYes();
     // await claimantLitigationFriendPage.enterLitigationFriendDetails();
     await claimantLitigationFriendPage.submit();
   }
@@ -100,8 +101,9 @@ export default class CreateClaimActions extends BaseTestData {
   async secondClaimantLitigationFriendPage() {
     const { secondClaimantLitigationFriendPage } = this.createClaimPageFactory;
     await secondClaimantLitigationFriendPage.verifyContent();
-    await secondClaimantLitigationFriendPage.selectYes();
-    await secondClaimantLitigationFriendPage.enterLitigationFriendDetails();
+    await secondClaimantLitigationFriendPage.selectNo();
+    // await secondClaimantLitigationFriendPage.selectYes();
+    // await secondClaimantLitigationFriendPage.enterLitigationFriendDetails();
     await secondClaimantLitigationFriendPage.submit();
   }
 

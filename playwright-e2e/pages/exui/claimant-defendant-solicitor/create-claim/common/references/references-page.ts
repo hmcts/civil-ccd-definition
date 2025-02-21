@@ -24,7 +24,7 @@ export default class ReferencesPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectSubheading(subheadings.yourFileReference),
-      // this.claimantSolicitorReferenceFragment.verifyContent(),
+      this.claimantSolicitorReferenceFragment.verifyContent(),
       this.defendantSolicitorReferenceFragment.verifyContent(),
     ]);
   }

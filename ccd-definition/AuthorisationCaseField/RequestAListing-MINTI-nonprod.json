@@ -22,21 +22,5 @@
       "hearing-schedule-access"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "requestAnotherHearingLabel",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "requestAnotherHearing",
-    "UserRoles": [
-      "hearing-schedule-access"
-    ],
-    "CRUD": "CRU"
   }
 ]

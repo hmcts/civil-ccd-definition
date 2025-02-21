@@ -20,7 +20,7 @@ export default class RespondentResponseTypeSpecPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications(
+    await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
         // super.expectLabel(radioButtons.fullDefence.label),

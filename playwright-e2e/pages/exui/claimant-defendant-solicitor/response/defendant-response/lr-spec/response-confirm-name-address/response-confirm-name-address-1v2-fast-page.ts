@@ -9,7 +9,7 @@ import ClaimTrack from '../../../../../../../enums/claim-track.ts';
 @AllMethodsStep()
 export default class ResponseConfirmNameAddress1v2FastPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(radioButtons.address.label, { count: 2 }),
       super.expectLabel(radioButtons.address.yes.label, { count: 2 }),

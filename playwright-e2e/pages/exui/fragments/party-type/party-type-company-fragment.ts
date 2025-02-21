@@ -18,10 +18,7 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
 
   async verifyContent() {
     await super.runVerifications(
-      [
-        // super.expectLabel(inputs.name.label, { exact: true, index: 0 }),
-        super.expectLabel(inputs.email.label),
-      ],
+      [super.expectLabel(inputs.name.label, { count: 1 }), super.expectLabel(inputs.email.label)],
       {
         runAxe: false,
       },

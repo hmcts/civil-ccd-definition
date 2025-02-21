@@ -25,10 +25,10 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        // super.expectLabel(inputs.firstName.label, { index: 1 }),
-        // super.expectLabel(inputs.lastName.label, { index: 1 }),
-        // super.expectText(inputs.dateOfBirth.label, { index: 1 }),
-        // this.dateFragment.verifyContent(),
+        super.expectLabel(inputs.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.lastName.label, { count: 1 }),
+        super.expectText(inputs.dateOfBirth.label, { count: 1 }),
+        this.dateFragment.verifyContent(),
         super.expectLabel(inputs.tradingAs.label),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
