@@ -1,4 +1,3 @@
-import testSpeeds from './playwright-e2e/constants/test-speeds.ts';
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
 import os from 'node:os';
