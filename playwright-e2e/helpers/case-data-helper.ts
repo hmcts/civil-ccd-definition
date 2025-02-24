@@ -120,9 +120,9 @@ export default class CaseDataHelper {
       case partys.DEFENDANT_1_LITIGATION_FRIEND:
         return 'SO15 2JY';
       case partys.DEFENDANT_2_LITIGATION_FRIEND:
-        return 'EX1 1JG';
-      case partys.DEFENDANT_SOLICITOR_1:
         return 'B1 1AA';
+      case partys.DEFENDANT_SOLICITOR_1:
+        return 'EX1 1JG';
       case partys.DEFENDANT_SOLICITOR_2:
         return 'M4 5DL';
     }
@@ -179,12 +179,14 @@ export default class CaseDataHelper {
           individualFirstName: partyKey,
           individualLastName: partyTypeKey,
           individualDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
+          partyName: `Mx ${partyKey} ${partyTypeKey}`,
         };
 
       case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
+          partyName: `${partyKey} ${partyTypeKey}`,
         };
 
       case claimantDefendantPartyTypes.SOLE_TRADER:
@@ -195,11 +197,13 @@ export default class CaseDataHelper {
           soleTraderLastName: partyTypeKey,
           soleTraderTradingAs: `${partyKey} Trade`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
+          partyName: `Mx ${partyKey} ${partyTypeKey}`,
         };
       case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
           organisationName: `${partyKey} ${partyTypeKey}`,
+          partyName: `${partyKey} ${partyTypeKey}`,
         };
     }
   }
