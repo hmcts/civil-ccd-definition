@@ -48,7 +48,9 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'label')
   protected async clickByLabel(
     label: string,
-    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {},
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {
+      exact: true,
+    },
   ) {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
@@ -60,20 +62,24 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
-  protected async clickButtonByName(name: string, options: { timeout?: number } = {}) {
-    await this.page.getByRole('button', { name }).click(options);
+  protected async clickButtonByName(
+    name: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
+    await this.page.getByRole('button', { name, exact: options.exact }).click(options);
   }
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number } = {
+    options: { index?: number; timeout?: number; exact?: boolean } = {
+      exact: true,
       index: 0,
     },
   ) {
     await this.page
-      .getByRole('link', { name })
+      .getByRole('link', { name, exact: true })
       .nth(options.index)
       .click({ timeout: options.timeout });
   }
@@ -110,7 +116,10 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async clickByText(text: string, options: { timeout?: number; exact?: boolean } = {}) {
+  protected async clickByText(
+    text: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
     await this.page.getByText(text, { exact: options.exact }).click({ timeout: options.timeout });
   }
 
@@ -135,7 +144,7 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {},
+    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (options.index) {
       await this.page
@@ -183,7 +192,7 @@ export default abstract class BasePage {
   protected async selectFromDropdownByLabel(
     option: string | number,
     selector: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    options: { timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (typeof option === 'number')
       await this.page
@@ -444,17 +453,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -498,7 +511,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -538,17 +554,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -584,7 +604,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -622,17 +645,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -672,7 +699,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -703,27 +733,31 @@ export default abstract class BasePage {
       first?: boolean;
       count?: number;
       all?: boolean;
+      exact?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
-      exact?: boolean;
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.getByLabel(label, { exact: options.exact });
+    let locator = this.page.locator('label').getByText(label, { exact: options.exact });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -762,17 +796,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -798,6 +836,112 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     }
+  }
+
+  @BoxedDetailedStep(classKey, 'label')
+  async expectRadioGroupLabel(
+    label: string,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.locator('legend').getByText(label, { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'label', 'selector')
+  async expectLabelForInput(
+    label: string,
+    selector: string,
+    options: { message?: string; timeout?: number; exact?: boolean } = {},
+  ) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page
+        .locator('label')
+        .getByText(label, { exact: options.exact })
+        .locator(`[for="${inputId}"]`),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  async expectRadioYesLabel(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText('Yes', { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  async expectRadioNoLabel(selector: string, options: { message?: string; timeout?: number } = {}) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText('No', { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'name')
