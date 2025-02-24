@@ -253,8 +253,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.dqFastTrackClaimantResponse();
-        await claimantResponseSpecActions.claimantResponseFastTrackDQ();
+        await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
+        await claimantResponseSpecActions.claimantResponseFastTrackDQSpec();
         await claimantResponseSpecActions.applications();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -274,8 +274,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.mediationClaimantResponse();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQ();
+        await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
@@ -294,8 +294,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.mediationClaimantResponse();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQ();
+        await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
@@ -314,8 +314,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.mediationClaimantResponse();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQ();
+        await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
@@ -334,8 +334,8 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
-        await claimantResponseSpecActions.mediationClaimantResponse();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQ();
+        await claimantResponseSpecActions.mediationClaimantResponseSpec();
+        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
