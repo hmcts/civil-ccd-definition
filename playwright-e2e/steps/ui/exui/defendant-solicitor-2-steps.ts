@@ -31,15 +31,16 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseActions.confirmDetailsDefendantSolicitor2Page();
-        await defendantResponseActions.respondentResponseTypeDefendantSolicitor2Page();
-        await defendantResponseActions.solicitorReferencesDefendantResponseDefendantSolicitor2Page();
-        await defendantResponseActions.uploadDefendantResponseDefendantSolicitor2Page();
-        await defendantResponseActions.processDefendantSolicitor2DQPages();
-        await defendantResponseActions.processDefendantSolicitor2FinalPages();
+        await defendantResponseActions.confirmDetailsDS2();
+        await defendantResponseActions.respondentResponseTypeDS2();
+        await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
+        await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqDS2();
+        await defendantResponseActions.statementOfTruthDS2();
+        await defendantResponseActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseActions.confirmDefendantResponsePage();
+        await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor2User,

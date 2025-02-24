@@ -31,15 +31,18 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseSpecActions.processDefendantSolicitor1InitialPages();
-        await defendantResponseSpecActions.respondentResponseTypeSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.defenceRouteDefendantSolicitor1Page();
-        await defendantResponseSpecActions.uploadDefendantResponseSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FastTrackPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FastTrackDQPages();
-        await defendantResponseSpecActions.applicationDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.dqFastTrackDS1();
+        await defendantResponseSpecActions.dqDS1();
+        await defendantResponseSpecActions.applicationDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
+        await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -54,14 +57,17 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseSpecActions.processDefendantSolicitor1InitialPages();
-        await defendantResponseSpecActions.respondentResponseTypeSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.defenceRouteDefendantSolicitor1Page();
-        await defendantResponseSpecActions.uploadDefendantResponseSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
-        await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.mediationDS1();
+        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
+        await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -76,15 +82,18 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseSpecActions.processDefendantSolicitor1InitialPages();
-        await defendantResponseSpecActions.singleResponse2v1Page();
-        await defendantResponseSpecActions.respondentResponseType2v1SpecPage();
-        await defendantResponseSpecActions.defenceRouteDefendantSolicitor1Page();
-        await defendantResponseSpecActions.uploadDefendantResponseSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
-        await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse2v1();
+        await defendantResponseSpecActions.respondentResponseType2v1Spec();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.mediationDS1();
+        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
+        await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
@@ -99,15 +108,18 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseSpecActions.processDefendantSolicitor1InitialPages1v2SS();
-        await defendantResponseSpecActions.singleResponsePage();
-        await defendantResponseSpecActions.respondentResponseTypeSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.defenceRouteDefendantSolicitor1Page();
-        await defendantResponseSpecActions.uploadDefendantResponseSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
-        await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddress1v2();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.singleResponse();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.mediationDS1();
+        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
+        await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
         await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpecPage();
@@ -122,14 +134,17 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
     const { defendantResponseSpecActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await defendantResponseSpecActions.processDefendantSolicitor1InitialPages();
-        await defendantResponseSpecActions.respondentResponseTypeSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.defenceRouteDefendantSolicitor1Page();
-        await defendantResponseSpecActions.uploadDefendantResponseSpecDefendantSolicitor1Page();
-        await defendantResponseSpecActions.processDefendantSolicitor1TimelinePages();
-        await defendantResponseSpecActions.processDefendantSolicitor1MediationPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1SmallTrackDQPages();
-        await defendantResponseSpecActions.processDefendantSolicitor1FinalPages();
+        await defendantResponseSpecActions.respondentChecklist();
+        await defendantResponseSpecActions.responseConfirmNameAddressDS1();
+        await defendantResponseSpecActions.responseConfirmDetailsDS1();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
+        await defendantResponseSpecActions.defenceRouteDS1();
+        await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
+        await defendantResponseSpecActions.timelineDS1();
+        await defendantResponseSpecActions.mediationDS1();
+        await defendantResponseSpecActions.dqSmallTrackDS1();
+        await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
+        await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
         await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
