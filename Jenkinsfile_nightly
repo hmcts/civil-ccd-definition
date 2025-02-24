@@ -6,7 +6,8 @@ properties([
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
-    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '2', description: 'Number of times playwright will retry tests'),
+    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
+    string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', description: 'Number of times playwright tests will retry exui events'),
     string(name: 'PLAYWRIGHT_TEST_SPEED', defaultValue: 'fast', description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
     string(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', defaultValue: 'false', description: 'Runs accessibility tests for playwright during test execution'),
     string(name: 'PLAYWRIGHT_RUN_SETUP', defaultValue: 'true', description: 'Runs setup projects before functional test suite'),
@@ -103,6 +104,7 @@ withNightlyPipeline(type, product, component) {
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
+  env.PLAYWRIGHT_EXUI_RETRIES=params.PLAYWRIGHT_EXUI_RETRIES
   env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
   env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
   env.PLAYWRIGHT_UNASSIGN_CASES = true
