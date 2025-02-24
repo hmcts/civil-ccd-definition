@@ -12,8 +12,10 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -32,8 +34,10 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -52,8 +56,10 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -72,8 +78,10 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "judge-profile"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "GS_profile",
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
@@ -91,10 +99,6 @@
       },
       {
         "UserRoles": [
-          "cui-admin-profile",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
           "GS_profile",
           "caseworker-civil-solicitor"
         ],
