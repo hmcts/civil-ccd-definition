@@ -4,8 +4,14 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
+import {
+  components,
+  getFormattedCaseId,
+  getUnformattedCaseId,
+  headings,
+} from '../../exui-page/exui-content';
 import ExuiPage from '../../exui-page/exui-page';
-import { buttons, containers, dropdowns, getSuccessBannerText, tabs } from './case-details-content';
+import { buttons, containers, dropdowns, successBannerText, tabs } from './case-details-content';
 
 const classKey = 'CaseDetailsPage';
 
@@ -65,22 +71,33 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.runVerifications([], { useAxeCache: false });
   }
 
+  async grabCaseNumber() {
+    return getUnformattedCaseId(await super.getText(headings.caseNumber.selector));
+  }
+
   @TruthyParams(classKey, 'caseId')
   async goToCaseDetails(caseId: number) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`);
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force: true });
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
-    await super.retryClickBySelector(
-      buttons.go.selector,
-      () =>
-        super.expectNoTab(tabs.summary.title, {
+    let firstAttempt = true;
+    await super.retryAction(
+      async () => {
+        if (!firstAttempt) await super.reload();
+        await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+        await super.clickBySelector(buttons.go.selector);
+        firstAttempt = false;
+      },
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoTab(tabs.summary.title, {
           timeout: 15_000,
-          exact: true,
-        }),
+        });
+      },
+      `Starting event: ${ccdEvent.name} failed, trying again`,
       { retries: 3 },
     );
   }
@@ -96,8 +113,8 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
     await super.runVerifications(
       [
-        super.expectText(getSuccessBannerText(caseId, ccdEvent)),
-        super.clickByText(tabs.history.title, { exact: true }),
+        super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
+        super.clickByText(tabs.history.title),
         super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
           rowNum: 1,
         }),

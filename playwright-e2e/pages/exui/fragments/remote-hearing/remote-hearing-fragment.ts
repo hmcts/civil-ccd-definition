@@ -17,10 +17,14 @@ export default class RemoteHearingFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.remoteHearing.label),
-        super.expectText(radioButtons.remoteHearing.hintText),
-        super.expectLabel(radioButtons.remoteHearing.yes.label),
-        super.expectLabel(radioButtons.remoteHearing.no.label),
+        super.expectRadioGroupLabel(radioButtons.remoteHearing.label),
+        super.expectText(radioButtons.remoteHearing.hintText, { count: 1 }),
+        super.expectRadioYesLabel(
+          radioButtons.remoteHearing.yes.selector(this.claimantDefendantParty),
+        ),
+        super.expectRadioNoLabel(
+          radioButtons.remoteHearing.no.selector(this.claimantDefendantParty),
+        ),
       ],
       {
         runAxe: false,
