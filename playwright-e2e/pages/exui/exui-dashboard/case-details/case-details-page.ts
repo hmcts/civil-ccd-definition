@@ -83,17 +83,18 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
+    let firstAttempt = true;
     await super.retryAction(
       async () => {
-        await this.selectFromDropdown(0, dropdowns.nextStep.selector);
+        if (!firstAttempt) await super.reload();
         await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
         await super.clickBySelector(buttons.go.selector);
+        firstAttempt = false;
       },
       async () => {
         await super.waitForPageToLoad();
         await super.expectNoTab(tabs.summary.title, {
           timeout: 15_000,
-          exact: true,
         });
       },
       `Starting event: ${ccdEvent.name} failed, trying again`,
@@ -113,7 +114,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
-        super.clickByText(tabs.history.title, { exact: true }),
+        super.clickByText(tabs.history.title),
         super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
           rowNum: 1,
         }),

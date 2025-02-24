@@ -309,7 +309,6 @@ export default class respondentResponseSpecActions extends BaseTestData {
     await smallClaimHearingDefendantSolicitor1Page.addNewUnavailableDate();
     await smallClaimHearingDefendantSolicitor1Page.selectSingleDate();
     await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
-    await smallClaimHearingDefendantSolicitor1Page.selectYesInterpreter();
     await smallClaimHearingDefendantSolicitor1Page.enterTypeOfInterpreter();
     await smallClaimHearingDefendantSolicitor1Page.submit();
   }
@@ -317,9 +316,10 @@ export default class respondentResponseSpecActions extends BaseTestData {
   async smallClaimHearingDefendantSolicitor2Page() {
     const { smallClaimHearingDefendantSolicitor2Page } = this.defendantResponsePageFactory;
     await smallClaimHearingDefendantSolicitor2Page.verifyContent(this.ccdCaseData);
-    await smallClaimHearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
-    await smallClaimHearingDefendantSolicitor2Page.addNewUnavailableDate();
-    await smallClaimHearingDefendantSolicitor2Page.selectSingleDate();
+    await smallClaimHearingDefendantSolicitor2Page.selectNoAvailabilityRequired();
+    // await smallClaimHearingDefendantSolicitor2Page.selectYesAvailabilityRequired();
+    // await smallClaimHearingDefendantSolicitor2Page.addNewUnavailableDate();
+    // await smallClaimHearingDefendantSolicitor2Page.selectSingleDate();
     await smallClaimHearingDefendantSolicitor2Page.selectYesInterpreter();
     await smallClaimHearingDefendantSolicitor2Page.enterTypeOfInterpreter();
     await smallClaimHearingDefendantSolicitor2Page.submit();

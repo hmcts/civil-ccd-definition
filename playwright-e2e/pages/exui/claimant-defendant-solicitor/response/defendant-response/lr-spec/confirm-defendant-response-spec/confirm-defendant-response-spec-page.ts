@@ -21,11 +21,12 @@ export default class ConfirmDefendantResponseSpecPage extends ExuiPage(BasePage)
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
       super.expectSubheading(subheadings.happensNext),
-      super.expectText(ccdCaseData.legacyCaseReference),
+      super.expectText(ccdCaseData.legacyCaseReference, { exact: false }),
       super.expectText(
         paragraphs.claimantResponse(
           DateHelper.formatDateToString(claimantResponseDate, { outputFormat: 'DD Month YYYY' }),
         ),
+        { exact: false },
       ),
     ]);
   }

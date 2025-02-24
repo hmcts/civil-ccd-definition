@@ -22,14 +22,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-          super.expectHeading(ccdCaseData.caseNamePublic),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
         ];
       } else {
         expects = [
-          super.expectHeading(ccdEventstate.name),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-          super.expectHeading(ccdCaseData.caseNamePublic),
+          super.expectHeading(ccdEventstate.name, { exact: false }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });

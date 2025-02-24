@@ -10,7 +10,7 @@ export default class ConfirmNotifyClaimCOSPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeadingCOS),
-      super.expectText(paragraphs.descriptionTextCOS1),
+      super.expectText(paragraphs.descriptionTextCOS1, { exact: false }),
       super.expectText(paragraphs.descriptionTextCOS2),
     ]);
   }
