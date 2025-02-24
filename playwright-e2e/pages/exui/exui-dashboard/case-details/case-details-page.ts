@@ -87,7 +87,15 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     await super.retryAction(
       async () => {
         if (!firstAttempt) await super.reload();
-        await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+        await super.retryReload(
+          async () => {
+            await super.expectSelector(dropdowns.nextStep.selector);
+            await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector, {
+              timeout: 1000,
+            });
+          },
+          { retries: 1 },
+        );
         await super.clickBySelector(buttons.go.selector);
         firstAttempt = false;
       },
