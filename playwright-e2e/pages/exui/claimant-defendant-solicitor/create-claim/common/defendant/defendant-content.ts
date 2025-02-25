@@ -1,4 +1,10 @@
 export const subheadings = {
-  claimantDetails: 'Defendant details',
+  defendantDetails: 'Defendant details',
   address: 'Address',
+};
+
+export const radioButtons = {
+  partyType: {
+    label: 'Defendant type',
+  },
 };
