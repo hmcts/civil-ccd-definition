@@ -27,6 +27,21 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     await super.idamActions.exuiLogin(defendantSolicitor2User);
   }
 
+  async AddLitigationFriend() {
+    const { addDefendantLitigationFriendActions } = this.defendantActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await addDefendantLitigationFriendActions.defendant2LitigationFriend();
+        await addDefendantLitigationFriendActions.submitAddDefendantLitigationFriend();
+      },
+      async () => {
+        await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
+      },
+      ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
+      defendantSolicitor2User,
+    );
+  }
+
   async RespondSmallTrackFullDefence1v2DS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
     await super.retryExuiEvent(
