@@ -10,8 +10,8 @@ import partys from '../../../../../../constants/partys';
 export default class ClaimAmountDetailsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
-      super.expectText(tableHeadings.description, { ignoreDuplicates: true }),
-      super.expectText(tableHeadings.amount, { ignoreDuplicates: true }),
+      super.expectText(tableHeaders.description, { exact: true }),
+      super.expectText(tableHeaders.amount, { exact: true }),
     ]);
   }
 

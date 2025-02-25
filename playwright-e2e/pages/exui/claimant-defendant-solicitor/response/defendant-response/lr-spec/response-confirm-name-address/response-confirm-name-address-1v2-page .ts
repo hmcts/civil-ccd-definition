@@ -8,7 +8,7 @@ import partys from '../../../../../../../constants/partys.ts';
 @AllMethodsStep()
 export default class ResponseConfirmNameAddress1v2Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       // super.expectText(radioButtons.address.label),
       // super.expectLabel(radioButtons.address.yes.label),

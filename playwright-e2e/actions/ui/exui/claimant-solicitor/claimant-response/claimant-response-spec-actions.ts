@@ -1,11 +1,10 @@
 import TestData from '../../../../../models/test-data.ts';
-import partys from '../../../../../constants/partys.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
-import BaseAction from '../../../../../base/base-test-data.ts';
+import BaseTestData from '../../../../../base/base-test-data.ts';
 import ClaimantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory.ts';
 
 @AllMethodsStep()
-export default class ClaimantResponseSpecActions extends BaseAction {
+export default class ClaimantResponseSpecActions extends BaseTestData {
   private claimantResponsePageFactory: ClaimantResponsePageFactory;
 
   constructor(claimantResponsePageFactory: ClaimantResponsePageFactory, testData: TestData) {
@@ -123,7 +122,7 @@ export default class ClaimantResponseSpecActions extends BaseAction {
     const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
     await witnessesPage.selectYesWitnesses();
-    await witnessesPage.addWitness()
+    await witnessesPage.addWitness();
     await witnessesPage.enterWitnessDetails();
     await witnessesPage.submit();
   }
