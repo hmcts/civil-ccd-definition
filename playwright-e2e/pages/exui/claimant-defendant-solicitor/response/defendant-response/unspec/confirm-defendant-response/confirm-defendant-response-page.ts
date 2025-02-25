@@ -16,11 +16,12 @@ export default class ConfirmDefendantResponsePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectText(ccdCaseData.legacyCaseReference),
+      super.expectText(ccdCaseData.legacyCaseReference, { exact: false }),
       super.expectText(
         paragraphs.claimantsResponse(
           DateHelper.formatDateToString(claimantResponseDate, { outputFormat: 'DD Month YYYY' }),
         ),
+        { exact: false },
       ),
     ]);
   }

@@ -58,11 +58,11 @@ export default class ClaimantResponseActions extends BaseTestData {
     await fixedRecoverableCostsPage.submit();
   }
 
-  async disclosureOfNonElectronicDocumentsSpecPage() {
-    const { disclosureOfNonElectronicDocumentsSpecPage } = this.claimantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsSpecPage.verifyContent(this.ccdCaseData);
-    await disclosureOfNonElectronicDocumentsSpecPage.enterDetails();
-    await disclosureOfNonElectronicDocumentsSpecPage.submit();
+  async disclosureOfNonElectronicDocumentsPage() {
+    const { disclosureOfNonElectronicDocumentsPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsPage.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsPage.enterDetails();
+    await disclosureOfNonElectronicDocumentsPage.submit();
   }
 
   async expertsPage() {

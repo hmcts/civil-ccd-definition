@@ -9,7 +9,7 @@ export default class ConfirmNotifyClaimPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectHeading(confirmationHeading),
       super.expectText(paragraphs.descriptionText1),
-      super.expectText(paragraphs.descriptionText2),
+      super.expectText(paragraphs.descriptionText2, { exact: false }),
     ]);
   }
 

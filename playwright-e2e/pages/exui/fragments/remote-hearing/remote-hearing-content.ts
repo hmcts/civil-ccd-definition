@@ -12,7 +12,7 @@ export const radioButtons = {
     no: {
       label: 'No',
       selector: (claimantDefendantParty: Party) =>
-        `#${claimantDefendantParty.oldKey}DQRemoteHearing_remoteHearingRequested_Yes`,
+        `#${claimantDefendantParty.oldKey}DQRemoteHearing_remoteHearingRequested_No`,
     },
   },
 };

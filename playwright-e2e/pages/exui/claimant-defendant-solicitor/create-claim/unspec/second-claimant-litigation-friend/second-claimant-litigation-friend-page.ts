@@ -21,7 +21,9 @@ export default class SecondClaimantLitigationFriendPage extends ExuiPage(BasePag
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectText(radioButtons.litigationFriendRequired.label),
+      super.expectRadioGroupLabel(radioButtons.litigationFriendRequired.label),
+      super.expectRadioYesLabel(radioButtons.litigationFriendRequired.yes.selector),
+      super.expectRadioNoLabel(radioButtons.litigationFriendRequired.no.selector),
     ]);
   }
 

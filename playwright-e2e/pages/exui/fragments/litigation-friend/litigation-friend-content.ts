@@ -3,6 +3,8 @@ import { Party } from '../../../../models/partys';
 export const subheadings = {
   litigationFriendAddress: "Litigation friend's address",
   uploadcertificate: 'Upload the certificate of suitability',
+  litigationDetails: (litigationParty: Party) =>
+    `Defendant ${litigationParty.number === 1 ? '' : litigationParty.number} litigation details`,
 };
 
 export const inputs = {
@@ -12,7 +14,7 @@ export const inputs = {
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_firstName`,
     },
     lastName: {
-      label: 'Last Name',
+      label: 'Last name',
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_lastName`,
     },
     email: {

@@ -7,6 +7,6 @@ export const subheadings = {
 export const radioButtons = {
   address: {
     label:
-      "Is the address of the Defendant's litigation friend the same as the address of the Defendant?",
+      'Is the address of the Defendant’s litigation friend the same as the address of the Defendant?',
   },
 };

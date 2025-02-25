@@ -18,6 +18,6 @@ export default class InterestClaimFromPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.clickSubmit();
+    await super.retryClickSubmit();
   }
 }

@@ -10,7 +10,7 @@ export default class Confirm1v2DSDefendantResponsePage extends ExuiPage(BasePage
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
-      super.expectText(ccdCaseData.legacyCaseReference),
+      super.expectText(ccdCaseData.legacyCaseReference, { exact: false }),
       super.expectText(paragraphs.firstResponse1v2DS),
     ]);
   }

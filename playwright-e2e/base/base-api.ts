@@ -5,6 +5,7 @@ import { bankHolidays } from '../config/data';
 import { CCDEvent } from '../models/ccd/ccd-events';
 import ObjectHelper from '../helpers/object-helper';
 import TestData from '../models/test-data';
+import { civilAdminUser } from '../config/users/exui-users';
 
 export default abstract class BaseApi extends BaseTestData {
   private _requestsFactory: RequestsFactory;
@@ -78,9 +79,12 @@ export default abstract class BaseApi extends BaseTestData {
     await civilServiceRequests.waitForFinishedBusinessProcess(user, caseId ?? this.ccdCaseData.id);
   }
 
-  protected async fetchAndSetCCDCaseData(user: User, caseId?: number) {
+  protected async fetchAndSetCCDCaseData(caseId?: number) {
     const { ccdRequests } = this.requestsFactory;
-    await this.setupUserData(user);
-    this.setCCDCaseData = await ccdRequests.fetchCCDCaseData(user, caseId ?? this.ccdCaseData.id);
+    await this.setupUserData(civilAdminUser);
+    this.setCCDCaseData = await ccdRequests.fetchCCDCaseData(
+      civilAdminUser,
+      caseId ?? this.ccdCaseData.id,
+    );
   }
 }

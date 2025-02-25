@@ -5,7 +5,7 @@ import NotifyClaimPageFactory from '../../../../pages/exui/claimant-defendant-so
 import ClaimantResponsePageFactory from '../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory';
 import ClaimantResponseActions from './claimant-response/claimant-response-actions';
 import ClaimantResponseSpecActions from './claimant-response/claimant-response-spec-actions';
-import CreateClaimSpecActions from './create-claim-spec-actions';
+import CreateClaimSpecActions from './create-claim/create-claim-spec-actions';
 import CreateClaimActions from './create-claim/create-claim-actions';
 import NotifyClaimActions from './notify-claim-actions';
 import NotifyClaimDetailsActions from './notify-claim-details-actions';

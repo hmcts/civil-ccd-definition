@@ -28,7 +28,7 @@ export default class ResponseConfirmDetails1v2Page extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
-    super.runVerifications([
+    await super.runVerifications([
       super.expectHeading(heading),
       super.expectText(tableHeadings.organisation),
       super.expectText(tableHeadings.reference),

@@ -8,7 +8,7 @@ import { radioButtons } from './respondent-response-type-spec-content.ts';
 @AllMethodsStep()
 export default class RespondentResponseType1v2SpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
       super.expectLabel(radioButtons.fullAdmit.label, { count: 2 }),
