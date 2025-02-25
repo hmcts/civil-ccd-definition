@@ -66,7 +66,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentChecklistPage(this.page);
   }
 
-  get confirmDetailsDefendantSolicitor1Page() {
+  get confirmDetailsDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new ConfirmDetailsPage(
       this.page,
@@ -76,7 +76,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get confirmDetailsDefendantSolicitor2Page() {
+  get confirmDetailsDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new ConfirmDetailsPage(
       this.page,
@@ -91,7 +91,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ConfirmDetails1v2Page(this.page, dateFragment);
   }
 
-  get responseConfirmNameAddressDefendantSolicitor1Page() {
+  get responseConfirmNameAddressDS1Page() {
     return new ResponseConfirmNameAddressPage(
       this.page,
       partys.DEFENDANT_1,
@@ -99,7 +99,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get responseConfirmNameAddressDefendantSolicitor2Page() {
+  get responseConfirmNameAddressDS2Page() {
     return new ResponseConfirmNameAddressPage(
       this.page,
       partys.DEFENDANT_2,
@@ -115,7 +115,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new ResponseConfirmNameAddress1v2FastPage(this.page);
   }
 
-  get responseConfirmDetailsDefendantSolicitor1Page() {
+  get responseConfirmDetailsDS1Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -131,7 +131,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get responseConfirmDetailsDefendantSolicitor2Page() {
+  get responseConfirmDetailsDS2Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -165,7 +165,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new SingleResponse2v1Page(this.page);
   }
 
-  get respondentResponseTypeDefendantSolicitor1Page() {
+  get respondentResponseTypeDS1Page() {
     return new RespondentResponseTypePage(
       this.page,
       partys.DEFENDANT_1,
@@ -173,7 +173,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get respondentResponseTypeDefendantSolicitor2Page() {
+  get respondentResponseTypeDS2Page() {
     return new RespondentResponseTypePage(
       this.page,
       partys.DEFENDANT_2,
@@ -189,7 +189,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseType2v1Page(this.page);
   }
 
-  get respondentResponseTypeSpecDefendantSolicitor1Page() {
+  get respondentResponseTypeSpecDS1Page() {
     return new RespondentResponseTypeSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -197,7 +197,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get respondentResponseTypeSpecDefendantSolicitor2Page() {
+  get respondentResponseTypeSpecDS2Page() {
     return new RespondentResponseTypeSpecPage(
       this.page,
       partys.DEFENDANT_2,
@@ -213,7 +213,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new RespondentResponseType2v1SpecPage(this.page);
   }
 
-  get solicitorReferencesDefendantResponseDefendantSolicitor1Page() {
+  get solicitorReferencesDefendantResponseDS1Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -227,7 +227,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get solicitorReferencesDefendantResponseDefendantSolicitor2Page() {
+  get solicitorReferencesDefendantResponseDS2Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_2,
@@ -241,7 +241,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get defenceRouteDefendantSolicitor1Page() {
+  get defenceRouteDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new DefenceRoutePage(
       this.page,
@@ -251,7 +251,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get defenceRouteDefendantSolicitor2Page() {
+  get defenceRouteDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new DefenceRoutePage(
       this.page,
@@ -261,7 +261,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get uploadDefendantResponseDefendantSolicitor1Page() {
+  get uploadDefendantResponseDS1Page() {
     return new UploadDefendantResponsePage(
       this.page,
       partys.DEFENDANT_1,
@@ -269,7 +269,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get uploadDefendantResponseDefendantSolicitor2Page() {
+  get uploadDefendantResponseDS2Page() {
     return new UploadDefendantResponsePage(
       this.page,
       partys.DEFENDANT_2,
@@ -277,7 +277,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get uploadDefendantResponseSpecDefendantSolicitor1Page() {
+  get uploadDefendantResponseSpecDS1Page() {
     return new UploadDefendantResponseSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -285,7 +285,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get uploadDefendantResponseSpecDefendantSolicitor2Page() {
+  get uploadDefendantResponseSpecDS2Page() {
     return new UploadDefendantResponseSpecPage(
       this.page,
       partys.DEFENDANT_2,
@@ -293,15 +293,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get howToAddTimelineDefendantSolicitor1Page() {
+  get howToAddTimelineDS1Page() {
     return new HowToAddTimelinePage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get howToAddTimelineDefendantSolicitor2Page() {
+  get howToAddTimelineDS2Page() {
     return new HowToAddTimelinePage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get howToAddTimelineManualDefendantSolicitor1Page() {
+  get howToAddTimelineManualDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new HowToAddTimelineManualPage(
       this.page,
@@ -311,7 +311,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get howToAddTimelineManualDefendantSolicitor2Page() {
+  get howToAddTimelineManualDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new HowToAddTimelineManualPage(
       this.page,
@@ -321,7 +321,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get howToAddTimelineUploadDefendantSolicitor1Page() {
+  get howToAddTimelineUploadDS1Page() {
     return new HowToAddTimelineUploadPage(
       this.page,
       partys.DEFENDANT_1,
@@ -329,7 +329,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get howToAddTimelineUploadDefendantSolicitor2Page() {
+  get howToAddTimelineUploadDS2Page() {
     return new HowToAddTimelineUploadPage(
       this.page,
       partys.DEFENDANT_2,
@@ -337,15 +337,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get mediationDefendantSolicitor1Page() {
+  get mediationDS1Page() {
     return new MediationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get mediationDefendantSolicitor2Page() {
+  get mediationDS2Page() {
     return new MediationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get mediationContactInformationDefendantSolicitor1Page() {
+  get mediationContactInformationDS1Page() {
     return new MediationContactInformationPage(
       this.page,
       partys.DEFENDANT_1,
@@ -354,7 +354,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get mediationContactInformationDefendantSolicitor2Page() {
+  get mediationContactInformationDS2Page() {
     return new MediationContactInformationPage(
       this.page,
       partys.DEFENDANT_2,
@@ -363,7 +363,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get mediationAvailabilityDefendantSolicitor1Page() {
+  get mediationAvailabilityDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new MediationAvailabilityPage(
       this.page,
@@ -373,7 +373,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get mediationAvailabilityDefendantSolicitor2Page() {
+  get mediationAvailabilityDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new MediationAvailabilityPage(
       this.page,
@@ -383,7 +383,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get fileDirectionsQuestionaireDefendantSolicitor1Page() {
+  get fileDirectionsQuestionaireDS1Page() {
     return new FileDirectionsQuestionnairePage(
       this.page,
       partys.DEFENDANT_1,
@@ -391,7 +391,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get fileDirectionsQuestionaireDefendantSolicitor2Page() {
+  get fileDirectionsQuestionaireDS2Page() {
     return new FileDirectionsQuestionnairePage(
       this.page,
       partys.DEFENDANT_2,
@@ -399,7 +399,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get fixedRecoverableCostsPageDefendantSolicitor1() {
+  get fixedRecoverableCostsDS1Page() {
     return new FixedRecoverableCostsPage(
       this.page,
       partys.DEFENDANT_1,
@@ -407,7 +407,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get fixedRecoverableCostsPageDefendantSolicitor2() {
+  get fixedRecoverableCostsDS2Page() {
     return new FixedRecoverableCostsPage(
       this.page,
       partys.DEFENDANT_2,
@@ -415,7 +415,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor1Page() {
+  get disclosureOfElectronicDocumentsLRSpecDS1Page() {
     return new DisclosureOfElectronicDocumentsLRSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -423,7 +423,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfElectronicDocumentsLRSpecDefendantSolicitor2Page() {
+  get disclosureOfElectronicDocumentsLRSpecDS2Page() {
     return new DisclosureOfElectronicDocumentsLRSpecPage(
       this.page,
       partys.DEFENDANT_2,
@@ -431,7 +431,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor1Page() {
+  get disclosureOfNonElectronicDocumentsLRSpecDS1Page() {
     return new DisclosureOfNonElectronicDocumentsLRSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -439,7 +439,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfNonElectronicDocumentsLRSpecDefendantSolicitor2Page() {
+  get disclosureOfNonElectronicDocumentsLRSpecDS2Page() {
     return new DisclosureOfNonElectronicDocumentsLRSpecPage(
       this.page,
       partys.DEFENDANT_2,
@@ -447,7 +447,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfNonElectronicDocumentsDefendantSolicitor1Page() {
+  get disclosureOfNonElectronicDocumentsDS1Page() {
     return new DisclosureOfNonElectronicDocumentsPage(
       this.page,
       partys.DEFENDANT_1,
@@ -455,7 +455,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureOfNonElectronicDocumentsDefendantSolicitor2Page() {
+  get disclosureOfNonElectronicDocumentsDS2Page() {
     return new DisclosureOfNonElectronicDocumentsPage(
       this.page,
       partys.DEFENDANT_2,
@@ -463,15 +463,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get disclosureReportDefendantSolicitor1Page() {
+  get disclosureReportDS1Page() {
     return new DisclosureReportPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get disclosureReportDefendantSolicitor2Page() {
+  get disclosureReportDS2Page() {
     return new DisclosureReportPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get smallClaimExpertsDefendantSolicitor1Page() {
+  get smallClaimExpertsDS1Page() {
     return new SmallClaimExpertsPage(
       this.page,
       partys.DEFENDANT_1,
@@ -480,7 +480,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimExpertsDefendantSolicitor2Page() {
+  get smallClaimExpertsDS2Page() {
     return new SmallClaimExpertsPage(
       this.page,
       partys.DEFENDANT_2,
@@ -489,7 +489,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get expertsDefendantSolicitor1Page() {
+  get expertsDS1Page() {
     return new ExpertPage(
       this.page,
       partys.DEFENDANT_1,
@@ -498,16 +498,16 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get expertsDefendantSolicitor2Page() {
+  get expertsDS2Page() {
     return new ExpertPage(
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_EXPERT_2,
+      partys.DEFENDANT_2_EXPERT_1,
     );
   }
 
-  get smallClaimWitnessesDefendantSolicitor1Page() {
+  get smallClaimWitnessesDS1Page() {
     return new SmallClaimWitnessesPage(
       this.page,
       partys.DEFENDANT_1,
@@ -516,7 +516,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimWitnessesDefendantSolicitor2Page() {
+  get smallClaimWitnessesDS2Page() {
     return new SmallClaimWitnessesPage(
       this.page,
       partys.DEFENDANT_2,
@@ -525,7 +525,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get witnessesSpecDefendantSolicitor1Page() {
+  get witnessesSpecDS1Page() {
     return new WitnessesSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -534,16 +534,16 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get witnessesSpecDefendantSolicitor2Page() {
+  get witnessesSpecDS2Page() {
     return new WitnessesSpecPage(
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_WITNESS_2,
+      partys.DEFENDANT_2_WITNESS_1,
     );
   }
 
-  get witnessesDefendantSolicitor1Page() {
+  get witnessesDS1Page() {
     return new WitnessesPage(
       this.page,
       partys.DEFENDANT_1,
@@ -552,24 +552,24 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get witnessesDefendantSolicitor2Page() {
+  get witnessesDS2Page() {
     return new WitnessesPage(
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
-      partys.DEFENDANT_1_WITNESS_2,
+      partys.DEFENDANT_2_WITNESS_1,
     );
   }
 
-  get languageDefendantSolicitor1Page() {
+  get languageDS1Page() {
     return new LanguagePage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get languageDefendantSolicitor2Page() {
+  get languageDS2Page() {
     return new LanguagePage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get hearingDefendantSolicitor1Page() {
+  get hearingDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new HearingPage(
       this.page,
@@ -579,7 +579,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get hearingDefendantSolicitor2Page() {
+  get hearingDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new HearingPage(
       this.page,
@@ -589,7 +589,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimHearingDefendantSolicitor1Page() {
+  get smallClaimHearingDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new SmallClaimHearingPage(
       this.page,
@@ -599,7 +599,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get smallClaimHearingDefendantSolicitor2Page() {
+  get smallClaimHearingDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new SmallClaimHearingPage(
       this.page,
@@ -609,7 +609,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get hearingLRSpecDefendantSolicitor1Page() {
+  get hearingLRSpecDS1Page() {
     const dateFragment = new DateFragment(this.page);
     return new HearingLRSpecPage(
       this.page,
@@ -619,7 +619,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get hearingLRSpecDefendantSolicitor2Page() {
+  get hearingLRSpecDS2Page() {
     const dateFragment = new DateFragment(this.page);
     return new HearingLRSpecPage(
       this.page,
@@ -629,15 +629,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get draftDirectionsDefendantSolicitor1Page() {
+  get draftDirectionsDS1Page() {
     return new DraftDirectionsPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get draftDirectionsDefendantSolicitor2Page() {
+  get draftDirectionsDS2Page() {
     return new DraftDirectionsPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get requestedCourtDefendantSolicitor1Page() {
+  get requestedCourtDS1Page() {
     const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_1);
     return new RequestedCourtPage(
       this.page,
@@ -647,7 +647,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get requestedCourtDefendantSolicitor2Page() {
+  get requestedCourtDS2Page() {
     const remoteHearingFragment = new RemoteHearingFragment(this.page, partys.DEFENDANT_2);
     return new RequestedCourtPage(
       this.page,
@@ -657,7 +657,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get requestedCourtLRSpecDefendantSolicitor1Page() {
+  get requestedCourtLRSpecDS1Page() {
     const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_1);
     return new RequestedCourtLRSpecPage(
       this.page,
@@ -667,7 +667,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get requestedCourtLRSpecDefendantSolicitor2Page() {
+  get requestedCourtLRSpecDS2Page() {
     const remoteHearingSpecFragment = new RemoteHearingSpecFragment(this.page, partys.DEFENDANT_2);
     return new RequestedCourtLRSpecPage(
       this.page,
@@ -677,15 +677,15 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get hearingSupportDefendantSolicitor1Page() {
+  get hearingSupportDS1Page() {
     return new HearingSupportPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get hearingSupportDefendantSolicitor2Page() {
+  get hearingSupportDS2Page() {
     return new HearingSupportPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get vulnerabilityQuestionsDefendantSolicitor1Page() {
+  get vulnerabilityQuestionsDS1Page() {
     return new VulnerabilityQuestionsPage(
       this.page,
       partys.DEFENDANT_1,
@@ -693,7 +693,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get vulnerabilityQuestionsDefendantSolicitor2Page() {
+  get vulnerabilityQuestionsDS2Page() {
     return new VulnerabilityQuestionsPage(
       this.page,
       partys.DEFENDANT_2,
@@ -701,7 +701,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get vulnerabilityQuestionsSpecDefendantSolicitor1Page() {
+  get vulnerabilityQuestionsSpecDS1Page() {
     return new VulnerabilityQuestionsSpecPage(
       this.page,
       partys.DEFENDANT_1,
@@ -709,7 +709,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get vulnerabilityQuestionsSpecDefendantSolicitor2Page() {
+  get vulnerabilityQuestionsSpecDS2Page() {
     return new VulnerabilityQuestionsSpecPage(
       this.page,
       partys.DEFENDANT_2,
@@ -717,23 +717,23 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     );
   }
 
-  get furtherInformationDefendantSolicitor1Page() {
+  get furtherInformationDS1Page() {
     return new FurtherInformationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get furtherInformationDefendantSolicitor2Page() {
+  get furtherInformationDS2Page() {
     return new FurtherInformationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get applicationDefendantSolicitor1Page() {
+  get applicationDS1Page() {
     return new ApplicationPage(this.page, partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1);
   }
 
-  get applicationDefendantSolicitor2Page() {
+  get applicationDS2Page() {
     return new ApplicationPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
   }
 
-  get statementOfTruthDefendantResponseDefendantSolicitor1Page() {
+  get statementOfTruthDefendantResponseDS1Page() {
     const statementofTruthFragment = new StatementOfTruthFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_1,
@@ -741,7 +741,7 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
     return new StatmentOfTruthDefendantResponsePage(this.page, statementofTruthFragment);
   }
 
-  get statementOfTruthDefendantResponseDefendantSolicitor2Page() {
+  get statementOfTruthDefendantResponseDS2Page() {
     const statementofTruthFragment = new StatementOfTruthFragment(
       this.page,
       partys.DEFENDANT_SOLICITOR_2,

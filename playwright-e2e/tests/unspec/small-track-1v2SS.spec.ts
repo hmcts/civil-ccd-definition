@@ -1,6 +1,6 @@
 import { test } from '../../playwright-fixtures/index';
 
-test('1v1 Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
+test('1v2SS Small Track Defendant Full Defence Claimant Intent To Proceed - Claim Journey', async ({
   ClaimantSolicitorSteps,
   DefendantSolicitor1Steps,
   ClaimantSolicitorApiSteps,
@@ -9,7 +9,7 @@ test('1v1 Small Track Defendant Full Defence Claimant Intent To Proceed - Claim 
   await ClaimantSolicitorSteps.Login();
   await ClaimantSolicitorSteps.CreateClaimSmallTrack1v2SS();
   await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
-  await ClaimantSolicitorSteps.NotifyClaim1v2SS();
+  await ClaimantSolicitorSteps.NotifyClaim();
   await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
   await ClaimantSolicitorSteps.NotifyClaimDetails1v2SS();
   await DefendantSolicitor1Steps.Login();

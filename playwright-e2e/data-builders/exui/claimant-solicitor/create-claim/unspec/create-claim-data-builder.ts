@@ -15,12 +15,16 @@ export default class CreateClaimDataBuilder extends BaseDataBuilder {
     return this.buildData();
   }
 
-  async buildSmallTrack1v2DS() {
-    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
-  }
-
   async buildSmallTrack2v1() {
     return this.buildData({ claimType: ClaimType.TWO_VS_ONE });
+  }
+
+  async buildSmallTrack1v2SS() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_SAME_SOL });
+  }
+
+  async buildSmallTrack1v2DS() {
+    return this.buildData({ claimType: ClaimType.ONE_VS_TWO_DIFF_SOL });
   }
 
   protected async buildData({
