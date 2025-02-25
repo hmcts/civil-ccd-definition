@@ -1,4 +1,5 @@
 import BasePage from '../../../../base/base-page';
+import config from '../../../../config/config';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
@@ -83,30 +84,28 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    let firstAttempt = true;
     await super.retryAction(
       async () => {
-        if (!firstAttempt) await super.reload();
         await super.retryReload(
           async () => {
             await super.expectSelector(dropdowns.nextStep.selector);
             await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector, {
-              timeout: 1000,
+              timeout: 5_000,
             });
           },
           { retries: 1 },
         );
         await super.clickBySelector(buttons.go.selector);
-        firstAttempt = false;
       },
       async () => {
         await super.waitForPageToLoad();
         await super.expectNoTab(tabs.summary.title, {
-          timeout: 15_000,
+          timeout: config.exui.pageSubmitTimeout,
         });
       },
       `Starting event: ${ccdEvent.name} failed, trying again`,
       { retries: 3 },
+      () => super.reload(),
     );
   }
 
