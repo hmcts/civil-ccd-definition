@@ -8,7 +8,7 @@ import partys from '../../../../../../constants/partys.ts';
 @AllMethodsStep()
 export default class ResponseIntention1v2SSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectLabel(radioButtons.fullDefence.label, { count: 2 }),
       super.expectLabel(radioButtons.partAdmit.label, { count: 2 }),

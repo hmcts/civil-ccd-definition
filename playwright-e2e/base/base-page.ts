@@ -249,7 +249,7 @@ export default abstract class BasePage {
   protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 500 });
+      await locator.waitFor({ state: 'attached', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -270,7 +270,7 @@ export default abstract class BasePage {
   protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 500 });
+      await locator.waitFor({ state: 'attached', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -839,7 +839,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'label')
-  async expectRadioGroupLabel(
+  protected async expectRadioGroupLabel(
     label: string,
     options: {
       containerSelector?: string;
@@ -896,7 +896,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'label', 'selector')
-  async expectLabelForInput(
+  protected async expectLabelForInput(
     label: string,
     selector: string,
     options: { message?: string; timeout?: number; exact?: boolean } = {},
@@ -916,7 +916,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  async expectRadioYesLabel(
+  protected async expectRadioYesLabel(
     selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
@@ -932,7 +932,10 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  async expectRadioNoLabel(selector: string, options: { message?: string; timeout?: number } = {}) {
+  protected async expectRadioNoLabel(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
     const inputId = await this.page
       .locator(selector)
       .getAttribute('id', { timeout: options.timeout });
@@ -1018,13 +1021,22 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'selector', 'option')
   @TruthyParams(classKey, 'selector', 'option')
   protected async expectDropdownOption(
-    option: string,
+    option: string | number,
     selector: string,
-    options: { message?: string; timeout?: number } = {},
+    options: { message?: string; timeout?: number; exact?: boolean } = { exact: true },
   ) {
-    await pageExpect(this.page.locator(selector), { message: options.message }).toHaveText(option, {
-      timeout: options.timeout,
-    });
+    let locator: Locator;
+
+    if (typeof option === 'number')
+      locator = this.page.locator(selector).getByRole('option').nth(option);
+    else
+      locator = this.page
+        .locator(selector)
+        .getByRole('option', { name: option, exact: options.exact });
+
+    await pageExpect(locator, {
+      message: options.message,
+    }).toBeAttached({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'text', 'selector')
@@ -1045,11 +1057,15 @@ export default abstract class BasePage {
     action: () => Promise<void>,
     assertions: () => Promise<void>[] | Promise<void>,
     message?: string,
-    { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
-  ) {
+    options: { retries?: number; assertFirst?: boolean } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+  ): Promise<void> {
+    let { retries = 1, assertFirst = false } = options;
+
     while (retries >= 0) {
       if (!assertFirst) await action();
       const promises = assertions();
+
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
@@ -1059,6 +1075,10 @@ export default abstract class BasePage {
         console.log(`Retries: ${retries} remaining`);
         retries--;
         assertFirst = false;
+
+        if (actionAfterFirstAttempt) {
+          await actionAfterFirstAttempt();
+        }
       }
     }
   }

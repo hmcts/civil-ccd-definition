@@ -5,7 +5,7 @@ properties([
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
-    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', description: 'Number of times playwright tests will retry exui events'),
     string(name: 'PLAYWRIGHT_TEST_SPEED', defaultValue: 'fast', description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),

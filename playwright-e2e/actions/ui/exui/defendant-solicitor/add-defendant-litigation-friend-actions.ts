@@ -14,4 +14,30 @@ export default class AddDefendantLitigationFriendActions extends BaseTestData {
     super(testData);
     this.addDefendantLitigationFriendPageFactory = addDefendantLitigationFriendPageFactory;
   }
+
+  async litigationFriend() {
+    const { litigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await litigationFriendPage.verifyContent(this.ccdCaseData);
+    await litigationFriendPage.enterLitigationFriendDetails();
+    await litigationFriendPage.submit();
+  }
+
+  async defendant2LitigationFriend() {
+    const { defendant2LitigationFriendPage } = this.addDefendantLitigationFriendPageFactory;
+    await defendant2LitigationFriendPage.verifyContent(this.ccdCaseData);
+    await defendant2LitigationFriendPage.enterLitigationFriendDetails();
+    await defendant2LitigationFriendPage.submit();
+  }
+
+  async submitAddDefendantLitigationFriend() {
+    const { submitAddDefendantLitigationFriend } = this.addDefendantLitigationFriendPageFactory;
+    await submitAddDefendantLitigationFriend.verifyContent(this.ccdCaseData);
+    await submitAddDefendantLitigationFriend.submit();
+  }
+
+  async confirmAddDefendantLitigationFriend() {
+    const { confirmAddDefendantLitigationFriend } = this.addDefendantLitigationFriendPageFactory;
+    await confirmAddDefendantLitigationFriend.verifyContent(this.ccdCaseData);
+    await confirmAddDefendantLitigationFriend.submit();
+  }
 }
