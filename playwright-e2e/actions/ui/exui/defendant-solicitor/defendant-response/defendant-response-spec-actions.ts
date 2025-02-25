@@ -320,11 +320,8 @@ export default class DefendantResponseSpecActions extends BaseTestData {
 
     const { smallClaimHearingDS2Page } = this.defendantResponsePageFactory;
     await smallClaimHearingDS2Page.verifyContent(this.ccdCaseData);
-    await smallClaimHearingDS2Page.selectYesAvailabilityRequired();
-    await smallClaimHearingDS2Page.addNewUnavailableDate();
-    await smallClaimHearingDS2Page.selectSingleDate();
-    await smallClaimHearingDS2Page.selectYesInterpreter();
-    await smallClaimHearingDS2Page.enterTypeOfInterpreter();
+    await smallClaimHearingDS2Page.selectNoAvailabilityRequired();
+    await smallClaimHearingDS2Page.selectNoInterpreter();
     await smallClaimHearingDS2Page.submit();
 
     const { requestedCourtLRSpecDS2Page } = this.defendantResponsePageFactory;

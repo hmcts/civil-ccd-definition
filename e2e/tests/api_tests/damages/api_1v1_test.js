@@ -1,6 +1,3 @@
-
- 
-
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_ONE';
 
