@@ -40,11 +40,7 @@ export default abstract class BaseExui extends BaseApi {
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    {
-      retries = config.playwright.exuiRetries,
-      verifySuccessEvent = true,
-      camundaProcess = true,
-    } = {},
+    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     while (retries >= 0) {
       try {

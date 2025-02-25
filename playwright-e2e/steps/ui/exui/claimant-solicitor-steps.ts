@@ -2,7 +2,7 @@ import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-s
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { civilAdminUser, claimantSolicitorUser } from '../../../config/users/exui-users';
+import { claimantSolicitorUser } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
@@ -225,45 +225,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async NotifyClaim1v1() {
+  async NotifyClaim() {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaim2v1() {
-    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-      },
-      async () => {
-        await notifyClaimActions.confirmNotifyClaimPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaim1v2SS() {
-    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-    await super.retryExuiEvent(
-      async () => {
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-      },
-      async () => {
-        await notifyClaimActions.confirmNotifyClaimPage();
+        await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -274,12 +244,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimActions.defendantSolicitorToNotifyPage();
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
+        await notifyClaimActions.defendantSolicitorToNotify();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimPage();
+        await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -290,11 +260,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimActions.certificateOfService1NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
+        await notifyClaimActions.certificateOfService1NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -304,12 +274,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimActions.certificateOfService1NotifyClaimPage();
-        await notifyClaimActions.certificateOfService2NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
+        await notifyClaimActions.certificateOfService1NotifyClaim();
+        await notifyClaimActions.certificateOfService2NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -320,12 +290,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.certificateOfService2NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.certificateOfService2NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
       },
       async () => {
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
