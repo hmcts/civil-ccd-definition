@@ -1,6 +1,7 @@
 import BasePage from '../../../base/base-page';
-import { AllMethodsStep } from '../../../decorators/test-steps';
+import config from '../../../config/config';
 import ccdEvents from '../../../constants/ccd-events';
+import Timer from '../../../helpers/timer';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
 import { buttons, components, getFormattedCaseId } from './exui-content';
@@ -22,14 +23,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-          super.expectHeading(ccdCaseData.caseNamePublic),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
         ];
       } else {
         expects = [
-          super.expectHeading(ccdEventstate.name),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-          super.expectHeading(ccdCaseData.caseNamePublic),
+          super.expectHeading(ccdEventstate.name, { exact: false }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
@@ -53,32 +54,34 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       await super.clickBySelector(buttons.addNew.selector);
     }
 
-    protected async clickSubmit() {
-      await super.clickBySelector(buttons.submit.selector);
+    protected async waitForPageToLoad() {
       await Promise.race([
         super.waitForSelectorToDetach(components.loading.selector, {
-          timeout: 30_000,
+          timeout: config.exui.pageSubmitTimeout,
         }),
-        super.waitForUrlToChange({ timeout: 30_000 }),
+        super.waitForUrlToChange({ timeout: config.exui.pageSubmitTimeout }),
       ]);
+    }
+
+    protected async clickSubmit() {
+      await super.clickBySelector(buttons.submit.selector);
+      await this.waitForPageToLoad();
       await super.expectNoSelector(components.fieldError.selector, {
-        timeout: 300,
+        timeout: 200,
         all: true,
         message: 'Field Validation Error on UI',
       });
+      await super.expectNoSelector(components.loading.selector, {
+        timeout: 10,
+        message: 'Loading spinner taking too long to disappear',
+      });
     }
 
-    //Monitoring the usage of the other retryClickSubmit method. May need to revert back to this if it does not work well
     // protected async retryClickSubmit(expect?: () => Promise<void>) {
     //   await super.retryClickBySelectorTimeout(
     //     buttons.submit.selector,
     //     async () => {
-    //       await Promise.race([
-    //         super.waitForSelectorToDetach(components.loading.selector, {
-    //           timeout: 30_000,
-    //         }),
-    //         super.waitForUrlToChange({ timeout: 30_000 }),
-    //       ]);
+    //       await this.waitForPageToLoad();
     //       await super.expectNoSelector(components.error.selector, {
     //         timeout: 200,
     //         all: true,
@@ -94,24 +97,27 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     //   });
     // }
 
-    protected async waitForPageToLoad() {
-      await Promise.race([
-        super.waitForSelectorToDetach(components.loading.selector, {
-          timeout: 15_000,
-        }),
-        super.waitForUrlToChange({ timeout: 15_000 }),
-      ]);
-    }
-
     protected async retryClickSubmit(expect?: () => Promise<void>) {
-      await super.retryClickBySelector(buttons.submit.selector, async () => {
-        await this.waitForPageToLoad();
-        await super.expectNoSelector(components.error.selector, {
-          timeout: 200,
-          all: true,
-        });
-        if (expect) await expect();
-      });
+      await super.retryAction(
+        async () => {
+          await super.clickBySelector(buttons.submit.selector);
+        },
+        async () => {
+          await this.waitForPageToLoad();
+          await super.expectNoSelector(components.error.selector, {
+            timeout: 200,
+            all: true,
+          });
+          if (expect) await expect();
+        },
+        'Clicking submit button failed, trying again',
+        { retries: 2 },
+        async () =>
+          super.expectNoSelector(components.loading.selector, {
+            timeout: 10,
+            message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
+          }),
+      );
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 200,
         all: true,
