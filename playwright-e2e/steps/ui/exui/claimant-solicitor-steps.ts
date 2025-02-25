@@ -416,13 +416,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse();
         await claimantResponseActions.defenceResponseDocument();
-        await claimantResponseActions.dqClaimantResponseFastTrack();
-        await claimantResponseActions.claimantResponseFastTrackDQ();
+        await claimantResponseActions.dqFastTrack();
         await claimantResponseActions.statementOfTruth();
-        await claimantResponseActions.submit();
+        await claimantResponseActions.submitClaimantResponse();
       },
       async () => {
-        await claimantResponseActions.confirm();
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -436,12 +435,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse();
         await claimantResponseActions.defenceResponseDocument();
-        await claimantResponseActions.claimantResponseSmallTrackDQ();
+        await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
-        await claimantResponseActions.submit();
+        await claimantResponseActions.submitClaimantResponse();
       },
       async () => {
-        await claimantResponseActions.confirm();
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -455,12 +454,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse2v1();
         await claimantResponseActions.defenceResponseDocument();
-        await claimantResponseActions.claimantResponseSmallTrackDQ();
+        await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
-        await claimantResponseActions.submit();
+        await claimantResponseActions.submitClaimantResponse();
       },
       async () => {
-        await claimantResponseActions.confirm();
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -474,12 +473,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse1v2();
         await claimantResponseActions.defenceResponseDocument1v2();
-        await claimantResponseActions.claimantResponseSmallTrackDQ();
+        await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
-        await claimantResponseActions.submit();
+        await claimantResponseActions.submitClaimantResponse();
       },
       async () => {
-        await claimantResponseActions.confirm();
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -493,12 +492,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       async () => {
         await claimantResponseActions.respondentResponse1v2();
         await claimantResponseActions.defenceResponseDocument1v2();
-        await claimantResponseActions.claimantResponseSmallTrackDQ();
+        await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
-        await claimantResponseActions.submit();
+        await claimantResponseActions.submitClaimantResponse();
       },
       async () => {
-        await claimantResponseActions.confirm();
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,

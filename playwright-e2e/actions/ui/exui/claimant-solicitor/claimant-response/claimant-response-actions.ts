@@ -1,11 +1,9 @@
 import TestData from '../../../../../models/test-data.ts';
-import partys from '../../../../../constants/partys.ts';
-import {AllMethodsStep} from '../../../../../decorators/test-steps.ts';
 import BaseTestData from '../../../../../base/base-test-data.ts';
-import ClaimantResponsePageFactory
-  from '../../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory.ts';
+import ClaimantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/claimant-response/claimant-response-page-factory.ts';
+import { Step } from '../../../../../decorators/test-steps.ts';
 
-@AllMethodsStep()
+const classKey = 'ClaimantResponseActions';
 export default class ClaimantResponseActions extends BaseTestData {
   private claimantResponsePageFactory: ClaimantResponsePageFactory;
 
@@ -14,60 +12,49 @@ export default class ClaimantResponseActions extends BaseTestData {
     this.claimantResponsePageFactory = claimantResponsePageFactory;
   }
 
+  @Step(classKey)
   async respondentResponse() {
-    const {respondentResponsePage} = this.claimantResponsePageFactory;
+    const { respondentResponsePage } = this.claimantResponsePageFactory;
     await respondentResponsePage.selectYes();
     await respondentResponsePage.submit();
   }
 
+  @Step(classKey)
   async respondentResponse2v1() {
-    const {respondentResponse2v1Page} = this.claimantResponsePageFactory;
+    const { respondentResponse2v1Page } = this.claimantResponsePageFactory;
     await respondentResponse2v1Page.verifyContent(this.ccdCaseData);
     await respondentResponse2v1Page.selectYesBothClaimants();
     await respondentResponse2v1Page.submit();
   }
 
+  @Step(classKey)
   async respondentResponse1v2() {
-    const {respondentResponse1v2Page} = this.claimantResponsePageFactory;
+    const { respondentResponse1v2Page } = this.claimantResponsePageFactory;
     await respondentResponse1v2Page.selectYesBothDefendants();
     await respondentResponse1v2Page.submit();
   }
 
+  @Step(classKey)
   async defenceResponseDocument1v2() {
-    const {defenceResponseDocument1v2Page} = this.claimantResponsePageFactory;
+    const { defenceResponseDocument1v2Page } = this.claimantResponsePageFactory;
     await defenceResponseDocument1v2Page.uploadDocumentBothDefendants();
     await defenceResponseDocument1v2Page.submit();
   }
 
+  @Step(classKey)
   async defenceResponseDocument() {
-    const {defenceResponseDocumentPage} = this.claimantResponsePageFactory;
+    const { defenceResponseDocumentPage } = this.claimantResponsePageFactory;
     await defenceResponseDocumentPage.uploadDocument();
     await defenceResponseDocumentPage.submit();
   }
 
-  async dqClaimantResponseFastTrack() {
-    const {fileDirectionsQuestionairePage} = this.claimantResponsePageFactory;
-    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
-    await fileDirectionsQuestionairePage.enterDetails();
-    await fileDirectionsQuestionairePage.submit();
-
-    const {fixedRecoverableCostsPage} = this.claimantResponsePageFactory;
-    await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
-    await fixedRecoverableCostsPage.selectYes();
-    await fixedRecoverableCostsPage.submit();
-
-    const {disclosureOfNonElectronicDocumentsPage} = this.claimantResponsePageFactory;
-    await disclosureOfNonElectronicDocumentsPage.verifyContent(this.ccdCaseData);
-    await disclosureOfNonElectronicDocumentsPage.enterDetails();
-    await disclosureOfNonElectronicDocumentsPage.submit();
-  }
-
-  async claimantResponseSmallTrackDQ() {
+  @Step(classKey)
+  async dqSmallTrack() {
     await this.experts();
     await this.witnesses();
     await this.language();
 
-    const {hearingPage} = this.claimantResponsePageFactory;
+    const { hearingPage } = this.claimantResponsePageFactory;
     await hearingPage.verifyContent(this.ccdCaseData);
     await hearingPage.selectYesAvailabilityRequired();
     await hearingPage.addNewUnavailableDate();
@@ -80,12 +67,28 @@ export default class ClaimantResponseActions extends BaseTestData {
     await this.futherInformation();
   }
 
-  async claimantResponseFastTrackDQ() {
+  @Step(classKey)
+  async dqFastTrack() {
+    const { fileDirectionsQuestionairePage } = this.claimantResponsePageFactory;
+    await fileDirectionsQuestionairePage.verifyContent(this.ccdCaseData);
+    await fileDirectionsQuestionairePage.enterDetails();
+    await fileDirectionsQuestionairePage.submit();
+
+    const { fixedRecoverableCostsPage } = this.claimantResponsePageFactory;
+    await fixedRecoverableCostsPage.verifyContent(this.ccdCaseData);
+    await fixedRecoverableCostsPage.selectYes();
+    await fixedRecoverableCostsPage.submit();
+
+    const { disclosureOfNonElectronicDocumentsPage } = this.claimantResponsePageFactory;
+    await disclosureOfNonElectronicDocumentsPage.verifyContent(this.ccdCaseData);
+    await disclosureOfNonElectronicDocumentsPage.enterDetails();
+    await disclosureOfNonElectronicDocumentsPage.submit();
+
     await this.experts();
     await this.witnesses();
     await this.language();
 
-    const {hearingFastPage} = this.claimantResponsePageFactory;
+    const { hearingFastPage } = this.claimantResponsePageFactory;
     await hearingFastPage.verifyContent(this.ccdCaseData);
     await hearingFastPage.selectYesAvailabilityRequired();
     await hearingFastPage.addNewUnavailableDate();
@@ -98,8 +101,37 @@ export default class ClaimantResponseActions extends BaseTestData {
     await this.futherInformation();
   }
 
+  @Step(classKey)
+  async statementOfTruth() {
+    const { statementOfTruthClaimantResponsePage } = this.claimantResponsePageFactory;
+    await statementOfTruthClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await statementOfTruthClaimantResponsePage.enterDetails();
+    await statementOfTruthClaimantResponsePage.submit();
+  }
+
+  @Step(classKey)
+  async submitClaimantResponse() {
+    const { submitClaimantResponsePage } = this.claimantResponsePageFactory;
+    await submitClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await submitClaimantResponsePage.submit();
+  }
+
+  @Step(classKey)
+  async confirmClaimantResponse() {
+    const { confirmClaimantResponsePage } = this.claimantResponsePageFactory;
+    await confirmClaimantResponsePage.verifyContent(this.ccdCaseData);
+    await confirmClaimantResponsePage.submit();
+  }
+
+  private async draftDirections() {
+    const { draftDirectionsPage } = this.claimantResponsePageFactory;
+    await draftDirectionsPage.verifyContent(this.ccdCaseData);
+    await draftDirectionsPage.uploadEvidence();
+    await draftDirectionsPage.submit();
+  }
+
   private async experts() {
-    const {expertsPage} = this.claimantResponsePageFactory;
+    const { expertsPage } = this.claimantResponsePageFactory;
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
     await expertsPage.addNewExpert();
@@ -108,7 +140,7 @@ export default class ClaimantResponseActions extends BaseTestData {
   }
 
   private async witnesses() {
-    const {witnessesPage} = this.claimantResponsePageFactory;
+    const { witnessesPage } = this.claimantResponsePageFactory;
     await witnessesPage.verifyContent(this.ccdCaseData);
     await witnessesPage.selectYesWitnesses();
     await witnessesPage.addWitness();
@@ -116,41 +148,15 @@ export default class ClaimantResponseActions extends BaseTestData {
     await witnessesPage.submit();
   }
 
-  async language() {
-    const {languagePage} = this.claimantResponsePageFactory;
+  private async language() {
+    const { languagePage } = this.claimantResponsePageFactory;
     await languagePage.verifyContent(this.ccdCaseData);
     await languagePage.selectEnglishAndWelsh();
     await languagePage.submit();
   }
 
-  async statementOfTruth() {
-    const {statementOfTruthClaimantResponsePage} = this.claimantResponsePageFactory;
-    await statementOfTruthClaimantResponsePage.verifyContent(this.ccdCaseData);
-    await statementOfTruthClaimantResponsePage.enterDetails();
-    await statementOfTruthClaimantResponsePage.submit();
-  }
-
-  async submit() {
-    const {submitClaimantResponsePage} = this.claimantResponsePageFactory;
-    await submitClaimantResponsePage.verifyContent(this.ccdCaseData);
-    await submitClaimantResponsePage.submit();
-  }
-
-  async confirm() {
-    const {confirmClaimantResponsePage} = this.claimantResponsePageFactory;
-    await confirmClaimantResponsePage.verifyContent(this.ccdCaseData);
-    await confirmClaimantResponsePage.submit();
-  }
-
-  private async draftDirections() {
-    const {draftDirectionsPage} = this.claimantResponsePageFactory;
-    await draftDirectionsPage.verifyContent(this.ccdCaseData);
-    await draftDirectionsPage.uploadEvidence();
-    await draftDirectionsPage.submit();
-  }
-
   private async hearingSupport() {
-    const {hearingSupportPage} = this.claimantResponsePageFactory;
+    const { hearingSupportPage } = this.claimantResponsePageFactory;
     await hearingSupportPage.verifyContent(this.ccdCaseData);
     await hearingSupportPage.selectYes();
     await hearingSupportPage.enterSupportRequirementsAdditional();
@@ -158,7 +164,7 @@ export default class ClaimantResponseActions extends BaseTestData {
   }
 
   private async futherInformation() {
-    const {furtherInformationPage} = this.claimantResponsePageFactory;
+    const { furtherInformationPage } = this.claimantResponsePageFactory;
     await furtherInformationPage.verifyContent(this.ccdCaseData);
     await furtherInformationPage.selectYes();
     await furtherInformationPage.enterFurtherInformation();
@@ -166,7 +172,7 @@ export default class ClaimantResponseActions extends BaseTestData {
   }
 
   private async vulnerabilityQuestions() {
-    const {vulnerabilityQuestionsPage} = this.claimantResponsePageFactory;
+    const { vulnerabilityQuestionsPage } = this.claimantResponsePageFactory;
     await vulnerabilityQuestionsPage.verifyContent(this.ccdCaseData);
     await vulnerabilityQuestionsPage.selectYes();
     await vulnerabilityQuestionsPage.enterVulnerabilityAdjustments();
