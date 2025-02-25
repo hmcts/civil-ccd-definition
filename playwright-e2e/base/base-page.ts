@@ -1057,11 +1057,15 @@ export default abstract class BasePage {
     action: () => Promise<void>,
     assertions: () => Promise<void>[] | Promise<void>,
     message?: string,
-    { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
-  ) {
+    options: { retries?: number; assertFirst?: boolean } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+  ): Promise<void> {
+    let { retries = 1, assertFirst = false } = options;
+
     while (retries >= 0) {
       if (!assertFirst) await action();
       const promises = assertions();
+
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
@@ -1071,6 +1075,10 @@ export default abstract class BasePage {
         console.log(`Retries: ${retries} remaining`);
         retries--;
         assertFirst = false;
+
+        if (actionAfterFirstAttempt) {
+          await actionAfterFirstAttempt();
+        }
       }
     }
   }

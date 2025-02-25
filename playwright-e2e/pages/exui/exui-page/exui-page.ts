@@ -98,16 +98,9 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     // }
 
     protected async retryClickSubmit(expect?: () => Promise<void>) {
-      let firstAttempt = true;
       await super.retryAction(
         async () => {
-          if (!firstAttempt)
-            await super.expectNoSelector(components.loading.selector, {
-              timeout: 10,
-              message: 'Loading spinner taking too long to disappear',
-            });
           await super.clickBySelector(buttons.submit.selector);
-          firstAttempt = false;
         },
         async () => {
           await this.waitForPageToLoad();
@@ -117,6 +110,13 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
           });
           if (expect) await expect();
         },
+        'Clicking submit button failed, trying again',
+        { retries: 2 },
+        async () =>
+          super.expectNoSelector(components.loading.selector, {
+            timeout: 10,
+            message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
+          }),
       );
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 200,
