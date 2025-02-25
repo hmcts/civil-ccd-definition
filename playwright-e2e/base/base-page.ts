@@ -1074,7 +1074,7 @@ export default abstract class BasePage {
       .locator('tr', {
         has: this.page.locator(`*:has-text("${rowName}")`),
       })
-      .getByText(value.toString(), { exact: options.exact });
+      .getByRole('cell', { exact: options.exact, name: value.toString() });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {

@@ -10,17 +10,21 @@ export default class InterestSummaryPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectText(subheadings.totalAmountOfClaim),
-      super.expectText(tableHeaders.description, { exact: true }),
-      super.expectText(tableHeaders.amount, { exact: true }),
+      super.expectText(tableHeaders.description),
+      super.expectText(tableHeaders.amount),
     ]);
   }
 
   async verifySmallTrack() {
-    await super.expectTableValueByRowName('Claim amount', '£ 100');
+    const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.SMALL_CLAIM)}`;
+    await super.expectTableValueByRowName(tableRowNames.claimAmount, amount);
+    await super.expectTableValueByRowName(tableRowNames.totalAmount, amount);
   }
 
   async verifyFastTrack() {
-    await super.expectTableValueByRowName('Claim amount', '£ 11000');
+    const amount = `£ ${CaseDataHelper.getClaimValue(ClaimTrack.FAST_CLAIM)}`;
+    await super.expectTableValueByRowName(tableRowNames.claimAmount, amount);
+    await super.expectTableValueByRowName(tableRowNames.totalAmount, amount);
   }
 
   async submit() {
