@@ -1044,20 +1044,58 @@ export default abstract class BasePage {
   protected async expectTableValueByRowName(
     rowName: string,
     value: string | number,
-    options: { message?: string; timeout?: number; index?: number; valueIndex?: number } = {},
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
   ) {
-    const rowIndex = options.index ?? 0;
-    const valueIndex = options.valueIndex ?? 1;
-    const rowLocator = this.page
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    let locator = this.page
       .locator('tr', {
         has: this.page.locator(`*:has-text("${rowName}")`),
       })
-      .nth(rowIndex);
+      .getByText(value.toString(), { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
-    const valueLocator = rowLocator.locator('td').nth(valueIndex);
-    await pageExpect(valueLocator, { message: options.message }).toHaveText(value.toString(), {
-      timeout: options.timeout,
-    });
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'value')
@@ -1069,21 +1107,28 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       count?: number;
+      all?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
       exact?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
     }
 
-    if (options.first && options.index !== undefined && options.count) {
-      throw new ExpectError("Cannot use 'first', 'index' and 'count' options at the same time");
-    }
-
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -1096,6 +1141,10 @@ export default abstract class BasePage {
       });
     } else if (options.count !== undefined) {
       await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
         timeout: options.timeout,
       });
     } else {
