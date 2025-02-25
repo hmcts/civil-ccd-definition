@@ -7,6 +7,7 @@ import { radioButtons, buttons, inputs, subheadings, links } from './litigation-
 import filePaths from '../../../../config/file-paths';
 import AddressFragment from '../address/address-fragment';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import partys from '../../../../constants/partys';
 
 @AllMethodsStep()
 export default class LitigationFriendFragment extends ExuiPage(BasePage) {
@@ -61,7 +62,8 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   async chooseNoSameAddress() {
     const addressData = CaseDataHelper.buildAddressData(this.litigationFriendParty);
     await super.clickBySelector(radioButtons.address.no.selector(this.litigationFriendParty));
-    await super.clickLink(links.cannotFindAddress.title);
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.clickLink(links.cannotFindAddress.title);
     await super.inputText(
       addressData.AddressLine1,
       inputs.address.addressLine1.selector(this.litigationFriendParty),
@@ -78,10 +80,11 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
       addressData.PostTown,
       inputs.address.postTown.selector(this.litigationFriendParty),
     );
-    await super.inputText(
-      addressData.County,
-      inputs.address.county.selector(this.litigationFriendParty),
-    );
+    if (this.litigationFriendParty !== partys.CLAIMANT_2_LITIGATION_FRIEND)
+      await super.inputText(
+        addressData.County,
+        inputs.address.county.selector(this.litigationFriendParty),
+      );
     await super.inputText(
       addressData.Country,
       inputs.address.country.selector(this.litigationFriendParty),
@@ -94,7 +97,10 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
 
   async uploadCertificateOfSuitability() {
     await super.clickBySelector(buttons.addNewCertificate.selector(this.litigationFriendParty));
-    await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label);
+    await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label, {
+      exact: true,
+      index: 0,
+    });
     await super.retryUploadFile(
       filePaths.testPdfFile,
       inputs.certificateOfSuitability.uploadDoc.selector(this.litigationFriendParty),

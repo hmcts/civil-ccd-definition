@@ -8,11 +8,12 @@ import DateHelper from '../../../../helpers/date-helper';
 import DateFragment from '../date/date-fragment';
 import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import PartyType from '../../../../enums/party-types';
 
 @AllMethodsStep()
 export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
-  private partyType = claimantDefendantPartyTypes.INDIVIDUAL;
+  private partyType = claimantDefendantPartyTypes.SOLE_TRADER;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {
@@ -24,10 +25,11 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectLabel(inputs.firstName.label),
-        super.expectLabel(inputs.lastName.label),
-        super.expectLabel(inputs.dateOfBirth.label, { index: 1 }),
+        super.expectLabel(inputs.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.lastName.label, { count: 1 }),
+        super.expectText(inputs.dateOfBirth.label, { count: 1 }),
         this.dateFragment.verifyContent(),
+        super.expectLabel(inputs.tradingAs.label),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
       ],
@@ -58,7 +60,8 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
       soleTraderData.soleTraderTradingAs,
       inputs.tradingAs.selector(this.claimantDefendantParty, this.partyType),
     );
-    await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT)
+      await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
     await super.inputText(
       soleTraderData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),

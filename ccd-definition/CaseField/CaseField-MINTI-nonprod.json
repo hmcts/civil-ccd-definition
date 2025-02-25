@@ -163,7 +163,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "uploadOrderDocumentFromTemplateLabel",
-    "Label": "**** \n ## Add document \n Make sure your file is named either directions or order, the party names and the date. Upload your completed order in DOC/DOCX (Word) format.",
+    "Label": "**** \n ## Add document \n Upload your completed order in DOC/DOCX (Word) format.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -174,6 +174,23 @@
     "Label": " ",
     "FieldType": "Document",
     "RegularExpression": ".doc,.docx",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingListedDynamicListLabel",
+    "Label": "## What type of hearing have you listed?",
+    "FieldType": "Label",
+    "FieldTypeParameter": "ConfirmListingTickBox",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingListedDynamicList",
+    "Label": "Hearing type",
+    "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -209,5 +226,29 @@
     "FieldType": "TaskManagementLocationTab",
     "SecurityClassification": "Public",
     "Searchable": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "orderAfterHearingDate",
+    "Label": " ",
+    "FieldType": "OrderAfterHearingDate",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "showOrderAfterHearingDatePage",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "hearingDurationMinti",
+    "Label": "Duration",
+    "FieldType": "TextArea",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
