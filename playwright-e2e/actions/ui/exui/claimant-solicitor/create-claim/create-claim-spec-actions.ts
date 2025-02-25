@@ -1,8 +1,10 @@
-import BaseAction from '../../../../../base/base-test-data.ts';
+import BaseTestData from '../../../../../base/base-test-data.ts';
+import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import TestData from '../../../../../models/test-data.ts';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory.ts';
 
-export default class CreateClaimSpecActions extends BaseAction {
+@AllMethodsStep()
+export default class CreateClaimSpecActions extends BaseTestData {
   private createClaimPageFactory: CreateClaimPageFactory;
 
   constructor(createClaimPageFactory: CreateClaimPageFactory, testData: TestData) {
