@@ -19,9 +19,9 @@ export default class SolicitorReferenceFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        // super.expectLabel(inputs.reference.label(this.claimantDefendantParty), {
-        //   index: this.claimantDefendantParty.number - 1,
-        // }),
+        super.expectLabel(inputs.reference.label(this.claimantDefendantParty), {
+          count: 1,
+        }),
       ],
       {
         runAxe: false,

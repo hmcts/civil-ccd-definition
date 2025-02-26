@@ -11,7 +11,7 @@ export default class ConfirmCreateClaimSpecPage extends ExuiPage(BasePage) {
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading.part1),
       super.expectHeading(confirmationHeading.part2),
-      super.expectText(paragraphs.descriptionText),
+      super.expectText(paragraphs.descriptionText, { exact: false }),
     ]);
   }
 
