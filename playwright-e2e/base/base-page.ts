@@ -255,6 +255,16 @@ export default abstract class BasePage {
     await locator.waitFor({ state: 'detached', ...options });
   }
 
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async waitForSelectorToBeHidden(selector: string, options: { timeout?: number } = {}) {
+    const locator = this.page.locator(selector);
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    await locator.waitFor({ state: 'hidden', ...options });
+  }
+
   protected async waitForUrlToChange(options: { timeout?: number } = {}) {
     const url = new URL(this.page.url());
     await this.page.waitForURL(
@@ -841,7 +851,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'label')
-  protected async expectRadioGroupLabel(
+  protected async expectLegend(
     label: string,
     options: {
       containerSelector?: string;
@@ -918,7 +928,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectRadioYesLabel(
+  protected async expectYesLabel(
     selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
@@ -934,7 +944,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectRadioNoLabel(
+  protected async expectNoLabel(
     selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {

@@ -30,8 +30,8 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     await super.runVerifications(
       [
         super.expectHeading(heading(this.defendantParty)),
-        super.expectRadioGroupLabel(inputs.dateDeemedServed.label),
-        super.expectRadioGroupLabel(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
         super.expectLabel(inputs.documentsServed.label),
         super.expectLabel(inputs.statementOfTruth.name.label),
