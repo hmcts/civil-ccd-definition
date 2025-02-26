@@ -15,6 +15,7 @@ export default class ClaimantResponseSpecActions extends BaseAction {
 
   async respondentResponse2v1SpecPage() {
     const { respondentResponse2v1SpecPage } = this.claimantResponsePageFactory;
+    await respondentResponse2v1SpecPage.verifyContent(this.ccdCaseData);
     await respondentResponse2v1SpecPage.selectYes();
     await respondentResponse2v1SpecPage.submit();
   }
@@ -27,18 +28,21 @@ export default class ClaimantResponseSpecActions extends BaseAction {
 
   async respondentResponse1v2DSSpecPage() {
     const { respondentResponse1v2DSSpecPage } = this.claimantResponsePageFactory;
+    await respondentResponse1v2DSSpecPage.verifyContent(this.ccdCaseData);
     await respondentResponse1v2DSSpecPage.selectYes();
     await respondentResponse1v2DSSpecPage.submit();
   }
 
   async respondentResponseSpecPage() {
     const { respondentResponseSpecPage } = this.claimantResponsePageFactory;
+    await respondentResponseSpecPage.verifyContent(this.ccdCaseData);
     await respondentResponseSpecPage.selectYes();
     await respondentResponseSpecPage.submit();
   }
 
   async defenceDocumentSpecPage() {
     const { defenceResponseDocumentSpecPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocumentSpecPage.verifyContent(this.ccdCaseData);
     await defenceResponseDocumentSpecPage.uploadDoc();
     await defenceResponseDocumentSpecPage.submit();
   }
