@@ -15,7 +15,6 @@ export default class ClaimantResponseActions extends BaseTestData {
 
   async respondentResponsePage() {
     const { respondentResponsePage } = this.claimantResponsePageFactory;
-    await respondentResponsePage.verifyContent(this.ccdCaseData);
     await respondentResponsePage.selectYes();
     await respondentResponsePage.submit();
   }
@@ -27,30 +26,20 @@ export default class ClaimantResponseActions extends BaseTestData {
     await respondentResponse2v1Page.submit();
   }
 
-  async respondentResponse1v2SSPage() {
-    const { respondentResponse1v2SSPage } = this.claimantResponsePageFactory;
-    await respondentResponse1v2SSPage.verifyContent(this.ccdCaseData);
-    await respondentResponse1v2SSPage.selectYesBothDefendants();
-    await respondentResponse1v2SSPage.submit();
-  }
-
-  async respondentResponse1v2DSPage() {
-    const { respondentResponse1v2DSPage } = this.claimantResponsePageFactory;
-    await respondentResponse1v2DSPage.verifyContent(this.ccdCaseData);
-    await respondentResponse1v2DSPage.selectYesBothDefendants();
-    await respondentResponse1v2DSPage.submit();
+  async respondentResponse1v2Page() {
+    const { respondentResponse1v2Page } = this.claimantResponsePageFactory;
+    await respondentResponse1v2Page.selectYesBothDefendants();
+    await respondentResponse1v2Page.submit();
   }
 
   async defenceResponseDocument1v2Page() {
     const { defenceResponseDocument1v2Page } = this.claimantResponsePageFactory;
-    await defenceResponseDocument1v2Page.verifyContent(this.ccdCaseData);
     await defenceResponseDocument1v2Page.uploadDocumentBothDefendants();
     await defenceResponseDocument1v2Page.submit();
   }
 
   async defenceResponseDocumentPage() {
     const { defenceResponseDocumentPage } = this.claimantResponsePageFactory;
-    await defenceResponseDocumentPage.verifyContent(this.ccdCaseData);
     await defenceResponseDocumentPage.uploadDocument();
     await defenceResponseDocumentPage.submit();
   }
