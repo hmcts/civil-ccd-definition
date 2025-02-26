@@ -28,8 +28,14 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.addressRequired.label),
         super.expectText(paragraphs.descriptionText),
+        super.expectRadioGroupLabel(radioButtons.addressRequired.label),
+        super.expectRadioYesLabel(
+          radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
+        ),
+        super.expectRadioNoLabel(
+          radioButtons.addressRequired.no.selector(this.claimantDefendantParty),
+        ),
       ],
       {
         runAxe: false,
