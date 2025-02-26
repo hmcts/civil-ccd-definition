@@ -118,16 +118,11 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
-    await super.runVerifications(
-      [
-        super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
-        super.clickByText(tabs.history.title),
-        super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
-          rowNum: 1,
-        }),
-      ],
-      { runAxe: false },
-    );
+    await super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent));
+    await super.clickByText(tabs.history.title);
+    await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
+      rowNum: 1,
+    });
   }
 
   async submit() {

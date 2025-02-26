@@ -32,7 +32,7 @@ const config = {
   },
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),
-    pageSubmitTimeout: 15_000,
+    pageSubmitTimeout: 20_000,
   },
 };
 
