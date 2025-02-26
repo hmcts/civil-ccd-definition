@@ -9,7 +9,7 @@ export default class DefendantSolicitorToNotifyPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(dropdowns.defendantSolicitors.label),
+      super.expectLabel(dropdowns.defendantSolicitors.label, { count: 1 }),
     ]);
   }
 

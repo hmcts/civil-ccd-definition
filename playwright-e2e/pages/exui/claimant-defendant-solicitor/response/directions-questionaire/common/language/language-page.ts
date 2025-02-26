@@ -24,11 +24,11 @@ export default class LanguagePage extends ExuiPage(BasePage) {
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.welsh, { count: 1 }),
         super.expectText(paragraphs.descriptionText, { count: 1 }),
-        super.expectText(radioButtons.courtLanguage.label, { count: 1 }),
-        super.expectText(radioButtons.documentLanguage.label, { count: 1 }),
         super.expectLabel(radioButtons.courtLanguage.welsh.label, { count: 2, exact: true }),
         super.expectLabel(radioButtons.courtLanguage.english.label, { count: 2, exact: true }),
         super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { count: 2 }),
+        super.expectRadioGroupLabel(radioButtons.courtLanguage.label, { count: 1 }),
+        super.expectRadioGroupLabel(radioButtons.documentLanguage.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

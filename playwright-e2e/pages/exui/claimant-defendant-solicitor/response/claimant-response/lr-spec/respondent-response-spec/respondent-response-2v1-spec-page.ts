@@ -10,9 +10,11 @@ export default class RespondentResponse2v1SpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(paragraphs.responseForm, { index: 2 }),
-      super.expectText(radioButtons.proceedWithClaim.label),
+      super.expectText(paragraphs.responseForm, { count: 1 }),
+      super.expectText(radioButtons.proceedWithClaim.label, { count: 1 }),
       super.expectLink(getDQDocName(ccdCaseData)),
+      super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector2v1),
+      super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector2v1),
     ]);
   }
 
