@@ -30,8 +30,14 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.witnesses, { index: 0 }),
-        super.expectText(radioButtons.witnessesRequired.label, { index: 0 }),
+        super.expectSubheading(subheadings.witnesses, { count: 1 }),
+        super.expectText(radioButtons.witnessesRequired.label, { count: 1 }),
+        super.expectRadioYesLabel(
+          radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
+        ),
+        super.expectRadioNoLabel(
+          radioButtons.witnessesRequired.no.selector(this.claimantDefendantParty),
+        ),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantDefendantParty.key) },
     );
