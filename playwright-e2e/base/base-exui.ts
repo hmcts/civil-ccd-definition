@@ -40,11 +40,7 @@ export default abstract class BaseExui extends BaseApi {
     confirmActions: () => Promise<void>,
     ccdEvent: CCDEvent,
     user: User,
-    {
-      retries = config.playwright.exuiRetries,
-      verifySuccessEvent = true,
-      camundaProcess = true,
-    } = {},
+    { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     while (retries >= 0) {
       try {
@@ -68,7 +64,7 @@ export default abstract class BaseExui extends BaseApi {
       super.setCCDCaseData = { id: caseId };
       UserAssignedCasesHelper.addAssignedCaseToUser(user, this.ccdCaseData.id);
     }
-    if (verifySuccessEvent) this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
+    if (verifySuccessEvent) await this.exuiDashboardActions.verifySuccessEvent(ccdEvent);
     await this.exuiDashboardActions.clearCCDEvent();
     if (camundaProcess) await this.waitForFinishedBusinessProcess(user, this.ccdCaseData.id);
     await this.fetchAndSetCCDCaseData(this.ccdCaseData.id);
