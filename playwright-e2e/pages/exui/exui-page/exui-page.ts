@@ -41,18 +41,16 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     protected async retryUploadFile(
       filePath: string,
       selector: string,
-      retries = 3,
-      timeout = 5000,
+      { retries = 3, timeout = 5000 } = {},
     ) {
       await this.retryAction(
-        () => super.retryUploadFile(filePath, selector),
-        async () => {
-          await super.expectSelector(components.uploadDocError.selector, {
-            ignoreDuplicates: true,
-            timeout: 20,
-          });
-          await super.expectNoSelector(components.uploadDocError.selector, { timeout, all: true });
-        },
+        () => super.uploadFile(filePath, selector),
+        () =>
+          super.expectNoSelector(components.uploadDocError.selector, {
+            timeout,
+            all: true,
+            message: 'Uploading document failed',
+          }),
         undefined,
         { retries, message: 'Uploading document failed, trying again...' },
       );

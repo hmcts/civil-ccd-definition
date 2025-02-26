@@ -226,7 +226,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
   @TruthyParams(classKey)
-  protected async retryUploadFile(filePath: string, selector: string) {
+  protected async uploadFile(filePath: string, selector: string) {
     await this.page.locator(selector).setInputFiles([]);
     await this.page.locator(selector).setInputFiles([filePath]);
   }

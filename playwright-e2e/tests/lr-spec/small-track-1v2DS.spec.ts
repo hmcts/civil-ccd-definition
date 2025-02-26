@@ -10,8 +10,8 @@ test('1v2DS Specified Small track Defendant Full Defence Claimant Intent To Proc
   await ClaimantSolicitorSpecSteps.Login();
   await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v2DS();
   await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
-  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
-  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant2();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+  await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
   await DefendantSolicitor1SpecSteps.Login();
   await DefendantSolicitor1SpecSteps.RespondSmallTrackFullDefence1v2DS();
   await DefendantSolicitor2SpecSteps.Login();
