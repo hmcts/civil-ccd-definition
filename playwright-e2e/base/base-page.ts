@@ -315,17 +315,19 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      timeout = 12_000,
+      retries,
+      message,
       axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      timeout?: number;
+      retries?: number;
+      message?: string;
       axePageInsertName?: string;
     } = {},
   ) {
-    await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
+    await this.retryReload(assertions, undefined, { message, retries });
 
     if (config.runAxeTests && runAxe) {
       await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
@@ -1171,16 +1173,19 @@ export default abstract class BasePage {
   }
 
   protected async retryAction(
-    action: () => Promise<void>,
+    actions: () => Promise<void>,
     assertions: () => Promise<void>[] | Promise<void>,
-    message?: string,
-    options: { retries?: number; assertFirst?: boolean } = {},
     actionAfterFirstAttempt?: () => Promise<void>,
+    options: {
+      retries?: number;
+      assertFirst?: boolean;
+      message?: string;
+    } = {},
   ): Promise<void> {
-    let { retries = 1, assertFirst = false } = options;
+    let { retries = 2, assertFirst = false } = options;
 
     while (retries >= 0) {
-      if (!assertFirst) await action();
+      if (!assertFirst) await actions();
       const promises = assertions();
 
       try {
@@ -1188,7 +1193,7 @@ export default abstract class BasePage {
         break;
       } catch (error) {
         if (retries <= 0) throw error;
-        console.log(message ?? 'Action failed, trying again');
+        console.log(options.message ?? 'Action failed, trying again');
         console.log(`Retries: ${retries} remaining`);
         retries--;
         assertFirst = false;
@@ -1205,13 +1210,17 @@ export default abstract class BasePage {
   protected async retryClickBySelector(
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       () => this.clickBySelector(selector),
       assertions,
-      `Click action failed, selector: ${selector}, trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message: message ?? `Click action failed, selector: ${selector}, trying again`,
+      },
     );
   }
 
@@ -1220,14 +1229,13 @@ export default abstract class BasePage {
   protected async retryClickLink(
     name: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
-    await this.retryAction(
-      () => this.clickLink(name),
-      assertions,
-      `Click action failed, link: ${name} trying again`,
-      { retries },
-    );
+    await this.retryAction(() => this.clickLink(name), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? `Click action failed, link: ${name} trying again`,
+    });
   }
 
   @Step(classKey)
@@ -1236,7 +1244,8 @@ export default abstract class BasePage {
     option: string,
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       async () => {
@@ -1244,8 +1253,13 @@ export default abstract class BasePage {
         await this.selectFromDropdown(option, selector);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      },
     );
   }
 
@@ -1255,7 +1269,8 @@ export default abstract class BasePage {
     option: string,
     label: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       async () => {
@@ -1263,46 +1278,77 @@ export default abstract class BasePage {
         await this.selectFromDropdownByLabel(option, label);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
+      },
     );
   }
 
   @Step(classKey)
   protected async retryReload(
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
+  ) {
+    await this.retryAction(() => this.reload(), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? 'Assertion failed, reloading page and trying again',
+      assertFirst: true,
+    });
+  }
+
+  @Step(classKey)
+  protected async retryGoTo(
+    url: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
-      () => this.reload(),
+      () => this.goTo(url, { force: true }),
       assertions,
-      'Assertion failed, reloading page and trying again',
-      { retries, assertFirst: true },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message: message ?? 'Navigation Failed, trying again',
+        assertFirst: true,
+      },
     );
   }
 
   protected async retryActionTimeout(
-    action: () => Promise<void>,
-    expects: () => Promise<void>[] | Promise<void>,
-    message: string,
+    actions: () => Promise<void>,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
     {
       interval = 5_000,
       timeout = config.playwright.toPassTimeout,
+      message,
       assertFirst = false,
-    }: { interval?: number; timeout?: number; assertFirst?: boolean } = {},
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+      assertFirst?: boolean;
+    } = {},
   ) {
     let attempts = 0;
     const timer = new Timer(timeout);
     await pageExpect(async () => {
-      if (!assertFirst) await action();
+      if (!assertFirst) await actions();
       attempts++;
-      const promises = expects();
+      const promises = assertions();
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
       } catch (error) {
         console.log(message);
         console.log(`Attempts: ${attempts}, Timeout in ${timer.remainingTime} second(s)`);
         assertFirst = false;
+        if (actionAfterFirstAttempt) await actionAfterFirstAttempt();
         throw error;
       }
     }).toPass({
@@ -1316,15 +1362,25 @@ export default abstract class BasePage {
   protected async retryClickBySelectorTimeout(
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
     await this.retryActionTimeout(
       () => this.clickBySelector(selector),
       assertions,
-      `Click action failed, selector: ${selector}, trying again`,
+      actionAfterFirstAttempt,
       {
         interval,
         timeout,
+        message: message ?? `Click action failed, selector: ${selector}, trying again`,
       },
     );
   }
@@ -1334,14 +1390,22 @@ export default abstract class BasePage {
   protected async retryClickLinkTimeout(
     name: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
-    await this.retryActionTimeout(
-      () => this.clickLink(name),
-      assertions,
-      `Click action failed, link: ${name} trying again`,
-      { interval, timeout },
-    );
+    await this.retryActionTimeout(() => this.clickLink(name), assertions, actionAfterFirstAttempt, {
+      interval,
+      timeout,
+      message: message ?? `Click action failed, link: ${name} trying again`,
+    });
   }
 
   @Step(classKey)
@@ -1350,7 +1414,16 @@ export default abstract class BasePage {
     option: string,
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
     await this.retryActionTimeout(
       async () => {
@@ -1358,21 +1431,36 @@ export default abstract class BasePage {
         await this.selectFromDropdown(option, selector);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
-      { interval, timeout },
+      actionAfterFirstAttempt,
+      {
+        interval,
+        timeout,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      },
     );
   }
 
   @Step(classKey)
   protected async retryReloadTimeout(
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
-    await this.retryActionTimeout(
-      () => this.reload(),
-      assertions,
-      'Assertion failed, reloading page and trying again',
-      { interval, timeout, assertFirst: true },
-    );
+    await this.retryActionTimeout(() => this.reload(), assertions, actionAfterFirstAttempt, {
+      interval,
+      timeout,
+      assertFirst: true,
+      message: message ?? 'Assertion failed, reloading page and trying again',
+    });
   }
 }

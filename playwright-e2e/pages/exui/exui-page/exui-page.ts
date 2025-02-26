@@ -1,7 +1,6 @@
 import BasePage from '../../../base/base-page';
 import config from '../../../config/config';
 import ccdEvents from '../../../constants/ccd-events';
-import Timer from '../../../helpers/timer';
 import CCDCaseData from '../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../models/ccd/ccd-events';
 import { buttons, components, getFormattedCaseId } from './exui-content';
@@ -13,7 +12,10 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
 ) {
   // @AllMethodsStep({ methodNamesToIgnore: ['setCCDEvent', 'clearCCDEvent'] })
   abstract class ExuiPage extends Base {
-    protected async verifyHeadings(ccdCaseData?: CCDCaseData) {
+    protected async verifyHeadings(
+      ccdCaseData?: CCDCaseData,
+      { timeout }: { timeout?: number } = {},
+    ) {
       let expects: Promise<void>[] | Promise<void>;
 
       if (
@@ -23,14 +25,14 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         expects = super.expectHeading(ccdEventstate.name);
       } else if (ccdEventstate === undefined) {
         expects = [
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
         ];
       } else {
         expects = [
-          super.expectHeading(ccdEventstate.name, { exact: false }),
-          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
-          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+          super.expectHeading(ccdEventstate.name, { exact: false, timeout }),
+          super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false, timeout }),
+          super.expectHeading(ccdCaseData.caseNamePublic, { exact: false, timeout }),
         ];
       }
       await super.runVerifications(expects, { runAxe: false });
@@ -45,8 +47,8 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       await this.retryAction(
         () => super.retryUploadFile(filePath, selector),
         () => super.waitForSelectorToDetach('span.error-message', { timeout }),
-        'Uploading document failed, trying again...',
-        { retries },
+        undefined,
+        { retries, message: 'Uploading document failed, trying again...' },
       );
     }
 
@@ -89,6 +91,11 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     //       if (expect) await expect();
     //     },
     //     { timeout: 45_000 },
+    //     async () =>
+    //       super.expectNoSelector(components.loading.selector, {
+    //         timeout: 10,
+    //         message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
+    //       }),
     //   );
     //   await super.expectNoSelector(components.fieldError.selector, {
     //     timeout: 200,
@@ -98,10 +105,8 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
     // }
 
     protected async retryClickSubmit(expect?: () => Promise<void>) {
-      await super.retryAction(
-        async () => {
-          await super.clickBySelector(buttons.submit.selector);
-        },
+      await super.retryClickBySelector(
+        buttons.submit.selector,
         async () => {
           await this.waitForPageToLoad();
           await super.expectNoSelector(components.error.selector, {
@@ -110,13 +115,15 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
           });
           if (expect) await expect();
         },
-        'Clicking submit button failed, trying again',
-        { retries: 2 },
         async () =>
           super.expectNoSelector(components.loading.selector, {
             timeout: 10,
             message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
           }),
+        {
+          retries: 2,
+          message: 'Clicking submit button failed, trying again',
+        },
       );
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 200,

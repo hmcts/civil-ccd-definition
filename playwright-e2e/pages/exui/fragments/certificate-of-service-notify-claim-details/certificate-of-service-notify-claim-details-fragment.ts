@@ -30,8 +30,8 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
     await super.runVerifications(
       [
         super.expectHeading(heading(this.defendantParty)),
-        super.expectText(inputs.dateDeemedServed.label),
-        super.expectText(inputs.dateDeemedServed.label),
+        super.expectRadioGroupLabel(inputs.dateDeemedServed.label),
+        super.expectRadioGroupLabel(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
         super.expectLabel(inputs.documentsServed.label),
         super.expectLabel(inputs.statementOfTruth.name.label),
@@ -42,7 +42,7 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
         super.expectLabel(radioButtons.docsServed.defendant.label),
         super.expectLabel(radioButtons.docsServed.litigationFriend.label),
         super.expectLabel(radioButtons.docsServed.solicitor.label),
-        super.expectText(checkboxes.signedTrue.label, { first: true }),
+        super.expectText(checkboxes.signedTrue.label, { count: 1 }),
       ],
       { runAxe: false },
     );
