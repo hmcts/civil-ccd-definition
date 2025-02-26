@@ -302,46 +302,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async NotifyClaimDetails1v1() {
-    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-    await super.fetchAndSetCCDCaseData(1740598858359355);
-    await this.retryExuiEvent(
-      async () => {
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-      },
-      async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaimDetails2v1() {
+  async NotifyClaimDetails() {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetails();
       },
       async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaimDetails1v2SS() {
-    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-    await this.retryExuiEvent(
-      async () => {
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-      },
-      async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -352,12 +321,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimDetailsActions.selectDefendantSolicitorPage();
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.selectDefendantSolicitor();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetails();
       },
       async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -368,11 +337,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPPage();
+        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIP();
       },
       async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -383,12 +352,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetails();
+        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsCOS();
       },
       async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -399,12 +368,12 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPLRPage();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPLR();
       },
       async () => {
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,

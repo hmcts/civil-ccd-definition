@@ -11,7 +11,7 @@ test.only('1v1 Fast track Defendant Full Defence Claimant Intent To Proceed - Cl
   await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
   await ClaimantSolicitorSteps.NotifyClaim();
   await CaseRoleAssignmentApiSteps.AssignCaseRoleToDefendant1();
-  await ClaimantSolicitorSteps.NotifyClaimDetails1v1();
+  await ClaimantSolicitorSteps.NotifyClaimDetails();
   await DefendantSolicitor1Steps.Login();
   await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v1();
   await ClaimantSolicitorSteps.Login();
