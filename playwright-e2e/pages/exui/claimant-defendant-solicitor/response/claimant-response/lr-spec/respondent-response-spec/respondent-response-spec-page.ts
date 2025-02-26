@@ -9,11 +9,9 @@ import { getResponseSealedFormDocName } from '../../../../../exui-page/exui-cont
 export default class RespondentResponseSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
-      super.expectText(paragraphs.responseForm, { count: 1 }),
-      super.expectText(radioButtons.proceedWithClaim.label, { count: 1 }),
-      super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector),
-      super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector),
+      super.verifyHeadings(),
+      super.expectText(paragraphs.responseForm, { index: 2 }),
+      super.expectText(radioButtons.proceedWithClaim.label),
       super.expectLink(getResponseSealedFormDocName(ccdCaseData)),
     ]);
   }

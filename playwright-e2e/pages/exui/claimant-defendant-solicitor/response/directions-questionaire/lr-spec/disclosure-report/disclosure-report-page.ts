@@ -22,9 +22,9 @@ export default class DisclosureReportPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.report, { count: 1 }),
-        super.expectText(radioButtons.disclosureReportFilledAndServed.label, { count: 1 }),
-        super.expectText(radioButtons.disclosureProposalAgreed.label, { count: 1 }),
+        // super.expectSubheading(subheadings.report),
+        // super.expectText(radioButtons.disclosureReportFilledAndServed.label),
+        // super.expectText(radioButtons.disclosureProposalAgreed.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

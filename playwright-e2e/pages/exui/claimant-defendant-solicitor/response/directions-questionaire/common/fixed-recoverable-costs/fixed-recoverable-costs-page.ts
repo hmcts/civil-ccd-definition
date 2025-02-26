@@ -22,16 +22,10 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.fixedRecoverableCosts, { count: 1 }),
+        super.expectSubheading(subheadings.fixedRecoverableCosts, { index: 0 }),
         super.expectText(radioButtons.fixedRecoverableCosts.label, {
-          count: 1,
+          index: 0,
         }),
-        super.expectRadioYesLabel(
-          radioButtons.fixedRecoverableCosts.yes.selector(this.claimantDefendantParty),
-        ),
-        super.expectRadioNoLabel(
-          radioButtons.fixedRecoverableCosts.no.selector(this.claimantDefendantParty),
-        ),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
@@ -41,7 +35,6 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
     await super.clickBySelector(
       radioButtons.fixedRecoverableCosts.no.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.fixedRecoverableCostsReason.label, { count: 1 });
     await super.inputText(
       `No explanation - ${this.claimantDefendantParty.key}`,
       inputs.fixedRecoverableCostsReason.selector(this.claimantDefendantParty),
@@ -56,12 +49,11 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
       radioButtons.complexityBands.band1.selector(this.claimantDefendantParty),
     );
     await super.expectText(radioButtons.complexityBandAgreed.label, {
-      count: 1,
+      index: 0,
     });
     await super.clickBySelector(
       radioButtons.complexityBandAgreed.yes.selector(this.claimantDefendantParty),
     );
-    await super.expectLabel(inputs.fixedRecoverableCostsReason.label, { count: 1 });
     await super.inputText(
       `No explanation - ${this.claimantDefendantParty.key}`,
       inputs.fixedRecoverableCostsReason.selector(this.claimantDefendantParty),

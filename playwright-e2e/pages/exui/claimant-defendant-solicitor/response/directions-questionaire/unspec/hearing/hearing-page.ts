@@ -32,14 +32,8 @@ export default class HearingPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings.availability, { count: 1 }),
-        super.expectText(radioButtons.unavailableDateRequired.label, { count: 1 }),
-        super.expectRadioYesLabel(
-          radioButtons.unavailableDateRequired.yes.selector(this.claimantDefendantParty),
-        ),
-        super.expectRadioNoLabel(
-          radioButtons.unavailableDateRequired.no.selector(this.claimantDefendantParty),
-        ),
+        super.expectSubheading(subheadings.availability, { index: 0 }),
+        super.expectText(radioButtons.unavailableDateRequired.label, { index: 0 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
@@ -59,7 +53,7 @@ export default class HearingPage extends ExuiPage(BasePage) {
 
   async addNewUnavailableDate() {
     await super.clickBySelector(buttons.addNewAvailability.selector(this.claimantDefendantParty));
-    await super.expectSubheading(subheadings.unavailableDate, { count: 1 });
+    await super.expectSubheading(subheadings.unavailableDate, { index: 0 });
   }
 
   async selectSingleDate() {

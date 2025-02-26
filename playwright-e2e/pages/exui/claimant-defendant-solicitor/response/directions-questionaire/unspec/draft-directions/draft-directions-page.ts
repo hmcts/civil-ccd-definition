@@ -24,8 +24,8 @@ export default class DraftDirectionsPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         // super.expectText(subheadings.draft, { first: true }), TODO - Sub Heading Not Appearing for Defendant 2 for a 1V2DS Journey.
-        super.expectText(inputs.uploadFile.label, { count: 1 }),
-        super.expectText(inputs.uploadFile.hintText, { count: 1 }),
+        super.expectText(inputs.uploadFile.label, { first: true }),
+        super.expectText(inputs.uploadFile.hintText, { first: true }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

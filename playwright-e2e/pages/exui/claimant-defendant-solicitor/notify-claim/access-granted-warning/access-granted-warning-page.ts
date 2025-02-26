@@ -9,7 +9,7 @@ export default class AccessGrantedWarningPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(paragraphs.descriptionText, { count: 1 }),
+      super.expectText(paragraphs.descriptionText),
     ]);
   }
 

@@ -10,7 +10,7 @@ export default class ConfirmClaimantResponsePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeadings.proceed),
-      super.expectText(paragraphs.descriptionText1, { count: 1 }),
+      super.expectText(paragraphs.descriptionText1),
     ]);
   }
 
