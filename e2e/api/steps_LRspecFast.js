@@ -21,9 +21,7 @@ const {CASE_FLAGS} = require('../fixtures/caseFlags');
 const {dateNoWeekends} = require('./dataHelper');
 const {removeFixedRecoveryCostFieldsFromSpecClaimantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
-const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const sdoTracks = require('../fixtures/events/createSDO');
-
 
 
 let caseId, eventName;

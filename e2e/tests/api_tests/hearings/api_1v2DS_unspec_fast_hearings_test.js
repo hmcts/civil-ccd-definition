@@ -22,7 +22,7 @@ BeforeSuite(async () => {
 
 Scenario('1v2DS full defence defendant and claimant response', async ({api}) => {
   if(!continueWithScenario()) return;
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, false, hmcTest);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, hmcTest);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');

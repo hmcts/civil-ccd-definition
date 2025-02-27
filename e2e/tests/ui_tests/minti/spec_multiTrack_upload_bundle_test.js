@@ -5,7 +5,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Multi track - Upload documents - Bundle @non-prod-e2e-ft');
+Feature('Multi track - Upload documents - Bundle @master-e2e-ft');
 
 async function prepareSpecClaim(api_spec, mpScenario) {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
