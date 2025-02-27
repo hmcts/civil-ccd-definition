@@ -83,6 +83,6 @@
     "Publish": "Y",
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
-    "PageShowShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_PAGE\"",
+    "PageShowShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_PAGE\""
   }
 ]
