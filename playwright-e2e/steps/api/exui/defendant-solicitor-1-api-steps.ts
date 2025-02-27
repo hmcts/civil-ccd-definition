@@ -12,7 +12,7 @@ export default class DefendantSolicitor1ApiSteps extends BaseApi {
     super(requestsFactory, testData);
   }
 
-  async AssignCaseRoleToDefendant1() {
+  async AssignCaseRole() {
     await this.setupUserData(defendantSolicitor1User);
     const { civilServiceRequests } = this.requestsFactory;
     await civilServiceRequests.assignCaseToDefendant(

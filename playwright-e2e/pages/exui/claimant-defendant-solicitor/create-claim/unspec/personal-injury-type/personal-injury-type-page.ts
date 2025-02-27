@@ -8,7 +8,7 @@ export default class PersonalInjuryTypePage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectRadioGroupLabel(radioButtons.personalInjuryType.label),
+      super.expectLegend(radioButtons.personalInjuryType.label),
       super.expectLabel(radioButtons.personalInjuryType.roadAccident.label),
       super.expectLabel(radioButtons.personalInjuryType.publicLiability.label),
       super.expectLabel(radioButtons.personalInjuryType.workAccident.label),

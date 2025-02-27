@@ -30,8 +30,8 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     await super.runVerifications(
       [
         super.expectHeading(heading(this.defendantParty)),
-        super.expectText(inputs.dateDeemedServed.label),
-        super.expectText(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
         super.expectLabel(inputs.documentsServed.label),
         super.expectLabel(inputs.statementOfTruth.name.label),
@@ -42,7 +42,7 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
         super.expectLabel(radioButtons.docsServed.defendant.label),
         super.expectLabel(radioButtons.docsServed.litigationFriend.label),
         super.expectLabel(radioButtons.docsServed.solicitor.label),
-        super.expectText(checkboxes.signedTrue.label, { first: true }),
+        super.expectText(checkboxes.signedTrue.label, { count: 1 }),
       ],
       { runAxe: false },
     );
@@ -68,11 +68,11 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
 
     await super.inputText(
-      `Test Documents ${this.defendantParty.number}`,
+      `Test Documents - ${this.defendantParty.key}`,
       inputs.documentsServed.selector(this.defendantParty),
     );
     await super.inputText(
-      `Defendant ${this.defendantParty.number}`,
+      `${this.defendantParty.key}`,
       inputs.notifyClaimRecipient.selector(this.defendantParty),
     );
     await super.selectFromDropdown(
@@ -80,7 +80,7 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
       dropdowns.locationType.selector(this.defendantParty),
     );
     await super.inputText(
-      `Test Address ${this.defendantParty.number}`,
+      `Test Address - ${this.defendantParty.key}`,
       inputs.documentsServedLocation.selector(this.defendantParty),
     );
     await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.defendantParty));
@@ -100,11 +100,11 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
 
   async fillStatementOfTruth() {
     await super.inputText(
-      `Name ${this.defendantParty.number}`,
+      `Name - ${this.defendantParty.key}`,
       inputs.statementOfTruth.name.selector(this.defendantParty),
     );
     await super.inputText(
-      `Law firm ${this.defendantParty.number}`,
+      `Law firm - ${this.defendantParty.key}`,
       inputs.statementOfTruth.firm.selector(this.defendantParty),
     );
     await super.clickBySelector(checkboxes.signedTrue.selector(this.defendantParty));

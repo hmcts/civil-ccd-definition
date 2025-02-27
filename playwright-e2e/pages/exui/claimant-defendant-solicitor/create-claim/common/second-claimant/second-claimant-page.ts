@@ -35,7 +35,7 @@ export default class SecondClaimantPage extends ExuiPage(BasePage) {
       super.verifyHeadings(),
       this.choosePartyTypeFragment.verifyContent(),
       super.expectSubheading(subheadings.claimantDetails),
-      super.expectRadioGroupLabel(radioButtons.partyType.label),
+      super.expectLegend(radioButtons.partyType.label),
       super.expectSubheading(subheadings.address),
     ]);
   }

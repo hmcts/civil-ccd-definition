@@ -1,16 +1,9 @@
 import BaseTestData from '../../../../../base/base-test-data';
-import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import { Step } from '../../../../../decorators/test-steps';
 import TestData from '../../../../../models/test-data';
 import DefendantResponsePageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/response/defendant-response/defendant-response-page-factory';
 
-@AllMethodsStep({
-  methodNamesToIgnore: [
-    'languageDS1',
-    'requestedCourtLRSpecDS1',
-    'hearingSupportDS1',
-    'vulnerabilityQuestionsSpecDS1',
-  ],
-})
+const classKey = 'DefendantResponseSpecActions';
 export default class DefendantResponseSpecActions extends BaseTestData {
   defendantResponsePageFactory: DefendantResponsePageFactory;
 
@@ -19,12 +12,14 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     this.defendantResponsePageFactory = defendantResponsePageFactory;
   }
 
+  @Step(classKey)
   async respondentChecklist() {
     const { respondentChecklistPage } = this.defendantResponsePageFactory;
     await respondentChecklistPage.verifyContent();
     await respondentChecklistPage.submit();
   }
 
+  @Step(classKey)
   async responseConfirmNameAddressDS1() {
     const { responseConfirmNameAddressDS1Page } = this.defendantResponsePageFactory;
     await responseConfirmNameAddressDS1Page.verifyContent(this.ccdCaseData);
@@ -32,6 +27,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await responseConfirmNameAddressDS1Page.submit();
   }
 
+  @Step(classKey)
   async responseConfirmNameAddressDS2() {
     const { responseConfirmNameAddressDS2Page } = this.defendantResponsePageFactory;
     await responseConfirmNameAddressDS2Page.verifyContent(this.ccdCaseData);
@@ -39,6 +35,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await responseConfirmNameAddressDS2Page.submit();
   }
 
+  @Step(classKey)
   async responseConfirmDetailsDS1() {
     const { responseConfirmDetailsDS1Page } = this.defendantResponsePageFactory;
     await responseConfirmDetailsDS1Page.verifyContent();
@@ -46,6 +43,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await responseConfirmDetailsDS1Page.submit();
   }
 
+  @Step(classKey)
   async responseConfirmDetailsDS2() {
     const { responseConfirmDetailsDS2Page } = this.defendantResponsePageFactory;
     await responseConfirmDetailsDS2Page.verifyContent();
@@ -53,6 +51,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await responseConfirmDetailsDS2Page.submit();
   }
 
+  @Step(classKey)
   async responseConfirmNameAddress1v2() {
     const { responseConfirmNameAddress1v2Page } = this.defendantResponsePageFactory;
     await responseConfirmNameAddress1v2Page.verifyContent(this.ccdCaseData);
@@ -60,6 +59,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await responseConfirmNameAddress1v2Page.submit();
   }
 
+  @Step(classKey)
   async singleResponse() {
     const { singleResponsePage } = this.defendantResponsePageFactory;
     await singleResponsePage.verifyContent(this.ccdCaseData);
@@ -67,6 +67,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await singleResponsePage.submit();
   }
 
+  @Step(classKey)
   async singleResponse2v1() {
     const { singleResponse2v1Page } = this.defendantResponsePageFactory;
     await singleResponse2v1Page.verifyContent(this.ccdCaseData);
@@ -74,6 +75,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await singleResponse2v1Page.submit();
   }
 
+  @Step(classKey)
   async respondentResponseType2v1Spec() {
     const { respondentResponseType2v1SpecPage } = this.defendantResponsePageFactory;
     await respondentResponseType2v1SpecPage.verifyContent(this.ccdCaseData);
@@ -81,6 +83,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await respondentResponseType2v1SpecPage.submit();
   }
 
+  @Step(classKey)
   async respondentResponseTypeSpecDS1() {
     const { respondentResponseTypeSpecDS1Page } = this.defendantResponsePageFactory;
     await respondentResponseTypeSpecDS1Page.verifyContent(this.ccdCaseData);
@@ -88,6 +91,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await respondentResponseTypeSpecDS1Page.submit();
   }
 
+  @Step(classKey)
   async respondentResponseTypeSpecDS2() {
     const { respondentResponseTypeSpecDS2Page } = this.defendantResponsePageFactory;
     await respondentResponseTypeSpecDS2Page.verifyContent(this.ccdCaseData);
@@ -95,6 +99,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await respondentResponseTypeSpecDS2Page.submit();
   }
 
+  @Step(classKey)
   async defenceRouteDS1() {
     const { defenceRouteDS1Page } = this.defendantResponsePageFactory;
     await defenceRouteDS1Page.verifyContent(this.ccdCaseData);
@@ -102,6 +107,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await defenceRouteDS1Page.submit();
   }
 
+  @Step(classKey)
   async defenceRouteDS2() {
     const { defenceRouteDS2Page } = this.defendantResponsePageFactory;
     await defenceRouteDS2Page.verifyContent(this.ccdCaseData);
@@ -109,6 +115,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await defenceRouteDS2Page.submit();
   }
 
+  @Step(classKey)
   async uploadDefendantResponseSpecDS1() {
     const { uploadDefendantResponseSpecDS1Page } = this.defendantResponsePageFactory;
     await uploadDefendantResponseSpecDS1Page.verifyContent(this.ccdCaseData);
@@ -116,6 +123,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await uploadDefendantResponseSpecDS1Page.submit();
   }
 
+  @Step(classKey)
   async uploadDefendantResponseSpecDS2() {
     const { uploadDefendantResponseSpecDS2Page } = this.defendantResponsePageFactory;
     await uploadDefendantResponseSpecDS2Page.verifyContent(this.ccdCaseData);
@@ -123,6 +131,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await uploadDefendantResponseSpecDS2Page.submit();
   }
 
+  @Step(classKey)
   async timelineDS1() {
     const { howToAddTimelineDS1Page } = this.defendantResponsePageFactory;
     await howToAddTimelineDS1Page.verifyContent(this.ccdCaseData);
@@ -135,6 +144,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await howToAddTimelineUploadDS1Page.submit();
   }
 
+  @Step(classKey)
   async timelineDS2() {
     const { howToAddTimelineDS2Page } = this.defendantResponsePageFactory;
     await howToAddTimelineDS2Page.verifyContent(this.ccdCaseData);
@@ -147,6 +157,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await howToAddTimelineUploadDS2Page.submit();
   }
 
+  @Step(classKey)
   async oldMediationDS1() {
     const { mediationDS1Page } = this.defendantResponsePageFactory;
     await mediationDS1Page.verifyContent(this.ccdCaseData);
@@ -154,6 +165,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await mediationDS1Page.submit();
   }
 
+  @Step(classKey)
   async oldMediationDS2() {
     const { mediationDS2Page } = this.defendantResponsePageFactory;
     await mediationDS2Page.verifyContent(this.ccdCaseData);
@@ -161,6 +173,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await mediationDS2Page.submit();
   }
 
+  @Step(classKey)
   async mediationDS1() {
     const { mediationContactInformationDS1Page } = this.defendantResponsePageFactory;
     await mediationContactInformationDS1Page.verifyContent(this.ccdCaseData);
@@ -175,6 +188,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await mediationAvailabilityDS1Page.submit();
   }
 
+  @Step(classKey)
   async mediationDS2() {
     const { mediationContactInformationDS2Page } = this.defendantResponsePageFactory;
     await mediationContactInformationDS2Page.verifyContent(this.ccdCaseData);
@@ -187,6 +201,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await mediationAvailabilityDS2Page.submit();
   }
 
+  @Step(classKey)
   async applicationDS1() {
     const { applicationDS1Page } = this.defendantResponsePageFactory;
     await applicationDS1Page.verifyContent(this.ccdCaseData);
@@ -195,6 +210,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await applicationDS1Page.submit();
   }
 
+  @Step(classKey)
   async statementOfTruthDefendantResponseDS2Page() {
     const { statementOfTruthDefendantResponseDS2Page } = this.defendantResponsePageFactory;
     await statementOfTruthDefendantResponseDS2Page.verifyContent(this.ccdCaseData);
@@ -202,18 +218,21 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await statementOfTruthDefendantResponseDS2Page.submit();
   }
 
+  @Step(classKey)
   async confirmDefendantResponseSpecPage() {
     const { confirmDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirmDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirmDefendantResponseSpecPage.submit();
   }
 
+  @Step(classKey)
   async confirm1v2SSDefendantResponseSpecPage() {
     const { confirm1v2SSDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirm1v2SSDefendantResponseSpecPage.submit();
   }
 
+  @Step(classKey)
   async dqFastTrackDS1() {
     const { fileDirectionsQuestionaireDS1Page } = this.defendantResponsePageFactory;
     await fileDirectionsQuestionaireDS1Page.verifyContent(this.ccdCaseData);
@@ -241,6 +260,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await disclosureReportDS1Page.submit();
   }
 
+  @Step(classKey)
   async dqDS1() {
     const { expertsDS1Page } = this.defendantResponsePageFactory;
     await expertsDS1Page.verifyContent(this.ccdCaseData);
@@ -269,6 +289,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await this.vulnerabilityQuestionsSpecDS1();
   }
 
+  @Step(classKey)
   async dqSmallTrackDS1() {
     const { smallClaimExpertsDS1Page } = this.defendantResponsePageFactory;
     await smallClaimExpertsDS1Page.verifyContent(this.ccdCaseData);
@@ -299,6 +320,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await this.vulnerabilityQuestionsSpecDS1();
   }
 
+  @Step(classKey)
   async dqSmallTrackDS2Pages() {
     const { smallClaimExpertsDS2Page } = this.defendantResponsePageFactory;
     await smallClaimExpertsDS2Page.verifyContent(this.ccdCaseData);
@@ -343,6 +365,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await vulnerabilityQuestionsSpecDS2Page.submit();
   }
 
+  @Step(classKey)
   async statementOfTruthDefendantResponseDS1Page() {
     const { statementOfTruthDefendantResponseDS1Page } = this.defendantResponsePageFactory;
     await statementOfTruthDefendantResponseDS1Page.verifyContent(this.ccdCaseData);
@@ -350,6 +373,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
     await statementOfTruthDefendantResponseDS1Page.submit();
   }
 
+  @Step(classKey)
   async submitDefendantResponse() {
     const { submitDefendantResponsePage } = this.defendantResponsePageFactory;
     await submitDefendantResponsePage.verifyContent(this.ccdCaseData);
