@@ -3,13 +3,14 @@ import User from '../../../models/user';
 import BasePage from '../../../base/base-page';
 import { inputs, buttons } from './login-page-content';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import config from '../../../config/config';
 
 @AllMethodsStep({ methodNamesToIgnore: ['login'] })
 export default class LoginPage extends BasePage {
   async verifyContent() {
-    await super.runVerifications([
+    await super.retryReloadRunVerifications(() => [
       // super.expectText(heading),
-      super.expectLabel(inputs.email.label),
+      super.expectLabel(inputs.email.label, { timeout: config.playwright.shortExpectTimeout }),
       super.expectLabel(inputs.password.label),
     ]);
   }
