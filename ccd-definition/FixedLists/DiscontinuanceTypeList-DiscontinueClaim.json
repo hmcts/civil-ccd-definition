@@ -4,11 +4,5 @@
     "ListElementCode": "FULL_DISCONTINUANCE",
     "ListElement": "Full discontinuance",
     "DisplayOrder": 1
-  },
-  {
-    "ID": "DiscontinuanceTypeList",
-    "ListElementCode": "PART_DISCONTINUANCE",
-    "ListElement": "Part discontinuance",
-    "DisplayOrder": 2
   }
 ]
