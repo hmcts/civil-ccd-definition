@@ -27,8 +27,13 @@ const config = {
     workers: parseInt(process.env.PLAYWRIGHT_WORKERS),
     actionTimeout: 25_000,
     showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
-    retries: process.env.PLAYWRIGHT_RETRIES ? parseInt(process.env.PLAYWRIGHT_RETRIES) : undefined,
+    retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
     testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
+    shortExpectTimeout: 10_000,
+  },
+  exui: {
+    eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),
+    pageSubmitTimeout: 20_000,
   },
 };
 

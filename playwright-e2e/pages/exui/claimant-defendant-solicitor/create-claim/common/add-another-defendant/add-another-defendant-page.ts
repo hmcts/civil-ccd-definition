@@ -6,7 +6,11 @@ import { radioButtons } from './add-another-defendant-content.ts';
 @AllMethodsStep()
 export default class AddAnotherDefendantPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    await super.runVerifications([super.expectText(radioButtons.anotherDefendant.label)]);
+    await super.runVerifications([
+      super.expectLegend(radioButtons.anotherDefendant.label),
+      super.expectYesLabel(radioButtons.anotherDefendant.yes.selector),
+      super.expectNoLabel(radioButtons.anotherDefendant.no.selector),
+    ]);
   }
 
   async selectYes() {

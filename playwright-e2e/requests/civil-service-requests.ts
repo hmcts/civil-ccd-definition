@@ -41,7 +41,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 50,
+      retries: 30,
       retryTimeInterval: 5000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);

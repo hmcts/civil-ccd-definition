@@ -48,7 +48,9 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'label')
   protected async clickByLabel(
     label: string,
-    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {},
+    options: { timeout?: number; first?: boolean; index?: number; exact?: boolean } = {
+      exact: true,
+    },
   ) {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
@@ -60,20 +62,24 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
-  protected async clickButtonByName(name: string, options: { timeout?: number } = {}) {
-    await this.page.getByRole('button', { name }).click(options);
+  protected async clickButtonByName(
+    name: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
+    await this.page.getByRole('button', { name, exact: options.exact }).click(options);
   }
 
   @BoxedDetailedStep(classKey, 'name')
   @TruthyParams(classKey, 'name')
   protected async clickLink(
     name: string,
-    options: { index?: number; timeout?: number } = {
+    options: { index?: number; timeout?: number; exact?: boolean } = {
+      exact: true,
       index: 0,
     },
   ) {
     await this.page
-      .getByRole('link', { name })
+      .getByRole('link', { name, exact: true })
       .nth(options.index)
       .click({ timeout: options.timeout });
   }
@@ -110,7 +116,10 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'text')
   @TruthyParams(classKey, 'text')
-  protected async clickByText(text: string, options: { timeout?: number; exact?: boolean } = {}) {
+  protected async clickByText(
+    text: string,
+    options: { timeout?: number; exact?: boolean } = { exact: true },
+  ) {
     await this.page.getByText(text, { exact: options.exact }).click({ timeout: options.timeout });
   }
 
@@ -135,7 +144,7 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = {},
+    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (options.index) {
       await this.page
@@ -183,7 +192,7 @@ export default abstract class BasePage {
   protected async selectFromDropdownByLabel(
     option: string | number,
     selector: string,
-    options: { timeout?: number; exact?: boolean } = {},
+    options: { timeout?: number; exact?: boolean } = { exact: true },
   ) {
     if (typeof option === 'number')
       await this.page
@@ -217,7 +226,7 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
   @TruthyParams(classKey)
-  protected async retryUploadFile(filePath: string, selector: string) {
+  protected async uploadFile(filePath: string, selector: string) {
     await this.page.locator(selector).setInputFiles([]);
     await this.page.locator(selector).setInputFiles([filePath]);
   }
@@ -240,10 +249,20 @@ export default abstract class BasePage {
   protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 500 });
+      await locator.waitFor({ state: 'attached', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async waitForSelectorToBeHidden(selector: string, options: { timeout?: number } = {}) {
+    const locator = this.page.locator(selector);
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    await locator.waitFor({ state: 'hidden', ...options });
   }
 
   protected async waitForUrlToChange(options: { timeout?: number } = {}) {
@@ -261,7 +280,7 @@ export default abstract class BasePage {
   protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 500 });
+      await locator.waitFor({ state: 'attached', timeout: 20 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -306,17 +325,19 @@ export default abstract class BasePage {
       runAxe = true,
       axeExclusions = [],
       useAxeCache = true,
-      timeout = 12_000,
+      retries,
+      message,
       axePageInsertName,
     }: {
       runAxe?: boolean;
       axeExclusions?: string[];
       useAxeCache?: boolean;
-      timeout?: number;
+      retries?: number;
+      message?: string;
       axePageInsertName?: string;
     } = {},
   ) {
-    await this.retryReloadTimeout(assertions, { timeout, interval: 2000 });
+    await this.retryReload(assertions, undefined, { message, retries });
 
     if (config.runAxeTests && runAxe) {
       await this.expectAxeToPass(axeExclusions, useAxeCache, axePageInsertName);
@@ -395,10 +416,10 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'text')
   protected async expectHeading(
     text: string | number,
-    options: { message?: string; timeout?: number } = {},
+    options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(
-      this.page.locator('h1', { has: this.page.locator(`text="${text}"`) }),
+      this.page.getByRole('heading', { name: text.toString(), level: 1, exact: options.exact }),
     ).toBeVisible({
       timeout: options.timeout,
     });
@@ -410,10 +431,15 @@ export default abstract class BasePage {
     text: string | number,
     options: {
       message?: string;
+      exact?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    const locator = this.page.locator('h1', { has: this.page.locator(`text="${text}"`) });
+    const locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 1,
+      exact: options.exact,
+    });
 
     try {
       await locator.waitFor({ state: 'visible', timeout: 20 });
@@ -435,24 +461,33 @@ export default abstract class BasePage {
       all?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
+      exact?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
+    let locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 2,
+      exact: options.exact,
+    });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -486,13 +521,20 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
-    let locator = this.page.locator('h2', { has: this.page.locator(`text="${text}"`) });
+    let locator = this.page.getByRole('heading', {
+      name: text.toString(),
+      level: 2,
+      exact: options.exact,
+    });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
@@ -524,17 +566,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -570,7 +616,10 @@ export default abstract class BasePage {
       timeout?: number;
     } = {},
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -606,19 +655,23 @@ export default abstract class BasePage {
       ignoreDuplicates?: boolean;
       count?: number;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -656,9 +709,12 @@ export default abstract class BasePage {
       index?: number;
       first?: boolean;
       timeout?: number;
-    } = {},
+    } = { exact: true },
   ) {
-    if (options.first && options.index !== undefined && options.all) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
@@ -689,27 +745,31 @@ export default abstract class BasePage {
       first?: boolean;
       count?: number;
       all?: boolean;
+      exact?: boolean;
       ignoreDuplicates?: boolean;
       message?: string;
-      exact?: boolean;
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.getByLabel(label, { exact: options.exact });
+    let locator = this.page.locator('label').getByText(label, { exact: options.exact });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -748,17 +808,21 @@ export default abstract class BasePage {
       timeout?: number;
     } = { exact: true },
   ) {
-    if (options.ignoreDuplicates && options.count !== undefined) {
-      throw new ExpectError("Cannot use 'ignoreDuplicates' and 'count' options at the same time");
-    }
-
-    if (options.first && options.index !== undefined && options.count && options.all) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
       throw new ExpectError(
-        "Cannot use 'first', 'index', 'count' and 'all' options at the same time",
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
       );
     }
 
-    if (options.count && options.count === 0) {
+    if (options.count === 0) {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
@@ -784,6 +848,115 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     }
+  }
+
+  @BoxedDetailedStep(classKey, 'label')
+  protected async expectLegend(
+    label: string,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.locator('legend').getByText(label, { exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'label', 'selector')
+  protected async expectLabelForInput(
+    label: string,
+    selector: string,
+    options: { message?: string; timeout?: number; exact?: boolean } = {},
+  ) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page
+        .locator('label')
+        .getByText(label, { exact: options.exact })
+        .locator(`[for="${inputId}"]`),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async expectYesLabel(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText('Yes', { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'selector')
+  protected async expectNoLabel(
+    selector: string,
+    options: { message?: string; timeout?: number } = {},
+  ) {
+    const inputId = await this.page
+      .locator(selector)
+      .getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText('No', { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'name')
@@ -860,13 +1033,139 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'selector', 'option')
   @TruthyParams(classKey, 'selector', 'option')
   protected async expectDropdownOption(
-    option: string,
+    option: string | number,
     selector: string,
-    options: { message?: string; timeout?: number } = {},
+    options: { message?: string; timeout?: number; exact?: boolean } = { exact: true },
   ) {
-    await pageExpect(this.page.locator(selector), { message: options.message }).toHaveText(option, {
-      timeout: options.timeout,
-    });
+    let locator: Locator;
+
+    if (typeof option === 'number')
+      locator = this.page.locator(selector).getByRole('option').nth(option);
+    else
+      locator = this.page
+        .locator(selector)
+        .getByRole('option', { name: option, exact: options.exact });
+
+    await pageExpect(locator, {
+      message: options.message,
+    }).toBeAttached({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'rowName', 'value')
+  @TruthyParams(classKey, 'rowName', 'value')
+  protected async expectTableValueByRowName(
+    rowName: string,
+    value: string | number,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    let locator = this.page
+      .locator('tr', {
+        has: this.page.locator(`*:has-text("${rowName}")`),
+      })
+      .getByRole('cell', { exact: options.exact, name: value.toString() });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
+  }
+
+  @BoxedDetailedStep(classKey, 'value')
+  @TruthyParams(classKey, 'value')
+  protected async expectDataCellValue(
+    value: string | number,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    if (options.count === 0) {
+      throw new ExpectError("'count' cannot be set to 0");
+    }
+
+    let locator = this.page.getByRole('cell', { name: value.toString(), exact: options.exact });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'text', 'selector')
@@ -884,23 +1183,34 @@ export default abstract class BasePage {
   }
 
   protected async retryAction(
-    action: () => Promise<void>,
+    actions: () => Promise<void>,
     assertions: () => Promise<void>[] | Promise<void>,
-    message?: string,
-    { retries = 1, assertFirst = false }: { retries?: number; assertFirst?: boolean } = {},
-  ) {
+    actionAfterFirstAttempt?: () => Promise<void>,
+    options: {
+      retries?: number;
+      assertFirst?: boolean;
+      message?: string;
+    } = {},
+  ): Promise<void> {
+    let { retries = 2, assertFirst = false } = options;
+
     while (retries >= 0) {
-      if (!assertFirst) await action();
+      if (!assertFirst) await actions();
       const promises = assertions();
+
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
         break;
       } catch (error) {
         if (retries <= 0) throw error;
-        console.log(message ?? 'Action failed, trying again');
+        console.log(options.message ?? 'Action failed, trying again');
         console.log(`Retries: ${retries} remaining`);
         retries--;
         assertFirst = false;
+
+        if (actionAfterFirstAttempt) {
+          await actionAfterFirstAttempt();
+        }
       }
     }
   }
@@ -910,13 +1220,17 @@ export default abstract class BasePage {
   protected async retryClickBySelector(
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       () => this.clickBySelector(selector),
       assertions,
-      `Click action failed, selector: ${selector}, trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message: message ?? `Click action failed, selector: ${selector}, trying again`,
+      },
     );
   }
 
@@ -925,14 +1239,13 @@ export default abstract class BasePage {
   protected async retryClickLink(
     name: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
-    await this.retryAction(
-      () => this.clickLink(name),
-      assertions,
-      `Click action failed, link: ${name} trying again`,
-      { retries },
-    );
+    await this.retryAction(() => this.clickLink(name), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? `Click action failed, link: ${name} trying again`,
+    });
   }
 
   @Step(classKey)
@@ -941,7 +1254,8 @@ export default abstract class BasePage {
     option: string,
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       async () => {
@@ -949,8 +1263,13 @@ export default abstract class BasePage {
         await this.selectFromDropdown(option, selector);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      },
     );
   }
 
@@ -960,7 +1279,8 @@ export default abstract class BasePage {
     option: string,
     label: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
       async () => {
@@ -968,46 +1288,77 @@ export default abstract class BasePage {
         await this.selectFromDropdownByLabel(option, label);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
-      { retries },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, label: ${label} trying again`,
+      },
     );
   }
 
   @Step(classKey)
   protected async retryReload(
     assertions: () => Promise<void>[] | Promise<void>,
-    { retries = 2 }: { retries?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
+  ) {
+    await this.retryAction(() => this.reload(), assertions, actionAfterFirstAttempt, {
+      retries,
+      message: message ?? 'Assertion failed, reloading page and trying again',
+      assertFirst: true,
+    });
+  }
+
+  @Step(classKey)
+  protected async retryGoTo(
+    url: string,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
+    { retries = 2, message }: { retries?: number; message?: string } = {},
   ) {
     await this.retryAction(
-      () => this.reload(),
+      () => this.goTo(url, { force: true }),
       assertions,
-      'Assertion failed, reloading page and trying again',
-      { retries, assertFirst: true },
+      actionAfterFirstAttempt,
+      {
+        retries,
+        message: message ?? 'Navigation Failed, trying again',
+        assertFirst: true,
+      },
     );
   }
 
   protected async retryActionTimeout(
-    action: () => Promise<void>,
-    expects: () => Promise<void>[] | Promise<void>,
-    message: string,
+    actions: () => Promise<void>,
+    assertions: () => Promise<void>[] | Promise<void>,
+    actionAfterFirstAttempt?: () => Promise<void>,
     {
       interval = 5_000,
       timeout = config.playwright.toPassTimeout,
+      message,
       assertFirst = false,
-    }: { interval?: number; timeout?: number; assertFirst?: boolean } = {},
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+      assertFirst?: boolean;
+    } = {},
   ) {
     let attempts = 0;
     const timer = new Timer(timeout);
     await pageExpect(async () => {
-      if (!assertFirst) await action();
+      if (!assertFirst) await actions();
       attempts++;
-      const promises = expects();
+      const promises = assertions();
       try {
         await (Array.isArray(promises) ? Promise.all(promises) : promises);
       } catch (error) {
         console.log(message);
         console.log(`Attempts: ${attempts}, Timeout in ${timer.remainingTime} second(s)`);
         assertFirst = false;
+        if (actionAfterFirstAttempt) await actionAfterFirstAttempt();
         throw error;
       }
     }).toPass({
@@ -1021,15 +1372,25 @@ export default abstract class BasePage {
   protected async retryClickBySelectorTimeout(
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
     await this.retryActionTimeout(
       () => this.clickBySelector(selector),
       assertions,
-      `Click action failed, selector: ${selector}, trying again`,
+      actionAfterFirstAttempt,
       {
         interval,
         timeout,
+        message: message ?? `Click action failed, selector: ${selector}, trying again`,
       },
     );
   }
@@ -1039,14 +1400,22 @@ export default abstract class BasePage {
   protected async retryClickLinkTimeout(
     name: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
-    await this.retryActionTimeout(
-      () => this.clickLink(name),
-      assertions,
-      `Click action failed, link: ${name} trying again`,
-      { interval, timeout },
-    );
+    await this.retryActionTimeout(() => this.clickLink(name), assertions, actionAfterFirstAttempt, {
+      interval,
+      timeout,
+      message: message ?? `Click action failed, link: ${name} trying again`,
+    });
   }
 
   @Step(classKey)
@@ -1055,7 +1424,16 @@ export default abstract class BasePage {
     option: string,
     selector: string,
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
     await this.retryActionTimeout(
       async () => {
@@ -1063,21 +1441,36 @@ export default abstract class BasePage {
         await this.selectFromDropdown(option, selector);
       },
       assertions,
-      `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
-      { interval, timeout },
+      actionAfterFirstAttempt,
+      {
+        interval,
+        timeout,
+        message:
+          message ??
+          `Select from dropdown action failed, option: ${option}, selector: ${selector} trying again`,
+      },
     );
   }
 
   @Step(classKey)
   protected async retryReloadTimeout(
     assertions: () => Promise<void>[] | Promise<void>,
-    { interval, timeout }: { interval?: number; timeout?: number } = {},
+    actionAfterFirstAttempt?: () => Promise<void>,
+    {
+      interval,
+      timeout,
+      message,
+    }: {
+      interval?: number;
+      timeout?: number;
+      message?: string;
+    } = {},
   ) {
-    await this.retryActionTimeout(
-      () => this.reload(),
-      assertions,
-      'Assertion failed, reloading page and trying again',
-      { interval, timeout, assertFirst: true },
-    );
+    await this.retryActionTimeout(() => this.reload(), assertions, actionAfterFirstAttempt, {
+      interval,
+      timeout,
+      assertFirst: true,
+      message: message ?? 'Assertion failed, reloading page and trying again',
+    });
   }
 }

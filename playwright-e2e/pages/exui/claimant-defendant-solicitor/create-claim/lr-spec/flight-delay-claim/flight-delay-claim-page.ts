@@ -6,7 +6,11 @@ import { radioButtons, subheadings } from './flight-delay-claim-content';
 @AllMethodsStep()
 export default class FlightDelayClaimPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    await super.runVerifications([super.expectSubheading(subheadings.airlineClaim)]);
+    await super.runVerifications([
+      super.expectSubheading(subheadings.airlineClaim),
+      super.expectYesLabel(radioButtons.flightDelay.yes.selector),
+      super.expectNoLabel(radioButtons.flightDelay.no.selector),
+    ]);
   }
 
   async selectYes() {
