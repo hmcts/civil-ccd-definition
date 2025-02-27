@@ -29,10 +29,11 @@ const config = {
     showBrowserWindow: process.env.PLAYWRIGHT_SHOW_BROWSER_WINDOW === 'true',
     retries: parseInt(process.env.PLAYWRIGHT_RETRIES),
     testSpeed: testSpeeds[process.env.PLAYWRIGHT_TEST_SPEED.toUpperCase() as string] as TestSpeed,
+    shortExpectTimeout: 10_000,
   },
   exui: {
     eventRetries: parseInt(process.env.PLAYWRIGHT_EXUI_RETRIES),
-    pageSubmitTimeout: 15_000,
+    pageSubmitTimeout: 20_000,
   },
 };
 

@@ -81,6 +81,6 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async verifySuccessEvent(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
+    await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
   }
 }
