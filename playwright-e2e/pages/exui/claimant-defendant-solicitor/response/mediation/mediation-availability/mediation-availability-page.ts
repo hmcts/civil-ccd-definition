@@ -37,10 +37,10 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.mediationAvailability),
-        // super.expectText(paragraphs.descriptionText),
-        // super.expectText(radioButtons.mediationAvailability.label),
-        // super.expectText(radioButtons.mediationAvailability.hintText),
+        super.expectSubheading(subheadings.mediationAvailability, { count: 1 }),
+        super.expectText(paragraphs.descriptionText, { count: 1 }),
+        super.expectLegend(radioButtons.mediationAvailability.label, { count: 1 }),
+        super.expectText(radioButtons.mediationAvailability.hintText, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
