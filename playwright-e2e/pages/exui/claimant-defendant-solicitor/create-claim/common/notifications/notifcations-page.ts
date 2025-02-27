@@ -9,9 +9,9 @@ export default class NotificationsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectSubheading(subheadings.notifications),
-      super.expectRadioGroupLabel(radioButtons.sameEmailForNotifications.label, { count: 1 }),
-      super.expectRadioYesLabel(radioButtons.sameEmailForNotifications.yes.selector),
-      super.expectRadioNoLabel(radioButtons.sameEmailForNotifications.no.selector),
+      super.expectLegend(radioButtons.sameEmailForNotifications.label, { count: 1 }),
+      super.expectYesLabel(radioButtons.sameEmailForNotifications.yes.selector),
+      super.expectNoLabel(radioButtons.sameEmailForNotifications.no.selector),
     ]);
   }
 
