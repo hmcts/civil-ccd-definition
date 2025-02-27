@@ -3,7 +3,6 @@ const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 
 
 const intermediateTrackClaimAmount = '99000';
-const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
 const track = 'INTERMEDIATE_CLAIM';
@@ -11,11 +10,11 @@ const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 let civilCaseReference;
 
-Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @non-prod-e2e-ft');
+Feature('Intermediate and Multi tracks - Download order template Journey - Upload Bundle @master-e2e-ft');
 
 Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
-  civilCaseReference =  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount, mintiEnabled);
+  civilCaseReference =  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, intermediateTrackClaimAmount);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
@@ -38,7 +37,7 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
 
 Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
-  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
+  civilCaseReference = await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');

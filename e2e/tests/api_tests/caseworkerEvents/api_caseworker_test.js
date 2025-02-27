@@ -83,14 +83,13 @@ Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
   await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
 });
 
-const mintiEnabled = true;
 const claimAmountMulti = '200001';
 
 Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
   const judgeUser = config.judgeUserWithRegionId1;
   const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti, mintiEnabled);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmountMulti);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');

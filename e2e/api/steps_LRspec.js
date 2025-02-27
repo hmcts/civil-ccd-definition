@@ -15,7 +15,7 @@ const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {checkCaseFlagsEnabled, checkMintiToggleEnabled} = require('./testingSupport');
+const {checkCaseFlagsEnabled} = require('./testingSupport');
 const {checkToggleEnabled} = require('./testingSupport');
 const {fetchCaseDetails} = require('./apiRequest');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
@@ -39,7 +39,7 @@ const settleClaim1v1Spec = require('../fixtures/events/settleClaim1v1Spec');
 const discontinueClaimSpec = require('../fixtures/events/discontinueClaimSpec');
 const validateDiscontinueClaimClaimantSpec = require('../fixtures/events/validateDiscontinueClaimClaimantSpec');
 const {cloneDeep} = require('lodash');
-const {adjustCaseSubmittedDateForMinti, getMintiTrackByClaimAmount, assertTrackAfterClaimCreation} = require('../helpers/mintiHelper');
+const {getMintiTrackByClaimAmount} = require('../helpers/mintiHelper');
 const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
@@ -819,8 +819,8 @@ module.exports = {
    * @param user user to create the claim
    * @return {Promise<void>}
    */
-  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', carmEnabled = false,
-                                               isMintiCase = false, mintiClaimAmount = '00000') => {
+  createClaimWithRepresentedRespondent: async (user, scenario = 'ONE_V_ONE', isMintiCase = false,
+                                               mintiClaimAmount = '00000') => {
     const pbaV3 = await checkToggleEnabled(PBAv3);
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
@@ -870,10 +870,6 @@ module.exports = {
 
     //field is deleted in about to submit callback
     deleteCaseFields('applicantSolicitor1CheckEmail');
-
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && isMintiCase), carmEnabled);
 
     return caseId;
   },
@@ -949,7 +945,6 @@ module.exports = {
                             expectedEvent = 'AWAITING_APPLICANT_INTENTION', carmEnabled = false,
                             isMintiCase = false, claimAmountMinti, djSetaside=false) => {
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
     await apiRequest.setupTokens(user);
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 
@@ -1013,11 +1008,6 @@ module.exports = {
       await assertCaseFlags(caseId, user, response);
     }
     deleteCaseFields('respondent1Copy');
-    const isMintiToggleEnabled = await checkMintiToggleEnabled();
-    let claimAmount = caseData.totalClaimAmount;
-    if (!response.includes('COUNTER_CLAIM')) {
-      await assertTrackAfterClaimCreation(config.adminUser, caseId, claimAmount, (isMintiCase && isMintiToggleEnabled), true);
-    }
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE',
@@ -1026,7 +1016,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
 
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
 
     await apiRequest.setupTokens(user);
 

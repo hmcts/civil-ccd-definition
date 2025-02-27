@@ -2,7 +2,6 @@
 
 const config = require('../../../config.js');
 const multiTrackClaimAmount = '200001';
-const mintiEnabled = true;
 const track = 'MULTI_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
@@ -10,7 +9,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 
 async function prepareClaim(api, mpScenario, claimAmount) {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
   await api.notifyClaim(config.applicantSolicitorUser);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await defendantResponse(api, mpScenario);
@@ -20,7 +19,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }
 
-Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({api}) => {
+Scenario('1v1 Create Unspecified Multi Track claim @api-prod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount);
 });
