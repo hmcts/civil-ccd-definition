@@ -12,65 +12,65 @@ export default class NotifyClaimDetailsActions extends BaseTestData {
     this.notifyClaimDetailsPageFactory = notifyClaimDetailsPageFactory;
   }
 
-  async selectDefendantSolicitorPage() {
+  async selectDefendantSolicitor() {
     const { selectDefendantSolicitorPage } = this.notifyClaimDetailsPageFactory;
     await selectDefendantSolicitorPage.verifyContent(this.ccdCaseData);
     await selectDefendantSolicitorPage.selectBoth();
     await selectDefendantSolicitorPage.submit();
   }
 
-  async uploadNotifyClaimDetailsPage() {
+  async uploadNotifyClaimDetails() {
     const { uploadNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
     await uploadNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
     await uploadNotifyClaimDetailsPage.uploadDocuments();
     await uploadNotifyClaimDetailsPage.submit();
   }
 
-  async certificateOfService1NotifyClaimDetailsPage() {
+  async certificateOfService1NotifyClaimDetails() {
     const { certificateOfService1NotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
     await certificateOfService1NotifyClaimDetailsPage.verifyContent();
     await certificateOfService1NotifyClaimDetailsPage.fillDetails();
     await certificateOfService1NotifyClaimDetailsPage.submit();
   }
 
-  async certificateOfService2NotifyClaimDetailsPage() {
+  async certificateOfService2NotifyClaimDetails() {
     const { certificateOfService2NotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
     await certificateOfService2NotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
     await certificateOfService2NotifyClaimDetailsPage.fillDetails();
     await certificateOfService2NotifyClaimDetailsPage.submit();
   }
 
-  async submitNotifyClaimDetailsLIPPage() {
+  async submitNotifyClaimDetailsLIP() {
     const { submitNotifyClaimDetailsLIPPage } = this.notifyClaimDetailsPageFactory;
     await submitNotifyClaimDetailsLIPPage.verifyContent(this.ccdCaseData);
     await submitNotifyClaimDetailsLIPPage.submit();
   }
 
-  async submitNotifyClaimDetailsPage() {
+  async submitNotifyClaimDetails() {
     const { submitNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
     await submitNotifyClaimDetailsPage.verifyContent(this.ccdCaseData);
     await submitNotifyClaimDetailsPage.submit();
   }
 
-  async submitNotifyClaimDetailsCOSPage() {
+  async submitNotifyClaimDetailsCOS() {
     const { submitNotifyClaimDetailsCOSPage } = this.notifyClaimDetailsPageFactory;
     await submitNotifyClaimDetailsCOSPage.verifyContent(this.ccdCaseData);
     await submitNotifyClaimDetailsCOSPage.submit();
   }
 
-  async submitNotifyClaimDetailsLIPLRPage() {
+  async submitNotifyClaimDetailsLIPLR() {
     const { submitNotifyClaimDetailsLIPLRPage } = this.notifyClaimDetailsPageFactory;
     await submitNotifyClaimDetailsLIPLRPage.verifyContent(this.ccdCaseData);
     await submitNotifyClaimDetailsLIPLRPage.submit();
   }
 
-  async confirmNotifyClaimDetailsPage() {
+  async confirmNotifyClaimDetails() {
     const { confirmNotifyClaimDetailsPage } = this.notifyClaimDetailsPageFactory;
     await confirmNotifyClaimDetailsPage.verifyContent();
     await confirmNotifyClaimDetailsPage.submit();
   }
 
-  async confirmNotifyClaimDetailsCOSPage() {
+  async confirmNotifyClaimDetailsCOS() {
     const { confirmNotifyClaimDetailsCOSPage } = this.notifyClaimDetailsPageFactory;
     await confirmNotifyClaimDetailsCOSPage.verifyContent();
     await confirmNotifyClaimDetailsCOSPage.submit();
