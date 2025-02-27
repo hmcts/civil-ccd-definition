@@ -21,6 +21,9 @@ export const components = {
   fieldError: {
     selector: "div[data-module='govuk-error-summary']",
   },
+  uploadDocError: {
+    selector: 'span.error-message',
+  },
 };
 
 export const links = {
