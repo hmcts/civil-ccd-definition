@@ -32,12 +32,10 @@ export default class ExpertPage extends ExuiPage(BasePage) {
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.experts, { count: 1 }),
         super.expectText(radioButtons.expertsRequired.label, { count: 1 }),
-        super.expectRadioYesLabel(
+        super.expectYesLabel(
           radioButtons.expertsRequired.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectRadioNoLabel(
-          radioButtons.expertsRequired.no.selector(this.claimantDefendantParty),
-        ),
+        super.expectNoLabel(radioButtons.expertsRequired.no.selector(this.claimantDefendantParty)),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

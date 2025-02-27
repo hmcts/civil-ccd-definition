@@ -23,8 +23,8 @@ export default class FurtherInformationPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.furtherInformation, { count: 1 }),
-        super.expectRadioYesLabel(radioButtons.yes.selector(this.claimantDefendantParty)),
-        super.expectRadioNoLabel(radioButtons.no.selector(this.claimantDefendantParty)),
+        super.expectYesLabel(radioButtons.yes.selector(this.claimantDefendantParty)),
+        super.expectNoLabel(radioButtons.no.selector(this.claimantDefendantParty)),
         super.expectText(form.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },

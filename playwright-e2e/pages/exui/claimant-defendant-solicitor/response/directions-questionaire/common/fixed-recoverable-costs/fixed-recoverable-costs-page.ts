@@ -26,10 +26,10 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
         super.expectText(radioButtons.fixedRecoverableCosts.label, {
           count: 1,
         }),
-        super.expectRadioYesLabel(
+        super.expectYesLabel(
           radioButtons.fixedRecoverableCosts.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectRadioNoLabel(
+        super.expectNoLabel(
           radioButtons.fixedRecoverableCosts.no.selector(this.claimantDefendantParty),
         ),
       ],

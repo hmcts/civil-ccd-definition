@@ -27,8 +27,8 @@ export default class LanguagePage extends ExuiPage(BasePage) {
         super.expectLabel(radioButtons.courtLanguage.welsh.label, { count: 2, exact: true }),
         super.expectLabel(radioButtons.courtLanguage.english.label, { count: 2, exact: true }),
         super.expectLabel(radioButtons.courtLanguage.welshAndEnglish.label, { count: 2 }),
-        super.expectRadioGroupLabel(radioButtons.courtLanguage.label, { count: 1 }),
-        super.expectRadioGroupLabel(radioButtons.documentLanguage.label, { count: 1 }),
+        super.expectLegend(radioButtons.courtLanguage.label, { count: 1 }),
+        super.expectLegend(radioButtons.documentLanguage.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

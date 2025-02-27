@@ -32,10 +32,10 @@ export default class WitnessesPage extends ExuiPage(BasePage) {
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.witnesses, { count: 1 }),
         super.expectText(radioButtons.witnessesRequired.label, { count: 1 }),
-        super.expectRadioYesLabel(
+        super.expectYesLabel(
           radioButtons.witnessesRequired.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectRadioNoLabel(
+        super.expectNoLabel(
           radioButtons.witnessesRequired.no.selector(this.claimantDefendantParty),
         ),
       ],
