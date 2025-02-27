@@ -1,4 +1,5 @@
 import BasePage from '../../../../base/base-page';
+import config from '../../../../config/config';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
@@ -83,22 +84,28 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
-    let firstAttempt = true;
     await super.retryAction(
       async () => {
-        if (!firstAttempt) await super.reload();
-        await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+        await super.retryReload(
+          async () => {
+            await super.expectSelector(dropdowns.nextStep.selector);
+            await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector, {
+              timeout: 5_000,
+            });
+          },
+          { retries: 1 },
+        );
         await super.clickBySelector(buttons.go.selector);
-        firstAttempt = false;
       },
       async () => {
         await super.waitForPageToLoad();
         await super.expectNoTab(tabs.summary.title, {
-          timeout: 15_000,
+          timeout: config.exui.pageSubmitTimeout,
         });
       },
       `Starting event: ${ccdEvent.name} failed, trying again`,
       { retries: 3 },
+      () => super.reload(),
     );
   }
 
@@ -111,16 +118,11 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
 
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
-    await super.runVerifications(
-      [
-        super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent)),
-        super.clickByText(tabs.history.title),
-        super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
-          rowNum: 1,
-        }),
-      ],
-      { runAxe: false },
-    );
+    await super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent));
+    await super.clickByText(tabs.history.title);
+    await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
+      rowNum: 1,
+    });
   }
 
   async submit() {
