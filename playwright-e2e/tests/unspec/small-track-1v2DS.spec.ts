@@ -1,6 +1,6 @@
 import { test } from '../../playwright-fixtures';
 
-test.describe('1v2DS Small track', async () => {
+test.describe('Unspecified Small track 1v2DS', async () => {
   test('Defendant Full Defence Claimant Intent To Proceed', async ({
     ClaimantSolicitorSteps,
     DefendantSolicitor1Steps,

@@ -1,6 +1,6 @@
 import { test } from '../../playwright-fixtures/index';
 
-test.describe('1v1 Fast track', async () => {
+test.describe('Unspecified Fast track 1v1', async () => {
   test('Defendant Full Defence Claimant Intent To Proceed', async ({
     ClaimantSolicitorSteps,
     DefendantSolicitor1Steps,
