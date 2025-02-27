@@ -45,11 +45,19 @@ export default class ClaimantResponseActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async defenceResponseDocument1v2() {
-    const { defenceResponseDocument1v2Page } = this.claimantResponsePageFactory;
-    await defenceResponseDocument1v2Page.verifyContent(this.ccdCaseData);
-    await defenceResponseDocument1v2Page.uploadDocumentBothDefendants();
-    await defenceResponseDocument1v2Page.submit();
+  async defenceResponseDocument1v2SS() {
+    const { defenceResponseDocument1v2SSPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocument1v2SSPage.verifyContent(this.ccdCaseData);
+    await defenceResponseDocument1v2SSPage.uploadDocumentBothDefendants();
+    await defenceResponseDocument1v2SSPage.submit();
+  }
+
+  @Step(classKey)
+  async defenceResponseDocument1v2DS() {
+    const { defenceResponseDocument1v2DSPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocument1v2DSPage.verifyContent(this.ccdCaseData);
+    await defenceResponseDocument1v2DSPage.uploadDocumentBothDefendants();
+    await defenceResponseDocument1v2DSPage.submit();
   }
 
   @Step(classKey)
