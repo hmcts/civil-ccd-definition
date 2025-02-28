@@ -19,8 +19,8 @@ export default class Defendant2LitigationFriendPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       this.litigationFriendFragment.verifyContent(),
-      super.expectSubheading(subheadings.litigationDetails),
-      super.expectText(radioButtons.address.label),
+      super.expectSubheading(subheadings.litigationDetails, { count: 1 }),
+      super.expectText(radioButtons.address.label, { count: 1 }),
     ]);
   }
 

@@ -20,11 +20,11 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectLabel(inputs.litigationFriendDetails.firstName.label),
-        super.expectLabel(inputs.litigationFriendDetails.lastName.label),
-        super.expectLabel(inputs.litigationFriendDetails.email.label),
-        super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label),
-        super.expectSubheading(subheadings.uploadcertificate),
+        super.expectLabel(inputs.litigationFriendDetails.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.litigationFriendDetails.lastName.label, { count: 1 }),
+        super.expectLabel(inputs.litigationFriendDetails.email.label, { count: 1 }),
+        super.expectLabel(inputs.litigationFriendDetails.phoneNumber.label, { count: 1 }),
+        super.expectSubheading(subheadings.uploadcertificate, { count: 1 }),
       ],
       {
         runAxe: false,
