@@ -4,7 +4,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateWitnessesDetailsForm",
     "ListElementCode": "firstName",
-    "HintText": "Insert TBC, if witness name not known yet",
+    "EventHintText": "Insert TBC, if witness name not known yet",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY"
   },
@@ -13,7 +13,7 @@
     "CaseEventID": "MANAGE_CONTACT_INFORMATION",
     "CaseFieldID": "updateWitnessesDetailsForm",
     "ListElementCode": "lastName",
-    "HintText": "Insert TBC, if witness name not known yet",
+    "EventHintText": "Insert TBC, if witness name not known yet",
     "FieldDisplayOrder": 2,
     "DisplayContext": "MANDATORY"
   },
