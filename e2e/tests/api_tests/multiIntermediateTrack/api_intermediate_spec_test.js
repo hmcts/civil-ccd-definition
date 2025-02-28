@@ -10,7 +10,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate');
 
 async function prepareClaim(api_spec, mpScenario) {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, true, claimAmountPenniesIntermediate);
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
 }
 
 Scenario('1v1 FULL_DEFENCE Intermediate claim Specified @api-prod', async ({api_spec}) => {
