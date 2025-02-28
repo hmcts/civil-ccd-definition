@@ -1015,8 +1015,7 @@ module.exports = {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
-
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
 
     await apiRequest.setupTokens(user);
 
