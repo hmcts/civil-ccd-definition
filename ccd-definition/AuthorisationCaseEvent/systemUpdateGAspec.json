@@ -40,5 +40,11 @@
     "CaseEventID": "ADD_PDF_TO_MAIN_CASE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "TRIGGER_MAIN_CASE_FROM_GA",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
