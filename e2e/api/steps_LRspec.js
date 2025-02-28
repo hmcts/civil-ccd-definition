@@ -1748,7 +1748,7 @@ module.exports = {
 
    if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-        header: '# Your claim has been discontinued',
+        header: '# Your claim will be fully discontinued against the specified defendants',
         body: ''
       }, true);
     } else if (mpScenario === 'ONE_V_TWO') {
