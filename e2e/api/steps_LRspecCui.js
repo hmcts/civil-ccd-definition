@@ -154,7 +154,7 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
   },
 
-  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '') => {
+  createClaimWithUnrepresentedClaimant: async (user, claimType = 'SmallClaims', carmEnabled = false, typeOfData = '', isMintiCase = false) => {
     console.log('Starting to create claim');
     let payload = {};
     await apiRequest.setupTokens(user);
@@ -187,7 +187,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     console.log('Claim issued');
     await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
-    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    await adjustCaseSubmittedDateForCarm(caseId, carmEnabled, isMintiCase);
     return caseId;
   },
 
