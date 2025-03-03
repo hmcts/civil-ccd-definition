@@ -142,5 +142,11 @@
     "ListElementCode": "CLAIMANT_MEDIATION_TWO_V_ONE",
     "ListElement": "CLAIMANT_MEDIATION_TWO_V_ONE",
     "DisplayOrder": 24
+  },
+  {
+    "ID": "ShowConditionFlags",
+    "ListElementCode": "SHOW_ADMITTED_AMOUNT_SCREEN",
+    "ListElement": "SHOW_ADMITTED_AMOUNT_SCREEN",
+    "DisplayOrder": 25
   }
 ]
