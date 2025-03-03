@@ -65,11 +65,19 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ResponseDate",
+    "TabFieldDisplayOrder": 8,
+    "FieldShowCondition": "respondent1ResponseDate = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "Summary",
     "TabLabel": "Summary",
     "TabDisplayOrder": 1,
     "CaseFieldID": "responseClaimTrack",
-    "TabFieldDisplayOrder": 8
+    "TabFieldDisplayOrder": 8,
+    "FieldShowCondition": "respondent1ResponseDate = \"*\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
