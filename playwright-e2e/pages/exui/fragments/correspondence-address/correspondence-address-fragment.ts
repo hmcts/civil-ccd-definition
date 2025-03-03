@@ -12,20 +12,28 @@ import {
   dropdowns,
   paragraphs,
 } from './correspondence-address-content';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
 
+AllMethodsStep();
 export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   private solicitorParty: Party;
+  private claimantDefendantParty: Party;
 
-  constructor(page: Page, solicitorParty: Party) {
+  constructor(page: Page, solicitorParty: Party, claimantDefendantParty: Party) {
     super(page);
     this.solicitorParty = solicitorParty;
+    this.claimantDefendantParty = claimantDefendantParty;
   }
 
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.addressRequired.label),
         super.expectText(paragraphs.descriptionText),
+        super.expectLegend(radioButtons.addressRequired.label),
+        super.expectYesLabel(
+          radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
+        ),
+        super.expectNoLabel(radioButtons.addressRequired.no.selector(this.claimantDefendantParty)),
       ],
       {
         runAxe: false,
@@ -34,12 +42,16 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   }
 
   async selectYes() {
-    await super.clickBySelector(radioButtons.addressRequired.yes.selector(this.solicitorParty));
+    await super.clickBySelector(
+      radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
+    );
     await super.expectSubheading(subheadings.correspondenceAddress);
   }
 
   async selectNo() {
-    await super.clickBySelector(radioButtons.addressRequired.no.selector(this.solicitorParty));
+    await super.clickBySelector(
+      radioButtons.addressRequired.no.selector(this.claimantDefendantParty),
+    );
   }
 
   async enterAddressManual() {
@@ -47,27 +59,39 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
     await super.clickLink(links.cannotFindAddress.title);
     await super.inputText(
       addressData.AddressLine1,
-      inputs.addressLine1.selector(this.solicitorParty),
+      inputs.addressLine1.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       addressData.AddressLine2,
-      inputs.addressLine2.selector(this.solicitorParty),
+      inputs.addressLine2.selector(this.claimantDefendantParty),
     );
     await super.inputText(
       addressData.AddressLine3,
-      inputs.addressLine3.selector(this.solicitorParty),
+      inputs.addressLine3.selector(this.claimantDefendantParty),
     );
-    await super.inputText(addressData.PostTown, inputs.postTown.selector(this.solicitorParty));
-    await super.inputText(addressData.County, inputs.county.selector(this.solicitorParty));
-    await super.inputText(addressData.Country, inputs.country.selector(this.solicitorParty));
-    await super.inputText(addressData.PostCode, inputs.postCode.selector(this.solicitorParty));
+    await super.inputText(
+      addressData.PostTown,
+      inputs.postTown.selector(this.claimantDefendantParty),
+    );
+    await super.inputText(addressData.County, inputs.county.selector(this.claimantDefendantParty));
+    await super.inputText(
+      addressData.Country,
+      inputs.country.selector(this.claimantDefendantParty),
+    );
+    await super.inputText(
+      addressData.PostCode,
+      inputs.postCode.selector(this.claimantDefendantParty),
+    );
   }
 
   async findAddress(postcode: string, index: number) {
-    await super.inputText(postcode, inputs.postCodeLookup.selector(this.solicitorParty));
+    await super.inputText(postcode, inputs.postCodeLookup.selector(this.claimantDefendantParty));
     await super.clickButtonByName(buttons.findaddress.title);
-    await super.expectSelector(dropdowns.addressList.selector(this.solicitorParty));
-    await super.selectFromDropdown(index, dropdowns.addressList.selector(this.solicitorParty));
+    await super.expectSelector(dropdowns.addressList.selector(this.claimantDefendantParty));
+    await super.selectFromDropdown(
+      index,
+      dropdowns.addressList.selector(this.claimantDefendantParty),
+    );
   }
 
   async submit() {

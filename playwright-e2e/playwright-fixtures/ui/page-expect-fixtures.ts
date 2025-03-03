@@ -3,6 +3,8 @@ import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
 import { PageResult } from '../../models/axe-results';
+import { pageExpect } from '..';
+import PromiseHelper from '../../helpers/promise-helper';
 
 export const expect = baseExpect
   .extend({
@@ -188,38 +190,39 @@ export const expect = baseExpect
       let pass: boolean;
       let matcherResult: any;
       let locatorCount: number;
+      let passCount = 0;
 
       try {
-        if (count !== null) {
-          await baseExpect(locator).toHaveCount(count, { timeout: 5000 });
-        } else {
-          await baseExpect(locator).not.toHaveCount(0, { timeout: 5000 });
-        }
+        await baseExpect(locator).not.toHaveCount(0, { timeout: options.timeout });
         locatorCount = await locator.count();
         const promises = [];
         for (let i = 0; i < locatorCount; i++) {
-          promises.push(baseExpect(locator.nth(i)).toBeVisible({ timeout: options.timeout }));
+          promises.push(baseExpect(locator.nth(i)).toBeVisible({ timeout: 500 }));
         }
-        await Promise.all(promises);
+        const results = await PromiseHelper.someSettled(promises, count, 100);
+        results.forEach((result) => {
+          if (result.status === 'fulfilled') passCount++;
+        });
+        if (count !== null) baseExpect(passCount).toEqual(count);
+        else baseExpect(passCount).toEqual(locatorCount);
         pass = true;
       } catch (error) {
         pass = false;
         matcherResult = error.matcherResult;
       }
-
       const message = pass
         ? () =>
             this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
             '\n\n' +
             `Locator: ${locator}\n` +
-            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count : 'multiple' + ' '}matching locator(s) to be visible\n` +
-            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '')
+            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count + ' ' : locatorCount + ' '}matching locator(s) to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : '')
         : () =>
             this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
             '\n\n' +
             `Locator: ${locator}\n` +
-            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count : 'multiple' + ' '}matching locator(s) to be visible\n` +
-            (matcherResult ? `Received: ${locatorCount === undefined ? 'locator count ' + this.utils.printReceived(0) : this.utils.printReceived(matcherResult.actual)}` : '');
+            `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count + ' ' : locatorCount + ' '}matching locator(s) to be visible\n` +
+            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : '');
 
       return {
         message,
@@ -228,12 +231,13 @@ export const expect = baseExpect
         actual: matcherResult?.actual
       };
     },
+
     async allToBeHidden(locator: Locator, options?: { timeout?: number }) {
       const assertionName = 'allToBeHidden';
       let pass: boolean;
       let matcherResult: any;
       let locatorCount: number;
-      let failureCount = 0;
+      let passCount = 0;
 
       try {
         locatorCount = await locator.count();
@@ -243,12 +247,9 @@ export const expect = baseExpect
         }
         const results = await Promise.allSettled(promises);
         results.forEach((result) => {
-          if (result.status === 'rejected') failureCount++;
+          if (result.status === 'fulfilled') passCount++;
         });
-        if (failureCount) {
-          const firstResult = results.find((result) => (result.status = 'rejected')) as any;
-          throw firstResult.reason;
-        }
+        baseExpect(passCount).toEqual(locatorCount);
         pass = true;
       } catch (error) {
         pass = false;
@@ -256,9 +257,17 @@ export const expect = baseExpect
       }
       const message = pass
         ? () =>
-            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) + '\n\n' + `Locator: ${locator}\n` + `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` + (matcherResult ? `Received: ${locatorCount} locator(s) and ${failureCount} were visible` : '')
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` +
+            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : '')
         : () =>
-            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) + '\n\n' + `Locator: ${locator}\n` + `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` + (matcherResult ? `Received: ${locatorCount} locator(s) and ${failureCount} were visible` : '');
+            this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
+            '\n\n' +
+            `Locator: ${locator}\n` +
+            `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` +
+            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : '');
 
       return {
         message,

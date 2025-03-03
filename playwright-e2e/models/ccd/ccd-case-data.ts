@@ -42,6 +42,7 @@ export default interface CCDCaseData {
   applicantDefenceResponseDocumentAndDQFlag?: string;
   specRespondent1Represented?: string;
   respondent1ResponseDeadline?: string;
+  respondent2ResponseDeadline?: string;
   specPaidLessAmountOrDisputesOrPartAdmission?: string;
   specFullDefenceOrPartAdmission?: string;
   respondentClaimResponseTypeForSpecGeneric?: string;

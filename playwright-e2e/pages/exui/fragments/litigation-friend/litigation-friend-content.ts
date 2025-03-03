@@ -3,6 +3,8 @@ import { Party } from '../../../../models/partys';
 export const subheadings = {
   litigationFriendAddress: "Litigation friend's address",
   uploadcertificate: 'Upload the certificate of suitability',
+  litigationDetails: (litigationParty: Party) =>
+    `Defendant ${litigationParty.number === 1 ? '' : litigationParty.number} litigation details`,
 };
 
 export const inputs = {
@@ -12,7 +14,7 @@ export const inputs = {
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_firstName`,
     },
     lastName: {
-      label: 'Last Name',
+      label: 'Last name',
       selector: (litigationFriendParty: Party) => `#${litigationFriendParty.oldKey}_lastName`,
     },
     email: {
@@ -28,42 +30,42 @@ export const inputs = {
     postCodeInput: {
       label: 'Enter a UK postcode',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress_primaryaddress_postcodeInput`,
+        `#${litigationFriendParty.oldKey}_primaryAddress_primaryAddress_postcodeInput`,
     },
     addressLine1: {
       label: 'Building and Street',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine1`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailAddressLine1`,
     },
     addressLine2: {
       label: 'Address Line 2',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine2`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailAddressLine2`,
     },
     addressLine3: {
       label: 'Address Line 3',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailAddressLine3`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailAddressLine3`,
     },
     postTown: {
       label: 'Town or City',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailPostTown`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailPostTown`,
     },
     county: {
       label: 'County',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailCounty`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailCounty`,
     },
     country: {
       label: 'Country',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailCountry`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailCountry`,
     },
     postCode: {
       label: 'Postcode/Zipcode',
       selector: (litigationFriendParty: Party) =>
-        `#${litigationFriendParty.oldKey}_primaryaddress__detailPostCode`,
+        `#${litigationFriendParty.oldKey}_primaryAddress__detailPostCode`,
     },
   },
   certificateOfSuitability: {

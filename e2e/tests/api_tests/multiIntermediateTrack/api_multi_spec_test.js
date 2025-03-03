@@ -20,7 +20,7 @@ Scenario('1v1 full defence Multi claim Specified @api-nonprod-specified', async 
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api_spec.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
 Scenario('1v1 FULL_ADMISSION Multi claim Specified', async ({api_spec}) => {
@@ -51,7 +51,7 @@ Scenario('1v2 full defence Multi claim Specified Different Solicitor', async ({a
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api_spec.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
 Scenario('1v2  full defence Multi claim Specified same solicitor', async ({I, api_spec}) => {
@@ -61,7 +61,7 @@ Scenario('1v2  full defence Multi claim Specified same solicitor', async ({I, ap
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false, true);
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api_spec.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
 AfterSuite(async  ({api_spec}) => {
