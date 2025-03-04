@@ -8,6 +8,7 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
+import {create} from "node:domain";
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExui {
@@ -32,37 +33,22 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilterPage();
-        await createClaimSpecActions.checklistPage();
-        await createClaimSpecActions.eligibiltySpecPage();
-        await createClaimSpecActions.referencesPage();
-        await createClaimSpecActions.claimant1Page();
-        await createClaimSpecActions.noAddClaimant2();
-        await createClaimSpecActions.notificationsPage();
-        await createClaimSpecActions.claimantSolicitorOrganisationPage();
-        await createClaimSpecActions.specCorrespondenceAddressPage();
-        await createClaimSpecActions.defendantPage();
-        await createClaimSpecActions.legalRepresentationSpecPage();
-        await createClaimSpecActions.defendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.defendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.respondentCorrespondenceAddressPage();
-        await createClaimSpecActions.addDefendant2No();
-        await createClaimSpecActions.flightDelayClaimPage();
-        await createClaimSpecActions.detailsSpecPage();
-        await createClaimSpecActions.uploadClaimDocumentPage();
-        await createClaimSpecActions.claimTimeLineUploadPage();
-        await createClaimSpecActions.evidenceListPage();
-        await createClaimSpecActions.claimAmountFastTrackPage();
-        await createClaimSpecActions.claimAmountDetailsFastTrackPage();
-        await createClaimSpecActions.claimInterestPage();
-        await createClaimSpecActions.interestSummaryFastTrackPage();
-        await createClaimSpecActions.pbaNumberPage();
-        await createClaimSpecActions.fixedCommencementCostsPage();
-        await createClaimSpecActions.statementOfTruthCreateClaimPage();
-        await createClaimSpecActions.submitCreateClaimPage();
+        await createClaimSpecActions.caseFilter();
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.claimDetailsFastTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaimSpecPage();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -74,37 +60,22 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilterPage();
-        await createClaimSpecActions.checklistPage();
-        await createClaimSpecActions.eligibiltySpecPage();
-        await createClaimSpecActions.referencesPage();
-        await createClaimSpecActions.claimant1Page();
-        await createClaimSpecActions.noAddClaimant2();
-        await createClaimSpecActions.notificationsPage();
-        await createClaimSpecActions.claimantSolicitorOrganisationPage();
-        await createClaimSpecActions.specCorrespondenceAddressPage();
-        await createClaimSpecActions.defendantPage();
-        await createClaimSpecActions.legalRepresentationSpecPage();
-        await createClaimSpecActions.defendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.defendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.respondentCorrespondenceAddressPage();
-        await createClaimSpecActions.addDefendant2No();
-        await createClaimSpecActions.flightDelayClaimPage();
-        await createClaimSpecActions.detailsSpecPage();
-        await createClaimSpecActions.uploadClaimDocumentPage();
-        await createClaimSpecActions.claimTimeLineUploadPage();
-        await createClaimSpecActions.evidenceListPage();
-        await createClaimSpecActions.claimAmountSmallTrackPage();
-        await createClaimSpecActions.claimAmountDetailsSmallTrackPage();
-        await createClaimSpecActions.claimInterestPage();
-        await createClaimSpecActions.claimInterestSummarySmallTrackPage();
-        await createClaimSpecActions.pbaNumberPage();
-        await createClaimSpecActions.fixedCommencementCostsPage();
-        await createClaimSpecActions.statementOfTruthCreateClaimPage();
-        await createClaimSpecActions.submitCreateClaimPage();
+        await createClaimSpecActions.caseFilter();
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.noAddAnotherDefendant();
+        await createClaimSpecActions.claimDetailsSmallTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaimSpecPage();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -116,37 +87,22 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilterPage();
-        await createClaimSpecActions.checklistPage();
-        await createClaimSpecActions.eligibiltySpecPage();
-        await createClaimSpecActions.referencesPage();
-        await createClaimSpecActions.claimant1Page();
-        await createClaimSpecActions.addAnotherClaimantPage();
-        await createClaimSpecActions.secondClaimantPage();
-        await createClaimSpecActions.notificationsPage();
-        await createClaimSpecActions.claimantSolicitorOrganisationPage();
-        await createClaimSpecActions.specCorrespondenceAddressPage();
-        await createClaimSpecActions.defendantPage();
-        await createClaimSpecActions.legalRepresentationSpecPage();
-        await createClaimSpecActions.defendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.defendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.respondentCorrespondenceAddressPage();
-        await createClaimSpecActions.flightDelayClaimPage();
-        await createClaimSpecActions.detailsSpecPage();
-        await createClaimSpecActions.uploadClaimDocumentPage();
-        await createClaimSpecActions.claimTimeLineUploadPage();
-        await createClaimSpecActions.evidenceListPage();
-        await createClaimSpecActions.claimAmountSmallTrackPage();
-        await createClaimSpecActions.claimAmountDetailsSmallTrackPage();
-        await createClaimSpecActions.claimInterestPage();
-        await createClaimSpecActions.claimInterestSummarySmallTrackPage();
-        await createClaimSpecActions.pbaNumberPage();
-        await createClaimSpecActions.fixedCommencementCostsPage();
-        await createClaimSpecActions.statementOfTruthCreateClaimPage();
-        await createClaimSpecActions.submitCreateClaimPage();
+        await createClaimSpecActions.caseFilter();
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.addAnotherClaimant();
+        await createClaimSpecActions.secondClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.claimDetailsSmallTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaimSpecPage();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -158,40 +114,24 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilterPage();
-        await createClaimSpecActions.checklistPage();
-        await createClaimSpecActions.eligibiltySpecPage();
-        await createClaimSpecActions.referencesPage();
-        await createClaimSpecActions.claimant1Page();
-        await createClaimSpecActions.noAddClaimant2();
-        await createClaimSpecActions.notificationsPage();
-        await createClaimSpecActions.claimantSolicitorOrganisationPage();
-        await createClaimSpecActions.specCorrespondenceAddressPage();
-        await createClaimSpecActions.defendantPage();
-        await createClaimSpecActions.legalRepresentationSpecPage();
-        await createClaimSpecActions.defendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.defendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.respondentCorrespondenceAddressPage();
-        await createClaimSpecActions.addDefendant2Yes();
-        await createClaimSpecActions.secondDefendantPage();
-        await createClaimSpecActions.legalRepresentationRespondent2Page();
-        await createClaimSpecActions.sameLegalRepresentativeSmallClaimPage();
-        await createClaimSpecActions.flightDelayClaimPage();
-        await createClaimSpecActions.detailsSpecPage();
-        await createClaimSpecActions.uploadClaimDocumentPage();
-        await createClaimSpecActions.claimTimeLineUploadPage();
-        await createClaimSpecActions.evidenceListPage();
-        await createClaimSpecActions.claimAmountSmallTrackPage();
-        await createClaimSpecActions.claimAmountDetailsSmallTrackPage();
-        await createClaimSpecActions.claimInterestPage();
-        await createClaimSpecActions.claimInterestSummarySmallTrackPage();
-        await createClaimSpecActions.pbaNumberPage();
-        await createClaimSpecActions.fixedCommencementCostsPage();
-        await createClaimSpecActions.statementOfTruthCreateClaimPage();
-        await createClaimSpecActions.submitCreateClaimPage();
+        await createClaimSpecActions.caseFilter();
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.addAnotherDefendant();
+        await createClaimSpecActions.secondDefendant();
+        await createClaimSpecActions.secondDefedantSSDetails();
+        await createClaimSpecActions.claimDetailsSmallTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaimSpecPage();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -203,43 +143,24 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilterPage();
-        await createClaimSpecActions.checklistPage();
-        await createClaimSpecActions.eligibiltySpecPage();
-        await createClaimSpecActions.referencesPage();
-        await createClaimSpecActions.claimant1Page();
-        await createClaimSpecActions.noAddClaimant2();
-        await createClaimSpecActions.notificationsPage();
-        await createClaimSpecActions.claimantSolicitorOrganisationPage();
-        await createClaimSpecActions.specCorrespondenceAddressPage();
-        await createClaimSpecActions.defendantPage();
-        await createClaimSpecActions.legalRepresentationSpecPage();
-        await createClaimSpecActions.defendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.defendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.respondentCorrespondenceAddressPage();
-        await createClaimSpecActions.addDefendant2Yes();
-        await createClaimSpecActions.secondDefendantPage();
-        await createClaimSpecActions.legalRepresentationRespondent2Page();
-        await createClaimSpecActions.differentLegalRepresentativeSmallClaimPage();
-        await createClaimSpecActions.secondDefendantSolicitorOrganisationSpecPage();
-        await createClaimSpecActions.secondDefendantSolicitorEmailSpecPage();
-        await createClaimSpecActions.specRespondent2CorrespondenceAddressPage();
-        await createClaimSpecActions.flightDelayClaimPage();
-        await createClaimSpecActions.detailsSpecPage();
-        await createClaimSpecActions.uploadClaimDocumentPage();
-        await createClaimSpecActions.claimTimeLineUploadPage();
-        await createClaimSpecActions.evidenceListPage();
-        await createClaimSpecActions.claimAmountSmallTrackPage();
-        await createClaimSpecActions.claimAmountDetailsSmallTrackPage();
-        await createClaimSpecActions.claimInterestPage();
-        await createClaimSpecActions.claimInterestSummarySmallTrackPage();
-        await createClaimSpecActions.pbaNumberPage();
-        await createClaimSpecActions.fixedCommencementCostsPage();
-        await createClaimSpecActions.statementOfTruthCreateClaimPage();
-        await createClaimSpecActions.submitCreateClaimPage();
+        await createClaimSpecActions.caseFilter();
+        await createClaimSpecActions.checklist();
+        await createClaimSpecActions.eligibiltySpec();
+        await createClaimSpecActions.references();
+        await createClaimSpecActions.claimant();
+        await createClaimSpecActions.noAddAnotherClaimant();
+        await createClaimSpecActions.claimantDetails();
+        await createClaimSpecActions.defendant();
+        await createClaimSpecActions.defendantDetails();
+        await createClaimSpecActions.addAnotherDefendant();
+        await createClaimSpecActions.secondDefendant();
+        await createClaimSpecActions.secondDefendantDSDetails()
+        await createClaimSpecActions.claimDetailsSmallTrack();
+        await createClaimSpecActions.statementOfTruthCreateClaim();
+        await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaimSpecPage();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
