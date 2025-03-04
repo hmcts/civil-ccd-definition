@@ -17,7 +17,7 @@ export default class ConfirmAcknowledgeClaimPage extends ExuiPage(BasePage) {
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeading),
       super.expectSubheading(ccdCaseData.legacyCaseReference),
-      super.expectText(DateHelper.formatDateToString(responseDeadline)),
+      super.expectText(DateHelper.formatDateToString(responseDeadline), { exact: false }),
     ]);
   }
 

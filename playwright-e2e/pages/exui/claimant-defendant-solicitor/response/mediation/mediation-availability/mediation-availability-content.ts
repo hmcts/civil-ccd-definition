@@ -5,20 +5,14 @@ export const subheadings = {
   unavailableDates: 'Unavailable dates',
 };
 
-export const paragraphs = {
-  descriptionText:
-    'These should only be the dates of important events like medical appointments, other court hearings, or holidays that are already booked.' +
-    'If the mediation appointment is not attended, your client may face a penalty.' +
-    'The Small Claims Mediation Service operates Monday to Friday from 8am to 5pm, except bank holidays',
-};
-
 export const radioButtons = {
   mediationAvailability: {
     label:
       'Are there any dates in the next 3 months when you or your client cannot attend a mediation appointment?',
     hintText:
       'These should only be the dates of important events like medical appointments, other court hearings, or holidays that are already booked.' +
-      'If the mediation appointment is not attended, your client may face a penalty. The Small Claims Mediation Service operates Monday to Friday from 8am to 5pm, except bank holidays',
+      ' If the mediation appointment is not attended, your client may face a penalty. ' +
+      'The Small Claims Mediation Service operates Monday to Friday from 8am to 5pm, except bank holidays',
     yes: {
       label: 'Yes',
       selector: (claimantDefendantParty: Party) =>

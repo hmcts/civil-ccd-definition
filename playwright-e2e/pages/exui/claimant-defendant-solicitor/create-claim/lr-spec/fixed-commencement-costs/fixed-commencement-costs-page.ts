@@ -9,7 +9,7 @@ export default class FixedCommencementCostsPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectSubheading(subheadings.fixedCosts),
-      super.expectRadioGroupLabel(radioButtons.fixedCosts.label),
+      super.expectLegend(radioButtons.fixedCosts.label),
       super.expectRadioYesLabel(radioButtons.fixedCosts.yes.selector),
       super.expectRadioNoLabel(radioButtons.fixedCosts.no.selector),
     ]);
