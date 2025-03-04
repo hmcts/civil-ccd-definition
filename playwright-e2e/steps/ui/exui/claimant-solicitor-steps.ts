@@ -441,8 +441,8 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await claimantResponseActions.respondentResponse1v2();
-        await claimantResponseActions.defenceResponseDocument1v2();
+        await claimantResponseActions.respondentResponse1v2SS();
+        await claimantResponseActions.defenceResponseDocument1v2SS();
         await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
         await claimantResponseActions.submitClaimantResponse();
@@ -460,8 +460,8 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await claimantResponseActions.respondentResponse1v2();
-        await claimantResponseActions.defenceResponseDocument1v2();
+        await claimantResponseActions.respondentResponse1v2DS();
+        await claimantResponseActions.defenceResponseDocument1v2DS();
         await claimantResponseActions.dqSmallTrack();
         await claimantResponseActions.statementOfTruth();
         await claimantResponseActions.submitClaimantResponse();

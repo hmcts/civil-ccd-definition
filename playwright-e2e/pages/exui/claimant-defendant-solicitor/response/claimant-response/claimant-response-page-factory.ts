@@ -9,9 +9,11 @@ import RespondentResponse1v2SSSpecPage from './lr-spec/respondent-response-spec/
 import RespondentResponse2v1SpecPage from './lr-spec/respondent-response-spec/respondent-response-2v1-spec-page';
 import RespondentResponseSpecPage from './lr-spec/respondent-response-spec/respondent-response-spec-page';
 import ConfirmClaimantResponsePage from './unspec/confirm-claimant-response/confirm-claimants-response-page';
-import DefenceResponseDocument1v2Page from './unspec/defence-response-document/defence-response-document-1v2-page';
+import DefenceResponseDocument1v2SSPage from './unspec/defence-response-document/defence-response-document-1v2SS-page.ts';
+import DefenceResponseDocument1v2DSPage from './unspec/defence-response-document/defence-response-document-1v2DS-page.ts';
 import DefenceResponseDocumentPage from './unspec/defence-response-document/defence-response-document-page';
-import RespondentResponse1v2Page from './unspec/respondent-response/respondent-response-1v2-page';
+import RespondentResponse1v2SSPage from './unspec/respondent-response/respondent-response-1v2SS-page';
+import RespondentResponse1v2DSPage from './unspec/respondent-response/respondent-response-1v2DS-page';
 import RespondentResponse2v1Page from './unspec/respondent-response/respondent-response-2v1-page';
 import RespondentResponsePage from './unspec/respondent-response/respondent-response-page';
 import ExpertPage from '../directions-questionaire/common/experts/experts-page';
@@ -52,8 +54,12 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new RespondentResponse2v1Page(this.page);
   }
 
-  get respondentResponse1v2Page() {
-    return new RespondentResponse1v2Page(this.page);
+  get respondentResponse1v2SSPage() {
+    return new RespondentResponse1v2SSPage(this.page);
+  }
+
+  get respondentResponse1v2DSPage() {
+    return new RespondentResponse1v2DSPage(this.page);
   }
 
   get respondentResponseSpecPage() {
@@ -76,8 +82,12 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
     return new DefenceResponseDocumentPage(this.page);
   }
 
-  get defenceResponseDocument1v2Page() {
-    return new DefenceResponseDocument1v2Page(this.page);
+  get defenceResponseDocument1v2SSPage() {
+    return new DefenceResponseDocument1v2SSPage(this.page);
+  }
+
+  get defenceResponseDocument1v2DSPage() {
+    return new DefenceResponseDocument1v2DSPage(this.page);
   }
 
   get defenceResponseDocumentSpecPage() {

@@ -3,10 +3,10 @@ import filePaths from '../../../../../../../config/file-paths.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
-import { subheadings, inputs } from './defence-response-document-content.ts';
+import { inputs, subheadings } from './defence-response-document-content.ts';
 
 @AllMethodsStep()
-export default class DefenceResponseDocumentPage extends ExuiPage(BasePage) {
+export default class DefenceResponseDocument1v2SSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
@@ -15,10 +15,10 @@ export default class DefenceResponseDocumentPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async uploadDocument() {
+  async uploadDocumentBothDefendants() {
     await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadDoc.selector);
+    await super.retryUploadFile(filePaths.testPdfFile, inputs.uploadDocDefendant2.selector);
   }
-
   async submit() {
     await super.retryClickSubmit();
   }

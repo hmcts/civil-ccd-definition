@@ -23,7 +23,7 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
 
   async verifyContent() {
     if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
-      await super.expectText(inputs.dateOfBirth.label, { count: 1 });
+      await super.expectLegend(inputs.dateOfBirth.label, { count: 1 });
     }
     await super.runVerifications(
       [

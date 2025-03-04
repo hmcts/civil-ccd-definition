@@ -29,8 +29,8 @@ export default class SmallClaimExpertsPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.experts),
-        // super.expectText(radioButtons.expertsRequired.label),
+        super.expectSubheading(subheadings.experts, { count: 1 }),
+        super.expectLegend(radioButtons.expertsRequired.label, { count: 1 }),
       ],
       { axePageInsertName: this.solicitorParty.key },
     );

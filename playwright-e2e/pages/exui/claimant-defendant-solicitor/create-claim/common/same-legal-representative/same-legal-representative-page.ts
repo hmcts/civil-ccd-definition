@@ -9,8 +9,8 @@ export default class SameLegalRepresentativePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectLegend(radioButtons.sameSolicitor.label),
-      super.expectYesLabel(radioButtons.sameSolicitor.yes.selector),
-      super.expectNoLabel(radioButtons.sameSolicitor.no.selector),
+      super.expectRadioYesLabel(radioButtons.sameSolicitor.yes.selector),
+      super.expectRadioNoLabel(radioButtons.sameSolicitor.no.selector),
     ]);
   }
 

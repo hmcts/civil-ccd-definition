@@ -9,8 +9,8 @@ export default class ClaimInterestPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.expectText(subheadings.claimInterest),
       super.expectLegend(radioButtons.claimInterest.label),
-      super.expectYesLabel(radioButtons.claimInterest.yes.selector),
-      super.expectNoLabel(radioButtons.claimInterest.no.selector),
+      super.expectRadioYesLabel(radioButtons.claimInterest.yes.selector),
+      super.expectRadioNoLabel(radioButtons.claimInterest.no.selector),
     ]);
   }
 

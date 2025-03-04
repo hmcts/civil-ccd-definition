@@ -26,8 +26,8 @@ export default class DisclosureOfElectronicDocumentsLRSpecPage extends ExuiPage(
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.disclosureOfDocs),
-        // super.expectText(radioButtons.disclosureOfElectronicDocs.label),
+        super.expectSubheading(subheadings.disclosureOfDocs, { count: 1 }),
+        super.expectLegend(radioButtons.disclosureOfElectronicDocs.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

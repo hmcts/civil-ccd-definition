@@ -8,8 +8,8 @@ export default class AddAnotherDefendantPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.expectLegend(radioButtons.anotherDefendant.label),
-      super.expectYesLabel(radioButtons.anotherDefendant.yes.selector),
-      super.expectNoLabel(radioButtons.anotherDefendant.no.selector),
+      super.expectRadioYesLabel(radioButtons.anotherDefendant.yes.selector),
+      super.expectRadioNoLabel(radioButtons.anotherDefendant.no.selector),
     ]);
   }
 

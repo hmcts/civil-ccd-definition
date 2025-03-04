@@ -31,10 +31,10 @@ export default class RequestedCourtPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.courtLocation),
-        // super.expectLabel(dropdowns.courtLocations.label),
-        // super.expectLabel(inputs.preferredCourtReason.label),
-        // this.remoteHearingFragment.verifyContent(),
+        super.expectSubheading(subheadings.courtLocation, { count: 1 }),
+        super.expectLabel(dropdowns.courtLocations.label, { count: 1, exact: false }),
+        super.expectLabel(inputs.preferredCourtReason.label, { count: 1 }),
+        this.remoteHearingFragment.verifyContent(),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

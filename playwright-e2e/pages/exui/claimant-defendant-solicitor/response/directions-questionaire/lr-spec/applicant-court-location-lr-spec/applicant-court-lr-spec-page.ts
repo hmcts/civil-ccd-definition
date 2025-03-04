@@ -20,8 +20,8 @@ export default class ApplicantCourtLocationLRSpecPage extends ExuiPage(BasePage)
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.claimant),
-      // super.expectLabel(inputs.preferredCourtReason.label, { index: 0 }),
+      super.expectSubheading(subheadings.claimant, { count: 1 }),
+      super.expectLabel(inputs.preferredCourtReason.label, { count: 1 }),
       this.remoteHearingSpecFragment.verifyContent(),
     ]);
   }

@@ -15,6 +15,7 @@ export default class ClaimantResponseActions extends BaseTestData {
   @Step(classKey)
   async respondentResponse() {
     const { respondentResponsePage } = this.claimantResponsePageFactory;
+    await respondentResponsePage.verifyContent(this.ccdCaseData);
     await respondentResponsePage.selectYes();
     await respondentResponsePage.submit();
   }
@@ -28,22 +29,41 @@ export default class ClaimantResponseActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async respondentResponse1v2() {
-    const { respondentResponse1v2Page } = this.claimantResponsePageFactory;
-    await respondentResponse1v2Page.selectYesBothDefendants();
-    await respondentResponse1v2Page.submit();
+  async respondentResponse1v2SS() {
+    const { respondentResponse1v2SSPage } = this.claimantResponsePageFactory;
+    await respondentResponse1v2SSPage.verifyContent(this.ccdCaseData);
+    await respondentResponse1v2SSPage.selectYesBothDefendants();
+    await respondentResponse1v2SSPage.submit();
   }
 
   @Step(classKey)
-  async defenceResponseDocument1v2() {
-    const { defenceResponseDocument1v2Page } = this.claimantResponsePageFactory;
-    await defenceResponseDocument1v2Page.uploadDocumentBothDefendants();
-    await defenceResponseDocument1v2Page.submit();
+  async respondentResponse1v2DS() {
+    const { respondentResponse1v2DSPage } = this.claimantResponsePageFactory;
+    await respondentResponse1v2DSPage.verifyContent(this.ccdCaseData);
+    await respondentResponse1v2DSPage.selectYesBothDefendants();
+    await respondentResponse1v2DSPage.submit();
+  }
+
+  @Step(classKey)
+  async defenceResponseDocument1v2SS() {
+    const { defenceResponseDocument1v2SSPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocument1v2SSPage.verifyContent(this.ccdCaseData);
+    await defenceResponseDocument1v2SSPage.uploadDocumentBothDefendants();
+    await defenceResponseDocument1v2SSPage.submit();
+  }
+
+  @Step(classKey)
+  async defenceResponseDocument1v2DS() {
+    const { defenceResponseDocument1v2DSPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocument1v2DSPage.verifyContent(this.ccdCaseData);
+    await defenceResponseDocument1v2DSPage.uploadDocumentBothDefendants();
+    await defenceResponseDocument1v2DSPage.submit();
   }
 
   @Step(classKey)
   async defenceResponseDocument() {
     const { defenceResponseDocumentPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocumentPage.verifyContent(this.ccdCaseData);
     await defenceResponseDocumentPage.uploadDocument();
     await defenceResponseDocumentPage.submit();
   }

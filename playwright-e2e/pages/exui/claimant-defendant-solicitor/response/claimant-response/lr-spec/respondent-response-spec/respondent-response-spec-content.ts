@@ -6,8 +6,8 @@ export const paragraphs = {
 
 export const radioButtons = {
   proceedWithClaim: {
-    label: 'Do the claimants want to proceed with the claim?',
-    label2v1: 'Does the claimant want to proceed with the claim?',
+    label: 'Does the claimant want to proceed with the claim?',
+    label2v1: 'Do the claimants want to proceed with the claim?',
     yes: {
       label: 'Yes',
       selector: '#applicant1ProceedWithClaim_Yes',

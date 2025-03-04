@@ -22,8 +22,8 @@ export default class ApplicationPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.application),
-        // super.expectText(inputs.otherInformation.label),
+        super.expectSubheading(subheadings.application),
+        super.expectLabel(inputs.otherInformation.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

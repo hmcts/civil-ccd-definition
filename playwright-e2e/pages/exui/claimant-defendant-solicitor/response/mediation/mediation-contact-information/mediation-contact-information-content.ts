@@ -1,6 +1,6 @@
 import { Party } from '../../../../../../models/partys';
 
-export const subheadings = 'Mediation contact information';
+export const subheadings = { mediationContact: 'Mediation contact information' };
 
 export const paragraphs = {
   description1:

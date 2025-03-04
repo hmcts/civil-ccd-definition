@@ -41,6 +41,7 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
           timeout: 5_000,
           exact: true,
         }),
+      undefined,
       { retries: 3 },
     );
   }
