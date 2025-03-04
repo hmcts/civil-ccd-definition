@@ -23,8 +23,8 @@ export default class HearingFastPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.availability, { index: 0 }),
-      super.expectText(radioButtons.unavailableDateRequired.label, { index: 0 }),
+      super.expectSubheading(subheadings.availability, { count: 1 }),
+      super.expectText(radioButtons.unavailableDateRequired.label, { count: 1 }),
     ]);
   }
 
