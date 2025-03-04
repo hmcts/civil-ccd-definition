@@ -3,11 +3,13 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    image: 'hmctspublic.azurecr.io/civil/service:pr-6018'
     keyVaults:
       civil:
         resourceGroup: civil
         secrets:
+          - name: appinsights-instrumentation-key
+            alias: azure.application-insights.instrumentation-key
           - name: civil-idam-client-secret
             alias: idam.client.secret
           - name: microservicekey-civil-service
@@ -221,6 +223,7 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
+    image: "hmctsprivatetemp.azurecr.io/camunda/bpm:latest"
     disableKeyVaults: true
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
