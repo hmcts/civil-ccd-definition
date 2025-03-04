@@ -552,7 +552,7 @@
           "caseworker-civil-admin",
           "legal-adviser"
         ],
-        "CRUD": "R"
+        "CRUD": "RUD"
       }
     ]
   },
