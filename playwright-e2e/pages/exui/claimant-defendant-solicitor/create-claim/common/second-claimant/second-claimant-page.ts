@@ -8,7 +8,7 @@ import PartyTypeCompanyFragment from '../../../../fragments/party-type/party-typ
 import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-type-individual-fragment.ts';
 import PartyTypeOrganisationFragment from '../../../../fragments/party-type/party-type-organisation-fragment.ts';
 import PartyTypeSoleTraderFragment from '../../../../fragments/party-type/party-type-sole-trader-fragment.ts';
-import { subheadings } from './second-claimant-content.ts';
+import { radioButtons, subheadings } from './second-claimant-content.ts';
 import partys from '../../../../../../constants/partys.ts';
 
 @AllMethodsStep()
@@ -35,6 +35,7 @@ export default class SecondClaimantPage extends ExuiPage(BasePage) {
       super.verifyHeadings(),
       this.choosePartyTypeFragment.verifyContent(),
       super.expectSubheading(subheadings.claimantDetails),
+      super.expectLegend(radioButtons.partyType.label),
       super.expectSubheading(subheadings.address),
     ]);
   }

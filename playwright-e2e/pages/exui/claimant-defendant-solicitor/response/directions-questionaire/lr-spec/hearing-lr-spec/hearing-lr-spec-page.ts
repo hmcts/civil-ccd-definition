@@ -32,7 +32,7 @@ export default class HearingLRSpecPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.hearingAvailability),
-        // super.expectText(radioButtons.unavailableDateRequired.label),
+        super.expectLegend(radioButtons.unavailableDateRequired.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

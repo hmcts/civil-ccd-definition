@@ -16,6 +16,8 @@ export const radioButtons = {
 };
 
 export const form = {
+  label:
+    'Please provide any further information the Judge may need, including if you do not agree with the provisional track allocation of this claim (Optional)',
   whatForForm: {
     selector: (claimantDefendantParty: Party) =>
       `#${claimantDefendantParty.oldKey}DQFurtherInformation_reasonForFutureApplications`,
