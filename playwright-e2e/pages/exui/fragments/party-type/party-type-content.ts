@@ -38,7 +38,7 @@ export const inputs = {
     ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}LastName`,
   },
   dateOfBirth: {
-    label: 'Date of Birth',
+    label: 'Date of birth',
   },
   email: {
     label: 'Email (Optional)',

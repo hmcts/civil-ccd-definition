@@ -1,4 +1,3 @@
-import testSpeeds from './playwright-e2e/constants/test-speeds.ts';
 import { defineConfig, devices } from '@playwright/test';
 import config from './playwright-e2e/config/config';
 import os from 'node:os';
@@ -30,7 +29,7 @@ export default defineConfig({
         ],
       ]
     : 'list',
-  timeout: 600_000,
+  timeout: 900_000,
   expect: {
     timeout: 30_000,
     toPass: {

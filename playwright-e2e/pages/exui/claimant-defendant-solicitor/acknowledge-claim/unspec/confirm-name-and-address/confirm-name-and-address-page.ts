@@ -18,11 +18,11 @@ export default class ConfirmNameAndAddressPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications([
+    await super.runVerifications([
       super.expectHeading(heading),
       super.expectHeading(ccdCaseData.id),
       super.expectHeading(ccdCaseData.caseNamePublic),
-      super.expectText(inputs.dateOfBirth.label, { index: 0 }),
+      super.expectText(inputs.dateOfBirth.label, { count: 1 }),
     ]);
   }
 
