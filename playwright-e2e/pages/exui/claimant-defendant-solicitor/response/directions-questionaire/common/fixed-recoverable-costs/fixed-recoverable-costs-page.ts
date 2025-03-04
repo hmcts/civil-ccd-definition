@@ -23,13 +23,13 @@ export default class FixedRecoverableCostsPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fixedRecoverableCosts, { count: 1 }),
-        super.expectText(radioButtons.fixedRecoverableCosts.label, {
+        super.expectLegend(radioButtons.fixedRecoverableCosts.label, {
           count: 1,
         }),
-        super.expectYesLabel(
+        super.expectRadioYesLabel(
           radioButtons.fixedRecoverableCosts.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectNoLabel(
+        super.expectRadioNoLabel(
           radioButtons.fixedRecoverableCosts.no.selector(this.claimantDefendantParty),
         ),
       ],

@@ -23,11 +23,11 @@ export default class HearingSupportPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.supportNeeds, { count: 1 }),
-        super.expectText(radioButtons.supportRequirements.label, { count: 1 }),
-        super.expectYesLabel(
+        super.expectLegend(radioButtons.supportRequirements.label, { count: 1 }),
+        super.expectRadioYesLabel(
           radioButtons.supportRequirements.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectNoLabel(
+        super.expectRadioNoLabel(
           radioButtons.supportRequirements.no.selector(this.claimantDefendantParty),
         ),
       ],

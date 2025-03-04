@@ -34,10 +34,10 @@ export default class HearingPage extends ExuiPage(BasePage) {
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.availability, { count: 1 }),
         super.expectText(radioButtons.unavailableDateRequired.label, { count: 1 }),
-        super.expectYesLabel(
+        super.expectRadioYesLabel(
           radioButtons.unavailableDateRequired.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectNoLabel(
+        super.expectRadioNoLabel(
           radioButtons.unavailableDateRequired.no.selector(this.claimantDefendantParty),
         ),
       ],

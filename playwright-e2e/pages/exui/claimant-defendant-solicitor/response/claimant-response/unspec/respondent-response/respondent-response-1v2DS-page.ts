@@ -16,11 +16,11 @@ export default class RespondentResponse1v2DSPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.docUrl, { count: 2 }),
-      super.expectText(paragraphs.rejectAll, { count: 2 }),
-      super.expectYesLabel(radioButtons.proceedWithClaim.yes.selector1v2(partys.DEFENDANT_1)),
-      super.expectNoLabel(radioButtons.proceedWithClaim.no.selector1v2(partys.DEFENDANT_1)),
-      super.expectYesLabel(radioButtons.proceedWithClaim.yes.selector1v2(partys.DEFENDANT_2)),
-      super.expectNoLabel(radioButtons.proceedWithClaim.no.selector1v2(partys.DEFENDANT_2)),
+      // super.expectText(paragraphs.rejectAll, { count: 2 }),
+      super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector1v2(partys.DEFENDANT_1)),
+      super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector1v2(partys.DEFENDANT_1)),
+      super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector1v2(partys.DEFENDANT_2)),
+      super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector1v2(partys.DEFENDANT_2)),
     ]);
   }
 

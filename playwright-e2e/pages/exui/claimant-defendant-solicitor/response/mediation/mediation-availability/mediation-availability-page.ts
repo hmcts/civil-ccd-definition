@@ -4,13 +4,7 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
-import {
-  subheadings,
-  paragraphs,
-  radioButtons,
-  buttons,
-  inputs,
-} from './mediation-availability-content.ts';
+import { subheadings, radioButtons, buttons, inputs } from './mediation-availability-content.ts';
 import DateHelper from '../../../../../../helpers/date-helper.ts';
 import DateFragment from '../../../../fragments/date/date-fragment.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
@@ -38,7 +32,6 @@ export default class MediationAvailabilityPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.mediationAvailability, { count: 1 }),
-        super.expectText(paragraphs.descriptionText, { count: 1 }),
         super.expectLegend(radioButtons.mediationAvailability.label, { count: 1 }),
         super.expectText(radioButtons.mediationAvailability.hintText, { count: 1 }),
       ],

@@ -28,10 +28,10 @@ export default class DisclosureOfNonElectronicDocumentsPage extends ExuiPage(Bas
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.disclosureOfDocs, { count: 1 }),
         super.expectText(radioButtons.disclosureOfElectronicDocs.label, { count: 1 }),
-        super.expectYesLabel(
+        super.expectRadioYesLabel(
           radioButtons.disclosureOfElectronicDocs.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectNoLabel(
+        super.expectRadioNoLabel(
           radioButtons.disclosureOfElectronicDocs.no.selector(this.claimantDefendantParty),
         ),
       ],

@@ -29,12 +29,18 @@ export default class FileDirectionsQuestionnairePage extends ExuiPage(BasePage) 
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.fileDQ, { count: 1 }),
         super.expectLabel(checkboxes.fileDQConfirm.label, { count: 1 }),
-        super.expectYesLabel(radioButtons.oneMonthStay.yes.selector(this.claimantDefendantParty)),
-        super.expectNoLabel(radioButtons.oneMonthStay.no.selector(this.claimantDefendantParty)),
-        super.expectYesLabel(
+        super.expectRadioYesLabel(
+          radioButtons.oneMonthStay.yes.selector(this.claimantDefendantParty),
+        ),
+        super.expectRadioNoLabel(
+          radioButtons.oneMonthStay.no.selector(this.claimantDefendantParty),
+        ),
+        super.expectRadioYesLabel(
           radioButtons.protocolComplied.yes.selector(this.claimantDefendantParty),
         ),
-        super.expectNoLabel(radioButtons.protocolComplied.no.selector(this.claimantDefendantParty)),
+        super.expectRadioNoLabel(
+          radioButtons.protocolComplied.no.selector(this.claimantDefendantParty),
+        ),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

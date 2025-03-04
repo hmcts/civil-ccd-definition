@@ -30,13 +30,13 @@ export default class MediationContactInformationPage extends ExuiPage(BasePage) 
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectSubheading(subheadings, { count: 1 }),
+        super.expectSubheading(subheadings.mediationContact, { count: 2 }),
         super.expectText(paragraphs.description1, { count: 1 }),
         super.expectText(paragraphs.description2, { count: 1 }),
-        super.expectLegend(inputs.mediationFriendDetails.firstName.label, { count: 1 }),
-        super.expectLegend(inputs.mediationFriendDetails.lastName.label, { count: 1 }),
-        super.expectLegend(inputs.mediationFriendDetails.emailAddress.label, { count: 1 }),
-        super.expectLegend(inputs.mediationFriendDetails.telephoneNumber.label, { count: 1 }),
+        super.expectLabel(inputs.mediationFriendDetails.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.mediationFriendDetails.lastName.label, { count: 1 }),
+        super.expectLabel(inputs.mediationFriendDetails.emailAddress.label, { count: 1 }),
+        super.expectLabel(inputs.mediationFriendDetails.telephoneNumber.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

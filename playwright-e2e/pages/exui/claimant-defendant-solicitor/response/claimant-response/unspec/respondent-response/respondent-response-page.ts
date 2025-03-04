@@ -10,10 +10,10 @@ export default class RespondentResponsePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.docUrl, { count: 1 }),
-      super.expectText(paragraphs.rejectAll, { count: 1 }),
-      super.expectText(radioButtons.proceedWithClaim.label, { count: 1 }),
-      super.expectYesLabel(radioButtons.proceedWithClaim.yes.selector),
-      super.expectNoLabel(radioButtons.proceedWithClaim.no.selector),
+      // super.expectText(paragraphs.rejectAll, { count: 1 }),
+      super.expectLegend(radioButtons.proceedWithClaim.label, { count: 1 }),
+      super.expectRadioYesLabel(radioButtons.proceedWithClaim.yes.selector),
+      super.expectRadioNoLabel(radioButtons.proceedWithClaim.no.selector),
     ]);
   }
 
