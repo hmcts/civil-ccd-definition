@@ -22,12 +22,14 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   }
 
   async verifyContent() {
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
+      await super.expectLegend(inputs.dateOfBirth.label, { count: 1 });
+    }
     await super.runVerifications(
       [
-        // super.expectLabel(inputs.title.label, { index: 0 }),
-        // super.expectLabel(inputs.firstName.label, { index: 0 }),
-        // super.expectLabel(inputs.lastName.label, { index: 0 }),
-        // super.expectText(inputs.dateOfBirth.label, { index: 0 }),
+        super.expectLabel(inputs.title.label, { count: 1 }),
+        super.expectLabel(inputs.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.lastName.label, { count: 1 }),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
       ],
