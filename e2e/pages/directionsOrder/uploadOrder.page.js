@@ -12,8 +12,7 @@ module.exports = {
     I.see('Add document', this.fields.label1);
 
     I.seeElement(this.fields.label2);
-    I.see('Make sure your file is named either directions or order, the party names and the date. ' +
-      'Upload your completed order in DOC/DOCX (Word) format.', this.fields.label2);
+    I.see('Upload your completed order in DOC/DOCX (Word) format.', this.fields.label2);
 
     I.attachFile(this.fields.uploadInput, filePath);
     I.wait(5);
@@ -24,7 +23,7 @@ module.exports = {
     });
 
     // Assert that the file was uploaded and its name matches
-    if (!uploadedFile || !uploadedFile.includes('examplePDF.pdf')) {
+    if (!uploadedFile || !uploadedFile.includes('exampleDOC.docx')) {
       throw new Error('File was not uploaded or the file name does not match.');
     }
 

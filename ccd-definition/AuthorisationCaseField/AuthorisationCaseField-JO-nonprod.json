@@ -418,5 +418,54 @@
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joSetAsideCreatedDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondForImmediateOption",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joDJCreatedDate",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joJudgementByAdmissionIssueDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff",
+      "caseworker-civil-systemupdate"
+    ],
+    "CRUD": "CRU"
   }
 ]

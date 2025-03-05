@@ -122,17 +122,17 @@ module.exports = {
   },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
-    email: '4917924EMP-@ejudiciary.net',
+    email: 'DJ.Amy.Powell@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
-  judgeUserWithRegionId4: {
+  circuitJudgeUserWithRegionId1: {
     password: judgeDefaultPassword,
-    email: '4924159EMP-@ejudiciary.net',
+    email: '4917924EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
-    regionId: '4'
+    regionId: '1'
   },
   judgeUser2WithRegionId4: {
     password: judgeDefaultPassword,
@@ -147,13 +147,6 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
-  },
-  judgeUserWithRegionId2: {
-    password: judgeDefaultPassword,
-    email: '4915631EMP-@ejudiciary.net',
-    type: 'judge',
-    roleCategory: 'JUDICIAL',
-    regionId: '2'
   },
   judgeUser2WithRegionId2: {
     password: judgeDefaultPassword,
@@ -183,26 +176,12 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
-  hearingCenterAdminWithRegionId41: {
-    email: 'hearing_center_admin_region2@justice.gov.uk',
-    password: defaultPassword,
-    type: 'hearing-center-admin',
-    roleCategory: 'ADMIN',
-    regionId: '4'
-  },
   hearingCenterAdminWithRegionId4: {
     email: 'hearing_center_admin_region4@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
     regionId: '2'
-  },
-  hearingCenterAdminWithRegionId12: {
-    email: 'CIVIL_WA_func_test_demo_user9@justice.gov.uk',
-    password: defaultPassword,
-    type: 'hearing-center-admin',
-    roleCategory: 'ADMIN',
-    regionId: '12'
   },
   tribunalCaseworkerWithRegionId12: {
     email: 'CIVIL_WA_func_test_demo_user7@justice.gov.uk',
