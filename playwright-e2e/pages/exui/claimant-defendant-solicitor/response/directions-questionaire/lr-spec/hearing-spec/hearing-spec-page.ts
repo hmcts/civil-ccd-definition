@@ -25,7 +25,7 @@ export default class HearingSpecPage extends ExuiPage(BasePage) {
       [
         super.expectHeading(heading),
         // super.expectSubheading(subheadings.unavailableDate),
-        super.expectText(radioButtons.unavailableDateRequired.label),
+        super.expectLegend(radioButtons.unavailableDateRequired.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.claimantParty.key) },
     );
