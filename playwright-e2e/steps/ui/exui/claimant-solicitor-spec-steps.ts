@@ -8,7 +8,7 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import {create} from "node:domain";
+import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExui {
@@ -154,7 +154,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.defendantDetails();
         await createClaimSpecActions.addAnotherDefendant();
         await createClaimSpecActions.secondDefendant();
-        await createClaimSpecActions.secondDefendantDSDetails()
+        await createClaimSpecActions.secondDefendantDSDetails();
         await createClaimSpecActions.claimDetailsSmallTrack();
         await createClaimSpecActions.statementOfTruthCreateClaim();
         await createClaimSpecActions.submitCreateClaim();
