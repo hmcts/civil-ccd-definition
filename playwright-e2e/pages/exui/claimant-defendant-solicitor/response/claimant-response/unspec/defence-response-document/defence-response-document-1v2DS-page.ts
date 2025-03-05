@@ -6,12 +6,12 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import { inputs, subheadings } from './defence-response-document-content.ts';
 
 @AllMethodsStep()
-export default class DefenceResponseDocument1v2Page extends ExuiPage(BasePage) {
+export default class DefenceResponseDocument1v2DSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.respondToDefence, { count: 2 }),
-      super.expectLabel(inputs.uploadDoc.label, { count: 2 }),
+      super.expectLegend(inputs.uploadDoc.label, { count: 2 }),
     ]);
   }
 
