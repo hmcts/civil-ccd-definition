@@ -21,9 +21,9 @@ export default class ResponseIntentionPage extends ExuiPage(BasePage) {
     super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.fullDefence.label),
-        super.expectLabel(radioButtons.partAdmit.label),
-        super.expectLabel(radioButtons.contestJurisdiction.label),
+        super.expectLabel(radioButtons.fullDefence.label, { count: 1 }),
+        super.expectLabel(radioButtons.partAdmit.label, { count: 1 }),
+        super.expectLabel(radioButtons.contestJurisdiction.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
