@@ -3,7 +3,7 @@ import urls from '../config/urls';
 import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
-import { UploadDocumentValue } from '../models/ccd/ccd-case-data';
+import CCDCaseData, { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
@@ -41,7 +41,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 50,
+      retries: 30,
       retryTimeInterval: 5000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
@@ -103,5 +103,17 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     caseIds.forEach((caseId) =>
       console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
     );
+  }
+
+  async updateCaseData(user: User, caseId: number, caseData: CCDCaseData) {
+    console.log(`Updating case data, caseId: ${caseId}`);
+    const url = `${this.testingSupportUrl}/case/${caseId}`;
+    const requestOptions: RequestOptions = {
+      headers: await this.getRequestHeaders(user),
+      body: caseData,
+      method: 'PUT',
+    };
+    await super.retryRequest(url, requestOptions);
+    console.log(`Case data successfully updated, caseId: ${caseId}`);
   }
 }

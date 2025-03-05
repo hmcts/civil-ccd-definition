@@ -23,10 +23,10 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
-        super.expectHeading(heading),
-        super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-        super.expectHeading(ccdCaseData.caseNamePublic),
-        // super.expectLabel(inputs.upload.label),
+        super.expectHeading(heading, { exact: false }),
+        super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
+        super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
+        // super.expectLegend(inputs.upload.label),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

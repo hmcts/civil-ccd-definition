@@ -30,9 +30,11 @@ export default class SmallClaimWitnessesPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectSubheading(subheadings.witnesses),
-        // super.expectSubheading(subheadings.partyWitnesses(this.claimantDefendantParty)),
-        // super.expectText(radioButtons.witnessesRequired.label),
+        super.expectSubheading(subheadings.witnesses, { count: 1 }),
+        super.expectSubheading(subheadings.partyWitnesses(this.claimantDefendantParty), {
+          count: 1,
+        }),
+        super.expectLegend(radioButtons.witnessesRequired.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
