@@ -104,7 +104,8 @@
     "test:playwright-functional:open-report": "allure open playwright-allure-functional-report",
     "test:playwright-bootstrap:generate-report": "allure generate playwright-allure-bootstrap-results --clean -o playwright-allure-bootstrap-report",
     "test:playwright-bootstrap:open-report": "allure open playwright-allure-bootstrap-report",
-    "prepare": "husky"
+    "prepare": "husky",
+    "dummy":"dummy"
   },
   "license": "MIT",
   "devDependencies": {
