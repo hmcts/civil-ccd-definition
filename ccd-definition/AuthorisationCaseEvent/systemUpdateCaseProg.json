@@ -71,6 +71,24 @@
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
   },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "APPLICANT_NOTIFY_OTHERS_TRIAL_READY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "RESPONDENT1_NOTIFY_OTHERS_TRIAL_READY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "RESPONDENT2_NOTIFY_OTHERS_TRIAL_READY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
 
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
