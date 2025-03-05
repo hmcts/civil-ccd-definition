@@ -86,7 +86,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
