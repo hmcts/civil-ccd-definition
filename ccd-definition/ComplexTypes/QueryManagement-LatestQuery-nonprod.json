@@ -9,24 +9,8 @@
   },
   {
     "ID": "LatestQuery",
-    "ListElementCode": "subject",
-    "FieldType": "Text",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "LatestQuery",
     "ListElementCode": "isHearingRelated",
     "FieldType": "YesOrNo",
-    "ElementLabel": " ",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "LatestQuery",
-    "ListElementCode": "dateSubmitted",
-    "FieldType": "DateTime",
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
