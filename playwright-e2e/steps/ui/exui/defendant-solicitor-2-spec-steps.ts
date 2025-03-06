@@ -38,7 +38,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS2();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS2();
         await defendantResponseSpecActions.timelineDS2();
-        await defendantResponseSpecActions.oldMediationDS2();
+        await defendantResponseSpecActions.mediationDS2();
         await defendantResponseSpecActions.dqSmallTrackDS2Pages();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
         await defendantResponseSpecActions.submitDefendantResponse();

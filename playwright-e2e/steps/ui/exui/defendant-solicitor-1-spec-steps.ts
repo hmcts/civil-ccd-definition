@@ -64,7 +64,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.oldMediationDS1();
+        await defendantResponseSpecActions.mediationDS1();
         await defendantResponseSpecActions.dqSmallTrackDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -90,7 +90,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.oldMediationDS1();
+        await defendantResponseSpecActions.mediationDS1();
         await defendantResponseSpecActions.dqSmallTrackDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -116,7 +116,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.oldMediationDS1();
+        await defendantResponseSpecActions.mediationDS1();
         await defendantResponseSpecActions.dqSmallTrackDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
         await defendantResponseSpecActions.submitDefendantResponse();
@@ -141,7 +141,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
-        await defendantResponseSpecActions.oldMediationDS1();
+        await defendantResponseSpecActions.mediationDS1();
         await defendantResponseSpecActions.dqSmallTrackDS1();
         await defendantResponseSpecActions.statementOfTruthDefendantResponseDS1Page();
         await defendantResponseSpecActions.submitDefendantResponse();
