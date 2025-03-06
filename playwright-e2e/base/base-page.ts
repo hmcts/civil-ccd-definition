@@ -145,18 +145,23 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
+    options: {
+      index?: number;
+      timeout?: number;
+      containerSelector?: string;
+      first?: boolean;
+      exact?: boolean;
+    } = { exact: true },
   ) {
-    if (options.index) {
-      await this.page
-        .getByLabel(label, { exact: options.exact ?? true })
-        .nth(options.index)
-        .fill(input.toString());
-    } else {
-      await this.page.getByLabel(label, { exact: options.exact ?? true }).fill(input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+
+    let locator = this.page.getByLabel(label, { exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString(), {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -164,11 +169,14 @@ export default abstract class BasePage {
   protected async inputSensitiveText(
     input: string | number,
     selector: string,
-    options: { timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    await this.page.fill(selector, input.toString(), {
-      timeout: options.timeout,
-    });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @TruthyParams(classKey)
