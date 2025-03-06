@@ -34,13 +34,13 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { timeout?: number; first?: boolean; index?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.first && options.index !== undefined) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
     let locator = this.page.locator(selector);
-    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
 
@@ -79,7 +79,7 @@ export default abstract class BasePage {
     },
   ) {
     await this.page
-      .getByRole('link', { name, exact: true })
+      .getByRole('link', { name, exact: options.exact ?? true })
       .nth(options.index ?? 0)
       .click({ timeout: options.timeout });
   }
@@ -130,15 +130,14 @@ export default abstract class BasePage {
   protected async inputText(
     input: string | number,
     selector: string,
-    options: { index?: number; timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.index) {
-      await this.page.locator(selector).nth(options.index).fill(input.toString());
-    } else {
-      await this.page.fill(selector, input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @BoxedDetailedStep(classKey, 'input', 'label')
@@ -931,6 +930,68 @@ export default abstract class BasePage {
         message: options.message,
       },
     ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'label', 'selector')
+  protected async expectRadioLabel(
+    label: string,
+    selector: string,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    const inputId = await locator.getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText(label, { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'selector')
