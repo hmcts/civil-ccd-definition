@@ -29,7 +29,7 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.expectText(paragraphs.descriptionText),
-        super.expectRadioGroupLabel(radioButtons.addressRequired.label),
+        super.expectLegend(radioButtons.addressRequired.label),
         super.expectRadioYesLabel(
           radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
         ),
