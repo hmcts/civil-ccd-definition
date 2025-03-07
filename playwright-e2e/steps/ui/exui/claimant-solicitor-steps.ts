@@ -7,7 +7,7 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import {create} from "node:domain";
+import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSteps extends BaseExui {
