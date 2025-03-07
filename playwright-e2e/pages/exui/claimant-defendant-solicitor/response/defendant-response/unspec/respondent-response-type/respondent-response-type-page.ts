@@ -23,10 +23,10 @@ export default class RespondentResponseTypePage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectLabel(radioButtons.rejectAll.label, { index: 0 }),
-        // super.expectLabel(radioButtons.admitAll.label, { index: 0 }),
-        // super.expectLabel(radioButtons.partAdmit.label, { index: 0 }),
-        // super.expectLabel(radioButtons.counterClaim.label, { index: 0 }),
+        super.expectLabel(radioButtons.rejectAll.label, { count: 1 }),
+        super.expectLabel(radioButtons.admitAll.label, { count: 1 }),
+        super.expectLabel(radioButtons.partAdmit.label, { count: 1 }),
+        super.expectLabel(radioButtons.counterClaim.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
