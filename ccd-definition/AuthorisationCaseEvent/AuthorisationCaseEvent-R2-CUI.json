@@ -147,34 +147,6 @@
           "citizen-profile"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "cui-admin-profile",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
-          "GS_profile"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "ASSIGN_CASE_TO_APPLICANT1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "cui-admin-profile",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
-          "GS_profile"
-        ],
-        "CRUD": "R"
       }
     ]
   },
