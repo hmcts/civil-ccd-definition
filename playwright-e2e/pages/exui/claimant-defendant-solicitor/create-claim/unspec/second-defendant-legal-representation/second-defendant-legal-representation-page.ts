@@ -9,8 +9,8 @@ export default class SecondDefendantLegalRepresentationPage extends ExuiPage(Bas
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectLegend(radioButtons.defendantRepresented.label),
-      super.expectYesLabel(radioButtons.defendantRepresented.yes.selector),
-      super.expectNoLabel(radioButtons.defendantRepresented.no.selector),
+      super.expectRadioYesLabel(radioButtons.defendantRepresented.yes.selector),
+      super.expectRadioNoLabel(radioButtons.defendantRepresented.no.selector),
     ]);
   }
 

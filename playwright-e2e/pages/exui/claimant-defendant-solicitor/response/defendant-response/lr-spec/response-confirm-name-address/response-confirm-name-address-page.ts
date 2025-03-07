@@ -23,9 +23,9 @@ export default class ResponseConfirmNameAddressPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectNoText('chgfgh', { exact: true, all: true }),
-        super.expectText(radioButtons.address.label, { exact: true, count: 1 }),
-        // super.expectLabel(radioButtons.address.yes.label),
-        // super.expectLabel(radioButtons.address.no.label),
+        super.expectLegend(radioButtons.address.label, { exact: true, count: 1 }),
+        super.expectRadioYesLabel(radioButtons.address.yes.selector(this.defendantParty, this.solicitorParty)),
+        super.expectRadioNoLabel(radioButtons.address.no.selector(this.defendantParty, this.solicitorParty)),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
