@@ -1,0 +1,9 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CategoryID": "QueryDocuments",
+    "CategoryLabel": "Query documents",
+    "DisplayOrder": "13",
+    "ParentCategoryID": ""
+  }
+]

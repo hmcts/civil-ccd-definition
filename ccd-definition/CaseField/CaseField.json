@@ -81,7 +81,8 @@
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -524,6 +525,15 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "unfinishedBackEndProcess",
+    "Label": "The case processing has not completed, please refresh this page in one minute. If the problem persists please contact the helpdesk 0300 123 7050",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Comment": "Case is stuck in Camunda or the backend services are taking long to respond."
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
