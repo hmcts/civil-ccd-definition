@@ -10,8 +10,8 @@ export default class DefenceResponseDocumentPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectSubheading(subheadings.respondToDefence, { index: 0 }),
-      super.expectLegend(inputs.uploadDoc.label, { index: 0 }),
+      super.expectSubheading(subheadings.respondToDefence, { count: 1 }),
+      super.expectLegend(inputs.uploadDoc.label, { count: 1 }),
     ]);
   }
 
