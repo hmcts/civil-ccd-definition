@@ -65,7 +65,5 @@ Scenario('1v2  full defence Intermediate claim Specified same solicitor', async 
   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 });
 
-AfterSuite(async  ({api_spec}) => {
-  await api_spec.cleanUp();
-});
+
 
