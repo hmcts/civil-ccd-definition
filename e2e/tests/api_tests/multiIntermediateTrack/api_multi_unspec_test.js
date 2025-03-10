@@ -38,7 +38,7 @@ async function prepareClaim(api, mpScenario, claimAmount, WA) {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }
 
-Scenario('1v1 Create Unspecified Multi Track claim @api-nonprod', async ({ api }) => {
+Scenario('1v1 Create Unspecified Multi Track claim @api-prod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, multiTrackClaimAmount);
 });
