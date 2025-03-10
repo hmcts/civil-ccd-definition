@@ -144,6 +144,7 @@ civil-service:
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
+      DOCMOSIS_TORNADO_URL: https://docmosis.preview.platform.hmcts.net
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
