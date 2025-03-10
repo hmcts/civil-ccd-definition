@@ -14,7 +14,8 @@
     "UserRoles": [
       "caseworker-ras-validation",
       "GS_profile",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "CITIZEN-DEFENDANT-PROFILE",
+      "RES-SOL-ONE-SPEC-PROFILE"
     ],
     "CRUD": "R"
   },
