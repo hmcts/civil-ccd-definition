@@ -329,12 +329,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondToClaimAdmitPartLRspec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
