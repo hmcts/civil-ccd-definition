@@ -3046,7 +3046,6 @@
     "Label": "### Title:\n${applicant1.individualTitle}\n\n### First name:\n${applicant1.individualFirstName}\n\n### Last name:\n${applicant1.individualLastName}\n",
     "FieldType": "Label",
     "SecurityClassification": "Public",
-    "RegularExpression": "^[\\u0000-\\uFFFF]{5,}$",
     "_Comment": "Label for Legal rep view for party because these fields are not editable",
     "Searchable": "N"
   },
