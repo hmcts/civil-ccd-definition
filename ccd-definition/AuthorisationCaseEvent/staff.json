@@ -157,7 +157,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_EVENT",
+    "CaseEventID": "NOTIFY_EVENT_FOR_LITIGATION_FRIEND_ADDED",
     "UserRole": "caseworker-civil-staff",
     "CRUD": "R"
   },
