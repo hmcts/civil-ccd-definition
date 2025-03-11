@@ -7,7 +7,7 @@ const claimAmountMulti = '200001';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
+Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate @api-prod');
 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);

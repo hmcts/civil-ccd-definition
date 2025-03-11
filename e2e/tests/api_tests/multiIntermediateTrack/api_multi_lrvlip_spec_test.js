@@ -7,7 +7,7 @@ if (config.runWAApiTest) {
 }
 const claimType = 'MULTI';
 
-Feature('CCD 1v1 LR v LiP API test spec multi track @api-spec-multi-intermediate');
+Feature('CCD 1v1 LR v LiP API test spec multi track @api-spec-multi-intermediate @api-nonprod @api-prod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
