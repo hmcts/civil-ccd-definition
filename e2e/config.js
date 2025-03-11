@@ -329,7 +329,11 @@ module.exports = {
     fastTrackDirections: 'FastTrackDirections',
     smallClaimDirections: 'SmallClaimsTrackDirections',
     legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
-    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO'
+    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO',
+    intermediateTrackDirections: 'intermediate_track_decision_making_work',
+    multiTrackDirections: 'multi_track_decision_making_work',
+    multiTrackOrderMadeReview: 'Order Made - Review case - Multi track',
+    transferCaseOffline: 'Transfer Case Offline'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
