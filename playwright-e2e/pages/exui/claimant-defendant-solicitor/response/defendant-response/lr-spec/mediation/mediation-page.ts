@@ -22,8 +22,8 @@ export default class MediationPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectLabel(radioButtons.yesMediation.label),
-        // super.expectLabel(radioButtons.yesMediation.label),
+        super.expectRadioYesLabel(radioButtons.yesMediation.selector(this.defendantParty)),
+        super.expectRadioNoLabel(radioButtons.noMediation.selector(this.defendantParty)),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
