@@ -55,7 +55,8 @@
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "RegularExpression": "^[\\u0000-\\uFFFF]{5,}$"
   },
   {
     "ID": "Claimant",
