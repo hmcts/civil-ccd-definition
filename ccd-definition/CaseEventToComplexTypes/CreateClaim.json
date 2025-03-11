@@ -55,7 +55,7 @@
     "CaseFieldID": "applicant1",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Claimant",
