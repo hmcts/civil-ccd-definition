@@ -464,7 +464,9 @@
     "UserRoles": [
       "caseworker-civil-admin",
       "caseworker-civil-staff",
-      "caseworker-civil-systemupdate"
+      "caseworker-civil-systemupdate",
+      "CITIZEN-CLAIMANT-PROFILE",
+      "citizen-profile"
     ],
     "CRUD": "CRU"
   }
