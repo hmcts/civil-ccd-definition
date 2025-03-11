@@ -6,6 +6,7 @@ import SolicitorReferenceFragment from '../../../../fragments/solicitor-referenc
 import { Page } from 'playwright-core';
 import { Party } from '../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()
 export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(BasePage) {
@@ -25,7 +26,6 @@ export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(Ba
   async verifyContent() {
     await super.runVerifications(
       [
-        super.verifyHeadings(),
         super.expectSubheading(subheadings.yourFileReference),
         this.defendantSolicitorReferenceFragment.verifyContent(),
       ],

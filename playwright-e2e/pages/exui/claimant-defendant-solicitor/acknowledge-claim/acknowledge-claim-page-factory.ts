@@ -16,11 +16,11 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new ConfirmNameAndAddressPage(this.page, dateOfBirthFragment);
   }
 
-  get responseIntensionDefendant1Page() {
+  get responseIntentionDefendant1Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_1);
   }
 
-  get responseIntensionDefendant2Page() {
+  get responseIntentionDefendant2Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_2);
   }
 
