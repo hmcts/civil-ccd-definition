@@ -7,13 +7,13 @@ import ResponseIntention2v1Page from './unspec/response-intention/response-inten
 import ResponseIntentionPage from './unspec/response-intention/response-intention-page';
 import SolicitorReferencesAcknowledgeClaimPage from './unspec/solicitor-references-acknowledge-claim/solicitor-references-acknowledge-claim-page';
 import SubmitAcknowledgeClaimPage from './unspec/submit-acknowledge-claim/submit-acknowledge-claim-page';
-import DateFragment from '../../fragments/date/date-fragment';
 import SolicitorReferenceFragment from '../../fragments/solicitor-reference/solicitor-reference-fragment';
+import DateOfBirthFragment from '../../fragments/date/date-of-birth-fragment';
 
 export default class AcknowledgeClaimPageFactory extends BasePageFactory {
   get confirmNameAndAddressPage() {
-    const dateFragment = new DateFragment(this.page);
-    return new ConfirmNameAndAddressPage(this.page, dateFragment);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
+    return new ConfirmNameAndAddressPage(this.page, dateOfBirthFragment);
   }
 
   get responseIntensionDefendant1Page() {

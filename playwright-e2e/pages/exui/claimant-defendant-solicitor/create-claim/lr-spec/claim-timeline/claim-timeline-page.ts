@@ -30,7 +30,7 @@ export default class ClaimTimelinePage extends ExuiPage(BasePage) {
 
   async enterTimelineEvent1Details() {
     const date = DateHelper.subtractFromToday({ months: 3 });
-    await this.dateFragment.enterDate(date, inputs.timelineDate.selectorKey, 0);
+    await this.dateFragment.enterDate(date, inputs.timelineDate.selectorKey, { index: 0 });
     await super.inputText(
       `This the timeline - ${partys.CLAIMANT_1.key}`,
       inputs.timelineDescription.selector(1),

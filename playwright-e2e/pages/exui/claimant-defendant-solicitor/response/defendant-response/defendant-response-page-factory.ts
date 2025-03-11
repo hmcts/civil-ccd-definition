@@ -18,7 +18,7 @@ import RespondentResponseTypeSpecPage from './lr-spec/respondent-response-type-s
 import ResponseConfirmDetails1v2Page from './lr-spec/response-confirm-details/response-confirm-details-1v2-page';
 import ResponseConfirmDetailsPage from './lr-spec/response-confirm-details/response-confirm-details-page';
 import ResponseConfirmNameAddress1v2FastPage from './lr-spec/response-confirm-name-address/response-confirm-name-address-1v2-fast-page';
-import ResponseConfirmNameAddress1v2Page from './lr-spec/response-confirm-name-address/response-confirm-name-address-1v2-page ';
+import ResponseConfirmNameAddress1v2Page from './lr-spec/response-confirm-name-address/response-confirm-name-address-1v2-page';
 import ResponseConfirmNameAddressPage from './lr-spec/response-confirm-name-address/response-confirm-name-address-page';
 import UploadDefendantResponseSpecPage from './lr-spec/upload-defendant-response-spec/upload-defendant-response-spec-page';
 import Confirm1v2DSDefendantResponsePage from './unspec/confirm-defendant-response/confirm-1v2DS-defendant-response-page';
@@ -60,6 +60,7 @@ import RemoteHearingSpecFragment from '../../../fragments/remote-hearing-spec/re
 import RemoteHearingFragment from '../../../fragments/remote-hearing/remote-hearing-fragment';
 import SolicitorReferenceFragment from '../../../fragments/solicitor-reference/solicitor-reference-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import DateOfBirthFragment from '../../../fragments/date/date-of-birth-fragment';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -67,28 +68,28 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
   }
 
   get confirmDetailsDS1Page() {
-    const dateFragment = new DateFragment(this.page);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
     return new ConfirmDetailsPage(
       this.page,
-      dateFragment,
+      dateOfBirthFragment,
       partys.DEFENDANT_1,
       partys.DEFENDANT_SOLICITOR_1,
     );
   }
 
   get confirmDetailsDS2Page() {
-    const dateFragment = new DateFragment(this.page);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
     return new ConfirmDetailsPage(
       this.page,
-      dateFragment,
+      dateOfBirthFragment,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
     );
   }
 
   get confirmDetails1v2Page() {
-    const dateFragment = new DateFragment(this.page);
-    return new ConfirmDetails1v2Page(this.page, dateFragment);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
+    return new ConfirmDetails1v2Page(this.page, dateOfBirthFragment);
   }
 
   get responseConfirmNameAddressDS1Page() {
@@ -121,13 +122,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       partys.DEFENDANT_1,
       partys.DEFENDANT_SOLICITOR_1,
     );
-    const dateFragment = new DateFragment(this.page);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
     return new ResponseConfirmDetailsPage(
       this.page,
       partys.DEFENDANT_1,
       partys.DEFENDANT_SOLICITOR_1,
       solicitorReferenceFragment,
-      dateFragment,
+      dateOfBirthFragment,
     );
   }
 
@@ -137,13 +138,13 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       partys.DEFENDANT_1,
       partys.DEFENDANT_SOLICITOR_1,
     );
-    const dateFragment = new DateFragment(this.page);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
     return new ResponseConfirmDetailsPage(
       this.page,
       partys.DEFENDANT_2,
       partys.DEFENDANT_SOLICITOR_2,
       solicitorReferenceFragment,
-      dateFragment,
+      dateOfBirthFragment,
     );
   }
 
@@ -153,8 +154,12 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
       partys.DEFENDANT_1,
       partys.DEFENDANT_SOLICITOR_1,
     );
-    const dateFragment = new DateFragment(this.page);
-    return new ResponseConfirmDetails1v2Page(this.page, solicitorReferenceFragment, dateFragment);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
+    return new ResponseConfirmDetails1v2Page(
+      this.page,
+      solicitorReferenceFragment,
+      dateOfBirthFragment,
+    );
   }
 
   get singleResponsePage() {

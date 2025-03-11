@@ -78,6 +78,7 @@ import SolicitorReferenceFragment from '../../fragments/solicitor-reference/soli
 import StatementOfTruthFragment from '../../fragments/statement-of-truth/statement-of-truth-fragment';
 import UnregisteredOrganisationAddressFragment from '../../fragments/unregistered-organisation-address/unregistered-organisation-address-fragment';
 import UnregisteredOrganisationFragment from '../../fragments/unregistered-organisation/unregistered-organisation-fragment';
+import YesOrNoFragment from '../../fragments/yes-or-no/yes-or-no-fragment';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
   get caseFilterPage() {
@@ -128,7 +129,8 @@ export default class CreateClaimPageFactory extends BasePageFactory {
   }
 
   get addAnotherClaimantPage() {
-    return new AddAnotherClaimantPage(this.page);
+    const yesOrNoFragment = new YesOrNoFragment(this.page);
+    return new AddAnotherClaimantPage(this.page, yesOrNoFragment);
   }
 
   get secondClaimantPage() {

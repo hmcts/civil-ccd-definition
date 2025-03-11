@@ -4,31 +4,34 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from '../party-type/party-type-content';
-import DateHelper from '../../../../helpers/date-helper';
-import DateFragment from '../date/date-fragment';
 import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
+import claimantDefendantPartyType from '../../../../enums/party-types';
 import PartyType from '../../../../enums/party-types';
+import DateOfBirthFragment from '../date/date-of-birth-fragment';
 
 @AllMethodsStep()
 export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
-  private dateFragment: DateFragment;
-  private partyType = claimantDefendantPartyTypes.SOLE_TRADER;
+  private dateOfBirthFragment: DateOfBirthFragment;
+  private claimantDefendantPartyType = claimantDefendantPartyTypes.SOLE_TRADER;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
-    this.dateFragment = new DateFragment(page);
+    this.dateOfBirthFragment = new DateOfBirthFragment(page);
   }
 
   async verifyContent() {
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
+      await super.expectLegend(inputs.dateOfBirth.label, { count: 1 });
+      this.dateOfBirthFragment.verifyContent(this.claimantDefendantPartyType);
+    }
     await super.runVerifications(
       [
         super.expectLabel(inputs.firstName.label, { count: 1 }),
         super.expectLabel(inputs.lastName.label, { count: 1 }),
         super.expectText(inputs.dateOfBirth.label, { count: 1 }),
-        this.dateFragment.verifyContent(),
         super.expectLabel(inputs.tradingAs.label),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
@@ -42,26 +45,30 @@ export default class PartyTypeSoleTraderFragment extends ExuiPage(BasePage) {
   async enterSoleTraderDetails() {
     const soleTraderData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
-      this.partyType,
+      this.claimantDefendantPartyType,
     );
     await super.inputText(
       soleTraderData.soleTraderTitle,
-      inputs.title.selector(this.claimantDefendantParty, this.partyType),
+      inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
     await super.inputText(
       soleTraderData.soleTraderFirstName,
-      inputs.firstName.selector(this.claimantDefendantParty, this.partyType),
+      inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
     await super.inputText(
       soleTraderData.soleTraderLastName,
-      inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
+      inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
     await super.inputText(
       soleTraderData.soleTraderTradingAs,
-      inputs.tradingAs.selector(this.claimantDefendantParty, this.partyType),
+      inputs.tradingAs.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
-    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT)
-      await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    if (this.claimantDefendantParty.partyType === claimantDefendantPartyType.CLAIMANT) {
+      await this.dateOfBirthFragment.enterDate(
+        this.claimantDefendantParty,
+        this.claimantDefendantPartyType,
+      );
+    }
     await super.inputText(
       soleTraderData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),

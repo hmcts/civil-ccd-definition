@@ -30,9 +30,9 @@ export default class DefenceRoutePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications(
       [
-        // super.verifyHeadings(ccdCaseData),
-        // super.expectLabel(radioButtons.defenceRoute.hasPaid.label),
-        // super.expectLabel(radioButtons.defenceRoute.disputesClaim.label),
+        super.verifyHeadings(ccdCaseData),
+        super.expectLabel(radioButtons.defenceRoute.hasPaid.label, {count:1}),
+        super.expectLabel(radioButtons.defenceRoute.disputesClaim.label, {count:1}),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

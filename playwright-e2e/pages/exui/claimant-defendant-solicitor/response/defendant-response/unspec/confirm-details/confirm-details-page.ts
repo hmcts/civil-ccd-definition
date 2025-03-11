@@ -3,8 +3,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import { Page } from 'playwright-core';
-import DateFragment from '../../../../../fragments/date/date-fragment.ts';
-import partys from '../../../../../../../constants/partys.ts';
+import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../../models/claimant-defendant-party-types.ts';
 import { inputs } from './confirm-details-content.ts';
 import { Party } from '../../../../../../../models/partys.ts';
@@ -14,16 +13,16 @@ import StringHelper from '../../../../../../../helpers/string-helper.ts';
 export default class ConfirmDetailsPage extends ExuiPage(BasePage) {
   private defendantParty: Party;
   private solicitorParty: Party;
-  private dateFragment: DateFragment;
+  private dateOfBirthFragment: DateOfBirthFragment;
 
   constructor(
     page: Page,
-    dateFragment: DateFragment,
+    dateOfBirthFragment: DateOfBirthFragment,
     defendantParty: Party,
     solicitorParty: Party,
   ) {
     super(page);
-    this.dateFragment = dateFragment;
+    this.dateOfBirthFragment = dateOfBirthFragment;
     this.defendantParty = defendantParty;
     this.solicitorParty = solicitorParty;
   }
@@ -36,8 +35,8 @@ export default class ConfirmDetailsPage extends ExuiPage(BasePage) {
   }
 
   //Need to decide how I am going to pass partyType Data, could be pass by ccdCaseData or store a reference in test data.
-  async enterDefendantDateOfBirth(partyType: ClaimantDefendantPartyType) {
-    await this.dateFragment.enterDateOfBirth(this.defendantParty, partyType);
+  async enterDefendantDateOfBirth(claimantDefendantPartyType: ClaimantDefendantPartyType) {
+    await this.dateOfBirthFragment.enterDate(this.defendantParty, claimantDefendantPartyType);
   }
 
   async submit() {
