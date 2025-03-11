@@ -34,13 +34,13 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { timeout?: number; first?: boolean; index?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.first && options.index !== undefined) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
     let locator = this.page.locator(selector);
-    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
 
@@ -55,7 +55,7 @@ export default abstract class BasePage {
     if (options.first && options.index !== undefined) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
-    let locator = this.page.getByLabel(label, { exact: options.exact });
+    let locator = this.page.getByLabel(label, { exact: options.exact ?? true });
     locator = this.getNewLocator(locator, undefined, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
@@ -64,9 +64,9 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'name')
   protected async clickButtonByName(
     name: string,
-    options: { timeout?: number; exact?: boolean } = { exact: true },
+    options: { timeout?: number; exact?: boolean } = {},
   ) {
-    await this.page.getByRole('button', { name, exact: options.exact }).click(options);
+    await this.page.getByRole('button', { name, exact: options.exact ?? true }).click(options);
   }
 
   @BoxedDetailedStep(classKey, 'name')
@@ -79,8 +79,8 @@ export default abstract class BasePage {
     },
   ) {
     await this.page
-      .getByRole('link', { name, exact: true })
-      .nth(options.index)
+      .getByRole('link', { name, exact: options.exact ?? true })
+      .nth(options.index ?? 0)
       .click({ timeout: options.timeout });
   }
 
@@ -120,7 +120,9 @@ export default abstract class BasePage {
     text: string,
     options: { timeout?: number; exact?: boolean } = { exact: true },
   ) {
-    await this.page.getByText(text, { exact: options.exact }).click({ timeout: options.timeout });
+    await this.page
+      .getByText(text, { exact: options.exact ?? true })
+      .click({ timeout: options.timeout });
   }
 
   @BoxedDetailedStep(classKey, 'input', 'selector')
@@ -128,15 +130,14 @@ export default abstract class BasePage {
   protected async inputText(
     input: string | number,
     selector: string,
-    options: { index?: number; timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.index) {
-      await this.page.locator(selector).nth(options.index).fill(input.toString());
-    } else {
-      await this.page.fill(selector, input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @BoxedDetailedStep(classKey, 'input', 'label')
@@ -144,18 +145,23 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
+    options: {
+      index?: number;
+      timeout?: number;
+      containerSelector?: string;
+      first?: boolean;
+      exact?: boolean;
+    } = { exact: true },
   ) {
-    if (options.index) {
-      await this.page
-        .getByLabel(label, { exact: options.exact })
-        .nth(options.index)
-        .fill(input.toString());
-    } else {
-      await this.page.getByLabel(label, { exact: options.exact }).fill(input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+
+    let locator = this.page.getByLabel(label, { exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString(), {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -163,11 +169,14 @@ export default abstract class BasePage {
   protected async inputSensitiveText(
     input: string | number,
     selector: string,
-    options: { timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    await this.page.fill(selector, input.toString(), {
-      timeout: options.timeout,
-    });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @TruthyParams(classKey)
@@ -196,11 +205,11 @@ export default abstract class BasePage {
   ) {
     if (typeof option === 'number')
       await this.page
-        .getByLabel(selector, { exact: options.exact })
+        .getByLabel(selector, { exact: options.exact ?? true })
         .selectOption({ index: option }, { timeout: options.timeout });
     else
       await this.page
-        .getByLabel(selector, { exact: options.exact })
+        .getByLabel(selector, { exact: options.exact ?? true })
         .selectOption(option, { timeout: options.timeout });
   }
 
@@ -419,7 +428,11 @@ export default abstract class BasePage {
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
     await pageExpect(
-      this.page.getByRole('heading', { name: text.toString(), level: 1, exact: options.exact }),
+      this.page.getByRole('heading', {
+        name: text.toString(),
+        level: 1,
+        exact: options.exact ?? true,
+      }),
     ).toBeVisible({
       timeout: options.timeout,
     });
@@ -438,7 +451,7 @@ export default abstract class BasePage {
     const locator = this.page.getByRole('heading', {
       name: text.toString(),
       level: 1,
-      exact: options.exact,
+      exact: options.exact ?? true,
     });
 
     try {
@@ -486,7 +499,7 @@ export default abstract class BasePage {
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
       level: 2,
-      exact: options.exact,
+      exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
@@ -533,7 +546,7 @@ export default abstract class BasePage {
     let locator = this.page.getByRole('heading', {
       name: text.toString(),
       level: 2,
-      exact: options.exact,
+      exact: options.exact ?? true,
     });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
@@ -675,7 +688,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.getByText(text.toString(), { exact: options.exact });
+    let locator = this.page.getByText(text.toString(), { exact: options.exact ?? true });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -718,7 +731,7 @@ export default abstract class BasePage {
       throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
     }
 
-    let locator = this.page.getByText(text.toString(), { exact: options.exact });
+    let locator = this.page.getByText(text.toString(), { exact: options.exact ?? true });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
@@ -769,7 +782,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('label').getByText(label, { exact: options.exact });
+    let locator = this.page.locator('label').getByText(label, { exact: options.exact ?? true });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -826,7 +839,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.getByRole('link', { name, exact: options.exact });
+    let locator = this.page.getByRole('link', { name, exact: options.exact ?? true });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -883,7 +896,7 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.locator('legend').getByText(label, { exact: options.exact });
+    let locator = this.page.locator('legend').getByText(label, { exact: options.exact ?? true });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -919,7 +932,7 @@ export default abstract class BasePage {
     await pageExpect(
       this.page
         .locator('label')
-        .getByText(label, { exact: options.exact })
+        .getByText(label, { exact: options.exact ?? true })
         .locator(`[for="${inputId}"]`),
       {
         message: options.message,
@@ -927,8 +940,70 @@ export default abstract class BasePage {
     ).toBeVisible({ timeout: options.timeout });
   }
 
+  @BoxedDetailedStep(classKey, 'label', 'selector')
+  protected async expectRadioLabel(
+    label: string,
+    selector: string,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    const inputId = await locator.getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText(label, { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectYesLabel(
+  protected async expectRadioYesLabel(
     selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
@@ -944,7 +1019,7 @@ export default abstract class BasePage {
   }
 
   @BoxedDetailedStep(classKey, 'selector')
-  protected async expectNoLabel(
+  protected async expectRadioNoLabel(
     selector: string,
     options: { message?: string; timeout?: number } = {},
   ) {
@@ -964,7 +1039,7 @@ export default abstract class BasePage {
     name: string,
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
-    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
+    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact ?? true }), {
       message: options.message,
     }).toBeVisible({
       timeout: options.timeout,
@@ -976,7 +1051,7 @@ export default abstract class BasePage {
     name: string,
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
-    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact }), {
+    await pageExpect(this.page.getByRole('tab', { name, exact: options.exact ?? true }), {
       message: options.message,
     }).toBeHidden({
       timeout: options.timeout,
@@ -988,7 +1063,7 @@ export default abstract class BasePage {
     name: string,
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
-    await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
+    await pageExpect(this.page.getByRole('button', { name, exact: options.exact ?? true }), {
       message: options.message,
     }).toBeVisible({
       timeout: options.timeout,
@@ -1000,7 +1075,7 @@ export default abstract class BasePage {
     name: string,
     options: { message?: string; exact?: boolean; timeout?: number } = { exact: true },
   ) {
-    await pageExpect(this.page.getByRole('button', { name, exact: options.exact }), {
+    await pageExpect(this.page.getByRole('button', { name, exact: options.exact ?? true }), {
       message: options.message,
     }).toBeHidden({
       timeout: options.timeout,
@@ -1044,7 +1119,7 @@ export default abstract class BasePage {
     else
       locator = this.page
         .locator(selector)
-        .getByRole('option', { name: option, exact: options.exact });
+        .getByRole('option', { name: option, exact: options.exact ?? true });
 
     await pageExpect(locator, {
       message: options.message,
@@ -1086,7 +1161,7 @@ export default abstract class BasePage {
       .locator('tr', {
         has: this.page.locator(`*:has-text("${rowName}")`),
       })
-      .getByRole('cell', { exact: options.exact, name: value.toString() });
+      .getByRole('cell', { exact: options.exact ?? true, name: value.toString() });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
@@ -1144,7 +1219,10 @@ export default abstract class BasePage {
       throw new ExpectError("'count' cannot be set to 0");
     }
 
-    let locator = this.page.getByRole('cell', { name: value.toString(), exact: options.exact });
+    let locator = this.page.getByRole('cell', {
+      name: value.toString(),
+      exact: options.exact ?? true,
+    });
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     if (options.ignoreDuplicates) {
