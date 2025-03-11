@@ -10,7 +10,7 @@ if (config.runWAApiTest) {
   multiTrackDirectionsExpectedTask = require('../../../../wa/tasks/multiTrackDirectionsTask.js');
   intermediateTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/intermediateTrackOrderMadeReviewCaseTask.js');
 }
-Feature('CCD API test unspec multi track @api-unspec-multi-intermediate @api-prod');
+Feature('CCD API test unspec multi track @api-unspec-multi-intermediate');
 
 async function prepareClaim(api, mpScenario, claimAmount, WA) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);

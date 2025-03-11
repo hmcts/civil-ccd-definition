@@ -7,7 +7,7 @@ const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate @api-prod');
+Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate');
 
 async function prepareClaim(api, mpScenario, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
