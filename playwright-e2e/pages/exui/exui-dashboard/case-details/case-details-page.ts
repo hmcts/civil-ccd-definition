@@ -92,7 +92,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       },
       async () => {
         await super.waitForPageToLoad();
-        await super.expectNoTab(tabs.summary.title, {
+        await super.expectNoText(tabs.summary.title, {
           timeout: config.exui.pageSubmitTimeout,
         });
       },
