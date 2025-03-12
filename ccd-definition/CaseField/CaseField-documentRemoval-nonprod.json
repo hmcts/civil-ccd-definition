@@ -1,9 +1,0 @@
-{
-  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-  "ID": "documentToKeepCollection",
-  "Label": "Documents to keep",
-  "FieldType": "Collection",
-  "FieldTypeParameter": "documentToKeep",
-  "SecurityClassification": "Public",
-  "Searchable": "N"
-}
