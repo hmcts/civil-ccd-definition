@@ -116,5 +116,14 @@
     "CaseFieldID": "joFullyPaymentMadeDate",
     "TabFieldDisplayOrder": 13,
     "FieldShowCondition": "joIsLiveJudgmentExists = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "JudgmentTab",
+    "TabLabel": "Judgment",
+    "TabDisplayOrder": 9,
+    "CaseFieldID": "joSetAsideCreatedDate",
+    "TabFieldDisplayOrder": 14,
+    "FieldShowCondition": "joIsLiveJudgmentExists = \"*\""
   }
 ]
