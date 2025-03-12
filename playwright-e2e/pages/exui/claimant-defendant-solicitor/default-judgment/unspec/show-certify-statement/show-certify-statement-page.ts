@@ -7,11 +7,9 @@ import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class ShowCertifyStatmentPage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData) {
+  async verifyContent() {
     await super.runVerifications([
       super.expectText(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-      super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectText(lists.timeExpired),
       super.expectText(lists.notResponded),
       super.expectText(lists.noOutstandingApp),

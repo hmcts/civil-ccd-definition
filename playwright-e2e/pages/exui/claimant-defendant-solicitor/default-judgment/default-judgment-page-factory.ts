@@ -21,6 +21,7 @@ import HearingSupportRequirementsFieldDJPage from './unspec/hearing-support-requ
 import HearingTypePage from './unspec/hearing-type/hearing-type-page';
 import ShowCertifyStatmentBothPage from './unspec/show-certify-statement-both/show-certify-statement-both-page';
 import ShowCertifyStatmentPage from './unspec/show-certify-statement/show-certify-statement-page';
+import ConfirmDefaultJudgmentPage from "./common/confirm-default-judgment/confirm-default-judgment-page.ts";
 
 export default class DefaultJudgmentPageFactory extends BasePageFactory {
   get defendantDetailsPage() {
@@ -109,5 +110,9 @@ export default class DefaultJudgmentPageFactory extends BasePageFactory {
 
   get submitDefaultJudgmentPage() {
     return new SubmitDefaultJudgmentPage(this.page);
+  }
+
+  get confirmDefaultJudgmentPage() {
+    return new ConfirmDefaultJudgmentPage(this.page);
   }
 }

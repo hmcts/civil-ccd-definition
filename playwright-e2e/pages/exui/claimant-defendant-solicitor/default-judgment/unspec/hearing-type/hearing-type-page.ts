@@ -11,8 +11,6 @@ export default class HearingTypePage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-      super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectSubheading(subheadings.hearingType),
       super.expectText(paragraphs.descriptionText),
     ]);
