@@ -16,11 +16,11 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new ConfirmNameAndAddressPage(this.page, dateOfBirthFragment);
   }
 
-  get responseIntentionDefendant1Page() {
+  get responseIntentionDS1Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_1);
   }
 
-  get responseIntentionDefendant2Page() {
+  get responseIntentionDS2Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_2);
   }
 
@@ -32,7 +32,7 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new ResponseIntention1v2SSPage(this.page);
   }
 
-  get solicitorReferencesAcknowledgeClaimDefendant1Page() {
+  get solicitorReferencesAcknowledgeClaimDS1Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -45,7 +45,7 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     );
   }
 
-  get solicitorReferencesAcknowledgeClaimDefendant2Page() {
+  get solicitorReferencesAcknowledgeClaimDS2Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_2,

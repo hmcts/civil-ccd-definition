@@ -16,15 +16,15 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
     await super.retryReloadRunVerifications(() => [
       super.verifyHeadings(caseData),
-      super.expectTab(tabs.summary.title, { timeout: config.playwright.shortExpectTimeout }),
-      super.expectTab(tabs.caseFile.title),
-      super.expectTab(tabs.claimDetails.title),
-      super.expectTab(tabs.history.title),
+      super.expectText(tabs.summary.title, { timeout: config.playwright.shortExpectTimeout }),
+      super.expectText(tabs.caseFile.title),
+      super.expectText(tabs.claimDetails.title),
+      super.expectText(tabs.history.title),
       // super.expectText(tabs.claimDocs.title),
-      super.expectTab(tabs.paymentHistory.title),
+      super.expectText(tabs.paymentHistory.title),
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
-      super.expectTab(tabs.bundles.title),
-      super.expectTab(tabs.caseFlags.title),
+      super.expectText(tabs.bundles.title),
+      super.expectText(tabs.caseFlags.title),
       super.expectLabel(dropdowns.nextStep.label),
     ]);
   }

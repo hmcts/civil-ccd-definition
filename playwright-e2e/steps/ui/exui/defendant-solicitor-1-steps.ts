@@ -150,8 +150,8 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     await this.retryExuiEvent(
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
-        await acknowlegdeClaimActions.responseIntentionDefendant1();
-        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant1();
+        await acknowlegdeClaimActions.responseIntentionDS1();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
@@ -169,7 +169,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntention2v1();
-        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant1();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
@@ -187,7 +187,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntention1v2SS();
-        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant1(); // await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant2();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1(); // await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant2();
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {

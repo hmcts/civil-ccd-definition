@@ -18,17 +18,17 @@ export default class AcknowledgeClaimActions extends BaseTestData {
     await confirmNameAndAddressPage.submit();
   }
 
-  async responseIntentionDefendant1() {
-    const { responseIntentionDefendant1Page } = this.acknowledgeClaimPageFactory;
-    await responseIntentionDefendant1Page.verifyContent(this.ccdCaseData);
-    await responseIntentionDefendant1Page.selectRejectAll();
-    await responseIntentionDefendant1Page.submit();
+  async responseIntentionDS1() {
+    const { responseIntentionDS1Page } = this.acknowledgeClaimPageFactory;
+    await responseIntentionDS1Page.verifyContent(this.ccdCaseData);
+    await responseIntentionDS1Page.selectRejectAll();
+    await responseIntentionDS1Page.submit();
   }
 
-  async solicitorReferencesAcknowledgeClaimDefendant1() {
-    const { solicitorReferencesAcknowledgeClaimDefendant1Page } = this.acknowledgeClaimPageFactory;
-    await solicitorReferencesAcknowledgeClaimDefendant1Page.verifyContent();
-    await solicitorReferencesAcknowledgeClaimDefendant1Page.submit();
+  async solicitorReferencesAcknowledgeClaimDS1() {
+    const { solicitorReferencesAcknowledgeClaimDS1Page } = this.acknowledgeClaimPageFactory;
+    await solicitorReferencesAcknowledgeClaimDS1Page.verifyContent();
+    await solicitorReferencesAcknowledgeClaimDS1Page.submit();
   }
 
   async submitAcknowledgeClaim() {
@@ -57,9 +57,9 @@ export default class AcknowledgeClaimActions extends BaseTestData {
     await responseIntention1v2SSPage.submit();
   }
 
-  async solicitorReferencesAcknowledgeClaimDefendant2() {
-    const { solicitorReferencesAcknowledgeClaimDefendant2Page } = this.acknowledgeClaimPageFactory;
-    await solicitorReferencesAcknowledgeClaimDefendant2Page.verifyContent();
-    await solicitorReferencesAcknowledgeClaimDefendant2Page.submit();
+  async solicitorReferencesAcknowledgeClaimDS2() {
+    const { solicitorReferencesAcknowledgeClaimDS2Page } = this.acknowledgeClaimPageFactory;
+    await solicitorReferencesAcknowledgeClaimDS2Page.verifyContent();
+    await solicitorReferencesAcknowledgeClaimDS2Page.submit();
   }
 }
