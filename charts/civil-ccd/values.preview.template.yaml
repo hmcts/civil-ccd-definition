@@ -8,8 +8,6 @@ civil-service:
       civil:
         resourceGroup: civil
         secrets:
-          - name: appinsights-instrumentation-key
-            alias: azure.application-insights.instrumentation-key
           - name: civil-idam-client-secret
             alias: idam.client.secret
           - name: microservicekey-civil-service
