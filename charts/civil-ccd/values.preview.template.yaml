@@ -3,7 +3,7 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:pr-5997'
+    image: 'hmctspublic.azurecr.io/civil/service:latest'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -221,7 +221,6 @@ ccd:
 camunda-bpm:
   enabled: true
   java:
-    image: "hmctsprivatetemp.azurecr.io/camunda/bpm:latest"
     disableKeyVaults: true
     environment:
 #      CAMUNDA_DB_HOST: civil-preview.postgres.database.azure.com
