@@ -93,6 +93,7 @@ const calculatedClaimsTrackWOSum = {
         && typeof data.input4 === 'string';
     },
     fastTrackTrialToggle: (data) => Array.isArray(data),
+    fastTrackTrialBundleToggle: (data) => Array.isArray(data),
     fastTrackNotes: (data) => {
       return typeof data.input === 'string';
     },
