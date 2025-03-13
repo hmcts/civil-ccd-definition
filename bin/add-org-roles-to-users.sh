@@ -50,4 +50,5 @@ echo "Setting up Users with role assignments..."
 ./bin/utils/organisational-role-assignment.sh "tribunal_legal_caseworker_reg4@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"CIVIL","primaryLocation":"366774"}' "LEGAL_OPERATIONS"
 ./bin/utils/organisational-role-assignment.sh "tribunal_legal_caseworker_reg4@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "hearing-manager" '{"jurisdiction":"CIVIL","primaryLocation":"366774"}' "LEGAL_OPERATIONS"
 ./bin/utils/organisational-role-assignment.sh "tribunal_legal_caseworker_reg4@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "tribunal-caseworker" '{"jurisdiction":"CIVIL","primaryLocation":"366774","workTypes":"decision_making_work"}' "LEGAL_OPERATIONS"
+./bin/utils/organisational-role-assignment.sh "ctsc_team_leader_region4@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "hearing-centre-team-leader" '{"jurisdiction":"CIVIL","primaryLocation":"20262","workTypes":"hearing_work,access_requests,routine_work"}' "ADMIN"
 
