@@ -404,8 +404,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -424,8 +423,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "RES-SOL-ONE-SPEC-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -463,8 +461,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "RES-SOL-TWO-SPEC-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }
@@ -674,6 +671,19 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
