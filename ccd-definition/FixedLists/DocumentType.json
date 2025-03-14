@@ -106,5 +106,11 @@
     "ListElementCode": "SEND_APP_TO_OTHER_PARTY",
     "ListElement": "Send Application to other party",
     "DisplayOrder": 18
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "QUERY_DOCUMENT",
+    "ListElement": "Query Document",
+    "DisplayOrder": 19
   }
 ]
