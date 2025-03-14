@@ -16,9 +16,16 @@ export default class DefaultJudgmentActions extends BaseTestData {
   async defendantDetails() {
   const { defendantDetailsPage } = this.defaultJudgmentFactory;
   await defendantDetailsPage.verifyContent(this.ccdCaseData);
-  await defendantDetailsPage.selectDefendant(claimantDefendantPartyTypes.INDIVIDUAL)
+  await defendantDetailsPage.selectDefendant(claimantDefendantPartyTypes.INDIVIDUAL);
   await defendantDetailsPage.submit();
 }
+
+  async defendantDetails1v2() {
+    const { defendantDetails1v2Page } = this.defaultJudgmentFactory;
+    await defendantDetails1v2Page.verifyContent(this.ccdCaseData);
+    await defendantDetails1v2Page.selectDefendant1(claimantDefendantPartyTypes.INDIVIDUAL);
+    await defendantDetails1v2Page.submit();
+  }
 
   async showCertifyStatement() {
     const { showCertifyStatementPage } = this.defaultJudgmentFactory;

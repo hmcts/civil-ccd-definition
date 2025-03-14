@@ -404,12 +404,30 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RequestDefaultJudgment1v1SmallTrack(){
+  async RequestDefaultJudgment(){
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
-    await super.fetchAndSetCCDCaseData( 1741785181806702);
     await this.retryExuiEvent(
       async () => {
         await defaultJudgementActions.defendantDetails();
+        await defaultJudgementActions.showCertifyStatement();
+        await defaultJudgementActions.hearingType();
+        await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
+        await defaultJudgementActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false},
+    );
+  }
+
+  async RequestDefaultJudgment1v2(){
+    const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementActions.defendantDetails1v2();
         await defaultJudgementActions.showCertifyStatement();
         await defaultJudgementActions.hearingType();
         await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
