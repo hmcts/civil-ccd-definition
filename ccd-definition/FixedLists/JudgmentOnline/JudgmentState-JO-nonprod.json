@@ -20,25 +20,25 @@
   {
     "ID": "JudgmentState",
     "ListElementCode": "SATISFIED",
-    "ListElement": "Satisfied",
+    "ListElement": "Satisfied - Paid in Full",
     "DisplayOrder": 4
   },
   {
     "ID": "JudgmentState",
     "ListElementCode": "SET_ASIDE",
-    "ListElement": "Set aside",
+    "ListElement": "Cancelled - Set aside",
     "DisplayOrder": 5
   },
   {
     "ID": "JudgmentState",
     "ListElementCode": "SET_ASIDE_ERROR",
-    "ListElement": "Set aside in error",
+    "ListElement": "Cancelled - Set aside in error",
     "DisplayOrder": 6
   },
   {
     "ID": "JudgmentState",
     "ListElementCode": "CANCELLED",
-    "ListElement": "Cancelled",
+    "ListElement": "Cancelled - Paid in Full",
     "DisplayOrder": 7
   }
 ]
