@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_JUDGMENT_DETAILS_CJES_SA",
-    "Name": "Send judgement CJES Set aside",
+    "Name": "Send judgment CJES Set aside",
     "Description": " ",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -15,7 +15,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_JUDGMENT_DETAILS_CJES",
-    "Name": "Send judgement details CJES",
+    "Name": "Send judgment details CJES",
     "Description": " ",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",

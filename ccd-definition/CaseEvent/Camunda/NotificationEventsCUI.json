@@ -263,7 +263,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT1_FOR_REQUEST_JUDGEMENT_BY_ADMISSION",
     "Name": "Email: Transferred offline",
-    "Description": "Notify respondent 1 for request judgement by admission",
+    "Description": "Notify respondent 1 for request judgment by admission",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
