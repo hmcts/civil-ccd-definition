@@ -54,7 +54,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -86,7 +88,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
