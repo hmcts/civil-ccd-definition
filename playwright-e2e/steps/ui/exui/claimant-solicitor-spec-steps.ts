@@ -268,4 +268,49 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async RequestDefaultJudgment(){
+    const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
+    await super.fetchAndSetCCDCaseData(1742042904892786);
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementSpecActions.defendantDetails();
+        await defaultJudgementSpecActions.showCertifyStatement();
+        await defaultJudgementSpecActions.claimPartialPayment();
+        await defaultJudgementSpecActions.fixedCostsOnEntry();
+        await defaultJudgementSpecActions.paymentBreakdown();
+        await defaultJudgementSpecActions.paymentType();
+        await defaultJudgementSpecActions.paymentSetDate();
+        await defaultJudgementSpecActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementSpecActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false},
+    );
+  }
+
+  async RequestDefaultJudgment1v2(){
+    const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementSpecActions.defendantDetails1v2();
+        await defaultJudgementSpecActions.showCertifyStatementMultipleDefendants();
+        await defaultJudgementSpecActions.claimPartialPayment1v2();
+        await defaultJudgementSpecActions.fixedCostsOnEntry();
+        await defaultJudgementSpecActions.paymentBreakdown1v2();
+        await defaultJudgementSpecActions.paymentType1v2();
+        await defaultJudgementSpecActions.repaymentInformation1v2();
+        await defaultJudgementSpecActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementSpecActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false},
+    );
+  }
 }
