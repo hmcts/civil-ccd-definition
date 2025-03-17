@@ -517,6 +517,19 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_BUNDLE_CREATION",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil",
+          "judge-profile"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "AccessControl": [
       {
