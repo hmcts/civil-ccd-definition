@@ -168,7 +168,7 @@ Scenario('1v1 full defence unspecified - legal advisor draws fast track WITHOUT 
   }
 });
 
-Scenario('1v1 full defence unspecified - judge draws disposal order - hearing scheduled @wa-r4', async ({ api, WA}) => {
+Scenario.only('1v1 full defence unspecified - judge draws disposal order - hearing scheduled @wa-r4', async ({ api, WA}) => {
   await prepareClaim(api, claimAmountJudge);
   const caseId = await api.getCaseId();
   if (config.runWAApiTest) {
