@@ -47,6 +47,8 @@ The below labels are options to get the different services running on the PR
 
   "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
 
+  "civilServicePr:????" label to point this deployment to a specific civil-service image,
+  replace ???? with the correspondent civil-service PR number, e.g. civilServicePr:6215 .
 
 ```
 Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.

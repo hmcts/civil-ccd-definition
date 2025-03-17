@@ -1486,6 +1486,18 @@ module.exports = {
     return caseId;
   },
 
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
+  completeTaskByUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'complete');
+  },
+
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
     console.log(`Checking ${user.email} ${shouldHaveAccess ? 'has' : 'does not have'} access to the case.`);
     const expectedStatus = shouldHaveAccess ? 200 : 404;
@@ -1748,7 +1760,7 @@ module.exports = {
 
    if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        header: '# Your claim will be fully discontinued against the specified defendants',
         body: ''
       }, true);
     } else if (mpScenario === 'ONE_V_TWO') {

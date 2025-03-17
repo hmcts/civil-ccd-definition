@@ -46,7 +46,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.expectText(inputs.timelineEvent.date.label, { count }),
-        this.dateFragment.verifyContent(),
+        this.dateFragment.verifyContent(inputs.timelineEvent.date.selectorKey),
         super.expectLabel(inputs.timelineEvent.eventDescription.label, { count }),
       ],
       { runAxe: false },
@@ -55,7 +55,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
 
   async fillEvent1Details() {
     const date = DateHelper.subtractFromToday({ years: 1 });
-    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 0);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, { index: 0 });
     await super.inputText(
       `Timeline event description for event 1 - ${this.defendantParty.key}`,
       inputs.timelineEvent.eventDescription.selector(this.defendantParty, 0),
@@ -64,7 +64,7 @@ export default class HowToAddTimelineManualPage extends ExuiPage(BasePage) {
 
   async fillEvent2Details() {
     const date = DateHelper.subtractFromToday({ months: 11 });
-    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, 1);
+    await this.dateFragment.enterDate(date, inputs.timelineEvent.date.selectorKey, { index: 1 });
     await super.inputText(
       `Timeline event description for event 2 - ${this.defendantParty.key}`,
       inputs.timelineEvent.eventDescription.selector(this.defendantParty, 1),

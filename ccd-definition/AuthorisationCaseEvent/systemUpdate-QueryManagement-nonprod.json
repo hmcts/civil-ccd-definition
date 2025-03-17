@@ -1,0 +1,14 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RAISED_QUERY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RESPONSE_TO_QUERY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  }
+]
