@@ -151,12 +151,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideApplicationDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2PartyNameLabelDraftDirections",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -871,12 +865,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "hearingDocumentsWelsh",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "manageStayRequestUpdateText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1166,12 +1154,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "expertSelectionEvidence",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "qmRespondentSolicitor1Queries",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -1543,12 +1525,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent1NoticeOfDiscontinueCWViewDoc",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OrgIndividuals",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1567,12 +1543,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondentSolicitorDetails",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentResponsePcqId",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1586,12 +1556,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "smallClaimsFlightDelayTitle",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppHelpWithFees",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -1693,12 +1657,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "lblMarkPaidInFull",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp2MediationAvailability",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1747,12 +1705,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "hearingDurationInMinutesAHN",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderSelectionLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -1778,12 +1730,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "caseTitle",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppTypeLR",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -1862,12 +1808,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "fastTrackBuildingDispute",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joTotalAmount",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -2047,18 +1987,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimantTrialReadyDocumentCreated",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joConfirmSentToBothDef",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "smallClaimsMethodInPerson",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2078,12 +2006,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessSummaryRes2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joDefendantMarkedPaidInFullIssueDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -2311,12 +2233,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "activeJudgment",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "sdtRequestId",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2342,12 +2258,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessSummaryApp2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "settlementSummary",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -2461,18 +2371,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joRepaymentSummaryObject",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joFullyPaymentMadeDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "responseClaimMediationSpecRequired",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2552,12 +2450,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "expertToggleTextRes",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimantWhoIsSettling",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -2659,12 +2551,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "isDiscontinuingAgainstBothDefendants",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "resp1MediationContactInfo",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2689,18 +2575,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "markPaidForAllClaimants",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimantsConsentToDiscontinuance",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderRecitals",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2714,18 +2588,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2DQHearingFastClaim",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "permissionGrantedDateCopy",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joState",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -2881,12 +2743,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "permissionGrantedComplex",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingDisclosureOfDocumentsToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -2924,12 +2780,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingOrderAndHearingDetailsDJ",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joPaymentPlan",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -3265,12 +3115,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "qmRespondentSolicitor2Queries",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentWitnessStatement",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -3355,12 +3199,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideDefenceReceivedDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimant2ClaimResponseTypeForSpecLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -3380,12 +3218,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1FullAdmitAmountLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "validateDiscontinuanceLbl",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -3493,12 +3325,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "permissionNotGrantedText",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialRoadTrafficAccident",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -3559,12 +3385,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "isPermissionGranted",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "amendApplicant2SolicitorEmailLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -3578,12 +3398,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "cosLabelDef1",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent2NoticeOfDiscontinueAllPartyViewDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -3841,12 +3655,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joJudgementByAdmissionIssueDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderReasonsLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -3878,12 +3686,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "witnessToggleText",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joJudgmentRecordReason",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -3956,12 +3758,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimPartAdmitBySetDateLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNamesDD",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -4094,12 +3890,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor2ServiceAddress",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "lblRecordJudgment",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -4243,12 +4033,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joJudgmentPaidInFull",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "sdoR2FastTrackWelshLangEndLine",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -4327,12 +4111,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "applicant1NoticeOfDiscontinueCWViewDoc",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialSelectionEvidenceSmallClaimRes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -4406,12 +4184,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "sdoSeparatorSettlement",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joPaymentPlanSelected",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -4741,12 +4513,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideOrderType",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2DQFixedRecoverableCostsIntermediate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -4838,12 +4604,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joAmountOrdered",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -4958,12 +4718,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "qmApplicantSolicitorQueries",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -5179,12 +4933,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joRepaymentFrequency",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "requestForReviewCommentsDefendant",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5239,12 +4987,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "confirmOrderGivesPermission",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "locationName",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5270,12 +5012,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "smallClaimsHearingEndLine",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joDJCreatedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -5437,12 +5173,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "selectedClaimantForDiscontinuance",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "orderOnCourtsList",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5527,19 +5257,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondForImmediateOption",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingBundleEndLine",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIsLiveJudgmentExists",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -5791,12 +5509,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joOrderMadeDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "showDJFixedCostsScreen",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5833,12 +5545,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joShowRegisteredWithRTLOption",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalAppSubmittedDateGAspec",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -5846,12 +5552,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "interestFromSpecificDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIsRegisteredWithRTL",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -5894,12 +5594,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "breakDownInterestTotal",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppReasonsOfOrderColl",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6091,19 +5785,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "discontinuingAgainstOneDefendant",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "upholdingPreviousOrderReason",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joCosts",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6325,12 +6007,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIsDisplayInJudgmentTab",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "specEligibilityQuestions",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -6386,12 +6062,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "reasonForReconsiderationRespondent1",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "courtPermissionNeededText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6535,12 +6205,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joRepaymentAmount",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "specAoSRespondentDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -6578,12 +6242,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderTrackAllocation",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideOrderDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6650,12 +6308,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "dismissalOrderDocRespondentSolTwo",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "certOfSC",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6865,12 +6517,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNames4",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingMedicalEvidenceToggle",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -6884,12 +6530,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "witnessToggleTextSmallClaimRes",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNames3",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -6913,30 +6553,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNames1",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joRepaymentSummaryLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "courtPermissionNeededChecked",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalAppUrgencyRequirement",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -6944,18 +6560,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "trialLabelSmallClaimRes",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joInstalmentDetails",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppAskForCosts",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -7417,12 +7021,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joMarkedPaidInFullIssueDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1PartnerAndDependentLabel",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -7495,12 +7093,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "typeOfDiscontinuance",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "writtenRepSeqDocClaimant",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -7520,12 +7112,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disposalHearingFinalDisposalHearingTimeDJ",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimantWhoIsDiscontinuing",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -7568,12 +7154,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderOrderedThatText",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "applicant1NoticeOfDiscontinueAllPartyViewDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -7676,12 +7256,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "interestClaimOptions",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joAmountCostOrdered",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -7844,12 +7418,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimInterestHelpTextLink",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "markPaidConsent",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -8149,12 +7717,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "historicJudgment",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimantResponseSubmittedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -8299,12 +7861,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNamesTD",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentAndNote",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -8407,12 +7963,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partDiscontinuanceDetails",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "specDebtPageLabel2",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -8432,12 +7982,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2DQRequestedCourt",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideJudgmentErrorText",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -8480,12 +8024,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "specClaimTimelineListLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIssuedDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -8617,18 +8155,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideCreatedDate",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "confirmOrderGivesPermissionLbl",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "bothDefendants",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -8702,12 +8228,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2DQExperts",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "coscSchedulerDeadline",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -8918,12 +8438,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentEvidenceForTrialApp2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joIssueDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -9151,12 +8665,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joPartiesNames",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1DQWitnesses",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -9164,12 +8672,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "finalOrderMadeSelection",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "courtPermissionNeeded",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -9415,19 +8917,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "defendantTrialReadyDocumentCreated",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondToAdmittedClaim",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent2NoticeOfDiscontinueCWViewDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -9458,12 +8948,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1AdditionalInformationForJudge",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joSetAsideReason",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -9517,12 +9001,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "partiesNames",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "repaymentFrequency",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -9536,12 +9014,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "disabilityPremiumPayments",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "confirmReferToJudgeDefenceReceived",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -9847,12 +9319,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "settleReason",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "dismissalOrderDocClaimant",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -10039,12 +9505,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppDetailsOfOrderColl",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimIssuedHwfDetails",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -10130,12 +9590,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1LitigationFriendRequired",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent1NoticeOfDiscontinueAllPartyViewDoc",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -10250,12 +9704,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantStatementOfTruthLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joRepaymentStartDate",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -10376,18 +9824,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joDefendantName1",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joDefendantName2",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -10549,12 +9985,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "qmLatestQuery",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "multiPartyResponseTypeFlags",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -10580,12 +10010,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1ServiceAddressRequired",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joOrderedAmount",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -10861,12 +10285,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "joCoscRpaStatus",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "documentForDisclosureRes",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -10994,12 +10412,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "sdoR2SmallClaimsWarning2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "coSCApplicationStatus",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -11372,12 +10784,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationTextRespondent2",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "permissionGrantedJudgeCopy",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
