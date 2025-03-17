@@ -44,6 +44,7 @@ set -eo pipefail
 ./bin/utils/ccd-add-role.sh "nbc-team-leader"
 ./bin/utils/ccd-add-role.sh "ctsc"
 ./bin/utils/ccd-add-role.sh "ctsc-team-leader"
+./bin/utils/ccd-add-role.sh "caseworker-civil-doc-removal"
 
 roles=("solicitor" "systemupdate" "admin" "staff")
 for role in "${roles[@]}"
