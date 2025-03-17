@@ -4,7 +4,7 @@ const claimType = 'INTERMEDIATE';
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 let caseId, taskId, takeCaseOfflineTaskeExpectedTask;
 if (config.runWAApiTest) {
-  takeCaseOfflineTaskeExpectedTask = require('../../../../wa/tasks/takeCaseOfflineTask.js');
+  takeCaseOfflineTaskeExpectedTask = require('../../../wa/tasks/takeCaseOfflineTask.js');
 }
 
 Feature('CCD 1v1 LR v LiP API test spec intermediate  track @api-spec-multi-intermediate @api-prod @api-nonprod');

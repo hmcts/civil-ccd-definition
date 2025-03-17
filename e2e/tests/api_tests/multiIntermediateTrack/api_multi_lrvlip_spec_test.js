@@ -3,7 +3,7 @@ const { deleteAccount, createAccount } = require('../../../api/idamHelper');
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId2;
 let caseId, taskId, takeCaseOfflineTaskeExpectedTask;
 if (config.runWAApiTest) {
-  takeCaseOfflineTaskeExpectedTask = require('../../../../wa/tasks/takeCaseOfflineTask.js');
+  takeCaseOfflineTaskeExpectedTask = require('../../../wa/tasks/takeCaseOfflineTask.js');
 }
 const claimType = 'MULTI';
 
