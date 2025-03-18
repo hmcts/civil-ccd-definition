@@ -19,3 +19,25 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
   });
 });
+
+test.describe('Unspecified Small Track 1v1 With Default Judgment', async () => {
+  test('Defendant Full Defence Claimant Intent To Proceed With Default Judgment', async ({
+    ClaimantSolicitorSteps,
+    DefendantSolicitor1Steps,
+    ClaimantSolicitorApiSteps,
+    CaseRoleAssignmentApiSteps,
+   }) => {
+    await ClaimantSolicitorSteps.Login();
+    await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
+    await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
+    await ClaimantSolicitorSteps.NotifyClaim();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    await ClaimantSolicitorSteps.NotifyClaimDetails();
+    await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
+    await ClaimantSolicitorSteps.RequestDefaultJudgment();
+    await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
+    await ClaimantSolicitorSteps.Login();
+    await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
+  });
+});
