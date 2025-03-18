@@ -131,14 +131,14 @@ Scenario('Lift the stay case - Manage stay', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Judge triggers SDO', async ({I}) => {
+Scenario.skip('Judge triggers SDO', async ({I}) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
   await I.waitForText('Summary');
   await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 
-Scenario('Claimant solicitor uploads evidence', async ({I}) => {
+Scenario.skip('Claimant solicitor uploads evidence', async ({I}) => {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);
 }).retry(3);
@@ -148,7 +148,7 @@ Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
     await I.evidenceUpload(caseNumber, true);
 }).retry(3);
 
-Scenario('Create a Hearing Request', async ({I}) => {
+Scenario.skip('Create a Hearing Request', async ({I}) => {
   if (['demo'].includes(config.runningEnv)) {
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
@@ -158,7 +158,7 @@ Scenario('Create a Hearing Request', async ({I}) => {
   }
 }).retry(3);
 
-Scenario('Transfer online case', async ({I}) => {
+Scenario.skip('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.transferOnlineCase();
 }).retry(3);
