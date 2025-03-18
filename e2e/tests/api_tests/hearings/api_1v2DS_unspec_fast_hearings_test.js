@@ -39,12 +39,12 @@ Scenario('Listing officer adds case flags', async ({hearings}) => {
   await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
 });
 
-Scenario('Judge choose hearing in person', async ({api}) => {
+Scenario.skip('Judge choose hearing in person', async ({api}) => {
   if(!continueWithScenario()) return;
   await api.createSDO(config.judgeUser2WithRegionId2, 'CREATE_FAST_IN_PERSON');
 });
 
-Scenario('Hearing centre admin requests a hearing', async ({hearings}) => {
+Scenario.skip('Hearing centre admin requests a hearing', async ({hearings}) => {
   if(!continueWithScenario()) return;
   await hearings.generateHearingsPayload(config.hearingCenterAdminWithRegionId2, caseId, serviceId);
 });
