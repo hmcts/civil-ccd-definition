@@ -16,15 +16,17 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
     await super.retryReloadRunVerifications(() => [
       super.verifyHeadings(caseData),
-      super.expectText(tabs.summary.title, { timeout: config.playwright.shortExpectTimeout }),
-      super.expectText(tabs.caseFile.title),
-      super.expectText(tabs.claimDetails.title),
-      super.expectText(tabs.history.title),
+      super.expectSelector(tabs.summary.selector, {
+        timeout: config.playwright.shortExpectTimeout,
+      }),
+      super.expectSelector(tabs.caseFile.selector),
+      super.expectSelector(tabs.claimDetails.selector),
+      super.expectSelector(tabs.history.selector),
       // super.expectText(tabs.claimDocs.title),
-      super.expectText(tabs.paymentHistory.title),
+      super.expectSelector(tabs.paymentHistory.selector),
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
-      super.expectText(tabs.bundles.title),
-      super.expectText(tabs.caseFlags.title),
+      super.expectSelector(tabs.bundles.selector),
+      super.expectSelector(tabs.caseFlags.selector),
       super.expectLabel(dropdowns.nextStep.label),
     ]);
   }
@@ -92,7 +94,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       },
       async () => {
         await super.waitForPageToLoad();
-        await super.expectNoText(tabs.summary.title, {
+        await super.expectNoSelector(tabs.summary.selector, {
           timeout: config.exui.pageSubmitTimeout,
         });
       },

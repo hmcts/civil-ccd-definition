@@ -16,9 +16,7 @@ test.describe('Specified Small Track 1v1', async () => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v1();
   });
-});
 
-test.describe('Specified Small Track 1v1 With Default Judgment ', async () => {
   test('Defendant Full Defence Claimant Intent To Proceed With Default Judgment', async ({
     ClaimantSolicitorSpecSteps,
     ClaimantSolicitorSpecApiSteps,

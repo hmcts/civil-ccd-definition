@@ -18,15 +18,12 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
   });
-});
 
-test.describe('Unspecified Small Track 1v1 With Default Judgment', async () => {
   test('Defendant Full Defence Claimant Intent To Proceed With Default Judgment', async ({
     ClaimantSolicitorSteps,
-    DefendantSolicitor1Steps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
-   }) => {
+  }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimSmallTrack1v1();
     await ClaimantSolicitorApiSteps.MakePaymentForClaimIssue();
