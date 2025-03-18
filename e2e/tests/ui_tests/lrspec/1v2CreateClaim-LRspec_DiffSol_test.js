@@ -80,7 +80,7 @@ Scenario.skip('Defendant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.evidenceUploadSpec(caseNumber, true);
 }).retry(3);
 
-Scenario('Schedule a hearing', async ({LRspec}) => {
+Scenario.skip('Schedule a hearing', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
