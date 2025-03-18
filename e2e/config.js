@@ -56,7 +56,7 @@ module.exports = {
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   s2sForXUI: {
-    microservice: 'xui_webapp',
+    microservice: 'xui-webapp',
     secret: process.env.XUI_S2S_SECRET || 'AABBCCDDEEFFGGHH'
   },
   applicantSolicitorUser: {
