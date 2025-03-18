@@ -35,9 +35,5 @@ test.describe('Unspecified Small Track 1v1 With Default Judgment', async () => {
     await ClaimantSolicitorSteps.NotifyClaimDetails();
     await ClaimantSolicitorApiSteps.AmendRespondent1ResponseDeadline();
     await ClaimantSolicitorSteps.RequestDefaultJudgment();
-    await DefendantSolicitor1Steps.Login();
-    await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v1();
-    await ClaimantSolicitorSteps.Login();
-    await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
   });
 });
