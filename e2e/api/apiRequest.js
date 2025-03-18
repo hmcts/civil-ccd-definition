@@ -5,7 +5,7 @@ const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const {TOTP} = require('totp-generator');
 
-const TASK_MAX_RETRIES = 20;
+const TASK_MAX_RETRIES = 100;
 const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
