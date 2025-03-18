@@ -186,6 +186,7 @@ module.exports = {
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
     const userToken = await idamHelper.accessToken(user);
+    console.log('one time', TOTP.generate(config.s2sForXUI.secret))
     const s2sToken = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
       {'Content-Type': 'application/json'},
