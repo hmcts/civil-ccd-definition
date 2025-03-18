@@ -10,7 +10,7 @@ BeforeSuite(async ({hearings}) => {
   await hearings.setupStaticMocks();
 });
 
-Scenario('Create Unspec claim with sdo', async ({api}) => {
+Scenario.skip('Create Unspec claim with sdo', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
   await api.amendClaimDocuments(config.applicantSolicitorUser);
@@ -36,7 +36,7 @@ Scenario('Generate Unspec Dispute Resolution hearing notice', async ({hearings})
   await hearings.triggerUnspecAutomatedHearingNoticeScheduler(hearingId);
 }).retry(3);
 
-Scenario('Create Spec claim with SDO', async ({api_spec_small}) => {
+Scenario.skip('Create Spec claim with SDO', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', false);

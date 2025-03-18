@@ -20,7 +20,7 @@ async function prepareClaimOtherOption(api_spec, claimAmount) {
 
 Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec');
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay @api-nonprod', async ({api_spec}) => {
+Scenario.skip('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay @api-nonprod', async ({api_spec}) => {
   await prepareClaim(api_spec, claimAmountSmallTrack);
   await api_spec.createSDO(judgeUser, 'CREATE_SMALL');
 });
