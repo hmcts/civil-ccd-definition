@@ -152,9 +152,6 @@ export const inputs = {
     helpText1: {
       selector: '#fastTrackHearingTime_helpText1',
     },
-    helpText2: {
-      selector: '#fastTrackHearingTime_helpText2',
-    },
     otherHours: {
       label: 'Hours',
       selector: '#fastTrackHearingTime_otherHours',
