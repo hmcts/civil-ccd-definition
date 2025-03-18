@@ -14,7 +14,7 @@ async function prepareClaimLiPvLiP(api_spec_cui, carmEnabled, claimType = 'Small
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario.skip('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
+Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
   await api_spec_cui.stayCase(config.hearingCenterAdminWithRegionId1);
   await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, true);
@@ -24,7 +24,7 @@ Scenario.skip('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({
 
 });
 
-Scenario.skip('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
@@ -69,7 +69,7 @@ Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
 
-Scenario.skip('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
+Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
   claimRef = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, '', claimType, carmEnabled);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, claimRef, claimType, carmEnabled);
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'Yes', 'IN_MEDIATION', carmEnabled);
