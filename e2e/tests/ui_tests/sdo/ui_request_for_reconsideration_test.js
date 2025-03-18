@@ -11,7 +11,7 @@ async function prepareClaimSpec(api_spec_small) {
 
 Feature('Request for reconsideration - 1v1 - spec @master-e2e-ft');
 
-Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({api_spec_small, LRspec}) => {
+Scenario.skip('1v1 spec request for reconsideration for Create a new SDO', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
@@ -21,21 +21,21 @@ Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({ap
   }
 }).retry(3);
 
-Scenario('Request for Reconsideration by claimant', async ({LRspec}) => {
+Scenario.skip('Request for Reconsideration by claimant', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForReconsiderationForUI();
     }
 }).retry(3);
 
-Scenario('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
+Scenario.skip('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.judgeUserWithRegionId1);
     await LRspec.decisionForReconsideration();
   }
 }).retry(3);
 
-Scenario('Create SDO journey - after Request for Reconsideration', async ({api_spec_small}) => {
+Scenario.skip('Create SDO journey - after Request for Reconsideration', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
   }

@@ -1528,14 +1528,6 @@
     "DisplayContext": "MANDATORY"
   },
   {
-    "ID": "FastTrackHearingTime",
-    "CaseEventID": "CREATE_SDO",
-    "CaseFieldID": "fastTrackHearingTime",
-    "ListElementCode": "helpText2",
-    "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
-  },
-  {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
