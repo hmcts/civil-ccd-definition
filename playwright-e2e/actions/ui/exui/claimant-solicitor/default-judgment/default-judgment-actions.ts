@@ -1,8 +1,8 @@
 import TestData from '../../../../../models/test-data';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
-import claimantDefendantPartyTypes from "../../../../../constants/claimant-defendant-party-types.ts";
-import DefaultJudgmentPageFactory from "../../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts";
+import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types.ts';
+import DefaultJudgmentPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts';
 
 @AllMethodsStep()
 export default class DefaultJudgmentActions extends BaseTestData {
@@ -14,11 +14,11 @@ export default class DefaultJudgmentActions extends BaseTestData {
   }
 
   async defendantDetails() {
-  const { defendantDetailsPage } = this.defaultJudgmentFactory;
-  await defendantDetailsPage.verifyContent(this.ccdCaseData);
-  await defendantDetailsPage.selectDefendant(claimantDefendantPartyTypes.INDIVIDUAL);
-  await defendantDetailsPage.submit();
-}
+    const { defendantDetailsPage } = this.defaultJudgmentFactory;
+    await defendantDetailsPage.verifyContent(this.ccdCaseData);
+    await defendantDetailsPage.selectDefendant(claimantDefendantPartyTypes.INDIVIDUAL);
+    await defendantDetailsPage.submit();
+  }
 
   async defendantDetails1v2() {
     const { defendantDetails1v2Page } = this.defaultJudgmentFactory;
@@ -29,7 +29,7 @@ export default class DefaultJudgmentActions extends BaseTestData {
 
   async showCertifyStatement() {
     const { showCertifyStatementPage } = this.defaultJudgmentFactory;
-    await showCertifyStatementPage.verifyContent();
+    await showCertifyStatementPage.verifyContent(this.ccdCaseData);
     await showCertifyStatementPage.acceptCPR();
     await showCertifyStatementPage.submit();
   }
@@ -42,16 +42,18 @@ export default class DefaultJudgmentActions extends BaseTestData {
   }
 
   async hearingSupportRequirementsFieldDJ() {
-    const {hearingSupportRequirementsFieldDJPage } = this.defaultJudgmentFactory;
+    const { hearingSupportRequirementsFieldDJPage } = this.defaultJudgmentFactory;
     await hearingSupportRequirementsFieldDJPage.verifyContent(this.ccdCaseData);
     await hearingSupportRequirementsFieldDJPage.selectInPerson();
-    await hearingSupportRequirementsFieldDJPage.enterDetails(claimantDefendantPartyTypes.INDIVIDUAL);
+    await hearingSupportRequirementsFieldDJPage.enterDetails(
+      claimantDefendantPartyTypes.INDIVIDUAL,
+    );
     await hearingSupportRequirementsFieldDJPage.selectNoUnavailableDates();
     await hearingSupportRequirementsFieldDJPage.selectRequireNoSupport();
   }
 
   async submitDefaultJudgment() {
-    const { submitDefaultJudgmentPage} = this.defaultJudgmentFactory;
+    const { submitDefaultJudgmentPage } = this.defaultJudgmentFactory;
     await submitDefaultJudgmentPage.verifyContent(this.ccdCaseData);
     await submitDefaultJudgmentPage.submit();
   }

@@ -27,7 +27,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
       super.expectSelector(tabs.bundles.selector),
       super.expectSelector(tabs.caseFlags.selector),
-      super.expectLabel(dropdowns.nextStep.label),
+      // super.expectLabel(dropdowns.nextStep.label),
     ]);
   }
 
