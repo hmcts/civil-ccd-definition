@@ -19,7 +19,7 @@ test.describe('Unspecified Small Track 1v1', async () => {
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v1();
   });
 
-  test('Defendant Full Defence Claimant Intent To Proceed With Default Judgment', async ({
+  test('Default Judgment', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
