@@ -3,7 +3,6 @@ import config from '../../config/config';
 import AxeBuilder from '@axe-core/playwright';
 import AxeCacheHelper from '../../helpers/axe-cache-helper';
 import { PageResult } from '../../models/axe-results';
-import { pageExpect } from '..';
 import PromiseHelper from '../../helpers/promise-helper';
 
 export const expect = baseExpect
@@ -216,13 +215,13 @@ export const expect = baseExpect
             '\n\n' +
             `Locator: ${locator}\n` +
             `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count + ' ' : locatorCount + ' '}matching locator(s) to be visible\n` +
-            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : '')
+            (matcherResult ? `Received: ${locatorCount !== undefined ? locatorCount : 0} matching locator(s) ${locatorCount ? `and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : ''}` : '')
         : () =>
             this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
             '\n\n' +
             `Locator: ${locator}\n` +
             `Expected: ${this.isNot ? 'not' : ''}${count !== null ? count + ' ' : locatorCount + ' '}matching locator(s) to be visible\n` +
-            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : '');
+            (matcherResult ? `Received: ${locatorCount !== undefined ? locatorCount : 0} matching locator(s) ${locatorCount ? `and ${passCount} ${passCount === 1 ? 'was' : 'were'} visible` : ''}` : '');
 
       return {
         message,
@@ -261,13 +260,13 @@ export const expect = baseExpect
             '\n\n' +
             `Locator: ${locator}\n` +
             `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` +
-            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : '')
+            (matcherResult ? `Received: ${locatorCount !== undefined ? locatorCount : 0} matching locator(s) ${locatorCount ? `and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : ''}` : '')
         : () =>
             this.utils.matcherHint(assertionName, undefined, undefined, { isNot: this.isNot }) +
             '\n\n' +
             `Locator: ${locator}\n` +
             `Expected: ${this.isNot ? 'not ' : ''}all locator(s) to be hidden\n` +
-            (matcherResult ? `Received: ${locatorCount} matching locator(s) and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : '');
+            (matcherResult ? `Received: ${locatorCount !== undefined ? locatorCount : 0} matching locator(s) ${locatorCount ? `and ${passCount} ${passCount === 1 ? 'was' : 'were'} hidden` : ''}` : '');
 
       return {
         message,

@@ -15,6 +15,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   @Step(classKey)
   async respondentResponse2v1Spec() {
     const { respondentResponse2v1SpecPage } = this.claimantResponsePageFactory;
+    await respondentResponse2v1SpecPage.verifyContent(this.ccdCaseData);
     await respondentResponse2v1SpecPage.selectYes();
     await respondentResponse2v1SpecPage.submit();
   }
@@ -29,6 +30,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   @Step(classKey)
   async respondentResponse1v2DSSpec() {
     const { respondentResponse1v2DSSpecPage } = this.claimantResponsePageFactory;
+    await respondentResponse1v2DSSpecPage.verifyContent(this.ccdCaseData);
     await respondentResponse1v2DSSpecPage.selectYes();
     await respondentResponse1v2DSSpecPage.submit();
   }
@@ -36,6 +38,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   @Step(classKey)
   async respondentResponseSpec() {
     const { respondentResponseSpecPage } = this.claimantResponsePageFactory;
+    await respondentResponseSpecPage.verifyContent(this.ccdCaseData);
     await respondentResponseSpecPage.selectYes();
     await respondentResponseSpecPage.submit();
   }
@@ -43,6 +46,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   @Step(classKey)
   async defenceDocumentSpec() {
     const { defenceResponseDocumentSpecPage } = this.claimantResponsePageFactory;
+    await defenceResponseDocumentSpecPage.verifyContent(this.ccdCaseData);
     await defenceResponseDocumentSpecPage.uploadDoc();
     await defenceResponseDocumentSpecPage.submit();
   }

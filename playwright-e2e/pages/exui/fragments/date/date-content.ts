@@ -1,14 +1,14 @@
 export const inputs = {
   day: {
     label: 'Day',
-    selector: (prefix: string) => `#${prefix}-day`,
+    selector: (selectorKey: string) => `#${selectorKey}-day`,
   },
   month: {
     label: 'Month',
-    selector: (prefix: string) => `#${prefix}-month`,
+    selector: (selectorKey: string) => `#${selectorKey}-month`,
   },
   year: {
     label: 'Year',
-    selector: (prefix: string) => `#${prefix}-year`,
+    selector: (selectorKey: string) => `#${selectorKey}-year`,
   },
 };

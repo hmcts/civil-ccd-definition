@@ -10,8 +10,8 @@ export default class SingleResponse2v1Page extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(radioButtons.singleResponse.label),
-      super.expectLabel(radioButtons.singleResponse.yes.label),
-      super.expectLabel(radioButtons.singleResponse.no.label),
+      super.expectRadioYesLabel(radioButtons.singleResponse.yes.selector),
+      super.expectRadioNoLabel(radioButtons.singleResponse.no.selector),
     ]);
   }
 
