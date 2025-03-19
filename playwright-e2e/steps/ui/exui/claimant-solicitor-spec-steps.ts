@@ -1,4 +1,3 @@
-import test from 'node:test';
 import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-solicitor/claimant-solcitor-actions-factory';
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
@@ -8,7 +7,6 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExui {
