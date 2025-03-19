@@ -2,13 +2,14 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
-import {confirmationDJHeading} from "./confirm-default-judgment-content.ts";
+import { confirmationHeading } from './confirm-default-judgment-spec-content.ts';
 
 @AllMethodsStep()
-export default class ConfirmDefaultJudgmentPage extends ExuiPage(BasePage) {
+export default class ConfirmDefaultJudgmentSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
+      super.expectHeading(confirmationHeading),
     ]);
   }
 

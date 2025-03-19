@@ -50,6 +50,7 @@ export default class DefaultJudgmentActions extends BaseTestData {
     );
     await hearingSupportRequirementsFieldDJPage.selectNoUnavailableDates();
     await hearingSupportRequirementsFieldDJPage.selectRequireNoSupport();
+    await hearingSupportRequirementsFieldDJPage.submit();
   }
 
   async submitDefaultJudgment() {

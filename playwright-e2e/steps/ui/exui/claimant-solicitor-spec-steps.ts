@@ -281,7 +281,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.submitDefaultJudgment();
       },
       async () => {
-        await defaultJudgementSpecActions.confirmDefaultJudgment();
+        await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
       claimantSolicitorUser,
@@ -301,7 +301,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.submitDefaultJudgment();
       },
       async () => {
-        await defaultJudgementSpecActions.confirmDefaultJudgment();
+        await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
       claimantSolicitorUser,
