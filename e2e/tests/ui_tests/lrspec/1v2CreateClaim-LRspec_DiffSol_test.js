@@ -63,7 +63,7 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
   }
 }).retry(3);
 
-Scenario.skip('Judge triggers SDO', async ({LRspec}) => {
+Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
    await LRspec.waitForText('Summary');
@@ -75,12 +75,12 @@ Scenario.skip('Claimant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.evidenceUploadSpec(caseNumber, false);
 }).retry(3);
 
-Scenario.skip('Defendant solicitor uploads evidence', async ({LRspec}) => {
+Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
     await LRspec.login(config.defendantSolicitorUser);
     await LRspec.evidenceUploadSpec(caseNumber, true);
 }).retry(3);
 
-Scenario.skip('Schedule a hearing', async ({LRspec}) => {
+Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
     await LRspec.waitForText('Summary');
@@ -89,26 +89,26 @@ Scenario.skip('Schedule a hearing', async ({LRspec}) => {
     await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
-Scenario.skip('Pay hearing fee', async ({LRspec}) => {
+Scenario('Pay hearing fee', async ({LRspec}) => {
   await LRspec.payHearingFee();
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);
 
-Scenario.skip('Stay the case', async ({LRspec}) => {
+Scenario('Stay the case', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.stayCase();
     await waitForFinishedBusinessProcess(caseNumber);
   }
 }).retry(3);
 
-Scenario.skip('Request update on the stay case - Manage stay', async ({LRspec}) => {
+Scenario('Request update on the stay case - Manage stay', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.manageStay('REQ_UPDATE');
     await waitForFinishedBusinessProcess(caseNumber);
   }
 }).retry(3);
 
-Scenario.skip('Lift the stay case - Manage stay', async ({LRspec}) => {
+Scenario('Lift the stay case - Manage stay', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.manageStay('LIFT_STAY', 'HEARING_READINESS');
     await waitForFinishedBusinessProcess(caseNumber);

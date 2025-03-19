@@ -49,7 +49,7 @@ AfterSuite(async ({api_spec_small}) => {
 
 Feature('Discontinue This Claim - Hearing Schedule - Full discontinuance  - 1v2 - spec @master-e2e-ft');
 
-Scenario.skip('1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
+Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of damages - hearing scheduled', async ({api, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
@@ -60,14 +60,14 @@ Scenario.skip('1v2 full defence unspecified - judge draws fast track WITHOUT sum
   }
 });
 
-Scenario.skip('Discontinue This Claim', async ({LRspec}) => {
+Scenario('Discontinue This Claim', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForDiscontinueThisClaimForUI1v2();
   }
 }).retry(3);
 
-Scenario.skip('Validate Discontinuance', async ({LRspec}) => {
+Scenario('Validate Discontinuance', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
