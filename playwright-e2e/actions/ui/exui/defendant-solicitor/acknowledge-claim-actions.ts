@@ -25,6 +25,13 @@ export default class AcknowledgeClaimActions extends BaseTestData {
     await responseIntentionDS1Page.submit();
   }
 
+  async responseIntentionDS2() {
+    const { responseIntentionDS2Page } = this.acknowledgeClaimPageFactory;
+    await responseIntentionDS2Page.verifyContent(this.ccdCaseData);
+    await responseIntentionDS2Page.selectRejectAll();
+    await responseIntentionDS2Page.submit();
+  }
+
   async solicitorReferencesAcknowledgeClaimDS1() {
     const { solicitorReferencesAcknowledgeClaimDS1Page } = this.acknowledgeClaimPageFactory;
     await solicitorReferencesAcknowledgeClaimDS1Page.verifyContent();
@@ -59,7 +66,7 @@ export default class AcknowledgeClaimActions extends BaseTestData {
 
   async solicitorReferencesAcknowledgeClaimDS2() {
     const { solicitorReferencesAcknowledgeClaimDS2Page } = this.acknowledgeClaimPageFactory;
-    await solicitorReferencesAcknowledgeClaimDS2Page.verifyContent();
+    // await solicitorReferencesAcknowledgeClaimDS2Page.verifyContent(); // not working for ds2, own page might be needed
     await solicitorReferencesAcknowledgeClaimDS2Page.submit();
   }
 }

@@ -198,4 +198,22 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async AcknowledgeClaimFullDefence1v2DS1() {
+    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await acknowlegdeClaimActions.confirmNameAndAddress();
+        await acknowlegdeClaimActions.responseIntentionDS1();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1(); // await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant2();
+        await acknowlegdeClaimActions.submitAcknowledgeClaim();
+      },
+      async () => {
+        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
+      },
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      defendantSolicitor1User,
+      { verifySuccessEvent: false },
+    );
+  }
 }

@@ -27,7 +27,7 @@ export default class SolicitorReferencesAcknowledgeClaimPage extends ExuiPage(Ba
     await super.runVerifications(
       [
         super.expectSubheading(subheadings.yourFileReference),
-        this.defendantSolicitorReferenceFragment.verifyContent(),
+        this.defendantSolicitorReferenceFragment.verifyContent(), // this is different for DS2
       ],
       { axePageInsertName: StringHelper.capitalise(this.defendantParty.key) },
     );
