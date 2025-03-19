@@ -1534,7 +1534,8 @@
     "ListElementCode": "helpText2",
     "FieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
-    "_comment": "legacy field no longer in use"
+    "_comment": "legacy field no longer in use",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"DO_NOT_SHOW\""
   },
   {
     "ID": "FastTrackNotes",
