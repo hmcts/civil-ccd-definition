@@ -2,10 +2,13 @@
 
 properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
+  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
-    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '5', description: 'Number of workers for playwright'),
-    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '2', description: 'Number of times playwright will retry tests'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
+    string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', description: 'Number of times playwright tests will retry exui events'),
+    string(name: 'PLAYWRIGHT_TEST_SPEED', defaultValue: 'fast', description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
     string(name: 'PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS', defaultValue: 'false', description: 'Runs accessibility tests for playwright during test execution'),
     string(name: 'PLAYWRIGHT_RUN_SETUP', defaultValue: 'true', description: 'Runs setup projects before functional test suite'),
     string(name: 'FRONTEND_URL', defaultValue: 'https://manage-case.aat.platform.hmcts.net',
@@ -54,6 +57,8 @@ void publishBootstrapReport() {
             reportFiles: 'index.html',
             reportName: 'Playwright Allure Bootstrap Report'
         ])
+    sh "cp -r ./playwright-allure-bootstrap-report/history/  ./allure-bootstrap-history"
+    archiveArtifacts artifacts: 'allure-bootstrap-history/**', fingerprint: true
   }
 
   void publishFunctionalReport() {
@@ -65,7 +70,25 @@ void publishBootstrapReport() {
             reportFiles: 'index.html',
             reportName: 'Playwright Allure Functional Report'
         ])
+    sh "cp -r ./playwright-allure-functional-report/history/  ./allure-functional-history"
+    archiveArtifacts artifacts: 'allure-functional-history/**', fingerprint: true
   }
+
+def copyPreviousHistory(historyDir, resultsDir) {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild.number
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/${historyDir}/**", target: "${resultsDir}"
+      sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
 
 def secrets = [
   'civil-${env}': [
@@ -81,9 +104,11 @@ withNightlyPipeline(type, product, component) {
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
+  env.PLAYWRIGHT_EXUI_RETRIES=params.PLAYWRIGHT_EXUI_RETRIES
   env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS=params.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS
   env.PLAYWRIGHT_RUN_SETUP=params.PLAYWRIGHT_RUN_SETUP
   env.PLAYWRIGHT_UNASSIGN_CASES = true
+  env.PLAYWRIGHT_TEST_SPEED=params.PLAYWRIGHT_TEST_SPEED
   env.URL=params.FRONTEND_URL
   env.DM_STORE_URL=params.DM_STORE_URL
   env.IDAM_WEB_URL=params.IDAM_WEB_URL
@@ -136,6 +161,7 @@ withNightlyPipeline(type, product, component) {
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
         if(playwrightSetupPassed) {
+          copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
           yarnBuilder.yarn('test:playwright-functional:generate-report')
           publishFunctionalReport()
         }
@@ -149,6 +175,7 @@ withNightlyPipeline(type, product, component) {
         } catch (Exception error) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
+          copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }

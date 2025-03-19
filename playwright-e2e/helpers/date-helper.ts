@@ -1,5 +1,5 @@
 import { bankHolidays } from '../config/data';
-
+import DateStringFormats from '../models/date-string-formats';
 export default class DateHelper {
   private static shortMonths: string[] = [
     'Jan',
@@ -45,11 +45,27 @@ export default class DateHelper {
     return new Date();
   }
 
-  static addToToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
-    return this.addDate(new Date(), { days, months, years, workingDay });
+  static addToToday({
+    days = 0,
+    months = 0,
+    years = 0,
+    workingDay = false,
+    addDayAfter4pm = false,
+  }): Date {
+    const now = new Date();
+    if (addDayAfter4pm && this.isAfter4pm(now)) {
+      days += 1;
+    }
+    return this.addDate(now, { days, months, years, workingDay });
   }
 
-  static addToDate(date: string, { days = 0, months = 0, years = 0, workingDay = false }): Date {
+  static addToDate(
+    date: string,
+    { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
+  ): Date {
+    if (addDayAfter4pm && this.isAfter4pm(new Date())) {
+      days += 1;
+    }
     return this.addDate(new Date(date), { days, months, years, workingDay });
   }
 
@@ -67,14 +83,27 @@ export default class DateHelper {
     return date;
   }
 
-  static subtractFromToday({ days = 0, months = 0, years = 0, workingDay = false }): Date {
-    return this.subtractDate(new Date(), { days, months, years, workingDay });
+  static subtractFromToday({
+    days = 0,
+    months = 0,
+    years = 0,
+    workingDay = false,
+    addDayAfter4pm = false,
+  }): Date {
+    const now = new Date();
+    if (addDayAfter4pm && this.isAfter4pm(now)) {
+      days += 1;
+    }
+    return this.subtractDate(now, { days, months, years, workingDay });
   }
 
   static subtractFromDate(
     date: string,
-    { days = 0, months = 0, years = 0, workingDay = false },
+    { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
   ): Date {
+    if (addDayAfter4pm && this.isAfter4pm(new Date())) {
+      days += 1;
+    }
     return this.subtractDate(new Date(date), { days, months, years, workingDay });
   }
 
@@ -94,8 +123,11 @@ export default class DateHelper {
   }
 
   static formatDateToString(
-    inputDate: string | Date,
-    { inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Month YYYY' } = {},
+    inputDate: DateStringFormats | Date,
+    {
+      inputFormat = 'YYYY-MM-DD' as DateStringFormats,
+      outputFormat = 'DD Month YYYY' as DateStringFormats,
+    } = {},
   ): string {
     let date: Date;
     let dateString: string;
@@ -113,9 +145,15 @@ export default class DateHelper {
       dateString = `${date.getDate()} ${this.longMonths[date.getMonth()]} ${date.getFullYear()}`;
     } else if (outputFormat === 'DD Mon YYYY') {
       dateString = `${date.getDate()} ${this.shortMonths[date.getMonth()]} ${date.getFullYear()}`;
+    } else if (outputFormat === 'YYYY-MM-DDTHH:MM:SS') {
+      dateString = date.toISOString().slice(0, 19);
     }
 
     return dateString;
+  }
+
+  private static isAfter4pm(date: Date) {
+    return date.getHours() >= 16;
   }
 
   private static isWeekend(date: Date): boolean {
