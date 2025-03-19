@@ -277,9 +277,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.showCertifyStatement();
         await defaultJudgementSpecActions.claimPartialPayment();
         await defaultJudgementSpecActions.fixedCostsOnEntry();
-        await defaultJudgementSpecActions.paymentBreakdown();
-        await defaultJudgementSpecActions.paymentType();
-        await defaultJudgementSpecActions.paymentSetDate();
+        await defaultJudgementSpecActions.paymentBySetDate();
         await defaultJudgementSpecActions.submitDefaultJudgment();
       },
       async () => {
@@ -299,9 +297,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.showCertifyStatementMultipleDefendants();
         await defaultJudgementSpecActions.claimPartialPayment1v2();
         await defaultJudgementSpecActions.fixedCostsOnEntry();
-        await defaultJudgementSpecActions.paymentBreakdown1v2();
-        await defaultJudgementSpecActions.paymentType1v2();
-        await defaultJudgementSpecActions.repaymentInformation1v2();
+        await defaultJudgementSpecActions.paymentWithRepayment1v2();
         await defaultJudgementSpecActions.submitDefaultJudgment();
       },
       async () => {
