@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_OTHER_PARTY_FOR_RAISED_QUERY",
-    "Name": "Email: Notify party a query has been raised",
+    "Name": "Email: Notify query has been raised",
     "Description": "Notify party a query has been raised",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
