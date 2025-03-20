@@ -1528,6 +1528,16 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "FastTrackHearingTime",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "fastTrackHearingTime",
+    "ListElementCode": "helpText2",
+    "FieldDisplayOrder": 9,
+    "DisplayContext": "MANDATORY",
+    "_comment": "legacy field no longer in use",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"DO_NOT_SHOW\""
+  },
+  {
     "ID": "FastTrackNotes",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "fastTrackNotes",
