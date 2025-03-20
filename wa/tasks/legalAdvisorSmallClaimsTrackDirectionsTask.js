@@ -9,7 +9,7 @@ module.exports = {
     location: '192280',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
-    region: '4',
+    region: '1',
     case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     case_name: 'Test Inc',
