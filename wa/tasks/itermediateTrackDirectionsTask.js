@@ -22,10 +22,8 @@ module.exports = {
   permissions: {
     values: [
       'Read', 'Own',
-      'Manage', 'Cancel',
       'CompleteOwn', 'CancelOwn',
       'Claim', 'Unclaim',
-      'Assign', 'Unassign',
       'UnclaimAssign'
     ]
   },
