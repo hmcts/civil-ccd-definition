@@ -5,7 +5,7 @@ module.exports = {
   task_system: 'SELF',
   security_classification: 'PUBLIC',
   task_title: 'Fast Track Directions',
-  location_name: 'Nottingham County Court and Family Court (and Crown)',
+  location_name: 'Central London County Court',
   location: '424213',
   execution_type: 'Case Management Task',
   jurisdiction: 'CIVIL',
