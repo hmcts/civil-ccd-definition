@@ -6,7 +6,7 @@ module.exports = {
     security_classification: 'PUBLIC',
     task_title: 'Schedule A Hearing',
     location_name: 'Central London County Court',
-    location: '424213',
+    location: '20262',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
     region: '2',
