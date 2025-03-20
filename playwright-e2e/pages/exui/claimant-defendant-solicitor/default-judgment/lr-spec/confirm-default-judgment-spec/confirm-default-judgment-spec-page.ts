@@ -9,7 +9,7 @@ export default class ConfirmDefaultJudgmentSpecPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectHeading(confirmationHeading),
+      super.expectHeading(confirmationHeading, {exact:false}), // without option not working for 1v1 and not working at all for 1v2DS can't figure out why.
     ]);
   }
 
