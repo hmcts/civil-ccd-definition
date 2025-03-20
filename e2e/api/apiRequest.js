@@ -165,7 +165,7 @@ module.exports = {
   taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
