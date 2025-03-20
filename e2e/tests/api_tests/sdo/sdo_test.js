@@ -176,23 +176,23 @@ Scenario.only('1v1 full defence unspecified - judge draws disposal order - heari
     WA.validateTaskInfo(task, fastTrackDirectionsTask);
     taskId = task['id'];
   }
-  await api.createSDO(judgeUser);
+  await api.createSDO(judgeUser, 'CREATE_SMALL_DRH');
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUser, taskId);
   }
-  await api.evidenceUploadApplicant(config.applicantSolicitorUser);
-  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
+  await api.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario, 'DRH');
+  await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario, 'DRH');
   if (config.runWAApiTest) {
     const hearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
     WA.validateTaskInfo(hearingTask, scheduleAHearingTask);
     taskId = hearingTask['id'];
   }
-  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'SMALL_CLAIMS');
   if (config.runWAApiTest) {
     api.completeTaskByUser(hearingCenterAdminToBeUsed, taskId);
   }
   await api.amendHearingDueDate(config.systemupdate);
-  await api.hearingFeeUnpaid(hearingCenterAdminToBeUsed);
+  await api.hearingFeePaidDRH(hearingCenterAdminToBeUsed);
 });
 
 Scenario('1v1 full defence specified - legal advisor draws disposal order - hearing scheduled @wa-r4 @sdo-spec @api-sdo', async ({api_spec_small, WA}) => {
@@ -232,5 +232,5 @@ Scenario.skip('1v1 full defence unspecified - legal advisor declares SDO unsuita
 });
 
 AfterSuite(async ({api}) => {
-  await api.cleanUp();
+ // await api.cleanUp();
 });
