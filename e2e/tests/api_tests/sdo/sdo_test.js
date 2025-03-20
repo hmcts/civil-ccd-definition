@@ -176,7 +176,7 @@ Scenario.only('1v1 full defence unspecified - judge draws disposal order - heari
     WA.validateTaskInfo(task, fastTrackDirectionsTask);
     taskId = task['id'];
   }
-  await api.createSDO(judgeUser,'CREATE_SMALL');
+  await api.createSDO(judgeUser);
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUser, taskId);
   }
