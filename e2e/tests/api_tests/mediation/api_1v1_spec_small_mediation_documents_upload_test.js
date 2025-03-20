@@ -37,7 +37,7 @@ async function prepareClaim2v1(api_spec, carmEnabled) {
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE', 'JUDICIAL_REFERRAL', carmEnabled);
 }
 
-Scenario.skip('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
+Scenario('1v1 claimant and defendant upload mediation documents - CARM not enabled', async ({api_spec_small}) => {
   await prepareClaim1v1(api_spec_small, false);
   await api_spec_small.uploadMediationDocuments(config.applicantSolicitorUser);
   await api_spec_small.uploadMediationDocuments(config.defendantSolicitorUser);
