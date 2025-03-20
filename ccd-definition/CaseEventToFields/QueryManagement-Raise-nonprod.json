@@ -38,7 +38,7 @@
     "PageID": "queryManagementRaiseQuery",
     "PageLabel": "Raise a new query",
     "Publish": "Y",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\""
   },
@@ -53,7 +53,7 @@
     "PageID": "queryManagementRaiseQuery",
     "PageLabel": "Raise a new query",
     "Publish": "Y",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 3,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\""
   },
