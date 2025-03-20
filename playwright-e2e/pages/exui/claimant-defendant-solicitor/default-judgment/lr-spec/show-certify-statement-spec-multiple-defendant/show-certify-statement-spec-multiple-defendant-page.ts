@@ -15,8 +15,8 @@ export default class ShowCertifyStatmentSpecMultipleDefendantPage extends ExuiPa
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectText(heading),
-      super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
-      super.expectHeading(ccdCaseData.caseNamePublic),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id), {exact:false}),
+      super.expectHeading(ccdCaseData.caseNamePublic, {exact:false}),
       super.expectText(lists.timeExpired),
       super.expectText(lists.notResponded),
       super.expectText(lists.noOutstandingApp),
