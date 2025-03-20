@@ -14,6 +14,7 @@ exports.config = {
     './e2e/tests/ui_tests/default_judgement/*_test.js',
     './e2e/tests/ui_tests/hearings/*_test.js',
     './e2e/tests/api_tests/lrspec_cui/*_test.js',
+    './e2e/tests/api_tests/sdo_R2/*_test.js',
   ] : [
     './e2e/tests/api_tests/*.js',
     './e2e/tests/api_tests/judgmentOnline/*_test.js',
