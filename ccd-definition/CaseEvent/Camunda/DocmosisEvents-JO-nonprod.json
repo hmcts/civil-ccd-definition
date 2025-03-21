@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GEN_DJ_FORM_NON_DIVERGENT_SPEC_DEFENDANT",
-    "Name": "DJ form spec claimant",
+    "Name": "DJ form spec defendant",
     "Description": "Generate DJ form non divergent spec defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
