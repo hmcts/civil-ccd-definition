@@ -80,6 +80,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_BUNDLE_CREATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_BUNDLE_CREATED",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
