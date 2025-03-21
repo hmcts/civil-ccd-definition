@@ -149,7 +149,7 @@ def getCivilServiceImage() {
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
     return "pr-" + label.minus("civilServicePr:").trim()
   }
-  return "latest"
+  return "pr-6314"
 }
 
 withPipeline(type, product, component) {
