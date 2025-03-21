@@ -45,6 +45,7 @@ const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const genAppClaimData = require('../fixtures/events/createGeneralApplication');
 const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 let caseId, eventName, mintiClaimTrack;
 let caseData = {};
@@ -77,7 +78,7 @@ const data = {
   DEFAULT_JUDGEMENT_SPEC_2V1: require('../fixtures/events/defaultJudgment2v1Spec.js'),
   CREATE_FAST_NO_SUM_SPEC: () => sdoTracks.createSDOFastTrackSpec(),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   FINAL_ORDERS_SPEC: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => createFinalOrderSpec.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType),
   RECORD_JUDGMENT_SPEC: (whyRecorded, paymentPlanSelection) => judgmentOnline1v1Spec.recordJudgment(whyRecorded, paymentPlanSelection),
   CONFIRM_ORDER_REVIEW: () => judgmentOnline1v1Spec.confirmOrderReview(),
@@ -100,7 +101,9 @@ const data = {
   STAY_CASE: () => stayCase.stayCaseSpec(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
-  DISMISS_CASE: () => dismissCase.dismissCase()
+  DISMISS_CASE: () => dismissCase.dismissCase(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
 };
 
 const eventData = {
@@ -649,6 +652,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
@@ -1381,7 +1385,7 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
+  scheduleHearing: async (user, allocatedTrack, isMinti = false) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -1390,7 +1394,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
 
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
     for (let pageId of Object.keys(scheduleData.userInput)) {
       await assertValidData(scheduleData, pageId);
@@ -1481,6 +1485,18 @@ module.exports = {
   getCaseId: async () => {
     console.log (`case created: ${caseId}`);
     return caseId;
+  },
+
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
+  completeTaskByUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'complete');
   },
 
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
@@ -1745,7 +1761,7 @@ module.exports = {
 
    if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        header: '# Your claim will be fully discontinued against the specified defendants',
         body: ''
       }, true);
     } else if (mpScenario === 'ONE_V_TWO') {
@@ -1876,6 +1892,59 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
   },
 
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Your message has been sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Reply sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+};
+
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
 };
 
 // Functions
@@ -2096,16 +2165,12 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    if (['preview', 'demo'].includes(config.runningEnv)) {
-      responseBody.data.repaymentDue= '1502.00';
-    } else {
-      responseBody.data.repaymentDue= '1580.00';
-    }
+    responseBody.data.repaymentDue= '1502.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
   }
-  if (pageId === 'claimPartialPayment' && ['preview', 'demo'].includes(config.runningEnv)) {
+  if (pageId === 'claimPartialPayment') {
     delete responseBody.data['showDJFixedCostsScreen'];
     if (scenario === 'ONE_V_ONE' || scenario === 'TWO_V_ONE' || (scenario === 'ONE_V_TWO' && isDivergent)) {
       responseBody.data.currentDefendantName = 'Sir John Doe';

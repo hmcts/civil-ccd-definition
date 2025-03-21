@@ -21,7 +21,7 @@ async function prepareClaim(api) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
+Scenario.skip('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);

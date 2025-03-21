@@ -21,7 +21,7 @@
     "FieldType": "Date",
     "ElementLabel": "Review date",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "Y"
   },
   {
     "ID": "StoredObligationData",
