@@ -14,5 +14,13 @@
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "documentToKeep",
+    "ListElementCode": "uploadedDate",
+    "FieldType": "DateTime",
+    "ElementLabel": "Uploaded Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
