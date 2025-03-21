@@ -15,7 +15,8 @@
     "EndButtonLabel": "Raise Query",
     "ShowSummary": "N",
     "ShowEventNotes": "N",
-    "Publish": "Y"
+    "Publish": "Y",
+    "EventEnablingCondition": "applicant1Represented != \"No\" AND respondent1Represented !=  \"No\" AND respondent2Represented !=  \"No\""
   },
   {
     "LiveFrom": "01/01/2017",
