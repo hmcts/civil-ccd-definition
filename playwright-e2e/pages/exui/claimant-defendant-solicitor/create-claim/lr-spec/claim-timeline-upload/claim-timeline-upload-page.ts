@@ -10,7 +10,7 @@ export default class ClaimTimelineUploadPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       super.expectSubheading(subheadings.uploadClaimTimelineTemplate),
-      super.expectLegend(inputs.uploadFiles.label),
+      super.expectLabel(inputs.uploadFiles.label),
     ]);
   }
 
