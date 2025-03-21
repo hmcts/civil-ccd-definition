@@ -32,7 +32,7 @@ wa:
       environment:
         CCD_URL: http://{{ .Release.Name }}-ccd-data-store-api
         CCD_SEARCH_URL: http://{{ .Release.Name }}-ccd-data-store-api
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service-aat.service.core-compute-aat.internal
         AZURE_SERVICE_BUS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
         AZURE_SERVICE_BUS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
         #AZURE_SERVICE_BUS_TOPIC_NAME: servicebus-topic-{{ .Release.Name }}-asb-ccd-case-events
@@ -45,12 +45,13 @@ wa:
       ingressHost: wa-task-monitor-${SERVICE_FQDN}
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service-aat.service.core-compute-aat.internal
 
   wa-task-management-api:
     java:
+      ingressHost: wa-task-management-api-${SERVICE_FQDN}
       environment:
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
         POSTGRES_HOST: "{{ .Release.Name }}-postgresql"
         POSTGRES_REPLICA_HOST: "{{ .Release.Name }}-postgresql"
