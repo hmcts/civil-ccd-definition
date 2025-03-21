@@ -20,6 +20,11 @@ export default class RepaymentInformation1v2Page extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(subheadings.instalments1v2),
+      super.expectText(inputs.regularPayments.label),
+      super.expectLegend(radioButtons.howOften.label),
+      super.expectText(radioButtons.howOften.every2Weeks.label),
+      super.expectText(radioButtons.howOften.everyMonth.label),
+      super.expectText(radioButtons.howOften.everyWeek.label),
     ]);
   }
 

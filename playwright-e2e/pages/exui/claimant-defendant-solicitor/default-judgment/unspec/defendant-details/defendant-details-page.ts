@@ -10,7 +10,10 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts'
 @AllMethodsStep()
 export default class DefendantDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData : CCDCaseData ) {
-    await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
+    await super.runVerifications([
+      super.verifyHeadings(ccdCaseData),
+      super.expectText(radioButtons.selectDefendant.label)
+    ]);
   }
 
   async selectDefendant(defendantPartyType: ClaimantDefendantPartyType) {
