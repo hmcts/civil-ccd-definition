@@ -21,7 +21,7 @@ BeforeSuite(async () => {
 });
 
 Scenario('1v2DS full defence defendant and claimant response', async ({api}) => {
-  if(!continueWithScenario()) return;
+  //if(!continueWithScenario()) return;
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, fastClaimAmount, false, hmcTest);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
@@ -30,7 +30,7 @@ Scenario('1v2DS full defence defendant and claimant response', async ({api}) => 
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 
   caseId = await api.getCaseId();
-});
+}).tag('@local-testing');
 
 Scenario('Listing officer adds case flags', async ({hearings}) => {
   if(!continueWithScenario()) return;
