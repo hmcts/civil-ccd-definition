@@ -8,10 +8,16 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import partys from '../../../../../../constants/partys.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
+import {Page} from "@playwright/test";
 
 @AllMethodsStep()
 export default class RepaymentInformationPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
+
+  constructor(page: Page, dateFragment: DateFragment) {
+    super(page);
+    this.dateFragment = dateFragment;
+  }
 
   async verifyContent(ccdCaseData: CCDCaseData, defendantPartyType: ClaimantDefendantPartyType) {
     const defendantData = CaseDataHelper.buildClaimantAndDefendantData(
@@ -22,6 +28,10 @@ export default class RepaymentInformationPage extends ExuiPage(BasePage) {
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.instalments(defendantData.partyName)),
     ]);
+  }
+
+  async regularPaymentsAmount() {
+    await super.inputText(20, inputs.regularPayments.selector);
   }
 
   async selectWeeklyRepayments() {
