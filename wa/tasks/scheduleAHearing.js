@@ -1,10 +1,10 @@
 module.exports = {
-    name: 'Schedule A Hearing',
+    name: 'Schedule a Small Claims Hearing - HMC',
     type: 'ScheduleAHearing',
     task_state: 'unassigned',
     task_system: 'SELF',
     security_classification: 'PUBLIC',
-    task_title: 'Schedule A Hearing',
+    task_title: 'Schedule a Small Claims Hearing - HMC',
     location_name: 'Central London County Court',
     location: '20262',
     execution_type: 'Case Management Task',
