@@ -13,7 +13,7 @@ export default class ClaimPartialPayment1v2Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(subheadings.hasPaid1v2),
+      super.expectText(subheadings.hasPaid1v2, {count:1}),
     ]);
   }
 

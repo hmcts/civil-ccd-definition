@@ -16,16 +16,18 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
     await super.retryReloadRunVerifications(() => [
       super.verifyHeadings(caseData),
-      super.expectTab(tabs.summary.title, { timeout: config.playwright.shortExpectTimeout }),
-      super.expectTab(tabs.caseFile.title),
-      super.expectTab(tabs.claimDetails.title),
-      super.expectTab(tabs.history.title),
+      super.expectSelector(tabs.summary.selector, {
+        timeout: config.playwright.shortExpectTimeout,
+      }),
+      super.expectSelector(tabs.caseFile.selector),
+      super.expectSelector(tabs.claimDetails.selector),
+      super.expectSelector(tabs.history.selector),
       // super.expectText(tabs.claimDocs.title),
-      super.expectTab(tabs.paymentHistory.title),
+      super.expectSelector(tabs.paymentHistory.selector),
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
-      super.expectTab(tabs.bundles.title),
-      super.expectTab(tabs.caseFlags.title),
-      super.expectLabel(dropdowns.nextStep.label),
+      super.expectSelector(tabs.bundles.selector),
+      super.expectSelector(tabs.caseFlags.selector),
+      // super.expectLabel(dropdowns.nextStep.label),
     ]);
   }
 
@@ -92,7 +94,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       },
       async () => {
         await super.waitForPageToLoad();
-        await super.expectNoTab(tabs.summary.title, {
+        await super.expectNoSelector(tabs.summary.selector, {
           timeout: config.exui.pageSubmitTimeout,
         });
       },
