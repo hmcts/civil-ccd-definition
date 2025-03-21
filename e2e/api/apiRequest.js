@@ -5,7 +5,7 @@ const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const {TOTP} = require('totp-generator');
 
-const TASK_MAX_RETRIES = 20;
+const TASK_MAX_RETRIES = 100;
 const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
@@ -165,7 +165,7 @@ module.exports = {
   taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
@@ -187,7 +187,7 @@ module.exports = {
     let taskDetails;
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,

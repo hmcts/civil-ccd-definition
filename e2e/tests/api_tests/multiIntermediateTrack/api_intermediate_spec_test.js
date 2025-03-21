@@ -1,5 +1,4 @@
 
-
 const config = require('../../../config.js');
 
 const claimAmountPenniesIntermediate = '9900000';
@@ -92,4 +91,3 @@ Scenario('1v2  full defence Intermediate claim Specified same solicitor @api-non
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();
 });
-
