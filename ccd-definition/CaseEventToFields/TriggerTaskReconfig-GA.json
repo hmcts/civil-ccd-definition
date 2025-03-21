@@ -7,14 +7,14 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
-    "PageShowCondition": "settlementSummary=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "gaDraftDocRespondentSolTwo=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "TRIGGER_TASK_RECONFIG_GA",
-    "CaseFieldID": "settlementSummary",
+    "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",

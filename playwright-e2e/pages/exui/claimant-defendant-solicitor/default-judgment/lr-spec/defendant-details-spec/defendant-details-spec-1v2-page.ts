@@ -13,8 +13,6 @@ export default class DefendantDetailsSpec1v2Page extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(radioButtons.selectDefendant.label),
-      // super.expectLabel(radioButtons.selectDefendant.defendant.label(partys.DEFENDANT_1, )),
-      // super.expectLabel(radioButtons.selectDefendant.defendant.label(partys.DEFENDANT_2, )),
       super.expectLabel(radioButtons.selectDefendant.both.label),
     ]);
   }

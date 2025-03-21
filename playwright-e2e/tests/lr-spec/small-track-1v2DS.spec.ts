@@ -20,4 +20,19 @@ test.describe('Specified Small track 1v2DS', async () => {
     await ClaimantSolicitorSpecSteps.Login();
     await ClaimantSolicitorSpecSteps.RespondSmallClaimIntentToProceed1v2DS();
   });
+
+  test('Default Judgment', async ({
+    ClaimantSolicitorSpecSteps,
+    ClaimantSolicitorSpecApiSteps,
+    CaseRoleAssignmentApiSteps,
+  }) => {
+    await ClaimantSolicitorSpecSteps.Login();
+    await ClaimantSolicitorSpecSteps.CreateClaimSmallTrack1v2DS();
+    await ClaimantSolicitorSpecApiSteps.MakePaymentForClaimIssue();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
+    await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
+    await ClaimantSolicitorSpecApiSteps.AmendRespondent1ResponseDeadline();
+    await ClaimantSolicitorSpecApiSteps.AmendRespondent2ResponseDeadline();
+    await ClaimantSolicitorSpecSteps.RequestDefaultJudgment1v2();
+  });
 });

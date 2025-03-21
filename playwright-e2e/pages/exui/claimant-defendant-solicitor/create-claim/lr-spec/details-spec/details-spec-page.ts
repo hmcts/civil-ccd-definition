@@ -12,7 +12,7 @@ export default class DetailsSpecPage extends ExuiPage(BasePage) {
       super.expectSubheading(subheadings.uploadDocs),
       super.expectText(paragraphs.timeline),
       super.expectLabel(inputs.details.label),
-      super.expectLegend(inputs.uploadFile.label),
+      super.expectLabel(inputs.uploadFile.label),
       super.expectText(inputs.uploadFile.hintText),
     ]);
   }

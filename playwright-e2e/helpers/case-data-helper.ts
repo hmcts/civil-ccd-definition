@@ -239,6 +239,7 @@ export default class CaseDataHelper {
       fieldOfExpertise: `Field of expertise - ${expertParty.key}`,
       whyRequired: `Reason required - ${expertParty.key}`,
       estimatedCost: this.getExpertEstimatedCost(expertParty),
+      partyName: `${StringHelper.capitalise(expertParty.key)} Expert`,
     };
   }
 
@@ -258,6 +259,7 @@ export default class CaseDataHelper {
       phoneNumber: this.getPartyPhoneNumber(witnessParty),
       emailAddress: `${witnessParty.key}@witnesses.com`,
       reasonForWitness: `Reason for witness - ${witnessParty.key}`,
+      partyName: `${StringHelper.capitalise(witnessParty.key)} Witness`,
     };
   }
 
