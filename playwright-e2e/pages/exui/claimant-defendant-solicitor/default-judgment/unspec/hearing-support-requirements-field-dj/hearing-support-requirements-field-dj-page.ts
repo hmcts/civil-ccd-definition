@@ -13,14 +13,15 @@ import partys from '../../../../../../constants/partys.ts';
 import preferredCourts from '../../../../../../config/preferred-courts.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
+import CCDCaseData from "../../../../../../models/ccd/ccd-case-data.ts";
 
 @AllMethodsStep()
 export default class HearingSupportRequirementsFieldDJPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
-  async verifyContent() {
+  async verifyContent(ccdCaseData:CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(),
+      super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.hearingRequirements),
       super.expectText(radioButtons.hearingType.label),
       super.expectLabel(radioButtons.hearingType.inPerson.label),
