@@ -57,7 +57,7 @@
     "RoleName" : "idam:caseworker-civil-systemupdate",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "caseworker-civil-systemupdate",
+    "AccessProfiles": "caseworker-civil-systemupdate,caseworker-civil-system-field-reader",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
