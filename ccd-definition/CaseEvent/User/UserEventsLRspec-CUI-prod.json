@@ -2,8 +2,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "Name": "Request Judgement by Admission",
-    "Description": "Request Judgement by Admission (Specified)",
+    "Name": "Request Judgment by Admission",
+    "Description": "Request Judgment by Admission (Specified)",
     "DisplayOrder": 10,
     "PreConditionState(s)": "AWAITING_APPLICANT_INTENTION;All_FINAL_ORDERS_ISSUED",
     "PostConditionState": "*",
