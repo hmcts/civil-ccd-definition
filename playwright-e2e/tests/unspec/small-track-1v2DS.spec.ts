@@ -1,5 +1,4 @@
 import { test } from '../../playwright-fixtures';
-import ClaimantSolicitorSpecSteps from '../../steps/ui/exui/claimant-solicitor-spec-steps.ts';
 
 test.describe('Unspecified Small track 1v2DS', async () => {
   test('Defendant Full Defence Claimant Intent To Proceed', async ({
@@ -17,9 +16,11 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS2();
     await ClaimantSolicitorSteps.NotifyClaimDetails1v2DS();
     await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1Steps.AddLitigationFriend();
     await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v2DS();
     await DefendantSolicitor2Steps.Login();
+    await DefendantSolicitor2Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor2Steps.AddLitigationFriend();
     await DefendantSolicitor2Steps.RespondSmallTrackFullDefence1v2DS();
     await ClaimantSolicitorSteps.Login();
