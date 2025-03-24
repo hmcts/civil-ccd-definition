@@ -806,6 +806,45 @@ export default abstract class BasePage {
     }
   }
 
+  @BoxedDetailedStep(classKey, 'label')
+  @TruthyParams(classKey, 'label')
+  protected async expectNoLabel(
+    label: string | number,
+    options: {
+      message?: string;
+      exact?: boolean;
+      containerSelector?: string;
+      all?: boolean;
+      index?: number;
+      first?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
+    }
+
+    let locator = this.page.locator('label').getByText(label, { exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    if (options.all) {
+      await pageExpect(locator, { message: options.message }).allToBeHidden({
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeHidden({
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'name')
   protected async expectLink(
     name: string,
