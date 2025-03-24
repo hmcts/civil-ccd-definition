@@ -62,7 +62,11 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new SubmitAcknowledgeClaimPage(this.page);
   }
 
-  get confirmAcknowledgeClaimPage() {
-    return new ConfirmAcknowledgeClaimPage(this.page);
+  get confirmAcknowledgeClaimDS1Page() {
+    return new ConfirmAcknowledgeClaimPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get confirmAcknowledgeClaimDS2Page() {
+    return new ConfirmAcknowledgeClaimPage(this.page, partys.DEFENDANT_2);
   }
 }

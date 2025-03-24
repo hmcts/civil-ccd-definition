@@ -62,7 +62,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
     );
   }
 
-  async AcknowledgeClaimFullDefence1v2DS2() {
+  async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -72,7 +72,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
-        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
       defendantSolicitor2User,

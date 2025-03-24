@@ -1,9 +1,8 @@
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
-import AcknowledgeClaimActions from '../../../actions/ui/exui/defendant-solicitor/acknowledge-claim-actions';
 import DefendantActionsFactory from '../../../actions/ui/exui/defendant-solicitor/defendant-actions-factory';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
 import BaseExui from '../../../base/base-exui';
-import { claimantSolicitorUser, defendantSolicitor1User } from '../../../config/users/exui-users';
+import { defendantSolicitor1User } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
@@ -145,7 +144,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
     );
   }
 
-  async AcknowledgeClaimFullDefence1v1() {
+  async AcknowledgeClaimFullDefence() {
     const { acknowlegdeClaimActions } = this.defendantActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -155,7 +154,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
-        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
       defendantSolicitor1User,
@@ -173,7 +172,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
-        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
       defendantSolicitor1User,
@@ -187,29 +186,11 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       async () => {
         await acknowlegdeClaimActions.confirmNameAndAddress();
         await acknowlegdeClaimActions.responseIntention1v2SS();
-        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1(); // await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant2();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
         await acknowlegdeClaimActions.submitAcknowledgeClaim();
       },
       async () => {
-        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
-      },
-      ccdEvents.ACKNOWLEDGE_CLAIM,
-      defendantSolicitor1User,
-      { verifySuccessEvent: false },
-    );
-  }
-
-  async AcknowledgeClaimFullDefence1v2DS1() {
-    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
-    await this.retryExuiEvent(
-      async () => {
-        await acknowlegdeClaimActions.confirmNameAndAddress();
-        await acknowlegdeClaimActions.responseIntentionDS1();
-        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1(); // await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDefendant2();
-        await acknowlegdeClaimActions.submitAcknowledgeClaim();
-      },
-      async () => {
-        await acknowlegdeClaimActions.confirmAcknowledgeClaim();
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
       defendantSolicitor1User,
