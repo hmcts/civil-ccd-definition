@@ -809,7 +809,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey, 'label')
   @TruthyParams(classKey, 'label')
   protected async expectNoLabel(
-    label: string | number,
+    label: string,
     options: {
       message?: string;
       exact?: boolean;
