@@ -17,11 +17,9 @@ export default class ConfirmNameAndAddressPage extends ExuiPage(BasePage) {
     this.dateOfBirthFragment = dateOfBirthFragment;
   }
 
-  async verifyContent(ccdCaseData: CCDCaseData) {
+  async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(ccdCaseData.id),
-      super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectText(inputs.dateOfBirth.label, { count: 1 }),
     ]);
   }

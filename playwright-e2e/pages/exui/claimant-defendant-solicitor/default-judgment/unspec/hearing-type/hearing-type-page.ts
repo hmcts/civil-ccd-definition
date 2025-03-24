@@ -15,6 +15,7 @@ export default class HearingTypePage extends ExuiPage(BasePage) {
       super.expectHeading(ccdCaseData.caseNamePublic, {exact:false}),
       super.expectSubheading(subheadings.hearingType),
       super.expectText(paragraphs.descriptionText),
+      super.expectLegend(radioButtons.hearingType.label)
     ]);
   }
 
