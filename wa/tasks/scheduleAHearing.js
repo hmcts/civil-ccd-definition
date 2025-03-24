@@ -27,7 +27,7 @@ module.exports = {
         'UnclaimAssign'
       ]
     },
-    description: '[Directions - Schedule A Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect)',
+    description: '[Hearings (HMC)](/cases/case-details/${[CASE_REFERENCE]}/hearings)',
     role_category: 'ADMIN',
     minor_priority: 500,
     major_priority: 5000
