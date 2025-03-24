@@ -1,6 +1,6 @@
 module.exports = {
     name: 'Schedule a Small Claims Hearing - HMC',
-    type: 'ScheduleAHearing',
+    type: 'ScheduleHMCHearing',
     task_state: 'unassigned',
     task_system: 'SELF',
     security_classification: 'PUBLIC',
