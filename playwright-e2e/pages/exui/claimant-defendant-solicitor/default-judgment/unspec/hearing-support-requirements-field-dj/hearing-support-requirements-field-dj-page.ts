@@ -13,24 +13,25 @@ import partys from '../../../../../../constants/partys.ts';
 import preferredCourts from '../../../../../../config/preferred-courts.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
+import CCDCaseData from "../../../../../../models/ccd/ccd-case-data.ts";
 
 @AllMethodsStep()
 export default class HearingSupportRequirementsFieldDJPage extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
 
-  async verifyContent() {
+  async verifyContent(ccdCaseData:CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(),
+      super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.hearingRequirements),
-      super.expectText(radioButtons.hearingType.label),
+      super.expectLegend(radioButtons.hearingType.label),
       super.expectLabel(radioButtons.hearingType.inPerson.label),
       super.expectLabel(radioButtons.hearingType.video.label),
       super.expectLabel(radioButtons.hearingType.telephone.label),
       super.expectLabel(dropdowns.courtLocation.label),
       super.expectLabel(inputs.telephoneNumber.label),
       super.expectLabel(inputs.email.label),
-      super.expectText(radioButtons.unavailableDates.label),
-      super.expectText(radioButtons.support.label),
+      super.expectLegend(radioButtons.unavailableDates.label),
+      super.expectLegend(radioButtons.support.label),
     ]);
   }
 
