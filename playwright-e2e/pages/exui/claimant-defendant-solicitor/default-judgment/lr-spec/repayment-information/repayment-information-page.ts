@@ -8,7 +8,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import partys from '../../../../../../constants/partys.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
-import {Page} from "@playwright/test";
+import { Page } from '@playwright/test';
 
 @AllMethodsStep()
 export default class RepaymentInformationPage extends ExuiPage(BasePage) {
@@ -27,11 +27,11 @@ export default class RepaymentInformationPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.instalments(defendantData.partyName)),
-      super.expectText(inputs.regularPayments.label),
+      super.expectLabel(inputs.regularPayments.label),
       super.expectLegend(radioButtons.howOften.label),
-      super.expectText(radioButtons.howOften.every2Weeks.label),
-      super.expectText(radioButtons.howOften.everyMonth.label),
-      super.expectText(radioButtons.howOften.everyWeek.label),
+      super.expectLabel(radioButtons.howOften.every2Weeks.label),
+      super.expectLabel(radioButtons.howOften.everyMonth.label),
+      super.expectLabel(radioButtons.howOften.everyWeek.label),
     ]);
   }
 
@@ -57,6 +57,8 @@ export default class RepaymentInformationPage extends ExuiPage(BasePage) {
   }
 
   async submit() {
-    await super.retryClickSubmit();
+    await super.retryClickSubmit(() =>
+      super.expectNoLabel(inputs.regularPayments.label, { timeout: 500 }),
+    );
   }
 }
