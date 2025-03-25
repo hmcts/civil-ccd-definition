@@ -8,7 +8,8 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const claimAmount = '100';
 
-let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
+//TODO - add correct roles for nbcUserWithRegionId4 user as they dont have the permissions to trigger mediation events
+let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.adminUser;
 
 Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo @non-prod-e2e-ft');
 
