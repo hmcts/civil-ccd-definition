@@ -61,7 +61,7 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
   async fixedCostsOnEntry() {
     const { fixedCostsOnEntryPage } = this.defaultJudgmentFactory;
     await fixedCostsOnEntryPage.verifyContent(this.ccdCaseData);
-    await fixedCostsOnEntryPage.selectNoClaimFixedCosts();
+    await fixedCostsOnEntryPage.selectYesClaimFixedCosts();
     await fixedCostsOnEntryPage.submit();
   }
 

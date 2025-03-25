@@ -2,7 +2,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_SET_ASIDE_JUDGEMENT_IN_ERROR_LETTER_TO_LIP_DEFENDANT1",
-    "Name": "Notify Set Aside Judgement",
+    "Name": "Notify Set Aside Judgment",
     "Description": "Send Set Aside Judgment In Error Letter to LiP Defendant 1",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -54,7 +54,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_JO_DEFENDANT1_PIN_IN_LETTER",
-    "Name": "Notify Record Judgement",
+    "Name": "Notify Record Judgment",
     "Description": "Send Record Judgment Determination Of Means Letter to LiP Defendant 1",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
