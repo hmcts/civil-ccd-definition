@@ -324,13 +324,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -467,13 +460,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -507,13 +493,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -526,13 +505,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -545,13 +517,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -564,13 +529,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -583,13 +541,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -602,13 +553,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
