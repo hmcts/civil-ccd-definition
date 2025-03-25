@@ -976,7 +976,7 @@ module.exports = function () {
     async requestForSettleThisClaimForUI2v1() {
       eventName = 'Settle this claim';
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSD(eventName, caseId),
+        () => caseViewPage.startEventForSDMultiple(eventName, caseId),
         () => this.click('Continue'),
         () => this.waitForText('Which claimants are settling'),
         () => this.click('Yes'),
