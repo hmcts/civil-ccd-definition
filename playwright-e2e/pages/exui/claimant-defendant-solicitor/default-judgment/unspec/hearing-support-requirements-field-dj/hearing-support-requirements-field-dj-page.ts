@@ -23,15 +23,15 @@ export default class HearingSupportRequirementsFieldDJPage extends ExuiPage(Base
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectSubheading(subheadings.hearingRequirements),
-      super.expectText(radioButtons.hearingType.label),
+      super.expectLegend(radioButtons.hearingType.label),
       super.expectLabel(radioButtons.hearingType.inPerson.label),
       super.expectLabel(radioButtons.hearingType.video.label),
       super.expectLabel(radioButtons.hearingType.telephone.label),
       super.expectLabel(dropdowns.courtLocation.label),
       super.expectLabel(inputs.telephoneNumber.label),
       super.expectLabel(inputs.email.label),
-      super.expectText(radioButtons.unavailableDates.label),
-      super.expectText(radioButtons.support.label),
+      super.expectLegend(radioButtons.unavailableDates.label),
+      super.expectLegend(radioButtons.support.label),
     ]);
   }
 

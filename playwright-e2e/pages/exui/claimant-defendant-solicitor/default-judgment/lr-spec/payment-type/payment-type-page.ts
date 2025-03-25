@@ -17,7 +17,7 @@ export default class PaymentTypePage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectText(subheadings.paymentType(defendantData.partyName)),
-      super.expectText(radioButtons.paymentType.label),
+      super.expectLegend(radioButtons.paymentType.label),
       super.expectLabel(radioButtons.paymentType.immediately.label),
       super.expectLabel(radioButtons.paymentType.setDate.label),
       super.expectLabel(radioButtons.paymentType.repaymentPlan.label),
