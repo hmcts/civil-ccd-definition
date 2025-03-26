@@ -1,4 +1,4 @@
-export const heading = 'Manage documents';
+export const heading = 'Manage Documents';
 
 export const subHeading = 'Check your answers';
 

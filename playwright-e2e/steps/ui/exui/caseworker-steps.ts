@@ -5,6 +5,8 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
+import {civilAdminUser} from "../../../config/users/exui-users.ts";
+import ccdEvents from "../../../constants/ccd-events.ts";
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -19,5 +21,24 @@ export default class CaseworkerSteps extends BaseExui {
   ) {
     super(exuiDashboardActions, idamActions, requestsFactory, testData);
     this.caseworkerActionsFactory = caseworkerActionsFactory;
+  }
+
+  async Login() {
+    await super.idamActions.exuiLogin(civilAdminUser);
+  }
+
+  async ManageDocuments() {
+    const { manageDocumentsActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await manageDocumentsActions.addNewDocuments();
+      },
+      async () => {
+        await manageDocumentsActions.manageDocumentSubmit();
+      },
+      ccdEvents.MANAGE_DOCUMENTS,
+      civilAdminUser,
+      { verifySuccessEvent: false },
+    );
   }
 }
