@@ -32,9 +32,7 @@ Scenario('1v1 LR v LR defendant response with full admit pay by set date judgmen
   await respondWithFAPayBySetDateJBAPaidInFull(api_spec);
 });
 
-
-/*  AfterSuite(async  ({api_spec_cui}) => {
+AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
     await deleteAccount(config.defendantCitizenUser2.email);
-  });*/
-
+});
