@@ -15,7 +15,7 @@ if (config.runWAApiTest) {
 
 Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod');
 
-Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-task', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
   caseId = await api.getCaseId();
 
@@ -39,7 +39,7 @@ Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e
   await I.judgeAddsCaseNotes();
 }).retry(3);
 
-Scenario.skip('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
@@ -58,7 +58,7 @@ Scenario.skip('Judge perform direction order @create-claim @e2e-1v1-dj @e2e-wa @
   }
 }).retry(3);
 
-Scenario.skip('Hearing schedule @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api, WA}) => {
+Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
     const scheduleAHearingTask = await api.retrieveTaskDetails(hearingCenterAdminToBeUsed, caseId, config.waTaskIds.scheduleAHearing);
     console.log('Schedule a hearing task...' , scheduleAHearingTask);
