@@ -1,8 +1,0 @@
-[
-  {
-    "ID": "ConfirmListingTickBox",
-    "ListElementCode": "CONFIRM_LISTING",
-    "ListElement": "By ticking this box, I confirm I have listed the required hearings and have added a case note with the details of the hearings.",
-    "DisplayOrder": 1
-  }
-]

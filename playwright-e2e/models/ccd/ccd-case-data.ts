@@ -42,6 +42,7 @@ export default interface CCDCaseData {
   applicantDefenceResponseDocumentAndDQFlag?: string;
   specRespondent1Represented?: string;
   respondent1ResponseDeadline?: string;
+  respondent2ResponseDeadline?: string;
   specPaidLessAmountOrDisputesOrPartAdmission?: string;
   specFullDefenceOrPartAdmission?: string;
   respondentClaimResponseTypeForSpecGeneric?: string;
@@ -195,7 +196,7 @@ export interface Party {
   partyName?: string;
   partyEmail?: string;
   companyName?: string;
-  primaryAddress?: PrimaryAddress;
+  primaryAddress?: Address;
   individualTitle?: string;
   individualLastName?: string;
   individualFirstName?: string;
@@ -317,7 +318,7 @@ export interface CaseFlagsDetailsValuePath {
   value?: string;
 }
 
-export interface PrimaryAddress {
+export interface Address {
   County?: string;
   Country?: string;
   PostCode?: string;

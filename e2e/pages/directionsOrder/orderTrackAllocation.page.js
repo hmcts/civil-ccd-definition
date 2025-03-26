@@ -17,7 +17,7 @@ module.exports = {
       }
     },
     labels: {
-      allocateQuestion: 'What track are you allocating the claim to?'
+      allocateQuestion: 'What track are you allocating or re-allocating the claim to?'
     }
   },
 

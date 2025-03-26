@@ -6,7 +6,7 @@ civil-translation:
 
 am-org-role-mapping-service:
   enabled: false
-  
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
