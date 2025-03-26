@@ -10,7 +10,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
 if (config.runWAApiTest) {
   validSummaryJudgmentDirectionsTask = require('../../../../wa/tasks/summaryJudgmentDirectionsTask.js');
-  validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js.js');
+  validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
 }
 
 Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod');
