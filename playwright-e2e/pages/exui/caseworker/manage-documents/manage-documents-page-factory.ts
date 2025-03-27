@@ -1,13 +1,15 @@
 import BasePageFactory from '../../../../base/base-page-factory';
-import ManageDocumentAddDocumentsPage from "../manage-documents/manage-documents-add-documents/manage-document-add-documents-page.ts";
-import ManageDocumentSubmitPage from "../manage-documents/manage-documents-submit/manage-documents-submit-page.ts";
+import EventSummaryFragment from '../../fragments/event-summary/event-summary-fragment.ts';
+import ManageDocumentsSubmitPage from '../manage-documents/manage-documents-submit/manage-documents-submit-page.ts';
+import ManageDocumentsPage from './manage-documents/manage-documents-page.ts';
 
 export default class ManageDocumentsPageFactory extends BasePageFactory {
-  get manageDocumentsAddDocumentsPage() {
-    return new ManageDocumentAddDocumentsPage(this.page);
+  get manageDocumentsPage() {
+    return new ManageDocumentsPage(this.page);
   }
 
   get manageDocumentsSubmitPage() {
-    return new ManageDocumentSubmitPage(this.page);
+    const eventSummaryFragment = new EventSummaryFragment(this.page);
+    return new ManageDocumentsSubmitPage(this.page, eventSummaryFragment);
   }
 }
