@@ -28,7 +28,7 @@ Scenario('1v1 LR v LR defendant response with full admit pay by set date judgmen
   await respondWithFAPayBySetDateJBAPaidInFullLRvLR(api_spec);
 });
 
-Scenario.only('1v1 LiP v LiP defendant response with part admit pay by installments judgment by admission mark paid in full', async ({api_spec_cui}) => {
+Scenario('1v1 LiP v LiP defendant response with part admit pay by installments judgment by admission mark paid in full', async ({api_spec_cui}) => {
   await respondWithPAPayByInstallmentsJBAPaidInFullLipvLip(api_spec_cui);
 });
 
