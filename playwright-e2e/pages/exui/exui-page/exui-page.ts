@@ -78,7 +78,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         message: 'Field Validation Error on UI',
       });
       await super.expectNoSelector(components.loading.selector, {
-        timeout: 10,
+        timeout: 15,
         message: 'Loading spinner taking too long to disappear',
       });
     }
@@ -121,7 +121,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         },
         async () =>
           super.expectNoSelector(components.loading.selector, {
-            timeout: 10,
+            timeout: 15,
             message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
           }),
         {

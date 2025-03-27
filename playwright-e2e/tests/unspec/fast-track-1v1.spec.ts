@@ -14,6 +14,7 @@ test.describe('Unspecified Fast track 1v1', async () => {
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorSteps.NotifyClaimDetails();
     await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence();
     await DefendantSolicitor1Steps.RespondFastTrackFullDefence1v1();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondFastTrackIntentToProceed1v1();

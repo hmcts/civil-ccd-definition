@@ -14,6 +14,7 @@ test.describe('Unspecified Small Track 1v2SS', async () => {
     await CaseRoleAssignmentApiSteps.AssignCaseRoleToDS1();
     await ClaimantSolicitorSteps.NotifyClaimDetails();
     await DefendantSolicitor1Steps.Login();
+    await DefendantSolicitor1Steps.AcknowledgeClaimFullDefence1v2SS();
     await DefendantSolicitor1Steps.RespondSmallTrackFullDefence1v2SS();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v2SS();

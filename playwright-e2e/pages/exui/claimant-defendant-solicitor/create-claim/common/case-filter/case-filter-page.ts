@@ -37,7 +37,7 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     await super.retryClickBySelector(
       buttons.submit.selector,
       () =>
-        super.expectNoTab(dropdowns.jurisdiction.label, {
+        super.expectNoLabel(dropdowns.jurisdiction.label, {
           timeout: 5_000,
           exact: true,
         }),

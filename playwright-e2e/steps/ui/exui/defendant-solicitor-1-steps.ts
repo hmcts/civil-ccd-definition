@@ -143,4 +143,58 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       defendantSolicitor1User,
     );
   }
+
+  async AcknowledgeClaimFullDefence() {
+    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await acknowlegdeClaimActions.confirmNameAndAddress();
+        await acknowlegdeClaimActions.responseIntentionDS1();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
+        await acknowlegdeClaimActions.submitAcknowledgeClaim();
+      },
+      async () => {
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
+      },
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      defendantSolicitor1User,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async AcknowledgeClaimFullDefence2v1() {
+    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await acknowlegdeClaimActions.confirmNameAndAddress();
+        await acknowlegdeClaimActions.responseIntention2v1();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
+        await acknowlegdeClaimActions.submitAcknowledgeClaim();
+      },
+      async () => {
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
+      },
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      defendantSolicitor1User,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async AcknowledgeClaimFullDefence1v2SS() {
+    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await acknowlegdeClaimActions.confirmNameAndAddress();
+        await acknowlegdeClaimActions.responseIntention1v2SS();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS1();
+        await acknowlegdeClaimActions.submitAcknowledgeClaim();
+      },
+      async () => {
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS1();
+      },
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      defendantSolicitor1User,
+      { verifySuccessEvent: false },
+    );
+  }
 }
