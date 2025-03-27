@@ -42,12 +42,12 @@ export default class CaseworkerSteps extends BaseExui {
 
   async ProceedsInCasemanLr() {
     const { caseProceedsInCasemanLrActions } = this.caseworkerActionsFactory;
+    await super.fetchAndSetCCDCaseData(1743072653220284)
     await super.retryExuiEvent(
       async () => {
-        await caseProceedsInCasemanLrActions.casemanLRCaseSettled();
       },
       async () => {
-        await caseProceedsInCasemanLrActions.submit();
+        await caseProceedsInCasemanLrActions.casemanLRCaseSettled();
       },
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       civilAdminUser,

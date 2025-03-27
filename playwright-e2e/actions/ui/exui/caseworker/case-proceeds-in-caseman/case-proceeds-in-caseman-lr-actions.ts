@@ -19,11 +19,11 @@ export default class CaseProceedsInCasemanLrActions extends BaseTestData {
     await caseProceedsInCasemanLRPage.verifyContent(this.ccdCaseData);
     await caseProceedsInCasemanLRPage.enterTodayDate();
     await caseProceedsInCasemanLRPage.selectProceedOnPaperReasonCaseSettled();
+    await caseProceedsInCasemanLRPage.submit();
   }
 
   async submit() {
     const { caseProceedsInCasemanLRPage } = this.caseProceedsInCasemanPageFactory;
-    await caseProceedsInCasemanLRPage.submit();
   }
 
 }
