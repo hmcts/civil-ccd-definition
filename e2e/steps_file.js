@@ -1145,10 +1145,22 @@ module.exports = function () {
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
         await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLOptionsForSettlement`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLSingleClaimant`);
       }, SIGNED_IN_SELECTOR);
 
-     await this.waitForSelector('#settlementSummary');
+     await this.waitForSelector('#markPaidConsent');
+    },
+
+    async navigateToCaseDetailsForSettleThisClaimMultple(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLMultipleClaimant`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#markPaidForAllClaimants');
     },
     async navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseNumber) {
       await this.retryUntilExists(async () => {
