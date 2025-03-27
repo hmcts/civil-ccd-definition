@@ -31,7 +31,7 @@ export default class CaseworkerSteps extends BaseExui {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await caseProceedsInCasemanActions.casemanCaseSettled();
+        await caseProceedsInCasemanActions.caseSettled();
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
@@ -44,7 +44,7 @@ export default class CaseworkerSteps extends BaseExui {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await caseProceedsInCasemanActions.casemanCaseSettledSpec();
+        await caseProceedsInCasemanActions.caseSettledSpec();
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,

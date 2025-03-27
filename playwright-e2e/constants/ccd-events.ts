@@ -93,7 +93,7 @@ const ccdEvents: CCDEvents = {
     description: 'Case will proceed offline in Caseman system',
     id: 'CASE_PROCEEDS_IN_CASEMAN',
     name: 'Case proceeds in Caseman',
-    order: 3,
+    order: 9,
   },
   RESUBMIT_CLAIM: {
     id: 'RESUBMIT_CLAIM',

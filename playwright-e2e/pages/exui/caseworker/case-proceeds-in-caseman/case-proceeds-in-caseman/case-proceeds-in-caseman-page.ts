@@ -1,11 +1,11 @@
-import BasePage from '../../../../../../base/base-page.ts';
-import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import ExuiPage from '../../../../exui-page/exui-page.ts';
-import { inputs, radioButtons } from './case-proceeds-in-caseman-content.ts';
-import DateHelper from '../../../../../../helpers/date-helper.ts';
-import DateFragment from '../../../../fragments/date/date-fragment.ts';
 import { Page } from 'playwright-core';
+import BasePage from '../../../../../base/base-page';
+import { AllMethodsStep } from '../../../../../decorators/test-steps';
+import DateHelper from '../../../../../helpers/date-helper';
+import CCDCaseData from '../../../../../models/ccd/ccd-case-data';
+import ExuiPage from '../../../exui-page/exui-page';
+import DateFragment from '../../../fragments/date/date-fragment';
+import { inputs, radioButtons } from './case-proceeds-in-caseman-content';
 
 @AllMethodsStep()
 export default class CaseProceedsInCasemanPage extends ExuiPage(BasePage) {
