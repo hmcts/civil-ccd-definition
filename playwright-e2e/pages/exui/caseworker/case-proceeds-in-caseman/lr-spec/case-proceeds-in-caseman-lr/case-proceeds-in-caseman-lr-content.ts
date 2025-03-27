@@ -1,5 +1,5 @@
 export const date = {
-  day: '#date-day',
+  day: 'date',
   month: '#date-month',
   year: '#date-year',
 };

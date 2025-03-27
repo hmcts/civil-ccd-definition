@@ -3,17 +3,27 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { date, proceedOnPaperReasonButtons } from './case-proceeds-in-caseman-lr-content.ts';
+import DateHelper from "../../../../../../helpers/date-helper.ts";
+import DateFragment from "../../../../fragments/date/date-fragment.ts";
+import {Page} from "playwright-core";
 
 @AllMethodsStep()
 export default class CaseProceedsInCasemanLRPage extends ExuiPage(BasePage) {
+  private dateFragment : DateFragment
+
+  constructor(page: Page, dateFragment: DateFragment) {
+    super(page);
+    this.dateFragment = dateFragment;
+  }
+
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([super.verifyHeadings(ccdCaseData)]);
   }
 
-  async enterDate() {
-    await super.inputText('01', date.day);
-    await super.inputText('01', date.month);
-    await super.inputText('2022', date.year);
+
+  async enterTodayDate() {
+    // const date = DateHelper.subtractFromToday({ months: 6 });
+    await this.dateFragment.enterDate(DateHelper.getToday(), date.day);
   }
 
   async selectProceedOnPaperReasonApplication() {
