@@ -332,7 +332,7 @@ module.exports = {
     notSuitableSdo: 'transferCaseOfflineNotSuitableSDO',
     intermediateTrackDirections: 'allocateIntermediateTrack',
     multiTrackDirections: 'allocateMultiTrack',
-    multiTrackOrderMadeReview: 'Order Made - Review case - Multi track',
+    multiTrackOrderMadeReview: 'reviewOrder',
     transferCaseOffline: 'Transfer Case Offline'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
