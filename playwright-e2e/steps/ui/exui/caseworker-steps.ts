@@ -5,8 +5,8 @@ import BaseExui from '../../../base/base-exui';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import {civilAdminUser} from "../../../config/users/exui-users.ts";
-import ccdEvents from "../../../constants/ccd-events.ts";
+import { civilAdminUser } from '../../../config/users/exui-users.ts';
+import ccdEvents from '../../../constants/ccd-events.ts';
 
 @AllMethodsStep()
 export default class CaseworkerSteps extends BaseExui {
@@ -27,7 +27,7 @@ export default class CaseworkerSteps extends BaseExui {
     await super.idamActions.exuiLogin(civilAdminUser);
   }
 
-  async ProceedsInCaseman() {
+  async CaseProceedsInCaseman() {
     const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(
       async () => {
@@ -39,20 +39,4 @@ export default class CaseworkerSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
-
-  async ProceedsInCasemanLr() {
-    const { caseProceedsInCasemanLrActions } = this.caseworkerActionsFactory;
-    await super.fetchAndSetCCDCaseData(1743072653220284)
-    await super.retryExuiEvent(
-      async () => {
-      },
-      async () => {
-        await caseProceedsInCasemanLrActions.casemanLRCaseSettled();
-      },
-      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      civilAdminUser,
-      { verifySuccessEvent: false },
-    );
-  }
 }
-
