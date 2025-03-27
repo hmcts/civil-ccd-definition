@@ -43,6 +43,7 @@ const dismissCase = require('../fixtures/events/dismissCase');
 const { toJSON } = require('lodash/seq');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 const judgmentMarkPaidInFull = require('../fixtures/events/cui/judgmentMarkPaidInFullCui');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
 
 
 let caseId, eventName;
@@ -109,6 +110,9 @@ const eventData = {
       },
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
+    /*  PART_ADMISSION_IMMEDIATELY: {
+        No: data.CLAIMANT_RESPONSE('PART_ADMISSION_IMMEDIATELY', true, 'No'),
+      },*/
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM'),
       PART_ADMISSION_SETTLE: data.CLAIMANT_RESPONSE('PART_ADMISSION_SETTLE'),
     }
@@ -304,19 +308,27 @@ module.exports = {
     }
   },
 
-  performMarkPainInFull: async (user, caseId) => {
+  judgmentPaidInFullCui: async (user, caseId) => {
     let eventName = 'JUDGMENT_PAID_IN_FULL';
     let payload = judgmentMarkPaidInFull.markJudgmentPaidInFull();
-
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload);
-    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if (isJudgmentOnlineLive) {
-      await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-        header: '# Judgment marked as paid in full',
-        body: 'The judgment has been marked as paid in full'
-      }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let payload = judgmentOnline1v1Spec.markJudgmentPaidInFull();
+    for (let pageId of Object.keys(payload.userInput)) {
+      await assertValidData(payload, pageId);
     }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -613,6 +625,11 @@ module.exports = {
     for (let pageId of Object.keys(requestJudgementData.userInput)) {
       await assertValidData(requestJudgementData, pageId);
     }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment Submitted \r\n## A county court judgment(CCJ) has been submitted for case',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   extendResponseDeadline: async (user) => {
