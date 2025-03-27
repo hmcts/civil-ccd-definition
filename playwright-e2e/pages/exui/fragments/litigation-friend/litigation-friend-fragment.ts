@@ -96,7 +96,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
 
   async uploadCertificateOfSuitability() {
     await super.clickBySelector(buttons.addNewCertificate.selector(this.litigationFriendParty));
-    await super.expectLegend(inputs.certificateOfSuitability.uploadDoc.label, {
+    await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label, {
       count: 1,
     });
     await super.retryUploadFile(

@@ -154,13 +154,16 @@ for the named developer use.
 
 While connected to the VPN simply run one of the below commands from your project's (civil-ccd-definition) folder:
 Note: be sure to have Docker running
+
+
 ```shell
-npx @hmcts/dev-env@latest && ./bin/setup-devuser-preview-env.sh
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh
 ```
+
 You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
 
 ```shell
-npx @hmcts/dev-env@latest && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
 ```
 
 Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.

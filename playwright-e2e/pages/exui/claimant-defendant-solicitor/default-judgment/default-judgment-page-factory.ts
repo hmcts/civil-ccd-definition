@@ -21,6 +21,10 @@ import HearingSupportRequirementsFieldDJPage from './unspec/hearing-support-requ
 import HearingTypePage from './unspec/hearing-type/hearing-type-page';
 import ShowCertifyStatmentBothPage from './unspec/show-certify-statement-both/show-certify-statement-both-page';
 import ShowCertifyStatmentPage from './unspec/show-certify-statement/show-certify-statement-page';
+import DateFragment from '../../fragments/date/date-fragment.ts';
+import YesOrNoFragment from '../../fragments/yes-or-no/yes-or-no-fragment.ts';
+import ConfirmDefaultJudgmentPage from './unspec/confirm-default-judgment/confirm-default-judgment-page.ts';
+import ConfirmDefaultJudgmentSpecPage from './lr-spec/confirm-default-judgment-spec/confirm-default-judgment-spec-page.ts';
 
 export default class DefaultJudgmentPageFactory extends BasePageFactory {
   get defendantDetailsPage() {
@@ -72,7 +76,8 @@ export default class DefaultJudgmentPageFactory extends BasePageFactory {
   }
 
   get fixedCostsOnEntryPage() {
-    return new FixedCostsOnEntryPage(this.page);
+    const yesOrNoFragment = new YesOrNoFragment(this.page);
+    return new FixedCostsOnEntryPage(this.page, yesOrNoFragment);
   }
 
   get paymentBreakdownPage() {
@@ -92,7 +97,8 @@ export default class DefaultJudgmentPageFactory extends BasePageFactory {
   }
 
   get paymentSetDatePage() {
-    return new PaymentSetDatePage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new PaymentSetDatePage(this.page, dateFragment);
   }
 
   get paymentSetDate1v2Page() {
@@ -100,14 +106,24 @@ export default class DefaultJudgmentPageFactory extends BasePageFactory {
   }
 
   get repaymentInformationPage() {
-    return new RepaymentInformationPage(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new RepaymentInformationPage(this.page, dateFragment);
   }
 
   get repaymentInformation1v2Page() {
-    return new RepaymentInformation1v2Page(this.page);
+    const dateFragment = new DateFragment(this.page);
+    return new RepaymentInformation1v2Page(this.page, dateFragment);
   }
 
   get submitDefaultJudgmentPage() {
     return new SubmitDefaultJudgmentPage(this.page);
+  }
+
+  get confirmDefaultJudgmentPage() {
+    return new ConfirmDefaultJudgmentPage(this.page);
+  }
+
+  get confirmDefaultJudgmentSpecPage() {
+    return new ConfirmDefaultJudgmentSpecPage(this.page);
   }
 }
