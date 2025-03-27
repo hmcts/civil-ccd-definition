@@ -330,8 +330,8 @@ module.exports = {
     smallClaimDirections: 'SmallClaimsTrackDirections',
     legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
     notSuitableSdo: 'transferCaseOfflineNotSuitableSDO',
-    intermediateTrackDirections: 'intermediate_track_decision_making_work',
-    multiTrackDirections: 'multi_track_decision_making_work',
+    intermediateTrackDirections: 'allocateIntermediateTrack',
+    multiTrackDirections: 'allocateMultiTrack',
     multiTrackOrderMadeReview: 'Order Made - Review case - Multi track',
     transferCaseOffline: 'Transfer Case Offline'
   },
