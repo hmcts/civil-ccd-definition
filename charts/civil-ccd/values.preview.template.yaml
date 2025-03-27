@@ -137,9 +137,9 @@ aac-manage-case-assignment:
     ingressHost: manage-case-assignment-${SERVICE_NAME}.preview.platform.hmcts.net
 
 xui-webapp:
-  image: hmctspublic.azurecr.io/xui/webapp:pr-4384
-  imagePullPolicy: Always
   nodejs:
+    image: hmctspublic.azurecr.io/xui/webapp:pr-4384
+    imagePullPolicy: Always
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
