@@ -39,4 +39,17 @@ export default class CaseworkerSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async CaseProceedsInCasemanSpec() {
+    const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.casemanCaseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      civilAdminUser,
+      { verifySuccessEvent: false },
+    );
+  }
 }
