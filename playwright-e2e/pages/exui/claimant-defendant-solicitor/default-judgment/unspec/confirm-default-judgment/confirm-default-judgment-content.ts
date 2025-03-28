@@ -1,1 +1,1 @@
-export const confirmationHeading = 'Judgment for damages to be decided Granted';
+export const confirmationHeading = 'Judgment for damages to be decided';
