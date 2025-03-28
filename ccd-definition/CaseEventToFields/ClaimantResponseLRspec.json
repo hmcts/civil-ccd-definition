@@ -102,6 +102,39 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearingLabel",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "DeterminationWithoutHearing",
+    "ShowSummaryChangeOption": "N",
+    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND applicant1ProceedWithClaim=\"Yes\"",
+    "PageLabel": "Determination without Hearing Questions"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearingYesNo",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DeterminationWithoutHearing",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearingWhyNot",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "MANDATORY",
+    "PageID": "DeterminationWithoutHearing",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "deterWithoutHearingYesNo =\"No\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1ClaimExpertSpecRequired",
     "PageDisplayOrder": 8,
     "PageFieldDisplayOrder": 2,
