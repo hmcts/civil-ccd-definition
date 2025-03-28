@@ -253,7 +253,7 @@ module.exports = {
       ...markJudgmentPaid.userInput,
       MarkJudgmentPaidInFull: {
         joJudgmentPaidInFull: {
-          dateOfFullPaymentMade:  date(-5),
+          dateOfFullPaymentMade:  date(0),
           confirmFullPaymentMade:['CONFIRMED']
         }
       }
@@ -270,4 +270,17 @@ module.exports = {
     };
     return referJudgeDefenceReceived;
   },
+  confirmOrderReview: () => {
+    const confirmReview = {};
+    confirmReview.userInput = {
+      ...confirmReview.userInput,
+      ObligationDate: {
+        obligationDatePresent: 'No'
+      },
+      IsFinalOrder: {
+        isFinalOrder: 'Yes'
+      }
+    };
+    return confirmReview;
+  }
 };

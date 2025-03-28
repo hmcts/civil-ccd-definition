@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE') => {
+  claimantResponse: (response = 'FULL_DEFENCE', lipDefendant = false) => {
     const responseData = {
     };
     switch (response) {
@@ -135,12 +135,13 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          Hearing: {
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            }
-          }
+          ...(!lipDefendant) ? {
+            Hearing: {
+              respondent1DQStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              }
+            }}: {}
         };
         break;
       case 'PART_ADMISSION':
