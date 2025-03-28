@@ -27,6 +27,33 @@ export default class CaseworkerSteps extends BaseExui {
     await super.idamActions.exuiLogin(civilAdminUser);
   }
 
+  async CaseProceedsInCaseman() {
+    const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettled();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      civilAdminUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CaseProceedsInCasemanSpec() {
+    const { caseProceedsInCasemanActions } = this.caseworkerActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await caseProceedsInCasemanActions.caseSettledSpec();
+      },
+      async () => {},
+      ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
+      civilAdminUser,
+      { verifySuccessEvent: false },
+     );
+  }
+      
+      
   async ManageDocuments() {
     const { manageDocumentsActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(
