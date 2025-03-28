@@ -5,14 +5,14 @@ import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-de
 import partys from '../../../../../../constants/partys';
 import { radioButtons } from './defendant-details-content';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper';
-import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts'
+import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 
 @AllMethodsStep()
 export default class DefendantDetailsPage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData : CCDCaseData ) {
+  async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectText(radioButtons.selectDefendant.label)
+      super.expectText(radioButtons.selectDefendant.label),
     ]);
   }
 

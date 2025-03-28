@@ -50,10 +50,9 @@ export default class CaseworkerSteps extends BaseExui {
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
       civilAdminUser,
       { verifySuccessEvent: false },
-     );
+    );
   }
-      
-      
+
   async ManageDocuments() {
     const { manageDocumentsActions } = this.caseworkerActionsFactory;
     await super.retryExuiEvent(

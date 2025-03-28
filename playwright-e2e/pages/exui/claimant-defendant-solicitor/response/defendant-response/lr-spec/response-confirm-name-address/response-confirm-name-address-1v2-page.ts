@@ -10,9 +10,13 @@ export default class ResponseConfirmNameAddress1v2Page extends ExuiPage(BasePage
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLegend(radioButtons.address.label, {count:2}),
-      super.expectRadioYesLabel(radioButtons.address.yes.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1)),
-      super.expectRadioNoLabel(radioButtons.address.no.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1)),
+      super.expectLegend(radioButtons.address.label, { count: 2 }),
+      super.expectRadioYesLabel(
+        radioButtons.address.yes.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+      ),
+      super.expectRadioNoLabel(
+        radioButtons.address.no.selector(partys.DEFENDANT_1, partys.DEFENDANT_SOLICITOR_1),
+      ),
     ]);
   }
 

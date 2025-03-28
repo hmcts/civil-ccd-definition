@@ -404,7 +404,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RequestDefaultJudgment(){
+  async RequestDefaultJudgment() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -419,11 +419,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 
-  async RequestDefaultJudgment1v2(){
+  async RequestDefaultJudgment1v2() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -438,7 +438,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 }

@@ -31,8 +31,8 @@ export default class DefenceRoutePage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.defenceRoute.hasPaid.label, {count:1}),
-        super.expectLabel(radioButtons.defenceRoute.disputesClaim.label, {count:1}),
+        super.expectLabel(radioButtons.defenceRoute.hasPaid.label, { count: 1 }),
+        super.expectLabel(radioButtons.defenceRoute.disputesClaim.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

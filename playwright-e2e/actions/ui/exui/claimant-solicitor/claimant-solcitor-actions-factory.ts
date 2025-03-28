@@ -8,11 +8,10 @@ import CreateClaimSpecActions from './create-claim/create-claim-spec-actions';
 import CreateClaimActions from './create-claim/create-claim-actions';
 import NotifyClaimActions from './notify-claim-actions';
 import NotifyClaimDetailsActions from './notify-claim-details-actions';
-import DefaultJudgmentPageFactory
-  from "../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts";
-import DefaultJudgmentActions from "./default-judgment/default-judgment-actions.ts";
-import ClaimantResponseSpecActions from "./claimant-response/claimant-response-spec-actions.ts";
-import DefaultJudgmentSpecActions from "./default-judgment/default-judgment-spec-actions.ts";
+import DefaultJudgmentPageFactory from '../../../../pages/exui/claimant-defendant-solicitor/default-judgment/default-judgment-page-factory.ts';
+import DefaultJudgmentActions from './default-judgment/default-judgment-actions.ts';
+import ClaimantResponseSpecActions from './claimant-response/claimant-response-spec-actions.ts';
+import DefaultJudgmentSpecActions from './default-judgment/default-judgment-spec-actions.ts';
 
 export default class ClaimantSolicitorActionsFactory extends BasePageActionsFactory {
   get createClaimActions() {
@@ -46,10 +45,10 @@ export default class ClaimantSolicitorActionsFactory extends BasePageActionsFact
   }
 
   get defaultJudgementActions() {
-    return new DefaultJudgmentActions(new DefaultJudgmentPageFactory(this.page), this.testData,);
+    return new DefaultJudgmentActions(new DefaultJudgmentPageFactory(this.page), this.testData);
   }
 
   get defaultJudgementSpecActions() {
-    return new DefaultJudgmentSpecActions(new DefaultJudgmentPageFactory(this.page), this.testData,);
+    return new DefaultJudgmentSpecActions(new DefaultJudgmentPageFactory(this.page), this.testData);
   }
 }
