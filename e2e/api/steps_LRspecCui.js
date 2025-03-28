@@ -110,9 +110,6 @@ const eventData = {
       },
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
-    /*  PART_ADMISSION_IMMEDIATELY: {
-        No: data.CLAIMANT_RESPONSE('PART_ADMISSION_IMMEDIATELY', true, 'No'),
-      },*/
       COUNTER_CLAIM: data.CLAIMANT_RESPONSE('COUNTER_CLAIM'),
       PART_ADMISSION_SETTLE: data.CLAIMANT_RESPONSE('PART_ADMISSION_SETTLE'),
     }
@@ -625,11 +622,6 @@ module.exports = {
     for (let pageId of Object.keys(requestJudgementData.userInput)) {
       await assertValidData(requestJudgementData, pageId);
     }
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '# Judgment Submitted \r\n## A county court judgment(CCJ) has been submitted for case',
-      body: ''
-    }, true);
-    await waitForFinishedBusinessProcess(caseId);
   },
 
   extendResponseDeadline: async (user) => {

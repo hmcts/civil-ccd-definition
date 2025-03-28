@@ -11,7 +11,7 @@ Before(async () => {
 });
 
 async function respondWithPAPayByInstallmentsJBAPaidInFullLipvLip(api_spec_cui) {
-  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, 'SmallClaims', false, 'INDIVIDUAL');
+  caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, false, 'INDIVIDUAL');
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled, 'PA_INSTALLMENTS_INDIVIDUAL');
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'All_FINAL_ORDERS_ISSUED', carmEnabled, 'PA_ACCEPT_CCJ');
   await api_spec_cui.judgmentPaidInFullCui(config.applicantCitizenUser, caseId, true);
