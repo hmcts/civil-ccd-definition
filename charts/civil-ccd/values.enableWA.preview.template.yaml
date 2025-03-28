@@ -157,6 +157,7 @@ am-org-role-mapping-service:
 
 xui-webapp:
   nodejs:
+    inage: 'hmctspublic.azurecr.io/xui/webapp:pr-4382-e862a40-20250325082715'
     environment:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
       SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
