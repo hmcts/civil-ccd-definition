@@ -497,6 +497,14 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "deterWithoutHearingYesNo",
+    "TabFieldDisplayOrder": 81
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "applicant1DQExperts",
     "TabFieldDisplayOrder": 82
   },
