@@ -98,7 +98,7 @@ const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
+const {PBAv3} = require('./fixtures/featureKeys');
 const specifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocumentSpec');
 const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
 const whoIsFor = require('./pages/mediationDocumentsUpload/whoIsFor');
@@ -356,7 +356,6 @@ module.exports = function () {
 
          //const twoVOneScenario = claimant1 && claimant2;
          const pbaV3 = await checkToggleEnabled(PBAv3);
-         const SdoR2 = await checkToggleEnabled(SDOR2);
          output.log('--------------createCaseSpecified calling------------');
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
          output.log('--------------createCaseSpecified finished------------');
@@ -371,7 +370,7 @@ module.exports = function () {
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
              ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps(SdoR2, [
+            ...conditionalSteps( [
               () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
                  () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
@@ -401,7 +400,7 @@ module.exports = function () {
               () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
             ]),
             ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps(SdoR2, [
+            ...conditionalSteps([
               () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
             () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
             () => specTimelinePage.addManually(),
@@ -433,7 +432,6 @@ module.exports = function () {
 
       //const twoVOneScenario = claimant1 && claimant2;
       const pbaV3 = await checkToggleEnabled(PBAv3);
-      const SdoR2 = await checkToggleEnabled(SDOR2);
       output.log('--------------createCaseSpecified calling------------');
       await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
       output.log('--------------createCaseSpecified finished------------');
@@ -448,7 +446,7 @@ module.exports = function () {
           () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
         ]),
         ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
         () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
         () => specTimelinePage.addManually(),
@@ -465,7 +463,7 @@ module.exports = function () {
         () => pbaNumberPage.clickContinue(),
         () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
         () => event.returnToCaseDetails(),
@@ -480,7 +478,7 @@ module.exports = function () {
           () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
         ]),
         ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
         () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
         () => specTimelinePage.addManually(),
@@ -498,7 +496,7 @@ module.exports = function () {
         () => paymentReferencePage.updatePaymentReference(),
         () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),

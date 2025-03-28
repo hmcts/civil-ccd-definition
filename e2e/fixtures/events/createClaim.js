@@ -75,7 +75,7 @@ let claimantCourt = config.claimantSelectedCourt;
 const useHmcEaCourt = config.claimantSelectedCourtHmc;
 const useClaimantSelectedCourt = config.claimantSelectedCourt;
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2, hmcTest) => {
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
   claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt;
 
@@ -185,15 +185,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...(sdoR2 === true) ? {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      }
-    } : {
-      ClaimType: {
-        claimType: 'CONSUMER_CREDIT'
-      }
-      },
+    ClaimTypeUnSpec: {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
+    },
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
@@ -387,7 +381,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -423,7 +417,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, isMintiEnabled),
       },
       invalid: {
         Upload: {
