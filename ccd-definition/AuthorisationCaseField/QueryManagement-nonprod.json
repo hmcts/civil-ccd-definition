@@ -54,7 +54,11 @@
       {
         "UserRoles": [
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -85,6 +89,10 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
           "GS_profile"
         ],
@@ -117,6 +125,10 @@
       },
      {
        "UserRoles": [
+         "APP-SOL-UNSPEC-PROFILE",
+         "APP-SOL-SPEC-PROFILE",
+         "RES-SOL-ONE-SPEC-PROFILE",
+         "RES-SOL-ONE-UNSPEC-PROFILE",
          "judge-profile",
          "GS_profile"
        ],
