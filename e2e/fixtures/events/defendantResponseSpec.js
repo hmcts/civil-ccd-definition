@@ -1,4 +1,4 @@
-const {listElement, element} = require('../../api/dataHelper');
+const {listElement, element, date} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
   respondToClaim: (response = 'FULL_DEFENCE', camundaEvent = 'CREATE_CLAIM_SPEC', fastTrack = false,
@@ -315,7 +315,61 @@ module.exports = {
           }
         };
         break;
-
+      case 'FULL_ADMISSION_JBA':
+        responseData.userInput = {
+          ...responseData.userInput,
+          RespondentResponseTypeSpec: {
+            respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
+            responseClaimTrack: 'SMALL_CLAIM',
+            specFullDefenceOrPartAdmission: 'No',
+            specFullDefenceOrPartAdmission1V1: null,
+          },
+          defenceAdmittedPartRoute: {
+            respondToAdmittedClaimOwingAmount: '200000',
+            specDefenceFullAdmittedRequired: 'No'
+          },
+          WhenWillClaimBePaid: {
+            defenceAdmitPartPaymentTimeRouteGeneric: 'BY_SET_DATE',
+            defenceAdmitPartPaymentTimeRouteRequired: 'BY_SET_DATE',
+            respondToClaimAdmitPartLRspec: {
+              whenWillThisAmountBePaid:  date(40),
+            }
+          },
+          WhyDoesNotPayImmediately: {
+            responseToClaimAdmitPartWhyNotPayLRspec: 'reasons'
+          },
+          Upload: {
+            detailsOfWhyDoesYouDisputeTheClaim: 'details'
+          },
+          HowToAddTimeline: {
+            specClaimResponseTimelineList: 'MANUAL'
+          },
+          ResponseConfirmNameAddress: {
+            businessProcess: {
+              status: 'FINISHED',
+              camundaEvent: 'CREATE_CLAIM_SPEC'
+            },
+          },
+          defenceRoute: {
+            specPaidLessAmountOrDisputesOrPartAdmission: 'No',
+          }
+        };
+        responseData.midEventData = {
+          ...responseData.midEventData,
+          RespondentResponseTypeSpec: {
+            specFullDefenceOrPartAdmission: 'No',
+            multiPartyResponseTypeFlags: 'FULL_ADMISSION',
+            specDefenceFullAdmittedRequired: 'No'
+          },
+          defenceAdmittedPartRoute: {
+            responseClaimTrack: 'SMALL_CLAIM'
+          },
+          defenceRoute: {
+            respondent1ClaimResponsePaymentAdmissionForSpec: 'DID_NOT_PAY',
+            responseClaimTrack: 'SMALL_CLAIM'
+          }
+        };
+        break;
     }
 
     return responseData;
