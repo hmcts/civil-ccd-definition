@@ -497,7 +497,7 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
-    "CaseFieldID": "deterWithoutHearingYesNo",
+    "CaseFieldID": "deterWithoutHearing",
     "TabFieldDisplayOrder": 81
   },
   {
