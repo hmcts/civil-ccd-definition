@@ -162,6 +162,7 @@ ccd:
       ingressHost: gateway-${SERVICE_FQDN}
   ccd-data-store-api:
     java:
+      image: hmctspublic.azurecr.io/ccd/data-store-api:pr-2528-2ed7d95-20250327110605
       environment:
         CASE_DOCUMENT_AM_API_ATTACH_DOCUMENT_ENABLED: true
         CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
