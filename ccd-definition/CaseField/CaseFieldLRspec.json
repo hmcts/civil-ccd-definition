@@ -1086,25 +1086,9 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "deterWithoutHearingLabel",
-    "Label": "**Do you consider that this claim is suitable for determination without a hearing** i.e. by a Judge reading and considering the case papers, witness statements and other documents filed by the parties, making a decision, and giving a note of reasons for that decision? ",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "deterWithoutHearingYesNo",
-    "Label": "Determination without hearing?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "deterWithoutHearingWhyNot",
-    "Label": "Tell us why",
-    "FieldType": "TextArea",
+    "ID": "deterWithoutHearing",
+    "Label": "Claimant 1 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
