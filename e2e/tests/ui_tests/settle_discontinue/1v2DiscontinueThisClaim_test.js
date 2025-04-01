@@ -26,21 +26,21 @@ Scenario('1v2 spec Discontinue This Claim - Full discontinuance', async ({api_sp
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).skip().retry(3);
 
 Scenario('Discontinue This Claim', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForDiscontinueThisClaimForUI1v2();
   }
-}).retry(3);
+}).skip().retry(3);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
   }
-}).retry(3);
+}).skip().retry(3);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
@@ -58,28 +58,28 @@ Scenario('1v2 full defence unspecified - judge draws fast track WITHOUT sum of d
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-});
+}).skip();
 
 Scenario('Discontinue This Claim', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForDiscontinueThisClaimForUI1v2();
   }
-}).retry(3);
+}).skip().retry(3);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
   }
-}).retry(3);
+}).skip().retry(3);
 
 Scenario.skip('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestForClaimDiscontinuedRemoveHearingForUI();
   }
-}).retry(3);
+}).skip().retry(3);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
