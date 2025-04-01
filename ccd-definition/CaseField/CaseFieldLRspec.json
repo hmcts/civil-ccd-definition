@@ -1094,6 +1094,22 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "deterWithoutHearingRespondent1",
+    "Label": "Defendant 1 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "deterWithoutHearingRespondent2",
+    "Label": "Defendant 2 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimCourtLocationLabel",
     "Label": "## Court Location",
     "FieldType": "Label",
