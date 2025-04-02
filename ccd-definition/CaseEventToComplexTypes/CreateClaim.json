@@ -288,7 +288,8 @@
     "CaseFieldID": "respondent1",
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "DisplayContextParameter": "#MAXLENGTH=70"
   },
   {
     "ID": "Defendant",
