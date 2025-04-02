@@ -289,7 +289,7 @@
     "ListElementCode": "individualFirstName",
     "FieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
-    "DisplayContextParameter": "#MAXLENGTH=70"
+    "DisplayContextParameter": "#MAXLENGTH=10"
   },
   {
     "ID": "Defendant",
