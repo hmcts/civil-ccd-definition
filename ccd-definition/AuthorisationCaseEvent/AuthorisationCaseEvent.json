@@ -568,8 +568,7 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
+          "GS_profile",
           "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
