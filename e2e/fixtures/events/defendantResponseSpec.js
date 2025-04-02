@@ -50,6 +50,12 @@ module.exports = {
               }
             },
           } : {}),
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
+          },
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -374,6 +380,12 @@ module.exports = {
               }
             },
           } : {}),
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent2: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 2'
+            }
+          },
           SmallClaimExperts: {
             respondent2DQExperts: {
               expertRequired: 'Yes',

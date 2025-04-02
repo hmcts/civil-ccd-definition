@@ -66,6 +66,12 @@ module.exports = {
               ]
             }
           },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
+          },
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -365,6 +371,12 @@ module.exports = {
               isMediationUnavailablityExists: 'No'
             }
           },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
+          },
           SmallClaimExperts: {
             responseClaimExpertSpecRequired: 'No'
           },
@@ -519,6 +531,12 @@ module.exports = {
           MediationAvailability: {
             resp1MediationAvailability: {
               isMediationUnavailablityExists: 'No'
+            }
+          },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
             }
           },
           SmallClaimExperts: {
@@ -714,6 +732,12 @@ module.exports = {
           MediationAvailability: {
             resp2MediationAvailability: {
               isMediationUnavailablityExists: 'No'
+            }
+          },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent2: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 2'
             }
           },
           SmallClaimExperts: {
