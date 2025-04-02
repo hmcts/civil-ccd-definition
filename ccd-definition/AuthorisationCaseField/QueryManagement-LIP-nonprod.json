@@ -22,7 +22,7 @@
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -51,7 +51,7 @@
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
