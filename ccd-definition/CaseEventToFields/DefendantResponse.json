@@ -599,6 +599,32 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent1",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DeterminationWithoutHearing",
+    "CaseEventFieldLabel": " ",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "multiPartyResponseTypeFlags=\"FULL_DEFENCE\" AND allocatedTrack =\"SMALL_CLAIM\"",
+    "FieldShowCondition": "isRespondent1 = \"Yes\"",
+    "PageLabel": "Determination without Hearing Questions"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent2",
+    "PageDisplayOrder": 10,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DeterminationWithoutHearing",
+    "CaseEventFieldLabel": " ",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "addRespondent2 = \"Yes\" AND respondent2SameLegalRepresentative != \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "applicant1PartyNameLabelExperts1",
     "PageLabel": "Respond to claim",
     "PageDisplayOrder": 11,
