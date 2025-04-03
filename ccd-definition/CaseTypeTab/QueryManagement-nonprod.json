@@ -8,7 +8,7 @@
     "CaseFieldID": "QueryManagementComponentLauncher",
     "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
     "TabFieldDisplayOrder": 1,
-    "TabShowCondition": "qmApplicantSolicitorQueries.partyName = \"*\" OR qmRespondentSolicitor1Queries.partyName = \"*\" OR qmRespondentSolicitor2Queries.partyName = \"*\""
+    "TabShowCondition": "qmApplicantCitizenQueries.partyName = \"*\" OR qmRespondentCitizenQueries.partyName = \"*\" OR qmApplicantSolicitorQueries.partyName = \"*\" OR qmRespondentSolicitor1Queries.partyName = \"*\" OR qmRespondentSolicitor2Queries.partyName = \"*\""
   },
   {
     "LiveFrom": "01/01/2017",
@@ -31,7 +31,7 @@
     "TabDisplayOrder": 14,
     "CaseFieldID": "qmRespondentSolicitor1Queries",
     "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
-    "TabFieldDisplayOrder": 3,
+    "TabFieldDisplayOrder": 5,
     "FieldShowCondition": "QueryManagementComponentLauncher!=\"\""
   },
   {
@@ -43,7 +43,7 @@
     "TabDisplayOrder": 14,
     "CaseFieldID": "qmRespondentSolicitor2Queries",
     "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
-    "TabFieldDisplayOrder": 4,
+    "TabFieldDisplayOrder": 6,
     "FieldShowCondition": "QueryManagementComponentLauncher!=\"\""
   }
 ]
