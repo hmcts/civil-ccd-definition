@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DELETE_QUERY_DOCUMENT",
-    "Name": "Generate query document",
-    "Description": "Generate the latest document",
+    "Name": "Delete old query document",
+    "Description": "Delete the old query document",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
