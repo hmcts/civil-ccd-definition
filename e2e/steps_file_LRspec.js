@@ -958,12 +958,12 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventForSD(eventName, caseId),
         () => this.click('Continue'),
-        () => this.waitForText('Confirm marking as paid in full'),
+        () => this.waitForText('Confirm settle this claim'),
         () => this.click('Yes'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
-        () => this.waitForText('The claim has been marked as paid in full'),
+        () => this.waitForText('This claim has been marked as settled'),
         () => this.waitForText('Close and Return to case details'),
         () => this.click('Close and Return to case details'),
         () => this.waitForText('Sign out'),
@@ -974,14 +974,14 @@ module.exports = function () {
     async requestForSettleThisClaimForUI2v1() {
       eventName = 'Settle this claim';
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSD(eventName, caseId),
+        () => caseViewPage.startEventForSDMultiple(eventName, caseId),
         () => this.click('Continue'),
         () => this.waitForText('Which claimants are settling'),
         () => this.click('Yes'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
-        () => this.waitForText('The claim has been marked as paid in full'),
+        () => this.waitForText('This claim has been marked as settled'),
         () => this.waitForText('Close and Return to case details'),
         () => this.click('Close and Return to case details'),
         () => this.waitForText('Sign out'),
