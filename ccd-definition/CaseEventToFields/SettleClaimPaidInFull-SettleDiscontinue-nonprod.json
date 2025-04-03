@@ -180,5 +180,15 @@
     "PageID": "WorkAllocation",
     "PageDisplayOrder": 99,
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SETTLE_CLAIM_MARK_PAID_FULL",
+    "CaseFieldID": "preStayState",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
   }
 ]
