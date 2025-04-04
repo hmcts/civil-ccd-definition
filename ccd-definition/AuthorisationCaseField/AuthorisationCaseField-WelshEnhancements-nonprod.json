@@ -1,0 +1,48 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "changeLanguagePreferenceLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "changeLanguagePreference",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  }
+]
