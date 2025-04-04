@@ -297,6 +297,22 @@
     "TabID": "ClaimDetails",
     "TabLabel": "Claim details",
     "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1LiPResponse.respondent1DQExtraDetails.determinationWithoutHearingRequired",
+    "TabFieldDisplayOrder": 44
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1LiPResponse.respondent1DQExtraDetails.determinationWithoutHearingReason",
+    "TabFieldDisplayOrder": 45
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
     "CaseFieldID": "deterWithoutHearingRespondent1",
     "TabFieldDisplayOrder": 44
   },
@@ -515,6 +531,22 @@
     "TabDisplayOrder": 2,
     "CaseFieldID": "deterWithoutHearing",
     "TabFieldDisplayOrder": 81
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "applicant1LiPResponse.applicant1DQExtraDetails.determinationWithoutHearingRequired",
+    "TabFieldDisplayOrder": 81
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "applicant1LiPResponse.applicant1DQExtraDetails.determinationWithoutHearingReason",
+    "TabFieldDisplayOrder": 82
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
