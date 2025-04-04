@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: 'hmctspublic.azurecr.io/civil/service:pr-6224'
     keyVaults:
       civil:
         resourceGroup: civil
@@ -138,6 +138,7 @@ aac-manage-case-assignment:
 
 xui-webapp:
   nodejs:
+    image: hmctspublic.azurecr.io/xui/webapp:pr-4398
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
