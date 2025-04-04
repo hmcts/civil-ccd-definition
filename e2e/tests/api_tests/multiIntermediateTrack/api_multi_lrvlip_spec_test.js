@@ -32,4 +32,3 @@ AfterSuite(async ({ api_spec_cui }) => {
   await api_spec_cui.cleanUp();
   await deleteAccount(config.defendantCitizenUser2.email);
 });
-
