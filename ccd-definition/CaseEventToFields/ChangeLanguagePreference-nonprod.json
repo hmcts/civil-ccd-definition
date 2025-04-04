@@ -17,6 +17,7 @@
     "DisplayContext": "Mandatory",
     "PageID": "ChangeLanguagePreference",
     "PageDisplayOrder": 1,
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-lang-pref",
     "ShowSummaryChangeOption": "Y"
   }
 ]

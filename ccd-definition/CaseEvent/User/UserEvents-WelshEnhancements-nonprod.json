@@ -16,6 +16,7 @@
     "EndButtonLabel": "Submit",
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0
+    "RetriesTimeoutURLSubmittedEvent": 0,
+    "EventEnablingCondition": "applicant1Represented = \"No\" OR specRespondent1Represented = \"No\""
   }
 ]
