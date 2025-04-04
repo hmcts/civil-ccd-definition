@@ -10,7 +10,7 @@
     "ID": "documentToRemove",
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
-    "ListElementCode": "caseDocument",
+    "ListElementCode": "caseDocumentToKeep",
     "DisplayContext": "READONLY"
   },
   {
