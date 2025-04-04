@@ -74,6 +74,12 @@ module.exports = {
       await I.navigateToCaseDetailsForSettleThisClaim(caseId);
     }, locate('.govuk-heading-l'));
   },
+  async startEventForSDMultiple(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForSettleThisClaimMultple(caseId);
+    }, locate('.govuk-heading-l'));
+  },
   async startEventForSettleThisClaimJudgesOrder(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
