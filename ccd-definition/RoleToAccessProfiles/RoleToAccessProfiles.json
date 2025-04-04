@@ -9,6 +9,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "idam:caseworker-civil-rparobot",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "AccessProfiles": "caseworker-civil-rparobot",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
