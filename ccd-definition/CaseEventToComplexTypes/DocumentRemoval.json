@@ -12,5 +12,19 @@
     "CaseFieldID": "documentToKeepCollection",
     "ListElementCode": "caseDocument",
     "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "documentToRemove",
+    "CaseEventID": "REMOVE_DOCUMENT",
+    "CaseFieldID": "documentToKeepCollection",
+    "ListElementCode": "uploadedDate",
+    "DisplayContext": "READONLY"
+  },
+  {
+    "ID": "documentToRemove",
+    "CaseEventID": "REMOVE_DOCUMENT",
+    "CaseFieldID": "documentToKeepCollection",
+    "ListElementCode": "isSystemGenerated",
+    "DisplayContext": "READONLY"
   }
 ]
