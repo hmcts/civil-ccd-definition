@@ -18,10 +18,10 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SETTLE_CLAIM_MARK_PAID_FULL",
-    "Name": "Mark claim as paid in full",
-    "Description": "Mark claim as paid in full",
+    "Name": "Settle this claim",
+    "Description": "Settle this claim",
     "DisplayOrder": 13,
-    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME",
+    "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;IN_MEDIATION;JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME;All_FINAL_ORDERS_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
