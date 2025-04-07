@@ -16,6 +16,7 @@
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-solicitor",
           "judge-profile"
         ],
         "CRUD": "R"
