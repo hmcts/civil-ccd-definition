@@ -99,4 +99,4 @@ postgresql:
   enabled: false
 
 ccd-events-topic:
-  enabled: true
+  enabled: false
