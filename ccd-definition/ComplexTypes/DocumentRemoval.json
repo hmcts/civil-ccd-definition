@@ -25,7 +25,7 @@
   },
   {
     "ID": "documentToKeep",
-    "ListElementCode": "isSystemGenerated",
+    "ListElementCode": "systemGenerated",
     "FieldType": "YesOrNo",
     "ElementLabel": "Is Document System Generated?",
     "SecurityClassification": "Public",

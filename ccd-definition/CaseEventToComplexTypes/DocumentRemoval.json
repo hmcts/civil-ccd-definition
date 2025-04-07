@@ -24,7 +24,7 @@
     "ID": "documentToKeep",
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
-    "ListElementCode": "isSystemGenerated",
+    "ListElementCode": "systemGenerated",
     "DisplayContext": "READONLY"
   }
 ]
