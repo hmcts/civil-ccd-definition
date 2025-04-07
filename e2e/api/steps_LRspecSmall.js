@@ -541,7 +541,7 @@ module.exports = function (){
       for (let pageId of Object.keys(disposalData.userInput)) {
         await assertValidData(disposalData, pageId);
       }
-      await assertSubmittedEvent('CLOSED', {
+      await assertSubmittedEvent('CASE_STAYED', {
         header: '# Response has been submitted',
         body: ''
       }, true);
