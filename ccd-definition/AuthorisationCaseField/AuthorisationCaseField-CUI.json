@@ -224,7 +224,8 @@
         "UserRoles": [
           "caseworker-civil-systemupdate",
           "caseworker-civil-admin",
-          "caseworker-civil"
+          "caseworker-civil",
+          "caseworker-civil-rparobot"
         ],
         "CRUD": "CRUD"
       }
