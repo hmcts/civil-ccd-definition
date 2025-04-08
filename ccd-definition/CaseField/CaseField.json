@@ -3395,5 +3395,29 @@
     "FieldTypeParameter": "documentToKeep",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsApp",
+    "Label": "Court location code NEW",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes1",
+    "Label": "Court location code NEW",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes2",
+    "Label": "Court location code NEW",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

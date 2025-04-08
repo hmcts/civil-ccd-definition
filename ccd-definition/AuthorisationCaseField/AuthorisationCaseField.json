@@ -6706,5 +6706,77 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "requestedCourtForTabDetailsApp",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "GS_profile",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "requestedCourtForTabDetailsRes1",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "GS_profile",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "requestedCourtForTabDetailsRes2",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "GS_profile",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
