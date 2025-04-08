@@ -14,7 +14,6 @@ export SERVICE_AUTH_PROVIDER_API_BASE_URL="http://rpe-service-auth-provider-aat.
 export IDAM_API_BASE_URL="https://idam-api.aat.platform.hmcts.net"
 export IDAM_API_URL="https://idam-api.aat.platform.hmcts.net"
 export CCD_IDAM_REDIRECT_URL="https://ccd-case-management-web-aat.service.core-compute-aat.internal/oauth2redirect"
-export ROLE_ASSIGNMENT_URL=${AM_ROLE_ASSIGNMENT_SERVICE_URL:-"http://am-role-assignment-service-aat.service.core-compute-aat.internal"}
 export CCD_DEFINITION_STORE_API_BASE_URL=${CCD_DEFINITION_STORE_API_URL:-"http://ccd-definition-store-api-aat.service.core-compute-aat.internal"}
 export CAMUNDA_BASE_URL=$CAMUNDA_URL
 export DEFINITION_IMPORTER_USERNAME=$(az keyvault secret show --vault-name civil-aat --name ccd-importer-username --query value -o tsv)

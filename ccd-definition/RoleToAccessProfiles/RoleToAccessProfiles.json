@@ -12,7 +12,7 @@
     "RoleName" : "idam:caseworker-civil-rparobot",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "caseworker-civil-rparobot",
+    "AccessProfiles": "caseworker-civil-rparobot,caseworker-civil-system-field-reader",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
