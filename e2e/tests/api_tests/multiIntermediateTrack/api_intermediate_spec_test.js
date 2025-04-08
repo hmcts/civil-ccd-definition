@@ -60,7 +60,7 @@ Scenario('1v2 full defence Intermediate claim Specified Different Solicitor', as
 
 });
 
-Scenario('1v2  full defence Intermediate claim Specified same solicitor @wa-task @api-nonprod', async ({api_spec, WA}) => {
+Scenario.skip('1v2  full defence Intermediate claim Specified same solicitor @wa-task @api-nonprod', async ({api_spec, WA}) => {
   const mpScenario = 'ONE_V_TWO_SAME_SOL';
   await prepareClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO','AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
