@@ -97,3 +97,6 @@ civil-wa:
 
 postgresql:
   enabled: false
+
+ccd-events-topic:
+  enabled: false
