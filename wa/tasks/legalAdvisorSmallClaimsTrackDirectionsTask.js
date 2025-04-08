@@ -40,7 +40,7 @@ module.exports = {
     name: 'Legal Advisor Small Claims Track Directions',
     type: 'LegalAdvisorSmallClaimsTrackDirections',
     task_title: 'Legal Advisor Small Claims Track Directions',
-    location_name: 'Central London County Court',
+    location_name: 'Nottingham County Court and Family Court (and Crown)',
     location: '420219',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
