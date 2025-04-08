@@ -339,6 +339,9 @@ ccd-message-publisher:
         key: PASSWORD
         disabled: true
 
+ccd-events-topic:
+  enabled: true
+
 postgresql:
   enabled: false
   flexibleserver: civil-preview

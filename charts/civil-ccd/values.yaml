@@ -24,3 +24,5 @@ em-ccdorc:
   enabled: false
 em-stitching:
   enabled: false
+ccd-events-topic:
+  enabled: false
