@@ -1,0 +1,36 @@
+[
+  {
+    "ID": "RequestedCourtForTabDetails",
+    "ListElementCode": "requestedCourt",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "FieldShowCondition": "requestedCourt=\"DO_NOT_SHOW\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtForTabDetails",
+    "ListElementCode": "requestedCourtLabel",
+    "FieldType": "Label",
+    "ElementLabel": "${requestedCourt}",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtForTabDetails",
+    "ListElementCode": "requestHearingAtSpecificCourt",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Do you want to ask for the hearing to be held at a specific court?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtForTabDetails",
+    "ListElementCode": "reasonForHearingAtSpecificCourt",
+    "FieldType": "TextArea",
+    "ElementLabel": "Briefly explain your reasons",
+    "FieldShowCondition": "requestHearingAtSpecificCourt = \"Yes\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
