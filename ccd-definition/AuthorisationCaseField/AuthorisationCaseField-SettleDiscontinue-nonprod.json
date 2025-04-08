@@ -125,17 +125,14 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "caseworker-civil",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE",
-          "judge-profile"
+          "caseworker-civil"
         ],
         "CRUD": "R"
       }
