@@ -65,5 +65,14 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "FastTrackHearingTime",
+    "ListElementCode": "helpText2",
+    "FieldType": "TextArea",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "_comment": "legacy field no longer in use"
   }
 ]
