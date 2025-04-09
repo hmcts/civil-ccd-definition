@@ -6,9 +6,7 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "CRU"
       },
@@ -32,6 +30,14 @@
           "APP-SOL-SPEC-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "judge-profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
