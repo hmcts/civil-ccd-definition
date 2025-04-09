@@ -69,7 +69,7 @@ civil-service:
       CCD_EVENTS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
-      CCD_EVENTS_SUBSCRIPTION_ENABLED: false
+      CCD_EVENTS_SUBSCRIPTION_ENABLED: true
       CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
@@ -338,6 +338,9 @@ ccd-message-publisher:
         secretRef: postgres
         key: PASSWORD
         disabled: true
+
+ccd-events-topic:
+  enabled: true
 
 postgresql:
   enabled: false

@@ -1,10 +1,10 @@
 module.exports = {
-  name: 'Order Made - Review case - Multi track',
+  name: 'Order Made - Review case - Intermediate track',
   type: 'reviewOrder',
   task_state: 'assigned',
   task_system: 'SELF',
   security_classification: 'PUBLIC',
-  task_title: 'Order Made - Review case - Multi track',
+  task_title: 'Order Made - Review case - Intermediate track',
   location_name: 'Central London County Court',
   location: '20262',
   execution_type: 'Case Management Task',

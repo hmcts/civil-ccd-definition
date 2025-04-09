@@ -1,0 +1,18 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "changeLanguagePreferenceLabel",
+    "Label": "Update a citizen’s language preference by selecting the user, and their preferred language in which to receive correspondence",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "changeLanguagePreference",
+    "Label": " ",
+    "FieldType": "ChangeLanguagePreference",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
