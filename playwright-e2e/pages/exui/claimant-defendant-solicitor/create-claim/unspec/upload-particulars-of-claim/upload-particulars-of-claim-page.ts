@@ -8,7 +8,9 @@ export default class UploadParticularsOfClaimPage extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications([
       super.verifyHeadings(),
-      super.expectText(radioButtons.uploadParticularsOfClaim.label),
+      super.expectLegend(radioButtons.uploadParticularsOfClaim.label),
+      super.expectRadioYesLabel(radioButtons.uploadParticularsOfClaim.yes.selector),
+      super.expectRadioNoLabel(radioButtons.uploadParticularsOfClaim.no.selector),
     ]);
   }
 

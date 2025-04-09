@@ -288,8 +288,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_EVENT",
-    "Name": "Email: Add litigation friend",
-    "Description": "Notifier for litigation friend added",
+    "Name": "Notify relevant parties",
+    "Description": "Notification event",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

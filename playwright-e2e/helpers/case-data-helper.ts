@@ -179,12 +179,14 @@ export default class CaseDataHelper {
           individualFirstName: partyKey,
           individualLastName: partyTypeKey,
           individualDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
+          partyName: `Mx ${partyKey} ${partyTypeKey}`,
         };
 
       case claimantDefendantPartyTypes.COMPANY:
         return {
           ...commonPartyData,
           companyName: `${partyKey} ${partyTypeKey}`,
+          partyName: `${partyKey} ${partyTypeKey}`,
         };
 
       case claimantDefendantPartyTypes.SOLE_TRADER:
@@ -195,11 +197,13 @@ export default class CaseDataHelper {
           soleTraderLastName: partyTypeKey,
           soleTraderTradingAs: `${partyKey} Trade`,
           soleTraderDateOfBirth: this.getPartyDateOfBirth(claimantDefendantParty),
+          partyName: `Mx ${partyKey} ${partyTypeKey}`,
         };
       case claimantDefendantPartyTypes.ORGANISATION:
         return {
           ...commonPartyData,
           organisationName: `${partyKey} ${partyTypeKey}`,
+          partyName: `${partyKey} ${partyTypeKey}`,
         };
     }
   }
@@ -235,6 +239,7 @@ export default class CaseDataHelper {
       fieldOfExpertise: `Field of expertise - ${expertParty.key}`,
       whyRequired: `Reason required - ${expertParty.key}`,
       estimatedCost: this.getExpertEstimatedCost(expertParty),
+      partyName: `${StringHelper.capitalise(expertParty.key)} Expert`,
     };
   }
 
@@ -254,6 +259,7 @@ export default class CaseDataHelper {
       phoneNumber: this.getPartyPhoneNumber(witnessParty),
       emailAddress: `${witnessParty.key}@witnesses.com`,
       reasonForWitness: `Reason for witness - ${witnessParty.key}`,
+      partyName: `${StringHelper.capitalise(witnessParty.key)} Witness`,
     };
   }
 

@@ -7,6 +7,7 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
+import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSteps extends BaseExui {
@@ -28,33 +29,23 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async CreateClaimFastTrack1v1() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { createClaimActions } = this.claimantSolicitorActionsFactory;
-        await createClaimActions.caseFilterPage();
-        await createClaimActions.eligibilityPage();
-        await createClaimActions.referencesPage();
-        await createClaimActions.courtPage();
-        await createClaimActions.claimantPage();
-        await createClaimActions.claimantLitigationFriendPage();
-        await createClaimActions.notificationsPage();
-        await createClaimActions.claimantSolicitorOrganisationPage();
-        await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
-        await createClaimActions.defendantPage();
-        await createClaimActions.legalRepresentationPage();
-        await createClaimActions.defendantSolicitorOrganisationPage();
-        await createClaimActions.defendantSolicitorServiceAddressPage();
-        await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.noAddAnotherDefendantPage();
-        await createClaimActions.claimTypePage();
-        await createClaimActions.personalInjuryTypePage();
-        await createClaimActions.detailsPage();
-        await createClaimActions.uploadParticularsOfClaimPage();
-        await createClaimActions.fastTrackClaimPages();
-        await createClaimActions.statementOfTruthCreateClaimPage();
-        await createClaimActions.submitCreateClaimPage();
-        await createClaimActions.confirmCreateClaimPage();
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.fastTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -62,34 +53,23 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
   async CreateClaimSmallTrack1v1() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { createClaimActions } = this.claimantSolicitorActionsFactory;
-        await createClaimActions.caseFilterPage();
-        await createClaimActions.eligibilityPage();
-        await createClaimActions.referencesPage();
-        await createClaimActions.courtPage();
-        await createClaimActions.claimantPage();
-        await createClaimActions.claimantLitigationFriendPage();
-        await createClaimActions.notificationsPage();
-        await createClaimActions.claimantSolicitorOrganisationPage();
-        await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
-        await createClaimActions.defendantPage();
-        await createClaimActions.legalRepresentationPage();
-        await createClaimActions.defendantSolicitorOrganisationPage();
-        await createClaimActions.defendantSolicitorServiceAddressPage();
-        await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.noAddAnotherDefendantPage();
-        await createClaimActions.claimTypePage();
-        await createClaimActions.personalInjuryTypePage();
-        await createClaimActions.detailsPage();
-        await createClaimActions.uploadParticularsOfClaimPage();
-        await createClaimActions.claimValuePage();
-        await createClaimActions.pbaNumberPage();
-        await createClaimActions.statementOfTruthCreateClaimPage();
-        await createClaimActions.submitCreateClaimPage();
-        await createClaimActions.confirmCreateClaimPage();
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -97,35 +77,24 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
   async CreateClaimSmallTrack2v1() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { createClaimActions } = this.claimantSolicitorActionsFactory;
-        await createClaimActions.caseFilterPage();
-        await createClaimActions.eligibilityPage();
-        await createClaimActions.referencesPage();
-        await createClaimActions.courtPage();
-        await createClaimActions.claimantPage();
-        await createClaimActions.claimantLitigationFriendPage();
-        await createClaimActions.notificationsPage();
-        await createClaimActions.claimantSolicitorOrganisationPage();
-        await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.addAnotherClaimantPage();
-        await createClaimActions.secondClaimantPage();
-        await createClaimActions.secondClaimantLitigationFriendPage();
-        await createClaimActions.defendantPage();
-        await createClaimActions.legalRepresentationPage();
-        await createClaimActions.defendantSolicitorOrganisationPage();
-        await createClaimActions.defendantSolicitorServiceAddressPage();
-        await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.claimTypePage();
-        await createClaimActions.personalInjuryTypePage();
-        await createClaimActions.detailsPage();
-        await createClaimActions.uploadParticularsOfClaimPage();
-        await createClaimActions.claimValuePage();
-        await createClaimActions.pbaNumberPage();
-        await createClaimActions.statementOfTruthCreateClaimPage();
-        await createClaimActions.submitCreateClaimPage();
-        await createClaimActions.confirmCreateClaimPage();
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.addAnotherClaimant();
+        await createClaimActions.secondClaimant();
+        await createClaimActions.secondClaimantLitigationFriend();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -134,37 +103,24 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async CreateClaimSmallTrack1v2SS() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { createClaimActions } = this.claimantSolicitorActionsFactory;
-        await createClaimActions.caseFilterPage();
-        await createClaimActions.eligibilityPage();
-        await createClaimActions.referencesPage();
-        await createClaimActions.courtPage();
-        await createClaimActions.claimantPage();
-        await createClaimActions.claimantLitigationFriendPage();
-        await createClaimActions.notificationsPage();
-        await createClaimActions.claimantSolicitorOrganisationPage();
-        await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
-        await createClaimActions.defendantPage();
-        await createClaimActions.legalRepresentationPage();
-        await createClaimActions.defendantSolicitorOrganisationPage();
-        await createClaimActions.defendantSolicitorServiceAddressPage();
-        await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.addAnotherDefendantPage();
-        await createClaimActions.secondDefendantPage();
-        await createClaimActions.defendant2RepresentedPages();
-        await createClaimActions.sameLegalRepresentativePage();
-        await createClaimActions.claimTypePage();
-        await createClaimActions.personalInjuryTypePage();
-        await createClaimActions.detailsPage();
-        await createClaimActions.uploadParticularsOfClaimPage();
-        await createClaimActions.claimValuePage();
-        await createClaimActions.pbaNumberPage();
-        await createClaimActions.statementOfTruthCreateClaimPage();
-        await createClaimActions.submitCreateClaimPage();
-        await createClaimActions.confirmCreateClaimPage();
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantSS();
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -173,41 +129,24 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async CreateClaimSmallTrack1v2DS() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { createClaimActions } = this.claimantSolicitorActionsFactory;
-        await createClaimActions.caseFilterPage();
-        await createClaimActions.eligibilityPage();
-        await createClaimActions.referencesPage();
-        await createClaimActions.courtPage();
-        await createClaimActions.claimantPage();
-        await createClaimActions.claimantLitigationFriendPage();
-        await createClaimActions.notificationsPage();
-        await createClaimActions.claimantSolicitorOrganisationPage();
-        await createClaimActions.claimantSolicitorServiceAddressPage();
-        await createClaimActions.noAddAnotherClaimantPage();
-        await createClaimActions.defendantPage();
-        await createClaimActions.legalRepresentationPage();
-        await createClaimActions.defendantSolicitorOrganisationPage();
-        await createClaimActions.defendantSolicitorServiceAddressPage();
-        await createClaimActions.defendantSolicitorEmailPage();
-        await createClaimActions.addAnotherDefendantPage();
-        await createClaimActions.secondDefendantPage();
-        await createClaimActions.defendant2RepresentedPages();
-        await createClaimActions.noSameLegalRepresentativePage();
-        await createClaimActions.secondDefendantSolicitorOrganisationPage();
-        await createClaimActions.secondDefendantSolicitorServiceAddressPage();
-        await createClaimActions.secondDefendantSolicitorReferencePage();
-        await createClaimActions.secondDefendantSolicitorEmailPage();
-        await createClaimActions.claimTypePage();
-        await createClaimActions.personalInjuryTypePage();
-        await createClaimActions.detailsPage();
-        await createClaimActions.uploadParticularsOfClaimPage();
-        await createClaimActions.claimValuePage();
-        await createClaimActions.pbaNumberPage();
-        await createClaimActions.statementOfTruthCreateClaimPage();
-        await createClaimActions.submitCreateClaimPage();
-        await createClaimActions.confirmCreateClaimPage();
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails();
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantDSdetails();
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaim();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -215,39 +154,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async NotifyClaim1v1() {
+  async NotifyClaim() {
+    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimPage();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.submitNotifyClaim();
       },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaim2v1() {
-    await super.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaim1v2SS() {
-    await super.retryExuiEvent(
-      async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimPage();
+        await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -255,13 +170,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaim1v2DS() {
+    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.defendantSolicitorToNotifyPage();
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimPage();
+        await notifyClaimActions.defendantSolicitorToNotify();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.submitNotifyClaim();
+      },
+      async () => {
+        await notifyClaimActions.confirmNotifyClaim();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -269,25 +186,29 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaim1v1LIP() {
+    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.certificateOfService1NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.certificateOfService1NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
+      },
+      async () => {
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
     );
   }
   async NotifyClaim1v2LIPS() {
+    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.certificateOfService1NotifyClaimPage();
-        await notifyClaimActions.certificateOfService2NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.certificateOfService1NotifyClaim();
+        await notifyClaimActions.certificateOfService2NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
+      },
+      async () => {
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
@@ -295,52 +216,30 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaim1v1LIP1LR() {
+    const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimActions.accessGrantedWarningPage();
-        await notifyClaimActions.certificateOfService2NotifyClaimPage();
-        await notifyClaimActions.submitNotifyClaimPage();
-        await notifyClaimActions.confirmNotifyClaimCOSPage();
+        await notifyClaimActions.accessGrantedWarning();
+        await notifyClaimActions.certificateOfService2NotifyClaim();
+        await notifyClaimActions.submitNotifyClaim();
+      },
+      async () => {
+        await notifyClaimActions.confirmNotifyClaimCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
     );
   }
 
-  async NotifyClaimDetails1v1() {
+  async NotifyClaimDetails() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetails();
       },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaimDetails2v1() {
-    await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
-      },
-      ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
-      claimantSolicitorUser,
-    );
-  }
-
-  async NotifyClaimDetails1v2SS() {
-    await this.retryExuiEvent(
-      async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -348,13 +247,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaimDetails1v2DS() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.selectDefendantSolicitorPage();
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsPage();
+        await notifyClaimDetailsActions.selectDefendantSolicitor();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetails();
+      },
+      async () => {
+        await notifyClaimDetailsActions.confirmNotifyClaimDetails();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -362,12 +263,14 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaimDetails1v1LIP() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIP();
+      },
+      async () => {
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -375,13 +278,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaimDetails1v2LIPS() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsCOSPage();
-        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOSPage();
+        await notifyClaimDetailsActions.certificateOfService1NotifyClaimDetails();
+        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsCOS();
+      },
+      async () => {
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -389,12 +294,15 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async NotifyClaimDetails1v2LIPLR() {
+    const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { notifyClaimDetailsActions } = this.claimantSolicitorActionsFactory;
-        await notifyClaimDetailsActions.uploadNotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetailsPage();
-        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPLRPage();
+        await notifyClaimDetailsActions.uploadNotifyClaimDetails();
+        await notifyClaimDetailsActions.certificateOfService2NotifyClaimDetails();
+        await notifyClaimDetailsActions.submitNotifyClaimDetailsLIPLR();
+      },
+      async () => {
+        await notifyClaimDetailsActions.confirmNotifyClaimDetailsCOS();
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
@@ -402,25 +310,17 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async RespondFastTrackIntentToProceed1v1() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
-        await claimantResponseActions.respondentResponsePage();
-        await claimantResponseActions.defenceResponseDocumentPage();
-        await claimantResponseActions.fileDirectionsQuestionairePage();
-        await claimantResponseActions.fixedRecoverableCostsPage();
-        await claimantResponseActions.disclosureOfNonElectronicDocumentsPage();
-        await claimantResponseActions.expertsPage();
-        await claimantResponseActions.witnessesPage();
-        await claimantResponseActions.languagePage();
-        await claimantResponseActions.hearingSmallClaimPage();
-        await claimantResponseActions.draftDirectionsPage();
-        await claimantResponseActions.hearingSupportPage();
-        await claimantResponseActions.vulnerabilityQuestionsPage();
-        await claimantResponseActions.futherInformationPage();
-        await claimantResponseActions.statementOfTruthPage();
-        await claimantResponseActions.submitPage();
-        await claimantResponseActions.confirmPage();
+        await claimantResponseActions.respondentResponse();
+        await claimantResponseActions.defenceResponseDocument();
+        await claimantResponseActions.dqFastTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -429,22 +329,17 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async RespondSmallClaimIntentToProceed1v1() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
-        await claimantResponseActions.respondentResponsePage();
-        await claimantResponseActions.defenceResponseDocumentPage();
-        await claimantResponseActions.expertsPage();
-        await claimantResponseActions.witnessesPage();
-        await claimantResponseActions.languagePage();
-        await claimantResponseActions.hearingSmallClaimPage();
-        await claimantResponseActions.draftDirectionsPage();
-        await claimantResponseActions.hearingSupportPage();
-        await claimantResponseActions.vulnerabilityQuestionsPage();
-        await claimantResponseActions.futherInformationPage();
-        await claimantResponseActions.statementOfTruthPage();
-        await claimantResponseActions.submitPage();
-        await claimantResponseActions.confirmPage();
+        await claimantResponseActions.respondentResponse();
+        await claimantResponseActions.defenceResponseDocument();
+        await claimantResponseActions.dqSmallTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -453,22 +348,17 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async RespondSmallClaimIntentToProceed2v1() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
-        await claimantResponseActions.respondentResponse2v1Page();
-        await claimantResponseActions.defenceResponseDocumentPage();
-        await claimantResponseActions.expertsPage();
-        await claimantResponseActions.witnessesPage();
-        await claimantResponseActions.languagePage();
-        await claimantResponseActions.hearingSmallClaimPage();
-        await claimantResponseActions.draftDirectionsPage();
-        await claimantResponseActions.hearingSupportPage();
-        await claimantResponseActions.vulnerabilityQuestionsPage();
-        await claimantResponseActions.futherInformationPage();
-        await claimantResponseActions.statementOfTruthPage();
-        await claimantResponseActions.submitPage();
-        await claimantResponseActions.confirmPage();
+        await claimantResponseActions.respondentResponse2v1();
+        await claimantResponseActions.defenceResponseDocument();
+        await claimantResponseActions.dqSmallTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -477,22 +367,17 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async RespondSmallClaimIntentToProceed1v2SS() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
-        await claimantResponseActions.respondentResponse1v2Page();
-        await claimantResponseActions.defenceResponseDocument1v2Page();
-        await claimantResponseActions.expertsPage();
-        await claimantResponseActions.witnessesPage();
-        await claimantResponseActions.languagePage();
-        await claimantResponseActions.hearingSmallClaimPage();
-        await claimantResponseActions.draftDirectionsPage();
-        await claimantResponseActions.hearingSupportPage();
-        await claimantResponseActions.vulnerabilityQuestionsPage();
-        await claimantResponseActions.futherInformationPage();
-        await claimantResponseActions.statementOfTruthPage();
-        await claimantResponseActions.submitPage();
-        await claimantResponseActions.confirmPage();
+        await claimantResponseActions.respondentResponse1v2SS();
+        await claimantResponseActions.defenceResponseDocument1v2SS();
+        await claimantResponseActions.dqSmallTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
@@ -501,27 +386,59 @@ export default class ClaimantSolicitorSteps extends BaseExui {
   }
 
   async RespondSmallClaimIntentToProceed1v2DS() {
+    const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        const { claimantResponseActions } = this.claimantSolicitorActionsFactory;
-
-        await claimantResponseActions.respondentResponse1v2Page();
-        await claimantResponseActions.defenceResponseDocument1v2Page();
-        await claimantResponseActions.expertsPage();
-        await claimantResponseActions.witnessesPage();
-        await claimantResponseActions.languagePage();
-        await claimantResponseActions.hearingSmallClaimPage();
-        await claimantResponseActions.draftDirectionsPage();
-        await claimantResponseActions.hearingSupportPage();
-        await claimantResponseActions.vulnerabilityQuestionsPage();
-        await claimantResponseActions.futherInformationPage();
-        await claimantResponseActions.statementOfTruthPage();
-        await claimantResponseActions.submitPage();
-        await claimantResponseActions.confirmPage();
+        await claimantResponseActions.respondentResponse1v2DS();
+        await claimantResponseActions.defenceResponseDocument1v2DS();
+        await claimantResponseActions.dqSmallTrack();
+        await claimantResponseActions.statementOfTruth();
+        await claimantResponseActions.submitClaimantResponse();
+      },
+      async () => {
+        await claimantResponseActions.confirmClaimantResponse();
       },
       ccdEvents.CLAIMANT_RESPONSE,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDefaultJudgment(){
+    const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementActions.defendantDetails();
+        await defaultJudgementActions.showCertifyStatement();
+        await defaultJudgementActions.hearingType();
+        await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
+        await defaultJudgementActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false},
+    );
+  }
+
+  async RequestDefaultJudgment1v2(){
+    const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementActions.defendantDetails1v2();
+        await defaultJudgementActions.showCertifyStatement();
+        await defaultJudgementActions.hearingType();
+        await defaultJudgementActions.hearingSupportRequirementsFieldDJ();
+        await defaultJudgementActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementActions.confirmDefaultJudgment();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false},
     );
   }
 }

@@ -7,7 +7,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
-    "PageShowCondition": "settlementSummary=\"DO NOT SHOW IN UI\"",
+    "PageShowCondition": "partiesNames=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
   },

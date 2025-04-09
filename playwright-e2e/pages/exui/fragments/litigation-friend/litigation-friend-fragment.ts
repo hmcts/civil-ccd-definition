@@ -5,7 +5,6 @@ import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { radioButtons, buttons, inputs, subheadings, links } from './litigation-friend-content';
 import filePaths from '../../../../config/file-paths';
-import AddressFragment from '../address/address-fragment';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import partys from '../../../../constants/partys';
 
@@ -98,8 +97,7 @@ export default class LitigationFriendFragment extends ExuiPage(BasePage) {
   async uploadCertificateOfSuitability() {
     await super.clickBySelector(buttons.addNewCertificate.selector(this.litigationFriendParty));
     await super.expectLabel(inputs.certificateOfSuitability.uploadDoc.label, {
-      exact: true,
-      index: 0,
+      count: 1,
     });
     await super.retryUploadFile(
       filePaths.testPdfFile,

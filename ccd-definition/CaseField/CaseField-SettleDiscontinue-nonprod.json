@@ -1,12 +1,4 @@
 [
- {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "settlementSummary",
-    "Label": "### Settle via consent order\n\nIf the parties have settled and a consent order is ready, please click cancel to return to the claim summary screen and select 'Make an application' from the 'Next steps' menu and select 'Settle by consent'.\n\n### Settle by way of Part 36 Acceptance\n\n If you have settle by way of Part 36 acceptance, please contact the hearing centre or court that is dealing with this claim.\n\n### Mark claim as paid in full\n\nIf the claim has been paid in full, click 'Continue' below.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partiesNames",
@@ -26,7 +18,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "markPaidForAllClaimants",
-    "Label": "Does marking this claim as paid in full relate to all claimants?",
+    "Label": "Does marking this Claim as settled relate to all claimants?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -34,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "markPaidConsent",
-    "Label": "I confirm this claim should be marked paid in full including cost",
+    "Label": "I confirm this claim should be marked as settled",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "MarkPaidConsentList",
     "SecurityClassification": "Public",
@@ -185,7 +177,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "typeOfDiscontinuance",
-    "Label": "Is this a full or part discontinuance?",
+    "Label": " ",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DiscontinuanceTypeList",
     "SecurityClassification": "Public",
@@ -287,5 +279,22 @@
     "FieldType": "CaseDocument",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "lblUpdateCourtMultiple",
+    "Label": "### You must update the court of the method of settlement.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "lblUpdateCourtSingle",
+    "Label": "### You must update the court of the method of settlement.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
+
 ]

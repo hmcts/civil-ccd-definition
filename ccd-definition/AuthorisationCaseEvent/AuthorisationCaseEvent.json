@@ -268,15 +268,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -577,8 +568,7 @@
         "UserRoles": [
           "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser",
+          "GS_profile",
           "RES-SOL-ONE-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
@@ -847,17 +837,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
       }
     ]
   },

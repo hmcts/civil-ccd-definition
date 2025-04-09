@@ -452,10 +452,24 @@
           "caseworker-civil-admin",
           "caseworker-civil-staff",
           "caseworker-civil-solicitor",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joJudgementByAdmissionIssueDate",
+    "UserRoles": [
+      "caseworker-civil-admin",
+      "caseworker-civil-staff",
+      "caseworker-civil-systemupdate",
+      "CITIZEN-CLAIMANT-PROFILE",
+      "citizen-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]

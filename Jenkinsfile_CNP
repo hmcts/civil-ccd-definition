@@ -144,6 +144,14 @@ def uploadCoreCaseDataDefinitions(env) {
   }
 }
 
+def getCivilServiceImage() {
+  def githubApi = new GithubAPI(this)
+  for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
+    return "pr-" + label.minus("civilServicePr:").trim()
+  }
+  return "latest"
+}
+
 withPipeline(type, product, component) {
   enableHighLevelDataSetup()
   loadVaultSecrets(secrets)
@@ -152,6 +160,7 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "preview"
     env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+    env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
     if (isHmcEnabled(env.BRANCH_NAME)) {
       env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
       env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
@@ -262,6 +271,7 @@ withPipeline(type, product, component) {
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
       ./bin/build-release-ccd-definition.sh staging
+      ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
     """
     env.URL = "https://civil-ccd-xui-staging.aat.platform.hmcts.net"

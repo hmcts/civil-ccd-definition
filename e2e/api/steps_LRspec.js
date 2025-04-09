@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, SDOR2, isJOLive, COSC} = require('../fixtures/featureKeys');
+const {PBAv3, isJOLive, COSC} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -407,9 +407,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  const isSdoR2Enabled = checkToggleEnabled(SDOR2);
-  if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
-    || pageId === 'SmallClaims')) {
+  if(pageId === 'ClaimsTrack' || pageId === 'OrderType' || pageId === 'SmallClaims') {
     calculated = {...calculated};
   }
   if(eventName === 'CREATE_CLAIM'){
@@ -430,12 +428,12 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(isSdoR2Enabled && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
-  if(isSdoR2Enabled && pageId === 'SmallClaims') {
+  if(pageId === 'SmallClaims') {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -652,6 +650,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
@@ -1292,7 +1291,6 @@ module.exports = {
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
@@ -1300,31 +1298,28 @@ module.exports = {
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    if(SdoR2){
-      delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
-      delete caseData['sdoR2NihlUseOfWelshLanguage'];
-      delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
-      delete caseData['sdoR2DrhUseOfWelshLanguage'];
-      delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
-      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
-      delete caseData['sdoR2FastTrackWitnessOfFact'];
-      delete caseData['sdoR2FastTrackCreditHire'];
-      delete caseData['sdoDJR2TrialCreditHire'];
-    }
+    delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete caseData['sdoR2NihlUseOfWelshLanguage'];
+    delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+    delete caseData['sdoR2DrhUseOfWelshLanguage'];
+    delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+    delete caseData['sdoR2FastTrackWitnessOfFact'];
+    delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['sdoDJR2TrialCreditHire'];
+
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
-      if (SdoR2) {
-        delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
-        disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
-      }
+      delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
-      if (SdoR2 && response === 'CREATE_FAST') {
+      if (response === 'CREATE_FAST') {
         delete disposalData.calculated.FastTrack.fastTrackCreditHire;
         disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
       }
@@ -1484,6 +1479,18 @@ module.exports = {
   getCaseId: async () => {
     console.log (`case created: ${caseId}`);
     return caseId;
+  },
+
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
+  completeTaskByUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'complete');
   },
 
   checkUserCaseAccess: async (user, shouldHaveAccess) => {
@@ -1748,7 +1755,7 @@ module.exports = {
 
    if (mpScenario === 'TWO_V_ONE') {
       await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
-        header: '#  We have noted your claim has been partly discontinued and your claim has been updated',
+        header: '# Your claim will be fully discontinued against the specified defendants',
         body: ''
       }, true);
     } else if (mpScenario === 'ONE_V_TWO') {
@@ -1937,7 +1944,6 @@ const getLatestMessageToReplyTo = (caseData) => {
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO' || eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
@@ -1954,17 +1960,17 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-  if(sdoR2Flag){
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
-    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
-    delete responseBody.data['sdoR2FastTrackCreditHire'];
-    delete responseBody.data['sdoDJR2TrialCreditHire'];
-  }
+
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
+
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {

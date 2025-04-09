@@ -4,30 +4,33 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
 import { inputs } from './party-type-content';
-import DateFragment from '../date/date-fragment';
 import claimantDefendantPartyTypes from '../../../../constants/claimant-defendant-party-types';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import PartyType from '../../../../enums/party-types';
+import DateOfBirthFragment from '../date/date-of-birth-fragment';
 
 @AllMethodsStep()
 export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
-  private dateFragment: DateFragment;
-  private partyType = claimantDefendantPartyTypes.INDIVIDUAL;
+  private dateOfBirthFragment: DateOfBirthFragment;
+  private claimantDefendantPartyType = claimantDefendantPartyTypes.INDIVIDUAL;
   private claimantDefendantParty: Party;
 
   constructor(page: Page, claimantDefendantParty: Party) {
     super(page);
     this.claimantDefendantParty = claimantDefendantParty;
-    this.dateFragment = new DateFragment(page);
+    this.dateOfBirthFragment = new DateOfBirthFragment(page);
   }
 
   async verifyContent() {
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
+      await super.expectLegend(inputs.dateOfBirth.label, { count: 1 });
+      await this.dateOfBirthFragment.verifyContent(this.claimantDefendantPartyType);
+    }
     await super.runVerifications(
       [
-        // super.expectLabel(inputs.title.label, { index: 0 }),
-        // super.expectLabel(inputs.firstName.label, { index: 0 }),
-        // super.expectLabel(inputs.lastName.label, { index: 0 }),
-        // super.expectText(inputs.dateOfBirth.label, { index: 0 }),
+        super.expectLabel(inputs.title.label, { count: 1 }),
+        super.expectLabel(inputs.firstName.label, { count: 1 }),
+        super.expectLabel(inputs.lastName.label, { count: 1 }),
         super.expectLabel(inputs.email.label),
         super.expectLabel(inputs.phone.label),
       ],
@@ -40,22 +43,26 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   async enterIndividualDetails() {
     const individualData = CaseDataHelper.buildClaimantAndDefendantData(
       this.claimantDefendantParty,
-      this.partyType,
+      this.claimantDefendantPartyType,
     );
     await super.inputText(
       individualData.individualTitle,
-      inputs.title.selector(this.claimantDefendantParty, this.partyType),
+      inputs.title.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
     await super.inputText(
       individualData.individualFirstName,
-      inputs.firstName.selector(this.claimantDefendantParty, this.partyType),
+      inputs.firstName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
     await super.inputText(
       individualData.individualLastName,
-      inputs.lastName.selector(this.claimantDefendantParty, this.partyType),
+      inputs.lastName.selector(this.claimantDefendantParty, this.claimantDefendantPartyType),
     );
-    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT)
-      await this.dateFragment.enterDateOfBirth(this.claimantDefendantParty, this.partyType);
+    if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
+      await this.dateOfBirthFragment.enterDate(
+        this.claimantDefendantParty,
+        this.claimantDefendantPartyType,
+      );
+    }
     await super.inputText(
       individualData.partyEmail,
       inputs.email.selector(this.claimantDefendantParty),

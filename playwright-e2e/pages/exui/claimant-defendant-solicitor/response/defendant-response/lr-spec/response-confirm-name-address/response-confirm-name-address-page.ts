@@ -19,12 +19,13 @@ export default class ResponseConfirmNameAddressPage extends ExuiPage(BasePage) {
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    super.runVerifications(
+    await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        // super.expectText(radioButtons.address.label),
-        // super.expectLabel(radioButtons.address.yes.label),
-        // super.expectLabel(radioButtons.address.no.label),
+        super.expectNoText('chgfgh', { exact: true, all: true }),
+        super.expectLegend(radioButtons.address.label, { exact: true, count: 1 }),
+        super.expectRadioYesLabel(radioButtons.address.yes.selector(this.defendantParty, this.solicitorParty)),
+        super.expectRadioNoLabel(radioButtons.address.no.selector(this.defendantParty, this.solicitorParty)),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

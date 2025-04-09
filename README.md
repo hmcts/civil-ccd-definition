@@ -47,6 +47,8 @@ The below labels are options to get the different services running on the PR
 
   "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
 
+  "civilServicePr:????" label to point this deployment to a specific civil-service image,
+  replace ???? with the correspondent civil-service PR number, e.g. civilServicePr:6215 .
 
 ```
 Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
@@ -152,13 +154,16 @@ for the named developer use.
 
 While connected to the VPN simply run one of the below commands from your project's (civil-ccd-definition) folder:
 Note: be sure to have Docker running
+
+
 ```shell
-npx @hmcts/dev-env@latest && ./bin/setup-devuser-preview-env.sh
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh
 ```
+
 You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
 
 ```shell
-npx @hmcts/dev-env@latest && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
 ```
 
 Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
@@ -206,5 +211,3 @@ For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some m
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-

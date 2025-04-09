@@ -1,6 +1,6 @@
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
-import { subheadings } from './claimant-content.ts';
+import { radioButtons, subheadings } from './claimant-content.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import ChoosePartyTypeFragment from '../../../../fragments/choose-party-type/choose-party-type-fragment.ts';
 import PartyTypeIndividualFragment from '../../../../fragments/party-type/party-type-individual-fragment.ts';
@@ -35,6 +35,7 @@ export default class ClaimantPage extends ExuiPage(BasePage) {
       super.verifyHeadings(),
       this.choosePartyTypeFragment.verifyContent(),
       super.expectSubheading(subheadings.claimantDetails),
+      super.expectLegend(radioButtons.partyType.label),
       super.expectSubheading(subheadings.address),
     ]);
   }

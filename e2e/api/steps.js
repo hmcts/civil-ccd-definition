@@ -16,7 +16,7 @@ const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrde
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3, SDOR2, COSC} = require('../fixtures/featureKeys');
+const {PBAv3, COSC} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -44,7 +44,7 @@ const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 
 const data = {
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -109,11 +109,7 @@ const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
     fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
     fastTrackHearingTime: (d) =>
-      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
-      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
-      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
-      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
-      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.',
     disposalHearingHearingTime: (d) =>
       d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
       && d.dateTo,
@@ -251,9 +247,8 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    const sdoR2 = await checkToggleEnabled(SDOR2);
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, hmcTest);
 
     // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
     const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
@@ -342,7 +337,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    const sdoR2 = await checkToggleEnabled(SDOR2);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -360,11 +354,11 @@ module.exports = {
     if (pbaV3) {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
     }
-    if (sdoR2) {
-      createClaimData.valid.ClaimTypeUnSpec = {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      };
-    }
+
+    createClaimData.valid.ClaimTypeUnSpec = {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
+    };
+
     await validateEventPages(createClaimData);
 
     console.log('comparing assertSubmittedEvent');
@@ -1056,7 +1050,6 @@ module.exports = {
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
@@ -1068,20 +1061,19 @@ module.exports = {
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
-    if(SdoR2){
-      delete caseData['smallClaimsFlightDelay'];
-      delete caseData['smallClaimsFlightDelayToggle'];
-      //required to fix existing prod api tests for sdo
-      clearWelshParaFromCaseData();
-      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
-      delete caseData['sdoR2FastTrackWitnessOfFact'];
-      delete caseData['sdoR2FastTrackCreditHire'];
-      delete caseData['sdoDJR2TrialCreditHire'];
-    }
+    delete caseData['smallClaimsFlightDelay'];
+    delete caseData['smallClaimsFlightDelayToggle'];
+    //required to fix existing prod api tests for sdo
+    clearWelshParaFromCaseData();
+    delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+    delete caseData['sdoR2FastTrackWitnessOfFact'];
+    delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['sdoDJR2TrialCreditHire'];
+
 
     let disposalData = eventData['sdoTracks'][response];
 
-    if (SdoR2 && response === 'CREATE_FAST') {
+    if (response === 'CREATE_FAST') {
       delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
@@ -1556,7 +1548,6 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
 
@@ -1569,7 +1560,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
-  if(sdoR2Flag && (pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims')) {
+  if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -1610,21 +1601,20 @@ const assertValidData = async (data, pageId, solicitor) => {
     }
   }
 
-  if(sdoR2Flag){
-    delete responseBody.data['smallClaimsFlightDelayToggle'];
-    delete responseBody.data['smallClaimsFlightDelay'];
-    //required to fix existing prod api tests for sdo
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
-    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
-    delete responseBody.data['sdoR2FastTrackCreditHire'];
-    delete responseBody.data['sdoDJR2TrialCreditHire'];
-    delete responseBody.data['gaEaCourtLocation'];
-  }
+  delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['smallClaimsFlightDelay'];
+  //required to fix existing prod api tests for sdo
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
+  delete responseBody.data['gaEaCourtLocation'];
+
 
   assert.equal(response.status, 200);
 
@@ -1635,10 +1625,10 @@ const assertValidData = async (data, pageId, solicitor) => {
     claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
   }
   if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
   if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
     // CIV-3883 depends on backend having the field
@@ -1650,9 +1640,7 @@ const assertValidData = async (data, pageId, solicitor) => {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
-      if (sdoR2Flag) {
-        clearNihlDataFromCaseData();
-      }
+      clearNihlDataFromCaseData();
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1844,7 +1832,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR2Flag) {
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -1853,8 +1841,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  if(sdoR2Flag && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
-    || pageId === 'SmallClaims')) {
+  if(pageId === 'ClaimsTrack' || pageId === 'OrderType' || pageId === 'SmallClaims') {
     calculated = {...calculated, ...calculatedClaimsTrackDRH};
   }
   if(eventName === 'CREATE_CLAIM'){
@@ -1875,12 +1862,12 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(sdoR2Flag && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
-  if(sdoR2Flag && pageId === 'OrderType') {
+  if(pageId === 'OrderType') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
@@ -2109,6 +2096,7 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
