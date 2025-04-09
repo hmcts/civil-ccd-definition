@@ -23,40 +23,40 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 5,
+    "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 2,
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 6,
+    "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder":99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "applicant1DQLanguage",
-    "PageFieldDisplayOrder": 7,
+    "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_FOR_RECONSIDERATION",
     "CaseFieldID": "respondent1DQLanguage",
-    "PageFieldDisplayOrder": 8,
+    "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   }
 ]
