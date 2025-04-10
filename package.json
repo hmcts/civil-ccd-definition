@@ -42,6 +42,7 @@
     "test:e2e-2v1": "MOCHAWESOME_REPORTFILENAME=e2e-2v1 npx codeceptjs run --grep @e2e-2v1 --reporter mocha-multi --verbose",
     "test:api-spec": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run-workers --suites 4 --grep @api-specified --reporter mocha-multi --verbose",
     "test:api-tests": "MOCHAWESOME_REPORTFILENAME=api-tests npx codeceptjs run-workers --suites 4 --grep @api-tests --reporter mocha-multi --verbose",
+    "test:local-tests": "MOCHAWESOME_REPORTFILENAME=api-tests npx codeceptjs run-workers --suites 1 --grep @local-testing --reporter mocha-multi --verbose",
     "test:api-spec-cui": "MOCHAWESOME_REPORTFILENAME=api-spec-cui npx codeceptjs run --grep @api-spec-cui --reporter mocha-multi --verbose",
     "test:api-spec-1v2": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-1v2 --reporter mocha-multi --verbose",
     "test:api-spec-1v1": "MOCHAWESOME_REPORTFILENAME=api-spec npx codeceptjs run --grep @api-spec-1v1 --reporter mocha-multi --verbose",

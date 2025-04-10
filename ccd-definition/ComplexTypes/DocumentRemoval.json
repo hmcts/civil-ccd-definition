@@ -14,5 +14,21 @@
     "ElementLabel": "Document",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "documentToKeep",
+    "ListElementCode": "uploadedDate",
+    "FieldType": "DateTime",
+    "ElementLabel": "Uploaded Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "documentToKeep",
+    "ListElementCode": "systemGenerated",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Is Document System Generated?",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
