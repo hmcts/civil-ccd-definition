@@ -4,13 +4,15 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: 'hmctspublic.azurecr.io/civil/service:pr-6018'
     keyVaults:
       civil:
         resourceGroup: civil
         secrets:
           - name: civil-idam-client-secret
             alias: idam.client.secret
+          - name: appinsights-connection-string
+            alias: appinsights-connection-string
           - name: microservicekey-civil-service
             alias: idam.s2s-auth.totp_secret
           - name: system-update-user-username
@@ -27,8 +29,7 @@ civil-service:
             alias: CIVIL_PRD_ADMIN_PASSWORD
           - name: docmosis-api-key
             alias: docmosis.tornado.key
-          - name: gov-notify-api-key
-            alias: GOV_NOTIFY_API_KEY
+          - name: gov-notify-live-api-key
           - name: sendgrid-api-key
             alias: SENDGRID_API_KEY
           - name: robotics-notification-sender
