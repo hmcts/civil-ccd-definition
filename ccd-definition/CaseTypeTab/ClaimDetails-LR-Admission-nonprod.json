@@ -1,0 +1,290 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1DetailsForClaimDetailsTab",
+    "TabFieldDisplayOrder": 20
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2DetailsForClaimDetailsTab",
+    "TabFieldDisplayOrder": 21
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1LitigationFriend",
+    "TabFieldDisplayOrder": 22
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2LitigationFriend",
+    "TabFieldDisplayOrder": 23
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1OrganisationPolicy",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 24
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "specRespondentCorrespondenceAddressdetails",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 25
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "respondentSolicitor1ServiceAddress",
+    "FieldShowCondition": "respondent1Represented=\"Yes\" AND respondent1OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 25
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondentSolicitor1EmailAddress",
+    "TabFieldDisplayOrder": 26
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2OrganisationPolicy",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 27
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "specRespondent2CorrespondenceAddressdetails",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 28
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "CaseFieldID": "respondentSolicitor2ServiceAddress",
+    "FieldShowCondition": "respondent2Represented=\"Yes\" AND respondent2OrgRegistered=\"Yes\"",
+    "TabFieldDisplayOrder": 28
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondentSolicitor2EmailAddress",
+    "TabFieldDisplayOrder": 29
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingDefendantResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"*\"",
+    "TabFieldDisplayOrder": 30
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ClaimResponseType",
+    "TabFieldDisplayOrder": 31
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2ClaimResponseType",
+    "TabFieldDisplayOrder": 32,
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 33
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 34,
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "headingDefendantDQ",
+    "TabFieldDisplayOrder": 35,
+    "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
+    "TabFieldDisplayOrder": 36
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "claimant1ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 37
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "claimant2ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 38,
+    "FieldShowCondition": "applicant2 =\"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 38
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQFixedRecoverableCosts",
+    "TabFieldDisplayOrder": 39
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1DQExperts",
+    "TabFieldDisplayOrder": 46
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2DQExperts",
+    "TabFieldDisplayOrder": 47
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1DQWitnesses",
+    "TabFieldDisplayOrder": 48
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2DQWitnesses",
+    "TabFieldDisplayOrder": 49
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQLanguage",
+    "TabFieldDisplayOrder": 53
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQLanguage",
+    "TabFieldDisplayOrder": 54,
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQHearing",
+    "TabFieldDisplayOrder": 55,
+    "FieldShowCondition": "responseClaimTrack != \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQHearing",
+    "TabFieldDisplayOrder": 56,
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\" AND responseClaimTrack != \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "responseClaimTrack",
+    "TabFieldDisplayOrder": 57,
+    "FieldShowCondition": "responseClaimTrack = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "allocatedTrack",
+    "TabFieldDisplayOrder": 57,
+    "FieldShowCondition": "allocatedTrack = \"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1DQHearingSmallClaim",
+    "TabFieldDisplayOrder": 58,
+    "FieldShowCondition": "responseClaimTrack = \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent2DQHearingSmallClaim",
+    "TabFieldDisplayOrder": 59,
+    "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\" AND responseClaimTrack = \"SMALL_CLAIM\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1Represented",
+    "FieldShowCondition": "respondent1OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 18
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2Represented",
+    "FieldShowCondition": "respondent2OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent1OrgRegistered",
+    "FieldShowCondition": "respondent1OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 19
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
+    "TabLabel": "Claim Details",
+    "TabDisplayOrder": 2,
+    "CaseFieldID": "respondent2OrgRegistered",
+    "FieldShowCondition": "respondent2OrganisationPolicy=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 19
+  }
+]
