@@ -10,7 +10,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
 
-Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo @non-prod-e2e-ft');
+Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);
