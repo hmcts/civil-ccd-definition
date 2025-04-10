@@ -26,6 +26,7 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\"",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
