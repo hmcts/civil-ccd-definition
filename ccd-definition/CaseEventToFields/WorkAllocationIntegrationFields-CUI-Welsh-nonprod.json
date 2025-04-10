@@ -36,6 +36,7 @@
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\"",
     "PageDisplayOrder":99,
     "Publish": "Y"
   },
@@ -46,6 +47,7 @@
     "PageFieldDisplayOrder": 13,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\"",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   },
@@ -56,6 +58,7 @@
     "PageFieldDisplayOrder": 14,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
+    "FieldShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW\"",
     "PageDisplayOrder": 99,
     "Publish": "Y"
   }
