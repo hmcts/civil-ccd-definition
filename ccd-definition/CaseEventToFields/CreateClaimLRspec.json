@@ -278,7 +278,7 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "specRespondentCorrespondenceAddress",
-    "PageLabel": "Postal address for respondent's legal representative",
+    "PageLabel": "Defendant legal representative’s address",
     "PageDisplayOrder": 15,
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",

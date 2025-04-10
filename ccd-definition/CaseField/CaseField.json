@@ -1125,8 +1125,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1ServiceAddressRequired",
-    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
-    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
+    "HintText": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
