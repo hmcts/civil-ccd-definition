@@ -13,7 +13,7 @@ if (config.runWAApiTest) {
 
 }
 
-Feature('CCD 1v1 API test spec intermediate  track @api-spec-multi-intermediate');
+Feature('CCD 1v1 API test spec intermediate  track @api-multi-intermediate-spec');
 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
