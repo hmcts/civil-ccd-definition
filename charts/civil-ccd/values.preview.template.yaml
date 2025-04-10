@@ -30,6 +30,7 @@ civil-service:
           - name: docmosis-api-key
             alias: docmosis.tornado.key
           - name: gov-notify-live-api-key
+          - alias: GOV_NOTIFY_API_KEY
           - name: sendgrid-api-key
             alias: SENDGRID_API_KEY
           - name: robotics-notification-sender
