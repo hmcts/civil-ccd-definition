@@ -20,7 +20,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
+const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
 const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
 const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
@@ -42,6 +42,9 @@ const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const { toJSON } = require('lodash/seq');
 const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
+const judgmentMarkPaidInFull = require('../fixtures/events/cui/judgmentMarkPaidInFullCui');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
+
 
 let caseId, eventName;
 let caseData = {};
@@ -292,13 +295,38 @@ module.exports = {
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
     const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if (isJudgmentOnlineLive && typeOfData == 'FA_ACCEPT_CCJ') {
+
+    if (isJudgmentOnlineLive && (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ')) {
       expectedEndState = 'All_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
     }
+  },
+
+  judgmentPaidInFullCui: async (user, caseId) => {
+    let eventName = 'JUDGMENT_PAID_IN_FULL';
+    let payload = judgmentMarkPaidInFull.markJudgmentPaidInFull();
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let payload = judgmentOnline1v1Spec.markJudgmentPaidInFull();
+    for (let pageId of Object.keys(payload.userInput)) {
+      await assertValidData(payload, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
