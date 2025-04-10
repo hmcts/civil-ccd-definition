@@ -14,7 +14,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CLEAR_FORMER_SOLICITOR_INFO_AFTER_NOTIFY_NOC",
-    "Name": "Clear former solicitor info after NoC",
+    "Name": "Clear former solicitor info",
     "Description": "Clear former solicitor info after Notifying Notice of Change",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
