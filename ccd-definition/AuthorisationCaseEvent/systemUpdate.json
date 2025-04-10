@@ -313,6 +313,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLEAR_FORMER_SOLICITOR_INFO_AFTER_NOTIFY_NOC",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
