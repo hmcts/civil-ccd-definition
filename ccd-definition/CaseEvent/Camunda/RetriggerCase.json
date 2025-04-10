@@ -35,7 +35,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_MEDIATION_UNSUCCESSFUL",
-    "Name": "Retrigger mediation unsuccessful",
+    "Name": "Retrigger med unsuccessful",
     "DisplayOrder": 1,
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
