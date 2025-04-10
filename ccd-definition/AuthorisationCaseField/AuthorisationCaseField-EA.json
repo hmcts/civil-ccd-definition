@@ -13,9 +13,7 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE"
+          "caseworker-civil-solicitor"
         ],
         "CRUD": "R"
       }
