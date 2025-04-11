@@ -26,8 +26,7 @@
     "PageFieldDisplayOrder": 8,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "FieldShowCondition": "featureToggleWA = \"DO_NOT_SHOW_IN_UI\"",
-    "PageDisplayOrder": 1,
+    "PageShowCondition": "reasonForReconsiderationPartiesName = \"DO_NOT_SHOW_IN_UI\"",
     "Publish": "Y"
   },
   {
@@ -37,9 +36,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "FieldShowCondition": "featureToggleWA = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
-    "PageDisplayOrder":1,
     "Publish": "Y"
   },
   {
@@ -49,9 +46,7 @@
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "FieldShowCondition": "featureToggleWA = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
-    "PageDisplayOrder": 1,
     "Publish": "Y"
   },
   {
@@ -61,9 +56,7 @@
     "PageFieldDisplayOrder": 11,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "FieldShowCondition": "featureToggleWA = \"DO_NOT_SHOW_IN_UI\"",
     "ShowSummaryChangeOption": "N",
-    "PageDisplayOrder": 1,
     "Publish": "Y"
   }
 ]
