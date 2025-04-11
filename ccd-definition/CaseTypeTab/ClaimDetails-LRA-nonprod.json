@@ -43,7 +43,7 @@
     "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantDQ",
     "TabFieldDisplayOrder": 36,
-    "FieldShowCondition": "respondent1DQLanguage = \"*\" OR respondent2DQLanguage = \"*\""
+    "FieldShowCondition": "respondent1DQVulnerabilityQuestions = \"*\" OR respondent2DQVulnerabilityQuestions = \"*\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
