@@ -2410,7 +2410,7 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"     
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       },
