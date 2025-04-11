@@ -4,7 +4,7 @@ civil-ccd-stack:
 civil-service:
   java:
     environment:
-#      CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
+      CORE_CASE_DATA_API_URL: http://ccd-data-store-api-aat.service.core-compute-aat.internal
       HMC_API_URL: http://hmc-cft-hearing-service-aat.service.core-compute-aat.internal
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: true
       HMC_HEARINGS_TOPIC_NAME: hmc-to-cft-aat
