@@ -91,6 +91,14 @@ module.exports = {
             }
           }
         } : {}),
+        ...(allocatedTrack === 'SMALL_CLAIM' ? {
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, Respondent 1'
+            }
+          },
+        } : {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',

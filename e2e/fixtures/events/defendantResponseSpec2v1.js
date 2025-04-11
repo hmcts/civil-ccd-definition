@@ -37,6 +37,12 @@ module.exports = {
           Mediation: {
             responseClaimMediationSpecRequired: 'No'
           },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
+          },
           SmallClaimExperts: {
             respondent1DQExperts: {
               expertRequired: 'Yes',
@@ -342,6 +348,12 @@ module.exports = {
           },
           Mediation: {
             responseClaimMediationSpecRequired: 'No'
+          },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
           },
           SmallClaimExperts: {
             respondent1DQExperts: {
