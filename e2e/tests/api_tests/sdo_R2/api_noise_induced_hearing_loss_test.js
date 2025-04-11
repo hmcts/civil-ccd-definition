@@ -10,7 +10,7 @@ const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 
 
-Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-r2-sdo');
+Feature('Noise Induced Hearing Loss API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo');
 
 async function prepareClaim(api) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario1v1Nihl, claimAmount);
@@ -21,7 +21,7 @@ async function prepareClaim(api) {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v1, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 }
 
-Scenario.skip('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
+Scenario('1v1 unspec create SDO for Noise Induced Hearing Loss', async ({api}) => {
     await prepareClaim(api);
     await api.createSDO(judgeUser, 'CREATE_FAST_NIHL');
     await api.evidenceUploadApplicant(config.applicantSolicitorUser);
