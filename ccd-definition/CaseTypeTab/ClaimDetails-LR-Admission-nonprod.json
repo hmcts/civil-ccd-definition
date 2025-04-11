@@ -234,7 +234,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"*\"",
+    "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\"",
     "TabFieldDisplayOrder": 30
   },
   {
@@ -253,28 +253,28 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
     "TabFieldDisplayOrder": 33
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
+    "CaseFieldID": "respondent1ClaimResponseTypeForSpec",
+    "TabFieldDisplayOrder": 34
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "respondent2ClaimResponseTypeForSpec",
-    "TabFieldDisplayOrder": 34,
+    "TabFieldDisplayOrder": 35,
     "FieldShowCondition": "respondent2DetailsForClaimDetailsTab =\"*\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
     "CaseFieldID": "headingDefendantDQ",
-    "TabFieldDisplayOrder": 35,
+    "TabFieldDisplayOrder": 36,
     "FieldShowCondition": "respondent1ClaimResponseType = \"*\" OR respondent1ClaimResponseTypeForSpec = \"*\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "TabID": "ClaimDetails",
-    "CaseFieldID": "respondent1ClaimResponseTypeToApplicant2",
-    "TabFieldDisplayOrder": 36
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
