@@ -55,6 +55,8 @@ civil-service:
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
           - name: ccd-shared-servicebus-connection-string
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
+          - name: hmc-servicebus-connection-string
+            alias: HMC_HEARINGS_TOPIC_CONNECTION_STRING
     environment:
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
@@ -81,6 +83,9 @@ civil-service:
         key: PASSWORD
         disabled: true
       CCD_EVENTS_TOPIC_CONNECTION_STRING:
+        secretRef: civil-sb-preview
+        key: connectionString
+      HMC_HEARINGS_TOPIC_CONNECTION_STRING:
         secretRef: civil-sb-preview
         key: connectionString
     postgresql:
