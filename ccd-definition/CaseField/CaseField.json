@@ -2600,6 +2600,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentSolicitor2AddressLabel",
+    "Label": "Defendant legal representative’s address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "changeOfRepresentation",
     "Label": "change of representation details",
     "FieldType": "ChangeOfRepresentation",
