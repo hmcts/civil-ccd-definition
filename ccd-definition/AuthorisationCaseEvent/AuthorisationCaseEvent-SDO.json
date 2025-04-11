@@ -166,8 +166,7 @@
       },
       {
         "UserRoles": [
-          "judge-profile",
-          "caseworker-civil"
+          "judge-profile"
         ],
         "CRUD": "R"
       }
