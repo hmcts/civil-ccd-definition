@@ -2410,9 +2410,7 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"          
+          "CITIZEN-DEFENDANT-PROFILE"        
         ],
         "CRUD": "R"
       },
