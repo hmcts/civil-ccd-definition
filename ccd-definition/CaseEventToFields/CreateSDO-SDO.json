@@ -671,6 +671,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "CaseAccessCategory",
+    "DisplayContext": "READONLY",
+    "PageID": "SDO",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 2,
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "setSmallClaimsFlag=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "setSmallClaimsFlag",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
