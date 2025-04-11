@@ -34,6 +34,17 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "RETRIGGER_MEDIATION_UNSUCCESSFUL",
+    "Name": "Retrigger med unsuccessful",
+    "DisplayOrder": 1,
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RETRIGGER_NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "Name": "Retrigger notify interim DJ",
     "DisplayOrder": 1,

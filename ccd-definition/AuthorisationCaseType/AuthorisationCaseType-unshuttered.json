@@ -20,7 +20,8 @@
       "caseworker-caa",
       "caseworker-civil-systemupdate",
       "next-hearing-date-admin",
-      "caseworker-wa-task-configuration"
+      "caseworker-wa-task-configuration",
+      "caseworker-civil-rparobot"
     ],
     "CRUD": "CRUD"
   },
