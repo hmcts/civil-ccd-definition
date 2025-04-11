@@ -2593,7 +2593,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1AddressLabel",
-    "Label": "Defendant's legal representative's correspondence address",
+    "Label": "Defendant legal representative’s address",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
