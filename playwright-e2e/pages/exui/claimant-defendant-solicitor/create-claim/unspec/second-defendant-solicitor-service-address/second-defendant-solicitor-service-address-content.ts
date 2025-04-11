@@ -1,1 +1,1 @@
-export const heading = 'Second respondent representative’s service address';
+export const heading = 'Defendant legal representative’s address';
