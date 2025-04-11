@@ -85,7 +85,7 @@
     "PageFieldDisplayOrder": 9,
     "DisplayContext": "MANDATORY",
     "PageID": "Respondent1SolicitorEmail",
-    "PageLabel": "Respondent representative’s service address",
+    "PageLabel": "Defendant legal representative’s address",
     "ShowSummaryChangeOption": "Y"
   },
   {
@@ -153,7 +153,7 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY",
     "PageID": "Respondent2SolicitorEmail",
-    "PageLabel": "Respondent representative’s service address",
+    "PageLabel": "Defendant legal representative’s address",
     "ShowSummaryChangeOption": "Y"
   },
   {
