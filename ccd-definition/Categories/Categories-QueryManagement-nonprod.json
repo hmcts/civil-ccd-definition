@@ -15,9 +15,23 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CategoryID": "ClaimantQueryDocumentAttachments",
+    "CategoryLabel": "Attachments",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "ClaimantQueryDocuments"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CategoryID": "DefendantQueryDocuments",
     "CategoryLabel": "Defendant",
     "DisplayOrder": "2",
     "ParentCategoryID": "QueryDocuments"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CategoryID": "DefendantQueryDocumentAttachments",
+    "CategoryLabel": "Attachments",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "DefendantQueryDocuments"
   }
 ]
