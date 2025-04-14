@@ -321,7 +321,7 @@ module.exports = {
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
-    scheduleAHearing: 'ScheduleAHearing',
+    scheduleAHearing: 'ScheduleHMCHearing',
     reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
@@ -330,9 +330,9 @@ module.exports = {
     smallClaimDirections: 'SmallClaimsTrackDirections',
     legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
     notSuitableSdo: 'transferCaseOfflineNotSuitableSDO',
-    intermediateTrackDirections: 'intermediate_track_decision_making_work',
-    multiTrackDirections: 'multi_track_decision_making_work',
-    multiTrackOrderMadeReview: 'Order Made - Review case - Multi track',
+    intermediateTrackDirections: 'allocateIntermediateTrack',
+    multiTrackDirections: 'allocateMultiTrack',
+    multiTrackOrderMadeReview: 'reviewOrder',
     transferCaseOffline: 'Transfer Case Offline'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
