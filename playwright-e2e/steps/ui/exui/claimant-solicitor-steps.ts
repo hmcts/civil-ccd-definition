@@ -76,6 +76,32 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       { verifySuccessEvent: false },
     );
   }
+
+  async CreateClaimSmallTrack1vLIP() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetailsLIP(); // Placeholder for LIP-specific defendant details journey
+        await createClaimActions.noAddAnotherDefendant();
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaimLIP();
+      },
+      ccdEvents.CREATE_CLAIM,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
   async CreateClaimSmallTrack2v1() {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
@@ -121,6 +147,58 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       async () => {
         await createClaimActions.confirmCreateClaim();
+      },
+      ccdEvents.CREATE_CLAIM,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CreateClaimSmallTrack1v2LIPs() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetailsLIP(); // First defendant (LIP)
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaimLIP();
+      },
+      ccdEvents.CREATE_CLAIM,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async CreateClaimSmallTrack1v2LRLIP() {
+    const { createClaimActions } = this.claimantSolicitorActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await createClaimActions.caseFilter();
+        await createClaimActions.eligibility();
+        await createClaimActions.references();
+        await createClaimActions.court();
+        await createClaimActions.claimantDetails();
+        await createClaimActions.noAddAnotherClaimant();
+        await createClaimActions.defendantDetails(); // First defendant (Legally Represented)
+        await createClaimActions.addAnotherDefendant();
+        await createClaimActions.secondDefendantLIP(); // Second defendant (LIP)
+        await createClaimActions.smallTrackClaimDetails();
+        await createClaimActions.statementOfTruthCreateClaim();
+        await createClaimActions.submitCreateClaim();
+      },
+      async () => {
+        await createClaimActions.confirmCreateClaimLIP();
       },
       ccdEvents.CREATE_CLAIM,
       claimantSolicitorUser,
@@ -404,7 +482,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RequestDefaultJudgment(){
+  async RequestDefaultJudgment() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -419,11 +497,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 
-  async RequestDefaultJudgment1v2(){
+  async RequestDefaultJudgment1v2() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -438,7 +516,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 }
