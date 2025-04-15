@@ -1,7 +1,7 @@
 import { test } from '../../playwright-fixtures/index';
 
 test.describe('Unspecified Small Track 1v2LIPs', async () => {
-  test.only('1v2LIPs Small Track Claimant Notify Claim Notify Claim Details', async ({
+  test('1v2LIPs Small Track Claimant Notify Claim Notify Claim Details', async ({
     ClaimantSolicitorSteps,
     ClaimantSolicitorApiSteps,
   }) => {

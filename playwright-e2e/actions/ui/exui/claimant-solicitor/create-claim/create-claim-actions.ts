@@ -135,15 +135,15 @@ export default class CreateClaimActions extends BaseTestData {
   }
 
   async secondDefendantLIP() {
-    const { defendantPage } = this.createClaimPageFactory;
-    await defendantPage.verifyContent();
-    await defendantPage.chooseIndividualAndEnterDetails(); // Second LIP-specific details
-    await defendantPage.submit();
+    const { secondDefendantPage } = this.createClaimPageFactory;
+    await secondDefendantPage.verifyContent();
+    await secondDefendantPage.chooseIndividualAndEnterDetails();
+    await secondDefendantPage.submit();
 
-    const { legalRepresentationPage } = this.createClaimPageFactory;
-    await legalRepresentationPage.verifyContent();
-    await legalRepresentationPage.selectNo(); // LIPs do not have legal representation
-    await legalRepresentationPage.submit();
+    const { secondDefendantLegalRepresentationPage } = this.createClaimPageFactory;
+    await secondDefendantLegalRepresentationPage.verifyContent();
+    await secondDefendantLegalRepresentationPage.selectNo();
+    await secondDefendantLegalRepresentationPage.submit();
   }
 
   async noAddAnotherDefendant() {
