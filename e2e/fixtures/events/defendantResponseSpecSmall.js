@@ -25,6 +25,12 @@ module.exports = {
         Mediation: {
           responseClaimMediationSpecRequired: 'Yes'
         },
+        DeterminationWithoutHearing:{
+          deterWithoutHearingRespondent1: {
+            deterWithoutHearingYesNo: 'No',
+            deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+          }
+        },
         SmallClaimExperts: {
           responseClaimExpertSpecRequired: 'No'
         },
@@ -87,6 +93,12 @@ module.exports = {
           ...responseData.userInput,
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_DEFENCE'
+          },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+            }
           },
           SmallClaimExperts: {
             respondent1DQExperts: {
@@ -295,6 +307,12 @@ module.exports = {
         Mediation: {
           responseClaimMediationSpecRequired: 'No'
         },
+        DeterminationWithoutHearing:{
+          deterWithoutHearingRespondent1: {
+            deterWithoutHearingYesNo: 'No',
+            deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
+          }
+        },
         SmallClaimExperts: {
           responseClaimExpertSpecRequired: 'No'
         },
@@ -404,6 +422,12 @@ module.exports = {
                 unavailableDateType: 'DATE_RANGE',
               })
             ]
+          }
+        },
+        DeterminationWithoutHearing:{
+          deterWithoutHearingRespondent1: {
+            deterWithoutHearingYesNo: 'No',
+            deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 1'
           }
         },
         SmallClaimExperts: {
@@ -741,6 +765,12 @@ module.exports = {
           },
           Mediation: {
             responseClaimMediationSpec2Required: 'No'
+          },
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent2: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, respondent 2'
+            }
           },
           SmallClaimExperts: {
             respondent2DQExperts: {

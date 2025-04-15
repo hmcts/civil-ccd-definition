@@ -1433,6 +1433,32 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearingRespondent1",
+    "PageDisplayOrder": 45,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DeterminationWithoutHearing",
+    "CaseEventFieldLabel": " ",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" OR showConditionFlags CONTAINS \"SOMEONE_DISPUTES\" AND responseClaimTrack = \"SMALL_CLAIM\" AND respondentClaimResponseTypeForSpecGeneric != \"FULL_ADMISSION\"",
+    "FieldShowCondition": "isRespondent1 = \"Yes\" OR isApplicant1 = \"Yes\"",
+    "PageLabel": "Determination without Hearing Questions"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearingRespondent2",
+    "PageDisplayOrder": 45,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DeterminationWithoutHearing",
+    "CaseEventFieldLabel": " ",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "isRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimExpertSpecLabel",
     "PageDisplayOrder": 46,
     "PageFieldDisplayOrder": 1,
