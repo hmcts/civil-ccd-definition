@@ -73,6 +73,31 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingYesNo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingWhyNot",
+    "FieldDisplayOrder": 3,
+    "FieldShowCondition": "deterWithoutHearing.deterWithoutHearingYesNo = \"No\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "CLAIMANT_RESPONSE",
     "CaseFieldID": "applicant1DQExperts",
