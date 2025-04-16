@@ -12,6 +12,12 @@ module.exports = {
             hasAgreedFreeMediation: hasAgreedFreeMediation
           }
         },
+        DeterminationWithoutHearing:{
+          deterWithoutHearing: {
+            deterWithoutHearingYesNo: 'No',
+            deterWithoutHearingWhyNot: 'Incredibly valid reasons'
+          }
+        },
         SmallClaimExperts: {
           applicant1DQExperts: {
             expertRequired: 'Yes',
@@ -113,6 +119,12 @@ module.exports = {
         MediationAvailability: {
           app1MediationAvailability: {
             isMediationUnavailablityExists: 'No'
+          }
+        },
+        DeterminationWithoutHearing:{
+          deterWithoutHearing: {
+            deterWithoutHearingYesNo: 'No',
+            deterWithoutHearingWhyNot: 'Incredibly valid reasons'
           }
         },
         SmallClaimExperts: {
