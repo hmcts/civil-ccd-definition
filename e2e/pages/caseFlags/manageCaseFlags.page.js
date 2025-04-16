@@ -8,10 +8,10 @@ const fields = {
     }
   },
   commentInput: {
-    id: 'textarea[aria-describedby=\'update-flag-hint update-flag-char-limit-info update-flag-char-limit-error\']'
+    id: '#flagComment'
   },
-  next: {
-    id: 'Next'
+  continue: {
+    id: 'Continue'
   }
 };
 
@@ -21,13 +21,13 @@ module.exports = {
     await within(fields.flagLocationSelection.radioGroup.id, () => {
       I.click(flagLocation);
     });
-    I.click(fields.next.id);
+    I.click(fields.continue.id);
   },
 
   async updateFlagComment(comment) {
     I.waitForElement(fields.commentInput.id);
     I.fillField(fields.commentInput.id, comment);
     I.click('Make inactive');
-    I.click(fields.next.id);
+    I.click(fields.continue.id);
   }
 };
