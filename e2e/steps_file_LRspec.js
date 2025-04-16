@@ -107,6 +107,8 @@ const addClaimForAFlightDelay = require('./pages/createClaim/addClaimForAFlightD
 const addClaimFlightDelayConfirmationPage = require('./pages/createClaim/addConfirmationSubmitPageValidation.page');
 const requestForRR = require('./pages/requestForReconsideration/reasonForReconsideration.page');
 const requestForDecision = require('./pages/decisionOnReconsideration/decisionOnReconsideration.page');
+const mediationContactInformationPage = require('./pages/respondToClaimLRspec/mediationContactInformation.page.js');
+const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediationAvailability.page.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -497,9 +499,10 @@ module.exports = function () {
                 () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
            ]),
            ... conditionalSteps(claimType === 'small', [
-                      () => freeMediationPage.selectMediation('DefendantResponse'),
-                      () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
+                      () => mediationContactInformationPage.enterMediationContactInformation('resp1'),
+                      () => mediationAvailabilityPage.selectNoMediationAvailability('resp1'),
                       () => useExpertPage.claimExpert('DefendantResponse'),
+                      () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
                       () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
             ]),
@@ -655,6 +658,7 @@ module.exports = function () {
         await this.triggerStepsWithScreenshot([
           () => caseViewPage.startEvent(eventName, caseId),
           () => mediationFailurePage.selectMediationFailureReason(),
+          () => this.clickContinue(),
           () => event.submitWithoutHeader('Submit'),
         ]);
      },
@@ -666,22 +670,23 @@ module.exports = function () {
                       () => proceedPage.proceedWithClaim(mpScenario),
                       () => this.clickContinue(),
                       ... conditionalSteps(claimType === 'small', [
-                      () => freeMediationPage.selectMediation('ClaimantResponse'),
-                      () => useExpertPage.claimExpert('ClaimantResponse'),
-                      () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
-                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
-                      () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
+                        () => mediationContactInformationPage.enterMediationContactInformation('app1'),
+                        () => mediationAvailabilityPage.selectNoMediationAvailability('app1'),
+                        () => useExpertPage.claimExpert('ClaimantResponse'),
+                        () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
+                        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                        () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
                       ]),
                       ... conditionalSteps(claimType === 'fast', [
-                       () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-                       () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
-                       () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specApplicant1'),
-                       () => this.clickContinue(),
-                       () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
-                       () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
-                       () => witnessesLRspecPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
-                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
-                       () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
+                        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+                        () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+                        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specApplicant1'),
+                        () => this.clickContinue(),
+                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
+                        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+                        () => witnessesLRspecPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+                        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+                        () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
                        ]),
                       () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
                       () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
