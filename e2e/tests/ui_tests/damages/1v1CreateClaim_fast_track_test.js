@@ -2,7 +2,6 @@ const config = require('../../../config.js');
 const {assignCaseRoleToUser, unAssignAllUsers, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
 const {
   waitForFinishedBusinessProcess,
-  checkCaseFlagsEnabled
 } = require('../../../api/testingSupport');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
@@ -33,6 +32,7 @@ Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(`Case ${caseNumber} has been created.`);
   await addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
+  
 }).retry(0);
 
 Scenario('Applicant solicitor notifies defendant solicitor of claim', async ({I}) => {
