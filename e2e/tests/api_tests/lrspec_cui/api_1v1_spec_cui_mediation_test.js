@@ -14,7 +14,7 @@ async function prepareClaim(api_spec_cui, carmEnabled) {
 }
 
 // set config.localMediationTests to true to run locally
-Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @cui-carm @api-nightly-prod');
+Feature('Unsuccessful mediation for spec small claim with unrepresented defendant @api-cui-carm @api-nightly-prod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
