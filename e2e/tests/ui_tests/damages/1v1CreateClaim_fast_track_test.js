@@ -22,11 +22,11 @@ const respondent1 = {
 
 let caseNumber; 
 
-Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod @debug');
+Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, null);
+  await I.createCase(claimant1, null, respondent1, null, 20000);
   caseNumber = await I.grabCaseNumber();
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
