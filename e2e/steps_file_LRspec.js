@@ -195,8 +195,8 @@ module.exports = function () {
 
     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
-
-      return await this.grabTextFrom(CASE_HEADER);
+      const caseHeader = await this.grabTextFrom(CASE_HEADER);
+      return caseHeader.split(' ')[0].split('-').join('').substring(1);
     },
 
     async signOut() {
@@ -423,7 +423,7 @@ module.exports = function () {
           ];
 
           await this.triggerStepsWithScreenshot(steps);
-         caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+         caseId = this.grabCaseNumber();
   },
 
     async createCaseSpecifiedForFlightDelay(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
@@ -503,7 +503,7 @@ module.exports = function () {
       ];
 
       await this.triggerStepsWithScreenshot(steps);
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+      caseId = this.grabCaseNumber();
     },
 
    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {

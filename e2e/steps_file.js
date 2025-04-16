@@ -306,8 +306,8 @@ module.exports = function () {
 
     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
-
-      return await this.grabTextFrom(CASE_HEADER);
+      const caseHeader = await this.grabTextFrom(CASE_HEADER);
+      return caseHeader.split(' ')[0].split('-').join('').substring(1);
     },
 
     async signOut() {
@@ -388,7 +388,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot(steps);
 
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+      caseId = this.grabCaseNumber();
     },
 
     async checkForCaseFlagsEvent() {
@@ -1026,7 +1026,7 @@ module.exports = function () {
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
       await event.submit('Submit', expectedMessage);
       await event.returnToCaseDetails();
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+      caseId = this.grabCaseNumber();
     },
 
     async acknowledgeClaimSpec() {
