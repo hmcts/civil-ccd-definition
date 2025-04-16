@@ -98,7 +98,6 @@ const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3} = require('./fixtures/featureKeys');
 const specifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocumentSpec');
 const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
 const whoIsFor = require('./pages/mediationDocumentsUpload/whoIsFor');
@@ -114,9 +113,8 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
 
 const CONFIRMATION_MESSAGE = {
-  online: 'Your claim has been received\nClaim number: ',
+  online: 'Please now pay your claim fee\nusing the link below',
   offline: 'Your claim has been received and will progress offline',
-  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
@@ -194,7 +192,7 @@ module.exports = function () {
     },
 
     grabCaseNumber: async function () {
-      this.waitForElement(CASE_HEADER);
+      await this.waitForElement(CASE_HEADER);
       const caseHeader = await this.grabTextFrom(CASE_HEADER);
       return caseHeader.split(' ')[0].split('-').join('').substring(1);
     },
@@ -354,76 +352,42 @@ module.exports = function () {
       output.log('Create claim - Specified');
       eventName = 'Create claim - Specified';
 
-         //const twoVOneScenario = claimant1 && claimant2;
-         const pbaV3 = await checkToggleEnabled(PBAv3);
-         output.log('--------------createCaseSpecified calling------------');
-         await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
-         output.log('--------------createCaseSpecified finished------------');
-          let steps = pbaV3 ? [
-            () => this.clickContinue(),
-            () => this.clickContinue(),
-            () => solicitorReferencesPage.enterReferences(),
-            ...firstClaimantSteps(claimant1),
-            ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(respondent1),
-            ...conditionalSteps(claimant2 == null, [
-             () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
-              ]),
-             ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps( [
-              () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
-                 () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
-                 () => specTimelinePage.addManually(),
-                 () => specAddTimelinePage.addTimeline(),
-                 () => specListEvidencePage.addEvidence(),
-                 () => specClaimAmountPage.addClaimItem(claimAmount),
-                 () => this.clickContinue(),
-                 () => specInterestPage.addInterest(),
-                 () => specInterestValuePage.selectInterest(),
-                 () => specInterestRatePage.selectInterestRate(),
-                 () => specInterestDateStartPage.selectInterestDateStart(),
-                 () => specInterestDateEndPage.selectInterestDateEnd(),
-                 () => this.clickContinue(),
-                 () => pbaNumberPage.clickContinue(),
-                 () => fixedCostsPage.addFixedCosts(),
-                 () => statementOfTruth.enterNameAndRole('claim'),
-                 () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
-                 () => event.returnToCaseDetails(),
-           ] : [
-            () => this.clickContinue(),
-            () => this.clickContinue(),
-            () => solicitorReferencesPage.enterReferences(),
-            ...firstClaimantSteps(claimant1),
-            ...secondClaimantSteps(claimant2),
-            ...firstDefendantSteps(respondent1),
-            ...conditionalSteps(claimant2 == null, [
-              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
-            ]),
-            ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps([
-              () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
-            () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
-            () => specTimelinePage.addManually(),
-            () => specAddTimelinePage.addTimeline(),
-            () => specListEvidencePage.addEvidence(),
-            () => specClaimAmountPage.addClaimItem(claimAmount),
-            () => this.clickContinue(),
-            () => specInterestPage.addInterest(),
-            () => specInterestValuePage.selectInterest(),
-            () => specInterestRatePage.selectInterestRate(),
-            () => specInterestDateStartPage.selectInterestDateStart(),
-            () => specInterestDateEndPage.selectInterestDateEnd(),
-            () => this.clickContinue(),
-            () => pbaNumberPage.selectPbaNumber(),
-            () => paymentReferencePage.updatePaymentReference(),
-            () => fixedCostsPage.addFixedCosts(),
-            () => statementOfTruth.enterNameAndRole('claim'),
-            () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
-            () => event.returnToCaseDetails(),
-          ];
+      //const twoVOneScenario = claimant1 && claimant2;
+      output.log('--------------createCaseSpecified calling------------');
+      await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
+      output.log('--------------createCaseSpecified finished------------');
+      let steps = [
+        () => this.clickContinue(),
+        () => this.clickContinue(),
+        () => solicitorReferencesPage.enterReferences(),
+        ...firstClaimantSteps(claimant1),
+        ...secondClaimantSteps(claimant2),
+        ...firstDefendantSteps(respondent1),
+        ...conditionalSteps(claimant2 == null, [
+          () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
+        ]),
+        ...secondDefendantSteps(respondent2, respondent1.represented),
+        () => addClaimForAFlightDelay.enteredFlightDelayClaim(),
+        () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
+        () => specTimelinePage.addManually(),
+        () => specAddTimelinePage.addTimeline(),
+        () => specListEvidencePage.addEvidence(),
+        () => specClaimAmountPage.addClaimItem(claimAmount),
+        () => this.clickContinue(),
+        () => specInterestPage.addInterest(),
+        () => specInterestValuePage.selectInterest(),
+        () => specInterestRatePage.selectInterestRate(),
+        () => specInterestDateStartPage.selectInterestDateStart(),
+        () => this.clickContinue(),
+        () => pbaNumberPage.clickContinue(),
+        () => fixedCostsPage.addFixedCosts(),
+        () => statementOfTruth.enterNameAndRole('claim'),
+        () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
+        () => event.returnToCaseDetails(),
+      ];
 
-          await this.triggerStepsWithScreenshot(steps);
-         caseId = this.grabCaseNumber();
+    await this.triggerStepsWithScreenshot(steps);
+    caseId = await this.grabCaseNumber();
   },
 
     async createCaseSpecifiedForFlightDelay(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
@@ -431,11 +395,10 @@ module.exports = function () {
       eventName = 'Create claim - Specified';
 
       //const twoVOneScenario = claimant1 && claimant2;
-      const pbaV3 = await checkToggleEnabled(PBAv3);
       output.log('--------------createCaseSpecified calling------------');
       await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
       output.log('--------------createCaseSpecified finished------------');
-      let steps = pbaV3 ? [
+      let steps = [
         () => this.clickContinue(),
         () => this.clickContinue(),
         () => solicitorReferencesPage.enterReferences(),
@@ -465,45 +428,12 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole('claim'),
         ...conditionalSteps( [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
-        () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
-        () => event.returnToCaseDetails(),
-      ] : [
-        () => this.clickContinue(),
-        () => this.clickContinue(),
-        () => solicitorReferencesPage.enterReferences(),
-        ...firstClaimantSteps(claimant1),
-        ...secondClaimantSteps(claimant2),
-        ...firstDefendantSteps(respondent1),
-        ...conditionalSteps(claimant2 == null, [
-          () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
-        ]),
-        ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps( [
-          () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
-        () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
-        () => specTimelinePage.addManually(),
-        () => specAddTimelinePage.addTimeline(),
-        () => specListEvidencePage.addEvidence(),
-        () => specClaimAmountPage.addClaimItem(claimAmount),
-        () => this.clickContinue(),
-        () => specInterestPage.addInterest(),
-        () => specInterestValuePage.selectInterest(),
-        () => specInterestRatePage.selectInterestRate(),
-        () => specInterestDateStartPage.selectInterestDateStart(),
-        () => specInterestDateEndPage.selectInterestDateEnd(),
-        () => this.clickContinue(),
-        () => pbaNumberPage.selectPbaNumber(),
-        () => paymentReferencePage.updatePaymentReference(),
-        () => fixedCostsPage.addFixedCosts(),
-        () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps( [
-          () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),
       ];
 
       await this.triggerStepsWithScreenshot(steps);
-      caseId = this.grabCaseNumber();
+      caseId = await this.grabCaseNumber();
     },
 
    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
@@ -895,12 +825,9 @@ module.exports = function () {
 
     async payHearingFee(user = config.applicantSolicitorUser) {
       await this.login(user);
-      const pbaV3 = await checkToggleEnabled(PBAv3);
-      if (pbaV3) {
-        await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-        await serviceRequest.openServiceRequestTab();
-        await serviceRequest.payFee(caseId, true);
-      }
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await serviceRequest.openServiceRequestTab();
+      await serviceRequest.payFee(caseId, true);
     },
 
     async stayCase(user = config.ctscAdminUser) {
