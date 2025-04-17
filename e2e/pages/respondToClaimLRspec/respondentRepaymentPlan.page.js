@@ -1,4 +1,5 @@
 const {I} = inject();
+const dataHelper = require('../../api/dataHelper');
 
 module.exports = {
   fields: {
@@ -22,10 +23,10 @@ module.exports = {
     I.click(this.fields.repaymentFrequency.options.everyMonth);
 
     });
-
-    await I.fillField(this.fields.dayOfPayment, 30);
-    await I.fillField(this.fields.monthOfPayment, 12);
-    await I.fillField(this.fields.yearOfPayment, 2024);
+    const date = dataHelper.incrementDate(new Date(), 0, 2, 0);
+    await I.fillField(this.fields.dayOfPayment, date.getDay());
+    await I.fillField(this.fields.monthOfPayment, date.getMonth() + 1);
+    await I.fillField(this.fields.yearOfPayment, date.getFullYear());
 
 
     await I.clickContinue();
