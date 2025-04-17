@@ -26,8 +26,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondentLanguagePreferenceDisplay",
-    "Label": "Respondent language preference",
+    "ID": "defendantLanguagePreferenceDisplay",
+    "Label": "Defendant language preference",
     "FieldType": "FixedList",
     "FieldTypeParameter": "PreferredLanguage",
     "SecurityClassification": "Public",

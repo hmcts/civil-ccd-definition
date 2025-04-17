@@ -8,7 +8,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
-    "CaseFieldID": "respondentLanguagePreferenceDisplay",
+    "CaseFieldID": "defendantLanguagePreferenceDisplay",
     "TabFieldDisplayOrder": 9
   }
 ]

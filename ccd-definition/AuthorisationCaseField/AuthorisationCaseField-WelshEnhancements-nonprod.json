@@ -73,7 +73,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondentLanguagePreferenceDisplay",
+    "CaseFieldID": "defendantLanguagePreferenceDisplay",
     "AccessControl": [
       {
         "UserRoles": [
