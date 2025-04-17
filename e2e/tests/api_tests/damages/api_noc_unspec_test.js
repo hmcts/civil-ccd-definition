@@ -1,4 +1,4 @@
- 
+
 const {
   applicantSolicitorUser,
   defendantSolicitorUser,
@@ -6,8 +6,15 @@ const {
   otherSolicitorUser1, otherSolicitorUser2
 } = require('../../../config');
 const config = require('../../../config.js');
+const {RESPONDENT_SOLICITOR_1_QUERY, RESPONDENT_SOLICITOR_2_QUERY} = require('../../../fixtures/queryTypes');
+const {waitForFinishedBusinessProcess, checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
+let isQueryManagementEnabled = false;
 
 Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod @api-nightly-prod');
+
+Before(async () => {
+  isQueryManagementEnabled = await checkLRQueryManagementEnabled();
+});
 
 Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser);
@@ -23,7 +30,7 @@ Scenario('notice of change - 1v1 - represented defendant', async ({api, noc}) =>
   await noc.requestNoticeOfChangeForRespondent1Solicitor(caseId, otherSolicitorUser1);
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
-}).tag('@api-nonprod');
+}).tag('@api-nonprod').tag('@QM');
 
 Scenario('notice of change - 1v1 - unrepresented defendant', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(applicantSolicitorUser, 'ONE_V_ONE');
@@ -99,7 +106,7 @@ Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 });
 
-Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc}) => {
+Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc, qmSteps}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -114,6 +121,16 @@ Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({ap
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
   await api.checkUserCaseAccess(otherSolicitorUser1, true);
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
+
+  if (isQueryManagementEnabled) {
+    const defendantSolicitor1Query = await qmSteps.raiseQuery(caseId, config.secondDefendantSolicitorUser, RESPONDENT_SOLICITOR_1_QUERY);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, defendantSolicitor1Query, RESPONDENT_SOLICITOR_1_QUERY);
+    await qmSteps.followUpOnQuery(caseId, config.secondDefendantSolicitorUser, defendantSolicitor1Query, RESPONDENT_SOLICITOR_1_QUERY);
+
+    const defendantSolicitor2Query = await qmSteps.raiseQuery(caseId, config.otherSolicitorUser1, RESPONDENT_SOLICITOR_2_QUERY);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, defendantSolicitor2Query, RESPONDENT_SOLICITOR_2_QUERY);
+    await qmSteps.followUpOnQuery(caseId, config.otherSolicitorUser1, defendantSolicitor2Query, RESPONDENT_SOLICITOR_2_QUERY);
+  }
 });
 
 Scenario('notice of change - 2v1', async ({api, noc}) => {

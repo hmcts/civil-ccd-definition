@@ -1,10 +1,16 @@
- 
+
 
 const config = require('../../../config.js');
+const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_1_AND_2_QUERY} = require('../../../fixtures/queryTypes');
+const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
+let isQueryManagementEnabled = false;
 
+Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence @QM');
 
-Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence');
+Before(async () => {
+  isQueryManagementEnabled = await checkLRQueryManagementEnabled();
+});
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -45,6 +51,21 @@ Scenario('Defendant response', async ({I, api}) => {
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
+
+Scenario('Claimant queries', async ({api, qmSteps}) => {
+  const caseId = await api.getCaseId();
+  const applicantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY);
+  await qmSteps.respondToQuery(caseId, config.ctscAdminUser, applicantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+  await qmSteps.followUpOnQuery(caseId, config.applicantSolicitorUser, applicantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+});
+
+Scenario('Defendant queries', async ({api, qmSteps}) => {
+  const caseId = await api.getCaseId();
+  const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_1_AND_2_QUERY);
+  await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, defendantSolicitorQuery, RESPONDENT_SOLICITOR_1_AND_2_QUERY);
+  await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_1_AND_2_QUERY);
+});
+
 
 Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);

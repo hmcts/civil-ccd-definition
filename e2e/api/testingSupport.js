@@ -53,6 +53,10 @@ const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
 };
 
+const checkLRQueryManagementEnabled = async () => {
+  return checkFlagEnabled('query-management');
+};
+
 module.exports =  {
   waitForFinishedBusinessProcess: async caseId => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -294,5 +298,6 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkMintiToggleEnabled
+  checkMintiToggleEnabled,
+  checkLRQueryManagementEnabled
 };
