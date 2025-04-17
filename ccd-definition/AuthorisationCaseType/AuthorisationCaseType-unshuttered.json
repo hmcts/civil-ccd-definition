@@ -22,7 +22,7 @@
       "next-hearing-date-admin",
       "caseworker-wa-task-configuration",
       "caseworker-civil-rparobot",
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRUD"
   },

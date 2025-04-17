@@ -3,7 +3,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRUD"
   },
@@ -11,7 +11,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "AWAITING_APPLICANT_INTENTION",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRUD"
   },
@@ -19,7 +19,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "PENDING_CASE_ISSUED",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRUD"
   },
@@ -29,7 +29,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -41,7 +41,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }
@@ -51,7 +51,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
-      "wlu-admin-profile"
+      "wlu-admin"
     ],
     "CRUD": "CRUD"
   },
@@ -61,7 +61,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       }

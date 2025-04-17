@@ -5,7 +5,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -17,7 +17,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -29,7 +29,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -41,7 +41,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -53,7 +53,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -65,7 +65,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -77,7 +77,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -89,7 +89,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -101,7 +101,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -113,7 +113,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -125,7 +125,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -137,7 +137,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -149,7 +149,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -161,7 +161,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -173,7 +173,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -185,7 +185,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -197,7 +197,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -207,7 +207,7 @@
         "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
         "CaseFieldID": "timelineOfEvents",
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "R"
       },
@@ -217,7 +217,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -229,7 +229,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -241,7 +241,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -253,7 +253,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -265,7 +265,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -277,7 +277,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -289,7 +289,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -301,7 +301,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -313,7 +313,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -325,7 +325,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -335,7 +335,7 @@
         "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
         "CaseFieldID": "caseHistory",
         "UserRoles": [
-          "wlu-admin-profile"
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       },
@@ -345,7 +345,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -357,7 +357,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -369,7 +369,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -381,7 +381,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -393,7 +393,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -405,7 +405,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -417,7 +417,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -429,7 +429,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -441,7 +441,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -453,7 +453,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -465,7 +465,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -477,7 +477,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -489,7 +489,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -501,7 +501,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -513,7 +513,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -525,7 +525,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -537,7 +537,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -549,7 +549,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -561,7 +561,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -573,7 +573,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -585,7 +585,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -597,7 +597,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -609,7 +609,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -621,7 +621,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -633,7 +633,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -645,7 +645,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -657,7 +657,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -669,7 +669,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -681,7 +681,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -693,7 +693,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -705,7 +705,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -717,7 +717,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
@@ -729,7 +729,7 @@
         "AccessControl": [
           {
             "UserRoles": [
-              "wlu-admin-profile"
+              "wlu-admin"
             ],
             "CRUD": "R"
           }
