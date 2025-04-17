@@ -363,7 +363,7 @@
     "RoleName" : "task-supervisor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "GS_profile,cui-admin-profile,court-officer-order",
+    "AccessProfiles": "GS_profile,cui-admin-profile,court-officer-order,wlu-admin-profile",
     "ReadOnly": "Y",
     "Disabled": "F",
     "CaseAccessCategories": ""
