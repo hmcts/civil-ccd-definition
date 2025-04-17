@@ -236,5 +236,35 @@
     "CaseEventFieldLabel": "Vulnerability Questions",
     "ShowSummaryChangeOption": "Y",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "RETRIGGER_MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "claimType",
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "RETRIGGER_MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "responseClaimTrack",
+    "PageFieldDisplayOrder": 21,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "RETRIGGER_MEDIATION_UNSUCCESSFUL",
+    "CaseFieldID": "totalClaimAmount",
+    "PageFieldDisplayOrder": 25,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 2,
+    "Publish": "Y"
   }
 ]

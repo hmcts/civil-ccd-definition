@@ -14,7 +14,7 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -313,7 +313,6 @@ module.exports = function (){
 
   createSDO: async (user, response = 'CREATE_DISPOSAL', carmEnabled = false) => {
     console.log('SDO for case id ' + caseId);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -341,12 +340,10 @@ module.exports = function (){
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
-    if(SdoR2){
-      delete caseData['smallClaimsFlightDelay'];
-      delete caseData['smallClaimsFlightDelayToggle'];
-      //required to fix existing prod api tests for sdo
-      clearWelshParaFromCaseData();
-    }
+    delete caseData['smallClaimsFlightDelay'];
+    delete caseData['smallClaimsFlightDelayToggle'];
+    //required to fix existing prod api tests for sdo
+    clearWelshParaFromCaseData();
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -544,7 +541,7 @@ module.exports = function (){
       for (let pageId of Object.keys(disposalData.userInput)) {
         await assertValidData(disposalData, pageId);
       }
-      await assertSubmittedEvent('CLOSED', {
+      await assertSubmittedEvent('CASE_STAYED', {
         header: '# Response has been submitted',
         body: ''
       }, true);
@@ -562,8 +559,6 @@ module.exports = function (){
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
@@ -591,16 +586,15 @@ const assertValidData = async (data, pageId) => {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
 
-  if(sdoR2Flag){
-    delete responseBody.data['smallClaimsFlightDelayToggle'];
-    delete responseBody.data['smallClaimsFlightDelay'];
-    //required to fix existing prod api tests for sdo
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-  }
+  delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['smallClaimsFlightDelay'];
+  //required to fix existing prod api tests for sdo
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
   }
