@@ -320,7 +320,7 @@ ccd-message-publisher:
           - name: AppInsightsInstrumentationKey
             alias: azure.application-insights.instrumentation-key
     environment:
-#      DATA_STORE_DB_HOST: civil-preview.postgres.database.azure.com
+#        DATA_STORE_DB_HOST: civil-preview.postgres.database.azure.com
 #      DATA_STORE_DB_NAME: "pr-${CHANGE_ID}-data-store"
 #      DATA_STORE_DB_USERNAME: hmcts
 #      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
@@ -370,4 +370,4 @@ servicebus:
       - name: crd-topic
         subscriptionNeeded: yes
       - name: jrd-topic
-        subscriptionNeeded: yes
+        subscriptionNeeded: yes       
