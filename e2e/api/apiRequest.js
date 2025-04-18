@@ -28,6 +28,15 @@ const getRequestHeaders = (userAuth) => {
 };
 const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/create-case/${tokens.userId}`;
 
+const fetchCaseDetails = async (user, caseId, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  let eventUserId = await idamHelper.userId(eventUserAuth);
+  let url = getCaseDetailsUrl(eventUserId, caseId);
+
+  return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
+      .then(response => response.json());
+};
+
 module.exports = {
   setupTokens: async (user) => {
     tokens.userAuth = await idamHelper.accessToken(user);
@@ -42,15 +51,17 @@ module.exports = {
       .then(response => response.text());
   },
 
-  fetchCaseDetails: async (user, caseId, response = 200) => {
-    let eventUserAuth = await idamHelper.accessToken(user);
-    let eventUserId = await idamHelper.userId(eventUserAuth);
-    let url = getCaseDetailsUrl(eventUserId, caseId);
+  getTokens: () => tokens,
 
-    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
-      .then(response => response.json());
+  fetchCaseDetails,
+  fetchCaseDetailsAsSystemUser: async (caseId) => {
+    const { userAuth, userId } = tokens;
+    const details = await fetchCaseDetails(config.systemUpdate2, caseId, 200);
+    // Reset auth and id back to original user.
+    tokens.userAuth = userAuth;
+    tokens.userId = userId;
+    return details;
   },
-
   fetchCaseForDisplay: async (user, caseId, response = 200) => {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
@@ -112,6 +123,7 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST', 200)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
+    return response.case_data;
   },
 
   startEventNotAllowed: async (eventName, caseId) => {
