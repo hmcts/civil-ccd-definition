@@ -18,7 +18,7 @@ export default class SecondDefendantLegalRepresentationPage extends ExuiPage(Bas
     await super.clickBySelector(radioButtons.defendantRepresented.yes.selector);
   }
 
-  async clickNo() {
+  async selectNo() {
     await super.clickBySelector(radioButtons.defendantRepresented.no.selector);
   }
 

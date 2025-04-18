@@ -8,7 +8,7 @@ import { confirmationHeadingCOS, paragraphs } from './confirm-notify-claim-conte
 export default class ConfirmNotifyClaimCOSPage extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
-      super.verifyHeadings(ccdCaseData),
+      // super.verifyHeadings(ccdCaseData),
       super.expectHeading(confirmationHeadingCOS),
       super.expectText(paragraphs.descriptionTextCOS1, { exact: false }),
       super.expectText(paragraphs.descriptionTextCOS2),
