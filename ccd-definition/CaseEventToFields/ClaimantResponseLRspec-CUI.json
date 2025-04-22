@@ -202,8 +202,7 @@
     "PageID": "RespondentResponse",
     "CaseEventFieldLabel": "Does the claimant want to proceed with the claim?",
     "FieldShowCondition": "claimantResponseScenarioFlag!=\"TWO_V_ONE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_FULL_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_BY_SET_DATE\" AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"  AND showResponseOneVOneFlag!=\"ONE_V_ONE_PART_ADMIT_HAS_PAID\"",
-    "ShowSummaryChangeOption": "Y",
-    "RetainHiddenValue": "Y"
+    "ShowSummaryChangeOption": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

@@ -14,18 +14,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "showCarmFields",
-    "PageDisplayOrder": 1,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RespondentCheckList",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "ShowSummaryChangeOption": "N",
-    "RetainHiddenValue": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "multiPartyResponseTypeFlags",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 2,
@@ -1208,6 +1196,17 @@
     "RetainHiddenValue": "Y",
     "ShowSummaryChangeOption": "Y",
     "RetriesTimeoutURLMidEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "showCarmFields",
+    "DisplayContext": "READONLY",
+    "PageID": "Mediation",
+    "PageDisplayOrder": 41,
+    "PageFieldDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "responseClaimTrack=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
