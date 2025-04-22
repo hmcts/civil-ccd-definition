@@ -228,7 +228,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "mediationFileSentToMmt",
-    "Label": "",
+    "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
