@@ -743,11 +743,13 @@ module.exports = function () {
       ]);
     },
 
-    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType, civilCaseReference) {
+      if(civilCaseReference) caseId = civilCaseReference;
       eventName = 'Standard Direction Order';
 
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary');
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
-
       await this.waitForText('Standard Direction Order');
       await this.triggerStepsWithScreenshot([
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
@@ -818,6 +820,9 @@ module.exports = function () {
 
     async createHearingScheduled() {
       eventName = 'Hearing Scheduled';
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
       await this.triggerStepsWithScreenshot([
         () => hearingNoticeListPage.hearingType('fastTrack'),
         () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),

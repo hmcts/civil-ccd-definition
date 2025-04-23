@@ -142,7 +142,6 @@ module.exports = {
     if (caseId) {
       url += `/${caseId}/events`;
     }
-
     return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
       {
         data: caseData,

@@ -337,7 +337,7 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
@@ -812,6 +812,8 @@ module.exports = function () {
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary');
       if (['demo'].includes(config.runningEnv)) {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
         await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable

@@ -64,8 +64,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
-   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-   await I.waitForText('Summary');
    await I.initiateSDO(null, null, 'fastTrack', null);
 }).retry(3);
 

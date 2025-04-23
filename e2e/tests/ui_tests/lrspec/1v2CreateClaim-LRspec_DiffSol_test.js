@@ -65,8 +65,6 @@ Scenario.skip('Add case flags', async ({LRspec}) => {
 
 Scenario('Judge triggers SDO', async ({LRspec}) => {
    await LRspec.login(config.judgeUserWithRegionId1);
-   await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-   await LRspec.waitForText('Summary');
    await LRspec.initiateSDO('yes', 'yes', null, null);
 }).retry(3);
 
@@ -82,9 +80,6 @@ Scenario('Defendant solicitor uploads evidence', async ({LRspec}) => {
 
 Scenario('Schedule a hearing', async ({LRspec}) => {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber);
-    await LRspec.waitForText('Summary');
-    await LRspec.amOnPage(config.url.manageCase + '/cases/case-details/' + caseNumber + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
     await LRspec.createHearingScheduled();
     await waitForFinishedBusinessProcess(caseNumber);
 }).retry(3);

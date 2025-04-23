@@ -1432,9 +1432,9 @@ module.exports = {
     console.log('Hearing Fee Paid');
 
     await apiRequest.setupTokens(config.applicantSolicitorUser);
-    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
-    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
-    console.log('State moved to:'+updatedCaseState);
+    const caseState = (await apiRequest.fetchCaseDetails(config.applicantSolicitorUser, caseId)).state;
+    assert.equal(caseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+caseState);
   },
 
   hearingFeePaidFlightDelay: async (user) => {
