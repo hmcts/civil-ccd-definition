@@ -12,13 +12,11 @@ module.exports = {
     },
   },
 
-  async chooseUploadParticularsOfClaim(yesOrNo) {
-    console.log('Available options:' + yesOrNo);
+  async chooseYesUploadParticularsOfClaim() {
     I.waitForElement(this.fields.uploadQuestion.id);
     await I.runAccessibilityTest();
     await within(this.fields.uploadQuestion.id, () => {
-      console.log('Available locator:' + this.fields.uploadQuestion.options[yesOrNo]);
-      I.click(this.fields.uploadQuestion.options[yesOrNo]);
+      I.click(this.fields.uploadQuestion.options['yes']);
     });
     await I.clickContinue();
   },
