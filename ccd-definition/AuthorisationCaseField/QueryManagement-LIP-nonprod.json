@@ -20,7 +20,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-CLAIMANT-PROFILE"
+          "CITIZEN-CLAIMANT-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "ctsc",
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
       },
@@ -49,7 +53,11 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "ctsc",
+          "nbc-team-leader"
         ],
         "CRUD": "CRU"
       },
