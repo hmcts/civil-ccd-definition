@@ -28,6 +28,6 @@ module.exports = {
     I.waitForElement(fields.commentInput.id);
     I.fillField(fields.commentInput.id, comment);
     I.click('Make inactive');
-    I.click(fields.continue.id);
+    I.doubleClick(fields.continue.id);
   }
 };

@@ -363,7 +363,7 @@ module.exports = function () {
 
       await this.triggerStepsWithScreenshot(steps);
 
-      caseId = this.grabCaseNumber();
+      caseId = await this.grabCaseNumber();
     },
 
     async checkForCaseFlagsEvent() {
@@ -1002,7 +1002,7 @@ module.exports = function () {
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
       await event.submit('Submit', expectedMessage);
       await event.returnToCaseDetails();
-      caseId = this.grabCaseNumber();
+      caseId = await this.grabCaseNumber();
     },
 
     async acknowledgeClaimSpec() {
