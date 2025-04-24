@@ -353,7 +353,8 @@ module.exports = function () {
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
-        () => uploadParticularsOfClaim.upload(TEST_FILE_PATH),
+        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH) 
+          : uploadParticularsOfClaim.enterParticularsOfClaim(), //Uploading files to aat is causing loading on page to timeout.
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
@@ -909,7 +910,7 @@ module.exports = function () {
      * @param maxNumberOfTries - maximum number to retry the function for before failing
      * @returns {Promise<void>} - promise holding no result if resolved or error if rejected
      */
-    async retryUntilExists(action, locator, maxNumberOfTries = 3) {
+    async retryUntilExists(action, locator, maxNumberOfTries = 3, timeout) {
       for (let tryNumber = 1; tryNumber <= maxNumberOfTries; tryNumber++) {
         output.log(`retryUntilExists(${locator}): starting try #${tryNumber}`);
         if (tryNumber > 1 && await this.hasSelector(locator)) {
@@ -917,7 +918,7 @@ module.exports = function () {
           break;
         }
         await action();
-        if (await this.waitForSelector(locator) != null) {
+        if (await this.waitForSelector(locator, timeout) != null) {
           console.log(`retryUntilExists(${locator}): element found after try #${tryNumber} was executed`);
           break;
         } else {
@@ -1099,7 +1100,6 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForSelector(SIGNED_IN_SELECTOR);
       }, SIGNED_IN_SELECTOR);
 
       await this.waitForSelector('.ccd-dropdown');

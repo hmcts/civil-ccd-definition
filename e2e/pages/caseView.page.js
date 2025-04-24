@@ -27,13 +27,7 @@ module.exports = {
   start: async function (event) {
     await I.waitForElement(this.fields.eventDropdown, 90);
     await I.selectOption(this.fields.eventDropdown, event);
-    /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
-       Further investigation is required to find (hopefully) a cleaner solution
-     */
-   // await I.moveCursorTo(this.goButton);
-    await I.wait(15);
     await I.forceClick(this.goButton);
-    await I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
@@ -41,7 +35,7 @@ module.exports = {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
-    }, locate('.govuk-heading-l'));
+    }, EVENT_TRIGGER_LOCATOR, 5, 25);
   },
   async permissionGrantedByJudge() {
     await I.runAccessibilityTest();
