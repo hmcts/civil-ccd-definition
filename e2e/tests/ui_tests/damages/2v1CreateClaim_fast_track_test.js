@@ -24,7 +24,7 @@ Feature('2v1 Claim Journey Fast track @e2e-unspec @e2e-nightly @e2e-2v1 @e2e-nig
 
 Scenario('Claimant solicitor raises a claim for 2 claimants against 1 defendant', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, claimant2, respondent1, null, 20000);
+  await I.createCase(claimant1, claimant2, respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
@@ -77,7 +77,7 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
     twoDefendants: false,
     defendant1Response: 'fullDefence',
     defendant1ResponseToApplicant2: 'fullDefence',
-    claimValue: 20000
+    claimValue: 25000
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
@@ -85,7 +85,7 @@ Scenario('Defendants solicitor reject claim of both claimants', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('TWO_V_ONE', 20000);
+  await I.respondToDefence('TWO_V_ONE', 25000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseNumber);

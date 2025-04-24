@@ -26,7 +26,7 @@ Feature('1v2 Same Solicitor Claim Journey @e2e-unspec @e2e-multiparty @e2e-1v2SS
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have the same solicitor', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, respondent2, 20000);
+  await I.createCase(claimant1, null, respondent1, respondent2, 25000);
   caseNumber = await I.grabCaseNumber();
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
@@ -79,14 +79,15 @@ Scenario('Defendants solicitor rejects claim for both defendants', async ({I}) =
     party: parties.RESPONDENT_SOLICITOR_1,
     twoDefendants: true,
     sameResponse: true,
-    defendant1Response: 'fullDefence', claimValue: 20000});
+    defendant1Response: 'fullDefence',
+    claimValue: 25000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
 }).retry(3);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_TWO_ONE_LEGAL_REP', 20000);
+  await I.respondToDefence('ONE_V_TWO_ONE_LEGAL_REP', 25000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseNumber);

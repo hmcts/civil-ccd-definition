@@ -148,8 +148,6 @@ const addUnavailableDatesPage = require('./pages/addUnavailableDates/unavailable
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
-const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3} = require('./fixtures/featureKeys');
 const partySelection = require('./pages/manageContactInformation/partySelection.page');
 const manageWitnesses = require('./pages/manageContactInformation/manageWitnesses.page');
 const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
@@ -240,7 +238,7 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
     ]),
     () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
     () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response, sameResponse),
-    ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+    ...conditionalSteps(['partAdmission', 'fullDefence'].includes(defendant1Response) || ['partAdmission', 'fullDefence'].includes(defendant2Response), [
       () => uploadResponsePage.uploadResponseDocuments(party, TEST_FILE_PATH)
     ])
   ];
@@ -530,7 +528,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 25000}) {
       eventName = 'Respond to claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -540,7 +538,7 @@ module.exports = function () {
             () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
             () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
           ]),
-          ...conditionalSteps(claimValue >= 25000, [
+          ...conditionalSteps(claimValue > 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
           ),
@@ -574,7 +572,7 @@ module.exports = function () {
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
           () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
         ]),
-        ...conditionalSteps(claimValue >= 25000, [
+        ...conditionalSteps(claimValue > 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
           ]
@@ -739,7 +737,6 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
-        () => takeCaseOffline.takeCaseOffline()
       ]);
       await this.takeScreenshot();
     },

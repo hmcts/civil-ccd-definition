@@ -30,7 +30,7 @@ Scenario('2v1 defendant upload mediation docs', async ({LRspec}) => {
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 1', 'Non-attendance');
 }).retry(3);
 
-Scenario('1v2 upload mediation documents in different SDO states @debug', async ({api_spec, LRspec, WA}) => {
+Scenario('1v2 upload mediation documents in different SDO states', async ({api_spec, LRspec, WA}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL');

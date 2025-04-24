@@ -25,7 +25,7 @@ Feature('1v1 - Claim Journey @e2e-unspec @e2e-1v1 @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates claim @create-claim', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null, respondent1, null, 20000);
+  await I.createCase(claimant1, null, respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
@@ -73,7 +73,7 @@ Scenario('Defendant solicitor adds defendant litigation friend', async ({I}) => 
 
 Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.respondToClaim({defendant1Response: 'fullDefence', claimValue: 20000});
+  await I.respondToClaim({defendant1Response: 'fullDefence', claimValue: 25000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
 }).retry(0);
@@ -110,7 +110,7 @@ Scenario('Manage case flags', async ({I}) => {
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_ONE', 20000);
+  await I.respondToDefence('ONE_V_ONE', 25000);
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseNumber);
