@@ -1,34 +1,44 @@
 import { Party } from '../../../../models/partys';
-import { PartyType } from '../../../../models/party-types';
+import { ClaimantDefendantPartyType } from '../../../../models/claimant-defendant-party-types';
 
 export const inputs = {
   name: {
     label: 'Name',
-    selector: (claimantDefendantParty: Party, partyType: PartyType) =>
-      `#${claimantDefendantParty.oldKey}_${partyType.key}Name`,
+    selector: (
+      claimantDefendantParty: Party,
+      claimantDefendantPartyType: ClaimantDefendantPartyType,
+    ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}Name`,
   },
   title: {
     label: 'Title (Optional)',
-    selector: (claimantDefendantParty: Party, partyType: PartyType) =>
-      `#${claimantDefendantParty.oldKey}_${partyType.key}Title`,
+    selector: (
+      claimantDefendantParty: Party,
+      claimantDefendantPartyType: ClaimantDefendantPartyType,
+    ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}Title`,
   },
   tradingAs: {
     label: 'Trading as',
-    selector: (claimantDefendantParty: Party, partyType: PartyType) =>
-      `#${claimantDefendantParty.oldKey}_${partyType.key}TradingAs`,
+    selector: (
+      claimantDefendantParty: Party,
+      claimantDefendantPartyType: ClaimantDefendantPartyType,
+    ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}TradingAs`,
   },
   firstName: {
-    label: 'Title (Optional)',
-    selector: (claimantDefendantParty: Party, partyType: PartyType) =>
-      `#${claimantDefendantParty.oldKey}_${partyType.key}FirstName`,
+    label: 'First name',
+    selector: (
+      claimantDefendantParty: Party,
+      claimantDefendantPartyType: ClaimantDefendantPartyType,
+    ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}FirstName`,
   },
   lastName: {
-    label: 'Title (Optional)',
-    selector: (claimantDefendantParty: Party, partyType: PartyType) =>
-      `#${claimantDefendantParty.oldKey}_${partyType.key}LastName`,
+    label: 'Last name',
+    selector: (
+      claimantDefendantParty: Party,
+      claimantDefendantPartyType: ClaimantDefendantPartyType,
+    ) => `#${claimantDefendantParty.oldKey}_${claimantDefendantPartyType.key}LastName`,
   },
   dateOfBirth: {
-    label: 'Date of Birth',
+    label: 'Date of birth',
   },
   email: {
     label: 'Email (Optional)',

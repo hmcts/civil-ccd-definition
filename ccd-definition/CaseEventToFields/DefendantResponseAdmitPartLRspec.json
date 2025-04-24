@@ -6,7 +6,7 @@
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageShowCondition": "showConditionFlags CONTAINS \"CURRENT_ADMITS_PART_OR_FULL\" AND respondentResponseIsSame != \"No\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"CURRENT_ADMITS_PART_OR_FULL\" AND showConditionFlags CONTAINS \"SHOW_ADMITTED_AMOUNT_SCREEN\" AND respondentResponseIsSame != \"No\"",
     "FieldShowCondition": "showConditionFlags CONTAINS \"RESPONDENT_1_ADMITS_PART_OR_FULL\" AND defendantSingleResponseToBothClaimants != \"Yes\" AND showConditionFlags CONTAINS \"CAN_ANSWER_RESPONDENT_1\" AND respondentResponseIsSame != \"Yes\"",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",

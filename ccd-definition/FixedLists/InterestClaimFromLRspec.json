@@ -2,8 +2,8 @@
   {
     "ID": "InterestClaimFrom",
     "ListElementCode": "FROM_CLAIM_SUBMIT_DATE",
-    "ListElement": "The date you submit the claim",
-    "HintText": "The date you submit the claim",
+    "ListElement": "The date you submit the claim. \n\n\n The interest will then be calculated up until the claim is settled or a judgment has been made.",
+    "HintText": "The interest will then be calculated up until the claim is settled or a judgment has been made.",
     "DisplayOrder": 1
   },
   {

@@ -308,7 +308,8 @@
         "UserRoles": [
           "judge-profile",
           "caseworker-civil-admin",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "caseworker-civil-rparobot"
         ],
         "CRUD": "CRU"
       },

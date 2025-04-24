@@ -14,6 +14,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "showCarmFields",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentResponse",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 1,
@@ -98,6 +110,19 @@
     "FieldShowCondition": "applicant1ProceedWithClaim=\"Yes\" OR applicant1ProceedWithClaimSpec2v1=\"Yes\"",
     "PageShowCondition": "responseClaimTrack =\"FAST_CLAIM\"",
     "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearing",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "COMPLEX",
+    "PageID": "DeterminationWithoutHearing",
+    "CaseEventFieldLabel": " ",
+    "ShowSummaryChangeOption": "Y",
+    "PageShowCondition": "responseClaimTrack = \"SMALL_CLAIM\" AND applicant1ProceedWithClaim=\"Yes\"",
+    "PageLabel": "Determination without Hearing Questions"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -274,16 +299,5 @@
     "DisplayContext": "READONLY",
     "PageID": "RespondentResponsePayImmediately",
     "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "showCarmFields",
-    "DisplayContext": "READONLY",
-    "PageID": "Mediation",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "responseClaimTrack=\"DO NOT SHOW IN UI\""
   }
 ]

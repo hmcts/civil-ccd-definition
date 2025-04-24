@@ -148,8 +148,6 @@ const addUnavailableDatesPage = require('./pages/addUnavailableDates/unavailable
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const manageCaseFlagsPage = require('./pages/caseFlags/manageCaseFlags.page');
 const noticeOfChange = require('./pages/noticeOfChange.page');
-const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3} = require('./fixtures/featureKeys');
 const partySelection = require('./pages/manageContactInformation/partySelection.page');
 const manageWitnesses = require('./pages/manageContactInformation/manageWitnesses.page');
 const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
@@ -162,15 +160,15 @@ const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
+const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
 const CLAIMANT_NAME = 'Test Inc';
 const DEFENDANT1_NAME = 'Sir John Doe';
 const DEFENDANT2_NAME = 'Dr Foo Bar';
 
 
 const CONFIRMATION_MESSAGE = {
-  online: 'Your claim has been received\nClaim number: ',
+  online:  'Please now pay your claim fee\nusing the link below',
   offline: 'Your claim has been received and will progress offline',
-  pbaV3Online: 'Please now pay your claim fee\nusing the link below'
 };
 
 let caseId, screenshotNumber, eventName, currentEventName, loggedInUser;
@@ -240,7 +238,7 @@ const defenceSteps = ({party, twoDefendants = false, sameResponse = false, defen
     ]),
     () => responseTypePage.selectResponseType({defendant1Response, defendant2Response, defendant1ResponseToApplicant2}),
     () => confirmDetailsPage.confirmReferences(defendant1Response, defendant2Response, sameResponse),
-    ...conditionalSteps(defendant1Response === 'fullDefence' || defendant2Response === 'fullDefence', [
+    ...conditionalSteps(['partAdmission', 'fullDefence'].includes(defendant1Response) || ['partAdmission', 'fullDefence'].includes(defendant2Response), [
       () => uploadResponsePage.uploadResponseDocuments(party, TEST_FILE_PATH)
     ])
   ];
@@ -305,8 +303,8 @@ module.exports = function () {
 
     grabCaseNumber: async function () {
       this.waitForElement(CASE_HEADER);
-
-      return await this.grabTextFrom(CASE_HEADER);
+      const caseHeader = await this.grabTextFrom(CASE_HEADER);
+      return caseHeader.split(' ')[0].split('-').join('').substring(1);
     },
 
     async signOut() {
@@ -337,14 +335,13 @@ module.exports = function () {
       }
     },
 
-    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000, shouldStayOnline = true) {
+    async createCase(claimant1, claimant2, respondent1, respondent2, claimValue = 30000) {
       eventName = 'Create case';
 
       const twoVOneScenario = claimant1 && claimant2;
       await createCasePage.createCase(config.definition.jurisdiction);
-      const pbaV3 = await checkToggleEnabled(PBAv3);
 
-      let steps = pbaV3 ? [
+      let steps = [
         () => continuePage.continue(),
         () => solicitorReferencesPage.enterReferences(),
         () => chooseCourtPage.selectCourt(),
@@ -359,33 +356,13 @@ module.exports = function () {
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.pbaV3Online : CONFIRMATION_MESSAGE.offline),
-        () => event.returnToCaseDetails(),
-      ] : [
-        () => continuePage.continue(),
-        () => solicitorReferencesPage.enterReferences(),
-        () => chooseCourtPage.selectCourt(),
-        ...firstClaimantSteps(),
-        ...secondClaimantSteps(claimant2),
-        ...firstDefendantSteps(respondent1),
-        ...secondDefendantSteps(respondent2, respondent1.represented, twoVOneScenario),
-        () => claimTypePage.selectClaimType(),
-        () => personalInjuryTypePage.selectPersonalInjuryType(),
-        () => detailsOfClaimPage.enterDetailsOfClaim(),
-        () => uploadParticularsOfClaimQuestion.chooseUploadParticularsOfClaim('no'),
-        () => claimValuePage.enterClaimValue(claimValue),
-        () => pbaNumberPage.selectPbaNumber(),
-        () => paymentReferencePage.updatePaymentReference(),
-        () => statementOfTruth.enterNameAndRole('claim'),
-        () => event.submit('Submit',
-          shouldStayOnline ? CONFIRMATION_MESSAGE.online : CONFIRMATION_MESSAGE.offline),
+        () => event.submit('Submit', CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),
       ];
 
       await this.triggerStepsWithScreenshot(steps);
 
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+      caseId = await this.grabCaseNumber();
     },
 
     async checkForCaseFlagsEvent() {
@@ -446,10 +423,10 @@ module.exports = function () {
         () => specifiedDefaultJudmentPage.againstWhichDefendant(scenario),
         () => specifiedDefaultJudmentPage.statementToCertify(scenario),
         () => specifiedDefaultJudmentPage.hasDefendantMadePartialPayment(),
-        ...conditionalSteps(caseCategory === 'SPEC' && isTestEnv, [
+        ...conditionalSteps(caseCategory === 'SPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCostsOnEntry()
         ]),
-        ...conditionalSteps(caseCategory === 'UNSPEC' || !isTestEnv, [
+        ...conditionalSteps(caseCategory === 'UNSPEC', [
           () => specifiedDefaultJudmentPage.claimForFixedCosts()
         ]),
         () => specifiedDefaultJudmentPage.repaymentSummary(),
@@ -550,7 +527,7 @@ module.exports = function () {
       ]);
     },
 
-    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 30000}) {
+    async respondToClaim({party = parties.RESPONDENT_SOLICITOR_1, twoDefendants = false, sameResponse = false, defendant1Response, defendant2Response, defendant1ResponseToApplicant2, claimValue = 25000}) {
       eventName = 'Respond to claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
@@ -560,7 +537,7 @@ module.exports = function () {
             () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(party),
             () => fixedRecoverableCostsPage.fixedRecoverableCosts(party),
           ]),
-          ...conditionalSteps(claimValue >= 25000, [
+          ...conditionalSteps(claimValue > 25000, [
             () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments(party)
             ]
           ),
@@ -594,7 +571,7 @@ module.exports = function () {
           () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
           () => fixedRecoverableCostsPage.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
         ]),
-        ...conditionalSteps(claimValue >= 25000, [
+        ...conditionalSteps(claimValue > 25000, [
             () => disclosureOfElectronicDocumentsPage.
                             enterDisclosureOfElectronicDocuments(parties.APPLICANT_SOLICITOR_1)
           ]
@@ -613,6 +590,41 @@ module.exports = function () {
         () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
         () => event.submit('Submit your response', 'You have chosen to proceed with the claim\nClaim number: '),
         () => this.click('Close and Return to case details')
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async respondToDefenceMinti(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
+      eventName = 'View and respond to defence';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => uploadResponseDocumentPage.uploadResponseDocumentsSpec(TEST_FILE_PATH, mpScenario),
+        ...conditionalSteps(claimValue > 100000, [
+          // Multi: Greater than 100k
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+        ]),
+        ...conditionalSteps(claimValue > 25000 && claimValue <= 100000, [
+          // Intermediate: Greater than 25k and less than or equal to 100k
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+          () => fixedRecoverableCostsPage.fixedRecoverableCostsInt(parties.APPLICANT_SOLICITOR_1),
+        ]),
+        () => disclosureOfElectronicDocumentsPage.
+        enterDisclosureOfElectronicDocuments(parties.SPEC_APPLICANT_SOLICITOR_1),
+        // Disclosure of non-electronic documents (Optional)
+        () => this.clickContinue(),
+        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
+        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+        () => witnessPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => hearingPage.enterHearingAvailability(parties.APPLICANT_SOLICITOR_1),
+        () => draftDirectionsPage.upload(parties.APPLICANT_SOLICITOR_1, TEST_FILE_PATH),
+        () => requestedCourtPage.selectSpecCourtLocation(parties.APPLICANT_SOLICITOR_1),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit your response', 'You have decided to proceed with the claim\nClaim number: '),
+        () => event.returnToCaseDetails()
       ]);
       await this.takeScreenshot();
     },
@@ -724,7 +736,6 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(eventName, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
-        () => takeCaseOffline.takeCaseOffline()
       ]);
       await this.takeScreenshot();
     },
@@ -790,13 +801,15 @@ module.exports = function () {
         ]),
         () => selectOrderTemplatePage.selectTemplateByText(trackType, optionText),
         () => downloadOrderTemplatePage.verifyLabelsAndDownload(),
-        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH),
+        () => uploadOrderPage.verifyLabelsAndUploadDocument(TEST_FILE_PATH_DOC),
         () => event.submit('Submit', 'Your order has been issued')
       ]);
     },
 
     async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
       eventName = 'Standard Direction Order';
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+      await this.waitForText('Summary');
       if (['demo'].includes(config.runningEnv)) {
         await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/tasks');
         await this.wait(20); // I've not been able to find a way to wait for the spinner to disappear - tried multiple things ie detach from DOM , wait for element to be clickable
@@ -988,7 +1001,7 @@ module.exports = function () {
         'Your claim has been received and will progress offline' : 'Your claim has been received\nClaim number: ';
       await event.submit('Submit', expectedMessage);
       await event.returnToCaseDetails();
-      caseId = (await this.grabCaseNumber()).split('-').join('').substring(1);
+      caseId = await this.grabCaseNumber();
     },
 
     async acknowledgeClaimSpec() {
@@ -1107,10 +1120,22 @@ module.exports = function () {
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
         await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLOptionsForSettlement`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLSingleClaimant`);
       }, SIGNED_IN_SELECTOR);
 
-     await this.waitForSelector('#settlementSummary');
+     await this.waitForSelector('#markPaidConsent');
+    },
+
+    async navigateToCaseDetailsForSettleThisClaimMultple(caseNumber) {
+      await this.retryUntilExists(async () => {
+        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
+        console.log(`Navigating to case: ${normalizedCaseId}`);
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
+        await this.waitForText('Summary');
+        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLMultipleClaimant`);
+      }, SIGNED_IN_SELECTOR);
+
+      await this.waitForSelector('#markPaidForAllClaimants');
     },
     async navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseNumber) {
       await this.retryUntilExists(async () => {

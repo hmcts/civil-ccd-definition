@@ -552,7 +552,7 @@
           "caseworker-civil-admin",
           "legal-adviser"
         ],
-        "CRUD": "R"
+        "CRUD": "RUD"
       }
     ]
   },
@@ -724,16 +724,15 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-solicitor"
+          "caseworker-civil-solicitor",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-systemupdate",
           "CITIZEN-DEFENDANT-PROFILE"
-
         ],
         "CRUD": "R"
       }
@@ -1641,7 +1640,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -4666,6 +4666,22 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "unfinishedBackEndProcess",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-solicitor",
+          "citizen-profile",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "RU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2ResponseDeadline",
     "AccessControl": [
       {
@@ -5017,6 +5033,24 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1AddressLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondentSolicitor2AddressLabel",
     "AccessControl": [
       {
         "UserRoles": [

@@ -1,7 +1,7 @@
 const {I} = inject();
 
-const CASE_HEADER = 'ccd-markdown >> h1';
 const CONFIRMATION_HEADER = '#confirmation-header';
+const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
 
 module.exports = {
 
@@ -22,6 +22,6 @@ module.exports = {
   },
 
   async returnToCaseDetails() {
-    await I.retryUntilExists(() => I.click('Close and Return to case details'), CASE_HEADER);
+    await I.retryUntilExists(() => I.click('Close and Return to case details'), SUMMARY_TAB);
   }
 };

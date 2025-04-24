@@ -1,3 +1,5 @@
+const { waitForFinishedBusinessProcess } = require('../../api/testingSupport');
+
 const {I} = inject();
 
 module.exports = {
@@ -42,6 +44,7 @@ module.exports = {
     await I.click('Confirm payment');
     await I.waitForText('Payment successful');
     await I.click('View service requests');
+    await waitForFinishedBusinessProcess(caseNumber);
   },
 
   async openServiceRequestTab() {

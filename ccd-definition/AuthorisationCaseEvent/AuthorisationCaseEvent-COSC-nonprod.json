@@ -92,5 +92,17 @@
        "CRUD": "R"
      }
    ]
- }
+ },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "INITIATE_GENERAL_APPLICATION_COSC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+         "CITIZEN-DEFENDANT-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  }
 ]

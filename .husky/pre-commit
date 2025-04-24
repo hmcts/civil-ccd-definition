@@ -12,7 +12,9 @@ GLOB_PATTERNS=(
     'playwright-e2e/requests/*.ts'      
     'playwright-e2e/requests/**/*.ts',
     'playwright-e2e/data-builders/*.ts'      
-    'playwright-e2e/data-builders/**/*.ts' 
+    'playwright-e2e/data-builders/**/*.ts'
+    'playwright-e2e/actions/*.ts'      
+    'playwright-e2e/actions/**/*.ts' 
 )
 
 # Get the list of changed files

@@ -31,8 +31,6 @@ const isPBAv3 = (pbaV3) => {
   return pbaV3;
 };
 
-const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
-
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
 
@@ -90,9 +88,9 @@ module.exports = {
             applicantSolicitor1Reference: 'Applicant reference',
             respondentSolicitor1Reference: 'Respondent reference'
           },
-          // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
+          // Workaround, toggle is active after 27/02/2025, based on either submittedDate, or current localdatetime
           ...(isMintiCaseEnabled) ? {
-            submittedDate:'2025-02-20T15:59:50'
+            submittedDate:'2025-06-20T15:59:50'
           }: {},
         },
         Claimant: {
@@ -118,14 +116,12 @@ module.exports = {
             }
           }
         },
-        ...isTestEnv ? {
-          FixedCommencementCosts: {
-            fixedCosts: {
-            claimFixedCosts: 'Yes',
-            fixedCostAmount: '10000'
-            }
+        FixedCommencementCosts: {
+          fixedCosts: {
+          claimFixedCosts: 'Yes',
+          fixedCostAmount: '10000'
           }
-        }: {},
+        },
         specCorrespondenceAddress: {
           specApplicantCorrespondenceAddressRequired: 'No'
         },

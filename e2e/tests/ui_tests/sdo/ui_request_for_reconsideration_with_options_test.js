@@ -56,9 +56,11 @@ Scenario('Decision on Reconsideration Request to uphold the previous order made'
   }
 }).retry(3);
 
-Scenario('1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small}) => {
+Scenario('1v1 spec request for reconsideration to previous order needs amending', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
+    caseNumber = await api_spec_small.getCaseId();
+    await LRspec.setCaseId(caseNumber);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
   }
 }).retry(3);

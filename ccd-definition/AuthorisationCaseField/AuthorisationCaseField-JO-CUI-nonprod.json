@@ -81,6 +81,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "joSetAsideCreatedDate",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE"
+    ],
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "joRepaymentSummaryObject",
     "UserRoles": [
       "CITIZEN-CLAIMANT-PROFILE"

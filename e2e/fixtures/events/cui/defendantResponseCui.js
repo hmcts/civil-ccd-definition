@@ -474,6 +474,118 @@ module.exports = {
     }
     return carmEnabled ? defendantResponseDataCarm : defendantResponseData;
   },
+  createDefendantResponseSmallClaimPartAdmitCarm: () => {
+    return {
+      event: 'DEFENDANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        respondent1ClaimResponseTypeForSpec: 'PART_ADMISSION',
+        defenceAdmitPartPaymentTimeRouteRequired: 'SUGGESTION_OF_REPAYMENT_PLAN',
+        respondent1RepaymentPlan: {
+          paymentAmount: 20000,
+          repaymentFrequency: 'ONCE_ONE_MONTH',
+          firstRepaymentDate: '2025-05-22T23:00:00.000Z'
+        },
+        respondToClaimAdmitPartLRspec: {},
+        responseClaimMediationSpecRequired: 'No',
+        specAoSApplicantCorrespondenceAddressRequired: 'Yes',
+        totalClaimAmount: 1500,
+        respondent1: {
+          individualDateOfBirth: null,
+          organisationName: 'Sir John Doe',
+          partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+          partyPhone: '07777777777',
+          primaryAddress: {
+            AddressLine1: '1',
+            AddressLine2: '',
+            AddressLine3: '',
+            PostCode: 'E1 6AN',
+            PostTown: 'London'
+          },
+          soleTraderDateOfBirth: null,
+          type: 'ORGANISATION'
+        },
+        respondent1LiPResponse: {
+          timelineComment: '',
+          evidenceComment: '',
+          respondent1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            whyPhoneOrVideoHearing: '',
+            giveEvidenceYourSelf: 'No',
+            determinationWithoutHearingRequired: 'Yes',
+            determinationWithoutHearingReason: '',
+            considerClaimantDocumentsDetails: '',
+            respondent1DQLiPExpert: {
+              expertCanStillExamineDetails: ''
+            }
+          },
+          respondent1DQHearingSupportLip: {
+            supportRequirementLip: 'No'
+          },
+          respondent1LiPContactPerson: 'company contact',
+          respondent1ResponseLanguage: 'ENGLISH'
+        },
+        respondent1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'Yes',
+          isMediationEmailCorrect: 'Yes',
+          isMediationPhoneCorrect: 'Yes',
+          hasUnavailabilityNextThreeMonths: 'No'
+        },
+        respondent1LiPFinancialDetails: {},
+        specDefenceAdmittedRequired: 'No',
+        respondToAdmittedClaimOwingAmountPounds: '1200',
+        respondToAdmittedClaimOwingAmount: '120000',
+        detailsOfWhyDoesYouDisputeTheClaim: 'reasons',
+        specClaimResponseTimelineList: 'MANUAL',
+        specResponseTimelineOfEvents: [],
+        specResponselistYourEvidenceList: [],
+        respondent1DQHomeDetails: {},
+        respondent1PartnerAndDependent: {
+          howManyChildrenByAgeGroup: {}
+        },
+        specDefendant1SelfEmploymentDetails: {},
+        respondToClaimAdmitPartUnemployedLRspec: {},
+        respondent1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH'
+        },
+        respondent1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No'
+        },
+        respondent1DQRequestedCourt: {
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'location',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: config.defendantSelectedCourt,
+            baseLocation: config.defendantSelectedCourt
+          }
+        },
+        respondent1DQWitnesses: {
+          witnessesToAppear: 'No',
+          details: [
+            {
+              value: {
+                name: '',
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                phoneNumber: '',
+                reasonForWitness: ''
+              }
+            }
+          ]
+        },
+        respondent1DQHearingSmallClaim: {
+          unavailableDatesRequired: 'No'
+        },
+        respondent1DQExperts: {},
+        respondent1DQHearingSupport: {
+          supportRequirements: 'No'
+        }
+      }
+    };
+  },
   createDefendantResponseIntermediateTrack: () => {
     return {
       event: 'DEFENDANT_RESPONSE_CUI',

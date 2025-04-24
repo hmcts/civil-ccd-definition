@@ -106,17 +106,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED",
-    "CaseFieldID": "channel",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "PageID": "HearingDetails",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED",
     "CaseFieldID": "hearingDateLabel",
     "PageFieldDisplayOrder": 5,
     "DisplayContext": "READONLY",
@@ -158,17 +147,6 @@
     "PageColumnNumber": 1,
     "ShowSummaryChangeOption": "Y",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/checkFutureDate"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "HEARING_SCHEDULED",
-    "CaseFieldID": "hearingDuration",
-    "PageFieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY",
-    "PageID": "HearingDetails",
-    "PageDisplayOrder": 4,
-    "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

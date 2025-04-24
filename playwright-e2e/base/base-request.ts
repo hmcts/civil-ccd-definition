@@ -70,7 +70,7 @@ export default abstract class BaseRequest {
     responseDataType = ResponseDataType.NONE,
     {
       expectedStatus = 200,
-      retries = 3,
+      retries = 2,
       retryTimeInterval = 5000,
       verifyResponse,
     }: responseOptions._RetryResponseOptions = {},
@@ -78,8 +78,7 @@ export default abstract class BaseRequest {
     if (retryTimeInterval > this.MAX_RETRY_TIMEOUT) {
       retryTimeInterval = this.MAX_RETRY_TIMEOUT;
     }
-    while (retries > 0) {
-      retries--;
+    while (retries >= 0) {
       try {
         const response = await this._request(url, requestOptions, responseDataType, {
           expectedStatus,
@@ -87,10 +86,11 @@ export default abstract class BaseRequest {
         });
         return response;
       } catch (error: any) {
-        if (!retries) throw error;
+        if (retries <= 0) throw error;
         console.log(
           `${error.message.split('\n')[0]}, retrying in ${retryTimeInterval / 1000} seconds (Retries left: ${retries})`,
         );
+        retries--;
         await this.sleep(retryTimeInterval);
       }
     }
@@ -197,7 +197,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToHaveProperty(
     keyPath: string,
-    responseJson: Record<string, unknown>,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -210,7 +210,7 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath')
   protected async expectResponseJsonToNotHaveProperty(
     keyPath: string,
-    responseJson: Record<string, unknown>,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -223,8 +223,8 @@ export default abstract class BaseRequest {
   @BoxedDetailedStep(classKey, 'keyPath', 'value')
   protected async expectResponseJsonToHavePropertyValue(
     keyPath: string,
-    value: unknown,
-    responseJson: Record<string, unknown>,
+    value: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(
@@ -236,8 +236,8 @@ export default abstract class BaseRequest {
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToContain(
-    partialObject: Record<string, unknown> | Array<unknown>,
-    responseJson: Record<string, unknown>,
+    partialObject: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(responseJson, options.message).toMatchObject(partialObject);
@@ -245,8 +245,8 @@ export default abstract class BaseRequest {
 
   @BoxedDetailedStep(classKey)
   protected async expectResponseJsonToEqual(
-    object: Record<string, unknown> | Array<unknown>,
-    responseJson: Record<string, unknown>,
+    object: any,
+    responseJson: any,
     options: { message?: string } = {},
   ) {
     expect(responseJson, options.message).toEqual(object);

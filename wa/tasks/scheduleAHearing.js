@@ -1,15 +1,15 @@
 module.exports = {
-    name: 'Schedule A Hearing',
-    type: 'ScheduleAHearing',
+    name: 'Schedule a Small Claims Hearing - HMC',
+    type: 'ScheduleHMCHearing',
     task_state: 'unassigned',
     task_system: 'SELF',
     security_classification: 'PUBLIC',
-    task_title: 'Schedule A Hearing',
-    location_name: 'Nottingham County Court and Family Court (and Crown)',
-    location: '424213',
+    task_title: 'Schedule a Small Claims Hearing - HMC',
+    location_name: 'Central London County Court',
+    location: '20262',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
-    region: '2',
+    region: '1',
     case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     case_name: 'Test Inc',
@@ -29,7 +29,7 @@ module.exports = {
         'UnclaimAssign'
       ]
     },
-    description: '[Directions - Schedule A Hearing](/cases/case-details/${[CASE_REFERENCE]}/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect)',
+    description: '[Hearings (HMC)](/cases/case-details/${[CASE_REFERENCE]}/hearings)',
     role_category: 'ADMIN',
     minor_priority: 500,
     major_priority: 5000

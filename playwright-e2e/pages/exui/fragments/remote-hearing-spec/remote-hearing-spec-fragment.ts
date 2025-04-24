@@ -3,7 +3,7 @@ import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
-import { radioButtons, inputs } from './remote-hearing-spec-content';
+import { radioButtons, inputs, subheadings } from './remote-hearing-spec-content';
 
 @AllMethodsStep()
 export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
@@ -17,10 +17,9 @@ export default class RemoteHearingSpecFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.remoteHearing.label),
-        super.expectText(radioButtons.remoteHearing.hintText),
-        super.expectLabel(radioButtons.remoteHearing.yes.label),
-        super.expectLabel(radioButtons.remoteHearing.no.label),
+        super.expectSubheading(subheadings.remoteHearing, { count: 1 }),
+        super.expectText(radioButtons.remoteHearing.label, { count: 1 }),
+        super.expectText(radioButtons.remoteHearing.hintText, { count: 1 }),
       ],
       {
         runAxe: false,

@@ -1,0 +1,11 @@
+[
+  {
+    "RoleName" : "idam:wlu-admin",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "AccessProfiles": "wlu-admin",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": "SPEC_CLAIM"
+  }
+]

@@ -9,6 +9,15 @@
     "CaseAccessCategories": ""
   },
   {
+    "RoleName" : "idam:caseworker-civil-rparobot",
+    "Authorisation": "",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "AccessProfiles": "caseworker-civil-rparobot,caseworker-civil-system-field-reader",
+    "ReadOnly": "N",
+    "Disabled": "F",
+    "CaseAccessCategories": ""
+  },
+  {
     "RoleName" : "idam:caseworker-civil-solicitor",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -57,7 +66,7 @@
     "RoleName" : "idam:caseworker-civil-systemupdate",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "caseworker-civil-systemupdate",
+    "AccessProfiles": "caseworker-civil-systemupdate,caseworker-civil-system-field-reader",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""
@@ -327,7 +336,7 @@
     "RoleName" : "hearing-centre-team-leader",
     "Authorisation": "",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin,court-officer-order",
+    "AccessProfiles": "GS_profile,hearing-schedule-access,caseworker-civil-admin,caseflags-admin,court-officer-order,caseworker-civil-doc-removal",
     "ReadOnly": "N",
     "Disabled": "F",
     "CaseAccessCategories": ""

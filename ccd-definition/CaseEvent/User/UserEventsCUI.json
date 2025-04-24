@@ -97,7 +97,7 @@
     "ID": "CITIZEN_CLAIM_ISSUE_PAYMENT",
     "Name": "Citizen Claim Issue Payment",
     "Description": "Citizen Claim Issue Payment",
-    "PreConditionState(s)": "*",
+    "PreConditionState(s)": "PENDING_CASE_ISSUED",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
     "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",

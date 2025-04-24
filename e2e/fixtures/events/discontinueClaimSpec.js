@@ -56,7 +56,7 @@ module.exports = {
             }
           },
           DiscontinuanceType: {
-            typeOfDiscontinuance:'PART_DISCONTINUANCE',
+            typeOfDiscontinuance:'FULL_DISCONTINUANCE',
             partDiscontinuanceDetails:'test'
           }
         };
