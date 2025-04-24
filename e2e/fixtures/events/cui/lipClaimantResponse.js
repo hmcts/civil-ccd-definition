@@ -395,5 +395,75 @@ module.exports = {
       return lipClaimantData[typeOfData];
     }
     return carmEnabled ? claimantResponseDataCarm : claimantResponseData;
+  },
+  claimantResponsePartAdmitRejectCarm: () => {
+    return {
+      event: 'CLAIMANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        applicant1AcceptAdmitAmountPaidSpec: 'No',
+        applicant1LiPResponse: {
+          applicant1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            whyPhoneOrVideoHearing: '',
+            giveEvidenceYourSelf: 'No',
+            determinationWithoutHearingRequired: 'Yes',
+            determinationWithoutHearingReason: '',
+            considerClaimantDocumentsDetails: '',
+            applicant1DQLiPExpert: {
+              expertCanStillExamineDetails: ''
+            }
+          },
+          applicant1DQHearingSupportLip: {
+            supportRequirementLip: 'No'
+          }
+        },
+        applicant1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'Yes',
+          isMediationEmailCorrect: 'Yes',
+          isMediationPhoneCorrect: 'Yes',
+          hasUnavailabilityNextThreeMonths: 'No'
+        },
+        applicant1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH'
+        },
+        applicant1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No'
+        },
+        applicant1DQRequestedCourt: {
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'location',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: config.claimantSelectedCourt,
+            baseLocation: config.claimantSelectedCourt
+          }
+        },
+        applicant1DQWitnesses: {
+          witnessesToAppear: 'No',
+          details: [
+            {
+              value: {
+                name: '',
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                phoneNumber: '',
+                reasonForWitness: ''
+              }
+            }
+          ]
+        },
+        applicant1DQSmallClaimHearing: {
+          unavailableDatesRequired: 'No'
+        },
+        applicant1DQExperts: {},
+        applicant1DQHearingSupport: {
+          supportRequirements: 'No'
+        },
+        applicant1SettleClaim: 'No'
+      }
+    };
   }
 };
