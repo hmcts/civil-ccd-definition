@@ -241,7 +241,7 @@ let mpScenario = 'ONE_V_ONE';
 
 module.exports = {
 
-  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = 11000, isMintiCaseEnabled = false, hmcTest = false) => {
+  createClaimWithRepresentedRespondent: async (user, multipartyScenario, claimAmount = '11000', isMintiCaseEnabled = false, hmcTest = false) => {
     eventName = 'CREATE_CLAIM';
     caseId = null;
     caseData = {};
