@@ -59,7 +59,7 @@ Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
 
 Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.informAgreedExtensionDate(1);
+  await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Inform agreed extension date'));
 }).retry(0);
@@ -76,6 +76,15 @@ Scenario('Defendant solicitor responds to claim', async ({I}) => {
   await I.respondToClaim({defendant1Response: 'fullDefence', claimValue: 25000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
+}).retry(0);
+
+
+Scenario('Claimant solicitor responds to defence', async ({I}) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.respondToDefence('ONE_V_ONE', 25000);
+  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
+  //await I.see(caseEventMessage('View and respond to defence'));
+  await waitForFinishedBusinessProcess(caseNumber);
 }).retry(0);
 
 Scenario('Add case flags', async ({I}) => {
@@ -107,14 +116,6 @@ Scenario('Manage case flags', async ({I}) => {
   await I.manageCaseFlags(caseFlags);
   // await I.validateUpdatedCaseFlags(caseFlags);
 });
-
-Scenario('Claimant solicitor responds to defence', async ({I}) => {
-  await I.login(config.applicantSolicitorUser);
-  await I.respondToDefence('ONE_V_ONE', 25000);
-  // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
-  //await I.see(caseEventMessage('View and respond to defence'));
-  await waitForFinishedBusinessProcess(caseNumber);
-}).retry(0);
 
 AfterSuite(async () => {
   await unAssignAllUsers();

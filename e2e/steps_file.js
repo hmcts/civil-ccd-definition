@@ -153,11 +153,13 @@ const manageWitnesses = require('./pages/manageContactInformation/manageWitnesse
 const manageOrganisationIndividuals = require('./pages/manageContactInformation/manageOrganisationIndividuals.page');
 const manageLitigationFriend = require('./pages/manageContactInformation/manageLitigationFriend.page');
 const manageDefendant1 = require('./pages/manageContactInformation/manageDefendant1.page');
+const { waitForFinishedBusinessProcess } = require('./api/testingSupport.js');
 //const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
+const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
 
 const TEST_FILE_PATH = './e2e/fixtures/examplePDF.pdf';
 const TEST_FILE_PATH_DOC = './e2e/fixtures/exampleDOC.docx';
@@ -365,6 +367,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot(steps);
 
       caseId = await this.grabCaseNumber();
+      await waitForFinishedBusinessProcess(caseId);
     },
 
     async checkForCaseFlagsEvent() {
@@ -1100,110 +1103,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         console.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('.ccd-dropdown');
-    },
-
-    async navigateToCaseDetailsForRR(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('.ccd-dropdown');
-    },
-
-    async navigateToCaseDetailsForSettleThisClaim(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLSingleClaimant`);
-      }, SIGNED_IN_SELECTOR);
-
-     await this.waitForSelector('#markPaidConsent');
-    },
-
-    async navigateToCaseDetailsForSettleThisClaimMultple(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLMultipleClaimant`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#markPaidForAllClaimants');
-    },
-    async navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#settleReason-JUDGE_ORDER');
-    },
-
-    async navigateToCaseDetailsForDiscontinueThisClaim(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTCourtPermission`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#courtPermissionNeeded-YES');
-    },
-    async navigateToCaseDetailsForDiscontinueThisClaim2v1(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#claimantWhoIsDiscontinuing');
-    },
-    async navigateToCaseDetailsForValidateDiscontinuance(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANTValidateDiscontinuance`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#confirmOrderGivesPermission-YES');
-    },
-    async navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#caseNote');
-    },
-    async navigateToCaseDetailsForDR(caseNumber) {
-      await this.retryUntilExists(async () => {
-        const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
-        console.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForText('Summary');
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('#decisionOnRequestReconsiderationOptions-CREATE_SDO');
+      }, SUMMARY_TAB, undefined, 25);
     },
 
     async initiateNoticeOfChange(caseId, clientName) {
@@ -1220,13 +1120,8 @@ module.exports = function () {
       await this.retryUntilExists(async () => {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
-        await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForSelector(SIGNED_IN_SELECTOR);
-        await this.waitForText('Summary');
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
-      }, SIGNED_IN_SELECTOR);
-
-      await this.waitForSelector('.ccd-dropdown');
+      }, SUMMARY_TAB, 25);
     },
 
     async manageWitnessesForDefendant(caseId) {
