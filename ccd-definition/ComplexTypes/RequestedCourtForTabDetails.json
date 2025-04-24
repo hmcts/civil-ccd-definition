@@ -9,6 +9,14 @@
   },
   {
     "ID": "RequestedCourtForTabDetails",
+    "ListElementCode": "requestedCourtName",
+    "ElementLabel": "Court name",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "RequestedCourtForTabDetails",
     "ListElementCode": "reasonForHearingAtSpecificCourt",
     "FieldType": "TextArea",
     "ElementLabel": "Briefly explain your reasons for requesting this Court location.",
