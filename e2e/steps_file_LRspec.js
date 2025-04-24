@@ -113,6 +113,7 @@ const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediatio
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
 const CASE_HEADER = 'ccd-markdown >> h1';
+const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Please now pay your claim fee\nusing the link below',
@@ -390,6 +391,7 @@ module.exports = function () {
 
     await this.triggerStepsWithScreenshot(steps);
     caseId = await this.grabCaseNumber();
+    await waitForFinishedBusinessProcess(caseId);
   },
 
     async createCaseSpecifiedForFlightDelay(mpScenario, claimant1, claimant2, respondent1, respondent2, claimAmount) {
@@ -801,8 +803,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}`);
-        await this.waitForSelector(SIGNED_IN_SELECTOR);
-      }, SIGNED_IN_SELECTOR);
+      }, SUMMARY_TAB, undefined, 20);
 
       await this.waitForSelector('.ccd-dropdown');
     },
