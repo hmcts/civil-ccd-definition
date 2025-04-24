@@ -1069,6 +1069,7 @@ module.exports = function () {
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventForDR(caseId),
         () => requestForDecision.selectYesOptionToUpholdThePreviousOrderMade(),
+        () => this.click('Continue'),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),
         () => this.click('Close and Return to case details'),
