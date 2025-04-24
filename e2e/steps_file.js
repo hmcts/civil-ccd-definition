@@ -1121,7 +1121,7 @@ module.exports = function () {
         const normalizedCaseId = caseNumber.toString().replace(/\D/g, '');
         output.log(`Navigating to case: ${normalizedCaseId}`);
         await this.amOnPage(`${config.url.manageCase}/cases/case-details/${normalizedCaseId}#Case%20Flags`);
-      }, SUMMARY_TAB, 25);
+      }, SUMMARY_TAB, undefined, 25);
     },
 
     async manageWitnessesForDefendant(caseId) {
