@@ -179,6 +179,13 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "APP-SOL-UNSPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
