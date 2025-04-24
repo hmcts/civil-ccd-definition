@@ -8,7 +8,7 @@ let mediationAdminRegion2 = config.localMediationTests ? config.nbcUserLocal : c
 
 // Fix all these tests and run against preview and aat
 //BUG - CIV-15903
-Feature.skip('Spec small claims mediation API test');
+Feature('Spec small claims mediation API test');
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
