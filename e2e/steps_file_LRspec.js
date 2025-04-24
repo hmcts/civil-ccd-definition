@@ -911,8 +911,7 @@ module.exports = function () {
       eventName = 'Settle this claim';
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEventForSDMultiple(eventName, caseId),
-        () => this.click('Continue'),
-        () => this.waitForText('Which claimants are settling'),
+        () => this.waitForText('Does marking this Claim as settled relate to all claimants?'),
         () => this.click('Yes'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),
@@ -1013,7 +1012,6 @@ module.exports = function () {
         () => this.waitForText('Has permission been granted by a Judge to discontinue'),
         () => this.click('Yes'),
         () => caseViewPage.permissionGrantedByJudge(),
-        () => this.waitForText('Is this a full or part discontinuance?'),
         () => this.click('Full discontinuance'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),

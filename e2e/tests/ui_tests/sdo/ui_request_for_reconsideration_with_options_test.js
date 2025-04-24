@@ -8,7 +8,7 @@ async function prepareClaimSpec(api_spec_small) {
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 }
 
-Feature('Request for reconsideration - 1v1 - spec @api-spec-1v1 @e2e-nightly-prod @debug');
+Feature('Request for reconsideration - 1v1 - spec @api-spec-1v1 @e2e-nightly-prod');
 
 Scenario('1v1 spec request for reconsideration for other options', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
