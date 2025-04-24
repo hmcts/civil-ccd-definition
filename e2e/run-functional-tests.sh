@@ -5,9 +5,9 @@ echo "Running Functional tests on ${ENVIRONMENT} env"
 
 export CCD_UI_TESTS=true
 
-if [ "$ENVIRONMENT" = "aat" ]
+if [ "$ENVIRONMENT" = "aat" ]; then
   yarn test:master-e2e-ft
-elif [ -z "$PR_FT_GROUPS" ]
+elif [ -z "$PR_FT_GROUPS" ]; then
   yarn test:non-prod-e2e-ft
 else
   command="yarn test:non-prod-e2e-ft --grep "
