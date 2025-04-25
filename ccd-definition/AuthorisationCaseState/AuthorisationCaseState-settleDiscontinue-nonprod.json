@@ -35,7 +35,8 @@
       },
       {
         "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
