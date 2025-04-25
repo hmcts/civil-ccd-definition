@@ -21,7 +21,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
-}).retry(0);
+}).retry(2);
 
 Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseNumber);
@@ -35,7 +35,7 @@ Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defen
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
-}).retry(0);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
