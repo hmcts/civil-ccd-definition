@@ -12,9 +12,9 @@ module.exports = {
 
       },
     },
-    dayOfPayment: 'input[id$="whenWillThisAmountBePaid-day"]',
-    monthOfPayment: 'input[id$="whenWillThisAmountBePaid-month"]',
-    yearOfPayment: 'input[id$="whenWillThisAmountBePaid-year"]',
+    dayOfPayment: '#whenWillThisAmountBePaid-day',
+    monthOfPayment: '#whenWillThisAmountBePaid-month',
+    yearOfPayment: '#whenWillThisAmountBePaid-year',
   },
 
  async selectPaymentRoute(partAdmitType) {
@@ -23,9 +23,9 @@ module.exports = {
    await I.click(this.fields.partAdmitType.options[partAdmitType]);
    if ('setDate' == partAdmitType) {
       const date = dataHelper.incrementDate(new Date(), 0, 1, 0);
-      await I.fillField(this.fields.dayOfPayment, date.getDay());
-      await I.fillField(this.fields.monthOfPayment, date.getMonth() + 1);
-      await I.fillField(this.fields.yearOfPayment, date.getFullYear());
+      await I.fillField(this.fields.dayOfPayment, `${date.getDay()}`);
+      await I.fillField(this.fields.monthOfPayment, `${date.getMonth() + 1}`);
+      await I.fillField(this.fields.yearOfPayment, `${date.getFullYear()}`);
     }
 
    await I.clickContinue();
