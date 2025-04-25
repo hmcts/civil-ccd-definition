@@ -36,7 +36,7 @@ module.exports = {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
-    }, EVENT_TRIGGER_LOCATOR, 5, 25);
+    }, EVENT_TRIGGER_LOCATOR, 5, 35);
   },
   async permissionGrantedByJudge() {
     await I.runAccessibilityTest();
@@ -81,42 +81,42 @@ module.exports = {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
   async startEventForDiscontinueThisClaim(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTCourtPermission`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTCourtPermission`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
   async startEventForDiscontinueThisClaim2v1(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
   async startEventForValidateDiscontinuance(event, caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANTValidateDiscontinuance`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANTValidateDiscontinuance`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
   async startEventForClaimDiscontinuedRemoveHearing(caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
   async startEventForDR(caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
     }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
 
