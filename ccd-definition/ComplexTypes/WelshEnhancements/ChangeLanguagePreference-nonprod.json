@@ -12,7 +12,7 @@
     "ID": "ChangeLanguagePreference",
     "ListElementCode": "preferredLanguage",
     "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "ChangeLanguagePreferencePreferredLanguage",
+    "FieldTypeParameter": "PreferredLanguage",
     "ElementLabel": "What is their preferred language?",
     "SecurityClassification": "Public",
     "Searchable": "N"
