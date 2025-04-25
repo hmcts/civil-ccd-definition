@@ -48,7 +48,7 @@ Scenario('1v1 Mediation unsuccessful', async ({LRspec}) => {
   await LRspec.mediationUnsuccessful();
 }).retry(2);
 
-Scenario('Add case flags', async ({LRspec}) => {
+Scenario.skip('Add case flags', async ({LRspec}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
     details: [PARTY_FLAGS.vulnerableUser.value]

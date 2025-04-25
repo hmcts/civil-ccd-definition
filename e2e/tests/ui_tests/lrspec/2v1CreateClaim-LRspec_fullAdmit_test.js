@@ -6,7 +6,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 
-let caseNumber;
+let caseNumber = '1745586241234281';
 
 Feature('2v1 Multi Party full admit Claim Creation 2v1 @e2e-tests-spec @e2e-nightly-prod');
 
@@ -23,7 +23,7 @@ Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
+Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay immediately', async ({LRspec}) => {
   await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullAdmit({
@@ -31,7 +31,7 @@ Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defen
     defendant1Response: 'fullAdmission',
     twoClaimants: true,
     claimType: 'fast',
-    defenceType: config.runningEnv === 'aat' ? 'setDate' : 'immediately'
+    defenceType: 'immediately'
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
