@@ -109,6 +109,7 @@ const requestForRR = require('./pages/requestForReconsideration/reasonForReconsi
 const requestForDecision = require('./pages/decisionOnReconsideration/decisionOnReconsideration.page');
 const mediationContactInformationPage = require('./pages/respondToClaimLRspec/mediationContactInformation.page.js');
 const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediationAvailability.page.js');
+const determinationWithoutHearingPage = require('./pages/respondToClaimLRspec/determinationWithoutHearing.page.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -504,6 +505,7 @@ module.exports = function () {
            ... conditionalSteps(claimType === 'small', [
                       () => mediationContactInformationPage.enterMediationContactInformation('resp1'),
                       () => mediationAvailabilityPage.selectNoMediationAvailability('resp1'),
+                      () => determinationWithoutHearingPage.selectNo('Respondent1'),
                       () => useExpertPage.claimExpert('DefendantResponse'),
                       () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
                       () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
@@ -635,7 +637,10 @@ module.exports = function () {
         () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
         ]),
         () => responseTypeSpecPage.selectResponseType(twoDefendants, defendant1Response),
-        () => admitPartPaymentRoutePage.selectPaymentRoute('setDate'),
+        ...conditionalSteps(config.runningEnv === 'aat', [
+          () => this.clickContinue()
+        ]),
+        () => admitPartPaymentRoutePage.selectPaymentRoute(defenceType),
         ... conditionalSteps(defenceType == 'payByInstallments', [
         () => this.clickContinue(),
         () => this.clickContinue(),
@@ -645,7 +650,9 @@ module.exports = function () {
         () => respondentDebtsDetailsPage.selectDebtsDetails(),
         () => respondentIncomeExpensesDetailsPage.selectIncomeExpenses(),
         ]),
-        () => respondentPage.enterReasons(),
+        ...conditionalSteps(defenceType !== 'immediately', [
+          () => respondentPage.enterReasons()
+        ]),
         ... conditionalSteps(defenceType == 'payByInstallments', [
         () => vulnerabilityPage.selectVulnerability('no'),
       ]),
@@ -675,6 +682,7 @@ module.exports = function () {
                         () => mediationContactInformationPage.enterMediationContactInformation('app1'),
                         () => mediationAvailabilityPage.selectNoMediationAvailability('app1'),
                         () => useExpertPage.claimExpert('ClaimantResponse'),
+                        () => determinationWithoutHearingPage.selectNo(''),
                         () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
                         () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
                         () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),

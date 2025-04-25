@@ -3,7 +3,6 @@ const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 const {PARTY_FLAGS} = require('../../../fixtures/caseFlags');
-const apiRequest = require('../../../api/apiRequest');
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 
@@ -15,7 +14,6 @@ Scenario('1v1 Applicant solicitor creates specified claim for fast track @create
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('1v1 fast claim', 'organisation', null, 'company', null, 19000);
   caseNumber = await LRspec.grabCaseNumber();
-  await apiRequest.setupTokens(config.applicantSolicitorUser);
   await serviceRequest.openServiceRequestTab();
   await serviceRequest.payFee(caseNumber);
 
