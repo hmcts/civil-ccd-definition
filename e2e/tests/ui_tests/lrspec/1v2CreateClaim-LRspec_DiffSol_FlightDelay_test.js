@@ -18,7 +18,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Diff Solicitor with flight delay @e2e-spec @e2e-spec-1v2DS @master-e2e-ft');
+Feature('Claim creation 1v2 Diff Solicitor with flight delay @e2e-spec-fast @e2e-spec-1v2DS @master-e2e-ft');
 Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for flight delay @create-claim-spec', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     console.log('AApplicant solicitor creates 1v2 Diff LRs specified claim defendant Different LRs for flight delay @create-claim-spec');

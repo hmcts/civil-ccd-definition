@@ -10,7 +10,7 @@ if (config.runWAApiTest) {
   validSummaryLegalAdvisorDirectionsTask = require('../../../../wa/tasks/legalAdvisorSmallClaimsTrackDirectionsTask.js');
 }
 
-Feature('SDO Carm - Upload mediation documents @e2e-nightly-prod');
+Feature('SDO Carm - Upload mediation documents @e2e-nightly-prod @e2e-carm');
 
 Scenario('2v1 claimant and defendant upload mediation documents', async ({api_spec, LRspec}) => {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
