@@ -1640,7 +1640,8 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "GS_profile"
         ],
         "CRUD": "R"
       }
@@ -5032,6 +5033,24 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondentSolicitor1AddressLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondentSolicitor2AddressLabel",
     "AccessControl": [
       {
         "UserRoles": [

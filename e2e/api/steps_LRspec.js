@@ -9,7 +9,7 @@ const {expect, assert} = chai;
 
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./caseRoleAssignmentHelper');
-const {PBAv3, SDOR2, isJOLive, COSC} = require('../fixtures/featureKeys');
+const {PBAv3, isJOLive, COSC} = require('../fixtures/featureKeys');
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
@@ -103,7 +103,8 @@ const data = {
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
   DISMISS_CASE: () => dismissCase.dismissCase(),
   SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
-  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel),
+  CLAIMANT_RESPONSE_JBA: (response) => require('../fixtures/events/claimantResponseSpec1v1.js').claimantResponse_JBA(response)
 };
 
 const eventData = {
@@ -126,6 +127,7 @@ const eventData = {
       COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MULTI_CLAIM('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_ADMISSION_JBA_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION_JBA', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
@@ -407,9 +409,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  const isSdoR2Enabled = checkToggleEnabled(SDOR2);
-  if(isSdoR2Enabled && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
-    || pageId === 'SmallClaims')) {
+  if(pageId === 'ClaimsTrack' || pageId === 'OrderType' || pageId === 'SmallClaims') {
     calculated = {...calculated};
   }
   if(eventName === 'CREATE_CLAIM'){
@@ -430,12 +430,12 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(isSdoR2Enabled && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
-  if(isSdoR2Enabled && pageId === 'SmallClaims') {
+  if(pageId === 'SmallClaims') {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -1042,9 +1042,14 @@ module.exports = {
     if (isMintiCase) {
       response = response+ '_' + mintiClaimTrack;
     }
+    let claimantResponseData;
 
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
-
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
+    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+      claimantResponseData = data.CLAIMANT_RESPONSE_JBA(response);
+    } else {
+      claimantResponseData = eventData['claimantResponses'][scenario][response];
+    }
     await validateEventPages(claimantResponseData);
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
@@ -1053,6 +1058,10 @@ module.exports = {
     }
 
     carmEnabled ? validState = 'IN_MEDIATION' : validState;
+
+    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+      validState = 'All_FINAL_ORDERS_ISSUED';
+    }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -1293,7 +1302,6 @@ module.exports = {
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
     await apiRequest.setupTokens(user);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
     } else {
@@ -1301,31 +1309,28 @@ module.exports = {
     }
 
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    if(SdoR2){
-      delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
-      delete caseData['sdoR2NihlUseOfWelshLanguage'];
-      delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
-      delete caseData['sdoR2DrhUseOfWelshLanguage'];
-      delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
-      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
-      delete caseData['sdoR2FastTrackWitnessOfFact'];
-      delete caseData['sdoR2FastTrackCreditHire'];
-      delete caseData['sdoDJR2TrialCreditHire'];
-    }
+    delete caseData['sdoR2SmallClaimsUseOfWelshLanguage'];
+    delete caseData['sdoR2NihlUseOfWelshLanguage'];
+    delete caseData['sdoR2FastTrackUseOfWelshLanguage'];
+    delete caseData['sdoR2DrhUseOfWelshLanguage'];
+    delete caseData['sdoR2DisposalHearingUseOfWelshLanguage'];
+    delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+    delete caseData['sdoR2FastTrackWitnessOfFact'];
+    delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['sdoDJR2TrialCreditHire'];
+
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
     if (response === 'CREATE_SMALL') {
       let disposalData = data.CREATE_SDO();
-      if (SdoR2) {
-        delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
-        disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
-      }
+      delete disposalData.calculated.ClaimsTrack.smallClaimsWitnessStatement;
+      disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsSmallClaims};
       for (let pageId of Object.keys(disposalData.valid)) {
         await assertValidData(disposalData, pageId);
       }
     } else {
       let disposalData = data.CREATE_FAST_NO_SUM_SPEC();
-      if (SdoR2 && response === 'CREATE_FAST') {
+      if (response === 'CREATE_FAST') {
         delete disposalData.calculated.FastTrack.fastTrackCreditHire;
         disposalData.calculated.FastTrack = {...disposalData.calculated.FastTrack, ...newSdoR2FastTrackCreditHireFields};
       }
@@ -1950,7 +1955,6 @@ const getLatestMessageToReplyTo = (caseData) => {
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO' || eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
@@ -1967,17 +1971,17 @@ const assertValidData = async (data, pageId) => {
   );
   let responseBody = await response.json();
   responseBody = clearDataForSearchCriteria(responseBody); //Until WA release
-  if(sdoR2Flag){
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
-    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
-    delete responseBody.data['sdoR2FastTrackCreditHire'];
-    delete responseBody.data['sdoDJR2TrialCreditHire'];
-  }
+
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
+
   assert.equal(response.status, 200);
 
   if (data.midEventData && data.midEventData[pageId]) {
