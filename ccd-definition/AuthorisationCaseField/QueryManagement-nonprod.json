@@ -54,7 +54,11 @@
       {
         "UserRoles": [
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -85,6 +89,10 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
           "GS_profile"
         ],
@@ -117,6 +125,10 @@
       },
      {
        "UserRoles": [
+         "APP-SOL-UNSPEC-PROFILE",
+         "APP-SOL-SPEC-PROFILE",
+         "RES-SOL-ONE-SPEC-PROFILE",
+         "RES-SOL-ONE-UNSPEC-PROFILE",
          "judge-profile",
          "GS_profile"
        ],
@@ -159,5 +171,34 @@
     "CaseFieldID": "qmLatestQuery",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "queryDocuments",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile",
+          "GS_profile"
+        ],
+        "CRUD": "R"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "ctsc",
+          "nbc-team-leader"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

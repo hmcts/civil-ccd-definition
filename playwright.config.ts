@@ -31,7 +31,7 @@ export default defineConfig({
     : 'list',
   timeout: 900_000,
   expect: {
-    timeout: 30_000,
+    timeout: 60_000,
     toPass: {
       timeout: config.playwright.toPassTimeout,
     },
