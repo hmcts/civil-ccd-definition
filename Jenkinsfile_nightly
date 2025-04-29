@@ -162,6 +162,7 @@ withNightlyPipeline(type, product, component) {
       } finally {
         if(playwrightSetupPassed) {
           copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
+          sh 'cp categories.json playwright-allure-functional-results/'
           yarnBuilder.yarn('test:playwright-functional:generate-report')
           publishFunctionalReport()
         }
@@ -176,6 +177,7 @@ withNightlyPipeline(type, product, component) {
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
           copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+          sh 'cp categories.json playwright-allure-bootstrap-results/'
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
           publishBootstrapReport()
         }
