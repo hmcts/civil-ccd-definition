@@ -734,5 +734,17 @@
             "CRUD": "R"
           }
         ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "translatedDocuments",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
       }
     ]
