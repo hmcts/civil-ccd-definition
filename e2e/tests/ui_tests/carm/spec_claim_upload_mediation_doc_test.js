@@ -48,7 +48,6 @@ Scenario('1v2 upload mediation documents in different SDO states', async ({api_s
   console.log('Prepare for Hearing Conduct Hearing');
   await api_spec.amendHearingDueDate(config.systemupdate);
   await api_spec.hearingFeePaid(hearingCenterAdminToBeUsed);
-  await LRspec.login(config.defendantSolicitorUser);
   await LRspec.uploadMediationDocs(civilCaseReference, 'Defendant 2', 'Both docs');
 }).retry(2);
 
