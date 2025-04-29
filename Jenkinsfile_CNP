@@ -171,7 +171,7 @@ withPipeline(type, product, component) {
     env.CIVIL_SERVICE_URL = "https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     env.CIVIL_SERVICE_IMAGE = getCivilServiceImage()
     env.PR_FT_GROUPS = getFunctionalTestsGroups()
-    println "${env.PR_FT_GROUPS}"
+    println "PR_FT_GROUPS: ${env.PR_FT_GROUPS}"
     if (isHmcEnabled(env.BRANCH_NAME)) {
       env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
       env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
