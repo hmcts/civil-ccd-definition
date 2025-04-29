@@ -24,7 +24,7 @@ module.exports = {
 
     });
     const date = dataHelper.incrementDate(new Date(), 0, 2, 0);
-    await I.fillField(this.fields.dayOfPayment, date.getDay());
+    await I.fillField(this.fields.dayOfPayment, date.getDate());
     await I.fillField(this.fields.monthOfPayment, date.getMonth() + 1);
     await I.fillField(this.fields.yearOfPayment, date.getFullYear());
 
