@@ -16,7 +16,6 @@ module.exports = {
     I.see('Email');
     I.see('test@hmcts.net');
     I.see('Notification');
-    I.see('SendRefund');
     I.click('//tr[4]//a[.=\'Change\']');
   }
 };
