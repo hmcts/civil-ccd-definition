@@ -29,15 +29,15 @@
           "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
+          "caseworker-civil-systemupdate",
+          "citizen-profile"
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
           "CITIZEN-DEFENDANT-PROFILE",
-          "CITIZEN-CLAIMANT-PROFILE",
-          "citizen-profile"
+          "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
       }
