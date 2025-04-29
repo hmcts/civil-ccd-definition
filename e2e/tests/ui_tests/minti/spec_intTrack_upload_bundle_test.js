@@ -5,7 +5,7 @@ let civilCaseReference;
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 
-Feature('Intermediate track - Upload documents - Bundle @master-e2e-ft');
+Feature('Intermediate track - Upload documents - Bundle @master-e2e-ft @minti');
 
 async function prepareSpecClaim(api_spec, mpScenario) {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);

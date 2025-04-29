@@ -7,7 +7,7 @@ const claimAmountJudge = '11000';
 let caseNumber;
 
 
-Feature('1v2 Diff Sols Hearing Request Journey @e2e-hearing-request @e2e-nightly');
+Feature('1v2 Diff Sols Hearing Request Journey @e2e-hearing-request @e2e-nightly-prod');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);

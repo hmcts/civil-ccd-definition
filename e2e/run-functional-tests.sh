@@ -21,7 +21,7 @@ else
       if [ -n "$regex_pattern" ]; then
           regex_pattern+="|"
       fi
-      regex_pattern+="@$ft_group"
+      regex_pattern+="@e2e-$ft_group"
   done
 
   command+="'$regex_pattern'"

@@ -19,7 +19,7 @@ const respondent2 = {
 
 let caseNumber;
 
-Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-tests-spec @e2e-nightly-prod');
+Feature('Claim creation 1v2 Same Solicitor with Small claims @e2e-spec-small @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates 1v2 specified claim both defendants same LR for small claims @create-claim-spec', async ({LRspec}) => {
   await LRspec.login(config.applicantSolicitorUser);

@@ -20,7 +20,6 @@
     "test:smoke-spec": "MOCHAWESOME_REPORTFILENAME=smoke npx codeceptjs run --grep @smoke-tests-spec --reporter mocha-multi --verbose",
     "test:api-unspec": "MOCHAWESOME_REPORTFILENAME=api-unspec npx codeceptjs run-workers --suites 4  --grep @api-unspec --reporter mocha-multi --verbose",
     "test:api-unspec-full-defence": "MOCHAWESOME_REPORTFILENAME=api-unspec-full-defence npx codeceptjs run-workers --suites 4  --grep @api-unspec-full-defence --reporter mocha-multi --verbose",
-    "test:e2e-unspec": "MOCHAWESOME_REPORTFILENAME=e2e-unspec npx codeceptjs run-workers --suites 4 --grep @e2e-unspec --reporter mocha-multi --verbose",
     "test:api-sdo": "MOCHAWESOME_REPORTFILENAME=api-sdo npx codeceptjs run-workers --suites 4 --grep @api-sdo --reporter mocha-multi --verbose",
     "test:api-r2-sdo": "MOCHAWESOME_REPORTFILENAME=api-r2-sdo npx codeceptjs run-workers --suites 4 --grep @api-r2-sdo --reporter mocha-multi --verbose",
     "test:api-settle-discont": "MOCHAWESOME_REPORTFILENAME=api-settle-discont npx codeceptjs run-workers --suites 4 --grep @api-settle-discont --reporter mocha-multi --verbose",

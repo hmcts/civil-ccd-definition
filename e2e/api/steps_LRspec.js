@@ -1342,6 +1342,7 @@ module.exports = {
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
     } else {
+      delete caseData['showConditionFlags'];
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
@@ -1404,7 +1405,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.userInput)) {
       await assertValidData(scheduleData, pageId);
     }
-
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1516,7 +1517,6 @@ module.exports = {
 
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1536,6 +1536,7 @@ module.exports = {
     }
 
     await apiRequest.startEvent(eventName, caseId);
+    delete caseData['showConditionFlags'];
     await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);

@@ -4,7 +4,7 @@ const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
-let caseNumber = '1745430767441576';
+let caseNumber;
 
 Feature('RPA handoff points tests @rpa-handoff-tests');
 
