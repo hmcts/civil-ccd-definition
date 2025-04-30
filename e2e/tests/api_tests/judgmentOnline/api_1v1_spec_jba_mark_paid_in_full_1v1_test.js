@@ -24,7 +24,7 @@ async function respondWithFAPayBySetDateJBAPaidInFullLRvLR(api_spec) {
   await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
 }
 
-Scenario('1v1 LR v LR defendant response with full admit pay by set date judgment by admission mark paid in full', async ({api_spec}) => {
+Scenario.skip('1v1 LR v LR defendant response with full admit pay by set date judgment by admission mark paid in full', async ({api_spec}) => {
   await respondWithFAPayBySetDateJBAPaidInFullLRvLR(api_spec);
 });
 

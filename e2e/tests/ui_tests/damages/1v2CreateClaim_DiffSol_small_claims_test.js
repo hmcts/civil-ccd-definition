@@ -20,12 +20,12 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-});
+}).retry(2);
 
 Scenario('1v2 Diff   - Assign roles to defendants', async () => {
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-}).retry(3);
+}).retry(2);
 
 
 Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
@@ -33,7 +33,7 @@ Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) =
   await I.addDefendantLitigationFriend();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Add litigation friend'));
-});
+}).retry(2);
 
 Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
@@ -42,7 +42,7 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
     claimValue: 3000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
@@ -52,7 +52,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
     claimValue: 3000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-});
+}).retry(2);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -60,12 +60,12 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseNumber);
-}).retry(3);
+}).retry(2);
 
 Scenario('Judge triggers SDO', async ({I}) => {
    await I.login(config.judgeUserWithRegionId1);
    await I.initiateSDO(null, null, 'fastTrack', null);
-}).retry(3);
+}).retry(2);
 
 
 

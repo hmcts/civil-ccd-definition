@@ -15,14 +15,14 @@ Scenario('2v1 spec Settle this Claim - Confirm marking as paid in full', async (
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Confirm marking as paid in full', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForSettleThisClaimForUI2v1();
     }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
@@ -38,14 +38,14 @@ Scenario('2v1 spec Reason for settlement - judges order', async ({api_spec_small
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Reason for settlement - judges order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimJudgesOrderForUI();
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
@@ -61,14 +61,14 @@ Scenario('2v1 spec Reason for settlement - Consent order', async ({api_spec_smal
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Reason for settlement - Consent order', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestSettleThisClaimConsentOrderForUI();
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();

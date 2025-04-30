@@ -19,27 +19,27 @@ Scenario('1v1 spec request for reconsideration for Create a new SDO', async ({ap
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Request for Reconsideration by claimant', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForReconsiderationForUI();
     }
-}).retry(3);
+}).retry(2);
 
 Scenario('Decision on Reconsideration Request with option No -- Generate a new SDO event', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.judgeUserWithRegionId1);
     await LRspec.decisionForReconsideration();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Create SDO journey - after Request for Reconsideration', async ({api_spec_small}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();

@@ -13,8 +13,7 @@ module.exports = {
             applicant1AcceptFullAdmitPaymentPlanSpec: 'Yes',
           },
           CcjPaymentPaidSome: {
-            ccjPaymentPaidSomeOption: 'Yes',
-            ccjPaymentPaidSomeAmount: '1000',
+            ccjPaymentPaidSomeOption: 'No',
           },
           FixedCost: {
             ccjJudgmentFixedCostOption: 'Yes',

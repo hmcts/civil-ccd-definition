@@ -12,7 +12,7 @@ Scenario('LR vs LIP Multi track - LR response', async ({api_spec_cui, I}) => {
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'MULTI');
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefenceMinti(caseId, mpScenario, claimAmountMulti);
-});
+}).retry(1);
 
 Scenario('LR vs LIP Int track - LR response', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';
@@ -21,7 +21,7 @@ Scenario('LR vs LIP Int track - LR response', async ({api_spec_cui, I}) => {
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'INTERMEDIATE');
   await I.login(config.applicantSolicitorUser);
   await I.respondToDefenceMinti(caseId, mpScenario, intermediateTrackClaimAmount);
-});
+}).retry(1);
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();

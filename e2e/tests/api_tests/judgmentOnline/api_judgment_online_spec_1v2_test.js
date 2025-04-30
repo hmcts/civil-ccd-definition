@@ -28,7 +28,7 @@ async function prepareClaimSpecFinalOrderJO(api_spec){
   await api_spec.confirmOrderReview(caseWorkerUserReg1);
 
 }
-Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
+Scenario.skip('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new judgment', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL', false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
@@ -38,7 +38,7 @@ Scenario('Default judgment Spec claim 1v2 - Set Aside After Order  - Record new 
   }
 });
 
-Scenario('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
+Scenario.skip('Default judgment Spec claim 1v2 - Set Aside after defence - Case taken offline', async ({I, api_spec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false );
     await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);

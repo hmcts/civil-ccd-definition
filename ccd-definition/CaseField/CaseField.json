@@ -3395,5 +3395,13 @@
     "FieldTypeParameter": "documentToKeep",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "headingDefendantResponse",
+    "Label": "## Defendant response",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
