@@ -14,5 +14,32 @@
     "FieldType": "ChangeLanguagePreference",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "claimantLanguagePreferenceDisplay",
+    "Label": "Claimant language preference",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PreferredLanguage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "defendantLanguagePreferenceDisplay",
+    "Label": "Defendant language preference",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PreferredLanguage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "preTranslationSdoOrderDocuments",
+    "Label": "View directions order",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
