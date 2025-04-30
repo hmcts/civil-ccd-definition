@@ -871,9 +871,9 @@ module.exports = function () {
     },
 
     async requestForReconsiderationForUI() {
-      eventName = events.REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK.name;
+      eventName = events.REQUEST_FOR_RECONSIDERATION.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(events.REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK, caseId),
+        () => caseViewPage.startEvent(events.REQUEST_FOR_RECONSIDERATION, caseId),
         () => requestForRR.reasonForReconsideration(),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),

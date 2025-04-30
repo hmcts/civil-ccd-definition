@@ -203,8 +203,8 @@ module.exports = {
     description: 'Reset Pin for case',
     order: 7
   },
-  REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK: {
-    id: 'REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK',
+  REQUEST_FOR_RECONSIDERATION: {
+    id: 'REQUEST_FOR_RECONSIDERATION',
     name: 'Request for reconsideration',
     description: 'Request for reconsideration check',
     order: null

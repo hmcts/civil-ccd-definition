@@ -597,9 +597,9 @@ module.exports = function () {
     },
 
     async respondToDefenceMinti(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
-      eventName = events.CLAIMANT_RESPONSE.name;
+      eventName = events.CLAIMANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(events.CLAIMANT_RESPONSE, caseId),
+        () => caseViewPage.startEvent(events.CLAIMANT_RESPONSE_SPEC, caseId),
         () => proceedPage.proceedWithClaim(mpScenario),
         () => uploadResponseDocumentPage.uploadResponseDocumentsSpec(TEST_FILE_PATH, mpScenario),
         ...conditionalSteps(claimValue > 100000, [
