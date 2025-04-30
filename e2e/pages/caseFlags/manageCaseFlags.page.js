@@ -16,11 +16,12 @@ const fields = {
 };
 
 module.exports = {
-  async selectFlagLocation(flagLocation) {
-    I.waitForElement(fields.flagLocationSelection.id);
-    await within(fields.flagLocationSelection.radioGroup.id, () => {
-      I.click(flagLocation);
-    });
+  async selectFlagLocation(partyName, flagLabel) {
+    await I.see(flagLabel);
+    await I.waitForElement(fields.flagLocationSelection.id);
+      await within(fields.flagLocationSelection.radioGroup.id, () => {
+        I.click(partyName);
+      });
     I.click(fields.continue.id);
   },
 

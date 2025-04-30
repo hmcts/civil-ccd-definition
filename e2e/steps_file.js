@@ -1191,7 +1191,7 @@ module.exports = function () {
       for (const {partyName, roleOnCase, flagType, flagComment} of caseFlags) {
         await this.triggerStepsWithScreenshot([
           () => caseViewPage.startEvent(events.MANAGE_CASE_FLAGS, caseId),
-          () => manageCaseFlagsPage.selectFlagLocation(`${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
+          () => manageCaseFlagsPage.selectFlagLocation(partyName, `${partyName} (${roleOnCase}) - ${flagType} (${flagComment})`),
           () => manageCaseFlagsPage.updateFlagComment(`${flagComment} - Updated - ${partyName}`),
           () => event.submitWithoutHeader('Submit')
         ]);
