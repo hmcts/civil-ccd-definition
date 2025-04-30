@@ -30,21 +30,21 @@ Scenario('1v1 spec Discontinue This Claim - Full discontinuance', async ({api_sp
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Discontinue This Claim', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForDiscontinueThisClaimForUI();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
@@ -71,21 +71,21 @@ Scenario('Discontinue This Claim', async ({LRspec}) => {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForDiscontinueThisClaimForUI();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Claim Discontinued - Remove Hearing', async ({LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestForClaimDiscontinuedRemoveHearingForUI();
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();

@@ -34,7 +34,7 @@ Scenario.skip('Claimant solicitor raise a claim against 2 defendants, one of who
   // Reinstate the lines below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //caseNumber = await I.grabCaseNumber();
   //await I.see(`Case ${caseNumber} has been created.`);
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

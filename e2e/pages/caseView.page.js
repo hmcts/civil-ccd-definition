@@ -36,7 +36,7 @@ module.exports = {
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       await this.start(event);
-    }, EVENT_TRIGGER_LOCATOR, 4, 45);
+    }, EVENT_TRIGGER_LOCATOR, 3, 35);
   },
   async permissionGrantedByJudge() {
     await I.runAccessibilityTest();

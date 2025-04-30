@@ -18,7 +18,8 @@ Scenario('1v2 two respondents are LIP - notify/notify claim details journey', as
   await I.verifyCOSTabNotifyClaimDetails();
   await I.navigateToTab('History');
     await I.see('Awaiting Defendant Response');
-});
+}).retry(1);
+
 Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async ({I, api}) => {
   civilCaseReference = await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser,
     'ONE_V_TWO_ONE_LEGAL_REP_ONE_LIP');
@@ -30,7 +31,7 @@ Scenario('1v2 - one LIP and one LR - notify/notify claim details journey', async
   await I.fillLRNotifyClaimDetailsCOSForm(civilCaseReference);
   await I.navigateToTab('History');
   await I.see('Awaiting Defendant Response');
-});
+}).retry(1);
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();

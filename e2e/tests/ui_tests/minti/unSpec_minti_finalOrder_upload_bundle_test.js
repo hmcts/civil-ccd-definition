@@ -34,7 +34,7 @@ Scenario('1v2 Same Solicitor Int Track - Download order template - Upload Bundle
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + civilCaseReference);
   await I.waitForText('Summary');
   await I.verifyBundleDetails(civilCaseReference);
-});
+}).retry(1);
 
 Scenario('1v2 Different Solicitor Multi Track claim - Download order template - Upload Bundle', async ({api, I}) => {
   const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
@@ -51,7 +51,7 @@ Scenario('1v2 Different Solicitor Multi Track claim - Download order template - 
 
   await I.login(config.secondDefendantSolicitorUser);
   await I.evidenceUpload(civilCaseReference, true, true);
-});
+}).retry(1);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

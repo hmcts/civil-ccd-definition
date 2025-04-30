@@ -32,7 +32,7 @@ Scenario.skip('Applicant solicitor creates 1v2 Diff LRs specified claim defendan
 
     addUserCaseMapping(caseId(), config.applicantSolicitorUser);
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
