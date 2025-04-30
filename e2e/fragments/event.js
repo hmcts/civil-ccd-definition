@@ -11,7 +11,8 @@ module.exports = {
     await I.retryUntilExists(() => I.click(buttonText), CONFIRMATION_HEADER);
     await I.runAccessibilityTest();
     await within(CONFIRMATION_HEADER, () => {
-      I.see(expectedMessage);
+      if(expectedMessage && expectedMessage.length > 0)
+        I.see(expectedMessage);
     });
   },
 
