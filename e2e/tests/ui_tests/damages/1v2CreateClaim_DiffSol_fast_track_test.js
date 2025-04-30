@@ -10,7 +10,11 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
 
-let caseNumber;
+let caseNumber, validFastTrackDirectionsTask;
+
+if (config.runWAApiTest) {
+  validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
+}
 
 Feature('1v2 Different Solicitors fast track - Claim Journey @e2e-unspec-fast @e2e-nightly-prod @e2e-unspec-1v2DS @master-e2e-ft');
 
@@ -131,9 +135,20 @@ Scenario('Lift the stay case - Manage stay', async ({I}) => {
   }
 }).retry(2);
 
-Scenario('Judge triggers SDO', async ({I}) => {
+Scenario('Judge triggers SDO', async ({I, WA, api}) => {
   await I.login(config.judgeUserWithRegionId1);
+  let taskId;
+  if (config.runWAApiTest) {
+    const fastTrackDirections = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseNumber, config.waTaskIds.fastTrackDirections);
+    console.log('fastTrackDirections...' , fastTrackDirections);
+    WA.validateTaskInfo(fastTrackDirections, validFastTrackDirectionsTask);
+    taskId = fastTrackDirections['id'];
+    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+  }
   await I.initiateSDO(null, null, 'fastTrack', null);
+  if (config.runWAApiTest) {
+    api.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
+  }
 }).retry(2);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
