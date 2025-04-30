@@ -60,7 +60,6 @@ Scenario('Defendant solicitor acknowledges claim', async ({I}) => {
 
 Scenario('Defendant solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Inform agreed extension date'));

@@ -37,7 +37,7 @@ module.exports = {
       await I.navigateToCaseDetails(caseId);
       // await this.start(event);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
-    }, EVENT_TRIGGER_LOCATOR, 3, 20);
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
 
   async permissionGrantedByJudge() {
