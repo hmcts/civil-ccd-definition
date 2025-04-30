@@ -21,26 +21,26 @@ Scenario('Claimant solicitor raises a claim against 2 defendants who have differ
   addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
   await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimDetails(config.applicantSolicitorUser);
-}).retry(3);
+}).retry(2);
 
 Scenario('1v2 Diff   - Assign roles to defendants', async () => {
   await assignCaseRoleToUser(caseNumber, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
   await assignCaseRoleToUser(caseNumber,  'RESPONDENTSOLICITORTWO', config.secondDefendantSolicitorUser);
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.acknowledgeClaim('fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
   await I.acknowledgeClaim(null, 'fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
@@ -48,14 +48,14 @@ Scenario('Defendant 1 solicitor requests deadline extension', async ({I}) => {
   await I.informAgreedExtensionDate();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   // I.see(caseEventMessage('Inform agreed extension date'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 1 solicitor adds defendant litigation friend', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
   await I.addDefendantLitigationFriend();
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Add litigation friend'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
   await I.login(config.defendantSolicitorUser);
@@ -64,7 +64,7 @@ Scenario('Defendant 1 solicitor rejects claim for defendant 1', async ({I}) => {
     claimValue: 11000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
@@ -74,7 +74,7 @@ Scenario('Defendant 2 solicitor rejects claim for defendant 2', async ({I}) => {
     claimValue: 11000});
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Respond to claim'));
-}).retry(3);
+}).retry(2);
 
 Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await I.login(config.applicantSolicitorUser);
@@ -82,7 +82,7 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('View and respond to defence'));
   await waitForFinishedBusinessProcess(caseNumber);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Add case flags', async ({I}) => {
   if(await checkCaseFlagsEnabled()) {
@@ -99,7 +99,7 @@ Scenario.skip('Add case flags', async ({I}) => {
     await I.createCaseFlags(caseFlags);
     await I.validateCaseFlags(caseFlags);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
   if (await checkToggleEnabled('update-contact-details')) {
@@ -108,43 +108,43 @@ Scenario.skip('Defendant 2 solicitor adds unavailable dates', async ({I}) => {
     await I.waitForText('Summary');
     await I.addUnavailableDates(caseNumber);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Stay the case', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.stayCase();
     await waitForFinishedBusinessProcess(caseNumber);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Request update on the stay case - Manage stay', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.manageStay('REQ_UPDATE');
     await waitForFinishedBusinessProcess(caseNumber);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Lift the stay case - Manage stay', async ({I}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await I.manageStay('LIFT_STAY', 'JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseNumber);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Judge triggers SDO', async ({I}) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.initiateSDO(null, null, 'fastTrack', null);
-}).retry(3);
+}).retry(2);
 
 Scenario('Claimant solicitor uploads evidence', async ({I}) => {
     await I.login(config.applicantSolicitorUser);
     await I.evidenceUpload(caseNumber, false);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Defendant solicitor uploads evidence', async ({I}) => {
     await I.login(config.defendantSolicitorUser);
     await I.evidenceUpload(caseNumber, true);
-}).retry(3);
+}).retry(2);
 
 Scenario('Create a Hearing Request', async ({I}) => {
   if (['demo'].includes(config.runningEnv)) {
@@ -154,12 +154,12 @@ Scenario('Create a Hearing Request', async ({I}) => {
     await I.updateHearing();
     await I.cancelHearing();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Transfer online case', async ({I}) => {
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.transferOnlineCase();
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
