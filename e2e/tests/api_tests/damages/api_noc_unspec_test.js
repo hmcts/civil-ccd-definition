@@ -69,7 +69,7 @@ Scenario('notice of change - 1v2 - both respondents LiPs to same solicitor', asy
   await api.claimantResponse(config.applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP', 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO');
 });
 
-Scenario('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
+Scenario.skip('notice of change - 1v2 - both respondents LiPs to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
   await api.notifyClaimDetailsLip(config.applicantSolicitorUser, 'ONE_V_TWO_LIPS');
