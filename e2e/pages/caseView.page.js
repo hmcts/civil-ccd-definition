@@ -35,9 +35,11 @@ module.exports = {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.start(event);
-    }, EVENT_TRIGGER_LOCATOR, 3, 35);
+      // await this.start(event);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
+    }, EVENT_TRIGGER_LOCATOR, 3, 20);
   },
+
   async permissionGrantedByJudge() {
     await I.runAccessibilityTest();
     I.fillField(this.fields.judgeName, 'Testing');
@@ -55,69 +57,6 @@ module.exports = {
     await I.runAccessibilityTest();
     I.fillField(this.fields.caseNote, 'Testing');
     await I.clickContinue();
-  },
-  async startEventForRR(event, caseId) {
-      await waitForFinishedBusinessProcess(caseId);
-      await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await this.start(event);
-    }, EVENT_TRIGGER_LOCATOR, 5, 25);
-  },
-  async startEventForSD(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLSingleClaimant`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForSDMultiple(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/SETTLE_CLAIM_MARK_PAID_FULL/SETTLE_CLAIM_MARK_PAID_FULLMultipleClaimant`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForSettleThisClaimJudgesOrder(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/SETTLE_CLAIM/SETTLE_CLAIMSettleClaim`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForDiscontinueThisClaim(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTCourtPermission`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForDiscontinueThisClaim2v1(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DISCONTINUE_CLAIM_CLAIMANT/DISCONTINUE_CLAIM_CLAIMANTMultipleClaimant`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForValidateDiscontinuance(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT/VALIDATE_DISCONTINUE_CLAIM_CLAIMANTValidateDiscontinuance`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForClaimDiscontinuedRemoveHearing(caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/ADD_CASE_NOTE/ADD_CASE_NOTECaseNote`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
-  },
-  async startEventForDR(caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/DECISION_ON_RECONSIDERATION_REQUEST/DECISION_ON_RECONSIDERATION_REQUESTJudgeResponseToReconsideration`);
-    }, EVENT_TRIGGER_LOCATOR, undefined, 25);
   },
 
   async verifyErrorMessageOnEvent(event, caseId, errorMsg) {

@@ -34,7 +34,7 @@ Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
   await I.waitForText('How do you want to add a case note?');
   await I.judgeAddsCaseNotes();
 }).retry(2);
@@ -50,8 +50,7 @@ Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
     taskId = summaryJudgmentDirectionsTask['id'];
     api.assignTaskToUser(judgeUserToBeUsed, taskId);
   }
-
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJ');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
@@ -89,7 +88,7 @@ async function createHearingScheduled(I) {
     await I.login(hearingCenterAdminToBeUsed);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULED');
     await I.createHearingScheduled();
 }
 

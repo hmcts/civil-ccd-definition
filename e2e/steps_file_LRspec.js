@@ -110,6 +110,7 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 const mediationContactInformationPage = require('./pages/respondToClaimLRspec/mediationContactInformation.page.js');
 const mediationAvailabilityPage = require('./pages/respondToClaimLRspec/mediationAvailability.page.js');
 const determinationWithoutHearingPage = require('./pages/respondToClaimLRspec/determinationWithoutHearing.page.js');
+const events = require('./fixtures/ccd/events.js');
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
@@ -441,9 +442,9 @@ module.exports = function () {
     },
 
    async informAgreedExtensionDateSpec(respondentSolicitorNumber = '1') {
-       eventName = 'Inform agreed extension date';
-       await this.triggerStepsWithScreenshot([
-         () => caseViewPage.startEvent(eventName, caseId),
+      eventName = events.INFORM_AGREED_EXTENSION_DATE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+         () => caseViewPage.startEvent(events.INFORM_AGREED_EXTENSION_DATE_SPEC, caseId),
          () => extensionDatePage.enterExtensionDate(respondentSolicitorNumber),
          () => event.submit('Submit', ''),
          () => event.returnToCaseDetails(),
@@ -451,119 +452,116 @@ module.exports = function () {
      },
 
    async enterBreathingSpace() {
-       eventName = 'Enter Breathing Space';
-        await this.triggerStepsWithScreenshot([
-                 () => caseViewPage.startEvent(eventName, caseId
-                 ),
-                 () => enterBreathingSpacePage.selectBSType(),
-                 () => event.submit('Submit', ''),
-                 () => event.returnToCaseDetails()
-               ]);
+    eventName = events.ENTER_BREATHING_SPACE_SPEC.name;
+    await this.triggerStepsWithScreenshot([
+              () => caseViewPage.startEvent(events.ENTER_BREATHING_SPACE_SPEC, caseId
+              ),
+              () => enterBreathingSpacePage.selectBSType(),
+              () => event.submit('Submit', ''),
+              () => event.returnToCaseDetails()
+            ]);
     },
 
    async liftBreathingSpace() {
-           eventName = 'Lift Breathing Space';
-            await this.triggerStepsWithScreenshot([
-                     () => caseViewPage.startEvent(eventName, caseId),
-                     () => liftBreathingSpacePage.liftBS(),
-                     () => event.submit('Submit', ''),
-                     () => event.returnToCaseDetails()
-                   ]);
+    eventName = events.LIFT_BREATHING_SPACE_SPEC.name;
+    await this.triggerStepsWithScreenshot([
+              () => caseViewPage.startEvent(events.LIFT_BREATHING_SPACE_SPEC, caseId),
+              () => liftBreathingSpacePage.liftBS(),
+              () => event.submit('Submit', ''),
+              () => event.returnToCaseDetails()
+            ]);
         },
 
     async respondToClaimFullDefence({twoDefendants = false, defendant1Response = 'fullDefence', twoClaimants = false, claimType = 'fast', defenceType = 'dispute'}) {
-      await waitForFinishedBusinessProcess(caseId);
-      eventName = 'Respond to claim';
-          await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
-            () => respondentCheckListPage.claimTimelineTemplate(),
-            () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
-            () => specConfirmLegalRepDetails.confirmDetails(false),
-            ... conditionalSteps(twoDefendants, [
-              () => singleResponse.defendantsHaveSameResponse(true),
-            ]),
-            ... conditionalSteps(twoClaimants, [
-              () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
-            ]),
-            () => responseTypeSpecPage.selectResponseType(false,defendant1Response),
-            () => defenceTypePage.selectDefenceType(false,defenceType,150),
-            () => disputeClaimDetailsPage.enterReasons(false),
-            () => claimResponseTimelineLRspecPage.addManually(false),
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
+        () => respondentCheckListPage.claimTimelineTemplate(),
+        () => specConfirmDefendantsDetails.confirmDetails(twoDefendants),
+        () => specConfirmLegalRepDetails.confirmDetails(false),
+        ... conditionalSteps(twoDefendants, [
+          () => singleResponse.defendantsHaveSameResponse(true),
+        ]),
+        ... conditionalSteps(twoClaimants, [
+          () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
+        ]),
+        () => responseTypeSpecPage.selectResponseType(false,defendant1Response),
+        () => defenceTypePage.selectDefenceType(false,defenceType,150),
+        () => disputeClaimDetailsPage.enterReasons(false),
+        () => claimResponseTimelineLRspecPage.addManually(false),
+        () => this.clickContinue(),
+      ... conditionalSteps(claimType === 'fast', [
+            () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
+            () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
+            () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
             () => this.clickContinue(),
-         ... conditionalSteps(claimType === 'fast', [
-                () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_1),
-                () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_1),
-                () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent1'),
-                () => this.clickContinue(),
-                () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
-                () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
-                () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
-                () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
-           ]),
-           ... conditionalSteps(claimType === 'small', [
-                      () => mediationContactInformationPage.enterMediationContactInformation('resp1'),
-                      () => mediationAvailabilityPage.selectNoMediationAvailability('resp1'),
-                      () => determinationWithoutHearingPage.selectNo('Respondent1'),
-                      () => useExpertPage.claimExpert('DefendantResponse'),
-                      () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
-                      () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
-                      () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
-            ]),
-            () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
-            () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
-            () => vulnerabilityPage.selectVulnerability('no'),
-            ... conditionalSteps(claimType === 'fast', [
-              () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
-            ]),
-            () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
-            () => event.submit('Submit', ''),
-            () => event.returnToCaseDetails()
-         ]);
+            () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_1),
+            () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_1),
+            () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_1),
+            () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+            () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_1),
+        ]),
+        ... conditionalSteps(claimType === 'small', [
+                  () => mediationContactInformationPage.enterMediationContactInformation('resp1'),
+                  () => mediationAvailabilityPage.selectNoMediationAvailability('resp1'),
+                  () => determinationWithoutHearingPage.selectNo('Respondent1'),
+                  () => useExpertPage.claimExpert('DefendantResponse'),
+                  () => enterWitnessesPage.howManyWitnesses('DefendantResponse'),
+                  () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_1),
+                  () => smallClaimsHearingPage.selectHearing('DefendantResponse'),
+        ]),
+        () => chooseCourtSpecPage.chooseCourt('DefendantResponse'),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_1),
+        () => vulnerabilityPage.selectVulnerability('no'),
+        ... conditionalSteps(claimType === 'fast', [
+          () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_1),
+        ]),
+        () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
 
     },
 
     async respond1v2DiffLR_FullDefence({secondDefendant = true, defendant1Response = 'fullDefence', claimType = 'fast', defenceType = 'dispute'}) {
-          eventName = 'Respond to claim';
-          await waitForFinishedBusinessProcess(caseId);
-          await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
-            () => respondentCheckListPage.claimTimelineTemplate(),
-            () => confirm2ndDefLRspecPage.confirmDetails(),
-            () => specConfirmLegalRepDetails.confirmDetails(secondDefendant),
-            () => responseTypeSpecPage.selectResponseType(secondDefendant,defendant1Response),
-            () => defenceTypePage.selectDefenceType(secondDefendant,defenceType,150),
-            () => disputeClaimDetailsPage.enterReasons(secondDefendant),
-            () => claimResponseTimelineLRspecPage.addManually(secondDefendant),
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
+        () => respondentCheckListPage.claimTimelineTemplate(),
+        () => confirm2ndDefLRspecPage.confirmDetails(),
+        () => specConfirmLegalRepDetails.confirmDetails(secondDefendant),
+        () => responseTypeSpecPage.selectResponseType(secondDefendant,defendant1Response),
+        () => defenceTypePage.selectDefenceType(secondDefendant,defenceType,150),
+        () => disputeClaimDetailsPage.enterReasons(secondDefendant),
+        () => claimResponseTimelineLRspecPage.addManually(secondDefendant),
+        () => this.clickContinue(),
+      ... conditionalSteps(claimType === 'fast', [
+            () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_2),
+            () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_2),
+            () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent2'),
             () => this.clickContinue(),
-          ... conditionalSteps(claimType === 'fast', [
-                () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.RESPONDENT_SOLICITOR_2),
-                () => fixedRecoverableCosts.fixedRecoverableCosts(parties.RESPONDENT_SOLICITOR_2),
-                () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specRespondent2'),
-                () => this.clickContinue(),
-                () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_2),
-                () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_2),
-                () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_2),
-                () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_2),
-                () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_2),
-            ]),
-            () => chooseCourtSpecPage.chooseCourt('DefendantResponse2'),
-            () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_2),
-            () => vulnerabilityPage.selectVulnerability('no',true),
-            ... conditionalSteps(claimType === 'fast', [
-              () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_2),
-            ]),
-            () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
-            () => event.submit('Submit', ''),
-            () => event.returnToCaseDetails()
-          ]);
-        },
+            () => disclosureReportPage.enterDisclosureReport(parties.RESPONDENT_SOLICITOR_2),
+            () => useMPExpertsPage.enterExpertInformation(parties.RESPONDENT_SOLICITOR_2),
+            () => witnessesLRspecPage.enterWitnessInformation(parties.RESPONDENT_SOLICITOR_2),
+            () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.RESPONDENT_SOLICITOR_2),
+            () => hearingLRspecPage.enterHearing(parties.RESPONDENT_SOLICITOR_2),
+        ]),
+        () => chooseCourtSpecPage.chooseCourt('DefendantResponse2'),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.RESPONDENT_SOLICITOR_2),
+        () => vulnerabilityPage.selectVulnerability('no',true),
+        ... conditionalSteps(claimType === 'fast', [
+          () => furtherInformationLRspecPage.enterFurtherInformation(parties.RESPONDENT_SOLICITOR_2),
+        ]),
+        () => statementOfTruth.enterNameAndRole(parties.RESPONDENT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit', ''),
+        () => event.returnToCaseDetails()
+      ]);
+    },
 
     async respondToClaimPartAdmit({twoDefendants = false, defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan', twoClaimants = false}) {
-      await waitForFinishedBusinessProcess(caseId);        
-      eventName = 'Respond to claim';
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;      
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
@@ -617,10 +615,9 @@ module.exports = function () {
      },
 
      async respondToClaimFullAdmit({twoDefendants = false, defendant1Response = 'fullAdmission', twoClaimants = false, claimType, defenceType}) {
-      await waitForFinishedBusinessProcess(caseId);
-      eventName = 'Respond to claim';
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
@@ -662,68 +659,67 @@ module.exports = function () {
      },
 
      async mediationUnsuccessful() {
-        eventName = 'Mediation Unsuccessful';
-        await this.triggerStepsWithScreenshot([
-          () => caseViewPage.startEvent(eventName, caseId),
-          () => mediationFailurePage.selectMediationFailureReason(),
-          () => this.clickContinue(),
-          () => event.submitWithoutHeader('Submit'),
-        ]);
+      eventName = events.MEDIATION_UNSUCCESSFUL.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.MEDIATION_UNSUCCESSFUL, caseId),
+        () => mediationFailurePage.selectMediationFailureReason(),
+        () => this.clickContinue(),
+        () => event.submitWithoutHeader('Submit'),
+      ]);
      },
 
-     async respondToDefence({mpScenario = 'ONE_V_ONE', claimType = 'fast'}) {
-                eventName = 'View and respond to defence';
-                await this.triggerStepsWithScreenshot([
-                      () => caseViewPage.startEvent(eventName, caseId),
-                      () => proceedPage.proceedWithClaim(mpScenario),
-                      () => this.clickContinue(),
-                      ... conditionalSteps(claimType === 'small', [
-                        () => mediationContactInformationPage.enterMediationContactInformation('app1'),
-                        () => mediationAvailabilityPage.selectNoMediationAvailability('app1'),
-                        () => useExpertPage.claimExpert('ClaimantResponse'),
-                        () => determinationWithoutHearingPage.selectNo(''),
-                        () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
-                        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
-                        () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
-                      ]),
-                      ... conditionalSteps(claimType === 'fast', [
-                        () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
-                        () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
-                        () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specApplicant1'),
-                        () => this.clickContinue(),
-                        () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
-                        () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
-                        () => witnessesLRspecPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
-                        () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
-                        () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
-                       ]),
-                      () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
-                      () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
-                      () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
-                       ... conditionalSteps(claimType === 'fast', [
-                      () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
-                       ]),
-                      () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
-                      () => event.submit('Submit your response', ''),
-                      () => event.returnToCaseDetails()
-                   ]);
-                   await this.takeScreenshot();
+    async respondToDefence({mpScenario = 'ONE_V_ONE', claimType = 'fast'}) {
+      eventName = events.CLAIMANT_RESPONSE_SPEC.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.CLAIMANT_RESPONSE_SPEC, caseId),
+        () => proceedPage.proceedWithClaim(mpScenario),
+        () => this.clickContinue(),
+        ... conditionalSteps(claimType === 'small', [
+          () => mediationContactInformationPage.enterMediationContactInformation('app1'),
+          () => mediationAvailabilityPage.selectNoMediationAvailability('app1'),
+          () => useExpertPage.claimExpert('ClaimantResponse'),
+          () => determinationWithoutHearingPage.selectNo(''),
+          () => enterWitnessesPage.howManyWitnesses('ClaimantResponse'),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+          () => smallClaimsHearingPage.selectHearing('ClaimantResponse'),
+        ]),
+        ... conditionalSteps(claimType === 'fast', [
+          () => fileDirectionsQuestionnairePage.fileDirectionsQuestionnaire(parties.APPLICANT_SOLICITOR_1),
+          () => fixedRecoverableCosts.fixedRecoverableCosts(parties.APPLICANT_SOLICITOR_1),
+          () => disclosureOfElectronicDocumentsPage.enterDisclosureOfElectronicDocuments('specApplicant1'),
+          () => this.clickContinue(),
+          () => disclosureReportPage.enterDisclosureReport(parties.APPLICANT_SOLICITOR_1),
+          () => expertsPage.enterExpertInformation(parties.APPLICANT_SOLICITOR_1),
+          () => witnessesLRspecPage.enterWitnessInformation(parties.APPLICANT_SOLICITOR_1),
+          () => welshLanguageRequirementsPage.enterWelshLanguageRequirements(parties.APPLICANT_SOLICITOR_1),
+          () => hearingClaimantLRspecPage.enterHearing(parties.APPLICANT_SOLICITOR_1),
+          ]),
+        () => chooseCourtSpecPage.chooseCourt('ClaimantResponse'),
+        () => hearingSupportRequirementsPage.selectRequirements(parties.APPLICANT_SOLICITOR_1),
+        () => vulnerabilityQuestionsPage.vulnerabilityQuestions(parties.APPLICANT_SOLICITOR_1),
+          ... conditionalSteps(claimType === 'fast', [
+        () => furtherInformationLRspecPage.enterFurtherInformation(parties.APPLICANT_SOLICITOR_1),
+          ]),
+        () => statementOfTruth.enterNameAndRole(parties.APPLICANT_SOLICITOR_1 + 'DQ'),
+        () => event.submit('Submit your response', ''),
+        () => event.returnToCaseDetails()
+      ]);
+      await this.takeScreenshot();
       },
 
     async caseProceedsInCaseman() {
-      eventName = 'Case proceeds in Caseman';
-
+      eventName = events.CASE_PROCEEDS_IN_CASEMAN.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),
         () => caseProceedsInCasemanPage.enterTransferDate(),
       ]);
       await this.takeScreenshot();
     },
 
     async acknowledgeClaimSpec() {
-      eventName = 'Acknowledgement of Service';
+      eventName = events.ACKNOWLEDGEMENT_OF_SERVICE.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.ACKNOWLEDGEMENT_OF_SERVICE, caseId),
         () => specConfirmDefendantsDetails.confirmDetails(),
         () => specConfirmLegalRepDetails.confirmDetails(),
         () => event.submit('Acknowledge claim', ''),
@@ -732,9 +728,9 @@ module.exports = function () {
     },
 
     async uploadMediationDocs(caseId, partyType, docType) {
-      eventName = 'Upload mediation documents';
+      eventName = events.UPLOAD_MEDIATION_DOCUMENTS.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.UPLOAD_MEDIATION_DOCUMENTS, caseId),
         () => mediationDocumentsExplanation.uploadADocument(),
         () => whoIsFor.selectOptions(partyType),
         () => documentType.selectDocumentType(docType),
@@ -751,15 +747,10 @@ module.exports = function () {
       ]);
     },
 
-    async initiateSDO(damages, allocateSmallClaims, trackType, orderType, civilCaseReference) {
-      if(civilCaseReference) caseId = civilCaseReference;
-      eventName = 'Standard Direction Order';
-
-      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-      await this.waitForText('Summary');
-      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/CREATE_SDO/CREATE_SDOSDO');
-      await this.waitForText('Standard Direction Order');
+    async initiateSDO(damages, allocateSmallClaims, trackType, orderType) {
+      eventName = events.CREATE_SDO.name;
       await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(events.CREATE_SDO, caseId),
         () => sumOfDamagesToBeDecidedPage.damagesToBeDecided(damages),
 
         ...conditionalSteps(damages, [
@@ -778,12 +769,11 @@ module.exports = function () {
     },
 
     async createCaseFlags(caseFlags) {
-      eventName = 'Create case flags';
-
+      eventName = events.CREATE_CASE_FLAGS.name; 
       for (const {partyName, roleOnCase, details} of caseFlags) {
         for (const {name, flagComment} of details) {
           await this.triggerStepsWithScreenshot([
-            () => caseViewPage.startEvent(eventName, caseId),
+            () => caseViewPage.startEvent(events.CREATE_CASE_FLAGS, caseId),
             () => createCaseFlagPage.selectFlagLocation(`${partyName} (${roleOnCase})`),
             () => createCaseFlagPage.selectFlag(name),
             () => createCaseFlagPage.inputFlagComment(flagComment),
@@ -794,8 +784,6 @@ module.exports = function () {
     },
 
     async validateCaseFlags(caseFlags) {
-      eventName = '';
-
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.goToCaseFlagsTab(caseId),
         () => caseViewPage.rejectCookieBanner(),
@@ -826,10 +814,10 @@ module.exports = function () {
     },
 
     async createHearingScheduled() {
-      eventName = 'Hearing Scheduled';
+      eventName = events.HEARING_SCHEDULED.name;
       await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
       await this.waitForText('Summary');
-      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+      await this.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULED');
       await this.triggerStepsWithScreenshot([
         () => hearingNoticeListPage.hearingType('fastTrack'),
         () => hearingNoticeListTypePage.listingOrRelistingSelect('Listing'),
@@ -848,10 +836,10 @@ module.exports = function () {
     },
 
     async stayCase(user = config.ctscAdminUser) {
-      eventName = 'Stay case';
+      eventName = events.STAY_CASE.name;
       await this.login(user);
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.STAY_CASE, caseId),
         () => this.waitForText('All parties will be notified.'),
         () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
         () => event.returnToCaseDetails(),
@@ -859,10 +847,10 @@ module.exports = function () {
     },
 
     async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
-      eventName = 'Manage stay';
+      eventName = events.MANAGE_STAY.name;
       await this.login(user);
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEvent(eventName, caseId),
+        () => caseViewPage.startEvent(events.MANAGE_STAY, caseId),
       ]);
       if (manageStayType == 'REQ_UPDATE')  {
         await this.triggerStepsWithScreenshot([
@@ -883,9 +871,9 @@ module.exports = function () {
     },
 
     async requestForReconsiderationForUI() {
-      eventName = 'Request for Reconsideration';
+      eventName = events.REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForRR(eventName, caseId),
+        () => caseViewPage.startEvent(events.REQUEST_FOR_RECONSIDERATION_DEADLINE_CHECK, caseId),
         () => requestForRR.reasonForReconsideration(),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),
@@ -898,9 +886,9 @@ module.exports = function () {
     },
 
     async requestForSettleThisClaimForUI() {
-      eventName = 'Settle this claim';
+      eventName = events.SETTLE_CLAIM_MARK_PAID_FULL.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSD(eventName, caseId),
+        () => caseViewPage.startEvent(events.SETTLE_CLAIM_MARK_PAID_FULL, caseId),
         () => this.click('Continue'),
         () => this.waitForText('Confirm settle this claim'),
         () => this.click('Yes'),
@@ -916,9 +904,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async requestForSettleThisClaimForUI2v1() {
-      eventName = 'Settle this claim';
+      eventName = events.SETTLE_CLAIM_MARK_PAID_FULL.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSDMultiple(eventName, caseId),
+        () => caseViewPage.startEvent(events.SETTLE_CLAIM_MARK_PAID_FULL, caseId),
         () => this.waitForText('Does marking this Claim as settled relate to all claimants?'),
         () => this.click('Yes'),
         () => this.click('Continue'),
@@ -933,9 +921,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async requestSettleThisClaimJudgesOrderForUI() {
-      eventName = 'Settle this claim';
+      eventName = events.SETTLE_CLAIM.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => caseViewPage.startEvent(events.SETTLE_CLAIM, caseId),
         () => caseViewPage.selectJudgeOrder(),
         () => this.waitForText('Check your answers'),
         () => this.click('Submit'),
@@ -948,9 +936,9 @@ module.exports = function () {
     },
 
     async requestSettleThisClaimConsentOrderForUI() {
-      eventName = 'Settle this claim';
+      eventName = events.SETTLE_CLAIM.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => caseViewPage.startEvent(events.SETTLE_CLAIM, caseId),
         () => this.click('Consent order approved'),
         () => this.click('Continue'),
         () => this.waitForText('Check your answers'),
@@ -964,9 +952,9 @@ module.exports = function () {
     },
 
     async requestForDiscontinueThisClaimForUI() {
-      eventName = 'Discontinue this claim';
+      eventName = events.DISCONTINUE_CLAIM_CLAIMANT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDiscontinueThisClaim(eventName, caseId),
+        () => caseViewPage.startEvent(events.DISCONTINUE_CLAIM_CLAIMANT, caseId),
         () => this.click('Yes'),
         () => this.click('Continue'),
         () => this.waitForText('Permission granted by the court'),
@@ -985,9 +973,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async requestForDiscontinueThisClaimForUI1v2() {
-      eventName = 'Discontinue this claim';
+      eventName = events.DISCONTINUE_CLAIM_CLAIMANT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDiscontinueThisClaim(eventName, caseId),
+        () => caseViewPage.startEvent(events.DISCONTINUE_CLAIM_CLAIMANT, caseId),
         () => this.click('Yes'),
         () => this.click('Continue'),
         () => this.waitForText('Permission granted by the court'),
@@ -1009,9 +997,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async requestForDiscontinueThisClaimForUI2v1() {
-      eventName = 'Discontinue this claim';
+      eventName = events.DISCONTINUE_CLAIM_CLAIMANT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDiscontinueThisClaim2v1(eventName, caseId),
+        () => caseViewPage.startEvent(events.DISCONTINUE_CLAIM_CLAIMANT, caseId),
         () => this.click('Both'),
         () => this.click('Continue'),
         () => this.waitForText('Permission from the court'),
@@ -1032,9 +1020,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async requestForValidateDiscontinuanceForUI() {
-      eventName = 'Validate discontinuance';
+      eventName = events.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForValidateDiscontinuance(eventName, caseId),
+        () => caseViewPage.startEvent(events.VALIDATE_DISCONTINUE_CLAIM_CLAIMANT, caseId),
         () => this.click('Yes - generate a Notice of Discontinuance'),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),
@@ -1044,10 +1032,10 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
-    async requestForClaimDiscontinuedRemoveHearingForUI() {
-     // eventName = 'Validate discontinuance';
+    async addCaseNote() {
+      eventName = events.ADD_CASE_NOTE.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForClaimDiscontinuedRemoveHearing(caseId),
+        () => caseViewPage.startEvent(events.ADD_CASE_NOTE, caseId),
         () => caseViewPage.caseNoteForClaimDiscontinuedRemoveHearing(),
         () => this.waitForText('Add a case note'),
         () => this.click('Submit'),
@@ -1057,9 +1045,9 @@ module.exports = function () {
       await this.takeScreenshot();
     },
     async decisionForReconsideration() {
-      eventName = 'Decision on reconsideration';
+      eventName = events.DECISION_ON_RECONSIDERATION_REQUEST.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
+        () => caseViewPage.startEvent(events.DECISION_ON_RECONSIDERATION_REQUEST, caseId),
         () => requestForDecision.selectCreateNewSDO(),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),
@@ -1071,9 +1059,9 @@ module.exports = function () {
     },
 
     async decisionForReconsiderationYesOption() {
-      eventName = 'Decision on reconsideration';
+      eventName = events.DECISION_ON_RECONSIDERATION_REQUEST.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
+        () => caseViewPage.startEvent(events.DECISION_ON_RECONSIDERATION_REQUEST, caseId),
         () => requestForDecision.selectYesOptionToUpholdThePreviousOrderMade(),
         () => this.click('Continue'),
         () => this.click('Submit'),
@@ -1086,9 +1074,9 @@ module.exports = function () {
     },
 
     async decisionForReconsiderationNoOptionForAmending() {
-      eventName = 'Decision on reconsideration';
+      eventName = events.DECISION_ON_RECONSIDERATION_REQUEST.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.startEventForDR(caseId),
+        () => caseViewPage.startEvent(events.DECISION_ON_RECONSIDERATION_REQUEST, caseId),
         () => requestForDecision.selectNoOptionForPreviousOrderNeedsAmending(),
         () => this.click('Submit'),
         () => this.waitForText('Close and Return to case details'),

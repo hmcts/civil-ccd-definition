@@ -21,7 +21,7 @@ Scenario('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api}) =>
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid);
   await I.waitForText('Summary');
   if (['preview', 'demo'].includes(config.runningEnv)) {
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
     await I.waitForText('How do you want to add a case note?');
     await I.judgeAddsCaseNotes();
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid);
@@ -33,7 +33,7 @@ Scenario('DefaultJudgement @create-claim @e2e-nightly-prod', async ({I, api}) =>
     console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
   }
 
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseid + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJ');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     const caseProgressionTakeCaseOfflineTask = await api.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseid, config.waTaskIds.listingOfficerCaseProgressionTask);
