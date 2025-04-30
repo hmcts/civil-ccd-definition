@@ -2170,7 +2170,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue= '1502.00';
+    responseBody.data.repaymentDue= '1702.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
