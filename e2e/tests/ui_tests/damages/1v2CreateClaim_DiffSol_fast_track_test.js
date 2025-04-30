@@ -16,6 +16,10 @@ if (config.runWAApiTest) {
   validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
 }
 
+if (config.runWAApiTest) {
+  validFastTrackDirectionsTask = require('../../../../wa/tasks/fastTrackDirectionsTask.js');
+}
+
 Feature('1v2 Different Solicitors fast track - Claim Journey @e2e-unspec-fast @e2e-nightly-prod @e2e-unspec-1v2DS @master-e2e-ft');
 
 Scenario('Claimant solicitor raises a claim against 2 defendants who have different solicitors', async ({I, api}) => {
@@ -135,7 +139,7 @@ Scenario('Lift the stay case - Manage stay', async ({I}) => {
   }
 }).retry(2);
 
-Scenario('Judge triggers SDO', async ({I, WA, api}) => {
+Scenario('Judge triggers SDO', async ({I, api, WA}) => {
   await I.login(config.judgeUserWithRegionId1);
   let taskId;
   if (config.runWAApiTest) {
