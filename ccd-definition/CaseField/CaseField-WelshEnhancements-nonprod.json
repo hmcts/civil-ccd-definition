@@ -45,7 +45,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "preTranslationDocuments",
-    "Label": "Translated Documents",
+    "Label": "Documents to be translated",
     "FieldType": "Collection",
     "FieldTypeParameter": "CaseDocument",
     "SecurityClassification": "Public",
