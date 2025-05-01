@@ -11,16 +11,14 @@ Feature('RPA handoff points tests @e2e-rpa-handoff-tests');
 Scenario('Take claim offline', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
   await I.informAgreedExtensionDate();
 
   await I.login(config.adminUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
   await I.assertHasEvents(['Amend party details', 'Add a case note']);
   await I.signOut();
-}).retry(2);
+}).retry(0);
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -40,7 +38,6 @@ Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => 
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefenceDropClaim();
   if(['preview', 'demo'].includes(config.runningEnv))
     await I.assertHasEvents(['Raise a new query']);
@@ -54,7 +51,6 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefence('ONE_V_ONE', 25000);
   if(['preview', 'demo'].includes(config.runningEnv))
     await I.assertHasEvents(['Raise a new query']);
