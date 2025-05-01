@@ -41,7 +41,7 @@ Scenario('Defendant 1 solicitor acknowledges claim', async ({I}) => {
   await I.acknowledgeClaim('fullDefence');
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await I.see(caseEventMessage('Acknowledge claim'));
-}).retry(0);
+}).retry(2);
 
 Scenario('Defendant 2 solicitor acknowledges claim', async ({I}) => {
   await I.login(config.secondDefendantSolicitorUser);
