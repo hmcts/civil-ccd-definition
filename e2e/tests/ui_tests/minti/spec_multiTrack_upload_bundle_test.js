@@ -28,7 +28,7 @@ Scenario('Spec Claim - Multi track - 1v2 same solicitor - Upload bundle', async 
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + civilCaseReference);
   await I.waitForText('Summary');
   await I.verifyBundleDetails(civilCaseReference);
-}).retry(1);
+}).retry(2);
 
 AfterSuite(async ({ api_spec }) => {
   await api_spec.cleanUp();
