@@ -4474,7 +4474,20 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "responseClaimAdmitFullInterestLabel",
+    "CaseFieldID": "respondent1ClaimAdmitFullInterestLabel",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent2ClaimAdmitFullInterestLabel",
     "AccessControl": [
       {
         "UserRoles": [
