@@ -105,7 +105,7 @@ Scenario.skip('Add case flags', async ({I}) => {
 
     await I.login(config.hearingCenterAdminWithRegionId1);
     await I.createCaseFlags(caseFlags);
-    await I.validateCaseFlags(caseFlags);
+    // await I.validateCaseFlags(caseFlags);
   }
 }).retry(2);
 

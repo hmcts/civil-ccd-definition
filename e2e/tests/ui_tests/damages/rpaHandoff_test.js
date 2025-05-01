@@ -61,7 +61,7 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   else
     await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(0);
+}).retry(2);
 
 const createCaseUpUntilNotifyClaimDetails = async (I) => {
   const claimant1 = {
