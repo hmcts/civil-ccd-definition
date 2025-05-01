@@ -92,7 +92,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "claimIssuedHwfDetails.hwfCaseEvent != \"\" OR hearingHwfDetails.hwfCaseEvent != \"\""
+    "EventEnablingCondition": "claimIssuedHwfDetails.hwfCaseEvent!=\"\" OR hearingHwfDetails.hwfCaseEvent!=\"\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
