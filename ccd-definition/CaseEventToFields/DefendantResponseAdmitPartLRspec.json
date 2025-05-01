@@ -243,7 +243,8 @@
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageID": "WhenWillClaimBePaid"
+    "PageID": "WhenWillClaimBePaid",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
