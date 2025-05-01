@@ -6,7 +6,7 @@ let caseNumber;
 async function prepareClaimSpec1v2(api_spec_small) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
 }
-Feature('Settle this Claim - Confirm marking as paid in full - 1v2 - spec @master-e2e-ft @settle-discontinue');
+Feature('Settle this Claim - Confirm marking as paid in full - 1v2 - spec @master-e2e-ft @e2e-settle-discontinue');
 
 Scenario('1v2 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -29,7 +29,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - judges order - 1v2 - spec @master-e2e-ft @settle-discontinue');
+Feature('Settle this Claim - Reason for settlement - judges order - 1v2 - spec @master-e2e-ft @e2e-settle-discontinue');
 
 Scenario('1v2 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -52,7 +52,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @master-e2e-ft @settle-discontinue');
+Feature('Settle this Claim - Reason for settlement - Consent order - 1v2 - spec @master-e2e-ft @e2e-settle-discontinue');
 
 Scenario('1v2 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {

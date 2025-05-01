@@ -6,7 +6,7 @@ const serviceRequest = require('../../../pages/createClaim/serviceRequest.page')
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
 
-Feature('RPA handoff points tests @rpa-handoff-tests');
+Feature('RPA handoff points tests @e2e-rpa-handoff-tests');
 
 Scenario('Take claim offline', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
