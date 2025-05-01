@@ -244,7 +244,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent1 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -254,7 +254,7 @@
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_ADMISSION\""
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
