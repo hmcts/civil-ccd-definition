@@ -3905,13 +3905,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
-  version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=f898a1&locator=civil-ccd-definition%40workspace%3A."
-  checksum: b169bb261faddb2afd0461f3077824af732ef58b244bd7badfd030817f96c1c5a612389eeb429ccea70757d5f193e6227d24f3b6af81afc3017b93231138d86e
-  languageName: node
-  linkType: hard
-
 "dateformat@npm:^4.5.1":
   version: 4.6.3
   resolution: "dateformat@npm:4.6.3"
