@@ -1146,7 +1146,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:9.25.1, @eslint/js@npm:^9.11.0":
+"@eslint/js@npm:9.11.0":
+  version: 9.11.0
+  resolution: "@eslint/js@npm:9.11.0"
+  checksum: 3e3a8945c7f97b29187f3a6b05c9bb1e3e373d75f94c16b7499565df7c343d5e5e0a14e177bb75c368c6022bb33aa3d17775386a5f39d9085f9f522862d4bd4a
+  languageName: node
+  linkType: hard
+
+"@eslint/js@npm:9.25.1":
   version: 9.25.1
   resolution: "@eslint/js@npm:9.25.1"
   checksum: f5b9c9c40694fbb858fc84ac0f9468ca3f09d8b4935da21dcab3f65c094e8e266a4926ec7bb1e18441440c5ddd722a5f62dabd58096aefbe6b517ed809d8fa8b
@@ -3436,7 +3443,7 @@ __metadata:
   resolution: "civil-ccd-definition@workspace:."
   dependencies:
     "@axe-core/playwright": ^4.10.0
-    "@eslint/js": ^9.11.0
+    "@eslint/js": 9.11.0
     "@playwright/test": ^1.47.1
     "@types/node": ^22.5.5
     "@typescript-eslint/eslint-plugin": ^8.0.0
@@ -3907,8 +3914,8 @@ __metadata:
 
 "custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
   version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=4ee97c&locator=civil-ccd-definition%40workspace%3A."
-  checksum: 5c1d115131a4780689435add226a1b63286624b387a8abd52028974e84186f9114c12818c5397bdf7c99a1a1c9e296387185e7761a1fa2037d679460ec91a0fe
+  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=f898a1&locator=civil-ccd-definition%40workspace%3A."
+  checksum: b169bb261faddb2afd0461f3077824af732ef58b244bd7badfd030817f96c1c5a612389eeb429ccea70757d5f193e6227d24f3b6af81afc3017b93231138d86e
   languageName: node
   linkType: hard
 
