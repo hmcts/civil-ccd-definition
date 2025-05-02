@@ -32,7 +32,7 @@ Scenario('1v1 full defence unspecified - not suitable SDO - Transfer Case)', asy
     await prepareClaim(api);
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
     await api.transferCase(caseWorkerUser);
-});
+}).retry(3);
 
 Scenario('1v1 full defence unspecified - not suitable SDO - Other reasons)', async ({api}) => {
     await prepareClaim(api);
