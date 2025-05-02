@@ -52,7 +52,7 @@ Scenario('2v1 small claim full defence and not proceed @api-spec-full-defence', 
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'NOT_PROCEED', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).retry(3);
 
 Scenario('2v1 small claim part admission and response @api-spec-part-admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');

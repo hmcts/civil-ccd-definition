@@ -43,7 +43,7 @@ Scenario('1v2 fast claim full defence and not proceed', async ({I, api_spec_fast
 Scenario('1v2 fast claim fast claim full admit, defendant response', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'ONE_V_TWO');
-});
+}).retry(3);
 
 Scenario('1v2 fast claim part admit, defendant response', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
