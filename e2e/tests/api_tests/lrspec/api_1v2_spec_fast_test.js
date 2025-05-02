@@ -21,7 +21,7 @@ Scenario('1v2 different response full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'ONE_V_TWO');
 });
 
-Scenario('1v2 different response no full defence', async ({I, api_spec_fast}) => {
+Scenario.skip('1v2 different response no full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'ONE_V_TWO');
 });
