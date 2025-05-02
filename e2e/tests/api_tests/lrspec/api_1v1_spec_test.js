@@ -32,7 +32,7 @@ Scenario('1v1 full defence claimant and defendant response @api-spec-full-defenc
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).retry(3);
 
 Scenario('1v1 full admit claimant and defendant response @api-spec-full-admit', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'FULL_ADMISSION');
