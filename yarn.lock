@@ -3426,7 +3426,7 @@ __metadata:
     mochawesome: ^7.0.1
     node-cache: ^5.1.2
     node-fetch: ^2.6.9
-    playwright: 1.41.1
+    playwright: 1.47.1
     playwright-core: ^1.47.2
     prettier: ^3.3.3
     totp-generator: ^1.0.0
@@ -3869,8 +3869,8 @@ __metadata:
 
 "custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
   version: 1.0.0
-  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=4ee97c&locator=civil-ccd-definition%40workspace%3A."
-  checksum: 5c1d115131a4780689435add226a1b63286624b387a8abd52028974e84186f9114c12818c5397bdf7c99a1a1c9e296387185e7761a1fa2037d679460ec91a0fe
+  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=f898a1&locator=civil-ccd-definition%40workspace%3A."
+  checksum: b169bb261faddb2afd0461f3077824af732ef58b244bd7badfd030817f96c1c5a612389eeb429ccea70757d5f193e6227d24f3b6af81afc3017b93231138d86e
   languageName: node
   linkType: hard
 
@@ -8105,12 +8105,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.41.1":
-  version: 1.41.1
-  resolution: "playwright-core@npm:1.41.1"
+"playwright-core@npm:1.47.1":
+  version: 1.47.1
+  resolution: "playwright-core@npm:1.47.1"
   bin:
     playwright-core: cli.js
-  checksum: c83446a560c6bd85f6f0cd586ff8c643b77e2005567386e12f85890936cc370673114b94cd883246018797cc1580e93b0296ade7d07275bb611b8962f5bb9693
+  checksum: f61cee27a04df439b1e0df48e43bcd4f71cc41adcac3c35ac2df538d27be52cd1da91220295abb089c702ef40311af0dce12e1a71959ec15933bcdc1e6091563
   languageName: node
   linkType: hard
 
@@ -8123,18 +8123,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright@npm:1.41.1":
-  version: 1.41.1
-  resolution: "playwright@npm:1.41.1"
+"playwright@npm:1.47.1":
+  version: 1.47.1
+  resolution: "playwright@npm:1.47.1"
   dependencies:
     fsevents: 2.3.2
-    playwright-core: 1.41.1
+    playwright-core: 1.47.1
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 3da7fb929abdec6adbdd8829f840580f5f210713214a8d230b130127f2270403eb2113c6c1418012221149707250fff896794c7c22c260dd09a92bf800227f31
+  checksum: 90b9405b20946f1dd6bafc5b0248bb8a0217e850b1f740c672448cb0a284c57c7faef4c7207807d1a94cb45172fc5903478b12aef4f1bd03541630e8ab6267c1
   languageName: node
   linkType: hard
 
