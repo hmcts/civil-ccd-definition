@@ -92,7 +92,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "claimIssuedHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR claimIssuedHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR hearingHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR claimIssuedHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\""
+    "EventEnablingCondition": "claimIssuedHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR claimIssuedHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR hearingHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR claimIssuedHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\" OR claimIssuedHwfDetails.hwfCaseEvent=\"MORE_INFORMATION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"MORE_INFORMATION_HWF\" OR claimIssuedHwfDetails.hwfCaseEvent=\"INVALID_HWF_REFERENCE\" OR hearingHwfDetails.hwfCaseEvent=\"INVALID_HWF_REFERENCE\" OR claimIssuedHwfDetails.hwfCaseEvent=\"UPDATE_HELP_WITH_FEE_NUMBER\" OR hearingHwfDetails.hwfCaseEvent=\"UPDATE_HELP_WITH_FEE_NUMBER\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
