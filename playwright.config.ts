@@ -38,6 +38,7 @@ export default defineConfig({
   },
   outputDir: './playwright-test-results',
   use: {
+    ignoreHTTPSErrors: true,
     actionTimeout: config.playwright.actionTimeout,
     headless: !config.playwright.showBrowserWindow,
     video: { mode: 'retain-on-failure' },
