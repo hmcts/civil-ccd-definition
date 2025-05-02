@@ -1085,13 +1085,13 @@ __metadata:
   linkType: hard
 
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
-  version: 4.6.1
-  resolution: "@eslint-community/eslint-utils@npm:4.6.1"
+  version: 4.7.0
+  resolution: "@eslint-community/eslint-utils@npm:4.7.0"
   dependencies:
     eslint-visitor-keys: ^3.4.3
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
-  checksum: 924f38a069cc281dacd231f1293f5969dff98d4ad867f044ee384f1ad35937c27d12222a45a7da0b294253ffbaccc0a6f7878aed3eea8f4f9345f195ae24dea2
+  checksum: b177e3b75c0b8d0e5d71f1c532edb7e40b31313db61f0c879f9bf19c3abb2783c6c372b5deb2396dab4432f2946b9972122ac682e77010376c029dfd0149c681
   languageName: node
   linkType: hard
 
@@ -3902,6 +3902,13 @@ __metadata:
   dependencies:
     css-what: ~3.3.0
   checksum: d47b6d0543efed5bb16d6eaf935e2ea8bde4ea64438b304bfb8be8c3de3c6b59eb977e04a91ba86cd22752c89939419e59785d9954ea81244f125625abeae2eb
+  languageName: node
+  linkType: hard
+
+"custom-eslint-plugin@file:plugins/custom-eslint-plugins::locator=civil-ccd-definition%40workspace%3A.":
+  version: 1.0.0
+  resolution: "custom-eslint-plugin@file:plugins/custom-eslint-plugins#plugins/custom-eslint-plugins::hash=f898a1&locator=civil-ccd-definition%40workspace%3A."
+  checksum: b169bb261faddb2afd0461f3077824af732ef58b244bd7badfd030817f96c1c5a612389eeb429ccea70757d5f193e6227d24f3b6af81afc3017b93231138d86e
   languageName: node
   linkType: hard
 
