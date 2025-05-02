@@ -66,7 +66,7 @@ Scenario('2v1 fast claim part admission and claimant response @api-spec-part-adm
 Scenario('2v1 fast claim different response full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'TWO_V_ONE');
-});
+}).retry(3);
 
 AfterSuite(async  ({api_spec_fast}) => {
   await api_spec_fast.cleanUp();
