@@ -2065,7 +2065,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1RepaymentPlanAdmitFullInterestLabel",
-    "Label": "This amount includes interest if it has been claimed which will continue to accrue on the amount outstanding up to the date of judgment or earlier payment.\n\nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
+    "Label": "This amount includes interest if it has been claimed which may continue to accrue on the amount outstanding up to the date of judgment or earlier payment.\n\nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2097,7 +2097,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2RepaymentPlanAdmitFullInterestLabel",
-    "Label": "This amount includes interest if it has been claimed which will continue to accrue on the amount outstanding up to the date of judgment or earlier payment.\n\nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
+    "Label": "This amount includes interest if it has been claimed which may continue to accrue on the amount outstanding up to the date of judgment or earlier payment.\n\nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
