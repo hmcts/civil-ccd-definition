@@ -176,6 +176,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "totalClaimAmountPlusInterest",
+    "Label": "Total Claim amount + interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "superClaimType",
     "Label": "Total Interest",
     "FieldType": "Text",
@@ -2041,7 +2049,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1RepaymentPlanLabel2",
-    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "Label": "The total amount claimed is £${totalClaimAmountPlusInterest}. \nThis amount includes interest if it has been claimed which may continue to accrue on the amount outstanding up to the day of judgment or earlier payment. \nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2057,7 +2065,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2RepaymentPlanLabel2",
-    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
+    "Label": "The total amount claimed is £${totalClaimAmountPlusInterest}. \nThis amount includes interest if it has been claimed which may continue to accrue on the amount outstanding up to the day of judgment or earlier payment. \nThe above amount does not include the claim fee and any fixed costs claimed which are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -2123,7 +2131,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2131,7 +2139,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2139,7 +2147,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
-    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
