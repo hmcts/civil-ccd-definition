@@ -55,24 +55,6 @@ Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario('Claimant queries', async ({api, qmSteps}) => {
-  if (isQueryManagementEnabled) {
-    const caseId = await api.getCaseId();
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY);
-    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
-    await qmSteps.followUpOnQuery(caseId, config.applicantSolicitorUser, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
-    }
-});
-
-Scenario('Defendant queries', async ({api, qmSteps}) => {
-  if (isQueryManagementEnabled) {
-    const caseId = await api.getCaseId();
-    const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_QUERY, false);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY,);
-    await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
-  }
-});
-
 Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
@@ -84,6 +66,24 @@ Scenario('Manage case flags', async ({api}) => {
 Scenario('Manage contact information', async ({api}) => {
   await api.manageDefendant1Details(config.adminUser);
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
+});
+
+Scenario('Claimant queries', async ({api, qmSteps}) => {
+  if (isQueryManagementEnabled) {
+    const caseId = await api.getCaseId();
+    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+    await qmSteps.followUpOnQuery(caseId, config.applicantSolicitorUser, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+  }
+});
+
+Scenario('Defendant queries', async ({api, qmSteps}) => {
+  if (isQueryManagementEnabled) {
+    const caseId = await api.getCaseId();
+    const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_QUERY, false);
+    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY,);
+    await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
+  }
 });
 
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
