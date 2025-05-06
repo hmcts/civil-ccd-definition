@@ -1,9 +1,16 @@
- 
+
 
 const config = require('../../../config.js');
+const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_QUERY} = require('../../../fixtures/queryTypes');
+const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'TWO_V_ONE';
+let isQueryManagementEnabled = false;
 
-Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod @api-nightly-prod @api-unspec-full-defence');
+Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod @api-nightly-prod @api-unspec-full-defence @QM');
+
+Before(async () => {
+  isQueryManagementEnabled = await checkLRQueryManagementEnabled();
+});
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -43,6 +50,24 @@ Scenario('Defendant response', async ({I, api}) => {
 
 Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+});
+
+Scenario('Claimant queries', async ({api, qmSteps}) => {
+  if (isQueryManagementEnabled) {
+    const caseId = await api.getCaseId();
+    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+    await qmSteps.followUpOnQuery(caseId, config.applicantSolicitorUser, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
+  }
+});
+
+Scenario('Defendant queries', async ({api, qmSteps}) => {
+  if (isQueryManagementEnabled) {
+    const caseId = await api.getCaseId();
+    const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_QUERY);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
+    await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
+  }
 });
 
 Scenario('Add case flags', async ({api}) => {
