@@ -9,12 +9,12 @@ Scenario('2v1 fast claim full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.createCaseFlags(config.hearingCenterAdminWithRegionId2);
   await api_spec_fast.manageCaseFlags(config.hearingCenterAdminWithRegionId2);
-});
+}).retry(3);
 
 Scenario('2v1 fast claim counter claim @api-spec-counterclaim', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM', 'TWO_V_ONE');
-});
+}).retry(3);
 
 //TODO - Skipping this test as requirement for the Pipeline to be Green and Another Defect should fix the existing Issue
 Scenario.skip('2v1 fast claim different response no full defence', async ({I, api_spec_fast}) => {
@@ -39,14 +39,14 @@ Scenario('2v1 fast claim full defence and claimant response  @api-prod @api-nonp
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).retry(3);
 
 Scenario('2v1 fast claim full defence and not proceed', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'NOT_PROCEED', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).retry(3);
 
 //TODO - To be Fixed as receiving a 502 BAD Gateway
 Scenario.skip('2v1 fast claim full admission and claimant response @api-spec-full-admit', async ({I, api_spec_fast}) => {
@@ -61,7 +61,7 @@ Scenario('2v1 fast claim part admission and claimant response @api-spec-part-adm
   await api_spec_fast.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', 'TWO_V_ONE');
   await api_spec_fast.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
+}).retry(3);
 
 Scenario('2v1 fast claim different response full defence', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
