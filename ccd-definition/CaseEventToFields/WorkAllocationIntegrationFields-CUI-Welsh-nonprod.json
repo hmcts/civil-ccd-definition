@@ -58,5 +58,41 @@
     "PageID": "WorkAllocationIntegrationFields",
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
+    "CaseFieldID": "respondent1LiPResponse",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
+    "CaseFieldID": "applicant1DQLanguage",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
+    "CaseFieldID": "respondent1DQLanguage",
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
   }
 ]
