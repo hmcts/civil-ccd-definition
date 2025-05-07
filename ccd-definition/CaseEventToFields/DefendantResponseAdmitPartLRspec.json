@@ -239,7 +239,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "responseClaimAdmitFullClaimSpecExtraCostsLabel2",
+    "CaseFieldID": "responseClaimAdmitFullClaimmWhenToPaySpecLabel2",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
