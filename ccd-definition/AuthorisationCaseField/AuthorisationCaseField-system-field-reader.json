@@ -6649,6 +6649,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabelBothDefendants",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "cosLabelForClaimant2_1",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -9260,6 +9266,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabel",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabel2",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
