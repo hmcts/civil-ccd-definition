@@ -2993,7 +2993,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabel",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -3013,7 +3013,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabel2",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel2",
     "AccessControl": [
       {
         "UserRoles": [
@@ -3053,7 +3053,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecExtraCostsLabelBothDefendants",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabelBothDefendants",
     "AccessControl": [
       {
         "UserRoles": [
