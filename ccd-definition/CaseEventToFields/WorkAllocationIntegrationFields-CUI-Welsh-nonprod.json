@@ -65,7 +65,7 @@
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntegrationFields",
     "Publish": "Y"
   },
   {
@@ -74,7 +74,7 @@
     "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntegrationFields",
     "Publish": "Y"
   },
   {
@@ -83,7 +83,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntegrationFields",
     "Publish": "Y"
   },
   {
@@ -92,7 +92,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
-    "PageID": "WorkAllocationIntegrationFields",
+    "PageID": "WAIntegrationFields",
     "Publish": "Y"
   }
 ]
