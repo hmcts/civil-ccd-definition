@@ -234,6 +234,17 @@
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
     "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitFullClaimSpecExtraCostsLabel2",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
   },
   {
