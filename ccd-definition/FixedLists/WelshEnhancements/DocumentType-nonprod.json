@@ -4,5 +4,11 @@
     "ListElementCode": "SDO_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Standard Direction Order",
     "DisplayOrder": 28
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "MANUAL_DETERMINATION_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Manual Determination Document",
+    "DisplayOrder": 29
   }
 ]
