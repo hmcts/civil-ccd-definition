@@ -4,27 +4,46 @@
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
     "ListElementCode": "documentId",
-    "DisplayContext": "READONLY"
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryContentOption": "N"
+
+  },
+  {
+    "ID": "documentToKeep",
+    "CaseEventID": "REMOVE_DOCUMENT",
+    "CaseFieldID": "documentToKeepCollection",
+    "ListElementCode": "documentFilename",
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryContentOption": "N"
+
   },
   {
     "ID": "documentToKeep",
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
     "ListElementCode": "caseDocumentToKeep",
-    "DisplayContext": "READONLY"
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryContentOption": "N"
   },
   {
     "ID": "documentToKeep",
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
     "ListElementCode": "uploadedDate",
-    "DisplayContext": "READONLY"
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryContentOption": "N"
   },
   {
     "ID": "documentToKeep",
     "CaseEventID": "REMOVE_DOCUMENT",
     "CaseFieldID": "documentToKeepCollection",
     "ListElementCode": "systemGenerated",
-    "DisplayContext": "READONLY"
+    "DisplayContext": "READONLY",
+    "ShowSummaryChangeOption": "Y",
+    "ShowSummaryContentOption": "N"
   }
 ]

@@ -9,6 +9,14 @@
   },
   {
     "ID": "documentToKeep",
+    "ListElementCode": "documentFilename",
+    "FieldType": "Text",
+    "ElementLabel": "Document Filename",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "documentToKeep",
     "ListElementCode": "caseDocumentToKeep",
     "FieldType": "Document",
     "ElementLabel": "Document",
