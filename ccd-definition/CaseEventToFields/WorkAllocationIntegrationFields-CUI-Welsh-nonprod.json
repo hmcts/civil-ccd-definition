@@ -145,42 +145,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
-    "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 1,
-    "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
-    "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
-    "CaseFieldID": "applicant1DQLanguage",
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
-    "CaseFieldID": "respondent1DQLanguage",
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "Publish": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 12,
@@ -216,6 +180,15 @@
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_LIP_CLAIMANT_MANUAL_DETERMINATION",
+    "CaseFieldID": "preTranslationDocumentType",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
     "Publish": "Y"
   }
 ]
