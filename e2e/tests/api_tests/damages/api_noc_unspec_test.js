@@ -1,4 +1,4 @@
-
+ 
 const {
   applicantSolicitorUser,
   defendantSolicitorUser,
@@ -99,7 +99,7 @@ Scenario('notice of change - 1v2 - unrepresented respondent 2', async ({api, noc
   await api.checkUserCaseAccess(secondDefendantSolicitorUser, true);
 });
 
-Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc}) => {
+Scenario('notice of change - 1v2 - same solicitor to diff solicitor', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'ONE_V_TWO_ONE_LEGAL_REP');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
@@ -116,7 +116,7 @@ Scenario.skip('notice of change - 1v2 - same solicitor to diff solicitor', async
   await api.checkUserCaseAccess(defendantSolicitorUser, false);
 });
 
-Scenario.skip('notice of change - 2v1', async ({api, noc}) => {
+Scenario('notice of change - 2v1', async ({api, noc}) => {
   await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, 'TWO_V_ONE');
   await api.notifyClaim(applicantSolicitorUser);
   await api.notifyClaimDetails(applicantSolicitorUser);
