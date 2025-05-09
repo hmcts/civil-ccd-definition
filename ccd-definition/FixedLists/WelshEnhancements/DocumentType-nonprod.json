@@ -7,8 +7,14 @@
   },
   {
     "ID": "DocumentType",
+    "ListElementCode": "INTERLOC_JUDGMENT_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Interlocutory Judgment",
+    "DisplayOrder": 29
+  },
+  {
+    "ID": "DocumentType",
     "ListElementCode": "MANUAL_DETERMINATION_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Manual Determination Document",
-    "DisplayOrder": 29
+    "DisplayOrder": 30
   }
 ]
