@@ -1,27 +1,24 @@
 const config = require('../../../config.js');
-const {unAssignAllUsers, assignCaseRoleToUser, addUserCaseMapping} = require('../../../api/caseRoleAssignmentHelper');
-const {waitForFinishedBusinessProcess, checkToggleEnabled} = require('../../../api/testingSupport');
-const {PBAv3} = require('../../../fixtures/featureKeys');
+const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
+const {waitForFinishedBusinessProcess} = require('../../../api/testingSupport');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 let caseNumber;
 
-Feature('RPA handoff points tests @rpa-handoff-tests');
+Feature('RPA handoff points tests @e2e-rpa-handoff-tests');
 
 Scenario('Take claim offline', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await I.login(config.defendantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim('fullDefence');
   await I.informAgreedExtensionDate();
 
   await I.login(config.adminUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.caseProceedsInCaseman();
   await I.assertHasEvents(['Amend party details', 'Add a case note']);
   await I.signOut();
-}).retry(3);
+}).retry(0);
 
 Scenario('Defendant - Defend part of Claim', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
@@ -29,18 +26,23 @@ Scenario('Defendant - Defend part of Claim', async ({I}) => {
 
   await waitForFinishedBusinessProcess(caseId());
   await I.navigateToCaseDetails(caseNumber);
-  await I.assertNoEventsAvailable();
+  if(['preview', 'demo'].includes(config.runningEnv))
+    await I.assertHasEvents(['Raise a new query']);
+  else
+    await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3);
+}).retry(2);
 
 Scenario('Defendant - Defends, Claimant decides not to proceed', async ({I}) => {
   await createCaseUpUntilNotifyClaimDetails(I);
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
   await I.respondToDefenceDropClaim();
-  await I.assertNoEventsAvailable();
+  if(['preview', 'demo'].includes(config.runningEnv))
+    await I.assertHasEvents(['Raise a new query']);
+  else
+    await I.assertNoEventsAvailable();
   await I.signOut();
 }).retry(3);
 
@@ -49,13 +51,15 @@ Scenario('Defendant - Defends, Claimant decides to proceed', async ({I}) => {
   await defendantAcknowledgeAndRespondToClaim(I, 'fullDefence', 'fullDefence');
 
   await I.login(config.applicantSolicitorUser);
-  await I.navigateToCaseDetails(caseNumber);
-  await I.respondToDefence();
-  await I.assertNoEventsAvailable();
+  await I.respondToDefence('ONE_V_ONE', 25000);
+  if(['preview', 'demo'].includes(config.runningEnv))
+    await I.assertHasEvents(['Raise a new query']);
+  else
+    await I.assertNoEventsAvailable();
   await I.signOut();
-}).retry(3);
+}).retry(2);
 
-const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) => {
+const createCaseUpUntilNotifyClaimDetails = async (I) => {
   const claimant1 = {
     litigantInPerson: false
   };
@@ -65,16 +69,11 @@ const createCaseUpUntilNotifyClaimDetails = async (I, shouldStayOnline = true) =
     representativeOrgNumber: 2
   };
   await I.login(config.applicantSolicitorUser);
-  await I.createCase(claimant1, null , respondent1, null, shouldStayOnline);
+  await I.createCase(claimant1, null , respondent1, null, 25000);
   caseNumber = await I.grabCaseNumber();
 
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
+  await serviceRequest.openServiceRequestTab();
+  await serviceRequest.payFee(caseId());
 
   await I.notifyClaim();
   await addUserCaseMapping(caseId(),config.applicantSolicitorUser);
@@ -87,7 +86,7 @@ const defendantAcknowledgeAndRespondToClaim = async (I, acknowledgeClaimResponse
   await I.navigateToCaseDetails(caseNumber);
   await I.acknowledgeClaim(acknowledgeClaimResponse);
   await I.informAgreedExtensionDate();
-  await I.respondToClaim({defendant1Response: respondToClaimResponse});
+  await I.respondToClaim({defendant1Response: respondToClaimResponse, claimValue: 25000});
 };
 
 AfterSuite(async  () => {

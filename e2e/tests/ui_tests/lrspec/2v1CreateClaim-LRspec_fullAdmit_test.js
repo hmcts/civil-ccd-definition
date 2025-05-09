@@ -1,49 +1,41 @@
 const config = require('../../../config.js');
-const {assignCaseToLRSpecDefendant, checkToggleEnabled} = require('../../../api/testingSupport');
+const {assignCaseToLRSpecDefendant} = require('../../../api/testingSupport');
 const {addUserCaseMapping, unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
-const {PBAv3} = require('../../../fixtures/featureKeys');
 const serviceRequest = require('../../../pages/createClaim/serviceRequest.page');
 
 // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
 //const caseEventMessage = eventName => `Case ${caseNumber} has been updated with event: ${eventName}`;
-const caseId = () => `${caseNumber.split('-').join('').replace(/#/, '')}`;
 
 let caseNumber;
 
-Feature('2v1 Multi Party full admit Claim Creation 2v1 @e2e-tests-spec @e2e-nightly-prod');
+Feature('2v1 Multi Party full admit Claim Creation 2v1 @e2e-spec-full-admit @e2e-nightly-prod');
 
 Scenario('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims', async ({LRspec}) => {
   console.log('Applicant solicitor creates 2v1 specified claim with 2 organisation vs 1 company for fast-track claims');
   await LRspec.login(config.applicantSolicitorUser);
   await LRspec.createCaseSpecified('2v1 specified claim - fast track', 'organisation', 'organisation', 'company', null, 18000);
   caseNumber = await LRspec.grabCaseNumber();
-
-  const pbaV3 = await checkToggleEnabled(PBAv3);
-  console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-  if (pbaV3) {
-    await serviceRequest.openServiceRequestTab();
-    await serviceRequest.payFee(caseId());
-  }
+  await serviceRequest.openServiceRequestTab();
+  await serviceRequest.payFee(caseNumber);
 
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(`Case ${caseNumber} has been created.`);
-  addUserCaseMapping(caseId(), config.applicantSolicitorUser);
-}).retry(3);
+  addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
+}).retry(2);
 
-Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay by setDate', async ({LRspec}) => {
-  await assignCaseToLRSpecDefendant(caseId());
+Scenario('2v1 Respond To Claim - Defendants solicitor Admits the claim and defendant wants to pay immediately', async ({LRspec}) => {
+  await assignCaseToLRSpecDefendant(caseNumber);
   await LRspec.login(config.defendantSolicitorUser);
   await LRspec.respondToClaimFullAdmit({
     twoDefendants: false,
     defendant1Response: 'fullAdmission',
     twoClaimants: true,
     claimType: 'fast',
-    defenceType: 'setDate'
+    defenceType: 'immediately'
   });
   // Reinstate the line below when https://tools.hmcts.net/jira/browse/EUI-6286 is fixed
   //await LRspec.see(caseEventMessage('Respond to claim'));
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();

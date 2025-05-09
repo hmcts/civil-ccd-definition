@@ -56,7 +56,7 @@ module.exports = {
   },
 
   async proceedWithClaim(mpScenario) {
-    I.waitForElement(this.fields(mpScenario).proceed.id);
+    await I.waitForElement(this.fields(mpScenario).proceed.id);
     await I.runAccessibilityTest();
     await within(this.fields(mpScenario).proceed.id, () => {
       I.click(this.fields(mpScenario).proceed.options.yes);

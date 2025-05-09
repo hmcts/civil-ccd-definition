@@ -1,3 +1,5 @@
+const { waitForFinishedBusinessProcess } = require('../../api/testingSupport');
+
 const {I} = inject();
 
 module.exports = {

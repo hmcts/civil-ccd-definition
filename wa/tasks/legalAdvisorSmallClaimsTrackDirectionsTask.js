@@ -6,7 +6,7 @@ module.exports = {
     security_classification: 'PUBLIC',
     task_title: 'Legal Advisor Small Claims Track Directions',
     location_name: 'Central London County Court',
-    location: '192280',
+    location: '20262',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
     region: '1',

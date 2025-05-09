@@ -28,6 +28,6 @@ module.exports = {
 
     I.fillField(this.fields.otherDescription.id, 'A reason other than Application and Judgement request.');
 
-    await I.clickContinue();
+    await I.click('Submit');
   }
 };

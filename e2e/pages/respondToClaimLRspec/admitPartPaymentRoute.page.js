@@ -1,4 +1,5 @@
 const {I} = inject();
+const dataHelper = require('../../api/dataHelper');
 
 module.exports = {
   fields: {
@@ -11,9 +12,9 @@ module.exports = {
 
       },
     },
-    dayOfPayment: 'input[id$="whenWillThisAmountBePaid-day"]',
-    monthOfPayment: 'input[id$="whenWillThisAmountBePaid-month"]',
-    yearOfPayment: 'input[id$="whenWillThisAmountBePaid-year"]',
+    dayOfPayment: '#whenWillThisAmountBePaid-day',
+    monthOfPayment: '#whenWillThisAmountBePaid-month',
+    yearOfPayment: '#whenWillThisAmountBePaid-year',
   },
 
  async selectPaymentRoute(partAdmitType) {
@@ -21,9 +22,10 @@ module.exports = {
    await I.runAccessibilityTest();
    await I.click(this.fields.partAdmitType.options[partAdmitType]);
    if ('setDate' == partAdmitType) {
-      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-day\')])[2]', 1);
-      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-month\')])[2]', 3);
-      await I.fillField('(//input[contains(@id, \'whenWillThisAmountBePaid-year\')])[2]', 2023);
+      const date = dataHelper.incrementDate(new Date(), 0, 1, 0);
+      await I.fillField(this.fields.dayOfPayment, `${date.getDate()}`);
+      await I.fillField(this.fields.monthOfPayment, `${date.getMonth() + 1}`);
+      await I.fillField(this.fields.yearOfPayment, `${date.getFullYear()}`);
     }
 
    await I.clickContinue();

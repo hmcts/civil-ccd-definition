@@ -5,7 +5,7 @@ let civilCaseReference;
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 
-Feature('Intermediate track - Upload documents - Bundle @master-e2e-ft');
+Feature('Intermediate track - Upload documents - Bundle @master-e2e-ft @e2e-minti');
 
 async function prepareSpecClaim(api_spec, mpScenario) {
   civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
@@ -24,7 +24,7 @@ Scenario('Spec Claim - Int track - 1v2 diff solicitor - Upload bundle', async ({
   await api_spec.createFinalOrderJO(judgeUser, 'FREE_FORM_ORDER');
   await I.login(config.secondDefendantSolicitorUser);
   await I.evidenceUpload(civilCaseReference, true, true);
-});
+}).retry(1);
 
 AfterSuite(async ({api_spec}) => {
  await api_spec.cleanUp();

@@ -10,10 +10,10 @@ module.exports = {
   },
 
   async addFixedCosts() {
-    I.waitForElement(this.fields.fixedCosts.claimFixedCosts);
+    await I.waitForElement(this.fields.fixedCosts.claimFixedCosts);
     await I.runAccessibilityTest();
     await I.click('Yes');
-    I.fillField(this.fields.fixedCostAmount, '20000');
+    await I.fillField(this.fields.fixedCosts.fixedCostAmount, '100');
     await I.clickContinue();
   },
 };
