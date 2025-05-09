@@ -177,7 +177,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "typeOfDiscontinuance",
-    "Label": " ",
+    "Label": "Is this a full or part discontinuance?",
     "FieldType": "FixedRadioList",
     "FieldTypeParameter": "DiscontinuanceTypeList",
     "SecurityClassification": "Public",
