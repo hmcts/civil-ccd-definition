@@ -50,7 +50,7 @@ module.exports = {
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
     wiremockService: process.env.WIREMOCK_URL || 'http://localhost:8765'
-    },
+  },
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
