@@ -2803,6 +2803,12 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1RepaymentPlanLabel2FullAdmission",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "updateExpertsDetailsForm",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -4394,6 +4400,12 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2RepaymentPlanLabel2",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent2RepaymentPlanLabel2FullAdmission",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
