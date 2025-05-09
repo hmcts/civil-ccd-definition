@@ -30,5 +30,11 @@
     "CaseEventID": "UPDATE_DASHBOARD_NOTIFICATIONS_RAISED_QUERY",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "UPDATE_DASHBOARD_NOTIFICATIONS_RESPONSE_TO_QUERY",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
