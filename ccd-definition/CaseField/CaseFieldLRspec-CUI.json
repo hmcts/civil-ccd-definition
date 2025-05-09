@@ -465,7 +465,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostOption",
     "Label": " ",
-    "HintText": "This will include fixed costs for judgement",
+    "HintText": "This will include fixed costs for judgment",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
