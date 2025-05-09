@@ -202,5 +202,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
