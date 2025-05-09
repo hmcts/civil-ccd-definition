@@ -15,8 +15,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "UPDATE_DASHBOARD_NOTIFICATIONS_RESPONSE_TO_QUERY",
-    "Name": "Update dashboard for lip",
-    "Description": "Update dashboard notification for lip",
+    "Name": "Update dashboard qm response",
+    "Description": "Update dashboard qm response",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
