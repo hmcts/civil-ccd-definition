@@ -259,5 +259,77 @@
     "CaseFieldID": "gaDraftDocRespondentSolTwo",
     "TabFieldDisplayOrder": 33,
     "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingOrderDocStaff",
+    "TabFieldDisplayOrder": 34,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingOrderDocClaimant",
+    "TabFieldDisplayOrder": 35,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingOrderDocRespondentSol",
+    "TabFieldDisplayOrder": 36,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "hearingOrderDocRespondentSolTwo",
+    "TabFieldDisplayOrder": 37,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "requestForInfoDocStaff",
+    "TabFieldDisplayOrder": 38,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "requestForInfoDocClaimant",
+    "TabFieldDisplayOrder": 39,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "requestForInfoDocRespondentSol",
+    "TabFieldDisplayOrder": 40,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "Documents",
+    "TabLabel": "Claim documents",
+    "TabDisplayOrder": 4,
+    "CaseFieldID": "requestForInfoDocRespondentSolTwo",
+    "TabFieldDisplayOrder": 41,
+    "DisplayContextParameter": "#TABLE(documentType, createdDatetime, documentLink, createdBy)"
   }
 ]
