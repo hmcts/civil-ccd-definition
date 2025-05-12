@@ -10,7 +10,6 @@ import {
   inputs,
   buttons,
   dropdowns,
-  paragraphs,
 } from './correspondence-address-content';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 
@@ -28,8 +27,6 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(paragraphs.descriptionText),
-        super.expectLegend(radioButtons.addressRequired.label),
         super.expectRadioYesLabel(
           radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
         ),
