@@ -13,6 +13,24 @@ let isQueryManagementEnabled = false;
 
 Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
 
+async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+  if (isQueryManagementEnabled) {
+    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
+    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+  }
+}
+
+async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+  if (isQueryManagementEnabled) {
+    const claimantQuery = await qmSteps.raiseLipQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantQuery.id), claimantQuery.id);
+    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantQuery, queryType);
+    const claimantFollowUp = await qmSteps.followUpOnLipQuery(caseId, config.applicantCitizenUser, claimantQuery, queryType);
+    await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantFollowUp.id), claimantFollowUp.id);
+  }
+}
+
 Before(async () => {
   isQueryManagementEnabled = await checkLRQueryManagementEnabled();
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -57,21 +75,14 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
-
-    if (isQueryManagementEnabled) {
-      const claimantQuery = await qmSteps.raiseLipQuery(caseId, config.applicantCitizenUser, APPLICANT_CITIZEN_QUERY);
-      await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantQuery.id), claimantQuery.id);
-      await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantQuery, APPLICANT_CITIZEN_QUERY);
-      const claimantSolicitorFollowUp = await qmSteps.followUpOnLipQuery(caseId, config.applicantCitizenUser, claimantQuery, APPLICANT_CITIZEN_QUERY);
-      await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantSolicitorFollowUp.id), claimantSolicitorFollowUp.id);
-
-      const defendantQuery = await qmSteps.raiseLipQuery(caseId, config.defendantCitizenUser2, RESPONDENT_CITIZEN_QUERY);
-      await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(defendantQuery.id), defendantQuery.id);
-      await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, defendantQuery, RESPONDENT_CITIZEN_QUERY);
-      const defendantFollowUp = await qmSteps.followUpOnLipQuery(caseId, config.defendantCitizenUser2, defendantQuery, RESPONDENT_CITIZEN_QUERY);
-      await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(defendantFollowUp.id), defendantFollowUp.id);
-    }
-
+    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+      config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
+      APPLICANT_CITIZEN_QUERY, true
+    );
+    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+      config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
+      RESPONDENT_CITIZEN_QUERY, true
+    );
     await api_spec_cui.evidenceUploadApplicant(config.applicantCitizenUser);
     await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
     await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL', 'CUI');
@@ -106,18 +117,17 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled @api-ni
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps}) => {
-  await  prepareClaimLiPvLR(api_spec_cui, noc, true);
-
-  if (isQueryManagementEnabled) {
-    const claimantQuery = await qmSteps.raiseLipQuery(caseId, config.applicantCitizenUser, APPLICANT_CITIZEN_QUERY);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, claimantQuery, APPLICANT_CITIZEN_QUERY);
-    await qmSteps.followUpOnLipQuery(caseId, config.applicantCitizenUser, claimantQuery, APPLICANT_CITIZEN_QUERY);
-
-    const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_QUERY, false);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
-    await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
-  }
+Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps
+}) => {
+  await prepareClaimLiPvLR(api_spec_cui, noc, true);
+  await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+    config.applicantCitizenUser, config.ctscAdminUser,
+    APPLICANT_CITIZEN_QUERY, false
+  );
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+    config.defendantSolicitorUser, config.ctscAdminUser,
+    RESPONDENT_SOLICITOR_QUERY, false
+  );
 }).tag('@QM');
 
 async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
