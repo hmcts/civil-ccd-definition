@@ -21,13 +21,13 @@ async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId
   }
 }
 
-async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, citizenUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantQuery = await qmSteps.raiseLipQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantQuery.id), claimantQuery.id);
-    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantQuery, queryType);
-    const claimantFollowUp = await qmSteps.followUpOnLipQuery(caseId, config.applicantCitizenUser, claimantQuery, queryType);
-    await qmSteps.validateQmResponseTask(caseId, config.hearingCenterAdminWithRegionId1, respondToQueryAdminTask(claimantFollowUp.id), claimantFollowUp.id);
+    const claimantQuery = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(claimantQuery.id), claimantQuery.id);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantQuery, queryType);
+    const claimantFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, claimantQuery, queryType);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(claimantFollowUp.id), claimantFollowUp.id);
   }
 }
 

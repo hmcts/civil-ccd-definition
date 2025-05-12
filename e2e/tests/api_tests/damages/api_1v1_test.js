@@ -7,7 +7,7 @@ let isQueryManagementEnabled = false;
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
 Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM @testGL');
 
-async function raiseRespondAndFollowUpToQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
     const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
     await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
@@ -77,14 +77,14 @@ Scenario('Manage contact information', async ({api}) => {
 });
 
 Scenario('Claimant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToQueriesScenario(qmSteps, await api.getCaseId(),
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
     APPLICANT_SOLICITOR_QUERY, true
   );
 });
 
 Scenario('Defendant queries', async ({api, qmSteps}) => {
-  await raiseRespondAndFollowUpToQueriesScenario(qmSteps, await api.getCaseId(),
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.defendantSolicitorUser, config.ctscAdminUser,
     RESPONDENT_SOLICITOR_QUERY, false
   );
