@@ -10,5 +10,11 @@
     "ListElementCode": "INTERLOC_JUDGMENT_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Interlocutory Judgment",
     "DisplayOrder": 29
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Settlement Agreement",
+    "DisplayOrder": 30
   }
 ]
