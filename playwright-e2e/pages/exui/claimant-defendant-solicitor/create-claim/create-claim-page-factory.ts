@@ -36,7 +36,7 @@ import InterestFromSpecificDate from './lr-spec/interest-from-specific-date/inte
 import InterestSummaryPage from './lr-spec/interest-summary/interest-summary-page';
 import LegalRepresentationRespondent2Page from './lr-spec/legal-representation-respondent-2/legal-representation-respondent-2-page';
 import LegalRepresentationSpecPage from './lr-spec/legal-representation-spec/legal-representation-spec-page';
-import SpecRespondent2CorrespondenceAddressPage from './lr-spec/respondent-2-correspondence-address-spec/respondent-2-correspondence-address-page';
+import SpecRespondent2CorrespondenceAddressPage from './lr-spec/spec-respondent-2-correspondence-address/spec-respondent-2-correspondence-address-page';
 import SameRateInterestSelectionPage from './lr-spec/same-rate-interest-selection/same-rate-interest-selection-page';
 import SecondDefendantSolicitorEmailSpecPage from './lr-spec/second-defendant-solicitor-email-spec/second-defendant-solicitor-email-spec-page';
 import SecondDefendantSolicitorOrganisationSpecPage from './lr-spec/second-defendant-solicitor-organisation-spec/second-defendant-solicitor-organisation-spec-page';
