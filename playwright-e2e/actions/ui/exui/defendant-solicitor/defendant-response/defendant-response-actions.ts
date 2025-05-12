@@ -114,6 +114,20 @@ export default class DefendantResponseActions extends BaseTestData {
     await disclosureOfNonElectronicDocumentsDS2Page.submit();
   }
 
+  async dqSmallTrackDS1() {
+    const { determinationWithoutHearingDS1Page } = this.defendantResponsePageFactory;
+    await determinationWithoutHearingDS1Page.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingDS1Page.selectYes();
+    await determinationWithoutHearingDS1Page.submit();
+  }
+
+  async dqSmallTrackDS2() {
+    const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
+    await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingDS2Page.selectYes();
+    await determinationWithoutHearingDS2Page.submit();
+  }
+
   async dqDS1() {
     const { expertsDS1Page } = this.defendantResponsePageFactory;
     await expertsDS1Page.verifyContent(this.ccdCaseData);
