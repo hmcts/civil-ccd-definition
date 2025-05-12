@@ -24,7 +24,7 @@ export default class PartyTypeIndividualFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     if (this.claimantDefendantParty.partyType === PartyType.CLAIMANT) {
       await super.expectLegend(inputs.dateOfBirth.label, { count: 1 });
-      // await this.dateOfBirthFragment.verifyContent(this.claimantDefendantPartyType);
+      // await this.dateOfBirthFragment.verifyContent(this.claimantDefendantPartyType); Issue covered by: CCD-6357
     }
     await super.runVerifications(
       [
