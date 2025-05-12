@@ -7,6 +7,14 @@ let isQueryManagementEnabled = false;
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
 Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM @testGL');
 
+async function raiseRespondAndFollowUpToQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+  if (isQueryManagementEnabled) {
+    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
+    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+  }
+}
+
 Before(async () => {
   isQueryManagementEnabled = await checkLRQueryManagementEnabled();
 });
@@ -69,21 +77,17 @@ Scenario('Manage contact information', async ({api}) => {
 });
 
 Scenario('Claimant queries', async ({api, qmSteps}) => {
-  if (isQueryManagementEnabled) {
-    const caseId = await api.getCaseId();
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY);
-    await qmSteps.respondToQuery(caseId, config.hearingCenterAdminWithRegionId1, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
-    await qmSteps.followUpOnQuery(caseId, config.applicantSolicitorUser, claimantSolicitorQuery, APPLICANT_SOLICITOR_QUERY);
-  }
+  await raiseRespondAndFollowUpToQueriesScenario(qmSteps, await api.getCaseId(),
+    config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+    APPLICANT_SOLICITOR_QUERY, true
+  );
 });
 
 Scenario('Defendant queries', async ({api, qmSteps}) => {
-  if (isQueryManagementEnabled) {
-    const caseId = await api.getCaseId();
-    const defendantSolicitorQuery = await qmSteps.raiseQuery(caseId, config.defendantSolicitorUser, RESPONDENT_SOLICITOR_QUERY, false);
-    await qmSteps.respondToQuery(caseId, config.ctscAdminUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY,);
-    await qmSteps.followUpOnQuery(caseId, config.defendantSolicitorUser, defendantSolicitorQuery, RESPONDENT_SOLICITOR_QUERY);
-  }
+  await raiseRespondAndFollowUpToQueriesScenario(qmSteps, await api.getCaseId(),
+    config.defendantSolicitorUser, config.ctscAdminUser,
+    RESPONDENT_SOLICITOR_QUERY, false
+  );
 });
 
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {

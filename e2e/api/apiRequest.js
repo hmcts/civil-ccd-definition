@@ -63,7 +63,13 @@ const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
         'Authorization': `Bearer ${userToken}`,
         'ServiceAuthorization': `Bearer ${s2sToken}`
       }, inputData, 'POST', expectedStatus)
-      .then(async response => await response.json());
+      .then(async response => {
+        if (response.status !== expectedStatus) {
+          throw new Error(`There was an issue retrieving wa tasks. Expected status: ${expectedStatus}, actual status: ${response.status}, `
+            + `message: ${response.statusText}, url: ${response.url}`);
+        }
+        return await response.json();
+      });
 };
 
 module.exports = {
