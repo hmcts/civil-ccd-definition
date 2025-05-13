@@ -34,7 +34,7 @@ const createQueryPayload = (caseData, queryType, newMessage) => {
     return queryPayload;
 };
 
-const triggerQueryEvent = async (caseId, event, queryType, newMessage) => {
+const triggerCaseworkerQueryEvent = async (caseId, event, queryType, newMessage) => {
     const updatedCaseData = await triggerCaseworkerEvent(caseId, event,
         (caseData) => createQueryPayload(caseData, queryType, newMessage));
 
@@ -90,24 +90,24 @@ const completeQueryResponseTask = async (user, caseId, queryId) => {
 };
 
 module.exports = {
-    raiseQuery: async (caseId, user, queryType, isHearingRelated= true) => {
+    raiseLRQuery: async (caseId, user, queryType, isHearingRelated= true) => {
         console.log(`Raising a query as: ${user.email}`);
         await apiRequest.setupTokens(user);
         const newMessage = (await initialQueryMessage(queryType.partyName, apiRequest.getTokens().userId, isHearingRelated));
-        return triggerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
+        return triggerCaseworkerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
     },
     respondToQuery: async (caseId, user, initialQueryMessage, queryType) => {
         console.log(`Responding to query as: ${user.email}`);
         await apiRequest.setupTokens(user);
         const newMessage = await queryResponseMessage(initialQueryMessage, apiRequest.getTokens().userId);
-        await triggerQueryEvent(caseId, RESPOND_QUERY_EVENT, queryType, newMessage);
+        await triggerCaseworkerQueryEvent(caseId, RESPOND_QUERY_EVENT, queryType, newMessage);
         await completeQueryResponseTask(user, caseId, initialQueryMessage.id);
     },
-    followUpOnQuery: async (caseId, user, initialQueryMessage, queryType) => {
+    followUpOnLRQuery: async (caseId, user, initialQueryMessage, queryType) => {
         console.log(`Following up on query as: ${user.email}`);
         await apiRequest.setupTokens(user);
         const newMessage = await followUpQueryMessage(initialQueryMessage, apiRequest.getTokens().userId);
-        return triggerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
+        return triggerCaseworkerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
     },
     raiseLipQuery: async (caseId, user, queryType, isHearingRelated=true) => {
         console.log(`Raising a query as: ${user.email}`);

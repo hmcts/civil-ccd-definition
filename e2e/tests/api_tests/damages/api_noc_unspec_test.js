@@ -14,9 +14,9 @@ Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
-    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
   }
 }
 

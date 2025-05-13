@@ -10,9 +10,9 @@ Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod @
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    const claimantSolicitorQuery = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
     await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
-    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
   }
 }
 
