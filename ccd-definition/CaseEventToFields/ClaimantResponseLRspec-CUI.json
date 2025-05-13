@@ -590,10 +590,10 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "claimInterest",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 7,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 24,
     "DisplayContext": "READONLY",
-    "PageID": "CcjJudgmentSummary",
+    "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
@@ -617,7 +617,7 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimInterest =\"Yes\" "
+    "FieldShowCondition": "claimInterest =\"Yes\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
