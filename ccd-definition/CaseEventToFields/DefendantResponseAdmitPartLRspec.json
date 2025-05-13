@@ -1116,18 +1116,6 @@
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_ADMISSION\"",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlanLabel2FullAdmission",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -1160,18 +1148,6 @@
     "PageDisplayOrder": 40,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric!=\"FULL_ADMISSION\"",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel2FullAdmission",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
