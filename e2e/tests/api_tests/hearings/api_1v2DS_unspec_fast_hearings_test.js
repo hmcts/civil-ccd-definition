@@ -24,11 +24,11 @@ Before(async () => {
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType) {
   if (isQueryManagementEnabled) {
-    const query = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, false);
+    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, false);
     await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryCTSCTask(query.id), query.id);
     await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-    const claimantSolicitorFollowUp = await qmSteps.followUpOnQuery(caseId, solicitorUser, query, queryType);
-    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryCTSCTask(claimantSolicitorFollowUp.id), claimantSolicitorFollowUp.id);
+    const queryFollowUp = await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryCTSCTask(queryFollowUp.id), queryFollowUp.id);
   }
 }
 
