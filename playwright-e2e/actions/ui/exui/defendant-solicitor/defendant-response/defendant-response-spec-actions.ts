@@ -291,6 +291,11 @@ export default class DefendantResponseSpecActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrackDS1() {
+    const { determinationWithoutHearingDS1Page } = this.defendantResponsePageFactory;
+    await determinationWithoutHearingDS1Page.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingDS1Page.selectNo();
+    await determinationWithoutHearingDS1Page.submit();
+
     const { smallClaimExpertsDS1Page } = this.defendantResponsePageFactory;
     await smallClaimExpertsDS1Page.verifyContent(this.ccdCaseData);
     await smallClaimExpertsDS1Page.selectYesExperts();
@@ -322,6 +327,11 @@ export default class DefendantResponseSpecActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrackDS2Pages() {
+    const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
+    await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingDS2Page.selectNo();
+    await determinationWithoutHearingDS2Page.submit();
+
     const { smallClaimExpertsDS2Page } = this.defendantResponsePageFactory;
     await smallClaimExpertsDS2Page.verifyContent(this.ccdCaseData);
     await smallClaimExpertsDS2Page.selectYesExperts();
