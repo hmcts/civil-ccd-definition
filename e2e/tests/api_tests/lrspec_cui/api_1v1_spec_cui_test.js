@@ -15,18 +15,18 @@ Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
-    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+    const query = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnQuery(caseId, solicitorUser, query, queryType);
   }
 }
 
 async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, citizenUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantQuery = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
-    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(claimantQuery.id), claimantQuery.id);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantQuery, queryType);
-    const claimantFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, claimantQuery, queryType);
+    const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(query.id), query.id);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    const claimantFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
     await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(claimantFollowUp.id), claimantFollowUp.id);
   }
 }
