@@ -1112,16 +1112,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlanLabel2",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1RepaymentPlan",
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 3,
@@ -1138,16 +1128,6 @@
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageShowCondition": "showConditionFlags CONTAINS \"REPAYMENT_PLAN_2\"",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel2",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   },
