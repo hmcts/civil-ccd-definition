@@ -95,12 +95,17 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async claimantResponseSmallTrackDQSpec() {
+  async dqSmallTrack() {
     const { smallClaimExpertsPage } = this.claimantResponsePageFactory;
     await smallClaimExpertsPage.verifyContent(this.ccdCaseData);
     await smallClaimExpertsPage.selectYesExperts();
     await smallClaimExpertsPage.enterExpertDetails();
     await smallClaimExpertsPage.submit();
+
+    const { determinationWithoutHearingPage } = this.claimantResponsePageFactory;
+    await determinationWithoutHearingPage.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingPage.selectYes();
+    await determinationWithoutHearingPage.submit();
 
     const { smallClaimWitnessesPage } = this.claimantResponsePageFactory;
     await smallClaimWitnessesPage.verifyContent(this.ccdCaseData);
@@ -125,7 +130,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async claimantResponseFastTrackDQSpec() {
+  async dqFastTrack() {
     const { expertsPage } = this.claimantResponsePageFactory;
     await expertsPage.verifyContent(this.ccdCaseData);
     await expertsPage.useExperts();
