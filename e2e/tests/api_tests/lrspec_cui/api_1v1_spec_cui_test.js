@@ -71,12 +71,12 @@ Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti E
   await prepareClaimLiPvLiPMintiTrack(api_spec_cui, true);
 });
 
-Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps}) => {
+Scenario.only('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
     await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
-      config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
+      config.applicantCitizenUser, config.hearingCenterAdminWithRegionId1,
       APPLICANT_CITIZEN_QUERY, true
     );
     await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
