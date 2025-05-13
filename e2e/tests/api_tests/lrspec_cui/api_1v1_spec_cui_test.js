@@ -182,7 +182,7 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
     await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
     await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
-}).tag('@wa-task @QM');
+}).tag('@wa-task-qm @QM');
 
 Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
