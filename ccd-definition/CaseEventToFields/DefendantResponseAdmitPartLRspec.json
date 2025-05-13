@@ -1112,50 +1112,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlanLabel2",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlanAdmitFullLabel",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_ADMISSION\" AND isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlanAdmitFullInterestLabel",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_ADMISSION\" AND isRespondent1 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent1RepaymentPlan",
-    "PageDisplayOrder": 39,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RepaymentPlan",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2RepaymentPlanLabel",
     "PageDisplayOrder": 40,
     "PageFieldDisplayOrder": 1,
@@ -1163,49 +1119,5 @@
     "PageShowCondition": "showConditionFlags CONTAINS \"REPAYMENT_PLAN_2\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanLabel2",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanAdmitFullLabel",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 2,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlanAdmitFullInterestLabel",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "READONLY",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"FULL_ADMISSION\" AND isRespondent2 = \"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondent2RepaymentPlan",
-    "PageDisplayOrder": 40,
-    "PageFieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY",
-    "PageID": "RepaymentPlanRespondent2",
-    "ShowSummaryChangeOption": "Y",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan-2"
   }
 ]
