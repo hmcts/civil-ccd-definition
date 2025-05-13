@@ -64,7 +64,7 @@
     "test:crossbrowser": "./e2e/run-crossbrowser-tests.sh",
     "test:AATFunctional": "./e2e/run-prod-functional-tests.sh",
     "test:DemoFunctional": "./e2e/run-features-flag-enabled-full-functional-tests",
-    "test:fullfunctional": "yarn playwright install && MOCHAWESOME_REPORTFILENAME=functional-unspec npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
+    "test:fullfunctional": "./e2e/run-full-functional-tests.sh",
     "test:e2e-nightly-prod": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-prod' --reporter mocha-multi --verbose",
     "test:api-nightly-prod": "MOCHAWESOME_REPORTFILENAME=api-nightly-prod npx codeceptjs run-workers --suites 8 --grep '@api-nightly-prod' --reporter mocha-multi --verbose",
     "test:e2e-nightly-nonprod": "MOCHAWESOME_REPORTFILENAME=non-prod-e2e-ft npx codeceptjs run-workers --suites 2 --grep '@e2e-nightly-nonprod' --reporter mocha-multi --verbose",
@@ -154,5 +154,8 @@
   "resolutions": {
     "minimatch": "^3.0.5"
   },
-  "packageManager": "yarn@3.8.5"
+  "packageManager": "yarn@3.8.5",
+  "dependencies": {
+    "proper-lockfile": "^4.1.2"
+  }
 }
