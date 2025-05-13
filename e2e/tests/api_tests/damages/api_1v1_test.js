@@ -5,13 +5,13 @@ const mpScenario = 'ONE_V_ONE';
 let isQueryManagementEnabled = false;
 
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM @testGL');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
-    const claimantSolicitorQuery = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, claimantSolicitorQuery, queryType);
-    await qmSteps.followUpOnQuery(caseId, solicitorUser, claimantSolicitorQuery, queryType);
+    const query = await qmSteps.raiseQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnQuery(caseId, solicitorUser, query, queryType);
   }
 }
 
