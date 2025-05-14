@@ -106,7 +106,7 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
-    failTestFilesPlugin: {
+    failedTestFilesPlugin: {
       enabled: true,
       require: './e2e/plugins/failedTestsPlugin'
     }
