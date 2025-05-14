@@ -212,7 +212,7 @@ withNightlyPipeline(type, product, component) {
   enableFullFunctionalTest(200)
 
   afterAlways('fullFunctionalTest') {
-   archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+   archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/**/*'
   }
 }
 
