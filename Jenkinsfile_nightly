@@ -99,7 +99,7 @@ def copyFailedTestFilesJson() {
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/failedTestFiles.json", target: "test-results/functional"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/failedTestFiles.json"
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -206,8 +206,6 @@ withNightlyPipeline(type, product, component) {
   before('fullFunctionalTest') {
     if(env.RUN_FAILED_TEST_FILES == 'true') {
       copyFailedTestFilesJson()
-      echo "Listing files in workspace:"
-      sh 'ls -la'
     }
   }
 
