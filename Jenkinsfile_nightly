@@ -97,7 +97,7 @@ def copyFailedTestFilesJson() {
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/failedTestFiles.json", target: "test-results"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/failedTestFiles.json"
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -145,19 +145,19 @@ withNightlyPipeline(type, product, component) {
     stage('Playwright test setup') {
       try {
         yarnBuilder.yarn('test:playwright-setup:install')
-        if(env.PLAYWRIGHT_RUN_SETUP) {
+        if(env.PLAYWRIGHT_RUN_SETUP == 'true') {
           yarnBuilder.yarn('test:playwright-e2e-setup:ci')
         }
       } catch (Exception error) {
         if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
           flowInterrupted = true
         }
-        if(env.PLAYWRIGHT_RUN_SETUP) {
+        if(env.PLAYWRIGHT_RUN_SETUP == 'true') {
           playwrightSetupPassed=false
         }
         unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
       } finally {
-        if(env.PLAYWRIGHT_RUN_SETUP) {
+        if(env.PLAYWRIGHT_RUN_SETUP == 'true') {
           yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
         }
       }
@@ -185,7 +185,7 @@ withNightlyPipeline(type, product, component) {
       }
     }
 
-    if(env.PLAYWRIGHT_RUN_SETUP) {
+    if(env.PLAYWRIGHT_RUN_SETUP == 'true') {
       stage('Playwright test teardown') {
         try {
           yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
@@ -201,7 +201,7 @@ withNightlyPipeline(type, product, component) {
   }
 
   before('fullFunctionalTest') {
-    if(env.RUN_FAILED_TEST_FILES == true) {
+    if(env.RUN_FAILED_TEST_FILES == 'true') {
       copyFailedTestFilesJson()
     }
   }
