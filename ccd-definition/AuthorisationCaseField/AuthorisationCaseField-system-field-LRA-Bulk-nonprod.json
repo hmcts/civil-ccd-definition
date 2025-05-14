@@ -1,8 +1,0 @@
-[
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent2RepaymentPlanLabel2FullAdmission",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  }
-]
