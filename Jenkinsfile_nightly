@@ -148,7 +148,7 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  if(runFailedTestFiles) {
+  if(!runFailedTestFiles) {
     afterAlways('DependencyCheckNightly') {
       stage('Playwright test setup') {
         try {
