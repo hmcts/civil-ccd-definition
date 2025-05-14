@@ -2,6 +2,73 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\"",
+    "PageShowCondition": "showConditionFlags CONTAINS \"WHEN_WILL_CLAIM_BE_PAID\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabelBothDefendants",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimWhenToPaySpecLabel2",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse!=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabelBothDefendants",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND sameSolicitorSameResponse=\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel2",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec=\"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimAdmitFullInterestLabel",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 2,
