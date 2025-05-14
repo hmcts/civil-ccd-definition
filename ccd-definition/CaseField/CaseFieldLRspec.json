@@ -176,14 +176,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "totalClaimAmountPlusInterest",
-    "Label": "Total Claim amount + interest",
-    "FieldType": "Number",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "superClaimType",
     "Label": "Total Interest",
     "FieldType": "Text",
