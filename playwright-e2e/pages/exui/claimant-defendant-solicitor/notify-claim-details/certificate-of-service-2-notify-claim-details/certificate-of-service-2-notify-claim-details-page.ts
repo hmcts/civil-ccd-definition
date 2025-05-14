@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import CertificateOfServiceNotifyClaimDetailsFragment from '../../../fragments/certificate-of-service-notify-claim-details/certificate-of-service-notify-claim-details-fragment';

@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import { heading, inputs, subheadings } from './solicitor-references-acknowledge-claim-content.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import SolicitorReferenceFragment from '../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import { Party } from '../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';

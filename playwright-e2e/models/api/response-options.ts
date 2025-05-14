@@ -1,4 +1,4 @@
-import { APIResponse } from 'playwright-core';
+import { APIResponse } from '@playwright/test';
 
 export interface _ResponseOptions {
   expectedStatus?: number;

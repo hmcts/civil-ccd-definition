@@ -1,11 +1,9 @@
 import BasePage from '../../../../../base/base-page.ts';
-import filePaths from '../../../../../config/file-paths.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../models/ccd/ccd-case-data.ts';
 import ExuiPage from '../../../exui-page/exui-page.ts';
-import { getFormattedCaseId } from '../../../exui-page/exui-content.ts';
 import EventSummaryFragment from '../../../fragments/event-summary/event-summary-fragment.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import ccdEvents from '../../../../../constants/ccd-events.ts';
 
 @AllMethodsStep()

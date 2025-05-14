@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';

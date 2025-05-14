@@ -5,7 +5,7 @@ import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { radioButtons } from './fixed-costs-on-entry-content.ts';
 import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 import YesOrNoFragment from '../../../../fragments/yes-or-no/yes-or-no-fragment.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 
 @AllMethodsStep()
 export default class FixedCostsOnEntryPage extends ExuiPage(BasePage) {

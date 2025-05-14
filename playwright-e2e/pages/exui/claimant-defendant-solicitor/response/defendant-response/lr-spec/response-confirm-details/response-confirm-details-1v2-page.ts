@@ -7,7 +7,7 @@ import {
   inputs,
   tableHeadings,
 } from './response-confirm-details-content.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';

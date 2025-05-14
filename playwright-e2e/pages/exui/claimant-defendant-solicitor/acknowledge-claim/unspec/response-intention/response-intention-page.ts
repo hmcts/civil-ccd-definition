@@ -4,7 +4,7 @@ import ExuiPage from '../../../../exui-page/exui-page.ts';
 import { radioButtons } from './response-intention-content.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import { Party } from '../../../../../../models/partys.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import partys from '../../../../../../constants/partys.ts';
 import StringHelper from '../../../../../../helpers/string-helper.ts';
 

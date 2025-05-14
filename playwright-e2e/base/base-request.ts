@@ -1,4 +1,4 @@
-import { APIRequestContext, APIResponse } from 'playwright-core';
+import { APIRequestContext, APIResponse } from '@playwright/test';
 import RequestOptions from '../models/api/request-options';
 import { expect } from '../playwright-fixtures';
 import { BoxedDetailedStep } from '../decorators/test-steps';
