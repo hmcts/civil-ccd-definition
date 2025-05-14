@@ -108,7 +108,7 @@ exports.config = {
     },
     failedTestFilesPlugin: {
       enabled: true,
-      require: './e2e/plugins/failedTestsPlugin'
+      require: './e2e/plugins/failedTestFilesPlugin'
     }
   },
   mocha: {
