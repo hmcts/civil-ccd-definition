@@ -22,6 +22,9 @@ bin/main/application.yaml
 
 .DS_Store
 
+# dotenv environment variables file
+.env
+.env.test
 
 # node_modules
 package-lock.json
@@ -42,3 +45,21 @@ charts/civil-ccd/Chart.lock
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+/test-results/
+/playwright-report/
+/blob-report/
+playwright/.cache/
+
+# Playwright
+playwright-test-results/
+allure-results/
+playwright-allure-functional-results/
+playwright-allure-bootstrap-results/
+playwright-allure-bootstrap-report/
+playwright-allure-functional-report/
+allure-report/
+playwright-report/
+/playwright-e2e/fixtures/.users/
+/playwright-e2e/fixtures/.user-cookies/
+/playwright-e2e/fixtures/.user-assigned-cases/
+/playwright-e2e/fixtures/data/bankHolidays.json

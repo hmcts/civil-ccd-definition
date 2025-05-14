@@ -6,6 +6,7 @@ const config = require('./config.js');
 const parties = require('./helpers/party.js');
 const loginPage = require('./pages/login.page');
 const caseViewPage = require('./pages/caseView.page');
+const stayAndLiftCasePage = require('./pages/stayAndLiftCase/stayAndLiftCase.page');
 const solicitorReferencesPage = require('./pages/createClaim/solicitorReferences.page');
 const claimantSolicitorOrganisationLRspec = require('./pages/createClaim/claimantSolicitorOrganisationLRspec.page');
 const addAnotherClaimant = require('./pages/createClaim/addAnotherClaimant.page');
@@ -44,6 +45,7 @@ const specListEvidencePage = require('./pages/createClaim/claimListEvidenceLRspe
 const specClaimAmountPage = require('./pages/createClaim/claimAmountLRspec.page');
 const specInterestPage = require('./pages/createClaim/interestLRspec.page');
 const specInterestValuePage = require('./pages/createClaim/interestValueLRspec.page');
+const fixedCostsPage = require('./pages/createClaim/fixedCostsLRspec.page');
 const specInterestRatePage = require('./pages/createClaim/interestRateLRspec.page');
 const specInterestDateStartPage = require('./pages/createClaim/interestDateStartLRspec.page');
 const specInterestDateEndPage = require('./pages/createClaim/interestDateEndLRspec.page');
@@ -96,7 +98,7 @@ const serviceRequest = require('./pages/createClaim/serviceRequest.page');
 const {takeCaseOffline} = require('./pages/caseProceedsInCaseman/takeCaseOffline.page');
 const createCaseFlagPage = require('./pages/caseFlags/createCaseFlags.page');
 const {checkToggleEnabled} = require('./api/testingSupport');
-const {PBAv3, SDOR2} = require('./fixtures/featureKeys');
+const {PBAv3} = require('./fixtures/featureKeys');
 const specifiedEvidenceUpload = require('./pages/evidenceUpload/uploadDocumentSpec');
 const mediationDocumentsExplanation = require('./pages/mediationDocumentsUpload/mediationDocumentsExplanation');
 const whoIsFor = require('./pages/mediationDocumentsUpload/whoIsFor');
@@ -109,7 +111,7 @@ const requestForDecision = require('./pages/decisionOnReconsideration/decisionOn
 
 const SIGNED_IN_SELECTOR = 'exui-header';
 const SIGNED_OUT_SELECTOR = '#global-header';
-const CASE_HEADER = 'ccd-case-header > h1';
+const CASE_HEADER = 'ccd-markdown >> h1';
 
 const CONFIRMATION_MESSAGE = {
   online: 'Your claim has been received\nClaim number: ',
@@ -354,7 +356,6 @@ module.exports = function () {
 
          //const twoVOneScenario = claimant1 && claimant2;
          const pbaV3 = await checkToggleEnabled(PBAv3);
-         const SdoR2 = await checkToggleEnabled(SDOR2);
          output.log('--------------createCaseSpecified calling------------');
          await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
          output.log('--------------createCaseSpecified finished------------');
@@ -369,7 +370,7 @@ module.exports = function () {
              () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
               ]),
              ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps(SdoR2, [
+            ...conditionalSteps( [
               () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
                  () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
                  () => specTimelinePage.addManually(),
@@ -384,6 +385,7 @@ module.exports = function () {
                  () => specInterestDateEndPage.selectInterestDateEnd(),
                  () => this.clickContinue(),
                  () => pbaNumberPage.clickContinue(),
+                 () => fixedCostsPage.addFixedCosts(),
                  () => statementOfTruth.enterNameAndRole('claim'),
                  () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
                  () => event.returnToCaseDetails(),
@@ -398,7 +400,7 @@ module.exports = function () {
               () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
             ]),
             ...secondDefendantSteps(respondent2, respondent1.represented),
-            ...conditionalSteps(SdoR2, [
+            ...conditionalSteps([
               () => addClaimForAFlightDelay.enteredFlightDelayClaim()]),
             () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
             () => specTimelinePage.addManually(),
@@ -414,6 +416,7 @@ module.exports = function () {
             () => this.clickContinue(),
             () => pbaNumberPage.selectPbaNumber(),
             () => paymentReferencePage.updatePaymentReference(),
+            () => fixedCostsPage.addFixedCosts(),
             () => statementOfTruth.enterNameAndRole('claim'),
             () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
             () => event.returnToCaseDetails(),
@@ -429,7 +432,6 @@ module.exports = function () {
 
       //const twoVOneScenario = claimant1 && claimant2;
       const pbaV3 = await checkToggleEnabled(PBAv3);
-      const SdoR2 = await checkToggleEnabled(SDOR2);
       output.log('--------------createCaseSpecified calling------------');
       await specCreateCasePage.createCaseSpecified(config.definition.jurisdiction);
       output.log('--------------createCaseSpecified finished------------');
@@ -444,7 +446,7 @@ module.exports = function () {
           () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
         ]),
         ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
         () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
         () => specTimelinePage.addManually(),
@@ -459,8 +461,9 @@ module.exports = function () {
         () => specInterestDateEndPage.selectInterestDateEnd(),
         () => this.clickContinue(),
         () => pbaNumberPage.clickContinue(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.pbaV3Online),
         () => event.returnToCaseDetails(),
@@ -475,7 +478,7 @@ module.exports = function () {
           () =>  addAnotherDefendant.enterAddAnotherDefendant(respondent2),
         ]),
         ...secondDefendantSteps(respondent2, respondent1.represented),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimForAFlightDelay.enteredFlightDelayClaimYes()]),
         () => detailsOfClaimPage.enterDetailsOfClaim(mpScenario),
         () => specTimelinePage.addManually(),
@@ -491,8 +494,9 @@ module.exports = function () {
         () => this.clickContinue(),
         () => pbaNumberPage.selectPbaNumber(),
         () => paymentReferencePage.updatePaymentReference(),
+        () => fixedCostsPage.addFixedCosts(),
         () => statementOfTruth.enterNameAndRole('claim'),
-        ...conditionalSteps(SdoR2, [
+        ...conditionalSteps( [
           () => addClaimFlightDelayConfirmationPage.flightDelayClaimConfirmationPageValidation()]),
         () => event.submit('Submit',CONFIRMATION_MESSAGE.online),
         () => event.returnToCaseDetails(),
@@ -899,6 +903,41 @@ module.exports = function () {
       }
     },
 
+    async stayCase(user = config.ctscAdminUser) {
+      eventName = 'Stay case';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+        () => this.waitForText('All parties will be notified.'),
+        () => event.submit('Submit', 'All parties have been notified and any upcoming hearings must be cancelled'),
+        () => event.returnToCaseDetails(),
+      ]);
+    },
+
+    async manageStay(manageStayType = 'LIFT_STAY', caseState = 'JUDICIAL_REFERRAL', user = config.ctscAdminUser) {
+      eventName = 'Manage stay';
+      await this.login(user);
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEvent(eventName, caseId),
+      ]);
+      if (manageStayType == 'REQ_UPDATE')  {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyReqUpdateSteps(),
+          () => event.submit('Submit', 'You have requested an update on'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      } else {
+        await this.triggerStepsWithScreenshot([
+          () => stayAndLiftCasePage.verifyLiftCaseStaySteps(caseState),
+          () => event.submit('Submit', 'You have lifted the stay from this'),
+          () => this.waitForText('All parties have been notified'),
+          () => event.returnToCaseDetails(),
+        ]);
+      }
+      await this.waitForText('Summary');
+    },
+
     async requestForReconsiderationForUI() {
       eventName = 'Request for Reconsideration';
       await this.triggerStepsWithScreenshot([
@@ -914,6 +953,167 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
+    async requestForSettleThisClaimForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSD(eventName, caseId),
+        () => this.click('Continue'),
+        () => this.waitForText('Confirm settle this claim'),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('This claim has been marked as settled'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForSettleThisClaimForUI2v1() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSDMultiple(eventName, caseId),
+        () => this.click('Continue'),
+        () => this.waitForText('Which claimants are settling'),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('This claim has been marked as settled'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestSettleThisClaimJudgesOrderForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => caseViewPage.selectJudgeOrder(),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestSettleThisClaimConsentOrderForUI() {
+      eventName = 'Settle this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForSettleThisClaimJudgesOrder(eventName, caseId),
+        () => this.click('Consent order approved'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
+    async requestForDiscontinueThisClaimForUI() {
+      eventName = 'Discontinue this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDiscontinueThisClaim(eventName, caseId),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Permission granted by the court'),
+        () => this.click('Yes'),
+        () => caseViewPage.permissionGrantedByJudge(),
+        () => this.waitForText('Type of Discontinuance'),
+        () => this.click('Full discontinuance'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForDiscontinueThisClaimForUI1v2() {
+      eventName = 'Discontinue this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDiscontinueThisClaim(eventName, caseId),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Permission granted by the court'),
+        () => this.click('Yes'),
+        () => caseViewPage.permissionGrantedByJudge(),
+        () => this.waitForText('Discontinuing against defendants'),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Type of Discontinuance'),
+        () => this.click('Full discontinuance'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForDiscontinueThisClaimForUI2v1() {
+      eventName = 'Discontinue this claim';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForDiscontinueThisClaim2v1(eventName, caseId),
+        () => this.click('Both'),
+        () => this.click('Continue'),
+        () => this.waitForText('Permission from the court'),
+        () => this.click('Yes'),
+        () => this.click('Continue'),
+        () => this.waitForText('Has permission been granted by a Judge to discontinue'),
+        () => this.click('Yes'),
+        () => caseViewPage.permissionGrantedByJudge(),
+        () => this.waitForText('Is this a full or part discontinuance?'),
+        () => this.click('Full discontinuance'),
+        () => this.click('Continue'),
+        () => this.waitForText('Check your answers'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForValidateDiscontinuanceForUI() {
+      eventName = 'Validate discontinuance';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForValidateDiscontinuance(eventName, caseId),
+        () => this.click('Yes - generate a Notice of Discontinuance'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+    async requestForClaimDiscontinuedRemoveHearingForUI() {
+     // eventName = 'Validate discontinuance';
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startEventForClaimDiscontinuedRemoveHearing(caseId),
+        () => caseViewPage.caseNoteForClaimDiscontinuedRemoveHearing(),
+        () => this.waitForText('Add a case note'),
+        () => this.click('Submit'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
     async decisionForReconsideration() {
       eventName = 'Decision on reconsideration';
       await this.triggerStepsWithScreenshot([

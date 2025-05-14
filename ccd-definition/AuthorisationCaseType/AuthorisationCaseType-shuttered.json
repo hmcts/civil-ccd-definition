@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRoles": [
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
@@ -11,7 +11,7 @@
     "CRUD": "D"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRoles": [
       "caseworker-civil-systemupdate"
     ],

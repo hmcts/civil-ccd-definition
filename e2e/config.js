@@ -2,7 +2,8 @@ const defaultPassword = process.env.DEFAULT_PASSWORD;
 const judgeDefaultPassword = process.env.JUDGE_DEFAULT_PASSWORD;
 const iacDefaultPassword = process.env.IAC_DEFAULT_PASSWORD;
 const defaultPasswordSystemUser = process.env.SYSTEM_USER_PASSWORD;
-const courtToBeSelected = process.env.TEST_EA_COURTS == 'true' ? 'Nottingham County Court and Family Court (and Crown) - Canal Street - NG1 7EJ' : 'Barnet Civil and Family Centre - St Mary\'s Court, Regents Park Road - N3 1BQ';
+const courtToBeSelected = 'Central London County Court - Thomas More Building, Royal Courts of Justice, Strand, London - WC2A 2LL';
+const courtToBeSelectedHmc = 'Nottingham County Court And Family Court - Canal Street - NG1 7EJ';
 
 module.exports = {
   idamStub: {
@@ -10,13 +11,14 @@ module.exports = {
     url: 'http://localhost:5555'
   },
   url: {
-    // manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
+    // manageCase: process.env.URL || 'https://manage-case-int.demo.platform.hmcts.net',
+    // //manageCase: process.env.URL || 'https://manage-case-wa-int.demo.platform.hmcts.net',
     // authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://rpe-service-auth-provider-demo.service.core-compute-demo.internal',
     // ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://ccd-data-store-api-demo.service.core-compute-demo.internal',
     // dmStore:process.env.DM_STORE_URL || 'http://dm-store-demo.service.core-compute-demo.internal',
     // idamApi: process.env.IDAM_API_URL || 'https://idam-api.demo.platform.hmcts.net',
     // civilService: process.env.CIVIL_SERVICE_URL || 'http://civil-service-demo.service.core-compute-demo.internal',
-    // // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
+    // waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
     // for preview
     // manageCase: 'https://xui-civil-ccd-pr-3186.preview.platform.hmcts.net',
@@ -47,8 +49,8 @@ module.exports = {
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',
     paymentApi: process.env.PAYMENT_API_URL || 'http://payment-api-aat.service.core-compute-aat.internal',
-    wiremockService: 'http://localhost:8765'
-  },
+    wiremockService: process.env.WIREMOCK_URL || 'http://localhost:8765'
+    },
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH'
@@ -120,17 +122,17 @@ module.exports = {
   },
   judgeUserWithRegionId1: {
     password: judgeDefaultPassword,
-    email: '4917924EMP-@ejudiciary.net',
+    email: 'DJ.Amy.Powell@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
   },
-  judgeUserWithRegionId4: {
+  circuitJudgeUserWithRegionId1: {
     password: judgeDefaultPassword,
-    email: '4924159EMP-@ejudiciary.net',
+    email: '4917924EMP-@ejudiciary.net',
     type: 'judge',
     roleCategory: 'JUDICIAL',
-    regionId: '4'
+    regionId: '1'
   },
   judgeUser2WithRegionId4: {
     password: judgeDefaultPassword,
@@ -145,13 +147,6 @@ module.exports = {
     type: 'judge',
     roleCategory: 'JUDICIAL',
     regionId: '1'
-  },
-  judgeUserWithRegionId2: {
-    password: judgeDefaultPassword,
-    email: '4915631EMP-@ejudiciary.net',
-    type: 'judge',
-    roleCategory: 'JUDICIAL',
-    regionId: '2'
   },
   judgeUser2WithRegionId2: {
     password: judgeDefaultPassword,
@@ -181,26 +176,12 @@ module.exports = {
     roleCategory: 'ADMIN',
     regionId: '1'
   },
-  hearingCenterAdminWithRegionId41: {
-    email: 'hearing_center_admin_region2@justice.gov.uk',
-    password: defaultPassword,
-    type: 'hearing-center-admin',
-    roleCategory: 'ADMIN',
-    regionId: '4'
-  },
   hearingCenterAdminWithRegionId4: {
     email: 'hearing_center_admin_region4@justice.gov.uk',
     password: defaultPassword,
     type: 'hearing-center-admin',
     roleCategory: 'ADMIN',
     regionId: '2'
-  },
-  hearingCenterAdminWithRegionId12: {
-    email: 'CIVIL_WA_func_test_demo_user9@justice.gov.uk',
-    password: defaultPassword,
-    type: 'hearing-center-admin',
-    roleCategory: 'ADMIN',
-    regionId: '12'
   },
   tribunalCaseworkerWithRegionId12: {
     email: 'CIVIL_WA_func_test_demo_user7@justice.gov.uk',
@@ -242,7 +223,7 @@ module.exports = {
   },
   definition: {
     jurisdiction: 'CIVIL',
-    caseType: 'CIVIL',
+    caseType: 'CIVIL' + (process.env.CCD_DEF_VERSION || '')
   },
   iacLeadershipJudge: {
     password: iacDefaultPassword,
@@ -340,7 +321,7 @@ module.exports = {
   waTaskIds: {
     judgeUnspecDJTask :'summaryJudgmentDirections',
     listingOfficerCaseProgressionTask: 'transferCaseOffline',
-    scheduleAHearing: 'ScheduleAHearing',
+    scheduleAHearing: 'ScheduleHMCHearing',
     reviewSpecificAccessRequestJudiciary: 'reviewSpecificAccessRequestJudiciary',
     reviewSpecificAccessRequestLegalOps: 'reviewSpecificAccessRequestLegalOps',
     reviewSpecificAccessRequestAdmin: 'reviewSpecificAccessRequestAdmin',
@@ -348,13 +329,16 @@ module.exports = {
     fastTrackDirections: 'FastTrackDirections',
     smallClaimDirections: 'SmallClaimsTrackDirections',
     legalAdvisorDirections: 'LegalAdvisorSmallClaimsTrackDirections',
-    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO'
+    notSuitableSdo: 'transferCaseOfflineNotSuitableSDO',
+    intermediateTrackDirections: 'allocateIntermediateTrack',
+    multiTrackDirections: 'allocateMultiTrack',
+    multiTrackOrderMadeReview: 'reviewOrder',
+    transferCaseOffline: 'Transfer Case Offline'
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST == 'true' || false,
-  testEarlyAdopterCourts: process.env.TEST_EA_COURTS == 'true' || false,
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',
@@ -365,5 +349,7 @@ module.exports = {
   liverpoolCourt: 'Liverpool Civil and Family Court - 35, Vernon Street, City Square - L2 2BX',
   sdoJudgeSelectedCourt: courtToBeSelected,
   localNoCTests: false,
-  localMediationTests: false
+  localMediationTests: false,
+  claimantSelectedCourtHmc: courtToBeSelectedHmc,
+  defendantSelectedCourtHmc: courtToBeSelectedHmc,
 };

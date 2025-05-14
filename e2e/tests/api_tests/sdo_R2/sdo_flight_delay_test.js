@@ -7,20 +7,20 @@ const mpScenario = 'ONE_V_ONE_FLIGHT_DELAY';
 const claimAmountSmallTrack = '1500';
 
 async function prepareClaim(api_spec, claimAmount) {
-  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario, claimAmount);
+  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
 }
 
 async function prepareClaimOtherOption(api_spec, claimAmount) {
-  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER', claimAmount);
+  await api_spec.createClaimSpecFlightDelay(config.applicantSolicitorUser, 'ONE_V_ONE_FLIGHT_DELAY_OTHER');
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponseForFlightDelay(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', 'AWAITING_APPLICANT_INTENTION');
 }
 
-Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec @api-specified @api-prod  @api-r2-sdo');
+Feature('Create SDO SmallTrack- Flight Delay - 1v1 - spec');
 
-Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay @api-r2-sdo', async ({api_spec}) => {
+Scenario('1v1 full defence unspecified - judge draws small claims WITHOUT sum of damages - flight delay @api-nonprod', async ({api_spec}) => {
   await prepareClaim(api_spec, claimAmountSmallTrack);
   await api_spec.createSDO(judgeUser, 'CREATE_SMALL');
 });

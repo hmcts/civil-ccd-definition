@@ -16,7 +16,7 @@ module.exports = {
   },
 
   async selectResponseIntention(respondent1Intention = 'fullDefence', respondent2Intention, respondent1Applicant2ClaimIntention) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     if(respondent1Intention) {
       await this.selectResponse('1', respondent1Intention);
     }
@@ -30,7 +30,7 @@ module.exports = {
   },
 
   async selectResponse(respondentNumber, responseIntention) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     if (!this.fields(respondentNumber).responseIntention.options.hasOwnProperty(responseIntention)) {
       throw new Error(`Response intention: ${responseIntention} does not exist`);
     }

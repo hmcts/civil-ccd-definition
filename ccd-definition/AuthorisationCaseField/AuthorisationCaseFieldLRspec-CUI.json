@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1AcceptFullAdmitPaymentPlanSpec",
     "AccessControl": [
       {
@@ -23,7 +23,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimResponseDocumentSpec",
     "AccessControl": [
       {
@@ -42,12 +42,12 @@
           "APP-SOL-UNSPEC-PROFILE",
           "APP-SOL-SPEC-PROFILE"
         ],
-        "CRUD": "R"
+        "CRUD": "RU"
       }
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimResponseTypeLabelForSpec",
     "AccessControl": [
       {
@@ -66,7 +66,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimAdmitAllRepaymentPlanLabel",
     "AccessControl": [
       {
@@ -85,7 +85,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimAdmitAllBySetDateLabel",
     "AccessControl": [
       {
@@ -104,7 +104,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1PaymentDateToStringSpec",
     "AccessControl": [
       {
@@ -124,7 +124,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1AcceptAdmitAmountPaidSpec",
     "AccessControl": [
       {
@@ -147,7 +147,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "AccessControl": [
       {
@@ -170,7 +170,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimPartAdmitImmediatelyLabel",
     "AccessControl": [
       {
@@ -193,7 +193,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimPartAdmitBySetDateLabel",
     "AccessControl": [
       {
@@ -215,7 +215,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1ClaimPartAdmitInstalmentLabel",
     "AccessControl": [
       {
@@ -237,7 +237,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpecLabel",
     "AccessControl": [
       {
@@ -259,7 +259,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1RepaymentOptionForDefendantSpec",
     "AccessControl": [
       {
@@ -281,7 +281,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1RequestedPaymentDateForDefendantSpec",
     "AccessControl": [
       {
@@ -303,7 +303,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SuggestInstalmentsForDefendantSpecHeader",
     "AccessControl": [
       {
@@ -325,7 +325,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SuggestInstalmentsForDefendantSpecLabel",
     "AccessControl": [
       {
@@ -347,7 +347,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SuggestInstalmentsPaymentAmountForDefendantSpec",
     "AccessControl": [
       {
@@ -369,7 +369,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec",
     "AccessControl": [
       {
@@ -391,7 +391,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec",
     "AccessControl": [
       {
@@ -413,7 +413,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "currentDateboxDefendantSpec",
     "AccessControl": [
       {
@@ -435,7 +435,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeLabel",
     "AccessControl": [
       {
@@ -457,7 +457,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeOption",
     "AccessControl": [
       {
@@ -479,7 +479,29 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "ccjPaymentPaidSomeLabelInsetHelpText",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeAmount",
     "AccessControl": [
       {
@@ -502,7 +524,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1PartAdmitPaidImmediatelyLabelSpec",
     "AccessControl": [
       {
@@ -524,7 +546,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1PartAdmitConfirmAmountPaidSpec",
     "AccessControl": [
       {
@@ -547,7 +569,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1PartAdmitIntentionToSettleClaimSpec",
     "AccessControl": [
       {
@@ -570,7 +592,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1PartAdmitRejectReasonSpec",
     "AccessControl": [
       {
@@ -593,7 +615,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "partAdmitPaidValuePounds",
     "AccessControl": [
       {
@@ -612,7 +634,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "claimantUserDetails",
     "AccessControl": [
       {
@@ -636,7 +658,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountSummaryLabel",
     "AccessControl": [
       {
@@ -658,7 +680,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentSummarySubtotalAmount",
     "AccessControl": [
       {
@@ -680,7 +702,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountSummaryResponse",
     "AccessControl": [
       {
@@ -702,7 +724,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
     "AccessControl": [
       {
@@ -724,7 +746,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountClaimAmount",
     "AccessControl": [
       {
@@ -746,7 +768,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
     "AccessControl": [
       {
@@ -768,7 +790,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountInterestToDate",
     "AccessControl": [
       {
@@ -790,7 +812,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountClaimFeeLabel",
     "AccessControl": [
       {
@@ -812,7 +834,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountClaimFee",
     "AccessControl": [
       {
@@ -834,7 +856,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountSubtotalLabel",
     "AccessControl": [
       {
@@ -856,7 +878,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentAmountSubtotal",
     "AccessControl": [
       {
@@ -878,7 +900,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeAmountInPoundsLabel",
     "AccessControl": [
       {
@@ -900,7 +922,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjPaymentPaidSomeAmountInPounds",
     "AccessControl": [
       {
@@ -923,7 +945,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentTotalStillOwedLabel",
     "AccessControl": [
       {
@@ -945,7 +967,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentTotalStillOwed",
     "AccessControl": [
       {
@@ -967,7 +989,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentStatement",
     "AccessControl": [
       {
@@ -990,7 +1012,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicantDefenceResponseDocumentAndDQFlag",
     "AccessControl": [
       {
@@ -1008,7 +1030,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "mediationSettlementAgreedAt",
     "AccessControl": [
       {
@@ -1030,7 +1052,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "mediationAgreement",
     "AccessControl": [
       {
@@ -1052,7 +1074,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "unsuccessfulMediationReason",
     "AccessControl": [
       {
@@ -1074,7 +1096,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
     "AccessControl": [
       {
@@ -1096,7 +1118,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentFixedCostOption",
     "AccessControl": [
       {
@@ -1118,7 +1140,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
     "AccessControl": [
       {
@@ -1140,7 +1162,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "AccessControl": [
       {
@@ -1162,7 +1184,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1ClaimMediationSpecRequiredLip",
     "AccessControl": [
       {
@@ -1184,7 +1206,7 @@
     ]
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "changeOfRepresentation",
     "AccessControl": [
       {

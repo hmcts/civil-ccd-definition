@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "CaseFieldID": "claimProceedsInCaseman",
     "PageFieldDisplayOrder": 1,
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "CaseFieldID": "claimProceedsInCasemanLR",
     "PageFieldDisplayOrder": 1,
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLMidEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CASE_PROCEEDS_IN_CASEMAN",
     "CaseFieldID": "CaseAccessCategory",
     "PageFieldDisplayOrder": 1,

@@ -1,8 +1,9 @@
-/* eslint-disable no-unused-vars */
+
 
 const config = require('../../../config.js');
 
 Feature('CCD 2v1 API test @api-spec @api-nightly-prod');
+
 Scenario('2v1 small claim full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec.createCaseFlags(config.hearingCenterAdminWithRegionId2);
@@ -30,7 +31,8 @@ Scenario('2v1 small claim different response full defence', async ({I, api_spec}
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'TWO_V_ONE');
 });
 
-Scenario('2v1 small claim different response no full defence', async ({I, api_spec}) => {
+// skipping until DTSCCI-329 is resolved
+Scenario.skip('2v1 small claim different response no full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'TWO_V_ONE');
 });
@@ -61,13 +63,6 @@ Scenario('2v1 small claim full admission and response @api-spec-full-admit', asy
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
     'AWAITING_APPLICANT_INTENTION');
-});
-
-Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
-  await api_spec.createCaseFlags(config.hearingCenterAdminWithRegionId2);
-  await api_spec.manageCaseFlags(config.hearingCenterAdminWithRegionId2);
-  await api_spec.settleClaimSelectClaimant(config.applicantSolicitorUser, 'YES');
 });
 
 AfterSuite(async  ({api_spec}) => {

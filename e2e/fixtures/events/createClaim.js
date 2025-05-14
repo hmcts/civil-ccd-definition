@@ -71,8 +71,13 @@ let selectedPba = listElement('PBAFUNC12345');
 const validPba = listElement('PBAFUNC12345');
 const invalidPba = listElement('PBA0078095');
 
-const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', sdoR2) => {
+let claimantCourt = config.claimantSelectedCourt;
+const useHmcEaCourt = config.claimantSelectedCourtHmc;
+const useClaimantSelectedCourt = config.claimantSelectedCourt;
+
+const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, claimAmount = '30000', hmcTest) => {
   selectedPba = useValidPba ? validPba : invalidPba;
+  claimantCourt = hmcTest ? useHmcEaCourt : useClaimantSelectedCourt;
 
   const claimData = {
     References: {
@@ -86,9 +91,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       courtLocation: {
         applicantPreferredCourtLocationList: {
           list_items: [
-            listElement(config.claimantSelectedCourt)
+            listElement(claimantCourt)
           ],
-          value: listElement(config.claimantSelectedCourt)
+          value: listElement(claimantCourt)
         }
       },
       applicant1DQRemoteHearing: {
@@ -180,15 +185,9 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
       SecondDefendantSolicitorEmail: {},
       SameLegalRepresentative: {},
     } : {},
-    ...(sdoR2 === true) ? {
-      ClaimTypeUnSpec: {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      }
-    } : {
-      ClaimType: {
-        claimType: 'CONSUMER_CREDIT'
-      }
-      },
+    ClaimTypeUnSpec: {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
+    },
     Details: {
       detailsOfClaim: 'Test details of claim'
     },
@@ -317,6 +316,8 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
     }
     case 'ONE_V_TWO_LIPS': {
       delete claimData.SecondDefendantLegalRepresentation;
+      delete claimData.LegalRepresentation;
+
       return {
         ...claimData,
         AddAnotherClaimant: {
@@ -326,12 +327,12 @@ const createClaimData = (pbaV3, legalRepresentation, useValidPba, mpScenario, cl
           addRespondent2: 'Yes'
         },
         SecondDefendant: {
-          respondent2: respondent2WithPartyName,
+          respondent2: respondent2WithPartyName
         },
         LegalRepresentation: {
           respondent1Represented: 'No',
           respondent2Represented: 'No'
-        },
+        }
       };
     }
 
@@ -380,7 +381,7 @@ const isPBAv3 = (pbaV3) => {
 };
 
 module.exports = {
-  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, sdoR2, isMintiEnabled) => {
+  createClaim: (mpScenario = 'ONE_V_ONE', claimAmount, pbaV3, isMintiEnabled) => {
     return {
       midEventData: {
         ClaimValue: {
@@ -416,7 +417,7 @@ module.exports = {
         }
       },
       valid: {
-        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, sdoR2, isMintiEnabled),
+        ...createClaimData(pbaV3,'Yes', true, mpScenario, claimAmount, isMintiEnabled),
       },
       invalid: {
         Upload: {

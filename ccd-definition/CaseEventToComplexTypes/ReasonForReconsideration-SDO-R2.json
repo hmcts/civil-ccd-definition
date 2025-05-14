@@ -6,7 +6,8 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\""
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Applicant\"",
+    "Publish": "Y"
   },
   {
     "ID": "ReasonForReconsideration",
@@ -15,7 +16,8 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\""
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent1\"",
+    "Publish": "Y"
   },
   {
     "ID": "ReasonForReconsideration",
@@ -24,6 +26,7 @@
     "ListElementCode": "reasonForReconsiderationTxt",
     "FieldDisplayOrder": 1,
     "DisplayContext": "MANDATORY",
-    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\""
+    "FieldShowCondition": "casePartyRequestForReconsideration = \"Respondent2\"",
+    "Publish": "Y"
   }
 ]

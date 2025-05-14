@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "Name": "Email CL: Fee Unpaid",
     "Description": "Notify claimant fee unpaid",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_HEARING_FEE_UNPAID",
     "Name": "Email DF 1: Fee Unpaid",
     "Description": "Notify defendant fee unpaid",
@@ -26,7 +26,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_HEARING_FEE_UNPAID",
     "Name": "Email DF 2: Fee Unpaid",
     "Description": "Notify Second Respondent Fee Unpaid",
@@ -39,7 +39,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_TRIAL_READY",
     "Name": "Email CL: Confirm readiness",
     "Description": "Notify Applicant Check Trial Readiness",
@@ -52,7 +52,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_TRIAL_READY",
     "Name": "Email DF 1: Confirm readiness",
     "Description": "Notify defendant check trial readiness",
@@ -65,7 +65,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_TRIAL_READY",
     "Name": "Email DF 2: confirm readiness",
     "Description": "Notify second defendant check trial readiness",
@@ -78,7 +78,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_CLAIMANT_HEARING",
     "Name": "Email CL: Hearing created",
     "Description": "Notify claimant of hearing",
@@ -91,7 +91,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT1_HEARING",
     "Name": "Email DF 1: Hearing created",
     "Description": "Notify defendant of Hearing",
@@ -105,7 +105,7 @@
   }
 ,
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT2_HEARING",
     "Name": "Email DF 2: Hearing created",
     "Description": "Notify second defendant of hearing",
@@ -118,7 +118,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_FOR_OTHER_TRIAL_READY",
     "Name": "Email CL: trial readiness",
     "Description": "Notify Claimant to check other party trial readiness",
@@ -132,7 +132,7 @@
   },
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_OTHER_TRIAL_READY",
     "Name": "Email DF 1: trial readiness",
     "Description": "Notify Defendant to check other party trial readiness",
@@ -145,7 +145,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_OTHER_TRIAL_READY",
     "Name": "Email DF 2: trial readiness",
     "Description": "Notify Second Defendant to check other party trial readiness",
@@ -158,7 +158,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_GENERATE_ORDER",
     "Name": "Email CL: order made",
     "Description": "Notify claimant of order",
@@ -171,7 +171,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_GENERATE_ORDER",
     "Name": "Email DF 1: order made",
     "Description": "Notify defendant of order",
@@ -184,7 +184,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RESPONDENT_SOLICITOR2_FOR_GENERATE_ORDER",
     "Name": "Email DF 2: order made",
     "Description": "Notify second defendant of order",
@@ -197,7 +197,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_APPLICANT_SOLICITOR_FOR_HEARING_FEE_AFTER_NOC",
     "Name": "Email CL: Fee Unpaid",
     "Description": "Notify Claimant Fee Unpaid",

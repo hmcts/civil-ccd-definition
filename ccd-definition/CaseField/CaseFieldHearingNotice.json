@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingNoticeList",
     "Label": "What hearing notice do you want to create?",
     "HintText": "Select one option.",
@@ -10,7 +10,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicationDetails",
     "Label": "Application details",
     "FieldType": "FixedList",
@@ -19,7 +19,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "typeOfApplication",
     "Label": "Type of application",
     "FieldType": "Text",
@@ -27,7 +27,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "dateOfApplication",
     "Label": "Date of application",
     "HintText": "For example, 27 3 2022",
@@ -36,7 +36,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingNoticeListOther",
     "Label": "What hearing notice are you creating?",
     "FieldType": "Text",
@@ -44,7 +44,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "listingOrRelisting",
     "Label": "Is this a listing or a relisting?",
     "FieldType": "FixedRadioList",
@@ -53,7 +53,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingLocationLabel",
     "Label": "**Location**",
     "FieldType": "Label",
@@ -61,7 +61,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingLocation",
     "Label": " ",
     "HintText": "Venue",
@@ -70,7 +70,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "channelLabel",
     "Label": "**Channel**",
     "FieldType": "Label",
@@ -78,7 +78,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "channel",
     "Label": " ",
     "FieldType": "FixedRadioList",
@@ -87,7 +87,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingDateLabel",
     "Label": "**Date**",
     "FieldType": "Label",
@@ -95,7 +95,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingDate",
     "Label": " ",
     "HintText": "For example, 27 3 2022",
@@ -104,7 +104,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingTimeLabel",
     "Label": "**Time**",
     "FieldType": "Label",
@@ -112,7 +112,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingTimeHourMinute",
     "Label": "Start time",
     "FieldType": "FixedList",
@@ -121,7 +121,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingDuration",
     "Label": "Duration",
     "FieldType": "FixedList",
@@ -130,7 +130,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "information",
     "Label": "Is there more information you need to add to the Hearing Notification letter?",
     "FieldType": "TextArea",
@@ -138,7 +138,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingFee",
     "Label": "Hearing Fee",
     "FieldType": "Fee",
@@ -146,7 +146,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingDueDate",
     "Label": "Hearing Due Date",
     "FieldType": "Date",
@@ -154,7 +154,7 @@
     "Searchable": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseDismissedHearingFeeDueDate",
     "Label": "Date of dismissal",
     "HintText": "For example, 27 3 2022",
@@ -163,7 +163,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingFeePaymentDetails",
     "Label": "Hearing Payment Details",
     "FieldType": "PaymentDetails",
@@ -171,7 +171,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingFeePBADetails",
     "Label": "Hearing fee PBA details\n",
     "FieldType": "SRPbaDetails",
@@ -179,7 +179,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingDocuments",
     "Label": "System generated Case Documents",
     "FieldType": "Collection",
@@ -188,15 +188,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "relistHearingNotice",
-    "Label": "When you click Continue, the next screen will enable you to select to schedule the hearing.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "hearingReferenceNumber",
     "Label": "Hearing reference",
     "FieldType": "Text",

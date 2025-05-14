@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_CLAIM",
     "Name": "Create claim - Unspecified",
     "Description": "Case created, post actions triggered",
@@ -19,7 +19,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DEFENDANT_RESPONSE",
     "Name": "Respond to claim",
     "Description": "Defendant response to claim",
@@ -38,7 +38,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT_OF_CLAIM",
     "Name": "Notify claim",
     "Description": "Notify defendant solicitor of claim",
@@ -56,7 +56,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_DEFENDANT_OF_CLAIM_DETAILS",
     "Name": "Notify claim details",
     "Description": "Inform the defendant of particulars of claim",
@@ -74,7 +74,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CLAIMANT_RESPONSE",
     "Name": "View and respond to defence",
     "Description": "View and respond to defendant",
@@ -94,7 +94,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ACKNOWLEDGE_CLAIM",
     "Name": "Acknowledge claim",
     "Description": "Defendant solicitor is acknowledging claim",
@@ -113,7 +113,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ADD_DEFENDANT_LITIGATION_FRIEND",
     "Name": "Add litigation friend",
     "Description": "Add litigation friend",
@@ -129,7 +129,7 @@
     "RetriesTimeoutAboutToStartEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DISMISS_CLAIM",
     "Name": "Move claim to dismissed",
     "Description": "Moves a claim to dismissed",
@@ -146,7 +146,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ADD_OR_AMEND_CLAIM_DOCUMENTS",
     "Name": "Add or amend claim documents",
     "Description": "Add or amend documents attached to the claim",
@@ -164,7 +164,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "RESUBMIT_CLAIM",
     "Name": "Resubmit claim",
     "Description": "Resubmits claim for unsuccessful PBA payment",
@@ -182,7 +182,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "INFORM_AGREED_EXTENSION_DATE",
     "Name": "Inform agreed 28 day extension",
     "Description": "Enter an extension date that has already been agreed with other parties",
@@ -200,27 +200,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
-    "ID": "AMEND_PARTY_DETAILS",
-    "Name": "Amend party details",
-    "Description": "Update defendant and claimant solicitor email addresses",
-    "DisplayOrder": 13,
-    "PreConditionState(s)": "PENDING_CASE_ISSUED;CASE_ISSUED;AWAITING_CASE_DETAILS_NOTIFICATION;AWAITING_RESPONDENT_ACKNOWLEDGEMENT;AWAITING_APPLICANT_INTENTION;PROCEEDS_IN_HERITAGE_SYSTEM;JUDICIAL_REFERRAL;CASE_PROGRESSION",
-    "PostConditionState": "*",
-    "SecurityClassification": "Public",
-    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
-    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
-    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
-    "ShowSummary": "N",
-    "ShowEventNotes": "N",
-    "RetriesTimeoutAboutToStartEvent": 0,
-    "RetriesTimeoutURLAboutToSubmitEvent": 0,
-    "RetriesTimeoutURLSubmittedEvent": 0,
-    "EventEnablingCondition": "respondent1Represented = \"Yes\" OR applicant1Represented != \"No\""
-  },
-
-  {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_CLAIM_AFTER_PAYMENT",
     "Name": "Case issued after payment",
     "Description": "Move to case issued when fee paid",
@@ -236,7 +216,7 @@
     "RetriesTimeoutURLSubmittedEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CREATE_SERVICE_REQUEST_CLAIM",
     "Name": "Create service request",
     "Description": "Create service request unspecified",
@@ -250,7 +230,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "CHANGE_SOLICITOR_EMAIL",
     "Name": "Change solicitor's information",
     "Description": "Change solicitor's information",
@@ -266,5 +246,54 @@
     "RetriesTimeoutAboutToStartEvent": 0,
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "UPDATE_MISSING_FIELDS",
+    "Name": "Update missing fields",
+    "Description": "Update case data with missing fields",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "TAKE_CASE_OFFLINE",
+    "Name": "Take case offline",
+    "Description": "Take case offline",
+    "DisplayOrder": 15,
+    "EventEnablingCondition": "respondentSolicitor2Reference = \"None\"",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "PROCEEDS_IN_HERITAGE_SYSTEM",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "ADD_UNAVAILABLE_DATES",
+    "Name": "Add Unavailable Dates",
+    "Description": "Add unavailable dates after claimant response or default judgment",
+    "DisplayOrder": 50,
+    "PreConditionState(s)": "JUDICIAL_REFERRAL;CASE_PROGRESSION;HEARING_READINESS;PREPARE_FOR_HEARING_CONDUCT_HEARING;DECISION_OUTCOME;IN_MEDIATION;CASE_STAYED;All_FINAL_ORDERS_ISSUED",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToStartEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-start",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
+    "ShowSummary": "Y",
+    "ShowEventNotes": "N",
+    "EndButtonLabel": "Submit",
+    "RetriesTimeoutAboutToStartEvent": 0,
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
   }
 ]

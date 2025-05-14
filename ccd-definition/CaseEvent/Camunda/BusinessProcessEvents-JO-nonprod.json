@@ -1,9 +1,9 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DEFAULT_JUDGEMENT_NON_DIVERGENT_SPEC",
     "Name": "DJ non divergent spec",
-    "Description": "Default judgement non divergent spec",
+    "Description": "Default judgment non divergent spec",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
@@ -13,10 +13,10 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "JUDGEMENT_BY_ADMISSION_NON_DIVERGENT_SPEC",
     "Name": "DJ non divergent spec",
-    "Description": "Default judgement non divergent spec",
+    "Description": "Default judgment non divergent spec",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",

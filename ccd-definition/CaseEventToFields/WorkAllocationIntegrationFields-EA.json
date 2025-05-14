@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "eaCourtLocation",
     "PageFieldDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "eaCourtLocation",
     "PageFieldDisplayOrder": 2,
@@ -22,7 +22,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 3,
@@ -32,7 +32,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_SDO",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 4,
@@ -42,7 +42,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 5,
@@ -52,7 +52,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "STANDARD_DIRECTION_ORDER_DJ",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 6,
@@ -62,7 +62,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "responseClaimTrack",
     "PageFieldDisplayOrder": 7,
@@ -73,7 +73,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "allocatedTrack",
     "PageFieldDisplayOrder": 8,
@@ -83,7 +83,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "orderType",
     "PageFieldDisplayOrder": 9,
@@ -93,11 +93,22 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "HEARING_SCHEDULED_RETRIGGER",
     "CaseFieldID": "caseManagementOrderSelection",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "TRANSFER_ONLINE_CASE",
+    "CaseFieldID": "eaCourtLocation",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "PageShowCondition": "transferCourtLocationList=\"DONOTSHOW\"",
     "PageID": "WorkAllocationIntegrationFields",
     "PageDisplayOrder": 99,
     "Publish": "Y"

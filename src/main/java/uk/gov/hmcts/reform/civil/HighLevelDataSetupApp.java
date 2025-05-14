@@ -19,7 +19,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     private static final Logger logger = LoggerFactory.getLogger(HighLevelDataSetupApp.class);
 
-    private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_NFD = {
+    private static final CcdRoleConfig[] CCD_ROLES_NEEDED_FOR_CIVIL = {
         new CcdRoleConfig("caseworker-civil", "PUBLIC"),
         new CcdRoleConfig("caseworker-approver", "PUBLIC"),
         new CcdRoleConfig("prd-admin", "PUBLIC"),
@@ -47,7 +47,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("payment-access", "PUBLIC"),
         new CcdRoleConfig("caseflags-admin", "PUBLIC"),
         new CcdRoleConfig("caseflags-viewer", "PUBLIC"),
-        new CcdRoleConfig("caseworker-wa-task-configuration", "PUBLIC"),
+        new CcdRoleConfig("caseworker-wa-task-configuration", "RESTRICTED"),
         new CcdRoleConfig("CITIZEN-CLAIMANT-PROFILE", "PUBLIC"),
         new CcdRoleConfig("CITIZEN-DEFENDANT-PROFILE", "PUBLIC"),
         new CcdRoleConfig("cui-admin-profile", "PUBLIC"),
@@ -60,7 +60,14 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
         new CcdRoleConfig("national-business-centre", "PUBLIC"),
         new CcdRoleConfig("hearing-centre-team-leader", "PUBLIC"),
         new CcdRoleConfig("next-hearing-date-admin", "PUBLIC"),
-        new CcdRoleConfig("court-officer-order", "PUBLIC")
+        new CcdRoleConfig("court-officer-order", "PUBLIC"),
+        new CcdRoleConfig("nbc-team-leader", "PUBLIC"),
+        new CcdRoleConfig("ctsc", "PUBLIC"),
+        new CcdRoleConfig("ctsc-team-leader", "PUBLIC"),
+        new CcdRoleConfig("caseworker-civil-doc-removal", "PUBLIC"),
+        new CcdRoleConfig("caseworker-civil-system-field-reader", "PUBLIC"),
+        new CcdRoleConfig("caseworker-civil-rparobot", "PUBLIC"),
+        new CcdRoleConfig("wlu-admin", "PUBLIC")
     };
 
     private final CcdEnvironment environment;
@@ -76,7 +83,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
 
     @Override
     public void addCcdRoles() {
-        for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_NFD) {
+        for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_CIVIL) {
             try {
                 logger.info("\n\nAdding CCD Role {}.", roleConfig);
                 addCcdRole(roleConfig);
@@ -103,8 +110,8 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     }
 
     @Override
-    protected boolean shouldTolerateDataSetupFailure(){
-        if(BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")){
+    protected boolean shouldTolerateDataSetupFailure() {
+        if (BeftaMain.getConfig().getDefinitionStoreUrl().contains(".preview.")) {
             return true;
         }
         return false;
@@ -117,10 +124,10 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
             ImportException importException = (ImportException) e;
             return importException.getHttpStatusCode() == httpStatusCode504;
         }
-        if(e instanceof SSLException){
+        if (e instanceof SSLException) {
             return true;
         }
-        if(e instanceof AEADBadTagException){
+        if (e instanceof AEADBadTagException) {
             return true;
         }
         return shouldTolerateDataSetupFailure();

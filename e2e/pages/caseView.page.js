@@ -14,7 +14,13 @@ module.exports = {
   },
   fields: {
     eventDropdown: '#next-step',
-    tabButton: 'div.mat-tab-label-content'
+    tabButton: 'div.mat-tab-label-content',
+    dayOfPermission: '#permissionGrantedDate-day',
+    monthOfPermission: '#permissionGrantedDate-month',
+    yearOfPermission: '#permissionGrantedDate-year',
+    judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
+    caseNote: '#caseNote',
+    judgeOrder: '#settleReason-JUDGE_ORDER',
   },
   goButton: '.button[type="submit"]',
 
@@ -37,7 +43,24 @@ module.exports = {
       await this.start(event);
     }, locate('.govuk-heading-l'));
   },
-
+  async permissionGrantedByJudge() {
+    await I.runAccessibilityTest();
+    I.fillField(this.fields.judgeName, 'Testing');
+    I.fillField(this.fields.dayOfPermission, 29);
+    I.fillField(this.fields.monthOfPermission, 8);
+    I.fillField(this.fields.yearOfPermission, 2024);
+    await I.clickContinue();
+  },
+  async selectJudgeOrder() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.judgeOrder);
+    await I.clickContinue();
+  },
+  async caseNoteForClaimDiscontinuedRemoveHearing() {
+    await I.runAccessibilityTest();
+    I.fillField(this.fields.caseNote, 'Testing');
+    await I.clickContinue();
+  },
   async startEventForRR(event, caseId) {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
@@ -45,7 +68,48 @@ module.exports = {
       await this.start(event);
     }, locate('.govuk-heading-l'));
   },
-
+  async startEventForSD(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForSettleThisClaim(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForSDMultiple(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForSettleThisClaimMultple(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForSettleThisClaimJudgesOrder(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForDiscontinueThisClaim(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForDiscontinueThisClaim(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForDiscontinueThisClaim2v1(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForDiscontinueThisClaim2v1(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForValidateDiscontinuance(event, caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForValidateDiscontinuance(caseId);
+    }, locate('.govuk-heading-l'));
+  },
+  async startEventForClaimDiscontinuedRemoveHearing(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseId);
+    }, locate('.govuk-heading-l'));
+  },
   async startEventForDR(caseId) {
     await waitForFinishedBusinessProcess(caseId);
     await I.retryUntilExists(async() => {

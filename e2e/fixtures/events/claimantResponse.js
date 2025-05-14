@@ -101,7 +101,7 @@ module.exports = {
               reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             applicant1DQFixedRecoverableCosts: {
               band: 'BAND_1',
@@ -171,6 +171,14 @@ module.exports = {
           }
             } : {})
           }
+        } : {}),
+        ...(allocatedTrack === 'SMALL_CLAIM' ? {
+          DeterminationWithoutHearing:{
+            deterWithoutHearing: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, applicant'
+            }
+          },
         } : {}),
         Experts: {
           applicant1DQExperts: {

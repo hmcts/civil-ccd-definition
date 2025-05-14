@@ -1,14 +1,14 @@
 const config = require('../../../config.js');
 
 const mpScenario1v1 = 'ONE_V_ONE';
-const judgeUser = config.testEarlyAdopterCourts ? config.judgeUser2WithRegionId2 : config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.testEarlyAdopterCourts ? config.hearingCenterAdminWithRegionId2 : config.hearingCenterAdminWithRegionId1;
+const judgeUser = config.judgeUserWithRegionId1;
+const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 // To use on local because the idam images are different
 //const judgeUser = config.judgeUserWithRegionId1Local;
 //const hearingCenterAdminToBeUsed = config.hearingCenterAdminLocal;
 const claimAmount = '100';
 
-let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcUserWithRegionId4;
+let mediationAdminRegion4 = config.localMediationTests ? config.nbcUserLocal : config.nbcTeamLeaderWithRegionId4;
 
 Feature('Dispute resolution hearing API test - fast claim - unspec @api-unspec @api-tests-1v1 @api-prod @api-r2-sdo');
 
@@ -23,7 +23,7 @@ async function prepareClaim(api) {
 
 async function prepareClaim1v1(api_spec_small, carmEnabled) {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, carmEnabled);
-  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
+  await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, carmEnabled);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', carmEnabled);
 }
 

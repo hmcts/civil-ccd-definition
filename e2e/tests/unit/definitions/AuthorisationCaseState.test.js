@@ -6,20 +6,27 @@ const dataProvider = require('../utils/dataProvider');
 
 const assertStateExists = createAssertExists('State');
 
+function assertFieldDefinitionIsValid(row) {
+  expect(row.CaseTypeID).to.be.a('string').and.satisfy(v => {
+    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
+  });
+}
+
 dataProvider.exclusions.forEach((value, key) =>  {
   describe('AuthorisationCaseState'.concat(': ', key, ' config'), () => {
     context('definitions:', () => {
       let authorisationCaseState = [];
       let stateConfig = [];
       let errors = [];
+      let uniqResult = [];
 
       before(() => {
         authorisationCaseState = dataProvider.getConfig('../../../../ccd-definition/AuthorisationCaseState', key);
         stateConfig = dataProvider.ccdData.State;
+        uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseStateID'));
       });
 
       it('should contain a unique case state, case type ID and role (no duplicates) for nonprod files', () => {
-        const uniqResult = uniqWith(authorisationCaseState, isFieldDuplicated('CaseStateID'));
         try {
           expect(uniqResult).to.eql(authorisationCaseState);
         } catch (error) {
@@ -37,6 +44,10 @@ dataProvider.exclusions.forEach((value, key) =>  {
       it('should use existing states', () => {
         assertStateExists(authorisationCaseState, stateConfig);
       });
+
+        it('should have only valid definitions', () => {
+          uniqResult.forEach(assertFieldDefinitionIsValid);
+        });
 
       context('Solicitor has valid permissions', () => {
         it('CRU permissions for all states', () => {

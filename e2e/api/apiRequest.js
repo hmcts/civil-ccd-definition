@@ -3,9 +3,9 @@ const config = require('../config.js');
 const idamHelper = require('./idamHelper');
 const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
-const totp = require('totp-generator');
+const {TOTP} = require('totp-generator');
 
-const TASK_MAX_RETRIES = 20;
+const TASK_MAX_RETRIES = 100;
 const TASK_RETRY_TIMEOUT_MS = 20000;
 
 const tokens = {};
@@ -37,7 +37,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
   },
@@ -165,11 +165,11 @@ module.exports = {
   taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: totp(config.s2sForXUI.secret)
+        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -187,11 +187,11 @@ module.exports = {
     let taskDetails;
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
-        oneTimePassword: totp(config.s2sForXUI.secret)
+        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
       })
       .then(response => response.text());
 
@@ -340,7 +340,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
     const accountNumber = 'PBA0088192';
@@ -387,7 +387,7 @@ module.exports = {
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2s.microservice,
-        oneTimePassword: totp(config.s2s.secret)
+        oneTimePassword: TOTP.generate(config.s2s.secret).otp
       })
       .then(response => response.text());
     const rollbackPaymentDateByCCDNumberEndPoint = `/payments/ccd_case_reference/${ccdCaseNumber}/lag_time/25`;

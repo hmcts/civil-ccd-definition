@@ -1,7 +1,7 @@
 [
 
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "WITHDRAW_CLAIM",
     "Name": "Withdraw claim",
     "Description": "Withdraw a claim",
@@ -16,7 +16,7 @@
     "RetriesTimeoutAboutToStartEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "DISCONTINUE_CLAIM",
     "Name": "Discontinue claim",
     "Description": "Discontinue a claim",

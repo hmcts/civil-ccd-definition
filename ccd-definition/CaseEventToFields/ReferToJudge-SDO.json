@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "eventDescription",
     "PageFieldDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "ShowSummaryChangeOption": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REFER_TO_JUDGE",
     "CaseFieldID": "additionalInformation",
     "PageFieldDisplayOrder": 2,

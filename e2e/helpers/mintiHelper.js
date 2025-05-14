@@ -49,20 +49,20 @@ function getCaseAllocatedTrack(case_data, isSpecCase) {
 
 module.exports = {
   addSubmittedDateInCaseData: (caseData) => {
-    caseData.valid.References.submittedDate = '2025-02-20T15:59:50';
+    caseData.valid.References.submittedDate = '2025-06-20T15:59:50';
     return caseData;
   },
-  adjustCaseSubmittedDateForMinti: async (caseId, isMintiEnabled = false) => {
+  adjustCaseSubmittedDateForMinti: async (caseId, isMintiEnabled = false, isCarmEnabled = false) => {
     if (isMintiEnabled) {
       console.log('multi Intermediate track is enabled');
       await apiRequest.setupTokens(config.systemupdate);
-      const submittedDate = {'submittedDate':'2025-02-20T15:59:50'};
+      const submittedDate = {'submittedDate':'2025-06-20T15:59:50'};
       await testingSupport.updateCaseData(caseId, submittedDate);
       console.log('submitted date update to after multi Intermediate track live date');
-    } else {
+    } else if (!isMintiEnabled && !isCarmEnabled) {
       console.log('multi Intermediate track not enabled, updating submitted date');
       await apiRequest.setupTokens(config.systemupdate);
-      const submittedDate = {'submittedDate':'2022-05-10T15:59:50'};
+      const submittedDate = {'submittedDate':'2024-10-28T15:59:50'};
       await testingSupport.updateCaseData(caseId, submittedDate);
       console.log('submitted date update to before multi Intermediate track live date');
     }

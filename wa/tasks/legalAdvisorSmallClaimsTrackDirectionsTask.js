@@ -5,12 +5,12 @@ module.exports = {
     task_system: 'SELF',
     security_classification: 'PUBLIC',
     task_title: 'Legal Advisor Small Claims Track Directions',
-    location_name: 'Nottingham County Court and Family Court (and Crown)',
+    location_name: 'Central London County Court',
     location: '192280',
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
-    region: '4',
-    case_type_id: 'CIVIL',
+    region: '1',
+    case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     case_name: 'Test Inc',
     auto_assigned: false,
@@ -34,8 +34,8 @@ module.exports = {
     role_category: 'LEGAL_OPERATIONS',
     minor_priority: 500,
     major_priority: 5000
-  }
-  
+  };
+
 /* {
     name: 'Legal Advisor Small Claims Track Directions',
     type: 'LegalAdvisorSmallClaimsTrackDirections',
@@ -45,7 +45,7 @@ module.exports = {
     execution_type: 'Case Management Task',
     jurisdiction: 'CIVIL',
     region: '4',
-    case_type_id: 'CIVIL',
+    case_type_id: 'CIVIL' + (process.env.CCD_DEF_VERSION || ''),
     case_category: 'Civil',
     auto_assigned: false,
     case_management_category: 'Civil',

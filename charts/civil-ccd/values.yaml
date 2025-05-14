@@ -12,3 +12,17 @@ servicebus:
   enabled: false
 postgresql:
   enabled: false
+civil-translation:
+  enabled: false
+ccd-def-cleanup:
+  enabled: false
+am-org-role-mapping-service:
+  enabled: false
+ccd-case-document-am-api:
+  enabled: false
+em-ccdorc:
+  enabled: false
+em-stitching:
+  enabled: false
+ccd-events-topic:
+  enabled: false

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_INTERIM_JUDGMENT_CLAIMANT",
     "Name": "Notify IJ Claimant",
     "Description": "Notify interim judgment to claimant",
@@ -13,7 +13,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
     "Name": "Email: Notify Defendant",
     "Description": "Notify interim judgment to defendant",
@@ -27,7 +27,7 @@
     "Publish": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RPA_DJ_UNSPEC",
     "Name": "Notify RPA",
     "Description": "Notify RPA",

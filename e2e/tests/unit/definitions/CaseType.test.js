@@ -8,7 +8,7 @@ const dataProvider = require('../utils/dataProvider');
 
 function assertFieldDefinitionIsValid(row) {
   expect(row.ID).to.be.a('string').and.satisfy(v => {
-    return v.startsWith('CIVIL');
+    return v.startsWith('CIVIL${CCD_DEF_VERSION}');
   });
   expect(row.SecurityClassification).to.eq('Public');
   expect(row.Name).to.be.a('string').and.satisfy(isNotEmpty());

@@ -9,10 +9,49 @@
   },
   {
     "ID": "JoJudgment",
-    "ListElementCode": "defendants",
+    "ListElementCode": "defendant1Name",
     "ElementLabel": " ",
-    "FieldType": "DynamicList",
-    "FieldTypeParameter": "Party",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Name",
+    "ElementLabel": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant1Address",
+    "ElementLabel": " ",
+    "FieldType": "JudgmentAddress",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Address",
+    "ElementLabel": " ",
+    "FieldType": "JudgmentAddress",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant1Dob",
+    "ElementLabel": " ",
+    "FieldType": "Date",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "defendant2Dob",
+    "ElementLabel": " ",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -46,6 +85,14 @@
     "ElementLabel": " ",
     "FieldType": "FixedList",
     "FieldTypeParameter": "JudgmentState",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "rtlState",
+    "ElementLabel": " ",
+    "FieldType": "Text",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -132,6 +179,22 @@
   },
   {
     "ID": "JoJudgment",
+    "ListElementCode": "claimFeeAmount",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "amountAlreadyPaid",
+    "ElementLabel": " ",
+    "FieldType": "MoneyGBP",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
     "ListElementCode": "totalAmount",
     "ElementLabel": " ",
     "FieldType": "MoneyGBP",
@@ -159,6 +222,14 @@
     "ListElementCode": "instalmentDetails",
     "ElementLabel": " ",
     "FieldType": "InstalmentPaymentDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "JoJudgment",
+    "ListElementCode": "setAsideApplicationDate",
+    "ElementLabel": " ",
+    "FieldType": "Date",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

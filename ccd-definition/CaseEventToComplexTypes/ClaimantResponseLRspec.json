@@ -146,6 +146,31 @@
     "DisplayContext": "OPTIONAL"
   },
   {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingYesNo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "deterWithoutHearing",
+    "ListElementCode": "deterWithoutHearingWhyNot",
+    "FieldDisplayOrder": 3,
+    "FieldShowCondition": "deterWithoutHearing.deterWithoutHearingYesNo = \"No\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "applicant1DQExperts",
@@ -525,7 +550,7 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "details.firstName",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -533,7 +558,7 @@
     "CaseFieldID": "applicant1DQExperts",
     "ListElementCode": "details.lastName",
     "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "Experts",
@@ -614,52 +639,6 @@
     "CaseFieldID": "applicant1DQFixedRecoverableCosts",
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 7,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "isSubjectToFixedRecoverableCostRegime",
-    "ElementLabel": " ",
-    "FieldDisplayOrder": 2,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "complexityBandingAgreed",
-    "ElementLabel": " ",
-    "FieldDisplayOrder":3,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "band",
-    "ElementLabel": " ",
-    "FieldTypeParameter": "ComplexityBandIntermediate",
-    "FieldDisplayOrder": 4,
-    "DisplayContext": "MANDATORY"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "reasons",
-    "ElementLabel": " ",
-    "FieldDisplayOrder": 5,
-    "DisplayContext": "OPTIONAL"
-  },
-  {
-    "ID": "FixedRecoverableCostsIntermediate",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1DQFixedRecoverableCostsIntermediate",
-    "ListElementCode": "frcSupportingDocument",
-    "ElementLabel": " ",
-    "FieldDisplayOrder": 6,
     "DisplayContext": "OPTIONAL"
   }
 ]

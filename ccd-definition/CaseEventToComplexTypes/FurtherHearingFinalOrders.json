@@ -141,7 +141,7 @@
     "CaseFieldID": "finalOrderFurtherHearingComplex",
     "ListElementCode": "alternativeHearingList",
     "FieldDisplayOrder": 18,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "OPTIONAL"
   },
   {
     "ID": "FinalOrderFurtherHearing",

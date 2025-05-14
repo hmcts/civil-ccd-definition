@@ -9,15 +9,14 @@ version 'DEV-SNAPSHOT'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
 repositories {
-  mavenCentral()
   mavenLocal()
+  mavenCentral()
   maven { url 'https://jitpack.io' }
-  jcenter()
 }
 
 task highLevelDataSetup(type: JavaExec) {
@@ -43,7 +42,7 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '8.8.0'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.3'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 
   testImplementation libraries.junit5

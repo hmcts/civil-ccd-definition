@@ -1,0 +1,15 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": ["playwright-e2e/playwright-fixtures/**/*.ts"],
+      "options": {
+        "arrowParens": "always",
+        "trailingComma": "none",
+        "printWidth": 300
+      }
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+const {listElement} = require('../../api/dataHelper');
+
 const finalOrderDocument = {
   FinalOrderPreview: {
     finalOrderDocument: {
@@ -92,17 +94,92 @@ const createFreeFormOrder = (dayPlus7) => {
   };
 };
 
+const createIntermediateDownloadOrder = () => {
+  return {
+    TrackAllocation: {
+      finalOrderTrackToggle: 'INTERMEDIATE_CLAIM',
+      finalOrderAllocateToTrack: 'Yes',
+      finalOrderTrackAllocation: 'INTERMEDIATE_CLAIM',
+      showOrderAfterHearingDatePage: 'No'
+    },
+    IntermediateTrackComplexityBand: {
+      finalOrderIntermediateTrackComplexityBand: {
+        assignComplexityBand: 'Yes',
+        band: 'BAND_1',
+        reasons: 'Test reasons'
+      }
+    },
+    SelectTemplate: {
+      finalOrderDownloadTemplateOptions: {
+        list_items: [
+          listElement('Blank template to be used after a hearing'),
+          listElement('Blank template to be used before a hearing/box work'),
+          listElement('Fix a date for CMC')
+        ],
+        value: listElement('Fix a date for CMC')
+      }
+      },
+    UploadOrder: {
+      uploadOrderDocumentFromTemplate: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
+    }
+  };
+};
+
+const createMultiDownloadOrder = () => {
+  return {
+    TrackAllocation: {
+      finalOrderTrackToggle: 'MULTI_CLAIM',
+      finalOrderAllocateToTrack: 'Yes',
+      finalOrderTrackAllocation: 'MULTI_CLAIM',
+      showOrderAfterHearingDatePage: 'No'
+    },
+    SelectTemplate: {
+      finalOrderDownloadTemplateOptions: {
+        list_items: [
+          listElement('Blank template to be used after a hearing'),
+          listElement('Blank template to be used before a hearing/box work'),
+          listElement('Fix a date for CMC')
+        ],
+        value: listElement('Fix a date for CMC')
+      }
+    },
+    UploadOrder: {
+      uploadOrderDocumentFromTemplate: {
+        document_url: '${TEST_DOCUMENT_URL}',
+        document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+        document_filename: '${TEST_DOCUMENT_FILENAME}'
+      }
+    }
+  };
+};
+
 module.exports = {
-  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => {
+  requestFinalOrder: (finalOrderRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderType) => {
     if (finalOrderRequestType === 'ASSISTED_ORDER') {
       return {
         valid: createAssistedOrder(dayPlus0, dayPlus7, dayPlus14, dayPlus21),
       };
-    } else {
+    }
+    if (finalOrderRequestType === 'FREE_FORM_ORDER') {
       return {
         valid: createFreeFormOrder(dayPlus7),
       };
     }
-
+    if (finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE') {
+      if (orderType === 'INTERMEDIATE') {
+        return {
+          valid: createIntermediateDownloadOrder(),
+        };
+      }
+      if (orderType === 'MULTI') {
+        return {
+          valid: createMultiDownloadOrder(),
+        };
+      }
+    }
   }
 };

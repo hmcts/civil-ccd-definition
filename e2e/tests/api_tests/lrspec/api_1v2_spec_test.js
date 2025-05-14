@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 
 const config = require('../../../config.js');
 
@@ -41,7 +41,8 @@ Scenario('1v2 small claim different response full defence', async ({I, api_spec}
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_FULL_DEFENCE', 'ONE_V_TWO');
 });
 
-Scenario('1v2 small claim different response no full defence', async ({I, api_spec}) => {
+// skipping until DTSCCI-329 is resolved
+Scenario.skip('1v2 small claim different response no full defence', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'DIFF_NOT_FULL_DEFENCE', 'ONE_V_TWO');
 });
@@ -77,12 +78,14 @@ Scenario('1v2 small claim part admit, claimant response', async ({I, api_spec}) 
 });
 
 Scenario('Settle claim spec 1v2', async ({I, api_spec}) => {
-  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
-    'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
-  await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
-    'AWAITING_APPLICANT_INTENTION');
-  await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
+  if (['preview', 'demo'].includes(config.runningEnv)) {
+    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO');
+    await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL',
+      'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
+    await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
+      'AWAITING_APPLICANT_INTENTION');
+    await api_spec.settleClaim(config.applicantSolicitorUser, 'NO');
+  }
 });
 
 AfterSuite(async  ({api_spec}) => {

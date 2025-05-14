@@ -22,7 +22,8 @@
     "FieldType": "YesOrNo",
     "ElementLabel": "Is your case reserved to a judge?",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "FieldShowCondition": "judgeRequiredYesOrNo = \"DEPRECATED_DO_NOT_SHOW\""
   },
   {
     "ID": "GAHearingDetailsGAspec",
@@ -95,7 +96,6 @@
     "ListElementCode": "ReasonForPreferredHearingType",
     "ElementLabel": "Why would you prefer this type of hearing?",
     "FieldType": "TextArea",
-    "Max": 400,
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -123,8 +123,7 @@
     "ListElementCode": "HearingDetailsEmailID",
     "ElementLabel": "Preferred email",
     "FieldType": "Text",
-    "Max": 40,
-    "RegularExpression": "^([a-zA-Z0-9_\\-\\.]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
+    "RegularExpression": "^([a-zA-Z0-9_\\.%+-]+)@([a-zA-Z0-9_\\-\\.]+)\\.([a-zA-Z]{2,5})$",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

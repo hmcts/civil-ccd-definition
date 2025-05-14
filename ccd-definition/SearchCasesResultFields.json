@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[CASE_REFERENCE]",
     "Label": "Case Reference",
@@ -9,7 +9,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "unassignedCaseListDisplayOrganisationReferences",
     "Label": "Solicitor Reference(s)",
@@ -17,7 +17,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "legacyCaseReference",
     "Label": "Case Number",
@@ -25,7 +25,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[LAST_MODIFIED_DATE]",
     "Label": "Last Modified Date",
@@ -33,7 +33,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "[STATE]",
     "Label": "State",
@@ -41,7 +41,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "allPartyNames",
     "Label": "Party Names",
@@ -49,7 +49,7 @@
     "UseCase": "orgcases"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRole": "caseworker-caa",
     "CaseFieldID": "nextDeadline",
     "Label": "Next Deadline",

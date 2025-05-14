@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_DOCUMENTS",
     "CaseFieldID": "manageDocuments",
     "PageDisplayOrder": 1,
@@ -11,7 +11,7 @@
     "CaseEventFieldLabel": "Bulk scanned or emailed documents"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "MANAGE_DOCUMENTS",
     "CaseFieldID": "caseTitleWithReference",
     "DisplayContext": "READONLY",

@@ -1,7 +1,7 @@
 const {listElement, element} = require('../../api/dataHelper');
 const config = require('../../config.js');
 module.exports = {
-  claimantResponse: (response = 'FULL_DEFENCE') => {
+  claimantResponse: (response = 'FULL_DEFENCE', lipDefendant = false) => {
     const responseData = {
     };
     switch (response) {
@@ -19,12 +19,17 @@ module.exports = {
               reactionProtocolNotCompliedWithReason: 'test'
             }
           },
-          FixedRecoverableCostsIntermediate: {
+          FixedRecoverableCosts: {
             applicant1DQFixedRecoverableCostsIntermediate: {
               isSubjectToFixedRecoverableCostRegime: 'Yes',
               complexityBandingAgreed:'Yes',
               band: 'BAND_4',
-              reasons: 'some important reasons'
+              reasons: 'some important reasons',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
             }
           },
           DisclosureOfElectronicDocuments: {
@@ -87,6 +92,13 @@ module.exports = {
               unavailableDatesRequired: 'No',
             }
           },
+          DraftDirections: {
+            applicant1DQDraftDirections: {
+              document_url: '${TEST_DOCUMENT_URL}',
+              document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+              document_filename: '${TEST_DOCUMENT_FILENAME}'
+            }
+          },
           ApplicantCourtLocationLRspec: {
             applicant1DQRequestedCourt: {
               responseCourtLocations: {
@@ -123,12 +135,13 @@ module.exports = {
         };
         responseData.midEventData = {
           ...responseData.midEventData,
-          Hearing: {
-            respondent1DQStatementOfTruth: {
-              name: 'Test',
-              role: 'Worker'
-            }
-          }
+          ...(!lipDefendant) ? {
+            Hearing: {
+              respondent1DQStatementOfTruth: {
+                name: 'Test',
+                role: 'Worker'
+              }
+            }}: {}
         };
         break;
       case 'PART_ADMISSION':

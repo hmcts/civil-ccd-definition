@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "ENTER_BREATHING_SPACE_SPEC",
     "CaseFieldID": "enterBreathing",
     "PageDisplayOrder": 1,
@@ -12,7 +12,7 @@
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/enter-info"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "LIFT_BREATHING_SPACE_SPEC",
     "CaseFieldID": "liftBreathing",
     "PageDisplayOrder": 1,

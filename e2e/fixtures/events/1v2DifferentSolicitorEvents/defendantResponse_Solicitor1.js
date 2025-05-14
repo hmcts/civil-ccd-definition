@@ -1,6 +1,7 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
 
 const config = require('../../../config.js');
+const uuid = require('uuid');
 
 module.exports = {
   defendantResponse: (allocatedTrack = 'MULTI_CLAIM') => {
@@ -9,6 +10,7 @@ module.exports = {
         ConfirmDetails: {
           respondent1: {
             type: 'INDIVIDUAL',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             individualFirstName: 'John',
             individualLastName: 'Doe',
             individualTitle: 'Sir',
@@ -43,7 +45,7 @@ module.exports = {
             reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM' ? {
           FixedRecoverableCosts: {
             respondent1DQFixedRecoverableCosts: {
               band: 'BAND_1',
@@ -59,7 +61,12 @@ module.exports = {
               band: 'BAND_2',
               reasons: 'reasons',
               complexityBandingAgreed: 'Yes',
-              isSubjectToFixedRecoverableCostRegime: 'Yes'
+              isSubjectToFixedRecoverableCostRegime: 'Yes',
+              frcSupportingDocument: {
+                document_url: '${TEST_DOCUMENT_URL}',
+                document_binary_url: '${TEST_DOCUMENT_BINARY_URL}',
+                document_filename: '${TEST_DOCUMENT_FILENAME}'
+              }
             }
           }
         } : {}),
@@ -83,6 +90,14 @@ module.exports = {
               disclosureProposalAgreed: 'No',
             }
           }
+        } : {}),
+        ...(allocatedTrack === 'SMALL_CLAIM' ? {
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, Respondent 1'
+            }
+          },
         } : {}),
         Experts: {
           respondent1DQExperts: {

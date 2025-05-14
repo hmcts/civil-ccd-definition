@@ -1,3 +1,10 @@
+ccd-case-document-am-api:
+  enabled: false
+em-ccdorc:
+  enabled: false
+em-stitching:
+  enabled: false
+
 civil-general-applications:
   enabled: false
 civil-service:
@@ -89,4 +96,7 @@ civil-wa:
   enabled: false
 
 postgresql:
+  enabled: false
+
+ccd-events-topic:
   enabled: false

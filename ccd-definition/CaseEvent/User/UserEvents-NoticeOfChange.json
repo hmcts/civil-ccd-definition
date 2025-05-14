@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOC_REQUEST",
     "Name": "NoC Request",
     "Description": "Notice of Change Request",
@@ -14,7 +14,7 @@
     "ShowEventNotes": "Y"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "APPLY_NOC_DECISION",
     "Name": "Apply NoC Decision",
     "Description": "Apply Notice of Change Request",
@@ -25,6 +25,7 @@
     "CallBackURLSubmittedEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/submitted",
     "SecurityClassification": "Public",
     "ShowSummary": "Y",
-    "ShowEventNotes": "Y"
+    "ShowEventNotes": "Y",
+    "Publish": "Y"
   }
 ]

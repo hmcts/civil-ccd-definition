@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "label",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date of new hearing",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "listFromLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### List from",
@@ -18,7 +18,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "listFromDate",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -28,7 +28,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "dateToLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Date to (Optional)",
@@ -37,7 +37,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "dateToDate",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -47,7 +47,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Length of new hearing",
@@ -56,7 +56,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -66,7 +66,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "lengthListOther",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -76,7 +76,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Do you want the parties to provide dates to avoid?",
@@ -85,7 +85,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidYesNo",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -94,7 +94,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "datesToAvoidDateDropdown",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -104,7 +104,7 @@
     "FieldShowCondition": "datesToAvoidYesNo=\"Yes\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "alternativeHearingLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Hearing location",
@@ -113,7 +113,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "hearingLocationList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -122,7 +122,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "alternativeHearingDropdownLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Alternative hearing location",
@@ -132,7 +132,7 @@
     "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "alternativeHearingList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -142,7 +142,7 @@
     "FieldShowCondition": "hearingLocationList=\"OTHER_LOCATION\""
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "hearingMethodLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Method of hearing",
@@ -151,7 +151,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "hearingMethodList",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",
@@ -162,7 +162,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "hearingNotesLabel",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": "### Hearing notes (Optional)",
@@ -171,7 +171,7 @@
     "Searchable": "N"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ListElementCode": "hearingNotesText",
     "ID": "FinalOrderFurtherHearing",
     "ElementLabel": " ",

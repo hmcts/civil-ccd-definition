@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "componentLauncher",
     "Label": "Case file view",
     "FieldType": "ComponentLauncher",

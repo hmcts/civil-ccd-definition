@@ -1,6 +1,12 @@
 civil-ccd-stack:
   enabled: true
 
+civil-translation:
+  enabled: false
+
+am-org-role-mapping-service:
+  enabled: false
+
 civil-general-applications:
   java:
     image: 'hmctspublic.azurecr.io/civil/general-applications:latest'
@@ -11,26 +17,41 @@ civil-general-applications:
       civil:
         resourceGroup: civil
         secrets:
-          - civil-idam-client-secret
-          - microservicekey-civil-service
-          - system-update-user-username
-          - system-update-user-password
-          - cross-access-user-username
-          - cross-access-user-password
-          - prd-admin-user-username
-          - prd-admin-user-password
-          - docmosis-api-key
-          - gov-notify-api-key
-          - sendgrid-api-key
-          - robotics-notification-sender
-          - robotics-notification-recipient
+          - name: civil-idam-client-secret
+            alias: idam.client.secret
+          - name: microservicekey-civil-service
+            alias: idam.s2s-auth.totp_secret
+          - name: system-update-user-username
+            alias: CIVIL_SYSTEM_UPDATE_USERNAME
+          - name: system-update-user-password
+            alias: CIVIL_SYSTEM_UPDATE_PASSWORD
+          - name: cross-access-user-username
+            alias: CIVIL_CROSS_ACCESS_USERNAME
+          - name: cross-access-user-password
+            alias: CIVIL_CROSS_ACCESS_PASSWORD
+          - name: prd-admin-user-username
+            alias: CIVIL_PRD_ADMIN_USERNAME
+          - name: prd-admin-user-password
+            alias: CIVIL_PRD_ADMIN_PASSWORD
+          - name: docmosis-api-key
+            alias: docmosis.tornado.key
+          - name: gov-notify-api-key
+            alias: GOV_NOTIFY_API_KEY
+          - name: sendgrid-api-key
+            alias: SENDGRID_API_KEY
+          - name: robotics-notification-sender
+            alias: robotics.notification.sender
+          - name: robotics-notification-recipient
+            alias: robotics.notification.recipient
           - name: launch-darkly-sdk-key-non-prod
             alias: launch-darkly-sdk-key
-          - robotics-notification-multipartyrecipient
+          - name: robotics-notification-multipartyrecipient
+            alias: robotics.notification.multipartyrecipient
       civil-gen-apps:
         resourceGroup: civil
         secrets:
-          - microservicekey-civil-general-applications
+          - name: microservicekey-civil-general-applications
+            alias: idam.s2s-auth.totp_secret
     environment:
       CORE_CASE_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
@@ -47,6 +68,7 @@ civil-general-applications:
       DOCUMENT_MANAGEMENT_SECURED: true
       RD_PROFESSIONAL_API_URL: http://rd-professional-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
       RD_COMMONDATA_API_URL: http://rd-commondata-api-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+      SEND_LETTER_URL: http://rpe-send-letter-service-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
 
 civil-service:
   java:
@@ -120,6 +142,7 @@ civil-service:
       RELEASE_REVISION: "{{ .Release.Revision }}"
       POLLING_EVENT_EMITTER_ENABLED: false
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       CIVIL_S2S_AUTHORISED_SERVICES: payment_app,ccd_data,civil_service,civil-citizen-ui
     postgresql:
       enabled: true
@@ -141,11 +164,13 @@ civil-service:
               CREATE DATABASE "data-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "definition-store" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "camunda" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
-              CREATE DATABASE "role_assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "role-assignment" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-task-management-api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa-case-event-handler" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "wa_workflow_api" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
               CREATE DATABASE "cft_task_db" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "ts_translation_service" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
+              CREATE DATABASE "org_role_mapping" WITH OWNER = hmcts ENCODING = 'UTF-8' CONNECTION LIMIT = -1;
       auth:
         username: ${POSTGRES_USER}
         password: ${POSTGRES_PASSWORD}
@@ -200,12 +225,12 @@ xui-webapp:
     imagePullPolicy: Always
     releaseNameOverride: ${SERVICE_NAME}-xui-webapp
     image: hmctspublic.azurecr.io/xui/webapp:latest
-    memoryRequests: 2Gi
-    cpuRequests: 2000m
+    memoryRequests: 4Gi
+    cpuRequests: 4000m
     memoryLimits: 4Gi
     cpuLimits: 3500m
-    devmemoryRequests: 6Gi
-    devcpuRequests: 2000m
+    devmemoryRequests: 8Gi
+    devcpuRequests: 4000m
     devmemoryLimits: 8Gi
     devcpuLimits: 4500m
     environment:
@@ -244,6 +269,7 @@ ccd:
     ccdDataStoreUrl: http://${SERVICE_NAME}-ccd-data-store-api
     ccdDefinitionStoreUrl: http://${SERVICE_NAME}-ccd-definition-store-api
     ccdUserProfileUrl: http://ccd-user-profile-api-aat.service.core-compute-aat.internal
+    ccdAdminWebIngress: ${SERVICE_NAME}-ccd-admin-web
     dmStoreUrl: http://dm-store-aat.service.core-compute-aat.internal
     idamApiUrl: https://idam-api.aat.platform.hmcts.net
     idamWebUrl: https://idam-web-public.aat.platform.hmcts.net
@@ -288,27 +314,6 @@ ccd:
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         RELEASE_REVISION: "{{ .Release.Revision }}"
-
-  am-role-assignment-service:
-    java:
-      releaseNameOverride: ${SERVICE_NAME}-am-role-assignment-service
-      secrets:
-        LD_SDK_KEY:
-          secretRef: role-assignment-service-LD-SDK-KEY
-          key: key
-          disabled: true
-        ROLE_ASSIGNMENT_DB_PASSWORD:
-          secretRef: "{{ .Values.global.postgresSecret }}"
-          key: PASSWORD
-          disabled: true
-      environment:
-        RELEASE_REVISION: "{{ .Release.Revision }}"
-        ROLE_ASSIGNMENT_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
-        ROLE_ASSIGNMENT_DB_OPTIONS: "?stringtype=unspecified"
-      keyVaults:
-        am:
-          secrets:
-            - role-assignment-service-LD-SDK-KEY
   ccd-definition-store-api:
     java:
       releaseNameOverride: ${SERVICE_NAME}-ccd-definition-store-api

@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOC_REQUEST",
     "CaseFieldID": "changeOrganisationRequestField",
     "PageFieldDisplayOrder": 1,

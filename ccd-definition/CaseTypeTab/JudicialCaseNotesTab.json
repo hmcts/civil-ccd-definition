@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
@@ -9,7 +9,7 @@
     "DisplayContextParameter": "#TABLE(note, createdBy, createdOn)"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,
@@ -18,7 +18,7 @@
     "DisplayContextParameter": "#TABLE(documentNoteForTab, documentName, createdBy, createdDateTime, document)"
   },
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "JudicialCaseNotesTab",
     "TabLabel": "Judicial Case Notes",
     "TabDisplayOrder": 5,

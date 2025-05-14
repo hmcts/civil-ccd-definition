@@ -1,6 +1,6 @@
 [
   {
-    "CaseTypeID": "CIVIL",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "migrateCase",
     "Name": "Migrate case data",
     "Description": "Triggered by running migration tool - callback modifies the data.",

@@ -1,4 +1,5 @@
 const {date, element, buildAddress, listElement} = require('../../../api/dataHelper');
+const uuid = require('uuid');
 
 const config = require('../../../config.js');
 
@@ -9,6 +10,7 @@ module.exports = {
         ConfirmDetails: {
           respondent1: {
             type: 'INDIVIDUAL',
+            partyID: `${uuid.v1()}`.substring(0, 16),
             individualFirstName: 'John',
             individualLastName: 'Doe',
             individualTitle: 'Sir',
@@ -46,7 +48,7 @@ module.exports = {
             reactionProtocolCompliedWith: 'Yes'
           }
         },
-        ...(allocatedTrack === 'FAST_CLAIM' ? {
+        ...(allocatedTrack === 'FAST_CLAIM' || allocatedTrack === 'MULTI_CLAIM'? {
           FixedRecoverableCosts: {
             respondent1DQFixedRecoverableCosts: {
               band: 'BAND_1',
@@ -92,6 +94,14 @@ module.exports = {
             }
           },
         }: {}),
+        ...(allocatedTrack === 'SMALL_CLAIM' ? {
+          DeterminationWithoutHearing:{
+            deterWithoutHearingRespondent1: {
+              deterWithoutHearingYesNo: 'No',
+              deterWithoutHearingWhyNot: 'Incredibly valid reasons, Respondent 1'
+            }
+          },
+        } : {}),
         Experts: {
           respondent1DQExperts: {
             expertRequired: 'Yes',

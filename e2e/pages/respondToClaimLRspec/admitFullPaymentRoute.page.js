@@ -14,7 +14,7 @@ module.exports = {
   },
 
   async selectPaymentRoute(paymentType) {
-    // eslint-disable-next-line no-prototype-builtins
+     
     if (!this.fields.fullAdmitType.options.hasOwnProperty('paymentType')) {
       throw new Error(`Response type: ${paymentType} does not exist`);
     }

@@ -33,7 +33,7 @@ To access Camunda visit url (login and password are both `admin`):
 - `https://camunda-civil-ccd-pr-PR_NUMBER.service.core-compute-preview.internal`
 
 
-Below labels are needed on the PR 
+The below labels are options to get the different services running on the PR
 
 ```
 
@@ -44,7 +44,18 @@ Below labels are needed on the PR
   "pr-values:elasticsearch" label to have elastic search running - needed for scheduler testing
 
   "pr-values:enableWA" label to verify work allocation task
-  
+
+  "pr-values:enableHmc" label to enable the HMC integration with services running in AAT.
+
+  "civilServicePr:????" label to point this deployment to a specific civil-service image,
+  replace ???? with the correspondent civil-service PR number, e.g. civilServicePr:6215 .
+
+```
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+curl -v -k -X DELETE \
+  'http://ccd-definition-store-api-aat.service.core-compute-aat.internal/api/testing-support/cleanup-case-type/{PR_NUMBER}/?caseTypeIds=CIVIL'
 ```
 
 Running Crossbrowser tests:
@@ -134,7 +145,69 @@ additional information where necessary.
 
    Still, you shouldn't be doing it so make sure you get in touch with a Technical Lead soon afterwards.
 
-## License
 
+## Development / Debugging Environment - Preview with Mirrord
+
+As an alternative for a development environment there is a procedure in place where after running the command
+below the required services for Civil are created in Preview under the developer's name, so these will be exclusively
+for the named developer use.
+
+While connected to the VPN simply run one of the below commands from your project's (civil-ccd-definition) folder:
+Note: be sure to have Docker running
+
+
+```shell
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh
+```
+
+You can optionally specify a branch for CCD definitions and Camunda definitions like below or leave it blank to use master.
+
+```shell
+echo "CIVIL_SERVICE_IMAGE=latest" >> .env.local && npx @hmcts/dev-env@latest --env .env.local && ./bin/setup-devuser-preview-env.sh camundaBranch dmnBranch waStandaloneBranch
+```
+
+Once the pods are up and running you can connect to them using a plugin called Mirrord on Intellij.
+https://mirrord.dev
+
+If you want to clean up the environment just run:
+
+```shell
+npx @hmcts/dev-env@latest --delete
+```
+
+To run the specialised charts, where you can get Work Allocation for instance, run:
+
+```shell
+npx @hmcts/dev-env@latest --template values.enableWA.preview.template.yaml && ./bin/setup-devuser-preview-env.sh
+```
+
+Note: enabling HMC, will create a custom CaseType in definitions and import it to AAT.
+Please delete the same after use by running:
+```shell
+./bin/delete-dev-preview-definition-from-aat.sh
+```
+
+## Hearings Development - Preview
+For now any Hearings related PRs, i.e. that requires HMC/ILA must undergo some manual setup.
+
+1 - Execute the commands below replacing ${PR_NUMBER} accordingly to create the topic subscription required
+
+```shell
+    az servicebus topic subscription create --resource-group hmc-shared-aat --namespace-name hmc-servicebus-aat \
+      --topic-name hmc-to-cft-aat --subscription DCD-CNP-DEV --name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --subscription DCD-CNP-DEV && \
+    az servicebus topic subscription rule create --resource-group hmc-shared-aat --subscription DCD-CNP-DEV\
+      --namespace-name hmc-servicebus-aat --topic-name hmc-to-cft-aat \
+      --subscription-name hmc-to-civil-subscription-pr-${PR_NUMBER} \
+      --name hmc-servicebus-aat-subscription-rule-civil --subscription DCD-CNP-DEV\
+      --filter-sql-expression "hmctsServiceId IN ('AAA7','AAA6')"
+```
+(Remember to delete this once finished with the PR using "az servicebus topic subscription delete")
+
+2 - Add the label pr-values:enableHmc on your GitHub PR
+
+3 - When in XUI/CUI the case type will have an extension to your PR number added to it.
+
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details

@@ -398,7 +398,7 @@
     "CaseFieldID": "disposalHearingHearingTime",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 4,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "DisposalHearingHearingTime",
@@ -593,7 +593,7 @@
     "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "showCarmFields=\"No\""
+    "FieldShowCondition": "showCarmFields=\"No\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "ID": "SmallClaimsOrderAndHearingDetails",
@@ -697,7 +697,7 @@
     "CaseFieldID": "smallClaimsHearing",
     "ListElementCode": "dateFrom",
     "FieldDisplayOrder": 2,
-    "DisplayContext": "OPTIONAL"
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "SmallClaimsHearing",
@@ -1005,6 +1005,22 @@
     "ListElementCode":"directionComment",
     "FieldDisplayOrder": 1,
     "DisplayContext":"OPTIONAL"
+  },
+  {
+    "ID": "SmallClaimsMediation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "smallClaimsMediationSectionStatement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SdoR2SmallClaimsMediation",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "sdoR2SmallClaimsMediationSectionStatement",
+    "ListElementCode": "input",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
   },
   {
     "ID": "FastTrackOrderAndHearingDetails",
@@ -1517,7 +1533,9 @@
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "helpText2",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "_comment": "legacy field no longer in use",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"DO_NOT_SHOW\""
   },
   {
     "ID": "FastTrackNotes",
@@ -1987,6 +2005,23 @@
     "CaseFieldID": "fastTrackAllocation",
     "ListElementCode": "reasons",
     "FieldDisplayOrder": 5,
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CaseLocationCivil",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "caseManagementLocation",
+    "ListElementCode": "region",
+    "ElementLabel": "Region",
+    "DisplayContext": "OPTIONAL"
+  },
+  {
+    "ID": "CaseLocationCivil",
+    "CaseEventID": "CREATE_SDO",
+    "CaseFieldID": "caseManagementLocation",
+    "ListElementCode": "baseLocation",
+    "ElementLabel": "Base Location",
+    "FieldType": "Text",
     "DisplayContext": "OPTIONAL"
   }
 ]
