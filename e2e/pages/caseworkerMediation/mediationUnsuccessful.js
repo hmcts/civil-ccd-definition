@@ -3,7 +3,7 @@ module.exports = {
   fields: function() {
         return {
           mediationFailureReason: {
-            id: '#unsuccessfulMediationReason',
+            id: '#mediationUnsuccessfulReasonsMultiSelect',
             options: {
               one: 'Party withdraws from mediation',
               two: 'Appointment no agreement reached',
@@ -18,8 +18,9 @@ module.exports = {
 
     I.waitForElement(this.fields().mediationFailureReason.id);
     await I.runAccessibilityTest();
-    I.selectOption(this.fields().mediationFailureReason.id, this.fields().mediationFailureReason.options.one);
-
+    await within(this.fields().mediationFailureReason.id, () => {
+      I.click(this.fields().mediationFailureReason.options.one);
+    });
     await I.clickContinue();
   }
 };
