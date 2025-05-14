@@ -93,6 +93,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseType2v1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();
@@ -107,6 +108,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
 
   async RespondSmallTrackFullDefence1v2SS() {
     const { defendantResponseActions } = this.defendantActionsFactory;
+    await super.fetchAndSetCCDCaseData(1747248728945370);
     await super.retryExuiEvent(
       async () => {
         await defendantResponseActions.confirmDetailsDS1();
@@ -114,6 +116,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseTypeDS1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();
