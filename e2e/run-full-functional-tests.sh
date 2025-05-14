@@ -5,8 +5,8 @@ yarn playwright install
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
-# Check if RUN_FAILED_TESTS is set to "true"
-if [ "$RUN_FAILED_TESTS" != "true" ]; then
+# Check if RUN_FAILED_TEST_FILES is set to "true"
+if [ "$RUN_FAILED_TEST_FILES" != "true" ]; then
   yarn test:e2e-nightly-prod
 
 # Check if failedTestFiles.json exists and is non-empty
