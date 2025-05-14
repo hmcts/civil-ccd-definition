@@ -10,7 +10,6 @@ export default class ConfirmNotifyClaimDetailsPage extends ExuiPage(BasePage) {
     const responseDeadline = DateHelper.addToToday({
       days: 14,
       workingDay: true,
-      addDayAfter4pm: true,
     });
     await super.runVerifications([
       super.expectHeading(confirmationHeading),
