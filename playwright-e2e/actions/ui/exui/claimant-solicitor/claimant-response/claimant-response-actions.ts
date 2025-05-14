@@ -70,6 +70,11 @@ export default class ClaimantResponseActions extends BaseTestData {
 
   @Step(classKey)
   async dqSmallTrack() {
+    const { determinationWithoutHearingPage } = this.claimantResponsePageFactory;
+    await determinationWithoutHearingPage.verifyContent(this.ccdCaseData);
+    await determinationWithoutHearingPage.selectYes();
+    await determinationWithoutHearingPage.submit();
+
     await this.experts();
     await this.witnesses();
     await this.language();

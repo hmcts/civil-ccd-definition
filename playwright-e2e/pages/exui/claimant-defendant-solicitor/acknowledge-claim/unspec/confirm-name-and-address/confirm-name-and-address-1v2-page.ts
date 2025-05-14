@@ -7,6 +7,7 @@ import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-de
 import partys from '../../../../../../constants/partys.ts';
 import { inputs, heading } from './confirm-name-and-address-content.ts';
 import DateOfBirthFragment from '../../../../fragments/date/date-of-birth-fragment.ts';
+import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class ConfirmNameAndAddress1v2Page extends ExuiPage(BasePage) {
@@ -20,7 +21,7 @@ export default class ConfirmNameAndAddress1v2Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(ccdCaseData.id),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
       super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectText(inputs.dateOfBirth.label, { count: 2 }),
     ]);

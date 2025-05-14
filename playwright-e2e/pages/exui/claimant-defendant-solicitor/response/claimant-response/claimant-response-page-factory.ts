@@ -44,6 +44,8 @@ import SmallClaimExperts2v1ClaimantPage from '../directions-questionaire/lr-spec
 import HearingFastPage from '../directions-questionaire/unspec/hearing/hearing-fast-page.ts';
 import RemoteHearingSpecFragment from '../../../fragments/remote-hearing-spec/remote-hearing-spec-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
+import YesOrNoFragment from '../../../fragments/yes-or-no/yes-or-no-fragment.ts';
+import DeterminationWithoutHearingPage from '../directions-questionaire/common/determination-without-hearing/determination-without-hearing-page.ts';
 
 export default class ClaimantResponsePageFactory extends BasePageFactory {
   get respondentResponsePage() {
@@ -164,6 +166,16 @@ export default class ClaimantResponsePageFactory extends BasePageFactory {
 
   get smallClaimExperts2v1Page() {
     return new SmallClaimExperts2v1ClaimantPage(this.page);
+  }
+
+  get determinationWithoutHearingPage() {
+    const yesOrNoFragment = new YesOrNoFragment(this.page);
+    return new DeterminationWithoutHearingPage(
+      this.page,
+      yesOrNoFragment,
+      partys.CLAIMANT_1,
+      partys.CLAIMANT_SOLICITOR_1,
+    );
   }
 
   get smallClaimWitnessesPage() {

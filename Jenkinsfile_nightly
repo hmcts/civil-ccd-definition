@@ -4,6 +4,7 @@ properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
+    string(name: 'RUN_FAILED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the previous pipeline run'),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
@@ -92,6 +93,21 @@ def copyPreviousHistory(historyDir, resultsDir) {
   }
 }
 
+def copyFailedTestFilesJson() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild.number
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/failedTestFiles.json", target: "test-results"
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
 def secrets = [
   'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
@@ -103,6 +119,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.RUN_FAILED_TEST_FILES=params.RUN_FAILED_TEST_FILES
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
@@ -185,7 +202,12 @@ withNightlyPipeline(type, product, component) {
   //       }
   //     }
   //   }
-  // }
+
+  before('fullFunctionalTest') {
+    if(env.RUN_FAILED_TEST_FILES === true) {
+      copyFailedTestFilesJson()
+    }
+  }
 
   enableFullFunctionalTest(200)
 

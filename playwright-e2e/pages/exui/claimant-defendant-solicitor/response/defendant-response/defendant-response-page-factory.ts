@@ -61,6 +61,8 @@ import RemoteHearingFragment from '../../../fragments/remote-hearing/remote-hear
 import SolicitorReferenceFragment from '../../../fragments/solicitor-reference/solicitor-reference-fragment';
 import StatementOfTruthFragment from '../../../fragments/statement-of-truth/statement-of-truth-fragment';
 import DateOfBirthFragment from '../../../fragments/date/date-of-birth-fragment';
+import DeterminationWithoutHearingPage from '../directions-questionaire/common/determination-without-hearing/determination-without-hearing-page';
+import YesOrNoFragment from '../../../fragments/yes-or-no/yes-or-no-fragment';
 
 export default class DefendantResponsePageFactory extends BasePageFactory {
   get respondentChecklistPage() {
@@ -474,6 +476,26 @@ export default class DefendantResponsePageFactory extends BasePageFactory {
 
   get disclosureReportDS2Page() {
     return new DisclosureReportPage(this.page, partys.DEFENDANT_2, partys.DEFENDANT_SOLICITOR_2);
+  }
+
+  get determinationWithoutHearingDS1Page() {
+    const yesOrNoFragment = new YesOrNoFragment(this.page);
+    return new DeterminationWithoutHearingPage(
+      this.page,
+      yesOrNoFragment,
+      partys.DEFENDANT_1,
+      partys.DEFENDANT_SOLICITOR_1,
+    );
+  }
+
+  get determinationWithoutHearingDS2Page() {
+    const yesOrNoFragment = new YesOrNoFragment(this.page);
+    return new DeterminationWithoutHearingPage(
+      this.page,
+      yesOrNoFragment,
+      partys.DEFENDANT_2,
+      partys.DEFENDANT_SOLICITOR_2,
+    );
   }
 
   get smallClaimExpertsDS1Page() {
