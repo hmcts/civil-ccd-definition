@@ -24,7 +24,6 @@ export default class ConfirmAcknowledgeClaimPage extends ExuiPage(BasePage) {
         : ccdCaseData.respondent2ResponseDeadline,
       {
         days: 14,
-        addDayAfter4pm: true,
         workingDay: true,
       },
     );
