@@ -13,7 +13,7 @@ if (config.runWAApiTest) {
   validScheduleAHearingTask = require('../../../../wa/tasks/scheduleADisposalHearing.js');
 }
 
-Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod');
+Feature('1v1 Unspec defaultJudgement @e2e-nightly-prod @e2e-dj-unspec');
 
 Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-task', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', '11000');
@@ -27,17 +27,17 @@ Scenario('Request default judgement @create-claim @e2e-1v1-dj @e2e-wa @master-e2
   await api.amendRespondent1ResponseDeadline(config.systemupdate);
   await I.login(config.applicantSolicitorUser);
   await I.initiateDJUnspec(caseId, 'ONE_V_ONE');
-}).retry(3);
+}).retry(2);
 
 //DTSCCI-358
-Scenario.skip('Judge add casee notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
+Scenario.skip('Judge add case notes @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await I.login(judgeUserToBeUsed);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGECaseNoteSelection');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/EVIDENCE_UPLOAD_JUDGE/EVIDENCE_UPLOAD_JUDGE');
   await I.waitForText('How do you want to add a case note?');
   await I.judgeAddsCaseNotes();
-}).retry(3);
+}).retry(2);
 
 Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
   await I.login(judgeUserToBeUsed);
@@ -50,13 +50,12 @@ Scenario('Judge perform direction order @wa-task', async ({I, api, WA}) => {
     taskId = summaryJudgmentDirectionsTask['id'];
     api.assignTaskToUser(judgeUserToBeUsed, taskId);
   }
-
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJCaseManagementOrder');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/STANDARD_DIRECTION_ORDER_DJ/STANDARD_DIRECTION_ORDER_DJ');
   await I.judgePerformDJDirectionOrder();
   if (config.runWAApiTest) {
     api.completeTaskByUser(judgeUserToBeUsed, taskId);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
   if (config.runWAApiTest) {
@@ -66,30 +65,30 @@ Scenario('Hearing schedule @wa-task', async ({I, api, WA}) => {
     taskId = scheduleAHearingTask['id'];
   }
   await createHearingScheduled(I);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip  ('Verify error on trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.amendHearingDate(config.systemupdate, '2022-01-10');
   hearingDateIsLessThan3Weeks = true;
   await performConfirmTrialReadiness(I, config.defendantSolicitorUser, 'yes');
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Confirm trial readiness @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I, api}) => {
   await api.amendHearingDate(config.systemupdate, '2025-01-10');
   hearingDateIsLessThan3Weeks = false;
   await performConfirmTrialReadiness(I, config.applicantSolicitorUser, hearingDateIsLessThan3Weeks, 'no');
   await performConfirmTrialReadiness(I, config.defendantSolicitorUser, hearingDateIsLessThan3Weeks, 'yes');
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Pay hearing fee @create-claim @e2e-1v1-dj @e2e-wa @master-e2e-ft @wa-r4', async ({I}) => {
   await payHearingFee(I);
-}).retry(3);
+}).retry(2);
 
 async function createHearingScheduled(I) {
     await I.login(hearingCenterAdminToBeUsed);
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULEDHearingNoticeSelect');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId+ '/trigger/HEARING_SCHEDULED/HEARING_SCHEDULED');
     await I.createHearingScheduled();
 }
 
@@ -115,21 +114,21 @@ Scenario.skip('Verify Challenged access check for judge @e2e-wa @wa-r4', async (
     await I.login(config.judgeUser2WithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Challenged access check for admin @e2e-wa @wa-r4', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.hearingCenterAdminWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Challenged access check for legalops @e2e-wa @wa-r4', async ({I, WA}) => {
   if (config.runWAApiTest) {
     await I.login(config.tribunalCaseworkerWithRegionId4);
     await WA.runChallengedAccessSteps(caseId);
   }
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.iacLeadershipJudge);
@@ -144,13 +143,13 @@ Scenario.skip('Verify Specific access check for judge @e2e-wa @wa-r4', async ({I
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacLeadershipJudge);
   await WA.verifyApprovedSpecificAccess(caseId);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Request Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
    let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
    await I.login(userToBeLoggedIn);
    await WA.runSpecificAccessRequestSteps(caseId);
- }).retry(3);
+ }).retry(2);
 
  Scenario.skip('Approve Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
   if (config.runWAApiTest) {
@@ -161,13 +160,13 @@ Scenario.skip('Request Specific access check for admin @e2e-wa  @wa-r4', async (
   }
   await I.login(config.nbcTeamLeaderWithRegionId1);
   await WA.runSpecificAccessApprovalSteps(caseId);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify approved Specific access check for admin @e2e-wa  @wa-r4', async ({I, WA, api}) => {
   let userToBeLoggedIn = config.runningEnv == 'demo' ? config.iacAdminUser : config.iacAATAdminUser;
   await I.login(userToBeLoggedIn);
   await WA.verifyApprovedSpecificAccess(caseId);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Specific access check for legalops @e2e-wa', async ({I, WA, api}) => {
   await I.login(config.iacLegalOpsUser);
@@ -182,7 +181,7 @@ Scenario.skip('Verify Specific access check for legalops @e2e-wa', async ({I, WA
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacLegalOpsUser);
   await WA.verifyApprovedSpecificAccess(caseId);
-}).retry(3);
+}).retry(2);
 
 
 Scenario.skip('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, api}) => {
@@ -198,12 +197,12 @@ Scenario.skip('Verify Specific access check for CTSC @e2e-wa', async ({I, WA, ap
   await WA.runSpecificAccessApprovalSteps(caseId);
   await I.login(config.iacCtscTeamLeaderUser);
   await WA.verifyApprovedSpecificAccess(caseId);
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Staff UI @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.staffUIAdmin);
   await WA.verifyStaffLink();
-}).retry(3);
+}).retry(2);
 
 Scenario.skip('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api}) => {
   await I.login(config.feePaidJudge);
@@ -211,7 +210,7 @@ Scenario.skip('Verify Judicial booking UI  @e2e-wa @wa-r4', async ({I, WA, api})
   await WA.createBooking('Liverpool Civil and Family Court');
   await WA.verifyCreatedBooking('Central London County Court');
   await WA.verifyCreatedBooking('Liverpool Civil and Family Court');
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
