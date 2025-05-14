@@ -108,6 +108,10 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
+    failedTestsPlugin: {
+      enabled: true,
+      require: './e2e/plugins/failedTestsPlugin',
+    },
   },
   mocha: {
     bail: true,
