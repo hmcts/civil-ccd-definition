@@ -75,8 +75,6 @@ void publishBootstrapReport() {
     archiveArtifacts artifacts: 'allure-functional-history/**', fingerprint: true
   }
 
-copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
-
 def copyPreviousHistory(historyDir, resultsDir) {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild.number
@@ -85,6 +83,21 @@ def copyPreviousHistory(historyDir, resultsDir) {
     try {
       copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/${historyDir}/**", target: "${resultsDir}"
       sh "mv ${resultsDir}/${historyDir} ${resultsDir}/history"
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
+def copyFailedTestFilesJson() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild.number
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/failedTestFiles.json", target: "test-results"
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -127,13 +140,6 @@ withNightlyPipeline(type, product, component) {
 
   boolean playwrightSetupPassed=true
   boolean flowInterrupted = false
-
-  before('checkout') {
-    if(env.RUN_FAILED_TEST_FILES === true) {
-      def buildNumber = currentBuild.previousBuild.number
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "**/${historyDir}/**", target: "${resultsDir}"
-    }
-  }
 
   afterAlways('DependencyCheckNightly') {
     stage('Playwright test setup') {
@@ -191,6 +197,12 @@ withNightlyPipeline(type, product, component) {
           publishBootstrapReport()
         }
       }
+    }
+  }
+
+  before('fullFunctionalTest') {
+    if(env.RUN_FAILED_TEST_FILES === true) {
+      copyFailedTestFilesJson()
     }
   }
 
