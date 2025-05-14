@@ -7,7 +7,11 @@ import { confirmationHeading, paragraphs } from './confirm-notify-claim-details-
 @AllMethodsStep()
 export default class ConfirmNotifyClaimDetailsPage extends ExuiPage(BasePage) {
   async verifyContent() {
-    const responseDeadline = DateHelper.addToToday({ days: 14 });
+    const responseDeadline = DateHelper.addToToday({
+      days: 14,
+      workingDay: true,
+      addDayAfter4pm: true,
+    });
     await super.runVerifications([
       super.expectHeading(confirmationHeading),
       super.expectText(paragraphs.descriptionText1, { exact: false }),

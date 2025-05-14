@@ -87,7 +87,6 @@ Scenario('Claimant solicitor responds to defence', async ({I}) => {
   await waitForFinishedBusinessProcess(caseNumber);
 }).retry(2);
 
-
 Scenario('Add case flags', async ({I}) => {
   const caseFlags = [{
     partyName: 'Example applicant1 company', roleOnCase: 'Claimant 1',
