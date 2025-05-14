@@ -15,7 +15,6 @@ if [ "$RUN_FAILED_TEST_FILES" != "true" ]; then
 # Check if failedTestFiles.json exists and is non-empty
 elif [ ! -f "$FAILED_TEST_FILES_JSON" ] || [ ! -s "$FAILED_TEST_FILES_JSON" ]; then
   echo "failedTestFiles.json not found or is empty."
-  echo "Last test suite may not have finished/executed or process may have aborted/failed"
   exit 1
 
 # Check if the JSON array inside failedTestFiles.json is empty

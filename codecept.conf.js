@@ -2,8 +2,7 @@ const {
   createFailedTestFile,
   createNewFailedTestsFile,
   deleteNewFailedTestsFile,
-  deleteFailedTestsFile
-} = require('./e2e/plugins/failedTestsPlugin');
+} = require('./e2e/plugins/failedTestFilesPlugin');
 
 const ccdPipelineTests = process.env.FAILED_TEST_FILES
   ? process.env.FAILED_TEST_FILES.split(',')
@@ -49,7 +48,6 @@ exports.config = {
   teardownAll: async () => {
     await createFailedTestFile();
     await deleteNewFailedTestsFile();
-    await deleteFailedTestsFile();
   },
   tests:
     process.env.WA_TESTS === 'true'
@@ -108,6 +106,10 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
+    failTestFilesPlugin: {
+      enabled: true,
+      require: './e2e/plugins/failedTestsPlugin'
+    }
   },
   mocha: {
     bail: true,
