@@ -201,7 +201,7 @@ withNightlyPipeline(type, product, component) {
   }
 
   before('fullFunctionalTest') {
-    if(env.RUN_FAILED_TEST_FILES === true) {
+    if(env.RUN_FAILED_TEST_FILES == true) {
       copyFailedTestFilesJson()
     }
   }
