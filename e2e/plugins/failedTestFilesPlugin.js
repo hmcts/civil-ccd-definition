@@ -57,15 +57,3 @@ module.exports.createFailedTestFile = async () => {
   const jsonData = JSON.parse(content);
   await fs.writeFile(failedTestFilesPath, JSON.stringify(jsonData, null, 2));
 };
-
-module.exports.deleteFailedTestsFile = async () => {
-  try {
-    const content = await fs.readFile(failedTestFilesPath, 'utf-8');
-    const failedTestFilesJson = JSON.parse(content);
-    if(failedTestFilesJson.length === 0) {
-      await fs.unlink(failedTestFilesPath);
-    }
-  } catch (e) {
-    console.log('Error deleting file in path: ' + failedTestFilesPath);
-  }
-};
