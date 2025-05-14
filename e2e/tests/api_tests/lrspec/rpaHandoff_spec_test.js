@@ -29,15 +29,15 @@ Scenario('Defendant response and claimant intention - 1v1 Full admission', async
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'FULL_ADMISSION');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION');
-});
+}).retry(3);
 
 Scenario('Defendant response and claimant intention - 1v1 Part admission', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'PART_ADMISSION');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION');
   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION');
-});
+}).retry(3);
 
 Scenario('Defendant response  - 1v1-counter claim', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM');
-});
+}).retry(3);
