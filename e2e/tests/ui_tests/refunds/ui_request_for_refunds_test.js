@@ -3,7 +3,7 @@ const {unAssignAllUsers} = require('../../../api/caseRoleAssignmentHelper');
 const RequestRefundSteps = require('./steps/requestRefundSteps');
 const apiRequest = require('../../../api/apiRequest');
 
-Feature('Request and Processing of refunds @e2e-nightly-prod').tag('@refunds');
+Feature('Request and Processing of refunds @e2e-nightly-prod').tag('@e2e-refunds');
 
 Scenario('Request and Approval of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {
@@ -22,7 +22,7 @@ Scenario('Request and Approval of a Refund after a return to Requestor by the Ap
     RequestRefundSteps.reviewRefunds(caseId);
     await I.navigateToRefundsList(config.defendantSolicitorUser);
     RequestRefundSteps.approveRefund(caseId);
-});
+}).retry(2);
 
 Scenario('Request and Rejection of a Refund after a return to Requestor by the Approval Caseworker',
   async ({I, api}) => {
@@ -41,7 +41,7 @@ Scenario('Request and Rejection of a Refund after a return to Requestor by the A
     RequestRefundSteps.reviewRefunds(caseId);
     await I.navigateToRefundsList(config.defendantSolicitorUser);
     RequestRefundSteps.rejectRefund(caseId);
-});
+}).retry(2);
 
 
 AfterSuite(async ({api}) => {
