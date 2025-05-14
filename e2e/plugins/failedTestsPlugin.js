@@ -2,8 +2,8 @@ const fs = require('fs/promises');
 const event = require('codeceptjs').event;
 const lockfile = require('proper-lockfile');
 
-const newFailedTestFilesPath = 'test-results/newFailedTestFiles.json';
-const failedTestFilesPath = 'test-results/failedTestFiles.json';
+const newFailedTestFilesPath = 'test-results/functional/newFailedTestFiles.json';
+const failedTestFilesPath = 'test-results/functional/failedTestFiles.json';
 
 async function writeFailedTestFile(testFile) {
   const release = await lockfile.lock(newFailedTestFilesPath, { retries: { retries: 10, factor: 1.5 } });
