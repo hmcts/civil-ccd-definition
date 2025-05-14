@@ -34,13 +34,24 @@ async function removeFailedTestFile(testFile) {
   }
 }
 
+function normaliseFilePath(filePath) {
+  const index = filePath.indexOf('/e2e/');
+  if (index !== -1) {
+    return `.${filePath.substring(index)}`;
+  } else {
+    return filePath;
+  }
+}
+
 module.exports = function() {
   event.dispatcher.on(event.test.failed, async function (test) {
-    await writeFailedTestFile(test.file);
+    const normalisedFilePath = normaliseFilePath(test.file);
+    await writeFailedTestFile(normalisedFilePath);
   });
 
   event.dispatcher.on(event.test.passed, async function (test) {
-    await removeFailedTestFile(test.file);
+    const normalisedFilePath = normaliseFilePath(test.file);
+    await removeFailedTestFile(normalisedFilePath);
   });
 };
 
