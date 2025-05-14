@@ -593,7 +593,7 @@
     "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "showCarmFields=\"No\""
+    "FieldShowCondition": "showCarmFields=\"No\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "ID": "SmallClaimsOrderAndHearingDetails",
