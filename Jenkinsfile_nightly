@@ -204,7 +204,7 @@ withNightlyPipeline(type, product, component) {
   //   }
 
   before('fullFunctionalTest') {
-    if(env.RUN_FAILED_TEST_FILES) {
+    if(env.RUN_FAILED_TEST_FILES == 'true') {
       copyFailedTestFilesJson()
       echo "Listing files in workspace:"
       sh 'ls -la'
