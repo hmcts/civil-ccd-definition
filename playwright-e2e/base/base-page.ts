@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
 import Cookie from '../models/cookie';
@@ -359,7 +360,7 @@ export default abstract class BasePage {
     useAxeCache: boolean,
     axePageInsertName?: string | number,
   ) {
-    const axeBuilder = new AxeBuilder({ page: this.page })
+    const axeBuilder = new AxeBuilder({ page: this.page as PageCore })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
 

@@ -4,7 +4,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import { confirmationHeading } from './confirm-acknowledge-claim-content.ts';
 import DateHelper from '../../../../../../helpers/date-helper.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import { Party } from '../../../../../../models/partys.ts';
 import partys from '../../../../../../constants/partys.ts';
 
