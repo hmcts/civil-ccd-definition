@@ -326,7 +326,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrackDS2Pages() {
+  async dqSmallTrackDS2() {
     const { determinationWithoutHearingDS2Page } = this.defendantResponsePageFactory;
     await determinationWithoutHearingDS2Page.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingDS2Page.selectNo();
@@ -376,7 +376,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async statementOfTruthDefendantResponseDS1Page() {
+  async statementOfTruthDefendantResponseDS1() {
     const { statementOfTruthDefendantResponseDS1Page } = this.defendantResponsePageFactory;
     await statementOfTruthDefendantResponseDS1Page.verifyContent(this.ccdCaseData);
     await statementOfTruthDefendantResponseDS1Page.enterDetails();
