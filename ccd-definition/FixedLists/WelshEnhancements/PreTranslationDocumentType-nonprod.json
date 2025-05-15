@@ -4,5 +4,11 @@
     "ListElementCode": "INTERLOCUTORY_JUDGMENT",
     "ListElement": "Interlocutory Judgment",
     "DisplayOrder": 1
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "MANUAL_DETERMINATION_DOCUMENT",
+    "ListElement": "Manual Determination Document",
+    "DisplayOrder": 2
   }
 ]
