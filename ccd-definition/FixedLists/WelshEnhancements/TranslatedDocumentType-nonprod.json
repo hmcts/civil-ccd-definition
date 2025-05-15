@@ -19,7 +19,7 @@
   },
   {
     "ID": "TranslatedDocumentType",
-    "ListElementCode": "JUDGMENT_BY_ADMISSION",
+    "ListElementCode": "CCJ_REQUEST_ADMISSION",
     "ListElement": "Judgment By Admission Document",
     "DisplayOrder": 8
   }
