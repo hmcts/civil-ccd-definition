@@ -32,7 +32,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -56,7 +55,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -80,7 +78,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -106,7 +103,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -132,7 +128,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();

@@ -28,6 +28,50 @@ const getRequestHeaders = (userAuth) => {
 };
 const getCivilServiceCaseworkerSubmitNewClaimUrl = () => `${config.url.civilService}/cases/caseworkers/create-case/${tokens.userId}`;
 
+const fetchCaseDetails = async (user, caseId, response = 200) => {
+  let eventUserAuth = await idamHelper.accessToken(user);
+  let eventUserId = await idamHelper.userId(eventUserAuth);
+  let url = getCaseDetailsUrl(eventUserId, caseId);
+
+  return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
+      .then(response => response.json());
+};
+
+const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
+  const userToken = await idamHelper.accessToken(user);
+  const s2sToken = await restHelper.retriedRequest(
+      `${config.url.authProviderApi}/testing-support/lease`,
+      {'Content-Type': 'application/json'},
+      {
+        microservice: config.s2sForXUI.microservice,
+        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
+      })
+      .then(response => response.text());
+
+    const inputData = {
+        'search_parameters': [
+            {'key': 'caseId', 'operator': 'IN', 'values': [caseNumber]},
+            {'key': 'jurisdiction', 'operator': 'IN', 'values': ['CIVIL']},
+            {'key': 'state', 'operator': 'IN', 'values': ['assigned', 'unassigned']}
+        ],
+        'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
+    };
+
+  return restHelper.request(`${config.url.waTaskMgmtApi}/task`,
+      {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${userToken}`,
+        'ServiceAuthorization': `Bearer ${s2sToken}`
+      }, inputData, 'POST', expectedStatus)
+      .then(async response => {
+        if (response.status !== expectedStatus) {
+          throw new Error(`There was an issue retrieving wa tasks. Expected status: ${expectedStatus}, actual status: ${response.status}, `
+            + `message: ${response.statusText}, url: ${response.url}`);
+        }
+        return await response.json();
+      });
+};
+
 module.exports = {
   setupTokens: async (user) => {
     tokens.userAuth = await idamHelper.accessToken(user);
@@ -42,15 +86,17 @@ module.exports = {
       .then(response => response.text());
   },
 
-  fetchCaseDetails: async (user, caseId, response = 200) => {
-    let eventUserAuth = await idamHelper.accessToken(user);
-    let eventUserId = await idamHelper.userId(eventUserAuth);
-    let url = getCaseDetailsUrl(eventUserId, caseId);
+  getTokens: () => tokens,
 
-    return await restHelper.retriedRequest(url, getRequestHeaders(eventUserAuth), null, 'GET', response)
-      .then(response => response.json());
+  fetchCaseDetails,
+  fetchCaseDetailsAsSystemUser: async (caseId) => {
+    const { userAuth, userId } = tokens;
+    const details = await fetchCaseDetails(config.systemUpdate2, caseId, 200);
+    // Reset auth and id back to original user.
+    tokens.userAuth = userAuth;
+    tokens.userId = userId;
+    return details;
   },
-
   fetchCaseForDisplay: async (user, caseId, response = 200) => {
     let eventUserAuth = await idamHelper.accessToken(user);
     let eventUserId = await idamHelper.userId(eventUserAuth);
@@ -112,6 +158,7 @@ module.exports = {
     let response = await restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth), payload, 'POST', 200)
       .then(response => response.json());
     tokens.ccdEvent = response.token;
+    return response.case_data;
   },
 
   startEventNotAllowed: async (eventName, caseId) => {
@@ -184,34 +231,8 @@ module.exports = {
 
   fetchTaskDetails: async (user, caseNumber, taskId, expectedStatus = 200) => {
     let taskDetails;
-    const userToken = await idamHelper.accessToken(user);
-    const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/testing-support/lease`,
-      {'Content-Type': 'application/json'},
-      {
-        microservice: config.s2sForXUI.microservice,
-        oneTimePassword: TOTP.generate(config.s2sForXUI.secret)
-      })
-      .then(response => response.text());
-
-    const inputData = {
-      'search_parameters': [
-        {'key': 'caseId', 'operator': 'IN', 'values': [caseNumber]},
-        {'key': 'jurisdiction', 'operator': 'IN', 'values': ['CIVIL']},
-        {'key': 'state', 'operator': 'IN', 'values': ['assigned', 'unassigned']}
-      ],
-      'sorting_parameters': [{'sort_by': 'dueDate', 'sort_order': 'asc'}]
-    };
-
-
     return retry(() => {
-      return restHelper.request(`${config.url.waTaskMgmtApi}/task`,
-        {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${userToken}`,
-          'ServiceAuthorization': `Bearer ${s2sToken}`
-        }, inputData, 'POST', expectedStatus)
-        .then(async response => await response.json())
+      return fetchWaTasks(user, caseNumber, expectedStatus)
         .then(jsonResponse => {
           let availableTaskDetails = jsonResponse['tasks'];
           availableTaskDetails.forEach((taskInfo) => {
@@ -227,6 +248,22 @@ module.exports = {
             return taskDetails;
           }
         });
+    }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
+  },
+
+  fetchTasks: async (user, caseNumber, filterCallback, expectedStatus = 200) => {
+    return retry(() => {
+      return fetchWaTasks(user, caseNumber, expectedStatus)
+          .then(jsonResponse => {
+            const tasks = filterCallback(jsonResponse['tasks']);
+            if (tasks.length > 0) {
+              console.log('Tasks ...');
+              tasks.forEach(taskInfo => console.log(taskInfo));
+              return tasks;
+            } else {
+              throw new Error(`Ongoing task retrieval process for case id: ${caseNumber}`);
+            }
+          });
     }, TASK_MAX_RETRIES, TASK_RETRY_TIMEOUT_MS);
   },
 

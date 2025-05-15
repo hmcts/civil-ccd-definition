@@ -12,14 +12,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
     this.createClaimPageFactory = createClaimPageFactory;
   }
 
-  async caseFilter() {
-    const { caseFilterPage } = this.createClaimPageFactory;
-    await caseFilterPage.verifyContent();
-    // await caseFilterPage.chooseSpec();
-    // await caseFilterPage.submit();
-    await caseFilterPage.chooseSpecWithUrl();
-  }
-
   async checklist() {
     const { checkListPage } = this.createClaimPageFactory;
     await checkListPage.verifyContent();

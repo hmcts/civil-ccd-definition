@@ -93,6 +93,7 @@ exports.config = {
     noc: './e2e/api/steps_noc.js',
     hearings: './e2e/api/steps_hearings.js',
     bulks: './e2e/api/steps_Bulk.js',
+    qmSteps: './e2e/api/steps_qm.js',
   },
   plugins: {
     autoDelay: {
