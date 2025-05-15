@@ -56,7 +56,8 @@ export default class ExuiDashboardActions extends BaseApi {
     const { caseListPage } = this.exuiDashboardPageFactory;
     await caseListPage.openCaseList();
     const { navBar } = this.exuiDashboardPageFactory;
-    await navBar.clickCreateCase();
+    // await navBar.clickCreateCase();
+    await navBar.openCreateCaseWithUrl();
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
@@ -65,7 +66,8 @@ export default class ExuiDashboardActions extends BaseApi {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
     await caseDetailsPage.goToCaseDetails(this.ccdCaseData.id);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
-    await caseDetailsPage.retryChooseNextStep(ccdEvent);
+    // await caseDetailsPage.retryChooseNextStep(ccdEvent);
+    await caseDetailsPage.chooseNextStepWithUrl(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 

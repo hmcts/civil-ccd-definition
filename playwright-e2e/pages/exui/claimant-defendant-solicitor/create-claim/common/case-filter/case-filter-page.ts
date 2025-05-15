@@ -1,4 +1,6 @@
 import BasePage from '../../../../../../base/base-page';
+import config from '../../../../../../config/config';
+import urls from '../../../../../../config/urls';
 import ccdEvents from '../../../../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import { buttons } from '../../../../exui-page/exui-content';
@@ -24,6 +26,12 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     await super.selectFromDropdown(dropdowns.event.options.spec, dropdowns.event.selector);
   }
 
+  async chooseSpecWithUrl() {
+    await super.goTo(
+      `${urls.manageCase}/cases/case-create/${config.definition.jurisdiction}/${config.definition.caseType}/${ccdEvents.CREATE_CLAIM_SPEC.id}/${ccdEvents.CREATE_CLAIM_SPEC.id}`,
+    );
+  }
+
   async chooseUnSpec() {
     await super.selectFromDropdown(
       dropdowns.jurisdiction.options.civil,
@@ -31,6 +39,12 @@ export default class CaseFilterPage extends ExuiPage(BasePage) {
     );
     await super.selectFromDropdown(dropdowns.caseType.options.civil, dropdowns.caseType.selector);
     await super.selectFromDropdown(dropdowns.event.options.unspec, dropdowns.event.selector);
+  }
+
+  async chooseUnspecWithUrl() {
+    await super.goTo(
+      `${urls.manageCase}/cases/case-create/${config.definition.jurisdiction}/${config.definition.caseType}/${ccdEvents.CREATE_CLAIM.id}/${ccdEvents.CREATE_CLAIM.id}`,
+    );
   }
 
   async submit() {
