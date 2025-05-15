@@ -6,7 +6,7 @@
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "PageID": "defenceAdmittedPartRoute",
+    "PageID": "RespondentCheckList",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "ShowSummaryChangeOption": "N",
     "RetainHiddenValue": "Y"
