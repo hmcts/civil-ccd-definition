@@ -213,8 +213,8 @@ withNightlyPipeline(type, product, component) {
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-    if(runFailedTestFiles) {
-      copyFailedTestFilesJson()
+      if(runFailedTestFiles) {
+        copyFailedTestFilesJson()
       }
     }
 
