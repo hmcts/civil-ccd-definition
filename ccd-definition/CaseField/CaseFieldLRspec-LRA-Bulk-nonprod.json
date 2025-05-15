@@ -1,6 +1,30 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel",
+    "Label": "The claim fee and any fixed costs claimed are payable in addition to the claim amount admitted.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabel2",
+    "Label": "The claim fee and any fixed costs claimed are payable in addition to the claim amount admitted.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabelBothDefendants",
+    "Label": "The claim fee and any fixed costs claimed are payable in addition to the claim amount admitted.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
     "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
     "FieldType": "Label",

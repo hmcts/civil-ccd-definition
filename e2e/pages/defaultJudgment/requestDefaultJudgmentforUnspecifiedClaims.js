@@ -187,7 +187,7 @@ module.exports = {
   async performAndVerifyTransferCaseOffline(caseId) {
     await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
     await I.waitForText('Summary');
-    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/TAKE_CASE_OFFLINE/submit');
+    await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId + '/trigger/TAKE_CASE_OFFLINE');
     await I.waitForText('Take case offline');
     await I.click('Submit');
     await I.waitForText('Summary');
