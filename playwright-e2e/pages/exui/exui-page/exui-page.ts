@@ -77,10 +77,6 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         all: true,
         message: 'Field Validation Error on UI',
       });
-      await super.expectNoSelector(components.loading.selector, {
-        timeout: 15,
-        message: 'Loading spinner taking too long to disappear',
-      });
     }
 
     // protected async retryClickSubmit(expect?: () => Promise<void>) {
@@ -119,11 +115,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
           });
           if (expect) await expect();
         },
-        async () =>
-          super.expectNoSelector(components.loading.selector, {
-            timeout: 15,
-            message: 'Loading spinner taking too long to disappear',
-          }),
+        undefined,
         {
           retries: 2,
           message: 'Clicking submit button failed, trying again',

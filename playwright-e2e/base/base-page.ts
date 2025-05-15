@@ -185,6 +185,11 @@ export default abstract class BasePage {
     return (await this.page.textContent(selector)) ?? undefined;
   }
 
+  @BoxedDetailedStep(classKey)
+  protected async getCurrentUrl() {
+    return this.page.url();
+  }
+
   @BoxedDetailedStep(classKey, 'option', 'selector')
   @TruthyParams(classKey, 'selector')
   protected async selectFromDropdown(
@@ -419,6 +424,16 @@ export default abstract class BasePage {
       Array.isArray(endpoints) ? `(${endpoints.join('|')})$` : `${endpoints}$`,
     );
     await pageExpect(this.page, { message: options.message }).toHaveURL(regex, {
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'oldUrl')
+  protected async expectUrlToChange(
+    currentUrl: string,
+    options: { timeout?: number; message?: string } = {},
+  ) {
+    pageExpect(this.page, { message: options.message }).not.toHaveURL(currentUrl, {
       timeout: options.timeout,
     });
   }
