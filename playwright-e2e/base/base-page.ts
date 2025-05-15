@@ -428,7 +428,7 @@ export default abstract class BasePage {
     });
   }
 
-  @BoxedDetailedStep(classKey, 'oldUrl')
+  @BoxedDetailedStep(classKey, 'currentUrl')
   protected async expectUrlToChange(
     currentUrl: string,
     options: { timeout?: number; message?: string } = {},
