@@ -4,6 +4,7 @@ properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
+    string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
     string(name: 'RUN_FAILED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the previous pipeline run'),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
@@ -144,11 +145,12 @@ withNightlyPipeline(type, product, component) {
 
   boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
+  boolean forceGreenBuild = params.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTestFiles = env.RUN_FAILED_TEST_FILES.toBoolean();
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  if(!runFailedTestFiles) {
+  if(!runFailedTestFiles || !forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       stage('Playwright test setup') {
         try {
@@ -209,17 +211,18 @@ withNightlyPipeline(type, product, component) {
     }
   }
   
-
-  before('fullFunctionalTest') {
+  if(!forceGreenBuild) {
+    before('fullFunctionalTest') {
     if(runFailedTestFiles) {
       copyFailedTestFilesJson()
+      }
     }
-  }
 
-  enableFullFunctionalTest(200)
+    enableFullFunctionalTest(200)
 
-  afterAlways('fullFunctionalTest') {
-   archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    afterAlways('fullFunctionalTest') {
+    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    }
   }
 }
 
