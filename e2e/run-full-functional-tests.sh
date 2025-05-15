@@ -5,6 +5,12 @@ yarn playwright install
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
+if [ "$FORCE_GREEN_BUILD" == "true" ]; then
+  echo "Manually forced green build, no functional tests will be run."
+  exit 0
+fi
+
+
 # Define path to failedTestFiles.json
 FAILED_TEST_FILES_JSON="./test-results/functional/failedTestFiles.json"
 

@@ -5,9 +5,9 @@ properties([
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
-    string(name: 'RUN_FAILED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the previous pipeline run'),
+    string(name: 'RUN_FAILED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the \'failedTestFiles.json\' of the first previous pipeline run that contains the artefact'),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
-    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', description: 'Number of times playwright tests will retry exui events'),
     string(name: 'PLAYWRIGHT_TEST_SPEED', defaultValue: 'fast', description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
@@ -120,6 +120,7 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
   env.RUN_FAILED_TEST_FILES=params.RUN_FAILED_TEST_FILES
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
@@ -145,7 +146,7 @@ withNightlyPipeline(type, product, component) {
 
   boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
-  boolean forceGreenBuild = params.FORCE_GREEN_BUILD.toBoolean();
+  boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
   boolean runFailedTestFiles = env.RUN_FAILED_TEST_FILES.toBoolean();
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
@@ -217,12 +218,15 @@ withNightlyPipeline(type, product, component) {
         copyFailedTestFilesJson()
       }
     }
+  }
 
-    enableFullFunctionalTest(200)
+  enableFullFunctionalTest(200)
 
+  if(!forceGreenBuild) {
     afterAlways('fullFunctionalTest') {
       archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
   }
+  
 }
 
