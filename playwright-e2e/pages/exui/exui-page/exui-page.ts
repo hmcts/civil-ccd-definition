@@ -122,7 +122,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
         async () =>
           super.expectNoSelector(components.loading.selector, {
             timeout: 15,
-            message: `Loading spinner expected to disappear after ${config.exui.pageSubmitTimeout}ms`,
+            message: 'Loading spinner taking too long to disappear',
           }),
         {
           retries: 2,
