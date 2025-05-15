@@ -10,5 +10,11 @@
     "ListElementCode": "INTERLOCUTORY_JUDGMENT",
     "ListElement": "Interlocutory Judgment",
     "DisplayOrder": 6
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "MANUAL_DETERMINATION",
+    "ListElement": "Manual Determination Document",
+    "DisplayOrder": 7
   }
 ]
