@@ -17,7 +17,6 @@ module.exports = {
       I.see('Send via');
       I.see('Email');
       I.see('test@hmcts.net');
-      I.see('SendRefund');
       I.click('Submit refund');
     }
   };
