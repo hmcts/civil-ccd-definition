@@ -201,7 +201,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -221,7 +221,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -241,7 +241,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -261,7 +261,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
