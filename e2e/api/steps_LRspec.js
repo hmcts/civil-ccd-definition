@@ -103,7 +103,8 @@ const data = {
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
   DISMISS_CASE: () => dismissCase.dismissCase(),
   SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
-  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel),
+  CLAIMANT_RESPONSE_JBA: (response) => require('../fixtures/events/claimantResponseSpec1v1.js').claimantResponse_JBA(response)
 };
 
 const eventData = {
@@ -126,6 +127,7 @@ const eventData = {
       COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM_PBAv3_MULTI_CLAIM: data.DEFENDANT_RESPONSE_MULTI_CLAIM('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       COUNTER_CLAIM_PBAv3_INTERMEDIATE_CLAIM: data.DEFENDANT_RESPONSE_INTERMEDIATE_CLAIM('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
+      FULL_ADMISSION_JBA_PBAv3: data.DEFENDANT_RESPONSE('FULL_ADMISSION_JBA', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
     },
     ONE_V_TWO: {
       FULL_DEFENCE: data.DEFENDANT_RESPONSE_1v2('FULL_DEFENCE'),
@@ -1040,9 +1042,14 @@ module.exports = {
     if (isMintiCase) {
       response = response+ '_' + mintiClaimTrack;
     }
+    let claimantResponseData;
 
-    let claimantResponseData = eventData['claimantResponses'][scenario][response];
-
+    const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
+    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+      claimantResponseData = data.CLAIMANT_RESPONSE_JBA(response);
+    } else {
+      claimantResponseData = eventData['claimantResponses'][scenario][response];
+    }
     await validateEventPages(claimantResponseData);
 
     let validState = expectedEndState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
@@ -1051,6 +1058,10 @@ module.exports = {
     }
 
     carmEnabled ? validState = 'IN_MEDIATION' : validState;
+
+    if (isJudgmentOnlineLive && response === 'FA_ACCEPT_CCJ') {
+      validState = 'All_FINAL_ORDERS_ISSUED';
+    }
 
     await assertSubmittedEvent(validState || 'PROCEEDS_IN_HERITAGE_SYSTEM');
 
@@ -1331,6 +1342,7 @@ module.exports = {
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
     } else {
+      delete caseData['showConditionFlags'];
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
@@ -1393,7 +1405,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.userInput)) {
       await assertValidData(scheduleData, pageId);
     }
-
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1421,9 +1433,9 @@ module.exports = {
     console.log('Hearing Fee Paid');
 
     await apiRequest.setupTokens(config.applicantSolicitorUser);
-    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
-    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
-    console.log('State moved to:'+updatedCaseState);
+    const caseState = (await apiRequest.fetchCaseDetails(config.applicantSolicitorUser, caseId)).state;
+    assert.equal(caseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+caseState);
   },
 
   hearingFeePaidFlightDelay: async (user) => {
@@ -1505,7 +1517,6 @@ module.exports = {
 
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1525,6 +1536,7 @@ module.exports = {
     }
 
     await apiRequest.startEvent(eventName, caseId);
+    delete caseData['showConditionFlags'];
     await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
@@ -2158,7 +2170,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue= '1502.00';
+    responseBody.data.repaymentDue= '1702.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';

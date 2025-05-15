@@ -24,6 +24,8 @@ properties([
       description: 'The URL of ccd data store'),
     string(name: 'CIVIL_SERVICE_URL', defaultValue: 'http://civil-service-aat.service.core-compute-aat.internal',
       description: 'The URL of civil service'),
+    string(name: 'WA_TASK_MGMT_URL', defaultValue: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+       description: 'The URL of wa task management'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -117,8 +119,10 @@ withNightlyPipeline(type, product, component) {
   env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
   env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
+  env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.CCD_UI_TESTS = true
+  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   loadVaultSecrets(secrets)
 
   boolean playwrightSetupPassed=true
@@ -186,7 +190,7 @@ withNightlyPipeline(type, product, component) {
   enableFullFunctionalTest(200)
 
   afterAlways('fullFunctionalTest') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+   archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
   }
 }
 

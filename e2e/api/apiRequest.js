@@ -5,8 +5,8 @@ const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const {TOTP} = require('totp-generator');
 
-const TASK_MAX_RETRIES = 20;
-const TASK_RETRY_TIMEOUT_MS = 20000;
+const TASK_MAX_RETRIES = 30;
+const TASK_RETRY_TIMEOUT_MS = 5000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -142,7 +142,6 @@ module.exports = {
     if (caseId) {
       url += `/${caseId}/events`;
     }
-
     return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
       {
         data: caseData,
@@ -165,7 +164,7 @@ module.exports = {
   taskActionByUser: async function (user, taskId, url, expectedStatus = 204) {
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
@@ -187,7 +186,7 @@ module.exports = {
     let taskDetails;
     const userToken = await idamHelper.accessToken(user);
     const s2sToken = await restHelper.retriedRequest(
-      `${config.url.authProviderApi}/lease`,
+      `${config.url.authProviderApi}/testing-support/lease`,
       {'Content-Type': 'application/json'},
       {
         microservice: config.s2sForXUI.microservice,
