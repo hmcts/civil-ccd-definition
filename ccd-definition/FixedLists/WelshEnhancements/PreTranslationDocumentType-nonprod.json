@@ -10,5 +10,11 @@
     "ListElementCode": "MANUAL_DETERMINATION_DOCUMENT",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "CCJ_REQUEST_ADMISSION",
+    "ListElement": "Judgment By Admission Document",
+    "DisplayOrder": 3
   }
 ]
