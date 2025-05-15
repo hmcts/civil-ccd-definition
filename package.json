@@ -110,7 +110,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@eslint/js": "^9.11.0",
-    "@playwright/test": "^1.47.1",
+    "@playwright/test": "1.47.1",
     "@types/node": "^22.5.5",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/eslint-plugin-tslint": "^7.0.0",
@@ -137,7 +137,6 @@
     "mochawesome": "^7.0.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^2.6.9",
-    "playwright": "^1.41.1",
     "playwright-core": "^1.47.2",
     "prettier": "^3.3.3",
     "totp-generator": "^1.0.0",
