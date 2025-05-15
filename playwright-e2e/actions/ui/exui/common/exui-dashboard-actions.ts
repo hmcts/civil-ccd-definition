@@ -55,11 +55,16 @@ export default class ExuiDashboardActions extends BaseApi {
   async createCase(ccdEvent: CCDEvent) {
     const { caseListPage } = this.exuiDashboardPageFactory;
     await caseListPage.openCaseList();
+
     const { navBar } = this.exuiDashboardPageFactory;
     // await navBar.clickCreateCase();
     await navBar.openCreateCaseWithUrl();
-    const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    caseDetailsPage.setCCDEvent = ccdEvent;
+
+    const { caseFilterPage } = this.exuiDashboardPageFactory;
+    await caseFilterPage.verifyContent();
+    // await caseFilterPage.chooseClaimType(ccdEvent);
+    //  await caseFilterPage.submit();
+    await caseFilterPage.chooseClaimTypeWithUrl(ccdEvent);
   }
 
   async startExuiEvent(ccdEvent: CCDEvent) {
@@ -67,7 +72,7 @@ export default class ExuiDashboardActions extends BaseApi {
     await caseDetailsPage.goToCaseDetails(this.ccdCaseData.id);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
     // await caseDetailsPage.retryChooseNextStep(ccdEvent);
-    await caseDetailsPage.chooseNextStepWithUrl(this.ccdCaseData.id, ccdEvent);
+    await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id, ccdEvent);
     caseDetailsPage.setCCDEvent = ccdEvent;
   }
 

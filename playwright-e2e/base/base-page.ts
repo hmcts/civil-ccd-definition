@@ -1458,7 +1458,6 @@ export default abstract class BasePage {
       {
         retries,
         message: message ?? 'Navigation Failed, trying again',
-        assertFirst: true,
       },
     );
   }
