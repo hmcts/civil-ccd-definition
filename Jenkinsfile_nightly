@@ -150,7 +150,7 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  if(!runFailedTestFiles || !forceGreenBuild) {
+  if(!runFailedTestFiles && !forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       stage('Playwright test setup') {
         try {
@@ -213,15 +213,15 @@ withNightlyPipeline(type, product, component) {
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-    if(runFailedTestFiles) {
-      copyFailedTestFilesJson()
+      if(runFailedTestFiles) {
+        copyFailedTestFilesJson()
       }
     }
 
     enableFullFunctionalTest(200)
 
     afterAlways('fullFunctionalTest') {
-    archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
     }
   }
 }
