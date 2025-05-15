@@ -20,8 +20,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defenceAdmittedPartRoute",
     "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmittedRequired = \"No\" AND isRespondent1 = \"Yes\"",
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -32,8 +31,7 @@
     "DisplayContext": "READONLY",
     "PageID": "defenceAdmittedPartRoute",
     "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmitted2Required = \"No\" AND isRespondent2 = \"Yes\"",
-    "ShowSummaryChangeOption": "N",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
