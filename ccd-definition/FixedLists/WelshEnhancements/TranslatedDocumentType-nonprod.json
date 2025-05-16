@@ -4,5 +4,11 @@
     "ListElementCode": "STANDARD_DIRECTION_ORDER",
     "ListElement": "Standard Direction Order",
     "DisplayOrder": 5
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "INTERLOCUTORY_JUDGMENT",
+    "ListElement": "Interlocutory Judgment",
+    "DisplayOrder": 6
   }
 ]
