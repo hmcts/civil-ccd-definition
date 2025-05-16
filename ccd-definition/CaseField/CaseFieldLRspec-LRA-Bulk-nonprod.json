@@ -22,5 +22,45 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "totalClaimAmountPlusInterestAdmitPart",
+    "Label": "Total Claim amount + interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel1",
+    "Label": "The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondToAdmittedClaimOwingAmountLabel1",
+    "Label": "The amount to be considered is the claim amount and any interest claimed.  The claim fee and any \n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is \n\nentered on an admission will be included in the total judgment sum.",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel2",
+    "Label": "The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondToAdmittedClaimOwingAmountLabel2",
+    "Label": "The amount to be considered is the claim amount and any interest claimed.  The claim fee and any \n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is \n\nentered on an admission will be included in the total judgment sum.",
+    "FieldType": "Label",
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   }
 ]

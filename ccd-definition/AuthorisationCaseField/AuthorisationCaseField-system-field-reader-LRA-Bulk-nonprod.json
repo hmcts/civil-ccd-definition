@@ -16,5 +16,35 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabelBothDefendants",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "totalClaimAmountPlusInterestAdmitPart",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "responseToClaimAdmitPartTotalAmountWithInterestLabel1",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountLabel1",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "responseToClaimAdmitPartTotalAmountWithInterestLabel2",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountLabel2",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
   }
 ]
