@@ -99,8 +99,7 @@
     "AccessControl": [
       {
         "UserRoles": [
-         "CITIZEN-DEFENDANT-PROFILE",
-          "citizen-profile"
+         "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
       }
