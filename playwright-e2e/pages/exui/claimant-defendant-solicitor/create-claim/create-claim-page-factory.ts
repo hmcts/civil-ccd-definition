@@ -2,7 +2,6 @@ import BasePageFactory from '../../../../base/base-page-factory';
 import partys from '../../../../constants/partys';
 import AddAnotherClaimantPage from './common/add-another-claimant/add-another-claimant-page';
 import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page';
-import CaseFilterPage from './common/case-filter/case-filter-page';
 import ClaimantSolicitorOrganisationPage from './common/claimant-solicitor-organisation/claimant-solicitor-organisation-page';
 import ClaimantPage from './common/claimant/claimant-page';
 import DefendantPage from './common/defendant/defendant-page';
@@ -81,10 +80,6 @@ import UnregisteredOrganisationFragment from '../../fragments/unregistered-organ
 import YesOrNoFragment from '../../fragments/yes-or-no/yes-or-no-fragment';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
-  get caseFilterPage() {
-    return new CaseFilterPage(this.page);
-  }
-
   get checkListPage() {
     return new ChecklistPage(this.page);
   }
