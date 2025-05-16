@@ -8,8 +8,7 @@ import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
 import partys from '../../../../../../constants/partys.ts';
 import CaseDataHelper from '../../../../../../helpers/case-data-helper.ts';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
-import {Page} from "playwright-core";
-import {Party} from "../../../../../../models/partys.ts";
+import { Page } from '@playwright/test';
 
 @AllMethodsStep()
 export default class PaymentSetDatePage extends ExuiPage(BasePage) {

@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
@@ -23,10 +23,10 @@ export default class RespondentResponseTypeSpecPage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.fullDefence.label, {count:1}),
-        super.expectLabel(radioButtons.fullAdmit.label, {count:1}),
-        super.expectLabel(radioButtons.partAdmit.label, {count:1}),
-        super.expectLabel(radioButtons.counterClaim.label, {count:1}),
+        super.expectLabel(radioButtons.fullDefence.label, { count: 1 }),
+        super.expectLabel(radioButtons.fullAdmit.label, { count: 1 }),
+        super.expectLabel(radioButtons.partAdmit.label, { count: 1 }),
+        super.expectLabel(radioButtons.counterClaim.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
