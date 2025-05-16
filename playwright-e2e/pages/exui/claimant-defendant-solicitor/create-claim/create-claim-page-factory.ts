@@ -2,7 +2,6 @@ import BasePageFactory from '../../../../base/base-page-factory';
 import partys from '../../../../constants/partys';
 import AddAnotherClaimantPage from './common/add-another-claimant/add-another-claimant-page';
 import AddAnotherDefendantPage from './common/add-another-defendant/add-another-defendant-page';
-import CaseFilterPage from './common/case-filter/case-filter-page';
 import ClaimantSolicitorOrganisationPage from './common/claimant-solicitor-organisation/claimant-solicitor-organisation-page';
 import ClaimantPage from './common/claimant/claimant-page';
 import DefendantPage from './common/defendant/defendant-page';
@@ -36,7 +35,7 @@ import InterestFromSpecificDate from './lr-spec/interest-from-specific-date/inte
 import InterestSummaryPage from './lr-spec/interest-summary/interest-summary-page';
 import LegalRepresentationRespondent2Page from './lr-spec/legal-representation-respondent-2/legal-representation-respondent-2-page';
 import LegalRepresentationSpecPage from './lr-spec/legal-representation-spec/legal-representation-spec-page';
-import SpecRespondent2CorrespondenceAddressPage from './lr-spec/respondent-2-correspondence-address-spec/respondent-2-correspondence-address-page';
+import SpecRespondent2CorrespondenceAddressPage from './lr-spec/spec-respondent-2-correspondence-address/spec-respondent-2-correspondence-address-page';
 import SameRateInterestSelectionPage from './lr-spec/same-rate-interest-selection/same-rate-interest-selection-page';
 import SecondDefendantSolicitorEmailSpecPage from './lr-spec/second-defendant-solicitor-email-spec/second-defendant-solicitor-email-spec-page';
 import SecondDefendantSolicitorOrganisationSpecPage from './lr-spec/second-defendant-solicitor-organisation-spec/second-defendant-solicitor-organisation-spec-page';
@@ -81,10 +80,6 @@ import UnregisteredOrganisationFragment from '../../fragments/unregistered-organ
 import YesOrNoFragment from '../../fragments/yes-or-no/yes-or-no-fragment';
 
 export default class CreateClaimPageFactory extends BasePageFactory {
-  get caseFilterPage() {
-    return new CaseFilterPage(this.page);
-  }
-
   get checkListPage() {
     return new ChecklistPage(this.page);
   }

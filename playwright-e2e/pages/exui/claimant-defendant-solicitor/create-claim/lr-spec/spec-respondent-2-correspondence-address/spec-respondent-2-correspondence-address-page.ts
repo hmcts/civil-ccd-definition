@@ -1,8 +1,12 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { heading } from './respondent-2-correspondence-address-content';
+import {
+  heading,
+  paragraphs,
+  radioButtons,
+} from './spec-respondent-2-correspondence-address-content';
 import CorrespondenceAddressFragment from '../../../../fragments/correspondence-address/correspondence-address-fragment';
 
 @AllMethodsStep()
@@ -17,7 +21,9 @@ export default class SpecRespondent2CorrespondenceAddressPage extends ExuiPage(B
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
-      // this.correspondenceAddressFragment.verifyContent(),
+      super.expectText(paragraphs.descriptionText),
+      super.expectLegend(radioButtons.addressRequired.label),
+      this.correspondenceAddressFragment.verifyContent(),
     ]);
   }
 
