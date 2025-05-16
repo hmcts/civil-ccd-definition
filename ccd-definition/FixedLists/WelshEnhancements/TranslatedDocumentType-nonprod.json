@@ -16,5 +16,11 @@
     "ListElementCode": "MANUAL_DETERMINATION",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 7
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "CCJ_REQUEST_ADMISSION",
+    "ListElement": "Judgment By Admission Document",
+    "DisplayOrder": 8
   }
 ]

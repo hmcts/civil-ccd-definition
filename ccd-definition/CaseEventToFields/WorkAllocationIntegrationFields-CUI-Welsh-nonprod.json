@@ -190,5 +190,63 @@
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "respondent1LiPResponse",
+    "PageFieldDisplayOrder": 15,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "applicant1DQLanguage",
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "respondent1DQLanguage",
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "applicant1LiPResponse",
+    "PageFieldDisplayOrder": 12,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "preTranslationDocumentType",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
   }
 ]
