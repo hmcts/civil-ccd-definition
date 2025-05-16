@@ -3,12 +3,11 @@ const idamHelper = require('./idamHelper');
 const serviceAuthHelper = require('./serviceAuthorisationHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const {TOTP} = require('totp-generator');
 
 
 let incidentMessage;
 
-const MAX_RETRIES = 60;
+const MAX_RETRIES = 30;
 const RETRY_TIMEOUT_MS = 5000;
 
 const checkFlagEnabled = async (flag) => {

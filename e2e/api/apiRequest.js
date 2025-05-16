@@ -5,8 +5,8 @@ const restHelper = require('./restHelper.js');
 const {retry} = require('./retryHelper');
 const {TOTP} = require('totp-generator');
 
-const TASK_MAX_RETRIES = 100;
-const TASK_RETRY_TIMEOUT_MS = 20000;
+const TASK_MAX_RETRIES = 30;
+const TASK_RETRY_TIMEOUT_MS = 5000;
 
 const tokens = {};
 const getCcdDataStoreBaseUrl = () => `${config.url.ccdDataStore}/caseworkers/${tokens.userId}/jurisdictions/${config.definition.jurisdiction}/case-types/${config.definition.caseType}`;
@@ -189,7 +189,6 @@ module.exports = {
     if (caseId) {
       url += `/${caseId}/events`;
     }
-
     return restHelper.retriedRequest(url, getRequestHeaders(tokens.userAuth),
       {
         data: caseData,
