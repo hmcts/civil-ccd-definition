@@ -339,7 +339,7 @@ module.exports = {
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
   runningEnv: process.env.ENVIRONMENT,
   runWAApiTest: process.env.RUN_WA_API_TEST === 'true',
-  runFailedTests: process.env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES === 'true',
+  runFailedTests: process.env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES.toLowerCase() === 'true',
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
   defendant1SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'DAWY9LJ' : '79ZRSOU',
   defendant2SolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'LCVTI1I' : 'H2156A0',

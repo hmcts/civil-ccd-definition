@@ -13,7 +13,7 @@ fi
 
 # Define path to failedTestFiles.json
 FAILED_TEST_FILES_JSON="./test-results/functional/failedTestFiles.json"
-NOT_EXECUTED_TEST_FILES_JSON="./test-results/functional/testFilesNotExecuted.json"
+NOT_EXECUTED_TEST_FILES_JSON="./test-results/functional/notExecutedTestFilesJson.json"
 
 # Check if RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES is set to "true"
 if [ "$RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES" != "true" ]; then
