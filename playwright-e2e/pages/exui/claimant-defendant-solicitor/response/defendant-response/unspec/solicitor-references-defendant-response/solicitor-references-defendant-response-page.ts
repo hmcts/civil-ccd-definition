@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
@@ -27,12 +27,9 @@ export default class SolicitorReferencesDefendantResponsePage extends ExuiPage(B
   }
 
   async verifyContent(ccdCaseData: CCDCaseData) {
-    await super.runVerifications(
-      [
-        super.verifyHeadings(ccdCaseData),
-      ],
-      { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
-    );
+    await super.runVerifications([super.verifyHeadings(ccdCaseData)], {
+      axePageInsertName: StringHelper.capitalise(this.solicitorParty.key),
+    });
   }
 
   async enterReference() {

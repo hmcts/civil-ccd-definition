@@ -31,7 +31,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -58,7 +57,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -85,7 +83,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -112,7 +109,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -141,7 +137,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -201,7 +196,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -221,7 +216,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -241,7 +236,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -261,7 +256,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );

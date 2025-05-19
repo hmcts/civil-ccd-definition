@@ -23,8 +23,7 @@
           "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc",
-          "nbc-team-leader"
+          "ctsc"
         ],
         "CRUD": "CRU"
       },
@@ -33,7 +32,8 @@
           "judge-profile",
           "GS_profile",
           "APP-SOL-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE"
+          "APP-SOL-SPEC-PROFILE",
+          "national-business-centre"
         ],
         "CRUD": "R"
       }
@@ -56,8 +56,7 @@
           "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc",
-          "nbc-team-leader"
+          "ctsc"
         ],
         "CRUD": "CRU"
       },
@@ -66,7 +65,8 @@
           "judge-profile",
           "GS_profile",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "national-business-centre"
         ],
         "CRUD": "R"
       }
