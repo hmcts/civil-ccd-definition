@@ -49,6 +49,11 @@ module.exports = function() {
     await writeFailedTestFile(normalisedFilePath);
   });
 
+  event.dispatcher.on(event.test.skipped, async function (test) {
+    const normalisedFilePath = normaliseFilePath(test.file);
+    await writeFailedTestFile(normalisedFilePath);
+  });
+
   event.dispatcher.on(event.test.passed, async function (test) {
     const normalisedFilePath = normaliseFilePath(test.file);
     await removeFailedTestFile(normalisedFilePath);
