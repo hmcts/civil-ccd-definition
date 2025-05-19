@@ -148,11 +148,11 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
-  boolean runFailedTestFiles = env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
+  boolean runFailedAndNotExecutedTestFiles = env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  if(!runFailedTestFiles && !forceGreenBuild) {
+  if(!runFailedAndNotExecutedTestFiles && !forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       stage('Playwright test setup') {
         try {
@@ -215,7 +215,7 @@ withNightlyPipeline(type, product, component) {
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(runFailedTestFiles) {
+      if(runFailedAndNotExecutedTestFiles) {
         copyFailedTestFilesJson()
       }
     }
