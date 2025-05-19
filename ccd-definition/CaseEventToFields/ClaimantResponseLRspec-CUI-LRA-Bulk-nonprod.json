@@ -9,5 +9,27 @@
     "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountShowInterest",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 9,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "claimInterest =\"Yes\" AND ccjJudgmentAmountShowInterest =\"Yes\""
   }
 ]
