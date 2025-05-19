@@ -30,6 +30,6 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimInterest=\"Yes\" AND ccjJudgmentAmountShowInterest=\"Yes\""
+    "FieldShowCondition": "claimInterest=\"Yes\" AND ccjJudgmentAmountShowInterest!=\"No\""
   }
 ]
