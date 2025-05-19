@@ -14,10 +14,10 @@ const fields = {
     }
   },
   commentInput: {
-    id: 'textarea[aria-describedby=\'add-comments-hint add-comments-char-limit-info add-comments-char-limit-error\']'
+    id: '#flagComments'
   },
-  next: {
-    id: 'Next'
+  continue: {
+    id: 'Continue'
   }
 };
 
@@ -27,7 +27,7 @@ module.exports = {
     await within(fields.flagLocationSelection.radioGroup.id, () => {
       I.click(flagLocation);
     });
-    I.click(fields.next.id);
+    I.click(fields.continue.id);
   },
 
   async selectFlag(flag) {
@@ -36,12 +36,12 @@ module.exports = {
     await within(fields.flagSelection.radioGroup.id, () => {
       I.click(flag);
     });
-    I.click(fields.next.id);
+    I.click(fields.continue.id);
   },
 
   async inputFlagComment(comment) {
     I.waitForElement(fields.commentInput.id);
     I.fillField(fields.commentInput.id, comment);
-    I.click(fields.next.id);
+    I.click(fields.continue.id);
   }
 };
