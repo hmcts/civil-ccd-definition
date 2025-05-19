@@ -24,6 +24,9 @@ export const components = {
   uploadDocError: {
     selector: 'span.error-message',
   },
+  eventTrigger: {
+    selector: 'ccd-case-event-trigger',
+  },
 };
 
 export const links = {
