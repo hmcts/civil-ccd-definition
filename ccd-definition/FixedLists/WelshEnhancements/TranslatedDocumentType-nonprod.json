@@ -16,5 +16,11 @@
     "ListElementCode": "MANUAL_DETERMINATION",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 7
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "FINAL_ORDER",
+    "ListElement": "Judge Final Order",
+    "DisplayOrder": 8
   }
 ]
