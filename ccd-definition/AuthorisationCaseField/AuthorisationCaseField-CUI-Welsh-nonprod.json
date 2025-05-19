@@ -7,7 +7,7 @@
             "UserRoles": [
               "wlu-admin"
             ],
-            "CRUD": "R"
+            "CRUD": "RU"
           }
         ]
       },

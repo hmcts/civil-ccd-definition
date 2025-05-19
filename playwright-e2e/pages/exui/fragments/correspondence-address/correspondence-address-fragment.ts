@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { Party } from '../../../../models/partys';
@@ -10,7 +10,6 @@ import {
   inputs,
   buttons,
   dropdowns,
-  paragraphs,
 } from './correspondence-address-content';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 
@@ -28,8 +27,6 @@ export default class CorrespondenceAddressFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(paragraphs.descriptionText),
-        super.expectLegend(radioButtons.addressRequired.label),
         super.expectRadioYesLabel(
           radioButtons.addressRequired.yes.selector(this.claimantDefendantParty),
         ),

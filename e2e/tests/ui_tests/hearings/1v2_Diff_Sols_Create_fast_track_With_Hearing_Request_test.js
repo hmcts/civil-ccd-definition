@@ -7,7 +7,7 @@ const claimAmountJudge = '11000';
 let caseNumber;
 
 
-Feature('1v2 Diff Sols Hearing Request Journey @e2e-hearing-request @e2e-nightly');
+Feature('1v2 Diff Sols Hearing Request Journey @e2e-hearing-request @e2e-nightly-prod');
 
 async function prepareClaim(api, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount);
@@ -25,7 +25,7 @@ Scenario('Claimant solicitor raises a claim against 2 defendants', async ( {api}
     await api.createSDO(judgeUser, 'CREATE_FAST_NO_SUM');
     caseNumber = await api.getCaseId();
   }
-}).retry(3);
+}).retry(2);
 
 Scenario('Request, Edit and Cancel a Hearing', async ({I}) => {
   if (['demo', 'aat'].includes(config.runningEnv)) {
@@ -37,7 +37,7 @@ Scenario('Request, Edit and Cancel a Hearing', async ({I}) => {
     await I.updateHearing();
     await I.cancelHearing();
   }
-}).retry(3);
+}).retry(2);
 
 AfterSuite(async  () => {
   await unAssignAllUsers();
