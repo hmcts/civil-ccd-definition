@@ -6,6 +6,7 @@ const passedTestFilesPath = 'test-results/functional/passedTestFiles.json';
 const tempFailedTestFilesPath = 'test-results/functional/tempFailedTestFiles.json';
 const failedTestFilesPath = 'test-results/functional/failedTestFiles.json';
 const notExecutedTestFilesPath = 'test-results/functional/notExecutedTestFiles.json';
+const toBeExecutedTestFilesPath = 'test-results/functional/toBeExecutedTestFiles.json';
 
 async function writeNotExecutedTestFiles(allTestFiles) {
   const tempFailedTestFiles = JSON.parse(await fs.readFile(tempFailedTestFilesPath, 'utf-8'));
@@ -92,9 +93,13 @@ module.exports = function() {
     await writeFailedTestFile(normalisedFilePath);
   });
 
-  event.dispatcher.on(event.all.result, async function (result) {
-    const normalisedTestFiles = result.testFiles.map(testFile => normaliseFilePath(testFile));
-    await writeNotExecutedTestFiles(normalisedTestFiles);
+  event.dispatcher.on(event.all.before, async function (result) {
+    try {
+      await fs.access(toBeExecutedTestFilesPath);
+    } catch(error) {
+      const normalisedTestFiles = result.testFiles.map(testFile => normaliseFilePath(testFile));
+      await fs.writeFile(toBeExecutedTestFilesPath, JSON.stringify(normalisedTestFiles, null, 2));
+    }
   });
 
   event.dispatcher.on(event.test.passed, async function (test) {
@@ -116,12 +121,28 @@ module.exports.createNotExecutedTestsFile = async () => {
   await fs.writeFile(notExecutedTestFilesPath, JSON.stringify([], null, 2));
 };
 
-module.exports.deleteTempFailedTestsFile = async () => {
-  await fs.unlink(tempFailedTestFilesPath);
-};
-
 module.exports.createFailedTestsFile = async () => {
   const content = await fs.readFile(tempFailedTestFilesPath, 'utf-8');
   const jsonData = JSON.parse(content);
   await fs.writeFile(failedTestFilesPath, JSON.stringify(jsonData, null, 2));
+};
+
+module.exports.deleteTempFailedTestsFile = async () => {
+  await fs.unlink(tempFailedTestFilesPath);
+};
+
+module.exports.deleteToBeExecutedTestFiles = async () => {
+  await fs.unlink(toBeExecutedTestFilesPath);
+};
+
+module.exports.writeNotExecutedTestFiles = async () => {
+  const toBeExecutedTestFiles = JSON.parse(await fs.readFile(toBeExecutedTestFilesPath, 'utf-8'));
+  const tempFailedTestFiles = JSON.parse(await fs.readFile(tempFailedTestFilesPath, 'utf-8'));
+  const passedTestFiles = JSON.parse(await fs.readFile(passedTestFilesPath, 'utf-8'));
+
+  const executedTestFiles = new Set([...tempFailedTestFiles, ...passedTestFiles]);
+
+  const notExecutedTestFiles = toBeExecutedTestFiles.filter(toBeExecutedTestFile => !executedTestFiles.has(toBeExecutedTestFile));
+
+  await fs.writeFile(notExecutedTestFilesPath, JSON.stringify(notExecutedTestFiles, null, 2));
 };

@@ -4,6 +4,8 @@ const {
   deleteTempFailedTestsFile,
   createPassedTestsFile,
   createNotExecutedTestsFile,
+  deleteToBeExecutedTestFiles,
+  writeNotExecutedTestFiles
 } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const ccdPipelineTests = process.env.FAILED_TEST_FILES
@@ -51,7 +53,9 @@ exports.config = {
   },
   teardownAll: async () => {
     await createFailedTestsFile();
+    await writeNotExecutedTestFiles();
     await deleteTempFailedTestsFile();
+    await deleteToBeExecutedTestFiles();
   },
   tests:
     process.env.WA_TESTS === 'true'
