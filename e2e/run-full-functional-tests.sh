@@ -13,9 +13,10 @@ fi
 
 # Define path to failedTestFiles.json
 FAILED_TEST_FILES_JSON="./test-results/functional/failedTestFiles.json"
+NOT_EXECUTED_TEST_FILES_JSON="./test-results/functional/testFilesNotExecuted.json"
 
-# Check if RUN_FAILED_TEST_FILES is set to "true"
-if [ "$RUN_FAILED_TEST_FILES" != "true" ]; then
+# Check if RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES is set to "true"
+if [ "$RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES" != "true" ]; then
   yarn test:e2e-nightly-prod
 
 # Check if failedTestFiles.json exists and is non-empty
@@ -35,12 +36,19 @@ else
   # If no failed tests, set FAILED_TEST_FILES to empty string
   FAILED_TEST_FILES=${FAILED_TEST_FILES:-""}
 
+  # Collect array elements into a comma-separated string
+  NOT_EXECUTED_TEST_FILES=$(jq -r '.[]' "$NOT_EXECUTED_TEST_FILES_JSON" | paste -sd "," -)
+
+  # If no failed tests, set NOT_EXECUTED_TEST_FILES to empty string
+  NOT_EXECUTED_TEST_FILES=${NOT_EXECUTED_TEST_FILES:-""}
+
   if [ -z "$FAILED_TEST_FILES" ]; then
     echo "No failed tests found."
     exit 1
   else
     # Export as environment variable
     export FAILED_TEST_FILES
+    export NOT_EXECUTED_TEST_FILES
 
     # Optionally print it for confirmation
     echo "FAILED_TEST_FILES='$FAILED_TEST_FILES'"
