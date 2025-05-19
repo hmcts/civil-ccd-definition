@@ -600,17 +600,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
-    "PageDisplayOrder": 5,
-    "PageFieldDisplayOrder": 9,
-    "DisplayContext": "READONLY",
-    "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimInterest =\"Yes\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 10,
