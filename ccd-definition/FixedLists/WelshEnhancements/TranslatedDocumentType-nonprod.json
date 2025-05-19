@@ -13,8 +13,14 @@
   },
   {
     "ID": "TranslatedDocumentType",
+    "ListElementCode": "MANUAL_DETERMINATION",
+    "ListElement": "Manual Determination Document",
+    "DisplayOrder": 7
+  },
+  {
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "SETTLEMENT_AGREEMENT",
     "ListElement": "Settlement Agreement",
-    "DisplayOrder": 7
+    "DisplayOrder": 8
   }
 ]
