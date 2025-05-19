@@ -1,12 +1,4 @@
-const {
-  createFailedTestsFile,
-  createTempFailedTestsFile,
-  deleteTempFailedTestsFile,
-  createPassedTestsFile,
-  createNotExecutedTestsFile,
-  deleteToBeExecutedTestFiles,
-  writeNotExecutedTestFiles
-} = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
+const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const ccdPipelineTests = process.env.FAILED_TEST_FILES
   ? [...process.env.FAILED_TEST_FILES.split(','), ...process.env.NOT_EXECUTED_TEST_FILES.split(',')]
@@ -47,15 +39,16 @@ const civilServiceAndCamundaTests = [
 ];
 exports.config = {
   bootstrapAll: async () => {
-    await createTempFailedTestsFile();
-    await createPassedTestsFile();
-    await createNotExecutedTestsFile();
+    await testFilesHelper.createTempFailedTestsFile();
+    await testFilesHelper.createPassedTestsFile();
+    await testFilesHelper.createToBeExecutedTestsFile();
+    await testFilesHelper.createNotExecutedTestsFile();
   },
   teardownAll: async () => {
-    await createFailedTestsFile();
-    await writeNotExecutedTestFiles();
-    await deleteTempFailedTestsFile();
-    await deleteToBeExecutedTestFiles();
+    await testFilesHelper.createFailedTestsFile();
+    await testFilesHelper.writeNotExecutedTestFiles();
+    await testFilesHelper.deleteTempFailedTestsFile();
+    await testFilesHelper.deleteToBeExecutedTestFiles();
   },
   tests:
     process.env.WA_TESTS === 'true'
