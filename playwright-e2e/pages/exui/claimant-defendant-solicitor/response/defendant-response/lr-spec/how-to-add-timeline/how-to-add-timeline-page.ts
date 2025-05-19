@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
@@ -22,8 +22,8 @@ export default class HowToAddTimelinePage extends ExuiPage(BasePage) {
     await super.runVerifications(
       [
         super.verifyHeadings(ccdCaseData),
-        super.expectLabel(radioButtons.upload.label, {count:1}),
-        super.expectLabel(radioButtons.manual.label, {count:1}),
+        super.expectLabel(radioButtons.upload.label, { count: 1 }),
+        super.expectLabel(radioButtons.manual.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

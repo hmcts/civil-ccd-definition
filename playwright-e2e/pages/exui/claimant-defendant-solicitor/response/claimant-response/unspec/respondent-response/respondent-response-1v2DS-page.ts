@@ -4,7 +4,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import { radioButtons, subheadings, paragraphs } from './respondent-response-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import partys from '../../../../../../../constants/partys.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 
 @AllMethodsStep()
 export default class RespondentResponse1v2DSPage extends ExuiPage(BasePage) {
