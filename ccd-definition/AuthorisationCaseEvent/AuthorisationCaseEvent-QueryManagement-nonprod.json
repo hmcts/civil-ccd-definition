@@ -21,7 +21,7 @@
           "judge-profile",
           "GS_profile",
           "ctsc",
-          "nbc-team-leader"
+          "national-business-centre"
         ],
         "CRUD": "R"
       }
@@ -35,8 +35,7 @@
         "UserRoles": [
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc",
-          "nbc-team-leader"
+          "ctsc"
         ],
         "CRUD": "CRU"
       },
@@ -49,7 +48,8 @@
           "RES-SOL-TWO-SPEC-PROFILE",
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "judge-profile",
-          "GS_profile"
+          "GS_profile",
+          "national-business-centre"
         ],
         "CRUD": "R"
       }

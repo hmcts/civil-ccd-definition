@@ -94,7 +94,7 @@ def copyPreviousHistory(historyDir, resultsDir) {
   }
 }
 
-def copyFailedTestFilesJson() {
+def copyFailedAndNotExecutedTestFilesJson() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild.number
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
@@ -216,7 +216,7 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
       if(runFailedAndNotExecutedTestFiles) {
-        copyFailedTestFilesJson()
+        copyFailedAndNotExecutedTestFilesJson()
       }
     }
   }
