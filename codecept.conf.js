@@ -1,11 +1,7 @@
-const {
-  createFailedTestFile,
-  createNewFailedTestsFile,
-  deleteNewFailedTestsFile,
-} = require('./e2e/plugins/failedTestFilesPlugin');
+const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
 const ccdPipelineTests = process.env.FAILED_TEST_FILES
-  ? process.env.FAILED_TEST_FILES.split(',')
+  ? [...process.env.FAILED_TEST_FILES.split(','), ...process.env.NOT_EXECUTED_TEST_FILES.split(',')]
   : [
       './e2e/tests/ui_tests/*.js',
       './e2e/tests/ui_tests/damages/*_test.js',
@@ -43,11 +39,16 @@ const civilServiceAndCamundaTests = [
 ];
 exports.config = {
   bootstrapAll: async () => {
-    await createNewFailedTestsFile();
+    await testFilesHelper.createTempFailedTestsFile();
+    await testFilesHelper.createPassedTestsFile();
+    await testFilesHelper.createToBeExecutedTestsFile();
+    await testFilesHelper.createNotExecutedTestsFile();
   },
   teardownAll: async () => {
-    await createFailedTestFile();
-    await deleteNewFailedTestsFile();
+    await testFilesHelper.createFailedTestsFile();
+    await testFilesHelper.writeNotExecutedTestFiles();
+    await testFilesHelper.deleteTempFailedTestsFile();
+    await testFilesHelper.deleteToBeExecutedTestFiles();
   },
   tests:
     process.env.WA_TESTS === 'true'
@@ -107,10 +108,10 @@ exports.config = {
       enabled: true,
       fullPageScreenshots: true,
     },
-    failedTestFilesPlugin: {
+    failedAndNotExecutedTestFilesPlugin: {
       enabled: true,
-      require: './e2e/plugins/failedTestFilesPlugin'
-    }
+      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
+    },
   },
   mocha: {
     bail: true,
