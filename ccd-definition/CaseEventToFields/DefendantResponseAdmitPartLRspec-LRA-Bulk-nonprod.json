@@ -177,5 +177,17 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired2=\"BY_SET_DATE\" AND isRespondent2 = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "totalClaimAmountPlusInterestAdmitPart",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
   }
 ]

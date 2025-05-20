@@ -70,5 +70,13 @@
     "FieldType": "Number",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "totalClaimAmountPlusInterestAdmitPart",
+    "Label": "Total Claim amount + interest",
+    "FieldType": "Number",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
