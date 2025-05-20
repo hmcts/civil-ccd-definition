@@ -253,7 +253,7 @@ module.exports = {
       ...markJudgmentPaid.userInput,
       MarkJudgmentPaidInFull: {
         joJudgmentPaidInFull: {
-          dateOfFullPaymentMade:  date(-5),
+          dateOfFullPaymentMade:  date(0),
           confirmFullPaymentMade:['CONFIRMED']
         }
       }

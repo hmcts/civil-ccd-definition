@@ -481,6 +481,56 @@
     "DisplayContext": "MANDATORY"
   },
   {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent1",
+    "ListElementCode": "deterWithoutHearingLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent1",
+    "ListElementCode": "deterWithoutHearingYesNo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent1",
+    "ListElementCode": "deterWithoutHearingWhyNot",
+    "FieldDisplayOrder": 3,
+    "FieldShowCondition": "deterWithoutHearingRespondent1.deterWithoutHearingYesNo = \"No\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent2",
+    "ListElementCode": "deterWithoutHearingLabel",
+    "FieldDisplayOrder": 1,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent2",
+    "ListElementCode": "deterWithoutHearingYesNo",
+    "FieldDisplayOrder": 2,
+    "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "DeterWithoutHearing",
+    "CaseEventID": "DEFENDANT_RESPONSE",
+    "CaseFieldID": "deterWithoutHearingRespondent2",
+    "ListElementCode": "deterWithoutHearingWhyNot",
+    "FieldDisplayOrder": 3,
+    "FieldShowCondition": "deterWithoutHearingRespondent2.deterWithoutHearingYesNo = \"No\"",
+    "DisplayContext": "MANDATORY"
+  },
+  {
     "ID": "Experts",
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "respondent1DQExperts",

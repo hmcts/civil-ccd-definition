@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import DateHelper from '../../../../../helpers/date-helper';
@@ -191,7 +191,6 @@ export default class FastTrackPage extends ExuiPage(BasePage) {
     await super.inputText('4', inputs.hearingTime.otherHours.selector);
     await super.inputText('30', inputs.hearingTime.otherMinutes.selector);
     await super.inputText('hearing time help text 1', inputs.hearingTime.helpText1.selector);
-    await super.inputText('hearing time help text 2', inputs.hearingTime.helpText2.selector);
   }
 
   async addHearingMethod() {

@@ -1,5 +1,6 @@
 const {I} = inject();
 const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
+const config = require('../config');
 
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
 
@@ -27,22 +28,18 @@ module.exports = {
   start: async function (event) {
     await I.waitForElement(this.fields.eventDropdown, 90);
     await I.selectOption(this.fields.eventDropdown, event);
-    /* This is a temporary fix the issue of the Go button not being pressed in the automated test.
-       Further investigation is required to find (hopefully) a cleaner solution
-     */
-   // await I.moveCursorTo(this.goButton);
-    await I.wait(15);
     await I.forceClick(this.goButton);
-    await I.waitForElement(EVENT_TRIGGER_LOCATOR);
   },
 
   async startEvent(event, caseId) {
       await waitForFinishedBusinessProcess(caseId);
       await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await this.start(event);
-    }, locate('.govuk-heading-l'));
+      // await this.start(event);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
+
   async permissionGrantedByJudge() {
     await I.runAccessibilityTest();
     I.fillField(this.fields.judgeName, 'Testing');
@@ -60,55 +57,6 @@ module.exports = {
     await I.runAccessibilityTest();
     I.fillField(this.fields.caseNote, 'Testing');
     await I.clickContinue();
-  },
-  async startEventForRR(event, caseId) {
-      await waitForFinishedBusinessProcess(caseId);
-      await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForRR(caseId);
-      await this.start(event);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForSD(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForSettleThisClaim(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForSettleThisClaimJudgesOrder(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForSettleThisClaimJudgesOrder(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForDiscontinueThisClaim(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForDiscontinueThisClaim(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForDiscontinueThisClaim2v1(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForDiscontinueThisClaim2v1(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForValidateDiscontinuance(event, caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForValidateDiscontinuance(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForClaimDiscontinuedRemoveHearing(caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForClaimDiscontinuedRemoveHearing(caseId);
-    }, locate('.govuk-heading-l'));
-  },
-  async startEventForDR(caseId) {
-    await waitForFinishedBusinessProcess(caseId);
-    await I.retryUntilExists(async() => {
-      await I.navigateToCaseDetailsForDR(caseId);
-    }, locate('.govuk-heading-l'));
   },
 
   async verifyErrorMessageOnEvent(event, caseId, errorMsg) {

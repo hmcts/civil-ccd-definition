@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import filePaths from '../../../../../../../config/file-paths.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
@@ -24,7 +24,7 @@ export default class UploadDefendantResponsePage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectSubheading(subheadings.uploadDefence),
-        super.expectLegend(inputs.uploadDoc.label, { count: 1 }),
+        super.expectLabel(inputs.uploadDoc.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

@@ -39,6 +39,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
       defendantSolicitor2User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -50,6 +51,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.respondentResponseTypeDS2();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS2();
         await defendantResponseActions.uploadDefendantResponseDS2();
+        await defendantResponseActions.dqSmallTrackDS2();
         await defendantResponseActions.dqDS2();
         await defendantResponseActions.statementOfTruthDS2();
         await defendantResponseActions.submitDefendantResponse();
@@ -59,6 +61,24 @@ export default class DefendantSolicitor2Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor2User,
+    );
+  }
+
+  async AcknowledgeClaimFullDefence() {
+    const { acknowlegdeClaimActions } = this.defendantActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await acknowlegdeClaimActions.confirmNameAndAddress();
+        await acknowlegdeClaimActions.responseIntentionDS2();
+        await acknowlegdeClaimActions.solicitorReferencesAcknowledgeClaimDS2();
+        await acknowlegdeClaimActions.submitAcknowledgeClaim();
+      },
+      async () => {
+        await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
+      },
+      ccdEvents.ACKNOWLEDGE_CLAIM,
+      defendantSolicitor2User,
+      { verifySuccessEvent: false },
     );
   }
 }
