@@ -163,7 +163,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "docTranslationInProgress",
+    "CaseFieldID": "documentTranslationInProgressLabel",
     "AccessControl": [
       {
         "UserRoles": [
@@ -175,6 +175,8 @@
       },
       {
         "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
           "judge-profile",
           "legal-adviser",
           "wlu-admin"

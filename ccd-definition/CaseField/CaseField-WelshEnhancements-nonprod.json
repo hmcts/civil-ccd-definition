@@ -63,7 +63,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "docTranslationInProgress",
+    "ID": "documentTranslationInProgressLabel",
     "Label": "<strong class=\"text-16\">Translation of system generated document in progress.</strong>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
