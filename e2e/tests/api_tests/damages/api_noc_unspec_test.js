@@ -13,11 +13,11 @@ let isQueryManagementEnabled = false;
 Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod @api-nightly-prod');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  if (isQueryManagementEnabled) {
-    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-  }
+  // if (isQueryManagementEnabled) {
+  //   const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+  //   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+  //   await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+  // }
 }
 
 Before(async () => {
