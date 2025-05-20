@@ -90,7 +90,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondToAdmittedClaimOwingAmountLabel1",
-    "Label": "The amount to be considered is the claim amount and any interest claimed.  The claim fee and any \n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is \n\nentered on an admission will be included in the total judgment sum.",
+    "Label": "The amount to be considered is the claim amount and any interest claimed. The claim fee and any\n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is\n\nentered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -106,7 +106,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondToAdmittedClaimOwingAmountLabel2",
-    "Label": "The amount to be considered is the claim amount and any interest claimed.  The claim fee and any \n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is \n\nentered on an admission will be included in the total judgment sum.",
+    "Label": "The amount to be considered is the claim amount and any interest claimed. The claim fee and any\n\nfixed costs claimed are not included in this figure but are payable in addition and if judgment is\n\nentered on an admission will be included in the total judgment sum.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
