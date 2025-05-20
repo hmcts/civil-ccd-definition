@@ -160,5 +160,27 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "docTranslationInProgress",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "caseworker-civil-admin",
+          "caseworker-civil"
+        ],
+        "CRUD": "CRUD"
+      },
+      {
+        "UserRoles": [
+          "judge-profile",
+          "legal-adviser",
+          "wlu-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]

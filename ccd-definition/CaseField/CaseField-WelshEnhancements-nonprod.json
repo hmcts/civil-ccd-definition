@@ -60,5 +60,13 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "docTranslationInProgress",
+    "Label": "<strong class=\"text-16\">Translation of system generated document in progress.</strong>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
