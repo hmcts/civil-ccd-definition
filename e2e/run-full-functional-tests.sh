@@ -50,9 +50,6 @@ else
     export FAILED_TEST_FILES
     export NOT_EXECUTED_TEST_FILES
 
-    # Optionally print it for confirmation
-    echo "FAILED_TEST_FILES='$FAILED_TEST_FILES'"
-
     yarn test:e2e-nightly-prod
   fi
 fi
