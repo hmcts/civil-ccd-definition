@@ -3390,7 +3390,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentToKeepCollection",
-    "Label": "Documents to keep",
+    "Label": "Document",
     "FieldType": "Collection",
     "FieldTypeParameter": "documentToKeep",
     "SecurityClassification": "Public",
