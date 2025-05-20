@@ -82,7 +82,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel1",
-    "Label": "The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "Label": "## The total amount, including any interest claimed to date, is\n\n## £${totalClaimAmountPlusInterestAdmitPart}.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -98,7 +98,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel2",
-    "Label": "The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "Label": "## The total amount, including any interest claimed to date, is\n\n## £${totalClaimAmountPlusInterestAdmitPart}.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
