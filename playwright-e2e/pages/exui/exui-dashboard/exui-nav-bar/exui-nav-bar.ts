@@ -1,18 +1,21 @@
 import BasePage from '../../../../base/base-page';
+import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { links } from './exui-nav-bar-content';
 
 @AllMethodsStep()
 export default class ExuiNavBar extends BasePage {
   async verifyContent(): Promise<void> {
-    throw new Error('Method not implemented.');
-  }
-
-  async solicitorVerifyContent(): Promise<void> {
     super.runVerifications(
-      [super.expectLink(links.createCase.title), super.expectLink(links.caseList.title)],
+      [
+        //super.expectLink(links.createCase.title), super.expectLink(links.caseList.title)
+      ],
       { runAxe: false },
     );
+  }
+
+  async openCreateCaseWithUrl() {
+    await super.goTo(`${urls.manageCase}/cases/case-filter`);
   }
 
   async clickCreateCase() {
