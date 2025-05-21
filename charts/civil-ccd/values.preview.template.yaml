@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:pr-6327
+    image: hmctspublic.azurecr.io/civil/service:pr-6540
     keyVaults:
       civil:
         resourceGroup: civil
@@ -35,7 +35,7 @@ civil-service:
             alias: robotics.notification.sender
           - name: robotics-notification-recipient
             alias: robotics.notification.recipient
-          - name: launch-darkly-sdk-key-non-prod
+          - name: launch-darkly-sdk-key
             alias: LAUNCH_DARKLY_SDK_KEY
           - name: robotics-notification-multipartyrecipient
             alias: robotics.notification.multipartyrecipient
@@ -138,6 +138,8 @@ aac-manage-case-assignment:
 
 xui-webapp:
   nodejs:
+    imagePullPolicy: Always
+    image: hmctspublic.azurecr.io/xui/webapp:pr-4462
     ingressHost: xui-${SERVICE_FQDN}
     environment:
       FEATURE_ACCESS_MANAGEMENT_ENABLED: true
