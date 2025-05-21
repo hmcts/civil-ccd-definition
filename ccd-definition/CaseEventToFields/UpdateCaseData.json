@@ -5,7 +5,7 @@
       "CaseFieldID": "claimDismissedDeadline",
       "PageDisplayOrder": 1,
       "PageFieldDisplayOrder": 1,
-      "DisplayContext": "MANDATORY",
+      "DisplayContext": "OPTIONAL",
       "PageColumnNumber": 1,
       "ShowSummaryChangeOption": "Y"
     }
