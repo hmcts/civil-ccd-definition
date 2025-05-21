@@ -16,5 +16,11 @@
     "ListElementCode": "MANUAL_DETERMINATION_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Manual Determination Document",
     "DisplayOrder": 30
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Settlement Agreement",
+    "DisplayOrder": 31
   }
 ]
