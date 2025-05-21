@@ -629,7 +629,9 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     } else {
-      await pageExpect(locator, { message: options.message }).toBeVisible(options);
+      await pageExpect(locator, { message: options.message }).toBeVisible({
+        timeout: options.timeout,
+      });
     }
   }
 
