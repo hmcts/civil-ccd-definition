@@ -100,19 +100,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "totalClaimAmountPlusInterest",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "CRU"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1RepaymentPlanAdmitFullLabel",
     "AccessControl": [
       {
