@@ -100,30 +100,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToAdmittedClaim",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "defenceAdmittedPartRoute",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmittedRequired = \"Yes\"  AND isRespondent1 = \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToAdmittedClaim2",
-    "PageDisplayOrder": 6,
-    "PageFieldDisplayOrder": 3,
-    "DisplayContext": "MANDATORY",
-    "PageID": "defenceAdmittedPartRoute",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmitted2Required = \"Yes\"  AND isRespondent2 = \"Yes\"",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
     "PageDisplayOrder": 12,
     "PageFieldDisplayOrder": 1,
