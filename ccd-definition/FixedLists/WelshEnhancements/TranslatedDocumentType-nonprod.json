@@ -19,8 +19,14 @@
   },
   {
     "ID": "TranslatedDocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT",
+    "ListElement": "Settlement Agreement",
+    "DisplayOrder": 8
+  },
+  {
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "FINAL_ORDER",
     "ListElement": "Judge Final Order",
-    "DisplayOrder": 8
+    "DisplayOrder": 9
   }
 ]

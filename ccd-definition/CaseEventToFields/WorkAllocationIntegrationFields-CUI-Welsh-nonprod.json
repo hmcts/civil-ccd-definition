@@ -193,9 +193,45 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 17,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "respondent1LiPResponse",
+    "PageFieldDisplayOrder": 18,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "applicant1DQLanguage",
+    "PageFieldDisplayOrder": 19,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "respondent1DQLanguage",
+    "PageFieldDisplayOrder": 20,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "applicant1DQLanguage",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 21,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "PageShowCondition": "finalOrderSelection=\"DO NOT SHOW IN UI\"",
@@ -205,7 +241,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
     "CaseFieldID": "respondent1DQLanguage",
-    "PageFieldDisplayOrder": 2,
+    "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "Publish": "Y"
