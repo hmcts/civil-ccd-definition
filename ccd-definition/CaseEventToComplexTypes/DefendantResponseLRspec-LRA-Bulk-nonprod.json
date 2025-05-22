@@ -44,6 +44,15 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToAdmittedClaim",
+    "ListElementCode": "howWasThisAmountPaidOther",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondToAdmittedClaim.howWasThisAmountPaid = \"OTHER\""
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToAdmittedClaim2",
     "ListElementCode": "howMuchWasPaidLabel",
     "FieldDisplayOrder": 1,
@@ -86,6 +95,15 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToAdmittedClaim2",
+    "ListElementCode": "howWasThisAmountPaidOther",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondToAdmittedClaim2.howWasThisAmountPaid = \"OTHER\""
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToClaim",
     "ListElementCode": "howMuchWasPaidLabel",
     "FieldDisplayOrder": 1,
@@ -128,6 +146,15 @@
   {
     "ID": "SpecAoSCorrespondenceAddress",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim",
+    "ListElementCode": "howWasThisAmountPaidOther",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondToClaim.howWasThisAmountPaid = \"OTHER\""
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondToClaim2",
     "ListElementCode": "howMuchWasPaidLabel",
     "FieldDisplayOrder": 1,
@@ -166,5 +193,14 @@
     "ListElementCode": "howWasThisAmountPaid",
     "FieldDisplayOrder": 4,
     "DisplayContext": "MANDATORY"
+  },
+  {
+    "ID": "SpecAoSCorrespondenceAddress",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim2",
+    "ListElementCode": "howWasThisAmountPaidOther",
+    "FieldDisplayOrder": 5,
+    "DisplayContext": "MANDATORY",
+    "FieldShowCondition": "respondToClaim2.howWasThisAmountPaid = \"OTHER\""
   }
 ]

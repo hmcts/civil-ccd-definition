@@ -53,7 +53,6 @@
     "ElementLabel": "Tell us how",
     "FieldType": "Text",
     "SecurityClassification": "Public",
-    "Searchable": "N",
-    "FieldShowCondition": "howWasThisAmountPaid = \"OTHER\""
+    "Searchable": "N"
   }
 ]
