@@ -77,7 +77,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "previewCourtOfficerOrder",
-    "PageDisplayOrder": 1,
+    "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 1,
     "DisplayContext": "COMPLEX",
     "PageID": "PreviewOrder",

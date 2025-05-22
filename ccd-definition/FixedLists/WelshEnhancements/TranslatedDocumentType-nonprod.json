@@ -28,5 +28,11 @@
     "ListElementCode": "FINAL_ORDER",
     "ListElement": "Judge Final Order",
     "DisplayOrder": 9
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "COURT_OFFICER_ORDER",
+    "ListElement": "Court Officer Order",
+    "DisplayOrder": 10
   }
 ]
