@@ -36,7 +36,7 @@
     "ID": "respondToAdmittedClaimOwingAmount2",
     "Label": "How much money does your client admit to owing?",
     "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "SecurityClassification": "Public"
   }
 ]
