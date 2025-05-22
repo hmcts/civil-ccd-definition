@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
 import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import { ClaimantDefendantPartyType } from '../../../../../../../models/claimant-defendant-party-types.ts';
 import partys from '../../../../../../../constants/partys.ts';
 import { inputs } from './confirm-details-content.ts';

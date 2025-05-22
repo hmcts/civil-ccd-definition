@@ -1,42 +1,62 @@
-const ccdPipelineTests = [
-  './e2e/tests/ui_tests/*.js',
-    './e2e/tests/ui_tests/damages/*_test.js',
-    './e2e/tests/ui_tests/lrspec/*_test.js',
-    './e2e/tests/ui_tests/damages/nightly/*_test.js',
-    './e2e/tests/ui_tests/noticeofchange/*_test.js',
-    './e2e/tests/ui_tests/manageContactInformation/*_test.js',
-    './e2e/tests/ui_tests/settle_discontinue/*_test.js',
-    './e2e/tests/ui_tests/sdo/*_test.js',
-    './e2e/tests/ui_tests/carm/*_test.js',
-    './e2e/tests/ui_tests/minti/*_test.js',
-    './e2e/tests/ui_tests/refunds/*_test.js',
-    './e2e/tests/ui_tests/default_judgement/*_test.js',
-    './e2e/tests/ui_tests/hearings/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
-]
+const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
+
+const ccdPipelineTests = process.env.FAILED_TEST_FILES
+  ? [...process.env.FAILED_TEST_FILES.split(','), ...process.env.NOT_EXECUTED_TEST_FILES.split(',')]
+  : [
+      './e2e/tests/ui_tests/*.js',
+      './e2e/tests/ui_tests/damages/*_test.js',
+      './e2e/tests/ui_tests/lrspec/*_test.js',
+      './e2e/tests/ui_tests/damages/nightly/*_test.js',
+      './e2e/tests/ui_tests/noticeofchange/*_test.js',
+      './e2e/tests/ui_tests/manageContactInformation/*_test.js',
+      './e2e/tests/ui_tests/settle_discontinue/*_test.js',
+      './e2e/tests/ui_tests/sdo/*_test.js',
+      './e2e/tests/ui_tests/carm/*_test.js',
+      './e2e/tests/ui_tests/minti/*_test.js',
+      './e2e/tests/ui_tests/refunds/*_test.js',
+      './e2e/tests/ui_tests/default_judgement/*_test.js',
+      './e2e/tests/ui_tests/hearings/*_test.js',
+      './e2e/tests/api_tests/lrspec_cui/*_test.js',
+    ];
 const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/*.js',
-    './e2e/tests/api_tests/judgmentOnline/*_test.js',
-    './e2e/tests/api_tests/mediation/*_test.js',
-    './e2e/tests/api_tests/sdo_R2/*_test.js',
-    './e2e/tests/api_tests/generalapplication/*_test.js',
-    './e2e/tests/api_tests/defaultJudgments/*_test.js',
-    './e2e/tests/api_tests/damages/*_test.js',
-    './e2e/tests/api_tests/sdo/*_test.js',
-    './e2e/tests/api_tests/hearings/*_test.js',
-    './e2e/tests/api_tests/bulkclaim/*_test.js',
-    './e2e/tests/api_tests/lrspec/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
-    './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
-    './e2e/tests/api_tests/settle-discontinue/*_test.js',
-    './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
-    './e2e/tests/api_tests/caseworkerEvents/*_test.js'
+  './e2e/tests/api_tests/judgmentOnline/*_test.js',
+  './e2e/tests/api_tests/mediation/*_test.js',
+  './e2e/tests/api_tests/sdo_R2/*_test.js',
+  './e2e/tests/api_tests/generalapplication/*_test.js',
+  './e2e/tests/api_tests/defaultJudgments/*_test.js',
+  './e2e/tests/api_tests/damages/*_test.js',
+  './e2e/tests/api_tests/sdo/*_test.js',
+  './e2e/tests/api_tests/hearings/*_test.js',
+  './e2e/tests/api_tests/bulkclaim/*_test.js',
+  './e2e/tests/api_tests/lrspec/*_test.js',
+  './e2e/tests/api_tests/lrspec_cui/*_test.js',
+  './e2e/tests/api_tests/settle-discontinue/*_test.js',
+  './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
+  './e2e/tests/api_tests/settle-discontinue/*_test.js',
+  './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
+  './e2e/tests/api_tests/caseworkerEvents/*_test.js',
 ];
 exports.config = {
-  tests: process.env.WA_TESTS === 'true' ?
-   [...ccdPipelineTests, ...civilServiceAndCamundaTests] :
-   (process.env.CCD_UI_TESTS === 'true' ? ccdPipelineTests : civilServiceAndCamundaTests),
-  output:  process.env.REPORT_DIR || 'test-results/functional',
+  bootstrapAll: async () => {
+    await testFilesHelper.createTempFailedTestsFile();
+    await testFilesHelper.createPassedTestsFile();
+    await testFilesHelper.createToBeExecutedTestsFile();
+    await testFilesHelper.createNotExecutedTestsFile();
+  },
+  teardownAll: async () => {
+    await testFilesHelper.createFailedTestsFile();
+    await testFilesHelper.writeNotExecutedTestFiles();
+    await testFilesHelper.deleteTempFailedTestsFile();
+    await testFilesHelper.deleteToBeExecutedTestFiles();
+  },
+  tests:
+    process.env.WA_TESTS === 'true'
+      ? [...ccdPipelineTests, ...civilServiceAndCamundaTests]
+      : process.env.CCD_UI_TESTS === 'true'
+        ? ccdPipelineTests
+        : civilServiceAndCamundaTests,
+  output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
@@ -49,9 +69,9 @@ exports.config = {
       bypassCSP: true,
       ignoreHTTPSErrors: true,
       video: true,
-      contextOptions : {
-        recordVideo:{
-          dir:'failed-videos',
+      contextOptions: {
+        recordVideo: {
+          dir: 'failed-videos',
         },
       },
     },
@@ -79,13 +99,7 @@ exports.config = {
   plugins: {
     autoDelay: {
       enabled: true,
-      methods: [
-        'click',
-        'fillField',
-        'checkOption',
-        'selectOption',
-        'attach',
-      ],
+      methods: ['click', 'fillField', 'checkOption', 'selectOption', 'attach'],
     },
     retryFailedStep: {
       enabled: true,
@@ -93,6 +107,10 @@ exports.config = {
     screenshotOnFail: {
       enabled: true,
       fullPageScreenshots: true,
+    },
+    failedAndNotExecutedTestFilesPlugin: {
+      enabled: true,
+      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
     },
   },
   mocha: {
@@ -110,7 +128,7 @@ exports.config = {
           mochaFile: process.env.REPORT_FILE || 'test-results/functional/result.xml',
         },
       },
-      'mochawesome': {
+      mochawesome: {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',
