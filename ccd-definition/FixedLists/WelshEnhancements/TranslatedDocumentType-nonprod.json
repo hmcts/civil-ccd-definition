@@ -22,5 +22,15 @@
     "ListElementCode": "SETTLEMENT_AGREEMENT",
     "ListElement": "Settlement Agreement",
     "DisplayOrder": 8
+  },
+  { "ID": "TranslatedDocumentType",
+    "ListElementCode": "NOTICE_OF_DISCONTINUANCE_CLAIMANT",
+    "ListElement": "Notice Of Discontinuance Claimant Document",
+    "DisplayOrder": 9
+  },
+  { "ID": "TranslatedDocumentType",
+    "ListElementCode": "NOTICE_OF_DISCONTINUANCE_DEFENDANT",
+    "ListElement": "Notice Of Discontinuance Defendant Document",
+    "DisplayOrder": 10
   }
 ]
