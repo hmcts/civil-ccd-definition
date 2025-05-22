@@ -42,6 +42,7 @@ const cosNotifyClaimDetailsPage = require('./pages/notifyClaimDetails/certificat
 const cosNotifyClaimCYAPage = require('./pages/cosNotifyClaimCYA.page');
 const cosTab = require('./pages/cosTab.page');
 const bundlesTab = require('./pages/bundlesTab.page');
+const queriesTab = require('./pages/queriesTab.page');
 
 
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
@@ -606,8 +607,15 @@ module.exports = function () {
         () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
         () => raiseQueryPage.selectQuery(),
         () => raiseAQueryFormPage.enterQueryDetails(),
-        () => event.submit('Submit your response', 'Query submitted'),
-        () => event.goBackToCase()
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted')
+      ]);
+    },
+
+    async raiseNewQueryInOfflineState(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery()
       ]);
     },
 
@@ -733,6 +741,20 @@ module.exports = function () {
       ]);
     },
 
+    async verifyQueriesDetails() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyQueriesDetails()
+      ]);
+    },
+
+    async verifyQueriesDetailsAsCaseWorker() {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyDetailsAsCaseWorker()
+      ]);
+    },
+
     async navigateToTab(tabName) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab(tabName),
@@ -746,7 +768,7 @@ module.exports = function () {
       ]);
     },
 
-    async caseProceedsInCaseman() {
+    async caseProceedsInCaseman(caseId = false) {
       eventName = events.CASE_PROCEEDS_IN_CASEMAN.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),

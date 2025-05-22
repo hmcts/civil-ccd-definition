@@ -7,6 +7,7 @@ module.exports = {
       subject: '#subject',
       detail: 'textarea#body',
       isHearingRelated: '#isHearingRelated-no',
+      cya:'.govuk-summary-list'
     },
   },
 
@@ -18,6 +19,8 @@ module.exports = {
     I.click(this.fields.query.isHearingRelated);
     I.click('Add new');
     I.see('Attach a document to this query');
-    await I.clickContinue();
+    await I.click('Continue');
+    I.waitForElement(this.fields.query.cya);
+    await I.see('Query subject');
   },
 };

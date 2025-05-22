@@ -1,16 +1,9 @@
-
 const config = require('../../../config.js');
 
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
-// const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
- let caseId;
-// if (config.runWAApiTest) {
-//   intermediateTrackDirectionsExpectedTask = require('../../../../wa/tasks/itermediateTrackDirectionsTask.js');
-//   multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
-//
-// }
+let caseId;
 
 Feature('LR v LR claim - Claimant and Defendant raises a query @qm-spec');
 
@@ -21,80 +14,64 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
 }
 
-Scenario('Claimant LR raises a query @123', async ({api_spec, I}) => {
+Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQuery(caseId);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetails();
 });
 
-Scenario('Defendant LR raises a query @123', async ({api_spec, I}) => {
-  const mpScenario = 'ONE_V_ONE';
-  await prepareClaim(api_spec, mpScenario);
+Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewQuery(caseId);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetails();
 });
-//
-// Scenario('1v1 FULL_ADMISSION Intermediate claim Specified', async ({api_spec}) => {
-//   const mpScenario = 'ONE_V_ONE';
-//   await prepareClaim(api_spec, mpScenario);
-//   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-//   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true);
-// });
-//
-// Scenario('1v1 PART_ADMISSION Intermediate claim Specified', async ({api_spec}) => {
-//   const mpScenario = 'ONE_V_ONE';
-//   await prepareClaim(api_spec, mpScenario);
-//   await api_spec.defendantResponse(config.defendantSolicitorUser, 'PART_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-//   await api_spec.claimantResponse(config.applicantSolicitorUser, 'PART_ADMISSION', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true);
-// });
-//
-// Scenario('1v1 COUNTER_CLAIM Intermediate claim Specified', async ({api_spec}) => {
-//   const mpScenario = 'ONE_V_ONE';
-//   await prepareClaim(api_spec, mpScenario);
-//   await api_spec.defendantResponse(config.defendantSolicitorUser, 'COUNTER_CLAIM', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-// });
-//
-// Scenario('1v2 full defence Intermediate claim Specified Different Solicitor', async ({api_spec}) => {
-//   const mpScenario = 'ONE_V_TWO';
-//   await prepareClaim(api_spec, mpScenario);
-//   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE1', 'ONE_V_ONE_DIF_SOL', 'AWAITING_RESPONDENT_ACKNOWLEDGEMENT', false, true, claimAmountIntermediate);
-//   await api_spec.defendantResponse(config.secondDefendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL', 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-//   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'JUDICIAL_REFERRAL', false, true);
-//   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
-//   await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-//   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-//
-// });
-//
-// Scenario.skip('1v2  full defence Intermediate claim Specified same solicitor @wa-task @api-nonprod', async ({api_spec, WA}) => {
-//   const mpScenario = 'ONE_V_TWO_SAME_SOL';
-//   await prepareClaim(api_spec, mpScenario);
-//   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO','AWAITING_APPLICANT_INTENTION', false, true, claimAmountIntermediate);
-//   await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_TWO', 'JUDICIAL_REFERRAL', false, true);
-//   caseId = await api_spec.getCaseId();
-//   if (config.runWAApiTest) {
-//     const intermediateTrackDirections = await api_spec.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.intermediateTrackDirections);
-//     console.log('intermediateTrackDirections...' , intermediateTrackDirections);
-//     WA.validateTaskInfo(intermediateTrackDirections, intermediateTrackDirectionsExpectedTask);
-//     taskId = intermediateTrackDirections['id'];
-//     api_spec.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
-//   }
-//   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
-//   if (config.runWAApiTest) {
-//     api_spec.completeTaskByUser(config.judgeUserWithRegionId1, taskId);
-//   }
-//   await api_spec.evidenceUploadApplicant(config.applicantSolicitorUser, mpScenario);
-//   if (config.runWAApiTest) {
-//     const multiTrackOrderMakeReview = await api_spec.retrieveTaskDetails(config.hearingCenterAdminWithRegionId1, caseId, config.waTaskIds.multiTrackOrderMadeReview);
-//     console.log('multiTrackOrderMakeReview...' , multiTrackOrderMakeReview);
-//     WA.validateTaskInfo(multiTrackOrderMakeReview, multiTrackOrderMadeReviewCaseExpectedTask);
-//     taskId = multiTrackOrderMakeReview['id'];
-//     api_spec.assignTaskToUser(config.hearingCenterAdminWithRegionId1, taskId);
-//   }
-//   await api_spec.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
-// });
 
-AfterSuite(async  ({api_spec}) => {
-  //await api_spec.cleanUp();
+Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
+  await I.login(config.ctscAdminUser);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetailsAsCaseWorker();
+});
+
+Scenario('Judge can access to a query', async ({ I }) => {
+  await I.login(config.judgeUserWithRegionId1);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetails();
+});
+
+Scenario('Judge can access to a query', async ({ I }) => {
+  await I.login(config.judgeUserWithRegionId1);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetails();
+});
+
+Scenario('Judge can access to a query', async ({ I }) => {
+  await I.login(config.judgeUserWithRegionId1);
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.waitForText('Summary');
+  await I.verifyQueriesDetails();
+});
+
+Scenario('Take claim offline', async ({ I }) => {
+  await I.login(config.adminUser);
+  await I.caseProceedsInCaseman(caseId);
+});
+
+Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
+  await I.login(config.applicantSolicitorUser);
+  await I.raiseNewQueryInOfflineState(caseId);
+  await I.waitForText('Enter query details');
+  await I.see('If your case is offline, you cannot raise a query.');
+});
+
+AfterSuite(async ({ api_spec }) => {
+  await api_spec.cleanUp();
 });
