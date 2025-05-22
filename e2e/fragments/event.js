@@ -24,5 +24,9 @@ module.exports = {
 
   async returnToCaseDetails() {
     await I.retryUntilExists(() => I.click('Close and Return to case details'), SUMMARY_TAB);
+  },
+
+  async goBackToCase() {
+    await I.retryUntilExists(() => I.click('Go back to the case'), SUMMARY_TAB);
   }
 };

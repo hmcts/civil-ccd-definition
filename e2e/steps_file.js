@@ -57,6 +57,10 @@ const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
 const proceedPage = require('./pages/respondToDefence/proceed.page');
+const raiseQueryPage = require('./pages/query/raiseQuery.page');
+const raiseAQueryFormPage = require('./pages/query/raiseAQueryForm.page');
+
+
 const uploadResponseDocumentPage = require('./pages/respondToDefence/uploadResponseDocument.page');
 
 const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFriend/defendantLitigationDetails.page');
@@ -356,7 +360,7 @@ module.exports = function () {
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
-        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH) 
+        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH)
           : uploadParticularsOfClaim.enterParticularsOfClaim(), //Uploading files to aat is causing loading on page to timeout.
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
@@ -594,6 +598,17 @@ module.exports = function () {
         () => this.click('Close and Return to case details')
       ]);
       await this.takeScreenshot();
+    },
+
+    async raiseNewQuery(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery(),
+        () => raiseAQueryFormPage.enterQueryDetails(),
+        () => event.submit('Submit your response', 'Query submitted'),
+        () => event.goBackToCase()
+      ]);
     },
 
     async respondToDefenceMinti(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
