@@ -4,13 +4,13 @@ const config = require('../../../config.js');
 const claimAmountPenniesIntermediate = '9900000';
 const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
-const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
-let caseId;
-if (config.runWAApiTest) {
-  intermediateTrackDirectionsExpectedTask = require('../../../../wa/tasks/itermediateTrackDirectionsTask.js');
-  multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
-
-}
+// const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
+ let caseId;
+// if (config.runWAApiTest) {
+//   intermediateTrackDirectionsExpectedTask = require('../../../../wa/tasks/itermediateTrackDirectionsTask.js');
+//   multiTrackOrderMadeReviewCaseExpectedTask = require('../../../../wa/tasks/multiTrackOrderMadeReviewCaseTask.js');
+//
+// }
 
 Feature('LR v LR claim - Claimant and Defendant raises a query @qm-spec');
 

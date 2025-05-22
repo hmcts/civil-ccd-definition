@@ -3,7 +3,7 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const config = require('../config');
 
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
-const EVENT_TRIGGER_LOCATOR = '';
+//const EVENT_TRIGGER_LOCATOR = '';
 
 module.exports = {
 
