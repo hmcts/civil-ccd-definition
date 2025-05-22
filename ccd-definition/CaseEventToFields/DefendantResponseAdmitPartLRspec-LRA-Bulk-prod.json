@@ -2,26 +2,74 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToAdmittedClaim",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmount",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmittedRequired = \"Yes\"  AND isRespondent1 = \"Yes\"",
+    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmittedRequired = \"No\" AND isRespondent1 = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
-    "CaseFieldID": "respondToAdmittedClaim2",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmount2",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "MANDATORY",
     "PageID": "defenceAdmittedPartRoute",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmitted2Required = \"Yes\"  AND isRespondent2 = \"Yes\"",
+    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric=\"PART_ADMISSION\" AND specDefenceAdmitted2Required = \"No\" AND isRespondent2 = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defenceAdmittedPartRoute",
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToAdmittedClaimOwingAmountPounds2",
+    "PageDisplayOrder": 6,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "FieldShowCondition": "specAoSRespondentDetails = \"DO_NOT_SHOW_IN_UI\" OR respondent1ClaimResponseTypeForSpec = \"DO_NOT_SHOW_IN_UI\"",
+    "PageID": "defenceAdmittedPartRoute",
+    "ShowSummaryChangeOption": "N",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/specHandleAdmitPartClaim"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "defenceRoute",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defenceRouteRequired = \"HAS_PAID_THE_AMOUNT_CLAIMED\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondToClaim2",
+    "PageDisplayOrder": 8,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "defenceRoute",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "defenceRouteRequired2 = \"HAS_PAID_THE_AMOUNT_CLAIMED\"",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/track"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -148,5 +196,47 @@
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired2=\"BY_SET_DATE\" AND isRespondent2 = \"Yes\"",
     "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-payment-date"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1RepaymentPlanLabel2",
+    "PageDisplayOrder": 39,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RepaymentPlan",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent1RepaymentPlan",
+    "PageDisplayOrder": 39,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RepaymentPlan",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2RepaymentPlanLabel2",
+    "PageDisplayOrder": 40,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RepaymentPlanRespondent2",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondent2RepaymentPlan",
+    "PageDisplayOrder": 40,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "MANDATORY",
+    "PageID": "RepaymentPlanRespondent2",
+    "ShowSummaryChangeOption": "Y",
+    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/validate-repayment-plan-2"
   }
 ]
