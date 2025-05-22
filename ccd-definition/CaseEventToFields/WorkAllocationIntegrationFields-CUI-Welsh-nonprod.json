@@ -193,8 +193,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
-    "CaseFieldID": "preTranslationDocumentType",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 17,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -202,8 +202,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
-    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 18,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -211,8 +211,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
-    "CaseFieldID": "respondent1LiPResponse",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 19,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -220,8 +220,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
-    "CaseFieldID": "applicant1DQLanguage",
+    "CaseEventID": "GENERATE_LIP_SIGN_SETTLEMENT_AGREEMENT_FORM",
+    "CaseFieldID": "respondent1DQLanguage",
     "PageFieldDisplayOrder": 20,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -230,7 +230,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
-    "CaseFieldID": "respondent1DQLanguage",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 21,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -238,8 +238,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
-    "CaseFieldID": "preTranslationDocumentType",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
+    "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -247,8 +247,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
-    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
+    "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 23,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -256,8 +256,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
-    "CaseFieldID": "respondent1LiPResponse",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_DETERMINATION_RESPONSE_DOC",
+    "CaseFieldID": "respondent1DQLanguage",
     "PageFieldDisplayOrder": 24,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -266,7 +266,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
-    "CaseFieldID": "applicant1DQLanguage",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 25,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
@@ -275,8 +275,26 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
-    "CaseFieldID": "respondent1DQLanguage",
+    "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 26,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "applicant1DQLanguage",
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_JUDGMENT_BY_ADMISSION_RESPONSE_DOC",
+    "CaseFieldID": "respondent1DQLanguage",
+    "PageFieldDisplayOrder": 28,
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "Publish": "Y"

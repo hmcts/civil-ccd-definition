@@ -28,5 +28,11 @@
     "ListElementCode": "CCJ_REQUEST_ADMISSION",
     "ListElement": "Request Admission Document",
     "DisplayOrder": 9
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT",
+    "ListElement": "Settlement Agreement",
+    "DisplayOrder": 10
   }
 ]

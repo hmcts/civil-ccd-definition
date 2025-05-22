@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
 import Cookie from '../models/cookie';
@@ -184,6 +185,11 @@ export default abstract class BasePage {
     return (await this.page.textContent(selector)) ?? undefined;
   }
 
+  @BoxedDetailedStep(classKey)
+  protected async getCurrentUrl() {
+    return this.page.url();
+  }
+
   @BoxedDetailedStep(classKey, 'option', 'selector')
   @TruthyParams(classKey, 'selector')
   protected async selectFromDropdown(
@@ -359,7 +365,7 @@ export default abstract class BasePage {
     useAxeCache: boolean,
     axePageInsertName?: string | number,
   ) {
-    const axeBuilder = new AxeBuilder({ page: this.page })
+    const axeBuilder = new AxeBuilder({ page: this.page as PageCore })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
 
@@ -418,6 +424,16 @@ export default abstract class BasePage {
       Array.isArray(endpoints) ? `(${endpoints.join('|')})$` : `${endpoints}$`,
     );
     await pageExpect(this.page, { message: options.message }).toHaveURL(regex, {
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'currentUrl')
+  protected async expectUrlToChange(
+    currentUrl: string,
+    options: { timeout?: number; message?: string } = {},
+  ) {
+    pageExpect(this.page, { message: options.message }).not.toHaveURL(currentUrl, {
       timeout: options.timeout,
     });
   }
@@ -613,7 +629,9 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     } else {
-      await pageExpect(locator, { message: options.message }).toBeVisible(options);
+      await pageExpect(locator, { message: options.message }).toBeVisible({
+        timeout: options.timeout,
+      });
     }
   }
 
@@ -1442,7 +1460,6 @@ export default abstract class BasePage {
       {
         retries,
         message: message ?? 'Navigation Failed, trying again',
-        assertFirst: true,
       },
     );
   }

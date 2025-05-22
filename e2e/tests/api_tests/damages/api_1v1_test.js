@@ -1,8 +1,23 @@
 const config = require('../../../config.js');
+const {APPLICANT_SOLICITOR_QUERY, RESPONDENT_SOLICITOR_QUERY} = require('../../../fixtures/queryTypes');
+const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_ONE';
+let isQueryManagementEnabled = false;
 
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM');
+
+async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
+  if (isQueryManagementEnabled) {
+    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+  }
+}
+
+Before(async () => {
+  isQueryManagementEnabled = await checkLRQueryManagementEnabled();
+});
 
 Scenario('Create claim', async ({api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -59,6 +74,20 @@ Scenario('Manage case flags', async ({api}) => {
 Scenario('Manage contact information', async ({api}) => {
   await api.manageDefendant1Details(config.adminUser);
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
+});
+
+Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+    config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+    APPLICANT_SOLICITOR_QUERY, true
+  );
+});
+
+Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
+  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
+    config.defendantSolicitorUser, config.ctscAdminUser,
+    RESPONDENT_SOLICITOR_QUERY, false
+  );
 });
 
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
