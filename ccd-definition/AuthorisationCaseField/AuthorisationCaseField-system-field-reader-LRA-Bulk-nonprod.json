@@ -16,5 +16,11 @@
     "CaseFieldID": "responseClaimAdmitPartOfClaimSpecExtraCostsLabelBothDefendants",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "totalClaimAmountPlusInterestAdmitPart",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
   }
 ]
