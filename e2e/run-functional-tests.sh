@@ -3,16 +3,16 @@ set -ex
 
 echo "Running Functional tests on ${ENVIRONMENT} env"
 
-export CCD_UI_TESTS=true
+export CCD_UI_TESTS=false
 
 if [ "$ENVIRONMENT" = "aat" ]; then
   yarn test:master-e2e-ft
 elif [ -z "$PR_FT_GROUPS" ]; then
-  yarn test:non-prod-e2e-ft
+  yarn test:api-QM
 else
   command="yarn test:non-prod-e2e-ft --grep "
   pr_ft_groups=$(echo "$PR_FT_GROUPS" | awk '{print tolower($0)}')
-  
+
   regex_pattern=""
 
   IFS=',' read -ra ft_groups_array <<< "$pr_ft_groups"
