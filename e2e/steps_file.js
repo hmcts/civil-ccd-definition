@@ -601,12 +601,22 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
-    async raiseNewQuery(caseId) {
+    async raiseNewNonHearingQuery(caseId) {
       eventName = events.QUERY_MANAGEMENT.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
         () => raiseQueryPage.selectQuery(),
         () => raiseAQueryFormPage.enterQueryDetails(),
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted')
+      ]);
+    },
+
+    async raiseNewHearingQuery(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery(),
+        () => raiseAQueryFormPage.enterHearingQueryDetails(),
         () => event.submitAndGoBackToCase('Submit', 'Query submitted')
       ]);
     },
@@ -741,17 +751,17 @@ module.exports = function () {
       ]);
     },
 
-    async verifyQueriesDetails() {
+    async verifyQueriesDetails(hearing = false) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab('Queries'),
-        () => queriesTab.verifyQueriesDetails()
+        () => queriesTab.verifyQueriesDetails(hearing)
       ]);
     },
 
-    async verifyQueriesDetailsAsCaseWorker() {
+    async verifyQueriesDetailsAsCaseWorker(hearing = false) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab('Queries'),
-        () => queriesTab.verifyDetailsAsCaseWorker()
+        () => queriesTab.verifyDetailsAsCaseWorker(hearing)
       ]);
     },
 

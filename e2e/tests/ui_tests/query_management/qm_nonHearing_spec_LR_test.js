@@ -5,7 +5,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('LR v LR claim - Claimant and Defendant raises a query @qm-spec');
+Feature('Query Management - Non Hearing E2E journey @qm-spec @non-prod-e2e-ft');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
@@ -18,7 +18,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   await I.login(config.applicantSolicitorUser);
-  await I.raiseNewQuery(caseId);
+  await I.raiseNewNonHearingQuery(caseId);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
@@ -26,7 +26,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
 
 Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
-  await I.raiseNewQuery(caseId);
+  await I.raiseNewNonHearingQuery(caseId);
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
@@ -37,20 +37,6 @@ Scenario('CaseWorker can access and also responds back to a query', async ({ I }
   await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker();
-});
-
-Scenario('Judge can access to a query', async ({ I }) => {
-  await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-  await I.waitForText('Summary');
-  await I.verifyQueriesDetails();
-});
-
-Scenario('Judge can access to a query', async ({ I }) => {
-  await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
-  await I.waitForText('Summary');
-  await I.verifyQueriesDetails();
 });
 
 Scenario('Judge can access to a query', async ({ I }) => {
