@@ -251,6 +251,12 @@ module.exports = {
     description: 'Upload mediation documents',
     order: 24
   },
+  QUERY_MANAGEMENT: {
+    id: 'query-management',
+    name: 'Raise a new query',
+    description: 'Raise a new query',
+    order: 25
+  },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
     name: 'Create case flags',
