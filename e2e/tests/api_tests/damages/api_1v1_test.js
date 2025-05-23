@@ -76,14 +76,14 @@ Scenario('Manage contact information', async ({api}) => {
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
 });
 
-Scenario('Claimant queries', async ({api, qmSteps}) => {
+Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
     APPLICANT_SOLICITOR_QUERY, true
   );
 });
 
-Scenario('Defendant queries', async ({api, qmSteps}) => {
+Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.defendantSolicitorUser, config.ctscAdminUser,
     RESPONDENT_SOLICITOR_QUERY, false

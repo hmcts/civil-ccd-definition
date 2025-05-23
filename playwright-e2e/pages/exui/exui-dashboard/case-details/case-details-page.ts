@@ -129,7 +129,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
       async () =>
         super.expectSelector(components.eventTrigger.selector, {
-          timeout: 30_000,
+          timeout: config.exui.pageSubmitTimeout,
         }),
       undefined,
       { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },

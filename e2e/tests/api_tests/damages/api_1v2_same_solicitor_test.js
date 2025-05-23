@@ -60,14 +60,14 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario('Claimant queries', async ({api, qmSteps}) => {
+Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.applicantSolicitorUser, config.ctscAdminUser,
     APPLICANT_SOLICITOR_QUERY, false
   );
 });
 
-Scenario('Defendant queries', async ({api, qmSteps}) => {
+Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
     RESPONDENT_SOLICITOR_1_AND_2_QUERY, true

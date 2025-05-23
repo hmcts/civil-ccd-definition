@@ -16,7 +16,7 @@ const RESPOND_QUERY_EVENT = 'queryManagementRespondQuery';
 
 const assertQueryMessage = (actualQueryMessage, expectedQueryMessage) => {
     expect(actualQueryMessage.id).equal(expectedQueryMessage.id);
-    expect(actualQueryMessage.createdOn).equal(expectedQueryMessage.createdOn);
+    expect(new Date(actualQueryMessage.createdOn).toISOString()).equal(new Date(expectedQueryMessage.createdOn).toISOString());
     expect(actualQueryMessage.createdBy).equal(expectedQueryMessage.createdBy);
     expect(actualQueryMessage.body).equal(expectedQueryMessage.body);
     expect(actualQueryMessage.isHearingRelated).equal(expectedQueryMessage.isHearingRelated);
