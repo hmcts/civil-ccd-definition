@@ -250,37 +250,40 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 17,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "PageShowCondition": "courtOfficerGiveReasonsComplex=\"DONOTSHOW\"",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 18,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "applicant1DQLanguage",
-    "PageFieldDisplayOrder": 19,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "respondent1DQLanguage",
-    "PageFieldDisplayOrder": 20,
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageDisplayOrder": 99,
     "Publish": "Y"
   }
 ]
