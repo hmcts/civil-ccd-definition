@@ -1,8 +1,8 @@
 const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
 
-const ccdPipelineTests = process.env.FAILED_TEST_FILES
-  ? [...process.env.FAILED_TEST_FILES.split(','), ...process.env.NOT_EXECUTED_TEST_FILES.split(',')]
-  : [
+const functional = process.env.FUNCTIONAL;
+
+const ccdPipelineTests = [
       './e2e/tests/ui_tests/*.js',
       './e2e/tests/ui_tests/damages/*_test.js',
       './e2e/tests/ui_tests/lrspec/*_test.js',
@@ -18,6 +18,7 @@ const ccdPipelineTests = process.env.FAILED_TEST_FILES
       './e2e/tests/ui_tests/hearings/*_test.js',
       './e2e/tests/api_tests/lrspec_cui/*_test.js',
     ];
+    
 const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/*.js',
   './e2e/tests/api_tests/judgmentOnline/*_test.js',
@@ -37,25 +38,36 @@ const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
   './e2e/tests/api_tests/caseworkerEvents/*_test.js',
 ];
+
+const getTests = () => {
+  if(process.env.FAILED_TEST_FILES)
+    return [...process.env.FAILED_TEST_FILES.split(','), ...process.env.NOT_EXECUTED_TEST_FILES.split(',')];
+  if(process.env.WA_TESTS === 'true')
+    return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
+  if(process.env.CCD_UI_TESTS === 'true')
+    return ccdPipelineTests;
+  else
+    return civilServiceAndCamundaTests;
+};
+
 exports.config = {
   bootstrapAll: async () => {
-    await testFilesHelper.createTempFailedTestsFile();
-    await testFilesHelper.createPassedTestsFile();
-    await testFilesHelper.createToBeExecutedTestsFile();
-    await testFilesHelper.createNotExecutedTestsFile();
+    if(functional) {
+      await testFilesHelper.createTempFailedTestsFile();
+      await testFilesHelper.createPassedTestsFile();
+      await testFilesHelper.createToBeExecutedTestsFile();
+      await testFilesHelper.createNotExecutedTestsFile();
+    }
   },
   teardownAll: async () => {
-    await testFilesHelper.createFailedTestsFile();
-    await testFilesHelper.writeNotExecutedTestFiles();
-    await testFilesHelper.deleteTempFailedTestsFile();
-    await testFilesHelper.deleteToBeExecutedTestFiles();
+    if(functional) {
+      await testFilesHelper.createFailedTestsFile();
+      await testFilesHelper.writeNotExecutedTestFiles();
+      await testFilesHelper.deleteTempFailedTestsFile();
+      await testFilesHelper.deleteToBeExecutedTestFiles();
+    }
   },
-  tests:
-    process.env.WA_TESTS === 'true'
-      ? [...ccdPipelineTests, ...civilServiceAndCamundaTests]
-      : process.env.CCD_UI_TESTS === 'true'
-        ? ccdPipelineTests
-        : civilServiceAndCamundaTests,
+  tests: getTests(),
   output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
@@ -109,7 +121,7 @@ exports.config = {
       fullPageScreenshots: true,
     },
     failedAndNotExecutedTestFilesPlugin: {
-      enabled: true,
+      enabled: functional,
       require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
     },
   },

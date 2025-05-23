@@ -5,7 +5,7 @@ properties([
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
-    string(name: 'RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the \'failedTestFiles.json\' of the first previous pipeline run that contains the artefact'),
+    string(name: 'RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs the failed test files and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
