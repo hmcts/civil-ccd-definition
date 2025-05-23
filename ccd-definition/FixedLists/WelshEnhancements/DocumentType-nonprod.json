@@ -22,5 +22,11 @@
     "ListElementCode": "SETTLEMENT_AGREEMENT_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Settlement Agreement",
     "DisplayOrder": 31
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "FINAL_ORDER_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Judge final order",
+    "DisplayOrder": 32
   }
 ]
