@@ -11,7 +11,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerOrderedLabel",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -19,7 +20,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerOrdered",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -27,7 +29,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerFurtherHearingComplex",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -35,7 +38,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerGiveReasonsLabel",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -43,7 +47,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerGiveReasonsYesNo",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -51,7 +56,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtOfficerGiveReasonsComplex",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   },
@@ -59,7 +65,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "previewCourtOfficerOrder",
     "UserRoles": [
-      "court-officer-order"
+      "court-officer-order",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   }

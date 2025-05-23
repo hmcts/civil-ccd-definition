@@ -569,7 +569,7 @@
           "caseworker-civil",
           "judge-profile"
         ],
-        "CRUD": "R"
+        "CRUD": "CRU"
       }
     ]
   }
