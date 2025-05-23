@@ -71,6 +71,7 @@ civil-service:
       CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
       CCD_EVENTS_SUBSCRIPTION_ENABLED: true
       CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
+      WA_TOGGLE: SD
 #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
