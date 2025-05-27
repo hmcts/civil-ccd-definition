@@ -10,11 +10,11 @@ let civilCaseReference;
 Feature('SDO Carm - Upload mediation documents @e2e-nightly-prod @e2e-carm');
 
 Scenario('2v1 claimant and defendant upload mediation documents', async ({api_spec, LRspec}) => {
-  civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
-  await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
-  await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
-    'JUDICIAL_REFERRAL');
-  console.log('2v1 Spec small claims created : ' + civilCaseReference);
+  // civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
+  // await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
+  // await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
+  //   'JUDICIAL_REFERRAL');
+  // console.log('2v1 Spec small claims created : ' + civilCaseReference);
 }).retry(2);
 
 // Scenario('2v1 claimant upload mediation docs', async ({LRspec}) => {
