@@ -5,7 +5,7 @@ properties([
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
     string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
-    string(name: 'RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs only the failed test files from the \'failedTestFiles.json\' of the first previous pipeline run that contains the artefact'),
+    string(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs the failed test files and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
     string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
@@ -94,14 +94,14 @@ def copyPreviousHistory(historyDir, resultsDir) {
   }
 }
 
-def copyFailedAndNotExecutedTestFilesJson() {
+def copyPrevFailedAndNotExecutedTestFilesJson() {
   def buildFound = false
   def buildNumber = currentBuild.previousBuild.number
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/failedTestFiles.json"
-      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/notExecutedTestFiles.json"
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
+      sh "mv 'test-results/functional/testFilesReport.json' 'test-results/functional/prevTestFilesReport.json'"
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
@@ -122,7 +122,7 @@ def secrets = [
 
 withNightlyPipeline(type, product, component) {
   env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
-  env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES
+  env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
@@ -148,11 +148,11 @@ withNightlyPipeline(type, product, component) {
   boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
   boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
-  boolean runFailedAndNotExecutedTestFiles = env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
+  boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
 
-  if(!runFailedAndNotExecutedTestFiles && !forceGreenBuild) {
+  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
     afterAlways('DependencyCheckNightly') {
       stage('Playwright test setup') {
         try {
@@ -215,8 +215,8 @@ withNightlyPipeline(type, product, component) {
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
-      if(runFailedAndNotExecutedTestFiles) {
-        copyFailedAndNotExecutedTestFilesJson()
+      if(runPrevFailedAndNotExecutedTestFiles) {
+        copyPrevFailedAndNotExecutedTestFilesJson()
       }
     }
   }
