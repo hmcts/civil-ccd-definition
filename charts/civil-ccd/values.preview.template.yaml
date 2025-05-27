@@ -371,3 +371,4 @@ servicebus:
         subscriptionNeeded: yes
       - name: jrd-topic
         subscriptionNeeded: yes
+
