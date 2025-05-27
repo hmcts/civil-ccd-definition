@@ -4,8 +4,10 @@ properties([
   pipelineTriggers([cron('H 07 * * 1-5')]),
   copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
   parameters([
+    string(name: 'FORCE_GREEN_BUILD', defaultValue: 'false', description: 'Should force pipeline to go green by not running any functional tests'),
+    string(name: 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES', defaultValue: 'false', description: 'Runs the failed test files and not executed test files from the first previous pipeline run that contains the following files \'failedTestFiles.json\' and \'notExecutedTestFiles.json\''),
     string(name: 'ENVIRONMENT', defaultValue: 'aat', description: 'Environment to test'),
-    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '10', description: 'Number of workers for playwright'),
+    string(name: 'PLAYWRIGHT_WORKERS', defaultValue: '8', description: 'Number of workers for playwright'),
     string(name: 'PLAYWRIGHT_RETRIES', defaultValue: '1', description: 'Number of times playwright will retry tests'),
     string(name: 'PLAYWRIGHT_EXUI_RETRIES', defaultValue: '1', description: 'Number of times playwright tests will retry exui events'),
     string(name: 'PLAYWRIGHT_TEST_SPEED', defaultValue: 'fast', description: 'Speed playwright performs actions, can be set to \'fast\', \'medium\' or \'slow\''),
@@ -24,6 +26,8 @@ properties([
       description: 'The URL of ccd data store'),
     string(name: 'CIVIL_SERVICE_URL', defaultValue: 'http://civil-service-aat.service.core-compute-aat.internal',
       description: 'The URL of civil service'),
+    string(name: 'WA_TASK_MGMT_URL', defaultValue: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+       description: 'The URL of wa task management'),
     string(name: 'WAIT_FOR_TIMEOUT_MS',
       defaultValue: '120000',
       description: 'Functional tests waitForTimeout value'),
@@ -90,6 +94,22 @@ def copyPreviousHistory(historyDir, resultsDir) {
   }
 }
 
+def copyPrevFailedAndNotExecutedTestFilesJson() {
+  def buildFound = false
+  def buildNumber = currentBuild.previousBuild.number
+  def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
+  while (!buildFound && buildNumber > minBuildNumber) {
+    try {
+      copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
+      sh "mv 'test-results/functional/testFilesReport.json' 'test-results/functional/prevTestFilesReport.json'"
+      buildFound = true
+    } catch (Exception error) {
+      echo "artifact not found: " + error.toString()
+      buildNumber--
+    }
+  }
+}
+
 def secrets = [
   'civil-${env}': [
     secret('microservicekey-civil-service', 'S2S_SECRET'),
@@ -101,6 +121,8 @@ def secrets = [
 ]
 
 withNightlyPipeline(type, product, component) {
+  env.FORCE_GREEN_BUILD=params.FORCE_GREEN_BUILD
+  env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES=params.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES
   env.ENVIRONMENT=params.ENVIRONMENT
   env.PLAYWRIGHT_WORKERS=params.PLAYWRIGHT_WORKERS
   env.PLAYWRIGHT_RETRIES=params.PLAYWRIGHT_RETRIES
@@ -117,76 +139,95 @@ withNightlyPipeline(type, product, component) {
   env.CCD_DATA_STORE_URL = params.CCD_DATA_STORE_URL
   env.CIVIL_SERVICE_URL = params.CIVIL_SERVICE_URL
   env.WAIT_FOR_TIMEOUT_MS = params.WAIT_FOR_TIMEOUT_MS
+  env.WA_TASK_MGMT_URL = params.WA_TASK_MGMT_URL
   env.URL_FOR_SECURITY_SCAN = params.CIVIL_SERVICE_URL
   env.CCD_UI_TESTS = true
+  env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   loadVaultSecrets(secrets)
 
-  boolean playwrightSetupPassed=true
+  boolean playwrightSetupPassed = true
   boolean flowInterrupted = false
+  boolean forceGreenBuild = env.FORCE_GREEN_BUILD.toBoolean();
+  boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
+  boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
-  afterAlways('DependencyCheckNightly') {
-    stage('Playwright test setup') {
-      try {
-        yarnBuilder.yarn('test:playwright-setup:install')
-        if(env.PLAYWRIGHT_RUN_SETUP) {
-          yarnBuilder.yarn('test:playwright-e2e-setup:ci')
-        }
-      } catch (Exception error) {
-        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-          flowInterrupted = true
-        }
-        if(env.PLAYWRIGHT_RUN_SETUP) {
-          playwrightSetupPassed=false
-        }
-        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-      } finally {
-        if(env.PLAYWRIGHT_RUN_SETUP) {
-          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
-        }
-      }
-    }
 
-    stage('Playwright full functional test') {
-      try {
-        if(flowInterrupted) {
-          throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
-        }
-        if(playwrightSetupPassed) {
-          yarnBuilder.yarn('test:playwright-e2e-nightly:ci')
-        }
-      } catch (Exception error) {
-        if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
-          flowInterrupted = true
-        }
-        unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
-      } finally {
-        if(playwrightSetupPassed) {
-          copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
-          yarnBuilder.yarn('test:playwright-functional:generate-report')
-          publishFunctionalReport()
-        }
-      }
-    }
-
-    if(env.PLAYWRIGHT_RUN_SETUP) {
-      stage('Playwright test teardown') {
+  if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
+    afterAlways('DependencyCheckNightly') {
+      stage('Playwright test setup') {
         try {
-          yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
+          yarnBuilder.yarn('test:playwright-setup:install')
+          if(playwrightRunSetup) {
+            yarnBuilder.yarn('test:playwright-e2e-setup:ci')
+          }
         } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          if(playwrightRunSetup) {
+            playwrightSetupPassed=false
+          }
           unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
         } finally {
-          copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
-          yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
-          publishBootstrapReport()
+          if(playwrightRunSetup) {
+            yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+          }
+        }
+      }
+
+      stage('Playwright full functional test') {
+        try {
+          if(flowInterrupted) {
+            throw new org.jenkinsci.plugins.workflow.steps.FlowInterruptedException()
+          }
+          if(playwrightSetupPassed) {
+            yarnBuilder.yarn('test:playwright-e2e-nightly:ci')
+          }
+        } catch (Exception error) {
+          if(error instanceof org.jenkinsci.plugins.workflow.steps.FlowInterruptedException) {
+            flowInterrupted = true
+          }
+          unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+        } finally {
+          if(playwrightSetupPassed) {
+            copyPreviousHistory('allure-functional-history', 'playwright-allure-functional-results');
+            yarnBuilder.yarn('test:playwright-functional:generate-report')
+            publishFunctionalReport()
+          }
+        }
+      }
+
+      if(playwrightRunSetup) {
+        stage('Playwright test teardown') {
+          try {
+            yarnBuilder.yarn('test:playwright-e2e-teardown:ci')
+          } catch (Exception error) {
+            unstable(message: "${STAGE_NAME} is unstable: " + error.toString())
+          } finally {
+            copyPreviousHistory('allure-bootstrap-history', 'playwright-allure-bootstrap-results');
+            yarnBuilder.yarn('test:playwright-bootstrap:generate-report')
+            publishBootstrapReport()
+          }
         }
       }
     }
   }
+  
+  if(!forceGreenBuild) {
+    before('fullFunctionalTest') {
+      if(runPrevFailedAndNotExecutedTestFiles) {
+        copyPrevFailedAndNotExecutedTestFilesJson()
+      }
+    }
+  }
 
-  //enableFullFunctionalTest(200)
+  enableFullFunctionalTest(200)
 
-  // afterAlways('fullFunctionalTest') {
-  //  archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
-  // }
+  if(!forceGreenBuild) {
+    afterAlways('fullFunctionalTest') {
+      archiveArtifacts allowEmptyArchive: true, artifacts: 'test-results/functional/**/*'
+    }
+  }
+  
 }
 

@@ -1,5 +1,3 @@
-export const heading = 'Check if you need to complete the claim timeline template';
-
 export const paragraphs = {
   descriptionText1:
     "You only need to complete this template if you're providing a timeline of events.",
