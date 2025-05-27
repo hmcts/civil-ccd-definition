@@ -7,8 +7,8 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 30;
-const RETRY_TIMEOUT_MS = 5000;
+const MAX_RETRIES = 20;
+const RETRY_TIMEOUT_MS = 3000;
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
@@ -50,6 +50,14 @@ const checkFastTrackUpliftsEnabled = async () => {
 
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
+};
+
+const checkLRQueryManagementEnabled = async () => {
+  return checkFlagEnabled('query-management');
+};
+
+const checkLIPQueryManagementEnabled = async () => {
+    return checkFlagEnabled('query-management-lips');
 };
 
 module.exports =  {
@@ -293,5 +301,7 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkMintiToggleEnabled
+  checkMintiToggleEnabled,
+  checkLRQueryManagementEnabled,
+  checkLIPQueryManagementEnabled
 };
