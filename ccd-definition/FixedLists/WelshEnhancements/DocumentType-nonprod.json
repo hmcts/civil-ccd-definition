@@ -22,5 +22,11 @@
     "ListElementCode": "SETTLEMENT_AGREEMENT_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Settlement Agreement",
     "DisplayOrder": 31
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "TRANSLATED_HEARING_FORM",
+    "ListElement": "Translated Hearing Form",
+    "DisplayOrder": 32
   }
 ]

@@ -10,5 +10,11 @@
     "ListElementCode": "MANUAL_DETERMINATION_DOCUMENT",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "HEARING_FORM",
+    "ListElement": "Hearing Form",
+    "DisplayOrder": 3
   }
 ]

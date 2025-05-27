@@ -22,5 +22,11 @@
     "ListElementCode": "SETTLEMENT_AGREEMENT",
     "ListElement": "Settlement Agreement",
     "DisplayOrder": 8
+  },
+  {
+    "ID": "TranslatedDocumentType",
+    "ListElementCode": "HEARING_FORM",
+    "ListElement": "Hearing Form",
+    "DisplayOrder": 9
   }
 ]
