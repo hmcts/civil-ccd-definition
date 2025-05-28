@@ -105,5 +105,6 @@ if [ "$RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES" = "true" ]; then
   fi
 
 else 
+  echo "env variable 'RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES' is not set to true"
   run_functional_tests
 fi
