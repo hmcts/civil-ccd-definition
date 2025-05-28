@@ -758,6 +758,30 @@ module.exports = function () {
       ]);
     },
 
+    async raiseFollowUpQuestionAndVerify(party = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.askFollowUpQuestion(party),
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted'),
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestion(party)
+      ]);
+    },
+
+    async verifyFollowUpQuestionAsCaseWorker(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestionAsCourtStaff(hearing)
+      ]);
+    },
+
+    async verifyFollowUpQuestionAsJudge(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestion(hearing)
+      ]);
+    },
+
     async verifyQueriesDetailsAsCaseWorker(hearing = false) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab('Queries'),
