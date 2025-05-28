@@ -49,19 +49,19 @@ Scenario('Listing officer adds case flags', async ({hearings}) => {
   await hearings.createCaseFlags(config.hearingCenterAdminWithRegionId2, caseId, 'respondent2Witnesses', getSupportWorkerFlag());
 });
 
-Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
+Scenario('Claimant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.applicantSolicitorUser, config.ctscAdminUser,
     APPLICANT_SOLICITOR_QUERY);
 });
 
-Scenario.skip('Defendant 1 solicitor queries', async ({api, qmSteps}) => {
+Scenario('Defendant 1 solicitor queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.defendantSolicitorUser, config.ctscAdminUser,
     RESPONDENT_SOLICITOR_1_QUERY);
 });
 
-Scenario.skip('Defendant 2 solicitor queries', async ({api, qmSteps}) => {
+Scenario('Defendant 2 solicitor queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.secondDefendantSolicitorUser, config.ctscAdminUser,
     RESPONDENT_SOLICITOR_2_QUERY);
