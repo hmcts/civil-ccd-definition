@@ -36,7 +36,7 @@ run_functional_tests() {
   elif [ -z "$PR_FT_GROUPS" ]; then
     yarn test:non-prod-e2e-ft 
   else
-    command="test:non-prod-e2e-ft --grep "
+    command="yarn test:non-prod-e2e-ft --grep "
     pr_ft_groups=$(echo "$PR_FT_GROUPS" | awk '{print tolower($0)}')
     
     regex_pattern=""
@@ -52,7 +52,7 @@ run_functional_tests() {
 
     command+="'$regex_pattern'"
     echo "Executing: $command"
-    yarn "$command"
+    eval "$command"
   fi
 }
 
