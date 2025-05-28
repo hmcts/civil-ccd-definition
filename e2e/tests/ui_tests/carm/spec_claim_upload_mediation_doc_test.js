@@ -10,6 +10,7 @@ let civilCaseReference;
 Feature('SDO Carm - Upload mediation documents @e2e-nightly-prod @e2e-carm');
 
 Scenario('2v1 claimant and defendant upload mediation documents', async ({api_spec, LRspec}) => {
+  throw new Error();
   // civilCaseReference = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
   // await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'TWO_V_ONE');
   // await api_spec.claimantResponse(config.applicantSolicitorUser, 'FULL_ADMISSION', 'TWO_V_ONE',
