@@ -1,5 +1,16 @@
 [
   {
+  "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+  "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+  "CaseFieldID": "respondent1ClaimPartAdmitImmediatelyLabelWithInterest",
+  "PageDisplayOrder": 1,
+  "PageFieldDisplayOrder": 7,
+  "DisplayContext": "READONLY",
+  "PageID": "RespondentResponse",
+  "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_IMMEDIATELY\"",
+  "ShowSummaryChangeOption": "N"
+  },
+  {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent1ClaimPartAdmitBySetDateLabelWithInterest",

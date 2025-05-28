@@ -144,21 +144,5 @@
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ClaimPartAdmitBySetDateLabelWithInterest",
-    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds} including any interest claimed but exclusive of the claim fee and any fixed costs \nclaimed which are payable in addition. \n\nThey have offered to pay by ${respondent1PaymentDateToStringSpec}.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ClaimPartAdmitInstalmentLabelWithInterest",
-    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds} including any interest claimed but exclusive of the claim fee and any fixed costs claimed which are payable in addition. \n\nIf judgment is entered on an admission the claim fee and any fixed costs claimed will be included in the total judgment sum. \n\nThey have offered to pay in instalments. \n\n Details of the repayment plan can be found in the Defendant Response form.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
   }
 ]
