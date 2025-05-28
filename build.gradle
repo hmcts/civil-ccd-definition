@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'com.github.hmcts'
-version 'DEV-SNAPSHOT'
+version 'DEV-SNAPSHOT' 
 
 java {
   toolchain {
