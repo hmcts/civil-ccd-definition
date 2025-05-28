@@ -33,7 +33,8 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-      await I.retryUntilExists(async() => {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       // await this.start(event);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
