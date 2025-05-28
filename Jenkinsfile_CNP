@@ -10,6 +10,10 @@ def camundaBranch = "master"
 def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
+properties([
+  copyArtifactPermission('/HMCTS_a_to_c_Nightly/civil-ccd-definition/*'),
+]);
+
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
 static Map<String, Object> secret(String secretName, String envVariable) {
