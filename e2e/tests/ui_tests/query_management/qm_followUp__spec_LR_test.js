@@ -35,7 +35,7 @@ Scenario('CaseWorker can access and also responds back to a query', async ({ I }
 
 Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + '1748431606108878');
+  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
   await I.waitForText('Summary');
   await I.verifyFollowUpQuestionAsJudge(true);
 });
