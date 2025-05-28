@@ -3,6 +3,7 @@ const {waitForFinishedBusinessProcess} = require('../api/testingSupport');
 const config = require('../config');
 
 const EVENT_TRIGGER_LOCATOR = 'ccd-case-event-trigger';
+const EVENT_QM_LOCATOR = 'div.query-form-container';
 
 module.exports = {
 
@@ -32,12 +33,19 @@ module.exports = {
   },
 
   async startEvent(event, caseId) {
-      await waitForFinishedBusinessProcess(caseId);
-      await I.retryUntilExists(async() => {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
       // await this.start(event);
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
+  },
+
+  async raiseNewQuery(event, caseId) {
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      await I.amOnPage(`${config.url.manageCase}/${event.id}/query/${caseId}`);
+    }, EVENT_QM_LOCATOR, 3, 45);
   },
 
   async permissionGrantedByJudge() {
