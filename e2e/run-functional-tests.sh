@@ -31,7 +31,7 @@ compare_ft_groups() {
 
 run_functional_tests() {
   echo "Running all functional tests on ${ENVIRONMENT} env"
-  if [ "$ENVIRONMENT" = "aat" ] then
+  if [ "$ENVIRONMENT" = "aat" ]; then
     yarn test:master-e2e-ft
   elif [ -z "$PR_FT_GROUPS" ]; then
     yarn test:non-prod-e2e-ft 
