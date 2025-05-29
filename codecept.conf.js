@@ -40,6 +40,9 @@ const civilServiceAndCamundaTests = [
   './e2e/tests/api_tests/caseworkerEvents/*_test.js',
 ];
 
+console.log('Prev Failed Tests: ' + process.env.PREV_FAILED_TEST_FILES);
+console.log('Prev Not Executed Tests: ' + process.env.PREV_NOT_EXECUTED_TEST_FILES);
+
 const getTests = () => {
   if (process.env.PREV_FAILED_TEST_FILES && process.env.PREV_NOT_EXECUTED_TEST_FILES)
     return [...process.env.PREV_FAILED_TEST_FILES.split(","), ...process.env.PREV_NOT_EXECUTED_TEST_FILES.split(",")];

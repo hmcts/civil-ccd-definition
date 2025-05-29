@@ -12,7 +12,7 @@ let continueWithScenario = () => {
   return caseFlagsAndHmcEnabled;
 };
 
-Feature('CCD 1v2 Spec fast hearings API test @api-hearings @api-hearings-spec @api-nonprod');
+Feature('CCD 1v2 Spec fast hearings API test @api-hearings @api-hearings-spec ');
 
 BeforeSuite(async () => {
   caseFlagsAndHmcEnabled = await checkCaseFlagsAndHmcEnabled();

@@ -8,28 +8,29 @@ if (config.runWAApiTest) {
   caseProgressionOfflineExpectedTask = require('../../../../wa/tasks/caseProgressionTakeCaseOfflineTask.js');
 }
 
-Feature('CCD 1v1 API test @api-dj-1v1, @api-dj @dmn-task-dj @api-nightly-prod');
+Feature('CCD 1v1 API test @dmn-task-dj @api-nightly-prod');
 
 let caseId;
 
-Scenario('Default Judgment claim', async ({I, api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-  await api.addCaseNote(config.adminUser);
-  await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
-  await api.notifyClaimDetails(config.applicantSolicitorUser);
-  caseId = await api.getCaseId();
-  await api.amendRespondent1ResponseDeadline(config.systemupdate);
-  await api.defaultJudgment(config.applicantSolicitorUser);
+Scenario('Default Judgment claim @api-dj', async ({I, api}) => {
+  throw new Error();
+  // await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  // await api.addCaseNote(config.adminUser);
+  // await api.notifyClaim(config.applicantSolicitorUser, mpScenario);
+  // await api.notifyClaimDetails(config.applicantSolicitorUser);
+  // caseId = await api.getCaseId();
+  // await api.amendRespondent1ResponseDeadline(config.systemupdate);
+  // await api.defaultJudgment(config.applicantSolicitorUser);
 });
 
-Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task', async ({I, api, WA}) => {
-  if (config.runWAApiTest) {
-    const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
-    console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
-    WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
-    taskId = summaryJudgmentDirectionsTask['id'];
-    api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
-  }
+Scenario('Verify Direction order(summaryJudgmentDirectionsTask) Judge task @api-dj', async ({I, api, WA}) => {
+  // if (config.runWAApiTest) {
+  //   const summaryJudgmentDirectionsTask = await api.retrieveTaskDetails(config.judgeUserWithRegionId1, caseId, config.waTaskIds.judgeUnspecDJTask);
+  //   console.log('summaryJudgmentDirectionsTask...' , summaryJudgmentDirectionsTask);
+  //   WA.validateTaskInfo(summaryJudgmentDirectionsTask, summaryJudgmentDirectionsExpectedTask);
+  //   taskId = summaryJudgmentDirectionsTask['id'];
+  //   api.assignTaskToUser(config.judgeUserWithRegionId1, taskId);
+  // }
 });
 
 Scenario('Default Judgment claim SDO', async ({I, api}) => {

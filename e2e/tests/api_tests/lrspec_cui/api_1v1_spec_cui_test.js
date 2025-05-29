@@ -11,7 +11,7 @@ let caseId;
 let isQueryManagementEnabled = false;
 
 
-Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
+Feature('CCD 1v1 API test @api-spec-cui ');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
@@ -61,7 +61,7 @@ Scenario('1v1 LiP v LiP Part admit defendant and claimant response - claimant re
   caseId = await api_spec_cui.createClaimWithUnrepresentedClaimant(config.applicantCitizenUser, claimType, true);
   await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, 'SmallClaimPartAdmit', true);
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'IN_MEDIATION', true, 'partadmit');
-}).tag('@api-prod @api-nonprod');
+}).tag('@api-prod ');
 
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, false);

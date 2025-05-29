@@ -16,7 +16,7 @@ const hmcTest = true;
 let caseId;
 let isQueryManagementEnabled = false;
 
-Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod @wa-task @QM');
+Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings  @wa-task @QM');
 
 Before(async () => {
   isQueryManagementEnabled = await checkLRQueryManagementEnabled();

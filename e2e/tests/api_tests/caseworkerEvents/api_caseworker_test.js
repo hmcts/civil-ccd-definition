@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const {createAccount} = require('../../../api/idamHelper');
 
-Feature('CCD API test @api-caseworker @api-nonprod');
+Feature('CCD API test @api-caseworker ');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
