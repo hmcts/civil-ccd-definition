@@ -233,8 +233,7 @@
     "CaseFieldID": "applicant1DQLanguage",
     "PageFieldDisplayOrder": 21,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
-    "PageShowCondition": "finalOrderSelection=\"DO NOT SHOW IN UI\"",
+    "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"
   },
   {
@@ -243,7 +242,7 @@
     "CaseFieldID": "respondent1DQLanguage",
     "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
+    "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"
   },
   {
