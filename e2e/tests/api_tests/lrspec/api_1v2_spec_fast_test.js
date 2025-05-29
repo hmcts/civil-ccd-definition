@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('CCD 1v2 API test @api-spec-fast @api-nightly-prod');
+Feature('CCD 1v2 API test @api-spec-fast ');
 
 Scenario('1v2 fast claim counter claim @api-spec-counterclaim', async ({I, api_spec_fast}) => {
   await api_spec_fast.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_TWO_SAME_SOL');

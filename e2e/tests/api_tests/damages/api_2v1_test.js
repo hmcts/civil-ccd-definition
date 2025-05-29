@@ -6,7 +6,7 @@ const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'TWO_V_ONE';
 let isQueryManagementEnabled = false;
 
-Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod @api-nightly-prod @api-unspec-full-defence @QM');
+Feature('CCD 2v1 API test @api-unspec @api-multiparty @api-tests-2v1 @api-prod  @api-unspec-full-defence @QM');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {

@@ -10,7 +10,7 @@ const {RESPONDENT_SOLICITOR_1_QUERY, RESPONDENT_SOLICITOR_2_QUERY, RESPONDENT_SO
 const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 let isQueryManagementEnabled = false;
 
-Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod @api-nightly-prod');
+Feature('Unspecified Notice of Change on Unpecified Claim API test @api-noc @api-noc-unspec @api-prod ');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
