@@ -31,6 +31,7 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "caseworker-civil-solicitor",
           "caseworker-civil-admin",
           "cui-admin-profile"
         ],
@@ -38,7 +39,6 @@
       },
       {
         "UserRoles": [
-          "caseworker-civil-solicitor",
           "judge-profile"
         ],
         "CRUD": "R"

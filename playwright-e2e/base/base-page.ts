@@ -1,4 +1,5 @@
 import { Locator, Page } from '@playwright/test';
+import { Page as PageCore } from 'playwright-core';
 import AxeBuilder from '@axe-core/playwright';
 import config from '../config/config';
 import Cookie from '../models/cookie';
@@ -34,13 +35,13 @@ export default abstract class BasePage {
   @TruthyParams(classKey, 'selector')
   protected async clickBySelector(
     selector: string,
-    options: { timeout?: number; first?: boolean; index?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.first && options.index !== undefined) {
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
       throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
     let locator = this.page.locator(selector);
-    locator = this.getNewLocator(locator, undefined, options.index, options.first);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
     await locator.click({ timeout: options.timeout });
   }
 
@@ -79,7 +80,7 @@ export default abstract class BasePage {
     },
   ) {
     await this.page
-      .getByRole('link', { name, exact: true })
+      .getByRole('link', { name, exact: options.exact ?? true })
       .nth(options.index ?? 0)
       .click({ timeout: options.timeout });
   }
@@ -130,15 +131,14 @@ export default abstract class BasePage {
   protected async inputText(
     input: string | number,
     selector: string,
-    options: { index?: number; timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    if (options.index) {
-      await this.page.locator(selector).nth(options.index).fill(input.toString());
-    } else {
-      await this.page.fill(selector, input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @BoxedDetailedStep(classKey, 'input', 'label')
@@ -146,18 +146,23 @@ export default abstract class BasePage {
   protected async inputTextByLabel(
     input: string | number,
     label: string,
-    options: { index?: number; timeout?: number; exact?: boolean } = { exact: true },
+    options: {
+      index?: number;
+      timeout?: number;
+      containerSelector?: string;
+      first?: boolean;
+      exact?: boolean;
+    } = { exact: true },
   ) {
-    if (options.index) {
-      await this.page
-        .getByLabel(label, { exact: options.exact ?? true })
-        .nth(options.index)
-        .fill(input.toString());
-    } else {
-      await this.page.getByLabel(label, { exact: options.exact ?? true }).fill(input.toString(), {
-        timeout: options.timeout,
-      });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
     }
+
+    let locator = this.page.getByLabel(label, { exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString(), {
+      timeout: options.timeout,
+    });
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -165,16 +170,24 @@ export default abstract class BasePage {
   protected async inputSensitiveText(
     input: string | number,
     selector: string,
-    options: { timeout?: number } = {},
+    options: { index?: number; timeout?: number; containerSelector?: string; first?: boolean } = {},
   ) {
-    await this.page.fill(selector, input.toString(), {
-      timeout: options.timeout,
-    });
+    if ([options.first, options.index !== undefined].filter((option) => option).length > 1) {
+      throw new ExpectError("Cannot use 'first' and 'index' options at the same time");
+    }
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+    await locator.fill(input.toString());
   }
 
   @TruthyParams(classKey)
   protected async getText(selector: string) {
     return (await this.page.textContent(selector)) ?? undefined;
+  }
+
+  @BoxedDetailedStep(classKey)
+  protected async getCurrentUrl() {
+    return this.page.url();
   }
 
   @BoxedDetailedStep(classKey, 'option', 'selector')
@@ -352,7 +365,7 @@ export default abstract class BasePage {
     useAxeCache: boolean,
     axePageInsertName?: string | number,
   ) {
-    const axeBuilder = new AxeBuilder({ page: this.page })
+    const axeBuilder = new AxeBuilder({ page: this.page as PageCore })
       .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22a', 'wcag22aa'])
       .setLegacyMode(true);
 
@@ -411,6 +424,16 @@ export default abstract class BasePage {
       Array.isArray(endpoints) ? `(${endpoints.join('|')})$` : `${endpoints}$`,
     );
     await pageExpect(this.page, { message: options.message }).toHaveURL(regex, {
+      timeout: options.timeout,
+    });
+  }
+
+  @BoxedDetailedStep(classKey, 'currentUrl')
+  protected async expectUrlToChange(
+    currentUrl: string,
+    options: { timeout?: number; message?: string } = {},
+  ) {
+    pageExpect(this.page, { message: options.message }).not.toHaveURL(currentUrl, {
       timeout: options.timeout,
     });
   }
@@ -606,7 +629,9 @@ export default abstract class BasePage {
         timeout: options.timeout,
       });
     } else {
-      await pageExpect(locator, { message: options.message }).toBeVisible(options);
+      await pageExpect(locator, { message: options.message }).toBeVisible({
+        timeout: options.timeout,
+      });
     }
   }
 
@@ -799,6 +824,45 @@ export default abstract class BasePage {
     }
   }
 
+  @BoxedDetailedStep(classKey, 'label')
+  @TruthyParams(classKey, 'label')
+  protected async expectNoLabel(
+    label: string,
+    options: {
+      message?: string;
+      exact?: boolean;
+      containerSelector?: string;
+      all?: boolean;
+      index?: number;
+      first?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [options.first, options.index !== undefined, options.all].filter((option) => option).length >
+      1
+    ) {
+      throw new ExpectError("Cannot use 'first', 'index', 'all' options at the same time");
+    }
+
+    let locator = this.page.locator('label').getByText(label, { exact: options.exact ?? true });
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    try {
+      await locator.waitFor({ state: 'visible', timeout: 20 });
+      // eslint-disable-next-line no-empty
+    } catch (err) {}
+    if (options.all) {
+      await pageExpect(locator, { message: options.message }).allToBeHidden({
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, { message: options.message }).toBeHidden({
+        timeout: options.timeout,
+      });
+    }
+  }
+
   @BoxedDetailedStep(classKey, 'name')
   protected async expectLink(
     name: string,
@@ -931,6 +995,68 @@ export default abstract class BasePage {
         message: options.message,
       },
     ).toBeVisible({ timeout: options.timeout });
+  }
+
+  @BoxedDetailedStep(classKey, 'label', 'selector')
+  protected async expectRadioLabel(
+    label: string,
+    selector: string,
+    options: {
+      containerSelector?: string;
+      index?: number;
+      first?: boolean;
+      count?: number;
+      all?: boolean;
+      ignoreDuplicates?: boolean;
+      message?: string;
+      exact?: boolean;
+      timeout?: number;
+    } = { exact: true },
+  ) {
+    if (
+      [
+        options.first,
+        options.index !== undefined,
+        options.ignoreDuplicates,
+        options.count !== undefined,
+        options.all,
+      ].filter((option) => option).length > 1
+    ) {
+      throw new ExpectError(
+        "Cannot use 'first', 'index', 'count', 'ignoreDuplicates' and 'all' options at the same time",
+      );
+    }
+
+    let locator = this.page.locator(selector);
+    locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
+
+    const inputId = await locator.getAttribute('id', { timeout: options.timeout });
+    await pageExpect(
+      this.page.locator(`label[for="${inputId}"]`).getByText(label, { exact: true }),
+      {
+        message: options.message,
+      },
+    ).toBeVisible({ timeout: options.timeout });
+
+    if (options.ignoreDuplicates) {
+      await pageExpect(locator, { message: options.message }).atLeastOneToBeVisible({
+        timeout: options.timeout,
+      });
+    } else if (options.count !== undefined) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(options.count, {
+        timeout: options.timeout,
+      });
+    } else if (options.all) {
+      await pageExpect(locator, { message: options.message }).someToBeVisible(null, {
+        timeout: options.timeout,
+      });
+    } else {
+      await pageExpect(locator, {
+        message: options.message,
+      }).toBeVisible({
+        timeout: options.timeout,
+      });
+    }
   }
 
   @BoxedDetailedStep(classKey, 'selector')
@@ -1334,7 +1460,6 @@ export default abstract class BasePage {
       {
         retries,
         message: message ?? 'Navigation Failed, trying again',
-        assertFirst: true,
       },
     );
   }

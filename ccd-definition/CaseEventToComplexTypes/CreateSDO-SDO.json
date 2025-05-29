@@ -593,7 +593,7 @@
     "ListElementCode": "text2",
     "FieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "showCarmFields=\"No\""
+    "FieldShowCondition": "showCarmFields=\"No\" AND CaseAccessCategory=\"SPEC_CLAIM\""
   },
   {
     "ID": "SmallClaimsOrderAndHearingDetails",
@@ -1533,7 +1533,9 @@
     "CaseFieldID": "fastTrackHearingTime",
     "ListElementCode": "helpText2",
     "FieldDisplayOrder": 9,
-    "DisplayContext": "MANDATORY"
+    "DisplayContext": "MANDATORY",
+    "_comment": "legacy field no longer in use",
+    "FieldShowCondition": "fastTrackHearingTime.hearingDuration = \"DO_NOT_SHOW\""
   },
   {
     "ID": "FastTrackNotes",

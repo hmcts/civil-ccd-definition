@@ -7,24 +7,24 @@ import {
   inputs,
   tableHeadings,
 } from './response-confirm-details-content.ts';
-import DateFragment from '../../../../../fragments/date/date-fragment.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import SolicitorReferenceFragment from '../../../../../fragments/solicitor-reference/solicitor-reference-fragment.ts';
 import partys from '../../../../../../../constants/partys.ts';
+import DateOfBirthFragment from '../../../../../fragments/date/date-of-birth-fragment.ts';
 
 @AllMethodsStep()
 export default class ResponseConfirmDetails1v2Page extends ExuiPage(BasePage) {
   private solicitorReferenceFragment: SolicitorReferenceFragment;
-  private dateFragment: DateFragment;
+  private dateOfBirthFragment: DateOfBirthFragment;
 
   constructor(
     page: Page,
     solicitorReferenceFragment: SolicitorReferenceFragment,
-    dateFragment: DateFragment,
+    dateOfBirthFragment: DateOfBirthFragment,
   ) {
     super(page);
     this.solicitorReferenceFragment = solicitorReferenceFragment;
-    this.dateFragment = dateFragment;
+    this.dateOfBirthFragment = dateOfBirthFragment;
   }
 
   async verifyContent() {
@@ -35,7 +35,7 @@ export default class ResponseConfirmDetails1v2Page extends ExuiPage(BasePage) {
       super.expectText(inputs.defendant1DateOfBirth.label),
       super.expectText(inputs.defendant2DateOfBirth.label),
       this.solicitorReferenceFragment.verifyContent(),
-      // this.dateFragment.verifyContent(),
+      // this.dateOfBirthFragment.verifyContent(),
       // super.expectText(radioButtons.address.label),
     ]);
   }

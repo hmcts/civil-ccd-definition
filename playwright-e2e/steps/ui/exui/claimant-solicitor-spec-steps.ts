@@ -1,4 +1,3 @@
-import test from 'node:test';
 import ClaimantSolicitorActionsFactory from '../../../actions/ui/exui/claimant-solicitor/claimant-solcitor-actions-factory';
 import ExuiDashboardActions from '../../../actions/ui/exui/common/exui-dashboard-actions';
 import IdamActions from '../../../actions/ui/idam/idam-actions';
@@ -8,7 +7,6 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSpecSteps extends BaseExui {
@@ -33,7 +31,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -60,7 +57,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -87,7 +83,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -114,7 +109,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -143,7 +137,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
     const { createClaimSpecActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimSpecActions.caseFilter();
         await createClaimSpecActions.checklist();
         await createClaimSpecActions.eligibiltySpec();
         await createClaimSpecActions.references();
@@ -175,7 +168,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.dqFastTrackClaimantResponseSpec();
-        await claimantResponseSpecActions.claimantResponseFastTrackDQSpec();
+        await claimantResponseSpecActions.dqFastTrack();
         await claimantResponseSpecActions.application();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
@@ -196,14 +189,14 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponseSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
+        await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -216,14 +209,14 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse2v1Spec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
+        await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -236,14 +229,14 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2SSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
+        await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
@@ -256,14 +249,54 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.respondentResponse1v2DSSpec();
         await claimantResponseSpecActions.defenceDocumentSpec();
         await claimantResponseSpecActions.mediationClaimantResponseSpec();
-        await claimantResponseSpecActions.claimantResponseSmallTrackDQSpec();
+        await claimantResponseSpecActions.dqSmallTrack();
         await claimantResponseSpecActions.statementOfTruthClaimantResponse();
         await claimantResponseSpecActions.submitClaimantResponse();
       },
       async () => {
         await claimantResponseSpecActions.confirm();
       },
-      ccdEvents.CLAIMANT_RESPONSE,
+      ccdEvents.CLAIMANT_RESPONSE_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDefaultJudgment() {
+    const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementSpecActions.defendantDetails();
+        await defaultJudgementSpecActions.showCertifyStatement();
+        await defaultJudgementSpecActions.claimPartialPayment();
+        await defaultJudgementSpecActions.fixedCostsOnEntry();
+        await defaultJudgementSpecActions.paymentBySetDate();
+        await defaultJudgementSpecActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
+      claimantSolicitorUser,
+      { verifySuccessEvent: false },
+    );
+  }
+
+  async RequestDefaultJudgment1v2() {
+    const { defaultJudgementSpecActions } = this.claimantSolicitorActionsFactory;
+    await this.retryExuiEvent(
+      async () => {
+        await defaultJudgementSpecActions.defendantDetails1v2();
+        await defaultJudgementSpecActions.showCertifyStatementMultipleDefendants();
+        await defaultJudgementSpecActions.claimPartialPayment1v2();
+        await defaultJudgementSpecActions.fixedCostsOnEntry();
+        await defaultJudgementSpecActions.paymentWithRepayment1v2();
+        await defaultJudgementSpecActions.submitDefaultJudgment();
+      },
+      async () => {
+        await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
+      },
+      ccdEvents.DEFAULT_JUDGEMENT_SPEC,
       claimantSolicitorUser,
       { verifySuccessEvent: false },
     );

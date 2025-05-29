@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
@@ -30,7 +30,7 @@ export default class ClaimTimelinePage extends ExuiPage(BasePage) {
 
   async enterTimelineEvent1Details() {
     const date = DateHelper.subtractFromToday({ months: 3 });
-    await this.dateFragment.enterDate(date, inputs.timelineDate.selectorKey, 0);
+    await this.dateFragment.enterDate(date, inputs.timelineDate.selectorKey, { index: 0 });
     await super.inputText(
       `This the timeline - ${partys.CLAIMANT_1.key}`,
       inputs.timelineDescription.selector(1),

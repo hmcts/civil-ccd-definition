@@ -7,13 +7,13 @@ const claimAmountMulti = '200001';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('CCD 1v1 API test spec multi track @api-spec-multi-intermediate');
+Feature('CCD 1v1 API test spec multi track @api-multi-intermediate-spec');
 
 async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesMulti);
 }
 
-Scenario('1v1 full defence Multi claim Specified @api-nonprod-specified', async ({api_spec}) => {
+Scenario('1v1 full defence Multi claim Specified @api-prod', async ({api_spec}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', mpScenario, 'AWAITING_APPLICANT_INTENTION', false, true, claimAmountMulti);

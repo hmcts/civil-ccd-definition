@@ -1,38 +1,75 @@
+const { testFilesHelper } = require('./e2e/plugins/failedAndNotExecutedTestFilesPlugin');
+
+const functional = process.env.FUNCTIONAL;
+
+const ccdPipelineTests = [
+      './e2e/tests/ui_tests/*.js',
+      './e2e/tests/ui_tests/damages/*_test.js',
+      './e2e/tests/ui_tests/lrspec/*_test.js',
+      './e2e/tests/ui_tests/damages/nightly/*_test.js',
+      './e2e/tests/ui_tests/noticeofchange/*_test.js',
+      './e2e/tests/ui_tests/manageContactInformation/*_test.js',
+      './e2e/tests/ui_tests/settle_discontinue/*_test.js',
+      './e2e/tests/ui_tests/sdo/*_test.js',
+      './e2e/tests/ui_tests/carm/*_test.js',
+      './e2e/tests/ui_tests/minti/*_test.js',
+      './e2e/tests/ui_tests/refunds/*_test.js',
+      './e2e/tests/ui_tests/default_judgement/*_test.js',
+      './e2e/tests/ui_tests/hearings/*_test.js',
+      './e2e/tests/ui_tests/query_management/*_test.js',
+      './e2e/tests/api_tests/lrspec_cui/*_test.js',
+    ];
+    
+const civilServiceAndCamundaTests = [
+  './e2e/tests/api_tests/*.js',
+  './e2e/tests/api_tests/judgmentOnline/*_test.js',
+  './e2e/tests/api_tests/mediation/*_test.js',
+  './e2e/tests/api_tests/sdo_R2/*_test.js',
+  './e2e/tests/api_tests/generalapplication/*_test.js',
+  './e2e/tests/api_tests/defaultJudgments/*_test.js',
+  './e2e/tests/api_tests/damages/*_test.js',
+  './e2e/tests/api_tests/sdo/*_test.js',
+  './e2e/tests/api_tests/hearings/*_test.js',
+  './e2e/tests/api_tests/bulkclaim/*_test.js',
+  './e2e/tests/api_tests/lrspec/*_test.js',
+  './e2e/tests/api_tests/lrspec_cui/*_test.js',
+  './e2e/tests/api_tests/settle-discontinue/*_test.js',
+  './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
+  './e2e/tests/api_tests/settle-discontinue/*_test.js',
+  './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
+  './e2e/tests/api_tests/caseworkerEvents/*_test.js',
+];
+
+const getTests = () => {
+  if (process.env.PREV_FAILED_TEST_FILES && process.env.PREV_NOT_EXECUTED_TEST_FILES)
+    return [...process.env.PREV_FAILED_TEST_FILES.split(","), ...process.env.PREV_NOT_EXECUTED_TEST_FILES.split(",")];
+  if (process.env.PREV_FAILED_TEST_FILES) return process.env.PREV_FAILED_TEST_FILES.split(",");
+  if(process.env.WA_TESTS === 'true')
+    return [...ccdPipelineTests, ...civilServiceAndCamundaTests]
+  if(process.env.CCD_UI_TESTS === 'true')
+    return ccdPipelineTests;
+  else
+    return civilServiceAndCamundaTests;
+};
+
 exports.config = {
-  tests: process.env.CCD_UI_TESTS === 'true' ? [
-    './e2e/tests/ui_tests/*.js',
-    './e2e/tests/ui_tests/damages/*_test.js',
-    './e2e/tests/ui_tests/lrspec/*_test.js',
-    './e2e/tests/ui_tests/damages/nightly/*_test.js',
-    './e2e/tests/ui_tests/noticeofchange/*_test.js',
-    './e2e/tests/ui_tests/manageContactInformation/*_test.js',
-    './e2e/tests/ui_tests/settle_discontinue/*_test.js',
-    './e2e/tests/ui_tests/sdo/*_test.js',
-    './e2e/tests/ui_tests/carm/*_test.js',
-    './e2e/tests/ui_tests/minti/*_test.js',
-    './e2e/tests/ui_tests/refunds/*_test.js',
-    './e2e/tests/ui_tests/default_judgement/*_test.js',
-    './e2e/tests/ui_tests/hearings/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
-  ] : [
-    './e2e/tests/api_tests/*.js',
-    './e2e/tests/api_tests/judgmentOnline/*_test.js',
-    './e2e/tests/api_tests/mediation/*_test.js',
-    './e2e/tests/api_tests/sdo_R2/*_test.js',
-    './e2e/tests/api_tests/generalapplication/*_test.js',
-    './e2e/tests/api_tests/defaultJudgments/*_test.js',
-    './e2e/tests/api_tests/damages/*_test.js',
-    './e2e/tests/api_tests/sdo/*_test.js',
-    './e2e/tests/api_tests/hearings/*_test.js',
-    './e2e/tests/api_tests/bulkclaim/*_test.js',
-    './e2e/tests/api_tests/lrspec/*_test.js',
-    './e2e/tests/api_tests/lrspec_cui/*_test.js',
-    './e2e/tests/api_tests/multiIntermediateTrack/*_test.js',
-    './e2e/tests/api_tests/settle-discontinue/*_test.js',
-    './e2e/tests/api_tests/automated_hearing_notice/*_test.js',
-    './e2e/tests/api_tests/caseworkerEvents/*_test.js'
-  ],
-  output:  process.env.REPORT_DIR || 'test-results/functional',
+  bootstrapAll: async () => {
+    if (functional) {
+      await testFilesHelper.createTempFailedTestsFile();
+      await testFilesHelper.createTempPassedTestsFile();
+      await testFilesHelper.createTempToBeExecutedTestsFile();
+    }
+  },
+  teardownAll: async () => {
+    if (functional) {
+      await testFilesHelper.createTestFilesReport();
+      await testFilesHelper.deleteTempFailedTestsFile();
+      await testFilesHelper.deleteTempPassedTestsFile();
+      await testFilesHelper.deleteTempToBeExecutedTestFiles();
+    }
+  },
+  tests: getTests(),
+  output: process.env.REPORT_DIR || 'test-results/functional',
   helpers: {
     Playwright: {
       url: process.env.URL || 'http://localhost:3333',
@@ -45,9 +82,9 @@ exports.config = {
       bypassCSP: true,
       ignoreHTTPSErrors: true,
       video: true,
-      contextOptions : {
-        recordVideo:{
-          dir:'failed-videos',
+      contextOptions: {
+        recordVideo: {
+          dir: 'failed-videos',
         },
       },
     },
@@ -70,17 +107,12 @@ exports.config = {
     noc: './e2e/api/steps_noc.js',
     hearings: './e2e/api/steps_hearings.js',
     bulks: './e2e/api/steps_Bulk.js',
+    qmSteps: './e2e/api/steps_qm.js',
   },
   plugins: {
     autoDelay: {
       enabled: true,
-      methods: [
-        'click',
-        'fillField',
-        'checkOption',
-        'selectOption',
-        'attach',
-      ],
+      methods: ['click', 'fillField', 'checkOption', 'selectOption', 'attach'],
     },
     retryFailedStep: {
       enabled: true,
@@ -88,6 +120,10 @@ exports.config = {
     screenshotOnFail: {
       enabled: true,
       fullPageScreenshots: true,
+    },
+    failedAndNotExecutedTestFilesPlugin: {
+      enabled: functional,
+      require: './e2e/plugins/failedAndNotExecutedTestFilesPlugin',
     },
   },
   mocha: {
@@ -105,7 +141,7 @@ exports.config = {
           mochaFile: process.env.REPORT_FILE || 'test-results/functional/result.xml',
         },
       },
-      'mochawesome': {
+      mochawesome: {
         stdout: '-',
         options: {
           reportDir: process.env.REPORT_DIR || 'test-results/functional',

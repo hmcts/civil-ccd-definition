@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
@@ -26,7 +26,7 @@ export default class HowToAddTimelineUploadPage extends ExuiPage(BasePage) {
         super.expectHeading(heading, { exact: false }),
         super.expectHeading(getFormattedCaseId(ccdCaseData.id), { exact: false }),
         super.expectHeading(ccdCaseData.caseNamePublic, { exact: false }),
-        // super.expectLegend(inputs.upload.label),
+        super.expectText(inputs.upload.label, { count: 1 }),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );

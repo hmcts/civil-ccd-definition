@@ -7,20 +7,20 @@ import ResponseIntention2v1Page from './unspec/response-intention/response-inten
 import ResponseIntentionPage from './unspec/response-intention/response-intention-page';
 import SolicitorReferencesAcknowledgeClaimPage from './unspec/solicitor-references-acknowledge-claim/solicitor-references-acknowledge-claim-page';
 import SubmitAcknowledgeClaimPage from './unspec/submit-acknowledge-claim/submit-acknowledge-claim-page';
-import DateFragment from '../../fragments/date/date-fragment';
 import SolicitorReferenceFragment from '../../fragments/solicitor-reference/solicitor-reference-fragment';
+import DateOfBirthFragment from '../../fragments/date/date-of-birth-fragment';
 
 export default class AcknowledgeClaimPageFactory extends BasePageFactory {
   get confirmNameAndAddressPage() {
-    const dateFragment = new DateFragment(this.page);
-    return new ConfirmNameAndAddressPage(this.page, dateFragment);
+    const dateOfBirthFragment = new DateOfBirthFragment(this.page);
+    return new ConfirmNameAndAddressPage(this.page, dateOfBirthFragment);
   }
 
-  get responseIntensionDefendant1Page() {
+  get responseIntentionDS1Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_1);
   }
 
-  get responseIntensionDefendant2Page() {
+  get responseIntentionDS2Page() {
     return new ResponseIntentionPage(this.page, partys.DEFENDANT_2);
   }
 
@@ -32,7 +32,7 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new ResponseIntention1v2SSPage(this.page);
   }
 
-  get solicitorReferencesAcknowledgeClaimDefendant1Page() {
+  get solicitorReferencesAcknowledgeClaimDS1Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_1,
@@ -45,7 +45,7 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     );
   }
 
-  get solicitorReferencesAcknowledgeClaimDefendant2Page() {
+  get solicitorReferencesAcknowledgeClaimDS2Page() {
     const solicitorReferenceFragment = new SolicitorReferenceFragment(
       this.page,
       partys.DEFENDANT_2,
@@ -62,7 +62,11 @@ export default class AcknowledgeClaimPageFactory extends BasePageFactory {
     return new SubmitAcknowledgeClaimPage(this.page);
   }
 
-  get confirmAcknowledgeClaimPage() {
-    return new ConfirmAcknowledgeClaimPage(this.page);
+  get confirmAcknowledgeClaimDS1Page() {
+    return new ConfirmAcknowledgeClaimPage(this.page, partys.DEFENDANT_1);
+  }
+
+  get confirmAcknowledgeClaimDS2Page() {
+    return new ConfirmAcknowledgeClaimPage(this.page, partys.DEFENDANT_2);
   }
 }

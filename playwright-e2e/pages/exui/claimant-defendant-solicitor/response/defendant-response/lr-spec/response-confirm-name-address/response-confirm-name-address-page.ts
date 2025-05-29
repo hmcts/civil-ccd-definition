@@ -3,7 +3,7 @@ import { AllMethodsStep } from '../../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../../exui-page/exui-page.ts';
 import { radioButtons } from './response-confirm-name-address-content.ts';
 import CCDCaseData from '../../../../../../../models/ccd/ccd-case-data.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import { Party } from '../../../../../../../models/partys.ts';
 import StringHelper from '../../../../../../../helpers/string-helper.ts';
 
@@ -23,9 +23,13 @@ export default class ResponseConfirmNameAddressPage extends ExuiPage(BasePage) {
       [
         super.verifyHeadings(ccdCaseData),
         super.expectNoText('chgfgh', { exact: true, all: true }),
-        super.expectText(radioButtons.address.label, { exact: true, count: 1 }),
-        // super.expectLabel(radioButtons.address.yes.label),
-        // super.expectLabel(radioButtons.address.no.label),
+        super.expectLegend(radioButtons.address.label, { exact: true, count: 1 }),
+        super.expectRadioYesLabel(
+          radioButtons.address.yes.selector(this.defendantParty, this.solicitorParty),
+        ),
+        super.expectRadioNoLabel(
+          radioButtons.address.no.selector(this.defendantParty, this.solicitorParty),
+        ),
       ],
       { axePageInsertName: StringHelper.capitalise(this.solicitorParty.key) },
     );
