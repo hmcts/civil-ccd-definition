@@ -40,7 +40,7 @@ Scenario('Create Spec claim with SDO', async ({api_spec_small}) => {
   await api_spec_small.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', false, false);
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE');
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', false);
-  await api_spec_small.createSDO(config.judgeUser2WithRegionId2, 'CREATE_SMALL', true);
+  await api_spec_small.createSDO(config.judgeUser2WithRegionId4, 'CREATE_SMALL', true);
 }).retry(3);
 
 Scenario('Generate Spec Disposal hearing notice', async ({hearings}) => {
