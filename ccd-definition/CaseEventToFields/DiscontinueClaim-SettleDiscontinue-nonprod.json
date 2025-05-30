@@ -77,7 +77,6 @@
     "CaseFieldID": "partiesNames3",
     "PageID": "CourtPermission",
     "PageLabel": "Permission from the court",
-    "PageShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 1,
     "PageColumnNumber": 1,
@@ -95,7 +94,6 @@
     "PageColumnNumber": 1,
     "DisplayContext": "MANDATORY",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimantsConsentToDiscontinuance !=\"No\"",
     "Publish": "Y"
   },
   {
@@ -137,7 +135,7 @@
     "PageColumnNumber": 1,
     "DisplayContext": "READONLY",
     "ShowSummaryChangeOption": "N",
-    "PageShowCondition": "courtPermissionNeeded = \"YES\" OR (courtPermissionNeeded != \"YES\" AND claimantsConsentToDiscontinuance =\"No\")"
+    "PageShowCondition": "courtPermissionNeeded = \"YES\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
