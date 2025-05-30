@@ -14,21 +14,21 @@ let isQueryManagementEnabled = false;
 Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  // if (isQueryManagementEnabled) {
-  //   const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-  //   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  //   await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-  // }
+  if (isQueryManagementEnabled) {
+    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+  }
 }
 
 async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, citizenUser, caseworkerUser, queryType, isHearingRelated) {
-  // if (isQueryManagementEnabled) {
-  //   const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
-  //   await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(query.id), query.id);
-  //   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  //   const queryFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
-  //   await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(queryFollowUp.id), queryFollowUp.id);
-  // }
+  if (isQueryManagementEnabled) {
+    const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(query.id), query.id);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    const queryFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(queryFollowUp.id), queryFollowUp.id);
+  }
 }
 
 Before(async () => {
