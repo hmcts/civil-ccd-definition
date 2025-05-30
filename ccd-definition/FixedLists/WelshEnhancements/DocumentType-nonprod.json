@@ -25,21 +25,9 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "NOTICE_OF_DISCONTINUANCE_CLAIMANT",
-    "ListElement": "Notice of discontinuance claimant",
-    "DisplayOrder": 31
-  },
-  {
-    "ID": "DocumentType",
     "ListElementCode": "NOTICE_OF_DISCONTINUANCE_DEFENDANT",
     "ListElement": "Notice of discontinuance defendant",
     "DisplayOrder": 32
-  },
-  {
-    "ID": "DocumentType",
-    "ListElementCode": "NOTICE_OF_DISCONTINUANCE_CLAIMANT_TRANSLATED_DOCUMENT",
-    "ListElement": "Notice of discontinuance claimant translated",
-    "DisplayOrder": 33
   },
   {
     "ID": "DocumentType",
