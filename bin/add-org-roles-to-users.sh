@@ -59,3 +59,11 @@ echo "Setting up Users with role assignments..."
 
 ./bin/utils/organisational-role-assignment.sh "nbc_admin_region2@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "hmcts-admin" '{"jurisdiction":"CIVIL","primaryLocation":"424213","region":"2"}' "ADMIN"
 ./bin/utils/organisational-role-assignment.sh "nbc_admin_region2@justice.gov.uk" "${DEFAULT_PASSWORD}" "PUBLIC" "national-business-centre" '{"jurisdiction":"CIVIL","primaryLocation":"424213","region":"2","workTypes":"routine_work,query_work"}' "ADMIN"
+
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "ctsc" '{"jurisdiction":"CIVIL","primaryLocation":"283922","workTypes":"routine_work,query_work"}' "CTSC"
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "hmcts-ctsc" '{"jurisdiction":"CIVIL","primaryLocation":"283922"}' "CTSC"
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "hearing-viewer" '{"jurisdiction":"CIVIL","primaryLocation":"283922"}' "CTSC"
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "task-supervisor" '{"jurisdiction":"CIVIL","primaryLocation":"283922","workTypes":"routine_work,hearing_work,access_requests"}' "CTSC"
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "case-allocator" '{"jurisdiction":"CIVIL","primaryLocation":"283922"}' "CTSC"
+./bin/utils/organisational-role-assignment.sh "ga_ctsc_team_leader_national@justice.gov.uk" "${CITIZEN_PASSWORD}" "PUBLIC" "ctsc-team-leader" '{"jurisdiction":"CIVIL","primaryLocation":"283922","workTypes":"routine_work,access_requests"}' "CTSC"
+
