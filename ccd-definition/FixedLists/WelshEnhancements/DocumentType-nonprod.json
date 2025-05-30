@@ -16,5 +16,23 @@
     "ListElementCode": "MANUAL_DETERMINATION_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Manual Determination Document",
     "DisplayOrder": 30
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "SETTLEMENT_AGREEMENT_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Settlement Agreement",
+    "DisplayOrder": 31
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "FINAL_ORDER_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Judge final order",
+    "DisplayOrder": 32
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "COURT_OFFICER_ORDER_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Court Officer Order",
+    "DisplayOrder": 33
   }
 ]
