@@ -80,7 +80,7 @@ void publishBootstrapReport() {
 
 def copyPreviousHistory(historyDir, resultsDir) {
   def buildFound = false
-  def buildNumber = currentBuild.previousBuild.number
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
@@ -96,12 +96,11 @@ def copyPreviousHistory(historyDir, resultsDir) {
 
 def copyPrevFailedAndNotExecutedTestFilesJson() {
   def buildFound = false
-  def buildNumber = currentBuild.previousBuild.number
+  def buildNumber = currentBuild.previousBuild ? currentBuild.previousBuild.number : 0
   def minBuildNumber = ((buildNumber - 8) > 0) ? buildNumber - 8 : 0
   while (!buildFound && buildNumber > minBuildNumber) {
     try {
       copyArtifacts projectName: env.JOB_NAME, selector: specific("${buildNumber}"), filter: "test-results/functional/testFilesReport.json"
-      sh "mv 'test-results/functional/testFilesReport.json' 'test-results/functional/prevTestFilesReport.json'"
       buildFound = true
     } catch (Exception error) {
       echo "artifact not found: " + error.toString()
