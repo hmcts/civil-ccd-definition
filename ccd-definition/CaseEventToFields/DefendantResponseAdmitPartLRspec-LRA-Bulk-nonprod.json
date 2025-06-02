@@ -341,11 +341,11 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2RepaymentPlanLabelPartAdmit",
-    "PageDisplayOrder": 39,
+    "PageDisplayOrder": 40,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"PART_ADMISSION\""
   }
 ]
