@@ -25,8 +25,8 @@
   },
   {
     "ID": "DocumentType",
-    "ListElementCode": "TRANSLATED_HEARING_FORM",
-    "ListElement": "Translated Hearing Form",
+    "ListElementCode": "TRANSLATED_HEARING_NOTICE",
+    "ListElement": "Translated Hearing Notice",
     "DisplayOrder": 32
   }
 ]

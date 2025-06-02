@@ -13,8 +13,8 @@
   },
   {
     "ID": "PreTranslationDocumentType",
-    "ListElementCode": "HEARING_FORM",
-    "ListElement": "Hearing Form",
+    "ListElementCode": "HEARING_NOTICE",
+    "ListElement": "Hearing Notice",
     "DisplayOrder": 3
   }
 ]
