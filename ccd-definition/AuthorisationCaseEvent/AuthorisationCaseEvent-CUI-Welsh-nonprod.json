@@ -262,5 +262,17 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_DIRECTIONS_ORDER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
   }
 ]
