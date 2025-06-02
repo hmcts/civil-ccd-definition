@@ -34,5 +34,17 @@
     "ListElementCode": "NOTICE_OF_DISCONTINUANCE_DEFENDANT_TRANSLATED_DOCUMENT",
     "ListElement": "Notice of discontinuance defendant translated",
     "DisplayOrder": 34
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "FINAL_ORDER_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Judge final order",
+    "DisplayOrder": 32
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "COURT_OFFICER_ORDER_TRANSLATED_DOCUMENT",
+    "ListElement": "Translated Court Officer Order",
+    "DisplayOrder": 33
   }
 ]
