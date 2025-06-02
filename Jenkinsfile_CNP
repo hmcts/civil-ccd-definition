@@ -178,7 +178,7 @@ def uploadCoreCaseDataDefinitions(env) {
 def getCivilServiceImage() {
   def githubApi = new GithubAPI(this)
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
-    return "pr-" + label.minus("civilServicePr:").trim()
+    return "pr-" + label.minus("civilServicePr:").trim() 
   }
   return "latest"
 }
