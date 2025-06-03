@@ -6,7 +6,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft');
+Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft @e2e-nightly-prod');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
