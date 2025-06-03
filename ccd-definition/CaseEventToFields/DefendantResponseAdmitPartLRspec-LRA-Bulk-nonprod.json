@@ -340,12 +340,23 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "respondentGenericRepaymentPlanLabelPartAdmit",
+    "PageDisplayOrder": 40,
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "RepaymentPlanRespondent2",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec = \"PART_ADMISSION\" AND sameSolicitorSameResponse=\"Yes\" AND isRespondent1 = \"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "respondent2RepaymentPlanLabelPartAdmit",
     "PageDisplayOrder": 40,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"PART_ADMISSION\""
+    "FieldShowCondition": "respondent2ClaimResponseTypeForSpec = \"PART_ADMISSION\" AND isRespondent2 = \"Yes\""
   }
 ]
