@@ -15,7 +15,7 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
 }
 
-Scenario.only('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
+Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   const query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY, false);
