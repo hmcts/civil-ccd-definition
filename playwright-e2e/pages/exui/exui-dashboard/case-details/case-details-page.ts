@@ -5,7 +5,12 @@ import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
-import { getFormattedCaseId, getUnformattedCaseId, headings } from '../../exui-page/exui-content';
+import {
+  components,
+  getFormattedCaseId,
+  getUnformattedCaseId,
+  headings,
+} from '../../exui-page/exui-content';
 import ExuiPage from '../../exui-page/exui-page';
 import { buttons, containers, dropdowns, successBannerText, tabs } from './case-details-content';
 
@@ -71,9 +76,16 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
   }
 
   @TruthyParams(classKey, 'caseId')
-  async goToCaseDetails(caseId: number) {
+  async goToCaseDetails(caseId: number, { force }: { force: boolean } = { force: true }) {
     console.log(`Navigating to case with ccd case id: ${caseId}`);
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force: true });
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force });
+  }
+
+  async chooseNextStep(ccdEvent: CCDEvent) {
+    console.log(`Starting event: ${ccdEvent.name}`);
+    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
+    await super.clickBySelector(buttons.go.selector);
+    super.setCCDEvent = ccdEvent;
   }
 
   async retryChooseNextStep(ccdEvent: CCDEvent) {
@@ -103,10 +115,25 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
     );
   }
 
-  async chooseNextStep(ccdEvent: CCDEvent) {
-    console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
-    await super.clickBySelector(buttons.go.selector);
+  async chooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Starting event with url: ${ccdEvent.id}`);
+    await super.goTo(
+      `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
+    );
+    super.setCCDEvent = ccdEvent;
+  }
+
+  async retryChooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Starting event with url: ${ccdEvent.id}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
+      async () =>
+        super.expectSelector(components.eventTrigger.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },
+    );
     super.setCCDEvent = ccdEvent;
   }
 

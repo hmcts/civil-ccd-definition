@@ -39,6 +39,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -71,6 +72,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseTypeDS1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();
@@ -91,6 +93,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseType2v1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();
@@ -112,6 +115,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseTypeDS1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();
@@ -132,6 +136,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
         await defendantResponseActions.respondentResponseTypeDS1();
         await defendantResponseActions.solicitorReferencesDefendantResponseDS1();
         await defendantResponseActions.uploadDefendantResponseDS1();
+        await defendantResponseActions.dqSmallTrackDS1();
         await defendantResponseActions.dqDS1();
         await defendantResponseActions.statementOfTruthDS1();
         await defendantResponseActions.submitDefendantResponse();

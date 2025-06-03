@@ -3390,9 +3390,41 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentToKeepCollection",
-    "Label": "Documents to keep",
+    "Label": "Document",
     "FieldType": "Collection",
     "FieldTypeParameter": "documentToKeep",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "headingDefendantResponse",
+    "Label": "## Defendant response",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsApp",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes1",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes2",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

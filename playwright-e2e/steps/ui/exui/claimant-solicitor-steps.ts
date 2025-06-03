@@ -32,7 +32,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -56,7 +55,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -80,7 +78,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -106,7 +103,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -132,7 +128,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -166,6 +161,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -243,6 +239,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -404,7 +401,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     );
   }
 
-  async RequestDefaultJudgment(){
+  async RequestDefaultJudgment() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -419,11 +416,11 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 
-  async RequestDefaultJudgment1v2(){
+  async RequestDefaultJudgment1v2() {
     const { defaultJudgementActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
@@ -438,7 +435,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.DEFAULT_JUDGEMENT,
       claimantSolicitorUser,
-      { verifySuccessEvent: false},
+      { verifySuccessEvent: false },
     );
   }
 }

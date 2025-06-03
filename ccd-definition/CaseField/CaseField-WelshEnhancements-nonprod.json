@@ -32,5 +32,49 @@
     "FieldTypeParameter": "PreferredLanguage",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "preTranslationSdoOrderDocuments",
+    "Label": "View directions order",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "preTranslationDocuments",
+    "Label": "Documents to be translated",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "preTranslationDocumentType",
+    "Label": "Type of document to be translated",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "PreTranslationDocumentType",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "documentTranslationInProgressLabel",
+    "Label": "<strong class=\"text-16\">Translation of system generated document in progress.</strong>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "translatedCourtOfficerOrder",
+    "Label": "Translated order document",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
