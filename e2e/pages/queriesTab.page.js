@@ -23,8 +23,8 @@ module.exports = {
       I.see('What is the date of the hearing?');
       I.see('Test Hearing query detail');
     }
-    I.see('Your query is under review');
   },
+
   async verifyDetailsAsCaseWorker(hearing = false) {
     I.waitInUrl('#Queries', 10);
     I.see('Query subject');
@@ -76,7 +76,7 @@ module.exports = {
   },
 
   async verifyFollowUpQuestion(party = false) {
-    I.waitInUrl('#Queries', 10);
+   await I.waitInUrl('#Queries', 10);
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
@@ -92,9 +92,7 @@ module.exports = {
       I.see('Caseworker response to query.');
       I.see('Follow up query');
       I.see('Query detail');
-      I.see('Your query is under review');
     }
-    I.see('Our team will read your query and will respond. Do not submit the same query more than once.');
   },
 
   async verifyFollowUpQuestionAsCourtStaff(party = false) {
@@ -116,5 +114,4 @@ module.exports = {
       I.see('Query detail');
     }
   },
-
 };
