@@ -254,7 +254,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "  respondentGenericRepaymentPlanLabelPartAdmit",
+    "CaseFieldID": "respondentGenericRepaymentPlanLabelPartAdmit",
     "AccessControl": [
       {
         "UserRoles": [
