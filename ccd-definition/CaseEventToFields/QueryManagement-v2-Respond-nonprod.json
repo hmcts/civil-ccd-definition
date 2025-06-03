@@ -1,0 +1,17 @@
+[
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRespondQuery",
+    "CaseFieldID": "queries",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "OPTIONAL",
+    "DisplayContextParameter": "#ARGUMENT(CREATE)",
+    "PageID": "queryManagementRespondQuery",
+    "PageLabel": "Respond to a query",
+    "Publish": "Y",
+    "PageDisplayOrder": 1,
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\""
+  }
+]

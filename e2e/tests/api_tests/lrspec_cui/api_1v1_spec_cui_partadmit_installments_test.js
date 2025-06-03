@@ -7,7 +7,7 @@ let carmEnabled = false;
 
 Feature('CCD 1v1 API test @api-spec-cui @non-prod-e2e-ft');
 Before(async () => {
-    await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
+    // await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
   });
 
   Scenario('1v1 LiP v LiP defendant response with part admit pay by installments', async ({api_spec_cui}) => {
@@ -24,4 +24,4 @@ Before(async () => {
   await api_spec_cui.cleanUp();
     await deleteAccount(config.defendantCitizenUser2.email);
   });
-  
+

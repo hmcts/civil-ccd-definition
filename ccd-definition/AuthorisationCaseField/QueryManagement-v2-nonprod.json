@@ -16,7 +16,8 @@
           "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc"
+          "ctsc",
+          "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
       },
