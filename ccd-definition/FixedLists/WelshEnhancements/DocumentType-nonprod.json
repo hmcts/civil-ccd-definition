@@ -34,5 +34,11 @@
     "ListElementCode": "COURT_OFFICER_ORDER_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Court Officer Order",
     "DisplayOrder": 33
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS_TRANSLATED",
+    "ListElement": "Translated Decision On Reconsideration",
+    "DisplayOrder": 34
   }
 ]
