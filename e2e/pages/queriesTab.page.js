@@ -4,6 +4,7 @@ module.exports = {
 
   async verifyQueriesDetails(hearing = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Query subject');
     I.see('Last submitted by');
     I.see('Last submission date');
@@ -27,6 +28,7 @@ module.exports = {
 
   async verifyDetailsAsCaseWorker(hearing = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Query subject');
     I.see('Last submitted by');
     I.see('Last submission date');
@@ -51,6 +53,7 @@ module.exports = {
 
   async askFollowUpQuestion(party = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
@@ -77,6 +80,7 @@ module.exports = {
 
   async verifyFollowUpQuestion(party = false) {
    await I.waitInUrl('#Queries', 10);
+   await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
@@ -97,6 +101,7 @@ module.exports = {
 
   async verifyFollowUpQuestionAsCourtStaff(party = false) {
     I.waitInUrl('#Queries', 10);
+    await I.waitForElement('table.query-list__table');
     I.see('Last submitted by');
     I.see('Last submission date');
     I.see('Last response date');
