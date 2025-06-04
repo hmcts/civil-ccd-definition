@@ -19,7 +19,7 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   await prepareClaim(api_spec, mpScenario);
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewNonHearingQuery(caseId);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
 });
@@ -27,21 +27,21 @@ Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
 Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewNonHearingQuery(caseId);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
 });
 
 Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker();
 });
 
 Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
 });
