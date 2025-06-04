@@ -6,7 +6,7 @@ const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport');
 const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
 let isQueryManagementEnabled = false;
 
-Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence @QM');
+Feature('CCD 1v2 Same Solicitor API test @api-unspec @api-tests-1v2SS @api-nightly-prod @api-unspec-full-defence @api-prod @QM');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
@@ -60,14 +60,14 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
+Scenario('Claimant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.applicantSolicitorUser, config.ctscAdminUser,
     APPLICANT_SOLICITOR_QUERY, false
   );
 });
 
-Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
+Scenario('Defendant queries', async ({api, qmSteps}) => {
   await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
     config.defendantSolicitorUser, config.hearingCenterAdminWithRegionId1,
     RESPONDENT_SOLICITOR_1_AND_2_QUERY, true

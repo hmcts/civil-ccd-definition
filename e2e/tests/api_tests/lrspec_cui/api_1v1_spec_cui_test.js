@@ -14,21 +14,21 @@ let isQueryManagementEnabled = false;
 Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
-  // if (isQueryManagementEnabled) {
-  //   const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
-  //   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  //   await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
-  // }
+  if (isQueryManagementEnabled) {
+    const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+  }
 }
 
 async function raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId, citizenUser, caseworkerUser, queryType, isHearingRelated) {
-  // if (isQueryManagementEnabled) {
-  //   const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
-  //   await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(query.id), query.id);
-  //   await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
-  //   const queryFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
-  //   await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(queryFollowUp.id), queryFollowUp.id);
-  // }
+  if (isQueryManagementEnabled) {
+    const query = await qmSteps.raiseLipQuery(caseId, citizenUser, queryType, isHearingRelated);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(query.id), query.id);
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+    const queryFollowUp = await qmSteps.followUpOnLipQuery(caseId, citizenUser, query, queryType);
+    await qmSteps.validateQmResponseTask(caseId, caseworkerUser, respondToQueryAdminTask(queryFollowUp.id), queryFollowUp.id);
+  }
 }
 
 Before(async () => {
@@ -90,7 +90,7 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps
     await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
     await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
-}).tag('@wa-task @QM');
+}).tag('@wa-task @QM @api-prod');
 
 Scenario('1v1 LiP v LiP Request for reconsideration', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -182,7 +182,7 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
     await api_spec_cui.trialReadinessCitizen(config.defendantCitizenUser2);
     await api_spec_cui.createFinalOrder(config.judgeUserWithRegionId1, 'FREE_FORM_ORDER');
   }
-}).tag('@wa-task @QM');
+}).tag('@wa-task @QM @api-prod');
 
 Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
