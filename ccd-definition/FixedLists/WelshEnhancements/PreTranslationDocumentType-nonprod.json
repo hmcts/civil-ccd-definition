@@ -11,10 +11,15 @@
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
   },
+  { "ID": "PreTranslationDocumentType",
+    "ListElementCode": "NOTICE_OF_DISCONTINUANCE",
+    "ListElement": "Notice Of Discontinuance Document",
+    "DisplayOrder": 3
+  },
   {
     "ID": "PreTranslationDocumentType",
     "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
     "ListElement": "Decision made on applications",
-    "DisplayOrder": 3
+    "DisplayOrder": 4
   }
 ]
