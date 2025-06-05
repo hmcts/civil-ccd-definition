@@ -58,7 +58,7 @@ ccd:
     persistence:
       enabled: false
     ingress:
-      enabled: false
+      enabled: true
       className: traefik
 
   logstash:
