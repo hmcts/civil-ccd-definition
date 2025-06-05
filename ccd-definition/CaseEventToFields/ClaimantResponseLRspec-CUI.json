@@ -907,7 +907,8 @@
     "DisplayContext": "COMPLEX",
     "PageID": "Language",
     "PageShowCondition": "applicantDefenceResponseDocumentAndDQFlag =\"Yes\"",
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "Y",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
