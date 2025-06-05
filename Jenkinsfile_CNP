@@ -10,8 +10,8 @@ def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
-def dmnBranch = "master"
-def waStandaloneBranch = "DTSCCI-1854"
+def dmnBranch = "DTSCCI-1854"
+def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
 
