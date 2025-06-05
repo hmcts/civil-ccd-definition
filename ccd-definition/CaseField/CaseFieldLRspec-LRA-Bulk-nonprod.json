@@ -152,7 +152,7 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  }
+  },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1RepaymentPlanLabelPartAdmit",
