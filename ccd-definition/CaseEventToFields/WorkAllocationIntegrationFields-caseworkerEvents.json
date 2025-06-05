@@ -127,7 +127,6 @@
     "EventElementLabel": "  ",
     "EventHintText": "  ",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageShowCondition": "sendMessageMetadata=\"DO NOT SHOW IN UI\"",
     "PageDisplayOrder": 4,
     "ShowSummaryChangeOption": "N",
     "Publish": "Y"
