@@ -1,4 +1,4 @@
-f plugins {
+plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
