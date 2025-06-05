@@ -121,6 +121,20 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "SEND_AND_REPLY",
+    "CaseFieldID": "latestMessage",
+    "PageFieldDisplayOrder": 1,
+    "DisplayContext": "READONLY",
+    "EventElementLabel": "  ",
+    "EventHintText": "  ",
+    "PageID": "WorkAllocationIntegrationFields",
+    "PageShowCondition": "sendMessageMetadata=\"DO NOT SHOW IN UI\"",
+    "PageDisplayOrder": 4,
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SEND_AND_REPLY",
     "CaseFieldID": "lastMessageAllocatedTrack",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",

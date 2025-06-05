@@ -1,0 +1,86 @@
+[
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "senderRoleType",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "RolePool",
+    "ElementLabel": "From",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "recipientRoleType",
+    "FieldType": "FixedList",
+    "FieldTypeParameter": "RolePool",
+    "ElementLabel": "To",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "isUrgent",
+    "FieldType": "YesOrNo",
+    "ElementLabel": "Urgency",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "sentTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Date and time sent",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "updatedTime",
+    "FieldType": "DateTime",
+    "ElementLabel": "Updated time",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "senderName",
+    "FieldType": "Text",
+    "ElementLabel": "Sender's name",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "subjectType",
+    "ElementLabel": "What is it about",
+    "FieldType": "FixedRadioList",
+    "FieldTypeParameter": "SendMessageSubjectOptionsList",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "subject",
+    "FieldType": "Text",
+    "ElementLabel": "Subject",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "messageContent",
+    "FieldType": "TextArea",
+    "ElementLabel": "Message details",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "LatestMessage",
+    "ListElementCode": "history",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "MessageReply",
+    "ElementLabel": "Message history",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  }
+]
