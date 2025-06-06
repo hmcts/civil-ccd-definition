@@ -1722,8 +1722,8 @@ module.exports = {
 
     await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL(addApplicant2));
 
-    await assertSubmittedEvent('CLOSED', {
-      header: '### The claim has been marked as paid in full',
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '### This claim has been marked as settled',
       body: ''
     }, true);
 

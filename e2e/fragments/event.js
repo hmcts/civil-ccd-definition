@@ -1,7 +1,7 @@
 const {I} = inject();
 
 const CONFIRMATION_HEADER = '#confirmation-header';
-const SUMMARY_TAB = 'div[role=\'tab\'] >> \'Summary\'';
+const SUMMARY_TAB = 'div[role="tab"]:nth-child(1)';
 
 module.exports = {
 
@@ -24,5 +24,13 @@ module.exports = {
 
   async returnToCaseDetails() {
     await I.retryUntilExists(() => I.click('Close and Return to case details'), SUMMARY_TAB);
+  },
+
+  async submitAndGoBackToCase(buttonText, expectedMessage) {
+    await I.waitForText(buttonText);
+    await I.click(buttonText);
+    await I.waitForText(expectedMessage);
+    I.see(expectedMessage);
+    await I.retryUntilExists(() => I.click('Go back to the case'), SUMMARY_TAB);
   }
 };

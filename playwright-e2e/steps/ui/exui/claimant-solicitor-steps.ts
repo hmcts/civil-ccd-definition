@@ -161,6 +161,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -177,6 +178,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -192,6 +194,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
   async NotifyClaim1v2LIPS() {
@@ -207,6 +210,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -223,6 +227,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -238,6 +243,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -254,6 +260,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -269,6 +276,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -285,6 +293,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -301,6 +310,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 

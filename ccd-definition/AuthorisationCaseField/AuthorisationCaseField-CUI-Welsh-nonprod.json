@@ -746,5 +746,29 @@
             "CRUD": "CRUD"
           }
         ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "hearingDocuments",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "hearingDocumentsWelsh",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
       }
     ]

@@ -42,6 +42,7 @@ const cosNotifyClaimDetailsPage = require('./pages/notifyClaimDetails/certificat
 const cosNotifyClaimCYAPage = require('./pages/cosNotifyClaimCYA.page');
 const cosTab = require('./pages/cosTab.page');
 const bundlesTab = require('./pages/bundlesTab.page');
+const queriesTab = require('./pages/queriesTab.page');
 
 
 const selectDefendantSolicitorPage = require('./pages/notifyClaimDetails/selectDefendantSolicitor.page');
@@ -57,6 +58,10 @@ const responseTypePage = require('./pages/respondToClaim/responseType.page');
 const uploadResponsePage = require('./pages/respondToClaim/uploadResponseDocument.page');
 
 const proceedPage = require('./pages/respondToDefence/proceed.page');
+const raiseQueryPage = require('./pages/query/raiseQuery.page');
+const raiseAQueryFormPage = require('./pages/query/raiseAQueryForm.page');
+
+
 const uploadResponseDocumentPage = require('./pages/respondToDefence/uploadResponseDocument.page');
 
 const defendantLitigationFriendPage = require('./pages/addDefendantLitigationFriend/defendantLitigationDetails.page');
@@ -356,7 +361,7 @@ module.exports = function () {
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
-        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH) 
+        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH)
           : uploadParticularsOfClaim.enterParticularsOfClaim(), //Uploading files to aat is causing loading on page to timeout.
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
@@ -596,6 +601,34 @@ module.exports = function () {
       await this.takeScreenshot();
     },
 
+    async raiseNewNonHearingQuery(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery(),
+        () => raiseAQueryFormPage.enterQueryDetails(),
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted')
+      ]);
+    },
+
+    async raiseNewHearingQuery(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery(),
+        () => raiseAQueryFormPage.enterHearingQueryDetails(),
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted')
+      ]);
+    },
+
+    async raiseNewQueryInOfflineState(caseId) {
+      eventName = events.QUERY_MANAGEMENT.name;
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => raiseQueryPage.selectQuery()
+      ]);
+    },
+
     async respondToDefenceMinti(caseId, mpScenario = 'ONE_V_ONE', claimValue = 30000) {
       eventName = events.CLAIMANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
@@ -718,6 +751,44 @@ module.exports = function () {
       ]);
     },
 
+    async verifyQueriesDetails(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyQueriesDetails(hearing)
+      ]);
+    },
+
+    async raiseFollowUpQuestionAndVerify(party = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.askFollowUpQuestion(party),
+        () => event.submitAndGoBackToCase('Submit', 'Query submitted'),
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestion(party)
+      ]);
+    },
+
+    async verifyFollowUpQuestionAsCaseWorker(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestionAsCourtStaff(hearing)
+      ]);
+    },
+
+    async verifyFollowUpQuestionAsJudge(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyFollowUpQuestion(hearing)
+      ]);
+    },
+
+    async verifyQueriesDetailsAsCaseWorker(hearing = false) {
+      await this.triggerStepsWithScreenshot([
+        () =>caseViewPage.navigateToTab('Queries'),
+        () => queriesTab.verifyDetailsAsCaseWorker(hearing)
+      ]);
+    },
+
     async navigateToTab(tabName) {
       await this.triggerStepsWithScreenshot([
         () =>caseViewPage.navigateToTab(tabName),
@@ -731,7 +802,7 @@ module.exports = function () {
       ]);
     },
 
-    async caseProceedsInCaseman() {
+    async caseProceedsInCaseman(caseId = false) {
       eventName = events.CASE_PROCEEDS_IN_CASEMAN.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.CASE_PROCEEDS_IN_CASEMAN, caseId),

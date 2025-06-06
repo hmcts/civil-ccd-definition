@@ -10,5 +10,16 @@
     "ListElementCode": "MANUAL_DETERMINATION_DOCUMENT",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
+  },
+  { "ID": "PreTranslationDocumentType",
+    "ListElementCode": "NOTICE_OF_DISCONTINUANCE",
+    "ListElement": "Notice Of Discontinuance Document",
+    "DisplayOrder": 3
+  },
+  {
+     "ID": "PreTranslationDocumentType",
+    "ListElementCode": "HEARING_NOTICE",
+    "ListElement": "Hearing Notice",
+      "DisplayOrder": 4
   }
 ]
