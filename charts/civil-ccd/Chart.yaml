@@ -41,6 +41,7 @@ dependencies:
   - name: servicebus
     version: 1.2.1
     repository: 'oci://hmctspublic.azurecr.io/helm'
+    icon: 'https://github.com/hmcts/chart-servicebus/raw/master/images/message_icon-32.png'
     condition: servicebus.enabled
 # WA
   - name: wa
