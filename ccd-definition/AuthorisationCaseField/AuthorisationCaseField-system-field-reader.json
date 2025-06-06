@@ -10840,5 +10840,11 @@
     "CaseFieldID": "respondent1LiPStatementOfTruth",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "mediationFileSentToMmt",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
   }
 ]
