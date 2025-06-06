@@ -23,11 +23,11 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
-    version: ~1.0.8
+    version: 1.0.31
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
-    version: ~0.2.9
+    version: 0.2.19
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: idam-pr
@@ -35,7 +35,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: camunda-bpm
-    version: 0.0.44
+    version: 0.0.48
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: camunda-bpm.enabled
   - name: servicebus
@@ -49,34 +49,28 @@ dependencies:
     condition: civil-wa.enabled
 # CCD message publisher
   - name: ccd-message-publisher
-    version: ~0.1.7
+    version: 0.1.22
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-events-topic.enabled
   - name: ts-translation-service
-    version: 0.1.7
+    version: 0.1.9
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-translation.enabled
-
-  # To remove unused definitions
-  - name: ccd-def-cleanup
-    version: ~9.0.4
-    repository: 'oci://hmctspublic.azurecr.io/helm'
-    condition: ccd-def-cleanup.enabled
   - name: am-org-role-mapping-service
-    version: ~0.0.58
+    version: 0.0.72
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: am-org-role-mapping-service.enabled
 
 # Stiching
   - name: ccd-case-document-am-api
-    version: 1.7.14
+    version: 1.7.17
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-case-document-am-api.enabled
   - name: em-ccdorc
-    version: 2.0.25
+    version: 2.1.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: em-ccdorc.enabled
   - name: em-stitching
-    version: 1.0.55
+    version: 1.1.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: em-stitching.enabled
