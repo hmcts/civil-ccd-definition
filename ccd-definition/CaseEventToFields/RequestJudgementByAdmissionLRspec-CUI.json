@@ -44,17 +44,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "PageID": "FixedCost",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-up-ccj-amount-summary",
-    "ShowSummaryChangeOption": "Y",
-    "DisplayContext": "READONLY"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "CaseFieldID": "ccjJudgmentFixedCostOption",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
