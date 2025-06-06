@@ -50,7 +50,7 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "DECISION_MADE_ON_APPLICATIONS_TRANSLATED",
-    "ListElement": "Translated Decision On Reconsideration",
+    "ListElement": "Translated Decision on reconsideration request",
     "DisplayOrder": 34
   }
 ]
