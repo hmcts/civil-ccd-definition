@@ -257,6 +257,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "latestMessage",
+    "Label": " ",
+    "FieldType": "LatestMessage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "lastMessageAllocatedTrack",
     "Label": " ",
     "FieldType": "Text",
