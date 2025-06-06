@@ -46,5 +46,11 @@
     "ListElementCode": "COURT_OFFICER_ORDER_TRANSLATED_DOCUMENT",
     "ListElement": "Translated Court Officer Order",
     "DisplayOrder": 33
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "TRANSLATED_HEARING_NOTICE",
+    "ListElement": "Translated Hearing Notice",
+    "DisplayOrder": 34
   }
 ]
