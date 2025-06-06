@@ -26,6 +26,6 @@
      "ID": "PreTranslationDocumentType",
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
-      "DisplayOrder": 5
+    "DisplayOrder": 5
   }
 ]
