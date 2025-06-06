@@ -306,6 +306,7 @@
           "judge-profile",
           "legal-adviser",
           "caseworker-wa-task-configuration",
+          "CITIZEN-DEFENDANT-PROFILE",
           "caseflags-admin"
         ],
         "CRUD": "CRU"
@@ -314,7 +315,6 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
           "caseworker-ras-validation",
           "GS_profile",
           "caseflags-viewer"
