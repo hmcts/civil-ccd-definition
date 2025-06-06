@@ -35,15 +35,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "preTranslationSdoOrderDocuments",
-    "Label": "View directions order",
-    "FieldType": "Collection",
-    "FieldTypeParameter": "CaseDocument",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "preTranslationDocuments",
     "Label": "Documents to be translated",
     "FieldType": "Collection",
