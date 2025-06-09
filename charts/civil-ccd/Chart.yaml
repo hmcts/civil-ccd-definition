@@ -23,16 +23,16 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
-    version: ~1.0.8
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~1.0.31
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
     version: 0.2.19
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: idam-pr
     version: 2.3.0
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: camunda-bpm
     version: 0.0.48
@@ -50,21 +50,21 @@ dependencies:
 # CCD message publisher
   - name: ccd-message-publisher
     version: ~0.1.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-events-topic.enabled
   - name: ts-translation-service
     version: 0.1.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-translation.enabled
 
   # To remove unused definitions
   - name: ccd-def-cleanup
     version: ~9.0.4
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-def-cleanup.enabled
   - name: am-org-role-mapping-service
     version: ~0.0.58
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: am-org-role-mapping-service.enabled
 
 # Stiching
