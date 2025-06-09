@@ -82,5 +82,13 @@
     "ElementLabel": "Message history",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "Message",
+    "ListElementCode": "messageID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
