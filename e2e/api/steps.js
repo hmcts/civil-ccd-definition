@@ -1006,7 +1006,7 @@ module.exports = {
       await validateEventPages(data.REQUEST_DJ('TRIAL_HEARING', mpScenario));
     }
 
-    await assertSubmittedEvent('AWAITING_RESPONDENT_ACKNOWLEDGEMENT', {
+    await assertSubmittedEvent('JUDICIAL_REFERRAL', {
       header: '',
       body: ''
     }, true);
