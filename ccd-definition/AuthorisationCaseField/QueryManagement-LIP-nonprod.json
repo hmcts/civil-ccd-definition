@@ -64,6 +64,13 @@
   {
     "LiveFrom": "01/01/2017",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "queries",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
+  },
+  {
+    "LiveFrom": "01/01/2017",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "qmApplicantSolicitorQueries",
     "AccessControl": [
       {
@@ -80,7 +87,7 @@
           "caseworker-civil-staff",
           "ctsc"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -111,7 +118,7 @@
           "caseworker-civil-staff",
           "ctsc"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -142,7 +149,7 @@
           "caseworker-civil-staff",
           "ctsc"
         ],
-        "CRUD": "CRU"
+        "CRUD": "CRUD"
       },
       {
         "UserRoles": [
@@ -161,8 +168,17 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE"
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "ctsc"
         ],
         "CRUD": "CRU"
       }
