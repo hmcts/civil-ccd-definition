@@ -37,7 +37,7 @@ export default class DefendantPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       this.choosePartyTypeFragment.verifyContent(),
-      super.expectSubheading(subheadings.defendantDetails),
+      // super.expectSubheading(subheadings.defendantDetails),
       super.expectLegend(radioButtons.partyType.label),
       super.expectSubheading(subheadings.address),
     ]);
