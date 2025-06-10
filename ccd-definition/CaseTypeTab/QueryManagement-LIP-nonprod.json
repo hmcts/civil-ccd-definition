@@ -8,7 +8,7 @@
     "CaseFieldID": "QueryManagementComponentLauncher",
     "DisplayContextParameter" : "#ARGUMENT(QueryManagement)",
     "TabFieldDisplayOrder": 1,
-    "TabShowCondition": "qmApplicantCitizenQueries.partyName = \"*\" OR qmRespondentCitizenQueries.partyName = \"*\" OR qmApplicantSolicitorQueries.partyName = \"*\" OR qmRespondentSolicitor1Queries.partyName = \"*\" OR qmRespondentSolicitor2Queries.partyName = \"*\""
+    "TabShowCondition": "queries.partyName = \"*\" OR qmApplicantSolicitorQueries.partyName = \"*\" OR qmRespondentSolicitor1Queries.partyName = \"*\" OR qmRespondentSolicitor2Queries.partyName = \"*\""
   },
   {
     "LiveFrom": "01/01/2017",
