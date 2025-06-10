@@ -7,7 +7,6 @@ import ccdEvents from '../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import TestData from '../../../models/test-data';
 import RequestsFactory from '../../../requests/requests-factory';
-import { create } from 'node:domain';
 
 @AllMethodsStep()
 export default class ClaimantSolicitorSteps extends BaseExui {
@@ -79,7 +78,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -154,7 +152,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -180,7 +177,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
