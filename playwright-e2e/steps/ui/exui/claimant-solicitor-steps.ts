@@ -32,7 +32,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -56,7 +55,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -106,7 +104,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await this.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -132,7 +129,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -210,7 +206,6 @@ export default class ClaimantSolicitorSteps extends BaseExui {
     const { createClaimActions } = this.claimantSolicitorActionsFactory;
     await super.retryExuiEvent(
       async () => {
-        await createClaimActions.caseFilter();
         await createClaimActions.eligibility();
         await createClaimActions.references();
         await createClaimActions.court();
@@ -244,6 +239,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -260,6 +256,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -275,6 +272,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
   async NotifyClaim1v2LIPS() {
@@ -290,6 +288,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -306,6 +305,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -321,6 +321,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -337,6 +338,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -352,6 +354,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -368,6 +371,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -384,6 +388,7 @@ export default class ClaimantSolicitorSteps extends BaseExui {
       },
       ccdEvents.NOTIFY_DEFENDANT_OF_CLAIM_DETAILS,
       claimantSolicitorUser,
+      { verifySuccessEvent: false },
     );
   }
 

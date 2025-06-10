@@ -1342,6 +1342,7 @@ module.exports = {
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
     } else {
+      delete caseData['showConditionFlags'];
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
@@ -1404,7 +1405,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.userInput)) {
       await assertValidData(scheduleData, pageId);
     }
-
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1432,9 +1433,9 @@ module.exports = {
     console.log('Hearing Fee Paid');
 
     await apiRequest.setupTokens(config.applicantSolicitorUser);
-    const updatedCaseState = await apiRequest.fetchCaseState(caseId, 'TRIAL_READINESS');
-    assert.equal(updatedCaseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
-    console.log('State moved to:'+updatedCaseState);
+    const caseState = (await apiRequest.fetchCaseDetails(config.applicantSolicitorUser, caseId)).state;
+    assert.equal(caseState, 'PREPARE_FOR_HEARING_CONDUCT_HEARING');
+    console.log('State moved to:'+caseState);
   },
 
   hearingFeePaidFlightDelay: async (user) => {
@@ -1516,7 +1517,6 @@ module.exports = {
 
     eventName = 'GENERATE_DIRECTIONS_ORDER';
     let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
-    delete returnedCaseData['SearchCriteria'];
     caseData = returnedCaseData;
     assertContainsPopulatedFields(returnedCaseData);
 
@@ -1536,6 +1536,7 @@ module.exports = {
     }
 
     await apiRequest.startEvent(eventName, caseId);
+    delete caseData['showConditionFlags'];
     await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
@@ -1721,8 +1722,8 @@ module.exports = {
 
     await validateEventPages(data.SETTLE_CLAIM_MARK_PAID_FULL(addApplicant2));
 
-    await assertSubmittedEvent('CLOSED', {
-      header: '### The claim has been marked as paid in full',
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '### This claim has been marked as settled',
       body: ''
     }, true);
 
@@ -2169,7 +2170,7 @@ const assertValidDataDefaultJudgments = async (data, pageId, scenario,isDivergen
     }
 
   } else if (pageId === 'paymentSetDate') {
-    responseBody.data.repaymentDue= '1502.00';
+    responseBody.data.repaymentDue= '1702.00';
   }
   if (pageId === 'paymentSetDate' || pageId === 'paymentType') {
     responseBody.data.currentDatebox = '25 August 2022';
