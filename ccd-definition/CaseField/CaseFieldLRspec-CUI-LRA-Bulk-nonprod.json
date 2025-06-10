@@ -33,6 +33,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "ccjJudgmentAmountClaimAmountWithInterestLabel",
+    "Label": "### Claim amount (including interest if it has been claimed)\n\n£${ccjJudgmentAmountClaimAmount}",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimAmountLabel",
     "Label": "### Claim amount (including interest if it has been claimed)\n\n£${ccjJudgmentAmountClaimAmount}",
     "FieldType": "Label",

@@ -6,7 +6,7 @@
     "Description": "Request Default Judgment",
     "DisplayOrder": 17,
     "PreConditionState(s)": "AWAITING_RESPONDENT_ACKNOWLEDGEMENT",
-    "PostConditionState": "*",
+    "PostConditionState": "JUDICIAL_REFERRAL",
     "EventEnablingCondition": "applicantSolicitor1ServiceAddressRequired = \"No\" OR applicantSolicitor1ServiceAddressRequired =  \"Yes\"",
     "_comment": "above shows the DF event when claim type is damages",
     "SecurityClassification": "Public",
