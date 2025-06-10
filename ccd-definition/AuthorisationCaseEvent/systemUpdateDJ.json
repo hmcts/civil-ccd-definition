@@ -19,32 +19,8 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "APP-SOL-UNSPEC-PROFILE",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "judge-profile",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RPA_DJ_UNSPEC",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "GS_profile",
-    "CRUD": "R"
   }
 ]

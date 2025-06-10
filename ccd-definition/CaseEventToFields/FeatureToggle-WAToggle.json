@@ -27,7 +27,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT",
     "CaseFieldID": "featureToggleWA",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 22,
