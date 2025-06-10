@@ -160,3 +160,20 @@ xui-webapp:
     environment:
       WA_SUPPORTED_JURISDICTIONS: "IA,PRIVATELAW,CIVIL"
       SERVICES_ROLE_ASSIGNMENT_MAPPING_API: https://am-org-role-mapping-service-${SERVICE_FQDN}
+
+wa-initiation-batch:
+  job:
+    schedule: "*/1 * * * *"
+    releaseNameOverride: "{{ .Release.Name }}-wa-task-batch"
+wa-reconfiguration-batch:
+  job:
+    schedule: "*/1 * * * *"
+    releaseNameOverride: "{{ .Release.Name }}-reconfiguration"
+wa-termination-batch:
+  job:
+    schedule: "*/1 * * * *"
+    releaseNameOverride: "{{ .Release.Name }}-termination-batch"
+wa-message-cron-service:
+  job:
+    schedule: "*/1 * * * *"
+    releaseNameOverride: "{{ .Release.Name }}-wa-message-cron"
