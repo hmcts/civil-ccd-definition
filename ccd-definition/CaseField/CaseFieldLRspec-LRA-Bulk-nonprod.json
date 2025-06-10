@@ -152,5 +152,29 @@
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1RepaymentPlanLabelPartAdmit",
+    "Label": "<p>The amount admitted is £${respondToAdmittedClaimOwingAmountPounds}</p> <p>The amount includes interest if it has been claimed.</br>The claim fee and any fixed costs claimed are not included in this figure but are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentGenericRepaymentPlanLabelPartAdmit",
+    "Label": "<p>The amount admitted is £${respondToAdmittedClaimOwingAmountPounds}</p> <p>The amount includes interest if it has been claimed.</br>The claim fee and any fixed costs claimed are not included in this figure but are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent2RepaymentPlanLabelPartAdmit",
+    "Label": "<p>The amount admitted is £${respondToAdmittedClaimOwingAmountPounds2}</p> <p>The amount includes interest if it has been claimed.</br>The claim fee and any fixed costs claimed are not included in this figure but are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
