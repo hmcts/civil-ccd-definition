@@ -33,14 +33,5 @@
       "CITIZEN-CLAIMANT-PROFILE"
     ],
     "CRUD": "CRU"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseStateID": "DECISION_OUTCOME",
-    "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE",
-      "APP-SOL-SPEC-PROFILE"
-    ],
-    "CRUD": "CRU"
   }
 ]
