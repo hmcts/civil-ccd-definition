@@ -15,7 +15,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_DRO_ORDER_TO_LIP_CLAIMANT",
-    "Name": "Trigger Bulk Print for claimant",
+    "Name": "TriggerBulkPrintforClaimant",
     "Description": "Trigger Bulk Print for claimant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
@@ -28,7 +28,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "SEND_DRO_ORDER_TO_LIP_DEFENDANT",
-    "Name": "Trigger Bulk Print for defendant",
+    "Name": "TriggerBulkPrintforDefendant",
     "Description": "Trigger Bulk Print for defendant",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
