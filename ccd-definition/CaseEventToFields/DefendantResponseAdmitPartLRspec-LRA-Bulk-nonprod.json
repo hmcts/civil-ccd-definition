@@ -390,7 +390,7 @@
     "PageDisplayOrder": 39,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\"",
+    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\" AND isRespondent1 = \"Yes\"",
     "PageID": "RepaymentPlan",
     "ShowSummaryChangeOption": "Y"
   },
@@ -401,7 +401,7 @@
     "PageDisplayOrder": 40,
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
-    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\"",
+    "FieldShowCondition": "respondentClaimResponseTypeForSpecGeneric = \"FULL_ADMISSION\" AND isRespondent2 = \"Yes\"",
     "PageID": "RepaymentPlanRespondent2",
     "ShowSummaryChangeOption": "Y"
   }
