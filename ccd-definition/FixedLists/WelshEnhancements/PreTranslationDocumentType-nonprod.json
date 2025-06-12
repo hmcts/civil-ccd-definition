@@ -10,5 +10,11 @@
     "ListElementCode": "MANUAL_DETERMINATION_DOCUMENT",
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "DEFENDANT_SEALED_CLAIM_FORM_FOR_LIP_VS_LR",
+    "ListElement": "Defendant sealed claim form",
+    "DisplayOrder": 4
   }
 ]
