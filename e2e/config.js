@@ -337,7 +337,7 @@ module.exports = {
   },
   TestOutputDir: process.env.E2E_OUTPUT_DIR || 'test-results/functional',
   TestForAccessibility: process.env.TESTS_FOR_ACCESSIBILITY === 'true',
-  runningEnv: process.env.ENVIRONMENT,
+  runningEnv: 'staging',
   runWAApiTest: process.env.RUN_WA_API_TEST === 'true',
   runFailedTests: process.env.RUN_FAILED_AND_NOT_EXECUTED_TEST_FILES === 'true',
   claimantSolicitorOrgId: process.env.ENVIRONMENT === 'demo' ? 'B04IXE4' : 'Q1KOKP2',
