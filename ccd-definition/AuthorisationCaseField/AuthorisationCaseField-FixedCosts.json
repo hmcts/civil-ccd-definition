@@ -40,7 +40,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-systemupdate",
-          "[DEFENDANT]"
+          "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
       }
