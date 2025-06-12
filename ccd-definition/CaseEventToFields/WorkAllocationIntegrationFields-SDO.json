@@ -132,6 +132,17 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
+    "CaseFieldID": "claimValue",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 22,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT",
     "CaseFieldID": "claimValue",
     "PageDisplayOrder": 1,
