@@ -49,14 +49,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "applicant1AcceptAdmitAmountPaidSpec",
-    "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
@@ -290,14 +282,6 @@
     "ID": "ccjJudgmentStatement",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "ccjJudgmentAmountClaimAmountLabel",
-    "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
-    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },

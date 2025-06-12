@@ -11,6 +11,17 @@
     "ListElement": "Manual Determination Document",
     "DisplayOrder": 2
   },
+  { "ID": "PreTranslationDocumentType",
+    "ListElementCode": "NOTICE_OF_DISCONTINUANCE",
+    "ListElement": "Notice Of Discontinuance Document",
+    "DisplayOrder": 3
+  },
+  {
+     "ID": "PreTranslationDocumentType",
+    "ListElementCode": "HEARING_NOTICE",
+    "ListElement": "Hearing Notice",
+      "DisplayOrder": 4
+  },
   {
     "ID": "PreTranslationDocumentType",
     "ListElementCode": "DEFENDANT_SEALED_CLAIM_FORM_FOR_LIP_VS_LR",

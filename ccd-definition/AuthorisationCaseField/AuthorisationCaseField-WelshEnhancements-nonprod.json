@@ -99,26 +99,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "preTranslationSdoOrderDocuments",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "wlu-admin"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "preTranslationDocuments",
     "AccessControl": [
       {
@@ -179,6 +159,41 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "judge-profile",
           "legal-adviser",
+          "wlu-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1NoticeOfDiscontinueAllPartyTranslatedDoc",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate",
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "judge-profile",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "caseworker-civil-system-field-reader"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1NoticeOfDiscontinueAllPartyViewDoc",
+    "AccessControl": [
+      {
+        "UserRoles": [
           "wlu-admin"
         ],
         "CRUD": "R"
