@@ -32,7 +32,7 @@ Scenario('1v1 FULL_DEFENCE claimant and defendant response small claim - CARM en
   await api_spec_small.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE', 'ONE_V_ONE', false, true);
   await api_spec_small.claimantResponse(config.applicantSolicitorUser, true, 'No', true);
   await api_spec_small.manageContactInformation(config.adminUser, true);
-}).tag('@api-nonprod-specified');
+});
 
 AfterSuite(async ({api_spec_small}) => {
   await api_spec_small.cleanUp();
