@@ -56,7 +56,6 @@ civil-service:
           - name: ccd-shared-servicebus-connection-string
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
-      WA_TOGGLE: SD
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
       CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
