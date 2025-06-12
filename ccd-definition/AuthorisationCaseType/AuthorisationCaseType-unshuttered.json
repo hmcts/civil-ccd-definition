@@ -35,5 +35,16 @@
       "caseworker-civil-citizen-ui-pcqextractor"
     ],
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "UserRoles": [
+      "CITIZEN-CLAIMANT-PROFILE",
+      "CITIZEN-DEFENDANT-PROFILE",
+      "cui-admin-profile",
+      "cui-nbc-profile",
+      "citizen-profile"
+    ],
+    "CRUD": "CRU"
   }
 ]
