@@ -1,6 +1,6 @@
 [
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "senderRoleType",
     "FieldType": "FixedList",
     "FieldTypeParameter": "RolePool",
@@ -9,7 +9,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "recipientRoleType",
     "FieldType": "FixedList",
     "FieldTypeParameter": "RolePool",
@@ -18,7 +18,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "isUrgent",
     "FieldType": "YesOrNo",
     "ElementLabel": "Urgency",
@@ -26,7 +26,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "sentTime",
     "FieldType": "DateTime",
     "ElementLabel": "Date and time sent",
@@ -34,7 +34,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "updatedTime",
     "FieldType": "DateTime",
     "ElementLabel": "Updated time",
@@ -42,7 +42,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "senderName",
     "FieldType": "Text",
     "ElementLabel": "Sender's name",
@@ -50,7 +50,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "subjectType",
     "ElementLabel": "What is it about",
     "FieldType": "FixedRadioList",
@@ -59,7 +59,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "subject",
     "FieldType": "Text",
     "ElementLabel": "Subject",
@@ -67,7 +67,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "messageContent",
     "FieldType": "TextArea",
     "ElementLabel": "Message details",
@@ -75,7 +75,7 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
+    "ID": "LatestMessage",
     "ListElementCode": "history",
     "FieldType": "Collection",
     "FieldTypeParameter": "MessageReply",
@@ -84,10 +84,10 @@
     "Searchable": "N"
   },
   {
-    "ID": "Message",
-    "ListElementCode": "messageID",
+    "ID": "LatestMessage",
+    "ListElementCode": "messageId",
     "FieldType": "Text",
-    "ElementLabel": " ",
+    "ElementLabel": "message id",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

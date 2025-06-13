@@ -65,5 +65,13 @@
     "ElementLabel": "Message details",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
+    "ListElementCode": "messageID",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

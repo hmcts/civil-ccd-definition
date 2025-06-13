@@ -257,6 +257,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "latestMessage",
+    "Label": " ",
+    "FieldType": "LatestMessage",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "lastMessageAllocatedTrack",
     "Label": " ",
     "FieldType": "Text",
@@ -276,6 +284,14 @@
     "ID": "obligationWAFlag",
     "Label": " ",
     "FieldType": "ObligationWAFlag",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "messageWaTaskDetails",
+    "Label": " ",
+    "FieldType": "MessageWaTaskDetails",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
