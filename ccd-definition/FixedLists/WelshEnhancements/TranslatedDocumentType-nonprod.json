@@ -42,8 +42,14 @@
   },
   {
     "ID": "TranslatedDocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
+    "ListElement": "Decision on reconsideration request",
+    "DisplayOrder": 11
+  },
+ {
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   }
 ]
