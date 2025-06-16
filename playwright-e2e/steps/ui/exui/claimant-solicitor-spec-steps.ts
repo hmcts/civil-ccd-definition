@@ -45,7 +45,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaim();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -71,7 +71,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaim();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -97,7 +97,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaim();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -125,7 +125,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaim();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,
@@ -153,7 +153,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.submitCreateClaim();
       },
       async () => {
-        await createClaimSpecActions.confirmCreateClaim();
+        await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
       claimantSolicitorUser,

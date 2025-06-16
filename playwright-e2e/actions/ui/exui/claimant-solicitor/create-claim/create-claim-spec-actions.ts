@@ -231,10 +231,10 @@ export default class CreateClaimSpecActions extends BaseTestData {
     await submitCreateClaimPage.submit();
   }
 
-  async confirmCreateClaim() {
-    const { confirmCreateClaimPage } = this.createClaimPageFactory;
-    await confirmCreateClaimPage.verifyContent();
-    await confirmCreateClaimPage.submit();
+  async confirmCreateClaimSpec() {
+    const { confirmCreateClaimSpecPage } = this.createClaimPageFactory;
+    await confirmCreateClaimSpecPage.verifyContent();
+    await confirmCreateClaimSpecPage.submit();
   }
 
   private async flightDelayClaim() {
