@@ -5,7 +5,6 @@
       "caseworker-civil-solicitor",
       "caseworker-civil-admin",
       "caseworker-caa",
-      "caseworker-civil-staff",
       "caseworker-approver"
     ],
     "CRUD": "D"
@@ -31,6 +30,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "UserRoles": [
+      "caseworker-civil-staff",
       "GS_profile",
       "caseworker-ras-validation",
       "caseworker-civil-citizen-ui-pcqextractor"
