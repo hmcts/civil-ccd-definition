@@ -27,5 +27,14 @@
       "citizen-profile"
     ],
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "UserRoles": [
+      "GS_profile",
+      "caseworker-ras-validation",
+      "caseworker-civil-citizen-ui-pcqextractor"
+    ],
+    "CRUD": "R"
   }
 ]
