@@ -144,20 +144,27 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "claimantBilingualLanguagePreference",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 23,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
     "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 24,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
-    "PageDisplayOrder": 99,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DECISION_ON_RECONSIDERATION_REQUEST",
+    "CaseFieldID": "preTranslationDocumentType",
+    "PageFieldDisplayOrder": 27,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"
   },
   {
