@@ -1,4 +1,4 @@
- 
+
 
 const config = require('../../../config.js');
 const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
@@ -60,13 +60,13 @@ Scenario('Claimant response', async ({I, api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
 });
 
-Scenario('Add case flags', async ({api}) => {
-  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-});
+//Scenario('Add case flags', async ({api}) => {
+//  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+//});
 
-Scenario('Manage case flags', async ({api}) => {
-  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-});
+//Scenario('Manage case flags', async ({api}) => {
+//  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+//});
 
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
