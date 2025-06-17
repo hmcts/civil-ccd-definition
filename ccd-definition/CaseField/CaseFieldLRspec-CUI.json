@@ -287,14 +287,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "ccjJudgmentAmountClaimAmountLabel",
-    "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentAmountClaimAmount",
     "Label": " ",
     "FieldType": "Text",

@@ -7,8 +7,8 @@ const {retry} = require('./retryHelper');
 
 let incidentMessage;
 
-const MAX_RETRIES = 20;
-const RETRY_TIMEOUT_MS = 3000;
+const MAX_RETRIES = 30;
+const RETRY_TIMEOUT_MS = 5000;
 
 const checkFlagEnabled = async (flag) => {
   const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
