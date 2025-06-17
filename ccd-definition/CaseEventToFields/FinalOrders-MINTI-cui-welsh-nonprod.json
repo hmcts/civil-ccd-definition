@@ -138,7 +138,6 @@
     "PageID": "FinalOrderSelect",
     "ShowSummaryChangeOption": "N"
   },
-
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_DIRECTIONS_ORDER",

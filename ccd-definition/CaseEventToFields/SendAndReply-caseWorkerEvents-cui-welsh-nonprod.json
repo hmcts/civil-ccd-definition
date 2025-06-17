@@ -8,7 +8,8 @@
     "PageID": "sendAndReplyOption",
     "PageDisplayOrder": 1,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N"
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "sendAndReplyOption=\"DO_NOT_SHOW\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -19,8 +20,7 @@
     "PageID": "sendAndReplyOption",
     "PageDisplayOrder": 2,
     "PageColumnNumber": 1,
-    "ShowSummaryChangeOption": "N",
-    "FieldShowCondition": "sendAndReplyOption=\"DO_NOT_SHOW\""
+    "ShowSummaryChangeOption": "N"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
