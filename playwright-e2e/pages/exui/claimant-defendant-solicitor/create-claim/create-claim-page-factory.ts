@@ -446,6 +446,10 @@ export default class CreateClaimPageFactory extends BasePageFactory {
     return new ConfirmCreateClaimPage(this.page);
   }
 
+  get confirmCreateClaimSpecPage() {
+    return new ConfirmCreateClaimSpecPage(this.page);
+  }
+
   get confirmCreateClaimLIPPage() {
     return new ConfirmCreateClaimLIPPage(this.page);
   }
