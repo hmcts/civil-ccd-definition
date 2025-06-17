@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const {createAccount} = require('../../../api/idamHelper');
 
-Feature('CCD API test @api-caseworker @api-nonprod');
+Feature('CCD API test @api-caseworker @api-nightly-prod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -24,7 +24,7 @@ Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_s
 
 });
 
-Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case @api-nonprod', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
