@@ -10,7 +10,7 @@ const {
 } = require('../fixtures/queryMessages');
 const chai = require('chai');
 const {expect} = chai;
-
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 const RAISE_QUERY_EVENT = 'queryManagementRaiseQuery';
 const RESPOND_QUERY_EVENT = 'queryManagementRespondQuery';
 
@@ -89,11 +89,22 @@ const completeQueryResponseTask = async (user, caseId, queryId) => {
   };
 };
 
+const findPartyNameForQueryFromUserConfig = async (user) => {
+  const partyType = user.type;
+  if (partyType.includes('applicant') || partyType.includes('claimant')) {
+    return 'Claimant';
+  } else if (partyType.includes('defendant')) {
+    return 'Defendant';
+  }
+  return 'All queries';
+}
+
 module.exports = {
     raiseLRQuery: async (caseId, user, queryType, isHearingRelated= true) => {
         console.log(`Raising a query as: ${user.email}`);
         await apiRequest.setupTokens(user);
-        const newMessage = (await initialQueryMessage(queryType.partyName, apiRequest.getTokens().userId, isHearingRelated));
+        const partyName = isTestEnv ? await findPartyNameForQueryFromUserConfig(user) : queryType.partyName;
+        const newMessage = (await initialQueryMessage(partyName, apiRequest.getTokens().userId, isHearingRelated));
         return triggerCaseworkerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
     },
     respondToQuery: async (caseId, user, initialQueryMessage, queryType) => {
@@ -112,7 +123,8 @@ module.exports = {
     raiseLipQuery: async (caseId, user, queryType, isHearingRelated=true) => {
         console.log(`Raising a query as: ${user.email}`);
         await apiRequest.setupTokens(user);
-        const newMessage = await initialQueryMessage(queryType.partyName, apiRequest.getTokens().userId, isHearingRelated);
+        const partyName = isTestEnv ? await findPartyNameForQueryFromUserConfig(user) : queryType.partyName;
+        const newMessage = await initialQueryMessage(partyName, apiRequest.getTokens().userId, isHearingRelated);
         const submittedMessage = await triggerCitizenQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
         return submittedMessage;
     },
