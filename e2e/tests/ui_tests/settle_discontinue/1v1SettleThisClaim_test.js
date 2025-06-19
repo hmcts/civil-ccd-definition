@@ -11,7 +11,7 @@ async function prepareClaimSpec(api_spec_small) {
 
 Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec @e2e-nightly-prod e2e-nightly-nonprod');
 
-Scenario.only('1v1 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
+Scenario('1v1 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
     await prepareClaimSpec(api_spec_small);
    // await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     caseNumber = await api_spec_small.getCaseId();
@@ -19,7 +19,7 @@ Scenario.only('1v1 spec Settle this Claim - Confirm marking as paid in full', as
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
 }).retry(2);
 
-Scenario.only('Confirm marking as paid in full', async ({LRspec}) => {
+Scenario('Confirm marking as paid in full', async ({LRspec}) => {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForSettleThisClaimForUI();
 }).retry(2);
