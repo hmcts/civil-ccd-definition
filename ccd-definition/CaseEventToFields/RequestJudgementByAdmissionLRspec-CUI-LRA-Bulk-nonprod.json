@@ -29,7 +29,7 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 22,
     "DisplayContext": "READONLY",
-    "PageID": "FixedCost",
+    "PageID": "CcjPaymentPaidSome",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   },
