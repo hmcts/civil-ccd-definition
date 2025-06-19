@@ -78,6 +78,7 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
+    await adjustCaseSubmittedDateForPublicQueries(caseId, true);
     await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
       config.applicantCitizenUser, config.hearingCenterAdminWithRegionId1,
       PUBLIC_QUERY, true
