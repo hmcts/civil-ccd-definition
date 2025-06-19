@@ -7,6 +7,7 @@ const {RESPONDENT_SOLICITOR_QUERY, APPLICANT_SOLICITOR_QUERY,
 } = require('../../../fixtures/queryTypes');
 const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport.js');
 const {respondToQueryAdminTask} = require('../../../fixtures/wa/respondToQueryTasks');
+const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
 
 const claimType = 'SmallClaims';
 let caseId;
