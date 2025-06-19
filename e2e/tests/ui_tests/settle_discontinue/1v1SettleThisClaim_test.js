@@ -9,19 +9,23 @@ async function prepareClaimSpec(api_spec_small) {
  // await api_spec_small.claimantResponse(config.applicantSolicitorUser, true);
 }
 
-Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec @e2e-nightly-prod e2e-nightly-nonprod');
+Feature('Settle this Claim - Confirm marking as paid in full - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 spec Settle this Claim - Confirm marking as paid in full', async ({api_spec_small, LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimSpec(api_spec_small);
    // await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     caseNumber = await api_spec_small.getCaseId();
     await LRspec.setCaseId(caseNumber);
     addUserCaseMapping(caseNumber, config.applicantSolicitorUser);
+  }
 }).retry(2);
 
 Scenario('Confirm marking as paid in full', async ({LRspec}) => {
+  if (['preview', 'demo'].includes(config.runningEnv)) {
     await LRspec.login(config.applicantSolicitorUser);
     await LRspec.requestForSettleThisClaimForUI();
+    }
 }).retry(2);
 
 AfterSuite(async ({api_spec_small}) => {
@@ -29,7 +33,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - judges order - 1v1 - spec @e2e-nightly-prod e2e-nightly-nonprod');
+Feature('Settle this Claim - Reason for settlement - judges order - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 spec Reason for settlement - judges order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -53,7 +57,7 @@ AfterSuite(async ({api_spec_small}) => {
   await unAssignAllUsers();
 });
 
-Feature('Settle this Claim - Reason for settlement - Consent order - 1v1 - spec @e2e-nightly-prod e2e-nightly-nonprod');
+Feature('Settle this Claim - Reason for settlement - Consent order - 1v1 - spec @e2e-nightly-prod');
 
 Scenario('1v1 spec Reason for settlement - Consent order', async ({api_spec_small, LRspec}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
