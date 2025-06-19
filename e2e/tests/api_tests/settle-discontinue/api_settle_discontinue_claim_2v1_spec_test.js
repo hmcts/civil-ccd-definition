@@ -12,7 +12,7 @@ Scenario('Settle claim 2v1 scenario', async ({I, api_spec}) => {
     await api_spec.createCaseFlags(caseWorkerUser);
     await api_spec.manageCaseFlags(caseWorkerUser);
     await api_spec.settleClaimSelectClaimant(solicitorUser, 'YES');
-});
+}).tag('@api-prod @api-nonprod');
 
 Scenario('Discontinue claim 1v2 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';
@@ -30,7 +30,7 @@ Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
-});
+}).tag('@api-prod @api-nonprod');
 
 Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
@@ -38,7 +38,7 @@ Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
     await api_spec.validateDiscontinueClaimClaimant(caseWorkerUser, permission);
-});
+}).tag('@api-prod @api-nonprod');
 
 Scenario('Validate discontinue claim claimant 1v2 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_TWO';
