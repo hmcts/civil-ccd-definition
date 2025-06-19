@@ -1,6 +1,4 @@
 const { I } = inject();
-const config = require('../config.js');
-const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 module.exports = {
 
@@ -64,13 +62,8 @@ module.exports = {
     // Commented due to XUI bug
     // I.see('Caseworker');
     if (party) {
-      if (isTestEnv) {
-        I.see('All queries');
-        I.click('All queries');
-      } else {
-        I.see('Claimant Query');
-        I.click('Claimant Query');
-      }
+      I.see('Claimant Query');
+      I.click('Claimant Query');
       I.waitForText('Query details');
       I.see('Query details');
       I.see('This query was raised by Claimant.');
@@ -94,13 +87,8 @@ module.exports = {
     I.see('Response status');
     I.see('Awaiting Response');
     if (party) {
-      if (isTestEnv) {
-        I.see('All queries');
-        I.click('All queries');
-      } else {
-        I.see('Claimant Query');
-        I.click('Claimant Query');
-      }
+      I.see('Claimant Query');
+      I.click('Claimant Query');
       I.waitForText('Query details');
       I.see('Query details');
       I.see('This query was raised by Claimant.');
@@ -120,13 +108,8 @@ module.exports = {
     I.see('Response status');
     I.see('Awaiting Response');
     if (party) {
-      if (isTestEnv) {
-        I.see('All queries');
-        I.click('All queries');
-      } else {
-        I.see('Claimant Query');
-        I.click('Claimant Query');
-      }
+      I.see('Claimant Query');
+      I.click('Claimant Query');
       I.waitForText('Query details');
       I.see('Query details');
       I.see('This query was raised by Claimant.');
