@@ -97,7 +97,7 @@ const findPartyNameForQueryFromUserConfig = async (user) => {
     return 'Defendant';
   }
   return 'All queries';
-}
+};
 
 module.exports = {
     raiseLRQuery: async (caseId, user, queryType, isHearingRelated= true) => {
