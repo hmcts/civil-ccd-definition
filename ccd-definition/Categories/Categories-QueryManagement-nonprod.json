@@ -33,5 +33,19 @@
     "CategoryLabel": "Attachments",
     "DisplayOrder": "1",
     "ParentCategoryID": "DefendantQueryDocuments"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CategoryID": "CaseWorkerQueryDocuments",
+    "CategoryLabel": "CaseWorker",
+    "DisplayOrder": "3",
+    "ParentCategoryID": "QueryDocuments"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CategoryID": "CaseWorkerQueryDocumentsDocumentAttachments",
+    "CategoryLabel": "Uploaded documents",
+    "DisplayOrder": "1",
+    "ParentCategoryID": "CaseWorkerQueryDocuments"
   }
 ]
