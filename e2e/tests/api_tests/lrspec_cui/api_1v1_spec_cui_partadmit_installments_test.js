@@ -24,4 +24,4 @@ Before(async () => {
   await api_spec_cui.cleanUp();
     await deleteAccount(config.defendantCitizenUser2.email);
   });
-  
+
