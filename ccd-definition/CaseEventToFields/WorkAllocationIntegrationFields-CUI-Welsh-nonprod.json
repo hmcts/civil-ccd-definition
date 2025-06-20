@@ -175,5 +175,14 @@
     "DisplayContext": "READONLY",
     "PageID": "WAIntegrationFields",
     "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_RESPONSE_SEALED",
+    "CaseFieldID": "preTranslationDocumentType",
+    "PageFieldDisplayOrder": 24,
+    "DisplayContext": "READONLY",
+    "PageID": "WAIntegrationFields",
+    "Publish": "Y"
   }
 ]

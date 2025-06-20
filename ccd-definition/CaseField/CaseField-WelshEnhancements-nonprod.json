@@ -99,5 +99,13 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1OriginalDqDoc",
+    "Label": " ",
+    "FieldType": "CaseDocument",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
