@@ -46,9 +46,9 @@ wa:
       environment:
         WA_TASK_MANAGEMENT_API_URL: http://{{ .Release.Name }}-wa-task-management-api
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
-
   wa-task-management-api:
     java:
+      ingressHost: wa-task-management-api-${SERVICE_FQDN}
       environment:
         ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
         POSTGRES_CONNECTION_OPTIONS: "?stringtype=unspecified"
