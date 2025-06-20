@@ -57,6 +57,17 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "claimFixedCostsExist",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "READONLY",
+    "PageID": "FixedCost",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
     "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
     "PageDisplayOrder": 5,
     "PageFieldDisplayOrder": 9,
@@ -74,6 +85,6 @@
     "DisplayContext": "READONLY",
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" OR fixedCosts.claimFixedCosts =\"Yes\""
+    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" OR claimFixedCostsExist=\"Yes\""
   }
 ]

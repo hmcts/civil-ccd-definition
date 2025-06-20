@@ -5,7 +5,7 @@
     "CaseFieldID": "fixedCosts",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 12,
-    "DisplayContext": "COMPLEX",
+    "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
     "RetainHiddenValue": "Y"
