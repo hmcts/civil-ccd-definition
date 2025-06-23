@@ -125,6 +125,7 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled @api-ni
 Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps
 }) => {
   await prepareClaimLiPvLR(api_spec_cui, noc, true);
+  await adjustCaseSubmittedDateForPublicQueries(caseId, true);
   await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
     config.applicantCitizenUser, config.ctscAdminUser,
     PUBLIC_QUERY, false
