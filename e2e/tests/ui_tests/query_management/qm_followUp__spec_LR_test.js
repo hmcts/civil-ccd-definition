@@ -6,7 +6,7 @@ const claimAmountIntermediate = '99000';
 const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 
-Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft');
+Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft @e2e-nightly-prod');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
@@ -21,21 +21,21 @@ Scenario('Claimant Follow up a query', async ({ api_spec, I, qmSteps }) => {
   const query = await qmSteps.raiseLRQuery(caseId, config.applicantSolicitorUser, APPLICANT_SOLICITOR_QUERY, false);
   await qmSteps.respondToQuery(caseId, config.ctscAdminUser, query, APPLICANT_SOLICITOR_QUERY);
   await I.login(config.applicantSolicitorUser);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.raiseFollowUpQuestionAndVerify(true);
 });
 
 Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyFollowUpQuestionAsCaseWorker(true);
 });
 
 Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
-  await I.amOnPage(config.url.manageCase + '/cases/case-details/' + caseId);
+  await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyFollowUpQuestionAsJudge(true);
 });

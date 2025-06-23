@@ -49,6 +49,7 @@ import ClaimValuePage from './unspec/claim-value/claim-value-page';
 import ClaimantLitigationFriendPage from './unspec/claimant-litigation-friend/claimant-litigation-friend-page';
 import ClaimantSolicitorServiceAddressPage from './unspec/claimant-solicitor-service-address/claimant-solicitor-service-address-page';
 import ConfirmCreateClaimPage from './unspec/confirm-create-claim/confirm-create-claim-page';
+import ConfirmCreateClaimLIPPage from './unspec/confirm-create-claim-LIP/confirm-create-claim-LIP-page';
 import CourtPage from './unspec/court/court-page';
 import DefendantSolicitorEmailPage from './unspec/defendant-solicitor-email/defendant-solicitor-email-page';
 import DefendantSolicitorOrganisationPage from './unspec/defendant-solicitor-organisation/defendant-solicitor-organisation-page';
@@ -447,5 +448,9 @@ export default class CreateClaimPageFactory extends BasePageFactory {
 
   get confirmCreateClaimSpecPage() {
     return new ConfirmCreateClaimSpecPage(this.page);
+  }
+
+  get confirmCreateClaimLIPPage() {
+    return new ConfirmCreateClaimLIPPage(this.page);
   }
 }

@@ -1067,14 +1067,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ResponseDate",
-    "Label": "Defendant response date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ResponseDate",
     "Label": "Defendant 2 response date",
     "FieldType": "DateTime",
