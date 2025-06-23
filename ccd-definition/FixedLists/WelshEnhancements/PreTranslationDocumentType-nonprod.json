@@ -17,9 +17,15 @@
     "DisplayOrder": 3
   },
   {
-     "ID": "PreTranslationDocumentType",
+    "ID": "PreTranslationDocumentType",
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
-      "DisplayOrder": 4
+     "DisplayOrder": 4
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "LIP_CLAIMANT_DQ",
+    "ListElement": "Claimant Dq",
+    "DisplayOrder": 5
   }
 ]
