@@ -18,14 +18,26 @@
   },
   {
     "ID": "PreTranslationDocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
+    "ListElement": "Decision on reconsideration request",
+    "DisplayOrder": 4
+  },
+  {
+     "ID": "PreTranslationDocumentType",
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
-     "DisplayOrder": 4
+    "DisplayOrder": 5
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "DEFENDANT_SEALED_CLAIM_FORM_FOR_LIP_VS_LR",
+    "ListElement": "Defendant sealed claim form",
+    "DisplayOrder": 6
   },
   {
     "ID": "PreTranslationDocumentType",
     "ListElementCode": "LIP_CLAIMANT_DQ",
     "ListElement": "Claimant Dq",
-    "DisplayOrder": 5
+    "DisplayOrder": 7
   }
 ]
