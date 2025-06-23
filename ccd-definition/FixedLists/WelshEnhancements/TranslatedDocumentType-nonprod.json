@@ -3,30 +3,30 @@
     "ID": "TranslatedDocumentType",
     "ListElementCode": "STANDARD_DIRECTION_ORDER",
     "ListElement": "Standard Direction Order",
-    "DisplayOrder": 5
+    "DisplayOrder": 4
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "INTERLOCUTORY_JUDGMENT",
     "ListElement": "Interlocutory Judgment",
-    "DisplayOrder": 6
+    "DisplayOrder": 5
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "MANUAL_DETERMINATION",
     "ListElement": "Manual Determination Document",
-    "DisplayOrder": 7
+    "DisplayOrder": 6
   },
   {
     "ID": "TranslatedDocumentType",
     "ListElementCode": "SETTLEMENT_AGREEMENT",
     "ListElement": "Settlement Agreement",
-    "DisplayOrder": 8
+    "DisplayOrder": 7
   },
   { "ID": "TranslatedDocumentType",
     "ListElementCode": "NOTICE_OF_DISCONTINUANCE_DEFENDANT",
     "ListElement": "Notice Of Discontinuance Defendant Document",
-    "DisplayOrder": 10
+    "DisplayOrder": 8
   },
   {
     "ID": "TranslatedDocumentType",
@@ -42,8 +42,14 @@
   },
   {
     "ID": "TranslatedDocumentType",
+    "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
+    "ListElement": "Decision on reconsideration request",
+    "DisplayOrder": 11
+  },
+ {
+    "ID": "TranslatedDocumentType",
     "ListElementCode": "HEARING_NOTICE",
     "ListElement": "Hearing Notice",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   }
 ]
