@@ -10,7 +10,7 @@ def type = "nodejs"
 def product = "civil"
 def component = "ccd"
 def camundaBranch = "master"
-def dmnBranch = "CIV-17280-send-reply-public-query"
+def dmnBranch = "master"
 def waStandaloneBranch = "master"
 
 def yarnBuilder = new uk.gov.hmcts.contino.YarnBuilder(this)
@@ -180,7 +180,7 @@ def getCivilServiceImage() {
   for (label in githubApi.getLabelsbyPattern(env.BRANCH_NAME, "civilServicePr:") ) {
     return "pr-" + label.minus("civilServicePr:").trim()
   }
-  return "pr-6642"
+  return "latest"
 }
 
 withPipeline(type, product, component) {
