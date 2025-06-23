@@ -126,11 +126,11 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightl
 }) => {
   await prepareClaimLiPvLR(api_spec_cui, noc, true);
   await adjustCaseSubmittedDateForPublicQueries(caseId, true);
-  await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
-    config.applicantCitizenUser, config.ctscAdminUser,
-    PUBLIC_QUERY, false
-  );
   if (isTestEnv) {
+    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+      config.applicantCitizenUser, config.ctscAdminUser,
+      PUBLIC_QUERY, false
+    );
     await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
       config.defendantSolicitorUser, config.ctscAdminUser,
       PUBLIC_QUERY, false
@@ -180,9 +180,14 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLRvLiPExui(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
+    await adjustCaseSubmittedDateForPublicQueries(caseId, true);
     if (isTestEnv) {
       await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
         config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+        PUBLIC_QUERY, true
+      );
+      await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+        config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
         PUBLIC_QUERY, true
       );
     } else {
@@ -191,10 +196,6 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
         APPLICANT_SOLICITOR_QUERY, true
       );
     }
-    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
-      config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
-      PUBLIC_QUERY, true
-    );
     await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
     await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api_spec_cui.amendHearingDueDate(config.systemupdate);
