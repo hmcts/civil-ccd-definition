@@ -81,7 +81,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
-    "CaseFieldID": "applicant1DQLanguage",
+    "CaseFieldID": "preTranslationDocumentType",
     "PageFieldDisplayOrder": 10,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
