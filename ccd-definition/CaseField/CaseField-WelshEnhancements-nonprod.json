@@ -86,6 +86,22 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "bilingualHint",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "bilingualHintTextNotification",
+    "Label": "<h2>A party in this case has expressed a Welsh language preference. Delays to visibility of documents could be caused during translation processes</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1OriginalDqDoc",
     "Label": " ",
     "FieldType": "CaseDocument",
