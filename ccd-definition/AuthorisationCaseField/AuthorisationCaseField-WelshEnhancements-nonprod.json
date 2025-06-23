@@ -223,6 +223,30 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "bilingualHint",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "bilingualHintTextNotification",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "judge-profile"
+        ],
+        "CRUD": "CRU"
+        }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1OriginalDqDoc",
     "AccessControl": [
       {
