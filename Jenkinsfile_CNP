@@ -98,10 +98,6 @@ def checkForPrValuesLabel(branch_name, label) {
   return new GithubAPI(this).getLabelsbyPattern(branch_name, "pr-values:" + label).contains("pr-values:" + label)
 }
 
-def checkForRunFailedTestFiles(branch_name) {
-    return new GithubAPI(this).getLabelsbyPattern(branch_name, "runFailedTestFiles").contains("runFailedTestFiles")
-}
-
 def createGithubRelease() {
   sh """
     set -e
@@ -283,11 +279,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:preview') {
     env.IDAM_STUB_ENABLED = 'false'
-    if(checkForRunFailedTestFiles(env.BRANCH_NAME)) {
-      echo "GitHub label: 'runFailedTestFiles' currently on PR"
-      copyPrevFailedAndNotExecutedTestFilesJson();
-      env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES = true
-    }
+    copyPrevFailedAndNotExecutedTestFilesJson();
   }
 
   afterAlways('functionalTest:preview') {
@@ -322,6 +314,7 @@ withPipeline(type, product, component) {
 
   before('functionalTest:aat') {
     env.IDAM_STUB_ENABLED = 'false'
+    copyPrevFailedAndNotExecutedTestFilesJson();
   }
 
   afterAlways('smoketest:aat') {
