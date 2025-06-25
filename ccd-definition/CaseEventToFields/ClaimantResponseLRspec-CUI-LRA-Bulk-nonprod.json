@@ -50,7 +50,7 @@
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 3,
     "DisplayContext": "READONLY",
-    "PageID": "FixedCost",
+    "PageID": "RespondentResponse",
     "ShowSummaryChangeOption": "N",
     "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
