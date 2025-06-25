@@ -2,41 +2,41 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.56
+version: 0.0.57
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: postgresql
     version: 1.0.2
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.67
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.84
+    repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: civil-general-applications
-    version: 0.0.64
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.72
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-general-applications.enabled
   - name: ccd
-    version: 9.2.1
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 9.2.2
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-ccd-stack.enabled
   - name: xui-webapp
-    version: ~1.0.8
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~1.0.31
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: xui-webapp.enabled
   - name: aac-manage-case-assignment
-    version: ~0.2.9
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.2.19
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: aac-manage-case-assignment.enabled
   - name: idam-pr
     version: 2.3.0
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: idam-pr.enabled
   - name: camunda-bpm
-    version: 0.0.44
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 0.0.48
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: camunda-bpm.enabled
   - name: servicebus
     version: 1.1.0
@@ -49,34 +49,34 @@ dependencies:
     condition: civil-wa.enabled
 # CCD message publisher
   - name: ccd-message-publisher
-    version: ~0.1.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: ~0.1.22
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-events-topic.enabled
   - name: ts-translation-service
     version: 0.1.7
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-translation.enabled
 
   # To remove unused definitions
   - name: ccd-def-cleanup
     version: ~9.0.4
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-def-cleanup.enabled
   - name: am-org-role-mapping-service
     version: ~0.0.58
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: am-org-role-mapping-service.enabled
 
 # Stiching
   - name: ccd-case-document-am-api
-    version: 1.7.14
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 1.7.17
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-case-document-am-api.enabled
   - name: em-ccdorc
-    version: 2.0.25
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 2.1.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: em-ccdorc.enabled
   - name: em-stitching
-    version: 1.0.55
-    repository: 'https://hmctspublic.azurecr.io/helm/v1/repo/'
+    version: 1.1.0
+    repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: em-stitching.enabled

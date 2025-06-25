@@ -13,8 +13,7 @@
     "CaseStateID": "CASE_SETTLED",
     "UserRoles": [
       "caseworker-ras-validation",
-      "GS_profile",
-      "CITIZEN-DEFENDANT-PROFILE"
+      "GS_profile"
     ],
     "CRUD": "R"
   },

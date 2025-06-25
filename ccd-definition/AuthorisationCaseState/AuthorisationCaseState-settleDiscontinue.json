@@ -23,30 +23,14 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseStateID": "CASE_DISCONTINUED",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-solicitor",
-          "caseworker-civil-admin",
-          "caseworker-civil-staff",
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "CITIZEN-DEFENDANT-PROFILE"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseStateID": "DECISION_OUTCOME",
     "UserRoles": [
-      "APP-SOL-UNSPEC-PROFILE",
-      "APP-SOL-SPEC-PROFILE"
+      "caseworker-civil-solicitor",
+      "caseworker-civil-admin",
+      "caseworker-civil-staff",
+      "caseworker-civil-systemupdate",
+      "citizen-profile",
+      "CITIZEN-DEFENDANT-PROFILE",
+      "CITIZEN-CLAIMANT-PROFILE"
     ],
     "CRUD": "CRU"
   }

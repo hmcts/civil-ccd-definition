@@ -374,6 +374,21 @@ module.exports = {
           SingleResponse2v1: {
             defendantSingleResponseToBothClaimants: 'Yes'
           },
+          RequestedCourtLocationLRspec: {
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement(config.defendantSelectedCourt)
+                ],
+                value: listElement(config.defendantSelectedCourt)
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
+            }
+          },
           RespondentResponseTypeSpec: {
             respondent1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
             claimant1ClaimResponseTypeForSpec: 'FULL_ADMISSION',
