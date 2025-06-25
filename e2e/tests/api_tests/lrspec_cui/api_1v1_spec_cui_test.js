@@ -185,13 +185,12 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
 }).tag('@wa-task @QM @api-prod');
 
 Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await  prepareClaimLRvLiPExui(api_spec_cui, false, 'Request for reconsideration track');
     await api_spec_cui.createSDO(config.tribunalCaseworkerWithRegionId4);
     await api_spec_cui.requestForReconsiderationCitizen(config.defendantCitizenUser2);
     await api_spec_cui.judgeDecisionOnReconsiderationRequest(config.judgeUserWithRegionId1, 'CREATE_SDO');
-  }
-});
+
+}).tag('@api-nightly-prod');
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
