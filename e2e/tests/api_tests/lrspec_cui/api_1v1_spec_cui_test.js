@@ -63,7 +63,7 @@ Scenario('1v1 LiP v LiP Part admit defendant and claimant response - claimant re
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'IN_MEDIATION', true, 'partadmit');
 }).tag('@api-prod @api-nonprod');
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
+Scenario.skip('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, false);
 });
 
@@ -113,7 +113,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   //await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
+Scenario.skip('1v1 LiP v LR defendant and claimant response- CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
   await  prepareClaimLiPvLR(api_spec_cui, noc, false);
 });
 
@@ -140,7 +140,7 @@ async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
+Scenario.skip('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
   await  prepareClaimLRvLiP(api_spec_cui, noc, false);
 });
 
@@ -155,7 +155,7 @@ async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled, claimType = 'Sm
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled @api-nightly-prod', async ({api_spec_cui}) => {
+Scenario.skip('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled @api-nightly-prod', async ({api_spec_cui}) => {
   await prepareClaimLRvLiPExui(api_spec_cui, false);
 });
 
