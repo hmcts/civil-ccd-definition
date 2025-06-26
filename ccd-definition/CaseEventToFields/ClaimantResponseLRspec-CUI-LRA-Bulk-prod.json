@@ -31,6 +31,17 @@
     "PageID": "RespondentResponse",
     "FieldShowCondition": "showResponseOneVOneFlag=\"ONE_V_ONE_PART_ADMIT_PAY_INSTALMENT\"",
     "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
+    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
+    "PageDisplayOrder": 5,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" "
   }
 ]
 
