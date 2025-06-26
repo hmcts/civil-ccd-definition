@@ -142,7 +142,7 @@ withNightlyPipeline(type, product, component) {
   env.CCD_UI_TESTS = true
   env.RUN_WA_API_TEST = params.ENVIRONMENT == 'preview' ? false : true
   overrideVaultEnvironments([
-  'aat': params.ENVIRONMENT == 'preview' ? 'aat' : 'demo'
+    'aat': params.ENVIRONMENT == 'preview' ? 'aat' : params.ENVIRONMENT
   ])
   loadVaultSecrets(secrets)
 
