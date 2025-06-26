@@ -1,8 +1,8 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { heading } from './defendant-solicitor-service-address-content';
+import { heading, radioButtons } from './defendant-solicitor-service-address-content';
 import ServiceAddressFragment from '../../../../fragments/service-address/service-address-fragment';
 
 @AllMethodsStep()
@@ -17,6 +17,8 @@ export default class DefendantSolicitorServiceAddressPage extends ExuiPage(BaseP
   async verifyContent() {
     await super.runVerifications([
       super.expectHeading(heading),
+      super.expectLegend(radioButtons.addressRequired.label),
+      super.expectText(radioButtons.addressRequired.hintText),
       this.serviceAddressFragment.verifyContent(),
     ]);
   }

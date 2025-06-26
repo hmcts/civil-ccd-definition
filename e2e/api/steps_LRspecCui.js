@@ -272,6 +272,10 @@ module.exports = {
       console.log('SmallClaim...');
       payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
     }
+    if (claimType === 'SmallClaimPartAdmit') {
+      console.log('SmallClaim part admit lip defendant response...');
+      payload = defendantResponse.createDefendantResponseSmallClaimPartAdmitCarm();
+    }
     if (claimType === 'INTERMEDIATE') {
       console.log('Intermediate lip defendant response...');
       payload = defendantResponse.createDefendantResponseIntermediateTrack();
@@ -290,6 +294,9 @@ module.exports = {
   performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled, typeOfData) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
     let payload = lipClaimantResponse.claimantResponse(carmEnabled, typeOfData);
+    if (typeOfData === 'partadmit') {
+      payload = lipClaimantResponse.claimantResponsePartAdmitRejectCarm();
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);

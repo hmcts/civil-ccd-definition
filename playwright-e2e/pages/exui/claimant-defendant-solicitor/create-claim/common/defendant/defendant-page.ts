@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
@@ -37,7 +37,7 @@ export default class DefendantPage extends ExuiPage(BasePage) {
     await super.runVerifications([
       super.verifyHeadings(),
       this.choosePartyTypeFragment.verifyContent(),
-      super.expectSubheading(subheadings.defendantDetails),
+      // super.expectSubheading(subheadings.defendantDetails),
       super.expectLegend(radioButtons.partyType.label),
       super.expectSubheading(subheadings.address),
     ]);

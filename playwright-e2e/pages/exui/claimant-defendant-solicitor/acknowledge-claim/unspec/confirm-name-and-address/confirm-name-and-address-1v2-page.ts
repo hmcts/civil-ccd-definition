@@ -2,11 +2,12 @@ import BasePage from '../../../../../../base/base-page.ts';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps.ts';
 import ExuiPage from '../../../../exui-page/exui-page.ts';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data.ts';
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types.ts';
 import partys from '../../../../../../constants/partys.ts';
 import { inputs, heading } from './confirm-name-and-address-content.ts';
 import DateOfBirthFragment from '../../../../fragments/date/date-of-birth-fragment.ts';
+import { getFormattedCaseId } from '../../../../exui-page/exui-content.ts';
 
 @AllMethodsStep()
 export default class ConfirmNameAndAddress1v2Page extends ExuiPage(BasePage) {
@@ -20,7 +21,7 @@ export default class ConfirmNameAndAddress1v2Page extends ExuiPage(BasePage) {
   async verifyContent(ccdCaseData: CCDCaseData) {
     await super.runVerifications([
       super.expectHeading(heading),
-      super.expectHeading(ccdCaseData.id),
+      super.expectHeading(getFormattedCaseId(ccdCaseData.id)),
       super.expectHeading(ccdCaseData.caseNamePublic),
       super.expectText(inputs.dateOfBirth.label, { count: 2 }),
     ]);

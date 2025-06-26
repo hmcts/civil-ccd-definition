@@ -1067,14 +1067,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ResponseDate",
-    "Label": "Defendant response date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ResponseDate",
     "Label": "Defendant 2 response date",
     "FieldType": "DateTime",
@@ -1125,8 +1117,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1ServiceAddressRequired",
-    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
-    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
+    "HintText": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1142,8 +1134,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2ServiceAddressRequired",
-    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
-    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
+    "HintText": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2593,7 +2585,15 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1AddressLabel",
-    "Label": "Defendant's legal representative's correspondence address",
+    "Label": "Defendant legal representative’s address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentSolicitor2AddressLabel",
+    "Label": "Defendant legal representative’s address",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -3382,9 +3382,41 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "documentToKeepCollection",
-    "Label": "Documents to keep",
+    "Label": "Document",
     "FieldType": "Collection",
     "FieldTypeParameter": "documentToKeep",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "headingDefendantResponse",
+    "Label": "## Defendant response",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsApp",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes1",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes2",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
     "SecurityClassification": "Public",
     "Searchable": "N"
   }

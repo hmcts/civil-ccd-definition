@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { Party } from '../../../../models/partys';
 import ExuiPage from '../../exui-page/exui-page';
