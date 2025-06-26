@@ -213,7 +213,7 @@ withNightlyPipeline(type, product, component) {
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
        sh """
-        echo "S2S_SECRET: civil-${env}"
+        echo "S2S_SECRET: ${S2S_SECRET}"
         """
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
