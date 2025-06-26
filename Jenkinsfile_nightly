@@ -149,10 +149,6 @@ withNightlyPipeline(type, product, component) {
   boolean runPrevFailedAndNotExecutedTestFiles = env.RUN_PREV_FAILED_AND_NOT_EXECUTED_TEST_FILES.toBoolean();
   boolean playwrightRunSetup = env.PLAYWRIGHT_RUN_SETUP.toBoolean();
 
-  sh """
-   "echo S2S_SECRET: ${env.S2S_SECRET}"
-  """
-
   if(!runPrevFailedAndNotExecutedTestFiles && !forceGreenBuild) {
     // afterAlways('DependencyCheckNightly') {
     //   stage('Playwright test setup') {
@@ -216,6 +212,9 @@ withNightlyPipeline(type, product, component) {
   
   if(!forceGreenBuild) {
     before('fullFunctionalTest') {
+       sh """
+        "echo S2S_SECRET: ${env.S2S_SECRET}"
+        """
       if(runPrevFailedAndNotExecutedTestFiles) {
         copyPrevFailedAndNotExecutedTestFilesJson()
       }
