@@ -33,5 +33,11 @@
     "ListElementCode": "DEFENDANT_SEALED_CLAIM_FORM_FOR_LIP_VS_LR",
     "ListElement": "Defendant sealed claim form",
     "DisplayOrder": 6
+  },
+  {
+    "ID": "PreTranslationDocumentType",
+    "ListElementCode": "LIP_CLAIMANT_DQ",
+    "ListElement": "Claimant Dq",
+    "DisplayOrder": 7
   }
 ]
