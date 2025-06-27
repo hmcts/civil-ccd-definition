@@ -7,7 +7,7 @@ module.exports = {
     if (publicQueriesEnabled) {
       console.log('public queries enabled, updating submitted date');
       await apiRequest.setupTokens(config.systemupdate);
-      const submittedDate = {'submittedDate':'2025-09-10T00:12:50'};
+      const submittedDate = {'submittedDate':'2025-09-18T00:12:50'};
       await testingSupport.updateCaseData(caseId, submittedDate);
       console.log('submitted date update to after qm date');
     }
