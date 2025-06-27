@@ -30,5 +30,16 @@
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimInterest =\"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" "
   }
 ]
