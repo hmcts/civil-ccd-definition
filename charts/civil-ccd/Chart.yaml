@@ -2,20 +2,20 @@ apiVersion: v2
 description: A Helm chart for civil-ccd App
 name: civil-ccd
 home: https://github.com/hmcts/civil-ccd-definition
-version: 0.0.57
+version: 0.0.58
 maintainers:
   - name: HMCTS Civil team
 
 dependencies:
   - name: postgresql
-    version: 1.0.2
+    version: 1.1.0
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: postgresql.enabled
   - name: civil-service
-    version: 0.0.84
+    version: 0.0.87
     repository: 'oci://hmctspublic.azurecr.io/helm'
   - name: civil-general-applications
-    version: 0.0.72
+    version: 0.0.73
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-general-applications.enabled
   - name: ccd
@@ -39,7 +39,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: camunda-bpm.enabled
   - name: servicebus
-    version: 1.1.0
+    version: 1.2.1
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: servicebus.enabled
 # WA
@@ -53,7 +53,7 @@ dependencies:
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: ccd-events-topic.enabled
   - name: ts-translation-service
-    version: 0.1.7
+    version: 0.1.9
     repository: 'oci://hmctspublic.azurecr.io/helm'
     condition: civil-translation.enabled
 
