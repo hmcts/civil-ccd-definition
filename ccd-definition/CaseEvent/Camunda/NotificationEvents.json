@@ -288,7 +288,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_EVENT",
-    "Name": "Notify relevant parties",
+    "Name": "Notified relevant parties",
     "Description": "Notification event",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",

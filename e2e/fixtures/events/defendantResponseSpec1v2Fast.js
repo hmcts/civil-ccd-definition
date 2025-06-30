@@ -212,6 +212,21 @@ module.exports = {
               camundaEvent: camundaEvent
             },
           },
+          RequestedCourtLocationLRspec: {
+            respondToCourtLocation: {
+              responseCourtLocations: {
+                list_items: [
+                  listElement(defendantCourt)
+                ],
+                value: listElement(defendantCourt)
+              },
+              reasonForHearingAtSpecificCourt: 'Reasons'
+            },
+            respondent1DQRemoteHearingLRspec: {
+              remoteHearingRequested: 'Yes',
+              reasonForRemoteHearing: 'Some reason'
+            }
+          }, 
           defenceRoute: {
             specPaidLessAmountOrDisputesOrPartAdmission: 'No',
           },
