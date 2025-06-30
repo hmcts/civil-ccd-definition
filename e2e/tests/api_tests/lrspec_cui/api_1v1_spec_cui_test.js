@@ -2,13 +2,17 @@
 
 const config = require('../../../config.js');
 const {createAccount, deleteAccount} = require('../../../api/idamHelper');
-const {APPLICANT_CITIZEN_QUERY, RESPONDENT_CITIZEN_QUERY, RESPONDENT_SOLICITOR_QUERY, APPLICANT_SOLICITOR_QUERY} = require('../../../fixtures/queryTypes');
+const {RESPONDENT_SOLICITOR_QUERY, APPLICANT_SOLICITOR_QUERY,
+  PUBLIC_QUERY
+} = require('../../../fixtures/queryTypes');
 const {checkLRQueryManagementEnabled} = require('../../../api/testingSupport.js');
 const {respondToQueryAdminTask} = require('../../../fixtures/wa/respondToQueryTasks');
+const {adjustCaseSubmittedDateForPublicQueries} = require('../../../helpers/lipQueriesHelper');
 
 const claimType = 'SmallClaims';
 let caseId;
 let isQueryManagementEnabled = false;
+const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 
 Feature('CCD 1v1 API test @api-spec-cui @api-nonprod');
@@ -71,13 +75,14 @@ Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
+    await adjustCaseSubmittedDateForPublicQueries(caseId, true);
     await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
       config.applicantCitizenUser, config.hearingCenterAdminWithRegionId1,
-      APPLICANT_CITIZEN_QUERY, true
+      PUBLIC_QUERY, true
     );
     await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
       config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
-      RESPONDENT_CITIZEN_QUERY, true
+      PUBLIC_QUERY, true
     );
     await api_spec_cui.evidenceUploadApplicant(config.applicantCitizenUser);
     await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
@@ -112,14 +117,22 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
 Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps
 }) => {
   await prepareClaimLiPvLR(api_spec_cui, noc, true);
-  await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
-    config.applicantCitizenUser, config.ctscAdminUser,
-    APPLICANT_CITIZEN_QUERY, false
-  );
-  await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-    config.defendantSolicitorUser, config.ctscAdminUser,
-    RESPONDENT_SOLICITOR_QUERY, false
-  );
+  await adjustCaseSubmittedDateForPublicQueries(caseId, true);
+  if (isTestEnv) {
+    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+      config.applicantCitizenUser, config.ctscAdminUser,
+      PUBLIC_QUERY, false
+    );
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      PUBLIC_QUERY, false
+    );
+  } else {
+    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      RESPONDENT_SOLICITOR_QUERY, false
+    );
+  }
 }).tag('@QM');
 
 async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
@@ -151,14 +164,22 @@ Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLRvLiPExui(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
-      APPLICANT_SOLICITOR_QUERY, true
-    );
-    await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
-      config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
-      RESPONDENT_CITIZEN_QUERY, true
-    );
+    await adjustCaseSubmittedDateForPublicQueries(caseId, true);
+    if (isTestEnv) {
+      await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+        config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+        PUBLIC_QUERY, true
+      );
+      await raiseRespondAndFollowUpToLipQueriesScenario(qmSteps, caseId,
+        config.defendantCitizenUser2, config.hearingCenterAdminWithRegionId1,
+        PUBLIC_QUERY, true
+      );
+    } else {
+      await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
+        config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
+        APPLICANT_SOLICITOR_QUERY, true
+      );
+    }
     await api_spec_cui.evidenceUploadDefendant(config.defendantCitizenUser2);
     await api_spec_cui.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
     await api_spec_cui.amendHearingDueDate(config.systemupdate);
