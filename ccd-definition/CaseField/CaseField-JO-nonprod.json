@@ -387,7 +387,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondentPayImmediatelyTextAfterDateLrJBA",
+    "ID": "respondentPayImmediatelyTextAfterDate",
     "Label": "Any cheques or transfers should be clear in your account.<p>You need to tell us if you’ve settled the claim, for example because the defendant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven’t been paid.</h3></p><p>If the defendant has not paid you, you can request a County Court Judgment by selecting 'Request Judgment by Admission' from the 'Next Step' drop down list.</p>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
