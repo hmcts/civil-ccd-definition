@@ -30,7 +30,8 @@
       "caseworker-civil-systemupdate",
       "citizen-profile",
       "CITIZEN-DEFENDANT-PROFILE",
-      "CITIZEN-CLAIMANT-PROFILE"
+      "CITIZEN-CLAIMANT-PROFILE",
+      "judge-profile"
     ],
     "CRUD": "CRU"
   }
