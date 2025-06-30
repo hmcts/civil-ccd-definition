@@ -78,7 +78,7 @@ Scenario('Manage contact information', async ({api}) => {
   await api.manageDefendant1LROrgDetails(config.defendantSolicitorUser);
 });
 
-Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
+Scenario('Claimant queries', async ({api, qmSteps}) => {
   if (isTestEnv) {
     await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
       config.applicantSolicitorUser, config.hearingCenterAdminWithRegionId1,
@@ -92,7 +92,7 @@ Scenario.skip('Claimant queries', async ({api, qmSteps}) => {
   }
 });
 
-Scenario.skip('Defendant queries', async ({api, qmSteps}) => {
+Scenario('Defendant queries', async ({api, qmSteps}) => {
   if (isTestEnv) {
     await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, await api.getCaseId(),
       config.defendantSolicitorUser, config.ctscAdminUser,
