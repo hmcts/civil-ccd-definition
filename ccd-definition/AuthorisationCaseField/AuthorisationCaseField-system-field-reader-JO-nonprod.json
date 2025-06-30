@@ -1,0 +1,8 @@
+[
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondentPayImmediatelyTextAfterDateLrJBA",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  }
+]
