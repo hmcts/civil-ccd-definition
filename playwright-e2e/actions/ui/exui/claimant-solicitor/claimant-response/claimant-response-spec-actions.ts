@@ -95,13 +95,25 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async dqSmallTrack() {
+  async smallClaimExperts2v1() {
+    const { smallClaimExperts2v1Page } = this.claimantResponsePageFactory;
+    await smallClaimExperts2v1Page.verifyContent(this.ccdCaseData);
+    await smallClaimExperts2v1Page.selectYesExperts();
+    await smallClaimExperts2v1Page.enterExpertDetails();
+    await smallClaimExperts2v1Page.submit();
+  }
+
+  @Step(classKey)
+  async smallClaimExperts() {
     const { smallClaimExpertsPage } = this.claimantResponsePageFactory;
     await smallClaimExpertsPage.verifyContent(this.ccdCaseData);
     await smallClaimExpertsPage.selectYesExperts();
     await smallClaimExpertsPage.enterExpertDetails();
     await smallClaimExpertsPage.submit();
+  }
 
+  @Step(classKey)
+  async dqSmallTrack() {
     const { determinationWithoutHearingPage } = this.claimantResponsePageFactory;
     await determinationWithoutHearingPage.verifyContent(this.ccdCaseData);
     await determinationWithoutHearingPage.selectYes();
@@ -157,15 +169,6 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
     await this.applicantCourtLocationLRSpec();
     await this.hearingSupport();
     await this.vulnerabilityQuestions();
-  }
-
-  @Step(classKey)
-  async smallClaimExperts2v1() {
-    const { smallClaimExperts2v1Page } = this.claimantResponsePageFactory;
-    await smallClaimExperts2v1Page.verifyContent(this.ccdCaseData);
-    await smallClaimExperts2v1Page.selectYesExperts();
-    await smallClaimExperts2v1Page.enterExpertDetails();
-    await smallClaimExperts2v1Page.submit();
   }
 
   @Step(classKey)

@@ -41,10 +41,12 @@ export default class LoginPage extends BasePage {
     await super.retryAction(
       async () => this.login(user),
       async () => {
-        if (!user.wa) await super.expectUrlEnd('/cases');
+        if (!user.wa)
+          await super.expectUrlEnd('/cases', { timeout: config.exui.pageSubmitTimeout });
         else
           await super.expectUrlEnd('/work/my-work/list', {
             message: `User: ${user.email} has WA enabled`,
+            timeout: config.exui.pageSubmitTimeout,
           });
       },
       async () => {

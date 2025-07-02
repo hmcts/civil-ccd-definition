@@ -35,7 +35,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async waitForFinishedBusinessProcess(user: User, caseId: number) {
-    console.log(`Waiting for business process to finish, caseId: ${caseId}...`);
+    console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
@@ -79,7 +79,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
-    console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}...`);
+    console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/assign-case/${caseId}/${caseRole}`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),

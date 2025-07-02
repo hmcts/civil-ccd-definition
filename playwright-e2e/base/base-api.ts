@@ -90,8 +90,8 @@ export default abstract class BaseApi extends BaseTestData {
   }
 
   protected async setDebugTestData() {
-    if (config.debugCaseID) {
-      await this.fetchAndSetCCDCaseData(config.debugCaseID);
+    if (config.debugCaseId) {
+      await this.fetchAndSetCCDCaseData(config.debugCaseId);
       super.setClaimantDefendantPartyTypes();
       super.setActiveCaseFlags();
     }

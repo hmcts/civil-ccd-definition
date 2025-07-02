@@ -22,6 +22,11 @@ export default class RespondentResponseType2v1SpecPage extends ExuiPage(BasePage
     await super.clickBySelector(radioButtons.fullDefence.selector(partys.CLAIMANT_2));
   }
 
+  async selectDifferentResponse() {
+    await super.clickBySelector(radioButtons.partAdmit.selector(partys.CLAIMANT_1));
+    await super.clickBySelector(radioButtons.counterClaim.selector(partys.CLAIMANT_2));
+  }
+
   async submit() {
     await super.retryClickSubmit();
   }

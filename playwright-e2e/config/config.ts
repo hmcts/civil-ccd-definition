@@ -9,7 +9,7 @@ const config = {
   runSetup: process.env.PLAYWRIGHT_RUN_SETUP === 'true',
   runAxeTests: process.env.PLAYWRIGHT_RUN_ACCESSIBILITY_TESTS === 'true',
   unassignCases: process.env.PLAYWRIGHT_UNASSIGN_CASES === 'true',
-  debugCaseID: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
+  debugCaseId: parseInt(process.env.PLAYWRIGHT_DEBUG_CASE_ID),
   s2s: {
     microservice: 'civil_service',
     secret: process.env.S2S_SECRET || 'AABBCCDDEEFFGGHH',
