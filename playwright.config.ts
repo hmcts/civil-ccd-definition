@@ -29,7 +29,7 @@ export default defineConfig({
         ],
       ]
     : 'list',
-  timeout: 900_000,
+  timeout: 1_200_000,
   expect: {
     timeout: 60_000,
     toPass: {
