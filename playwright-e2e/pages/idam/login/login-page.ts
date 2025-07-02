@@ -28,7 +28,7 @@ export default class LoginPage extends BasePage {
       () =>
         super.expectLabel(inputs.email.label, { timeout: config.playwright.shortExpectTimeout }),
       undefined,
-      { retries: 3 },
+      { retries: 2 },
     );
   }
 
