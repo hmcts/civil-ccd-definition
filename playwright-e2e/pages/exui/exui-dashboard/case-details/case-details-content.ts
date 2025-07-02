@@ -68,3 +68,6 @@ export const containers = {
 
 export const successBannerText = (formattedCaseId: string, ccdEvent: CCDEvent) =>
   `Case ${formattedCaseId} has been updated with event: ${ccdEvent.name}`;
+
+export const caseFlagsNoticeText = (activeCaseFlags: number) =>
+  `There ${activeCaseFlags === 1 ? 'is' : 'are'} ${activeCaseFlags} active flag${activeCaseFlags === 1 ? '' : 's'} on this case.`;

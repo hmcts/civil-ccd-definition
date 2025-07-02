@@ -12,6 +12,8 @@ import IdamSteps from '../../steps/ui/exui/idam-steps';
 import ExuiDashboardSteps from '../../steps/ui/exui/exui-dashboard-steps';
 import DefendantSolicitor2SpecSteps from '../../steps/ui/exui/defendant-solicitor-2-spec-steps';
 import DefendantSolicitor2Steps from '../../steps/ui/exui/defendant-solicitor-2-steps';
+import HearingCenterAdminSteps from '../../steps/ui/exui/hearing-center-admin-steps';
+import HearingCenterAdminSpecSteps from '../../steps/ui/exui/hearing-center-admin-spec-steps';
 
 type UiStepsFixtures = {
   IdamSteps: IdamSteps;
@@ -23,6 +25,8 @@ type UiStepsFixtures = {
   DefendantSolicitor2Steps: DefendantSolicitor2Steps;
   DefendantSolicitor2SpecSteps: DefendantSolicitor2SpecSteps;
   CaseworkerSteps: CaseworkerSteps;
+  HearingCenterAdminSteps: HearingCenterAdminSteps;
+  HearingCenterAdminSpecSteps: HearingCenterAdminSpecSteps;
   JudgeSteps: JudgeSteps;
 };
 
@@ -53,6 +57,12 @@ export const test = mergeTests(testUtils, uiActionsFactories, requestFactories).
   },
   CaseworkerSteps: async ({ _exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new CaseworkerSteps(_exuiDashboardActions, _idamActions, _caseworkerActionsFactory, _requestsFactory, _testData));
+  },
+  HearingCenterAdminSteps: async ({ _exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new HearingCenterAdminSteps(_exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData));
+  },
+  HearingCenterAdminSpecSteps: async ({ _exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData }, use) => {
+    await use(new HearingCenterAdminSpecSteps(_exuiDashboardActions, _idamActions, _hearingCenterAdminActionsFactory, _requestsFactory, _testData));
   },
   JudgeSteps: async ({ _exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData }, use) => {
     await use(new JudgeSteps(_exuiDashboardActions, _idamActions, _judgeActionsFactory, _requestsFactory, _testData));

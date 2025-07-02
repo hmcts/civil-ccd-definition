@@ -16,10 +16,10 @@ export default class DefendantDetailsPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async selectDefendant(defendantPartyType: ClaimantDefendantPartyType) {
+  async selectDefendant(defendant1PartyType: ClaimantDefendantPartyType) {
     const defendant1Data = CaseDataHelper.buildClaimantAndDefendantData(
       partys.DEFENDANT_1,
-      defendantPartyType,
+      defendant1PartyType,
     );
     await super.clickByLabel(
       radioButtons.selectDefendant.defendant.label(defendant1Data.partyName),

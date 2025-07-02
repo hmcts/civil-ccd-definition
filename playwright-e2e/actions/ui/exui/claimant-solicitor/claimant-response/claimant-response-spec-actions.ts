@@ -126,7 +126,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
 
     await this.applicantCourtLocationLRSpec();
     await this.hearingSupport();
-    await this.vulnerabilityQuestionsSpec();
+    await this.vulnerabilityQuestions();
   }
 
   @Step(classKey)
@@ -156,7 +156,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
 
     await this.applicantCourtLocationLRSpec();
     await this.hearingSupport();
-    await this.vulnerabilityQuestionsSpec();
+    await this.vulnerabilityQuestions();
   }
 
   @Step(classKey)
@@ -222,7 +222,7 @@ export default class ClaimantResponseSpecActions extends BaseTestData {
     await hearingSupportPage.submit();
   }
 
-  private async vulnerabilityQuestionsSpec() {
+  private async vulnerabilityQuestions() {
     const { vulnerabilityQuestionsSpecPage } = this.claimantResponsePageFactory;
     await vulnerabilityQuestionsSpecPage.verifyContent(this.ccdCaseData);
     await vulnerabilityQuestionsSpecPage.selectYes();

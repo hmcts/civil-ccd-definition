@@ -61,6 +61,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -82,6 +83,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -103,6 +105,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -125,6 +128,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
@@ -146,6 +150,7 @@ export default class DefendantSolicitor1Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor1User,
+      { verifySuccessEvent: false },
     );
   }
 
