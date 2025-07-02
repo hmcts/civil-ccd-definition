@@ -45,7 +45,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor1User,
@@ -70,7 +70,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor1User,
@@ -96,7 +96,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor1User,
@@ -122,7 +122,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor1User,
@@ -147,7 +147,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor1User,
