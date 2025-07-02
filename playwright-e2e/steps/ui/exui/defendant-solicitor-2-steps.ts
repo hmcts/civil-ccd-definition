@@ -61,6 +61,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
       },
       ccdEvents.DEFENDANT_RESPONSE,
       defendantSolicitor2User,
+      { verifySuccessEvent: false },
     );
   }
 
