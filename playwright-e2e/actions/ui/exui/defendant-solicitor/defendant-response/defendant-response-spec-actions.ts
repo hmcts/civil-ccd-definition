@@ -71,7 +71,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   async singleResponse2v1() {
     const { singleResponse2v1Page } = this.defendantResponsePageFactory;
     await singleResponse2v1Page.verifyContent(this.ccdCaseData);
-    await singleResponse2v1Page.selectNo();
+    await singleResponse2v1Page.selectYes();
     await singleResponse2v1Page.submit();
   }
 

@@ -86,7 +86,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.responseConfirmNameAddressDS1();
         await defendantResponseSpecActions.responseConfirmDetailsDS1();
         await defendantResponseSpecActions.singleResponse2v1();
-        await defendantResponseSpecActions.respondentResponseType2v1Spec();
+        await defendantResponseSpecActions.respondentResponseTypeSpecDS1();
         await defendantResponseSpecActions.defenceRouteDS1();
         await defendantResponseSpecActions.uploadDefendantResponseSpecDS1();
         await defendantResponseSpecActions.timelineDS1();
