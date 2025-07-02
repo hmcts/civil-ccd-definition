@@ -11,6 +11,7 @@ import PageUtilsFactory from '../../pages/utils/page-utils-factory';
 import IdamPageFactory from '../../pages/idam/idam-page-factory';
 import ExuiDashboardPageFactory from '../../pages/exui/exui-dashboard/exui-dashboard-page-factory';
 import RequestsFactory from '../../requests/requests-factory';
+import HearingCenterAdminActionsFactory from '../../actions/ui/exui/hearing-center-admin/hearing-center-admin-actions-factory';
 
 type UiActionsFixtures = {
   _idamActions: IdamActions;
@@ -18,6 +19,7 @@ type UiActionsFixtures = {
   _claimantSolicitor1ActionsFactory: ClaimantSolicitorActionsFactory;
   _defendantActionsFactory: DefendantActionsFactory;
   _caseworkerActionsFactory: CaseworkerActionsFactory;
+  _hearingCenterAdminActionsFactory: HearingCenterAdminActionsFactory;
   _judgeActionsFactory: JudgeActionsFactory;
 };
 
@@ -36,6 +38,9 @@ export const test = mergeTests(testUtils, requestFactories).extend<UiActionsFixt
   },
   _caseworkerActionsFactory: async ({ page, _testData }, use) => {
     await use(new CaseworkerActionsFactory(page, _testData));
+  },
+  _hearingCenterAdminActionsFactory: async ({ page, _testData }, use) => {
+    await use(new HearingCenterAdminActionsFactory(page, _testData));
   },
   _judgeActionsFactory: async ({ page, _testData }, use) => {
     await use(new JudgeActionsFactory(page, _testData));

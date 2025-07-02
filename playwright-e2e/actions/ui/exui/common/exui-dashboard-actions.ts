@@ -1,4 +1,5 @@
 import BaseApi from '../../../../base/base-api';
+import ccdEvents from '../../../../constants/ccd-events';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import CookiesHelper from '../../../../helpers/cookies-helper';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
@@ -43,7 +44,7 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async goToCaseDetails() {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(this.ccdCaseData.id);
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
   }
 
@@ -88,6 +89,8 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async verifySuccessEvent(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.verifySuccessEvent(this.ccdCaseData.id, ccdEvent);
+    if (ccdEvent === ccdEvents.CREATE_CASE_FLAGS || ccdEvent === ccdEvents.MANAGE_CASE_FLAGS)
+      await caseDetailsPage.verifySuccessCaseFlagsEvent(super.activeCaseFlags, ccdEvent);
+    else await caseDetailsPage.verifySuccessEvent(super.ccdCaseData.id, ccdEvent);
   }
 }
