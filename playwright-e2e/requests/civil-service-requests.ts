@@ -35,7 +35,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async waitForFinishedBusinessProcess(user: User, caseId: number) {
-    console.log(`Waiting for business process to finish, caseId: ${caseId}...`);
+    console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
