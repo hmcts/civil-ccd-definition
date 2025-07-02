@@ -1459,7 +1459,7 @@ export default abstract class BasePage {
       actionAfterFirstAttempt,
       {
         retries,
-        message: message ?? 'Navigation Failed, trying again',
+        message: message ?? 'Navigation failed, trying again',
       },
     );
   }
