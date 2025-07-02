@@ -70,7 +70,7 @@ export default class ExuiDashboardActions extends BaseApi {
 
   async startExuiEvent(ccdEvent: CCDEvent) {
     const { caseDetailsPage } = this.exuiDashboardPageFactory;
-    await caseDetailsPage.goToCaseDetails(this.ccdCaseData.id);
+    await caseDetailsPage.retryGoToCaseDetails(this.ccdCaseData.id);
     await caseDetailsPage.verifyContent(this.ccdCaseData);
     // await caseDetailsPage.retryChooseNextStep(ccdEvent);
     await caseDetailsPage.retryChooseNextStepWithUrl(this.ccdCaseData.id, ccdEvent);
