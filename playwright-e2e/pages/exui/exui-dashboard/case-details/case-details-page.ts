@@ -96,7 +96,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
           timeout: config.playwright.shortExpectTimeout,
         }),
       undefined,
-      { retries: 3, message: `Navigating to case details page failed, trying again` },
+      { retries: 3, message: `Navigating to case with ccd case id: ${caseId}, trying again` },
     );
   }
 
