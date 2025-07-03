@@ -4,6 +4,8 @@ em-ccdorc:
   enabled: false
 em-stitching:
   enabled: false
+wiremock:
+  enabled: false
 
 civil-general-applications:
   enabled: false
