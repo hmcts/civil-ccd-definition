@@ -49,11 +49,11 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
   }
 
   async fillCertificateOfService() {
-    const dateDeemedServed = DateHelper.getToday();
-    const dateOfService = DateHelper.addToToday({
+    const dateDeemedServed = DateHelper.addToToday({
       days: 2,
       workingDay: true,
     });
+    const dateOfService = DateHelper.getToday();
 
     await this.dateFragment.enterDate(dateDeemedServed, inputs.dateDeemedServed.selectorKey);
     await this.dateFragment.enterDate(dateOfService, inputs.dateOfService.selectorKey);
