@@ -219,9 +219,14 @@ export default abstract class BasePage {
         .selectOption(option, { timeout: options.timeout });
   }
 
+  //This method is hidden from reports (no '@BoxedDetailedStep') but used in multiple places in this file.
+  private async _getCookies(): Promise<Cookie[]> {
+    return await this.page.context().cookies();
+  }
+
   @BoxedDetailedStep(classKey)
   protected async getCookies(): Promise<Cookie[]> {
-    return await this.page.context().cookies();
+    return await this._getCookies();
   }
 
   @BoxedDetailedStep(classKey)
@@ -232,7 +237,7 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey)
   protected async clearCookies() {
     let retries = 2;
-    while ((await this.page.context().cookies()).length > 0 && retries >= 0) {
+    while ((await this._getCookies()).length > 0 && retries >= 0) {
       await this.page.context().clearCookies();
       retries--;
     }
@@ -241,8 +246,8 @@ export default abstract class BasePage {
   @BoxedDetailedStep(classKey)
   protected async addCookies(cookies: Cookie[]) {
     let retries = 2;
-    const currentCookiesAmount = (await this.page.context().cookies()).length;
-    while ((await this.page.context().cookies()).length <= currentCookiesAmount && retries >= 0) {
+    const currentCookiesAmount = (await this._getCookies()).length;
+    while ((await this._getCookies()).length <= currentCookiesAmount && retries >= 0) {
       await this.page.context().addCookies(cookies);
       retries--;
     }
