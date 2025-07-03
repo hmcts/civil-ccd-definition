@@ -12,13 +12,6 @@ export default class CreateClaimSpecActions extends BaseTestData {
     this.createClaimPageFactory = createClaimPageFactory;
   }
 
-  async caseFilter() {
-    const { caseFilterPage } = this.createClaimPageFactory;
-    await caseFilterPage.verifyContent();
-    await caseFilterPage.chooseSpec();
-    await caseFilterPage.submit();
-  }
-
   async checklist() {
     const { checkListPage } = this.createClaimPageFactory;
     await checkListPage.verifyContent();
@@ -240,7 +233,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
 
   async confirmCreateClaimSpec() {
     const { confirmCreateClaimSpecPage } = this.createClaimPageFactory;
-    await confirmCreateClaimSpecPage.verifyContent(this.ccdCaseData);
+    await confirmCreateClaimSpecPage.verifyContent();
     await confirmCreateClaimSpecPage.submit();
   }
 

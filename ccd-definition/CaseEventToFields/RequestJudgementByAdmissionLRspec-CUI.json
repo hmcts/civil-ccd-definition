@@ -44,17 +44,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjJudgmentFixedCostOptionLabel",
-    "PageDisplayOrder": 2,
-    "PageFieldDisplayOrder": 1,
-    "PageID": "FixedCost",
-    "CallBackURLMidEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/mid/set-up-ccj-amount-summary",
-    "ShowSummaryChangeOption": "Y",
-    "DisplayContext": "READONLY"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "CaseFieldID": "ccjJudgmentFixedCostOption",
     "PageDisplayOrder": 2,
     "PageFieldDisplayOrder": 2,
@@ -118,16 +107,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountClaimAmountLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 6,
-    "DisplayContext": "READONLY",
-    "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "CaseFieldID": "claimInterest",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 7,
@@ -150,17 +129,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjJudgmentAmountInterestToDateLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 9,
-    "DisplayContext": "READONLY",
-    "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "claimInterest =\"Yes\" "
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
     "CaseFieldID": "ccjJudgmentFixedCostAmount",
     "PageDisplayOrder": 3,
     "PageFieldDisplayOrder": 10,
@@ -168,17 +136,6 @@
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
-    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
-    "PageDisplayOrder": 3,
-    "PageFieldDisplayOrder": 11,
-    "DisplayContext": "READONLY",
-    "PageID": "CcjJudgmentSummary",
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" "
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

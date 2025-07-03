@@ -12,13 +12,6 @@ export default class CreateClaimActions extends BaseTestData {
     this.createClaimPageFactory = createClaimPageFactory;
   }
 
-  async caseFilter() {
-    const { caseFilterPage } = this.createClaimPageFactory;
-    await caseFilterPage.verifyContent();
-    await caseFilterPage.chooseUnSpec();
-    await caseFilterPage.submit();
-  }
-
   async eligibility() {
     const { eligibilityPage } = this.createClaimPageFactory;
     await eligibilityPage.verifyContent();
@@ -122,6 +115,30 @@ export default class CreateClaimActions extends BaseTestData {
     await defendantSolicitorEmailPage.submit();
   }
 
+  async defendantDetailsLIP() {
+    const { defendantPage } = this.createClaimPageFactory;
+    await defendantPage.verifyContent();
+    await defendantPage.chooseIndividualAndEnterDetails(); // LIP-specific details
+    await defendantPage.submit();
+
+    const { legalRepresentationPage } = this.createClaimPageFactory;
+    await legalRepresentationPage.verifyContent();
+    await legalRepresentationPage.selectNo(); // LIPs do not have legal representation
+    await legalRepresentationPage.submit();
+  }
+
+  async secondDefendantLIP() {
+    const { secondDefendantPage } = this.createClaimPageFactory;
+    await secondDefendantPage.verifyContent();
+    await secondDefendantPage.chooseIndividualAndEnterDetails();
+    await secondDefendantPage.submit();
+
+    const { secondDefendantLegalRepresentationPage } = this.createClaimPageFactory;
+    await secondDefendantLegalRepresentationPage.verifyContent();
+    await secondDefendantLegalRepresentationPage.selectNo();
+    await secondDefendantLegalRepresentationPage.submit();
+  }
+
   async noAddAnotherDefendant() {
     const { addAnotherDefendantPage } = this.createClaimPageFactory;
     await addAnotherDefendantPage.verifyContent();
@@ -221,6 +238,12 @@ export default class CreateClaimActions extends BaseTestData {
     const { confirmCreateClaimPage } = this.createClaimPageFactory;
     await confirmCreateClaimPage.verifyContent();
     await confirmCreateClaimPage.submit();
+  }
+
+  async confirmCreateClaimLIP() {
+    const { confirmCreateClaimLIPPage } = this.createClaimPageFactory;
+    await confirmCreateClaimLIPPage.verifyContent();
+    await confirmCreateClaimLIPPage.submit();
   }
 
   private async secondDefendant() {

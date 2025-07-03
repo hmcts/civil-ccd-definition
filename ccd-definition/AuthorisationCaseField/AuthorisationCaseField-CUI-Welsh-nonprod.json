@@ -7,7 +7,7 @@
             "UserRoles": [
               "wlu-admin"
             ],
-            "CRUD": "R"
+            "CRUD": "RU"
           }
         ]
       },
@@ -738,6 +738,30 @@
       {
         "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
         "CaseFieldID": "translatedDocuments",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "hearingDocuments",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRUD"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "hearingDocumentsWelsh",
         "AccessControl": [
           {
             "UserRoles": [

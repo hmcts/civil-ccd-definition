@@ -9,25 +9,21 @@ module.exports = {
       id: 'date'
     },
     claimProceedsInCasemanReason: {
-      id: '#claimProceedsInCaseman_reason',
+      id: '#claimProceedsInCasemanLR_reason-OTHER',
       options: {
         other: 'Other'
       }
     },
     otherDescription: {
-      id: '#claimProceedsInCaseman_other'
+      id: '#claimProceedsInCasemanLR_other'
     },
   },
 
   async enterTransferDate() {
     await I.runAccessibilityTest();
     await date.enterDate(this.fields.transferredDate.id, -1);
-    await within(this.fields.claimProceedsInCasemanReason.id, () => {
-      I.click(this.fields.claimProceedsInCasemanReason.options.other);
-    });
-
+    I.click(this.fields.claimProceedsInCasemanReason.id);
     I.fillField(this.fields.otherDescription.id, 'A reason other than Application and Judgement request.');
-
-    await I.clickContinue();
+    await I.click('Submit');
   }
 };

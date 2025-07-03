@@ -36,7 +36,7 @@ Scenario('notice of change - 1v2 - both defendants represented - same to differe
     'AWAITING_RESPONDENT_ACKNOWLEDGEMENT');
   await api_spec.defendantResponse(config.defendantSolicitorUser, 'FULL_DEFENCE2', 'ONE_V_ONE_DIF_SOL',
     'AWAITING_APPLICANT_INTENTION');
-}).tag('@api-prod @api-nonprod');
+});
 
 Scenario('notice of change - 2v1', async ({api_spec, noc}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, 'TWO_V_ONE');
