@@ -231,13 +231,21 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey)
   protected async clearCookies() {
-    while ((await this.page.context().cookies()).length > 0)
+    let retries = 2;
+    while ((await this.page.context().cookies()).length > 0 && retries >= 0) {
       await this.page.context().clearCookies();
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async addCookies(cookies: Cookie[]) {
-    await this.page.context().addCookies(cookies);
+    let retries = 2;
+    const currentCookiesAmount = (await this.page.context().cookies()).length;
+    while ((await this.page.context().cookies()).length <= currentCookiesAmount && retries >= 0) {
+      await this.page.context().addCookies(cookies);
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
