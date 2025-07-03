@@ -1,16 +1,16 @@
 [
     {
-      "name": "Camunda Error",
+      "name": "Camunda error",
       "messageRegex": ".*Ongoing business process.*",
       "matchedStatuses": ["failed"]
     },
     {
-      "name": "Missing Locator",
-      "messageRegex": ".*expect(locator).toBeVisible().*",
+      "name": "Missing locator",
+      "messageRegex": ".*expect\\.toBeVisible.*",
       "matchedStatuses": ["failed"]
     },
     {
-      "name": "Page Validation Error",
+      "name": "Page validation error",
       "messageRegex": ".*Field validation error.*",
       "matchedStatuses": ["failed"]
     }
