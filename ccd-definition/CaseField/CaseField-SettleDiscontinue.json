@@ -176,15 +176,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "typeOfDiscontinuance",
-    "Label": " ",
-    "FieldType": "FixedRadioList",
-    "FieldTypeParameter": "DiscontinuanceTypeList",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partDiscontinuanceDetails",
     "Label": "Which part of the claim do you want to discontinue?",
     "FieldType": "TextArea",
