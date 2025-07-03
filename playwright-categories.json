@@ -11,7 +11,7 @@
     },
     {
       "name": "Page Validation Error",
-      "messageRegex": ".*Field Validation Error.*",
+      "messageRegex": ".*Field validation error.*",
       "matchedStatuses": ["failed"]
     }
   ]
