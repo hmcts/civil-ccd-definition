@@ -6,9 +6,11 @@ export const heading = (defendantParty: Party) => `Certificate of Service [${def
 export const inputs = {
   dateOfService: {
     label: 'On what day did you serve?',
+    selectorKey: 'cosDateOfServiceForDefendant',
   },
   dateDeemedServed: {
     label: 'The date of service is',
+    selectorKey: 'cosDateDeemedServedForDefendant',
   },
   documentsServed: {
     label: 'What documents did you serve?',
