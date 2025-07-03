@@ -53,11 +53,10 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
     const dateOfService = DateHelper.addToToday({
       days: 2,
       workingDay: true,
-      addDayAfter4pm: true,
     });
 
-    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
-    await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, inputs.dateDeemedServed.selectorKey);
+    await this.dateFragment.enterDate(dateOfService, inputs.dateOfService.selectorKey);
 
     await super.inputText(
       `Test Documents ${this.defendantParty.number}`,
