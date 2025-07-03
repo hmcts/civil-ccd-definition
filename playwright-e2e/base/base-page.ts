@@ -231,7 +231,8 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey)
   protected async clearCookies() {
-    await this.page.context().clearCookies();
+    while ((await this.page.context().cookies()).length > 0)
+      await this.page.context().clearCookies();
   }
 
   @BoxedDetailedStep(classKey)
