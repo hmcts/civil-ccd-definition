@@ -1,0 +1,17 @@
+[
+    {
+      "name": "Camunda errors",
+      "messageRegex": ".*Camunda.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Missing Locators",
+      "messageRegex": ".*locator.*not found.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Page Validation failure",
+      "messageRegex": ".*Page validation failed.*",
+      "matchedStatuses": ["failed"]
+    }
+  ]

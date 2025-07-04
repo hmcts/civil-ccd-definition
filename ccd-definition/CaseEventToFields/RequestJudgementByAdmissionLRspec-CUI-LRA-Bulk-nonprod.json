@@ -77,5 +77,17 @@
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" OR fixedCosts.claimFixedCosts =\"Yes\""
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "claimInterest",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 10,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjPaymentPaidSome",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\"",
+    "RetainHiddenValue": "Y"
   }
 ]
