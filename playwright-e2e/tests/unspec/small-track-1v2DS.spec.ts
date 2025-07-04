@@ -7,6 +7,7 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     DefendantSolicitor2Steps,
     ClaimantSolicitorApiSteps,
     CaseRoleAssignmentApiSteps,
+    HearingCenterAdminSteps,
   }) => {
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.CreateClaimSmallTrack1v2DS();
@@ -25,6 +26,9 @@ test.describe('Unspecified Small track 1v2DS', async () => {
     await DefendantSolicitor2Steps.RespondSmallTrackFullDefence1v2DS();
     await ClaimantSolicitorSteps.Login();
     await ClaimantSolicitorSteps.RespondSmallClaimIntentToProceed1v2DS();
+    await HearingCenterAdminSteps.LoginRegion1();
+    await HearingCenterAdminSteps.CreateCaseLevelCaseFlag1v2DS();
+    await HearingCenterAdminSteps.CreateClaimant1CaseFlag1v2DS();
   });
 
   test('Default Judgment', async ({
