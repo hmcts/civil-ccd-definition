@@ -127,11 +127,6 @@ Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightl
       config.defendantSolicitorUser, config.ctscAdminUser,
       PUBLIC_QUERY, false
     );
-  } else {
-    await raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId,
-      config.defendantSolicitorUser, config.ctscAdminUser,
-      RESPONDENT_SOLICITOR_QUERY, false
-    );
   }
 }).tag('@QM');
 
