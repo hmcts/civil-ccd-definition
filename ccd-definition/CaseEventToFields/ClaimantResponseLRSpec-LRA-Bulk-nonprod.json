@@ -7,8 +7,7 @@
     "PageFieldDisplayOrder": 12,
     "DisplayContext": "MANDATORY",
     "PageID": "RespondentResponse",
-    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
-    "RetainHiddenValue": "Y"
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
