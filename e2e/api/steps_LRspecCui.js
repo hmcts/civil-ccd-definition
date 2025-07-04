@@ -466,11 +466,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    if (claimType === 'CUI') {
-      await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
-    } else {
-      await assertSubmittedEvent('HEARING_READINESS', null, false);
-    }
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
