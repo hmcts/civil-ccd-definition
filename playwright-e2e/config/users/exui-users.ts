@@ -181,6 +181,14 @@ export const ctscAdminUser: User = getUser({
   wa: true,
 });
 
+export const civilSystemUpdate: User = getUser({
+  name: 'Civil System Update',
+  email: 'civil-system-update@mailnesia.com',
+  password: defaultPasswordSystemUser,
+  role: UserRole.CASEWORKER,
+  key: UserKey.CIVIL_SYSTEM_UPDATE,
+});
+
 export const solicitorUsers = [
   claimantSolicitorUser,
   claimantSolicitorBulkScanUser,
