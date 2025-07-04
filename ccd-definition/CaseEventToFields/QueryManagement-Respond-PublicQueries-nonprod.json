@@ -3,26 +3,25 @@
     "LiveFrom": "01/01/2018",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRespondQuery",
-    "CaseFieldID": "qmApplicantCitizenQueries",
-    "PageFieldDisplayOrder": 2,
+    "CaseFieldID": "QueryManagementComponentLauncher",
+    "PageFieldDisplayOrder": 1,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRespondQuery",
     "PageLabel": "Respond to a query",
-    "FieldShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_FIELD\"",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y"
+    "ShowSummaryChangeOption": "N"
   },
   {
     "LiveFrom": "01/01/2018",
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRespondQuery",
-    "CaseFieldID": "qmRespondentCitizenQueries",
-    "PageFieldDisplayOrder": 3,
+    "CaseFieldID": "queries",
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "OPTIONAL",
     "PageID": "queryManagementRespondQuery",
     "PageLabel": "Respond to a query",
+    "DisplayContextParameter" : "#ARGUMENT(CREATE,QueryManagement)",
     "PageDisplayOrder": 1,
-    "ShowSummaryChangeOption": "Y",
-    "FieldShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_FIELD\""
+    "ShowSummaryChangeOption": "Y"
   }
 ]
