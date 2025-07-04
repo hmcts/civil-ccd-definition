@@ -4,6 +4,5 @@ module.exports = {
   RESPONDENT_SOLICITOR_1_QUERY: { collectionField: 'qmRespondentSolicitor1Queries', partyName: 'Defendant 1' },
   RESPONDENT_SOLICITOR_2_QUERY: { collectionField: 'qmRespondentSolicitor2Queries', partyName: 'Defendant 2' },
   RESPONDENT_SOLICITOR_1_AND_2_QUERY: { collectionField: 'qmRespondentSolicitor1Queries', partyName: 'Defendant' },
-  APPLICANT_CITIZEN_QUERY: {  collectionField: 'qmApplicantCitizenQueries', partyName: 'Claimant' },
-  RESPONDENT_CITIZEN_QUERY: {  collectionField: 'qmRespondentCitizenQueries', partyName: 'Claimant' }
+  PUBLIC_QUERY: { collectionField: 'queries', partyName: 'All queries'}
 };
