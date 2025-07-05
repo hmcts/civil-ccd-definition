@@ -74,6 +74,7 @@ civil-service:
       CCD_EVENTS_SUBSCRIPTION_ENABLED: false
       CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
       RD_PROFESSIONAL_API_URL: http://${SERVICE_NAME}-wiremock
+      DOCMOSIS_TORNADO_URL: http://${SERVICE_NAME}-wiremock
     #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
