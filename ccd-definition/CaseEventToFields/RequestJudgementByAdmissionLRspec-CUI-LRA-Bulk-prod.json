@@ -30,5 +30,27 @@
     "PageID": "CcjJudgmentSummary",
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "claimInterest =\"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "ccjJudgmentFixedCostAmountLabel",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 11,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "Y",
+    "FieldShowCondition": "ccjJudgmentFixedCostOption =\"Yes\" "
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REQUEST_JUDGEMENT_ADMISSION_SPEC",
+    "CaseFieldID": "claimInterest",
+    "PageDisplayOrder": 3,
+    "PageFieldDisplayOrder": 7,
+    "DisplayContext": "READONLY",
+    "PageID": "CcjJudgmentSummary",
+    "ShowSummaryChangeOption": "N",
+    "FieldShowCondition": "ccjPaymentPaidSomeLabel=\"DO NOT SHOW IN UI\" OR ccjPaymentPaidSomeLabelInsetHelpText=\"DO NOT SHOW IN UI\""
   }
 ]
