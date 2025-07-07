@@ -251,6 +251,7 @@ withPipeline(type, product, component) {
       env.SERVICE_AUTH_PROVIDER_API_BASE_URL = "http://rpe-service-auth-provider-aat.service.core-compute-aat.internal"
       env.DM_STORE_URL = "http://dm-store-aat.service.core-compute-aat.internal"
       env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
+      env.WIREMOCK_URL = "https://wiremock-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.AAC_API_URL = "https://manage-case-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.ROLE_ASSIGNMENT_URL = "https://am-role-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
@@ -260,6 +261,7 @@ withPipeline(type, product, component) {
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-wa-files.sh ${waStandaloneBranch}
       ./bin/add-org-roles-to-users.sh
+      ./bin/load-wiremock-mappings.sh
     """
       //uploadDmnDiagrams('preview',"${CHANGE_ID}")
       env.URL = "https://xui-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"

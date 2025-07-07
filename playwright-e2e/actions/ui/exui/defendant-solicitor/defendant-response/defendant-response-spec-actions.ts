@@ -71,7 +71,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   async singleResponse2v1() {
     const { singleResponse2v1Page } = this.defendantResponsePageFactory;
     await singleResponse2v1Page.verifyContent(this.ccdCaseData);
-    await singleResponse2v1Page.selectNo();
+    await singleResponse2v1Page.selectYes();
     await singleResponse2v1Page.submit();
   }
 
@@ -211,7 +211,7 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async statementOfTruthDefendantResponseDS2Page() {
+  async statementOfTruthDefendantResponseDS2() {
     const { statementOfTruthDefendantResponseDS2Page } = this.defendantResponsePageFactory;
     await statementOfTruthDefendantResponseDS2Page.verifyContent(this.ccdCaseData);
     await statementOfTruthDefendantResponseDS2Page.enterDetails();
@@ -219,14 +219,14 @@ export default class DefendantResponseSpecActions extends BaseTestData {
   }
 
   @Step(classKey)
-  async confirmDefendantResponseSpecPage() {
+  async confirmDefendantResponseSpec() {
     const { confirmDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirmDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirmDefendantResponseSpecPage.submit();
   }
 
   @Step(classKey)
-  async confirm1v2SSDefendantResponseSpecPage() {
+  async confirm1v2SSDefendantResponseSpec() {
     const { confirm1v2SSDefendantResponseSpecPage } = this.defendantResponsePageFactory;
     await confirm1v2SSDefendantResponseSpecPage.verifyContent(this.ccdCaseData);
     await confirm1v2SSDefendantResponseSpecPage.submit();

@@ -43,6 +43,7 @@ export default abstract class BaseExui extends BaseApi {
     { retries = config.exui.eventRetries, verifySuccessEvent = true, camundaProcess = true } = {},
   ) {
     await super.setupBankHolidays();
+    await super.setDebugTestData();
     while (retries >= 0) {
       try {
         if (ccdEvent === ccdEvents.CREATE_CLAIM || ccdEvent === ccdEvents.CREATE_CLAIM_SPEC) {

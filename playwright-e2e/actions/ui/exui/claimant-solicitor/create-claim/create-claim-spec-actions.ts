@@ -1,4 +1,5 @@
 import BaseTestData from '../../../../../base/base-test-data.ts';
+import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types.ts';
 import { AllMethodsStep } from '../../../../../decorators/test-steps.ts';
 import TestData from '../../../../../models/test-data.ts';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory.ts';
@@ -35,6 +36,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
     const { claimantPage } = this.createClaimPageFactory;
     await claimantPage.verifyContent();
     await claimantPage.chooseIndividualAndEnterDetails();
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await claimantPage.submit();
   }
 
@@ -56,6 +58,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
     const { secondClaimantPage } = this.createClaimPageFactory;
     await secondClaimantPage.verifyContent();
     await secondClaimantPage.chooseIndividualAndEnterDetails();
+    super.setClaimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await secondClaimantPage.submit();
   }
 
@@ -81,6 +84,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
     const { defendantPage } = this.createClaimPageFactory;
     await defendantPage.verifyContent();
     await defendantPage.chooseCompanyAndEnterDetails();
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.COMPANY;
     await defendantPage.submit();
   }
 
@@ -124,6 +128,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
     const { secondDefendantPage } = this.createClaimPageFactory;
     await secondDefendantPage.verifyContent();
     await secondDefendantPage.chooseIndividualAndEnterDetails();
+    super.setDefendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await secondDefendantPage.submit();
   }
 
@@ -227,7 +232,7 @@ export default class CreateClaimSpecActions extends BaseTestData {
 
   async submitCreateClaim() {
     const { submitCreateClaimPage } = this.createClaimPageFactory;
-    await submitCreateClaimPage.verifyContent();
+    await submitCreateClaimPage.verifyContent(super.ccdCaseData);
     await submitCreateClaimPage.submit();
   }
 

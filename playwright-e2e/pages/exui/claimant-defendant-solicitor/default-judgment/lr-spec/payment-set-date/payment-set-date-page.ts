@@ -19,10 +19,10 @@ export default class PaymentSetDatePage extends ExuiPage(BasePage) {
     this.dateFragment = dateFragment;
   }
 
-  async verifyContent(ccdCaseData: CCDCaseData, defendantPartyType: ClaimantDefendantPartyType) {
+  async verifyContent(ccdCaseData: CCDCaseData, defendant1PartyType: ClaimantDefendantPartyType) {
     const defendantData = CaseDataHelper.buildClaimantAndDefendantData(
       partys.DEFENDANT_1,
-      defendantPartyType,
+      defendant1PartyType,
     );
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),

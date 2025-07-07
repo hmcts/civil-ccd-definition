@@ -2,6 +2,7 @@ import TestData from '../../../../../models/test-data';
 import { AllMethodsStep } from '../../../../../decorators/test-steps';
 import BaseTestData from '../../../../../base/base-test-data';
 import CreateClaimPageFactory from '../../../../../pages/exui/claimant-defendant-solicitor/create-claim/create-claim-page-factory';
+import claimantDefendantPartyTypes from '../../../../../constants/claimant-defendant-party-types';
 
 @AllMethodsStep()
 export default class CreateClaimActions extends BaseTestData {
@@ -37,11 +38,14 @@ export default class CreateClaimActions extends BaseTestData {
     const { claimantPage } = this.createClaimPageFactory;
     await claimantPage.verifyContent();
     await claimantPage.chooseIndividualAndEnterDetails();
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await claimantPage.submit();
 
     const { claimantLitigationFriendPage } = this.createClaimPageFactory;
     await claimantLitigationFriendPage.verifyContent();
     await claimantLitigationFriendPage.selectNo();
+    // await claimantLitigationFriendPage.selectYes();
+    // await claimantLitigationFriendPage.enterLitigationFriendDetails();
     await claimantLitigationFriendPage.submit();
 
     const { notificationsPage } = this.createClaimPageFactory;
@@ -78,6 +82,7 @@ export default class CreateClaimActions extends BaseTestData {
     const { secondClaimantPage } = this.createClaimPageFactory;
     await secondClaimantPage.verifyContent();
     await secondClaimantPage.chooseIndividualAndEnterDetails();
+    super.setClaimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await secondClaimantPage.submit();
   }
 
@@ -85,6 +90,8 @@ export default class CreateClaimActions extends BaseTestData {
     const { secondClaimantLitigationFriendPage } = this.createClaimPageFactory;
     await secondClaimantLitigationFriendPage.verifyContent();
     await secondClaimantLitigationFriendPage.selectNo();
+    // await secondClaimantLitigationFriendPage.selectYes();
+    // await secondClaimantLitigationFriendPage.enterLitigationFriendDetails();
     await secondClaimantLitigationFriendPage.submit();
   }
 
@@ -92,6 +99,7 @@ export default class CreateClaimActions extends BaseTestData {
     const { defendantPage } = this.createClaimPageFactory;
     await defendantPage.verifyContent();
     await defendantPage.chooseIndividualAndEnterDetails();
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await defendantPage.submit();
 
     const { legalRepresentationPage } = this.createClaimPageFactory;
@@ -230,7 +238,7 @@ export default class CreateClaimActions extends BaseTestData {
 
   async submitCreateClaim() {
     const { submitCreateClaimPage } = this.createClaimPageFactory;
-    await submitCreateClaimPage.verifyContent();
+    await submitCreateClaimPage.verifyContent(super.ccdCaseData);
     await submitCreateClaimPage.submit();
   }
 
@@ -250,6 +258,7 @@ export default class CreateClaimActions extends BaseTestData {
     const { secondDefendantPage } = this.createClaimPageFactory;
     await secondDefendantPage.verifyContent();
     await secondDefendantPage.chooseIndividualAndEnterDetails();
+    super.setDefendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await secondDefendantPage.submit();
   }
 

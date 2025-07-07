@@ -75,7 +75,7 @@ export default function ExuiPage<TBase extends abstract new (...args: any[]) => 
       await super.expectNoSelector(components.fieldError.selector, {
         timeout: 200,
         all: true,
-        message: 'Field Validation Error on UI',
+        message: 'Field validation error on UI',
       });
     }
 

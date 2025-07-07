@@ -16,7 +16,7 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
   async defendantDetails() {
     const { defendantDetailsSpecPage } = this.defaultJudgmentFactory;
     await defendantDetailsSpecPage.verifyContent(this.ccdCaseData);
-    await defendantDetailsSpecPage.selectDefendant(claimantDefendantPartyTypes.COMPANY);
+    await defendantDetailsSpecPage.selectDefendant(super.defendant1PartyType);
     await defendantDetailsSpecPage.submit();
   }
 
@@ -71,12 +71,12 @@ export default class DefaultJudgmentSpecActions extends BaseTestData {
     await paymentBreakdownPage.submit();
 
     const { paymentTypePage } = this.defaultJudgmentFactory;
-    await paymentTypePage.verifyContent(this.ccdCaseData, claimantDefendantPartyTypes.COMPANY);
+    await paymentTypePage.verifyContent(this.ccdCaseData, super.defendant1PartyType);
     await paymentTypePage.selectSetPaymentDate();
     await paymentTypePage.submit();
 
     const { paymentSetDatePage } = this.defaultJudgmentFactory;
-    await paymentSetDatePage.verifyContent(this.ccdCaseData, claimantDefendantPartyTypes.COMPANY);
+    await paymentSetDatePage.verifyContent(this.ccdCaseData, super.defendant1PartyType);
     await paymentSetDatePage.setPaymentDate();
     await paymentSetDatePage.submit();
   }

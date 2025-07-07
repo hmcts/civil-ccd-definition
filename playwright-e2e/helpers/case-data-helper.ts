@@ -5,6 +5,11 @@ import { Party } from '../models/partys';
 import partys from '../constants/partys';
 import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
 import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
+import CCDCaseData, {
+  ExpertAndWitness,
+  ClaimantDefendant,
+  LitigationFriend,
+} from '../models/ccd/ccd-case-data';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -227,6 +232,7 @@ export default class CaseDataHelper {
       phoneNumber: this.getPartyPhoneNumber(litigationFriendParty),
       hasSameAddressAsLitigant: 'No',
       primaryAddress: this.buildAddressData(litigationFriendParty),
+      partyName: `${StringHelper.capitalise(litigationFriendParty.key)} Litigation`,
     };
   }
 
@@ -274,5 +280,50 @@ export default class CaseDataHelper {
       case ClaimTrack.MULTI_CLAIM:
         return 110000;
     }
+  }
+
+  static getActiveCaseFlagsForClaimantDefendant(claimantDefendant?: ClaimantDefendant) {
+    const activeCaseFlags =
+      claimantDefendant?.flags?.details?.filter((detail) => detail.value.status === 'Active')
+        ?.length || 0;
+    if (claimantDefendant)
+      console.log(
+        `Active case flags: ${activeCaseFlags} for party ${claimantDefendant?.partyName}`,
+      );
+    return activeCaseFlags;
+  }
+
+  static getActiveCaseFlagsForLitigationFriend(litigationFriend?: LitigationFriend) {
+    const activeCaseFlags =
+      litigationFriend?.flags?.details?.filter((detail) => detail.value.status === 'Active')
+        ?.length || 0;
+    if (litigationFriend)
+      console.log(
+        `Active case flags: ${activeCaseFlags} for party ${litigationFriend?.flags?.partyName}`,
+      );
+    return activeCaseFlags;
+  }
+
+  static getActiveCaseFlagsForExpertAndWitness(expertOrWitnesses?: ExpertAndWitness[]) {
+    return (
+      expertOrWitnesses?.reduce((total, expertOrWitness) => {
+        const activeCaseFlags =
+          expertOrWitness?.value?.flags?.details?.filter(
+            (detail) => detail.value.status === 'Active',
+          )?.length || 0;
+        console.log(
+          `Active case flags: ${activeCaseFlags} for party ${expertOrWitness?.value?.flags?.partyName}`,
+        );
+        return total + activeCaseFlags;
+      }, 0) || 0
+    );
+  }
+
+  static getActiveCaseLevelFlags(ccdCaseData: CCDCaseData) {
+    const activeCaseFlags =
+      ccdCaseData?.caseFlags?.details?.filter((detail) => detail.value.status === 'Active')
+        ?.length || 0;
+    console.log(`Active case level flags: ${activeCaseFlags}`);
+    return activeCaseFlags;
   }
 }

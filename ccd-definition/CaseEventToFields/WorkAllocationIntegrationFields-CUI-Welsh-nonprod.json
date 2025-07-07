@@ -60,6 +60,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_RESPONSE_DQ_LIP_SEALED",
+    "CaseFieldID": "preTranslationDocumentType",
+    "PageFieldDisplayOrder": 16,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocationIntegrationFields",
+    "ShowSummaryChangeOption": "N",
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "GENERATE_INTERLOCUTORY_JUDGEMENT_DOCUMENT",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 1,

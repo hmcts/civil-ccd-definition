@@ -16,7 +16,7 @@ export default class CCDRequests extends ServiceAuthProviderRequests(BaseRequest
   }
 
   async fetchCCDCaseData(user: User, caseId: number) {
-    console.log(`Fetching CCD case data, caseId: ${caseId}...`);
+    console.log(`Fetching CCD case data, caseId: ${caseId}`);
     const url = `${this.getCCDDataStoreBaseUrl(user)}/cases/${caseId}`;
     const requestOptions: RequestOptions = {
       headers: await super.getRequestHeaders(user),

@@ -219,9 +219,14 @@ export default abstract class BasePage {
         .selectOption(option, { timeout: options.timeout });
   }
 
+  //This method is hidden from reports (no '@BoxedDetailedStep') but used in multiple places in this file.
+  private async _getCookies(): Promise<Cookie[]> {
+    return await this.page.context().cookies();
+  }
+
   @BoxedDetailedStep(classKey)
   protected async getCookies(): Promise<Cookie[]> {
-    return await this.page.context().cookies();
+    return await this._getCookies();
   }
 
   @BoxedDetailedStep(classKey)
@@ -231,12 +236,21 @@ export default abstract class BasePage {
 
   @BoxedDetailedStep(classKey)
   protected async clearCookies() {
-    await this.page.context().clearCookies();
+    let retries = 2;
+    while ((await this._getCookies()).length > 0 && retries >= 0) {
+      await this.page.context().clearCookies();
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey)
   protected async addCookies(cookies: Cookie[]) {
-    await this.page.context().addCookies(cookies);
+    let retries = 2;
+    const currentCookiesAmount = (await this._getCookies()).length;
+    while ((await this._getCookies()).length <= currentCookiesAmount && retries >= 0) {
+      await this.page.context().addCookies(cookies);
+      retries--;
+    }
   }
 
   @BoxedDetailedStep(classKey, 'filePath', 'selector')
@@ -264,7 +278,7 @@ export default abstract class BasePage {
   protected async waitForSelectorToDetach(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 20 });
+      await locator.waitFor({ state: 'attached', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -274,7 +288,7 @@ export default abstract class BasePage {
   protected async waitForSelectorToBeHidden(selector: string, options: { timeout?: number } = {}) {
     const locator = this.page.locator(selector);
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'hidden', ...options });
@@ -295,7 +309,7 @@ export default abstract class BasePage {
   protected async waitForTextToDetach(text: string, options: { timeout?: number } = {}) {
     const locator = this.page.getByText(text);
     try {
-      await locator.waitFor({ state: 'attached', timeout: 20 });
+      await locator.waitFor({ state: 'attached', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await locator.waitFor({ state: 'detached', ...options });
@@ -471,7 +485,7 @@ export default abstract class BasePage {
     });
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     await pageExpect(locator, { message: options.message }).toBeHidden({
@@ -567,7 +581,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -658,7 +672,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -753,7 +767,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -849,7 +863,7 @@ export default abstract class BasePage {
     locator = this.getNewLocator(locator, options.containerSelector, options.index, options.first);
 
     try {
-      await locator.waitFor({ state: 'visible', timeout: 20 });
+      await locator.waitFor({ state: 'visible', timeout: 150 });
       // eslint-disable-next-line no-empty
     } catch (err) {}
     if (options.all) {
@@ -1459,7 +1473,7 @@ export default abstract class BasePage {
       actionAfterFirstAttempt,
       {
         retries,
-        message: message ?? 'Navigation Failed, trying again',
+        message: message ?? 'Navigation failed, trying again',
       },
     );
   }

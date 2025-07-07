@@ -53,8 +53,8 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
     let dateOfService: Date;
 
     if (this.defendantParty.number === 1) {
-      dateDeemedServed = DateHelper.getToday();
-      dateOfService = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.addToToday({ days: 2, workingDay: true });
+      dateOfService = DateHelper.getToday();
     } else {
       dateDeemedServed = DateHelper.subtractFromToday({ days: 14, addDayAfter4pm: true });
       dateOfService = DateHelper.subtractFromToday({
@@ -64,8 +64,8 @@ export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(Ba
       });
     }
 
-    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
-    await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, inputs.dateDeemedServed.selectorKey);
+    await this.dateFragment.enterDate(dateOfService, inputs.dateOfService.selectorKey);
 
     await super.inputText(
       `Test Documents - ${this.defendantParty.key}`,
