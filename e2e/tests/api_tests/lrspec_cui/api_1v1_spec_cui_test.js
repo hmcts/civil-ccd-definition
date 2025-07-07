@@ -67,15 +67,11 @@ Scenario('1v1 LiP v LiP Part admit defendant and claimant response - claimant re
   await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, 'IN_MEDIATION', true, 'partadmit');
 }).tag('@api-prod @api-nonprod');
 
-Scenario('1v1 LiP v LiP defendant and claimant response - CARM not enabled', async ({api_spec_cui}) => {
-  await prepareClaimLiPvLiP(api_spec_cui, false);
-});
-
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiPMintiTrack(api_spec_cui, true);
 });
 
-Scenario.skip('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps}) => {
+Scenario('1v1 LiP v LiP Case Progression Journey', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLiPvLiP(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
@@ -118,11 +114,7 @@ async function prepareClaimLiPvLR(api_spec_cui, noc, carmEnabled) {
   //await api_spec_cui.performCitizenClaimantResponse(config.applicantCitizenUser, caseId, expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LiP v LR defendant and claimant response- CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
-  await  prepareClaimLiPvLR(api_spec_cui, noc, false);
-});
-
-Scenario.skip('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps
+Scenario('1v1 LiP v LR defendant and claimant response- CARM enabled @api-nightly-prod', async ({noc, api_spec_cui, qmSteps
 }) => {
   await prepareClaimLiPvLR(api_spec_cui, noc, true);
   await adjustCaseSubmittedDateForPublicQueries(caseId, true);
@@ -153,10 +145,6 @@ async function prepareClaimLRvLiP(api_spec_cui, noc, carmEnabled) {
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM not enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
-  await  prepareClaimLRvLiP(api_spec_cui, noc, false);
-});
-
 Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CARM enabled @api-nightly-prod', async ({noc, api_spec_cui}) => {
   await  prepareClaimLRvLiP(api_spec_cui, noc, true);
 });
@@ -168,15 +156,11 @@ async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled, claimType = 'Sm
   await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
-Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM not enabled @api-nightly-prod', async ({api_spec_cui}) => {
-  await prepareClaimLRvLiPExui(api_spec_cui, false);
-});
-
 Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled @api-nightly-prod', async ({api_spec_cui}) => {
   await prepareClaimLRvLiPExui(api_spec_cui, true);
 });
 
-Scenario.skip('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
+Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
     await prepareClaimLRvLiPExui(api_spec_cui, false, 'FastTrack');
     await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_FAST');
@@ -206,13 +190,12 @@ Scenario.skip('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) =
 }).tag('@wa-task @QM @api-prod');
 
 Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
     await  prepareClaimLRvLiPExui(api_spec_cui, false, 'Request for reconsideration track');
     await api_spec_cui.createSDO(config.tribunalCaseworkerWithRegionId4);
     await api_spec_cui.requestForReconsiderationCitizen(config.defendantCitizenUser2);
     await api_spec_cui.judgeDecisionOnReconsiderationRequest(config.judgeUserWithRegionId1, 'CREATE_SDO');
-  }
-});
+
+}).tag('@api-nightly-prod');
 
 AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
