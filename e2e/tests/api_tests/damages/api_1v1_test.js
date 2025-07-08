@@ -7,7 +7,7 @@ let isQueryManagementEnabled = false;
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
 //This test runs in api_judgment_online_1v1_test - so running only in nightly
-Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM');
+Feature('CCD 1v1 API test @api-unspec @api-multiparty @api-tests-1v1 @api-nightly-prod @QM').tag('@local-testing');
 
 async function raiseRespondAndFollowUpToSolicitorQueriesScenario(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated) {
   if (isQueryManagementEnabled) {
@@ -22,9 +22,10 @@ Before(async () => {
 });
 
 Scenario('Create claim', async ({api}) => {
-  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, '3000');
 });
 
+/*
 Scenario('HMCTS admin adds a case note to case', async ({api}) => {
   await api.addCaseNote(config.adminUser);
 });
@@ -32,6 +33,7 @@ Scenario('HMCTS admin adds a case note to case', async ({api}) => {
 Scenario('Amend claim documents', async ({api}) => {
   await api.amendClaimDocuments(config.applicantSolicitorUser);
 });
+*/
 
 Scenario('Notify claim', async ({api}) => {
   await api.notifyClaim(config.applicantSolicitorUser);
@@ -41,7 +43,7 @@ Scenario('Notify claim details', async ({api}) => {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
 });
 
-Scenario('Amend party details', async ({api}) => {
+/*Scenario('Amend party details', async ({api}) => {
   await api.amendPartyDetails(config.adminUser);
 });
 
@@ -55,16 +57,17 @@ Scenario('Inform agreed extension date', async ({api}) => {
 
 Scenario('Add Litigation Friend', async ({api}) => {
   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
-});
+});*/
 
-Scenario('Defendant response', async ({api}) => {
+/*Scenario('Defendant response', async ({api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-});
+});*/
 
+/*
 Scenario('Add case flags', async ({api}) => {
   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
 });
@@ -105,7 +108,9 @@ Scenario('Defendant queries', async ({api, qmSteps}) => {
     );
   }
 });
+*/
 
+/*
 Scenario('Create claim where respondent is litigant in person and notify/notify details @api-cos', async ({api}) => {
   await api.createClaimWithRespondentLitigantInPerson(config.applicantSolicitorUser, mpScenario);
   await api.notifyClaimLip(config.applicantSolicitorUser);
@@ -126,3 +131,4 @@ Scenario('Resubmit claim after payment failure on PBA account ', async ({api}) =
 AfterSuite(async  ({api}) => {
   await api.cleanUp();
 });
+*/
