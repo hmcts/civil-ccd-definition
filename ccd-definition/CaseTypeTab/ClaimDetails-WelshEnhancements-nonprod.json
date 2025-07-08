@@ -14,6 +14,13 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "TabID": "ClaimDetails",
+    "CaseFieldID": "bilingualHint",
+    "FieldShowCondition": "claimantLanguagePreferenceDisplay=\"DO NOT SHOW IN UI\"",
+    "TabFieldDisplayOrder": 2
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "TabID": "ClaimDetails",
     "CaseFieldID": "documentTranslationInProgressLabel",
     "FieldShowCondition": "preTranslationDocuments = \"*\" OR bilingualHint=\"Yes\"",
     "TabFieldDisplayOrder": 0
