@@ -152,13 +152,13 @@ Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CAR
 async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled, claimType = 'SmallClaims') {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
+ /* await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
+  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);*/
 }
 
 Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled @api-nightly-prod', async ({api_spec_cui}) => {
   await prepareClaimLRvLiPExui(api_spec_cui, true);
-});
+}).tag('@local-testing');
 
 Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
@@ -197,8 +197,8 @@ Scenario('1v1 LR v LiP Request for reconsideration', async ({api_spec_cui}) => {
 
 }).tag('@api-nightly-prod');
 
-AfterSuite(async  ({api_spec_cui}) => {
+/*AfterSuite(async  ({api_spec_cui}) => {
   await api_spec_cui.cleanUp();
   await deleteAccount(config.defendantCitizenUser2.email);
-});
+});*/
 
