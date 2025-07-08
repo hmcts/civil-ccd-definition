@@ -73,6 +73,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
           "GS_profile"
         ],
         "CRUD": "R"
@@ -95,6 +96,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
           "GS_profile"
         ],
         "CRUD": "R"
@@ -117,6 +119,7 @@
           "RES-SOL-ONE-SPEC-PROFILE",
           "RES-SOL-TWO-SPEC-PROFILE",
           "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
           "GS_profile"
         ],
         "CRUD": "R"
