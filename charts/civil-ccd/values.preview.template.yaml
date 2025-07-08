@@ -73,7 +73,8 @@ civil-service:
       CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
       CCD_EVENTS_SUBSCRIPTION_ENABLED: false
       CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
-#      CMC_DB_HOST: civil-preview.postgres.database.azure.com
+      RD_PROFESSIONAL_API_URL: http://${SERVICE_NAME}-wiremock
+    #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
 #      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
@@ -373,3 +374,21 @@ servicebus:
         subscriptionNeeded: yes
       - name: jrd-topic
         subscriptionNeeded: yes
+
+
+wiremock:
+  enabled: true
+  image: "wiremock/wiremock"
+  applicationPort: 8080
+  imagePullPolicy: Always
+  releaseNameOverride : ${SERVICE_NAME}-wiremock
+  verbose: true
+  ingressHost: wiremock-${SERVICE_NAME}.preview.platform.hmcts.net
+  volumes:
+    - name: wiremock-mocks
+      configMap:
+        name: ${SERVICE_NAME}-wiremock-wm
+  volumeMounts:
+    - name: wiremock-mocks
+      mountPath: /home/wiremock/mappings
+      subPath: mappings

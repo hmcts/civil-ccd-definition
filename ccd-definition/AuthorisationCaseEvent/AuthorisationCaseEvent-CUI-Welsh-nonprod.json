@@ -334,5 +334,11 @@
         "CRUD": "R"
       }
     ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "UPDATE_CLAIM_STATE_AFTER_CLAIMANT_INTENTION_LR_DOC_UPLOADED",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
