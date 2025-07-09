@@ -81,7 +81,7 @@ module.exports = {
     id: 'RESUBMIT_CLAIM',
     name: 'Resubmit claim',
     description: 'Resubmits claim for unsuccessful PBA payment',
-    order: 12
+    order: 11
   },
   INFORM_AGREED_EXTENSION_DATE: {
     description: 'Enter an extension date that has already been agreed with other parties',
@@ -252,10 +252,10 @@ module.exports = {
     order: 24
   },
   QUERY_MANAGEMENT: {
-    id: 'query-management',
+    id: 'queryManagementRaiseQuery',
     name: 'Raise a new query',
     description: 'Raise a new query',
-    order: 25
+    order: 1
   },
   CREATE_CASE_FLAGS: {
     id: 'CREATE_CASE_FLAGS',
