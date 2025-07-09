@@ -604,7 +604,7 @@ module.exports = function () {
     async raiseNewNonHearingQuery(caseId) {
       eventName = events.QUERY_MANAGEMENT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => caseViewPage.raiseNewQuery(caseId),
         () => raiseQueryPage.selectQuery(),
         () => raiseAQueryFormPage.enterQueryDetails(),
         () => event.submitAndGoBackToCase('Submit', 'Query submitted')
@@ -614,7 +614,7 @@ module.exports = function () {
     async raiseNewHearingQuery(caseId) {
       eventName = events.QUERY_MANAGEMENT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => caseViewPage.raiseNewQuery(caseId),
         () => raiseQueryPage.selectQuery(),
         () => raiseAQueryFormPage.enterHearingQueryDetails(),
         () => event.submitAndGoBackToCase('Submit', 'Query submitted')
@@ -624,7 +624,7 @@ module.exports = function () {
     async raiseNewQueryInOfflineState(caseId) {
       eventName = events.QUERY_MANAGEMENT.name;
       await this.triggerStepsWithScreenshot([
-        () => caseViewPage.raiseNewQuery(events.QUERY_MANAGEMENT, caseId),
+        () => caseViewPage.raiseNewQuery(caseId),
         () => raiseQueryPage.selectQuery()
       ]);
     },
