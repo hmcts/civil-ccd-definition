@@ -461,7 +461,7 @@ module.exports = {
     valid: createClaimData(false,'No', true, 'ONE_V_TWO_LIPS', '11000')
   },
   createClaimWithTerminatedPBAAccount: {
-    valid: createClaimData(false,'Yes', false)
+    valid: createClaimData(true,'Yes', false)
   },
   createClaimRespondentSolFirmNotInMyHmcts: {
     valid: {
