@@ -23,7 +23,7 @@ module.exports = {
 //    waTaskMgmtApi: process.env.WA_TASK_MGMT_URL || 'http://wa-task-management-api-demo.service.core-compute-demo.internal'
 
 //    for Preview
-      /*manageCase: 'https://xui-civil-ccd-pr-5875.preview.platform.hmcts.net',
+      manageCase: 'https://xui-civil-ccd-pr-5875.preview.platform.hmcts.net',
       authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
       ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-5875.preview.platform.hmcts.net',
       dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
@@ -32,15 +32,15 @@ module.exports = {
       waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
       caseAssignmentService: 'http://manage-case-assignment-civil-ccd-pr-5875.preview.platform.hmcts.net',
       generalApplication: 'https://ga-civil-ccd-pr-5875.preview.platform.hmcts.net',
-      orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',*/
+      orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
-    manageCase: 'https://xui-civil-citizen-ui-pr-6414.preview.platform.hmcts.net',
+    /*manageCase: 'https://xui-civil-citizen-ui-pr-6414.preview.platform.hmcts.net',
     authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
     ccdDataStore: 'https://ccd-data-store-api-civil-citizen-ui-pr-6414.preview.platform.hmcts.net',
     dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
     idamApi: 'https://idam-api.aat.platform.hmcts.net',
     idamWeb: 'https://idam-web-public.aat.platform.hmcts.net',
-    civilService: 'https://civil-citizen-ui-pr-6414-civil-service.preview.platform.hmcts.net',
+    civilService: 'https://civil-citizen-ui-pr-6414-civil-service.preview.platform.hmcts.net',*/
 
 //    for AAT
 //    manageCase:  'https://manage-case.aat.platform.hmcts.net/',

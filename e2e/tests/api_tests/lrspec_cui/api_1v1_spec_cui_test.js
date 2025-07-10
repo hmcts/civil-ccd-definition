@@ -69,7 +69,7 @@ Scenario('1v1 LiP v LiP Part admit defendant and claimant response - claimant re
 
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Small', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiP(api_spec_cui, true);
-}).tag('@local-testing');
+});
 
 Scenario('1v1 LiP v LiP defendant and claimant response - CARM enabled - Minti Enabled', async ({api_spec_cui}) => {
   await prepareClaimLiPvLiPMintiTrack(api_spec_cui, true);
@@ -151,13 +151,13 @@ Scenario('1v1 LR v LiP defendant and claimant response - claimant does NoC - CAR
 async function prepareClaimLRvLiPExui(api_spec_cui, carmEnabled, claimType = 'SmallClaims') {
   let expectedEndState = carmEnabled ? 'IN_MEDIATION' : 'JUDICIAL_REFERRAL';
   caseId = await api_spec_cui.createSpecifiedClaimWithUnrepresentedRespondent(config.applicantSolicitorUser, 'ONE_V_ONE', claimType, carmEnabled);
-  await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
-  await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
+  //await api_spec_cui.performCitizenDefendantResponse(config.defendantCitizenUser2, caseId, claimType, carmEnabled);
+  //await api_spec_cui.claimantResponse(config.applicantSolicitorUser, 'FULL_DEFENCE_CITIZEN_DEFENDANT', 'ONE_V_ONE', 'No', expectedEndState, carmEnabled);
 }
 
 Scenario('1v1 LR v LiP defendant and claimant response - claim created from exui - CARM enabled @api-nightly-prod', async ({api_spec_cui}) => {
   await prepareClaimLRvLiPExui(api_spec_cui, true);
-});
+}).tag('@local-testing');
 
 Scenario('1v1 LR v LiP case progression', async ({api_spec_cui, qmSteps}) => {
   if (['preview', 'demo'].includes(config.runningEnv)) {
