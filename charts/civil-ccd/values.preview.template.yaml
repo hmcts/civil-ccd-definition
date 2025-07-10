@@ -4,7 +4,7 @@ civil-wa:
 civil-service:
   java:
     imagePullPolicy: Always
-    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
+    image: hmctspublic.azurecr.io/civil/service:pr-6779
     keyVaults:
       civil:
         resourceGroup: civil
@@ -58,7 +58,7 @@ civil-service:
           - name: ccd-shared-servicebus-connection-string
             alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
-      LAUNCH_DARKLY_ENV: aat
+      LAUNCH_DARKLY_ENV: ${SERVICE_FQDN}
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
       CASE_DOCUMENT_AM_URL: http://${SERVICE_NAME}-cdam
       OIDC_ISSUER: https://forgerock-am.service.core-compute-idam-aat2.internal:8443/openam/oauth2/realms/root/realms/hmcts
