@@ -32,7 +32,7 @@
   {
     "ID": "JudgmentState",
     "ListElementCode": "SET_ASIDE_ERROR",
-    "ListElement": "Cancelled - Set aside in error",
+    "ListElement": "Cancelled - set aside, judgment entered in error",
     "DisplayOrder": 6
   },
   {
