@@ -27,7 +27,15 @@ module.exports = {
 
   async clickOnViewEditHearing() {
     await I.waitForElement(this.fields.viewEle);
-    await I.clickHearingHyperLinkOrButton(this.fields.viewEle);
+    const urlBefore = await I.grabCurrentUrl();
+    let firstAttempt = true;
+    await I.retryUntilUrlChanges(async () => {
+      if(!firstAttempt)
+        await I.refreshPage();
+      await I.waitForText('Current and upcoming');
+      await I.forceClick(locate(this.fields.viewEle).first());
+      firstAttempt = false;
+    }, urlBefore);
     await I.runAccessibilityTest();
   },
 
