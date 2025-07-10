@@ -44,7 +44,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.submitDefendantResponse();
       },
       async () => {
-        await defendantResponseSpecActions.confirmDefendantResponseSpecPage();
+        await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
       defendantSolicitor2User,
