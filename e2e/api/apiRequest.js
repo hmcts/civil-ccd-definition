@@ -75,7 +75,9 @@ const fetchWaTasks = async (user, caseNumber, expectedStatus = 200) => {
 module.exports = {
   setupTokens: async (user) => {
     tokens.userAuth = await idamHelper.accessToken(user);
-    tokens.userId = await idamHelper.userId(tokens.userAuth);
+    const userDetails = await idamHelper.getUser(tokens.userAuth);
+    tokens.userId = userDetails.uid;
+    tokens.name = userDetails.name;
     tokens.s2sAuth = await restHelper.retriedRequest(
       `${config.url.authProviderApi}/lease`,
       {'Content-Type': 'application/json'},
