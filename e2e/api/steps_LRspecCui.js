@@ -20,7 +20,7 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
+const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
 const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
 const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
@@ -41,6 +41,10 @@ const stayCase = require('../fixtures/events/stayCase');
 const manageStay = require('../fixtures/events/manageStay');
 const dismissCase = require('../fixtures/events/dismissCase');
 const { toJSON } = require('lodash/seq');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
+const judgmentMarkPaidInFull = require('../fixtures/events/cui/judgmentMarkPaidInFullCui');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
+
 
 let caseId, eventName;
 let caseData = {};
@@ -72,7 +76,9 @@ const data = {
   STAY_CASE: () => stayCase.stayCaseSpec(),
   MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
   MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
-  DISMISS_CASE: () => dismissCase.dismissCase()
+  DISMISS_CASE: () => dismissCase.dismissCase(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
 };
 
 const eventData = {
@@ -193,6 +199,14 @@ module.exports = {
     return caseId;
   },
 
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
   createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
     console.log(' Creating specified claim');
     eventName = 'CREATE_CLAIM_SPEC';
@@ -258,6 +272,10 @@ module.exports = {
       console.log('SmallClaim...');
       payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
     }
+    if (claimType === 'SmallClaimPartAdmit') {
+      console.log('SmallClaim part admit lip defendant response...');
+      payload = defendantResponse.createDefendantResponseSmallClaimPartAdmitCarm();
+    }
     if (claimType === 'INTERMEDIATE') {
       console.log('Intermediate lip defendant response...');
       payload = defendantResponse.createDefendantResponseIntermediateTrack();
@@ -276,18 +294,46 @@ module.exports = {
   performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled, typeOfData) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
     let payload = lipClaimantResponse.claimantResponse(carmEnabled, typeOfData);
+    if (typeOfData === 'partadmit') {
+      payload = lipClaimantResponse.claimantResponsePartAdmitRejectCarm();
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
     const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if (isJudgmentOnlineLive && typeOfData == 'FA_ACCEPT_CCJ') {
+
+    if (isJudgmentOnlineLive && (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ')) {
       expectedEndState = 'All_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
     }
+  },
+
+  judgmentPaidInFullCui: async (user, caseId) => {
+    let eventName = 'JUDGMENT_PAID_IN_FULL';
+    let payload = judgmentMarkPaidInFull.markJudgmentPaidInFull();
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let payload = judgmentOnline1v1Spec.markJudgmentPaidInFull();
+    for (let pageId of Object.keys(payload.userInput)) {
+      await assertValidData(payload, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
@@ -420,11 +466,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    if (claimType === 'CUI') {
-      await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
-    } else {
-      await assertSubmittedEvent('HEARING_READINESS', null, false);
-    }
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -692,6 +734,60 @@ module.exports = {
 
     await waitForFinishedBusinessProcess(caseId);
   },
+
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Your message has been sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Reply sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+};
+
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
 };
 
 const validateEventPages = async (data, solicitor) => {

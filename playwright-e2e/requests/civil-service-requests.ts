@@ -1,11 +1,13 @@
 import BaseRequest from '../base/base-request';
 import urls from '../config/urls';
+import { AllMethodsStep } from '../decorators/test-steps';
 import CaseRole from '../enums/case-role';
 import RequestOptions from '../models/api/request-options';
-import { UploadDocumentValue } from '../models/ccd/ccd-case-data';
+import CCDCaseData, { UploadDocumentValue } from '../models/ccd/ccd-case-data';
 import User from '../models/user';
 import ServiceAuthProviderRequests from './service-auth-provider-requests';
 
+@AllMethodsStep()
 export default class CivilServiceRequests extends ServiceAuthProviderRequests(BaseRequest) {
   private testingSupportUrl = `${urls.civilService}/testing-support`;
 
@@ -33,14 +35,14 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async waitForFinishedBusinessProcess(user: User, caseId: number) {
-    console.log(`Waiting for business process to finish, caseId: ${caseId}...`);
+    console.log(`Waiting for business process to finish, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/case/${caseId}/business-process`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
     };
     await super.retryRequestJson(url, requestOptions, {
-      retries: 50,
-      retryTimeInterval: 5000,
+      retries: 25,
+      retryTimeInterval: 3000,
       verifyResponse: async (responseJson) => {
         await super.expectResponseJsonToHaveProperty('businessProcess', responseJson);
         const businessProcess = responseJson.businessProcess;
@@ -77,7 +79,7 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
   }
 
   async assignCaseToDefendant(user: User, caseId: number, caseRole: CaseRole) {
-    console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}...`);
+    console.log(`Assigning role: ${caseRole} to user: ${user.name}, caseId: ${caseId}`);
     const url = `${this.testingSupportUrl}/assign-case/${caseId}/${caseRole}`;
     const requestOptions: RequestOptions = {
       headers: await this.getRequestHeaders(user),
@@ -101,5 +103,17 @@ export default class CivilServiceRequests extends ServiceAuthProviderRequests(Ba
     caseIds.forEach((caseId) =>
       console.log(`User: ${user.name} unassigned from case [${caseId}] successfully`),
     );
+  }
+
+  async updateCaseData(user: User, caseId: number, caseData: CCDCaseData) {
+    console.log(`Updating case data, caseId: ${caseId}`);
+    const url = `${this.testingSupportUrl}/case/${caseId}`;
+    const requestOptions: RequestOptions = {
+      headers: await this.getRequestHeaders(user),
+      body: caseData,
+      method: 'PUT',
+    };
+    await super.retryRequest(url, requestOptions);
+    console.log(`Case data successfully updated, caseId: ${caseId}`);
   }
 }

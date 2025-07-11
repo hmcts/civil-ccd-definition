@@ -29,9 +29,9 @@ export default defineConfig({
         ],
       ]
     : 'list',
-  timeout: 360_000,
+  timeout: 1_200_000,
   expect: {
-    timeout: 30_000,
+    timeout: 60_000,
     toPass: {
       timeout: config.playwright.toPassTimeout,
     },
@@ -43,7 +43,7 @@ export default defineConfig({
     video: { mode: 'retain-on-failure' },
     screenshot: { mode: 'only-on-failure', fullPage: true },
     launchOptions: {
-      slowMo: process.env.CI ? 200 : 500,
+      slowMo: config.playwright.testSpeed?.slowMo,
     },
   },
   projects: [
@@ -78,7 +78,7 @@ export default defineConfig({
       name: 'e2e-full-functional',
       use: { ...devices['Desktop Chrome'] },
       dependencies: ['data-setup', 'users-auth-setup'],
-      teardown: 'case-role-assignment-teardown'
+      teardown: 'case-role-assignment-teardown',
     },
   ],
 });

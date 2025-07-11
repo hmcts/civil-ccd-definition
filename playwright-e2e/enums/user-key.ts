@@ -1,5 +1,6 @@
 enum UserKey {
   CLAIMANT_SOLICITOR = 'claimant-solicitor',
+  CLAIMANT_ORGANISATION_SUPER = 'claimant-organisation-super',
   CLAIMANT_SOLICITOR_BULK_SCAN = 'claimant-solicitor-bulk-scan',
   DEFENDANT_SOLICITOR_1 = 'defendant-solicitor-1',
   DEFENDANT_SOLICITOR_2 = 'defendant-solicitor-2',
@@ -17,6 +18,7 @@ enum UserKey {
   HEARING_CENTER_ADMIN_REGION_4 = 'hearing-center-admin-region-4',
   TRIBUNAL_CASEWORKER_REGION_4 = 'tribunal-caseworker-region-4',
   CTSC_ADMIN = 'ctsc-admin',
+  CIVIL_SYSTEM_UPDATE = 'system_update',
 }
 
 export default UserKey;

@@ -7,7 +7,7 @@ const track = 'INTERMEDIATE_CLAIM';
 const judgeUser = config.judgeUserWithRegionId1;
 const hearingCenterAdminToBeUsed = config.hearingCenterAdminWithRegionId1;
 
-Feature('CCD API test unspec intermediate @api-unspec-multi-intermediate');
+Feature('CCD API test unspec intermediate @api-multi-intermediate-unspec');
 
 async function prepareClaim(api, mpScenario, claimAmount) {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, claimAmount, mintiEnabled);
@@ -20,7 +20,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
 }
 
-Scenario('1v1 Create Unspecified Intermediate Track claim @api-nonprod', async ({api}) => {
+Scenario('1v1 Create Unspecified Intermediate Track claim @api-prod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
 });

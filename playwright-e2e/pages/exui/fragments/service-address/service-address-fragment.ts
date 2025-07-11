@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import CaseDataHelper from '../../../../helpers/case-data-helper';
 import { Party } from '../../../../models/partys';
@@ -11,7 +11,9 @@ import {
   buttons,
   dropdowns,
 } from './service-address-content';
+import { AllMethodsStep } from '../../../../decorators/test-steps';
 
+@AllMethodsStep()
 export default class ServiceAddressFragment extends ExuiPage(BasePage) {
   private claimantDefendantParty: Party;
   private solicitorParty: Party;
@@ -25,8 +27,8 @@ export default class ServiceAddressFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        super.expectText(radioButtons.addressRequired.label(this.claimantDefendantParty)),
-        super.expectText(radioButtons.addressRequired.hintText(this.claimantDefendantParty)),
+        super.expectRadioYesLabel(radioButtons.addressRequired.yes.selector(this.solicitorParty)),
+        super.expectRadioNoLabel(radioButtons.addressRequired.no.selector(this.solicitorParty)),
       ],
       {
         runAxe: false,

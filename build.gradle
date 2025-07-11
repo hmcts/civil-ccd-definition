@@ -2,6 +2,7 @@ plugins {
   id 'java'
   id 'java-library'
   id 'jacoco'
+  id 'maven-publish'
 }
 
 group 'com.github.hmcts'
@@ -9,17 +10,19 @@ version 'DEV-SNAPSHOT'
 
 java {
   toolchain {
-    languageVersion = JavaLanguageVersion.of(17)
+    languageVersion = JavaLanguageVersion.of(21)
   }
 }
 
 repositories {
   mavenLocal()
   mavenCentral()
-  maven { url 'https://jitpack.io' }
+  maven {
+    url 'https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1'
+  }
 }
 
-task highLevelDataSetup(type: JavaExec) {
+tasks.register('highLevelDataSetup', JavaExec) {
   mainClass = "uk.gov.hmcts.reform.civil.HighLevelDataSetupApp"
   classpath += sourceSets.main.runtimeClasspath
   jvmArgs = ['--add-opens=java.base/java.lang.reflect=ALL-UNNAMED']
@@ -42,8 +45,21 @@ ext.libraries = [
 ]
 
 dependencies {
-  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.0.2'
+  implementation group: 'com.github.hmcts', name: 'befta-fw', version: '9.2.4'
   implementation group: 'org.slf4j', name: 'slf4j-api', version: '2.0.9'
 
   testImplementation libraries.junit5
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "AzureArtifacts"
+      url = uri("https://pkgs.dev.azure.com/hmcts/Artifacts/_packaging/hmcts-lib/maven/v1")
+      credentials {
+        username = System.getenv("AZURE_DEVOPS_ARTIFACT_USERNAME")
+        password = System.getenv("AZURE_DEVOPS_ARTIFACT_TOKEN")
+      }
+    }
+  }
 }

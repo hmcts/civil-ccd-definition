@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
@@ -16,7 +16,7 @@ import { Party } from '../../../../models/partys';
 import DateFragment from '../date/date-fragment';
 
 @AllMethodsStep()
-export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(BasePage) {
+export default class CertificateOfServiceNotifyClaimFragment extends ExuiPage(BasePage) {
   private dateFragment: DateFragment;
   private defendantParty: Party;
 
@@ -30,8 +30,8 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
     await super.runVerifications(
       [
         super.expectHeading(heading(this.defendantParty)),
-        super.expectText(inputs.dateDeemedServed.label),
-        super.expectText(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
         super.expectLabel(inputs.documentsServed.label),
         super.expectLabel(inputs.statementOfTruth.name.label),
@@ -42,7 +42,7 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
         super.expectLabel(radioButtons.docsServed.defendant.label),
         super.expectLabel(radioButtons.docsServed.litigationFriend.label),
         super.expectLabel(radioButtons.docsServed.solicitor.label),
-        super.expectText(checkboxes.signedTrue.label, { first: true }),
+        super.expectText(checkboxes.signedTrue.label, { count: 1 }),
       ],
       { runAxe: false },
     );
@@ -53,8 +53,8 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
     let dateOfService: Date;
 
     if (this.defendantParty.number === 1) {
-      dateDeemedServed = DateHelper.getToday();
-      dateOfService = DateHelper.addToToday({ days: 2, workingDay: true, addDayAfter4pm: true });
+      dateDeemedServed = DateHelper.addToToday({ days: 2, workingDay: true });
+      dateOfService = DateHelper.getToday();
     } else {
       dateDeemedServed = DateHelper.subtractFromToday({ days: 14, addDayAfter4pm: true });
       dateOfService = DateHelper.subtractFromToday({
@@ -64,15 +64,15 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
       });
     }
 
-    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
-    await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, inputs.dateDeemedServed.selectorKey);
+    await this.dateFragment.enterDate(dateOfService, inputs.dateOfService.selectorKey);
 
     await super.inputText(
-      `Test Documents ${this.defendantParty.number}`,
+      `Test Documents - ${this.defendantParty.key}`,
       inputs.documentsServed.selector(this.defendantParty),
     );
     await super.inputText(
-      `Defendant ${this.defendantParty.number}`,
+      `${this.defendantParty.key}`,
       inputs.notifyClaimRecipient.selector(this.defendantParty),
     );
     await super.selectFromDropdown(
@@ -80,7 +80,7 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
       dropdowns.locationType.selector(this.defendantParty),
     );
     await super.inputText(
-      `Test Address ${this.defendantParty.number}`,
+      `Test Address - ${this.defendantParty.key}`,
       inputs.documentsServedLocation.selector(this.defendantParty),
     );
     await super.clickBySelector(radioButtons.docsServed.claimant.selector(this.defendantParty));
@@ -100,11 +100,11 @@ export default class CertificateOfServiceFragmentNotifyClaim extends ExuiPage(Ba
 
   async fillStatementOfTruth() {
     await super.inputText(
-      `Name ${this.defendantParty.number}`,
+      `Name - ${this.defendantParty.key}`,
       inputs.statementOfTruth.name.selector(this.defendantParty),
     );
     await super.inputText(
-      `Law firm ${this.defendantParty.number}`,
+      `Law firm - ${this.defendantParty.key}`,
       inputs.statementOfTruth.firm.selector(this.defendantParty),
     );
     await super.clickBySelector(checkboxes.signedTrue.selector(this.defendantParty));

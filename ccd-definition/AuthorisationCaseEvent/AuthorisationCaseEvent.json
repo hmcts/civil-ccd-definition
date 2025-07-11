@@ -268,15 +268,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-admin",
-          "judge-profile",
-          "legal-adviser"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -571,6 +562,21 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_EVENT",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "GS_profile",
+          "RES-SOL-ONE-UNSPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_RESPONDENT_SOLICITOR1_FOR_CLAIMANT_CONFIRMS_TO_PROCEED_CC",
     "AccessControl": [
       {
@@ -831,17 +837,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
-          "caseworker-civil-admin",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "R"
       }
     ]
   },

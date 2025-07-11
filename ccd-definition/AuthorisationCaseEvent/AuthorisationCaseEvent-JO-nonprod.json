@@ -324,13 +324,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -366,7 +359,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -385,7 +380,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -404,7 +401,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -423,7 +422,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -442,7 +443,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -457,13 +460,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -480,7 +476,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -495,51 +493,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT1",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "POST_DJ_NON_DIVERGENT_LETTER_DEFENDANT2",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "caseworker-civil-systemupdate"
-        ],
-        "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -552,13 +505,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -571,13 +517,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -590,13 +529,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -609,13 +541,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -628,13 +553,6 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
-      },
-      {
-        "UserRoles": [
-          "caseworker-civil-admin",
-          "caseworker-civil-staff"
-        ],
-        "CRUD": "R"
       }
     ]
   },
@@ -689,7 +607,9 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
@@ -708,7 +628,64 @@
       {
         "UserRoles": [
           "caseworker-civil-admin",
-          "caseworker-civil-staff"
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFAULT_JUDGEMENT_SPEC",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_RESPONDENT1_PART_ADMIT_PAY_IMMEDIATELY_AGREED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_APPLICANT_PART_ADMIT_PAY_IMMEDIATELY_AGREED",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "caseworker-civil-staff",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }

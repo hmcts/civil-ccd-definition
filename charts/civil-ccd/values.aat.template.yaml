@@ -4,6 +4,8 @@ em-ccdorc:
   enabled: false
 em-stitching:
   enabled: false
+wiremock:
+  enabled: false
 
 civil-general-applications:
   enabled: false
@@ -96,4 +98,7 @@ civil-wa:
   enabled: false
 
 postgresql:
+  enabled: false
+
+ccd-events-topic:
   enabled: false

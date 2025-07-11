@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
@@ -19,9 +19,9 @@ export default class SolicitorReferenceFragment extends ExuiPage(BasePage) {
   async verifyContent() {
     await super.runVerifications(
       [
-        // super.expectLabel(inputs.reference.label(this.claimantDefendantParty), {
-        //   index: this.claimantDefendantParty.number - 1,
-        // }),
+        super.expectLabel(inputs.reference.label(this.claimantDefendantParty), {
+          count: 1,
+        }),
       ],
       {
         runAxe: false,

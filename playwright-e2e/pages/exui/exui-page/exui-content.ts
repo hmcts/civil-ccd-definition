@@ -21,6 +21,12 @@ export const components = {
   fieldError: {
     selector: "div[data-module='govuk-error-summary']",
   },
+  uploadDocError: {
+    selector: 'span.error-message',
+  },
+  eventTrigger: {
+    selector: 'ccd-case-event-trigger',
+  },
 };
 
 export const links = {

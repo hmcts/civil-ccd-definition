@@ -3,7 +3,8 @@ civil-wa:
 
 civil-service:
   java:
-    image: 'hmctspublic.azurecr.io/civil/service:latest'
+    imagePullPolicy: Always
+    image: hmctspublic.azurecr.io/civil/service:${CIVIL_SERVICE_IMAGE}
     keyVaults:
       civil:
         resourceGroup: civil
@@ -50,8 +51,12 @@ civil-service:
             alias: mediation.emails.sender
           - name: mediation-notification-recipient
             alias: mediation.emails.recipient
+          - name: mediation-json-notification-recipient
+            alias: mediation.emails.jsonRecipient
           - name: hmc-servicebus-shared-access-key-tf
             alias: HMC_HEARINGS_TOPIC_ACCESS_KEY
+          - name: ccd-shared-servicebus-connection-string
+            alias: CCD_EVENTS_TOPIC_CONNECTION_STRING
     environment:
       LAUNCH_DARKLY_ENV: aat
       EM_CCD_ORCHESTRATOR_URL: http://${SERVICE_NAME}-em-ccdorc
@@ -63,7 +68,14 @@ civil-service:
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
       ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
-#      CMC_DB_HOST: civil-preview.postgres.database.azure.com
+      CCD_EVENTS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+      CCD_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
+      CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
+      CCD_EVENTS_SUBSCRIPTION_ENABLED: false
+      CCD_EVENTS_SUBSCRIPTION_RETRY_DURATION: 60
+      RD_PROFESSIONAL_API_URL: http://${SERVICE_NAME}-wiremock
+      DOCMOSIS_TORNADO_URL: http://${SERVICE_NAME}-wiremock
+    #      CMC_DB_HOST: civil-preview.postgres.database.azure.com
 #      CMC_DB_CONNECTION_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
 #      CMC_DB_USERNAME: hmcts
 #      CMC_DB_NAME: "pr-${CHANGE_ID}-cmc"
@@ -72,6 +84,9 @@ civil-service:
         secretRef: postgres
         key: PASSWORD
         disabled: true
+      CCD_EVENTS_TOPIC_CONNECTION_STRING:
+        secretRef: civil-sb-preview
+        key: connectionString
     postgresql:
       enabled: true
       releaseNameOverride: ${SERVICE_NAME}-postgresql
@@ -162,6 +177,8 @@ ccd:
         DATA_STORE_DEFAULT_LOG_LEVEL: WARN
         CASE_DATA_ISSUE_LOG_LEVEL: WARN
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
+        CCD_MULTIPARTY_CASE_TYPES: CIVIL
+        CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
         ROLE_ASSIGNMENT_URL: http://${SERVICE_NAME}-am-role-assignment-service
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
@@ -239,6 +256,14 @@ em-ccdorc:
       CCD_DATA_API_URL: http://${SERVICE_NAME}-ccd-data-store-api
       CALLBACK_HTTP_SCHEME: https
       CALLBACK_DOMAIN: em-ccdorc-${SERVICE_FQDN}
+    keyVaults:
+      em-ccdorc:
+        resourceGroup: em-ccdorc
+        secrets:
+          - name: microservicekey-em-ccd-orchestrator
+            alias: S2S_KEY
+          - name: notification-api-key
+            alias: NOTIFICATION_API_KEY
 
 em-stitching:
   enabled: true
@@ -263,6 +288,14 @@ em-stitching:
       RUN_DB_MIGRATION_ON_STARTUP: true
       FLYWAY_POSTGRESQL_TRANSACTIONAL_LOCK: false
       LOGGING_LEVEL_UK_GOV_HMCTS_REFORM_EM: DEBUG
+    keyVaults:
+      em-stitching:
+        resourceGroup: em-stitching
+        secrets:
+          - name: docmosis-access-key
+            alias: DOCMOSIS_ACCESS_KEY
+          - name: microservicekey-em-stitching-api
+            alias: S2S_KEY
 
 ccd-case-document-am-api:
   enabled: true
@@ -281,6 +314,38 @@ ccd-case-document-am-api:
       CASE_DOCUMENT_AM_API_S2S_SECRET: ${CASE_DOCUMENT_AM_API_S2S_SECRET}
     keyVaults: []
 
+ccd-message-publisher:
+  java:
+    ingressHost: ccd-message-publisher-${SERVICE_FQDN}
+    releaseNameOverride: ${SERVICE_NAME}-ccd-message-publisher
+    keyVaults:
+      ccd:
+        secrets:
+          - name: AppInsightsInstrumentationKey
+            alias: azure.application-insights.instrumentation-key
+    environment:
+#      DATA_STORE_DB_HOST: civil-preview.postgres.database.azure.com
+#      DATA_STORE_DB_NAME: "pr-${CHANGE_ID}-data-store"
+#      DATA_STORE_DB_USERNAME: hmcts
+#      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified&reWriteBatchedInserts=true&sslmode=require"
+      DATA_STORE_DB_HOST: "{{ .Release.Name }}-postgresql"
+      DATA_STORE_DB_NAME: "data-store"
+      DATA_STORE_DB_USERNAME: hmcts
+      DATA_STORE_DB_PASSWORD: ${POSTGRES_PASSWORD}
+      DATA_STORE_DB_OPTIONS: "?stringtype=unspecified"
+      CCD_CASE_EVENTS_DESTINATION: ${SERVICE_NAME}-asb-ccd-case-events
+    secrets:
+      SERVICE_BUS_CONNECTION_STRING:
+        secretRef: civil-sb-preview
+        key: connectionString
+      DATA_STORE_DB_PASSWORD:
+        secretRef: postgres
+        key: PASSWORD
+        disabled: true
+
+ccd-events-topic:
+  enabled: true
+
 postgresql:
   enabled: false
   flexibleserver: civil-preview
@@ -295,3 +360,36 @@ postgresql:
       - name: "pr-${CHANGE_ID}-wa-case-event-handler"
       - name: "pr-${CHANGE_ID}-wa_workflow_api"
       - name: "pr-${CHANGE_ID}-cmc"
+
+servicebus:
+  enabled: true
+  releaseNameOverride: ${SERVICE_NAME}-asb
+  resourceGroup: civil-aso-preview-rg
+  sbNamespace: civil-servicebus-preview # due to a bug https://github.com/kubernetes-sigs/kustomize/issues/5072 this value is set to civil, when this bug is resolved, the sbNamespace should be changed to the actual name of the Service Bus Namespace (civil-sb-preview)
+  setup:
+    topics:
+      - name: ccd-case-events
+        subscriptionNeeded: yes
+        requiresSession: true
+      - name: crd-topic
+        subscriptionNeeded: yes
+      - name: jrd-topic
+        subscriptionNeeded: yes
+
+
+wiremock:
+  enabled: true
+  image: "wiremock/wiremock"
+  applicationPort: 8080
+  imagePullPolicy: Always
+  releaseNameOverride : ${SERVICE_NAME}-wiremock
+  verbose: true
+  ingressHost: wiremock-${SERVICE_NAME}.preview.platform.hmcts.net
+  volumes:
+    - name: wiremock-mocks
+      configMap:
+        name: ${SERVICE_NAME}-wiremock-wm
+  volumeMounts:
+    - name: wiremock-mocks
+      mountPath: /home/wiremock/mappings
+      subPath: mappings

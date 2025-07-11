@@ -15,7 +15,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "courtLocation",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -644,6 +644,60 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2OrgIndividuals",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant1DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant1DQHearingSupport",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1DQHearingSupport",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent2DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent2DQHearingSupport",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant2DQVulnerabilityQuestions",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant2DQHearingSupport",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "unfinishedBackEndProcess",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
   }

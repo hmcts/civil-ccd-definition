@@ -1,5 +1,5 @@
 import { bankHolidays } from '../config/data';
-
+import DateStringFormats from '../models/date-string-formats';
 export default class DateHelper {
   private static shortMonths: string[] = [
     'Jan',
@@ -92,7 +92,7 @@ export default class DateHelper {
   }): Date {
     const now = new Date();
     if (addDayAfter4pm && this.isAfter4pm(now)) {
-      days += 1;
+      days -= 1;
     }
     return this.subtractDate(now, { days, months, years, workingDay });
   }
@@ -102,7 +102,7 @@ export default class DateHelper {
     { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
   ): Date {
     if (addDayAfter4pm && this.isAfter4pm(new Date())) {
-      days += 1;
+      days -= 1;
     }
     return this.subtractDate(new Date(date), { days, months, years, workingDay });
   }
@@ -123,8 +123,11 @@ export default class DateHelper {
   }
 
   static formatDateToString(
-    inputDate: string | Date,
-    { inputFormat = 'YYYY-MM-DD', outputFormat = 'DD Month YYYY' } = {},
+    inputDate: DateStringFormats | Date,
+    {
+      inputFormat = 'YYYY-MM-DD' as DateStringFormats,
+      outputFormat = 'DD Month YYYY' as DateStringFormats,
+    } = {},
   ): string {
     let date: Date;
     let dateString: string;
@@ -142,6 +145,8 @@ export default class DateHelper {
       dateString = `${date.getDate()} ${this.longMonths[date.getMonth()]} ${date.getFullYear()}`;
     } else if (outputFormat === 'DD Mon YYYY') {
       dateString = `${date.getDate()} ${this.shortMonths[date.getMonth()]} ${date.getFullYear()}`;
+    } else if (outputFormat === 'YYYY-MM-DDTHH:MM:SS') {
+      dateString = date.toISOString().slice(0, 19);
     }
 
     return dateString;

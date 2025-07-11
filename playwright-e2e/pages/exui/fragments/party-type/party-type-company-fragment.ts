@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { Party } from '../../../../models/partys';
@@ -18,10 +18,7 @@ export default class PartyTypeCompanyFragment extends ExuiPage(BasePage) {
 
   async verifyContent() {
     await super.runVerifications(
-      [
-        // super.expectLabel(inputs.name.label, { exact: true, index: 0 }),
-        super.expectLabel(inputs.email.label),
-      ],
+      [super.expectLabel(inputs.name.label, { count: 1 }), super.expectLabel(inputs.email.label)],
       {
         runAxe: false,
       },

@@ -3,6 +3,7 @@ import User from '../../../models/user';
 import BasePage from '../../../base/base-page';
 import { inputs, buttons } from './login-page-content';
 import { AllMethodsStep } from '../../../decorators/test-steps';
+import config from '../../../config/config';
 
 @AllMethodsStep({ methodNamesToIgnore: ['login'] })
 export default class LoginPage extends BasePage {
@@ -22,7 +23,13 @@ export default class LoginPage extends BasePage {
   }
 
   async openManageCase() {
-    await super.goTo(urls.manageCase);
+    await super.retryGoTo(
+      urls.manageCase,
+      () =>
+        super.expectLabel(inputs.email.label, { timeout: config.playwright.shortExpectTimeout }),
+      undefined,
+      { retries: 2 },
+    );
   }
 
   async citizenLogin(user: User) {
@@ -31,11 +38,21 @@ export default class LoginPage extends BasePage {
   }
 
   async manageCaseLogin(user: User) {
-    await this.login(user);
-    if (!user.wa) await super.expectUrlEnd('/cases');
-    else
-      await super.expectUrlEnd('/work/my-work/list', {
-        message: `User: ${user.email} has WA enabled`,
-      });
+    await super.retryAction(
+      async () => this.login(user),
+      async () => {
+        if (!user.wa)
+          await super.expectUrlEnd('/cases', { timeout: config.exui.pageSubmitTimeout });
+        else
+          await super.expectUrlEnd('/work/my-work/list', {
+            message: `User: ${user.email} has WA enabled`,
+            timeout: config.exui.pageSubmitTimeout,
+          });
+      },
+      async () => {
+        await this.openManageCase();
+      },
+      { retries: 2, message: `Login for user: ${user.name} failed, trying again` },
+    );
   }
 }

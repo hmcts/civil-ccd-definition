@@ -1,4 +1,4 @@
-import { Page } from 'playwright-core';
+import { Page } from '@playwright/test';
 import BasePage from '../../../../base/base-page';
 import filePaths from '../../../../config/file-paths';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
@@ -30,8 +30,8 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
     await super.runVerifications(
       [
         super.expectHeading(heading(this.defendantParty)),
-        super.expectText(inputs.dateDeemedServed.label),
-        super.expectText(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
+        super.expectLegend(inputs.dateDeemedServed.label),
         super.expectLabel(inputs.statementOfTruth.firm.label),
         super.expectLabel(inputs.documentsServed.label),
         super.expectLabel(inputs.statementOfTruth.name.label),
@@ -42,22 +42,21 @@ export default class CertificateOfServiceNotifyClaimDetailsFragment extends Exui
         super.expectLabel(radioButtons.docsServed.defendant.label),
         super.expectLabel(radioButtons.docsServed.litigationFriend.label),
         super.expectLabel(radioButtons.docsServed.solicitor.label),
-        super.expectText(checkboxes.signedTrue.label, { first: true }),
+        super.expectText(checkboxes.signedTrue.label, { count: 1 }),
       ],
       { runAxe: false },
     );
   }
 
   async fillCertificateOfService() {
-    const dateDeemedServed = DateHelper.getToday();
-    const dateOfService = DateHelper.addToToday({
+    const dateDeemedServed = DateHelper.addToToday({
       days: 2,
       workingDay: true,
-      addDayAfter4pm: true,
     });
+    const dateOfService = DateHelper.getToday();
 
-    await this.dateFragment.enterDate(dateDeemedServed, 'cosDateOfServiceForDefendant');
-    await this.dateFragment.enterDate(dateOfService, 'cosDateDeemedServedForDefendant');
+    await this.dateFragment.enterDate(dateDeemedServed, inputs.dateDeemedServed.selectorKey);
+    await this.dateFragment.enterDate(dateOfService, inputs.dateOfService.selectorKey);
 
     await super.inputText(
       `Test Documents ${this.defendantParty.number}`,

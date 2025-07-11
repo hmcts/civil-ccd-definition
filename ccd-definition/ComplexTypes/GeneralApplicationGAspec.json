@@ -372,5 +372,13 @@
     "ElementLabel": " ",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "ID": "GeneralApplicationGAspec",
+    "ListElementCode": "mainCaseSubmittedDate",
+    "FieldType": "DateTime",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

@@ -454,7 +454,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "specRespondentCorrespondenceAddressSubHeadingLabel",
-    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -462,7 +462,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "specRespondent2CorrespondenceAddressSubHeadingLabel",
-    "Label": "Postal correspondence will be sent to the address registered with MyHMCTS. You can change this address if, for example, you work in a different office from the address registered with MyHMCTS.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -470,7 +470,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "specRespondentCorrespondenceAddressRequired",
-    "Label": "Do you want to enter a different address?",
+    "Label": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -478,7 +478,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "specRespondent2CorrespondenceAddressRequired",
-    "Label": "Do you want to enter a different address?",
+    "Label": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -805,22 +805,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondToAdmittedClaimOwingAmount",
-    "Label": "How much money does your client admit to owing?",
-    "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondToAdmittedClaimOwingAmount2",
-    "Label": "How much money does your client admit to owing?",
-    "FieldType": "MoneyGBP",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondToAdmittedClaimOwingAmountPounds",
     "Label": " ",
     "FieldType": "Text",
@@ -1081,6 +1065,30 @@
     "ID": "responseClaimExpertSpecLabel",
     "Label": "## Use of experts in court",
     "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "deterWithoutHearing",
+    "Label": "Claimant 1 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "deterWithoutHearingRespondent1",
+    "Label": "Defendant 1 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "deterWithoutHearingRespondent2",
+    "Label": "Defendant 2 determination without a hearing",
+    "FieldType": "DeterWithoutHearing",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2016,27 +2024,11 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1RepaymentPlanLabel2",
-    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2RepaymentPlanLabel",
     "Label": "<h2 class=\"govuk-heading-l\">Repayment plan for ${respondent2.partyName} </h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent2RepaymentPlanLabel2",
-    "Label": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest.",
-    "FieldType": "Label",
-    "Searchable": "N",
-    "SecurityClassification": "Public"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -2093,30 +2085,6 @@
     "ID": "specDefenceFullAdmitted2Required",
     "Label": " ",
     "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmount}?</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
-    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmount}?</h2>",
-    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -2607,14 +2575,6 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentPayImmediatelyTextBeforeDate",
     "Label": "<p>Claim Number: ${legacyCaseReference}</p><p>They must make sure you have the money by:",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondentPayImmediatelyTextAfterDate",
-    "Label": "Any cheques or transfers should be clear in your account.<p>You need to tell us if you’ve settled the claim, for example because the defendant has paid you.</p><p>You can settle for less than the full claim amount.</p><p><h3>If you haven’t been paid.</h3></p><p>If the defendant has not paid you, you can request a County Court Judgment by completing the following form and sending it to the email address below.</p><p><li><a href=\"https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/961368/n225-eng.pdf\" target=\"_blank\">N225 </a>- Ask for judgment on a claim for a specified amount of money</li></ul></p><p>Email: <a href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></p>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
