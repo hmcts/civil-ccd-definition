@@ -27,5 +27,47 @@
     "CaseEventID": "UPDATE_GA_LANGUAGE_PREFERENCE",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SEND_DRO_ORDER_TO_LIP_CLAIMANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "SEND_DRO_ORDER_TO_LIP_DEFENDANT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REMOVE_PAYMENT_DASHBOARD_NOTIFICATION",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "MANAGE_CASE_FLAGS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CASE_FLAGS",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      }
+    ]
   }
 ]

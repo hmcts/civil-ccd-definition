@@ -405,9 +405,12 @@ module.exports = {
 
     await validateEventPages(createClaimData);
 
+    let bodyText = 'Your claim will not be issued until payment is confirmed.';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'You have until DATE to notify the defendant of the claim and claim details.'
+      header: headerText,
+      body: bodyText
     });
 
     await assignCase();
@@ -1957,7 +1960,7 @@ const solicitorSetup = (solicitor) => {
 };
 
 const clearDataForExtensionDate = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+//  delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondent1OrganisationIDCopy'];

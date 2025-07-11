@@ -92,7 +92,7 @@ export default class DateHelper {
   }): Date {
     const now = new Date();
     if (addDayAfter4pm && this.isAfter4pm(now)) {
-      days += 1;
+      days -= 1;
     }
     return this.subtractDate(now, { days, months, years, workingDay });
   }
@@ -102,7 +102,7 @@ export default class DateHelper {
     { days = 0, months = 0, years = 0, workingDay = false, addDayAfter4pm = false },
   ): Date {
     if (addDayAfter4pm && this.isAfter4pm(new Date())) {
-      days += 1;
+      days -= 1;
     }
     return this.subtractDate(new Date(date), { days, months, years, workingDay });
   }

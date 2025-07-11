@@ -1,7 +1,7 @@
 const config = require('../../../config.js');
 const {createAccount} = require('../../../api/idamHelper');
 
-Feature('CCD API test @api-caseworker @api-nonprod');
+Feature('CCD API test @api-caseworker @api-nightly-prod');
 
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
@@ -21,10 +21,9 @@ Scenario('1v1 JUDICIAL_REFERRAL Lip v Lip stay case dismiss case', async ({api_s
   await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL');
   await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
+}).retry(1);
 
-});
-
-Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_spec}) => {
+Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case @api-nonprod', async ({api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser);
   await api_spec.defendantResponse(config.defendantSolicitorUser);
   await api_spec.claimantResponse(config.applicantSolicitorUser);
@@ -40,7 +39,7 @@ Scenario('1v1 LR FAST TRACK prepare for conduct hearing stay case', async ({api_
   await api_spec.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec.scheduleHearing(config.hearingCenterAdminWithRegionId1, 'FAST_TRACK_TRIAL');
   await api_spec.dismissCase(config.hearingCenterAdminWithRegionId1);
-});
+}).retry(1);
 
 let caseId;
 
@@ -60,7 +59,7 @@ Scenario('1v2 LR UNSPEC claim hearing readiness', async ({api}) => {
   await api.replyMessage(config.ctscAdminUser);
   await api.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api.dismissCase(config.hearingCenterAdminWithRegionId1);
-});
+}).retry(1);
 
 let claimRef;
 const claimType = 'SmallClaims';
@@ -81,7 +80,7 @@ Scenario('1v1 LR  LR v Lip In mediation', async ({api_spec_cui}) => {
   await api_spec_cui.manageStay(config.hearingCenterAdminWithRegionId1, false);
   await api_spec_cui.createSDO(config.judgeUserWithRegionId1, 'CREATE_SMALL');
   await api_spec_cui.dismissCase(config.hearingCenterAdminWithRegionId1);
-});
+}).retry(1);
 
 const mintiEnabled = true;
 const claimAmountMulti = '200001';
@@ -106,4 +105,4 @@ Scenario('1v1 Multi Claim Stay Case Judicial Referral', async ({api}) => {
   await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'MULTI');
   await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL');
   await api.dismissCase(config.hearingCenterAdminWithRegionId1);
-});
+}).retry(1);

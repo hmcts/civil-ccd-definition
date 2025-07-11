@@ -9,10 +9,10 @@ import { subheadings, radioButtons } from './payment-type-content.ts';
 
 @AllMethodsStep()
 export default class PaymentTypePage extends ExuiPage(BasePage) {
-  async verifyContent(ccdCaseData: CCDCaseData, defendantPartyType: ClaimantDefendantPartyType) {
+  async verifyContent(ccdCaseData: CCDCaseData, defendant1PartyType: ClaimantDefendantPartyType) {
     const defendantData = CaseDataHelper.buildClaimantAndDefendantData(
       partys.DEFENDANT_1,
-      defendantPartyType,
+      defendant1PartyType,
     );
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
