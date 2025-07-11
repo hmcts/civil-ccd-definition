@@ -254,7 +254,7 @@ module.exports =  {
       }, caseData, 'PUT');
   },
 
-  uploadDocument: async () => {
+  uploadDocument: async (filename) => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
 
@@ -265,7 +265,9 @@ module.exports =  {
         'Authorization': `Bearer ${authToken}`,
         'ServiceAuthorization': s2sAuth
       },
-      {},
+      {
+        filename
+      },
       'POST');
 
     return await response.json();

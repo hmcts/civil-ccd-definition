@@ -104,13 +104,13 @@ module.exports = {
         console.log(`Raising a query as: ${user.email}`);
         await apiRequest.setupTokens(user);
         const partyName = isTestEnv ? await findPartyNameForQueryFromUserConfig(user) : queryType.partyName;
-        const newMessage = (await initialQueryMessage(partyName, apiRequest.getTokens().userId, isHearingRelated));
+        const newMessage = (await initialQueryMessage(partyName, apiRequest.getTokens().name, apiRequest.getTokens().userId, isHearingRelated));
         return triggerCaseworkerQueryEvent(caseId, RAISE_QUERY_EVENT, queryType, newMessage);
     },
     respondToQuery: async (caseId, user, initialQueryMessage, queryType) => {
         console.log(`Responding to query as: ${user.email}`);
         await apiRequest.setupTokens(user);
-        const newMessage = await queryResponseMessage(initialQueryMessage, apiRequest.getTokens().userId);
+        const newMessage = await queryResponseMessage(initialQueryMessage,  apiRequest.getTokens().name, apiRequest.getTokens().userId);
         await triggerCaseworkerQueryEvent(caseId, RESPOND_QUERY_EVENT, queryType, newMessage);
         await completeQueryResponseTask(user, caseId, initialQueryMessage.id);
     },

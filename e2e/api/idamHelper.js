@@ -39,6 +39,15 @@ async function userId(authToken) {
         .then(response => response.json()).then(data => data.uid);
 }
 
+async function getUser(authToken) {
+  return restHelper.retriedRequest(
+    `${idamUrl}/o/userinfo`, {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Authorization': `Bearer ${authToken}`
+    })
+    .then(response => response.json()).then(data => data);
+}
+
 async function createAccount(email, password) {
   try {
     let body = {'email': email, 'password': password, 'forename': 'forename', 'surname': 'surname', 'roles': [{'code': 'citizen'}]};
@@ -68,6 +77,7 @@ async function deleteAccount(email) {
 }
 
 module.exports = {
+  getUser,
     accessToken,
     userId,
   createAccount,
