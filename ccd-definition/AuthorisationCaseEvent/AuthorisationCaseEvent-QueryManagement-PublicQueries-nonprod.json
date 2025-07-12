@@ -9,6 +9,12 @@
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -16,6 +22,12 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "queryManagementRespondQuery",
     "AccessControl": [
+      {
+        "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "CRU"
+      },
       {
         "UserRoles": [
           "CITIZEN-CLAIMANT-PROFILE",
