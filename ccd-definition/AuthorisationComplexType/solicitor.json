@@ -1182,6 +1182,13 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant1LitigationFriend",
+    "ListElementCode": "flags",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2LitigationFriend",
     "ListElementCode": "fullName",
     "UserRole": "caseworker-civil-solicitor",
@@ -1238,6 +1245,13 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant2LitigationFriend",
+    "ListElementCode": "flags",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "CU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent1LitigationFriend",
     "ListElementCode": "fullName",
     "AccessControl": [
@@ -1342,6 +1356,29 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent1LitigationFriend",
+    "ListElementCode": "flags",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-TWO-UNSPEC-PROFILE",
+          "caseworker-civil-admin",
+          "judge-profile",
+          "legal-adviser"
+        ],
+        "CRUD": "U"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-ONE-UNSPEC-PROFILE"
+        ],
+        "CRUD": "CU"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2LitigationFriend",
     "ListElementCode": "fullName",
     "AccessControl": [
@@ -1441,6 +1478,27 @@
           "RES-SOL-TWO-UNSPEC-PROFILE"
         ],
         "CRUD": "CRUD"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondent2LitigationFriend",
+    "ListElementCode": "flags",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-UNSPEC-PROFILE",
+          "RES-SOL-ONE-UNSPEC-PROFILE",
+          "caseworker-civil-admin"
+        ],
+        "CRUD": "U"
+      },
+      {
+        "UserRoles": [
+          "RES-SOL-TWO-UNSPEC-PROFILE"
+        ],
+        "CRUD": "CU"
       }
     ]
   },
