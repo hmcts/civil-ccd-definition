@@ -1,0 +1,4 @@
+civil-service:
+  java:
+    environment:
+      DOCMOSIS_TORNADO_URL: https://docmosis.aat.platform.hmcts.net
