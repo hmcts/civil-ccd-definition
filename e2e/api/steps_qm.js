@@ -1,5 +1,5 @@
 const apiRequest = require('./apiRequest');
-const {waitForFinishedBusinessProcess} = require('./testingSupport');
+const {waitForFinishedBusinessProcess, checkFlagEnabled } = require('./testingSupport');
 const config = require('../config');
 const {validateTaskInfo} = require('../helpers/assertions/waTaskAssertions');
 const {fetchTasks} = require('./apiRequest');
@@ -9,11 +9,18 @@ const {
     initialQueryMessage
 } = require('../fixtures/queryMessages');
 const chai = require('chai');
+const { applicantSolicitorUser } = require('../config');
+const {
+  APPLICANT_SOLICITOR_QUERY,
+  RESPONDENT_SOLICITOR_1_QUERY,
+  RESPONDENT_SOLICITOR_2_QUERY,
+  RESPONDENT_SOLICITOR_1_AND_2_QUERY, PUBLIC_QUERY
+} = require('../fixtures/queryTypes');
 const {expect} = chai;
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 const RAISE_QUERY_EVENT = 'queryManagementRaiseQuery';
 const RESPOND_QUERY_EVENT = 'queryManagementRespondQuery';
-
+const scenarios = [];
 const assertQueryMessage = (actualQueryMessage, expectedQueryMessage) => {
     expect(actualQueryMessage.id).equal(expectedQueryMessage.id);
     expect(new Date(actualQueryMessage.createdOn).toISOString()).equal(new Date(expectedQueryMessage.createdOn).toISOString());
@@ -141,5 +148,92 @@ module.exports = {
         } else {
             console.log('WA API tests are not enabled - skipping WA test');
         };
-    }
+    },
+    create1v1QmScenario,
+    create1v2DiffQmScenario,
+    create1v2SameSolQmScenario,
+    create2v1QmScenario,
+    outputScenarios
 };
+
+const queriesTabUrl = (caseId) => `https://xui-civil-ccd-pr-5882.preview.platform.hmcts.net/cases/case-details/${caseId}#Queries`;
+
+async function raiseQueries(qmSteps, caseId, solicitorUser, caseworkerUser, queryType, isHearingRelated, queryScenario = 'followup') {
+  const query = await qmSteps.raiseLRQuery(caseId, solicitorUser, queryType, isHearingRelated);
+  if (queryScenario === 'respond' || queryScenario === 'followup') {
+    await qmSteps.respondToQuery(caseId, caseworkerUser, query, queryType);
+  }
+  if (queryScenario === 'followup') {
+    await qmSteps.followUpOnLRQuery(caseId, solicitorUser, query, queryType);
+  }
+}
+
+function logScenario(scenario) { console.log(`${scenario.scenario} ${scenario.url}`); }
+
+async function createQmScenario(scenarioName, api, mpScenario, qmSteps, userFocus, qmScenario) {
+  await api.createClaimWithRepresentedRespondent(applicantSolicitorUser, mpScenario);
+  await api.notifyClaim(applicantSolicitorUser);
+  await api.notifyClaimDetails(applicantSolicitorUser);
+
+  let caseId = await api.getCaseId();
+
+  const qmPublicEnabled = await checkFlagEnabled('public-query-management');
+
+  await raiseQueries(qmSteps, caseId,
+    config.applicantSolicitorUser, config.ctscAdminUser,
+    qmPublicEnabled ? PUBLIC_QUERY : APPLICANT_SOLICITOR_QUERY, false, userFocus === 'app1' ? qmScenario : undefined,
+  );
+
+  if (mpScenario === 'ONE_V_TWO_ONE_LEGAL_REP') {
+    await raiseQueries(qmSteps, caseId,
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      qmPublicEnabled ? PUBLIC_QUERY : RESPONDENT_SOLICITOR_1_AND_2_QUERY, false, userFocus === 'res1' ? qmScenario : undefined,
+    );
+  }
+  else if (mpScenario === 'ONE_V_TWO_TWO_LEGAL_REP') {
+    await raiseQueries(qmSteps, caseId,
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      qmPublicEnabled ? PUBLIC_QUERY : RESPONDENT_SOLICITOR_1_QUERY, false, userFocus === 'res1' ? qmScenario : undefined
+    );
+
+    await raiseQueries(qmSteps, caseId,
+      config.secondDefendantSolicitorUser, config.ctscAdminUser,
+      qmPublicEnabled ? PUBLIC_QUERY : RESPONDENT_SOLICITOR_2_QUERY, false, userFocus === 'res2' ? qmScenario : undefined
+    );
+  }
+  else {
+    await raiseQueries(qmSteps, caseId,
+      config.defendantSolicitorUser, config.ctscAdminUser,
+      qmPublicEnabled ? PUBLIC_QUERY : RESPONDENT_SOLICITOR_1_QUERY, false, userFocus === 'res1' ? qmScenario : undefined
+    );
+  }
+
+  const scenario = {scenario: scenarioName, url: queriesTabUrl(caseId)};
+  scenarios.push(scenario);
+  logScenario(scenario);
+}
+
+async function create1v1QmScenario(scenarioName, api, qmSteps, userFocus, qmScenario) {
+  await createQmScenario(scenarioName, api,  'ONE_V_ONE', qmSteps, userFocus, qmScenario);
+}
+
+async function create1v2SameSolQmScenario(scenarioName, api, qmSteps, userFocus, qmScenario) {
+  await createQmScenario(scenarioName, api,  'ONE_V_TWO_ONE_LEGAL_REP', qmSteps, userFocus, qmScenario);
+}
+
+async function create1v2DiffQmScenario(scenarioName, api, qmSteps, userFocus, qmScenario) {
+  await createQmScenario(scenarioName, api, 'ONE_V_TWO_TWO_LEGAL_REP', qmSteps, userFocus, qmScenario);
+}
+
+async function create2v1QmScenario(scenarioName, api, qmSteps, userFocus, qmScenario) {
+  await createQmScenario(scenarioName, api, 'TWO_V_ONE', qmSteps, userFocus, qmScenario);
+}
+
+function outputScenarios() {
+  console.log('=======SCENARIOS=========');
+  for (let i = 0; i < scenarios.length; i++) {
+    logScenario(scenarios[i]);
+  }
+  console.log('=========================');
+}
+

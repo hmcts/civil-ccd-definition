@@ -299,6 +299,7 @@ module.exports =  {
 
     return caseFlagsEnabled && hmcEnabled;
   },
+  checkFlagEnabled,
   checkHmcEnabled,
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
