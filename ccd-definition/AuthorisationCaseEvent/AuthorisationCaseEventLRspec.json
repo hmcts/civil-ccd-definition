@@ -66,6 +66,17 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -78,6 +89,17 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },
@@ -90,6 +112,17 @@
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "caseworker-civil-admin",
+          "CITIZEN-CLAIMANT-PROFILE",
+          "GS_profile"
+        ],
+        "CRUD": "R"
       }
     ]
   },

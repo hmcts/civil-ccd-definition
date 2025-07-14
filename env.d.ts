@@ -34,6 +34,7 @@ declare global {
       PLAYWRIGHT_TEST_SPEED: string;
       PLAYWRIGHT_RETRIES: string;
       PLAYWRIGHT_EXUI_RETRIES: string;
+      PLAYWRIGHT_DEBUG_CASE_ID: string;
     }
   }
 }
