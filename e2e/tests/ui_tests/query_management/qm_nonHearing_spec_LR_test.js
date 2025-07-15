@@ -55,6 +55,7 @@ Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');
+  await I.waitForText('Errors');
   await I.see('If your case is offline, you cannot raise a query.');
 }).retry(2);
 
