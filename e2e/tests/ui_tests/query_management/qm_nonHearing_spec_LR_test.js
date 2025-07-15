@@ -49,7 +49,7 @@ Scenario('Judge can access to a query', async ({ I }) => {
 Scenario('Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
-}).retry(0);
+}).retry(2);
 
 Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
