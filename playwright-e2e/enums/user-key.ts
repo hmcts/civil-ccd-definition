@@ -18,6 +18,7 @@ enum UserKey {
   HEARING_CENTER_ADMIN_REGION_4 = 'hearing-center-admin-region-4',
   TRIBUNAL_CASEWORKER_REGION_4 = 'tribunal-caseworker-region-4',
   CTSC_ADMIN = 'ctsc-admin',
+  CIVIL_SYSTEM_UPDATE = 'system_update',
 }
 
 export default UserKey;

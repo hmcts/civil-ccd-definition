@@ -26,9 +26,11 @@ module.exports = {
       events.INITIATE_GENERAL_APPLICATION
     ],
     PENDING_CASE_ISSUED: [
-      events.RESUBMIT_CLAIM,
+      events.QUERY_MANAGEMENT,
       events.NOTIFY_DEFENDANT_OF_CLAIM,
-      events.CHANGE_SOLICITOR_EMAIL
+      events.ADD_OR_AMEND_CLAIM_DOCUMENTS,
+      events.RESUBMIT_CLAIM,
+      events.INITIATE_GENERAL_APPLICATION,
     ]
   },
   defendant_solicitor: {

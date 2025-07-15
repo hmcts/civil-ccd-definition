@@ -1,10 +1,10 @@
 import BaseApi from '../../../base/base-api';
 import {
-  civilAdminUser,
   claimantOrganisationSuperUser,
   claimantSolicitorUser,
 } from '../../../config/users/exui-users';
 import ccdEvents from '../../../constants/ccd-events';
+import claimantDefendantPartyTypes from '../../../constants/claimant-defendant-party-types';
 import ClaimantSolicitorDataBuilderFactory from '../../../data-builders/exui/claimant-solicitor/claimant-solicitor-data-builder-factory';
 import { AllMethodsStep } from '../../../decorators/test-steps';
 import CaseState from '../../../enums/case-state';
@@ -46,6 +46,8 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
@@ -72,6 +74,9 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setClaimant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
@@ -98,6 +103,9 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
@@ -123,6 +131,9 @@ export default class ClaimantSolicitorApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
+    super.setClaimant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant1PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
+    super.setDefendant2PartyType = claimantDefendantPartyTypes.INDIVIDUAL;
     await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
