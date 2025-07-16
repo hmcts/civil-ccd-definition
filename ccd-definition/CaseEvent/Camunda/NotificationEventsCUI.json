@@ -16,7 +16,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "GENERATE_PIP_LETTER",
     "Name": "Email: issue claim",
-    "Description": "Notify respondent 1 for claim continuing online",
+    "Description": "Notify relevant parties for claim continuing online",
     "PreConditionState(s)": "*",
     "PostConditionState": "*",
     "SecurityClassification": "Public",
