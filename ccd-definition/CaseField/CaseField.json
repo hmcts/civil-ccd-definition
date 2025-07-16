@@ -3422,7 +3422,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "isLipOnCase",
+    "ID": "isMintiLipCase",
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
