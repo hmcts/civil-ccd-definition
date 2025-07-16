@@ -28,6 +28,19 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "NOTIFY_INTERIM_JUDGMENT",
+    "Name": "Notify Interim Judgement",
+    "Description": "Notify interim judgment",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "JUDICIAL_REFERRAL",
+    "SecurityClassification": "Public",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0,
+    "Publish": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "NOTIFY_RPA_DJ_UNSPEC",
     "Name": "Notify RPA",
     "Description": "Notify RPA",
