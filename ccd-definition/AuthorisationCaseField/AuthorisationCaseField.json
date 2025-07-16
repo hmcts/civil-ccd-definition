@@ -6797,10 +6797,15 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "isLipOnCase",
+    "CaseFieldID": "isMintiLipCase",
     "AccessControl": [
       {
         "UserRoles": [
+          "RES-SOL-ONE-SPEC-PROFILE",
+          "RES-SOL-TWO-SPEC-PROFILE",
+          "APP-SOL-SPEC-PROFILE",
+          "CITIZEN-DEFENDANT-PROFILE",
+          "CITIZEN-CLAIMANT-PROFILE",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRU"

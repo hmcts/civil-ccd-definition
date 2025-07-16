@@ -1678,9 +1678,6 @@ const assertValidData = async (data, pageId, solicitor) => {
   if (responseBody.data.requestForReconsiderationDeadline) {
     caseData.requestForReconsiderationDeadline = responseBody.data.requestForReconsiderationDeadline;
   }
-  if (responseBody.data.isLipOnCase) {
-    caseData.isLipOnCase = responseBody.data.isLipOnCase;
-  }
 
   try {
      assert.deepEqual(responseBody.data, caseData);
