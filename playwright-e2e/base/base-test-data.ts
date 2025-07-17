@@ -1,5 +1,7 @@
 import claimantDefendantPartyTypes from '../constants/claimant-defendant-party-types';
-import CaseDataHelper from '../helpers/case-data-helper';
+import CaseFlagsHelper from '../helpers/case-flags-helper';
+import DateHelper from '../helpers/date-helper';
+import CaseFlags from '../models/case-flag';
 import CCDCaseData from '../models/ccd/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../models/claimant-defendant-party-types';
 import TestData from '../models/test-data';
@@ -64,19 +66,42 @@ export default abstract class BaseTestData {
   }
 
   protected get activeCaseFlags() {
-    return this._testData.activeCaseFlags;
+    return this._testData.caseFlags.activeCaseFlags;
   }
 
-  protected incrementActiveCaseFlags() {
+  protected get caseFlagsDetails() {
+    return this._testData.caseFlags.caseFlagDetails;
+  }
+
+  protected addCaseFlag(caseFlagDetail: {
+    caseFlagLocation: string;
+    caseFlagType: string;
+    caseFlagComment: string;
+  }) {
+    console.log(
+      `Adding case flag to location: ${caseFlagDetail.caseFlagLocation} with type: ${caseFlagDetail.caseFlagType}`,
+    );
+    this._testData.caseFlags.caseFlagDetails.push({
+      ...caseFlagDetail,
+      creationDate: DateHelper.formatDateToString(DateHelper.getToday(), {
+        outputFormat: 'DD Mon YYYY',
+      }),
+      active: true,
+    });
     console.log('Incrementing Total Active Case Flags');
-    this._testData.activeCaseFlags++;
-    console.log(`Total Number of Active Case Flags: ${this._testData.activeCaseFlags}`);
+    this._testData.caseFlags.activeCaseFlags++;
+    console.log(`Total Number of Active Case Flags: ${this._testData.caseFlags.activeCaseFlags}`);
   }
 
-  protected decrementActiveCaseFlags() {
+  protected deactivateCaseFlag(index: number) {
+    const caseFlagDetails = this.caseFlagsDetails[index];
+    console.log(
+      `Deactivating case flag with location: ${caseFlagDetails.caseFlagLocation} with type: ${caseFlagDetails.caseFlagType}`,
+    );
+    caseFlagDetails.active = false;
     console.log('Decrementing Total Active Case Flags');
-    this._testData.activeCaseFlags--;
-    console.log(`Total Number of Active Case Flags: ${this._testData.activeCaseFlags}`);
+    this._testData.caseFlags.activeCaseFlags--;
+    console.log(`Total Number of Active Case Flags: ${this._testData.caseFlags.activeCaseFlags}`);
   }
 
   protected setClaimantDefendantPartyTypes() {
@@ -86,52 +111,81 @@ export default abstract class BaseTestData {
     this.setDefendant2PartyType = claimantDefendantPartyTypes[this.ccdCaseData?.respondent2?.type];
   }
 
-  protected setActiveCaseFlags() {
-    let activeCaseFlags = 0;
-    activeCaseFlags += CaseDataHelper.getActiveCaseLevelFlags(this.ccdCaseData);
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForClaimantDefendant(
-      this.ccdCaseData?.applicant1,
+  protected setCaseFlags() {
+    const caseFlags: CaseFlags = this._testData.caseFlags;
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseLevelFlags(this.ccdCaseData),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForLitigationFriend(
-      this.ccdCaseData?.applicant1LitigationFriend,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForClaimantDefendant(this.ccdCaseData?.applicant1),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForClaimantDefendant(
-      this.ccdCaseData?.applicant2,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForLitigationFriend(this.ccdCaseData?.applicant1LitigationFriend),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForLitigationFriend(
-      this.ccdCaseData?.applicant2LitigationFriend,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForClaimantDefendant(this.ccdCaseData?.applicant2),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForClaimantDefendant(
-      this.ccdCaseData?.respondent1,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForLitigationFriend(this.ccdCaseData?.applicant2LitigationFriend),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForLitigationFriend(
-      this.ccdCaseData?.respondent1LitigationFriend,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForClaimantDefendant(this.ccdCaseData?.respondent1),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForClaimantDefendant(
-      this.ccdCaseData?.respondent2,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForLitigationFriend(
+        this.ccdCaseData?.respondent1LitigationFriend,
+      ),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForLitigationFriend(
-      this.ccdCaseData?.respondent2LitigationFriend,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForClaimantDefendant(this.ccdCaseData?.respondent2),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.applicantExperts,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForLitigationFriend(
+        this.ccdCaseData?.respondent2LitigationFriend,
+      ),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.applicantWitnesses,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.applicantExperts),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.respondent1Experts,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.applicantWitnesses),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.respondent1Witnesses,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent1Experts),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.respondent2Experts,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent1Witnesses),
     );
-    activeCaseFlags += CaseDataHelper.getActiveCaseFlagsForExpertAndWitness(
-      this.ccdCaseData.respondent2Witnesses,
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent2Experts),
     );
-    this._testData.activeCaseFlags = activeCaseFlags;
-    console.log(`Total Number of Active Case Flags: ${this._testData.activeCaseFlags}`);
+    CaseFlagsHelper.updateCaseFlagsObject(
+      caseFlags,
+      CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent2Witnesses),
+    );
+    console.log(`Total Number of Case Flags: ${caseFlags.caseFlagDetails.length}`);
+    console.log(`Total Number of Active Case Flags: ${caseFlags.activeCaseFlags}`);
+  }
+
+  protected setIsDebugTestDataSetup() {
+    this._testData.isDebugTestDataSetup = true;
+  }
+
+  protected get isDebugTestDataSetup() {
+    return this._testData.isDebugTestDataSetup;
   }
 }

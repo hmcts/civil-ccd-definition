@@ -1,9 +1,10 @@
 import BasePage from '../../../../../../base/base-page';
+import caseFlagLocations from '../../../../../../constants/case-flags/case-flag-locations';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
+import { CaseFlagLocation } from '../../../../../../models/case-flags/case-flag-locations';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
 import { ClaimantDefendantPartyType } from '../../../../../../models/claimant-defendant-party-types';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { radioButtons } from './create-case-flags-location-spec-content';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsLocationSpecPage extends ExuiPage(BasePage) {
@@ -14,22 +15,18 @@ export default class CreateCaseFlagsLocationSpecPage extends ExuiPage(BasePage) 
   ) {
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
-      super.expectLabel(radioButtons.caseLevel.label),
-      super.expectLabel(radioButtons.claimant1.label(claimant1PartyType)),
-      super.expectLabel(radioButtons.defendant1.label(defendant1PartyType)),
-      super.expectLabel(radioButtons.claimantExpert1.label),
-      super.expectLabel(radioButtons.defendant1Expert1.label),
-      super.expectLabel(radioButtons.claimantWitness1.label),
-      super.expectLabel(radioButtons.defendant1Witness1.label),
+      super.expectLabel(caseFlagLocations.CASE_LEVEL),
+      super.expectLabel(caseFlagLocations.CLAIMANT_1(claimant1PartyType)),
+      super.expectLabel(caseFlagLocations.DEFENDANT_1(defendant1PartyType)),
+      super.expectLabel(caseFlagLocations.CLAIMANT_EXPERT_1),
+      super.expectLabel(caseFlagLocations.DEFENDANT_1_EXPERT_1),
+      super.expectLabel(caseFlagLocations.CLAIMANT_WITNESS_1),
+      super.expectLabel(caseFlagLocations.DEFENDANT_1_WITNESS_1),
     ]);
   }
 
-  async selectCaseLevel() {
-    await super.clickByLabel(radioButtons.caseLevel.label);
-  }
-
-  async selectClaimant1(claimant1PartyType: ClaimantDefendantPartyType) {
-    await super.clickByLabel(radioButtons.claimant1.label(claimant1PartyType));
+  async selectLocation(caseFlagLocation: CaseFlagLocation) {
+    await super.clickByLabel(caseFlagLocation);
   }
 
   async submit() {
