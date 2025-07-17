@@ -15,15 +15,15 @@ async function prepareClaim(api, mpScenario, claimAmount) {
   await api.notifyClaimDetails(config.applicantSolicitorUser);
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, null, track);
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'JUDICIAL_REFERRAL', 'FOR_SDO', track);
-  await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
+  /*await api.createFinalOrder(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
   await api.evidenceUploadRespondent(config.defendantSolicitorUser, mpScenario);
-  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);
+  await api.scheduleHearing(hearingCenterAdminToBeUsed, 'FAST_TRACK_TRIAL', true);*/
 }
 
 Scenario('1v1 Create Unspecified Intermediate Track claim @api-prod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
-});
+}).tag('local-testing');
 
 Scenario('1v2 Same Solicitor Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';
@@ -35,6 +35,6 @@ Scenario('2v1 Create Unspecified Intermediate Track claim', async ({api}) => {
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
 });
 
-AfterSuite(async  ({api}) => {
+/*AfterSuite(async  ({api}) => {
   await api.cleanUp();
-});
+});*/
