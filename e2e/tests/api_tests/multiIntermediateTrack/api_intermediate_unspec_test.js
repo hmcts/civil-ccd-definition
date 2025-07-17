@@ -23,7 +23,7 @@ async function prepareClaim(api, mpScenario, claimAmount) {
 Scenario('1v1 Create Unspecified Intermediate Track claim @api-prod', async ({api}) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api, mpScenario, intermediateTrackClaimAmount, track);
-}).tag('local-testing');
+});
 
 Scenario('1v2 Same Solicitor Create Unspecified Intermediate Track claim', async ({api}) => {
   const mpScenario = 'ONE_V_TWO_ONE_LEGAL_REP';

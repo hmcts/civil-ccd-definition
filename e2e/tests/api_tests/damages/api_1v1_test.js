@@ -59,13 +59,13 @@ Scenario('Add Litigation Friend', async ({api}) => {
   await api.addDefendantLitigationFriend(config.defendantSolicitorUser, mpScenario);
 });*/
 
-/*Scenario('Defendant response', async ({api}) => {
+Scenario('Defendant response', async ({api}) => {
   await api.defendantResponse(config.defendantSolicitorUser, mpScenario);
 });
 
 Scenario('Claimant response', async ({api}) => {
   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-});*/
+});
 
 /*
 Scenario('Add case flags', async ({api}) => {
