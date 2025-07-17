@@ -33,7 +33,7 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "caseworker-civil-admin",
-          "judge-profile"
+          "GS_profile"
         ],
         "CRUD": "R"
       }
