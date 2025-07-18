@@ -137,7 +137,7 @@ def archiveCoreCaseDataDefinitions() {
     dir("${WORKSPACE}/bin") {
       sh """
           set -e
-          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh ${CHANGE_ID})
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh 5895)
           ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
       """
     }
@@ -212,10 +212,23 @@ withPipeline(type, product, component) {
     env.ENVIRONMENT = "ithc"
   }
 
-  before('highleveldatasetup') {
-    yarnBuilder.yarn('setup')
-    archiveCoreCaseDataDefinitions()
+  before('build') {
+    dir("${WORKSPACE}/bin") {
+      ccdDefinitionFilePath = "${WORKSPACE}/build/ccd-release-config/civil-ccd-${env}.xlsx"
+      sh """
+          set -e
+          eval \$(./variables/load-${env.ENVIRONMENT}-environment-variables.sh 5895)
+          ./build-release-ccd-definition.sh ${env.ENVIRONMENT}
+          ./utils/ccd-import-definition.sh ${ccdDefinitionFilePath}
+      """
+    }
+    error("Purpose failure after ccd def upload")
   }
+
+  before('highleveldatasetup') {
+      yarnBuilder.yarn('setup')
+      archiveCoreCaseDataDefinitions()
+    }
 
 //  before('akschartsinstall'){
 //    onPR{

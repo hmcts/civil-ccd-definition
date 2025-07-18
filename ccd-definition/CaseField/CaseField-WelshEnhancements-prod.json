@@ -4,6 +4,6 @@
   "Label": "Defendant response date",
   "FieldType": "DateTime",
   "SecurityClassification": "Public",
-  "Searchable": "N"
+  "Searchable": "Y"
 }
 ]
