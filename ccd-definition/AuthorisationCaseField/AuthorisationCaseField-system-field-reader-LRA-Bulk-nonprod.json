@@ -118,5 +118,17 @@
     "CaseFieldID": "claimFixedCostsExist",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "partAdmit1v1Defendant",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediatelyLRALabel",
+    "UserRole": "caseworker-civil-system-field-reader",
+    "CRUD": "R"
   }
 ]
