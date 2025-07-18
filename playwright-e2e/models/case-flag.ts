@@ -7,7 +7,7 @@ export type CaseFlagDetails = {
 };
 
 type CaseFlags = {
-  caseFlagDetails: CaseFlagDetails[];
+  caseFlagsDetails: CaseFlagDetails[];
   activeCaseFlags: number;
 };
 

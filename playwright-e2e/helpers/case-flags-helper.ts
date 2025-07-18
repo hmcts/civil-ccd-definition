@@ -10,7 +10,7 @@ import DateHelper from './date-helper';
 
 export default class CaseFlagsHelper {
   static updateCaseFlagsObject(caseFlagsObjectToBeUpdated: CaseFlags, caseFlagsObject: CaseFlags) {
-    caseFlagsObjectToBeUpdated.caseFlagDetails.push(...caseFlagsObject.caseFlagDetails);
+    caseFlagsObjectToBeUpdated.caseFlagsDetails.push(...caseFlagsObject.caseFlagsDetails);
     caseFlagsObjectToBeUpdated.activeCaseFlags += caseFlagsObject.activeCaseFlags;
   }
 
@@ -43,7 +43,7 @@ export default class CaseFlagsHelper {
         `Active case flags: ${activeCaseFlags} for party ${claimantDefendant?.partyName}`,
       );
     }
-    return { caseFlagDetails, activeCaseFlags };
+    return { caseFlagsDetails: caseFlagDetails, activeCaseFlags };
   }
 
   static getCaseFlagsForLitigationFriend(litigationFriend?: LitigationFriend): CaseFlags {
@@ -66,11 +66,11 @@ export default class CaseFlagsHelper {
         `Active case flags: ${activeCaseFlags} for party ${litigationFriend?.flags?.partyName}`,
       );
     }
-    return { caseFlagDetails, activeCaseFlags };
+    return { caseFlagsDetails: caseFlagDetails, activeCaseFlags };
   }
 
   static getCaseFlagsForExpertAndWitness(expertOrWitnesses?: ExpertAndWitness[]): CaseFlags {
-    const caseFlags: CaseFlags = { caseFlagDetails: [], activeCaseFlags: 0 };
+    const caseFlags: CaseFlags = { caseFlagsDetails: [], activeCaseFlags: 0 };
     if (expertOrWitnesses) {
       for (const expertOrWitness of expertOrWitnesses) {
         const caseFlagDetails: CaseFlagDetails[] =
@@ -92,7 +92,10 @@ export default class CaseFlagsHelper {
             `Active case flags: ${activeCaseFlags} for party ${expertOrWitness?.value?.flags?.partyName}`,
           );
         }
-        this.updateCaseFlagsObject({ caseFlagDetails, activeCaseFlags }, caseFlags);
+        this.updateCaseFlagsObject(
+          { caseFlagsDetails: caseFlagDetails, activeCaseFlags },
+          caseFlags,
+        );
       }
     }
     return caseFlags;
@@ -114,6 +117,6 @@ export default class CaseFlagsHelper {
         ?.length || 0;
     console.log(`Total case flags: ${caseFlagDetails.length} for ${caseFlagLocations.CASE_LEVEL}`);
     console.log(`Active case flags: ${activeCaseFlags} for ${caseFlagLocations.CASE_LEVEL}`);
-    return { caseFlagDetails, activeCaseFlags };
+    return { caseFlagsDetails: caseFlagDetails, activeCaseFlags };
   }
 }

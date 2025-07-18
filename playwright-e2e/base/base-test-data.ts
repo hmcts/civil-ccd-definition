@@ -70,7 +70,13 @@ export default abstract class BaseTestData {
   }
 
   protected get caseFlagsDetails() {
-    return this._testData.caseFlags.caseFlagDetails;
+    return this._testData.caseFlags.caseFlagsDetails;
+  }
+
+  protected get firstActiveCaseFlagDetails() {
+    return this._testData.caseFlags.caseFlagsDetails.find(
+      (caseFlagDetail) => caseFlagDetail.active,
+    );
   }
 
   protected addCaseFlag(caseFlagDetail: {
@@ -81,7 +87,7 @@ export default abstract class BaseTestData {
     console.log(
       `Adding case flag to location: ${caseFlagDetail.caseFlagLocation} with type: ${caseFlagDetail.caseFlagType}`,
     );
-    this._testData.caseFlags.caseFlagDetails.push({
+    this._testData.caseFlags.caseFlagsDetails.push({
       ...caseFlagDetail,
       creationDate: DateHelper.formatDateToString(DateHelper.getToday(), {
         outputFormat: 'DD Mon YYYY',
@@ -177,7 +183,7 @@ export default abstract class BaseTestData {
       caseFlags,
       CaseFlagsHelper.getCaseFlagsForExpertAndWitness(this.ccdCaseData.respondent2Witnesses),
     );
-    console.log(`Total Number of Case Flags: ${caseFlags.caseFlagDetails.length}`);
+    console.log(`Total Number of Case Flags: ${caseFlags.caseFlagsDetails.length}`);
     console.log(`Total Number of Active Case Flags: ${caseFlags.activeCaseFlags}`);
   }
 
