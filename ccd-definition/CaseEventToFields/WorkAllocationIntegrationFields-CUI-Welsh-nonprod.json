@@ -155,6 +155,7 @@
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "claimantBilingualLanguagePreference",
     "PageFieldDisplayOrder": 23,
+    "PageDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"
@@ -164,6 +165,7 @@
     "CaseEventID": "COURT_OFFICER_ORDER",
     "CaseFieldID": "respondent1LiPResponse",
     "PageFieldDisplayOrder": 24,
+    "PageDisplayOrder": 1,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocationIntegrationFields",
     "Publish": "Y"

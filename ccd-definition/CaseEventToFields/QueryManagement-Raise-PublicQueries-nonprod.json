@@ -54,5 +54,31 @@
     "PageDisplayOrder": 99,
     "ShowSummaryChangeOption": "N",
     "PageShowShowCondition": "QueryManagementComponentLauncher=\"DUMMY_VALUE_TO_HIDE_PAGE\""
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "claimantBilingualLanguagePreference",
+    "PageFieldDisplayOrder": 2,
+    "DisplayContext": "READONLY",
+    "PageID": "WorkAllocation",
+    "PageLabel": " ",
+    "Publish": "Y",
+    "PageDisplayOrder": 99,
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "LiveFrom": "01/01/2018",
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "queryManagementRaiseQuery",
+    "CaseFieldID": "respondent1LiPResponse",
+    "PageFieldDisplayOrder": 3,
+    "DisplayContext": "OPTIONAL",
+    "PageID": "WorkAllocation",
+    "PageLabel": " ",
+    "Publish": "Y",
+    "PageDisplayOrder": 99,
+    "ShowSummaryChangeOption": "N"
   }
 ]

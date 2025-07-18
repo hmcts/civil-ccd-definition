@@ -227,7 +227,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "judge-profile"
+          "judge-profile",
+          "legal-adviser"
         ],
         "CRUD": "CRU"
       },
@@ -235,7 +236,6 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "legal-adviser",
           "wlu-admin",
           "caseworker-civil-admin",
           "caseworker-civil-staff"
