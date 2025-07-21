@@ -39,11 +39,10 @@ export default class HearingCenterAdminSteps extends BaseExui {
     await super.retryExuiEvent(
       async () => {
         await createCaseFlagsActions.selectCaseLevel();
-        await createCaseFlagsActions.caseLevelComplexTypeCaseFlag();
+        await createCaseFlagsActions.caseLevelComplexCaseCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
-      hearingCenterAdminRegion1User,
     );
   }
 
@@ -52,11 +51,10 @@ export default class HearingCenterAdminSteps extends BaseExui {
     await super.retryExuiEvent(
       async () => {
         await createCaseFlagsActions.selectCaseLevel();
-        await createCaseFlagsActions.caseLevelComplexTypeCaseFlag();
+        await createCaseFlagsActions.caseLevelComplexCaseCaseFlag();
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
-      hearingCenterAdminRegion1User,
     );
   }
 
@@ -69,7 +67,6 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
-      hearingCenterAdminRegion1User,
     );
   }
 
@@ -82,7 +79,17 @@ export default class HearingCenterAdminSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CREATE_CASE_FLAGS,
-      hearingCenterAdminRegion1User,
+    );
+  }
+
+  async ManageCaseFlags() {
+    const { manageCaseFlagsActions } = this.hearingCenterAdminActionsFactory;
+    await super.retryExuiEvent(
+      async () => {
+        await manageCaseFlagsActions.makeInactiveCaseFlag();
+      },
+      async () => {},
+      ccdEvents.MANAGE_CASE_FLAGS,
     );
   }
 }
