@@ -74,10 +74,13 @@ export default abstract class BaseApi extends BaseTestData {
     return eventData;
   }
 
-  protected async waitForFinishedBusinessProcess(user: User, caseId?: number) {
+  protected async waitForFinishedBusinessProcess(caseId?: number) {
     const { civilServiceRequests } = this.requestsFactory;
-    await this.setupUserData(user);
-    await civilServiceRequests.waitForFinishedBusinessProcess(user, caseId ?? this.ccdCaseData.id);
+    await this.setupUserData(civilSystemUpdate);
+    await civilServiceRequests.waitForFinishedBusinessProcess(
+      civilSystemUpdate,
+      caseId ?? this.ccdCaseData.id,
+    );
   }
 
   protected async fetchAndSetCCDCaseData(caseId?: number) {
@@ -90,10 +93,11 @@ export default abstract class BaseApi extends BaseTestData {
   }
 
   protected async setDebugTestData() {
-    if (config.debugCaseId) {
+    if (config.debugCaseId && !super.isDebugTestDataSetup) {
       await this.fetchAndSetCCDCaseData(config.debugCaseId);
       super.setClaimantDefendantPartyTypes();
-      super.setActiveCaseFlags();
+      super.setCaseFlags();
+      super.setIsDebugTestDataSetup();
     }
   }
 }

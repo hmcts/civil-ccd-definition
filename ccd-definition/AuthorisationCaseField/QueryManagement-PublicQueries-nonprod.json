@@ -52,7 +52,8 @@
           "RES-SOL-TWO-UNSPEC-PROFILE",
           "caseworker-civil-admin",
           "caseworker-civil-staff",
-          "ctsc"
+          "ctsc",
+          "wlu-admin"
         ],
         "CRUD": "CRU"
       },
