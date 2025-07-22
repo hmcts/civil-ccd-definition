@@ -361,7 +361,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptFullAdmit1",
+    "CaseFieldID": "respondent1FullAdmit1",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 24,
     "DisplayContext": "MANDATORY",
@@ -373,7 +373,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptFullAdmit2",
+    "CaseFieldID": "respondent1FullAdmit2",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 25,
     "DisplayContext": "MANDATORY",
@@ -385,7 +385,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptFullAdmit3",
+    "CaseFieldID": "respondent1FullAdmit3",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 26,
     "DisplayContext": "MANDATORY",
@@ -397,7 +397,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CLAIMANT_RESPONSE_SPEC",
-    "CaseFieldID": "applicant1AcceptFullAdmit4",
+    "CaseFieldID": "respondent1FullAdmit4",
     "PageDisplayOrder": 1,
     "PageFieldDisplayOrder": 27,
     "DisplayContext": "MANDATORY",
