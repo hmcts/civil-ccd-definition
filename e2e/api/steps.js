@@ -210,7 +210,7 @@ const midEventFieldForPage = {
     id: 'applicantSolicitor1ClaimStatementOfTruth',
     dynamicList: false,
     uiField: {
-      remove: true,
+      remove: false,
       field: 'uiStatementOfTruth'
     },
   }
@@ -1805,8 +1805,8 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
-    // this property won't be here until civil service is merged
-    if (populatedCaseField !== 'applicant1DQRemoteHearing') {
+    // this property won't be here
+    if (populatedCaseField !== 'uiStatementOfTruth') {
       assert.property(returnedCaseData, populatedCaseField);
     }
   }
