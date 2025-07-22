@@ -1390,6 +1390,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondStatementOfTruthHeaderLabel",
+    "Label": "<h2 class=\"govuk-heading-l\">Statement of truth</h2>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "uiStatementOfTruth",
     "Label": " ",
     "FieldType": "StatementOfTruth",

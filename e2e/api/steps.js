@@ -1805,7 +1805,7 @@ const assertSubmittedEventWithCaseData = async (updatedCaseData, expectedState, 
 const assertContainsPopulatedFields = (returnedCaseData, solicitor) => {
   const fixture = solicitor ? adjustDataForSolicitor(solicitor, caseData) : caseData;
   for (let populatedCaseField of Object.keys(fixture)) {
-    // this property won't be here
+    // this property won't be here until civil service is merged
     if (populatedCaseField !== 'uiStatementOfTruth') {
       assert.property(returnedCaseData, populatedCaseField);
     }
