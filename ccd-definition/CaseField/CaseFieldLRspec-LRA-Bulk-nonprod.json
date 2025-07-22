@@ -26,7 +26,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent1.partyName} want to pay the £${totalClaimAmountPlusInterestString}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -34,7 +34,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabel2",
-    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When does ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterestString}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -42,7 +42,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseClaimAdmitFullClaimWhenToPaySpecLabelBothDefendants",
-    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterest}?</h2>",
+    "Label": "<h2 class=\"govuk-heading-l\">When do ${respondent1.partyName} and ${respondent2.partyName} want to pay the £${totalClaimAmountPlusInterestString}?</h2>",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -73,6 +73,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "totalClaimAmountPlusInterestString",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "totalClaimAmountPlusInterestAdmitPart",
     "Label": "Total Claim amount + interest",
     "FieldType": "Number",
@@ -81,8 +89,16 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "totalClaimAmountPlusInterestAdmitPartString",
+    "Label": " ",
+    "FieldType": "Text",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel1",
-    "Label": "## The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "Label": "## The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPartString}.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -99,7 +115,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "responseToClaimAdmitPartTotalAmountWithInterestLabel2",
-    "Label": "## The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPart}.",
+    "Label": "## The total amount, including any interest claimed to date, is £${totalClaimAmountPlusInterestAdmitPartString}.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -116,7 +132,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1RepaymentPlanAdmitFullLabel",
-    "Label": "The total amount claimed is £${totalClaimAmountPlusInterest}.",
+    "Label": "The total amount claimed is £${totalClaimAmountPlusInterestString}.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -132,7 +148,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2RepaymentPlanAdmitFullLabel",
-    "Label": "The total amount claimed is £${totalClaimAmountPlusInterest}.",
+    "Label": "The total amount claimed is £${totalClaimAmountPlusInterestString}.",
     "FieldType": "Label",
     "Searchable": "N",
     "SecurityClassification": "Public"
@@ -173,6 +189,22 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2RepaymentPlanLabelPartAdmit",
     "Label": "<p>The amount admitted is £${respondToAdmittedClaimOwingAmountPounds2}</p> <p>The amount includes interest if it has been claimed.</br>The claim fee and any fixed costs claimed are not included in this figure but are payable in addition and if judgment is entered on an admission will be included in the total judgment sum.</p>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partAdmit1v1Defendant",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partAdmissionWhenWillDefendantPayImmediatelyLRALabel",
+    "Label": "If the claimant accepts, you must contact the claimant and pay the full amount within 5 days. Any cheques or transfers must be clear in their account.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

@@ -14,6 +14,30 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "totalClaimAmountPlusInterestAdmitPartString",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "RespondentCheckList",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "partAdmit1v1Defendant",
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 5,
+    "DisplayContext": "READONLY",
+    "PageID": "defenceAdmittedPartRoute",
+    "FieldShowCondition": "respondent1ClaimResponseTypeForSpec=\"DO NOT SHOW IN UI\"",
+    "ShowSummaryChangeOption": "N",
+    "RetainHiddenValue": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
     "CaseFieldID": "responseToClaimAdmitPartTotalAmountWithInterestLabel1",
     "PageDisplayOrder": 6,
     "PageFieldDisplayOrder": 3,
@@ -224,7 +248,18 @@
     "PageFieldDisplayOrder": 4,
     "DisplayContext": "READONLY",
     "PageID": "WhenWillClaimBePaid",
-    "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"IMMEDIATELY\" AND isRespondent1 = \"Yes\"",
+    "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"IMMEDIATELY\" AND isRespondent1 = \"Yes\" AND partAdmit1v1Defendant!=\"Yes\"",
+    "ShowSummaryChangeOption": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "DEFENDANT_RESPONSE_SPEC",
+    "CaseFieldID": "partAdmissionWhenWillDefendantPayImmediatelyLRALabel",
+    "PageDisplayOrder": 12,
+    "PageFieldDisplayOrder": 4,
+    "DisplayContext": "READONLY",
+    "PageID": "WhenWillClaimBePaid",
+    "FieldShowCondition": "defenceAdmitPartPaymentTimeRouteRequired=\"IMMEDIATELY\" AND isRespondent1 = \"Yes\" AND partAdmit1v1Defendant=\"Yes\"",
     "ShowSummaryChangeOption": "N"
   },
   {
