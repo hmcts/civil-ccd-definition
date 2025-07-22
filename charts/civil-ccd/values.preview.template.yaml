@@ -67,7 +67,7 @@ civil-service:
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
       COURT_LOCATION_WA_DMN_ENABLED: true
-      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+      ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-demo.service.core-compute-demo.internal
       CCD_EVENTS_TOPIC_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SUBSCRIPTION_NAME: ${SERVICE_NAME}-asb-ccd-case-events
       CCD_EVENTS_SERVICE_BUS_CONCURRENT_SESSIONS: 1
@@ -149,7 +149,7 @@ xui-webapp:
       SERVICES_WORK_ALLOCATION_TASK_API: http://{{ .Release.Name }}-wa-task-management-api
       SERVICES_WA_WORKFLOW_API_URL: http://wa-workflow-api-${SERVICE_FQDN}
       SERVICES_TRANSLATION_API_URL: http://${SERVICE_NAME}-translation-service
-      SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+      SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service-demo.service.core-compute-demo.internal
 ccd:
   ccd:
     ras:
@@ -179,7 +179,7 @@ ccd:
         UPLOAD_TIMESTAMP_FEATURED_CASE_TYPES: CIVIL, GENERALAPPLICATION
         CCD_MULTIPARTY_CASE_TYPES: CIVIL
         CCD_MULTIPARTY_EVENTS: DEFENDANT_RESPONSE,ACKNOWLEDGE_CLAIM,CLAIMANT_RESPONSE,queryManagementRaiseQuery,queryManagementRespondQuery
-        ROLE_ASSIGNMENT_URL: http://am-role-assignment-service-aat.service.core-compute-aat.internal
+        ROLE_ASSIGNMENT_URL:http://am-role-assignment-service-demo.service.core-compute-demo.internal
       ingressHost: ccd-data-store-api-${SERVICE_FQDN}
       secrets:
         DATA_STORE_DB_PASSWORD:
