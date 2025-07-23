@@ -283,6 +283,12 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
           "wlu-admin"
         ],
         "CRUD": "R"
