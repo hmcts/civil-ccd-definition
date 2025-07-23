@@ -1,14 +1,6 @@
 [
   {
     "ID": "RespondToClaim",
-    "ListElementCode": "howMuchWasPaidLabel",
-    "ElementLabel": "The total amount claimed is £${totalClaimAmount}. This includes the claim fee and any interest. \n",
-    "FieldType": "Label",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "ID": "RespondToClaim",
     "ListElementCode": "howMuchWasPaid",
     "FieldType": "MoneyGBP",
     "ElementLabel": "How much was paid?",
