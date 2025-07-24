@@ -6,7 +6,7 @@ export default class ObjectHelper {
    * What this method does is a kind of deep spread, in a case like the one before,
    * @param objectToBeModified the object we want to modify
    * @param modificationObject the object holding the modifications
-   * @return a caseData with the new values
+   * @return a data object with the new values
    */
   static deepSpread(objectToBeModified: object, modificationObject: object) {
     const modified = { ...objectToBeModified };

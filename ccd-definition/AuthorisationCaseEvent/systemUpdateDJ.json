@@ -32,7 +32,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "judge-profile",
+    "UserRole": "GS_profile",
     "CRUD": "R"
   },
   {
@@ -43,8 +43,14 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT_DEFENDANT",
-    "UserRole": "GS_profile",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "NOTIFY_INTERIM_JUDGMENT",
+    "UserRole": "judge-profile",
     "CRUD": "R"
   }
 ]
