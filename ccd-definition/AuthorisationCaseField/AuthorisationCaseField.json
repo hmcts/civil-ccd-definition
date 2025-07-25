@@ -1446,8 +1446,7 @@
       {
         "UserRoles": [
           "caseworker-civil-staff",
-          "caseworker-civil-admin",
-          "caseworker-civil-solicitor"
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
