@@ -3211,12 +3211,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent1FullAdmitAmountLabel",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hwfFeeType",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"

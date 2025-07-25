@@ -383,6 +383,38 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1FullAdmit1",
+    "Label": "Total Claim amount is £${totalClaimAmount}. 1 This includes all court fees and interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1FullAdmit2",
+    "Label": "Total Claim amount is £${totalClaimAmount}. 2 This includes all court fees and interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1FullAdmit3",
+    "Label": "Total Claim amount is £${totalClaimAmount}. 3 Part admit This includes all court fees and interest.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1FullAdmit4",
+    "Label": "Total Claim amount is £${totalClaimAmount}. 4 This includes all court fees and interest. No Field show condition",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "caseTitle",
     "Label": "### ${applicant1.partyName} Vs ${respondent1.partyName}",
     "FieldType": "Label",
