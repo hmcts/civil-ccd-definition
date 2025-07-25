@@ -297,10 +297,12 @@ withPipeline(type, product, component) {
     env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
     env.CIVIL_SERVICE_URL = "https://civil-ccd-staging.aat.platform.hmcts.net"
     env.AAC_API_URL = "https://manage-case-assignment-civil-ccd-staging-aat.aat.platform.hmcts.net"
+    env.WIREMOCK_URL = "https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net"
     sh """
       set -e
       eval \$(./bin/variables/load-staging-environment-variables.sh)
       ./bin/add-roles.sh
+      ./bin/load-wiremock-mappings.sh
       ./bin/build-release-ccd-definition.sh staging
       ./bin/pull-latest-dmn-files.sh ${dmnBranch}
       ./bin/pull-latest-camunda-files.sh ${camundaBranch}
