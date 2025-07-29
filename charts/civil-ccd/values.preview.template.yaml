@@ -388,7 +388,7 @@ wiremock:
   volumes:
     - name: wiremock-mocks
       configMap:
-        name: {{ .Release.Name }}-wiremock-wm
+        name: civil-ccd-staging-wiremock-wm
   volumeMounts:
     - name: wiremock-mocks
       mountPath: /home/wiremock/mappings
