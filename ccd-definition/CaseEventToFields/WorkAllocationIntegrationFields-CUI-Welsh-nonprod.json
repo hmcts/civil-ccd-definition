@@ -211,7 +211,8 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "VALIDATE_DISCONTINUE_CLAIM_CLAIMANT",
     "CaseFieldID": "preTranslationDocumentType",
-    "PageFieldDisplayOrder": 21,
+    "PageDisplayOrder": 1,
+    "PageFieldDisplayOrder": 2,
     "DisplayContext": "READONLY",
     "PageID": "WorkAllocation",
     "Publish": "Y"
