@@ -213,7 +213,7 @@
     "CaseFieldID": "preTranslationDocumentType",
     "PageFieldDisplayOrder": 21,
     "DisplayContext": "READONLY",
-    "PageID": "WAIntegrationFields",
+    "PageID": "WorkAllocation",
     "Publish": "Y"
   }
 ]
