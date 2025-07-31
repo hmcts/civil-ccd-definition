@@ -34,16 +34,16 @@ module.exports = {
 //    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
 //    for AAT
-//    manageCase:  'https://manage-case.aat.platform.hmcts.net/',
-//    authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
-//    ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
-//    dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
-//    idamApi:  'https://idam-api.aat.platform.hmcts.net',
-//    civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
-//    waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
-//    caseAssignmentService: 'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
-//    generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal',
-//    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
+  //  manageCase:  'https://manage-case.aat.platform.hmcts.net/',
+  //  authProviderApi:  'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+  //  ccdDataStore: 'http://ccd-data-store-api-aat.service.core-compute-aat.internal',
+  //  dmStore:'http://dm-store-aat.service.core-compute-aat.internal',
+  //  idamApi:  'https://idam-api.aat.platform.hmcts.net',
+  //  civilService: 'http://civil-service-aat.service.core-compute-aat.internal',
+  //  waTaskMgmtApi: 'http://wa-task-management-api-aat.service.core-compute-aat.internal',
+  //  caseAssignmentService: 'http://aac-manage-case-assignment-aat.service.core-compute-aat.internal',
+  //  generalApplication: 'http://civil-general-applications-aat.service.core-compute-aat.internal',
+  //  orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
 //    Default - leave below uncommented when merging
     manageCase: process.env.URL || 'http://localhost:3333',
