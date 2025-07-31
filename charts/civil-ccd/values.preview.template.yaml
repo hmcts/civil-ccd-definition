@@ -382,9 +382,13 @@ wiremock:
   image: "wiremock/wiremock"
   applicationPort: 8080
   imagePullPolicy: Always
-  releaseNameOverride : ${SERVICE_NAME}-wiremock
+  releaseNameOverride : civil-ccd-staging-wiremock
   verbose: true
   ingressHost: wiremock-${SERVICE_NAME}.preview.platform.hmcts.net
+  volumes:
+    - name: wiremock-mocks
+      configMap:
+        name: civil-ccd-staging-wiremock-wm
   volumeMounts:
     - name: wiremock-mocks
       mountPath: /home/wiremock/mappings
