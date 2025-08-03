@@ -10,7 +10,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent1ClaimPartAdmitImmediatelyLabelWithInterest",
-    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds} including any interest claimed but exclusive of the claim fee and any fixed costs \nclaimed which are payable in addition. \n\nThey have offered to pay the £${respondToAdmittedClaimOwingAmountPounds} immediately. \n\n They must make sure the claimant has the money by ${respondent1PaymentDateToStringSpec}.",
+    "Label": "${respondent1.partyName} admits they owe the claimant £${respondToAdmittedClaimOwingAmountPounds} including any interest claimed but exclusive of the claim fee and any fixed costs \nclaimed which are payable in addition. \n\nThey have offered to pay £${respondToAdmittedClaimOwingAmountPounds} immediately, plus claim fee and any fixed costs claimed. \n\n If the claimant accepts, they must contact the claimant and pay the full amount within the 5 days. Any cheques or transfers must be clear in the claimant's account.",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"

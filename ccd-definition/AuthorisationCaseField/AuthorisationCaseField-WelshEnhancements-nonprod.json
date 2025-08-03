@@ -228,7 +228,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "wlu-admin",
+          "caseworker-civil-admin"
         ],
         "CRUD": "CRU"
       },
@@ -236,8 +238,6 @@
         "UserRoles": [
           "APP-SOL-SPEC-PROFILE",
           "RES-SOL-ONE-SPEC-PROFILE",
-          "wlu-admin",
-          "caseworker-civil-admin",
           "caseworker-civil-staff"
         ],
         "CRUD": "R"
@@ -272,6 +272,24 @@
           "caseworker-civil-staff",
           "judge-profile",
           "caseworker-civil-system-field-reader"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "locationName",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "APP-SOL-SPEC-PROFILE"
+        ],
+        "CRUD": "CRU"
+      },
+      {
+        "UserRoles": [
+          "wlu-admin"
         ],
         "CRUD": "R"
       }
