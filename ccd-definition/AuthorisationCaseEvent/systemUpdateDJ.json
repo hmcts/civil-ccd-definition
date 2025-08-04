@@ -50,7 +50,7 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_INTERIM_JUDGMENT",
-    "UserRole": "judge-profile",
+    "UserRole": "GS_profile",
     "CRUD": "R"
   }
 ]
