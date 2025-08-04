@@ -379,7 +379,7 @@ servicebus:
 
 wiremock:
   enabled: true
-  image: "wiremock/wiremock"
+  image: hmctspublic.azurecr.io/imported/wiremock/wiremock
   applicationPort: 8080
   imagePullPolicy: Always
   releaseNameOverride : ${SERVICE_NAME}-wiremock
