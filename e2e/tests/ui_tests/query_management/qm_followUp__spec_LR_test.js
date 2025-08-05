@@ -7,7 +7,7 @@ const judgeUser = config.judgeUserWithRegionId1;
 let caseId;
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
-Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec @non-prod-e2e-ft @e2e-nightly-prod');
+Feature('Query Management - Raise, Respond and Follow up Queries  @qm-spec');
 
 async function prepareClaim(api_spec, mpScenario) {
   caseId = await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario, false, true, claimAmountPenniesIntermediate);
