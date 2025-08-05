@@ -1034,6 +1034,17 @@
             "CRUD": "CRU"
           }
         ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "finalOrderDocumentCollection",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRU"
+          }
+        ]
       }
-
     ]
