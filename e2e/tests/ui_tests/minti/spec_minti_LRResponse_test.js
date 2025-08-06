@@ -3,7 +3,7 @@ const { createAccount, deleteAccount } = require('../../../api/idamHelper');
 const intermediateTrackClaimAmount = '99000';
 const claimAmountMulti = '200001';
 
-Feature('Minti tracks - LR responses @master-e2e-ft @e2e-minti');
+Feature('Minti tracks - LR responses @e2e-minti').tag('@e2e-nightly-prod');
 
 Scenario('LR vs LIP Multi track - LR response', async ({api_spec_cui, I}) => {
   const mpScenario = 'ONE_V_ONE';
