@@ -25,6 +25,18 @@
       },
       {
         "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "totalClaimAmount",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "R"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
         "CaseFieldID": "legacyCaseReference",
         "AccessControl": [
           {
