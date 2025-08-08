@@ -968,9 +968,7 @@
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE",
-          "judge-profile",
-          "hearing-schedule-access",
-          "caseworker-civil-admin"
+          "hearing-schedule-access"
 
         ],
         "CRUD": "CRU"
