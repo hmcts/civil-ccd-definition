@@ -58,5 +58,29 @@
     "ListElementCode": "TRANSLATED_HEARING_NOTICE",
     "ListElement": "Translated Hearing Notice",
     "DisplayOrder": 35
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "REQUEST_MORE_INFORMATION_APPLICANT_TRANSLATED",
+    "ListElement": "Request More Info Applicant Translated",
+    "DisplayOrder": 36
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "REQUEST_MORE_INFORMATION_RESPONDENT_TRANSLATED",
+    "ListElement": "Request More Info Applicant Translated",
+    "DisplayOrder": 37
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_APPLICANT_TRANSLATED",
+    "ListElement": "Written Reps Respondent Translated",
+    "DisplayOrder": 38
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "WRITTEN_REPRESENTATION_RESPONDENT_TRANSLATED",
+    "ListElement": "Written Reps Respondent Translated",
+    "DisplayOrder": 39
   }
 ]
