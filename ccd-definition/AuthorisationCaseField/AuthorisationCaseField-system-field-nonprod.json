@@ -25,13 +25,13 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "defendantTrialReadyDocumentCreated",
+    "CaseFieldID": "generalAppHelpWithFees",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppHelpWithFees",
+    "CaseFieldID": "defendantTrialReadyDocumentCreated",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
