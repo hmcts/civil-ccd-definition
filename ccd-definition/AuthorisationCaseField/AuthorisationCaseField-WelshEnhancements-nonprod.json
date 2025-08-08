@@ -182,7 +182,9 @@
           "caseworker-civil-staff",
           "judge-profile",
           "CITIZEN-DEFENDANT-PROFILE",
-          "caseworker-civil-system-field-reader"
+          "caseworker-civil-system-field-reader",
+          "APP-SOL-SPEC-PROFILE",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }
