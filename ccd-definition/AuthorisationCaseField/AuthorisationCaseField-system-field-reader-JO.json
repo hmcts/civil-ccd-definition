@@ -211,12 +211,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppAskForCosts",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "joState",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
@@ -230,12 +224,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "joIsLiveJudgmentExists",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "claimantTrialReadyDocumentCreated",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
