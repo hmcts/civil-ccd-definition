@@ -52,5 +52,17 @@
     "CaseEventID": "UPDATE_DASHBOARD_NOTIFICATIONS_JUDGMENT_PAID_DEFENDANT",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CLAIMANT_RESPONSE_FA_IMMEDIATE_CCJ",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_DASHBOARD_NOTIFICATION_FOR_CLAIMANT_FA_IMMEDIATE_CCJ",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRU"
   }
 ]
