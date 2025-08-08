@@ -32,41 +32,41 @@ async function prepareClaimSpecRecordJudgment(api_spec){
 }
 
 Scenario('SetAside Default Judgment after judgment error - Spec claim 1v1 - Case taken offline', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-    await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
-    await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-    console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
-    console.log('--setAsideJudgment--');
-    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR','ORDER_AFTER_DEFENCE','All_FINAL_ORDERS_ISSUED');
-  }
+  //if (['preview', 'demo'].includes(config.runningEnv)) {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
+  await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
+  console.log('--markJudgmentPaid--');
+  await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
+  console.log('--setAsideJudgment--');
+  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGMENT_ERROR', 'ORDER_AFTER_DEFENCE', 'All_FINAL_ORDERS_ISSUED');
+  //}
 });
 
 Scenario.skip('Record Judgment Spec claim 1v1 with mark paid in full', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecRecordJudgment(api_spec);
-    await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
-    console.log('--markJudgmentPaid--');
-    await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
-  }
+  //if (['preview', 'demo'].includes(config.runningEnv)) {
+  await prepareClaimSpecRecordJudgment(api_spec);
+  await api_spec.editJudgment(caseWorkerUserReg1, mpScenario, 'DETERMINATION_OF_MEANS', 'PAY_BY_DATE');
+  console.log('--markJudgmentPaid--');
+  await api_spec.markJudgmentPaid(config.applicantSolicitorUser);
+  // }
 });
 
 Scenario.skip('Refer To Judge Spec claim 1v1 Defence Received In Time', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await prepareClaimSpecRecordJudgment(api_spec);
-    console.log('--referToJudgeDefenceReceived--');
-    await api_spec.referToJudgeDefenceReceived(caseWorkerUserReg1);
-  }
+  //if (['preview', 'demo'].includes(config.runningEnv)) {
+  await prepareClaimSpecRecordJudgment(api_spec);
+  console.log('--referToJudgeDefenceReceived--');
+  await api_spec.referToJudgeDefenceReceived(caseWorkerUserReg1);
+  //}
 });
 
 Scenario('SetAside Default Judgment Spec claim 1v1 - Record new judgment after hearing', async ({I, api_spec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
-    await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
-    await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
-    await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER','ORDER_AFTER_APPLICATION', 'All_FINAL_ORDERS_ISSUED');
-  }
+  //if (['preview', 'demo'].includes(config.runningEnv)) {
+  await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
+  await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
+  await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, false);
+  await api_spec.setAsideJudgment(caseWorkerUserReg2, 'JUDGE_ORDER', 'ORDER_AFTER_APPLICATION', 'All_FINAL_ORDERS_ISSUED');
+  //}
 });
 
 AfterSuite(async  ({api_spec}) => {
