@@ -1,7 +1,7 @@
 [
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "TabID": "ApplicationsStaff",
+    "TabID": "ApplicationsWelshAdmin",
     "TabLabel": "Applications",
     "TabDisplayOrder": 8,
     "UserRoles": [
