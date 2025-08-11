@@ -68,13 +68,13 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "REQUEST_MORE_INFORMATION_RESPONDENT_TRANSLATED",
-    "ListElement": "Request More Info Applicant Translated",
+    "ListElement": "Request More Info Respondent Translated",
     "DisplayOrder": 37
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "WRITTEN_REPRESENTATION_APPLICANT_TRANSLATED",
-    "ListElement": "Written Reps Respondent Translated",
+    "ListElement": "Written Reps Applicant Translated",
     "DisplayOrder": 38
   },
   {
