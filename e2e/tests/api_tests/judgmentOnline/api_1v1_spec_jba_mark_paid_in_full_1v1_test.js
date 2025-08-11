@@ -5,7 +5,7 @@ const claimType = 'SmallClaims';
 let caseId;
 let carmEnabled = false;
 
-Feature('CCD 1v1 judgment by admission mark paid in full API test @api-spec-1v1 @api-jo @api-nonprod-test');
+Feature('CCD 1v1 judgment by admission mark paid in full API test @api-spec-1v1 @api-jo @api-prod @api-nonprod-test');
 Before(async () => {
   await createAccount(config.defendantCitizenUser2.email, config.defendantCitizenUser2.password);
 });
