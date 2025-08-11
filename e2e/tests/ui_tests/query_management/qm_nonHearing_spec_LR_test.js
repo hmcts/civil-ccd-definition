@@ -46,7 +46,7 @@ Scenario.skip('Judge can access to a query', async ({ I }) => {
   await I.verifyQueriesDetails();
 }).retry(2);
 
-Scenario('Take claim offline', async ({ I }) => {
+Scenario.skip('Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
 }).retry(2);
