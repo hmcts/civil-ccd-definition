@@ -14,7 +14,7 @@ async function prepareClaim(api_spec, mpScenario) {
   await api_spec.createFinalOrderJO(judgeUser, 'DOWNLOAD_ORDER_TEMPLATE', 'INTERMEDIATE');
 }
 
-Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
+Scenario('Claimant LR raises a query', async ({ api_spec, I }) => {
   const mpScenario = 'ONE_V_ONE';
   await prepareClaim(api_spec, mpScenario);
   await I.login(config.applicantSolicitorUser);
@@ -24,7 +24,7 @@ Scenario.skip('Claimant LR raises a query', async ({ api_spec, I }) => {
   await I.verifyQueriesDetails();
 }).retry(2);
 
-Scenario.skip('Defendant LR raises a query', async ({ I }) => {
+Scenario('Defendant LR raises a query', async ({ I }) => {
   await I.login(config.defendantSolicitorUser);
   await I.raiseNewNonHearingQuery(caseId);
   await I.navigateToCaseDetails(caseId);
@@ -32,26 +32,26 @@ Scenario.skip('Defendant LR raises a query', async ({ I }) => {
   await I.verifyQueriesDetails();
 }).retry(2);
 
-Scenario.skip('CaseWorker can access and also responds back to a query', async ({ I }) => {
+Scenario('CaseWorker can access and also responds back to a query', async ({ I }) => {
   await I.login(config.ctscAdminUser);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetailsAsCaseWorker();
 }).retry(2);
 
-Scenario.skip('Judge can access to a query', async ({ I }) => {
+Scenario('Judge can access to a query', async ({ I }) => {
   await I.login(config.judgeUserWithRegionId1);
   await I.navigateToCaseDetails(caseId);
   await I.waitForText('Summary');
   await I.verifyQueriesDetails();
 }).retry(2);
 
-Scenario.skip('Take claim offline', async ({ I }) => {
+Scenario('Take claim offline', async ({ I }) => {
   await I.login(config.adminUser);
   await I.caseProceedsInCaseman(caseId);
 }).retry(2);
 
-Scenario.skip('Offline case - Claimant cant raise a query', async ({ I }) => {
+Scenario('Offline case - Claimant cant raise a query', async ({ I }) => {
   await I.login(config.applicantSolicitorUser);
   await I.raiseNewQueryInOfflineState(caseId);
   await I.waitForText('Enter query details');
