@@ -85,7 +85,7 @@ public class HighLevelDataSetupApp extends DataLoaderToDefinitionStore {
     public void addCcdRoles() {
         for (CcdRoleConfig roleConfig : CCD_ROLES_NEEDED_FOR_CIVIL) {
             try {
-                logger.info("\n\nAdding CCD Role {}.", roleConfig);
+                logger.info("\n\nAdding CCD Role {}.", roleConfig);//testing
                 addCcdRole(roleConfig);
                 logger.info("\n\nAdded CCD Role {}.", roleConfig);
             } catch (Exception e) {
