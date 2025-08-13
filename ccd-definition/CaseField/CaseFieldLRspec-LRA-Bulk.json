@@ -192,5 +192,21 @@
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partAdmit1v1Defendant",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "partAdmissionWhenWillDefendantPayImmediatelyLRALabel",
+    "Label": "If the claimant accepts, you must contact the claimant and pay the full amount within 5 days. Any cheques or transfers must be clear in their account.",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]
