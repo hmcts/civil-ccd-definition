@@ -953,7 +953,6 @@
       },
       {
         "UserRoles": [
-          "legal-adviser",
           "CITIZEN-DEFENDANT-PROFILE"
         ],
         "CRUD": "R"
@@ -967,15 +966,13 @@
       {
         "UserRoles": [
           "RES-SOL-ONE-SPEC-PROFILE",
-          "CITIZEN-DEFENDANT-PROFILE",
-          "hearing-schedule-access"
+          "CITIZEN-DEFENDANT-PROFILE"
 
         ],
         "CRUD": "CRU"
       },
       {
         "UserRoles": [
-          "legal-adviser",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "R"
