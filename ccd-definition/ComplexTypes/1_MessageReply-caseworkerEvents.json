@@ -1,6 +1,15 @@
 [
   {
     "ID": "MessageReply",
+    "ListElementCode": "messageId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "FieldShowCondition": "isUrgent=\"DO NOT SHOW IN UI\"",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "MessageReply",
     "ListElementCode": "senderRoleType",
     "FieldType": "Text",
     "ElementLabel": "From",
