@@ -15,7 +15,7 @@ Scenario('Default Judgment Spec claim 1v2 divergent', async ({I, api_spec}) => {
   await api_spec.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
   await api_spec.amendRespondent1ResponseDeadline(config.systemupdate);
   await api_spec.defaultJudgmentSpec(config.applicantSolicitorUser, mpScenario, true);
-});
+}).tag('@api-nightly-prod');
 
 AfterSuite(async  ({api_spec}) => {
   await api_spec.cleanUp();

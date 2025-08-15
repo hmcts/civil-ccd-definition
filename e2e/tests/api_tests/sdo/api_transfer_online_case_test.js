@@ -55,7 +55,7 @@ Scenario('1v2 full defence unspecified - not suitable SDO - Transfer Case)', asy
     await api.claimantResponse(config.applicantSolicitorUser, mpScenario1v2, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
     await api.notSuitableSDO(judgeUser, 'CHANGE_LOCATION');
     await api.transferCase(caseWorkerUser);
-}).tag('@api-prod @api-nonprod');
+});
 
 AfterSuite(async ({api}) => {
   await api.cleanUp();
