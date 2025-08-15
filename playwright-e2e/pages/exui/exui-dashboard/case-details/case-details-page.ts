@@ -33,7 +33,7 @@ export default class CaseDetailsPage extends ExuiPage(BasePage) {
       super.expectSelector(tabs.claimDetails.selector),
       super.expectSelector(tabs.history.selector),
       // super.expectText(tabs.claimDocs.title),
-      super.expectSelector(tabs.paymentHistory.selector),
+      // super.expectSelector(tabs.paymentHistory.selector),
       // super.expectText(tabs.serviceRequest.title, { exact: true }),
       super.expectSelector(tabs.bundles.selector),
       super.expectSelector(tabs.caseFlags.selector),

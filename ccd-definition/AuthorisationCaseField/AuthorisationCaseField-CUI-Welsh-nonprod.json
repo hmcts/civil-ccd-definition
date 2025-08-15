@@ -25,6 +25,18 @@
       },
       {
         "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "totalClaimAmount",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "R"
+          }
+        ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
         "CaseFieldID": "legacyCaseReference",
         "AccessControl": [
           {
@@ -243,7 +255,7 @@
             "UserRoles": [
               "wlu-admin"
             ],
-            "CRUD": "R"
+            "CRUD": "CRU"
           }
         ]
       },
@@ -1034,6 +1046,17 @@
             "CRUD": "CRU"
           }
         ]
+      },
+      {
+        "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+        "CaseFieldID": "finalOrderDocumentCollection",
+        "AccessControl": [
+          {
+            "UserRoles": [
+              "wlu-admin"
+            ],
+            "CRUD": "CRU"
+          }
+        ]
       }
-
     ]
