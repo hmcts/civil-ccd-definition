@@ -30,7 +30,7 @@ Scenario('Discontinue claim 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
     await api_spec.createClaimWithRepresentedRespondent(solicitorUser, mpScenario);
     await api_spec.discontinueClaim(solicitorUser, mpScenario);
-}).tag('@api-prod');
+});
 
 Scenario('Validate discontinue claim claimant 1v1 scenario', async ({I, api_spec}) => {
     let mpScenario = 'ONE_V_ONE';
