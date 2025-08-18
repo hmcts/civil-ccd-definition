@@ -3,6 +3,7 @@ properties([
   copyArtifactPermission('/HMCTS_a_to_c/civil-ccd-definition/*'),
 ]);
 
+
 @Library("Infrastructure")
 import uk.gov.hmcts.contino.GithubAPI
 
