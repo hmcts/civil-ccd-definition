@@ -318,8 +318,14 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1",
     "ListElementCode": "flags",
-    "UserRole": "caseworker-civil-solicitor",
-    "CRUD": "CU"
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-solicitor"
+        ],
+        "CRUD": "CU"
+      }
+    ]
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
