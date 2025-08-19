@@ -316,6 +316,13 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "applicant1",
+    "ListElementCode": "flags",
+    "UserRole": "caseworker-civil-solicitor",
+    "CRUD": "C"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant2",
     "ListElementCode": "type",
     "UserRole": "caseworker-civil-solicitor",
