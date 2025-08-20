@@ -17,7 +17,7 @@ let caseId;
 let isQueryManagementEnabled = false;
 const isTestEnv = ['preview', 'demo'].includes(config.runningEnv);
 
-Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod @wa-task @QM');
+Feature('CCD 1v2 Unspec fast hearings API test @api-hearings-unspec @api-hearings @api-nonprod @api-prod @wa-task @QM');
 
 Before(async () => {
   isQueryManagementEnabled = await checkLRQueryManagementEnabled();
