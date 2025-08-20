@@ -316,7 +316,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "applicant1",
+    "CaseFieldID": "respondent1",
     "ListElementCode": "flags",
     "AccessControl": [
       {
@@ -786,7 +786,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent1",
+    "CaseFieldID": "applicant1",
     "ListElementCode": "flags",
     "AccessControl": [
       {
