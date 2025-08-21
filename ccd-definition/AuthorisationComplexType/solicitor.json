@@ -766,24 +766,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondent1",
-    "ListElementCode": "flags",
-    "AccessControl": [
-      {
-        "UserRoles": [
-          "[CREATOR]",
-          "APP-SOL-UNSPEC-PROFILE",
-          "RES-SOL-ONE-UNSPEC-PROFILE",
-          "APP-SOL-SPEC-PROFILE",
-          "RES-SOL-ONE-SPEC-PROFILE",
-          "RES-SOL-TWO-SPEC-PROFILE"
-        ],
-        "CRUD": "C"
-      }
-    ]
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "respondent2",
     "ListElementCode": "type",
     "AccessControl": [
