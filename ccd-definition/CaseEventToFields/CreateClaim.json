@@ -584,6 +584,18 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "CREATE_CLAIM",
+    "CaseFieldID": "respondStatementOfTruthHeaderLabel",
+    "PageDisplayOrder": 33,
+    "PageFieldDisplayOrder": 1,
+    "PageColumnNumber": 1,
+    "DisplayContext": "READONLY",
+    "PageID": "StatementOfTruth",
+    "PageLabel": "",
+    "ShowSummaryChangeOption": "Y"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "CREATE_CLAIM",
     "CaseFieldID": "uiStatementOfTruth",
     "PageFieldDisplayOrder": 2,
     "DisplayContext": "COMPLEX",
