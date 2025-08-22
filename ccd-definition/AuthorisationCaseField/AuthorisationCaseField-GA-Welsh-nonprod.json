@@ -1,0 +1,15 @@
+[{
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "gaDetailsTranslationCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "wlu-admin",
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      }
+    ]
+  }
+]
