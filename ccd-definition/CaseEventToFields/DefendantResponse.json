@@ -25,7 +25,7 @@
     "CaseEventID": "DEFENDANT_RESPONSE",
     "CaseFieldID": "uiStatementOfTruth",
     "PageDisplayOrder": 20,
-    "PageFieldDisplayOrder": 1,
+    "PageFieldDisplayOrder": 3,
     "DisplayContext": "COMPLEX",
     "PageID": "StatementOfTruth",
     "ShowSummaryChangeOption": "Y",
