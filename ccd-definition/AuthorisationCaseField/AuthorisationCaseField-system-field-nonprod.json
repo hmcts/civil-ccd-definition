@@ -25,25 +25,7 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppHelpWithFees",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "defendantTrialReadyDocumentCreated",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "coscSchedulerDeadline",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "certOfSC",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -56,18 +38,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "hearingDurationInMinutesAHN",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppTypeLR",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "coSCApplicationStatus",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
@@ -86,12 +56,6 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "QueryManagementComponentLauncher",
-    "UserRole": "caseworker-civil-system-field-reader",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "generalAppAskForCosts",
     "UserRole": "caseworker-civil-system-field-reader",
     "CRUD": "R"
   },
