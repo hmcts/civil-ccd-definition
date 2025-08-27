@@ -4,11 +4,16 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "caseworker-civil-admin",
-          "wlu-admin",
           "caseworker-civil-systemupdate"
         ],
         "CRUD": "CRUD"
+      },
+       {
+        "UserRoles": [
+          "caseworker-civil-admin",
+          "wlu-admin"
+        ],
+        "CRUD": "R"
       }
     ]
   }
