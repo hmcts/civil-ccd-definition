@@ -14,6 +14,8 @@ export default [
       'playwright-e2e/base/**/*.ts',
       'playwright-e2e/steps/**/*.ts',
       'playwright-e2e/requests/**/*.ts',
+      'playwright-e2e/actions/**/*.ts',
+      'playwright-e2e/data-builders/**/*.ts',
     ],
     rules: {
       'customEslintPlugin/no-duplicate-class-names': 'error',

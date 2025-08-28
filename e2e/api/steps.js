@@ -13,12 +13,10 @@ const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaim.js');
 const createDJ = require('../fixtures/events/createDJ.js');
 const createDJDirectionOrder = require('../fixtures/events/createDJDirectionOrder.js');
-const genAppClaimData = require('../fixtures/events/createGeneralApplication.js');
-const genAppClaimDataLR = require('../fixtures/events/createGeneralApplicationLR.js');
 const expectedEvents = require('../fixtures/ccd/expectedEvents.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEvents.js');
 const testingSupport = require('./testingSupport');
-const {PBAv3, SDOR2, COSC} = require('../fixtures/featureKeys');
+const {PBAv3, COSC} = require('../fixtures/featureKeys');
 const sdoTracks = require('../fixtures/events/createSDO.js');
 const evidenceUploadApplicant = require('../fixtures/events/evidenceUploadApplicant.js');
 const evidenceUploadRespondent = require('../fixtures/events/evidenceUploadRespondent.js');
@@ -39,12 +37,14 @@ const {fetchCaseDetails} = require('./apiRequest');
 const {removeFlagsFieldsFromFixture, addFlagsToFixture} = require('../helpers/caseFlagsFeatureHelper');
 const {removeFixedRecoveryCostFieldsFromUnspecDefendantResponseData, removeFastTrackAllocationFromSdoData} = require('../helpers/fastTrackUpliftsHelper');
 const {adjustCaseSubmittedDateForMinti, assertTrackAfterClaimCreation, addSubmittedDateInCaseData} = require('../helpers/mintiHelper');
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
 
 
 const data = {
-  INITIATE_GENERAL_APPLICATION: genAppClaimData.createGAData('Yes', null, '27500','FEE0442'),
-  INITIATE_GENERAL_APPLICATION_LR: genAppClaimDataLR.createGAData('Yes', null, '27500','FEE0442'),
-  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, sdoR2, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest),
+  CREATE_CLAIM: (mpScenario, claimAmount, pbaV3, hmcTest) => claimData.createClaim(mpScenario, claimAmount, pbaV3, hmcTest),
   CREATE_CLAIM_RESPONDENT_LIP: claimData.createClaimLitigantInPerson,
   CREATE_CLAIM_RESPONDENT_LR_LIP: claimData.createClaimLRLIP,
   CREATE_CLAIM_RESPONDENT_LIP_LIP: claimData.createClaimLIPLIP,
@@ -84,7 +84,7 @@ const data = {
   CREATE_SMALL_NO_SUM: (userInput) => sdoTracks.createSDOSmallWODamageSum(userInput),
   UNSUITABLE_FOR_SDO: (userInput) => sdoTracks.createNotSuitableSDO(userInput),
   CREATE_SMALL_DRH: () => sdoTracks.createSDOSmallDRH(),
-  HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearing(allocatedTrack),
+  HEARING_SCHEDULED: (allocatedTrack, isMinti) => hearingScheduled.scheduleHearing(allocatedTrack, isMinti),
   EVIDENCE_UPLOAD_JUDGE: (typeOfNote) => evidenceUploadJudge.upload(typeOfNote),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   EVIDENCE_UPLOAD_APPLICANT_SMALL: (mpScenario) => evidenceUploadApplicant.createApplicantSmallClaimsEvidenceUpload(mpScenario),
@@ -97,17 +97,19 @@ const data = {
   NOT_SUITABLE_SDO: (option) => transferOnlineCase.notSuitableSDO(option),
   TRANSFER_CASE: () => transferOnlineCase.transferCase(),
   MANAGE_DEFENDANT1_INFORMATION: (caseData) => manageContactInformation.manageDefendant1Information(caseData),
-  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData)
+  MANAGE_DEFENDANT1_LR_INDIVIDUALS_INFORMATION: (caseData) => manageContactInformation.manageDefendant1LROrganisationInformation(caseData),
+  STAY_CASE: () => stayCase.stayCase(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdateDamages(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStayDamages(),
+  DISMISS_CASE: () => dismissCase.dismissCaseDamages(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessage(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessage(messageCode, messageLabel)
 };
 const calculatedClaimsTrackDRH = {
     disposalOrderWithoutHearing: (d) => typeof d.input === 'string',
     fastTrackOrderWithoutJudgement: (d) => typeof d.input === 'string',
     fastTrackHearingTime: (d) =>
-      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.'
-      && d.helpText2 === 'Not more than seven nor less than three clear days before the trial, '
-      + 'the claimant must file at court and serve an indexed and paginated bundle of documents which complies with the'
-      + ' requirements of Rule 39.5 Civil Procedure Rules and which complies with requirements of PD32. '
-      + 'The parties must endeavour to agree the contents of the bundle before it is filed. The bundle will include a case summary and a chronology.',
+      d.helpText1 === 'If either party considers that the time estimate is insufficient, they must inform the court within 7 days of the date of this order.',
     disposalHearingHearingTime: (d) =>
       d.input === 'This claim will be listed for final disposal before a judge on the first available date after'
       && d.dateTo,
@@ -245,9 +247,8 @@ module.exports = {
     caseData = {};
     mpScenario = multipartyScenario;
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    const sdoR2 = await checkToggleEnabled(SDOR2);
 
-    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, sdoR2, hmcTest);
+    let createClaimData = data.CREATE_CLAIM(mpScenario, claimAmount, pbaV3, hmcTest);
 
     // Workaround, toggle is active after 31/01/2025, based on either submittedDate, or current localdatetime
     const isMintiEnabled = await checkMintiToggleEnabled() && isMintiCaseEnabled;
@@ -336,7 +337,6 @@ module.exports = {
     await apiRequest.setupTokens(user);
     await apiRequest.startEvent(eventName);
     const pbaV3 = await checkToggleEnabled(PBAv3);
-    const sdoR2 = await checkToggleEnabled(SDOR2);
     let createClaimData;
     switch (mpScenario){
       case 'ONE_V_ONE':
@@ -354,11 +354,11 @@ module.exports = {
     if (pbaV3) {
       createClaimData.valid.ClaimValue.paymentTypePBA = 'PBAv3';
     }
-    if (sdoR2) {
-      createClaimData.valid.ClaimTypeUnSpec = {
-        claimTypeUnSpec: 'CONSUMER_CREDIT'
-      };
-    }
+
+    createClaimData.valid.ClaimTypeUnSpec = {
+      claimTypeUnSpec: 'CONSUMER_CREDIT'
+    };
+
     await validateEventPages(createClaimData);
 
     console.log('comparing assertSubmittedEvent');
@@ -405,9 +405,12 @@ module.exports = {
 
     await validateEventPages(createClaimData);
 
+    let bodyText = 'Your claim will not be issued until payment is confirmed.';
+    let headerText = '# Please now pay your claim fee\n# using the link below';
+
     await assertSubmittedEvent('PENDING_CASE_ISSUED', {
-      header: 'Your claim has been received',
-      body: 'You have until DATE to notify the defendant of the claim and claim details.'
+      header: headerText,
+      body: bodyText
     });
 
     await assignCase();
@@ -878,25 +881,6 @@ module.exports = {
     return await fetchCaseDetails(user, caseId, expectedStatus);
   },
 
-  initiateGeneralApplication: async (caseNumber, user, expectedState) => {
-    eventName = 'INITIATE_GENERAL_APPLICATION';
-    caseId = caseId || caseNumber;
-    console.log('caseid is..', caseId);
-
-    await apiRequest.setupTokens(user);
-    await apiRequest.startEvent(eventName, caseId);
-
-    var isCOSCEnabled = await checkToggleEnabled(COSC);
-    var gaData = isCOSCEnabled ? data.INITIATE_GENERAL_APPLICATION_LR : data.INITIATE_GENERAL_APPLICATION;
-    const response = await apiRequest.submitEvent(eventName, gaData, caseId);
-    const responseBody = await response.json();
-    assert.equal(response.status, 201);
-    assert.equal(responseBody.state, expectedState);
-
-    console.log('General application created when main case state is', expectedState);
-    assert.equal(responseBody.callback_response_status_code, 200);
-  },
-
   addDefendantLitigationFriend: async (user, mpScenario, solicitor) => {
     eventName = 'ADD_DEFENDANT_LITIGATION_FRIEND';
     await apiRequest.setupTokens(user);
@@ -1069,7 +1053,6 @@ module.exports = {
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
     console.log('SDO for case id ' + caseId);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
     if (response === 'UNSUITABLE_FOR_SDO') {
       eventName = 'NotSuitable_SDO';
@@ -1081,20 +1064,19 @@ module.exports = {
     // will be assigned on about to submit, based on judges decision
     delete caseData['allocatedTrack'];
     delete caseData['responseClaimTrack'];
-    if(SdoR2){
-      delete caseData['smallClaimsFlightDelay'];
-      delete caseData['smallClaimsFlightDelayToggle'];
-      //required to fix existing prod api tests for sdo
-      clearWelshParaFromCaseData();
-      delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
-      delete caseData['sdoR2FastTrackWitnessOfFact'];
-      delete caseData['sdoR2FastTrackCreditHire'];
-      delete caseData['sdoDJR2TrialCreditHire'];
-    }
+    delete caseData['smallClaimsFlightDelay'];
+    delete caseData['smallClaimsFlightDelayToggle'];
+    //required to fix existing prod api tests for sdo
+    clearWelshParaFromCaseData();
+    delete caseData['sdoR2SmallClaimsWitnessStatementOther'];
+    delete caseData['sdoR2FastTrackWitnessOfFact'];
+    delete caseData['sdoR2FastTrackCreditHire'];
+    delete caseData['sdoDJR2TrialCreditHire'];
+
 
     let disposalData = eventData['sdoTracks'][response];
 
-    if (SdoR2 && response === 'CREATE_FAST') {
+    if (response === 'CREATE_FAST') {
       delete disposalData.calculated.ClaimsTrack.fastTrackWitnessOfFact;
       disposalData.calculated.ClaimsTrack = {...disposalData.calculated.ClaimsTrack, ...newSdoR2FieldsFastTrack};
       delete disposalData.calculated.FastTrack.fastTrackCreditHire;
@@ -1145,10 +1127,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('DOWNLOAD_ORDER_TEMPLATE', dayPlus0, dayPlus7, dayPlus14, dayPlus21, orderTrack));
     }
 
-    await assertSubmittedEvent(finalOrderRequestType === 'DOWNLOAD_ORDER_TEMPLATE' ? 'CASE_PROGRESSION' : 'All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1175,10 +1155,8 @@ module.exports = {
       await validateEventPages(data.FINAL_ORDERS('FREE_FORM_ORDER', dayPlus0, dayPlus7, dayPlus14, dayPlus21));
     }
 
-    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
-      header: '',
-      body: ''
-    }, true);
+    await apiRequest.startEvent(eventName, caseId);
+    await apiRequest.submitEvent(eventName, caseData, caseId);
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -1221,7 +1199,7 @@ module.exports = {
     }
   },
 
-  scheduleHearing: async (user, allocatedTrack) => {
+  scheduleHearing: async (user, allocatedTrack, isMinti = false) => {
     console.log('Hearing Scheduled for case id ' + caseId);
     await apiRequest.setupTokens(user);
 
@@ -1230,7 +1208,7 @@ module.exports = {
     caseData = await apiRequest.startEvent(eventName, caseId);
     delete caseData['SearchCriteria'];
 
-    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack);
+    let scheduleData = data.HEARING_SCHEDULED(allocatedTrack, isMinti);
 
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
@@ -1416,14 +1394,150 @@ module.exports = {
     await validateEventPages(data.TRANSFER_CASE());
 
     await assertSubmittedEvent('JUDICIAL_REFERRAL', {
-        header: '',
-        body: ''
-      }, true);
-      await waitForFinishedBusinessProcess(caseId);
+      header: '',
+      body: ''
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
     }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate, isJudicialReferral) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (isJudicialReferral) {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent('CASE_PROGRESSION', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Your message has been sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.valid)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Reply sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
 };
 
 // Functions
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
+};
+
 const validateEventPages = async (data, solicitor) => {
   //transform the data
   for (let pageId of Object.keys(data.valid)) {
@@ -1437,7 +1551,6 @@ const validateEventPages = async (data, solicitor) => {
 
 const assertValidData = async (data, pageId, solicitor) => {
   console.log(`asserting page: ${pageId} has valid data`);
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
 
   const validDataForPage = data.valid[pageId];
 
@@ -1450,7 +1563,7 @@ const assertValidData = async (data, pageId, solicitor) => {
     caseData,
     addCaseId(pageId) ? caseId : null
   );
-  if(sdoR2Flag && (pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims')) {
+  if(pageId === 'SmallClaims' || pageId === 'SdoR2SmallClaims') {
     delete caseData.isSdoR2NewScreen;
   }
 
@@ -1463,28 +1576,49 @@ const assertValidData = async (data, pageId, solicitor) => {
   }
   if(eventName === 'EVIDENCE_UPLOAD_APPLICANT' || eventName === 'EVIDENCE_UPLOAD_RESPONDENT') {
     responseBody = clearDataForEvidenceUpload(responseBody, eventName);
+    delete caseData['businessProcess'];
   }
   if(eventName === 'HEARING_SCHEDULED' && pageId === 'HearingNoticeSelect')
   {
     responseBody = clearHearingLocationData(responseBody);
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
   }
   if(eventName === 'GENERATE_DIRECTIONS_ORDER') {
     responseBody = clearFinalOrderLocationData(responseBody);
+    // After second minti release this is not needed. Track fields for GENERATE_DIRECTIONS_ORDER are currently linked
+    // to a hidden wa page and do not appear in mid event handlers, which is fine as they are not currently used.
+    // After minti release the fields are linked to a page and hidden via field show conditions and get returned correctly.
+    responseBody.data.allocatedTrack = caseData.allocatedTrack;
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
   }
-  if(sdoR2Flag){
-    delete responseBody.data['smallClaimsFlightDelayToggle'];
-    delete responseBody.data['smallClaimsFlightDelay'];
-    //required to fix existing prod api tests for sdo
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
-    delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
-    delete responseBody.data['sdoR2FastTrackCreditHire'];
-    delete responseBody.data['sdoDJR2TrialCreditHire'];
+
+  if(eventName === 'SEND_AND_REPLY') {
+    if (pageId === 'sendAndReplyOption') {
+      if (typeof caseData.lastMessage !== 'undefined') {
+        responseBody.data.lastMessageJudgeLabel = caseData.lastMessageJudgeLabel;
+        responseBody.data.lastMessage = caseData.lastMessage;
+        responseBody.data.lastMessageAllocatedTrack = caseData.lastMessageAllocatedTrack;
+      }
+
+      delete responseBody.data['messageHistory'];
+    }
   }
+
+  delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['smallClaimsFlightDelay'];
+  //required to fix existing prod api tests for sdo
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2SmallClaimsWitnessStatementOther'];
+  delete responseBody.data['sdoR2FastTrackWitnessOfFact'];
+  delete responseBody.data['sdoR2FastTrackCreditHire'];
+  delete responseBody.data['sdoDJR2TrialCreditHire'];
+  delete responseBody.data['gaEaCourtLocation'];
+  delete responseBody.data['evidenceUploadNotificationSent'];
+
 
   assert.equal(response.status, 200);
 
@@ -1495,23 +1629,22 @@ const assertValidData = async (data, pageId, solicitor) => {
     claimValue = ''+data.valid.ClaimValue.claimValue.statementOfValueInPennies/100;
   }
   if (Object.prototype.hasOwnProperty.call(midEventFieldForPage, pageId)) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
     caseData = removeUiFields(pageId, caseData);
   } else if (eventName === 'CREATE_SDO' && data.midEventData && data.midEventData[pageId]) {
-    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue, sdoR2Flag);
+    addMidEventFields(pageId, responseBody, eventName === 'CREATE_SDO' ? data : null, claimValue);
   }
   if (!(responseBody.data.applicant1DQRemoteHearing) && caseData.applicant1DQRemoteHearing) {
     // CIV-3883 depends on backend having the field
     responseBody.data.applicant1DQRemoteHearing = caseData.applicant1DQRemoteHearing;
   }
   if (eventName === 'CREATE_SDO') {
+    responseBody.data.respondent1Represented = caseData.respondent1Represented;
     if (['ClaimsTrack', 'OrderType'].includes(pageId)) {
       delete caseData.hearingMethodValuesDisposalHearing;
       delete caseData.hearingMethodValuesFastTrack;
       delete caseData.hearingMethodValuesSmallClaims;
-      if (sdoR2Flag) {
-        clearNihlDataFromCaseData();
-      }
+      clearNihlDataFromCaseData();
     }
     if (responseBody.data.sdoOrderDocument) {
       caseData.sdoOrderDocument = responseBody.data.sdoOrderDocument;
@@ -1703,7 +1836,7 @@ const assertCorrectEventsAreAvailableToUser = async (user, state) => {
 //   assert.equal(caseForDisplay.message, `No case found for reference: ${caseId}`);
 // };
 
-function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR2Flag) {
+function addMidEventFields(pageId, responseBody, instanceData, claimAmount) {
   console.log(`Adding mid event fields for pageId: ${pageId}`);
   const midEventField = midEventFieldForPage[pageId];
   let midEventData;
@@ -1712,8 +1845,7 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (instanceData && instanceData.calculated && instanceData.calculated[pageId]) {
     calculated = instanceData.calculated[pageId];
   }
-  if(sdoR2Flag && (pageId === 'ClaimsTrack' || pageId === 'OrderType'
-    || pageId === 'SmallClaims')) {
+  if(pageId === 'ClaimsTrack' || pageId === 'OrderType' || pageId === 'SmallClaims') {
     calculated = {...calculated, ...calculatedClaimsTrackDRH};
   }
   if(eventName === 'CREATE_CLAIM'){
@@ -1734,12 +1866,12 @@ function addMidEventFields(pageId, responseBody, instanceData, claimAmount, sdoR
   if (midEventField && midEventField.dynamicList === true && midEventField.id != 'applicantSolicitor1PbaAccounts') {
     assertDynamicListListItemsHaveExpectedLabels(responseBody, midEventField.id, midEventData);
   }
-  if(sdoR2Flag && pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
+  if(pageId === 'ClaimsTrack' && typeof midEventData.isSdoR2NewScreen === 'undefined') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
 
-  if(sdoR2Flag && pageId === 'OrderType') {
+  if(pageId === 'OrderType') {
     let sdoR2Var = { ['isSdoR2NewScreen'] : 'No' };
     midEventData = {...midEventData, ...sdoR2Var};
   }
@@ -1829,7 +1961,7 @@ const solicitorSetup = (solicitor) => {
 };
 
 const clearDataForExtensionDate = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+//  delete responseBody.data['businessProcess'];
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondent1OrganisationIDCopy'];
@@ -1861,7 +1993,7 @@ const clearHearingLocationData = (responseBody) => {
 };
 
 const clearDataForDefendantResponse = (responseBody, solicitor) => {
-  delete responseBody.data['businessProcess'];
+
   delete responseBody.data['caseNotes'];
   delete responseBody.data['systemGeneratedCaseDocuments'];
   delete responseBody.data['respondentSolicitor2Reference'];
@@ -1968,10 +2100,12 @@ const clearDataForEvidenceUpload = (responseBody, eventName) => {
   delete responseBody.data['fastTrackSettlementToggle'];
   delete responseBody.data['fastTrackTrial'];
   delete responseBody.data['fastTrackTrialToggle'];
+  delete responseBody.data['fastTrackTrialBundleToggle'];
   delete responseBody.data['fastTrackVariationOfDirectionsToggle'];
   delete responseBody.data['fastTrackWitnessOfFact'];
   delete responseBody.data['fastTrackWitnessOfFactToggle'];
   delete responseBody.data['orderType'];
+  delete responseBody.data['finalOrderTrackToggle'];
   delete responseBody.data['respondent1Experts'];
   delete responseBody.data['respondent1Witnesses'];
   delete responseBody.data['setFastTrackFlag'];

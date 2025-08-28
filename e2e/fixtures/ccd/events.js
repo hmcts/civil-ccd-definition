@@ -71,11 +71,17 @@ module.exports = {
     name: 'Case proceeds in Caseman',
     order: 9
   },
+  TAKE_CASE_OFFLINE: {
+    id: 'TAKE_CASE_OFFLINE',
+    name: 'Take case offline',
+    description: 'Take case offline',
+    order: 15,
+  },
   RESUBMIT_CLAIM: {
     id: 'RESUBMIT_CLAIM',
     name: 'Resubmit claim',
     description: 'Resubmits claim for unsuccessful PBA payment',
-    order: 12
+    order: 11
   },
   INFORM_AGREED_EXTENSION_DATE: {
     description: 'Enter an extension date that has already been agreed with other parties',
@@ -100,6 +106,12 @@ module.exports = {
     id: 'ADD_CASE_NOTE',
     name: 'Add a case note',
     order: 16
+  },
+  EVIDENCE_UPLOAD_JUDGE: {
+    id: 'EVIDENCE_UPLOAD_JUDGE',
+    name: 'Add a case note',
+    description: 'Add a case note',
+    order: 22,
   },
   CHANGE_SOLICITOR_EMAIL: {
     description: 'Change solicitor\'s information',
@@ -136,6 +148,18 @@ module.exports = {
     name: 'Standard Direction Order',
     description: 'Standard Direction Order',
     order: 17
+  },
+  STANDARD_DIRECTION_ORDER_DJ: {
+    id: 'STANDARD_DIRECTION_ORDER_DJ',
+    name: 'Directions Order (Judgment)',
+    description: 'Standard Directions Order (Judgment)',
+    order: 18
+  },
+  GENERATE_DIRECTIONS_ORDER: {
+    id: 'GENERATE_DIRECTIONS_ORDER',
+    name: 'Make an order',
+    description: 'Make an order',
+    order: null,
   },
   CLAIMANT_RESPONSE_SPEC: {
     description: 'View and respond to defendant (Specified)',
@@ -178,5 +202,107 @@ module.exports = {
     name: 'Reset Pin',
     description: 'Reset Pin for case',
     order: 7
+  },
+  REQUEST_FOR_RECONSIDERATION: {
+    id: 'REQUEST_FOR_RECONSIDERATION',
+    name: 'Request for reconsideration',
+    description: 'Request for reconsideration check',
+    order: null
+  },
+  SETTLE_CLAIM_MARK_PAID_FULL: {
+    id: 'SETTLE_CLAIM_MARK_PAID_FULL',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 13,
+  },
+  SETTLE_CLAIM: {
+    id: 'SETTLE_CLAIM',
+    name: 'Settle this claim',
+    description: 'Settle this claim',
+    order: 12,
+  },
+  DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Discontinue this claim',
+    description: 'Discontinue this claim',
+    order: 14,
+  },
+  VALIDATE_DISCONTINUE_CLAIM_CLAIMANT: {
+    id: 'VALIDATE_DISCONTINUE_CLAIM_CLAIMANT',
+    name: 'Validate discontinuance',
+    description: 'Validate discontinuance',
+    order: 15
+  },
+  DECISION_ON_RECONSIDERATION_REQUEST: {
+    id: 'DECISION_ON_RECONSIDERATION_REQUEST',
+    name: 'Decision on reconsideration',
+    description: 'Decision on reconsideration',
+    order: 1
+  },
+  MEDIATION_UNSUCCESSFUL: {
+    id: 'MEDIATION_UNSUCCESSFUL',
+    name: 'Mediation unsuccessful',
+    description: 'Mediation was unsuccessful',
+    order: 9
+  },
+  UPLOAD_MEDIATION_DOCUMENTS: {
+    id: 'UPLOAD_MEDIATION_DOCUMENTS',
+    name: 'Upload mediation documents',
+    description: 'Upload mediation documents',
+    order: 24
+  },
+  QUERY_MANAGEMENT: {
+    id: 'queryManagementRaiseQuery',
+    name: 'Raise a new query',
+    description: 'Raise a new query',
+    order: 1
+  },
+  CREATE_CASE_FLAGS: {
+    id: 'CREATE_CASE_FLAGS',
+    name: 'Create case flags',
+    description: 'Create case flags',
+    order: 23,
+  },
+  MANAGE_CASE_FLAGS: {
+    id: 'MANAGE_CASE_FLAGS',
+    name: 'Manage case flags',
+    description: 'Manage case flags',
+    order: 24
+  },
+  STAY_CASE: {
+    id: 'STAY_CASE',
+    name: 'Stay case',
+    description: 'Stay the case',
+    order: null,
+  },
+  MANAGE_STAY: {
+    id: 'MANAGE_STAY',
+    name: 'Manage stay',
+    description: 'Manage the stay',
+    order: null
+  },
+  TRIAL_READINESS: {
+    id: 'TRIAL_READINESS',
+    name: 'Confirm trial arrangements',
+    description: 'Confirm trial arrangements',
+    order: 20
+  },
+  TRANSFER_ONLINE_CASE: {
+    id: 'TRANSFER_ONLINE_CASE',
+    name: 'Transfer online case',
+    description: 'Transfer online case',
+    order: 1,
+  },
+  ADD_UNAVAILABLE_DATES: {
+    id: 'ADD_UNAVAILABLE_DATES',
+    name: 'Add Unavailable Dates',
+    description: 'Add unavailable dates after claimant response or default judgment',
+    order: 50
+  },
+  HEARING_SCHEDULED: {
+    id: 'HEARING_SCHEDULED',
+    name: 'Create a hearing notice',
+    description: 'Create a hearing notice',
+    order: 18
   }
 };

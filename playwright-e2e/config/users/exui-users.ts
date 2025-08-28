@@ -28,6 +28,15 @@ export const claimantSolicitorBulkScanUser: User = getUser({
   orgId: config.environment === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
 });
 
+export const claimantOrganisationSuperUser: User = getUser({
+  name: 'Claimant Organisation Super',
+  email: 'hmcts.civil+organisation.1.superuser@gmail.com',
+  password: defaultPassword,
+  key: UserKey.CLAIMANT_ORGANISATION_SUPER,
+  role: UserRole.CASEWORKER,
+  orgId: config.environment === Environment.DEMO ? 'B04IXE4' : 'Q1KOKP2',
+});
+
 export const defendantSolicitor1User: User = getUser({
   name: 'Defendant Solicitor 1',
   email: 'hmcts.civil+organisation.2.solicitor.1@gmail.com',
@@ -172,9 +181,25 @@ export const ctscAdminUser: User = getUser({
   wa: true,
 });
 
+export const civilSystemUpdate: User = getUser({
+  name: 'Civil System Update',
+  email: 'civil-system-update@mailnesia.com',
+  password: defaultPasswordSystemUser,
+  role: UserRole.CASEWORKER,
+  key: UserKey.CIVIL_SYSTEM_UPDATE,
+});
+
+export const solicitorUsers = [
+  claimantSolicitorUser,
+  claimantSolicitorBulkScanUser,
+  defendantSolicitor1User,
+  defendantSolicitor2User,
+];
+
 export const exuiAuthSetupUsers = [
   claimantSolicitorUser,
   defendantSolicitor1User,
+  defendantSolicitor2User,
   civilAdminUser,
   judgeRegion1User,
 ];

@@ -3,6 +3,9 @@ import FileType from '../enums/file-type';
 import { AxeResults, PageResult } from '../models/axe-results';
 import FileSystemHelper from './file-system-helper';
 
+//TODO: Could be a potential concurrency issue when caching page results when multiple workers are running but will fix later.
+//e.g. Two workers could be caching at the same time.
+
 export default class AxeCacheHelper {
   private static getResultsFilePath(projectName: string) {
     return `${filePaths.axe}/${projectName}/accessibility-results.json`;

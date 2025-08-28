@@ -3,12 +3,11 @@ const idamHelper = require('./idamHelper');
 const serviceAuthHelper = require('./serviceAuthorisationHelper');
 const restHelper = require('./restHelper');
 const {retry} = require('./retryHelper');
-const {TOTP} = require('totp-generator');
 
 
 let incidentMessage;
 
-const MAX_RETRIES = 60;
+const MAX_RETRIES = 30;
 const RETRY_TIMEOUT_MS = 5000;
 
 const checkFlagEnabled = async (flag) => {
@@ -49,12 +48,16 @@ const checkFastTrackUpliftsEnabled = async () => {
   return checkFlagEnabled('fast-track-uplifts');
 };
 
-const checkCarmToggleEnabled = async () => {
-  return checkFlagEnabled('carm');
-};
-
 const checkMintiToggleEnabled = async () => {
   return checkFlagEnabled('minti');
+};
+
+const checkLRQueryManagementEnabled = async () => {
+  return checkFlagEnabled('query-management');
+};
+
+const checkLIPQueryManagementEnabled = async () => {
+    return checkFlagEnabled('query-management-lips');
 };
 
 module.exports =  {
@@ -219,7 +222,7 @@ module.exports =  {
   checkPBAv3IsEnabled: async () => {
     const authToken = await idamHelper.accessToken(config.applicantSolicitorUser);
     const s2sAuth = await serviceAuthHelper.civilServiceAuth();
-    
+
     return await restHelper.request(
       `${config.url.civilService}/testing-support/feature-toggle/pba-version-3-ways-to-pay`,
       {
@@ -298,6 +301,7 @@ module.exports =  {
   checkCaseFlagsEnabled,
   checkFastTrackUpliftsEnabled,
   checkManageContactInformationEnabled,
-  checkCarmToggleEnabled,
-  checkMintiToggleEnabled
+  checkMintiToggleEnabled,
+  checkLRQueryManagementEnabled,
+  checkLIPQueryManagementEnabled
 };

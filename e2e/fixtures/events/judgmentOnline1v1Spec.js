@@ -211,6 +211,7 @@ module.exports = {
           setAsideJudgment.userInput = {
             ...setAsideJudgment.userInput,
             SetAsideJudgment: {
+              joSetAsideApplicationDate: '2008-06-06',
               joSetAsideOrderDate: '2008-06-06',
               joSetAsideOrderType: setAsideOrderType,
               joSetAsideReason: setAsideReason
@@ -252,7 +253,7 @@ module.exports = {
       ...markJudgmentPaid.userInput,
       MarkJudgmentPaidInFull: {
         joJudgmentPaidInFull: {
-          dateOfFullPaymentMade:  date(-5),
+          dateOfFullPaymentMade:  date(0),
           confirmFullPaymentMade:['CONFIRMED']
         }
       }
@@ -269,4 +270,17 @@ module.exports = {
     };
     return referJudgeDefenceReceived;
   },
+  confirmOrderReview: () => {
+    const confirmReview = {};
+    confirmReview.userInput = {
+      ...confirmReview.userInput,
+      ObligationDate: {
+        obligationDatePresent: 'No'
+      },
+      IsFinalOrder: {
+        isFinalOrder: 'Yes'
+      }
+    };
+    return confirmReview;
+  }
 };

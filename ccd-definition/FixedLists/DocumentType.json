@@ -56,49 +56,55 @@
   {
     "ID": "DocumentType",
     "ListElementCode": "HEARING_FORM",
-    "ListElement": "Hearing Form",
+    "ListElement": "Hearing Notice",
     "DisplayOrder": 10
+  },
+  {
+    "ID": "DocumentType",
+    "ListElementCode": "HEARING_FORM_WELSH",
+    "ListElement": "Translated Hearing Notice",
+    "DisplayOrder": 11
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "SDO_ORDER",
     "ListElement": "Standard Directions Order",
-    "DisplayOrder": 11
+    "DisplayOrder": 12
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "TRIAL_READY_DOCUMENT",
     "ListElement": "Trial Ready",
-    "DisplayOrder": 12
+    "DisplayOrder": 13
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "JUDGE_FINAL_ORDER",
     "ListElement": "Order",
-    "DisplayOrder": 13
+    "DisplayOrder": 14
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "DEFENCE_TRANSLATED_DOCUMENT",
     "ListElement": "Defence Translated Document",
-    "DisplayOrder": 14
+    "DisplayOrder": 15
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "COURT_OFFICER_ORDER",
     "ListElement": "Court Officer Order",
-    "DisplayOrder": 15
+    "DisplayOrder": 16
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "DECISION_MADE_ON_APPLICATIONS",
-    "ListElement": "Decision made on applications",
-    "DisplayOrder": 16
+    "ListElement": "Decision on reconsideration request",
+    "DisplayOrder": 17
   },
   {
     "ID": "DocumentType",
     "ListElementCode": "SEND_APP_TO_OTHER_PARTY",
     "ListElement": "Send Application to other party",
-    "DisplayOrder": 17
+    "DisplayOrder": 18
   }
 ]

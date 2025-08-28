@@ -6,19 +6,23 @@ if (config.runSetup) {
   setup.describe('Authenticating exui user(s) and saving cookies', () => {
     setup.describe.configure({ mode: 'parallel' });
 
-    exuiAuthSetupUsers.forEach((exuiAuthSetupUser, index) => {
+    for (const [index, exuiAuthSetupUser] of exuiAuthSetupUsers.entries()) {
       if (index === 0) {
-        setup(exuiAuthSetupUser.name, { tag: '@verify-cookies-banner' }, async ({ IdamSteps, ExuiDashboardSteps }) => {
-          await IdamSteps.ExuiLogin(exuiAuthSetupUser);
-          await ExuiDashboardSteps.AcceptCookies();
-          await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
-        });
+        setup(
+          exuiAuthSetupUser.name,
+          { tag: '@verify-cookies-banner' },
+          async ({ IdamSteps, ExuiDashboardSteps }) => {
+            await IdamSteps.ExuiLogin(exuiAuthSetupUser);
+            await ExuiDashboardSteps.AcceptCookies();
+            await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
+          },
+        );
       } else
         setup(exuiAuthSetupUser.name, async ({ IdamSteps, ExuiDashboardSteps }) => {
           await IdamSteps.ExuiLogin(exuiAuthSetupUser);
           await ExuiDashboardSteps.SaveCookies(exuiAuthSetupUser);
         });
-    });
+    }
   });
 } else {
   console.log('Skipping authenticate exui users and save cookies setup');

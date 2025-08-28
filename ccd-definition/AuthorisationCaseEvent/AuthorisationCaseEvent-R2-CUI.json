@@ -91,6 +91,18 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "GENERATE_PIP_LETTER",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "CITIZEN-CLAIMANT-PROFILE"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseEventID": "NOTIFY_APPLICANT_SOLICITOR1_FOR_CONTACT_DETAILS_CHANGE",
     "AccessControl": [
       {
@@ -632,7 +644,8 @@
         "UserRoles": [
           "judge-profile",
           "caseworker-civil-admin",
-          "cui-admin-profile"
+          "cui-admin-profile",
+          "RES-SOL-ONE-SPEC-PROFILE"
         ],
         "CRUD": "R"
       }

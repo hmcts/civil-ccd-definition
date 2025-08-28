@@ -11,6 +11,8 @@ const {assignCaseRoleToUser, addUserCaseMapping, unAssignAllUsers} = require('./
 const apiRequest = require('./apiRequest.js');
 const claimData = require('../fixtures/events/createClaimSpec.js');
 const claimDataSpecFastLRvLiP = require('../fixtures/events/cui/createClaimSpecFastTrackCui.js');
+const claimDataSpecIntLRvLiP = require('../fixtures/events/cui/createClaimSpecIntermediateTrackCui.js');
+const claimDataSpecMultiLRvLiP = require('../fixtures/events/cui/createClaimSpecMultiTrackCui.js');
 const claimDataSpecSmallLRvLiP = require('../fixtures/events/cui/createClaimSpecSmallCui.js');
 const createClaimLipClaimant = require('../fixtures/events/cui/createClaimUnrepresentedClaimant');
 const defendantResponse = require('../fixtures/events/cui/defendantResponseCui.js');
@@ -18,8 +20,8 @@ const mediationUnsuccessful = require('../fixtures/events/cui/unsuccessfulMediat
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const testingSupport = require('./testingSupport');
-const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay} = require('./dataHelper');
-const {checkToggleEnabled, checkMintiToggleEnabled} = require('./testingSupport');
+const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
+const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
 const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
@@ -35,6 +37,14 @@ const lodash = require('lodash');
 const createFinalOrder = require('../fixtures/events/finalOrder.js');
 const judgeDecisionToReconsiderationRequest = require('../fixtures/events/judgeDecisionOnReconsiderationRequest');
 const {adjustCaseSubmittedDateForMinti} = require('../helpers/mintiHelper');
+const stayCase = require('../fixtures/events/stayCase');
+const manageStay = require('../fixtures/events/manageStay');
+const dismissCase = require('../fixtures/events/dismissCase');
+const { toJSON } = require('lodash/seq');
+const sendAndReplyMessage = require('../fixtures/events/sendAndReplyMessages');
+const judgmentMarkPaidInFull = require('../fixtures/events/cui/judgmentMarkPaidInFullCui');
+const judgmentOnline1v1Spec = require('../fixtures/events/judgmentOnline1v1Spec');
+
 
 let caseId, eventName;
 let caseData = {};
@@ -42,9 +52,13 @@ let caseData = {};
 const data = {
   CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
   CREATE_SPEC_CLAIM_FASTTRACK: (scenario) => claimDataSpecFastLRvLiP.createClaim(scenario),
+  CREATE_SPEC_CLAIM_INTTRACK: (scenario) => claimDataSpecIntLRvLiP.createClaim(scenario),
+  CREATE_SPEC_CLAIM_MULTITRACK: (scenario) => claimDataSpecMultiLRvLiP.createClaim(scenario),
   CREATE_SPEC_CLAIM: (scenario) => claimDataSpecSmallLRvLiP.createClaim(scenario),
   DEFENDANT_RESPONSE: (response) => require('../fixtures/events/defendantResponseSpecCui.js').respondToClaim(response),
   CLAIMANT_RESPONSE: (mpScenario, citizenDefendantResponse, freeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecCui.js').claimantResponse(mpScenario, citizenDefendantResponse, freeMediation, carmEnabled),
+  CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM: (response, hasLip) => require('../fixtures/events/claimantResponseIntermediateClaimSpec.js').claimantResponse(response, hasLip),
+  CLAIMANT_RESPONSE_MULTI_CLAIM: (response, hasLip) => require('../fixtures/events/claimantResponseMultiClaimSpec.js').claimantResponse(response, hasLip),
   REQUEST_JUDGEMENT: (mpScenario) => require('../fixtures/events/requestJudgementSpecCui.js').response(mpScenario),
   INFORM_AGREED_EXTENSION_DATE: () => require('../fixtures/events/informAgreeExtensionDateSpec.js'),
   EXTEND_RESPONSE_DEADLINE_DATE: () => require('../fixtures/events/extendResponseDeadline.js'),
@@ -53,12 +67,18 @@ const data = {
   CREATE_SDO_FAST_TRACK: (userInput) => sdoTracks.createSDOFastTrackSpec(userInput),
   HEARING_SCHEDULED: (allocatedTrack) => hearingScheduled.scheduleHearingForTrialReadiness(allocatedTrack),
   HEARING_SCHEDULED_CUI: (allocatedTrack) => hearingScheduled.scheduleHearingForCui(allocatedTrack),
-  EVIDENCE_UPLOAD_CLAIMANT: (mpScenario) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(mpScenario),
-  EVIDENCE_UPLOAD_DEFENDANT: (mpScenario) => evidenceUploadRespondent.createDefendantSmallClaimsEvidenceUpload(mpScenario),
+  EVIDENCE_UPLOAD_CLAIMANT: (mpScenario, document) => evidenceUploadApplicant.createClaimantSmallClaimsEvidenceUpload(document),
+  EVIDENCE_UPLOAD_DEFENDANT: (mpScenario, document) => evidenceUploadRespondent.createDefendantSmallClaimsEvidenceUpload(document),
   REQUEST_FOR_RECONSIDERATION: (userType) => requestForReconsideration.createRequestForReconsiderationSpecCitizen(userType),
   TRIAL_READINESS: (user) => trialReadiness.confirmTrialReady(user),
   FINAL_ORDERS: (finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21) => createFinalOrder.requestFinalOrder(finalOrdersRequestType, dayPlus0, dayPlus7, dayPlus14, dayPlus21),
   DECISION_ON_RECONSIDERATION_REQUEST: (decisionSelection)=> judgeDecisionToReconsiderationRequest.judgeDecisionOnReconsiderationRequestSpec(decisionSelection),
+  STAY_CASE: () => stayCase.stayCaseSpec(),
+  MANAGE_STAY_UPDATE: () => manageStay.manageStayRequestUpdate(),
+  MANAGE_STAY_LIFT: () => manageStay.manageStayLiftStay(),
+  DISMISS_CASE: () => dismissCase.dismissCase(),
+  SEND_MESSAGE: () => sendAndReplyMessage.sendMessageLr(),
+  REPLY_MESSAGE: (messageCode, messageLabel) => sendAndReplyMessage.replyMessageLr(messageCode, messageLabel)
 };
 
 const eventData = {
@@ -81,6 +101,12 @@ const eventData = {
       FULL_DEFENCE_CITIZEN_DEFENDANT_MEDIATION: {
         Yes: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'Yes', true),
         No: data.CLAIMANT_RESPONSE('FULL_DEFENCE', true, 'No', true)
+      },
+      FULL_DEFENCE_CITIZEN_DEFENDANT_INTERMEDIATE: {
+        No: data.CLAIMANT_RESPONSE_INTERMEDIATE_CLAIM('FULL_DEFENCE', true)
+      },
+      FULL_DEFENCE_CITIZEN_DEFENDANT_MULTI: {
+        No: data.CLAIMANT_RESPONSE_MULTI_CLAIM('FULL_DEFENCE', true)
       },
       FULL_ADMISSION: data.CLAIMANT_RESPONSE('FULL_ADMISSION'),
       PART_ADMISSION: data.CLAIMANT_RESPONSE('PART_ADMISSION'),
@@ -173,13 +199,27 @@ module.exports = {
     return caseId;
   },
 
+  retrieveTaskDetails: async (user, caseNumber, taskId) => {
+    return apiRequest.fetchTaskDetails(user, caseNumber, taskId);
+  },
+
+  assignTaskToUser: async (user, taskId) => {
+    return apiRequest.taskActionByUser(user, taskId, 'claim');
+  },
+
   createSpecifiedClaimWithUnrepresentedRespondent: async (user, multipartyScenario, claimType, carmEnabled = false) => {
     console.log(' Creating specified claim');
     eventName = 'CREATE_CLAIM_SPEC';
     caseId = null;
     caseData = {};
     let createClaimSpecData;
-    if (claimType === 'FastTrack') {
+    if (claimType === 'MULTI') {
+      console.log('Creating MultiTrack claim...');
+      createClaimSpecData = data.CREATE_SPEC_CLAIM_MULTITRACK(multipartyScenario);
+    } else if (claimType === 'INTERMEDIATE') {
+      console.log('Creating IntermediateTrack claim...');
+      createClaimSpecData = data.CREATE_SPEC_CLAIM_INTTRACK(multipartyScenario);
+    } else if (claimType === 'FastTrack') {
       console.log('Creating FastTrack claim...');
       createClaimSpecData = data.CREATE_SPEC_CLAIM_FASTTRACK(multipartyScenario);
     } else {
@@ -211,6 +251,8 @@ module.exports = {
     deleteCaseFields('applicantSolicitor1CheckEmail');
 
     await adjustCaseSubmittedDateForCarm(caseId, carmEnabled);
+    const isMintiToggleEnabled = await checkMintiToggleEnabled();
+    await adjustCaseSubmittedDateForMinti(caseId, (isMintiToggleEnabled && (claimType === 'INTERMEDIATE' || claimType === 'MULTI')), carmEnabled);
 
     return caseId;
   },
@@ -230,9 +272,17 @@ module.exports = {
       console.log('SmallClaim...');
       payload = defendantResponse.createDefendantResponse('1500', carmEnabled, typeOfResponse);
     }
+    if (claimType === 'SmallClaimPartAdmit') {
+      console.log('SmallClaim part admit lip defendant response...');
+      payload = defendantResponse.createDefendantResponseSmallClaimPartAdmitCarm();
+    }
     if (claimType === 'INTERMEDIATE') {
-      console.log('Intermediate def claim...');
-      payload = defendantResponse.createDefendantResponse('99999', carmEnabled);
+      console.log('Intermediate lip defendant response...');
+      payload = defendantResponse.createDefendantResponseIntermediateTrack();
+    }
+    if (claimType === 'MULTI') {
+      console.log('Multi lip defendant response...');
+      payload = defendantResponse.createDefendantResponseMultiTrack();
     }
 
     //console.log('The payload : ' + payload);
@@ -244,18 +294,46 @@ module.exports = {
   performCitizenClaimantResponse: async (user, caseId, expectedEndState, carmEnabled, typeOfData) => {
     let eventName = 'CLAIMANT_RESPONSE_CUI';
     let payload = lipClaimantResponse.claimantResponse(carmEnabled, typeOfData);
+    if (typeOfData === 'partadmit') {
+      payload = lipClaimantResponse.claimantResponsePartAdmitRejectCarm();
+    }
 
     await apiRequest.setupTokens(user);
     await apiRequest.startEventForCitizen(eventName, caseId, payload, expectedEndState);
     await waitForFinishedBusinessProcess(caseId);
     const isJudgmentOnlineLive = await checkToggleEnabled(isJOLive);
-    if (isJudgmentOnlineLive && typeOfData == 'FA_ACCEPT_CCJ') {
+
+    if (isJudgmentOnlineLive && (typeOfData === 'FA_ACCEPT_CCJ' || typeOfData === 'PA_ACCEPT_CCJ')) {
       expectedEndState = 'All_FINAL_ORDERS_ISSUED';
     }
     if (expectedEndState) {
       const response = await apiRequest.fetchCaseDetails(config.adminUser, caseId);
       assert.equal(response.state, expectedEndState);
     }
+  },
+
+  judgmentPaidInFullCui: async (user, caseId) => {
+    let eventName = 'JUDGMENT_PAID_IN_FULL';
+    let payload = judgmentMarkPaidInFull.markJudgmentPaidInFull();
+    await apiRequest.setupTokens(user);
+    await apiRequest.startEventForCitizen(eventName, caseId, payload);
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  markJudgmentPaid: async (user) => {
+    console.log(`case in All final orders issued ${caseId}`);
+    await apiRequest.setupTokens(user);
+    eventName = 'JUDGMENT_PAID_IN_FULL';
+    caseData = await apiRequest.startEvent(eventName, caseId);
+    let payload = judgmentOnline1v1Spec.markJudgmentPaidInFull();
+    for (let pageId of Object.keys(payload.userInput)) {
+      await assertValidData(payload, pageId);
+    }
+    await assertSubmittedEvent('All_FINAL_ORDERS_ISSUED', {
+      header: '# Judgment marked as paid in full',
+      body: 'The judgment has been marked as paid in full'
+    }, true);
+    await waitForFinishedBusinessProcess(caseId);
   },
 
   createSDO: async (user, response = 'CREATE_DISPOSAL') => {
@@ -310,24 +388,21 @@ module.exports = {
 
   evidenceUploadApplicant: async (user) => {
     await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE');
+    const document = await uploadDocument();
+    let payload = data.EVIDENCE_UPLOAD_CLAIMANT('ONE_V_ONE', document);
 
     caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
-
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   evidenceUploadDefendant: async (user) => {
     await apiRequest.setupTokens(user);
-
-    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE');
+    const document = await uploadDocument();
+    let payload = data.EVIDENCE_UPLOAD_DEFENDANT('ONE_V_ONE', document);
 
     caseData = await apiRequest.startEventForCitizen(eventName, caseId, payload);
 
     await waitForFinishedBusinessProcess(caseId);
-
   },
 
   requestForReconsiderationCitizen: async (user) => {
@@ -391,11 +466,7 @@ module.exports = {
     for (let pageId of Object.keys(scheduleData.valid)) {
       await assertValidData(scheduleData, pageId);
     }
-    if (claimType === 'CUI') {
-      await assertSubmittedEvent('PREPARE_FOR_HEARING_CONDUCT_HEARING', null, false);
-    } else {
-      await assertSubmittedEvent('HEARING_READINESS', null, false);
-    }
+    await assertSubmittedEvent('HEARING_READINESS', null, false);
     await waitForFinishedBusinessProcess(caseId);
   },
 
@@ -471,7 +542,7 @@ module.exports = {
   },
 
   claimantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', freeMediation = 'Yes',
-                           expectedCcdState, carmEnabled = false) => {
+                           expectedCcdState, carmEnabled = false, claimType = 'SmallClaims') => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -483,6 +554,10 @@ module.exports = {
 
     if (carmEnabled) {
       response = 'FULL_DEFENCE_CITIZEN_DEFENDANT_MEDIATION';
+    } else if (claimType === 'INTERMEDIATE') {
+      response = 'FULL_DEFENCE_CITIZEN_DEFENDANT_INTERMEDIATE';
+    } else if (claimType === 'MULTI') {
+      response = 'FULL_DEFENCE_CITIZEN_DEFENDANT_MULTI';
     }
 
     let claimantResponseData = eventData['claimantResponses'][scenario][response][freeMediation];
@@ -490,7 +565,6 @@ module.exports = {
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
     }
-
 
     let validState = expectedCcdState || 'PROCEEDS_IN_HERITAGE_SYSTEM';
 
@@ -577,6 +651,143 @@ module.exports = {
     respondent1ResponseDate = {'respondent1ResponseDate':'2022-01-10T15:59:50'};
     testingSupport.updateCaseData(caseId, respondent1ResponseDate);
   },
+
+  stayCase: async (user) => {
+    console.log('Stay Case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'STAY_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.STAY_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Stay added to the case \n\n ## All parties have been notified and any upcoming hearings must be cancelled',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  manageStay: async (user, requestUpdate) => {
+    console.log('Manage Stay for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'MANAGE_STAY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData, header;
+    if (requestUpdate) {
+      disposalData = data.MANAGE_STAY_UPDATE();
+      header = '# You have requested an update on \n\n # this case \n\n ## All parties have been notified';
+    } else {
+      disposalData = data.MANAGE_STAY_LIFT();
+      header = '# You have lifted the stay from this \n\n # case \n\n ## All parties have been notified';
+    }
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+
+    if (requestUpdate) {
+      await assertSubmittedEvent('CASE_STAYED', {
+        header: header,
+        body: '&nbsp;'
+      }, true);
+    } else {
+      if (caseData.preStayState === 'IN_MEDIATION') {
+        await assertSubmittedEvent('JUDICIAL_REFERRAL', {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      } else {
+        await assertSubmittedEvent(caseData.preStayState, {
+          header: header,
+          body: '&nbsp;'
+        }, true);
+      }
+    }
+
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  dismissCase: async (user) => {
+    console.log('Dismiss case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'DISMISS_CASE';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.DISMISS_CASE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_DISMISSED', {
+      header: '# The case has been dismissed\n## All parties have been notified',
+      body: '&nbsp;'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  sendMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+    let disposalData = data.SEND_MESSAGE();
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Your message has been sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your message'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+
+  replyMessage: async (user) => {
+    console.log('Send message  case for case id ' + caseId);
+    await apiRequest.setupTokens(user);
+    eventName = 'SEND_AND_REPLY';
+
+    let returnedCaseData = await apiRequest.startEvent(eventName, caseId);
+    delete returnedCaseData['SearchCriteria'];
+    caseData = returnedCaseData;
+
+    const latestMessage = getLatestMessageToReplyTo(caseData);
+    const disposalData = data.REPLY_MESSAGE(latestMessage.code, latestMessage.label);
+    for (let pageId of Object.keys(disposalData.userInput)) {
+      await assertValidData(disposalData, pageId);
+    }
+    await assertSubmittedEvent('CASE_STAYED', {
+      header: '# Reply sent',
+      body: '<br /><h2 class="govuk-heading-m">What happens next</h2><br />A task has been created to review your reply.'
+    }, true);
+
+    await waitForFinishedBusinessProcess(caseId);
+  },
+};
+
+const getLatestMessageToReplyTo = (caseData) => {
+  const messagesToReplyTo = caseData.messagesToReplyTo;
+  if (messagesToReplyTo && messagesToReplyTo.list_items && messagesToReplyTo.list_items.length > 0) {
+    const latestMessage = messagesToReplyTo.list_items[messagesToReplyTo.list_items.length - 1];
+    return {
+      code: latestMessage.code,
+      label: latestMessage.label
+    };
+  }
+  return null;
 };
 
 const validateEventPages = async (data, solicitor) => {
@@ -607,7 +818,10 @@ async function updateCaseDataWithPlaceholders(data, document) {
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
+  if (pageId === 'FixedRecoverableCosts' || pageId === 'DraftDirections') {
+    const document = await testingSupport.uploadDocument();
+    data = await updateCaseDataWithPlaceholders(data, document);
+  }
   let userData;
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' || eventName === 'HEARING_SCHEDULED'
   || eventName === 'GENERATE_DIRECTIONS_ORDER') {

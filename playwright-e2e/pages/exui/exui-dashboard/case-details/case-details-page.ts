@@ -1,33 +1,44 @@
 import BasePage from '../../../../base/base-page';
+import config from '../../../../config/config';
 import urls from '../../../../config/urls';
 import { AllMethodsStep } from '../../../../decorators/test-steps';
 import { TruthyParams } from '../../../../decorators/truthy-params';
 import CCDCaseData from '../../../../models/ccd/ccd-case-data';
 import { CCDEvent } from '../../../../models/ccd/ccd-events';
-import ExuiEvent from '../../exui-event/exui-event';
-import { buttons, containers, dropdowns, getSuccessBannerText, tabs } from './case-details-content';
+import {
+  components,
+  getFormattedCaseId,
+  getUnformattedCaseId,
+  headings,
+} from '../../exui-page/exui-content';
+import ExuiPage from '../../exui-page/exui-page';
+import {
+  buttons,
+  caseFlagsNoticeText,
+  containers,
+  dropdowns,
+  successBannerText,
+  tabs,
+} from './case-details-content';
 
 const classKey = 'CaseDetailsPage';
 
 @AllMethodsStep()
-export default class CaseDetailsPage extends ExuiEvent(BasePage) {
+export default class CaseDetailsPage extends ExuiPage(BasePage) {
   async verifyContent(caseData: CCDCaseData) {
-    await super.runVerifications(
-      [
-        super.verifyHeadings(caseData),
-        super.expectText(tabs.summary.title),
-        super.expectText(tabs.caseFile.title),
-        super.expectText(tabs.claimDetails.title, { exact: true }),
-        super.expectText(tabs.history.title, { exact: true }),
-        // super.expectText(tabs.claimDocs.title),
-        super.expectText(tabs.paymentHistory.title),
-        // super.expectText(tabs.serviceRequest.title, { exact: true }),
-        super.expectText(tabs.bundles.title),
-        super.expectText(tabs.caseFlags.title),
-        super.expectLabel(dropdowns.nextStep.label),
-      ],
-      { useAxeCache: false },
-    );
+    await super.runVerifications([
+      super.verifyHeadings(caseData),
+      super.expectSelector(tabs.summary.selector),
+      super.expectSelector(tabs.caseFile.selector),
+      super.expectSelector(tabs.claimDetails.selector),
+      super.expectSelector(tabs.history.selector),
+      // super.expectText(tabs.claimDocs.title),
+      // super.expectSelector(tabs.paymentHistory.selector),
+      // super.expectText(tabs.serviceRequest.title, { exact: true }),
+      super.expectSelector(tabs.bundles.selector),
+      super.expectSelector(tabs.caseFlags.selector),
+      // super.expectLabel(dropdowns.nextStep.label),
+    ]);
   }
 
   async verifySummaryContent(caseData: CCDCaseData) {
@@ -65,46 +76,102 @@ export default class CaseDetailsPage extends ExuiEvent(BasePage) {
     await super.runVerifications([], { useAxeCache: false });
   }
 
-  @TruthyParams(classKey, 'caseId')
-  async goToCaseDetails(caseId: number) {
-    console.log(`Navigating to case with ccd case id: ${caseId}`);
-    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, {
-      force: true,
-    });
+  async grabCaseNumber() {
+    return getUnformattedCaseId(await super.getText(headings.caseNumber.selector));
   }
 
-  async retryChooseNextStep(ccdEvent: CCDEvent) {
-    console.log(`Starting event: ${ccdEvent.name}`);
-    await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
-    await super.retryClickBySelector(
-      buttons.go.selector,
+  @TruthyParams(classKey, 'caseId')
+  async goToCaseDetails(caseId: number, { force }: { force: boolean } = { force: true }) {
+    console.log(`Navigating to case with ccd case id: ${caseId}`);
+    await super.goTo(`${urls.manageCase}/cases/case-details/${caseId}`, { force });
+  }
+
+  @TruthyParams(classKey, 'caseId')
+  async retryGoToCaseDetails(caseId: number) {
+    console.log(`Navigating to case with ccd case id: ${caseId}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/cases/case-details/${caseId}`,
       () =>
-        super.expectNoText(tabs.summary.title, {
-          timeout: 15_000,
+        super.expectSelector(tabs.summary.selector, {
+          timeout: config.playwright.shortExpectTimeout,
         }),
-      { retries: 3 },
+      undefined,
+      { retries: 3, message: `Navigating to case with ccd case id: ${caseId}, trying again` },
     );
-    super.setCCDEvent = ccdEvent;
   }
 
   async chooseNextStep(ccdEvent: CCDEvent) {
     console.log(`Starting event: ${ccdEvent.name}`);
     await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector);
     await super.clickBySelector(buttons.go.selector);
+    super.setCCDEvent = ccdEvent;
+  }
+
+  async retryChooseNextStep(ccdEvent: CCDEvent) {
+    console.log(`Starting event: ${ccdEvent.name}`);
+    await super.retryAction(
+      async () => {
+        await super.retryReload(
+          async () => {
+            await super.expectSelector(dropdowns.nextStep.selector);
+            await super.selectFromDropdown(ccdEvent.name, dropdowns.nextStep.selector, {
+              timeout: 5_000,
+            });
+          },
+          undefined,
+          { retries: 1 },
+        );
+        await super.clickBySelector(buttons.go.selector);
+      },
+      async () => {
+        await super.waitForPageToLoad();
+        await super.expectNoSelector(tabs.summary.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        });
+      },
+      () => super.reload(),
+      { retries: 3, message: `Starting event: ${ccdEvent.name} failed, trying again` },
+    );
+  }
+
+  async chooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Starting event with url: ${ccdEvent.id}`);
+    await super.goTo(
+      `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
+    );
+    super.setCCDEvent = ccdEvent;
+  }
+
+  async retryChooseNextStepWithUrl(caseId: number, ccdEvent: CCDEvent) {
+    console.log(`Starting event with url: ${ccdEvent.id}`);
+    await super.retryGoTo(
+      `${urls.manageCase}/cases/case-details/${caseId}/trigger/${ccdEvent.id}/${ccdEvent.id}`,
+      async () =>
+        super.expectSelector(components.eventTrigger.selector, {
+          timeout: config.exui.pageSubmitTimeout,
+        }),
+      undefined,
+      { retries: 2, message: `Starting event with url: ${ccdEvent.id} failed, trying again` },
+    );
+    super.setCCDEvent = ccdEvent;
   }
 
   async verifySuccessEvent(caseId: number, ccdEvent: CCDEvent) {
     console.log(`Verifying success banner and event history: ${ccdEvent.name}`);
-    await super.runVerifications(
-      [
-        super.expectText(getSuccessBannerText(caseId, ccdEvent)),
-        super.clickByText(tabs.history.title),
-        super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
-          rowNum: 1,
-        }),
-      ],
-      { runAxe: false },
-    );
+    await super.expectText(successBannerText(getFormattedCaseId(caseId), ccdEvent));
+    await super.clickByText(tabs.history.title);
+    await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
+      rowNum: 1,
+    });
+  }
+
+  async verifySuccessCaseFlagsEvent(activeCaseFlags: number, ccdEvent: CCDEvent) {
+    console.log(`Verifying case flags notice and event history: ${ccdEvent.name}`);
+    await super.expectText(caseFlagsNoticeText(activeCaseFlags), { exact: false });
+    await super.clickByText(tabs.history.title);
+    await super.expectTableRowValue(ccdEvent.name, containers.eventHistory.selector, {
+      rowNum: 1,
+    });
   }
 
   async submit() {

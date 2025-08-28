@@ -1,3 +1,10 @@
+ccd-case-document-am-api:
+  enabled: false
+em-ccdorc:
+  enabled: false
+em-stitching:
+  enabled: false
+
 civil-general-applications:
   enabled: false
 civil-service:
@@ -11,6 +18,8 @@ civil-service:
       HMC_HEARINGS_SUBSCRIPTION_ENABLED: false
       CAMUNDA_URL: https://civil-ccd-camunda-staging-aat.aat.platform.hmcts.net/engine-rest/
       CMC_DB_PASSWORD: "{{ .Values.postgresql.auth.postgresPassword}}"
+      RD_PROFESSIONAL_API_URL: https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net
+      DOCMOSIS_TORNADO_URL: https://civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net
 
 idam-pr:
   redirect_uris:
@@ -90,3 +99,23 @@ civil-wa:
 
 postgresql:
   enabled: false
+
+ccd-events-topic:
+  enabled: false
+
+wiremock:
+  enabled: true
+  image: hmctspublic.azurecr.io/imported/wiremock/wiremock
+  applicationPort: 8080
+  imagePullPolicy: Always
+  releaseNameOverride : ${SERVICE_NAME}-wiremock
+  verbose: true
+  ingressHost: civil-ccd-wiremock-staging-aat.aat.platform.hmcts.net
+  volumes:
+    - name: wiremock-mocks
+      configMap:
+        name: ${SERVICE_NAME}-wiremock-wm
+  volumeMounts:
+    - name: wiremock-mocks
+      mountPath: /home/wiremock/mappings
+      subPath: mappings

@@ -81,7 +81,8 @@
     "Label": "Does the defendant have a legal representative?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -524,6 +525,15 @@
     "SecurityClassification": "Public",
     "Searchable": "N",
     "Comment": "Field needs to be displayed twice for each respondent, ccd does not allow the same field twice in an event"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "unfinishedBackEndProcess",
+    "Label": "The case processing has not completed, please refresh this page in one minute. If the problem persists please contact the helpdesk 0300 123 7050",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N",
+    "Comment": "Case is stuck in Camunda or the backend services are taking long to respond."
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -1057,14 +1067,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "respondent1ResponseDate",
-    "Label": "Defendant response date",
-    "FieldType": "DateTime",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondent2ResponseDate",
     "Label": "Defendant 2 response date",
     "FieldType": "DateTime",
@@ -1115,8 +1117,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1ServiceAddressRequired",
-    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
-    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
+    "HintText": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -1132,8 +1134,8 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor2ServiceAddressRequired",
-    "Label": "Postal correspondence for the Respondent’s legal representative will be sent to the address registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent (eg if you work out of a different office from the address registered with MyHMCTS). Do you wish to enter a different address?",
-    "HintText": "This is the address to which postal correspondence for the Respondent’s legal representative will be sent.",
+    "Label": "Postal correspondence to the Defendant’s legal representative will be sent to the address that is currently registered with MyHMCTS. You can, if you wish, change the address to which postal correspondence is sent.",
+    "HintText": "Do you want to change the address?",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -2583,7 +2585,15 @@
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "respondentSolicitor1AddressLabel",
-    "Label": "Defendant's legal representative's correspondence address",
+    "Label": "Defendant legal representative’s address",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondentSolicitor2AddressLabel",
+    "Label": "Defendant legal representative’s address",
     "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
@@ -3368,5 +3378,54 @@
     "FieldType": "DynamicRadioList",
     "SecurityClassification": "Public",
     "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "documentToKeepCollection",
+    "Label": "Document",
+    "FieldType": "Collection",
+    "FieldTypeParameter": "documentToKeep",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "headingDefendantResponse",
+    "Label": "## Defendant response",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsApp",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetails",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes1",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "requestedCourtForTabDetailsRes2",
+    "Label": "Court location code",
+    "FieldType": "RequestedCourtForTabDetailsRes",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "isMintiLipCase",
+    "Label": " ",
+    "FieldType": "YesOrNo",
+    "SecurityClassification": "Public",
+    "Searchable": "Y"
   }
 ]

@@ -1,0 +1,22 @@
+[
+    {
+      "name": "Camunda error",
+      "messageRegex": ".*Ongoing business process.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Missing locator",
+      "messageRegex": ".*expect\\.toBeVisible.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Page validation error",
+      "messageRegex": ".*Field validation error.*",
+      "matchedStatuses": ["failed"]
+    },
+    {
+      "name": "Document upload error",
+      "messageRegex": ".*Uploading document failed.*",
+      "matchedStatuses": ["failed"]
+    }
+  ]

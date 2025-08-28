@@ -5,7 +5,8 @@
     "Label": " ",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
-    "Searchable": "N"
+    "Searchable": "N",
+    "Publish": "Y"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -120,5 +121,13 @@
     "Label": " ",
     "FieldType": "Date",
     "SecurityClassification": "Public"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "respondent1LiPStatementOfTruth",
+    "Label": " ",
+    "FieldType": "StatementOfTruth",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
   }
 ]

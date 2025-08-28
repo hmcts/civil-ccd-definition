@@ -14,7 +14,7 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {PBAv3, SDOR2} = require('../fixtures/featureKeys');
+const {PBAv3} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -44,9 +44,13 @@ const data = {
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
   DEFENDANT_RESPONSE_FULL_DEFENCE_CARM: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForCarm(),
+  DEFENDANT_RESPONSE_PART_ADMISSION_NOT_PAID_CARM: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForCarmPartAdmitNotPaid(),
+  DEFENDANT_RESPONSE_PART_ADMISSION_STATES_PAID_CARM: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForCarmPartAdmitStatesPaid(),
   DEFENDANT_RESPONSE_1v2: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpec1v2.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE2_1V2_2ND_DEF: (response) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim2(response),
   CLAIMANT_RESPONSE: (hasAgreedFreeMediation, carmEnabled) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponse(hasAgreedFreeMediation, carmEnabled),
+  CLAIMANT_RESPONSE_PART_ADMIT_REJECT: () => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponseRejectPartAdmit(),
+  CLAIMANT_RESPONSE_PART_ADMIT_STATES_PAID: (claimantPaymentReceived) => require('../fixtures/events/claimantResponseSpecSmall.js').claimantResponsePAStatesPaid(claimantPaymentReceived),
   INFORM_AGREED_EXTENSION_DATE: async (camundaEvent) => require('../fixtures/events/informAgreeExtensionDateSpec.js').informExtension(camundaEvent),
   LA_CREATE_SDO: (userInput) => sdoTracks.createLASDO(userInput),
   CREATE_SDO: (userInput) => sdoTracks.createSDOSmallWODamageSumInPerson(userInput),
@@ -72,7 +76,9 @@ const eventData = {
       COUNTER_CLAIM: data.DEFENDANT_RESPONSE('COUNTER_CLAIM'),
       COUNTER_CLAIM_PBAv3: data.DEFENDANT_RESPONSE('COUNTER_CLAIM', 'CREATE_CLAIM_SPEC_AFTER_PAYMENT'),
       FULL_DEFENCE_JUDICIAL_REFERRAL: data.DEFENDANT_RESPONSE_JUDICIAL_REFERRAL(),
-      FULL_DEFENCE_CARM: data.DEFENDANT_RESPONSE_FULL_DEFENCE_CARM()
+      FULL_DEFENCE_CARM: data.DEFENDANT_RESPONSE_FULL_DEFENCE_CARM(),
+      PART_ADMISSION_NOT_PAID_CARM: data.DEFENDANT_RESPONSE_PART_ADMISSION_NOT_PAID_CARM(),
+      PART_ADMISSION_STATES_PAID_CARM: data.DEFENDANT_RESPONSE_PART_ADMISSION_STATES_PAID_CARM()
     },
     ONE_V_TWO: {
       FULL_ADMISSION: data.DEFENDANT_RESPONSE_1v2('FULL_ADMISSION'),
@@ -213,7 +219,13 @@ module.exports = function (){
     }
 
     if (carmEnabled) {
-      defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_CARM'];
+      if (response === 'FULL_DEFENCE') {
+        defendantResponseData = eventData['defendantResponses'][scenario]['FULL_DEFENCE_CARM'];
+      } else if (response === 'PART_ADMISSION_NOT_PAID_PBAv3') {
+        defendantResponseData = eventData['defendantResponses'][scenario]['PART_ADMISSION_NOT_PAID_CARM'];
+      } else if (response === 'PART_ADMISSION_STATES_PAID_PBAv3') {
+        defendantResponseData = eventData['defendantResponses'][scenario]['PART_ADMISSION_STATES_PAID_CARM'];
+      }
     }
 
     caseData = returnedCaseData;
@@ -245,7 +257,7 @@ module.exports = function (){
     deleteCaseFields('respondent1Copy');
   },
 
-  claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes', carmEnabled = false) => {
+  claimantResponse: async (user, judicialReferral = false, hasAgreedFreeMediation = 'Yes', carmEnabled = false, partAdmitScenario = null) => {
     // workaround
     deleteCaseFields('applicantSolicitor1ClaimStatementOfTruth');
     deleteCaseFields('respondentResponseIsSame');
@@ -260,6 +272,15 @@ module.exports = function (){
     caseData = await addFlagsToFixture(caseData);
 
     let claimantResponseData = data.CLAIMANT_RESPONSE(hasAgreedFreeMediation, carmEnabled);
+    if (carmEnabled) {
+      if (partAdmitScenario === 'PART_ADMIT_REJECT') {
+        claimantResponseData = data.CLAIMANT_RESPONSE_PART_ADMIT_REJECT();
+      } else if (partAdmitScenario === 'PART_ADMIT_STATES_PAID_NOT_RECEIVED') {
+        claimantResponseData = data.CLAIMANT_RESPONSE_PART_ADMIT_STATES_PAID(false);
+      } else if (partAdmitScenario === 'PART_ADMIT_STATES_PAID_CLAIMANT_RECEIVED_REJECTSPA') {
+        claimantResponseData = data.CLAIMANT_RESPONSE_PART_ADMIT_STATES_PAID(true);
+      }
+    }
 
     for (let pageId of Object.keys(claimantResponseData.userInput)) {
       await assertValidData(claimantResponseData, pageId);
@@ -287,6 +308,7 @@ module.exports = function (){
     caseData = await apiRequest.startEvent(eventName, caseId);
     caseData = {...caseData, ...mediationUnsuccessful.unsuccessfulMediation(carmEnabled)};
     await apiRequest.setupTokens(user);
+    deleteCaseFields('showConditionFlags');
     await assertSubmittedEvent('JUDICIAL_REFERRAL');
     await waitForFinishedBusinessProcess(caseId);
     console.log('End of unsuccessful mediation');
@@ -312,7 +334,6 @@ module.exports = function (){
 
   createSDO: async (user, response = 'CREATE_DISPOSAL', carmEnabled = false) => {
     console.log('SDO for case id ' + caseId);
-    const SdoR2 = await checkToggleEnabled(SDOR2);
     await apiRequest.setupTokens(user);
 
     if (response === 'UNSUITABLE_FOR_SDO') {
@@ -333,6 +354,8 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
+    
+    delete caseData['showConditionFlags'];
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
@@ -340,12 +363,10 @@ module.exports = function (){
       await assertSubmittedEvent('CASE_PROGRESSION', null, false);
     }
 
-    if(SdoR2){
-      delete caseData['smallClaimsFlightDelay'];
-      delete caseData['smallClaimsFlightDelayToggle'];
-      //required to fix existing prod api tests for sdo
-      clearWelshParaFromCaseData();
-    }
+    delete caseData['smallClaimsFlightDelay'];
+    delete caseData['smallClaimsFlightDelayToggle'];
+    //required to fix existing prod api tests for sdo
+    clearWelshParaFromCaseData();
 
     await waitForFinishedBusinessProcess(caseId);
   },
@@ -523,6 +544,7 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('CASE_PROGRESSION', {
       header: '# Response has been submitted',
       body: ''
@@ -543,7 +565,7 @@ module.exports = function (){
       for (let pageId of Object.keys(disposalData.userInput)) {
         await assertValidData(disposalData, pageId);
       }
-      await assertSubmittedEvent('CLOSED', {
+      await assertSubmittedEvent('CASE_STAYED', {
         header: '# Response has been submitted',
         body: ''
       }, true);
@@ -561,8 +583,6 @@ module.exports = function (){
 // Functions
 const assertValidData = async (data, pageId) => {
   console.log(`asserting page: ${pageId} has valid data`);
-
-  let sdoR2Flag = await checkToggleEnabled(SDOR2);
   let userData;
 
   if (eventName === 'CREATE_SDO' || eventName === 'NotSuitable_SDO' ) {
@@ -590,16 +610,23 @@ const assertValidData = async (data, pageId) => {
     checkGenerated(responseBody.data, data.midEventGeneratedData[pageId]);
   }
 
-  if(sdoR2Flag){
-    delete responseBody.data['smallClaimsFlightDelayToggle'];
-    delete responseBody.data['smallClaimsFlightDelay'];
-    //required to fix existing prod api tests for sdo
-    delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
-    delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+  if (eventName === 'CLAIMANT_RESPONSE_SPEC') {
+    if (responseBody.data['applicant1PartAdmitConfirmAmountPaidSpec']
+      || responseBody.data['applicant1PartAdmitIntentionToSettleClaimSpec']
+      || responseBody.data['applicant1AcceptAdmitAmountPaidSpec']) {
+      delete responseBody.data['applicant1ProceedWithClaim'];
+    }
   }
+
+  delete responseBody.data['smallClaimsFlightDelayToggle'];
+  delete responseBody.data['smallClaimsFlightDelay'];
+  //required to fix existing prod api tests for sdo
+  delete responseBody.data['sdoR2SmallClaimsUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2NihlUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2FastTrackUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DrhUseOfWelshLanguage'];
+  delete responseBody.data['sdoR2DisposalHearingUseOfWelshLanguage'];
+
   if (pageId === 'SdoR2FastTrack') {
     clearWelshParaFromCaseData();
   }

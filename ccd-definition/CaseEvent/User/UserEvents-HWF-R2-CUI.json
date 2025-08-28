@@ -92,7 +92,7 @@
     "RetriesTimeoutURLAboutToSubmitEvent": 0,
     "RetriesTimeoutURLSubmittedEvent": 0,
     "Publish": "Y",
-    "EventEnablingCondition": "hwfFeeType = \"CLAIMISSUED\" OR hwfFeeType = \"HEARING\""
+    "EventEnablingCondition": "claimIssuedHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"FULL_REMISSION_HWF\" OR claimIssuedHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR hearingHwfDetails.hwfCaseEvent=\"PARTIAL_REMISSION_HWF_GRANTED\" OR claimIssuedHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\" OR hearingHwfDetails.hwfCaseEvent=\"NO_REMISSION_HWF\""
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",

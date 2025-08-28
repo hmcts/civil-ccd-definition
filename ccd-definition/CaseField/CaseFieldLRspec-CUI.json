@@ -49,14 +49,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "applicant1AcceptAdmitAmountPaidSpec",
-    "Label": "Does the claimant want to settle the claim for the £${respondToAdmittedClaimOwingAmountPounds} the defendant admitted?",
-    "FieldType": "YesOrNo",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "applicant1AcceptPartAdmitPaymentPlanSpec",
     "Label": "Does the claimant accept the repayment plan?",
     "FieldType": "YesOrNo",
@@ -198,12 +190,21 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "ccjPaymentPaidSomeLabelInsetHelpText",
+    "Label": "<div class=\"govuk-inset-text\">The system only allows interest to be calculated on the full claim amount. If you have received any part payment and you are requesting a CCJ, please use form <a target=\"_blank\" href=\"https://www.gov.uk/government/publications/form-n225-request-for-judgment-and-reply-to-admission-specified-amount\">N225</a>. If you have received any part payment and you are requesting a Judgment on a Part Admission response, please use form <a target=\"_blank\" href=\"https://assets.publishing.service.gov.uk/media/63f49b03e90e077bb3d7af45/n225a-eng-04-13_save.pdf\">N225a</a>. You can calculate the correct interest, and send to <a target=\"_blank\" href=\"mailto:contactocmc@justice.gov.uk\">contactocmc@justice.gov.uk</a></div>",
+    "FieldType": "Label",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjPaymentPaidSomeAmount",
     "Label": "Amount already paid",
     "FieldType": "MoneyGBP",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
+
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "partAdmitPaidValuePounds",
@@ -281,14 +282,6 @@
     "ID": "ccjJudgmentStatement",
     "Label": " ",
     "FieldType": "Text",
-    "SecurityClassification": "Public",
-    "Searchable": "N"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "ID": "ccjJudgmentAmountClaimAmountLabel",
-    "Label": "### Claim amount\n\n£${ccjJudgmentAmountClaimAmount}",
-    "FieldType": "Label",
     "SecurityClassification": "Public",
     "Searchable": "N"
   },
@@ -456,7 +449,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "ccjJudgmentFixedCostOption",
     "Label": " ",
-    "HintText": "This will include fixed costs for judgement",
+    "HintText": "This will include fixed costs for judgment",
     "FieldType": "YesOrNo",
     "SecurityClassification": "Public",
     "Searchable": "N"

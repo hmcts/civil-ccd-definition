@@ -329,12 +329,6 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
-    "CaseFieldID": "respondToClaimAdmitPartLRspec",
-    "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
-  },
-  {
-    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "responseClaimAdmitPartEmployer",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
@@ -349,7 +343,7 @@
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "applicant1DQRequestedCourt",
     "UserRole": "caseworker-civil-systemupdate",
-    "CRUD": "R"
+    "CRUD": "CRU"
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
@@ -410,5 +404,11 @@
     "CaseFieldID": "showResponseOneVOneFlag",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "R"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "respondToClaimAdmitPartLRspec",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]

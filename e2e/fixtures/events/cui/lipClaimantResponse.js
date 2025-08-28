@@ -94,6 +94,59 @@ const lipClaimantData = {
       },
       totalClaimAmount: 1500,
     },
+  },
+  'PA_ACCEPT_CCJ': {
+    event: 'CLAIMANT_RESPONSE_CUI',
+    caseDataUpdate: {
+      applicant1AcceptAdmitAmountPaidSpec: 'Yes',
+      applicant1LiPResponse: {
+        applicant1ChoosesHowToProceed: 'REQUEST_A_CCJ',
+      },
+      applicant1AcceptPartAdmitPaymentPlanSpec: 'Yes',
+      applicant1RepaymentOptionForDefendantSpec: 'REPAYMENT_PLAN',
+      applicant1SettleClaim: 'Yes',
+      applicant1SuggestInstalmentsPaymentAmountForDefendantSpec: 100,
+      applicant1SuggestInstalmentsRepaymentFrequencyForDefendantSpec: 'ONCE_ONE_MONTH',
+      applicant1SuggestInstalmentsFirstRepaymentDateForDefendantSpec: '2025-05-04',
+      applicant1RequestedPaymentDateForDefendantSpec: {},
+      ccjPaymentPaidSomeOption: 'No',
+      ccjPaymentPaidSomeAmount: null,
+      ccjJudgmentAmountClaimFee: 80,
+      ccjJudgmentLipInterest: 0,
+      applicant1: {
+        individualDateOfBirth: '1995-08-28',
+        individualFirstName: 'Jane',
+        individualLastName: 'Doe',
+        individualTitle: 'Miss',
+        partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+        partyPhone: undefined,
+        primaryAddress: {
+          AddressLine1: '123',
+          AddressLine2: 'Fake Street',
+          PostCode: 'S12eu',
+          PostTown: 'sheffield'
+        },
+        soleTraderDateOfBirth: null,
+        type: 'INDIVIDUAL'
+      },
+      respondent1: {
+        individualDateOfBirth: '1993-08-28',
+        individualFirstName: 'defendant',
+        individualLastName: 'person',
+        individualTitle: 'mr',
+        partyEmail: 'civilmoneyclaimsdemo@gmail.com',
+        partyPhone: '07800000000',
+        primaryAddress: {
+          AddressLine1: '123',
+          AddressLine2: 'Claim Road',
+          PostCode: 'L7 2PZ',
+          PostTown: 'Liverpool'
+        },
+        soleTraderDateOfBirth: null,
+        type: 'INDIVIDUAL'
+      },
+      totalClaimAmount: 1500
+    }
   }
 };
 
@@ -342,5 +395,75 @@ module.exports = {
       return lipClaimantData[typeOfData];
     }
     return carmEnabled ? claimantResponseDataCarm : claimantResponseData;
+  },
+  claimantResponsePartAdmitRejectCarm: () => {
+    return {
+      event: 'CLAIMANT_RESPONSE_CUI',
+      caseDataUpdate: {
+        applicant1AcceptAdmitAmountPaidSpec: 'No',
+        applicant1LiPResponse: {
+          applicant1DQExtraDetails: {
+            wantPhoneOrVideoHearing: 'No',
+            whyPhoneOrVideoHearing: '',
+            giveEvidenceYourSelf: 'No',
+            determinationWithoutHearingRequired: 'Yes',
+            determinationWithoutHearingReason: '',
+            considerClaimantDocumentsDetails: '',
+            applicant1DQLiPExpert: {
+              expertCanStillExamineDetails: ''
+            }
+          },
+          applicant1DQHearingSupportLip: {
+            supportRequirementLip: 'No'
+          }
+        },
+        applicant1LiPResponseCarm: {
+          isMediationContactNameCorrect: 'Yes',
+          isMediationEmailCorrect: 'Yes',
+          isMediationPhoneCorrect: 'Yes',
+          hasUnavailabilityNextThreeMonths: 'No'
+        },
+        applicant1DQLanguage: {
+          court: 'ENGLISH',
+          documents: 'ENGLISH'
+        },
+        applicant1DQVulnerabilityQuestions: {
+          vulnerabilityAdjustmentsRequired: 'No'
+        },
+        applicant1DQRequestedCourt: {
+          otherPartyPreferredSite: '',
+          responseCourtCode: '',
+          reasonForHearingAtSpecificCourt: 'location',
+          responseCourtLocations: [],
+          caseLocation: {
+            region: config.claimantSelectedCourt,
+            baseLocation: config.claimantSelectedCourt
+          }
+        },
+        applicant1DQWitnesses: {
+          witnessesToAppear: 'No',
+          details: [
+            {
+              value: {
+                name: '',
+                firstName: '',
+                lastName: '',
+                emailAddress: '',
+                phoneNumber: '',
+                reasonForWitness: ''
+              }
+            }
+          ]
+        },
+        applicant1DQSmallClaimHearing: {
+          unavailableDatesRequired: 'No'
+        },
+        applicant1DQExperts: {},
+        applicant1DQHearingSupport: {
+          supportRequirements: 'No'
+        },
+        applicant1SettleClaim: 'No'
+      }
+    };
   }
 };
