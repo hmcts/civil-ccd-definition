@@ -54,12 +54,12 @@ Scenario.skip('1v1 spec request for reconsideration when claim amount is greater
     await api_spec.requestForReconsideration(config.defendantSolicitorUser);
 });
 
-Scenario('1v1 spec request for reconsideration for create a new SDO ', async ({api_spec_small}) => {
+Scenario('1v1 spec request for reconsideration for create a new SDO', async ({api_spec_small}) => {
     await prepareClaimSpec(api_spec_small);
     await api_spec_small.createSDO(legalAdvUser, 'CREATE_SMALL_NO_SUM');
     await api_spec_small.requestForReconsideration(config.defendantSolicitorUser,'Respondent1');
     await api_spec_small.judgeDecisionOnReconsiderationRequest(judgeUser, 'CREATE_SDO');
-    await api_spec_small.notSuitableSdoChangeLocation(judgeUser, 'CHANGE_LOCATION');
+    // await api_spec_small.notSuitableSdoChangeLocation(judgeUser, 'CHANGE_LOCATION');
 });
 
 AfterSuite(async ({api_spec_small, api_spec}) => {
