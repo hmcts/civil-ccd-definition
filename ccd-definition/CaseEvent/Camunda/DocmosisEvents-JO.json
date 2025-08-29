@@ -40,6 +40,19 @@
   },
   {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "ID": "POST_DJ_NON_DIVERGENT_COVER_LETTER_CLAIMANT",
+    "Name": "Post DJ Cover Letter Claimant",
+    "Description": "Post DJ Non-Divergent Cover Letter for LiP Claimant",
+    "PreConditionState(s)": "*",
+    "PostConditionState": "*",
+    "SecurityClassification": "Public",
+    "CallBackURLAboutToSubmitEvent": "${CCD_DEF_CASE_SERVICE_BASE_URL}/cases/callbacks/about-to-submit",
+    "ShowSummary": "N",
+    "ShowEventNotes": "N",
+    "RetriesTimeoutURLAboutToSubmitEvent": 0
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "ID": "POST_DJ_NON_DIVERGENT_PIN_IN_LETTER_DEFENDANT1",
     "Name": "DJ Non Divergent Defendant",
     "Description": "DJ Non-Divergent PIN in Letter for LiP Defendant1",
