@@ -1,4 +1,5 @@
-[{
+[
+  {
   "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
   "CaseFieldID": "gaDraftDocStaff",
   "AccessControl": [
@@ -10,7 +11,7 @@
     }
   ]
 },
-  {
+ {
     "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
     "CaseFieldID": "generalOrderDocStaff",
     "AccessControl": [
@@ -76,6 +77,25 @@
     "AccessControl": [
       {
         "UserRoles": [
+          "wlu-admin"
+        ],
+        "CRUD": "R"
+      }
+    ]
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseFieldID": "gaDetailsTranslationCollection",
+    "AccessControl": [
+      {
+        "UserRoles": [
+          "caseworker-civil-systemupdate"
+        ],
+        "CRUD": "CRUD"
+      },
+       {
+        "UserRoles": [
+          "caseworker-civil-admin",
           "wlu-admin"
         ],
         "CRUD": "R"
