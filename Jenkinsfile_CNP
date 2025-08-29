@@ -194,9 +194,11 @@ withPipeline(type, product, component) {
       env.DEFINITION_STORE_URL_BASE = "http://ccd-definition-store-api-aat.service.core-compute-aat.internal"
       env.CCD_DATA_STORE_URL = "http://ccd-data-store-api-aat.service.core-compute-aat.internal"
       env.CCD_DEF_VERSION = "-${CHANGE_ID}"
+      env.ROLE_ASSIGNMENT_URL = "http://am-role-assignment-service-aat.service.core-compute-aat.internal"
     } else {
       env.DEFINITION_STORE_URL_BASE = "https://ccd-definition-store-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.CCD_DATA_STORE_URL = "https://ccd-data-store-api-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
+      env.ROLE_ASSIGNMENT_URL = "https://am-role-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
     }
   }
   onMaster {
@@ -254,7 +256,6 @@ withPipeline(type, product, component) {
       env.PAYMENT_API_URL = "http://payment-api-aat.service.core-compute-aat.internal"
       env.WIREMOCK_URL = "https://wiremock-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       env.AAC_API_URL = "https://manage-case-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
-      env.ROLE_ASSIGNMENT_URL = "https://am-role-assignment-civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net"
       sh """
         set -e
         eval \$(./bin/variables/load-preview-environment-variables.sh ${CHANGE_ID})
