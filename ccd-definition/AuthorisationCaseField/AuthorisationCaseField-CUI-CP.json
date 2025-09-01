@@ -946,7 +946,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-SPEC-PROFILE",
           "CITIZEN-CLAIMANT-PROFILE"
         ],
         "CRUD": "CRU"
@@ -965,7 +964,6 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "RES-SOL-ONE-SPEC-PROFILE",
           "CITIZEN-DEFENDANT-PROFILE"
 
         ],
