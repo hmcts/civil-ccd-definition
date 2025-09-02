@@ -1,6 +1,14 @@
 [
   {
     "ID": "Message",
+    "ListElementCode": "messageId",
+    "FieldType": "Text",
+    "ElementLabel": " ",
+    "SecurityClassification": "Public",
+    "Searchable": "N"
+  },
+  {
+    "ID": "Message",
     "ListElementCode": "senderRoleType",
     "FieldType": "FixedList",
     "FieldTypeParameter": "RolePool",
