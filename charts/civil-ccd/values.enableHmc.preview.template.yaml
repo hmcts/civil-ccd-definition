@@ -35,6 +35,7 @@ xui-webapp:
       SERVICES_HMC_HEARINGS_COMPONENT_API: http://hmc-cft-hearing-service-aat.service.core-compute-aat.internal
       SERVICES_HEARINGS_COMPONENT_API_CIVIL: https://civil-ccd-pr-${CHANGE_ID}.preview.platform.hmcts.net
       SERVICES_HEARINGS_CASETYPES_CIVIL: CIVIL-${CHANGE_ID}
+      SERVICES_ROLE_ASSIGNMENT_API: http://am-role-assignment-service-aat.service.core-compute-aat.internal
       HEARINGS_JURISDICTIONS: CIVIL
       LAUNCH_DARKLY_CLIENT_ID: 5de6610b23ce5408280f2268
 
