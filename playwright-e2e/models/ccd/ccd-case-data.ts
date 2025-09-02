@@ -301,12 +301,12 @@ export interface HearingAttendeeValue {
 }
 
 export interface CaseFlags {
-  details?: CaseFlagsDetails[];
+  details?: CCDCaseFlagsDetails[];
   partyName?: string;
   roleOnCase?: string;
 }
 
-export interface CaseFlagsDetails {
+export interface CCDCaseFlagsDetails {
   id?: string;
   value?: CaseFlagsDetailsValue;
 }
@@ -319,6 +319,7 @@ export interface CaseFlagsDetailsValue {
   flagComment?: string;
   dateTimeCreated?: string;
   hearingRelevant?: string;
+  otherDescription?: string;
 }
 
 export interface CaseFlagsDetailsValuePath {

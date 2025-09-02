@@ -19,5 +19,6 @@ test.describe('Specified Fast track 1v1', async () => {
     await HearingCenterAdminSpecSteps.LoginRegion1();
     await HearingCenterAdminSpecSteps.CreateCaseLevelCaseFlag();
     await HearingCenterAdminSpecSteps.CreateClaimant1CaseFlag();
+    await HearingCenterAdminSpecSteps.ManageCaseFlags();
   });
 });

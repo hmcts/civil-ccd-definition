@@ -47,7 +47,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
-    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await super.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
@@ -74,7 +74,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
-    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await super.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
@@ -101,7 +101,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
-    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await super.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
@@ -128,7 +128,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       eventData,
       eventToken,
     );
-    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, eventCaseData.id);
+    await super.waitForFinishedBusinessProcess(eventCaseData.id);
     await this.fetchAndSetCCDCaseData(eventCaseData.id);
     UserAssignedCasesHelper.addAssignedCaseToUser(claimantSolicitorUser, this.ccdCaseData.id);
   }
@@ -144,7 +144,7 @@ export default class ClaimantSolicitorSpecApiSteps extends BaseApi {
       claimantSolicitorUser,
       paidServiceRequestDTO,
     );
-    await super.waitForFinishedBusinessProcess(claimantSolicitorUser, this.ccdCaseData.id);
+    await super.waitForFinishedBusinessProcess(this.ccdCaseData.id);
   }
 
   async AmendRespondent1ResponseDeadline() {

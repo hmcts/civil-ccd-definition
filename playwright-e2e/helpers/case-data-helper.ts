@@ -10,6 +10,8 @@ import CCDCaseData, {
   ClaimantDefendant,
   LitigationFriend,
 } from '../models/ccd/ccd-case-data';
+import CaseFlags, { CaseFlagDetails } from '../models/case-flag';
+import caseFlagLocations from '../constants/case-flags/case-flag-locations';
 
 export default class CaseDataHelper {
   static getNextClaimNumber() {
@@ -280,50 +282,5 @@ export default class CaseDataHelper {
       case ClaimTrack.MULTI_CLAIM:
         return 110000;
     }
-  }
-
-  static getActiveCaseFlagsForClaimantDefendant(claimantDefendant?: ClaimantDefendant) {
-    const activeCaseFlags =
-      claimantDefendant?.flags?.details?.filter((detail) => detail.value.status === 'Active')
-        ?.length || 0;
-    if (claimantDefendant)
-      console.log(
-        `Active case flags: ${activeCaseFlags} for party ${claimantDefendant?.partyName}`,
-      );
-    return activeCaseFlags;
-  }
-
-  static getActiveCaseFlagsForLitigationFriend(litigationFriend?: LitigationFriend) {
-    const activeCaseFlags =
-      litigationFriend?.flags?.details?.filter((detail) => detail.value.status === 'Active')
-        ?.length || 0;
-    if (litigationFriend)
-      console.log(
-        `Active case flags: ${activeCaseFlags} for party ${litigationFriend?.flags?.partyName}`,
-      );
-    return activeCaseFlags;
-  }
-
-  static getActiveCaseFlagsForExpertAndWitness(expertOrWitnesses?: ExpertAndWitness[]) {
-    return (
-      expertOrWitnesses?.reduce((total, expertOrWitness) => {
-        const activeCaseFlags =
-          expertOrWitness?.value?.flags?.details?.filter(
-            (detail) => detail.value.status === 'Active',
-          )?.length || 0;
-        console.log(
-          `Active case flags: ${activeCaseFlags} for party ${expertOrWitness?.value?.flags?.partyName}`,
-        );
-        return total + activeCaseFlags;
-      }, 0) || 0
-    );
-  }
-
-  static getActiveCaseLevelFlags(ccdCaseData: CCDCaseData) {
-    const activeCaseFlags =
-      ccdCaseData?.caseFlags?.details?.filter((detail) => detail.value.status === 'Active')
-        ?.length || 0;
-    console.log(`Active case level flags: ${activeCaseFlags}`);
-    return activeCaseFlags;
   }
 }

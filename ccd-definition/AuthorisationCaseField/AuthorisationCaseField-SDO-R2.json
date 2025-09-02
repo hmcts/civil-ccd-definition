@@ -33,7 +33,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -59,7 +61,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }
@@ -85,7 +89,9 @@
       {
         "UserRoles": [
           "judge-profile",
-          "legal-adviser"
+          "legal-adviser",
+          "hearing-schedule-access",
+          "caseworker-civil-admin"
         ],
         "CRUD": "R"
       }

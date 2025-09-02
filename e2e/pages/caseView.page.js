@@ -41,10 +41,10 @@ module.exports = {
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
 
-  async raiseNewQuery(event, caseId) {
+  async raiseNewQuery(caseId) {
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
-      await I.amOnPage(`${config.url.manageCase}/${event.id}/query/${caseId}`);
+      await I.amOnPage(`${config.url.manageCase}/query-management/query/${caseId}`);
     }, EVENT_QM_LOCATOR, 3, 45);
   },
 

@@ -23,5 +23,6 @@ test.describe('Unspecified Fast track 1v1', async () => {
     await HearingCenterAdminSteps.LoginRegion1();
     await HearingCenterAdminSteps.CreateCaseLevelCaseFlag();
     await HearingCenterAdminSteps.CreateClaimant1CaseFlag();
+    await HearingCenterAdminSteps.ManageCaseFlags();
   });
 });

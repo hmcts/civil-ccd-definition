@@ -1617,6 +1617,7 @@ const assertValidData = async (data, pageId, solicitor) => {
   delete responseBody.data['sdoR2FastTrackCreditHire'];
   delete responseBody.data['sdoDJR2TrialCreditHire'];
   delete responseBody.data['gaEaCourtLocation'];
+  delete responseBody.data['evidenceUploadNotificationSent'];
 
 
   assert.equal(response.status, 200);

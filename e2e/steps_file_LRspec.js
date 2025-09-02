@@ -633,9 +633,6 @@ module.exports = function () {
         () => singleResponse.defendantsHaveSameResponseForBothClaimants(true),
         ]),
         () => responseTypeSpecPage.selectResponseType(twoDefendants, defendant1Response),
-        ...conditionalSteps(config.runningEnv === 'aat', [
-          () => this.clickContinue()
-        ]),
         () => admitPartPaymentRoutePage.selectPaymentRoute(defenceType),
         ... conditionalSteps(defenceType == 'payByInstallments', [
         () => this.clickContinue(),

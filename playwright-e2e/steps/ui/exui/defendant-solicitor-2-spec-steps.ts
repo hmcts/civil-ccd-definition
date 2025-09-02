@@ -47,7 +47,7 @@ export default class DefendantSolicitor2SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor2User,
+
       { verifySuccessEvent: false },
     );
   }

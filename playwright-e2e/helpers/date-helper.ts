@@ -123,7 +123,7 @@ export default class DateHelper {
   }
 
   static formatDateToString(
-    inputDate: DateStringFormats | Date,
+    inputDate: string | Date,
     {
       inputFormat = 'YYYY-MM-DD' as DateStringFormats,
       outputFormat = 'DD Month YYYY' as DateStringFormats,
@@ -136,6 +136,8 @@ export default class DateHelper {
       if (inputFormat === 'YYYY-MM-DD') {
         const [year, month, day] = inputDate.split('-');
         date = new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+      } else {
+        date = new Date(inputDate);
       }
     } else {
       date = inputDate;

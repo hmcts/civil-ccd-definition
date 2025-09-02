@@ -48,7 +48,7 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
+
       { verifySuccessEvent: false },
     );
   }
@@ -74,7 +74,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -100,7 +99,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -128,7 +126,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -156,7 +153,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await createClaimSpecActions.confirmCreateClaimSpec();
       },
       ccdEvents.CREATE_CLAIM_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -177,7 +173,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -198,7 +193,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -219,7 +213,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -240,7 +233,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -261,7 +253,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await claimantResponseSpecActions.confirm();
       },
       ccdEvents.CLAIMANT_RESPONSE_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -281,7 +272,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }
@@ -301,7 +291,6 @@ export default class ClaimantSolicitorSpecSteps extends BaseExui {
         await defaultJudgementSpecActions.confirmDefaultJudgmentSpec();
       },
       ccdEvents.DEFAULT_JUDGEMENT_SPEC,
-      claimantSolicitorUser,
       { verifySuccessEvent: false },
     );
   }

@@ -38,7 +38,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await addDefendantLitigationFriendActions.confirmAddDefendantLitigationFriend();
       },
       ccdEvents.ADD_DEFENDANT_LITIGATION_FRIEND,
-      defendantSolicitor2User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -60,7 +60,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await defendantResponseActions.confirmDefendantResponse();
       },
       ccdEvents.DEFENDANT_RESPONSE,
-      defendantSolicitor2User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -78,7 +78,7 @@ export default class DefendantSolicitor2Steps extends BaseExui {
         await acknowlegdeClaimActions.confirmAcknowledgeClaimDS2();
       },
       ccdEvents.ACKNOWLEDGE_CLAIM,
-      defendantSolicitor2User,
+
       { verifySuccessEvent: false },
     );
   }

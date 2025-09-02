@@ -2,7 +2,8 @@ import BasePage from '../../../../../../base/base-page';
 import { AllMethodsStep } from '../../../../../../decorators/test-steps';
 import CCDCaseData from '../../../../../../models/ccd/ccd-case-data';
 import ExuiPage from '../../../../exui-page/exui-page';
-import { heading, radioButtons, inputs } from './create-case-flags-reasonable-adjustment-content';
+import { heading, inputs } from './create-case-flags-reasonable-adjustment-content';
+import ReasonableAdjustmentFlags from '../../../../../../enums/case-flags/reasonable-adjustment-flags';
 
 @AllMethodsStep()
 export default class CreateCaseFlagsReasonableAdjustmentPage extends ExuiPage(BasePage) {
@@ -10,20 +11,22 @@ export default class CreateCaseFlagsReasonableAdjustmentPage extends ExuiPage(Ba
     await super.runVerifications([
       super.verifyHeadings(ccdCaseData),
       super.expectHeading(heading),
-      super.expectLabel(radioButtons.alternativeDocuments.label),
-      super.expectLabel(radioButtons.forms.label),
-      super.expectLabel(radioButtons.buildingAccess.label),
-      super.expectLabel(radioButtons.hearingSupport.label),
-      super.expectLabel(radioButtons.comfortDuringHearing.label),
-      super.expectLabel(radioButtons.hearingRequest.label),
-      super.expectLabel(radioButtons.communicating.label),
-      super.expectLabel(radioButtons.other.label),
+      super.expectLabel(ReasonableAdjustmentFlags.ALTERNATIVE_DOCUMENTS),
+      super.expectLabel(ReasonableAdjustmentFlags.FORMS),
+      super.expectLabel(ReasonableAdjustmentFlags.BUILDING_ACCESS),
+      super.expectLabel(ReasonableAdjustmentFlags.HEARING_SUPPORT),
+      super.expectLabel(ReasonableAdjustmentFlags.COMFORT_DURING_HEARING),
+      super.expectLabel(ReasonableAdjustmentFlags.HEARING_REQUEST),
+      super.expectLabel(ReasonableAdjustmentFlags.COMMUNICATING),
+      super.expectLabel(ReasonableAdjustmentFlags.OTHER),
     ]);
   }
 
-  async selectOther() {
-    await super.clickByLabel(radioButtons.other.label);
-    await super.inputText('New flag type', inputs.other.selector);
+  async selectFlag(caseflag: ReasonableAdjustmentFlags) {
+    await super.clickByLabel(caseflag);
+    if (caseflag === ReasonableAdjustmentFlags.OTHER) {
+      await super.inputText(ReasonableAdjustmentFlags.OTHER, inputs.other.selector);
+    }
   }
 
   async submit() {

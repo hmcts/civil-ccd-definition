@@ -354,6 +354,8 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.valid)) {
       await assertValidData(disposalData, pageId);
     }
+    
+    delete caseData['showConditionFlags'];
 
     if (response === 'UNSUITABLE_FOR_SDO') {
       await assertSubmittedEvent('PROCEEDS_IN_HERITAGE_SYSTEM', null, false);
@@ -542,6 +544,7 @@ module.exports = function (){
     for (let pageId of Object.keys(disposalData.userInput)) {
       await assertValidData(disposalData, pageId);
     }
+    delete caseData['showConditionFlags'];
     await assertSubmittedEvent('CASE_PROGRESSION', {
       header: '# Response has been submitted',
       body: ''

@@ -35,7 +35,6 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      civilAdminUser,
       { verifySuccessEvent: false },
     );
   }
@@ -48,7 +47,6 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.CASE_PROCEEDS_IN_CASEMAN,
-      civilAdminUser,
       { verifySuccessEvent: false },
     );
   }
@@ -61,7 +59,6 @@ export default class CaseworkerSteps extends BaseExui {
       },
       async () => {},
       ccdEvents.MANAGE_DOCUMENTS,
-      civilAdminUser,
       { verifySuccessEvent: false },
     );
   }

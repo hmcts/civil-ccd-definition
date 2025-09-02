@@ -13,8 +13,8 @@ export default class CreateCaseFlagsCommentsPage extends ExuiPage(BasePage) {
     ]);
   }
 
-  async addCaseFlagComment() {
-    await super.inputText('This is the comments for case flags', inputs.comments.selector);
+  async addCaseFlagComment(comment: string) {
+    await super.inputText(comment, inputs.comments.selector);
   }
 
   async submit() {

@@ -48,7 +48,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -73,7 +73,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -99,7 +99,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -125,7 +125,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirm1v2SSDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
@@ -150,7 +150,7 @@ export default class DefendantSolicitor1SpecSteps extends BaseExui {
         await defendantResponseSpecActions.confirmDefendantResponseSpec();
       },
       ccdEvents.DEFENDANT_RESPONSE_SPEC,
-      defendantSolicitor1User,
+
       { verifySuccessEvent: false },
     );
   }
