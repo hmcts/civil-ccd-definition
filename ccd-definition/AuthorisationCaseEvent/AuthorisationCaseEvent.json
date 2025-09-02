@@ -581,10 +581,8 @@
     "AccessControl": [
       {
         "UserRoles": [
-          "APP-SOL-UNSPEC-PROFILE",
           "caseworker-civil-admin",
-          "GS_profile",
-          "RES-SOL-ONE-UNSPEC-PROFILE"
+          "caseworker-civil-staff"
         ],
         "CRUD": "R"
       }

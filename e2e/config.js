@@ -46,12 +46,12 @@ module.exports = {
 //    orchestratorService: 'http://civil-orchestrator-service-aat.service.core-compute-aat.internal',
 
 //    Default - leave below uncommented when merging
-    manageCase: process.env.URL || 'http://localhost:3333',
-    authProviderApi: process.env.SERVICE_AUTH_PROVIDER_API_BASE_URL || 'http://localhost:4502',
-    ccdDataStore: process.env.CCD_DATA_STORE_URL || 'http://localhost:4452',
-    dmStore: process.env.DM_STORE_URL || 'http://dm-store:8080',
-    idamApi: process.env.IDAM_API_URL || 'http://localhost:5000',
-    civilService: process.env.CIVIL_SERVICE_URL || 'http://localhost:4000',
+    manageCase: 'https://xui-civil-ccd-pr-6001.preview.platform.hmcts.net',
+    authProviderApi: 'http://rpe-service-auth-provider-aat.service.core-compute-aat.internal',
+    ccdDataStore: 'https://ccd-data-store-api-civil-ccd-pr-6001.preview.platform.hmcts.net',
+    dmStore: 'http://dm-store-aat.service.core-compute-aat.internal',
+    idamApi: 'https://idam-api.aat.platform.hmcts.net',
+    civilService: 'https://civil-ccd-pr-6001.preview.platform.hmcts.net',
     caseAssignmentService: process.env.AAC_API_URL || 'http://localhost:4454',
     generalApplication: process.env.CIVIL_GENERAL_APPLICATIONS_URL  || 'http://localhost:4550',
     orchestratorService: process.env.CIVIL_ORCHESTRATOR_SERVICE_URL || 'https://localhost:9090',

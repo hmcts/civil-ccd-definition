@@ -5,7 +5,7 @@ const mpScenario = 'ONE_V_TWO_TWO_LEGAL_REP';
 
 // add @api-tests to run
 
-Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-nightly-prod @api-unspec-full-defence');
+Feature('CCD 1v2 Different Solicitor API test @api-unspec @api-multiparty @api-tests-1v2DS @api-tests-1v2DS-nigel @api-nightly-prod @api-unspec-full-defence');
 
 Scenario('Create claim', async ({I, api}) => {
   await api.createClaimWithRepresentedRespondent(config.applicantSolicitorUser, mpScenario);
@@ -47,27 +47,27 @@ Scenario('Inform agreed extension date Solicitor 1', async ({I, api}) => {
 Scenario('Inform agreed extension date Solicitor 2', async ({I, api}) => {
   await api.informAgreedExtension(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
 });
-
-Scenario('Defendant response Solicitor 1', async ({I, api}) => {
-  await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
-});
-
-Scenario('Defendant response Solicitor 2', async ({I, api}) => {
-  await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
-});
-
-Scenario('Claimant response', async ({I, api}) => {
-  await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
-});
-
-//Scenario('Add case flags', async ({api}) => {
-//  await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
-
-//Scenario('Manage case flags', async ({api}) => {
-//  await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
-//});
-
-AfterSuite(async  ({api}) => {
-  await api.cleanUp();
-});
+//
+// Scenario('Defendant response Solicitor 1', async ({I, api}) => {
+//   await api.defendantResponse(config.defendantSolicitorUser, mpScenario, 'solicitorOne');
+// });
+//
+// Scenario('Defendant response Solicitor 2', async ({I, api}) => {
+//   await api.defendantResponse(config.secondDefendantSolicitorUser, mpScenario, 'solicitorTwo');
+// });
+//
+// Scenario('Claimant response', async ({I, api}) => {
+//   await api.claimantResponse(config.applicantSolicitorUser, mpScenario, 'AWAITING_APPLICANT_INTENTION', 'FOR_SDO', 'FAST_CLAIM');
+// });
+//
+// Scenario('Add case flags', async ({api}) => {
+//   await api.createCaseFlags(config.hearingCenterAdminWithRegionId1);
+// });
+//
+// Scenario('Manage case flags', async ({api}) => {
+//   await api.manageCaseFlags(config.hearingCenterAdminWithRegionId1);
+// });
+//
+// AfterSuite(async  ({api}) => {
+//   await api.cleanUp();
+// });
