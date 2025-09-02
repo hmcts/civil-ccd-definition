@@ -22,7 +22,7 @@
     "DisplayContextParameter": "#ARGUMENT(CREATE)",
     "PageID": "queryManagementRaiseQuery",
     "PageLabel": "Raise a new query",
-    "Publish": "Y",
+    "Publish": "N",
     "PageDisplayOrder": 1,
     "ShowSummaryChangeOption": "Y",
     "FieldShowCondition": "QueryManagementComponentLauncher=\"DO_NOT_SHOW\""

@@ -412,5 +412,11 @@
     "CaseEventID": "CONTACT_INFORMATION_UPDATED_WA",
     "UserRole": "caseworker-civil-systemupdate",
     "CRUD": "CRUD"
+  },
+  {
+    "CaseTypeID": "CIVIL${CCD_DEF_VERSION}",
+    "CaseEventID": "REFER_TO_JUDGE",
+    "UserRole": "caseworker-civil-systemupdate",
+    "CRUD": "CRUD"
   }
 ]
