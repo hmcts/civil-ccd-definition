@@ -155,6 +155,12 @@ am-org-role-mapping-service:
       JUDICIAL_REF_APP_V2_ACTIVE: true
       JUDICIAL_REF_APP_V2_FILTER_AUTHS_BY_APP_ID: true
 
+civil-service:
+  java:
+    environment:
+      TASK_MANAGEMENT_ENABLED: true
+      TASK_MANAGEMENT_API_URL: http://${SERVICE_NAME}-wa-task-management-api
+
 xui-webapp:
   nodejs:
     environment:
