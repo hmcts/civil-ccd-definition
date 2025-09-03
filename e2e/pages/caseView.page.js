@@ -41,6 +41,30 @@ module.exports = {
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
 
+  async startTasks(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
+      await I.waitForSelector("//exui-case-task[.//strong[normalize-space(.)='Claim Discontinued - Validate discontinuance']]");
+      await I.click("//exui-case-task[.//strong[normalize-space(.)='Claim Discontinued - Validate discontinuance']]//a[@id='action_claim' or normalize-space(.)='Assign to me']");
+      // Wait for the "Validate Discontinuance" link inside that specific task panel
+      await I.waitForSelector(
+        "//exui-case-task[.//strong[normalize-space(.)='Claim Discontinued - Validate discontinuance']]//a[" +
+        "contains(@href,'/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT') or " +
+        "normalize-space(.)='Validate Discontinuance'"
+        + "]"
+      );
+      await I.click(
+          "//exui-case-task[.//strong[normalize-space(.)='Claim Discontinued - Validate discontinuance']]//a[" +
+          "contains(@href,'/trigger/VALIDATE_DISCONTINUE_CLAIM_CLAIMANT') or " +
+          "normalize-space(.)='Validate Discontinuance'"
+          + "]"
+        );
+
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
+  },
+
   async raiseNewQuery(caseId) {
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);

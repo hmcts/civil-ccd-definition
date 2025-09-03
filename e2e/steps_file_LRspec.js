@@ -559,7 +559,7 @@ module.exports = function () {
     },
 
     async respondToClaimPartAdmit({twoDefendants = false, defendant1Response = 'partAdmission', claimType = 'fast', defenceType = 'repaymentPlan', twoClaimants = false}) {
-      eventName = events.DEFENDANT_RESPONSE_SPEC.name;      
+      eventName = events.DEFENDANT_RESPONSE_SPEC.name;
       await this.triggerStepsWithScreenshot([
         () => caseViewPage.startEvent(events.DEFENDANT_RESPONSE_SPEC, caseId),
         () => respondentCheckListPage.claimTimelineTemplate(),
@@ -767,7 +767,7 @@ module.exports = function () {
     },
 
     async createCaseFlags(caseFlags) {
-      eventName = events.CREATE_CASE_FLAGS.name; 
+      eventName = events.CREATE_CASE_FLAGS.name;
       for (const {partyName, roleOnCase, details} of caseFlags) {
         for (const {name, flagComment} of details) {
           await this.triggerStepsWithScreenshot([
@@ -1030,6 +1030,21 @@ module.exports = function () {
       ]);
       await this.takeScreenshot();
     },
+
+    async requestForValidateDiscontinuanceForUIForAATDEMO() {
+      await this.triggerStepsWithScreenshot([
+        () => caseViewPage.startTasks(caseId),
+        () => this.waitForText('Yes - generate a Notice of Discontinuance'),
+        () => this.click('Yes - generate a Notice of Discontinuance'),
+        () => this.click('Submit'),
+        () => this.waitForText('Close and Return to case details'),
+        () => this.click('Close and Return to case details'),
+        () => this.waitForText('Sign out'),
+        () => this.click('Sign out'),
+      ]);
+      await this.takeScreenshot();
+    },
+
     async addCaseNote() {
       eventName = events.ADD_CASE_NOTE.name;
       await this.triggerStepsWithScreenshot([
