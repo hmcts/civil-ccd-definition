@@ -36,9 +36,13 @@ Scenario('Discontinue This Claim', async ({LRspec}) => {
 }).retry(2);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
+  if (['preview'].includes(config.runningEnv)) {
     await LRspec.login(config.ctscAdminUser);
     await LRspec.requestForValidateDiscontinuanceForUI();
+  }
+  if (['aat','demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.ctscAdminUser);
+    await LRspec.requestForValidateDiscontinuanceForUIForAATDEMO();
   }
 }).retry(2);
 
@@ -68,9 +72,13 @@ Scenario('Discontinue This Claim', async ({LRspec}) => {
 }).retry(2);
 
 Scenario('Validate Discontinuance', async ({LRspec}) => {
-  if (['preview', 'demo'].includes(config.runningEnv)) {
-    await LRspec.login(config.ctscAdminUser);
+  if (['preview'].includes(config.runningEnv)) {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
     await LRspec.requestForValidateDiscontinuanceForUI();
+  }
+  if (['aat','demo'].includes(config.runningEnv)) {
+    await LRspec.login(config.hearingCenterAdminWithRegionId1);
+    await LRspec.requestForValidateDiscontinuanceForUIForAATDEMO();
   }
 }).retry(2);
 
