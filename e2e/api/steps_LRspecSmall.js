@@ -14,7 +14,6 @@ const claimDataHearings = require('../fixtures/events/createClaimSpecSmallForHea
 const expectedEvents = require('../fixtures/ccd/expectedEventsLRSpec.js');
 const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSpec.js');
 const {assertCaseFlags, assertFlagsInitialisedAfterCreateClaim} = require('../helpers/assertions/caseFlagsAssertions');
-const {PBAv3} = require('../fixtures/featureKeys');
 const {checkToggleEnabled, checkCaseFlagsEnabled, checkManageContactInformationEnabled} = require('./testingSupport');
 const {addAndAssertCaseFlag, getPartyFlags, getDefinedCaseFlagLocations, updateAndAssertCaseFlag} = require('./caseFlagsHelper');
 const {CASE_FLAGS} = require('../fixtures/caseFlags');
@@ -38,8 +37,8 @@ let caseId, eventName;
 let caseData = {};
 
 const data = {
-  CREATE_CLAIM: (scenario, pbaV3) => claimData.createClaim(scenario, pbaV3),
-  CREATE_CLAIM_HEARINGS: (scenario, pbaV3) => claimDataHearings.createClaim(scenario, pbaV3),
+  CREATE_CLAIM: (scenario) => claimData.createClaim(scenario),
+  CREATE_CLAIM_HEARINGS: (scenario) => claimDataHearings.createClaim(scenario),
   DEFENDANT_RESPONSE: (response, camundaEvent) => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaim(response, camundaEvent),
   DEFENDANT_RESPONSE_JUDICIAL_REFERRAL: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForJudicialReferral(),
   DEFENDANT_RESPONSE_FULL_DEFENCE_CARM: () => require('../fixtures/events/defendantResponseSpecSmall.js').respondToClaimForCarm(),
@@ -113,13 +112,12 @@ module.exports = function (){
     caseId = null;
     caseData = {};
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
     let createClaimData  = {};
 
     if (!hearings) {
-      createClaimData = data.CREATE_CLAIM(scenario, pbaV3);
+      createClaimData = data.CREATE_CLAIM(scenario);
     } else {
-      createClaimData = data.CREATE_CLAIM_HEARINGS(scenario, pbaV3);
+      createClaimData = data.CREATE_CLAIM_HEARINGS(scenario);
     }
     //==============================================================
 
@@ -133,13 +131,10 @@ module.exports = function (){
 
     await waitForFinishedBusinessProcess(caseId);
 
-    console.log('Is PBAv3 toggle on?: ' + pbaV3);
-
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+    claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
+    
 
     await assignCaseRoleToUser(caseId, 'RESPONDENTSOLICITORONE', config.defendantSolicitorUser);
     if (scenario === 'ONE_V_TWO') {
@@ -162,9 +157,8 @@ module.exports = function (){
     eventName = 'INFORM_AGREED_EXTENSION_DATE_SPEC';
     await apiRequest.setupTokens(user);
     caseData = await apiRequest.startEvent(eventName, caseId);
-    const pbaV3 = await checkToggleEnabled(PBAv3);
 
-    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE(pbaV3 ? 'CREATE_CLAIM_SPEC_AFTER_PAYMENT':'CREATE_CLAIM_SPEC');
+    let informAgreedExtensionData = await data.INFORM_AGREED_EXTENSION_DATE('CREATE_CLAIM_SPEC_AFTER_PAYMENT');
     informAgreedExtensionData.userInput.ExtensionDate.respondentSolicitor1AgreedDeadlineExtension = await dateNoWeekends(40);
 
     for (let pageId of Object.keys(informAgreedExtensionData.userInput)) {
@@ -196,10 +190,7 @@ module.exports = function (){
   defendantResponse: async (user, response = 'FULL_DEFENCE', scenario = 'ONE_V_ONE', judicialReferral = false, carmEnabled = false) => {
     await apiRequest.setupTokens(user);
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if(pbaV3){
-      response = response+'_PBAv3';
-    }
+    response = response+'_PBAv3';
 
     eventName = 'DEFENDANT_RESPONSE_SPEC';
 

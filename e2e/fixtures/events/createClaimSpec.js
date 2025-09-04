@@ -27,10 +27,6 @@ const applicant1WithPartyName = {
   partyTypeDisplayValue: 'Company',
 };
 
-const isPBAv3 = (pbaV3) => {
-  return pbaV3;
-};
-
 const solicitor1Email = 'hmcts.civil+organisation.1.solicitor.1@gmail.com';
 const claimAmount = '150000';
 
@@ -79,7 +75,7 @@ const flightDelayDetails ={
 };
 
 module.exports = {
-  createClaim: (mpScenario, pbaV3, isMintiCaseEnabled, mintiClaimAmount) => {
+  createClaim: (mpScenario, isMintiCaseEnabled, mintiClaimAmount) => {
     const userData = {
       userInput: {
         References: {
@@ -185,9 +181,7 @@ module.exports = {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
-          ...isPBAv3(pbaV3) ? {
-            paymentTypePBASpec: 'PBAv3'
-          } : {},
+          paymentTypePBASpec: 'PBAv3',
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -221,9 +215,7 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          ...isPBAv3(pbaV3) ? {
-            paymentTypePBASpec: 'PBAv3'
-          } : {},
+          paymentTypePBASpec: 'PBAv3',
         }
       },
 
@@ -252,9 +244,7 @@ module.exports = {
             code: 'string',
             version: 'string'
           },
-          ...isPBAv3 (pbaV3) ? {
-            paymentTypePBASpec: 'string'
-          } : {},
+          paymentTypePBASpec: 'PBAv3',
         }
       }
     };
@@ -321,9 +311,7 @@ module.exports = {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
             },
-            ...isPBAv3(pbaV3) ? {
-              paymentTypePBASpec: 'PBAv3'
-            } : {},
+          paymentTypePBASpec: 'PBAv3',
           },
         };
 
@@ -466,7 +454,7 @@ module.exports = {
     return userData;
   },
 
-  createClaimDataByPage: (mpScenario, pbaV3) => {
+  createClaimDataByPage: (mpScenario) => {
     let userData = {
       References: {
         userInput: {
@@ -623,9 +611,7 @@ module.exports = {
         expected: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          ...isPBAv3(pbaV3) ? {
-            paymentTypePBASpec: 'PBAv3'
-          } : {},
+          paymentTypePBASpec: 'PBAv3',
         },
         generated: {
           applicantSolicitor1PbaAccounts: {

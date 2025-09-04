@@ -22,7 +22,7 @@ const nonProdExpectedEvents = require('../fixtures/ccd/nonProdExpectedEventsLRSp
 const testingSupport = require('./testingSupport');
 const {dateNoWeekends, dateNoWeekendsBankHolidayNextDay, date} = require('./dataHelper');
 const {checkToggleEnabled, checkMintiToggleEnabled, uploadDocument} = require('./testingSupport');
-const {PBAv3, isJOLive} = require('../fixtures/featureKeys');
+const {isJOLive} = require('../fixtures/featureKeys');
 const {adjustCaseSubmittedDateForCarm} = require('../helpers/carmHelper');
 const {fetchCaseDetails} = require('./apiRequest');
 const lipClaimantResponse = require('../fixtures/events/cui/lipClaimantResponse');
@@ -236,12 +236,10 @@ module.exports = {
     await assertSubmittedEvent('PENDING_CASE_ISSUED');
     await waitForFinishedBusinessProcess(caseId);
 
-    const pbaV3 = await checkToggleEnabled(PBAv3);
-    if (pbaV3) {
-      await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
-        claimData.serviceUpdateDto(caseId, 'paid'));
-      console.log('Service request update sent to callback URL');
-    }
+    await apiRequest.paymentUpdate(caseId, '/service-request-update-claim-issued',
+    claimData.serviceUpdateDto(caseId, 'paid'));
+    console.log('Service request update sent to callback URL');
+    
     await waitForFinishedBusinessProcess(caseId);
     if (claimType !== 'pinInPost') {
       await assignCaseRoleToUser(caseId, 'DEFENDANT', config.defendantCitizenUser2);
