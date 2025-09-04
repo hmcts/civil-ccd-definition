@@ -244,7 +244,7 @@ module.exports = {
             code: 'string',
             version: 'string'
           },
-          paymentTypePBASpec: 'PBAv3',
+          paymentTypePBASpec: 'string',
         }
       }
     };

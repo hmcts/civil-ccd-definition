@@ -195,7 +195,7 @@ module.exports = {
             code: 'string',
             version: 'string'
           },
-          paymentTypePBASpec: 'PBAv3',
+          paymentTypePBASpec: 'string',
         }
       }
     };
@@ -263,7 +263,7 @@ module.exports = {
             claimIssuedPaymentDetails: {
               customerReference: 'Applicant reference'
             },
-            paymentTypePBASpec: 'string',
+            paymentTypePBASpec: 'PBAv3',
           },
         };
 

@@ -136,7 +136,7 @@ module.exports = {
           claimIssuedPaymentDetails: {
             customerReference: 'Applicant reference'
           },
-          paymentTypePBASpec: 'string',
+          paymentTypePBASpec: 'PBAv3',
         },
         PbaNumber: {
           applicantSolicitor1PbaAccounts: {
@@ -170,7 +170,7 @@ module.exports = {
         InterestSummary: {
           totalInterest: 0,
           applicantSolicitor1PbaAccountsIsEmpty: 'No',
-          paymentTypePBASpec: 'string',
+          paymentTypePBASpec: 'PBAv3',
         },
       },
 
