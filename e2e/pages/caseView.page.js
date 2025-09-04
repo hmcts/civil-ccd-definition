@@ -23,6 +23,11 @@ module.exports = {
     judgeName: '#permissionGrantedComplex_permissionGrantedJudge',
     caseNote: '#caseNote',
     judgeOrder: '#settleReason-JUDGE_ORDER',
+    joSetAsideReasonJudgeOrder: '#joSetAsideReason-JUDGE_ORDER',
+    joSetAsideOrderTypeORDERAFTERDEFENCE: '#joSetAsideOrderType-ORDER_AFTER_DEFENCE',
+    joSetAsideOrderTypeOrderAfterApplication: '#joSetAsideOrderType-ORDER_AFTER_APPLICATION',
+    claimProceedsInCasemanLRReasonJUDGEMENTREQUEST:'#claimProceedsInCasemanLR_reason-JUDGEMENT_REQUEST',
+    joSetAsideReasonJUDGMENTERROR: '#joSetAsideReason-JUDGMENT_ERROR',
   },
   goButton: '.button[type="submit"]',
 
@@ -40,7 +45,49 @@ module.exports = {
       await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/trigger/${event.id}/${event.id}`);
     }, EVENT_TRIGGER_LOCATOR, 3, 45);
   },
+  async startSetAsideJudgmentTakeCaseOfflineTasks(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
+      await I.waitForSelector("//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]",
+      );
+      await I.click(
+        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]//dt[normalize-space(.)='Manage']/following-sibling::dd//a[@id='action_claim' or normalize-space(.)='Assign to me']"
+      );
+      // Wait for the "Validate Discontinuance" link inside that specific task panel
+      await I.waitForSelector(
+        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]",
+      );
+      await I.click(
+        "//exui-case-task[.//strong[normalize-space(.)='Set Aside - Take Case Offline']]//dt[normalize-space(.)='Next steps']/following-sibling::dd//a[" +
+        "contains(@href, '/trigger/CASE_PROCEEDS_IN_CASEMAN2') or " +
+        "normalize-space(.)='SetAside - Take Case Offline'" +
+        "]"
+      );
 
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
+  },
+  async startDefenceRreceivedInTimeOrderThatJudgmentIsSetAsideTasks(caseId) {
+    await waitForFinishedBusinessProcess(caseId);
+    await I.retryUntilExists(async() => {
+      await I.navigateToCaseDetails(caseId);
+      await I.amOnPage(`${config.url.manageCase}/cases/case-details/${caseId}/tasks`);
+      await I.waitForSelector(
+        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]",
+      );
+      await I.click(
+        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]//dt[normalize-space(.)='Manage']/following-sibling::dd//a[@id='action_claim' or normalize-space(.)='Assign to me']"
+      );
+      await I.waitForSelector(
+        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]",
+      );
+      await I.click(
+        "//exui-case-task[.//strong[normalize-space(.)='Defence received in time - order that judgment is set aside']]//dt[normalize-space(.)='Next steps']/following-sibling::dd//a[normalize-space(.)='Make Order']"
+      );
+
+    }, EVENT_TRIGGER_LOCATOR, 3, 45);
+  },
   async raiseNewQuery(caseId) {
     await I.retryUntilExists(async() => {
       await I.navigateToCaseDetails(caseId);
@@ -60,6 +107,27 @@ module.exports = {
     await I.runAccessibilityTest();
     I.click(this.fields.judgeOrder);
     await I.clickContinue();
+  },
+  async selectjoSetAsideReasonJudgeOrder() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.joSetAsideReasonJudgeOrder);
+    await I.clickContinue();
+  },
+  async selectjoSetAsideReasonMadeInError() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.joSetAsideReasonJUDGMENTERROR);
+  },
+  async selectReasonForProceedingOnPaper() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.claimProceedsInCasemanLRReasonJUDGEMENTREQUEST);
+  },
+  async selectjoSetAsideOrderTypeOrderAfterApplication() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.joSetAsideOrderTypeOrderAfterApplication);
+  },
+  async selectjoSetAsideORDER_AFTER_APPLICATION() {
+    await I.runAccessibilityTest();
+    I.click(this.fields.joSetAsideOrderTypeORDERAFTERDEFENCE);
   },
   async caseNoteForClaimDiscontinuedRemoveHearing() {
     await I.runAccessibilityTest();
