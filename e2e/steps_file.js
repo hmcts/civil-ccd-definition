@@ -361,8 +361,7 @@ module.exports = function () {
         () => personalInjuryTypePage.selectPersonalInjuryType(),
         () => detailsOfClaimPage.enterDetailsOfClaim(),
         () => uploadParticularsOfClaimQuestion.chooseYesUploadParticularsOfClaim(),
-        () => config.runningEnv !== 'aat' ? uploadParticularsOfClaim.upload(TEST_FILE_PATH)
-          : uploadParticularsOfClaim.enterParticularsOfClaim(), //Uploading files to aat is causing loading on page to timeout.
+        () => uploadParticularsOfClaim.enterParticularsOfClaim(),
         () => claimValuePage.enterClaimValue(claimValue),
         () => pbaNumberPage.clickContinue(),
         () => statementOfTruth.enterNameAndRole('claim'),
