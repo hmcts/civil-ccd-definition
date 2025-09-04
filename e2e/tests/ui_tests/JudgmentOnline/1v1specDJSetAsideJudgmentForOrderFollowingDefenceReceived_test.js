@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft @e2e-dj-spec');
+Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft @e2e-dj-spec @non-prod-e2e-ft');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec, LRspec}) => {
 
@@ -24,7 +24,7 @@ Scenario('Set A side Judgment - Order following defence received', async ({LRspe
 }).retry(2);
 
 Scenario('Set Aside - Take Case Offline', async ({LRspec}) => {
-  if (['preview','aat','demo'].includes(config.runningEnv)) {
+  if (['aat','demo'].includes(config.runningEnv)) {
     await LRspec.login(config.hearingCenterAdminWithRegionId2);
     await LRspec.requestSetAsideTakeCaseOffline();
   }

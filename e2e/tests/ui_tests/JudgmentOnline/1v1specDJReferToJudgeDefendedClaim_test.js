@@ -2,7 +2,7 @@
 
 const config = require('../../../config.js');
 
-Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft @e2e-dj-spec');
+Feature('1v1 spec defaultJudgement @e2e-1v1-dj @master-e2e-ft @e2e-dj-spec @non-prod-e2e-ft');
 
 Scenario('DefaultJudgement @create-claim ', async ({I, api_spec, LRspec}) => {
 
@@ -24,7 +24,7 @@ Scenario('Refer to judge (defence received in time)', async ({LRspec}) => {
 }).retry(2);
 
  Scenario('Defence received in time - order that judgment is set aside', async ({LRspec}) => {
-  if (['preview','aat','demo'].includes(config.runningEnv)) {
+  if (['aat','demo'].includes(config.runningEnv)) {
     await LRspec.login(config.judgeUser2WithRegionId2);
     await LRspec.requestDefenceReceivedInTimeOrderThatJudgmentIsSetAside();
   }
