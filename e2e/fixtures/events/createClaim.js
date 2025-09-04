@@ -210,7 +210,7 @@ const createClaimData = (legalRepresentation, useValidPba, mpScenario, claimAmou
         statementOfValueInPennies:  JSON.stringify(claimAmount * 100)
       },
       claimFee: getClaimFee(claimAmount),
-      paymentTypePBASpec: 'PBAv3',
+      paymentTypePBA: 'PBAv3',
     },
     PbaNumber: {
       applicantSolicitor1PbaAccounts: {
@@ -393,7 +393,7 @@ module.exports = {
           ...hasRespondent2(mpScenario) ? {
             respondent2: respondent2WithPartyName
           } : {},
-          paymentTypePBASpec: 'PBAv3',
+          paymentTypePBA: 'PBAv3',
         },
         ClaimantLitigationFriend: {
           applicant1: applicant1WithPartyName,
